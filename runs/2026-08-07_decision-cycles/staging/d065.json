@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_065",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 58,
+  "observation": {"orphan_meshes": ["Cube", "Torus", "Torus.001"], "orphan_materials": ["Bottle_Mat", "Dots Stroke", "Flashlight_Mat", "SimpleBlock_Mat_v2"]},
+  "reason": "purge accumulated orphaned data blocks (old boolean cutter meshes, superseded material versions, default startup material) for a clean final file",
+  "chosen_action": {"op": "remove all 0-user meshes and materials", "target": "scene data blocks"},
+  "result_revision": 59,
+  "result_state": {"removed_meshes": 3, "removed_materials": 5, "real_objects_still_clean": true},
+  "evaluation": "accepted"
+}
