@@ -34,8 +34,7 @@ def next_seq(session_id):
     return (entries[-1]["seq"] + 1) if entries else 1
 
 
-def cmd_append(args):
-    data = json.loads(Path(args.data_file).read_text())
+def _append_one(data):
     missing = REQUIRED_FIELDS - data.keys()
     if missing:
         print(f"ERROR: missing required fields: {missing}", file=sys.stderr)
@@ -48,6 +47,17 @@ def cmd_append(args):
     with open(log_path(data["session_id"]), "a") as f:
         f.write(json.dumps(data) + "\n")
     print(f"appended seq={data['seq']} status={data['status']}")
+
+
+def cmd_append(args):
+    loaded = json.loads(Path(args.data_file).read_text())
+    # A data file may hold one entry (dict) or several (list) -- several is for
+    # batching a set of independently-verified sub-steps that came back from a
+    # single Blender call (e.g. a loop that added N ring details, each with its
+    # own real before/after), so we don't need one MCP round-trip per entry.
+    entries = loaded if isinstance(loaded, list) else [loaded]
+    for data in entries:
+        _append_one(data)
 
 
 def cmd_summarize(args):
