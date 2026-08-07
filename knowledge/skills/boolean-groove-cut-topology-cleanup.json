@@ -1,0 +1,55 @@
+{
+  "id": "boolean-groove-cut-topology-cleanup",
+  "title": "N-gons and degenerate faces after a boolean DIFFERENCE groove cut on a hard-surface body",
+  "topic_tags": [
+    "topology",
+    "boolean",
+    "hard-surface",
+    "n-gon",
+    "degenerate-face",
+    "groove",
+    "cleanup"
+  ],
+  "problem": "Cutting a decorative groove into a solid revolved body (e.g. a bottle) using a torus cutter whose major_radius equals the body's surface radius, via a boolean DIFFERENCE modifier + modifier_apply, produces a messy intersection seam: the exact boolean solver leaves many stray n-gons and zero-area (degenerate) faces where the cutter surface was tangent/near-coincident with the target surface, even though it does not necessarily leave non-manifold edges.",
+  "symptom": "state_probe.mesh_health() on the target object shows a large jump in ngons (2 -> 54 in the observed case) and a nonzero degenerate_faces count (0 -> 10) immediately after bpy.ops.object.modifier_apply() on the boolean modifier, while non_manifold_edges can remain 0 -- so a check that only looks at non_manifold_edges would miss this defect entirely.",
+  "fix": {
+    "summary": "Merge coincident/near-coincident verts at a small threshold, recalc face normals, then triangulate any remaining n-gons. This single pass reliably clears both the n-gon spike and the degenerate faces because remove_doubles collapses the zero-area slivers the boolean solver leaves behind.",
+    "bpy_bmesh_steps": [
+      "bm = bmesh.new(); bm.from_mesh(obj.data)",
+      "bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.0001)",
+      "bmesh.ops.recalc_face_normals(bm, faces=bm.faces)",
+      "bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4])",
+      "bm.to_mesh(obj.data); obj.data.update()"
+    ],
+    "code_snippet": "blender_ops/repair.py::repair_non_manifold_from_boolean(name, merge_dist=0.0001)"
+  },
+  "evidence": {
+    "before": {
+      "vertices": 280,
+      "edges": 502,
+      "faces": 224,
+      "non_manifold_edges": 0,
+      "ngons": 54,
+      "degenerate_faces": 10
+    },
+    "after": {
+      "vertices": 236,
+      "edges": 518,
+      "faces": 284,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "degenerate_faces": 0
+    },
+    "action_log_seq": {
+      "mistake_detected": 14,
+      "repaired_verified": 15
+    },
+    "session_id": "2026-08-06_seven-proofs",
+    "verify_report": null,
+    "verify_report_note": "Independent tools/verify_mesh.py pass against the saved .blend happens in Milestone 5; this evidence is from the live-session state_probe check at the time of repair."
+  },
+  "learned_at": "2026-08-07T03:15:00Z",
+  "learned_during": "proof4_mistake_repair",
+  "source_session": "2026-08-06_seven-proofs",
+  "applicability": "Any time a boolean modifier (especially DIFFERENCE with a cutter surface tangent or near-coincident with the target's own surface, e.g. a groove/ring cutter matching the body radius) is applied and converted to mesh on a hard-surface object, immediately probe mesh_health() for ngons and degenerate_faces (not just non_manifold_edges) and apply this same merge -> recalc -> triangulate sequence if either is nonzero."
+}
