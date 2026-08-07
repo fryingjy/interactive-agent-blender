@@ -1,0 +1,10 @@
+{
+  "decision_id": "decision_029",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 24,
+  "reason": "verify-count flagged seq 19->20 as < 1s apart (batched signature). Root cause investigated: the underlying decisions (holes_fill retry, then edge_face_add fix) were genuinely separate MCP round-trips with real reasoning shown between them -- but I wrote both d019.json and d020.json in one message and appended both via consecutive Bash calls without an intervening MCP call, so both got append-time timestamps within the same second. This is a real flaw in my own logging discipline (timestamp reflects when I got around to logging, not when the decision happened), not evidence the decisions themselves were batched. Not retroactively editing d019/d020's timestamps to fix this -- that would be gaming the exact check this mechanism exists to enforce. Recorded here as an honest correction to logging practice going forward: append immediately after each individual decision, never batch two Write+append pairs together.",
+  "chosen_action": {"op": "document_logging_discipline_correction", "affected_entries": [19, 20]},
+  "result_revision": 25,
+  "evaluation": "accepted"
+}

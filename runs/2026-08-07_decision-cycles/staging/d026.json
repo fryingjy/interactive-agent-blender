@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_026",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 21,
+  "observation": {"flashlight_health": {"vertices": 787, "edges": 1581, "faces": 800, "non_manifold_edges": 0, "ngons": 0}},
+  "reason": "same finishing touch applied to Bottle in decision_025, now applying to Flashlight for consistency",
+  "chosen_action": {"op": "set polygon.use_smooth=True for all faces", "target": "Flashlight"},
+  "result_revision": 22,
+  "result_state": {"vertices": 787, "edges": 1581, "faces": 800, "non_manifold_edges": 0, "ngons": 0, "smooth_faces": 800},
+  "evaluation": "accepted"
+}
