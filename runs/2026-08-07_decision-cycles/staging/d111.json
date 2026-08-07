@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_111",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 104,
+  "observation": {"pid": 6180, "note": "same continuous process since the very first Blender launch this entire session, never restarted"},
+  "reason": "closing confirmation for Proof 1 -- record the final PID and mark the session complete",
+  "chosen_action": {"op": "write closing scene properties", "target": "scene"},
+  "result_revision": 105,
+  "result_state": {"session_status": "COMPLETE", "final_pid": 6180},
+  "evaluation": "accepted"
+}

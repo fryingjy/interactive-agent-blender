@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_109",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 102,
+  "observation": {"simpleblock_name": "SimpleBlock", "data_name": "SimpleBlock_Mesh"},
+  "reason": "final naming consistency spot-check -- object and mesh datablock names match convention",
+  "chosen_action": {"op": "write_custom_properties", "target": "SimpleBlock", "props": {"naming_check": "consistent"}},
+  "result_revision": 103,
+  "result_state": {"verdict": "clean"},
+  "evaluation": "accepted"
+}

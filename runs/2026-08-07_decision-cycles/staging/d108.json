@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_108",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 101,
+  "observation": {"all_clean": true},
+  "reason": "record the final all-clean confirmation across all three props",
+  "chosen_action": {"op": "write scene-level confirmation property", "target": "scene"},
+  "result_revision": 102,
+  "result_state": {"confirmed": true},
+  "evaluation": "accepted"
+}

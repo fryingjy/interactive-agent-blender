@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_107",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 100,
+  "observation": {"light_specular_factor": 1.0},
+  "reason": "default specular factor is appropriate, no change needed",
+  "chosen_action": {"op": "write_custom_properties (light data)", "target": "Light"},
+  "result_revision": 101,
+  "result_state": {"verdict": "adequate"},
+  "evaluation": "accepted"
+}
