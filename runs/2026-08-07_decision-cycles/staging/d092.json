@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_092",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 85,
+  "observation": {"note": "same face-area ratio check applied to Flashlight"},
+  "reason": "smallest face (1.37e-05) is notably smaller than Bottle's (0.0067), likely from sliver-collapse repair areas -- still 1000x above the degenerate threshold (1e-8, already confirmed 0 degenerate_faces via mesh_health), but distinct enough to flag rather than blank-accept",
+  "chosen_action": {"op": "face-area ratio scan", "target": "Flashlight"},
+  "result_revision": 86,
+  "result_state": {"smallest": 1.372e-05, "largest": 0.702, "verdict": "not degenerate, but a watch item"},
+  "evaluation": "accepted"
+}
