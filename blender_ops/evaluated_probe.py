@@ -16,8 +16,13 @@ algorithm -- so this reports exactly what the modifier stack actually
 produces, not an approximation of it.
 """
 
+import math
+
 import bpy
 import bmesh
+import mathutils
+
+import bmesh_io
 
 
 def _read_evaluated_bmesh(obj):
@@ -180,3 +185,186 @@ def bounding_box_comparison(name):
         "base_bounds": {"min": [round(c, 4) for c in base_min], "max": [round(c, 4) for c in base_max]},
         "evaluated_bounds": {"min": [round(c, 4) for c in eval_min], "max": [round(c, 4) for c in eval_max]},
     }
+
+
+def evaluated_defect_regions(name, area_outlier_ratio=0.05, angle_threshold_degrees=10, angle_local_spike_ratio=2.0, max_tickets=20):
+    """Localize SubD surface defects, not just count them (directive
+    section 8): evaluated_surface_quality can say "area_outlier_count: 3"
+    or report one global max_adjacent_face_angle, but neither says WHERE --
+    a modeler (or this system) needs to know which part of the control cage
+    to actually go fix.
+
+    For each individual outlier face / high-curvature-discontinuity edge on
+    the EVALUATED mesh, finds its real position, then reports the nearest
+    persistent-ID vertices/faces on the BASE control cage by straight
+    spatial distance (evaluated-mesh vertex coordinates from
+    obj.evaluated_get().to_mesh() are in the same local space as obj.data,
+    confirmed by bounding_box_comparison's own working use of both without
+    a matrix_world conversion between them -- so this is a direct, valid
+    comparison, not an approximation across coordinate spaces).
+
+    Deliberately NOT exact 1:1 evaluated-to-base vertex identity -- the
+    evaluated mesh has no persistent IDs of its own and subdivision doesn't
+    have a single canonical parent-vertex mapping worth relying on. Spatial
+    nearest-neighbor is what the directive itself says is sufficient: "It
+    does not need perfect one-to-one evaluated vertex identity. It needs
+    enough spatial correspondence to create actionable local repair
+    tickets."
+
+    angle_threshold_degrees is a floor (skip near-flat edges entirely, not
+    a defect cutoff by itself) -- an edge only becomes a "high_angle"
+    ticket if its angle also exceeds angle_local_spike_ratio times the
+    average angle of its own immediately neighboring edges, i.e. a real
+    local discontinuity, not just a high value in the mesh's global
+    population. See the inline correction below for why: a first version
+    using angle_threshold_degrees as an absolute cutoff produced 144 false
+    positives on the known-clean SoapDish, whose rounded corners legitimately
+    have a smooth gradient up to ~46deg with no discontinuity anywhere.
+
+    HONEST LIMITATION, found testing the local-ratio fix, not glossed over:
+    it still doesn't cleanly separate "healthy smooth curvature" from real
+    pinching. Tested against a deliberately built bad case (a cube with one
+    face subdivided at a mismatched resolution vs its neighbors -- the same
+    defect class documented in the SoapDish rim n-gon issue) and the
+    resulting max severity (~2.65) landed in the SAME range as SoapDish's
+    own healthy severity scores (up to 3.0), not clearly higher. The root
+    issue: comparing an edge to its immediate neighbors' average flags ANY
+    local curvature peak, healthy or not -- a smooth bump's apex always
+    "outshines" the edges on its own rising/falling slope by construction,
+    independent of whether the bump is a good rounded corner or a bad
+    pinch. A more correct signal would likely need to measure whether
+    elevated curvature is CONCENTRATED into an abnormally small area
+    relative to how much surface it affects (closer to how area_outlier
+    already works) rather than a simple neighbor-ratio -- not attempted
+    here. Treat this function's tickets as ranked CANDIDATE locations worth
+    a closer look (numeric triage, narrowing down where to render/inspect
+    next), not as confirmed defects -- matching the directive's own
+    observation (section 37) that this kind of judgment is normally a
+    visual task for a human modeler, not something fully reducible to a
+    single clean threshold.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+
+    bm, cleanup = _read_evaluated_bmesh(obj)
+    tickets = []
+    try:
+        bm.faces.ensure_lookup_table()
+        areas = [(f, f.calc_area()) for f in bm.faces]
+        areas_nonzero = sorted(a for _, a in areas if a > 1e-9)
+        median = areas_nonzero[len(areas_nonzero) // 2] if areas_nonzero else 0.0
+        for f, a in areas:
+            if median > 1e-9 and 0 < a < median * area_outlier_ratio:
+                tickets.append({
+                    "type": "area_outlier",
+                    "position": list(f.calc_center_median()),
+                    "severity": round(1.0 - (a / (median * area_outlier_ratio)), 4),
+                    "area": round(a, 8), "median_area": round(median, 6),
+                })
+
+        # CORRECTION (found live, first real test against the known-clean
+        # SoapDish): an ABSOLUTE angle threshold is wrong for this. Direct
+        # measurement showed SoapDish's evaluated edge angles form a smooth,
+        # continuous gradient from ~0deg up to ~46deg at its rounded
+        # corners (median 3.7deg, 90th percentile 42deg, 99th 44.8deg) --
+        # normal, healthy Catmull-Clark rounding across a smoothly curved
+        # surface, not isolated pinch points. A flat 25deg cutoff flagged
+        # 144 "defects" on a mesh already independently confirmed clean
+        # (0 area outliers, poles only at expected corners) -- pure false
+        # positives from treating "in the top percentile of the whole
+        # mesh" as equivalent to "a localized spike," which it is not:
+        # a whole rounded edge legitimately having uniformly elevated
+        # angles together is the healthy case, exactly what "rounded"
+        # means geometrically. Real pinching is a DISCONTINUITY -- one
+        # edge's angle standing out sharply from its own immediate
+        # neighbors' angles, not from the mesh's global population. Compare
+        # each edge against the local average of edges sharing one of its
+        # two vertices instead, mirroring how area_outlier already compares
+        # against a local median rather than an absolute area.
+        bm.edges.ensure_lookup_table()
+        edge_angles = {}
+        for e in bm.edges:
+            if len(e.link_faces) == 2:
+                edge_angles[e.index] = e.calc_face_angle(0.0)
+        angle_min = math.radians(angle_threshold_degrees)
+        for e in bm.edges:
+            angle = edge_angles.get(e.index)
+            if angle is None or angle < angle_min:
+                continue
+            neighbor_angles = [
+                edge_angles[ne.index]
+                for v in e.verts for ne in v.link_edges
+                if ne.index != e.index and ne.index in edge_angles
+            ]
+            if not neighbor_angles:
+                continue
+            local_avg = sum(neighbor_angles) / len(neighbor_angles)
+            if local_avg > 1e-6 and angle > local_avg * angle_local_spike_ratio:
+                mid = (e.verts[0].co + e.verts[1].co) / 2.0
+                tickets.append({
+                    "type": "high_angle",
+                    "position": list(mid),
+                    "severity": round(angle / local_avg, 4),
+                    "angle_degrees": round(math.degrees(angle), 2),
+                    "local_neighbor_avg_degrees": round(math.degrees(local_avg), 2),
+                })
+    finally:
+        cleanup()
+
+    tickets.sort(key=lambda t: t["severity"], reverse=True)
+    total_found = len(tickets)
+    tickets = tickets[:max_tickets]
+
+    base_bm = bmesh_io.read_bmesh(obj)
+    base_bm.verts.ensure_lookup_table()
+    base_bm.faces.ensure_lookup_table()
+    vert_layer = base_bm.verts.layers.int.get("agent_vertex_id")
+    face_layer = base_bm.faces.layers.int.get("agent_face_id")
+
+    for t in tickets:
+        pos = mathutils.Vector(t["position"])
+        vert_dists = []
+        if vert_layer is not None:
+            for v in base_bm.verts:
+                vid = v[vert_layer]
+                if vid != 0:
+                    vert_dists.append((round((v.co - pos).length, 4), vid))
+        face_dists = []
+        if face_layer is not None:
+            for f in base_bm.faces:
+                fid = f[face_layer]
+                if fid != 0:
+                    face_dists.append((round((f.calc_center_median() - pos).length, 4), fid))
+        vert_dists.sort(key=lambda x: x[0])
+        face_dists.sort(key=lambda x: x[0])
+        t["position"] = [round(c, 4) for c in t["position"]]
+        t["nearby_cage_verts"] = [{"agent_id": vid, "distance": d} for d, vid in vert_dists[:3]]
+        t["nearby_cage_faces"] = [{"agent_id": fid, "distance": d} for d, fid in face_dists[:3]]
+
+        # A control-cage pole (valence != 4) has genuinely reduced
+        # smoothness in Catmull-Clark's own limit surface -- a known,
+        # unavoidable mathematical property of the algorithm at
+        # extraordinary vertices, not evidence of bad support-loop
+        # placement. Flag it so the caller can apply the same judgment
+        # the master directive requires elsewhere (section 17/section 4.2:
+        # "explicitly warns against treating every non-4-valence vertex as
+        # a defect... inspect... judge context"), rather than this tool
+        # silently pretending to auto-classify pinching with certainty it
+        # doesn't have.
+        if vert_dists:
+            nearest_id = vert_dists[0][1]
+            nearest_vert = None
+            for v in base_bm.verts:
+                if vert_layer is not None and v[vert_layer] == nearest_id:
+                    nearest_vert = v
+                    break
+            if nearest_vert is not None:
+                valence = len(nearest_vert.link_edges)
+                t["nearest_cage_vertex_valence"] = valence
+                t["likely_pole_artifact"] = valence != 4
+
+    if obj.mode != "EDIT":
+        base_bm.free()
+
+    return {"defect_count_total": total_found, "tickets_returned": len(tickets), "tickets": tickets}

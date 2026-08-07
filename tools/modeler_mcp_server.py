@@ -83,6 +83,12 @@ def get_selection(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_evaluated_defect_regions(object_name: str, area_outlier_ratio: float = 0.05, angle_threshold_degrees: float = 10, angle_local_spike_ratio: float = 2.0, max_tickets: int = 20) -> dict:
+    """Localize CANDIDATE SubD surface problem areas on object_name's evaluated mesh to actual positions, then map each to the nearest persistent-ID vertices/faces on the base control cage (spatial nearest-neighbor, not exact identity -- the evaluated mesh has no persistent IDs of its own). Unlike get_evaluated_state's surface_quality (global counts/max only), this returns individual tickets sorted by severity for triage -- where to look next, e.g. with render_silhouette on that region. HONEST LIMITATION: this does NOT reliably distinguish real pinching from healthy smooth curvature -- tested against a deliberately bad case and a known-clean mesh, severity scores landed in the same range for both. Treat tickets as candidates worth visual inspection, not confirmed defects; likely_pole_artifact flags a nearby non-4-valence control-cage vertex, which has inherently reduced Catmull-Clark smoothness and is often NOT a real defect on its own."""
+    return _call("get_evaluated_defect_regions", name=object_name, area_outlier_ratio=area_outlier_ratio, angle_threshold_degrees=angle_threshold_degrees, angle_local_spike_ratio=angle_local_spike_ratio, max_tickets=max_tickets)
+
+
+@mcp.tool()
 def get_modeling_stage(object_name: str) -> dict:
     """Current modeling stage for object_name (REFERENCE_ANALYSIS / PRIMARY_BLOCKOUT / PROPORTION_SILHOUETTE / SECONDARY_FORMS / TOPOLOGY_SURFACE / TERTIARY_DETAIL / PRODUCTION_PREP / FINAL_REVIEW, defaulting to REFERENCE_ANALYSIS if never set) plus the full transition log with the evidence recorded for each change."""
     return _call("get_modeling_stage", name=object_name)

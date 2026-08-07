@@ -439,6 +439,12 @@ class ModelerServer:
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
+    def cmd_get_evaluated_defect_regions(self, name, area_outlier_ratio=0.05, angle_threshold_degrees=10, angle_local_spike_ratio=2.0, max_tickets=20):
+        return evaluated_probe.evaluated_defect_regions(
+            name, area_outlier_ratio=area_outlier_ratio,
+            angle_threshold_degrees=angle_threshold_degrees,
+            angle_local_spike_ratio=angle_local_spike_ratio, max_tickets=max_tickets)
+
     def cmd_inspect_region(self, name, center_ids, rings=2):
         return state_probe.inspect_region(name, center_ids, rings=rings)
 
