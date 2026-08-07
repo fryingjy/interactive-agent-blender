@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_095",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 88,
+  "observation": {"custom_property_counts": {"SimpleBlock": 16, "Bottle": 28, "Flashlight": 32}},
+  "reason": "audit the accumulated QA metadata from this session's many checks -- self-documenting record",
+  "chosen_action": {"op": "write_custom_properties (self-audit)", "target": "all three objects"},
+  "result_revision": 89,
+  "result_state": {"all_clean": true},
+  "evaluation": "accepted"
+}
