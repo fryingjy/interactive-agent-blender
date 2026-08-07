@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_105",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 98,
+  "observation": {"health": "all three clean", "active_camera": "Camera"},
+  "reason": "save the final closing checkpoint with camera and light complete",
+  "chosen_action": {"op": "save_as_mainfile", "target": "all objects", "path": "runs/2026-08-07_decision-cycles/blend/checkpoint_final.blend"},
+  "result_revision": 99,
+  "result_state": {"saved": true},
+  "evaluation": "accepted"
+}
