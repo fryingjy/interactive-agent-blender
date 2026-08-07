@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_072",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 65,
+  "observation": {"dimensions": [2.0, 2.0, 3.0], "note": "matches expected build history: cube size=2, extruded +1.0 on top"},
+  "reason": "cross-check coordinate extents across all axes to verify the four recessed panels (both sides, base, top) didn't push geometry outside reasonable bounds",
+  "chosen_action": {"op": "coordinate extent scan", "target": "SimpleBlock"},
+  "result_revision": 66,
+  "result_state": {"x_extent": [-1.0, 1.0], "y_extent": [-1.0, 1.0], "z_extent": [-1.0, 2.0], "verdict": "all within expected bounds"},
+  "evaluation": "accepted"
+}
