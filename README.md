@@ -45,9 +45,14 @@ Python variable) and `tools/decision_log.py` (validates strict revision chaining
 gap between consecutive decision timestamps, and can only be advanced one mutation at a time via
 `advance_revision()`) enforce this mechanically now, not by discipline alone.
 
-`2026-08-07_decision-cycles` is 111 genuinely separate MCP round-trips (`verify-count --min 100`
-passes: 100 accepted-or-repaired entries, single PID — 6180 — from first launch to last action,
-never restarted). It's an honest complete record, not a highlight reel: 15 real repairs, 3
+`2026-08-07_decision-cycles` is 111 genuinely separate MCP round-trips. **Status: PARTIAL, not
+PASS** — `verify-count --min 100` reports `accepted_or_repaired_count: 100` (the count threshold
+is met) and a single PID (6180) throughout, but `pass: false`, because the validator's actual rule
+is `len(accepted) >= min AND not problems`, and three historical timestamp pairs still fail the
+anti-batching timing check (see below). Reaching the count and passing strict verification are two
+different claims; only the second is currently false. A future clean run is needed to actually
+flip `pass` to `true`, without altering these old timestamps. It's an honest complete record, not
+a highlight reel: 15 real repairs, 3
 mistakes caught mid-session (including two the agent introduced itself, e.g. a bevel that left a
 0.52° sliver), 4 rejected attempts where a fix didn't work and was tried again differently (a
 misleading Blender operator report caught by verifying independently, `bmesh.ops.holes_fill`
