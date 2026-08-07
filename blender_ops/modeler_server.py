@@ -44,6 +44,7 @@ import evaluated_probe
 import mesh_ops
 import object_ops
 import persistent_ids
+import render_passes
 import semantic_regions
 import state_fingerprint
 import state_probe
@@ -65,6 +66,7 @@ CAPABILITIES = [
     "evaluated_mesh_inspection",
     "decision_rollback",
     "layered_state_fingerprint",
+    "native_silhouette_render",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -414,6 +416,11 @@ class ModelerServer:
 
     def cmd_inspect_region(self, name, center_ids, rings=2):
         return state_probe.inspect_region(name, center_ids, rings=rings)
+
+    def cmd_render_silhouette(self, name, output_path, view="front", resolution=512, margin=1.15):
+        """Free to call outside a decision transaction -- a render is a
+        read of the current state, not a mutation, same as get_full_state."""
+        return render_passes.render_silhouette(name, output_path, view=view, resolution=resolution, margin=margin)
 
     # ---- semantic regions (named groups of persistent-ID elements) ------
     # All free to call outside a decision transaction: they store/query

@@ -233,6 +233,12 @@ def commit_decision(decision_id: str) -> dict:
 
 
 @mcp.tool()
+def render_silhouette(object_name: str, output_path: str, view: str = "front", resolution: int = 512, margin: float = 1.15) -> dict:
+    """Blender-native (not a GUI screenshot) orthographic silhouette render of object_name's modifier-evaluated mesh to output_path (PNG, transparent background, flat unlit fill -- the alpha channel IS the silhouette mask directly). view is one of 'front'/'side'/'top'. Read-only: does not require or affect a decision transaction. Returns silhouette_fill_ratio (fraction of the frame the silhouette covers) alongside the output path."""
+    return _call("render_silhouette", name=object_name, output_path=output_path, view=view, resolution=resolution, margin=margin)
+
+
+@mcp.tool()
 def reject_decision(decision_id: str, reason: str = "") -> dict:
     """Transaction-owned rollback: restore the target object to exactly its state before perform_decision ran (geometry and transform), independent of Blender's global undo stack, and release decision_id WITHOUT advancing the live decision-revision counter -- the scene is left exactly as if this decision never happened. Use this instead of commit_decision when verify_decision's result is judged unacceptable."""
     return _call("reject_decision", decision_id=decision_id, reason=reason)
