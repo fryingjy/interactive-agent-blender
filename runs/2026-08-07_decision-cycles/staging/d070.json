@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_070",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 63,
+  "observation": {"lowest_z_levels": [-3.02,-3.0,-2.97,-2.95,-2.9,-2.72,-2.58,-2.44,-2.3,-2.05]},
+  "reason": "check Flashlight body radius near the tail against the 1.2 spec from the build",
+  "chosen_action": {"op": "radius scan at z~-2.97", "target": "Flashlight"},
+  "result_revision": 64,
+  "result_state": {"count": 38, "min_radius": 1.132, "max_radius": 1.212, "verdict": "expected variation from the tail-cap bevel rounding the base edge, not a defect"},
+  "evaluation": "accepted"
+}
