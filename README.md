@@ -151,6 +151,38 @@ the two flat trifan cap centers, where a pole is harmless by construction. Face-
 honest sequence — including the intermediate n-gon, the failed requad attempt, and the external
 edit — rather than only the clean endpoint.
 
+## Perception upgrade: persistent element IDs + per-decision deltas
+
+Prompted by an architecture proposal for a much larger custom-add-on protocol (push events, delta
+state, semantic regions, ownership locking, and more). The full protocol would mean writing a new
+Blender add-on with its own socket server — a multi-session rebuild of what blender-mcp already
+provides, not an incremental step. Rather than attempt all of it at once (the same over-scoping
+risk this project has caught before — see the batching and mug-topology corrections above), the
+two pieces with real, provable value on top of the existing MCP bridge were built first: stable
+element IDs and per-decision deltas.
+
+`blender_ops/persistent_ids.py` assigns custom int attributes (`agent_vertex_id`, `agent_edge_id`,
+`agent_face_id`, backed by a per-object `agent_id_counter` custom property) so an element can be
+referred back to by a stable ID even after unrelated topology changes elsewhere in the mesh
+renumber Blender's own indices. **A real bug surfaced immediately on first use, not left for
+later**: `bmesh.ops.bevel` (and presumably other ops that interpolate custom data for continuity)
+silently copies an existing nonzero ID onto newly created geometry instead of leaving it at the 0
+sentinel — one test bevel left vertex ID 7 shared by three different vertices. A "0 means
+unassigned" check alone is not sufficient; `ensure_persistent_ids()` now also detects and repairs
+same-pass duplicates, verified by deliberately re-triggering the bug and confirming zero duplicate
+IDs remained afterward. `blender_ops/bmesh_io.py` factors out mode-aware bmesh read/write
+(`bmesh.from_edit_mesh` vs `bmesh.new()+from_mesh()`), fixing the same stale-read risk that broke a
+mid-session repair during the mug-handle fix above.
+
+`DecisionTransaction` now backfills and diffs persistent IDs automatically around every
+transaction's target object, adding an `id_delta` (added/removed IDs per vertex/edge/face) to
+`verify()`'s return value — the real, provable delta scoped to exactly one decision, which is the
+actual unit of change in this project, rather than an arbitrary revision-range cache.
+`state_probe.get_full_state()` consolidates revision, mesh health, valence distribution, selection,
+and ID coverage into one call. All of this was tested live against the Mug, including the
+duplicate-ID bug and its fix, then the test mutations were discarded by reloading the last verified
+`.blend` rather than left on the actual deliverable object.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail

@@ -25,6 +25,7 @@ than something the log's numbers alone would hide.
 import bpy
 
 import decision_state
+import persistent_ids
 import state_probe
 
 
@@ -42,6 +43,8 @@ class DecisionTransaction:
         self._before_op_count = None
         self._before_state = None
         self._after_state = None
+        self._before_ids = None
+        self._after_ids = None
         self._op_delta = None
         self.result = None
 
@@ -56,6 +59,11 @@ class DecisionTransaction:
         self._before_op_count = len(bpy.context.window_manager.operators)
         if self.target_object:
             self._before_state = state_probe.mesh_health(self.target_object)
+            # Backfill IDs for any pre-existing element that doesn't have one yet
+            # (e.g. the first transaction ever run against an object), so the
+            # before/after ID sets captured around this transaction are complete.
+            persistent_ids.ensure_persistent_ids(self.target_object)
+            self._before_ids = persistent_ids.get_id_maps(self.target_object)
         return self
 
     def perform(self, fn, *args, **kwargs):
@@ -89,13 +97,29 @@ class DecisionTransaction:
             raise TransactionError("verify() called before perform() -- no operation happened yet")
         after_op_count = len(bpy.context.window_manager.operators)
         self._op_delta = after_op_count - self._before_op_count
+        id_delta = None
         if self.target_object:
             self._after_state = state_probe.mesh_health(self.target_object)
+            # Assign IDs to anything perform() created, then diff against the
+            # before-set captured in __enter__ -- this is the real, provable
+            # delta for exactly this one decision, not an arbitrary revision
+            # range: added/removed persistent element IDs.
+            persistent_ids.ensure_persistent_ids(self.target_object)
+            self._after_ids = persistent_ids.get_id_maps(self.target_object)
+            id_delta = {}
+            for kind in ("verts", "edges", "faces"):
+                before_ids = set(self._before_ids[kind]["id_to_index"])
+                after_ids = set(self._after_ids[kind]["id_to_index"])
+                id_delta[kind] = {
+                    "added": sorted(after_ids - before_ids),
+                    "removed": sorted(before_ids - after_ids),
+                }
         return {
             "action_type": self.action_type,
             "op_delta": self._op_delta,
             "before": self._before_state,
             "after": self._after_state,
+            "id_delta": id_delta,
         }
 
     def commit(self):

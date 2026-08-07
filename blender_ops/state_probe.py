@@ -3,6 +3,9 @@ import os
 import bmesh
 import bpy
 
+import decision_state
+import persistent_ids
+
 
 def pid():
     return os.getpid()
@@ -129,6 +132,22 @@ def active_state():
     return {
         "active_object": active_obj.name if active_obj else None,
         "mode": active_obj.mode if active_obj else None,
+    }
+
+
+def get_full_state(name):
+    """One consolidated read -- revision, mesh health, valence
+    distribution, selection, and persistent-ID coverage -- covering what a
+    decision typically needs before choosing its next action, instead of
+    several separate round trips."""
+    id_maps = persistent_ids.get_id_maps(name)
+    id_coverage = {kind: len(m["index_to_id"]) for kind, m in id_maps.items()}
+    return {
+        "revision": decision_state.current_revision(),
+        "mesh_health": mesh_health(name),
+        "valence_distribution": valence_distribution(name),
+        "selection": get_selection(name),
+        "persistent_id_coverage": id_coverage,
     }
 
 
