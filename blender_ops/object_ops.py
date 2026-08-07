@@ -44,9 +44,23 @@ def create_primitive(name, primitive_type, location=(0.0, 0.0, 0.0), **kwargs):
 
 
 def add_modifier(name, modifier_type, modifier_name=None):
+    """CORRECTION (found live, chasing why a Subdivision Surface modifier's
+    effect wasn't showing up in evaluated_probe's results): obj.modifiers.new()
+    does NOT default show_viewport/show_render to True -- confirmed
+    directly (a freshly created SUBSURF modifier read back show_viewport
+    == False before this fix), so the modifier was silently invisible to
+    both the evaluated-mesh dependency graph AND the actual Blender
+    viewport the whole time. This likely also affected the speaker
+    enclosure's earlier Bevel modifier test, which was never checked
+    against the evaluated mesh (evaluated_probe.py didn't exist yet) --
+    that decision is still an honest record of add_modifier/
+    set_modifier_parameter succeeding, but not evidence the modifier was
+    ever actually visible. Explicitly enabling both flags now."""
     obj = bpy.data.objects[name]
     mod = obj.modifiers.new(name=modifier_name or modifier_type.title(), type=modifier_type)
-    return {"modifier_name": mod.name, "type": mod.type}
+    mod.show_viewport = True
+    mod.show_render = True
+    return {"modifier_name": mod.name, "type": mod.type, "show_viewport": mod.show_viewport}
 
 
 def set_modifier_parameter(name, modifier_name, parameter, value):
