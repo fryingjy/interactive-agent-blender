@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_078",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 71,
+  "observation": {"note": "same base-color bug expected on Flashlight_Mat_v2, confirmed before=[0.8,0.8,0.8,1.0]"},
+  "reason": "same fix as Bottle -- set the actual BSDF Base Color to the intended dark grey",
+  "chosen_action": {"op": "bsdf.inputs['Base Color'].default_value = (0.15, 0.15, 0.18, 1.0)", "target": "Flashlight_Mat_v2"},
+  "result_revision": 72,
+  "result_state": {"bsdf_base_color_after": [0.15,0.15,0.18,1.0], "vertices": 794, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}
