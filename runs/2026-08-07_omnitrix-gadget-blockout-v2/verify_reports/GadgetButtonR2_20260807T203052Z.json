@@ -1,0 +1,24 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-07_omnitrix-gadget-blockout-v2\\blend\\GadgetBlockoutV2_20260807T202954Z.blend",
+  "object_name": "GadgetButtonR2",
+  "verified_at": "2026-08-07T20:30:52Z",
+  "stats": {
+    "vertices": 24,
+    "edges": 36,
+    "faces": 14,
+    "non_manifold_edges": 0,
+    "ngons": 2,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 0.003456024690609412
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": false,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": false
+}
