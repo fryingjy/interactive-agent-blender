@@ -1,0 +1,12 @@
+{
+  "decision_id": "speaker_002",
+  "session_id": "2026-08-07_speaker-typed-protocol",
+  "pid": 24112,
+  "observation_revision": 141,
+  "observation": {"note": "Identified the 4 vertical corner edges (length 3.6, matching body height) via inspect_region on a bare-corner vertex with rings=3, distinguishing them from the horizontal top/bottom rim edges (length 3.0 or 2.0).", "target_edge_indices": [6, 1, 9, 3]},
+  "reason": "modest corner softening per reference notes ('not sharp, not heavily rounded')",
+  "chosen_action": {"op": "bevel_edges", "target": "SpeakerEnclosure", "params": {"edge_indices": [6, 1, 9, 3], "offset": 0.12, "segments": 3}},
+  "result_revision": 142,
+  "result_state": {"vertices": 32, "edges": 48, "faces": 18, "ngons": 2, "non_manifold_edges": 0, "note": "2 n-gons appeared -- the top and bottom quad caps each became an 8-sided octagon since all 4 of their corners got clipped by the vertical bevel. Real, expected geometric consequence, not a bug, but this project holds n-gons to zero throughout -- flagged for a follow-up fix (triangulate) rather than accepted silently."},
+  "evaluation": "mistake_detected"
+}

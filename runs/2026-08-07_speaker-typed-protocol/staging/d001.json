@@ -1,0 +1,13 @@
+{
+  "decision_id": "speaker_001",
+  "session_id": "2026-08-07_speaker-typed-protocol",
+  "pid": 24112,
+  "observation_revision": 140,
+  "observation": {"note": "Fresh 1x1x1 cube from create_primitive, inspected via inspect_region to confirm actual verts at +-0.5 before deciding scale factors.", "before": {"vertices": 8, "edges": 12, "faces": 6}},
+  "reason": "scale the base cube to the target body proportions from reference/speaker_enclosure/notes.md (3.0 wide x 2.0 deep x 3.6 tall), informed by the actual inspected 1x1x1 starting size, not assumed",
+  "chosen_action": {"op": "scale_selection", "target": "SpeakerEnclosure", "params": {"factor": [3, 2, 3.6]}},
+  "result_revision": 141,
+  "result_state": {"vertices": 8, "edges": 12, "faces": 6, "non_manifold_edges": 0, "degenerate_faces": 0},
+  "evaluation": "accepted",
+  "protocol_note": "Performed via the typed modeler protocol (begin/perform/verify/commit_decision) using the raw socket wire protocol for create_primitive/inspect_region/check_external_edit (not yet in this session's frozen native MCP tool list -- added after tools were first loaded) and native mcp__modeler__ tool calls for begin/perform/verify/commit_decision (already present in the frozen set). No raw execute_blender_code used for any modeling decision."
+}

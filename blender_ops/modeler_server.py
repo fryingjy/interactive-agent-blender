@@ -389,6 +389,13 @@ class ModelerServer:
     def cmd_get_full_state(self, name):
         return state_probe.get_full_state(name)
 
+    def cmd_create_primitive(self, name, primitive_type, location=None, **kwargs):
+        """The one-time starting block a modeling session begins from --
+        free to call outside a decision transaction (nothing exists yet
+        for begin_decision's external-edit check to compare against)."""
+        loc = tuple(location) if location else (0.0, 0.0, 0.0)
+        return object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
+
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
 

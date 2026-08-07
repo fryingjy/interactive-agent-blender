@@ -9,6 +9,40 @@ import time
 import bpy
 
 
+_PRIMITIVES = {
+    "cube": bpy.ops.mesh.primitive_cube_add,
+    "cylinder": bpy.ops.mesh.primitive_cylinder_add,
+    "sphere": bpy.ops.mesh.primitive_uv_sphere_add,
+    "cone": bpy.ops.mesh.primitive_cone_add,
+    "torus": bpy.ops.mesh.primitive_torus_add,
+    "plane": bpy.ops.mesh.primitive_plane_add,
+}
+
+
+def create_primitive(name, primitive_type, location=(0.0, 0.0, 0.0), **kwargs):
+    """Create a new mesh object from a basic primitive and give it `name`.
+    Not itself an asset builder -- it's the one-time starting block a
+    modeling session begins from, same as picking a base mesh in the
+    Blender UI. All actual form comes from typed decisions afterward.
+
+    kwargs are passed straight through to the underlying bpy.ops.mesh.*
+    operator, since each primitive has different dimension parameters
+    (cube/plane: size; cylinder/sphere: radius; cone: radius1/radius2/
+    depth; torus: major_radius/minor_radius) -- there is no single generic
+    "size" that means the same thing across all of them."""
+    fn = _PRIMITIVES.get(primitive_type)
+    if fn is None:
+        raise ValueError(f"unknown primitive_type '{primitive_type}' -- available: {sorted(_PRIMITIVES)}")
+    if name in bpy.data.objects:
+        raise ValueError(f"object '{name}' already exists")
+    fn(location=location, **kwargs)
+    obj = bpy.context.active_object
+    obj.name = name
+    if obj.data is not None:
+        obj.data.name = name
+    return {"name": obj.name, "type": obj.type, "location": list(obj.location)}
+
+
 def add_modifier(name, modifier_type, modifier_name=None):
     obj = bpy.data.objects[name]
     mod = obj.modifiers.new(name=modifier_name or modifier_type.title(), type=modifier_type)

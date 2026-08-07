@@ -232,6 +232,8 @@ def inspect_region(name, center_ids, rings=2):
     id_maps = persistent_ids.get_id_maps(name)
     vert_id_to_index = id_maps["verts"]["id_to_index"]
     vert_index_to_id = id_maps["verts"]["index_to_id"]
+    edge_index_to_id = id_maps["edges"]["index_to_id"]
+    face_index_to_id = id_maps["faces"]["index_to_id"]
 
     start_indices = set()
     missing = []
@@ -289,6 +291,8 @@ def inspect_region(name, center_ids, rings=2):
         if len(e.link_faces) == 2:
             angle = round(e.calc_face_angle(), 5)
         edges_out.append({
+            "index": e.index,
+            "agent_id": edge_index_to_id.get(e.index),
             "vertex_indices": [v.index for v in e.verts],
             "vertex_agent_ids": [vert_index_to_id.get(v.index) for v in e.verts],
             "length": round(length, 5),
@@ -311,6 +315,7 @@ def inspect_region(name, center_ids, rings=2):
             ngon += 1
         faces_out.append({
             "index": f.index,
+            "agent_id": face_index_to_id.get(f.index),
             "vertex_count": n,
             "area": round(area, 6),
             "normal": [round(c, 5) for c in f.normal],

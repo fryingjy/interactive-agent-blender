@@ -436,6 +436,81 @@ editing this repo's code. The research/curriculum system (directive sections 23-
 explicitly gated behind this engineering work being reliable, per the directive's own sequencing
 rule — not started, as before.
 
+## Item 23: first real modeling session through the typed protocol, not raw code
+
+`runs/2026-08-07_speaker-typed-protocol/` — a genuinely unseen reference
+(`reference/speaker_enclosure/notes.md`, no prep before this session) modeled almost entirely
+through the typed `modeler` protocol (`begin_decision`/`perform_decision`/`verify_decision`/
+`commit_decision`, `select_by_ids`, `inspect_region`) instead of raw `execute_blender_code` —
+the first real proof this session's protocol work holds up for actual modeling, not just
+infrastructure tests on bare cubes. Deliberately a different topology family than every prior
+prop (Bottle/Flashlight/Mug are all revolved/cylindrical forms) — a boxy, rectilinear body with a
+circular-in-intent driver cutout, chosen specifically to stress a different part of the tool
+surface (inset/extrude on flat faces, not just cylinder rings).
+
+**A real operational limitation hit immediately, documented rather than worked around silently**:
+this Claude Code session's `modeler` MCP tool list was fixed to whatever existed when the tools
+were first loaded — commands added afterward (`create_primitive`, `select_by_ids`, `inspect_region`,
+etc.) aren't callable natively without restarting, because the MCP subprocess is long-lived and
+doesn't re-read the file per call (a finer-grained instance of the same constraint documented
+earlier for a full session restart). Rather than ask for another restart, the session was driven
+through a small reusable raw-socket script speaking the identical wire protocol for the newer
+commands, and native `mcp__modeler__*` tool calls for the ones already loaded
+(`begin_decision`/`perform_decision`/`verify_decision`/`commit_decision`/`get_full_state`/
+`get_selection`) — the underlying `DecisionTransaction`/`mesh_ops` guarantees are identical either
+way; only the calling mechanism differs. No raw `execute_blender_code` was used for any modeling
+mutation.
+
+8 decisions, each individually verified, three genuinely adaptive corrections along the way:
+
+1. **Scale to body proportions** — informed by actually inspecting the fresh primitive's real
+   1×1×1 size via `inspect_region` rather than assuming Blender's default.
+2. **Bevel the 4 vertical corner edges** for modest softening — introduced 2 n-gons (the flat
+   top/bottom quad caps each became 8-sided octagons once all 4 corners got clipped), a real,
+   expected geometric consequence, not silently accepted.
+3. **`triangulate_ngons`** to repair it, keeping n-gons at zero throughout, consistent with every
+   prior prop in this project.
+4. **Inset the front face** for the driver footprint — surfaced a genuine tool limitation:
+   `inset_region` always shrinks uniformly around the face's own centroid, with no way to inset
+   off-center directly. Adapted by insetting centered first and repositioning afterward, rather
+   than needing a new operation.
+5. **Unexpected result, corrected**: the inset produced a 1.6×2.44 rectangle, not the intended
+   roughly-square ~1.6×1.6 footprint for a circular driver silhouette — visibly different from
+   what was planned, addressed with a follow-up Z-axis-only scale rather than ignored.
+6. **Extrude the footprint inward** (negative offset, since the face's own outward normal points
+   away from the body) to create the actual recess cavity.
+7. **Move the whole recess (opening ring + cavity floor together)** upward for the "upper-middle,
+   not centered" placement the reference called for — moving both groups together, not just the
+   floor, to keep the recess walls straight instead of tapering.
+8. **Bevel the recess opening** for a finished lip, rather than a raw sharp edge reading as a flat
+   decal.
+
+**A real, live verification worth recording, not just a decision**: `bevel_edges` was found to
+never call the `clear_ids_in_open_bmesh` fix built earlier this session for extrude/inset's
+ID-theft bug (see above). Rather than assume this was fine or assume it was broken, checked
+directly for duplicate/unassigned persistent IDs across the whole object after two real bevels —
+found none. The reason: `clear_ids_in_open_bmesh` exists specifically for operations that delete/
+orphan the original ID-holder before `DecisionTransaction.verify()`'s standard `ensure_persistent_ids`
+duplicate check runs (extrude's pattern); bevel doesn't orphan anything, so the existing general
+duplicate-detection safety net already catches its interpolation copies. No code change was needed
+— but this was verified, not assumed, which is the point.
+
+**A quality judgment call, checked rather than reflexively "fixed"**: `inspect_region` swept the
+whole finished mesh and found 4 valence-3 poles at the recess cavity floor's corners. Rather than
+treat every non-4-valence vertex as a defect (the master directive explicitly warns against this,
+section 17), the pole locations were inspected directly — they're the four corners of a simple
+sharp-cornered rectangular recess, geometrically identical to how any box's own outer corners are
+also valence-3. This is normal, expected orthogonal-box topology, not the kind of irregular pole
+scatter across a surface that's supposed to be smooth that made the Mug's original topology bad.
+Left as-is, judgment recorded rather than blindly bevel-everything.
+
+Final result, independently verified against a fresh `.blend`
+(`runs/2026-08-07_speaker-typed-protocol/verify_reports/`): 48 vertices, 106 edges, 60 faces, 0
+non-manifold edges, 0 n-gons, 0 degenerate faces, consistent normals. The back panel was left flat
+per the reference's explicit "optional, a bare back is acceptable" — decision effort went into
+getting the primary form and the driver recess right rather than padding the decision count with a
+feature the reference itself called optional.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail
