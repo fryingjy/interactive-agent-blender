@@ -95,6 +95,48 @@ def inspect_region(object_name: str, center_ids: list[int], rings: int = 2) -> d
 
 
 @mcp.tool()
+def create_region(object_name: str, region_id: str, role: str, vertex_ids: list[int] | None = None, edge_ids: list[int] | None = None, face_ids: list[int] | None = None) -> dict:
+    """Name a persistent group of mesh elements (by agent_id, not index) for later reference -- e.g. 'outer_handle_curve' with role 'silhouette_feature'. Suggested roles: primary_form, secondary_form, outer_contour, silhouette_feature, corner, transition, support_loop, feature_edge, mirror_seam, hole_boundary, attachment_region, bevel_edge (any string is accepted; unrecognized roles are flagged, not rejected). All IDs must currently exist on the object."""
+    return _call("create_region", name=object_name, region_id=region_id, role=role, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids)
+
+
+@mcp.tool()
+def get_region(object_name: str, region_id: str) -> dict:
+    """Look up a previously created named region."""
+    return _call("get_region", name=object_name, region_id=region_id)
+
+
+@mcp.tool()
+def list_regions(object_name: str) -> dict:
+    """List all named region IDs stored on an object."""
+    return _call("list_regions", name=object_name)
+
+
+@mcp.tool()
+def validate_region(object_name: str, region_id: str) -> dict:
+    """Re-check whether every element in a named region still exists on the CURRENT mesh -- a topology change elsewhere could have merged or deleted some of them even if the region itself was never touched directly. A region is not assumed valid just because it was once created correctly."""
+    return _call("validate_region", name=object_name, region_id=region_id)
+
+
+@mcp.tool()
+def update_region(object_name: str, region_id: str, vertex_ids: list[int] | None = None, edge_ids: list[int] | None = None, face_ids: list[int] | None = None, role: str | None = None) -> dict:
+    """Update a named region's stored element IDs and/or role. Only the fields you pass are changed."""
+    return _call("update_region", name=object_name, region_id=region_id, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids, role=role)
+
+
+@mcp.tool()
+def delete_region(object_name: str, region_id: str) -> dict:
+    """Delete a named region."""
+    return _call("delete_region", name=object_name, region_id=region_id)
+
+
+@mcp.tool()
+def select_region(object_name: str, region_id: str, extend: bool = False) -> dict:
+    """Select every element stored in a named region -- the bridge from 'the region called X' to an actual selection you can then extrude/move/scale/bevel."""
+    return _call("select_region", name=object_name, region_id=region_id, extend=extend)
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")

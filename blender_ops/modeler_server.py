@@ -42,6 +42,7 @@ import decision_state
 import decision_transaction
 import mesh_ops
 import persistent_ids
+import semantic_regions
 import state_probe
 
 PROTOCOL_VERSION = "0.1"
@@ -57,6 +58,7 @@ CAPABILITIES = [
     "control_mode",
     "viewport_state",
     "region_inspection",
+    "semantic_regions",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -365,6 +367,31 @@ class ModelerServer:
 
     def cmd_inspect_region(self, name, center_ids, rings=2):
         return state_probe.inspect_region(name, center_ids, rings=rings)
+
+    # ---- semantic regions (named groups of persistent-ID elements) ------
+    # All free to call outside a decision transaction: they store/query
+    # metadata about the mesh, they don't mutate its geometry.
+
+    def cmd_create_region(self, name, region_id, role, vertex_ids=None, edge_ids=None, face_ids=None):
+        return semantic_regions.create_region(name, region_id, role, vertex_ids, edge_ids, face_ids)
+
+    def cmd_get_region(self, name, region_id):
+        return semantic_regions.get_region(name, region_id)
+
+    def cmd_list_regions(self, name):
+        return semantic_regions.list_regions(name)
+
+    def cmd_validate_region(self, name, region_id):
+        return semantic_regions.validate_region(name, region_id)
+
+    def cmd_update_region(self, name, region_id, vertex_ids=None, edge_ids=None, face_ids=None, role=None):
+        return semantic_regions.update_region(name, region_id, vertex_ids, edge_ids, face_ids, role)
+
+    def cmd_delete_region(self, name, region_id):
+        return semantic_regions.delete_region(name, region_id)
+
+    def cmd_select_region(self, name, region_id, extend=False):
+        return semantic_regions.select_region(name, region_id, extend)
 
     def cmd_select_by_ids(self, name, vertex_ids=None, edge_ids=None, face_ids=None, extend=False):
         """Selection is a mechanical helper, not a sanctioned artistic
