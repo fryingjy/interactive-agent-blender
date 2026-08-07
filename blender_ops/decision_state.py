@@ -35,3 +35,13 @@ def advance_revision(expected_before):
     new_rev = actual + 1
     bpy.context.scene[_KEY] = new_rev
     return new_rev
+
+
+def force_set_revision(new_value):
+    """Explicitly resync the live counter after an external revert (e.g. the user pressed
+    undo in the Blender GUI and it rolled back a scripted decision along with their own edit).
+    Not for normal use -- normal decisions must go through advance_revision(). This exists so
+    a resync is a deliberate, visible act tied to a logged 'reverted' entry, not something
+    that happens implicitly."""
+    bpy.context.scene[_KEY] = new_value
+    return new_value

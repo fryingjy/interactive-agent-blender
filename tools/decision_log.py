@@ -23,7 +23,7 @@ REQUIRED_FIELDS = {
     "decision_id", "session_id", "pid", "observation_revision", "reason",
     "chosen_action", "result_revision", "evaluation",
 }
-VALID_EVALUATIONS = {"accepted", "rejected", "mistake_detected", "repaired"}
+VALID_EVALUATIONS = {"accepted", "rejected", "mistake_detected", "repaired", "reverted"}
 
 MIN_CYCLE_SECONDS = 1.0  # consecutive decisions closer than this look batched
 
@@ -59,7 +59,19 @@ def cmd_append(args):
     if data["evaluation"] not in VALID_EVALUATIONS:
         print(f"ERROR: invalid evaluation '{data['evaluation']}'", file=sys.stderr)
         sys.exit(1)
-    if data["result_revision"] != data["observation_revision"] + 1:
+    if data["evaluation"] == "reverted":
+        # A "reverted" entry documents the live scene's revision moving BACKWARD from what
+        # the log's last entry claimed -- e.g. someone pressed undo in the Blender GUI and it
+        # rolled back a scripted decision along with their own edit. This is the one entry
+        # type allowed to violate the normal +1-per-decision rule, because it isn't recording
+        # a new decision -- it's recording that reality diverged from the log and by how much.
+        if data["result_revision"] >= data["observation_revision"]:
+            print(
+                f"ERROR: a 'reverted' entry must show result_revision < observation_revision "
+                f"(a regression) -- got {data['observation_revision']} -> "
+                f"{data['result_revision']}", file=sys.stderr)
+            sys.exit(1)
+    elif data["result_revision"] != data["observation_revision"] + 1:
         print(
             f"ERROR: result_revision ({data['result_revision']}) must be exactly "
             f"observation_revision+1 ({data['observation_revision'] + 1}) -- more than "
