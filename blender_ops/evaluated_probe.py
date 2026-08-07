@@ -126,3 +126,57 @@ def evaluated_surface_quality(name):
         }
     finally:
         cleanup()
+
+
+def bounding_box_comparison(name):
+    """Compare the base control cage's own bounding box to the modifier-
+    evaluated result's bounding box, in local space.
+
+    Exists for a specific, real judgment a plain area/angle check can't
+    make: Catmull-Clark subdivision without support loops near a corner
+    pulls the evaluated surface inward from that corner (the well-known
+    "beach ball" shrinkage), which can quietly erode the intended silhouette
+    proportions even when every other validity/pinching signal reads clean
+    -- 0 non-manifold, 0 area outliers, a moderate max adjacent-face angle
+    can all still coexist with a shape that's noticeably smaller/rounder
+    than the control cage that was supposedly built to spec. shrinkage_ratio
+    close to 1.0 on an axis means that axis's extent survived subdivision
+    intact; a low ratio (e.g. under ~0.9) on an axis that's supposed to read
+    as a firm silhouette edge is the concrete, local signal a support loop
+    is missing there -- not just a vague "does this look rounded enough"
+    impression.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+
+    base_coords = [v.co for v in obj.data.vertices]
+    if not base_coords:
+        return {"error": f"'{name}' has no vertices"}
+    base_min = [min(c[i] for c in base_coords) for i in range(3)]
+    base_max = [max(c[i] for c in base_coords) for i in range(3)]
+
+    bm, cleanup = _read_evaluated_bmesh(obj)
+    try:
+        eval_coords = [v.co for v in bm.verts]
+        if not eval_coords:
+            return {"error": "evaluated mesh has no vertices"}
+        eval_min = [min(c[i] for c in eval_coords) for i in range(3)]
+        eval_max = [max(c[i] for c in eval_coords) for i in range(3)]
+    finally:
+        cleanup()
+
+    base_dims = [base_max[i] - base_min[i] for i in range(3)]
+    eval_dims = [eval_max[i] - eval_min[i] for i in range(3)]
+    shrinkage_ratio = [
+        round(eval_dims[i] / base_dims[i], 4) if base_dims[i] > 1e-9 else None
+        for i in range(3)
+    ]
+
+    return {
+        "base_dimensions": [round(d, 4) for d in base_dims],
+        "evaluated_dimensions": [round(d, 4) for d in eval_dims],
+        "shrinkage_ratio_xyz": shrinkage_ratio,
+        "base_bounds": {"min": [round(c, 4) for c in base_min], "max": [round(c, 4) for c in base_max]},
+        "evaluated_bounds": {"min": [round(c, 4) for c in eval_min], "max": [round(c, 4) for c in eval_max]},
+    }

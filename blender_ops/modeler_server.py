@@ -409,6 +409,7 @@ class ModelerServer:
             "mesh_health": evaluated_probe.evaluated_mesh_health(name),
             "valence_distribution": evaluated_probe.evaluated_valence_distribution(name),
             "surface_quality": evaluated_probe.evaluated_surface_quality(name),
+            "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
     def cmd_inspect_region(self, name, center_ids, rings=2):

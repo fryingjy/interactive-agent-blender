@@ -63,3 +63,26 @@ No genuine unresolvable topology problem has shown up in this session — the n-
 real but resolved with existing project knowledge (triangulation, then the user's own
 resolution-matching correction). Per `docs/RESEARCH_ROADMAP.md`, that means no research episode
 is triggered yet. This is being watched honestly, not manufactured.
+
+## Final closure check (new master directive, section 8: local + silhouette diagnosis)
+
+Added `evaluated_probe.bounding_box_comparison()` -- base-cage vs evaluated-surface dimensions,
+specifically to check for a real, different failure mode than pinching: Catmull-Clark shrinkage
+("beach-ball" erosion) from missing corner support loops, which every other clean signal (0
+non-manifold, 0 area outliers, moderate max adjacent-face angle) can miss entirely, since a
+shape can be technically clean AND have quietly lost its intended silhouette proportions.
+
+Result on the finished SoapDish: base cage 2.6 x 1.8 x 0.6 (exactly the reference's target
+dimensions), evaluated surface 2.5573 x 1.7656 x 0.5967 -- `shrinkage_ratio_xyz`
+`[0.9836, 0.9809, 0.9944]`. 1.6-1.9% shrinkage on X/Y, 0.6% on Z: minor and expected for a prop
+whose own brief explicitly calls for a "soft and rounded" silhouette, not a sign of eroded
+proportions or a missing support loop.
+
+Combined with the earlier evaluated-surface check (0 area outliers, poles only at the 8 original
+corners, max adjacent-face angle ~46 deg) and the independent `verify_mesh.py` pass (0
+non-manifold/ngons/degenerate, consistent normals), this milestone's own success criteria
+(smooth rounded outer form + shallow continuous basin + clean support/control topology + no
+visible pinching + good pole placement + good evaluated surface) are met with real, measured
+evidence at every layer -- base cage, evaluated surface, and now silhouette/bounding-box. No
+further decisions are being added just to raise the count (directive section 15: decision
+quality, not action count, is the metric) -- the milestone is judged complete here.
