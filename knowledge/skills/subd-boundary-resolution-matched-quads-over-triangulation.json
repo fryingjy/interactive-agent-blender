@@ -1,0 +1,67 @@
+{
+  "skill_id": "subd.boundary_resolution.match_quads_over_triangulate",
+
+  "applicability": {
+    "workflow": "subdivision",
+    "surface": "any (rim/transition where two regions of a control cage meet at different subdivision resolutions)",
+    "defect": "n-gons at a resolution-mismatch boundary between a more-subdivided region and its unsubdivided neighbor"
+  },
+
+  "preconditions": [
+    "control cage feeds a Subdivision Surface modifier (Catmull-Clark)",
+    "one region was subdivided (e.g. subdivide_selection) without matching the surrounding, unsubdivided faces' shared boundary edges",
+    "the mismatch produced n-gons on the neighboring faces (observed: 7-sided, from 5 verts along the new-resolution shared edge + 2 original corners)"
+  ],
+
+  "required_observations": [
+    "evaluated_probe.evaluated_surface_quality (area_outlier_count, max_adjacent_face_angle_radians) before and after the fix",
+    "evaluated_probe.evaluated_valence_distribution -- specifically whether new poles cluster at the boundary/transition or stay confined to pre-existing corners"
+  ],
+
+  "action_policy": [
+    "Prefer re-topologizing the boundary so both sides share matching edge resolution (an all-quad grid across the transition), over the faster fix of triangulate_ngons on the mismatched faces, even when the affected region is currently flat (the condition under which triangulate_ngons was judged 'low risk' in the moment this was found).",
+    "This is stated by the human as a general quad-hygiene preference for subdivision control cages, not a claim specific to this one transition -- do not narrow the applicability to 'only curved transitions' or 'only where pinching is visually obvious' without separate evidence for that boundary."
+  ],
+
+  "expected_effects": [
+    "no new poles introduced at the resolution-mismatch boundary itself",
+    "evaluated surface shows no area-outlier cluster at the boundary",
+    "moderate, not extreme, max adjacent-face angle across the transition"
+  ],
+
+  "success_predicates": [
+    "evaluated_surface_quality.area_outlier_count == 0",
+    "evaluated_valence_distribution's non-4 poles are all traceable to pre-existing geometry (e.g. original box corners), none newly introduced at the boundary"
+  ],
+
+  "failure_predicates": [
+    "new valence-3/5 poles appear clustered at the boundary after the fix",
+    "area_outlier_count > 0 concentrated near the boundary"
+  ],
+
+  "recovery": [
+    "if the all-quad re-topology itself introduces new clustered poles at the boundary, that is real evidence AGAINST blanket-applying this preference at that specific geometry, not a reason to fall back to triangulation by default -- re-inspect and treat as a new, separate problem"
+  ],
+
+  "sources": [
+    {
+      "type": "human_correction",
+      "description": "User directly re-topologized the SoapDish rim by hand in the Blender GUI (live external edit, detected via check_external_edit), replacing an agent-applied triangulate_ngons fix with a resolution-matched all-quad grid.",
+      "stated_reasoning": "General quad hygiene in subdivision control cages -- not specifically about pole placement at this transition. Given directly when asked, after the fact, per directive section 46 ('human corrections are evidence, not automatically truth -- form a hypothesis').",
+      "trust_tier": "not applicable (Tier A-D is for external research sources; this is a direct, first-party correction from the project's own user, treated as real evidence in its own right, distinct from and not to be confused with a Tier-A/B external source)"
+    }
+  ],
+
+  "experiments": [
+    {
+      "type": "observational, not controlled",
+      "description": "Measured the evaluated mesh AFTER the human's fix (258v/512e/256f, valence {3: 8, 4: 250}, area_outlier_count 0, max_adjacent_face_angle_radians 0.802). Did NOT measure the evaluated quality of the original agent triangulate_ngons fix before it was overwritten by the live edit -- there is no direct A/B comparison, only the post-fix result plus the general knowledge (Blender Manual, general SubD theory) that triangles under Catmull-Clark can produce different curvature behavior than quads.",
+      "limitation": "No controlled minimal-scene experiment (directive section 41 style: variant A/B/C on a throwaway mesh) has been run yet to isolate whether the SPECIFIC improvement here came from 'quads vs triangles' or from 'matched vs mismatched resolution' -- these were changed together in the human's single fix, not independently."
+    }
+  ],
+
+  "runtime_usage": [],
+
+  "status": "CANDIDATE",
+  "status_note": "Not EXPERIMENTALLY_TESTED: evidence is one real observational data point from a live human correction plus post-fix measurement, not an isolated controlled experiment. Promote to EXPERIMENTALLY_TESTED only after a dedicated minimal-scene test separating the 'quads vs triangles' variable from the 'matched vs mismatched resolution' variable, per directive section 41."
+}
