@@ -139,6 +139,51 @@ def select_by_ids(name, vertex_ids=None, edge_ids=None, face_ids=None, extend=Fa
     return counts
 
 
+def subdivide_selection(name, cuts=2):
+    """Subdivide the currently selected faces (or edges) into a denser
+    grid -- the general loop-cut/subdivide member of the typed vocabulary,
+    adding resolution for later sculpting without deciding any shape
+    itself. Leaves the new interior faces selected, matching the
+    extrude/inset convention.
+
+    Verified bmesh.ops.subdivide_edges' actual return shape directly rather
+    than assumed: geom_inner is the strictly-new interior geometry,
+    geom_split is verts/edges created by splitting the original boundary
+    edges (the cut points) -- both are genuinely new and need their
+    persistent IDs cleared; the ORIGINAL boundary verts/edges (not in
+    either set) correctly keep their existing IDs, same reuse pattern as
+    inset."""
+    obj, bm = _bm_from_object(name)
+    bm.faces.ensure_lookup_table()
+    bm.edges.ensure_lookup_table()
+
+    selected_faces = [f for f in bm.faces if f.select]
+    if selected_faces:
+        edges = list({e for f in selected_faces for e in f.edges})
+    else:
+        edges = [e for e in bm.edges if e.select]
+        if not edges:
+            _write_back(obj, bm)
+            raise ValueError(f"no faces or edges selected on '{name}' to subdivide")
+
+    ret = bmesh.ops.subdivide_edges(bm, edges=edges, cuts=cuts, use_grid_fill=True)
+    new_geom = list({*ret["geom_inner"], *ret["geom_split"]})
+    new_verts = [g for g in new_geom if isinstance(g, bmesh.types.BMVert)]
+    new_edges = [g for g in new_geom if isinstance(g, bmesh.types.BMEdge)]
+    new_faces = [g for g in ret["geom_inner"] if isinstance(g, bmesh.types.BMFace)]
+    persistent_ids.clear_ids_in_open_bmesh(bm, verts=new_verts, edges=new_edges, faces=new_faces)
+
+    for seq in (bm.verts, bm.edges, bm.faces):
+        for elem in seq:
+            elem.select = False
+    for f in new_faces:
+        f.select = True
+    bm.select_flush(True)
+
+    _write_back(obj, bm)
+    return {"new_verts": len(new_verts), "new_faces": len(new_faces)}
+
+
 def inset_selection(name, thickness=0.05, depth=0.0):
     """Inset the currently selected faces by `thickness`, optionally pushed
     in/out along their normal by `depth`. Leaves the shrunk original faces

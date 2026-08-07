@@ -87,6 +87,7 @@ _OPS = {
     "move_selection": mesh_ops.move_selection,
     "scale_selection": mesh_ops.scale_selection,
     "inset_selection": mesh_ops.inset_selection,
+    "subdivide_selection": mesh_ops.subdivide_selection,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
 }
