@@ -55,23 +55,37 @@ def _evaluated_bbox_world(obj):
 
 def render_silhouette(name, output_path, view="front", resolution=512, margin=1.15):
     """Render a flat, unlit, transparent-background orthographic silhouette
-    of object `name`'s evaluated mesh to `output_path` (PNG). Restores every
-    scene/render/shading setting it touches and removes the temporary
-    camera it creates -- callers should not find the scene altered by
-    having called this."""
-    obj = bpy.data.objects.get(name)
-    if obj is None or obj.type != "MESH":
-        return {"error": f"'{name}' is not a mesh object"}
+    of object(s) `name`'s evaluated mesh to `output_path` (PNG). `name` may
+    be a single object name or a list of names -- a multi-component prop
+    (e.g. a dome + band + buttons modeled as separate objects, which this
+    project does for anything that isn't a single continuous mesh) renders
+    as one combined silhouette across all of them, framed to their combined
+    bounding box. Restores every scene/render/shading setting it touches
+    and removes the temporary camera it creates -- callers should not find
+    the scene altered by having called this."""
+    names = [name] if isinstance(name, str) else list(name)
+    objs = []
+    for n in names:
+        obj = bpy.data.objects.get(n)
+        if obj is None or obj.type != "MESH":
+            return {"error": f"'{n}' is not a mesh object"}
+        objs.append(obj)
     if view not in _VIEW_VECTORS:
         return {"error": f"view must be one of {sorted(_VIEW_VECTORS)}"}
 
-    bmin, bmax = _evaluated_bbox_world(obj)
+    bmin = bmax = None
+    for obj in objs:
+        obj_min, obj_max = _evaluated_bbox_world(obj)
+        if obj_min is None:
+            continue
+        bmin = obj_min if bmin is None else mathutils.Vector(map(min, bmin, obj_min))
+        bmax = obj_max if bmax is None else mathutils.Vector(map(max, bmax, obj_max))
     if bmin is None:
-        return {"error": "evaluated mesh has no vertices"}
+        return {"error": "no evaluated vertices across the given object(s)"}
     center = (bmin + bmax) / 2.0
     diag = (bmax - bmin).length
     if diag < 1e-6:
-        return {"error": "evaluated mesh bounding box is degenerate"}
+        return {"error": "combined evaluated bounding box is degenerate"}
 
     direction = _VIEW_VECTORS[view]
     cam_data = bpy.data.cameras.new(name="__silhouette_cam__")
@@ -109,7 +123,7 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
     # framing the camera on the target alone does not exclude other scene
     # content from the render. Every other object must be temporarily
     # excluded via hide_render, not just left to the camera framing.
-    other_objects = [o for o in bpy.data.objects if o is not obj and o is not cam_obj]
+    other_objects = [o for o in bpy.data.objects if o not in objs and o is not cam_obj]
     prev_hide_render = {o.name: o.hide_render for o in other_objects}
     for o in other_objects:
         o.hide_render = True

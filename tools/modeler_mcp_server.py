@@ -233,8 +233,8 @@ def commit_decision(decision_id: str) -> dict:
 
 
 @mcp.tool()
-def render_silhouette(object_name: str, output_path: str, view: str = "front", resolution: int = 512, margin: float = 1.15) -> dict:
-    """Blender-native (not a GUI screenshot) orthographic silhouette render of object_name's modifier-evaluated mesh to output_path (PNG, transparent background, flat unlit fill -- the alpha channel IS the silhouette mask directly). view is one of 'front'/'side'/'top'. Read-only: does not require or affect a decision transaction. Returns silhouette_fill_ratio (fraction of the frame the silhouette covers) alongside the output path."""
+def render_silhouette(object_name: str | list[str], output_path: str, view: str = "front", resolution: int = 512, margin: float = 1.15) -> dict:
+    """Blender-native (not a GUI screenshot) orthographic silhouette render of object_name's modifier-evaluated mesh to output_path (PNG, transparent background, flat unlit fill -- the alpha channel IS the silhouette mask directly). object_name may be a single name or a list of names, rendered as one combined silhouette framed to their combined bounding box -- use a list for a multi-component prop modeled as separate objects. view is one of 'front'/'side'/'top'. Read-only: does not require or affect a decision transaction. Returns silhouette_fill_ratio (fraction of the frame the silhouette covers) alongside the output path."""
     return _call("render_silhouette", name=object_name, output_path=output_path, view=view, resolution=resolution, margin=margin)
 
 
