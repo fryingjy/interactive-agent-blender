@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_054",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 48,
+  "observation": {"worst_angle_faces": [[797, 0.0091], [799, 0.033], [792, 0.040]], "diagnosis": "0.52 degree sliver at 797, likely introduced by the brand-plate inset added in decision_048"},
+  "reason": "genuine defect introduced by an earlier real action -- classic mistake-and-repair, not staged",
+  "chosen_action": {"op": "bmesh.ops.collapse shortest edge of face 797", "target": "Flashlight"},
+  "result_revision": 49,
+  "result_state": {"vertices": 794, "edges": 1595, "faces": 807, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}

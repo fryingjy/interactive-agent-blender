@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_053",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 47,
+  "observation": {"simpleblock_edge_ratio": "100:1 but not degenerate"},
+  "reason": "checking whether the punt addition (a real geometry change) introduced any poles on Bottle -- last checked before that work",
+  "chosen_action": {"op": "pole valence scan", "target": "Bottle"},
+  "result_revision": 48,
+  "result_state": {"max_valence": 4, "note": "still clean quad topology even after the punt extrude+bevel"},
+  "evaluation": "accepted"
+}
