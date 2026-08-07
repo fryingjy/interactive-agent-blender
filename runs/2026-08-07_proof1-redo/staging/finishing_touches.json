@@ -1,0 +1,92 @@
+[
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "create and assign SimpleBlock_Mat_v2 material",
+    "target_object": "SimpleBlock",
+    "state_before": {
+      "material_count": 1
+    },
+    "state_after": {
+      "material_count": 2
+    },
+    "assertion": "material_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "create and assign Bottle_Mat_v2 material",
+    "target_object": "Bottle",
+    "state_before": {
+      "material_count": 1
+    },
+    "state_after": {
+      "material_count": 2
+    },
+    "assertion": "material_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "create and assign Flashlight_Mat_v2 material",
+    "target_object": "Flashlight",
+    "state_before": {
+      "material_count": 1
+    },
+    "state_after": {
+      "material_count": 2
+    },
+    "assertion": "material_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "rename mesh datablock from 'Cylinder' to 'Bottle_Mesh' for clarity",
+    "target_object": "Bottle",
+    "state_before": {
+      "mesh_data_name": "Cylinder"
+    },
+    "state_after": {
+      "mesh_data_name": "Bottle_Mesh"
+    },
+    "assertion": "mesh_data_renamed",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "rename mesh datablock from 'Cylinder.001' to 'Flashlight_Mesh' for clarity",
+    "target_object": "Flashlight",
+    "state_before": {
+      "mesh_data_name": "Cylinder.001"
+    },
+    "state_after": {
+      "mesh_data_name": "Flashlight_Mesh"
+    },
+    "assertion": "mesh_data_renamed",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_finishing_touches",
+    "action": "create SevenProofsRedo collection and organize all three props into it",
+    "target_object": "SevenProofsRedo (collection)",
+    "state_before": {
+      "collection_object_count": 0
+    },
+    "state_after": {
+      "collection_object_count": 3
+    },
+    "assertion": "collection_object_count==3",
+    "status": "verified"
+  }
+]

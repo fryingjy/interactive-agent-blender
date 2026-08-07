@@ -1,0 +1,947 @@
+[
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-3.4 offset=0.01: very base rim accent",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 236,
+      "edges": 518,
+      "faces": 284,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 264,
+      "edges": 574,
+      "faces": 312,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-3.35 offset=0.015: base edge texture ring 1",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 264,
+      "edges": 574,
+      "faces": 312,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 292,
+      "edges": 630,
+      "faces": 340,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-3.22 offset=0.015: base edge texture ring 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 292,
+      "edges": 630,
+      "faces": 340,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 320,
+      "edges": 686,
+      "faces": 368,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-3.1 offset=-0.01: base texture groove",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 320,
+      "edges": 686,
+      "faces": 368,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 348,
+      "edges": 742,
+      "faces": 396,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-2.95 offset=0.015: base edge texture ring 3",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 348,
+      "edges": 742,
+      "faces": 396,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 376,
+      "edges": 798,
+      "faces": 424,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-2.8 offset=-0.01: base texture groove 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 376,
+      "edges": 798,
+      "faces": 424,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 404,
+      "edges": 854,
+      "faces": 452,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-2.6 offset=0.012: single accent ring above base texture",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 404,
+      "edges": 854,
+      "faces": 452,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 432,
+      "edges": 910,
+      "faces": 480,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-2.4 offset=-0.009: lower-body single groove",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 432,
+      "edges": 910,
+      "faces": 480,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 460,
+      "edges": 966,
+      "faces": 508,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-2.0 offset=0.01: mid-lower body accent ring",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 460,
+      "edges": 966,
+      "faces": 508,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 488,
+      "edges": 1022,
+      "faces": 536,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-1.85 offset=0.011: lower-mid transition ring",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 488,
+      "edges": 1022,
+      "faces": 536,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 516,
+      "edges": 1078,
+      "faces": 564,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-1.7 offset=-0.008: mid-lower body accent groove",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 516,
+      "edges": 1078,
+      "faces": 564,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 544,
+      "edges": 1134,
+      "faces": 592,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-1.35 offset=0.018: label band top edge",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 544,
+      "edges": 1134,
+      "faces": 592,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 572,
+      "edges": 1190,
+      "faces": 620,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-1.2 offset=-0.012: label band top inner accent",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 572,
+      "edges": 1190,
+      "faces": 620,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 600,
+      "edges": 1246,
+      "faces": 648,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-1.05 offset=0.01: label band decorative line 1",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 600,
+      "edges": 1246,
+      "faces": 648,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 628,
+      "edges": 1302,
+      "faces": 676,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.9 offset=-0.008: label band decorative line 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 628,
+      "edges": 1302,
+      "faces": 676,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 656,
+      "edges": 1358,
+      "faces": 704,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.75 offset=0.01: label band decorative line 3",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 656,
+      "edges": 1358,
+      "faces": 704,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 684,
+      "edges": 1414,
+      "faces": 732,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.6 offset=-0.008: label band decorative line 4",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 684,
+      "edges": 1414,
+      "faces": 732,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 712,
+      "edges": 1470,
+      "faces": 760,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.45 offset=0.01: label band decorative line 5",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 712,
+      "edges": 1470,
+      "faces": 760,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 740,
+      "edges": 1526,
+      "faces": 788,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.3 offset=-0.008: label band decorative line 6",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 740,
+      "edges": 1526,
+      "faces": 788,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 768,
+      "edges": 1582,
+      "faces": 816,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=-0.15 offset=0.012: label band lower accent, approaching groove seam",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 768,
+      "edges": 1582,
+      "faces": 816,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 796,
+      "edges": 1638,
+      "faces": 844,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=0.15 offset=0.012: label band continuation past groove seam",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 796,
+      "edges": 1638,
+      "faces": 844,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 824,
+      "edges": 1694,
+      "faces": 872,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=0.3 offset=-0.008: label band decorative line 7",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 824,
+      "edges": 1694,
+      "faces": 872,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 852,
+      "edges": 1750,
+      "faces": 900,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=0.45 offset=0.01: label band decorative line 8",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 852,
+      "edges": 1750,
+      "faces": 900,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 880,
+      "edges": 1806,
+      "faces": 928,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=0.6 offset=-0.008: label band bottom inner accent",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 880,
+      "edges": 1806,
+      "faces": 928,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 908,
+      "edges": 1862,
+      "faces": 956,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=0.78 offset=0.018: label band bottom edge",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 908,
+      "edges": 1862,
+      "faces": 956,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 936,
+      "edges": 1918,
+      "faces": 984,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=1.1 offset=0.01: upper body accent ring 1",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 936,
+      "edges": 1918,
+      "faces": 984,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 964,
+      "edges": 1974,
+      "faces": 1012,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=1.4 offset=-0.009: upper body accent groove 1",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 964,
+      "edges": 1974,
+      "faces": 1012,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 992,
+      "edges": 2030,
+      "faces": 1040,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=1.7 offset=0.01: upper body accent ring 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 992,
+      "edges": 2030,
+      "faces": 1040,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1020,
+      "edges": 2086,
+      "faces": 1068,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=2.0 offset=-0.009: upper body accent groove 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1020,
+      "edges": 2086,
+      "faces": 1068,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1048,
+      "edges": 2142,
+      "faces": 1096,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=2.3 offset=0.012: pre-shoulder accent ring",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1048,
+      "edges": 2142,
+      "faces": 1096,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1076,
+      "edges": 2198,
+      "faces": 1124,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=2.55 offset=-0.01: pre-shoulder accent groove",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1076,
+      "edges": 2198,
+      "faces": 1124,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1104,
+      "edges": 2254,
+      "faces": 1152,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=2.8 offset=0.012: shoulder-approach ring 1",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1104,
+      "edges": 2254,
+      "faces": 1152,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1132,
+      "edges": 2310,
+      "faces": 1180,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=3.0 offset=-0.01: shoulder-approach groove",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1132,
+      "edges": 2310,
+      "faces": 1180,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1160,
+      "edges": 2366,
+      "faces": 1208,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=3.15 offset=0.014: shoulder-approach ring 2",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1160,
+      "edges": 2366,
+      "faces": 1208,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1188,
+      "edges": 2422,
+      "faces": 1236,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_bottle_detail",
+    "action": "add ring at z=3.3 offset=-0.011: final body accent before shoulder curve begins",
+    "target_object": "Bottle",
+    "state_before": {
+      "vertices": 1188,
+      "edges": 2422,
+      "faces": 1236,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1216,
+      "edges": 2478,
+      "faces": 1264,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  }
+]

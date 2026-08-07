@@ -1,3 +1,23 @@
+"""Mechanical mesh helpers callable directly by the agent -- NOT a library of
+asset-specific shape generators.
+
+ALLOWED to call directly, any number of times: inspection, verification,
+saving, object naming, modifier configuration, selection helpers, repair
+primitives, mechanical cleanup (merge-by-distance, recalc normals,
+triangulate stray n-gons, bevel a selection the agent already chose).
+
+NOT ALLOWED: calling any of these in an unsupervised loop whose parameters
+are derived from a formula (e.g. `[f(i) for i in range(N)]`) to stamp
+detailing across a whole prop in one shot -- that is procedural asset
+generation wearing this module's clothes, the exact failure mode this
+project restarted to get away from. A helper like add_ring_detail() may
+still be called many times, but each call's location/parameters must come
+from the agent inspecting the current mesh and deciding that specific
+instance, not from an algorithm generating the whole set in advance. The
+artistic form has to come from the agent's own iterative decisions, not
+from this module.
+"""
+
 import bmesh
 import bpy
 
@@ -47,7 +67,15 @@ def bevel_edges(name, edge_indices, offset=0.02, segments=2):
 def add_ring_detail(name, z, radial_offset=0.03):
     """Bisect the mesh at a horizontal plane and push the resulting new ring
     of vertices radially in/out by radial_offset, forming a grip-ridge or
-    decorative groove ring. Returns the number of new vertices added."""
+    decorative groove ring. Returns the number of new vertices added.
+
+    Each call's z/radial_offset must be a specific decision the agent made
+    by looking at this object's current state -- never call this in a loop
+    whose z-values come from a formula (`start + i * step`); that turns one
+    mechanical helper into a procedural ring-stamping generator, which is
+    exactly the shape-authoring this module is not supposed to do. See the
+    module docstring.
+    """
     obj, bm = _bm_from_object(name)
     geom = list(bm.verts) + list(bm.edges) + list(bm.faces)
     result = bmesh.ops.bisect_plane(

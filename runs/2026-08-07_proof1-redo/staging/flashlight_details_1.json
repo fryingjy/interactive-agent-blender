@@ -1,0 +1,920 @@
+[
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.9 offset=0.025: tail cap seam ring",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 212,
+      "edges": 494,
+      "faces": 284,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 248,
+      "edges": 566,
+      "faces": 320,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.72 offset=0.028: grip ridge A1, primary hold zone",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 248,
+      "edges": 566,
+      "faces": 320,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 284,
+      "edges": 638,
+      "faces": 356,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.58 offset=0.028: grip ridge A2",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 284,
+      "edges": 638,
+      "faces": 356,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 320,
+      "edges": 710,
+      "faces": 392,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.44 offset=0.028: grip ridge A3",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 320,
+      "edges": 710,
+      "faces": 392,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 356,
+      "edges": 782,
+      "faces": 428,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.3 offset=-0.016: valley after grip zone A",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 356,
+      "edges": 782,
+      "faces": 428,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 392,
+      "edges": 854,
+      "faces": 464,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-2.05 offset=0.018: single accent ring, mid-body transition",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 392,
+      "edges": 854,
+      "faces": 464,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 428,
+      "edges": 926,
+      "faces": 500,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-1.75 offset=0.026: grip ridge B1, secondary hold zone",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 428,
+      "edges": 926,
+      "faces": 500,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 464,
+      "edges": 998,
+      "faces": 536,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-1.6 offset=0.026: grip ridge B2",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 464,
+      "edges": 998,
+      "faces": 536,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 500,
+      "edges": 1070,
+      "faces": 572,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-1.45 offset=0.026: grip ridge B3",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 500,
+      "edges": 1070,
+      "faces": 572,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 536,
+      "edges": 1142,
+      "faces": 608,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-1.3 offset=-0.016: valley after grip zone B",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 536,
+      "edges": 1142,
+      "faces": 608,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 572,
+      "edges": 1214,
+      "faces": 644,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-0.85 offset=-0.013: smooth-zone accent groove",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 572,
+      "edges": 1214,
+      "faces": 644,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 608,
+      "edges": 1286,
+      "faces": 680,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-0.55 offset=-0.018: accent groove marking switch zone start",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 608,
+      "edges": 1286,
+      "faces": 680,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 644,
+      "edges": 1358,
+      "faces": 716,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-0.15 offset=0.015: knurl ring 1",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 644,
+      "edges": 1358,
+      "faces": 716,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 680,
+      "edges": 1430,
+      "faces": 752,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=-0.05 offset=-0.012: knurl ring 2",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 680,
+      "edges": 1430,
+      "faces": 752,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 716,
+      "edges": 1502,
+      "faces": 788,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.05 offset=0.015: knurl ring 3",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 716,
+      "edges": 1502,
+      "faces": 788,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 752,
+      "edges": 1574,
+      "faces": 824,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.15 offset=-0.012: knurl ring 4",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 752,
+      "edges": 1574,
+      "faces": 824,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 788,
+      "edges": 1646,
+      "faces": 860,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.25 offset=0.015: knurl ring 5",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 788,
+      "edges": 1646,
+      "faces": 860,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 824,
+      "edges": 1718,
+      "faces": 896,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.35 offset=-0.012: knurl ring 6",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 824,
+      "edges": 1718,
+      "faces": 896,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 860,
+      "edges": 1790,
+      "faces": 932,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.4 offset=0.016: pre-thumb-rest accent ring",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 860,
+      "edges": 1790,
+      "faces": 932,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 896,
+      "edges": 1862,
+      "faces": 968,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.6 offset=0.027: grip ridge C1, thumb rest zone",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 896,
+      "edges": 1862,
+      "faces": 968,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 932,
+      "edges": 1934,
+      "faces": 1004,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.74 offset=0.027: grip ridge C2",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 932,
+      "edges": 1934,
+      "faces": 1004,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 968,
+      "edges": 2006,
+      "faces": 1040,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=0.88 offset=0.027: grip ridge C3",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 968,
+      "edges": 2006,
+      "faces": 1040,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1004,
+      "edges": 2078,
+      "faces": 1076,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.02 offset=0.027: grip ridge C4",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1004,
+      "edges": 2078,
+      "faces": 1076,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1040,
+      "edges": 2150,
+      "faces": 1112,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.18 offset=-0.017: valley after grip zone C",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1040,
+      "edges": 2150,
+      "faces": 1112,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1076,
+      "edges": 2222,
+      "faces": 1148,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.35 offset=0.014: post-grip-C accent ring",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1076,
+      "edges": 2222,
+      "faces": 1148,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1112,
+      "edges": 2294,
+      "faces": 1184,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.55 offset=0.012: cosmetic band 1 near head base",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1112,
+      "edges": 2294,
+      "faces": 1184,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1148,
+      "edges": 2366,
+      "faces": 1220,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.68 offset=-0.01: cosmetic band 2",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1148,
+      "edges": 2366,
+      "faces": 1220,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1184,
+      "edges": 2438,
+      "faces": 1256,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.81 offset=0.012: cosmetic band 3",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1184,
+      "edges": 2438,
+      "faces": 1256,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1220,
+      "edges": 2510,
+      "faces": 1292,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=1.95 offset=-0.011: cosmetic band 4",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1220,
+      "edges": 2510,
+      "faces": 1292,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1256,
+      "edges": 2582,
+      "faces": 1328,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=2.05 offset=0.02: accent ring near head transition seam",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1256,
+      "edges": 2582,
+      "faces": 1328,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1292,
+      "edges": 2654,
+      "faces": 1364,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=2.2 offset=-0.014: accent groove near head transition",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1292,
+      "edges": 2654,
+      "faces": 1364,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1328,
+      "edges": 2726,
+      "faces": 1400,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=2.35 offset=0.018: final accent ring before head widening",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1328,
+      "edges": 2726,
+      "faces": 1400,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1364,
+      "edges": 2798,
+      "faces": 1436,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=2.5 offset=-0.013: last groove before bezel transition",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1364,
+      "edges": 2798,
+      "faces": 1436,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1400,
+      "edges": 2870,
+      "faces": 1472,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight_detail",
+    "action": "add ring at z=2.65 offset=0.02: bezel-adjacent accent ring",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 1400,
+      "edges": 2870,
+      "faces": 1472,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 1436,
+      "edges": 2942,
+      "faces": 1508,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "new_verts>0 and non_manifold_edges==0 and ngons==0",
+    "status": "verified"
+  }
+]

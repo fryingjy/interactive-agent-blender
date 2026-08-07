@@ -1,0 +1,131 @@
+[
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight",
+    "action": "create Flashlight body cylinder (radius 1.2, height 6) -- rebuilt clean, no formulaic detailing carried over",
+    "target_object": "Flashlight",
+    "state_before": {
+      "scene_object_count": 3
+    },
+    "state_after": {
+      "vertices": 32,
+      "edges": 48,
+      "faces": 18,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "object_created",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight",
+    "action": "extrude +0.3 and widen 1.5x for head bulge",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 32,
+      "edges": 48,
+      "faces": 18,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 48,
+      "edges": 80,
+      "faces": 34,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "vertex_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight",
+    "action": "extrude head body +1.0 at constant radius",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 48,
+      "edges": 80,
+      "faces": 34,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 64,
+      "edges": 112,
+      "faces": 50,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "vertex_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight",
+    "action": "extrude +0.3 and taper inward to radius 1.6 for bezel rim",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 64,
+      "edges": 112,
+      "faces": 50,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 80,
+      "edges": 144,
+      "faces": 66,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "vertex_count_increased",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_flashlight",
+    "action": "bevel bezel rim edge loop (16 edges)",
+    "target_object": "Flashlight",
+    "state_before": {
+      "vertices": 80,
+      "edges": 144,
+      "faces": 66,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "state_after": {
+      "vertices": 112,
+      "edges": 208,
+      "faces": 98,
+      "non_manifold_edges": 0,
+      "ngons": 2,
+      "loose_verts": 0,
+      "degenerate_faces": 0
+    },
+    "assertion": "vertex_count_increased",
+    "status": "verified"
+  }
+]

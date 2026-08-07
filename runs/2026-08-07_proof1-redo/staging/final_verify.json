@@ -1,0 +1,24 @@
+[
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_proof7_independent_verify",
+    "action": "run tools/verify_mesh.py headlessly against rebuilt Bottle.blend",
+    "target_object": "Bottle",
+    "state_before": {"clean": "pending_final_check"},
+    "state_after": {"clean": true, "non_manifold_edges": 0, "ngons": 0, "exit_code": 0},
+    "assertion": "independent headless verifier confirms clean==true",
+    "status": "verified"
+  },
+  {
+    "session_id": "2026-08-07_proof1-redo",
+    "pid": 6180,
+    "milestone": "redo_proof7_independent_verify",
+    "action": "run tools/verify_mesh.py headlessly against rebuilt Flashlight.blend",
+    "target_object": "Flashlight",
+    "state_before": {"clean": "pending_final_check"},
+    "state_after": {"clean": true, "non_manifold_edges": 0, "ngons": 0, "exit_code": 0},
+    "assertion": "independent headless verifier confirms clean==true",
+    "status": "verified"
+  }
+]
