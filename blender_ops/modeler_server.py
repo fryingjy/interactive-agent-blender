@@ -40,6 +40,7 @@ import bpy
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import decision_state
 import decision_transaction
+import evaluated_probe
 import mesh_ops
 import object_ops
 import persistent_ids
@@ -60,6 +61,7 @@ CAPABILITIES = [
     "viewport_state",
     "region_inspection",
     "semantic_regions",
+    "evaluated_mesh_inspection",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -401,6 +403,13 @@ class ModelerServer:
 
     def cmd_get_viewport_state(self):
         return state_probe.viewport_state()
+
+    def cmd_get_evaluated_state(self, name):
+        return {
+            "mesh_health": evaluated_probe.evaluated_mesh_health(name),
+            "valence_distribution": evaluated_probe.evaluated_valence_distribution(name),
+            "surface_quality": evaluated_probe.evaluated_surface_quality(name),
+        }
 
     def cmd_inspect_region(self, name, center_ids, rings=2):
         return state_probe.inspect_region(name, center_ids, rings=rings)

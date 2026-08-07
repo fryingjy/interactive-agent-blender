@@ -173,6 +173,12 @@ def save_file(filepath: str | None = None) -> dict:
 
 
 @mcp.tool()
+def get_evaluated_state(object_name: str) -> dict:
+    """Read the modifier-EVALUATED mesh (what the surface actually looks like after the modifier stack runs, e.g. Subdivision Surface), not the base control cage every other state command reads. Returns mesh_health, valence_distribution, and surface_quality (face-area outlier detection and max adjacent-face angle -- signals aimed at spotting subdivision pinching, which doesn't show up as a validity failure)."""
+    return _call("get_evaluated_state", name=object_name)
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")
