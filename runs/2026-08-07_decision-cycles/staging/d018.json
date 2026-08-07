@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_018",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 17,
+  "observation": {"non_manifold_edge_count": 12, "detail": "all 12 edges have linked_faces==1 (open hole boundaries, not coincident-vertex duplicates); manual trace shows they form two clean 6-vertex closed loops (728-729-730-727-733-734 and 759-761-754-753-757-760), so should be fillable"},
+  "reason": "linked_faces==1 means these are hole boundaries, not merge candidates -- merge_by_distance was never going to fix this; bmesh.ops.holes_fill is the correct operator for closing open boundary loops",
+  "chosen_action": {"op": "bmesh.ops.holes_fill", "target": "Flashlight", "edges": "the 12 non-manifold edges", "sides": 0},
+  "result_revision": 18,
+  "result_state": {"vertices": 787, "edges": 1575, "faces": 792, "non_manifold_edges": 12, "ngons": 0, "note": "IDENTICAL to before -- holes_fill had zero effect, likely because sides=0 means 'fill only 0-sided holes' rather than 'no side limit'; needs a different sides value"},
+  "evaluation": "rejected"
+}

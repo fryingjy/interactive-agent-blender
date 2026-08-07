@@ -1,0 +1,13 @@
+{
+  "decision_id": "decision_010",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 9,
+  "observation": {"inward_facing_normal_candidates": 16, "note": "crude centroid-direction heuristic, unreliable on a mesh with recessed panels since insets legitimately face toward the centroid without being flipped"},
+  "reason": "rather than trust the crude heuristic and risk flipping legitimate recessed-panel normals, run the proper mechanical repair (recalc_normals) which handles consistency correctly regardless of shape concavity",
+  "chosen_action": {"op": "mesh_ops.recalc_normals", "target": "SimpleBlock"},
+  "result_revision": 10,
+  "result_state": {"vertices": 58, "edges": 120, "faces": 64, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted",
+  "ts": "2026-08-07T08:43:40Z"
+}

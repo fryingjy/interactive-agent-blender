@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_020",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 19,
+  "observation": {"current_nm_edges": [[1418, [728, 729]], [1420, [727, 730]], [1421, [730, 729]], [1422, [759, 761]], [1423, [760, 759]], [1424, [760, 757]], [1469, [734, 728]], [1470, [734, 733]], [1471, [733, 727]], [1478, [754, 753]], [1481, [761, 754]], [1482, [757, 753]]]},
+  "reason": "edge_face_add (Blender's standard F-fill) worked where bmesh.ops.holes_fill silently failed twice -- lesson: for open-boundary holes, prefer the interactive-equivalent operator over the lower-level bmesh op when its behavior is uncertain",
+  "chosen_action": {"op": "bpy.ops.mesh.edge_face_add", "target": "Flashlight", "edge_indices": [1418, 1420, 1421, 1422, 1423, 1424, 1469, 1470, 1471, 1478, 1481, 1482]},
+  "result_revision": 20,
+  "result_state": {"vertices": 787, "edges": 1581, "faces": 800, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}

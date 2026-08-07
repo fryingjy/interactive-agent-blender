@@ -1,0 +1,13 @@
+{
+  "decision_id": "decision_004",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 3,
+  "observation": {"closest_to_old_face26": [26, 3.64, [-1.0, 0.0, 0.01]]},
+  "reason": "the -X wall is the mirror counterpart of the +X wall that just got a panel detail; matching it maintains visual balance",
+  "chosen_action": {"op": "inset+recess", "target": "SimpleBlock", "face_index": 26, "thickness": 0.15, "recess": 0.03},
+  "result_revision": 4,
+  "result_state": {"vertices": 50, "edges": 104, "faces": 56, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted",
+  "ts": "2026-08-07T08:36:05Z"
+}

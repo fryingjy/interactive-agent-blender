@@ -1,0 +1,13 @@
+{
+  "decision_id": "decision_003",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 2,
+  "observation": {"largest_faces": [[19, 3.8, [1.0, 0.0, 0.05]], [26, 3.64, [-1.0, 0.0, 0.01]], [18, 3.24, [0.0, 0.0, -1.0]]]},
+  "reason": "face 19 is the largest flat face on the block (area 3.8, the +X side wall) -- a natural candidate for a recessed panel detail to break up the flat area",
+  "chosen_action": {"op": "inset+recess", "target": "SimpleBlock", "face_index": 19, "thickness": 0.15, "recess": -0.03},
+  "result_revision": 3,
+  "result_state": {"vertices": 42, "edges": 88, "faces": 48, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted",
+  "ts": "2026-08-07T08:35:41Z"
+}

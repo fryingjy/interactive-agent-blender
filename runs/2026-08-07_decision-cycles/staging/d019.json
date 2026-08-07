@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_019",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 18,
+  "observation": {"note": "bmesh.ops.holes_fill retried with sides=20 instead of 0 -- still zero effect (new_faces_from_fill: 0), ruling out the sides-parameter theory"},
+  "reason": "switch operator entirely rather than keep tuning holes_fill's parameters -- select the boundary edges in edit mode and use the standard interactive fill (edge_face_add, Blender's F shortcut), the same category of tool the user themselves used earlier for their own manual edit",
+  "chosen_action": {"op": "bpy.ops.mesh.edge_face_add", "target": "Flashlight", "edge_indices": [1418, 1420, 1421, 1422, 1423, 1424, 1469, 1470, 1471, 1478, 1481, 1482]},
+  "result_revision": 19,
+  "result_state": {"vertices": 787, "edges": 1575, "faces": 792, "non_manifold_edges": 12, "ngons": 0, "note": "second holes_fill attempt (sides=20) also had zero effect; logged as its own rejected cycle before switching approach"},
+  "evaluation": "rejected"
+}

@@ -1,0 +1,13 @@
+{
+  "decision_id": "decision_006",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 5,
+  "observation": {"health_at_investigation": {"vertices": 937, "ngons": 8}, "health_at_act_time": {"vertices": 810, "edges": 1624, "faces": 816, "ngons": 8}, "note": "vertex count kept shifting between investigation and action -- user actively editing Bottle live in the Blender GUI in parallel (confirmed via bpy.context.window_manager.operators showing MESH_OT_loop_select/MESH_OT_delete/MESH_OT_fill_grid not issued by any script here); user confirmed leaving their edit in place and just wants the resulting n-gons cleaned up"},
+  "reason": "user's manual grid-fill left 8 n-gons; triangulate_ngons is the correct mechanical repair regardless of who/what caused the n-gons, same helper used for the earlier boolean-cut repairs",
+  "chosen_action": {"op": "mesh_ops.triangulate_ngons", "target": "Bottle"},
+  "result_revision": 6,
+  "result_state": {"vertices": 810, "edges": 1640, "faces": 832, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired",
+  "ts": "2026-08-07T08:41:12Z"
+}
