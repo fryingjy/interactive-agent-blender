@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_082",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 75,
+  "observation": {"note": "SimpleBlock_Mat at default roughness/metallic"},
+  "reason": "generic prop, default painted-surface finish is appropriate -- no change needed, completing the material pass",
+  "chosen_action": {"op": "write_custom_properties", "target": "SimpleBlock_Mat", "props": {"material_finish_verdict": "default is appropriate"}},
+  "result_revision": 76,
+  "result_state": {"vertices": 68, "edges": 132, "faces": 66, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}
