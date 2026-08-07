@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_058",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 51,
+  "observation": {"duplicate_faces_after_punt": 0},
+  "reason": "confirm the punt/bevel work didn't introduce duplicate faces",
+  "chosen_action": {"op": "write_custom_properties", "target": "Bottle", "props": {"duplicate_face_recheck_after_punt": 0}},
+  "result_revision": 52,
+  "result_state": {"vertices": 850, "edges": 1696, "faces": 848, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

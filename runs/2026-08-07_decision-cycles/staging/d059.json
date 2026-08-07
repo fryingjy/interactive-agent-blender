@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_059",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 52,
+  "observation": {"note": "duplicate-face recheck on Flashlight after the sliver repair and brand-plate work"},
+  "reason": "confirm recent repairs didn't introduce duplicate faces",
+  "chosen_action": {"op": "duplicate-face scan", "target": "Flashlight"},
+  "result_revision": 53,
+  "result_state": {"vertices": 794, "edges": 1595, "faces": 807, "non_manifold_edges": 0, "ngons": 0, "duplicate_faces": 0},
+  "evaluation": "accepted"
+}
