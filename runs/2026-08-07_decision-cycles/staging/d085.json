@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_085",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 78,
+  "observation": {"valence_3_verts": 17, "note": "a different pole class than previously checked -- only high-valence had been inspected before"},
+  "reason": "17 valence-3 poles are expected byproducts of the repair-triangulation regions (holes_fill, sliver collapses), acceptable",
+  "chosen_action": {"op": "write_custom_properties", "target": "Flashlight", "props": {"valence3_check_count": 17, "valence3_check_verdict": "acceptable"}},
+  "result_revision": 79,
+  "result_state": {"vertices": 794, "edges": 1595, "faces": 807, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

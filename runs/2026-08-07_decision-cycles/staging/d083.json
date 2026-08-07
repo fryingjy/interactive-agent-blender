@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_083",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 76,
+  "observation": {"visibility": {"SimpleBlock": {"visible": true}, "Bottle": {"visible": true}, "Flashlight": {"visible": true}}},
+  "reason": "verify no leftover disabled/unused modifiers remain on any object -- all booleans should have been applied, not left live",
+  "chosen_action": {"op": "modifier stack scan + visibility record", "target": "SimpleBlock, Bottle, Flashlight"},
+  "result_revision": 77,
+  "result_state": {"SimpleBlock": [], "Bottle": [], "Flashlight": [], "verdict": "clean, all modifiers were properly applied earlier, none left live"},
+  "evaluation": "accepted"
+}
