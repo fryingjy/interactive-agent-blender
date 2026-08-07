@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_041",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 36,
+  "observation": {"face_material_indices_sample": [0,0,0,0,0], "distinct_indices_used": [0], "diagnosis": "all 800 faces point at material_index=0, the empty slot; the real Bottle_Mat_v2 material at index 1 is applied to zero faces"},
+  "reason": "the actual defect is faces never being assigned to the real material slot -- reassign all faces to index 1, then remove the now-truly-empty slot 0",
+  "chosen_action": {"op": "set polygon.material_index=1 for all faces, then materials.pop(index=0)", "target": "Bottle"},
+  "result_revision": 37,
+  "result_state": {"slots": ["Bottle_Mat_v2"], "faces_using_it": 800},
+  "evaluation": "repaired"
+}

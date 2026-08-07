@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_042",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 37,
+  "observation": {"slots_raw": [null], "all_materials_in_file": ["Bottle_Mat","Bottle_Mat_v2","Dots Stroke","Flashlight_Mat","Flashlight_Mat_v2","Material","SimpleBlock_Mat","SimpleBlock_Mat_v2"], "diagnosis": "Flashlight_Mat_v2 datablock still exists in the file but was unassigned from Flashlight's only material slot -- likely more concurrent GUI activity"},
+  "reason": "reassign the existing material datablock into the empty slot and ensure faces point to it",
+  "chosen_action": {"op": "reassign material into slot 0, set all polygon.material_index=0", "target": "Flashlight"},
+  "result_revision": 38,
+  "result_state": {"slots": ["Flashlight_Mat_v2"], "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}

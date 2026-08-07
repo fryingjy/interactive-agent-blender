@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_030",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 25,
+  "observation": {"shortest_5": [0.03, 0.03, 0.03, 0.03, 0.03], "longest_5": [1.373, 1.373, 1.373, 1.373, 1.373]},
+  "reason": "45.7:1 length ratio, but 0.03 isn't degenerate and non_manifold/ngon counts are clean -- expected given fine ring detailing coexisting with larger structural edges",
+  "chosen_action": {"op": "write_custom_properties", "target": "Bottle", "props": {"edge_ratio_check_min_to_max": 0.0219, "edge_ratio_check_verdict": "acceptable"}},
+  "result_revision": 26,
+  "result_state": {"vertices": 802, "edges": 1600, "faces": 800, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_038",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 33,
+  "observation": {"note": "checking for zero-area interior faces, a common boolean-artifact signature, on the two objects with boolean history"},
+  "reason": "Bottle and Flashlight both went through boolean groove cuts earlier in the session; verifying no residual zero-area slivers survived all the subsequent repairs",
+  "chosen_action": {"op": "zero-area face scan (calc_area() < 1e-6)", "target": "Bottle and Flashlight"},
+  "result_revision": 34,
+  "result_state": {"Bottle": {"zero_area_faces": 0}, "Flashlight": {"zero_area_faces": 0}},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_032",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 27,
+  "observation": {"bottle_uv_layers_before": 1},
+  "reason": "same UV unwrap treatment for Bottle, completing the set started with SimpleBlock",
+  "chosen_action": {"op": "bpy.ops.uv.smart_project", "target": "Bottle", "angle_limit": 1.15192, "island_margin": 0.02},
+  "result_revision": 28,
+  "result_state": {"vertices": 802, "edges": 1600, "faces": 800, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_036",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 31,
+  "observation": {"note": "completing duplicate-face sweep with SimpleBlock"},
+  "reason": "complete the duplicate-face QA sweep across all three props",
+  "chosen_action": {"op": "duplicate-face scan via frozenset(vert indices) per face", "target": "SimpleBlock"},
+  "result_revision": 32,
+  "result_state": {"vertices": 52, "edges": 100, "faces": 50, "non_manifold_edges": 0, "ngons": 0, "duplicate_faces": 0},
+  "evaluation": "accepted"
+}

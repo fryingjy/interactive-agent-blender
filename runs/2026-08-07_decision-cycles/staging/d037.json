@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_037",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 32,
+  "observation": {"scales": {"SimpleBlock": [1,1,1], "Bottle": [1,1,1], "Flashlight": [1,1,1]}},
+  "reason": "all scales already clean, nothing to apply; recorded the verdict plus origin/dimension data on all three objects in one act since the check itself is identical across them",
+  "chosen_action": {"op": "write_custom_properties", "target": "all three objects", "props": {"transform_check_scale_ok": true}},
+  "result_revision": 33,
+  "result_state": {"origins_recorded": true},
+  "evaluation": "accepted"
+}

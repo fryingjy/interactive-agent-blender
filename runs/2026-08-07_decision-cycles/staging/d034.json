@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_034",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 29,
+  "observation": {"worst_angle_faces": [[785, 0.659], [759, 0.659], [764, 0.659]], "note": "37.8 degrees min, not a sliver at all -- Bottle is genuinely clean on this axis, switching to a different check"},
+  "reason": "verify no duplicate/overlapping faces exist -- a distinct QA dimension not checked yet",
+  "chosen_action": {"op": "duplicate-face scan via frozenset(vert indices) per face", "target": "Bottle"},
+  "result_revision": 30,
+  "result_state": {"vertices": 802, "edges": 1600, "faces": 800, "non_manifold_edges": 0, "ngons": 0, "duplicate_faces": 0},
+  "evaluation": "accepted"
+}
