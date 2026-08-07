@@ -583,3 +583,68 @@ specific instance.
 `docs/RESEARCH_ROADMAP.md` — a mandatory future subsystem, gated behind the closed-loop runtime
 milestone above being proven reliable. Not optional, not to be dropped from scope, not to be
 built early. Read it before starting any research/learning-related work.
+
+## Curriculum step D: subdivision-surface milestone (SoapDish)
+
+`runs/2026-08-07_soap-dish-subsurf/` — the first prop in this project where the control cage is
+not the final surface (a Subdivision Surface modifier is), following the master directive's
+curriculum order (section 47: A. fundamentals → B. topology → C. simple hard-surface forms,
+covered by four flat-panel-bevel props → D. subdivision-surface modeling, this one). Reference:
+`reference/soap_dish/notes.md`, genuinely unseen beforehand — a rounded rectangular dish with a
+shallow concave basin that has to read as smooth and continuous once subdivided, not faceted or
+pinched at the basin/rim transition.
+
+**A real capability gap closed first**: judging a subdivision-surface result by inspecting the
+control cage (what every prior `state_probe` read) is close to meaningless — the cage isn't the
+final surface. Built `blender_ops/evaluated_probe.py`, which reads the mesh through
+`bpy.context.evaluated_depsgraph_get()` + `obj.evaluated_get(depsgraph).to_mesh()` — the actual
+post-modifier result — and added face-area-outlier and max-adjacent-face-angle heuristics aimed
+specifically at detecting pinching (a plain global min/max face-area check is a weak signal on a
+subdivided surface, where small faces are normal everywhere near any curvature). Verified first
+against a scratch cube + Subsurf level 2 (98v/192e/96f, exactly matching 6×4²) before trusting it
+on real work.
+
+**A real, silent bug found chasing that capability**: the Subsurf modifier's effect wasn't
+showing up in `evaluated_probe`'s output at all. Root-caused directly (not assumed) —
+`obj.modifiers.new()` does not default `show_viewport`/`show_render` to `True` via Blender's
+Python API, so `object_ops.add_modifier` had been silently creating modifiers invisible to both
+the viewport and the evaluated-mesh dependency graph the whole time. Fixed (`bd4648b`), with an
+honest note that this likely also affected the SpeakerEnclosure's earlier Bevel-modifier decision,
+which predates `evaluated_probe.py` and was never checked against the evaluated mesh — left as a
+documented limitation on that earlier verification claim, not retroactively edited.
+
+**A real topology mistake, a fast fix, and a better one from a live human correction**:
+subdividing the basin's interior without matching the surrounding rim faces' resolution produced
+4 seven-sided n-gons on the rim — a real, expected consequence of a resolution mismatch at a
+subdivision boundary. Fixed fast with `triangulate_ngons`, reasoned as low-risk since the rim was
+still flat at the time. Mid-session, `begin_decision` then failed with a genuine (not staged)
+external-edit detection: vertex count had doubled, n-gons had reappeared, several elements showed
+`agent_id: null`, mode was `EDIT`. Stopped immediately, reported the exact symptoms, and asked the
+user directly whether they were editing live — confirmed: "yes im fixing the topology to be all
+quads." Set `control_mode` to `USER_CONTROL` (the mechanism's first real deployment, built earlier
+this session for exactly this scenario) and stood down without fighting the user's edit or
+overwriting it.
+
+The user's manual fix — resolution-matching the rim to the basin with proper all-quad topology,
+rather than accepting the triangulated patch — is a real, tested correction, not just a style
+preference. `get_evaluated_state` on the result: 258v/512e/256f, `valence_distribution
+{3: 8, 4: 250}`, `area_outlier_count: 0`, `max_adjacent_face_angle_radians: 0.802` (~46°). The 8
+valence-3 poles are exactly the 8 original box corners — none clustered at the scoop/rim
+transition, and zero area-outlier faces anywhere on the evaluated surface. Real evidence the
+resolution-matched fix avoided introducing new poles at the curved transition, the classic
+pinching failure mode this whole milestone was chosen to exercise. Independently re-verified via
+`tools/verify_mesh.py` against a fresh `.blend`
+(`runs/2026-08-07_soap-dish-subsurf/verify_reports/SoapDish_20260807T191714Z.json`): clean, 0
+non-manifold/n-gons/degenerate faces, consistent normals.
+
+**Logging-discipline gap, stated honestly rather than backfilled**: a context-window compaction
+happened mid-session, and per-decision JSON records for the build-up portion (primitive creation,
+proportion scaling, basin inset/subdivide) were never written to disk before it — there is no
+server-side decision-history API to reconstruct them with real fidelity afterward (checked:
+`modeler_server.py`'s `_command_journal` is an in-memory idempotency cache, not a persisted audit
+trail). Rather than invent plausible-looking entries with fabricated revision numbers,
+`runs/2026-08-07_soap-dish-subsurf/decision_log.jsonl` starts empty and `note.md` documents the
+gap directly — a process fix for future sessions (log every decision immediately, from decision 1)
+rather than something to paper over this time. No genuine unresolvable topology problem has
+appeared yet, so per `docs/RESEARCH_ROADMAP.md` no research episode is triggered — watched
+honestly, not manufactured.
