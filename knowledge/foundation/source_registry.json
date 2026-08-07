@@ -1,0 +1,165 @@
+[
+  {
+    "source_id": "blender-manual-subsurf",
+    "title": "Subdivision Surface Modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 5.2 LTS",
+    "topics": ["subdivision-surface", "modifiers"],
+    "modalities_inspected": ["text"],
+    "status": "STUDIED",
+    "direct_observations": [
+      "Catmull-Clark vs Simple subdivision modes; Simple only smooths non-coplanar geometry",
+      "Levels Viewport vs Render are independent, viewport should not exceed render",
+      "Use Limit Surface places verts at the theoretical infinite-subdivision position"
+    ],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": []
+  },
+  {
+    "source_id": "blender-manual-empties",
+    "title": "Empties (incl. Image Empty reference-modeling workflow)",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/empties.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 5.2 LTS",
+    "topics": ["reference-modeling", "empties"],
+    "modalities_inspected": ["text"],
+    "status": "STUDIED",
+    "direct_observations": [
+      "Image Empty displays a reference photo directly in the 3D viewport for continuous comparison while modeling",
+      "Depth=Front + low Opacity is the recommended setting when using an image as a modeling reference"
+    ],
+    "candidate_principles": [
+      "Reference-based modeling should compare against the source continuously (or via repeated renders for a non-visual agent), not once at the end -- root cause of the first (rejected) gadget blockout attempt"
+    ],
+    "experiments": [],
+    "skills": []
+  },
+  {
+    "source_id": "blender-manual-mesh-editing-root",
+    "title": "Editing Mesh Objects (mesh editing operator index)",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/index.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 5.2 LTS",
+    "topics": ["mesh-editing", "operator-index"],
+    "modalities_inspected": ["text"],
+    "status": "STUDIED",
+    "direct_observations": [
+      "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
+    ],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": []
+  },
+  {
+    "source_id": "blender-manual-bevel",
+    "title": "Bevel (edge/vertex)",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/bevel.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 5.2 LTS",
+    "topics": ["bevel", "hard-surface"],
+    "modalities_inspected": ["text"],
+    "status": "STUDIED",
+    "direct_observations": [
+      "Width Type has 5 variants (Offset/Width/Depth/Percent/Absolute) with different meanings for the same Width number -- this project has only ever used bmesh.ops.bevel defaults, never explicitly varied Width Type",
+      "Clamp Overlap prevents overshoot past neighboring faces; Miter Outer/Inner controls extra geometry at multi-edge corners to avoid pinching"
+    ],
+    "candidate_principles": [],
+    "experiments": ["see knowledge/foundation/operator_cards/bevel.md -- pre-existing project findings, not fresh this session"],
+    "skills": ["boolean-groove-cut-topology-cleanup (unrelated defect, same project)"]
+  },
+  {
+    "source_id": "blender-api-bmesh-ops",
+    "title": "BMesh Operators (bmesh.ops) Python API reference",
+    "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "current Blender Python API",
+    "topics": ["bmesh", "api", "grid_fill", "bridge_loops"],
+    "modalities_inspected": ["text"],
+    "status": "STUDYING",
+    "direct_observations": [
+      "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
+      "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session"
+    ],
+    "candidate_principles": [],
+    "experiments": ["bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md"],
+    "skills": []
+  },
+  {
+    "source_id": "blenderguru-donut-v5-page",
+    "title": "The Blender Donut 5.0 Tutorial (all links and resources)",
+    "url": "https://www.blenderguru.com/posts/blender-donut-v5-tutorial",
+    "type": "video",
+    "trust_tier": "B",
+    "version_scope": "Blender 5.0",
+    "topics": ["fundamentals", "reference-modeling"],
+    "modalities_inspected": ["text (page shell/links only)"],
+    "status": "REJECTED",
+    "direct_observations": [
+      "Page is a link-list wrapper around an embedded YouTube video -- no substantive written lesson content of its own"
+    ],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": [],
+    "rejection_reason": "Actual instructional content is video-only (YouTube), confirmed unreachable this session (bot-check redirect via both the browser tool and WebFetch). Not promoted; would need the transcript/frames to be genuinely studied, which are not accessible."
+  },
+  {
+    "source_id": "cgcookie-core-mesh-modeling",
+    "title": "CORE: Fundamentals of 3D Mesh Modeling (Jonathan Lampel)",
+    "url": "https://cgcookie.com/courses/core-fundamentals-mesh-modeling",
+    "type": "course",
+    "trust_tier": "B",
+    "version_scope": "current Blender",
+    "topics": ["mesh-fundamentals", "hard-surface", "subdivision-surface", "topology"],
+    "modalities_inspected": ["text (course overview/curriculum page only)"],
+    "status": "QUEUED",
+    "direct_observations": [
+      "Real, structured curriculum confirmed: Ch1 Intro to 3D Modeling, Ch2 Hard Surface Modeling, Ch3 Subdivision Surface Modeling, Ch4 Final Exercise",
+      "68 reviews, positive, mentions concrete habits (merge by distance, recalculate normals) matching this project's own established practices"
+    ],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": [],
+    "access_note": "Course page itself loads; actual lesson content is paywalled/login-gated and video-based -- not accessible without an account and without video capability. Curriculum structure is real evidence (author credentials, chapter breakdown, review consensus); lesson-by-lesson study is NOT possible in this environment."
+  },
+  {
+    "source_id": "blenderartists-modeling-support",
+    "title": "Latest Support/Modeling topics",
+    "url": "https://blenderartists.org/c/support/modeling/37",
+    "type": "forum",
+    "trust_tier": "C",
+    "version_scope": "mixed/current",
+    "topics": ["community-troubleshooting"],
+    "modalities_inspected": ["text"],
+    "status": "STUDIED",
+    "direct_observations": ["Page loads correctly; not yet mined for a specific problem-driven query this session"],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": []
+  },
+  {
+    "source_id": "youtube-general",
+    "title": "YouTube (all video sources: Blender Guru, CG Cookie, Blender Secrets, Blender Studio)",
+    "url": "https://www.youtube.com/",
+    "type": "video",
+    "trust_tier": "D",
+    "version_scope": "n/a",
+    "topics": [],
+    "modalities_inspected": [],
+    "status": "REJECTED",
+    "direct_observations": [
+      "Confirmed unreachable from this environment: both the interactive Browser tool and the server-side WebFetch tool independently redirected to https://www.google.com/sorry/index (a bot-detection challenge page) when attempting https://www.youtube.com/watch?v=-tbSCMbJA6o",
+      "Not attempted to bypass -- completing CAPTCHAs/bot-detection is prohibited regardless of purpose"
+    ],
+    "candidate_principles": [],
+    "experiments": [],
+    "skills": [],
+    "rejection_reason": "No access to video_frames, audio, captions, or transcript for any YouTube-hosted source. Every video source in the directive's curriculum (Blender Studio Fundamentals, CG Cookie video lessons, Blender Secrets tips) is affected equally. Never claim video/audio access for these -- see Pass 0 access-truth requirement."
+  }
+]
