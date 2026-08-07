@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_090",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 83,
+  "observation": {"display_types": {"SimpleBlock": "TEXTURED", "Bottle": "TEXTURED", "Flashlight": "TEXTURED"}},
+  "reason": "verify viewport display type is appropriate (TEXTURED) for finished props, not left in a debug/bounds display mode",
+  "chosen_action": {"op": "write_custom_properties", "target": "all three objects", "props": {"display_type_check": "appropriate"}},
+  "result_revision": 84,
+  "result_state": {"verdict": "clean"},
+  "evaluation": "accepted"
+}
