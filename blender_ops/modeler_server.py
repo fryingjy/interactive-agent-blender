@@ -548,7 +548,15 @@ class ModelerServer:
         tx.__enter__()
         decision_id = f"dec_{obs_rev}_{int(time.time() * 1000)}"
         with self._pending_lock:
-            self._pending[decision_id] = {"tx": tx, "target": name}
+            # _check_external_edit just above set self._last_known_fingerprint[name]
+            # to the state observed at THIS moment -- capture it as this
+            # transaction's own baseline, so perform_decision can re-verify
+            # nothing changed between begin and perform (see the correction
+            # in cmd_perform_decision for why this matters).
+            self._pending[decision_id] = {
+                "tx": tx, "target": name,
+                "baseline_fingerprint": self._last_known_fingerprint.get(name),
+            }
         return {"decision_id": decision_id, "observed_revision": obs_rev}
 
     def cmd_perform_decision(self, decision_id, operation, params, command_id=None):
@@ -557,6 +565,32 @@ class ModelerServer:
         entry = self._pending.get(decision_id)
         if entry is None:
             raise ValueError(f"no pending decision {decision_id} (already committed, or begin_decision was never called)")
+        # CORRECTION (found live, testing the mid-transaction-edit scenario
+        # directive section 56 asks for): begin_decision only proves the
+        # mesh was clean AT THAT MOMENT. Nothing previously re-checked
+        # before the actual mutation ran -- a human edit landing between
+        # begin_decision and perform_decision was silently absorbed with
+        # zero indication anything unexpected happened, confirmed directly
+        # (moved a vertex mid-transaction, perform_decision succeeded
+        # without complaint, verify_decision's before/after showed nothing
+        # wrong since vertex COUNT hadn't changed, only a position). Not
+        # auto-refreshing the baseline here the way begin_decision's own
+        # check does on failure -- that would silently fold the human's
+        # edit into what the agent then treats as its own starting point,
+        # exactly what directive section 46 says not to do (human
+        # corrections are evidence to reason about, not something to
+        # silently absorb without surfacing).
+        baseline_fp = entry.get("baseline_fingerprint")
+        if baseline_fp is not None:
+            current_fp = state_fingerprint.compute(entry["target"])
+            detected, diff = state_fingerprint.diff(baseline_fp, current_fp)
+            if detected:
+                raise ValueError(
+                    f"external edit detected on '{entry['target']}' since this decision began "
+                    f"(diff: {diff}) -- the mesh changed mid-transaction, most likely a manual "
+                    f"GUI edit. This transaction is now stale: call reject_decision to discard "
+                    f"it, then begin_decision again to re-observe the current state."
+                )
         fn = _OPS.get(operation)
         if fn is None:
             raise ValueError(f"unknown operation '{operation}' -- available: {sorted(_OPS.keys())}")
@@ -582,6 +616,28 @@ class ModelerServer:
             del self._pending[decision_id]
         self._check_external_edit(target)  # refresh the snapshot to this decision's own result
         return {"decision_id": decision_id, "result_revision": new_rev}
+
+    def cmd_abandon_decision(self, decision_id, reason=""):
+        """Discard a pending decision that never reached perform() -- e.g.
+        begin_decision succeeded but perform_decision then failed (a
+        mid-transaction external edit, an invalid operation name, bad
+        params). reject_decision correctly refuses this case (there is no
+        mutation to roll back), which otherwise leaves the entry in
+        self._pending forever with no way to clear it except a full server
+        restart -- found live immediately after adding the mid-transaction
+        edit check above, which is exactly the situation that produces a
+        never-performed pending decision in normal use, not an edge case."""
+        entry = self._pending.get(decision_id)
+        if entry is None:
+            raise ValueError(f"no pending decision {decision_id}")
+        if entry["tx"]._performed:
+            raise ValueError(
+                f"decision {decision_id} already has a performed mutation -- use "
+                f"reject_decision (to roll it back) or commit_decision, not abandon_decision"
+            )
+        with self._pending_lock:
+            del self._pending[decision_id]
+        return {"decision_id": decision_id, "abandoned": True, "reason": reason}
 
     def cmd_reject_decision(self, decision_id, reason=""):
         """Transaction-owned rollback (directive P0.1): restore the target

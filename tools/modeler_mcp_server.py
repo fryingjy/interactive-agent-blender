@@ -281,6 +281,12 @@ def render_silhouette(object_name: str | list[str], output_path: str, view: str 
 
 
 @mcp.tool()
+def abandon_decision(decision_id: str, reason: str = "") -> dict:
+    """Discard a pending decision that never reached perform_decision (e.g. perform_decision itself failed -- a mid-transaction external edit, an invalid operation, bad params). Use this instead of reject_decision when nothing was ever actually mutated -- reject_decision correctly refuses that case since there's no mutation to roll back."""
+    return _call("abandon_decision", decision_id=decision_id, reason=reason)
+
+
+@mcp.tool()
 def reject_decision(decision_id: str, reason: str = "") -> dict:
     """Transaction-owned rollback: restore the target object to exactly its state before perform_decision ran (geometry and transform), independent of Blender's global undo stack, and release decision_id WITHOUT advancing the live decision-revision counter -- the scene is left exactly as if this decision never happened. Use this instead of commit_decision when verify_decision's result is judged unacceptable."""
     return _call("reject_decision", decision_id=decision_id, reason=reason)
