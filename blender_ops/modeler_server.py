@@ -32,6 +32,7 @@ import sys
 import threading
 import time
 import traceback
+import uuid
 from collections import deque
 
 import bpy
@@ -52,6 +53,8 @@ CAPABILITIES = [
     "decision_transactions",
     "external_edit_detection",
     "command_idempotency",
+    "session_handshake",
+    "control_mode",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -87,6 +90,14 @@ class ModelerServer:
         self.socket = None
         self.server_thread = None
 
+        # Fresh per server start, not persisted to the .blend -- represents
+        # THIS running server instance (directive section 14: session
+        # handshake). A Blender restart means a new session_id even if the
+        # same file reloads; a client can use this to detect "am I still
+        # talking to the same live session I was before."
+        self.session_id = uuid.uuid4().hex[:12]
+        self.started_at = time.time()
+
         self._event_seq = 0
         self._events = deque(maxlen=500)
         self._pending = {}  # decision_id -> {"tx": DecisionTransaction, "target": str}
@@ -108,6 +119,15 @@ class ModelerServer:
         # instead of re-running the mutation. Unbounded for now (bounded by
         # the same guidance as _events if this becomes a real memory concern).
         self._command_journal = {}
+
+        # Directive section 15: explicit AGENT_CONTROL / USER_CONTROL /
+        # SHARED_OBSERVATION. Unlike the removed depsgraph-timing "ownership
+        # heuristic" (which tried to infer origin after the fact and didn't
+        # work), this is a declared mode a human or the agent sets
+        # explicitly -- begin_decision enforces it directly: "never fight
+        # the user's mouse" means refusing to even ATTEMPT a mutation while
+        # USER_CONTROL is set, not detecting the collision after it happens.
+        self._control_mode = "AGENT_CONTROL"
 
     # ---- lifecycle -----------------------------------------------------
     # Found live during development: importlib.reload(modeler_server) resets
@@ -154,8 +174,17 @@ class ModelerServer:
     # since the underlying transport is request/response) ---------------
 
     def _push_event(self, event_type, **data):
+        # event_id is a distinct identifier from seq (directive section 7:
+        # keep session_id/scene_revision/decision_id/command_id/event_id
+        # separate) -- seq is purely this queue's ordering, event_id is the
+        # event's own identity, stable if it were ever persisted/replayed
+        # independent of queue position.
         self._event_seq += 1
-        self._events.append({"seq": self._event_seq, "ts": time.time(), "event": event_type, **data})
+        event_id = f"evt_{self.session_id}_{self._event_seq}"
+        self._events.append({
+            "event_id": event_id, "seq": self._event_seq, "ts": time.time(),
+            "event": event_type, **data,
+        })
 
     def _on_depsgraph_update(self, scene, depsgraph):
         for update in depsgraph.updates:
@@ -302,8 +331,25 @@ class ModelerServer:
             "protocol_version": PROTOCOL_VERSION,
             "blender_version": ".".join(str(v) for v in bpy.app.version),
             "pid": os.getpid(),
+            "session_id": self.session_id,
+            "started_at": self.started_at,
+            "blend_filepath": bpy.data.filepath or None,
             "capabilities": CAPABILITIES,
             "available_operations": sorted(_OPS.keys()),
+        }
+
+    def cmd_heartbeat(self):
+        """Cheap liveness + identity check -- a client can call this after a
+        reconnect to confirm it's still talking to the same Blender process
+        and server session it was before (matching pid and session_id), per
+        directive section 14/16, rather than assuming a fresh connection
+        means a fresh, unrelated session."""
+        return {
+            "session_id": self.session_id,
+            "pid": os.getpid(),
+            "revision": decision_state.current_revision(),
+            "uptime_seconds": round(time.time() - self.started_at, 1),
+            "pending_decisions": len(self._pending),
         }
 
     def cmd_get_full_state(self, name):
@@ -331,7 +377,25 @@ class ModelerServer:
         Safe to poll; does not require an open transaction."""
         return self._check_external_edit(name)
 
+    def cmd_get_control_mode(self):
+        return {"control_mode": self._control_mode}
+
+    def cmd_set_control_mode(self, mode):
+        valid = {"AGENT_CONTROL", "USER_CONTROL", "SHARED_OBSERVATION"}
+        if mode not in valid:
+            raise ValueError(f"control_mode must be one of {sorted(valid)}, got {mode!r}")
+        previous = self._control_mode
+        self._control_mode = mode
+        return {"previous": previous, "control_mode": mode}
+
     def cmd_begin_decision(self, name, action_type):
+        if self._control_mode != "AGENT_CONTROL":
+            raise ValueError(
+                f"cannot start a decision: control_mode is '{self._control_mode}', not "
+                f"'AGENT_CONTROL'. The agent does not attempt mutations while a human has "
+                f"declared control -- call set_control_mode('AGENT_CONTROL') first if that's "
+                f"no longer accurate."
+            )
         edit_check = self._check_external_edit(name)
         if edit_check["external_edit_detected"]:
             raise ValueError(

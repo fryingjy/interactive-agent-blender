@@ -77,6 +77,30 @@ def get_selection(object_name: str) -> dict:
 
 
 @mcp.tool()
+def select_by_ids(object_name: str, vertex_ids: list[int] | None = None, edge_ids: list[int] | None = None, face_ids: list[int] | None = None, extend: bool = False) -> dict:
+    """Select mesh elements by persistent agent_id (from get_selection/get_full_state) rather than a raw index, so the caller can remember and reselect specific elements even after unrelated topology changes elsewhere in the mesh. Set extend=True to add to the current selection instead of replacing it. This is a selection change, not an artistic mutation -- callable freely, no decision transaction needed."""
+    return _call("select_by_ids", name=object_name, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids, extend=extend)
+
+
+@mcp.tool()
+def heartbeat() -> dict:
+    """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
+    return _call("heartbeat")
+
+
+@mcp.tool()
+def get_control_mode() -> dict:
+    """Report the current ownership mode: AGENT_CONTROL (default -- the agent may start decisions), USER_CONTROL (a human has declared control; begin_decision refuses to start), or SHARED_OBSERVATION."""
+    return _call("get_control_mode")
+
+
+@mcp.tool()
+def set_control_mode(mode: str) -> dict:
+    """Set the ownership mode to one of AGENT_CONTROL, USER_CONTROL, or SHARED_OBSERVATION. While not AGENT_CONTROL, begin_decision refuses to start any new transaction -- the agent does not attempt mutations while a human has declared control."""
+    return _call("set_control_mode", mode=mode)
+
+
+@mcp.tool()
 def poll_events(since_seq: int = 0) -> dict:
     """Poll for scene-change events (mesh_changed, undo, redo, file_saved) with sequence number greater than since_seq. This is eventual-consistency polling, not real-time push -- event delivery latency is tied to Blender's redraw cycle and can be tens of seconds with no other viewport activity; do not treat a missing event as proof nothing changed."""
     return _call("poll_events", since_seq=since_seq)
