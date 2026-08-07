@@ -38,6 +38,7 @@ from collections import deque
 import bpy
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import curve_ops
 import decision_state
 import decision_transaction
 import evaluated_probe
@@ -67,6 +68,7 @@ CAPABILITIES = [
     "decision_rollback",
     "layered_state_fingerprint",
     "native_silhouette_render",
+    "curve_bevel_taper_geometry",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -399,6 +401,21 @@ class ModelerServer:
         for begin_decision's external-edit check to compare against)."""
         loc = tuple(location) if location else (0.0, 0.0, 0.0)
         return object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
+
+    def cmd_create_curve(self, name, points, bevel_depth=0.05, closed=False, curve_type="POLY"):
+        """Free to call outside a decision transaction, same reasoning as
+        create_primitive -- a new curve object, nothing yet exists for
+        begin_decision's external-edit check to compare against."""
+        return curve_ops.create_curve_from_points(name, points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
+
+    def cmd_set_curve_bevel_depth(self, name, depth):
+        return curve_ops.set_curve_bevel_depth(name, depth)
+
+    def cmd_set_curve_taper(self, name, taper_object_name):
+        return curve_ops.set_curve_taper(name, taper_object_name)
+
+    def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001):
+        return curve_ops.convert_curve_to_mesh(name, new_mesh_name=new_mesh_name, merge_dist=merge_dist)
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)

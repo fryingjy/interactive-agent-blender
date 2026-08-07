@@ -83,6 +83,30 @@ def get_selection(object_name: str) -> dict:
 
 
 @mcp.tool()
+def create_curve(name: str, points: list[list[float]], bevel_depth: float = 0.05, closed: bool = False, curve_type: str = "POLY") -> dict:
+    """Create a curve object from a list of [x, y, z] control points -- for geometry a mesh primitive can't represent (a path that wraps, overlaps, or tapers along its length; a torus is a symmetric ring and cannot do this). bevel_depth gives the path a round 3D cross-section of that radius. curve_type 'POLY' (straight segments, easiest to verify against measured reference coordinates) or 'BEZIER'. closed=True connects the last point back to the first. Free to call outside a decision transaction, same as create_primitive."""
+    return _call("create_curve", name=name, points=points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
+
+
+@mcp.tool()
+def set_curve_bevel_depth(object_name: str, depth: float) -> dict:
+    """Change a curve object's cross-section radius after creation."""
+    return _call("set_curve_bevel_depth", name=object_name, depth=depth)
+
+
+@mcp.tool()
+def set_curve_taper(object_name: str, taper_object_name: str) -> dict:
+    """Attach a separate curve object (typically a simple 2-point width-vs-position profile) as object_name's taper, scaling its cross-section along its own length. Both curve objects must already exist."""
+    return _call("set_curve_taper", name=object_name, taper_object_name=taper_object_name)
+
+
+@mcp.tool()
+def convert_curve_to_mesh(object_name: str, new_mesh_name: str | None = None, merge_dist: float = 0.0001) -> dict:
+    """Bake a curve's evaluated (bevel + taper applied) shape into a new, separate editable mesh object -- the bridge back into the normal bmesh-based typed vocabulary (bevel_edges, subdivide_selection, etc.) once a curve-based blockout reads correctly. Leaves the source curve object untouched. Automatically welds the beveled tube's end-cap seams (a real, confirmed gap in Blender's own curve-to-mesh conversion -- the caps are not merged to the tube wall by default), so the result is already 0-non-manifold, not something the caller needs to clean up separately."""
+    return _call("convert_curve_to_mesh", name=object_name, new_mesh_name=new_mesh_name, merge_dist=merge_dist)
+
+
+@mcp.tool()
 def select_by_ids(object_name: str, vertex_ids: list[int] | None = None, edge_ids: list[int] | None = None, face_ids: list[int] | None = None, extend: bool = False) -> dict:
     """Select mesh elements by persistent agent_id (from get_selection/get_full_state) rather than a raw index, so the caller can remember and reselect specific elements even after unrelated topology changes elsewhere in the mesh. Set extend=True to add to the current selection instead of replacing it. This is a selection change, not an artistic mutation -- callable freely, no decision transaction needed."""
     return _call("select_by_ids", name=object_name, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids, extend=extend)
