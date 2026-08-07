@@ -71,6 +71,36 @@ actual render-affecting BSDF input; a newly-added camera never set as `scene.cam
 encoded as a skill in `knowledge/skills/`, and added a `normals_consistent_ok` check to
 `tools/verify_mesh.py` from a signed-volume technique discovered mid-session.
 
+**A real remaining gap in the above**: `advance_revision()` alone only proves one
+revision-advancing call happened per logged decision — not that only one Blender mutation occurred
+before it. Five operations followed by one `advance_revision(rev)` would have looked identical in
+the log. `blender_ops/decision_transaction.py` closes this: the only sanctioned mutation point is
+`tx.perform(fn, *args, **kwargs)`, which raises if called a second time in the same transaction.
+It cannot stop code from bypassing the object and calling `bpy.ops`/`bmesh.ops` directly — no
+in-process Python API can fully sandbox its own caller — but it makes the sanctioned path one line
+to use correctly and a visible, auditable choice to skip. `blender_ops/state_probe.py` also gained
+the rich perception layer that was missing (`get_selection`, `vertex_neighborhood`,
+`valence_distribution`, `modifier_state`, `active_state`) — selected vertex/edge/face IDs,
+selection mode, local topology (valence, boundary state, neighbor IDs, connected edge
+lengths/face areas), not just aggregate mesh-health counts.
+
+**`runs/2026-08-07_mug-adaptive/`** exercises both for real: a genuinely unseen reference
+(`reference/mug/notes.md`, no prep before that session) modeled through 20 decisions using
+`DecisionTransaction` for every mutation and the new perception functions to actually pick targets
+(e.g. the outermost handle vertex via `vertex_neighborhood`, not a blind heuristic). This is
+deliberately not another 100-cycle count-chasing run — the point was demonstrating visible
+adaptation, and it happened three times, unstaged: a boolean UNION handle attachment reproduced
+the same defect class as an existing skill learned from DIFFERENCE cuts, and the fix was tested
+(not assumed) to generalize across operation types — it did, and the skill's applicability was
+updated with that evidence; a base-rim bevel introduced a sharper sliver (1.56°) than a
+previously-accepted threshold (3.98°) and got fixed rather than blanket-accepted; and
+investigating why a `bpy.ops`-based UV unwrap showed `op_delta==0` revealed
+`window_manager.operators` is a capped ring buffer *also shared with the user's own concurrent GUI
+clicks* — `decision_transaction.py`'s docstring was corrected on the spot to stop overclaiming that
+signal's reliability. 19/20 entries accepted-or-repaired, independently verified clean; two more
+honest timing-discipline flags left visible per the same no-retroactive-editing policy as the
+100-cycle run.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail
