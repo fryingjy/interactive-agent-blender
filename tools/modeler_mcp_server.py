@@ -83,6 +83,12 @@ def select_by_ids(object_name: str, vertex_ids: list[int] | None = None, edge_id
 
 
 @mcp.tool()
+def get_viewport_state() -> dict:
+    """Direct viewport state for the first 3D viewport: projection type (perspective/orthographic/camera), a best-effort standard-orientation label (FRONT/TOP/RIGHT/...), view distance/location, shading mode (wireframe/solid/material/rendered), x-ray, local view, and the active camera's transform if one is set. Lets you know what kind of view you're evaluating without inferring it from rendered pixels."""
+    return _call("get_viewport_state")
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")

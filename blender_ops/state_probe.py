@@ -145,6 +145,73 @@ def valence_distribution(name):
     return dist
 
 
+_STANDARD_VIEW_ROTATIONS = {
+    # Read directly from bpy.ops.view3d.view_axis() output for this Blender
+    # version rather than typed from memory -- a first attempt using
+    # remembered values was live-tested against an actual FRONT view and
+    # failed to match, both because the exact values were wrong and because
+    # quaternion sign was not accounted for (q and -q are the same rotation;
+    # see the caller, which checks both).
+    "FRONT": (0.707107, 0.707107, -0.0, -0.0),
+    "BACK": (0.0, -0.0, 0.707107, 0.707107),
+    "TOP": (1.0, -0.0, -0.0, -0.0),
+    "BOTTOM": (0.0, 1.0, -0.0, -0.0),
+    "LEFT": (0.5, 0.5, -0.5, -0.5),
+    "RIGHT": (0.5, 0.5, 0.5, 0.5),
+}
+
+
+def viewport_state():
+    """Direct state for the first 3D viewport found -- projection type,
+    view distance/location, shading mode, x-ray, local view, active camera
+    -- so the agent knows whether it's evaluating a front-orthographic
+    silhouette vs. a perspective view vs. wireframe without inferring that
+    from rendered pixels (this project deliberately doesn't use
+    screenshots for facts Blender can expose directly)."""
+    area = space = region_3d = None
+    for a in bpy.context.screen.areas:
+        if a.type == "VIEW_3D":
+            area = a
+            space = a.spaces.active
+            region_3d = space.region_3d
+            break
+    if area is None:
+        return {"error": "no 3D viewport found in the current screen"}
+
+    rotation = tuple(round(c, 6) for c in region_3d.view_rotation)
+    orientation_label = None
+    for label, ref in _STANDARD_VIEW_ROTATIONS.items():
+        matches_positive = all(abs(a - b) < 1e-3 for a, b in zip(rotation, ref))
+        matches_negated = all(abs(a + b) < 1e-3 for a, b in zip(rotation, ref))
+        if matches_positive or matches_negated:
+            orientation_label = label
+            break
+
+    result = {
+        "view_perspective": region_3d.view_perspective,  # 'PERSP' | 'ORTHO' | 'CAMERA'
+        "orientation_label": orientation_label,  # None if not a standard axis-aligned view
+        "view_rotation": rotation,
+        "view_distance": round(region_3d.view_distance, 5),
+        "view_location": [round(c, 5) for c in region_3d.view_location],
+        "shading_type": space.shading.type,  # 'WIREFRAME' | 'SOLID' | 'MATERIAL' | 'RENDERED'
+        "show_xray": bool(space.shading.show_xray),
+        "local_view": space.local_view is not None,
+        "lens_mm": round(space.lens, 2),
+    }
+
+    cam = bpy.context.scene.camera
+    if cam is not None:
+        result["active_camera"] = {
+            "name": cam.name,
+            "location": [round(c, 5) for c in cam.location],
+            "rotation_euler": [round(c, 5) for c in cam.rotation_euler],
+            "lens_mm": round(cam.data.lens, 2) if cam.data else None,
+        }
+    else:
+        result["active_camera"] = None
+    return result
+
+
 def modifier_state(name):
     obj = bpy.data.objects.get(name)
     if obj is None:

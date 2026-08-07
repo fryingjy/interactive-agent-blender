@@ -55,6 +55,7 @@ CAPABILITIES = [
     "command_idempotency",
     "session_handshake",
     "control_mode",
+    "viewport_state",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -357,6 +358,9 @@ class ModelerServer:
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
+
+    def cmd_get_viewport_state(self):
+        return state_probe.viewport_state()
 
     def cmd_select_by_ids(self, name, vertex_ids=None, edge_ids=None, face_ids=None, extend=False):
         """Selection is a mechanical helper, not a sanctioned artistic
