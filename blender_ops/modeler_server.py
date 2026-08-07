@@ -50,6 +50,8 @@ CAPABILITIES = [
     "full_state",
     "event_polling",
     "decision_transactions",
+    "external_edit_detection",
+    "command_idempotency",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -87,6 +89,22 @@ class ModelerServer:
         self._pending = {}  # decision_id -> {"tx": DecisionTransaction, "target": str}
         self._pending_lock = threading.Lock()
         self._handlers_registered = False
+
+        # object name -> {"verts": frozenset(ids), "edges": ..., "faces": ...}
+        # as of the last point this server actually observed the mesh (a
+        # begin_decision or commit_decision). Compared on the next
+        # begin_decision to detect edits that happened through neither path
+        # -- i.e. a human editing in the GUI. Replaces the depsgraph-timing
+        # "ownership heuristic" removed above, which was disproved live: this
+        # is a direct state comparison, not dependent on any event firing on
+        # any particular schedule.
+        self._last_known_ids = {}
+
+        # command_id -> stored result, for perform_decision idempotency: a
+        # retried call with the same command_id returns the stored result
+        # instead of re-running the mutation. Unbounded for now (bounded by
+        # the same guidance as _events if this becomes a real memory concern).
+        self._command_journal = {}
 
     # ---- lifecycle -----------------------------------------------------
     # Found live during development: importlib.reload(modeler_server) resets
@@ -238,6 +256,36 @@ class ModelerServer:
             except Exception:
                 pass
 
+    # ---- external-edit detection (state fingerprint, not timing) --------
+
+    @staticmethod
+    def _snapshot_ids(name):
+        id_maps = persistent_ids.get_id_maps(name)
+        return {kind: frozenset(m["id_to_index"]) for kind, m in id_maps.items()}
+
+    def _check_external_edit(self, name):
+        """Assign IDs to any new geometry, then compare the resulting ID set
+        against the last snapshot this server actually took (at the previous
+        begin_decision or commit_decision). Any difference means the mesh
+        changed through neither path -- an edit this server didn't perform
+        and wasn't told about. Always updates the snapshot to the
+        just-observed state, so a second call right after immediately sees
+        no further difference (the edit has now been "seen")."""
+        persistent_ids.ensure_persistent_ids(name)
+        current = self._snapshot_ids(name)
+        previous = self._last_known_ids.get(name)
+        detected = False
+        diff = {}
+        if previous is not None:
+            for kind in ("verts", "edges", "faces"):
+                added = sorted(current[kind] - previous[kind])
+                removed = sorted(previous[kind] - current[kind])
+                if added or removed:
+                    detected = True
+                diff[kind] = {"added": added, "removed": removed}
+        self._last_known_ids[name] = current
+        return {"external_edit_detected": detected, "diff": diff}
+
     # ---- command dispatch (runs on Blender's main thread) ---------------
 
     def _dispatch(self, command, params):
@@ -265,7 +313,22 @@ class ModelerServer:
         events = [e for e in self._events if e["seq"] > since_seq]
         return {"events": events, "latest_seq": self._event_seq}
 
+    def cmd_check_external_edit(self, name):
+        """Read-only: has this object changed since the last time this
+        server observed it, through a path other than a committed decision?
+        Safe to poll; does not require an open transaction."""
+        return self._check_external_edit(name)
+
     def cmd_begin_decision(self, name, action_type):
+        edit_check = self._check_external_edit(name)
+        if edit_check["external_edit_detected"]:
+            raise ValueError(
+                f"external edit detected on '{name}' since this server last observed it "
+                f"(diff: {edit_check['diff']}) -- the live mesh changed outside any committed "
+                f"decision, most likely a manual GUI edit. Re-observe with get_full_state before "
+                f"starting a new decision; retrying begin_decision will now succeed since this "
+                f"check just captured the current state as the new baseline."
+            )
         obs_rev = decision_state.current_revision()
         tx = decision_transaction.decision_transaction(obs_rev, action_type, target_object=name)
         tx.__enter__()
@@ -274,7 +337,9 @@ class ModelerServer:
             self._pending[decision_id] = {"tx": tx, "target": name}
         return {"decision_id": decision_id, "observed_revision": obs_rev}
 
-    def cmd_perform_decision(self, decision_id, operation, params):
+    def cmd_perform_decision(self, decision_id, operation, params, command_id=None):
+        if command_id is not None and command_id in self._command_journal:
+            return self._command_journal[command_id]
         entry = self._pending.get(decision_id)
         if entry is None:
             raise ValueError(f"no pending decision {decision_id} (already committed, or begin_decision was never called)")
@@ -282,7 +347,10 @@ class ModelerServer:
         if fn is None:
             raise ValueError(f"unknown operation '{operation}' -- available: {sorted(_OPS.keys())}")
         result = entry["tx"].perform(fn, entry["target"], **params)
-        return {"decision_id": decision_id, "performed": True, "result": result}
+        response = {"decision_id": decision_id, "performed": True, "result": result}
+        if command_id is not None:
+            self._command_journal[command_id] = response
+        return response
 
     def cmd_verify_decision(self, decision_id):
         entry = self._pending.get(decision_id)
@@ -295,8 +363,10 @@ class ModelerServer:
         if entry is None:
             raise ValueError(f"no pending decision {decision_id}")
         new_rev = entry["tx"].commit()
+        target = entry["target"]
         with self._pending_lock:
             del self._pending[decision_id]
+        self._check_external_edit(target)  # refresh the snapshot to this decision's own result
         return {"decision_id": decision_id, "result_revision": new_rev}
 
 

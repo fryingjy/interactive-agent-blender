@@ -89,9 +89,15 @@ def begin_decision(object_name: str, action_type: str) -> dict:
 
 
 @mcp.tool()
-def perform_decision(decision_id: str, operation: str, params: dict) -> dict:
-    """Perform the single sanctioned mutation for a pending decision_id. operation must be one of the available_operations reported by get_capabilities (currently: bevel_edges, merge_by_distance, add_ring_detail, recalc_normals, triangulate_ngons); params are that operation's keyword arguments."""
-    return _call("perform_decision", decision_id=decision_id, operation=operation, params=params)
+def perform_decision(decision_id: str, operation: str, params: dict, command_id: str | None = None) -> dict:
+    """Perform the single sanctioned mutation for a pending decision_id. operation must be one of the available_operations reported by get_capabilities (currently: bevel_edges, merge_by_distance, add_ring_detail, recalc_normals, triangulate_ngons); params are that operation's keyword arguments. Pass a stable command_id to make retries safe: a repeated call with the same command_id returns the original stored result instead of mutating the mesh again."""
+    return _call("perform_decision", decision_id=decision_id, operation=operation, params=params, command_id=command_id)
+
+
+@mcp.tool()
+def check_external_edit(object_name: str) -> dict:
+    """Read-only check: has object_name changed since this server last observed it (at the previous begin_decision or commit_decision), through a path other than a committed decision -- most likely a manual GUI edit? Does not require an open transaction. Safe to poll before starting new work; also runs automatically inside begin_decision, which refuses to start a transaction if this detects a change."""
+    return _call("check_external_edit", name=object_name)
 
 
 @mcp.tool()

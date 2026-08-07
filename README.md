@@ -279,6 +279,28 @@ tested by assigning persistent IDs to a scratch object and confirming every sele
 back with its real `agent_id` rather than `None`. Full regression (raw socket protocol test + real
 MCP client test) re-run clean afterward against the live Mug, unaffected by the refactor.
 
+**Two more items from the same list, also live-verified:**
+
+- **Item 6 (Blender-originated external-change detection), done via a different mechanism than
+  first attempted.** The depsgraph-timing "ownership heuristic" tried earlier this session was
+  disproved by direct testing — event latency isn't predictable enough to attribute origin. This
+  is a genuinely different, non-timing-dependent mechanism: `modeler_server.py` snapshots an
+  object's persistent-ID set after every `commit_decision`, and `begin_decision` compares the
+  current ID set against that snapshot *before* opening a transaction. Any difference — added or
+  removed IDs the server didn't cause itself — means the mesh changed through some other path,
+  almost certainly a manual GUI edit, and `begin_decision` refuses to start with a clear diff in
+  the error message, exactly matching the directive's "external_edit_detected → invalidate → stop
+  → re-observe → resume" flow. Verified live: committed a baseline decision on a scratch object,
+  then mutated it directly via `bpy.ops.mesh.subdivide` in Edit Mode *outside* the transaction
+  system (simulating a human GUI edit), then called `begin_decision` again — it was correctly
+  rejected, reporting the exact 30 added vertex/edge IDs the subdivide created. A retry immediately
+  succeeded, since the rejection itself captures the new baseline. A read-only `check_external_edit`
+  command was added too, for polling without opening a transaction.
+- **Items 12-13 (command idempotency).** `perform_decision` now accepts an optional `command_id`;
+  a retried call with the same id returns the original stored result instead of re-running the
+  mutation. Verified live: called the same `command_id` twice against `add_ring_detail` and
+  confirmed the vertex count only grew once, not twice.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail
