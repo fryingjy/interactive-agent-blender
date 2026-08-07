@@ -1,10 +1,18 @@
 import os
 
-import bmesh
 import bpy
 
+import bmesh_io
 import decision_state
 import persistent_ids
+
+
+def _free_if_object_mode(obj, bm):
+    """bmesh.from_edit_mesh() returns Blender's own live edit-bmesh, owned by
+    the edit-mesh system -- freeing it would corrupt the live edit session.
+    Only bmesh.new()-created copies (Object Mode reads) should be freed."""
+    if obj.mode != "EDIT":
+        bm.free()
 
 
 def pid():
@@ -18,6 +26,12 @@ def probe_scene():
 
 
 def probe_object(name):
+    """CORRECTION (found live during the mug-handle fix, confirmed again while
+    auditing this module against the master directive's Edit Mode truth
+    requirement): obj.data.vertices/edges/polygons counts are NOT reliably
+    live while the object is in Edit Mode -- they reflect the mesh datablock
+    as of mode entry, not the true current edit-bmesh, until Blender flushes
+    on mode exit. Uses bmesh_io.read_bmesh (mode-aware) instead."""
     obj = bpy.data.objects.get(name)
     if obj is None:
         return {"error": f"object '{name}' not found"}
@@ -30,25 +44,47 @@ def probe_object(name):
         "mode": obj.mode,
     }
     if obj.type == "MESH":
+        bm = bmesh_io.read_bmesh(obj)
         info["mesh"] = {
-            "vertices": len(obj.data.vertices),
-            "edges": len(obj.data.edges),
-            "polygons": len(obj.data.polygons),
+            "vertices": len(bm.verts),
+            "edges": len(bm.edges),
+            "polygons": len(bm.faces),
         }
+        _free_if_object_mode(obj, bm)
     return info
 
 
 def get_selection(name):
-    """Rich selection state: which vertex/edge/face IDs are actually selected right
-    now, and what selection mode is active. Reads obj.data's select flags directly
-    (kept in sync by Blender regardless of edit/object mode), not a bmesh copy."""
+    """Rich selection state: which vertex/edge/face indices are actually
+    selected right now, each paired with its persistent agent_id where one
+    has been assigned, plus the active selection mode.
+
+    CORRECTION (found auditing against the master directive's Edit Mode
+    truth requirement): previously read obj.data's select flags directly on
+    the claim they're "kept in sync ... regardless of edit/object mode" --
+    untested, and the same class of assumption already disproved once this
+    session for mesh counts (see probe_object). Now reads through
+    bmesh_io.read_bmesh, which is mode-aware by construction rather than by
+    assumption. Per the master directive: reason about persistent agent_id,
+    not the raw index, since the index can renumber after unrelated
+    topology changes elsewhere in the mesh; resolve back to an index only
+    immediately before issuing a Blender operation."""
     obj = bpy.data.objects.get(name)
     if obj is None or obj.type != "MESH":
         return {"error": f"'{name}' is not a mesh object"}
-    mesh = obj.data
-    selected_verts = [v.index for v in mesh.vertices if v.select]
-    selected_edges = [e.index for e in mesh.edges if e.select]
-    selected_faces = [p.index for p in mesh.polygons if p.select]
+
+    bm = bmesh_io.read_bmesh(obj)
+    id_maps = persistent_ids.get_id_maps(name)
+
+    def _pairs(seq, kind):
+        index_to_id = id_maps[kind]["index_to_id"]
+        return [{"index": e.index, "agent_id": index_to_id.get(e.index)} for e in seq if e.select]
+
+    selected_verts = _pairs(bm.verts, "verts")
+    selected_edges = _pairs(bm.edges, "edges")
+    selected_faces = _pairs(bm.faces, "faces")
+    _free_if_object_mode(obj, bm)
+
     selection_mode = None
     ts = bpy.context.tool_settings
     if ts is not None:
@@ -57,9 +93,9 @@ def get_selection(name):
     return {
         "mode": obj.mode,
         "selection_mode": selection_mode,
-        "selected_vertex_ids": selected_verts,
-        "selected_edge_ids": selected_edges,
-        "selected_face_ids": selected_faces,
+        "selected_vertices": selected_verts,
+        "selected_edges": selected_edges,
+        "selected_faces": selected_faces,
         "selected_vertex_count": len(selected_verts),
         "selected_edge_count": len(selected_edges),
         "selected_face_count": len(selected_faces),
@@ -74,11 +110,10 @@ def vertex_neighborhood(name, vertex_index):
     obj = bpy.data.objects.get(name)
     if obj is None or obj.type != "MESH":
         return {"error": f"'{name}' is not a mesh object"}
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
+    bm = bmesh_io.read_bmesh(obj)
     bm.verts.ensure_lookup_table()
     if vertex_index < 0 or vertex_index >= len(bm.verts):
-        bm.free()
+        _free_if_object_mode(obj, bm)
         return {"error": f"vertex index {vertex_index} out of range (0..{len(bm.verts) - 1})"}
     v = bm.verts[vertex_index]
     result = {
@@ -90,7 +125,7 @@ def vertex_neighborhood(name, vertex_index):
         "connected_face_areas": [round(f.calc_area(), 5) for f in v.link_faces],
         "connected_face_ids": [f.index for f in v.link_faces],
     }
-    bm.free()
+    _free_if_object_mode(obj, bm)
     return result
 
 
@@ -100,14 +135,13 @@ def valence_distribution(name):
     obj = bpy.data.objects.get(name)
     if obj is None or obj.type != "MESH":
         return {"error": f"'{name}' is not a mesh object"}
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
+    bm = bmesh_io.read_bmesh(obj)
     bm.verts.ensure_lookup_table()
     dist = {}
     for v in bm.verts:
         val = len(v.link_edges)
         dist[val] = dist.get(val, 0) + 1
-    bm.free()
+    _free_if_object_mode(obj, bm)
     return dist
 
 
@@ -156,8 +190,7 @@ def mesh_health(name):
     if obj is None or obj.type != "MESH":
         return {"error": f"'{name}' is not a mesh object"}
 
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
+    bm = bmesh_io.read_bmesh(obj)
     bm.verts.ensure_lookup_table()
     bm.edges.ensure_lookup_table()
     bm.faces.ensure_lookup_table()
@@ -171,5 +204,5 @@ def mesh_health(name):
         "loose_verts": sum(1 for v in bm.verts if not v.link_edges),
         "degenerate_faces": sum(1 for f in bm.faces if f.calc_area() < 1e-8),
     }
-    bm.free()
+    _free_if_object_mode(obj, bm)
     return result

@@ -248,6 +248,37 @@ its tools until that session restarts — this was verified independently via a 
 subprocess specifically because the agent driving this build could not simply call its own new
 tools to check.
 
+**Confirmed after the actual restart**: `mcp__modeler__get_capabilities` and `get_full_state`
+called successfully, live, for the first time as genuine Claude Code tool calls (not a test
+script) — Blender had also been closed in the meantime, so this additionally exercised launching
+Blender fresh, reloading `modeler_server.py` into the new process, and reconnecting, before the
+first real tool call landed correctly against the reloaded `Mug.blend`.
+
+## Master directive: mode-correct reads + persistent IDs in selection
+
+`docs/MASTER_DIRECTIVE.md` — a large continuation/curriculum document pasted by the user,
+superseding ad-hoc scope decisions going forward. Its own section 3 is explicit that it does not
+override the repository: verify current state before trusting anything written there, including
+itself. Its section 55 gives a priority-ordered implementation list; the research/curriculum
+sections (23-50) are explicitly gated behind the closed-loop engineering items per the document's
+own sequencing rule, matching `docs/RESEARCH_ROADMAP.md`'s pre-existing gating — not started.
+
+Two items from the top of that list were completed and live-verified: **item 2** (migrate live
+topology reads to mode-correct APIs) and **item 3** (return persistent IDs alongside indices in
+selection/state). `blender_ops/state_probe.py`'s mesh-reading functions (`probe_object`,
+`mesh_health`, `valence_distribution`, `vertex_neighborhood`, `get_selection`) and
+`blender_ops/mesh_ops.py`'s internal read/write helpers all now route through `bmesh_io` instead of
+the old `bmesh.new()+from_mesh()` pattern, which — as already found live during the mug-handle fix
+— silently reads stale data when the object is in Edit Mode. Required proof (directive section 56,
+"Edit Mode truth"): entered Edit Mode on a scratch object, extruded a face via `bmesh.ops` *without
+exiting Edit Mode*, then queried `state_probe.mesh_health`/`probe_object` and confirmed they
+reported the exact live edit-bmesh counts (12/20/11 verts/edges/faces), matching an independent
+ground-truth read, not the stale pre-extrude counts. `get_selection` now returns
+`{"index": ..., "agent_id": ...}` pairs instead of bare indices for each selected vertex/edge/face,
+tested by assigning persistent IDs to a scratch object and confirming every selected element came
+back with its real `agent_id` rather than `None`. Full regression (raw socket protocol test + real
+MCP client test) re-run clean afterward against the live Mug, unaffected by the refactor.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail

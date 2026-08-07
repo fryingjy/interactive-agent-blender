@@ -21,18 +21,23 @@ from this module.
 import bmesh
 import bpy
 
+import bmesh_io
+
 
 def _bm_from_object(name):
+    """CORRECTION (found live during the mug-handle fix, and again auditing
+    against the master directive's Edit Mode truth requirement): reading via
+    bmesh.new()+from_mesh() unconditionally broke outright when the object
+    turned out to be in Edit Mode (bm.to_mesh() raised "Mesh is in
+    editmode"). Routes through bmesh_io, which picks the correct mode-aware
+    API instead of assuming Object Mode."""
     obj = bpy.data.objects[name]
-    bm = bmesh.new()
-    bm.from_mesh(obj.data)
+    bm = bmesh_io.read_bmesh(obj)
     return obj, bm
 
 
 def _write_back(obj, bm):
-    bm.to_mesh(obj.data)
-    obj.data.update()
-    bm.free()
+    bmesh_io.write_bmesh(obj, bm)
 
 
 def merge_by_distance(name, dist=0.0001):
