@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_087",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 80,
+  "observation": {"note": "same valence-3 check applied to SimpleBlock, completing the set"},
+  "reason": "24 valence-3 poles, expected from panel-inset corners and bevel-repair triangulation",
+  "chosen_action": {"op": "valence-3 pole scan", "target": "SimpleBlock"},
+  "result_revision": 81,
+  "result_state": {"valence3_count": 24, "verdict": "acceptable"},
+  "evaluation": "accepted"
+}
