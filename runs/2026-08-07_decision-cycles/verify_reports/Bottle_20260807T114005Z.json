@@ -1,0 +1,24 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-07_decision-cycles\\blend\\checkpoint3.blend",
+  "object_name": "Bottle",
+  "verified_at": "2026-08-07T11:40:05Z",
+  "stats": {
+    "vertices": 850,
+    "edges": 1696,
+    "faces": 848,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 58.089874601462725
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}
