@@ -43,6 +43,7 @@ import decision_state
 import decision_transaction
 import evaluated_probe
 import mesh_ops
+import modeling_stage
 import object_ops
 import persistent_ids
 import render_passes
@@ -69,6 +70,7 @@ CAPABILITIES = [
     "layered_state_fingerprint",
     "native_silhouette_render",
     "curve_bevel_taper_geometry",
+    "modeling_stage_tracking",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -416,6 +418,12 @@ class ModelerServer:
 
     def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001):
         return curve_ops.convert_curve_to_mesh(name, new_mesh_name=new_mesh_name, merge_dist=merge_dist)
+
+    def cmd_get_modeling_stage(self, name):
+        return {"name": name, "stage": modeling_stage.get_stage(name), "log": modeling_stage.get_stage_log(name)}
+
+    def cmd_set_modeling_stage(self, name, stage, evidence):
+        return modeling_stage.set_stage(name, stage, evidence)
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)

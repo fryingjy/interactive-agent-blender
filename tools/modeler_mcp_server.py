@@ -83,6 +83,18 @@ def get_selection(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_modeling_stage(object_name: str) -> dict:
+    """Current modeling stage for object_name (REFERENCE_ANALYSIS / PRIMARY_BLOCKOUT / PROPORTION_SILHOUETTE / SECONDARY_FORMS / TOPOLOGY_SURFACE / TERTIARY_DETAIL / PRODUCTION_PREP / FINAL_REVIEW, defaulting to REFERENCE_ANALYSIS if never set) plus the full transition log with the evidence recorded for each change."""
+    return _call("get_modeling_stage", name=object_name)
+
+
+@mcp.tool()
+def set_modeling_stage(object_name: str, stage: str, evidence: str) -> dict:
+    """Explicitly declare object_name has moved to `stage`, with `evidence` describing why that stage's gate criteria are judged met (see blender_ops/modeling_stage.py's GATE_CRITERIA for what each stage expects) -- not automatically verified, but logged, so the check has to be articulated rather than silently skipped. Moving backward (e.g. a later check reveals an earlier stage's judgment was wrong) is normal and logged as a regression, not an error."""
+    return _call("set_modeling_stage", name=object_name, stage=stage, evidence=evidence)
+
+
+@mcp.tool()
 def create_curve(name: str, points: list[list[float]], bevel_depth: float = 0.05, closed: bool = False, curve_type: str = "POLY") -> dict:
     """Create a curve object from a list of [x, y, z] control points -- for geometry a mesh primitive can't represent (a path that wraps, overlaps, or tapers along its length; a torus is a symmetric ring and cannot do this). bevel_depth gives the path a round 3D cross-section of that radius. curve_type 'POLY' (straight segments, easiest to verify against measured reference coordinates) or 'BEZIER'. closed=True connects the last point back to the first. Free to call outside a decision transaction, same as create_primitive."""
     return _call("create_curve", name=name, points=points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
