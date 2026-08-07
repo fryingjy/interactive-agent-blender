@@ -72,12 +72,19 @@ class DecisionTransaction:
         return self.result
 
     def verify(self):
-        """Capture the after-state and the operator-history delta. For bpy.ops-based
-        operations this delta is a real, hard-to-fake signal (each operator call
-        appends exactly one entry to window_manager.operators). bmesh.ops-based
-        operations don't touch that history at all, so a delta of 0 there is
-        expected, not suspicious -- this is a known asymmetry, not a false claim
-        of full proof."""
+        """Capture the after-state and the operator-history delta.
+
+        CORRECTION (found 2026-08-07, mug milestone): window_manager.operators is
+        NOT a reliable per-transaction signal. Direct inspection showed it's a
+        capped ring buffer (observed length 24, not growing further) that is also
+        shared with the user's own concurrent GUI clicks in the same live session
+        -- its tail has contained VIEW3D_OT_select/OBJECT_OT_delete entries this
+        script never issued. A bpy.ops-based operation can legitimately show
+        op_delta==0 simply because the buffer is full and the user's own actions
+        are cycling through it. Treat op_delta as informational only, never as
+        proof that exactly one bpy.ops call happened -- it cannot be trusted for
+        that in a session where a human may be editing concurrently, which this
+        project's own history shows is a real, not hypothetical, condition."""
         if not self._performed:
             raise TransactionError("verify() called before perform() -- no operation happened yet")
         after_op_count = len(bpy.context.window_manager.operators)

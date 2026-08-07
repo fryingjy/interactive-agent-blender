@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_019",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 124,
+  "observation": {"note": "UV unwrap via bpy.ops calls showed op_delta=0, unexpected for bpy.ops-based operations per the original docstring claim"},
+  "reason": "investigate why -- found window_manager.operators is capped at 24 entries and shared with the user's own concurrent GUI clicks (tail contained VIEW3D_OT_select/OBJECT_OT_delete this script never issued), invalidating the earlier claim that op_delta is a reliable per-transaction signal for bpy.ops operations",
+  "chosen_action": {"op": "diagnose operator-history reliability + correct decision_transaction.py's docstring", "target": "blender_ops/decision_transaction.py"},
+  "result_revision": 125,
+  "result_state": {"uv_layers": 1, "op_delta_reliability": "downgraded to informational-only, documented honestly"},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_007",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 112,
+  "observation": {"worst_angle_faces": [[168, 0.0395], [170, 0.0395], [158, 0.0396]]},
+  "reason": "collapse the second seam sliver",
+  "chosen_action": {"op": "DecisionTransaction.perform(collapse_sliver)", "target": "Mug", "face_index": 168},
+  "result_revision": 113,
+  "result_state": {"vertices": 146, "edges": 322, "faces": 176, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}

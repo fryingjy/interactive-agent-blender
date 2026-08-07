@@ -51,5 +51,23 @@
   "learned_at": "2026-08-07T03:15:00Z",
   "learned_during": "proof4_mistake_repair",
   "source_session": "2026-08-06_seven-proofs",
-  "applicability": "Any time a boolean modifier (especially DIFFERENCE with a cutter surface tangent or near-coincident with the target's own surface, e.g. a groove/ring cutter matching the body radius) is applied and converted to mesh on a hard-surface object, immediately probe mesh_health() for ngons and degenerate_faces (not just non_manifold_edges) and apply this same merge -> recalc -> triangulate sequence if either is nonzero."
+  "applicability": "Any time a boolean modifier (especially DIFFERENCE with a cutter surface tangent or near-coincident with the target's own surface, e.g. a groove/ring cutter matching the body radius) is applied and converted to mesh on a hard-surface object, immediately probe mesh_health() for ngons and degenerate_faces (not just non_manifold_edges) and apply this same merge -> recalc -> triangulate sequence if either is nonzero.",
+  "generalization_evidence": [
+    {
+      "date": "2026-08-06",
+      "context": "Flashlight grip-ridge groove, boolean DIFFERENCE, torus cutter major_radius==body radius (same defect class as originally learned)",
+      "before": {"ngons": 56, "degenerate_faces": 14},
+      "after": {"ngons": 0, "degenerate_faces": 0},
+      "session_id": "2026-08-06_seven-proofs / 2026-08-07_proof1-redo",
+      "outcome": "worked identically, as expected -- same operation type"
+    },
+    {
+      "date": "2026-08-07",
+      "context": "Mug handle attachment, boolean UNION (not DIFFERENCE) of a torus onto a cylinder body -- genuinely different operation type than what the skill was learned from",
+      "before": {"ngons": 7, "degenerate_faces": 2},
+      "after": {"ngons": 0, "degenerate_faces": 0},
+      "session_id": "2026-08-07_mug-adaptive",
+      "outcome": "generalized successfully -- the fix is not specific to DIFFERENCE, it addresses the boolean solver's tangent-geometry artifacts regardless of operation type. Applicability broadened based on this real evidence, not assumed in advance."
+    }
+  ]
 }

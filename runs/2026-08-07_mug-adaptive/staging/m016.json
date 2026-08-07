@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_016",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 121,
+  "observation": {"note": "smooth shading confirmed applied"},
+  "reason": "create and assign a ceramic-white material, setting the actual BSDF Base Color directly (not just diffuse_color) to avoid the exact bug found and fixed earlier this session (diffuse-color-not-connected-to-bsdf skill)",
+  "chosen_action": {"op": "DecisionTransaction.perform(create_mug_material)", "target": "Mug"},
+  "result_revision": 122,
+  "result_state": {"material": "Mug_Mat", "faces_assigned": 398},
+  "evaluation": "accepted"
+}

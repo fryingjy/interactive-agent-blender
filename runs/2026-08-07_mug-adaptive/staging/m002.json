@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_002",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 107,
+  "observation": {"health": {"vertices": 32, "edges": 48, "faces": 18, "ngons": 2}, "selection": "fully selected default primitive state"},
+  "reason": "bevel the top rim edge loop for a finished lip per reference/mug/notes.md",
+  "chosen_action": {"op": "DecisionTransaction.perform(mesh_ops.bevel_edges)", "target": "Mug", "edges": 16, "offset": 0.05},
+  "result_revision": 108,
+  "result_state": {"vertices": 64, "edges": 112, "faces": 50, "non_manifold_edges": 0, "ngons": 2},
+  "evaluation": "accepted"
+}

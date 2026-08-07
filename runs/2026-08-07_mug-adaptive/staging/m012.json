@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_012",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 117,
+  "observation": {"outermost_vertex": 1, "valence": 4, "is_boundary": false, "neighbor_vertex_ids": [3, 17, 15, 127]},
+  "reason": "identify the outermost handle vertex and inspect its neighborhood before deciding a bevel -- note: this call advanced the revision counter without an actual mesh mutation (pure inspection), a minor discipline slip logged honestly rather than glossed over",
+  "chosen_action": {"op": "identify outermost vertex + vertex_neighborhood inspection (no mutation)", "target": "Mug"},
+  "result_revision": 118,
+  "result_state": {"note": "geometry unchanged -- this entry should have been a read-only query, not a revision-consuming decision"},
+  "evaluation": "accepted"
+}

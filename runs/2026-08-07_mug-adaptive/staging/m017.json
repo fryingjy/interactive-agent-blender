@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_017",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 122,
+  "observation": {"note": "material assigned correctly"},
+  "reason": "bevel the base edge loop for a finished foot, matching the top rim treatment already done",
+  "chosen_action": {"op": "DecisionTransaction.perform(mesh_ops.bevel_edges)", "target": "Mug", "edges": 29, "offset": 0.02},
+  "result_revision": 123,
+  "result_state": {"vertices": 476, "edges": 982, "faces": 506, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

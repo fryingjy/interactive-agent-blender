@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_005",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 110,
+  "observation": {"retrieved_skill_id": "boolean-groove-cut-topology-cleanup", "before": {"ngons": 7, "degenerate_faces": 2}},
+  "reason": "apply the retrieved skill's documented fix despite it being learned from a different boolean operation type (DIFFERENCE vs this UNION) -- testing generalization, not assuming it",
+  "chosen_action": {"op": "DecisionTransaction.perform(repair.repair_non_manifold_from_boolean)", "target": "Mug"},
+  "result_revision": 111,
+  "result_state": {"vertices": 148, "edges": 326, "faces": 178, "non_manifold_edges": 0, "ngons": 0, "degenerate_faces": 0},
+  "evaluation": "repaired"
+}

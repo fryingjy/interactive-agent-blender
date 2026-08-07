@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_020",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 125,
+  "observation": {"note": "UV unwrap complete, 20 real decisions reached"},
+  "reason": "save the final mug for independent verification -- closing the modeling phase",
+  "chosen_action": {"op": "DecisionTransaction.perform(save_mug)", "target": "Mug"},
+  "result_revision": 126,
+  "result_state": {"saved": true},
+  "evaluation": "accepted"
+}

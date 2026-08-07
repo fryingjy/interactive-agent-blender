@@ -1,0 +1,12 @@
+{
+  "decision_id": "mug_010",
+  "session_id": "2026-08-07_mug-adaptive",
+  "pid": 6180,
+  "observation_revision": 115,
+  "observation": {"worst_angle_faces_deg": [[38, 3.98], [39, 3.98], [160, 4.33]]},
+  "reason": "3.98 degrees minimum, mild and no longer clustered as a systematic seam defect -- acceptable, consistent with earlier accepted thresholds on bottle/flashlight",
+  "chosen_action": {"op": "write_custom_properties", "target": "Mug", "props": {"seam_sliver_check_final": "acceptable"}},
+  "result_revision": 116,
+  "result_state": {"vertices": 144, "edges": 318, "faces": 174, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}
