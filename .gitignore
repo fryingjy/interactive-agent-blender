@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 gh_auth.log
 *.blend1
+runs/*/blend/*.blend
