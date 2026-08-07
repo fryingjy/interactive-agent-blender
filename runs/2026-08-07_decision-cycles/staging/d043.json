@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_043",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 38,
+  "observation": {"slots": ["SimpleBlock_Mat", "SimpleBlock_Mat_v2"], "distinct_used": [0], "diagnosis": "slot 0 correctly holds a real material (unlike Bottle/Flashlight's null-slot bug); slot 1 is just redundant, not broken"},
+  "reason": "consolidate to the single actually-used material slot for cleanliness",
+  "chosen_action": {"op": "materials.pop(index=1)", "target": "SimpleBlock"},
+  "result_revision": 39,
+  "result_state": {"slots": ["SimpleBlock_Mat"], "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_046",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 41,
+  "observation": {"bottle_smooth_shading": {"total": 800, "smooth": 800, "flat": 0}},
+  "reason": "shading uniform and correct; checking a different, more rigorous signal: face planarity (non-planar quads cause shading artifacts, never checked before)",
+  "chosen_action": {"op": "planarity scan (max vertex deviation from face-normal plane > 0.001)", "target": "SimpleBlock, Bottle, Flashlight"},
+  "result_revision": 42,
+  "result_state": {"SimpleBlock": 0, "Bottle": 0, "Flashlight": 0},
+  "evaluation": "accepted"
+}
