@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_008",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 7,
+  "observation": {"sharpest_angle_faces_radians": [[173, 0.023], [1437, 0.023], [1499, 0.024], [1529, 0.024], [1438, 0.031]]},
+  "reason": "face 173 still has a ~1.3 degree sliver angle, persisting after the previous fix; same collapse-shortest-edge technique applies",
+  "chosen_action": {"op": "bmesh.ops.collapse", "target": "Flashlight", "face_index": 173, "edge": "shortest_of_face"},
+  "result_revision": 8,
+  "result_state": {"vertices": 1566, "edges": 3202, "faces": 1638, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

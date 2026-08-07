@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_011",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 10,
+  "observation": {"sharpest_angle_faces_radians": [[801, 0.083], [751, 0.083], [213, 0.097], [214, 0.097], [804, 0.205]]},
+  "reason": "worst angle is ~4.75 degrees, much milder than Flashlight's 0.83-degree sliver and not degenerate -- these are reasonable byproducts of the label-band ring seams; dissolving them would remove intentional detail for no real gain, so the decision is to leave geometry alone and record the review rather than silently skip it",
+  "chosen_action": {"op": "write_custom_properties", "target": "Bottle", "props": {"sliver_check_worst_angle_deg": 4.75, "sliver_check_verdict": "acceptable, not fixed"}},
+  "result_revision": 11,
+  "result_state": {"vertices": 805, "edges": 1611, "faces": 808, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

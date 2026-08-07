@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_014",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 13,
+  "observation": {"health": {"vertices": 68, "edges": 133, "faces": 67, "ngons": 6}},
+  "reason": "repair the 6 pentagon faces the previous bevel left, same triangulate_ngons mechanical fix used throughout",
+  "chosen_action": {"op": "mesh_ops.triangulate_ngons", "target": "SimpleBlock"},
+  "result_revision": 14,
+  "result_state": {"vertices": 68, "edges": 147, "faces": 81, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "repaired"
+}
