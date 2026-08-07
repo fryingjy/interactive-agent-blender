@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_050",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 44,
+  "observation": {"bottle_health": "confirmed clean after punt addition"},
+  "reason": "smooth the transition edge between the pushed-in punt and the side wall",
+  "chosen_action": {"op": "mesh_ops.bevel_edges (punt rim, 16 edges)", "target": "Bottle", "offset": 0.02, "segments": 2},
+  "result_revision": 45,
+  "result_state": {"vertices": 850, "edges": 1696, "faces": 848, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

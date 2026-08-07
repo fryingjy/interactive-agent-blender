@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_049",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 43,
+  "observation": {"largest_faces": [[767, 0.644, [-0.23, 0.52, -3.48]], [775, 0.644, [-0.53, -0.2, -3.48]], [768, 0.644, [0.53, 0.2, -3.48]]]},
+  "reason": "the base cap's large flat triangles are the last untouched major area; real bottles have a concave 'punt' at the base -- pushing those faces upward adds this genuine reference feature",
+  "chosen_action": {"op": "select base-cap faces (z within 0.05 of min_z), extrude +0.15", "target": "Bottle"},
+  "result_revision": 44,
+  "result_state": {"vertices": 818, "edges": 1632, "faces": 816, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}
