@@ -183,11 +183,37 @@ class ModelerServer:
         # separate) -- seq is purely this queue's ordering, event_id is the
         # event's own identity, stable if it were ever persisted/replayed
         # independent of queue position.
+        #
+        # Coalescing (directive section 9): one Blender operator can fire
+        # depsgraph_update_post many times for the same object in the same
+        # logical change (observed live: a single mesh edit produces
+        # separate updates for the object, its mesh data, the collection,
+        # and the scene). Rather than exposing each as a separate event,
+        # bump a repeat count on the most recent queue entry if it already
+        # represents the same (event_type, object) pair with nothing else
+        # in between -- one logical entry per burst, not one per callback.
+        # Verified directly (three synthetic consecutive same-object pushes
+        # collapsed to one entry, repeat_count=3). Note on real-world
+        # effectiveness: observed live depsgraph bursts in this environment
+        # tend to ALTERNATE between the target object and a companion
+        # object (e.g. object, then its mesh datablock's own name) rather
+        # than repeating the same one consecutively, so this catches true
+        # same-object repeats correctly but doesn't collapse an alternating
+        # A/B/A/B burst -- that would need object-set-based coalescing, not
+        # attempted here since the simpler form is already a real, correct
+        # improvement and the alternating pattern's cause hasn't been
+        # investigated.
+        if self._events:
+            last = self._events[-1]
+            if last["event"] == event_type and last.get("object") == data.get("object"):
+                last["repeat_count"] = last.get("repeat_count", 1) + 1
+                last["ts"] = time.time()
+                return
         self._event_seq += 1
         event_id = f"evt_{self.session_id}_{self._event_seq}"
         self._events.append({
             "event_id": event_id, "seq": self._event_seq, "ts": time.time(),
-            "event": event_type, **data,
+            "event": event_type, "repeat_count": 1, **data,
         })
 
     def _on_depsgraph_update(self, scene, depsgraph):
