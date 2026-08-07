@@ -232,5 +232,11 @@ def commit_decision(decision_id: str) -> dict:
     return _call("commit_decision", decision_id=decision_id)
 
 
+@mcp.tool()
+def reject_decision(decision_id: str, reason: str = "") -> dict:
+    """Transaction-owned rollback: restore the target object to exactly its state before perform_decision ran (geometry and transform), independent of Blender's global undo stack, and release decision_id WITHOUT advancing the live decision-revision counter -- the scene is left exactly as if this decision never happened. Use this instead of commit_decision when verify_decision's result is judged unacceptable."""
+    return _call("reject_decision", decision_id=decision_id, reason=reason)
+
+
 if __name__ == "__main__":
     mcp.run()

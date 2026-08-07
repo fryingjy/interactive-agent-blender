@@ -22,6 +22,7 @@ correctly is one line, and skipping it is a visible, auditable choice rather
 than something the log's numbers alone would hide.
 """
 
+import bmesh
 import bpy
 
 import decision_state
@@ -40,13 +41,17 @@ class DecisionTransaction:
         self.target_object = target_object
         self._performed = False
         self._committed = False
+        self._rejected = False
         self._before_op_count = None
         self._before_state = None
         self._after_state = None
         self._before_ids = None
         self._after_ids = None
         self._op_delta = None
+        self._before_mesh_snapshot = None
+        self._before_transform = None
         self.result = None
+        self.reject_reason = None
 
     def __enter__(self):
         actual = decision_state.current_revision()
@@ -67,7 +72,16 @@ class DecisionTransaction:
         return self
 
     def perform(self, fn, *args, **kwargs):
-        """The one and only sanctioned mutation point. Raises on a second call."""
+        """The one and only sanctioned mutation point. Raises on a second call.
+
+        Captures a restorable pre-mutation snapshot (a full, independent
+        mesh-datablock copy plus object transform) immediately before calling
+        fn(), not in __enter__ -- so a transaction that's opened and then
+        abandoned without ever calling perform() never allocates a snapshot
+        that would otherwise leak as an orphan mesh datablock. This is what
+        makes reject() a real transaction-owned rollback rather than relying
+        on bpy.ops.ed.undo(), which object_ops.undo()'s own docstring already
+        found unreliable for reverting one specific decision."""
         if self._performed:
             raise TransactionError(
                 "perform() was already called once in this transaction -- exactly "
@@ -75,6 +89,14 @@ class DecisionTransaction:
                 "transaction, advance the revision, and open a new one for the "
                 "next operation."
             )
+        if self.target_object:
+            obj = bpy.data.objects[self.target_object]
+            self._before_mesh_snapshot = obj.data.copy()
+            self._before_transform = {
+                "location": tuple(obj.location),
+                "rotation_euler": tuple(obj.rotation_euler),
+                "scale": tuple(obj.scale),
+            }
         self.result = fn(*args, **kwargs)
         self._performed = True
         return self.result
@@ -127,9 +149,61 @@ class DecisionTransaction:
             raise TransactionError("cannot commit: no operation was performed")
         if self._committed:
             raise TransactionError("this transaction was already committed")
+        if self._rejected:
+            raise TransactionError("this transaction was already rejected")
         new_revision = decision_state.advance_revision(self.observed_revision)
         self._committed = True
+        self._free_snapshot()
         return new_revision
+
+    def reject(self, reason=""):
+        """Transaction-owned rollback: restore geometry and transform to
+        exactly the pre-perform() snapshot, independent of Blender's global
+        undo stack. decision_state's revision counter is never advanced (no
+        commit() ever happened), so the scene is left exactly as if this
+        transaction had never been opened -- not a forward-fix, a true
+        revert. Mode-aware: an Edit Mode target must have its actual live
+        edit-bmesh cleared and refilled (mutating a separate, unrelated
+        bmesh and calling bmesh.update_edit_mesh does nothing useful, since
+        that call refreshes derived data FROM the currently active edit
+        bmesh, it does not accept a replacement bmesh as an argument)."""
+        if not self._performed:
+            raise TransactionError(
+                "cannot reject: no operation was performed -- there is nothing to "
+                "undo, just discard this transaction instead of calling reject()"
+            )
+        if self._committed:
+            raise TransactionError("cannot reject: this transaction was already committed")
+        if self._rejected:
+            raise TransactionError("this transaction was already rejected")
+        obj = bpy.data.objects[self.target_object]
+        if obj.mode == "EDIT":
+            bm = bmesh.from_edit_mesh(obj.data)
+            bm.clear()
+            bm.from_mesh(self._before_mesh_snapshot)
+            bmesh.update_edit_mesh(obj.data, loop_triangles=True, destructive=True)
+        else:
+            bm = bmesh.new()
+            bm.from_mesh(self._before_mesh_snapshot)
+            bm.to_mesh(obj.data)
+            obj.data.update()
+            bm.free()
+        obj.location = self._before_transform["location"]
+        obj.rotation_euler = self._before_transform["rotation_euler"]
+        obj.scale = self._before_transform["scale"]
+        self._rejected = True
+        self.reject_reason = reason
+        self._free_snapshot()
+        return {
+            "rejected": True,
+            "restored_revision": self.observed_revision,
+            "reason": reason,
+        }
+
+    def _free_snapshot(self):
+        if self._before_mesh_snapshot is not None:
+            bpy.data.meshes.remove(self._before_mesh_snapshot)
+            self._before_mesh_snapshot = None
 
     def __exit__(self, exc_type, exc, tb):
         return False

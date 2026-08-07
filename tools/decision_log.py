@@ -71,17 +71,22 @@ def cmd_append(args):
                 f"(a regression) -- got {data['observation_revision']} -> "
                 f"{data['result_revision']}", file=sys.stderr)
             sys.exit(1)
-    elif data["evaluation"] == "external_edit":
-        # A "reverted" entry records the scene falling behind the log (undo). This is the
-        # opposite: the mesh changed for the better through a channel this log can't see at
-        # all -- someone editing directly in the Blender GUI, bypassing DecisionTransaction
-        # entirely. decision_state's revision counter never moved (it's a script-owned
-        # integer, not tied to geometry), so there is no "+1" to require here. What's
-        # required instead is that the entry says so honestly via matching revisions, rather
-        # than claiming a scripted decision that didn't happen.
+    elif data["evaluation"] in ("external_edit", "rejected"):
+        # A "reverted" entry records the scene falling behind the log (undo). "external_edit"
+        # is the opposite: the mesh changed for the better through a channel this log can't
+        # see at all -- someone editing directly in the Blender GUI, bypassing
+        # DecisionTransaction entirely. "rejected" (added alongside DecisionTransaction.reject()
+        # -- transaction-owned rollback, directive P0.1) belongs in the same bucket for a
+        # different reason: perform() ran and got real evidence via verify(), but the decision
+        # was judged unacceptable and reject() restored the exact pre-perform() state, so
+        # commit() -- the only thing that calls decision_state.advance_revision() -- never ran.
+        # Either way, decision_state's revision counter never moved (it's a script-owned
+        # integer, not tied to geometry), so there is no "+1" to require here. What's required
+        # instead is that the entry says so honestly via matching revisions, rather than
+        # claiming a scripted decision that landed.
         if data["result_revision"] != data["observation_revision"]:
             print(
-                f"ERROR: an 'external_edit' entry must show result_revision == "
+                f"ERROR: a '{data['evaluation']}' entry must show result_revision == "
                 f"observation_revision (decision_state's counter did not move) -- got "
                 f"{data['observation_revision']} -> {data['result_revision']}", file=sys.stderr)
             sys.exit(1)

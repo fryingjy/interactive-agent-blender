@@ -45,6 +45,7 @@ import mesh_ops
 import object_ops
 import persistent_ids
 import semantic_regions
+import state_fingerprint
 import state_probe
 
 PROTOCOL_VERSION = "0.1"
@@ -62,6 +63,8 @@ CAPABILITIES = [
     "region_inspection",
     "semantic_regions",
     "evaluated_mesh_inspection",
+    "decision_rollback",
+    "layered_state_fingerprint",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -115,15 +118,19 @@ class ModelerServer:
         self._pending_lock = threading.Lock()
         self._handlers_registered = False
 
-        # object name -> {"verts": frozenset(ids), "edges": ..., "faces": ...}
-        # as of the last point this server actually observed the mesh (a
-        # begin_decision or commit_decision). Compared on the next
+        # object name -> state_fingerprint.compute() result, as of the last
+        # point this server actually observed the mesh (a begin_decision or
+        # commit_decision/reject_decision). Compared on the next
         # begin_decision to detect edits that happened through neither path
         # -- i.e. a human editing in the GUI. Replaces the depsgraph-timing
         # "ownership heuristic" removed above, which was disproved live: this
         # is a direct state comparison, not dependent on any event firing on
-        # any particular schedule.
-        self._last_known_ids = {}
+        # any particular schedule. Originally only compared persistent-ID
+        # SETS (topology add/remove); extended (directive P0.2) to also
+        # catch existing-vertex movement, object transform changes, and
+        # modifier parameter changes that leave every ID untouched -- see
+        # state_fingerprint.py.
+        self._last_known_fingerprint = {}
 
         # command_id -> stored result, for perform_decision idempotency: a
         # retried call with the same command_id returns the stored result
@@ -327,32 +334,24 @@ class ModelerServer:
 
     # ---- external-edit detection (state fingerprint, not timing) --------
 
-    @staticmethod
-    def _snapshot_ids(name):
-        id_maps = persistent_ids.get_id_maps(name)
-        return {kind: frozenset(m["id_to_index"]) for kind, m in id_maps.items()}
-
     def _check_external_edit(self, name):
-        """Assign IDs to any new geometry, then compare the resulting ID set
-        against the last snapshot this server actually took (at the previous
-        begin_decision or commit_decision). Any difference means the mesh
-        changed through neither path -- an edit this server didn't perform
-        and wasn't told about. Always updates the snapshot to the
-        just-observed state, so a second call right after immediately sees
-        no further difference (the edit has now been "seen")."""
+        """Assign IDs to any new geometry, then compare a full layered
+        fingerprint (topology + geometry hash + transform + modifier params)
+        against the last one this server actually took (at the previous
+        begin_decision or commit_decision/reject_decision). Any layer
+        differing means the object changed through neither path -- an edit
+        this server didn't perform and wasn't told about. Always updates the
+        snapshot to the just-observed state, so a second call right after
+        immediately sees no further difference (the edit has now been
+        "seen")."""
         persistent_ids.ensure_persistent_ids(name)
-        current = self._snapshot_ids(name)
-        previous = self._last_known_ids.get(name)
+        current = state_fingerprint.compute(name)
+        previous = self._last_known_fingerprint.get(name)
         detected = False
         diff = {}
         if previous is not None:
-            for kind in ("verts", "edges", "faces"):
-                added = sorted(current[kind] - previous[kind])
-                removed = sorted(previous[kind] - current[kind])
-                if added or removed:
-                    detected = True
-                diff[kind] = {"added": added, "removed": removed}
-        self._last_known_ids[name] = current
+            detected, diff = state_fingerprint.diff(previous, current)
+        self._last_known_fingerprint[name] = current
         return {"external_edit_detected": detected, "diff": diff}
 
     # ---- command dispatch (runs on Blender's main thread) ---------------
@@ -544,6 +543,23 @@ class ModelerServer:
             del self._pending[decision_id]
         self._check_external_edit(target)  # refresh the snapshot to this decision's own result
         return {"decision_id": decision_id, "result_revision": new_rev}
+
+    def cmd_reject_decision(self, decision_id, reason=""):
+        """Transaction-owned rollback (directive P0.1): restore the target
+        object to exactly its pre-perform() state, independent of Blender's
+        global undo stack. decision_state's revision counter is left
+        untouched (never advanced), so the scene is exactly as if this
+        decision never happened -- the caller does not need to re-observe a
+        "new" revision afterward, observed_revision is still current."""
+        entry = self._pending.get(decision_id)
+        if entry is None:
+            raise ValueError(f"no pending decision {decision_id}")
+        result = entry["tx"].reject(reason=reason)
+        target = entry["target"]
+        with self._pending_lock:
+            del self._pending[decision_id]
+        self._check_external_edit(target)  # refresh the snapshot to the restored (reverted) state
+        return {"decision_id": decision_id, **result}
 
 
 _server = None
