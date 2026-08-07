@@ -183,6 +183,71 @@ and ID coverage into one call. All of this was tested live against the Mug, incl
 duplicate-ID bug and its fix, then the test mutations were discarded by reloading the last verified
 `.blend` rather than left on the actual deliverable object.
 
+## Typed modeler protocol: custom add-on + MCP server (build in progress)
+
+Told to proceed with the full architecture proposal ("even though it's a much bigger commitment, if
+it makes it better, do it"). This is genuinely large — a new Blender add-on with its own socket
+server plus a new MCP server is a real rebuild, not an incremental step — so it's being built and
+verified incrementally rather than claimed complete in one pass, the same discipline used
+everywhere else in this project.
+
+**Built and live-verified so far:**
+
+- `blender_ops/modeler_server.py` — a second, typed socket server inside Blender (port 9878,
+  alongside blender-mcp's own 9876), built directly on the already-verified `state_probe`/
+  `persistent_ids`/`decision_transaction`/`mesh_ops` modules rather than duplicating logic. Uses
+  length-prefixed JSON framing (4-byte big-endian length + payload), more robust than blender-mcp's
+  own accumulate-and-hope-`json.loads`-succeeds approach, since this protocol was designed fresh.
+  Commands: `get_capabilities`, `get_full_state`, `get_selection`, `poll_events`, and the full
+  `begin_decision` → `perform_decision` → `verify_decision` → `commit_decision` lifecycle, wrapping
+  five existing `mesh_ops` operations (`bevel_edges`, `merge_by_distance`, `add_ring_detail`,
+  `recalc_normals`, `triangulate_ngons`). This is a small slice of the proposed command surface
+  (extrude/move/scale/loop_cut are not wired up yet) — proven end-to-end for a few commands rather
+  than stubbed shallowly for many.
+- `tools/modeler_mcp_server.py` — wraps that socket protocol as named MCP tools. Verified with a
+  **genuine MCP-protocol client** (the official `mcp` SDK's stdio client, spawning the server as a
+  real subprocess and driving it through actual JSON-RPC — not just testing the raw socket
+  underneath it): tool listing and `get_capabilities`/`get_full_state` calls all passed, reaching
+  live into the running Blender session and back. Registered in `.mcp.json` as a second server,
+  `modeler`.
+
+**Two real bugs found and fixed during this build, not left for later:**
+
+1. An "ownership heuristic" was attempted — tagging each `mesh_changed` event as `agent` or
+   `external` via a flag set around command dispatch, on the assumption `depsgraph_update_post`
+   fires within roughly one `bpy.app.timers` tick of the write that caused it. Direct instrumented
+   testing disproved this: `depsgraph_update_post` did not fire even 3 seconds after a synchronous,
+   direct mutation — it only fired once *later, unrelated* Blender activity (e.g. the next
+   `execute_blender_code` call) forced a redraw/dependency-graph evaluation. One observed gap
+   exceeded 30 seconds. Every event was misattributed "external," including the agent's own
+   changes. Rather than ship a plausible-looking signal that's actually always wrong, the field was
+   removed entirely. `poll_events` still reports real change events with real timestamps and
+   sequence numbers — useful for eventual-consistency polling — but genuine ownership/locking
+   (item 9 of the original proposal) needs a different mechanism (e.g. comparing persistent-ID sets
+   against last-known transaction state, the same technique that already caught the real human/agent
+   collision during the mug-handle fix) and is not built yet.
+2. Hot-reloading `modeler_server.py` in-session (`importlib.reload` + stop/start) left zombie accept
+   threads bound to the port — Windows' `SO_REUSEADDR` allowed a second `bind()` to succeed while
+   the first socket was still listening, so an old, buggy instance kept intermittently answering
+   connections even after the "fixed" code was reloaded and started. Caught via `threading.enumerate()`
+   showing multiple live `_accept_loop` threads. Worked around by moving to a fresh port for this
+   session and documented directly in the module so future hot-reloading captures and stops the
+   existing instance first; a real Blender restart doesn't have this problem.
+
+**Not yet built, deliberately:** semantic geometry regions, viewport/camera state exposure,
+Blender-native visual passes (silhouette/wireframe/normals — this one reverses the project's
+founding "no-screenshot" design tenet from the top of this README and should get an explicit
+confirmation before being built, not be waved through inside a larger bundle), real
+ownership/ locking (see the finding above), heartbeat/reconnect, and restricting
+`execute_blender_code` to a fallback/debug role (a policy change once the typed surface covers
+enough real operations to be the primary path).
+
+**Operational note, not a limitation of the code:** MCP servers load from `.mcp.json` at Claude
+Code session start. A session already running when `modeler` was added to `.mcp.json` cannot call
+its tools until that session restarts — this was verified independently via a real MCP client
+subprocess specifically because the agent driving this build could not simply call its own new
+tools to check.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail

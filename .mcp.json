@@ -6,6 +6,10 @@
             "env": {
                 "DISABLE_TELEMETRY": "true"
             }
+        },
+        "modeler": {
+            "command": "uv",
+            "args": ["run", "tools/modeler_mcp_server.py"]
         }
     }
 }
