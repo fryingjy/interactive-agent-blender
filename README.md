@@ -117,17 +117,39 @@ major pole source, replaced with clean edge-flow construction (`bmesh.ops.spin` 
 profile, then `bpy.ops.mesh.bridge_edge_loops()` to close the far end without needing exact pivot
 math — an initial hand-derived pivot placed the swept loop at radius ~1.37 instead of the intended
 1.2, logged honestly as a caught mistake rather than silently patched, and bridging sidestepped the
-need to get that math exact). Result, independently verified against a fresh `.blend`
-(`runs/2026-08-07_mug-retopo/verify_reports/Mug_20260807T144924Z.json`): valence distribution
-`{4: 190, 5: 6, 6: 2, 16: 2}` (95% clean quad flow; the two valence-16 poles are at flat trifan cap
-centers, where a pole is harmless; only 8 irregular poles remain, at the bridge seam, versus 83
-before) and face-area ratio 25:1, versus 6500:1 before — roughly a 90% reduction in stray poles.
-One repair mistake surfaced and is logged honestly rather than hidden: a first attempt to clear a
-bridge-seam degenerate face via edge-collapse (the technique that had worked repeatedly earlier)
-did not work, because the actual defect was two vertices at identical coordinates — a doubled
-vertex, not a short edge — which needed `merge_by_distance` instead;
-`runs/2026-08-07_mug-retopo/decision_log.jsonl` records both the failed attempt and the correct
-fix as separate entries.
+need to get that math exact). One repair mistake surfaced along the way and is logged honestly
+rather than hidden: a first attempt to clear a bridge-seam degenerate face via edge-collapse (the
+technique that had worked repeatedly earlier) did not work, because the actual defect was two
+vertices at identical coordinates — a doubled vertex, not a short edge — which needed
+`merge_by_distance` instead.
+
+That pass got the mesh to 0 non-manifold/n-gons/degenerate-faces but still left 8 irregular poles
+at the bridge seam (down from 83) — "clean" by the validity checks but the user correctly called
+it out again: "topology on the handle is bad." Direct inspection found a real, specific defect the
+pole count alone didn't name: the bottom handle-hole junction had two actual triangles (faces with
+non-negligible area, not slivers) plus a redundant overlapping quad, all traceable to two extra
+vertices left behind by the imprecise spin/bridge repair — comparing directly against the clean,
+all-quad top junction (which never went through that repair) showed exactly what "clean" should
+have looked like. Mid-repair — after dissolving the six faces around those two extra vertices into
+one region as step one of a planned two-step requad — the object was found to have live changes
+underneath the script that no automated transaction had made: 200 vertices had dropped to 162, with
+valence collapsing from 8 irregular poles to 4, then, after a mode switch, to zero. This was a live
+concurrent edit: a manual Merge-by-Distance / Limited Dissolve run directly in the Blender GUI,
+independently confirmed by inspecting `bmesh.from_edit_mesh` while the object was still in Edit
+Mode rather than assumed. `decision_state`'s revision counter is a script-owned integer with no way
+to observe GUI edits, so this divergence is invisible to `DecisionTransaction` by construction —
+handled by adding a new `external_edit` evaluation type to `tools/decision_log.py` (parallel to the
+existing `reverted` type added for the opposite case, a GUI undo rolling a scripted decision back)
+rather than silently resyncing or overwriting it, so the log states plainly that the mesh changed
+through a channel it cannot see, instead of falsely claiming a scripted decision.
+
+Final result, independently verified against a fresh `.blend`
+(`runs/2026-08-07_mug-retopo/verify_reports/Mug_20260807T153000Z.json`): valence distribution
+`{4: 160, 16: 2}` — zero irregular poles anywhere in the mesh; the only non-4-valence vertices are
+the two flat trifan cap centers, where a pole is harmless by construction. Face-area ratio 25:1
+(versus 6500:1 in `mug-adaptive`). `runs/2026-08-07_mug-retopo/decision_log.jsonl` records the full
+honest sequence — including the intermediate n-gon, the failed requad attempt, and the external
+edit — rather than only the clean endpoint.
 
 ## Shape-authoring boundary
 

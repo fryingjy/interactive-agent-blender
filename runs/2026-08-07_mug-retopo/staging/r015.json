@@ -1,0 +1,16 @@
+{
+  "decision_id": "retopo_015",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 140,
+  "observation": {
+    "note": "Follow-up requad attempt (triangulate+join_triangles on the n-gon left by retopo_014) failed twice: first because the object was in EDIT mode (obj.data.polygons stale vs the live edit-bmesh, to_mesh() raised 'Mesh is in editmode'); second, after switching to the edit-mode-safe bmesh.from_edit_mesh API, with an unlogged error. Live inspection while in Edit Mode found the mesh had ALREADY changed independently of any of my transactions: 162 vertices (down from 198), all 162 selected, valence {16:2, 4:156, 5:4}, 0 n-gons, 32 legitimate flat-cap triangles and 0 stray triangles. This is consistent with the user manually running Select All + Merge by Distance (or Limited Dissolve) in the Blender GUI, discovered live via direct state inspection rather than assumed.",
+    "user_confirmation": "User said 'go ahead and make the handle' after being shown this diagnosis, authorizing continuation rather than instructing a rollback.",
+    "final_check_after_mode_switch_to_object": {"vertices": 162, "edges": 336, "faces": 176, "non_manifold_edges": 0, "ngons": 0, "degenerate_faces": 0, "valence_distribution": {"16": 2, "4": 160}, "face_area_ratio": 25.16}
+  },
+  "reason": "record that decision_state's revision counter (still at 140) diverged from the actual mesh through a channel DecisionTransaction cannot see -- a live human edit in the Blender GUI -- and that the resulting state is genuinely clean (0 irregular poles beyond the 2 unavoidable flat-cap centers), better than any automated fix attempted in this session.",
+  "chosen_action": {"op": "none (external edit, observed not performed by this script)", "target": "Mug"},
+  "result_revision": 140,
+  "result_state": {"vertices": 162, "edges": 336, "faces": 176, "non_manifold_edges": 0, "ngons": 0, "degenerate_faces": 0, "valence_distribution": {"16": 2, "4": 160}, "face_area_ratio": 25.16},
+  "evaluation": "external_edit"
+}

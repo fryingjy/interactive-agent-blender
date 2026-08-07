@@ -23,7 +23,7 @@ REQUIRED_FIELDS = {
     "decision_id", "session_id", "pid", "observation_revision", "reason",
     "chosen_action", "result_revision", "evaluation",
 }
-VALID_EVALUATIONS = {"accepted", "rejected", "mistake_detected", "repaired", "reverted"}
+VALID_EVALUATIONS = {"accepted", "rejected", "mistake_detected", "repaired", "reverted", "external_edit"}
 
 MIN_CYCLE_SECONDS = 1.0  # consecutive decisions closer than this look batched
 
@@ -70,6 +70,20 @@ def cmd_append(args):
                 f"ERROR: a 'reverted' entry must show result_revision < observation_revision "
                 f"(a regression) -- got {data['observation_revision']} -> "
                 f"{data['result_revision']}", file=sys.stderr)
+            sys.exit(1)
+    elif data["evaluation"] == "external_edit":
+        # A "reverted" entry records the scene falling behind the log (undo). This is the
+        # opposite: the mesh changed for the better through a channel this log can't see at
+        # all -- someone editing directly in the Blender GUI, bypassing DecisionTransaction
+        # entirely. decision_state's revision counter never moved (it's a script-owned
+        # integer, not tied to geometry), so there is no "+1" to require here. What's
+        # required instead is that the entry says so honestly via matching revisions, rather
+        # than claiming a scripted decision that didn't happen.
+        if data["result_revision"] != data["observation_revision"]:
+            print(
+                f"ERROR: an 'external_edit' entry must show result_revision == "
+                f"observation_revision (decision_state's counter did not move) -- got "
+                f"{data['observation_revision']} -> {data['result_revision']}", file=sys.stderr)
             sys.exit(1)
     elif data["result_revision"] != data["observation_revision"] + 1:
         print(
