@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_068",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 61,
+  "observation": {"z_levels_in_neck_zone": [5.0, 6.0, 6.3, 6.47, 6.5], "total_distinct_z_levels": 50},
+  "reason": "verify the neck's radius actually matches the reference spec (radius 0.5 per reference/bottle/notes.md) rather than assuming it -- real reference-fidelity check",
+  "chosen_action": {"op": "radius scan at z~5.0", "target": "Bottle"},
+  "result_revision": 62,
+  "result_state": {"count": 16, "min_radius": 0.5, "max_radius": 0.5000000465, "verdict": "matches spec exactly"},
+  "evaluation": "accepted"
+}
