@@ -20,8 +20,10 @@ from this module.
 
 import bmesh
 import bpy
+import mathutils
 
 import bmesh_io
+import persistent_ids
 
 
 def _bm_from_object(name):
@@ -33,6 +35,7 @@ def _bm_from_object(name):
     API instead of assuming Object Mode."""
     obj = bpy.data.objects[name]
     bm = bmesh_io.read_bmesh(obj)
+    persistent_ids.ensure_layers(bm)
     return obj, bm
 
 
@@ -97,3 +100,154 @@ def add_ring_detail(name, z, radial_offset=0.03):
             v.co.y += (y / d) * radial_offset
     _write_back(obj, bm)
     return len(new_verts)
+
+
+def select_by_ids(name, vertex_ids=None, edge_ids=None, face_ids=None, extend=False):
+    """Select mesh elements by their persistent agent_id, resolved to
+    current indices at call time -- so the caller can remember 'the tip
+    vertex, agent_id 3012' across unrelated topology changes elsewhere in
+    the mesh, instead of a raw index that may have renumbered. Set
+    extend=True to add to the current selection instead of replacing it.
+    Returns how many of each kind were actually found and selected."""
+    obj, bm = _bm_from_object(name)
+    bm.verts.ensure_lookup_table()
+    bm.edges.ensure_lookup_table()
+    bm.faces.ensure_lookup_table()
+
+    if not extend:
+        for seq in (bm.verts, bm.edges, bm.faces):
+            for elem in seq:
+                elem.select = False
+
+    id_maps = persistent_ids.get_id_maps(name)
+    counts = {"verts": 0, "edges": 0, "faces": 0}
+    for kind, ids, seq in (
+        ("verts", vertex_ids, bm.verts),
+        ("edges", edge_ids, bm.edges),
+        ("faces", face_ids, bm.faces),
+    ):
+        if not ids:
+            continue
+        id_to_index = id_maps[kind]["id_to_index"]
+        for agent_id in ids:
+            idx = id_to_index.get(agent_id)
+            if idx is not None:
+                seq[idx].select = True
+                counts[kind] += 1
+    bm.select_flush(True)
+    _write_back(obj, bm)
+    return counts
+
+
+def extrude_selection(name, offset=0.1):
+    """Extrude whatever is currently selected (faces preferred, falling back
+    to a pure edge selection) along its average normal by `offset`. Pair with
+    a selection command first -- this acts on selection state, it doesn't
+    choose what to extrude. Returns the number of new vertices.
+
+    CORRECTION (found live, testing this against a fresh cube, two separate
+    real bugs -- not one): (1) the extrude direction must be captured BEFORE
+    calling bmesh.ops.extrude_face_region, not after. That operation reuses
+    the ORIGINAL face objects as the interior "back wall" of the extrusion
+    and flips their winding in the process -- reading .normal on them
+    afterward silently returns the flipped (inward) direction, which pushed
+    the new cap into the solid instead of out of it. (2) Even with the
+    direction fixed, bmesh.ops.extrude_face_region does NOT delete/consume
+    the original selected face -- confirmed directly: it stays valid and is
+    absent from the operator's own returned "new geometry" list. Left in
+    place, it becomes a stale duplicate sharing the original boundary edges
+    with the new side walls, producing non-manifold edges (3 faces per
+    edge instead of 2). Fix: explicitly delete the original faces (not
+    anything from the operator's return value) after extruding+translating.
+    Verified against a fresh cube both ways: non-manifold-edges went 4 (bad
+    direction) -> still 4 (right direction, stale face left) -> 0 (stale
+    face explicitly deleted), with the expected face count (10, not 11) and
+    zero degenerate faces."""
+    obj, bm = _bm_from_object(name)
+    bm.faces.ensure_lookup_table()
+    bm.edges.ensure_lookup_table()
+
+    selected_faces = [f for f in bm.faces if f.select]
+    if selected_faces:
+        normal = mathutils.Vector((0.0, 0.0, 0.0))
+        for f in selected_faces:
+            normal += f.normal
+        ret = bmesh.ops.extrude_face_region(bm, geom=selected_faces)
+        new_verts = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMVert)]
+        new_edges = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMEdge)]
+        new_faces = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMFace)]
+        persistent_ids.clear_ids_in_open_bmesh(bm, verts=new_verts, edges=new_edges, faces=new_faces)
+        bmesh.ops.delete(bm, geom=[f for f in selected_faces if f.is_valid], context='FACES')
+    else:
+        selected_edges = [e for e in bm.edges if e.select]
+        if not selected_edges:
+            _write_back(obj, bm)
+            raise ValueError(f"no faces or edges selected on '{name}' to extrude")
+        normal = mathutils.Vector((0.0, 0.0, 0.0))
+        seen_verts = set()
+        for e in selected_edges:
+            for v in e.verts:
+                if v.index not in seen_verts:
+                    seen_verts.add(v.index)
+                    normal += v.normal
+        ret = bmesh.ops.extrude_edge_only(bm, edges=selected_edges)
+        new_verts = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMVert)]
+        new_edges = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMEdge)]
+        new_faces = [g for g in ret["geom"] if isinstance(g, bmesh.types.BMFace)]
+        persistent_ids.clear_ids_in_open_bmesh(bm, verts=new_verts, edges=new_edges, faces=new_faces)
+
+    if normal.length > 1e-9:
+        normal.normalize()
+        bmesh.ops.translate(bm, verts=new_verts, vec=normal * offset)
+
+    # Leave the NEW geometry selected and deselect everything else, matching
+    # ordinary Extrude behavior everywhere else in Blender -- found live that
+    # without this, the original (untouched) boundary loop stayed selected
+    # after extrude, so a follow-up move/scale silently acted on old
+    # geometry instead of the thing that was just created.
+    for seq in (bm.verts, bm.edges, bm.faces):
+        for elem in seq:
+            elem.select = False
+    for v in new_verts:
+        v.select = True
+    for f in new_faces:
+        f.select = True
+    bm.select_flush(True)
+
+    _write_back(obj, bm)
+    return len(new_verts)
+
+
+def move_selection(name, delta):
+    """Translate the currently selected vertices by delta=(dx, dy, dz)."""
+    obj, bm = _bm_from_object(name)
+    bm.verts.ensure_lookup_table()
+    selected_verts = [v for v in bm.verts if v.select]
+    if not selected_verts:
+        _write_back(obj, bm)
+        raise ValueError(f"no vertices selected on '{name}' to move")
+    bmesh.ops.translate(bm, verts=selected_verts, vec=delta)
+    _write_back(obj, bm)
+    return len(selected_verts)
+
+
+def scale_selection(name, factor, center=None):
+    """Scale the currently selected vertices by factor=(sx, sy, sz) about
+    center (defaults to the median point of the selection, not the object
+    origin, so scaling a local detail doesn't drag it toward the origin)."""
+    obj, bm = _bm_from_object(name)
+    bm.verts.ensure_lookup_table()
+    selected_verts = [v for v in bm.verts if v.select]
+    if not selected_verts:
+        _write_back(obj, bm)
+        raise ValueError(f"no vertices selected on '{name}' to scale")
+    if center is None:
+        c = mathutils.Vector((0.0, 0.0, 0.0))
+        for v in selected_verts:
+            c += v.co
+        c /= len(selected_verts)
+    else:
+        c = mathutils.Vector(center)
+    bmesh.ops.scale(bm, verts=selected_verts, vec=factor, space=mathutils.Matrix.Translation(-c))
+    _write_back(obj, bm)
+    return len(selected_verts)

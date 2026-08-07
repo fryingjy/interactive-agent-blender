@@ -73,6 +73,9 @@ _OPS = {
     "add_ring_detail": mesh_ops.add_ring_detail,
     "recalc_normals": mesh_ops.recalc_normals,
     "triangulate_ngons": mesh_ops.triangulate_ngons,
+    "extrude_selection": mesh_ops.extrude_selection,
+    "move_selection": mesh_ops.move_selection,
+    "scale_selection": mesh_ops.scale_selection,
 }
 
 
@@ -308,6 +311,15 @@ class ModelerServer:
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
+
+    def cmd_select_by_ids(self, name, vertex_ids=None, edge_ids=None, face_ids=None, extend=False):
+        """Selection is a mechanical helper, not a sanctioned artistic
+        mutation -- free to call outside a decision transaction, matching
+        mesh_ops.py's own ALLOWED/NOT-ALLOWED boundary (selection helpers are
+        explicitly listed as freely callable there)."""
+        return mesh_ops.select_by_ids(
+            name, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids, extend=extend
+        )
 
     def cmd_poll_events(self, since_seq=0):
         events = [e for e in self._events if e["seq"] > since_seq]

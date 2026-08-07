@@ -73,6 +73,64 @@ def ensure_persistent_ids(name):
     return assigned
 
 
+def ensure_layers(bm):
+    """Create the three persistent-ID custom data layers on this bmesh if
+    they don't already exist, touching no element values.
+
+    CORRECTION (found live, chasing a 'BMFace has been removed' error
+    immediately after a clean extrude): creating a NEW custom data layer on
+    a bmesh mid-session invalidates every previously-held Python element
+    reference on that bmesh -- confirmed directly (captured a face
+    reference, called bm.faces.layers.int.new(...) for an unrelated layer,
+    and the captured reference's .is_valid immediately became False).
+    mesh_ops._bm_from_object() calls this immediately after opening a bm,
+    before any caller captures element references, so layer creation never
+    happens later mid-operation and invalidates something still in use."""
+    for seq, kind in ((bm.verts, "verts"), (bm.edges, "edges"), (bm.faces, "faces")):
+        if seq.layers.int.get(_LAYER_NAMES[kind]) is None:
+            seq.layers.int.new(_LAYER_NAMES[kind])
+
+
+def clear_ids_in_open_bmesh(bm, verts=None, edges=None, faces=None):
+    """For callers already holding an open bmesh mid-mutation (e.g.
+    mesh_ops.extrude_selection): force the given elements' persistent-ID
+    layer values back to 0 (unassigned), creating the layer if it doesn't
+    exist yet.
+
+    Exists because of a real gap in the duplicate-detection in
+    ensure_persistent_ids(): that function only catches an ID appearing on
+    2+ elements AT THE SAME TIME. If an operation creates new geometry that
+    inherits a copied ID from an ORIGINAL element that gets deleted in the
+    same operation (found live: bmesh.ops.extrude_face_region copies the
+    input face's custom data onto the new cap, and extrude_selection then
+    deletes the original as part of its own cleanup), there is never a
+    moment where both elements coexist -- so no duplicate is ever observed,
+    and the new element silently keeps an ID that isn't really its own. The
+    caller that knows exactly which elements are genuinely new is in the
+    best position to mark them unassigned explicitly, rather than relying
+    on a detector with this blind spot.
+
+    CORRECTION (found live, chasing another 'has been removed' error after
+    the layer-creation fix above): the first version of this function
+    determined which domain it was processing via `seq is bm.verts` /
+    `... is bm.edges` identity comparison against a captured (seq, elements)
+    tuple. bm.verts/bm.edges/bm.faces do not appear to be stable singletons
+    -- the comparison silently failed for every domain, always falling
+    through to the 'faces' branch, which then looked up (and, finding none,
+    created) an "agent_face_id" layer on the VERTS domain -- a genuinely
+    new layer, triggering the exact invalidation this function exists to
+    avoid. Uses explicit string labels instead of identity comparison now."""
+    for kind, seq, elements in (("verts", bm.verts, verts), ("edges", bm.edges, edges), ("faces", bm.faces, faces)):
+        if not elements:
+            continue
+        layer = seq.layers.int.get(_LAYER_NAMES[kind])
+        if layer is None:
+            layer = seq.layers.int.new(_LAYER_NAMES[kind])
+        for elem in elements:
+            if elem.is_valid:
+                elem[layer] = 0
+
+
 def get_id_maps(name):
     """Return, per element type, {index_to_id, id_to_index} reflecting
     current state. Elements without an assigned ID yet (0) are omitted --

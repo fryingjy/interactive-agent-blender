@@ -301,6 +301,52 @@ MCP client test) re-run clean afterward against the live Mug, unaffected by the 
   mutation. Verified live: called the same `command_id` twice against `add_ring_detail` and
   confirmed the vertex count only grew once, not twice.
 
+## Item 13, continued: extrude/move/scale — six real bugs found chasing one operation
+
+Added `extrude_selection`, `move_selection`, `scale_selection`, and `select_by_ids` to
+`mesh_ops.py`/the typed operation registry — the first genuine artistic primitives beyond
+mechanical/repair helpers, from the directive's initial typed vocabulary (section 12). Getting
+`extrude_selection` actually correct took six rounds of live testing against a bare cube, each
+one a real defect, not a false alarm:
+
+1. **Wrong extrude direction.** Read `face.normal` for the push direction *after* calling
+   `bmesh.ops.extrude_face_region`, but that operator reuses the original face object as the
+   interior "back wall" of the extrusion and flips its winding — the normal read afterward was
+   already inverted, pushing the new cap into the solid instead of out of it. Fixed by capturing
+   the normal before the operation runs.
+2. **Non-manifold result even with the right direction.** `extrude_face_region` does not
+   delete/consume the original selected face — confirmed directly (it stayed valid and was
+   absent from the operator's own "new geometry" return). Left in place, its boundary edges ended
+   up shared by 3 faces instead of 2. Fixed by explicitly deleting the original face after
+   extruding.
+3. **New geometry left unselected.** After a correct extrude, the *old* boundary loop stayed
+   selected (untouched by the operation) while the new cap was not — so a follow-up
+   `move_selection`/`scale_selection` silently acted on stale geometry instead of what was just
+   created. Fixed to explicitly select new geometry and deselect everything else, matching how
+   Extrude behaves everywhere else in Blender.
+4. **Persistent-ID theft.** The same custom-data interpolation behavior found earlier with bevel:
+   the new cap face inherited the *deleted* original face's `agent_face_id` instead of getting a
+   fresh one, and because the original was gone by the time `ensure_persistent_ids` next ran,
+   there was never a simultaneous duplicate for the duplicate-detector to catch — a real blind
+   spot in that safety net. Fixed with a new `persistent_ids.clear_ids_in_open_bmesh()`, called by
+   the operation itself (which knows exactly what's genuinely new) right after creating geometry.
+5. **A genuine bmesh gotcha, confirmed directly**: creating a *new* custom-data layer on a bmesh
+   mid-session invalidates every previously-held Python element reference on that bmesh, not just
+   ones related to the new layer — reproduced in isolation (capture a face reference, create an
+   unrelated layer, the reference's `.is_valid` immediately goes `False`). Fixed by guaranteeing
+   the three persistent-ID layers are created once, immediately after opening any bmesh in
+   `mesh_ops._bm_from_object`, before any caller captures element references that need to survive
+   the operation.
+6. **A bug in the very code written to fix #4 and #5.** `clear_ids_in_open_bmesh` determined which
+   domain (verts/edges/faces) it was processing via `seq is bm.verts` identity comparison — but
+   `bm.verts`/`bm.edges`/`bm.faces` are not stable singletons, so the comparison silently failed
+   for every domain, always falling through to "faces," which then created a spuriously-named new
+   layer on the *verts* domain — triggering exactly the layer-creation invalidation from #5. Fixed
+   by using explicit string labels instead of identity comparison.
+
+Full protocol regression (idempotency, external-edit detection, all prior commands) re-run clean
+against the live Mug afterward, unaffected throughout.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail
