@@ -36,13 +36,35 @@ replaces every formula-driven step with a hand-authored one: explicit literal
 details, insets, boolean cuts, bevels) rather than one op repeated. The old session's log is kept
 for transparency, not deleted, but `2026-08-07_proof1-redo` is what actually satisfies Proof 1.
 
-**A further correction**: even `2026-08-07_proof1-redo`'s hand-authored literals were still
-executed inside batched `execute_blender_code` calls — several actions sharing the same
-sub-second timestamp gave it away. Batched-but-well-reasoned isn't the same as genuinely separate
-decision cycles. `blender_ops/decision_state.py` (a revision counter the Blender scene itself
-owns) and `tools/decision_log.py` (validates strict revision chaining plus a minimum gap between
-consecutive decision timestamps) now enforce this mechanically rather than by discipline alone.
-See PR history for a demonstrated real one-at-a-time cycle run.
+**A further correction, now the actually-authoritative evidence: `runs/2026-08-07_decision-cycles/`.**
+Even `2026-08-07_proof1-redo`'s hand-authored literals were still executed inside batched
+`execute_blender_code` calls — several actions sharing the same sub-second timestamp gave it away.
+Batched-but-well-reasoned isn't the same as genuinely separate decision cycles.
+`blender_ops/decision_state.py` (a revision counter the Blender scene itself owns, not a local
+Python variable) and `tools/decision_log.py` (validates strict revision chaining plus a minimum
+gap between consecutive decision timestamps, and can only be advanced one mutation at a time via
+`advance_revision()`) enforce this mechanically now, not by discipline alone.
+
+`2026-08-07_decision-cycles` is 111 genuinely separate MCP round-trips (`verify-count --min 100`
+passes: 100 accepted-or-repaired entries, single PID — 6180 — from first launch to last action,
+never restarted). It's an honest complete record, not a highlight reel: 15 real repairs, 3
+mistakes caught mid-session (including two the agent introduced itself, e.g. a bevel that left a
+0.52° sliver), 4 rejected attempts where a fix didn't work and was tried again differently (a
+misleading Blender operator report caught by verifying independently, `bmesh.ops.holes_fill`
+silently failing twice before falling back to the interactive-equivalent operator), and 2 live
+collisions with a human editing the same Blender session concurrently — one where undo reverted a
+logged fix without any corresponding entry, handled with a new `reverted` evaluation type rather
+than silently resyncing. Three historical entries are flagged by the timestamp validator as
+looking batched (`seq 19-20`, `40-41`, `74-75`) — each was independently confirmed to be genuinely
+separate decisions, logged together afterward by a lapse in my own append discipline. Left visible
+and explained rather than retroactively edited, since fixing the timestamps to make the validator
+pass would be exactly the kind of gaming this mechanism exists to catch.
+
+Along the way this run also found and fixed three real bugs nobody had noticed (materials
+assigned to an empty slot while the real one sat unused; `diffuse_color` never reaching the
+actual render-affecting BSDF input; a newly-added camera never set as `scene.camera`), each
+encoded as a skill in `knowledge/skills/`, and added a `normals_consistent_ok` check to
+`tools/verify_mesh.py` from a signed-volume technique discovered mid-session.
 
 ## Shape-authoring boundary
 
