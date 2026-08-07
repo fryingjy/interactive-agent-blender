@@ -41,6 +41,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import decision_state
 import decision_transaction
 import mesh_ops
+import object_ops
 import persistent_ids
 import semantic_regions
 import state_probe
@@ -83,6 +84,9 @@ _OPS = {
     "extrude_selection": mesh_ops.extrude_selection,
     "move_selection": mesh_ops.move_selection,
     "scale_selection": mesh_ops.scale_selection,
+    "inset_selection": mesh_ops.inset_selection,
+    "add_modifier": object_ops.add_modifier,
+    "set_modifier_parameter": object_ops.set_modifier_parameter,
 }
 
 
@@ -418,6 +422,24 @@ class ModelerServer:
 
     def cmd_select_region(self, name, region_id, extend=False):
         return semantic_regions.select_region(name, region_id, extend)
+
+    # ---- undo/redo/checkpoints (scene/file-level, not a target-object
+    # decision, so not routed through perform_decision) ------------------
+
+    def cmd_undo(self):
+        return object_ops.undo()
+
+    def cmd_redo(self):
+        return object_ops.redo()
+
+    def cmd_save_checkpoint(self, label, directory):
+        return object_ops.save_checkpoint(label, directory)
+
+    def cmd_restore_checkpoint(self, filepath):
+        return object_ops.restore_checkpoint(filepath)
+
+    def cmd_save_file(self, filepath=None):
+        return object_ops.save_file(filepath)
 
     def cmd_select_by_ids(self, name, vertex_ids=None, edge_ids=None, face_ids=None, extend=False):
         """Selection is a mechanical helper, not a sanctioned artistic

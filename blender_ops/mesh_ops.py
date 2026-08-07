@@ -139,6 +139,59 @@ def select_by_ids(name, vertex_ids=None, edge_ids=None, face_ids=None, extend=Fa
     return counts
 
 
+def inset_selection(name, thickness=0.05, depth=0.0):
+    """Inset the currently selected faces by `thickness`, optionally pushed
+    in/out along their normal by `depth`. Leaves the shrunk original faces
+    selected (matching Blender's own Inset Faces tool -- the new inner
+    faces stay selected so a follow-up extrude/move can chain off them),
+    not the new ring faces.
+
+    Unlike extrude_face_region (see extrude_selection's docstring),
+    inset_region does NOT abandon the original face -- confirmed directly
+    against a bare cube: the original face object stays valid and keeps
+    its own persistent ID (correct, it genuinely is "the same face,
+    resized"), and its own boundary verts are moved inward and reused
+    (also correctly keeping their IDs), not duplicated. The elements that
+    ARE genuinely new are the ring faces returned by the operator plus a
+    duplicate outer-boundary vert/edge for each original one -- those
+    need clear_ids_in_open_bmesh, computed as "everything touched by the
+    ring MINUS whatever the original selected faces still legitimately
+    own" so this doesn't wipe out correct pre-existing IDs on the reused
+    inner boundary."""
+    obj, bm = _bm_from_object(name)
+    bm.faces.ensure_lookup_table()
+    selected_faces = [f for f in bm.faces if f.select]
+    if not selected_faces:
+        _write_back(obj, bm)
+        raise ValueError(f"no faces selected on '{name}' to inset")
+
+    reused_verts = {v for f in selected_faces for v in f.verts}
+    reused_edges = {e for f in selected_faces for e in f.edges}
+
+    ret = bmesh.ops.inset_region(
+        bm, faces=selected_faces, thickness=thickness, depth=depth,
+        use_boundary=True, use_even_offset=True,
+    )
+    ring_faces = ret["faces"]
+    ring_verts = {v for f in ring_faces for v in f.verts} - reused_verts
+    ring_edges = {e for f in ring_faces for e in f.edges} - reused_edges
+    persistent_ids.clear_ids_in_open_bmesh(bm, verts=ring_verts, edges=ring_edges, faces=ring_faces)
+
+    for seq in (bm.verts, bm.edges, bm.faces):
+        for elem in seq:
+            elem.select = False
+    for f in selected_faces:
+        if f.is_valid:
+            f.select = True
+    for v in reused_verts:
+        if v.is_valid:
+            v.select = True
+    bm.select_flush(True)
+
+    _write_back(obj, bm)
+    return len(selected_faces)
+
+
 def extrude_selection(name, offset=0.1):
     """Extrude whatever is currently selected (faces preferred, falling back
     to a pure edge selection) along its average normal by `offset`. Pair with

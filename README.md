@@ -347,6 +347,95 @@ one a real defect, not a false alarm:
 Full protocol regression (idempotency, external-edit detection, all prior commands) re-run clean
 against the live Mug afterward, unaffected throughout.
 
+## Closing out the master directive's engineering priority list
+
+Told to keep going without stopping. Worked through nearly all of section 55's remaining items,
+each live-tested, not just written:
+
+- **Item 5 (separate identifiers), completed**: `event_id` (distinct from `seq`, which is only
+  queue ordering) added to every pushed event; `session_id` added via the handshake below.
+- **Item 8 (event coalescing)**: `_push_event` now bumps a `repeat_count` on the most recent queue
+  entry instead of appending a new one for a repeated `(event_type, object)` pair. Verified
+  directly with synthetic consecutive pushes (3 → 1 entry, `repeat_count=3`). Noted honestly: real
+  depsgraph bursts observed in this environment tend to *alternate* between the target object and
+  a companion object rather than repeat one consecutively, so live noise reduction is lower than
+  the mechanism's ceiling — the mechanism itself is correct, that's just the real pattern observed.
+- **Item 15 (session handshake) + item 14 (heartbeat)**: `session_id` (fresh per server start, not
+  persisted — represents this running instance) and `started_at` in `get_capabilities`; a new
+  `heartbeat` command reports session_id/pid/revision/uptime/pending-decision count.
+- **Item 16 (reconnect without Blender restart)**: verified, not assumed. Began a decision on one
+  TCP connection, closed it (simulating a client crash), opened a fresh connection, confirmed the
+  same `session_id` and `pending_decisions==1` via `heartbeat`, then completed that same
+  `decision_id`'s perform/verify/commit on the new connection — server-side state is independent of
+  any one TCP connection by construction.
+- **Item 17 (explicit ownership)**: `AGENT_CONTROL` / `USER_CONTROL` / `SHARED_OBSERVATION`, default
+  `AGENT_CONTROL`. Unlike the removed depsgraph-timing heuristic, this has real teeth —
+  `begin_decision` refuses to even attempt a mutation while control_mode isn't `AGENT_CONTROL`,
+  rather than trying to detect a collision after the fact. Verified live: set `USER_CONTROL`,
+  confirmed refusal with a clear message; switched back, confirmed a normal cycle succeeded.
+- **Item 18 (semantic regions)**: `blender_ops/semantic_regions.py` — named, persistent-ID-keyed
+  groups (`create/get/list/update/delete/select_region`), stored as JSON on an object custom
+  property. `validate_region` re-checks every stored ID against the *current* mesh rather than
+  assuming persistence, per the directive's "must invalidate honestly." Verified live: full
+  lifecycle, then a genuinely destructive mutation (merge-by-distance at a large tolerance,
+  collapsing 8 vertices to 1) correctly flagged the region invalid with exactly the 3 destroyed
+  IDs listed as missing.
+- **Item 19 (richer local topology graphs)**: `state_probe.inspect_region(name, center_ids,
+  rings=2)` — a BFS-grown local graph keyed by agent_id, with pole locations, edge-length/face-area
+  ratios, local tri/quad/ngon composition, and a real (not assumed) connected-component count.
+  Verified read-only against the live Mug, targeting a known pole (one of the two flat trifan cap
+  centers) — correctly identified it as the region's sole pole with 16 triangular + 16 quad faces
+  around it.
+- **Item 20 (viewport/camera state)**: `state_probe.viewport_state()` — projection type, view
+  distance/location, shading mode, x-ray, local view, active camera transform, and a best-effort
+  standard-orientation label (FRONT/BACK/TOP/BOTTOM/LEFT/RIGHT). First attempt at the reference
+  quaternions was typed from memory and failed live testing (wrong values, and missing that a
+  quaternion and its negation represent the same rotation) — fixed by reading the real values
+  directly from `bpy.ops.view3d.view_axis()` for this Blender version. Verified against all six
+  standard views (all correctly detected) plus a free-orbited view (correctly returns no label).
+- **Item 13, remainder of the initial typed vocabulary**: `inset_selection`,
+  `add_modifier`/`set_modifier_parameter` (new `blender_ops/object_ops.py`, object-level, not
+  bmesh), `undo`/`redo`, `save_checkpoint`/`restore_checkpoint`/`save_file`.
+  - `inset_region` turned out to behave *better* than `extrude_face_region`: the original face
+    resizes in place and correctly keeps its own persistent ID and boundary verts (confirmed
+    directly by tagging IDs before insetting and reading them after) — no delete-the-original step
+    needed, unlike extrude. The genuinely new geometry is the ring of connecting faces plus a
+    duplicate of the old outer boundary; those get their IDs cleared the same way extrude's new
+    geometry does. Selection is correctly left on the shrunk original face (matching Blender's own
+    Inset tool), not the ring, so a follow-up extrude/move can chain off it.
+  - **A real, important limitation found live, not glossed over**: `undo`/`redo` do NOT reliably
+    undo "the last decision." `DecisionTransaction` mutations write directly via
+    `bm.to_mesh()+obj.data.update()`, which do not push an entry onto Blender's own undo stack —
+    confirmed directly: one mutation followed by exactly one `undo()` call deleted an entire
+    scratch object outright, jumping straight past the mutation to the last real
+    `bpy.ops`-recorded action (its creation). Any number of committed decisions can sit between
+    "now" and whatever `undo()` actually reverts to. Both functions' docstrings and MCP tool
+    descriptions say this explicitly rather than implying a guarantee the code doesn't keep.
+  - `save_checkpoint` verified live (wrote a real, loadable `.blend` file, confirmed on disk, then
+    removed as a test artifact).
+
+One real operational hiccup during this round, also worth recording honestly: mid-testing, the
+socket connection dropped (`WinError 10054`) and the `ModelerServer` instance came back as `None`
+on the next check — the accept thread apparently died silently. Blender's own MCP connection
+(`execute_blender_code`) stayed healthy throughout, confirming Blender itself never crashed; only
+the add-on's own server thread did. Recovered by reloading and restarting `modeler_server.py`
+(the same procedure already documented above for hot-reload iteration) — no data was lost, since
+`DecisionTransaction` commits are synchronous and the failure happened between test steps, not
+mid-transaction. This is a real gap heartbeat/reconnect *detects* (a client would see the
+connection refused) but does not yet *recover from automatically* — there's no supervisor
+restarting the accept thread if it dies. Worth hardening if this becomes a recurring problem;
+not attempted here since it was a single occurrence.
+
+Not done, and not attempted without further instruction: **Blender-native visual passes** (item
+21, and item 22 which depends on it) — this specifically reverses the project's founding
+"no-screenshot" design tenet from the top of this README and needs an explicit confirmation, not a
+default extrapolated from "keep going." Also not started: logging arbitrary `execute_blender_code`
+usage as a fallback-path metric (item 14's other half) — that tool lives in a separate MCP server
+(`blender-mcp`) this project doesn't control internally, so it isn't something addressable by
+editing this repo's code. The research/curriculum system (directive sections 23-50) remains
+explicitly gated behind this engineering work being reliable, per the directive's own sequencing
+rule — not started, as before.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail

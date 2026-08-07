@@ -137,6 +137,36 @@ def select_region(object_name: str, region_id: str, extend: bool = False) -> dic
 
 
 @mcp.tool()
+def undo() -> dict:
+    """Call Blender's own undo. WARNING, confirmed by direct testing: this does NOT reliably undo "the last decision." DecisionTransaction mutations write directly via bmesh, which do not push entries onto Blender's undo stack -- one such mutation followed by a single undo() call deleted an entire object, jumping straight past the mutation to the last real bpy.ops-recorded action (its creation). Any number of committed decisions can sit between "now" and whatever this actually reverts to. Always check mesh_health/get_full_state before and after; do not assume a small, single-decision-sized change."""
+    return _call("undo")
+
+
+@mcp.tool()
+def redo() -> dict:
+    """Call Blender's own redo. See undo()'s warning -- the same disconnect between Blender's undo stack and DecisionTransaction's bmesh-direct mutations applies in reverse."""
+    return _call("redo")
+
+
+@mcp.tool()
+def save_checkpoint(label: str, directory: str) -> dict:
+    """Save a labeled, timestamped snapshot of the current file (copy, not a save-and-continue-from-here) to directory. Returns the filepath."""
+    return _call("save_checkpoint", label=label, directory=directory)
+
+
+@mcp.tool()
+def restore_checkpoint(filepath: str) -> dict:
+    """Reload a previously saved checkpoint file, replacing the entire live scene. Irreversible for any unsaved work since that checkpoint."""
+    return _call("restore_checkpoint", filepath=filepath)
+
+
+@mcp.tool()
+def save_file(filepath: str | None = None) -> dict:
+    """Save the current file. Pass filepath to save a copy elsewhere without switching the working file; omit to save in place."""
+    return _call("save_file", filepath=filepath)
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")
