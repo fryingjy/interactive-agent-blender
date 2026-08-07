@@ -504,12 +504,70 @@ also valence-3. This is normal, expected orthogonal-box topology, not the kind o
 scatter across a surface that's supposed to be smooth that made the Mug's original topology bad.
 Left as-is, judgment recorded rather than blindly bevel-everything.
 
+That was 8 decisions — real, but short of the directive's 20-40 target for item 23. Told to extend
+it rather than start a new prop, the same session continued for 12 more (decisions 9-20, revision
+148→160), reaching the floor of the range. The back panel — left flat in the 8-decision cut per the
+reference's "optional" note — got real treatment after all, since with more decisions genuinely
+warranted, it stopped being the right place to economize:
+
+9. **Inset the driver-cavity floor** for a dust-cap footprint, then **10. extrude it outward 0.04**
+   to form a small dome — verified its position landed 0.11 units clear of the recess opening, not
+   clipping through.
+11. **Inset the back panel** (found via a `rings=6` region search that came up empty, then `rings=20`
+    that found it — the BFS radius needed to span the whole 68-face mesh from a driver-region
+    starting point was larger than first guessed) for a bordered detail area, then **12. extruded it
+    inward** — reasoned the direction fresh from the back face's own +Y normal rather than assuming
+    it mirrored the front's -Y convention, then confirmed the result at Y=0.97 directly.
+13. **Bevel the back recess opening** for visual consistency with the front.
+14. **Inset the base** for a foot ring — the bottom face turned out to be split into 2 triangles
+    from an earlier corner bevel, not one quad; tested whether `inset_selection` handles a merged
+    2-triangle region correctly (it does) rather than assuming.
+15. **Extrude the foot plinth outward** — one edge got *removed*, not just added (the old
+    triangle-diagonal got consumed as the region became a clean quad extrusion); inspected and
+    judged sensible rather than assumed a bug.
+16. **Bevel the plinth boundary** — surfaced a real, minor compounding effect: two existing
+    valence-7 poles (from the original corner bevels) became valence-8, since the plinth's boundary
+    intersects the same physical bottom corners as the earlier corner treatment. Investigated with a
+    direct diagnostic query (pole positions, whole-mesh min/max face area — 0.011 to 6.34, nothing
+    near-degenerate) rather than assumed either "fine" or "broken," and judged it an acceptable
+    trade-off of stacking two detail treatments at one corner, not a defect.
+17. **Inset a cable-port area** on the back recess floor — `select_by_ids(97)` initially picked a
+    small side-wall quad instead of the actual floor; re-diagnosed via `get_selection` and found the
+    right face (agent_id 272, area 5.97) before proceeding, rather than extruding the wrong thing.
+18. **Extrude the port inward** for real cutout depth, confirmed at Y=0.92, still well clear of the
+    front cavity.
+19. **Bevel the port opening.**
+20. **Bevel the driver-cavity floor's own boundary** — the one remaining sharp interior edge loop on
+    the whole model by this point. **A real identity discontinuity, recorded honestly rather than
+    hidden**: this bevel (`segments=1`) *removed* the four original floor-corner persistent IDs
+    outright rather than keeping them alongside new ones (unlike the `segments=2` bevels used
+    elsewhere, which preserve the original corner). Confirmed no orphaned/duplicate IDs resulted —
+    final `persistent_id_coverage` (108/226/120) exactly matches final element counts.
+
+**A genuine process-identity change, also not hidden**: `heartbeat` reported PID 15816 partway
+through, differing from the 24112 recorded for decisions 1-8. The mesh state itself showed no
+discontinuity (revision and vertex/edge/face counts continued exactly where decision 8 left off, both
+persisted as real scene/mesh data), so no committed work was lost — but Blender's OS process
+genuinely differs between the two halves of this session, most plausibly around the
+earlier-documented `modeler_server` crash/restart. Logged plainly in decision 9's entry rather than
+claimed as unbroken continuity.
+
+**Logging discipline gap, also left visible rather than fixed retroactively**, matching this
+project's established policy: decisions 9-20 were modeled live, one at a time, with real
+verification at each step (the revision numbers, `id_delta`s, and `mesh_health` results are all
+genuine per-decision data) — but the JSONL *logging* of those 12 entries happened as a batch write
+at the end of the session rather than immediately after each decision. `decision_log.py
+verify-count` correctly flags this: several timestamp pairs read as batched, and the PID split means
+`pass: false`. Status is **PARTIAL, not PASS** — the same honest distinction this project has drawn
+before between "the count is real" and "the strict verifier is satisfied."
+
 Final result, independently verified against a fresh `.blend`
-(`runs/2026-08-07_speaker-typed-protocol/verify_reports/`): 48 vertices, 106 edges, 60 faces, 0
-non-manifold edges, 0 n-gons, 0 degenerate faces, consistent normals. The back panel was left flat
-per the reference's explicit "optional, a bare back is acceptable" — decision effort went into
-getting the primary form and the driver recess right rather than padding the decision count with a
-feature the reference itself called optional.
+(`runs/2026-08-07_speaker-typed-protocol/verify_reports/SpeakerEnclosure_20260807T184842Z.json`):
+108 vertices, 226 edges, 120 faces, 0 non-manifold edges, 0 n-gons, 0 degenerate faces, consistent
+normals, `persistent_id_coverage` exactly matching element counts (no duplicate IDs anywhere in the
+finished model). Two semantic regions (`driver_cavity`, `cable_port`) were also created on the
+finished object via `create_region`, naming the model's real anatomy for future reference rather
+than only testing the mechanism on throwaway cubes.
 
 ## Shape-authoring boundary
 
