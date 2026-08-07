@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_011",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 136,
+  "observation": {"non_manifold_edges": 8, "two_loops": "the hole and the newly-opened tube end"},
+  "reason": "select both open boundary loops (all 8 non-manifold edges) and bridge them -- does not require exact alignment, connects them with a new strip of geometry regardless of the offset from the earlier miscalculation",
+  "chosen_action": {"op": "DecisionTransaction.perform(bridge_handle_loops)", "target": "Mug"},
+  "result_revision": 137,
+  "result_state": {"vertices": 202, "edges": 420, "faces": 218, "non_manifold_edges": 0, "degenerate_faces": 1, "note": "fully closed (0 non-manifold), but 1 degenerate face appeared, likely a thin connecting quad from the loop offset -- needs its own fix next"},
+  "evaluation": "accepted"
+}

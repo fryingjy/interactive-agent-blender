@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_004",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 129,
+  "observation": {"valence_after_both_bevels": {"3": 32, "4": 64}, "diagnosis": "beveling a rim edge loop adjacent to an n-gon cap creates one valence-3 vertex per cap-boundary vertex (16 top + 16 bottom = 32) -- the n-gon lacks the edge flow to absorb the bevel cleanly. This same issue likely affected the original bottle/flashlight rim bevels too, just never isolated and checked at the time."},
+  "reason": "rebuild with end_fill_type=TRIFAN instead of the default NGON -- rim vertices of a trifan cap stay valence-4 (2 fan neighbors + 1 to center + 1 down the side wall), confining the necessary pole to the flat cap's center where it causes no visible curvature artifact -- standard professional practice for flat end caps",
+  "chosen_action": {"op": "DecisionTransaction.perform(rebuild_with_trifan_caps)", "target": "Mug"},
+  "result_revision": 130,
+  "result_state": {"rebuilt": true},
+  "evaluation": "repaired"
+}

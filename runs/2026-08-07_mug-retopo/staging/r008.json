@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_008",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 133,
+  "observation": {"upper_face_index": 137, "lower_face_index": 154, "both_aligned_at_same_xy": true},
+  "reason": "delete the lower attachment face to open a hole -- the handle's swept end will bridge into this boundary",
+  "chosen_action": {"op": "DecisionTransaction.perform(delete_lower_attachment_face)", "target": "Mug"},
+  "result_revision": 134,
+  "result_state": {"vertices": 162, "edges": 336, "faces": 175, "non_manifold_edges": 4, "note": "expected -- open hole boundary, temporary until bridged"},
+  "evaluation": "accepted"
+}

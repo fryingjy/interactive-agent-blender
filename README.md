@@ -101,6 +101,34 @@ signal's reliability. 19/20 entries accepted-or-repaired, independently verified
 honest timing-discipline flags left visible per the same no-retroactive-editing policy as the
 100-cycle run.
 
+**That mesh still had genuinely bad topology, and `runs/2026-08-07_mug-retopo/` is now the
+authoritative evidence for the Mug specifically.** User feedback was blunt and correct: "topology
+on the mug model is shit." Every check above (`mesh_health`, `verify_mesh.py`) only measures
+*validity* — non-manifold edges, n-gons, degenerate faces — never *quality*: vertex valence/pole
+distribution or face-area consistency. The `mug-adaptive` mesh passed every validity check while
+carrying 83 irregular poles and a 6500:1 largest-to-smallest face-area ratio, because
+`state_probe.py` had no way to even see that until this session added `valence_distribution()` to
+the live diagnosis. Two real causes, found by direct inspection, not assumption: (1) the cylinder's
+default `NGON` end caps have no edge flow to absorb an adjacent rim bevel cleanly, so beveling the
+rim loop created a valence-3 pole at every one of the 32 cap-boundary vertices — fixed by rebuilding
+with `end_fill_type='TRIFAN'`, which confines the necessary pole to each cap's flat center instead
+of scattering it around the boundary; (2) the boolean-UNION handle attachment itself was the other
+major pole source, replaced with clean edge-flow construction (`bmesh.ops.spin` to sweep the handle
+profile, then `bpy.ops.mesh.bridge_edge_loops()` to close the far end without needing exact pivot
+math — an initial hand-derived pivot placed the swept loop at radius ~1.37 instead of the intended
+1.2, logged honestly as a caught mistake rather than silently patched, and bridging sidestepped the
+need to get that math exact). Result, independently verified against a fresh `.blend`
+(`runs/2026-08-07_mug-retopo/verify_reports/Mug_20260807T144924Z.json`): valence distribution
+`{4: 190, 5: 6, 6: 2, 16: 2}` (95% clean quad flow; the two valence-16 poles are at flat trifan cap
+centers, where a pole is harmless; only 8 irregular poles remain, at the bridge seam, versus 83
+before) and face-area ratio 25:1, versus 6500:1 before — roughly a 90% reduction in stray poles.
+One repair mistake surfaced and is logged honestly rather than hidden: a first attempt to clear a
+bridge-seam degenerate face via edge-collapse (the technique that had worked repeatedly earlier)
+did not work, because the actual defect was two vertices at identical coordinates — a doubled
+vertex, not a short edge — which needed `merge_by_distance` instead;
+`runs/2026-08-07_mug-retopo/decision_log.jsonl` records both the failed attempt and the correct
+fix as separate entries.
+
 ## Shape-authoring boundary
 
 See the module docstring in `blender_ops/mesh_ops.py`. Short version: mechanical/repair/detail

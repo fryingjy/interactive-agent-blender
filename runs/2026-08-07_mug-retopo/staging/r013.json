@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_013",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 138,
+  "observation": {"degenerate_face_verts": [[1.2,0,-0.6],[1.2,0,-0.8],[1.2,0,-0.6]], "diagnosis": "two of the triangle's three vertices are at identical coordinates -- a doubled vertex, correctly diagnosed as needing merge_by_distance not edge-collapse"},
+  "reason": "use the correct tool for coincident vertices",
+  "chosen_action": {"op": "DecisionTransaction.perform(mesh_ops.merge_by_distance)", "target": "Mug"},
+  "result_revision": 139,
+  "result_state": {"vertices": 200, "edges": 417, "faces": 217, "non_manifold_edges": 0, "ngons": 0, "degenerate_faces": 0},
+  "evaluation": "repaired"
+}

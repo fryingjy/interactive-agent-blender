@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_005",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 130,
+  "observation": {"naive_z_filter_edge_count": 32, "corrected_face_type_filter_edge_count": 16, "diagnosis": "naive z-matching also caught the trifan's spoke edges (center-to-rim); corrected by requiring the edge border one triangle and one quad face"},
+  "reason": "bevel the rim using the corrected selector, avoiding the spoke-edge contamination that a naive z-filter would have caused",
+  "chosen_action": {"op": "DecisionTransaction.perform(mesh_ops.bevel_edges)", "target": "Mug", "edges": 16},
+  "result_revision": 131,
+  "result_state": {"vertices": 66, "edges": 144, "faces": 80, "non_manifold_edges": 0, "ngons": 0},
+  "evaluation": "accepted"
+}

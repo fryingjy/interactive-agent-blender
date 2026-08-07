@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_002",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 127,
+  "observation": {"edge_count_verified": 16, "expected": 16, "match": true},
+  "reason": "verified exact edge selection before beveling this time, learning from the earlier base-bevel contamination mistake",
+  "chosen_action": {"op": "DecisionTransaction.perform(mesh_ops.bevel_edges)", "target": "Mug", "edges": 16},
+  "result_revision": 128,
+  "result_state": {"vertices": 64, "edges": 112, "faces": 50, "non_manifold_edges": 0, "ngons": 2},
+  "evaluation": "accepted"
+}

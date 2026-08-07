@@ -1,0 +1,12 @@
+{
+  "decision_id": "retopo_009",
+  "session_id": "2026-08-07_mug-retopo",
+  "pid": 6180,
+  "observation_revision": 134,
+  "observation": {"upper_face_center": [1.1543, -0.2296, 0.7], "pivot_math": "computed assuming a simple point at (1.2,0,0.7) rotating around pivot (1.2,0,0) would land exactly at (1.2,0,-0.7) after 180deg"},
+  "reason": "spin the upper attachment face 180deg around pivot (1.2,0,0), axis Y, to sweep the handle tube -- intended to land precisely on the pre-cut lower hole",
+  "chosen_action": {"op": "DecisionTransaction.perform(spin_handle_tube)", "target": "Mug", "steps": 10},
+  "result_revision": 135,
+  "result_state": {"vertices": 202, "edges": 416, "faces": 215, "note": "REAL MISCALCULATION FOUND AFTER THE FACT: the starting face spans a range of Y (it is not on the pivot's meridian plane, its 4 corners have differing Y values), so treating it as a single point at (1.2,0,0.7) was wrong -- corners did not land back on the cylinder surface (final radius 1.37 vs intended 1.2), offset from the hole by roughly 0.18 units. Not silently ignored -- diagnosed via direct vertex inspection, and the fix (bridge_edge_loops, which does not require exact alignment) is the next decision."},
+  "evaluation": "mistake_detected"
+}
