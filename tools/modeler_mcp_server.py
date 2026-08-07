@@ -89,6 +89,12 @@ def get_viewport_state() -> dict:
 
 
 @mcp.tool()
+def inspect_region(object_name: str, center_ids: list[int], rings: int = 2) -> dict:
+    """A local topology graph around one or more persistent vertex agent_ids, grown outward by `rings` edge-hops. Returns every vertex/edge/face touching the region (keyed by agent_id, not raw index), plus region-level quality signals: pole locations (valence != 4), edge-length ratio, face-area ratio, local triangle/quad/ngon counts, and connected-component count. Richer than get_selection/vertex_neighborhood for judging whether a specific area of the mesh reads as clean."""
+    return _call("inspect_region", name=object_name, center_ids=center_ids, rings=rings)
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")

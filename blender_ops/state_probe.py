@@ -212,6 +212,152 @@ def viewport_state():
     return result
 
 
+def inspect_region(name, center_ids, rings=2):
+    """A local topology graph around one or more persistent vertex IDs,
+    grown outward by `rings` edge-hops -- richer than vertex_neighborhood()
+    (which only covers one vertex's immediate neighbors). Returns vertices,
+    edges, and faces touching the region, each keyed by persistent agent_id
+    (not raw index, which can renumber elsewhere in the mesh), plus
+    region-level aggregates useful for judging local mesh quality: pole
+    locations (valence != 4), edge-length ratio, face-area ratio, local
+    tri/quad/ngon counts, and connected-component count within the region
+    (computed directly from the collected edges, not assumed to be 1)."""
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+
+    bm = bmesh_io.read_bmesh(obj)
+    bm.verts.ensure_lookup_table()
+
+    id_maps = persistent_ids.get_id_maps(name)
+    vert_id_to_index = id_maps["verts"]["id_to_index"]
+    vert_index_to_id = id_maps["verts"]["index_to_id"]
+
+    start_indices = set()
+    missing = []
+    for agent_id in center_ids:
+        idx = vert_id_to_index.get(agent_id)
+        if idx is None:
+            missing.append(agent_id)
+        else:
+            start_indices.add(idx)
+    if not start_indices:
+        _free_if_object_mode(obj, bm)
+        return {"error": f"none of center_ids {center_ids} resolved to a vertex on '{name}'", "missing_ids": missing}
+
+    frontier = set(start_indices)
+    visited = set(start_indices)
+    for _ in range(max(0, rings)):
+        next_frontier = set()
+        for idx in frontier:
+            for e in bm.verts[idx].link_edges:
+                other = e.other_vert(bm.verts[idx]).index
+                if other not in visited:
+                    next_frontier.add(other)
+        visited |= next_frontier
+        frontier = next_frontier
+        if not frontier:
+            break
+
+    region_verts = [bm.verts[i] for i in sorted(visited)]
+    region_edges = {e for v in region_verts for e in v.link_edges}
+    region_faces = {f for v in region_verts for f in v.link_faces}
+
+    verts_out = {}
+    poles = []
+    for v in region_verts:
+        vid = vert_index_to_id.get(v.index)
+        valence = len(v.link_edges)
+        is_boundary = any(not e.is_manifold for e in v.link_edges)
+        verts_out[vid if vid is not None else f"idx_{v.index}"] = {
+            "index": v.index,
+            "agent_id": vid,
+            "position": [round(c, 5) for c in v.co],
+            "valence": valence,
+            "is_boundary": is_boundary,
+            "neighbor_agent_ids": [vert_index_to_id.get(e.other_vert(v).index) for e in v.link_edges],
+        }
+        if valence != 4:
+            poles.append({"agent_id": vid, "index": v.index, "valence": valence, "position": [round(c, 5) for c in v.co]})
+
+    edge_lengths = []
+    edges_out = []
+    for e in region_edges:
+        length = e.calc_length()
+        edge_lengths.append(length)
+        angle = None
+        if len(e.link_faces) == 2:
+            angle = round(e.calc_face_angle(), 5)
+        edges_out.append({
+            "vertex_indices": [v.index for v in e.verts],
+            "vertex_agent_ids": [vert_index_to_id.get(v.index) for v in e.verts],
+            "length": round(length, 5),
+            "is_boundary": not e.is_manifold,
+            "face_angle_radians": angle,
+        })
+
+    face_areas = []
+    faces_out = []
+    tri = quad = ngon = 0
+    for f in region_faces:
+        area = f.calc_area()
+        face_areas.append(area)
+        n = len(f.verts)
+        if n == 3:
+            tri += 1
+        elif n == 4:
+            quad += 1
+        else:
+            ngon += 1
+        faces_out.append({
+            "index": f.index,
+            "vertex_count": n,
+            "area": round(area, 6),
+            "normal": [round(c, 5) for c in f.normal],
+        })
+
+    # connected components within the region, computed from the actual
+    # collected edges -- not assumed to be 1 just because this started as a
+    # BFS (center_ids could themselves be in disconnected parts of the mesh
+    # if rings=0 or the mesh has separate shells).
+    region_vert_indices = {v.index for v in region_verts}
+    adjacency = {i: [] for i in region_vert_indices}
+    for e in region_edges:
+        a, b = (v.index for v in e.verts)
+        if a in adjacency and b in adjacency:
+            adjacency[a].append(b)
+            adjacency[b].append(a)
+    remaining = set(region_vert_indices)
+    components = 0
+    while remaining:
+        components += 1
+        stack = [next(iter(remaining))]
+        while stack:
+            cur = stack.pop()
+            if cur in remaining:
+                remaining.discard(cur)
+                stack.extend(adjacency.get(cur, []))
+
+    _free_if_object_mode(obj, bm)
+
+    return {
+        "center_ids": center_ids,
+        "missing_center_ids": missing,
+        "rings": rings,
+        "vertex_count": len(region_verts),
+        "edge_count": len(region_edges),
+        "face_count": len(region_faces),
+        "vertices": verts_out,
+        "edges": edges_out,
+        "faces": faces_out,
+        "poles": poles,
+        "local_face_composition": {"tri": tri, "quad": quad, "ngon": ngon},
+        "edge_length_ratio": round(max(edge_lengths) / min(edge_lengths), 3) if edge_lengths and min(edge_lengths) > 1e-9 else None,
+        "face_area_ratio": round(max(face_areas) / min(face_areas), 3) if face_areas and min(face_areas) > 1e-9 else None,
+        "connected_components": components,
+    }
+
+
 def modifier_state(name):
     obj = bpy.data.objects.get(name)
     if obj is None:
