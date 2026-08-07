@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_097",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 90,
+  "observation": {"unit_settings": {"system": "METRIC", "scale_length": 1.0}, "frame_current": 25},
+  "reason": "unit settings fine (METRIC, scale 1.0), but current frame stuck at 25 with no animation present -- reset to 1 for a clean static-prop file state",
+  "chosen_action": {"op": "scene.frame_set(1)", "target": "scene"},
+  "result_revision": 91,
+  "result_state": {"frame_current": 1},
+  "evaluation": "accepted"
+}
