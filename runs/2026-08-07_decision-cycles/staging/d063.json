@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_063",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 56,
+  "observation": {"note": "completing the UV bounds validation set with SimpleBlock"},
+  "reason": "complete UV bounds validation across all three props",
+  "chosen_action": {"op": "UV bounds scan", "target": "SimpleBlock"},
+  "result_revision": 57,
+  "result_state": {"u_min": 0.0071, "u_max": 0.938, "v_min": 0.0071, "v_max": 0.971, "verdict": "valid"},
+  "evaluation": "accepted"
+}

@@ -1,0 +1,12 @@
+{
+  "decision_id": "decision_061",
+  "session_id": "2026-08-07_decision-cycles",
+  "pid": 6180,
+  "observation_revision": 54,
+  "observation": {"has_active_uv_layer": true, "uv_layer_count": 1},
+  "reason": "check UV coordinate bounds are valid (within 0-1 texture space) after the smart-project unwrap",
+  "chosen_action": {"op": "UV bounds scan", "target": "Bottle"},
+  "result_revision": 55,
+  "result_state": {"u_min": 0.0066, "u_max": 0.86, "v_min": 0.0066, "v_max": 0.993, "verdict": "valid, within bounds"},
+  "evaluation": "accepted"
+}
