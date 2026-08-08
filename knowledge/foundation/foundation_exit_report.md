@@ -48,32 +48,40 @@ lessons, Blender Secrets tips). Not attempted to bypass -- prohibited regardless
 video source in this report claims `video_frames`/`audio`/`captions`/`transcript` access it does
 not have.
 
-**Experiments completed:** ~19 distinct reproduction experiments this session (dissolve_verts,
+**Experiments completed:** ~27 distinct reproduction experiments this session (dissolve_verts,
 dissolve_edges, dissolve_faces, delete VERTS context, delete FACES_ONLY context, bridge_loops x3
 attempts, triangle_fill, grid_fill x3 attempts, bpy.ops.mesh.fill_grid simple case, bisect, spin,
 split, separate, symmetrize, vertex_slide, edge_slide, rip (failed), face-normal recalc,
-shade_smooth) plus several more already-verified from this project's prior sessions (extrude,
-inset, bevel corner-ID behavior, subdivide resolution-mismatch, curve bevel-cap weld).
+shade_smooth, Mirror+Bevel x2 orders, Boolean+Bevel x2 orders, Mirror+Subdivision x2 orders,
+Solidify+Bevel x2 orders) plus several more already-verified from this project's prior sessions
+(extrude, inset, bevel corner-ID behavior, subdivide resolution-mismatch, curve bevel-cap weld).
 
 **Failure-case experiments:** A genuine, real handful, not manufactured: bridge_loops on
 wire-edge rings filtered by `is_boundary` (silent no-op, root-caused to is_boundary requiring
 exactly 1 face), grid_fill on a multi-segment grid hole ("Connecting edge loops overlap", a real
 Blender-reported error, not silent), rip's `poll()` failure in headless context, one caught+fixed
-Python enum-value mistake (symmetrize direction).
+Python enum-value mistake (symmetrize direction), Mirror-before-Subdivision producing 16
+non-manifold edges (a genuine break, not a style issue), Bevel-before-Solidify being a complete
+no-op.
 
 **Topics with strong retrieval:** Bevel corner-ID behavior, bridge_loops' is_boundary gotcha,
-grid_fill's real limitation, split-vs-separate distinction, rip's headless-context limitation --
-each has a concrete, falsifiable, tested finding, not a vague impression.
+grid_fill's real limitation, split-vs-separate distinction, rip's headless-context limitation, all
+4 modifier stack-order pairs -- each has a concrete, falsifiable, tested finding, not a vague
+impression. Confirmed via `quizzes/quiz_001.md`: 13 questions answered from understanding, not by
+re-reading notes while composing.
 
-**Topics still weak:** Everything sculpt/UV/materials-adjacent (not touched at all), modifier
-stack-order interactions (not tested), Bevel modifier vs Bevel tool distinction, full mesh
-fundamentals doc coverage, any quiz-style retrieval check (not attempted).
+**Topics still weak:** Everything sculpt/UV/materials-adjacent (not touched at all), Bevel
+modifier vs Bevel tool distinction as a standalone topic (only tested at stack-order interaction
+points), full mesh fundamentals doc coverage. Quiz-style retrieval is no longer untouched (13
+questions answered, one honestly flagged as low-confidence: automated pinch/curvature-defect
+detection, Q3), but has not been repeated on a second pass to check retention over time.
 
-**Candidate skills:** None newly promoted from this session's experiments (the reproduction work
-this session was foundational/exploratory, not yet distilled into the project's `knowledge/skills/`
-executable-skill format). The grid_fill limitation and bridge_loops gotcha are strong candidates
-for a future skill entry once tested on a second case, per this project's own promotion
-discipline (CANDIDATE requires more than one data point before EXPERIMENTALLY_TESTED).
+**Candidate skills:** One promoted this session --
+`knowledge/skills/modifier-stack-order-subd-safe.json`, status EXPERIMENTALLY_TESTED (matched-pair
+controlled comparisons, not a single uncontrolled data point). The grid_fill limitation and
+bridge_loops gotcha remain strong candidates for a future skill entry once tested on a second
+case, per this project's own promotion discipline (CANDIDATE requires more than one data point
+before EXPERIMENTALLY_TESTED).
 
 **Contradicted claims:** None yet identified against this project's prior documented knowledge.
 
