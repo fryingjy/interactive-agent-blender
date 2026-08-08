@@ -19,10 +19,16 @@ bridge/fill/grid_fill, bisect, spin, split/separate, symmetrize, slides, rip, sh
 already had strong pre-existing coverage from this project's prior work (extrude, inset, bevel,
 subdivide, merge_by_distance) via real production use, not curriculum study.
 
-**Official modifier coverage:** Weak outside Subdivision Surface (well-covered via SoapDish) and
-Boolean (well-covered via a real, promoted skill from prior work). Bevel modifier (the
-non-destructive version, distinct from the Bevel tool), Mirror, Solidify, and stack-order pairs
-are not yet studied or tested.
+**Official modifier coverage:** Subdivision Surface (well-covered via SoapDish) and Boolean
+(well-covered via a real, promoted skill from prior work) remain the strongest. Bevel modifier
+(the non-destructive version, distinct from the Bevel tool) and Mirror are now covered
+specifically at their interaction points via stack-order testing (below), though not
+independently as standalone modifiers. **Update: all 4 directive-listed modifier stack-order
+pairs are now tested** (Mirror+Bevel, Boolean+Bevel, Mirror+Subdivision, Solidify+Bevel -- see
+`operator_cards/modifier_stack_order.md`), with one promoted to an executable skill
+(`knowledge/skills/mirror-before-bevel-subdivision-stack-order.json`): Mirror+Subdivision in the
+wrong order produces 16 non-manifold edges (a real break, not a style issue), and Solidify+Bevel
+in the wrong order makes Bevel a complete no-op.
 
 **Python/BMesh documentation coverage:** Partial. Read the bmesh.ops API page (truncated, not the
 full page) plus cross-referenced a WebSearch for grid_fill's real signature. Have not

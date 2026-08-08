@@ -1,0 +1,68 @@
+{
+  "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+
+  "applicability": {
+    "workflow": "modifier-stack",
+    "modifiers_involved": ["MIRROR", "SUBSURF", "BEVEL", "SOLIDIFY", "BOOLEAN"],
+    "defect": "non-manifold geometry or a no-op modifier caused by incorrect stack order"
+  },
+
+  "preconditions": [
+    "a modifier stack combines Mirror with Subdivision Surface, or Solidify with Bevel, or Boolean with Bevel, or Mirror with Bevel",
+    "the mesh has an open boundary that Mirror welds (Mirror+Subdivision, Mirror+Bevel), or is a flat/open shell that Solidify gives thickness to (Solidify+Bevel)"
+  ],
+
+  "required_observations": [
+    "evaluated mesh non_manifold_edges count (must be 0)",
+    "evaluated vertex positions near the mirror seam, to distinguish a genuinely flat/continuous seam from a carved/rounded one",
+    "evaluated vertex/face count, to detect a modifier silently doing nothing (e.g. Bevel on an unsolidified plane)"
+  ],
+
+  "action_policy": [
+    "Subdivision Surface must be placed BEFORE Mirror in the modifier stack, not after. Mirror-before-Subdivision produces non-manifold edges at the seam even when Mirror's own vertex merge succeeds at the base-cage level -- this is a correctness requirement, not a style preference.",
+    "Bevel should be placed BEFORE Mirror when a seamless join across the mirror plane is wanted. Mirror-before-Bevel causes Bevel to treat the former seam edges as ordinary edges and round/carve them, producing a visible facet at what should be a flat, continuous seam.",
+    "Solidify must be placed BEFORE Bevel when starting from an open/flat mesh (e.g. a plane). Bevel on an unsolidified single-face plane has no dihedral angle to act on and is effectively a no-op; Solidify must run first to give the mesh real 3D form.",
+    "Boolean before or after Bevel is a genuine strategic choice, not a correctness issue: Boolean-then-Bevel rounds the cut/hole rim too (more geometry); Bevel-then-Boolean leaves the cut sharp (less geometry). Choose based on whether the cut's edge should read as rounded or crisp."
+  ],
+
+  "expected_effects": [
+    "Mirror+Subdivision in the correct order (Subdivision first): 0 non-manifold edges in the evaluated mesh",
+    "Mirror+Bevel in the correct order (Bevel first): a flat, unrounded seam face at the mirror plane, with the two halves reading as one continuous surface",
+    "Solidify+Bevel in the correct order (Solidify first): the evaluated mesh's vertex/face count reflects real bevel geometry, not an unchanged flat shell"
+  ],
+
+  "success_predicates": [
+    "evaluated_mesh_health.non_manifold_edges == 0",
+    "no evaluated vertices with visibly rounded/offset coordinates sitting exactly on the mirror plane when a flat seam was intended"
+  ],
+
+  "failure_predicates": [
+    "evaluated_mesh_health.non_manifold_edges > 0 immediately after adding Subdivision Surface to a stack that already has Mirror above it",
+    "Bevel modifier added but the evaluated mesh's vertex/face count is unchanged from before adding it (Bevel silently doing nothing, usually because it ran before Solidify on a flat shell)"
+  ],
+
+  "recovery": [
+    "reorder the modifier stack (Blender modifiers can be reordered without data loss -- this does not require rebuilding geometry) and re-check non_manifold_edges / vertex-face counts on the evaluated mesh"
+  ],
+
+  "sources": [
+    {
+      "type": "direct_experiment",
+      "description": "This project's own live reproduction, session 2026-08-07 (knowledge-first foundation phase): built matched pairs of scratch objects (a cube with its inner face touching a mirror plane; a plane for Solidify+Bevel) with modifiers added in both orders, compared via evaluated_probe-style inspection (vertex/face/non-manifold counts, seam vertex positions).",
+      "trust_tier": "not applicable (first-party direct experiment, not an external source)"
+    }
+  ],
+
+  "experiments": [
+    {
+      "type": "controlled, matched-pair (this project's own reproduction lab, not an external tutorial)",
+      "description": "Mirror+Subdivision: Mirror->Subdivision gave 171v/176f/16 non-manifold edges; Subdivision->Mirror gave 196v/192f/0 non-manifold edges, with the evaluated seam empty of exactly-on-plane vertices in the working order and populated with rounded-looking coordinates in the broken order. Mirror+Bevel: Mirror->Bevel gave 68v/67f/12 non-manifold with bevelled coordinates at the seam; Bevel->Mirror gave 108v/107f/4 non-manifold with a flat unbevelled seam face. Solidify+Bevel: Solidify->Bevel gave 56v/54f; Bevel->Solidify gave 8v/6f, identical to an un-bevelled solidified plane (confirming the no-op). Boolean+Bevel: both orders gave 0 non-manifold edges but different face counts (248v/216f vs 120v/88f), confirming this pair is a style choice, not a correctness issue.",
+      "limitation": "Tested on simple primitive shapes (cube, plane, cube+cylinder cutter), not yet on a real production prop combining these modifiers. Mirror+Subdivision and Mirror+Bevel were each tested with only one specific mirror-plane geometry (a flat face exactly on the plane); an angled or curved seam has not been tested and might behave differently."
+    }
+  ],
+
+  "runtime_usage": [],
+
+  "status": "EXPERIMENTALLY_TESTED",
+  "status_note": "Genuine controlled comparison (matched pairs, same starting geometry, only modifier order varied), with clear, measured before/after evidence for each of the 4 directive-listed pairs -- meets this project's EXPERIMENTALLY_TESTED bar (unlike the earlier CANDIDATE-status SoapDish rim skill, which had only one uncontrolled real-world data point). Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED -- no real prop in this project has combined these modifiers yet; promote further only after genuine use on an actual asset."
+}
