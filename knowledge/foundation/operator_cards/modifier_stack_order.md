@@ -58,5 +58,49 @@ SpeakerEnclosure driver cavity (built via inset+extrude instead, a different str
 this is new, complementary knowledge about a boolean-based alternative, not a contradiction of
 prior work).
 
-## Not yet tested
-Mirror + Subdivision, Solidify + Bevel -- deferred, real gap, listed explicitly in the directive.
+## Mirror + Subdivision
+
+| Order | Verts | Faces | Non-manifold |
+|---|---|---|---|
+| Mirror -> Subdivision | 171 | 176 | **16** |
+| Subdivision -> Mirror | 196 | 192 | **0** |
+
+The most consequential result of the four pairs tested: **Mirror before Subdivision genuinely
+breaks the mesh** (16 non-manifold edges -- Subsurf's Catmull-Clark evaluation trips on the
+merged seam even though Mirror's own weld/merge succeeded at the base-cage level). **Subdivision
+before Mirror is clean** (0 non-manifold) -- Subsurf insets the evaluated surface slightly at an
+open boundary (confirmed: no evaluated vertices remain exactly at X=0 in this order, unlike the
+seam-sample in the broken order which still shows verts sitting at X=0), and Mirror then
+duplicates that already-correct result without issue.
+
+**Conclusion, directly load-bearing for any future prop combining Mirror with Subdivision
+Surface: Subdivision must come BEFORE Mirror in the stack**, not after -- this is a correctness
+requirement here, not just a stylistic preference like Boolean+Bevel above.
+
+## Solidify + Bevel
+
+| Order | Verts | Faces | Non-manifold |
+|---|---|---|---|
+| Solidify -> Bevel | 56 | 54 | 0 |
+| Bevel -> Solidify | 8 | 6 | 0 |
+
+Tested on a Plane (an open, single-face mesh -- Solidify's real use case is giving a flat/open
+shell thickness, which a pre-closed cube barely exercises). **Bevel -> Solidify is effectively a
+no-op for Bevel**: a flat single-face plane's boundary edges each have only one adjacent face, so
+there is no real dihedral angle for Bevel to round -- the result (8v/6f) is indistinguishable from
+a plain thin box with no bevel applied at all. **Solidify -> Bevel works as expected** (56v/54f):
+Bevel runs on the now-3D solid shape and correctly rounds its edges.
+
+**Conclusion**: for Solidify + Bevel, this isn't just a preference -- **Solidify must come first
+or the Bevel step does essentially nothing.**
+
+## Summary across all 4 listed pairs
+Three different KINDS of stack-order consequence found, not the same lesson repeated four times:
+1. **Mirror + Bevel**: both orders "work" (no invalid geometry), but only one is visually correct
+   (Bevel first avoids carving the seam).
+2. **Boolean + Bevel**: both orders are valid AND visually reasonable -- a genuine strategic
+   choice (Boolean first if the cut's rim should also be rounded).
+3. **Mirror + Subdivision**: only one order is even topologically valid (Subdivision first);
+   **Solidify + Bevel**: only one order makes Bevel do anything at all (Solidify first).
+Do not generalize "put X before Y" from one pair to another -- each pair was tested independently
+because the underlying reason differs each time.

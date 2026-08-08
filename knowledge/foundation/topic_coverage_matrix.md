@@ -31,7 +31,7 @@ caveat on every row.
 | Subdivision Surface modifier | ✓ | ✗ | ✓ (pre-existing, SoapDish milestone) | ✓ (pre-existing: mismatched-resolution n-gons) | ✗ |
 | Boolean modifier | ✗ | ✗ | ✗ | ✓ (pre-existing: groove-cut cleanup skill) | ✗ |
 | Mirror modifier | ✗ | ✗ | ✗ | ✗ | ✗ |
-| Modifier stack order (Mirror/Bevel/Boolean/Subdiv pairs) | ✗ | ✗ | ~ (2 of 4 listed pairs: Mirror+Bevel, Boolean+Bevel) | ✓ (Mirror+Bevel: a first test was a false negative, caught and corrected; real seam-carving artifact confirmed and root-caused) | ✗ |
+| Modifier stack order (Mirror/Bevel/Boolean/Subdiv/Solidify pairs) | ✗ | ✗ | ✓ (all 4 directive-listed pairs: Mirror+Bevel, Boolean+Bevel, Mirror+Subdivision, Solidify+Bevel) | ✓✓✓ (Mirror+Bevel: seam-carving artifact; Mirror+Subdivision: 16 non-manifold edges, genuinely broken in the wrong order; Solidify+Bevel: wrong order makes Bevel a no-op) | ✗ |
 | Retopology fundamentals | ✗ | ✗ | ~ (pre-existing: Mug retopo session, not curriculum-driven) | ✗ | ✗ |
 | Reference blockout | ✓ (Image Empty page) | ✗ | ~ (pre-existing, gadget v1/v2 -- v1 rejected, v2 measured) | ✓ (pre-existing: v1's eyeball-then-check failure, root-caused and fixed in v2) | ✗ |
 | Curve objects (bevel_depth, taper_object) | ~ (API-level, not the dedicated Manual page) | ✗ | ✓ (pre-existing, curve_ops.py this session) | ✓ (pre-existing: cap-weld bug) | ✗ |
