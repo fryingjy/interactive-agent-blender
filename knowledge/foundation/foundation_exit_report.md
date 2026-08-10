@@ -228,6 +228,15 @@ and passes fresh-process evaluated verification on 19/19 UV-bearing closed meshe
 reference had already been used, this is corrective production evidence rather than another
 held-out generalization pass. See `runs/2026-08-10_profile-authored-sword/`.
 
+A second profile-authored transfer uses the supplied tactical-axe reference to test a different
+hard-surface silhouette family. A measured 35-point full-tang contour, exact through-aperture,
+separate raised grip scales, exposed edge, and four fasteners produce seven semantic meshes without
+mesh primitive operators. Normalized side-profile IoU is 0.942380, aperture/negative-space IoU is
+0.771739, and fresh-process evaluated verification passes 7/7 UV-bearing closed meshes. Incorrect
+tessellator assumptions, cropped framing, and a gray-background threshold failure are retained.
+Because this source was selected during implementation, the result is corrective transfer rather
+than held-out evidence. See `runs/2026-08-10_profile-authored-axe/`.
+
 No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
 
 ## Stronger areas
@@ -254,7 +263,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    observability, and five controlled intervention signatures now pass, but mixed real defects remain.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
-   supplied references remain reserved for broader generalization evidence.
+   supplied references remain reserved for broader generalization evidence. The later tactical-axe
+   profile pass is useful cross-family corrective evidence but does not consume or satisfy that
+   held-out reserve.
 6. Advanced external instruction now includes one long-form retopology live study; local transcription and
    authored-caption ingestion are functional, but rigged facial expression transfer, production
    sculpt/retopology, and mixed-cause production surface diagnosis remain.

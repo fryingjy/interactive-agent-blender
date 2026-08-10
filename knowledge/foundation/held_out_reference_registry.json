@@ -40,7 +40,19 @@
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\e1b39bffaae0d8e9dee5c2ff0d505895.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\3bb2315f3c64224ffd4ec41e7a2e8b61.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\9b1d68cf7b70b52855a75b14349ad10e.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
-    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\tactical_axe.png", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"},
+    {
+      "path": "C:\\Users\\odane\\Downloads\\blender\\ref\\tactical_axe.png",
+      "status": "CORRECTIVE_TRANSFER_COMPLETED_NOT_HELD_OUT",
+      "first_used": "2026-08-10",
+      "reason": "User explicitly selected this supplied reference for profile-authored modeling after the registry was created; it is therefore used evidence and cannot remain excluded or become held out.",
+      "result": {
+        "normalized_side_silhouette_iou": 0.9423800325335502,
+        "negative_space_iou": 0.7717391304347826,
+        "independent_components_clean": "7/7",
+        "primitive_mesh_operators_used": 0,
+        "artifact": "runs/2026-08-10_profile-authored-axe/profile_authored_axe.blend"
+      }
+    },
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\medieval-swords-blades-shapes-edges-curvatures-varieties-knife-dagger-weapon-set-honor-authority-symbol-realistic-vector-illustration_1284-73163.avif", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"}
   ]
 }

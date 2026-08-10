@@ -48,6 +48,7 @@ open and is not falsely claimed.
 | GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |
 | Supplied `.blend` example learning | six read-only structural audits plus controlled renders; component/high-low/modifier lessons separated from rejected quality assumptions | complete learning slice; examples are not blindly labeled professional |
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
+| Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 
 ## Important disproved assumptions retained
 
@@ -78,7 +79,9 @@ open and is not falsely claimed.
 
 The profile-authored sword rebuild closes the locally actionable primitive-assembly criticism for
 that reference. It does not close the human/expert acceptance gate or turn a reused reference into
-new held-out evidence.
+new held-out evidence. The subsequent tactical-axe transfer demonstrates that the profile workflow
+extends to a different hard-surface silhouette and real negative space, but it is also same-reference
+corrective evidence rather than an unseen professional-quality judgment.
 
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.

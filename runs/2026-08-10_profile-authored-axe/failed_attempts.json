@@ -1,0 +1,35 @@
+{
+  "lab": "profile_authored_tactical_axe",
+  "attempts": [
+    {
+      "stage": "contour_tessellation",
+      "status": "REJECTED_FIXED",
+      "failure": "Blender 5.2 mathutils.geometry.tessellate_polygon returned integer indices in this execution path, while the first implementation assumed Vector-like return values.",
+      "observable_effect": "The build stopped before scene output instead of silently emitting malformed faces.",
+      "correction": "Accept both integer indices and coordinate-like tessellator results, then resolve every triangle back to the authored contour indices.",
+      "retained_rule": "Treat Blender API return-shape assumptions as version-sensitive and assert index validity before mesh creation."
+    },
+    {
+      "stage": "visual_review",
+      "status": "REJECTED_FIXED",
+      "failure": "The first orthographic camera scale (5.65) cropped the axe head and showed mainly the grip.",
+      "observable_effect": "The render could not support whole-asset silhouette judgment.",
+      "correction": "Increase orthographic scale to 11.5 and re-render the complete profile.",
+      "retained_rule": "A successful render is not evidence until the full measured bounds and semantic components are visibly reviewable."
+    },
+    {
+      "stage": "silhouette_measurement",
+      "status": "REJECTED_FIXED",
+      "failure": "A background threshold of 240 classified the light-gray source background as axe foreground.",
+      "observable_effect": "The reference mask covered nearly the whole image and produced a meaningless normalized IoU of 0.269494.",
+      "correction": "Use threshold 220, inspect the extracted reference mask and bounding box, then rerun alignment.",
+      "corrected_result": {
+        "normalized_silhouette_iou": 0.9423800325335502,
+        "negative_space_iou": 0.7717391304347826,
+        "centroid_error_normalized": 0.0013143067304356554,
+        "symmetric_contour_error_normalized": 0.0015225109349208382
+      },
+      "retained_rule": "Never trust a silhouette score before visually validating both binary masks and their foreground bounds."
+    }
+  ]
+}

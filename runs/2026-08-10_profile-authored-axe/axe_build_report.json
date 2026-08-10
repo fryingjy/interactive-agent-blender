@@ -1,0 +1,22 @@
+{
+  "lab": "profile_authored_tactical_axe",
+  "blender_version": "5.2.0 LTS",
+  "reference": "C:\\Users\\odane\\Downloads\\blender\\ref\\tactical_axe.png",
+  "construction": "measured contour extrusion + exact aperture boolean + raised grip + authored cylinders",
+  "mesh_primitive_operator_calls": 0,
+  "semantic_meshes": 7,
+  "fasteners": 4,
+  "source_uncertainty": [
+    "Thresholding extracts silhouette evidence, not hidden construction or physical dimensions.",
+    "The raised grip boundary is an eroded semantic approximation because the source is a single side image.",
+    "Depth and bevel hierarchy require explicit modeling judgment."
+  ],
+  "assertions": {
+    "real_head_aperture": true,
+    "separate_grip_scales": true,
+    "multiple_fasteners": true,
+    "evaluated_bevel_hierarchy": true,
+    "uv_on_every_mesh": true
+  },
+  "pass": true
+}

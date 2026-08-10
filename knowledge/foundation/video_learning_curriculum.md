@@ -29,7 +29,7 @@ visual-study credit.
 | P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
 | P1 | Topology and SubD | pole placement, loop termination, curved holes, pinching and density | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
 | P1 | Hard surface | boolean/SubD/hybrid choice, modifier order, bevel hierarchy, cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
-| P1 | Reference modeling | perspective uncertainty, landmark ratios, silhouette and negative space | multi-view reference asset with measured checkpoints | partial; chair failure retained |
+| P1 | Reference modeling | perspective uncertainty, landmark ratios, silhouette and negative space | multi-view reference asset with measured checkpoints | single-view sword-to-axe profile transfer passes; gray-background mask and chair failures retained; multi-view remains partial |
 | P2 | Stylized/low-poly | shape language, simplification budget, silhouette hierarchy | same concept in two style constraints | pending |
 | P2 | Curves/procedural | when curves or Geometry Nodes outperform mesh editing | cable/trim/ornament transfer asset | mechanics partial |
 | P2 | Materials/lighting/render | material response as surface evidence; camera and light neutrality | neutral review rig versus beauty rig | materials partial; video pending |
