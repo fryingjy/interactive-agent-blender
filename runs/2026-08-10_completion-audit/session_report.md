@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-10  
 **Branch:** `codex/improve-master-directive`  
-**Status:** PARTIAL — held-out, lesson, and asset-example inputs processed; elapsed-time and human-review gates remain
+**Status:** PARTIAL — held-out and transfer benchmarks passed; elapsed-time and human-review gates remain
 
 ## Completed local scope
 
@@ -18,7 +18,7 @@
 - UV/material/production evidence now includes packed tangent-normal/PBR GLB semantics and an
   explicitly separated editable-source versus delivery-format topology judgment.
 - Approximately 156 controlled/reproduction cases are recorded. Latest repository regression:
-  18/18 unit tests, 313/313 JSON files parsed, Python compilation passed, `git diff --check` passed.
+  18/18 unit tests, 368/368 JSON files parsed, Python compilation passed, `git diff --check` passed.
 
 ## Preserved failures in this final increment
 
@@ -45,17 +45,21 @@
    captions/transcripts were present, so speech comprehension is not claimed.
 3. Seven diverse non-firearm `.blend` examples from the supplied library opened successfully and
    were inventoried. This establishes accessible breadth, not professional acceptance.
+4. A second untouched reference entered transfer benchmark D. The typed run produced a stylized
+   trident with normalized front-silhouette IoU 0.6766 against the predeclared 0.65 gate and 14/14
+   independently clean evaluated components. No asset-specific builder or post-seen threshold was
+   introduced.
 
 ## External gates that remain
 
 1. A multi-day retention result requires a quiz on a later calendar day after 2026-08-10; it cannot
    be honestly manufactured in this same-day run.
-2. Professional stages 4–7 require multiple successful unseen transfer assets with little human
-   intervention and independent experienced-modeler acceptance. The supplied file inventory does
-   not replace that human review, and one passing held-out asset is not broad transfer evidence.
+2. Professional stages 4–7 require broader successful unseen transfer evidence with little human
+   intervention and independent experienced-modeler acceptance. The held-out sword and cross-family
+   trident now provide two passing reference assets, but they do not replace that human review.
 
-Foundation status therefore remains `PARTIAL`, but held-out readiness is now `YES`: seven supplied
-references remain reserved for later transfer runs.
+Foundation status therefore remains `PARTIAL`, but held-out readiness is `YES`: benchmarks B and D
+passed and six supplied references remain reserved for later transfer runs.
 
 ## Inputs that unblock the next valid run
 

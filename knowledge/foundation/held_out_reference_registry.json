@@ -16,7 +16,18 @@
     },
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\ulyca3epaelm.webp", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\Unconfirmed 915819.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
-    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\f4fb9a354f6b40482eb243c49caec5b9.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {
+      "path": "C:\\Users\\odane\\Downloads\\blender\\ref\\f4fb9a354f6b40482eb243c49caec5b9.png",
+      "status": "TRANSFER_D_COMPLETED_PASS",
+      "benchmark": "transfer_d_stylized_trident_001",
+      "first_used": "2026-08-10",
+      "result": {
+        "normalized_front_silhouette_iou": 0.6765773552290406,
+        "target": 0.65,
+        "independent_components_clean": "14/14",
+        "artifact": "runs/2026-08-10_transfer-trident/stylized_trident.blend"
+      }
+    },
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\b6f4b882c129783d9f1f9a485d3cb2c0.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\e1b39bffaae0d8e9dee5c2ff0d505895.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\3bb2315f3c64224ffd4ec41e7a2e8b61.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},

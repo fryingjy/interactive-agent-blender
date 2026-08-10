@@ -4,7 +4,7 @@
 
 **FOUNDATION STATUS: PARTIAL**
 
-**READY FOR HELD-OUT MODELING: YES — benchmark B passed; seven references remain reserved**
+**READY FOR HELD-OUT MODELING: YES — benchmarks B and D passed; six references remain reserved**
 
 This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
 
@@ -211,19 +211,20 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 2. Complex seam-authored UVs, high-to-low normal baking, and a named external-engine validation.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
 4. Broader validated surface judgment beyond candidate pinching/waviness signals.
-5. Passing held-out visual modeling across multiple references without benchmark-specific builders;
-   benchmark B passed at 0.8285 IoU, but seven reserved references have not yet tested transfer.
+5. Broader held-out visual modeling across additional shape families without benchmark-specific
+   builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
+   supplied references remain reserved for broader generalization evidence.
 6. Captioned/transcribed advanced external instruction; the completed official lessons provide real
    video/frame access but no transcript modality.
 
 ## Exit decision
 
-The foundation remains **PARTIAL**. External visual instruction and a genuine held-out visual and
-technical pass now exist; multi-day retention, successful cross-family transfer, and independent
-professional judgment remain below the gate.
+The foundation remains **PARTIAL**. External visual instruction, a genuine held-out visual and
+technical pass, and one successful cross-family transfer now exist. Multi-day retention and
+independent professional judgment remain below the gate.
 
 ## Highest-value next step
 
-On a later calendar day, run the retention quiz; then use one of the seven reserved references for
-a transfer run without further benchmark-driven implementation changes. Follow successful visual
-transfer with independent experienced-modeler review.
+On a later calendar day, run the retention quiz. Then obtain independent experienced-modeler review
+of the held-out sword and transfer trident; use the six remaining reserved references only when
+broader shape-family evidence is required.
