@@ -14,14 +14,14 @@ open and is not falsely claimed.
 | Critical modifier breadth | standalone and second-shape Bevel, Mirror, Boolean, Solidify; Array, Shrinkwrap, Simple Deform | controlled evidence complete |
 | Secondary modifier breadth | Screw, Remesh, Decimate, Triangulate, Smooth, Corrective Smooth, Laplacian Smooth, Curve, Lattice | 9/9 controlled foundation cases; transfer mostly pending |
 | Contextual topology/SubD | pole, triangle/n-gon context, density, support spacing, cylindrical routing, terminations | controlled evidence complete |
-| Retopology foundations | official planning lesson studied; low cage conformance, actual brush-sculpt handoff, sparse-vs-adequate deformation density, historical Mug rebuild | planning/density evidence complete; facial patch/pose transfer remains |
+| Retopology foundations | official planning and 2h12m live lessons studied; low cage conformance, actual brush-sculpt handoff, sparse-vs-adequate density and away-vs-in-bend pole tests, historical Mug rebuild | planning/density/pole mechanism evidence complete; rigged facial pose transfer remains |
 | Sculpt foundations | official 25-minute lesson studied; Multires/voxel remesh; seven-stroke Draw/Crease mutation; false-FINISHED and smoothing controls; clean low-cage handoff | mechanism evidence complete; production form quality remains open |
 | UV/material/production | scale warning, unwrap, node state, slots, organization, packed tangent normal/PBR semantics, OBJ/GLB round trip | foundational evidence complete |
 | Seam-authored high/low bake | official UV lesson studied; authored cut graph on a different flared housing; real Cycles Selected-to-Active tangent bake; missing-source failure; Non-Color invariant | controlled PASS with 2/2 fresh-process mesh verification; production transfer pending |
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
-| External official lesson study | seven Blender-authored/Studio lessons; decoded frames/audio/captions, timestamped observations, UV bake, sculpt, deformation-density, and review-light transfer | genuine visual/speech access; older UI and transcription errors explicitly bounded |
+| External official lesson study | eight Blender-authored/Studio lessons; 11,341.467 seconds, 108 decoded frames, audio/captions, timestamped observations, and different-shape transfers | genuine visual/speech access; older UI and automatic-caption errors explicitly bounded |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
@@ -61,8 +61,9 @@ open and is not falsely claimed.
 
 ## Items that cannot honestly be completed from current inputs
 
-1. **Advanced expert video curriculum:** seven official lessons are now processed with real
-   frames/audio/captions and source-to-skill experiments. Facial patch/pole transfer, production
+1. **Advanced expert video curriculum:** eight official lessons are now processed with real
+   frames/audio/captions and source-to-skill experiments. Pole placement has a controlled
+   different-shape articulation transfer; rigged facial expression transfer, production
    sculpt/retopology, and surface-defect cause classification remain absent.
 2. **Multi-day retention:** two quizzes exist on the same date. Elapsed days cannot be manufactured
    within one execution session.

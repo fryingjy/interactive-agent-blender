@@ -71,9 +71,9 @@ The weakest breadth remains production-quality organic sculpting, production art
 surface-defect cause classification, multi-day retrieval retention,
 professional visual judgment, and broader transfer validation.
 
-Video evidence is credited only for five Blender-authored Fundamentals lessons actually decoded,
-locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial
+Video evidence is credited only for eight Blender-authored/Studio lessons actually decoded,
+captioned or locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial
 mesh-fundamentals coverage; dedicated Extrude and Bevel lessons give substantial operator coverage;
-the UV and Sculpt lessons now have different-shape experiments. The older Blender 2.80 UI is
+the UV, Sculpt, facial-planning, pole-placement, and lighting lessons now have different-shape experiments. The older Blender 2.80 UI is
 version-limited, and machine transcript wording is not treated as authoritative. All unrelated
 Video cells remain `—`.

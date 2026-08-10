@@ -182,12 +182,13 @@ regression evidence rather than held-out judgment.
 
 ### Video and structured training
 
-Seven complete official Blender lessons were ingested through the approved-root pipeline: Modeling
+Eight complete official Blender lessons were ingested through the approved-root pipeline: Modeling
 Introduction, Extrude, Bevel Tool, UV Unwrapping, Intro to Sculpting, and Planning the Facial
-Retopology, plus Three Point Lighting. They provide 3,403.447 seconds of real video/audio and 81 decoded frame samples
+Retopology, Three Point Lighting, plus Snow - Stylized Character Retopology Live #2. They provide
+11,341.467 seconds of real video/audio and 108 decoded frame samples
 (`runs/2026-08-10_online-lessons/`). The first four use CC BY 3.0 Wikimedia mirrors; the sculpt
 retopology, and lighting lessons are free official Blender Studio sources with 650 authored-caption segments. Local
-faster-whisper supplied 196 timestamped segments where creator captions were absent. Important
+machine transcription/caption sidecars supplied 4,791 timestamped segments where creator captions were absent. Important
 claims were checked against decoded frames, current official documentation, and Blender 5.2
 experiments. Machine wording remains fallible and is not treated as an authoritative quotation.
 The UV lesson produced an authored-seam tangent-bake test; the sculpt lesson produced a seven-stroke
@@ -195,6 +196,12 @@ continuous-surface test and retained a false-`FINISHED` failure; retopology plan
 a sparse-versus-adequate articulation-density test; three-point lighting transferred to a grazing
 surface-review rig that reveals a localized dent 2.57× more strongly than broad frontal light. The
 earlier six-second project fixture remains pipeline-only evidence.
+
+The advanced Snow live lesson adds patch delimitation, loop tracing, density reduction, functional
+eyelid/inner-mouth structures, and pole-placement reasoning. Its different-shape hose transfer held
+topology and a 92-degree bend constant while moving one identical five-pole pair: bend-zone mean
+deviation increased 3,437.77x when the pair sat inside articulation. Two invalid deformation-axis
+setups are retained. This does not substitute for a rigged facial expression test.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
@@ -231,8 +238,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
    supplied references remain reserved for broader generalization evidence.
-6. Advanced external instruction beyond current fundamentals/planning; local transcription and
-   authored-caption ingestion are functional, but facial patch/pole expression transfer, production
+6. Advanced external instruction now includes one long-form retopology live study; local transcription and
+   authored-caption ingestion are functional, but rigged facial expression transfer, production
    sculpt/retopology, and surface-defect cause classification remain.
 
 ## Exit decision

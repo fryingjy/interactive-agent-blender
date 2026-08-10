@@ -1,0 +1,22 @@
+{
+  "status": "REJECTED_AND_REPLACED",
+  "attempts": [
+    {
+      "attempt": 1,
+      "setup": "Z-long tube with Simple Deform Bend also evaluated around Z",
+      "observed_failure": "The evaluated centerline remained effectively straight, so the apparent error ratio did not test articulation.",
+      "decision": "Reject the result; a modifier returning geometry is not evidence that the intended deformation occurred."
+    },
+    {
+      "attempt": 2,
+      "setup": "Y-long tube with a Simple Deform orientation adjustment",
+      "observed_failure": "The output formed a bow-tie/hourglass rather than a coherent bent hose.",
+      "decision": "Reject the result because the deformation model and coordinate frame were still wrong."
+    }
+  ],
+  "correction": {
+    "setup": "Evaluate the same Subdivision Surface level on each topology, then apply one explicit 92-degree analytic circular-arc mapping to every evaluated vertex.",
+    "reason": "The analytic map makes the intended centerline, transported cross-section, and controlled variables explicit, so topology placement is the remaining independent variable.",
+    "evidence": "pole_placement_deformation_report.json"
+  }
+}

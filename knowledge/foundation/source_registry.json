@@ -1024,5 +1024,40 @@
       ],
       "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
     }
+  },
+  {
+    "id": "blender-studio-snow-retopology-live-2",
+    "url": "https://www.youtube.com/watch?v=tRqCeWZLqQo",
+    "local_path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
+    "title": "Snow - Stylized Character Retopology Live #2",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "2021 workflow; pole-placement mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["retopology", "edge-flow", "poles", "patches", "deformation", "facial-topology"],
+    "access": {"text": true, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "automatic-captions"],
+    "metadata": {
+      "duration_seconds": 7938.020136,
+      "sha256": "c839efc9c4982e94b1cc01256165bd8afc88a5694d10202b9c5ceb7d5b8a79dd",
+      "automatic_caption_segments": 4595,
+      "decoded_frame_checkpoints": 27,
+      "direct_observations": [
+        "Three/five-pole redirections delimit readable facial patches without sending every loop through the head",
+        "Loops are reduced before low-demand neck and inner-ear regions while eye and mouth deformation retain stronger flow",
+        "Poles are kept away from proximity-loop creases and major articulation when possible",
+        "Loop paths are traced downstream to detect spirals, and localized relax protects landmarks and sharp folds",
+        "Inner mouth and eyelids are functional structures whose loop counts and expression behavior must be tested"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-studio-snow-retopology-live-2/video_ingest_report.json",
+        "runs/2026-08-10_pole-placement-deformation/pole_placement_deformation_report.json",
+        "runs/2026-08-10_pole-placement-deformation/failed_simple_deform_axis.json",
+        "runs/2026-08-10_pole-placement-deformation/fresh_collection_verify.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+    }
   }
 ]

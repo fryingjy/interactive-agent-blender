@@ -8,6 +8,8 @@ Source: <https://docs.blender.org/manual/en/5.0/modeling/meshes/retopology.html>
 
 Video: <https://studio.blender.org/training/stylized-character-workflow/5e5407ec8faf011a381510d7/>
 
+Advanced live study: <https://www.youtube.com/watch?v=tRqCeWZLqQo>
+
 - Voxel remesh rebuilds uniform volume-based topology; lower voxel size preserves more detail at higher density.
 - Voxel remesh is unsuitable as final deformation topology and is not the preferred route for Subdivision/Multires cages.
 - Quad remesh can better suit Subdivision, but automatic remesh still does not replace intentional deformation flow.
@@ -33,6 +35,15 @@ The official planning lesson was inspected through 15 decoded frames and 140 aut
 segments. The tube bend is a different-shape transfer of its articulation-density rule: the sparse
 failure has 2.62× the adequate cage's mean error and 3.07× its maximum error. This does not yet
 validate facial patch/pole routing, mouth interiors, or expression shape keys.
+
+The 2h12m Blender Studio live retopology lesson was inspected through 27 decoded checkpoints and
+4,595 automatic-caption segments. It adds concrete patch-routing rules: trace where loops actually
+lead, use three/five-pole redirections to delimit patches, avoid high-valence clusters, reduce loops
+before low-demand regions, keep poles out of proximity-loop creases and major articulation, and
+build eyelids/inner mouth as functional structures. A controlled different-shape transfer placed
+the same five-pole pair either away from or inside a 92-degree hose bend. Bend-zone mean deviation
+from the all-quad control rose from `4.13698e-08` to `1.42220e-04` when the poles were in the bend,
+a 3,437.77x ratio. The result is mechanism evidence, not a claim of facial animation quality.
 
 ## Decision rule
 
