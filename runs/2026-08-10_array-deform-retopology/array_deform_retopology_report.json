@@ -1,0 +1,467 @@
+{
+  "lab": "array_shrinkwrap_simple_deform_retopology",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "Array_Relative",
+      "question": "Does relative offset follow base bounding-box size?",
+      "settings": {
+        "count": 3,
+        "relative": [
+          1.0,
+          0,
+          0
+        ]
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 18,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            -11.0,
+            -5.0
+          ],
+          "y": [
+            4.400000095367432,
+            5.599999904632568
+          ],
+          "z": [
+            -0.6000000238418579,
+            0.6000000238418579
+          ]
+        },
+        "max_base_vertex_displacement": null,
+        "mean_base_vertex_displacement": null,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      }
+    },
+    {
+      "object": "Array_RelativePlusConstant",
+      "question": "Are relative and constant offsets additive?",
+      "settings": {
+        "count": 3,
+        "relative": [
+          1,
+          0,
+          0
+        ],
+        "constant": [
+          0.3,
+          0,
+          0
+        ]
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 18,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            -11.0,
+            -4.400000095367432
+          ],
+          "y": [
+            1.399999976158142,
+            2.5999999046325684
+          ],
+          "z": [
+            -0.6000000238418579,
+            0.6000000238418579
+          ]
+        },
+        "max_base_vertex_displacement": null,
+        "mean_base_vertex_displacement": null,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      }
+    },
+    {
+      "object": "Array_UnappliedScale",
+      "question": "How does unapplied object scale affect world array span?",
+      "settings": {
+        "count": 3,
+        "relative": [
+          1,
+          0,
+          0
+        ],
+        "object_scale": [
+          2,
+          0.6,
+          0.6
+        ]
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 18,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            -12.0,
+            0.0
+          ],
+          "y": [
+            -1.600000023841858,
+            -0.3999999761581421
+          ],
+          "z": [
+            -0.6000000238418579,
+            0.6000000238418579
+          ]
+        },
+        "max_base_vertex_displacement": null,
+        "mean_base_vertex_displacement": null,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      }
+    },
+    {
+      "object": "Shrink_Nearest",
+      "question": "Shrinkwrap Nearest behavior",
+      "settings": {
+        "method": "NEAREST_SURFACEPOINT",
+        "offset": 0.0,
+        "negative": true,
+        "positive": false
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49
+      },
+      "evaluated": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49,
+        "non_manifold_edges": 28,
+        "boundary_edges": 28,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            -0.3930366039276123,
+            0.3930369019508362
+          ],
+          "y": [
+            4.606963157653809,
+            5.393036842346191
+          ],
+          "z": [
+            0.8314695954322815,
+            0.9919694662094116
+          ]
+        },
+        "max_base_vertex_displacement": 0.8827937470191309,
+        "mean_base_vertex_displacement": 0.7273668191257932,
+        "radial_min": 0.9951927410939541,
+        "radial_max": 1.0,
+        "radial_mean": 0.9980386446874365
+      }
+    },
+    {
+      "object": "Shrink_NearestOffset",
+      "question": "Shrinkwrap NearestOffset behavior",
+      "settings": {
+        "method": "NEAREST_SURFACEPOINT",
+        "offset": 0.2,
+        "negative": true,
+        "positive": false
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49
+      },
+      "evaluated": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49,
+        "non_manifold_edges": 28,
+        "boundary_edges": 28,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            3.5322437286376953,
+            4.467756271362305
+          ],
+          "y": [
+            4.532243728637695,
+            5.467756271362305
+          ],
+          "z": [
+            1.0055828094482422,
+            1.1910064220428467
+          ]
+        },
+        "max_base_vertex_displacement": 0.6827937185772812,
+        "mean_base_vertex_displacement": 0.5273668065893174,
+        "radial_min": 1.1951025236115085,
+        "radial_max": 1.1998478997341704,
+        "radial_mean": 1.1977448035562046
+      }
+    },
+    {
+      "object": "Shrink_ProjectWrongDirection",
+      "question": "Shrinkwrap ProjectWrongDirection behavior",
+      "settings": {
+        "method": "PROJECT",
+        "offset": 0.0,
+        "negative": false,
+        "positive": true
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49
+      },
+      "evaluated": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 49,
+        "non_manifold_edges": 28,
+        "boundary_edges": 28,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            7.300000190734863,
+            8.699999809265137
+          ],
+          "y": [
+            4.300000190734863,
+            5.699999809265137
+          ],
+          "z": [
+            1.600000023841858,
+            1.600000023841858
+          ]
+        },
+        "max_base_vertex_displacement": 0.0,
+        "mean_base_vertex_displacement": 0.0,
+        "radial_min": 1.6062378850899335,
+        "radial_max": 1.881488682886454,
+        "radial_mean": 1.7246510965795232
+      }
+    },
+    {
+      "object": "SimpleDeform_Twist_LowDensity",
+      "question": "How does Twist behave on a low-density cage?",
+      "settings": {
+        "method": "TWIST",
+        "axis": "Z",
+        "angle": 3.141592653589793
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 4,
+        "bounds": {
+          "x": [
+            -6.599999904632568,
+            -5.400000095367432
+          ],
+          "y": [
+            -5.599999904632568,
+            -4.400000095367432
+          ],
+          "z": [
+            -2.0,
+            2.0
+          ]
+        },
+        "max_base_vertex_displacement": 1.199999825159696,
+        "mean_base_vertex_displacement": 1.199999825159696,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      }
+    },
+    {
+      "object": "SimpleDeform_Twist_Subdivided",
+      "question": "Does pre-deform resolution provide intermediate twist samples?",
+      "settings": {
+        "pre_subdivision": 3,
+        "method": "TWIST",
+        "axis": "Z",
+        "angle": 3.141592653589793
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 386,
+        "edges": 768,
+        "faces": 384,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            -2.8485283851623535,
+            -1.151471734046936
+          ],
+          "y": [
+            -5.8485283851623535,
+            -4.1514716148376465
+          ],
+          "z": [
+            -2.000000238418579,
+            2.000000238418579
+          ]
+        },
+        "max_base_vertex_displacement": null,
+        "mean_base_vertex_displacement": null,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      },
+      "deform_vs_subdivision_control": {
+        "correspondence_valid": true,
+        "maximum_vertex_displacement": 1.2000001728534575,
+        "mean_vertex_displacement": 0.5645085533912617
+      }
+    },
+    {
+      "object": "SimpleDeform_Bend_X_Noop",
+      "question": "Can an unsuitable local-axis plane make Bend a no-op?",
+      "settings": {
+        "method": "BEND",
+        "axis": "X",
+        "angle": 1.5707963267948966
+      },
+      "base": {
+        "vertices": 100,
+        "edges": 180,
+        "faces": 81
+      },
+      "evaluated": {
+        "vertices": 100,
+        "edges": 180,
+        "faces": 81,
+        "non_manifold_edges": 36,
+        "boundary_edges": 36,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            1.5,
+            4.5
+          ],
+          "y": [
+            -6.5,
+            -3.5
+          ],
+          "z": [
+            0.0,
+            0.0
+          ]
+        },
+        "max_base_vertex_displacement": 0.0,
+        "mean_base_vertex_displacement": 0.0,
+        "radial_min": null,
+        "radial_max": null,
+        "radial_mean": null
+      }
+    },
+    {
+      "object": "Retopo_LowDensity_Shrinkwrapped",
+      "question": "Can a low-density cage conform while preserving a far lower vertex count?",
+      "settings": {
+        "workflow": "low-density icosphere -> Shrinkwrap high-density sphere"
+      },
+      "base": {
+        "vertices": 42,
+        "edges": 120,
+        "faces": 80
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 120,
+        "faces": 80,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "bounds": {
+          "x": [
+            7.047187328338623,
+            8.952813148498535
+          ],
+          "y": [
+            -5.0,
+            -3.0
+          ],
+          "z": [
+            -1.0,
+            1.0
+          ]
+        },
+        "max_base_vertex_displacement": 0.25192120076277197,
+        "mean_base_vertex_displacement": 0.25121656729245895,
+        "radial_min": 0.9981217402916734,
+        "radial_max": 1.0,
+        "radial_mean": 0.9988564322489035
+      }
+    }
+  ],
+  "assertions": {
+    "array_count_triples_cube_topology": true,
+    "relative_and_constant_offsets_are_additive": true,
+    "unapplied_scale_expands_world_array_span": true,
+    "nearest_shrinkwrap_reaches_target_surface": true,
+    "shrinkwrap_offset_changes_radius": true,
+    "wrong_project_direction_is_noop": true,
+    "pre_deform_subdivision_adds_samples": true,
+    "subdivided_twist_changes_intermediate_vertices": true,
+    "unsuitable_bend_axis_is_noop": true,
+    "retopo_cage_is_much_lower_density": true,
+    "retopo_cage_conforms_to_target": true
+  },
+  "pass": true
+}

@@ -27,8 +27,11 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Boolean modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Mirror modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Solidify modifier | ✓ | — | ✓ | ✓ | ~ | ~ | ✓ |
+| Array modifier | ✓ | — | ✓ | ✓ | — | — | — |
+| Shrinkwrap modifier | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
+| Simple Deform modifier | ✓ | — | ✓ | ✓ | — | — | — |
 | Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | ~ |
-| Retopology fundamentals | — | — | ~ | ✓ | — | ✓ | — |
+| Retopology fundamentals | ✓ | — | ✓ | ✓ | — | ✓ | ~ |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Sculpting | — | — | — | — | — | — | — |
@@ -38,7 +41,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 ## Current interpretation
 
-The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, and Solidify now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, and Mirror now have controlled curved second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule and still lacks controlled visual comparison.
+The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule and still lacks controlled visual comparison.
 
 The weakest breadth remains sculpting, UV/material production, structured retopology, systematic API study, external video-based learning, repeated retrieval use, and transfer validation.
 

@@ -527,5 +527,100 @@
         "Audio presence was verified at stream level; speech understanding was not claimed"
       ]
     }
+  },
+  {
+    "id": "blender-manual-array-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/array.html",
+    "local_path": null,
+    "title": "Array Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0/current Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["array-modifier", "repetition", "modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Relative, Constant, and Object offsets are additive",
+        "Fit and relative behavior depend on local-space dimensions",
+        "Adjacent copies can merge only within the configured distance"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-shrinkwrap-modifier",
+    "url": "https://docs.blender.org/manual/en/5.0/modeling/modifiers/deform/shrinkwrap.html",
+    "local_path": null,
+    "title": "Shrinkwrap Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["shrinkwrap-modifier", "retopology", "projection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Nearest Surface Point selects the closest target-surface point",
+        "Project uses selected local axes/directions and leaves vertices unchanged when no target is hit",
+        "Offset controls distance from the selected target position"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-simple-deform-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/simple_deform.html",
+    "local_path": null,
+    "title": "Simple Deform Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Blender 3.6/5.x Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["simple-deform", "twist", "bend", "modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Twist/Bend use angle while Taper/Stretch use factor",
+        "Deformation is local-space and origin dependent",
+        "Unsuitable axis/geometry combinations can produce no deformation"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-remeshing-retopology",
+    "url": "https://docs.blender.org/manual/en/5.0/modeling/meshes/retopology.html",
+    "local_path": null,
+    "title": "Remeshing and Retopology",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["retopology", "voxel-remesh", "quad-remesh", "shrinkwrap"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Voxel remesh creates uniform volume-based topology but is unsuitable as final deformation topology",
+        "Automatic remesh does not replace manual loop-flow decisions",
+        "Manual retopology uses an overlapping mesh, overlay, Poly Build, snapping, and projection"
+      ],
+      "experiments": [
+        "runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json",
+        "runs/2026-08-07_mug-retopo/"
+      ]
+    }
   }
 ]
