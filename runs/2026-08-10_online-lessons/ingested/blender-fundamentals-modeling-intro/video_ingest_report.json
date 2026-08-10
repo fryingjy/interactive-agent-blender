@@ -1,0 +1,57 @@
+{
+  "source_id": "blender-fundamentals-modeling-intro",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\modeling-introduction.webm",
+  "sha256": "f6a6fef06ca3b89c133ada732909925af019e95f9306a7834715b885a99473a6",
+  "duration": 75.401,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": false,
+  "transcript": false,
+  "caption_path": null,
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 15.0,
+      "decoded_at": 15.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0001_000015.000s.png"
+    },
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 65.0,
+      "decoded_at": 65.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0003_000065.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 15.0,
+      "decoded_at": 15.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0001_000015.000s.png"
+    },
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 65.0,
+      "decoded_at": 65.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0003_000065.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+  ]
+}

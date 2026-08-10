@@ -1,0 +1,16 @@
+{
+  "source_root": "C:\\Users\\odane\\Downloads\\blender\\blend",
+  "audit_date": "2026-08-10",
+  "scope": "read-only sample of diverse non-firearm Blender files supplied by the user",
+  "samples": [
+    {"file": "adventure time sword.blend", "objects": 16, "meshes": 15, "vertices": 28963, "faces": 28270, "materials": 2, "modifiers": 19, "collections": 3},
+    {"file": "alien force watch.blend", "objects": 56, "meshes": 52, "vertices": 623248, "faces": 622514, "materials": 2, "modifiers": 112, "collections": 6},
+    {"file": "armor.blend", "objects": 5, "meshes": 4, "vertices": 449, "faces": 362, "materials": 1, "modifiers": 11, "collections": 1},
+    {"file": "football.blend", "objects": 2, "meshes": 2, "vertices": 53044, "faces": 53040, "materials": 2, "modifiers": 2, "collections": 2},
+    {"file": "mjolnir.blend", "objects": 38, "meshes": 38, "vertices": 19385, "faces": 18630, "materials": 2, "modifiers": 33, "collections": 4},
+    {"file": "pokeball.blend", "objects": 318, "meshes": 313, "vertices": 775850, "faces": 773811, "materials": 18, "modifiers": 459, "collections": 6},
+    {"file": "stylized.blend", "objects": 9, "meshes": 9, "vertices": 12870, "faces": 12872, "materials": 3, "modifiers": 69, "collections": 2}
+  ],
+  "result": "7/7 opened successfully in Blender 5.2 background mode",
+  "limitation": "Scene metadata establishes accessible example breadth, not visual quality, authorship, production readiness, or independent professional acceptance. None of the sampled files contained a camera, and they were not used to tune the held-out sword."
+}

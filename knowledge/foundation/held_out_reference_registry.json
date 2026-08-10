@@ -1,0 +1,27 @@
+{
+  "updated": "2026-08-10",
+  "policy": "References supplied after foundation implementation may enter evaluation. Seeing a thumbnail does not count as model development, but any asset used for implementation or tuning cannot be reused as held-out transfer evidence.",
+  "references": [
+    {
+      "path": "C:\\Users\\odane\\Downloads\\blender\\ref\\matteo-swordconcept244.jpg",
+      "status": "COMPLETED_TECHNICAL_PASS_VISUAL_GATE_FAIL",
+      "benchmark": "heldout_b_fantasy_ceremonial_sword_001",
+      "first_used": "2026-08-10",
+      "result": {
+        "normalized_front_silhouette_iou": 0.7253858591797736,
+        "target": 0.8,
+        "independent_components_clean": "15/15",
+        "artifact": "runs/2026-08-10_heldout-fantasy-sword/fantasy_sword_heldout.blend"
+      }
+    },
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\ulyca3epaelm.webp", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\Unconfirmed 915819.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\f4fb9a354f6b40482eb243c49caec5b9.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\b6f4b882c129783d9f1f9a485d3cb2c0.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\e1b39bffaae0d8e9dee5c2ff0d505895.png", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\3bb2315f3c64224ffd4ec41e7a2e8b61.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\9b1d68cf7b70b52855a75b14349ad10e.jpg", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\tactical_axe.png", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"},
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\medieval-swords-blades-shapes-edges-curvatures-varieties-knife-dagger-weapon-set-honor-authority-symbol-realistic-vector-illustration_1284-73163.avif", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"}
+  ]
+}

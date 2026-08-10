@@ -4,7 +4,7 @@
 
 **FOUNDATION STATUS: PARTIAL**
 
-**READY FOR HELD-OUT MODELING: NO**
+**READY FOR HELD-OUT MODELING: YES — seven reserved references; latest run failed its visual gate**
 
 This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
 
@@ -182,7 +182,13 @@ regression evidence rather than held-out judgment.
 
 ### Video and structured training
 
-No complete external video lesson has been studied. Historical attempts could not access YouTube modalities and correctly did not claim video understanding. Legal local ingestion is now implemented and exercised on a project-owned six-second MP4 with a real video stream, audio stream, WebVTT captions/transcript, and six timestamped frames (`runs/2026-08-10_video-ingestion/`). This validates modality handling, not expert curriculum knowledge. User-provided or otherwise permitted external lessons remain future evidence.
+Three complete official Blender Fundamentals lessons were obtained from their Wikimedia Commons
+CC BY 3.0 mirrors and ingested through the approved-root pipeline: Modeling Introduction, Extrude,
+and Bevel Tool. Together they provide 573.663 seconds of real video, three audio streams, and 21
+decoded frame samples (`runs/2026-08-10_online-lessons/`). Visual observations include modeling
+workspace/modifier taxonomy, extrude variants, and Bevel modifier width/profile/Clamp Overlap plus
+None-versus-Angle limiting. No captions or transcript were present, so audio probing is not claimed
+as speech comprehension. The earlier six-second project fixture remains pipeline-only evidence.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
@@ -205,17 +211,19 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 2. Complex seam-authored UVs, high-to-low normal baking, and a named external-engine validation.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
 4. Broader validated surface judgment beyond candidate pinching/waviness signals.
-5. Held-out modeling that tests strategy and visual loops without benchmark-specific builders.
-6. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
+5. Passing held-out visual modeling across multiple references without benchmark-specific builders;
+   benchmark B now has a technical pass but failed its 0.80 silhouette gate at 0.7254.
+6. Captioned/transcribed advanced external instruction; the completed official lessons provide real
+   video/frame access but no transcript modality.
 
 ## Exit decision
 
-The foundation remains **PARTIAL**. Experiment breadth and two same-day quizzes are meaningful
-evidence, but multi-day retention, external visual instruction, held-out reference modeling,
-cross-family runtime transfer, and independent professional judgment remain below the gate.
+The foundation remains **PARTIAL**. External visual instruction and a genuine held-out run now
+exist, but the held-out visual gate failed; multi-day retention, successful cross-family transfer,
+and independent professional judgment remain below the gate.
 
 ## Highest-value next step
 
-Provide an untouched reference pack, a permitted expert lesson file, and a later-date quiz window.
-Then run the held-out ladder without exposing assets during further development; follow with
-independent experienced-modeler review.
+On a later calendar day, run the retention quiz; then use one of the seven reserved references for
+a transfer run without further benchmark-driven implementation changes. Follow successful visual
+transfer with independent experienced-modeler review.

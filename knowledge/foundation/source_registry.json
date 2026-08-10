@@ -819,5 +819,82 @@
       "experiments": ["runs/2026-08-10_secondary-modifiers/secondary_modifier_report.json"],
       "skills": ["knowledge/foundation/operator_cards/secondary_modifiers.md"]
     }
+  },
+  {
+    "id": "blender-fundamentals-modeling-intro-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Modeling_Introduction_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
+    "title": "Modeling Introduction - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["modeling-workflow", "modifiers", "edit-mode"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 75.401,
+      "sha256": "f6a6fef06ca3b89c133ada732909925af019e95f9306a7834715b885a99473a6",
+      "direct_observations": [
+        "A sampled frame at 45 seconds shows Blender's Modeling workspace in Edit Mode and the modifier category menu",
+        "The file contains both real video and audio streams; no captions or transcript were present"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-extrude-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Extrude_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/extrude.webm",
+    "title": "Extrude - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["extrude", "mesh-editing", "selection-context"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 286.901,
+      "sha256": "2aa5cd83ce3e0915d55db4649cc1a7eb8629f0dc78c22daea78a267034c163c9",
+      "direct_observations": [
+        "A sampled frame at 180 seconds visibly distinguishes Extrude Region, Along Normals, Individual, and to Cursor variants",
+        "A later sampled frame shows loop-cut-and-slide state during the lesson's supporting mesh-editing sequence",
+        "No speech comprehension is claimed because the source has no captions or transcript"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-extrude/video_ingest_report.json"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-bevel-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Bevel_Tool_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
+    "title": "Bevel Tool - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["bevel", "bevel-modifier", "limit-method", "hard-surface"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 211.361,
+      "sha256": "2f52c26b21a3a965770f4def08af32bb9d414895b82f837174d124fbe107d34f",
+      "direct_observations": [
+        "Sampled frames at 180 and 195 seconds show the non-destructive Bevel modifier, Clamp Overlap, width/profile controls, and a change from no limit to Angle limit",
+        "The visual evidence reinforces the existing rule to use Angle limiting when coplanar internal edges should remain unaffected",
+        "No speech comprehension is claimed because the source has no captions or transcript"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"]
+    }
   }
 ]

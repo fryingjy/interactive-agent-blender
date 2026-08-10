@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-10  
 **Branch:** `codex/improve-master-directive`  
-**Status:** PARTIAL — all currently executable local work completed; external gates remain
+**Status:** PARTIAL — held-out, lesson, and asset-example inputs processed; elapsed-time and human-review gates remain
 
 ## Completed local scope
 
@@ -35,22 +35,29 @@
 - Message-bus callback type and deferred event-loop delivery limits are recorded; asynchronous
   dispatch is not claimed from a blocking background script.
 
+## Newly completed after user inputs
+
+1. A user-supplied untouched fantasy reference entered benchmark B. The adaptive typed run produced
+   a saved multi-component asset and 15/15 independent evaluated-mesh passes. Its normalized front
+   silhouette IoU was 0.7254 and honestly failed the predeclared 0.80 visual gate.
+2. Three official Blender Fundamentals videos were obtained from their CC BY 3.0 Wikimedia Commons
+   mirrors and genuinely ingested: 573.663 seconds, 21 decoded frames, and three audio streams. No
+   captions/transcripts were present, so speech comprehension is not claimed.
+3. Seven diverse non-firearm `.blend` examples from the supplied library opened successfully and
+   were inventoried. This establishes accessible breadth, not professional acceptance.
+
 ## External gates that remain
 
-1. No untouched reference remains in the repository; generating both benchmark and solver now
-   would violate the held-out rule.
-2. No permitted external expert lesson/video file is available for actual curriculum study.
-3. A multi-day retention result requires elapsed time after 2026-08-10.
-4. Professional stages 4–7 require multiple unseen assets and shape families with little human
-   intervention, plus independent experienced-modeler acceptance.
+1. A multi-day retention result requires a quiz on a later calendar day after 2026-08-10; it cannot
+   be honestly manufactured in this same-day run.
+2. Professional stages 4–7 require multiple successful unseen transfer assets with little human
+   intervention and independent experienced-modeler acceptance. The supplied file inventory does
+   not replace that human review, and benchmark B's visual gate failed.
 
-These conditions have persisted across repeated goal continuations and cannot be satisfied by
-more local fixtures without violating the directive's anti-fake-progress rules. Foundation status
-therefore remains `PARTIAL`; held-out readiness remains `NO`.
+Foundation status therefore remains `PARTIAL`, but held-out readiness is now `YES`: seven supplied
+references remain reserved for later transfer runs.
 
 ## Inputs that unblock the next valid run
 
-- an unused reference pack kept hidden until evaluation;
-- a legally accessible expert lesson file with video/audio/captions where available;
 - a later-date retention run;
 - an independent experienced modeler for final qualitative review.

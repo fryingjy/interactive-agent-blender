@@ -1,0 +1,82 @@
+{
+  "source_id": "blender-fundamentals-bevel",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\bevel-tool.webm",
+  "sha256": "2f52c26b21a3a965770f4def08af32bb9d414895b82f837174d124fbe107d34f",
+  "duration": 211.361,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": false,
+  "transcript": false,
+  "caption_path": null,
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0001_000030.000s.png"
+    },
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0003_000090.000s.png"
+    },
+    {
+      "timestamp": 135.0,
+      "decoded_at": 135.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0004_000135.000s.png"
+    },
+    {
+      "timestamp": 150.0,
+      "decoded_at": 150.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0005_000150.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0006_000180.000s.png"
+    },
+    {
+      "timestamp": 195.0,
+      "decoded_at": 195.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0007_000195.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0001_000030.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0003_000090.000s.png"
+    },
+    {
+      "timestamp": 150.0,
+      "decoded_at": 150.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0005_000150.000s.png"
+    },
+    {
+      "timestamp": 195.0,
+      "decoded_at": 195.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-bevel\\frame_0007_000195.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+  ]
+}
