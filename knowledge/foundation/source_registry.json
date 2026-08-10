@@ -988,7 +988,8 @@
       ],
       "experiments": [
         "runs/2026-08-10_online-lessons/ingested/blender-studio-planning-facial-retopology/video_ingest_report.json",
-        "runs/2026-08-10_sculpt-retopo-deformation/sculpt_retopology_deformation_report.json"
+        "runs/2026-08-10_sculpt-retopo-deformation/sculpt_retopology_deformation_report.json",
+        "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
       ],
       "skills": ["knowledge/foundation/operator_cards/retopology.md"]
     }
@@ -1055,7 +1056,8 @@
         "runs/2026-08-10_online-lessons/ingested/blender-studio-snow-retopology-live-2/video_ingest_report.json",
         "runs/2026-08-10_pole-placement-deformation/pole_placement_deformation_report.json",
         "runs/2026-08-10_pole-placement-deformation/failed_simple_deform_axis.json",
-        "runs/2026-08-10_pole-placement-deformation/fresh_collection_verify.json"
+        "runs/2026-08-10_pole-placement-deformation/fresh_collection_verify.json",
+        "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
       ],
       "skills": ["knowledge/foundation/operator_cards/retopology.md"]
     }

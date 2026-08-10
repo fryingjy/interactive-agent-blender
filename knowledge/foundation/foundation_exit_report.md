@@ -211,6 +211,14 @@ all were visibly measurable, and 5/5 meshes passed fresh verification after Open
 empty-collection, and inward-winding failures were rejected. Mixed-cause production transfer remains
 unmeasured.
 
+The articulation transfer now includes a real two-connected-bone Armature setup on a manually
+authored organic limb. With identical smooth weights and an 82-degree pose, a 21-ring purposeful
+joint cage reduces joint-zone mean deviation from an 11-ring cage's `0.01887370` to `0.00300313`
+against a 47-ring rigged reference (6.28467x); joint maximum falls from `0.06306881` to
+`0.01436530`. All three posed evaluated meshes pass fresh verification. Rejected camera and cap
+presentations remain documented. This is weighted joint evidence, not a full character or facial
+expression claim.
+
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
 A later quality rebuild rejected the original held-out sword's primitive-like visible result despite
@@ -235,8 +243,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 ## Largest remaining gaps
 
-1. Production-quality organic form sculpting and production articulation/retopology with rig
-   weighting. Multi-stroke mechanics now pass, but the result is not claimed as a professional form.
+1. Production-quality organic form sculpting and full-character/facial articulation. A controlled
+   weighted two-bone joint now passes, but multi-stroke mechanics and this limb are not claimed as a
+   professional character form or expression rig.
 2. Production transfer of seam-authored UV/high-to-low baking and a named external-engine
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
@@ -258,6 +267,6 @@ independent professional judgment remain below the gate.
 
 ## Highest-value next step
 
-Execute a rigged organic expression or joint-deformation transfer with purposeful production
-retopology and independent surface/topology review. On a later calendar day, also run the retention
+Execute a rigged facial expression or multi-axis joint/twist transfer with corrective shapes and
+independent surface/topology review. On a later calendar day, also run the retention
 quiz; elapsed-time evidence cannot be manufactured in this session.

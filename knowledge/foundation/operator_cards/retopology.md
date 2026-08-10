@@ -45,6 +45,14 @@ the same five-pole pair either away from or inside a 92-degree hose bend. Bend-z
 from the all-quad control rose from `4.13698e-08` to `1.42220e-04` when the poles were in the bend,
 a 3,437.77x ratio. The result is mechanism evidence, not a claim of facial animation quality.
 
+`runs/2026-08-10_rigged-joint-deformation/` advances the articulation test from analytic mapping to
+a real two-bone Armature modifier with smooth `Upper`/`Lower` weights. On a manually authored
+organic limb under an 82-degree pose, 21 purposefully distributed rings reduce joint-zone mean
+deviation from the 11-ring cage's `0.01887370` to `0.00300313` against a 47-ring rigged reference
+(6.28467x), and joint maximum from `0.06306881` to `0.01436530`. Three posed meshes independently
+verify clean. This validates joint-density allocation on one weighted shape, not full-character or
+facial expression topology.
+
 ## Decision rule
 
 Retopology is goal-dependent. Preserve silhouette and important curvature first, then allocate density, route loops, isolate detail, and place unavoidable poles where deformation and highlights tolerate them. Use Shrinkwrap/snapping as projection aids; never credit them with solving edge flow automatically.

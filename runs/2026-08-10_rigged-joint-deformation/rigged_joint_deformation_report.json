@@ -1,0 +1,45 @@
+{
+  "lab": "real_armature_joint_density_transfer",
+  "blender_version": "5.2.0 LTS",
+  "specimen": "manually authored stylized organic limb with two connected bones and smooth vertex-group weights",
+  "pose_degrees": 82.0,
+  "modifier_order": [
+    "Subdivision Surface",
+    "Armature"
+  ],
+  "ring_counts": {
+    "dense_reference": 47,
+    "purposeful": 21,
+    "sparse": 11
+  },
+  "purposeful_error": {
+    "mean": 0.0037630071545074746,
+    "max": 0.01843779720366001,
+    "joint_mean": 0.003003133554771035,
+    "joint_max": 0.014365298673510551,
+    "faces": 1376,
+    "joint_faces": 768
+  },
+  "sparse_error": {
+    "mean": 0.011372372344082934,
+    "max": 0.06306880712509155,
+    "joint_mean": 0.018873700284075312,
+    "joint_max": 0.06306880712509155,
+    "faces": 736,
+    "joint_faces": 256
+  },
+  "sparse_over_purposeful_joint_mean_ratio": 6.284668976539834,
+  "assertions": {
+    "purposeful_joint_mean_better": true,
+    "purposeful_joint_max_better": true,
+    "meaningful_improvement": true,
+    "real_armature_modifiers": true,
+    "two_bone_weight_groups": true
+  },
+  "limitations": [
+    "This is one stylized elbow-like joint, not a full character or facial rig.",
+    "Nearest-surface error measures geometric fidelity to a dense rigged reference, not animation appeal.",
+    "Linear blend skinning and one pose do not cover twist, muscle simulation, or corrective shape keys."
+  ],
+  "pass": true
+}
