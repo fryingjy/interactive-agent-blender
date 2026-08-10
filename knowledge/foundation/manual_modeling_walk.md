@@ -11,7 +11,7 @@ incomplete; `OPEN` means no adequate evidence exists.
 
 | Documentation branch | Primary official source | Status | Repository evidence | Remaining work |
 | --- | --- | --- | --- | --- |
-| Mesh editing overview | Mesh Editing operator index | INDEXED | prior operator labs and cards | child pages are not exhaustively studied |
+| Mesh editing overview | Mesh Editing operator index | INDEXED | mandatory operator inventory plus prior labs/cards | child pages are not exhaustively studied |
 | Extrude / inset | Mesh Editing branch | USED | speaker, soap-dish, operator runs | formal parameter sweep is incomplete |
 | Bevel operation | Bevel Manual | TESTED/USED | operator card and prior runs | profile/custom-profile breadth |
 | Delete / dissolve | Mesh Editing branch | TESTED | operator and BMesh labs | complete child-page notes |
@@ -28,10 +28,13 @@ incomplete; `OPEN` means no adequate evidence exists.
 | Array modifier | Array modifier Manual | TESTED | array/deform lab | object offset, caps, fit modes |
 | Shrinkwrap modifier | Shrinkwrap modifier Manual | TESTED | retopology lab | deformation-ready retopo transfer |
 | Simple Deform modifier | Simple Deform Manual | TESTED | deform lab and preserved API pitfall | bend/taper/stretch second shapes |
-| Retopology/remeshing | Retopology Manual | PARTIAL | low-cage conformance and voxel remesh | real production retopo with deformation flow |
-| Sculpting | Sculpting index | PARTIAL | Multires and voxel-remesh state tests | actual brush strokes, masks, Face Sets, filters |
-| UV layout/editing | UV workflow/editing Manual | TESTED | UV/material/sculpt lab | seams on complex asset, distortion and export checks |
-| Materials | Materials introduction + Principled BSDF | USED | node/slot lab and runtime repair | image textures, color management, engine transfer |
+| Screw/Remesh/Decimate/Triangulate | modifier index and official indexed excerpts | TESTED | secondary-modifier lab | exhaustive child pages and second shapes |
+| Smooth/Corrective/Laplacian Smooth | modifier index and official indexed excerpts | TESTED | secondary-modifier noisy-sphere controls | armature correction and second shapes |
+| Curve/Lattice modifiers | modifier index and official indexed excerpts | TESTED | segmented-strip and cage-deformation controls | cross-asset production transfer |
+| Retopology/remeshing | Retopology Manual | TESTED | low-cage conformance, actual sculpt handoff, deformation-density lab | production articulation and animation weighting |
+| Sculpting | Sculpting index | PARTIAL | Multires, voxel remesh, actual Draw stroke and retopo handoff | masks, Face Sets, filters, multi-stroke form development |
+| UV layout/editing | UV workflow/editing Manual | TESTED | UV/material/sculpt and PBR GLB labs | seams on complex asset and engine-specific conventions |
+| Materials | Materials introduction + Principled BSDF | USED | node/slot repair and packed normal-map GLB transfer | color management and named-engine transfer |
 | BMesh ownership/layers | BMesh module API | TESTED | BMesh API lab | edit-mode live BMesh and more custom-data layers |
 | BMesh operators | BMesh operators API | TESTED | nine-operation lab | systematic signatures beyond modeler-critical subset |
 | Reference images | Empties Manual | USED | reference blockouts | perspective/camera calibration |

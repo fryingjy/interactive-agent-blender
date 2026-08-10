@@ -12,14 +12,16 @@ open and is not falsely claimed.
 | Preserve live typed runtime | existing `blender_ops/` transaction, identity, state, region, and evaluated-probe stack retained | implemented before this pass |
 | Reconcile foundation | current exit report, source registry, coverage matrix, quizzes | complete/current |
 | Critical modifier breadth | standalone and second-shape Bevel, Mirror, Boolean, Solidify; Array, Shrinkwrap, Simple Deform | controlled evidence complete |
+| Secondary modifier breadth | Screw, Remesh, Decimate, Triangulate, Smooth, Corrective Smooth, Laplacian Smooth, Curve, Lattice | 9/9 controlled foundation cases; transfer mostly pending |
 | Contextual topology/SubD | pole, triangle/n-gon context, density, support spacing, cylindrical routing, terminations | controlled evidence complete |
-| Retopology foundations | low cage conformance plus historical Mug rebuild | partial production breadth |
-| Sculpt foundations | Multires, voxel remesh, and actual Draw brush mutation | foundational evidence complete |
-| UV/material/production | scale warning, unwrap, node state, slots, organization, OBJ/GLB round trip | foundational evidence complete |
+| Retopology foundations | low cage conformance, actual brush-sculpt handoff, deformation-density comparison, historical Mug rebuild | foundational evidence complete; production articulation breadth remains |
+| Sculpt foundations | Multires, voxel remesh, actual Draw brush mutation, and handoff to independently clean low cage | foundational evidence complete |
+| UV/material/production | scale warning, unwrap, node state, slots, organization, packed tangent normal/PBR semantics, OBJ/GLB round trip | foundational evidence complete |
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
+| Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
 | Runtime skill telemetry | append-only revision-linked material skill use | validated once |
 | Retention | two same-day quizzes, second has 15 fresh mechanism/evidence answers | same-day complete; multi-day pending |
@@ -35,6 +37,7 @@ open and is not falsely claimed.
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
 | Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect/symmetrize/split/separate in protocol 0.2 | 15/15 controlled cases plus rollback/identity evidence |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
+| Blender runtime API breadth | context/data/RNA types, depsgraph evaluation, handlers, timers, message bus, lifecycle cleanup | controlled lifecycle pass; asynchronous dispatch explicitly unclaimed |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
 | Self-session learning | 165 real decisions mined; multi-asset candidates guarded by replay; bevel replay validated on different asset | controlled pass; no automatic promotion |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |

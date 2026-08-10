@@ -6,7 +6,7 @@
 
 **READY FOR HELD-OUT MODELING: NO**
 
-This report reflects repository evidence through `runs/2026-08-10_visual-comparison/`. It is not a claim that the complete professional-modeling curriculum is finished.
+This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
 
 ## Evidence summary
 
@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 143 controlled/reproduction cases are now recorded:
+Approximately 156 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -49,6 +49,10 @@ Approximately 143 controlled/reproduction cases are now recorded:
 - One semantic selected-region render/stale-region case in `runs/2026-08-10_semantic-region-render/`.
 - Seven documentation-crawl/session-learning assertions in `runs/2026-08-10_learning-system/`.
 - One multi-channel transaction rejection stress case with eight assertions in `runs/2026-08-10_transaction-rollback/`.
+- One actual brush-sculpt retopology handoff and one deformation-density comparison in `runs/2026-08-10_sculpt-retopo-deformation/`.
+- One packed tangent-normal/PBR GLB round trip with source and imported-state verification in `runs/2026-08-10_pbr-normal-export/`.
+- Nine secondary-modifier cases for Screw, Remesh, Decimate, Triangulate, three smoothing workflows, Curve, and Lattice in `runs/2026-08-10_secondary-modifiers/`.
+- One Blender runtime-API lifecycle case covering context/data, RNA types, dependency-graph evaluation, handlers, timers, and message bus in `runs/2026-08-10_blender-runtime-api/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -120,6 +124,26 @@ semantic/custom metadata, selection, and active-object state while leaving the d
 unchanged. It also retains operation-created-object removal. Snapshot cleanup ordering and Blender
 5.2 UV-collection API failures are preserved in the run report rather than hidden.
 
+The actual brush-sculpt source now has an independently clean low-cage handoff, and a controlled
+70-degree bend shows quantitatively that adequate axial loops preserve changing form better than a
+sparse cage. This closes the introductory handoff/deformation evidence gap but not production
+anatomy, rig weighting, or multiple organic shape-family transfer.
+
+A packed Non-Color tangent normal texture, normal-map shader chain, roughness, UVs, bounds, and
+triangulated surface now survive a GLB round trip. Independent verification keeps the editable
+source clean while explicitly failing the seam-split imported glTF mesh as editable topology; the
+delivery result is not confused with the source asset.
+
+All nine secondary modifiers named by the curriculum now have controlled Blender 5.2 evidence.
+Direct latest Manual child-page fetches returned HTTP 402, so the source record distinguishes
+official indexed excerpts from exhaustive study. Corrective Smooth/Curve/Lattice production
+transfer and all second-shape claims remain open.
+
+The modeler-relevant API block now also covers context/data authority, Mesh/Object/Modifier RNA,
+dependency-graph evaluation, handlers, timers, message bus, and registration cleanup. Background
+execution does not yield asynchronous notifications, so registration lifecycle is credited but
+automatic event delivery is not.
+
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
 ### Failure cases
@@ -177,17 +201,21 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 ## Largest remaining gaps
 
-1. Real production retopology with deformation-aware transfer.
-2. Multi-stroke form sculpting, complex UV/textures, and target-engine export evidence.
+1. Multi-stroke organic form sculpting and production articulation/retopology with rig weighting.
+2. Complex seam-authored UVs, high-to-low normal baking, and a named external-engine validation.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
-4. Visual surface judgment beyond silhouettes, especially pinching/highlight flow, landmarks, and negative space.
+4. Broader validated surface judgment beyond candidate pinching/waviness signals.
 5. Held-out modeling that tests strategy and visual loops without benchmark-specific builders.
 6. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
 
 ## Exit decision
 
-The foundation remains **PARTIAL**. Experiment count and one completed quiz are meaningful evidence, but breadth, repeated retrieval, runtime use, second-shape transfer, and visual judgment remain below the gate.
+The foundation remains **PARTIAL**. Experiment breadth and two same-day quizzes are meaningful
+evidence, but multi-day retention, external visual instruction, held-out reference modeling,
+cross-family runtime transfer, and independent professional judgment remain below the gate.
 
 ## Highest-value next step
 
-Complete systematic Manual/API breadth and the retopology/sculpt/UV/material foundation labs, then run repeated retrieval and visual-surface evaluation. Keep them separate from held-out benchmark assets.
+Provide an untouched reference pack, a permitted expert lesson file, and a later-date quiz window.
+Then run the held-out ladder without exposing assets during further development; follow with
+independent experienced-modeler review.

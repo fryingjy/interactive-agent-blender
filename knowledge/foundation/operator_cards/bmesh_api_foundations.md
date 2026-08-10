@@ -30,3 +30,17 @@ Evidence: `runs/2026-08-10_bmesh-api/`
 ## Failure discipline
 
 Never assume an operator's return dictionary, target scope, or successful call proves the intended mutation. Measure element counts/data, validate normals and topology, then write back and independently inspect the saved mesh.
+
+## Runtime API lifecycle
+
+Evidence: `runs/2026-08-10_blender-runtime-api/`
+
+- `bpy.context` reports active/view-layer state; `bpy.data` resolves persistent datablocks. The
+  fixture confirms both references point to the same active object while preserving the conceptual
+  distinction.
+- `evaluated_get(depsgraph).to_mesh()` exposed a 56-vertex Bevel result while the base stayed at 8.
+- Handler, timer, and message-bus registrations require explicit cleanup. Message-bus `notify`
+  rejected a built-in bound method and accepted a Python wrapper.
+- A blocking background script does not yield Blender's event loop, so queued timer/message
+  delivery is not inferred from successful registration. Use a persistent GUI session for that
+  integration claim.

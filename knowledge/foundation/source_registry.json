@@ -789,5 +789,35 @@
       "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
       "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
     }
+  },
+  {
+    "id": "blender-manual-secondary-modifier-index-20260810",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/index.html",
+    "local_path": null,
+    "title": "Object Modifiers index and indexed child-page excerpts",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 4.5/5.0 indexed Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "screw", "remesh", "decimate", "triangulate", "smooth", "corrective-smooth",
+      "laplacian-smooth", "curve-modifier", "lattice-modifier"
+    ],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["search-indexed official text"],
+    "metadata": {
+      "direct_observations": [
+        "The official modifier index places Screw/Remesh/Decimate/Triangulate under Generate and Smooth/Corrective Smooth/Laplacian Smooth/Curve/Lattice under Deform",
+        "Screw revolves a profile with angle, axial offset, iterations and step density; profile alignment and axis are preconditions",
+        "Decimate targets face reduction and its collapse ratio is triangle-based; it is not intended to improve an already economical production cage",
+        "Corrective Smooth targets highly distorted deformations and commonly follows armature deformation; Only Smooth previews raw relaxation",
+        "Curve deformation depends on dominant axis and object/curve spatial relationship; Lattice provides non-destructive broad deformation through a control cage"
+      ],
+      "access_limit": "Direct latest child-page fetches returned HTTP 402; only official search-indexed text was observed, so exhaustive child-page study is not claimed",
+      "experiments": ["runs/2026-08-10_secondary-modifiers/secondary_modifier_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/secondary_modifiers.md"]
+    }
   }
 ]

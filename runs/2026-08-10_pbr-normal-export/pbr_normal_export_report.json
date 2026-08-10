@@ -1,0 +1,132 @@
+{
+  "lab": "pbr_normal_map_glb_roundtrip",
+  "blender_version": "5.2.0 LTS",
+  "source": {
+    "mesh": {
+      "vertices": 56,
+      "faces": 54,
+      "triangles": 108,
+      "uv_layers": [
+        "EngineUV"
+      ],
+      "materials": [
+        "PBR_Normal_Material"
+      ],
+      "bounds": {
+        "x": [
+          -1.399999976158142,
+          1.399999976158142
+        ],
+        "y": [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        "z": [
+          -0.550000011920929,
+          0.550000011920929
+        ]
+      }
+    },
+    "material": {
+      "node_types": [
+        "BSDF_PRINCIPLED",
+        "NORMAL_MAP",
+        "OUTPUT_MATERIAL",
+        "TEX_IMAGE"
+      ],
+      "normal_map_nodes": 1,
+      "image_texture_nodes": 1,
+      "normal_linked_to_principled": true,
+      "normal_texture_linked": true,
+      "roughness": 0.3799999952316284,
+      "images": [
+        {
+          "name": "Engine_Normal",
+          "size": [
+            32,
+            32
+          ],
+          "colorspace": "Non-Color",
+          "packed": true
+        }
+      ]
+    }
+  },
+  "export": {
+    "operator_result": [
+      "FINISHED"
+    ],
+    "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_pbr-normal-export\\pbr_normal_asset.glb",
+    "bytes": 9368
+  },
+  "import": {
+    "operator_result": [
+      "FINISHED"
+    ],
+    "mesh_count": 1,
+    "object_name": "PBR_Normal_Source.001",
+    "mesh": {
+      "vertices": 216,
+      "faces": 108,
+      "triangles": 108,
+      "uv_layers": [
+        "UVMap"
+      ],
+      "materials": [
+        "PBR_Normal_Material.001"
+      ],
+      "bounds": {
+        "x": [
+          -1.399999976158142,
+          1.399999976158142
+        ],
+        "y": [
+          -0.800000011920929,
+          0.800000011920929
+        ],
+        "z": [
+          -0.550000011920929,
+          0.550000011920929
+        ]
+      }
+    },
+    "material": {
+      "node_types": [
+        "BSDF_PRINCIPLED",
+        "NORMAL_MAP",
+        "OUTPUT_MATERIAL",
+        "TEX_IMAGE"
+      ],
+      "normal_map_nodes": 1,
+      "image_texture_nodes": 1,
+      "normal_linked_to_principled": true,
+      "normal_texture_linked": true,
+      "roughness": 0.3799999952316284,
+      "images": [
+        {
+          "name": "engine_normal",
+          "size": [
+            32,
+            32
+          ],
+          "colorspace": "Non-Color",
+          "packed": true
+        }
+      ]
+    }
+  },
+  "assertions": {
+    "normal_texture_file_written": true,
+    "source_has_engine_uv": true,
+    "source_normal_chain_complete": true,
+    "source_image_is_non_color_and_packed": true,
+    "glb_written": true,
+    "one_mesh_reimported": true,
+    "roundtrip_surface_and_bounds_match": true,
+    "roundtrip_uv_and_material_present": true,
+    "roundtrip_normal_semantics_preserved": true,
+    "roundtrip_roughness_preserved": true,
+    "roundtrip_normal_image_present": true
+  },
+  "pass": true
+}

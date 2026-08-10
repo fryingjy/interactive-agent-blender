@@ -26,7 +26,12 @@
       "camera_ortho_scale": 5.139601540761962,
       "scene_revision": 314,
       "foreground_fill_ratio": 0.196518,
-      "foreground_unique_colors_5bit": 62
+      "foreground_unique_colors_5bit": 62,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
     },
     {
       "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\wireframe_front.png",
@@ -53,7 +58,12 @@
       "camera_ortho_scale": 5.139601540761962,
       "scene_revision": 314,
       "foreground_fill_ratio": 0.007736,
-      "foreground_unique_colors_5bit": 1
+      "foreground_unique_colors_5bit": 1,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
     },
     {
       "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\normal_front.png",
@@ -80,7 +90,12 @@
       "camera_ortho_scale": 5.139601540761962,
       "scene_revision": 314,
       "foreground_fill_ratio": 0.196518,
-      "foreground_unique_colors_5bit": 322
+      "foreground_unique_colors_5bit": 322,
+      "dominant_channel_pixel_counts": {
+        "red": 1012,
+        "green": 5,
+        "blue": 629
+      }
     },
     {
       "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\depth_front.png",
@@ -107,7 +122,12 @@
       "camera_ortho_scale": 5.139601540761962,
       "scene_revision": 314,
       "foreground_fill_ratio": 0.196518,
-      "foreground_unique_colors_5bit": 8
+      "foreground_unique_colors_5bit": 8,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
     },
     {
       "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\component_mask_front.png",
@@ -134,7 +154,12 @@
       "camera_ortho_scale": 5.139601540761962,
       "scene_revision": 314,
       "foreground_fill_ratio": 0.196518,
-      "foreground_unique_colors_5bit": 11
+      "foreground_unique_colors_5bit": 11,
+      "dominant_channel_pixel_counts": {
+        "red": 10777,
+        "green": 2102,
+        "blue": 0
+      }
     }
   ],
   "assertions": {

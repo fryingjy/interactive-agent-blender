@@ -17,6 +17,13 @@ The mug repair (`runs/2026-08-07_mug-retopo/`) demonstrated that validity metric
 
 The controlled sphere transfer (`runs/2026-08-10_array-deform-retopology/`) reduced 1,984 target vertices to a 42-vertex conforming cage with mean radial error about 0.0011. That is a useful conformance baseline, but an icosphere's triangles do not establish deformation-ready loop routing.
 
+The actual sculpt handoff (`runs/2026-08-10_sculpt-retopo-deformation/`) projects a 114-vertex cage
+onto the 2,562-vertex mesh changed by a recorded Sculpt Draw stroke. The independently clean cage
+has mean face-center surface error 0.0280. In a separate shared 70-degree bend, a 17-ring quad cage
+cut mean surface error from the sparse 5-ring cage's 0.02958 to 0.01131 and maximum error from
+0.09754 to 0.03182. Density should therefore be allocated where deformation and changing radius
+need samples, not distributed uniformly by habit.
+
 ## Decision rule
 
 Retopology is goal-dependent. Preserve silhouette and important curvature first, then allocate density, route loops, isolate detail, and place unavoidable poles where deformation and highlights tolerate them. Use Shrinkwrap/snapping as projection aids; never credit them with solving edge flow automatically.

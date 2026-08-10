@@ -30,8 +30,15 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Array modifier | ✓ | — | ✓ | ✓ | — | — | — |
 | Shrinkwrap modifier | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
 | Simple Deform modifier | ✓ | — | ✓ | ✓ | — | — | — |
+| Screw modifier | ~ | — | ✓ | ~ | — | — | — |
+| Remesh modifier | ~ | — | ✓ | ~ | — | — | ~ |
+| Decimate modifier | ~ | — | ✓ | ~ | — | — | — |
+| Triangulate modifier | ~ | — | ✓ | ~ | — | ~ | — |
+| Smooth modifiers | ~ | — | ✓ | ~ | — | — | — |
+| Curve modifier | ~ | — | ✓ | ~ | — | ✓ | ~ |
+| Lattice modifier | ~ | — | ✓ | ~ | — | — | — |
 | Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | ~ |
-| Retopology fundamentals | ✓ | — | ✓ | ✓ | — | ✓ | ~ |
+| Retopology fundamentals | ✓ | — | ✓ | ✓ | — | ✓ | ✓ |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
@@ -47,6 +54,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
 | Export round-trip | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Blender runtime events/depsgraph | ✓ | — | ✓ | ✓ | — | ~ | — |
 | Typed modeling operation surface | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Scoped transaction rollback | ~ | — | ✓ | ✓ | — | ✓ | — |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |

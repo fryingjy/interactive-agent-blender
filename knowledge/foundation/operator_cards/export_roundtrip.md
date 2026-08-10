@@ -21,7 +21,14 @@ lab, a 56-vertex/54-polygon source re-imported from GLB as 216 vertices/108 tria
 preserving bounds, 108 source loop triangles, UVs, and a material. Exact raw count equality was a
 verifier defect, not an export failure.
 
+The normal-map fixture made this distinction explicit: its clean 56-vertex source re-imported as
+216 split vertices and failed editable non-manifold verification, while bounds, surface triangles,
+UVs, roughness, packed image, color space, and normal-node links all matched. Preserve the editable
+`.blend` as source of truth; evaluate a delivery format against its intended invariants.
+
 ## Evidence
 
 `runs/2026-08-10_sculpt-export/` contains OBJ and GLB files, imports saved in the `.blend`, a
 machine-readable report, the preserved failed assertion, and independent source verification.
+`runs/2026-08-10_pbr-normal-export/` adds packed tangent-normal/PBR semantics and both passing source
+and intentionally failing imported editable-topology verifier reports.

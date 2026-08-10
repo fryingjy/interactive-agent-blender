@@ -262,5 +262,27 @@ class StrategyTests(unittest.TestCase):
         self.assertEqual(rebuild["choice"], "REBUILD_REGION")
 
 
+class CurriculumInventoryTests(unittest.TestCase):
+    def test_every_mandatory_mesh_operator_is_in_inventory(self):
+        inventory = (
+            Path(__file__).parents[1]
+            / "knowledge" / "foundation" / "operator_cards" / "mandatory_mesh_editing_inventory.md"
+        ).read_text(encoding="utf-8")
+        required = {
+            "Selection", "Extrude", "Inset", "Bevel", "Loop Cut", "Subdivide", "Knife",
+            "Bisect", "Bridge Edge Loops", "Spin", "Merge", "Merge by Distance", "Dissolve",
+            "Delete", "Fill", "Grid Fill", "Edge Slide", "Vertex Slide", "Rip", "Split",
+            "Separate", "Symmetrize", "Normals", "Shade Smooth", "Shade Flat",
+        }
+        present = {
+            line.split("|")[1].strip()
+            for line in inventory.splitlines()
+            if line.startswith("|") and not line.startswith("| ---") and "Operator" not in line
+        }
+        self.assertEqual(present, required)
+        self.assertIn("API and typed support", inventory)
+        self.assertIn("Topology effects and common failures", inventory)
+
+
 if __name__ == "__main__":
     unittest.main()

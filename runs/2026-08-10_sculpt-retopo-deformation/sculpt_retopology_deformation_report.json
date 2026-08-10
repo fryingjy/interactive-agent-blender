@@ -1,0 +1,188 @@
+{
+  "lab": "actual_sculpt_retopology_and_deformation_density",
+  "blender_version": "5.2.0 LTS",
+  "sculpt_retopology": {
+    "source_provenance": {
+      "blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_sculpt-export\\sculpt_export_lab.blend",
+      "object": "BrushSculpt",
+      "actual_brush_moved_vertices": 248,
+      "note": "created by recorded VIEW_3D Sculpt Draw stroke in the source run"
+    },
+    "source": {
+      "vertices": 2562,
+      "faces": 5120
+    },
+    "cage": {
+      "vertices": 114,
+      "edges": 240,
+      "faces": 128,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "ngons": 0,
+      "triangles": 32,
+      "quads": 96,
+      "degenerate_faces": 0
+    },
+    "face_center_surface_error": {
+      "samples": 128,
+      "mean": 0.02804500224738149,
+      "maximum": 0.09069602191448212,
+      "p95": 0.037720538675785065
+    }
+  },
+  "deformation": {
+    "high": {
+      "vertices": 3120,
+      "edges": 6192,
+      "faces": 3072,
+      "boundary_edges": 96,
+      "non_manifold_edges": 96,
+      "ngons": 0,
+      "triangles": 0,
+      "quads": 3072,
+      "degenerate_faces": 0
+    },
+    "adequate": {
+      "topology": {
+        "vertices": 272,
+        "edges": 528,
+        "faces": 256,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 256,
+        "degenerate_faces": 0
+      },
+      "error": {
+        "samples": 256,
+        "mean": 0.011305618600317757,
+        "maximum": 0.03181815519928932,
+        "p95": 0.025025857612490654
+      }
+    },
+    "sparse": {
+      "topology": {
+        "vertices": 80,
+        "edges": 144,
+        "faces": 64,
+        "boundary_edges": 32,
+        "non_manifold_edges": 32,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 64,
+        "degenerate_faces": 0
+      },
+      "error": {
+        "samples": 64,
+        "mean": 0.029584879990579793,
+        "maximum": 0.0975416749715805,
+        "p95": 0.09487465769052505
+      }
+    },
+    "interpretation": "shared bend isolates axial loop density; the sparse cage undersamples the bulge and bend"
+  },
+  "visuals": {
+    "sculpt_solid": {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_sculpt-retopo-deformation\\actual_sculpt_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "ActualBrushSculpt_High"
+      ],
+      "frame_objects": [
+        "ActualBrushSculpt_High"
+      ],
+      "camera_location": [
+        1.1724658012390137,
+        -4.296865940093994,
+        4.172465801239014
+      ],
+      "camera_ortho_scale": 4.155480361322689,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.182509,
+      "foreground_unique_colors_5bit": 77,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    "retopo_wire": {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_sculpt-retopo-deformation\\retopo_cage_wire.png",
+      "pass_type": "wireframe",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "SculptRetopo_LowCage"
+      ],
+      "frame_objects": [
+        "ActualBrushSculpt_High"
+      ],
+      "camera_location": [
+        1.1724658012390137,
+        -4.296865940093994,
+        4.172465801239014
+      ],
+      "camera_ortho_scale": 4.155480361322689,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.041972,
+      "foreground_unique_colors_5bit": 3,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    "deformation_wire": {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_sculpt-retopo-deformation\\deformation_adequate_wire.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Deform_Retopo_Adequate"
+      ],
+      "frame_objects": [
+        "Deform_HighReference"
+      ],
+      "camera_location": [
+        3.0,
+        -9.110831260681152,
+        0.0
+      ],
+      "camera_ortho_scale": 5.238728087594897,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.050449,
+      "foreground_unique_colors_5bit": 1,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    }
+  },
+  "assertions": {
+    "actual_sculpt_source_used": true,
+    "retopo_reduces_density_by_ten_x": true,
+    "retopo_is_closed_and_nondegenerate": true,
+    "retopo_surface_mean_error_below_0_04": true,
+    "deformation_cages_are_quad_routed": true,
+    "adequate_density_beats_sparse_mean_error": true,
+    "adequate_density_beats_sparse_max_error": true,
+    "visual_evidence_is_nonblank": true
+  },
+  "pass": true
+}

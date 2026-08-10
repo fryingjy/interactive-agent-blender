@@ -17,6 +17,13 @@ Evidence: `runs/2026-08-10_uv-material-sculpt/`
 - Setting Base Color, Roughness `0.32`, and Metallic `0.85` directly on the connected Principled node was recovered exactly from the saved material state.
 - A second material slot unused by any polygon was detected as an orphan; assigning alternating faces made both slots reproducibly used.
 
+Evidence: `runs/2026-08-10_pbr-normal-export/`
+
+- A packed tangent normal image in Non-Color space survived GLB export/re-import with the Image
+  Texture → Normal Map → Principled Normal chain intact.
+- Principled roughness `0.38`, UV presence, 32×32 image dimensions, bounds, and triangulated surface
+  count survived the round trip. This proves transport semantics for the fixture, not normal baking.
+
 ## Production audit
 
 The lab's `Production_Ready` collection passed checks for semantic object naming, applied scale, descriptive modifier naming, and no hidden objects. Its evaluated mesh independently verified clean.

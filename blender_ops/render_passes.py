@@ -331,7 +331,9 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
             shading.color_type = "OBJECT"
         else:
             shading.color_type = "SINGLE"
-            shading.single_color = (0.55, 0.55, 0.55) if pass_type == "solid" else (0.0, 0.0, 0.0)
+            shading.single_color = (
+                (0.55, 0.55, 0.55) if pass_type == "solid" else (0.9, 0.9, 0.9)
+            )
         out_dir = os.path.dirname(output_path)
         if out_dir:
             os.makedirs(out_dir, exist_ok=True)
