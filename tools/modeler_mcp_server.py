@@ -216,8 +216,14 @@ def save_file(filepath: str | None = None) -> dict:
 
 @mcp.tool()
 def get_evaluated_state(object_name: str) -> dict:
-    """Read the modifier-EVALUATED mesh (what the surface actually looks like after the modifier stack runs, e.g. Subdivision Surface), not the base control cage every other state command reads. Returns mesh_health, valence_distribution, surface_quality (face-area outlier detection and max adjacent-face angle -- signals aimed at spotting subdivision pinching, which doesn't show up as a validity failure), and bounding_box (base-cage vs evaluated-surface dimensions/shrinkage_ratio_xyz per axis -- catches SubD silhouette shrinkage from missing support loops, which pinching signals alone can miss)."""
+    """Read modifier-evaluated health, topology, surface-quality, candidate pinch/waviness diagnostics, and cage-vs-result bounds. Surface diagnostics remain candidate evidence and require contextual visual review."""
     return _call("get_evaluated_state", name=object_name)
+
+
+@mcp.tool()
+def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
+    """Render a Blender-native solid, wireframe, normal, depth, or component_mask diagnostic PNG with scene revision and camera metadata."""
+    return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)
 
 
 @mcp.tool()

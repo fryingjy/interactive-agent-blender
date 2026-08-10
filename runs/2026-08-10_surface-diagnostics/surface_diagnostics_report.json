@@ -1,0 +1,332 @@
+{
+  "lab": "evaluated_surface_concentration_and_oscillation",
+  "results": {
+    "Surface_CleanSphere": {
+      "vertex_samples": 482,
+      "median_edge_length": 0.19603407,
+      "median_absolute_laplacian": 0.0736179,
+      "laplacian_mad": 0.01726246,
+      "max_robust_outlier_z": 0.9534,
+      "pinch_candidate_count": 0,
+      "pinch_candidates": [],
+      "meaningful_signed_edges": 992,
+      "laplacian_sign_change_ratio": 0.0,
+      "mean_neighbor_normal_angle_p95_degrees": 11.2161,
+      "classification": "CANDIDATE_EVIDENCE_ONLY",
+      "limitations": [
+        "boundaries and intentional corrugation can resemble defects",
+        "thresholds require validation by surface family and render/highlight inspection"
+      ]
+    },
+    "Surface_PinchedSphere": {
+      "vertex_samples": 482,
+      "median_edge_length": 0.19603407,
+      "median_absolute_laplacian": 0.0736179,
+      "laplacian_mad": 0.01726246,
+      "max_robust_outlier_z": 80.6796,
+      "pinch_candidate_count": 5,
+      "pinch_candidates": [
+        {
+          "evaluated_vertex_index": 120,
+          "position": [
+            1.4,
+            -0.0,
+            0.0
+          ],
+          "robust_outlier_z": 80.6796,
+          "signed_laplacian": 2.138478
+        },
+        {
+          "evaluated_vertex_index": 121,
+          "position": [
+            0.98079,
+            -0.0,
+            -0.19509
+          ],
+          "robust_outlier_z": 10.7126,
+          "signed_laplacian": -0.34779
+        },
+        {
+          "evaluated_vertex_index": 119,
+          "position": [
+            0.98079,
+            -0.0,
+            0.19509
+          ],
+          "robust_outlier_z": 10.7126,
+          "signed_laplacian": -0.34779
+        },
+        {
+          "evaluated_vertex_index": 135,
+          "position": [
+            0.98078,
+            -0.19509,
+            0.0
+          ],
+          "robust_outlier_z": 10.5399,
+          "signed_laplacian": -0.343369
+        },
+        {
+          "evaluated_vertex_index": 105,
+          "position": [
+            0.98079,
+            0.19509,
+            0.0
+          ],
+          "robust_outlier_z": 10.5399,
+          "signed_laplacian": -0.343369
+        }
+      ],
+      "meaningful_signed_edges": 992,
+      "laplacian_sign_change_ratio": 0.016129,
+      "mean_neighbor_normal_angle_p95_degrees": 11.2161,
+      "classification": "CANDIDATE_EVIDENCE_ONLY",
+      "limitations": [
+        "boundaries and intentional corrugation can resemble defects",
+        "thresholds require validation by surface family and render/highlight inspection"
+      ]
+    },
+    "Surface_UniformCylinder": {
+      "vertex_samples": 266,
+      "median_edge_length": 0.29999995,
+      "median_absolute_laplacian": 0.05679032,
+      "laplacian_mad": 1.1e-07,
+      "max_robust_outlier_z": 269.9406,
+      "pinch_candidate_count": 48,
+      "pinch_candidates": [
+        {
+          "evaluated_vertex_index": 2,
+          "position": [
+            0.86603,
+            0.5,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 8,
+          "position": [
+            -0.5,
+            0.86603,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 14,
+          "position": [
+            -0.86603,
+            -0.5,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 20,
+          "position": [
+            0.5,
+            -0.86603,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 242,
+          "position": [
+            0.86603,
+            0.5,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 248,
+          "position": [
+            -0.5,
+            0.86603,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 254,
+          "position": [
+            -0.86603,
+            -0.5,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 260,
+          "position": [
+            0.5,
+            -0.86603,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 0,
+          "position": [
+            1.0,
+            0.0,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 4,
+          "position": [
+            0.5,
+            0.86603,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 6,
+          "position": [
+            0.0,
+            1.0,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 10,
+          "position": [
+            -0.86603,
+            0.5,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 12,
+          "position": [
+            -1.0,
+            0.0,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 16,
+          "position": [
+            -0.5,
+            -0.86603,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 18,
+          "position": [
+            -0.0,
+            -1.0,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 22,
+          "position": [
+            0.86603,
+            -0.5,
+            -1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 240,
+          "position": [
+            1.0,
+            0.0,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 244,
+          "position": [
+            0.5,
+            0.86603,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 246,
+          "position": [
+            0.0,
+            1.0,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        },
+        {
+          "evaluated_vertex_index": 250,
+          "position": [
+            -0.86603,
+            0.5,
+            1.5
+          ],
+          "robust_outlier_z": 269.9406,
+          "signed_laplacian": 0.823291
+        }
+      ],
+      "meaningful_signed_edges": 504,
+      "laplacian_sign_change_ratio": 0.0,
+      "mean_neighbor_normal_angle_p95_degrees": 27.9996,
+      "classification": "CANDIDATE_EVIDENCE_ONLY",
+      "limitations": [
+        "boundaries and intentional corrugation can resemble defects",
+        "thresholds require validation by surface family and render/highlight inspection"
+      ]
+    },
+    "Surface_WavyCylinder": {
+      "vertex_samples": 266,
+      "median_edge_length": 0.36055505,
+      "median_absolute_laplacian": 0.32932756,
+      "laplacian_mad": 0.09450461,
+      "max_robust_outlier_z": 4.406,
+      "pinch_candidate_count": 0,
+      "pinch_candidates": [],
+      "meaningful_signed_edges": 504,
+      "laplacian_sign_change_ratio": 0.47619,
+      "mean_neighbor_normal_angle_p95_degrees": 29.2172,
+      "classification": "CANDIDATE_EVIDENCE_ONLY",
+      "limitations": [
+        "boundaries and intentional corrugation can resemble defects",
+        "thresholds require validation by surface family and render/highlight inspection"
+      ]
+    }
+  },
+  "assertions": {
+    "pinch_outlier_stronger_than_clean": true,
+    "pinch_candidate_count_increases": true,
+    "wavy_sign_changes_exceed_uniform": true,
+    "all_labeled_candidate_only": true
+  },
+  "pass": true
+}

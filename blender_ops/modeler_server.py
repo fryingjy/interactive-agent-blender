@@ -436,6 +436,7 @@ class ModelerServer:
             "mesh_health": evaluated_probe.evaluated_mesh_health(name),
             "valence_distribution": evaluated_probe.evaluated_valence_distribution(name),
             "surface_quality": evaluated_probe.evaluated_surface_quality(name),
+            "surface_diagnostics": evaluated_probe.evaluated_surface_diagnostics(name),
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
@@ -452,6 +453,11 @@ class ModelerServer:
         """Free to call outside a decision transaction -- a render is a
         read of the current state, not a mutation, same as get_full_state."""
         return render_passes.render_silhouette(name, output_path, view=view, resolution=resolution, margin=margin)
+
+    def cmd_render_diagnostic_pass(self, name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
+        return render_passes.render_diagnostic_pass(
+            name, output_path, pass_type, view=view, resolution=resolution,
+            margin=margin, frame_name=frame_name)
 
     # ---- semantic regions (named groups of persistent-ID elements) ------
     # All free to call outside a decision transaction: they store/query
