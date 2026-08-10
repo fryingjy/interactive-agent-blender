@@ -38,7 +38,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | UVs | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
 | Materials / shading | ✓ | — | ✓ | ✓ | — | ✓ | ✓ |
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
-| Blender Python / BMesh | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
+| Blender Python / BMesh | ✓ | — | ✓ | ✓ | ~ | ✓ | ✓ |
 
 ## Current interpretation
 

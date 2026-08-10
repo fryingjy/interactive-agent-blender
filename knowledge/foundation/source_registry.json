@@ -346,7 +346,7 @@
       "audio": false,
       "captions": false
     },
-    "status": "STUDYING",
+    "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
     "modalities_inspected": [
       "text"
@@ -354,11 +354,14 @@
     "metadata": {
       "direct_observations": [
         "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
-        "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session"
+        "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session",
+        "Standalone BMesh ownership requires explicit write-back/free; indexed sequences require current lookup tables",
+        "Scripts are responsible for valid selection/connectivity state and explicit edit-mesh updates"
       ],
       "candidate_principles": [],
       "experiments": [
-        "bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md"
+        "bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md",
+        "runs/2026-08-10_bmesh-api/bmesh_api_report.json"
       ],
       "skills": []
     }
@@ -716,6 +719,29 @@
         "Resolution strategy is part of sculpt workflow and later retopology remains a distinct task"
       ],
       "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-api-bmesh-module",
+    "url": "https://docs.blender.org/api/current/bmesh.html",
+    "local_path": null,
+    "title": "BMesh Module",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Current Blender Python API; reproduced in Blender 5.2.0 LTS",
+    "topics": ["bmesh", "api", "ownership", "custom-data", "selection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Standalone and Edit-mode BMesh access have different ownership/update responsibilities",
+        "Custom data such as UVs is accessed through element layers",
+        "Selection and mesh-validity conventions are not automatically enforced for scripts"
+      ],
+      "experiments": ["runs/2026-08-10_bmesh-api/bmesh_api_report.json"]
     }
   }
 ]
