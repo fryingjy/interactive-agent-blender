@@ -165,7 +165,10 @@
       "Apply or explicitly account for non-uniform scale before judging wall thickness",
       "Treat an intentionally open rim as a pipeline choice, not a closed solid"
     ],
-    "experiments": ["runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json"],
+    "experiments": [
+      "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+      "runs/2026-08-10_solidify-transfer/solidify_transfer_report.json"
+    ],
     "skills": ["modifier-stack-order-subd-safe"]
   },
   {

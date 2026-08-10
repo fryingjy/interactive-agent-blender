@@ -1,6 +1,6 @@
 # Operator card: Solidify modifier
 
-**Status:** DOCS ✓ (Blender Manual) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ ~ | RUNTIME_USE ~ | SECOND_SHAPE pending
+**Status:** DOCS ✓ (Blender Manual) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ ~ | RUNTIME_USE ~ | SECOND_SHAPE ✓
 
 ## Purpose
 
@@ -40,6 +40,16 @@ With requested thickness `0.2` and unapplied object scale `(1, 1, 2)`, world-spa
 Therefore:
 
 > Apply or explicitly account for non-uniform scale before judging Solidify thickness.
+
+The warning transferred to an elliptical quarter-cylinder: with baked scale, Simple mode's corresponding-vertex distance stayed within approximately `1.9e-7` of requested thickness `0.2`; the same curved source produced `0.1921–0.3000` under unapplied scale `(1.5, 0.75, 1)`.
+
+## Curved second-shape mode comparison
+
+Evidence: `runs/2026-08-10_solidify-transfer/`
+
+Simple, Simple Even, and Complex Fixed/Even/Constraints all produced closed, all-quad evaluated shells. However, the hypothesis that Even or Complex Constraints would reduce corresponding-vertex Euclidean distance error was false on this faceted elliptical panel.
+
+Do not interpret this as a universal ranking. “Even Thickness” targets corner offset behavior; corresponding-vertex distance is not the same as closest-surface or normal-projected wall thickness. Use a surface-aware metric before claiming one mode is more accurate.
 
 ## Preconditions and verification
 

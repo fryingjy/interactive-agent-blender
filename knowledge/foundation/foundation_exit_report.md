@@ -30,11 +30,12 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 49 controlled/reproduction cases are now recorded:
+Approximately 55 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
 - Twelve standalone Boolean/Solidify variants in `runs/2026-08-10_boolean-solidify-foundation/`.
+- Six curved Solidify second-shape variants in `runs/2026-08-10_solidify-transfer/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -52,6 +53,8 @@ The Boolean/Solidify lab added:
 - A reproduced tangent-groove Boolean failure with 90 n-gons and 18 degenerate faces.
 - Solidify Fill Rim on/off and Offset -1/0/+1.
 - Unapplied versus applied non-uniform-scale thickness measurement.
+
+The curved Solidify transfer confirmed the scale warning on a different shape, compared five thickness modes, disproved two simplistic mode-ranking hypotheses, and exposed the need for closest-surface/normal-projected thickness metrics.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
@@ -95,7 +98,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 - Subdivision and contextual topology fundamentals.
 - Modifier-order reasoning across four tested pairs.
 - Standalone Bevel/Mirror fundamentals.
-- Standalone Boolean/Solidify fundamentals and Boolean cross-asset runtime transfer.
+- Standalone Boolean/Solidify fundamentals, Boolean cross-asset runtime transfer, and Solidify curved second-shape transfer.
 - Honest failure recording and independent technical verification.
 
 ## Largest remaining gaps
@@ -106,7 +109,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 4. Modeler-relevant Python/BMesh documentation block.
 5. Repeated retention and context-aware knowledge retrieval.
 6. Visual surface judgment, especially pinching/highlight flow.
-7. Second-shape validation for Bevel, Mirror, and Solidify guidance.
+7. Second-shape validation for Bevel and Mirror guidance.
 8. Legal local video/tutorial ingestion with honest modality records.
 
 ## Exit decision
@@ -115,4 +118,4 @@ The foundation remains **PARTIAL**. Experiment count and one completed quiz are 
 
 ## Highest-value next step
 
-Run a curved second-shape Solidify transfer with acute corners and varied normal directions, comparing Simple/Complex and Even Thickness while measuring wall-thickness error and self-intersection. Keep this separate from held-out benchmark assets.
+Implement closest-surface and normal-projected wall-thickness measurement on an acute bent shell, then continue Bevel/Mirror second-shape transfer. Keep these separate from held-out benchmark assets.
