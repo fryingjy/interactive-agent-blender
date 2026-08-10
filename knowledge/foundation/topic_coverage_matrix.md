@@ -49,6 +49,8 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Typed modeling operation surface | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Documentation crawl tracking | ✓ | — | ✓ | ✓ | — | ~ | — |
+| Self-session learning/replay | ~ | — | ✓ | ✓ | — | ~ | ✓ |
 | Modeling strategy selection | ~ | — | ✓ | ✓ | — | — | — |
 
 ## Current interpretation

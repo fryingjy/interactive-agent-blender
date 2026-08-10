@@ -19,6 +19,7 @@ open and is not falsely claimed.
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
+| Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
 | Runtime skill telemetry | append-only revision-linked material skill use | validated once |
 | Retention | two same-day quizzes, second has 15 fresh mechanism/evidence answers | same-day complete; multi-day pending |
@@ -34,6 +35,7 @@ open and is not falsely claimed.
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
 | Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect/symmetrize/split/separate in protocol 0.2 | 15/15 controlled cases plus rollback/identity evidence |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
+| Self-session learning | 165 real decisions mined; multi-asset candidates guarded by replay; bevel replay validated on different asset | controlled pass; no automatic promotion |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
 | GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |
 

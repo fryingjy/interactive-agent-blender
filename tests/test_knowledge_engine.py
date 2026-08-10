@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from knowledge_engine.ingest.document_ingest import ingest_document
+from knowledge_engine.ingest.document_ingest import crawl_local_documents, ingest_document
 from knowledge_engine.ingest.transcript_ingest import parse_transcript
 from knowledge_engine.reasoning import (
     Diagnosis,
@@ -17,6 +17,7 @@ from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
+from knowledge_engine.session_learning import apply_replay_result, mine_session_events
 
 import numpy as np
 
@@ -81,6 +82,17 @@ class DocumentIngestTests(unittest.TestCase):
                     version="n/a",
                     topics=[],
                 )
+
+    def test_local_crawl_deduplicates_and_tracks_completion(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "a.html").write_text("<h1>A</h1><a href='b.html'>B</a><a href='copy.html'>Copy</a>", encoding="utf-8")
+            (root / "b.html").write_text("<h1>B</h1><p>Warning: test.</p>", encoding="utf-8")
+            (root / "copy.html").write_text("<h1>B</h1><p>Warning: test.</p>", encoding="utf-8")
+            result = crawl_local_documents([root / "a.html"], approved_roots=[root], creator="test", trust_tier="A", version="1", topics=["mesh"])
+            self.assertTrue(result["completion"]["complete"])
+            self.assertEqual(result["completion"]["unique_documents"], 2)
+            self.assertIn("DUPLICATE_CONTENT", [item["reason"] for item in result["skipped"]])
 
 
 class TranscriptTests(unittest.TestCase):
@@ -220,6 +232,21 @@ class QualityReviewTests(unittest.TestCase):
         ])
         self.assertFalse(result["pass"])
         self.assertEqual(result["hard_failures"], ["surface"])
+
+
+class SessionLearningTests(unittest.TestCase):
+    def test_candidates_require_separate_replay(self):
+        events = [
+            {"evaluation": "accepted", "asset_id": "a", "chosen_action": {"op": "bevel"}},
+            {"evaluation": "accepted", "asset_id": "b", "chosen_action": {"op": "bevel"}},
+            {"evaluation": "repaired", "asset_id": "b", "chosen_action": {"op": "bevel"}},
+        ]
+        candidate = mine_session_events(events)["candidates"][0]
+        self.assertEqual(candidate["status"], "CANDIDATE_REQUIRES_REPLAY")
+        result = apply_replay_result(candidate, {"replay_id": "r1", "different_asset": True, "expected": "clean", "observed": "clean", "pass": True, "evidence_path": "run.json"})
+        self.assertEqual(result["status"], "REPLAY_VALIDATED")
+        richer = apply_replay_result(candidate, {"replay_id": "r2", "different_asset": True, "expected": "clean", "observed": {"clean": True, "faces": 30}, "pass": True, "evidence_path": "verify.json"})
+        self.assertEqual(richer["status"], "REPLAY_VALIDATED")
 
 
 class StrategyTests(unittest.TestCase):
