@@ -1,0 +1,496 @@
+{
+  "lab": "standalone_boolean_solidify",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "Boolean_Difference_Target",
+      "question": "Does Exact Difference remove the overlapping cutter volume cleanly?",
+      "settings": {
+        "operation": "DIFFERENCE",
+        "solver": "EXACT",
+        "cutter_offset_x": 0.75
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 16,
+        "edges": 26,
+        "faces": 12,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 1,
+        "degenerate_faces": 0,
+        "signed_world_volume": 5.750000000000002,
+        "min_world_edge_length": 0.3535533905932738,
+        "world_bounds": {
+          "x": [
+            -10.0,
+            -8.0
+          ],
+          "y": [
+            3.0,
+            5.0
+          ],
+          "z": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Boolean_Union_Target",
+      "question": "Does Exact Union combine overlapping closed volumes and remove interior faces?",
+      "settings": {
+        "operation": "UNION",
+        "solver": "EXACT",
+        "cutter_offset_x": 0.75
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 16,
+        "edges": 26,
+        "faces": 12,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 1,
+        "degenerate_faces": 0,
+        "signed_world_volume": 9.125,
+        "min_world_edge_length": 0.3535533905932738,
+        "world_bounds": {
+          "x": [
+            -6.0,
+            -3.5
+          ],
+          "y": [
+            3.0,
+            5.0
+          ],
+          "z": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Boolean_Intersect_Target",
+      "question": "Does Exact Intersect retain only the shared volume?",
+      "settings": {
+        "operation": "INTERSECT",
+        "solver": "EXACT",
+        "cutter_offset_x": 0.75
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 2.25,
+        "min_world_edge_length": 1.0,
+        "world_bounds": {
+          "x": [
+            -1.0,
+            0.0
+          ],
+          "y": [
+            3.25,
+            4.75
+          ],
+          "z": [
+            -0.75,
+            0.75
+          ]
+        }
+      }
+    },
+    {
+      "object": "Boolean_ManifoldDifference_Target",
+      "question": "Does the Manifold solver handle the same closed-mesh Difference case?",
+      "settings": {
+        "operation": "DIFFERENCE",
+        "solver": "MANIFOLD",
+        "cutter_offset_x": 0.75
+      },
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "evaluated": {
+        "vertices": 16,
+        "edges": 26,
+        "faces": 12,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 1,
+        "degenerate_faces": 0,
+        "signed_world_volume": 5.749999999999999,
+        "min_world_edge_length": 1.0,
+        "world_bounds": {
+          "x": [
+            2.0,
+            4.0
+          ],
+          "y": [
+            3.0,
+            5.0
+          ],
+          "z": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Boolean_TangentGroove_Target",
+      "question": "Does a near-tangent groove cutter reproduce topology-quality defects?",
+      "settings": {
+        "operation": "DIFFERENCE",
+        "solver": "EXACT",
+        "target": "32-sided cylinder radius 1",
+        "cutter": "torus major radius 1, minor radius 0.12"
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 96,
+        "faces": 34
+      },
+      "evaluated": {
+        "vertices": 314,
+        "edges": 526,
+        "faces": 214,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 90,
+        "degenerate_faces": 18,
+        "signed_world_volume": 6.121894295421676,
+        "min_world_edge_length": 0.0,
+        "world_bounds": {
+          "x": [
+            6.0,
+            8.0
+          ],
+          "y": [
+            3.0,
+            5.0
+          ],
+          "z": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_Rim_On",
+      "question": "Does Fill Rim close the boundary between the two offset surfaces?",
+      "settings": {
+        "thickness": 0.2,
+        "offset": -1.0,
+        "use_rim": true
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.800000011920929,
+        "min_world_edge_length": 0.20000000707805143,
+        "world_bounds": {
+          "x": [
+            -10.0,
+            -8.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.20000000298023224,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_Rim_Off",
+      "question": "Does disabling Fill Rim intentionally leave open boundaries?",
+      "settings": {
+        "thickness": 0.2,
+        "offset": -1.0,
+        "use_rim": false
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 8,
+        "faces": 2,
+        "non_manifold_edges": 8,
+        "boundary_edges": 8,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.26666667064030963,
+        "min_world_edge_length": 2.0,
+        "world_bounds": {
+          "x": [
+            -7.0,
+            -5.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.20000000298023224,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_Offset_-1",
+      "question": "How does Offset place thickness relative to the original surface normal?",
+      "settings": {
+        "thickness": 0.2,
+        "offset": -1.0,
+        "use_rim": true
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.800000011920929,
+        "min_world_edge_length": 0.20000000707805143,
+        "world_bounds": {
+          "x": [
+            -4.0,
+            -2.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.20000000298023224,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_Offset_+0",
+      "question": "How does Offset place thickness relative to the original surface normal?",
+      "settings": {
+        "thickness": 0.2,
+        "offset": 0.0,
+        "use_rim": true
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.800000011920929,
+        "min_world_edge_length": 0.20000000707805143,
+        "world_bounds": {
+          "x": [
+            -1.0,
+            1.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.10000000149011612,
+            0.10000000149011612
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_Offset_+1",
+      "question": "How does Offset place thickness relative to the original surface normal?",
+      "settings": {
+        "thickness": 0.2,
+        "offset": 1.0,
+        "use_rim": true
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.800000011920929,
+        "min_world_edge_length": 0.20000000707805143,
+        "world_bounds": {
+          "x": [
+            2.0,
+            4.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            0.0,
+            0.20000000298023224
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_NonUniformScale",
+      "question": "Does non-uniform object scale change world-space thickness?",
+      "settings": {
+        "thickness": 0.2,
+        "object_scale": [
+          1.0,
+          1.0,
+          2.0
+        ],
+        "scale_applied": false
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.600000023841858,
+        "min_world_edge_length": 0.40000001415610287,
+        "world_bounds": {
+          "x": [
+            5.0,
+            7.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.4000000059604645,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "object": "Solidify_AppliedScale",
+      "question": "Does applying the same scale restore the requested world-space thickness?",
+      "settings": {
+        "thickness": 0.2,
+        "object_scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "scale_applied": true
+      },
+      "base": {
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1
+      },
+      "evaluated": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.8000000119209287,
+        "min_world_edge_length": 0.20000000707805143,
+        "world_bounds": {
+          "x": [
+            8.0,
+            10.0
+          ],
+          "y": [
+            -4.0,
+            -2.0
+          ],
+          "z": [
+            -0.20000000298023224,
+            0.0
+          ]
+        }
+      }
+    }
+  ],
+  "assertions": {
+    "difference_is_closed_and_reduces_volume": true,
+    "union_is_closed_and_increases_volume": true,
+    "intersect_is_closed_shared_volume": true,
+    "manifold_solver_handles_closed_difference": true,
+    "tangent_boolean_exposes_quality_defect": true,
+    "solidify_fill_rim_is_closed": true,
+    "solidify_without_rim_is_open": true,
+    "solidify_offsets_place_shell_as_documented": true,
+    "non_uniform_scale_changes_world_thickness": true
+  },
+  "pass": true
+}

@@ -119,6 +119,56 @@
     "skills": []
   },
   {
+    "source_id": "blender-manual-boolean-modifier",
+    "title": "Boolean Modifier",
+    "url": "https://docs.blender.org/manual/en/dev/modeling/modifiers/generate/booleans.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["boolean-modifier", "hard-surface", "modifiers"],
+    "modalities_inspected": ["text"],
+    "status": "RUNTIME_VALIDATED",
+    "direct_observations": [
+      "Difference subtracts source volume, Union combines volumes while removing interior faces, and Intersect retains shared volume",
+      "Fast is intended for speed but lacks robust overlapping-geometry support; Exact is slower and supports overlap/coplanarity",
+      "Manifold is usually fastest but requires manifold operands except for the documented Difference-with-plane case",
+      "Only manifold operands are guaranteed to produce proper results"
+    ],
+    "candidate_principles": [
+      "Inspect n-gons, degenerates, zero-length edges, shading, and editability even when a Boolean result is manifold",
+      "Avoid tangent or coincident cutter placement when a small strategy change can prevent solver slivers"
+    ],
+    "experiments": [
+      "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+      "runs/2026-08-07_proof1-redo/",
+      "runs/2026-08-07_mug-adaptive/"
+    ],
+    "skills": ["boolean-groove-cut-topology-cleanup", "modifier-stack-order-subd-safe"]
+  },
+  {
+    "source_id": "blender-manual-solidify-modifier",
+    "title": "Solidify Modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/solidify.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["solidify-modifier", "thickness", "modifiers"],
+    "modalities_inspected": ["text"],
+    "status": "EXPERIMENTALLY_TESTED",
+    "direct_observations": [
+      "Thickness is calculated in local coordinates, so non-uniform object scale can vary world-space thickness",
+      "Offset places thickness relative to face normals",
+      "Fill Rim joins inner and outer boundaries",
+      "Even Thickness improves consistency but does not guarantee exact thickness for every topology"
+    ],
+    "candidate_principles": [
+      "Apply or explicitly account for non-uniform scale before judging wall thickness",
+      "Treat an intentionally open rim as a pipeline choice, not a closed solid"
+    ],
+    "experiments": ["runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json"],
+    "skills": ["modifier-stack-order-subd-safe"]
+  },
+  {
     "source_id": "blender-api-bmesh-ops",
     "title": "BMesh Operators (bmesh.ops) Python API reference",
     "url": "https://docs.blender.org/api/current/bmesh.ops.html",

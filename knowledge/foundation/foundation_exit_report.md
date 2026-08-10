@@ -18,20 +18,23 @@ Studied Tier A material includes:
 - Bevel Edit Mode operation.
 - Bevel modifier.
 - Mirror modifier.
+- Boolean modifier.
+- Solidify modifier.
 - Empties/Image Empty reference workflow.
 - Mesh Editing operator index.
 - Parts of the BMesh operators API.
 
-Coverage remains unsystematic across the full mesh-editing branch, Boolean and Solidify standalone behavior, broader modifier families, retopology, sculpting, UVs, materials, and the modeler-relevant Python/BMesh surface.
+Coverage remains unsystematic across the full mesh-editing branch, broader modifier families, retopology, sculpting, UVs, materials, and the modeler-relevant Python/BMesh surface.
 
 The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newest lab ran in installed Blender 5.2.0 LTS. Records preserve that version distinction.
 
 ### Controlled experiments
 
-Approximately 37 controlled/reproduction cases are now recorded:
+Approximately 49 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
+- Twelve standalone Boolean/Solidify variants in `runs/2026-08-10_boolean-solidify-foundation/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -42,7 +45,15 @@ The standalone modifier lab added:
 - Excessive Bevel width with Clamp Overlap enabled/disabled.
 - Mirror exact seam, below-threshold seam failure, larger-threshold repair, and Bisect behavior.
 
-All seven encoded assertions passed. See `modifier_foundation_report.json` for evaluated measurements and `modifier_foundation_lab.blend` for the scene.
+The Boolean/Solidify lab added:
+
+- Exact Difference, Union, and Intersect volume/topology comparisons.
+- Manifold-solver Difference comparison.
+- A reproduced tangent-groove Boolean failure with 90 n-gons and 18 degenerate faces.
+- Solidify Fill Rim on/off and Offset -1/0/+1.
+- Unapplied versus applied non-uniform-scale thickness measurement.
+
+All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
 ### Failure cases
 
@@ -55,6 +66,9 @@ Meaningful failures or limitations include:
 - Bevel-before-Solidify being a no-op on a single plane.
 - Mirror seam outside Merge Distance leaving eight boundary/non-manifold edges.
 - Excessive Bevel width with Clamp Overlap producing nearly collapsed edges despite remaining manifold.
+- Tangent torus/cylinder Boolean Difference producing 90 n-gons, 18 degenerate faces, and a zero-length edge while remaining manifold.
+- Solidify with Fill Rim disabled leaving eight boundary/non-manifold edges.
+- Unapplied non-uniform Z scale doubling requested Solidify world thickness.
 
 Failures remain visible and are not counted as successes merely because Blender returned without an exception.
 
@@ -81,19 +95,19 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 - Subdivision and contextual topology fundamentals.
 - Modifier-order reasoning across four tested pairs.
 - Standalone Bevel/Mirror fundamentals.
+- Standalone Boolean/Solidify fundamentals and Boolean cross-asset runtime transfer.
 - Honest failure recording and independent technical verification.
 
 ## Largest remaining gaps
 
 1. Systematic current Blender Manual coverage rather than isolated pages.
-2. Standalone Boolean and Solidify documentation/labs.
-3. Retopology curriculum and transfer tests.
-4. Sculpt, UV, materials, and production/export foundations.
-5. Modeler-relevant Python/BMesh documentation block.
-6. Repeated retention and context-aware knowledge retrieval.
-7. Visual surface judgment, especially pinching/highlight flow.
-8. Second-shape and cross-asset validation of learned guidance.
-9. Legal local video/tutorial ingestion with honest modality records.
+2. Retopology curriculum and transfer tests.
+3. Sculpt, UV, materials, and production/export foundations.
+4. Modeler-relevant Python/BMesh documentation block.
+5. Repeated retention and context-aware knowledge retrieval.
+6. Visual surface judgment, especially pinching/highlight flow.
+7. Second-shape validation for Bevel, Mirror, and Solidify guidance.
+8. Legal local video/tutorial ingestion with honest modality records.
 
 ## Exit decision
 
@@ -101,4 +115,4 @@ The foundation remains **PARTIAL**. Experiment count and one completed quiz are 
 
 ## Highest-value next step
 
-Run the next second-shape modifier lab on curved/cylindrical geometry, including non-uniform-scale Bevel behavior and Mirror/SubD seam evaluation, then use the result to validate or narrow the new standalone guidance.
+Run a curved second-shape Solidify transfer with acute corners and varied normal directions, comparing Simple/Complex and Even Thickness while measuring wall-thickness error and self-intersection. Keep this separate from held-out benchmark assets.

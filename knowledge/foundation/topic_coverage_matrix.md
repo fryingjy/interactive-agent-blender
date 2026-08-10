@@ -24,9 +24,9 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Smooth / Flat shading | — | — | ✓ | — | — | ✓ | ~ |
 | Topology fundamentals | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Subdivision Surface | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
-| Boolean modifier | — | — | ~ | ✓ | ✓ | ✓ | ~ |
+| Boolean modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Mirror modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | — |
-| Solidify modifier | — | — | ~ | ✓ | ~ | ~ | — |
+| Solidify modifier | ✓ | — | ✓ | ✓ | ~ | ~ | — |
 | Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | — |
 | Retopology fundamentals | — | — | ~ | ✓ | — | ✓ | — |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
@@ -38,7 +38,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 ## Current interpretation
 
-The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel and Mirror now have documentation plus controlled Blender 5.2 experiments, but neither has second-shape transfer.
+The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, and Solidify now have documentation plus controlled Blender 5.2 experiments. Boolean also has genuine runtime and cross-asset transfer evidence; Bevel, Mirror, and Solidify still lack second-shape validation.
 
 The weakest breadth remains sculpting, UV/material production, structured retopology, systematic API study, video-based learning, repeated retrieval, and transfer validation.
 
