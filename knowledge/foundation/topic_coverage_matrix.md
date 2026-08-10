@@ -34,6 +34,9 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Retopology fundamentals | ✓ | — | ✓ | ✓ | — | ✓ | ~ |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
+| Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
+| Machine-enforced stage gates | ~ | — | ✓ | ✓ | — | ~ | — |
+| Professional review aggregation | ~ | — | ✓ | ✓ | — | ~ | — |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Sculpting | ✓ | — | ✓ | ~ | — | ~ | ~ |
 | UVs | ✓ | — | ✓ | ✓ | — | ~ | ✓ |

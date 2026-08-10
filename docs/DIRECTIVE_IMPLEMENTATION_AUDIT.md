@@ -25,6 +25,10 @@ open and is not falsely claimed.
 | Uncertainty/rebuild | explicit confidence and repair-pressure policy | tested |
 | Strategy selection | representation/component/edit/repair choices with reasons/margins | 10/10 declared cases |
 | Multi-view comparison | fixed-frame front/side/top IoU, contour, bounds, centroid | synthetic controlled pass |
+| Rich visual channel | solid, evaluated wireframe, world-normal, depth, component masks with scene/camera metadata | controlled pass |
+| Reference localization | enclosed negative space, named landmarks, semantic component masks | implemented and unit-tested |
+| Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
+| Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
 | GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |

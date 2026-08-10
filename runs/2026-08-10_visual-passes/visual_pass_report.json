@@ -1,0 +1,151 @@
+{
+  "lab": "blender_native_diagnostic_visual_passes",
+  "records": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\solid_front.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.196518,
+      "foreground_unique_colors_5bit": 62
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\wireframe_front.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.007736,
+      "foreground_unique_colors_5bit": 1
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\normal_front.png",
+      "pass_type": "normal",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.196518,
+      "foreground_unique_colors_5bit": 322
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\depth_front.png",
+      "pass_type": "depth",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.196518,
+      "foreground_unique_colors_5bit": 8
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\component_mask_front.png",
+      "pass_type": "component_mask",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.196518,
+      "foreground_unique_colors_5bit": 11
+    }
+  ],
+  "assertions": {
+    "all_files_exist": true,
+    "all_tied_to_revision": true,
+    "all_have_camera_metadata": true,
+    "wireframe_has_visible_edges": true,
+    "wireframe_sparser_than_solid": true,
+    "normal_has_direction_colors": true,
+    "depth_has_gradient": true,
+    "component_mask_has_multiple_colors": true
+  },
+  "pass": true
+}

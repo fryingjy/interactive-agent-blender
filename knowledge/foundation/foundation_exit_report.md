@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 110 controlled/reproduction cases are now recorded:
+Approximately 115 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -43,6 +43,7 @@ Approximately 110 controlled/reproduction cases are now recorded:
 - Nine modeler-relevant BMesh/API records in `runs/2026-08-10_bmesh-api/`.
 - Three fixed-frame visual variants compared across front, side, and top in `runs/2026-08-10_visual-comparison/`.
 - One actual Sculpt Mode brush mutation and two export/import round trips in `runs/2026-08-10_sculpt-export/`.
+- Five Blender-native diagnostic visual passes and strict stage-gate attempts in `runs/2026-08-10_visual-passes/` and `runs/2026-08-10_stage-quality/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -80,6 +81,12 @@ The interactive sculpt/export lab used a real `VIEW_3D` context and Draw brush, 
 matching bounds, triangulated surface coverage, UV presence, and material presence. A failed GLB
 raw-count assertion is preserved: glTF legitimately triangulated polygons and split attribute
 vertices, so format-invariant verification replaced exact raw-count equality.
+
+The visual channel now includes solid, evaluated-wireframe, world-normal, depth, and component-mask
+passes tied to scene/camera metadata. Two blank/face-retaining wireframe failures are preserved.
+Strict forward stage transitions reject weak evidence without mutating persistent Blender state.
+Professional readiness aggregation currently fails hard surface/reference/generalization gates,
+preventing clean technical meshes or synthetic IoU from being misreported as professional quality.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 

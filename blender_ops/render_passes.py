@@ -186,3 +186,199 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
         "frame_objects": frame_names,
         "silhouette_fill_ratio": round(filled / total, 4) if total else None,
     }
+
+
+def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
+    depsgraph = bpy.context.evaluated_depsgraph_get()
+    obj_eval = obj.evaluated_get(depsgraph)
+    evaluated = obj_eval.to_mesh()
+    mesh = evaluated.copy()
+    obj_eval.to_mesh_clear()
+    temp = bpy.data.objects.new(f"__visual_{pass_type}_{obj.name}", mesh)
+    bpy.context.scene.collection.objects.link(temp)
+    temp.matrix_world = obj.matrix_world.copy()
+    if pass_type == "wireframe":
+        local_diag = mathutils.Vector(mesh.bounds_max - mesh.bounds_min).length if hasattr(mesh, "bounds_max") else max(obj.dimensions.length, 1.0)
+        wire = temp.modifiers.new("Diagnostic Wire", "WIREFRAME")
+        wire.thickness = max(local_diag * 0.004, 0.002)
+        wire.use_replace = True
+        return temp
+    attribute = mesh.color_attributes.new(name="visual_pass_color", type="BYTE_COLOR", domain="CORNER")
+    mesh.color_attributes.active_color = attribute
+    if pass_type == "normal":
+        normal_matrix = obj.matrix_world.to_3x3().inverted().transposed()
+        for polygon in mesh.polygons:
+            normal = (normal_matrix @ polygon.normal).normalized()
+            color = (normal.x * 0.5 + 0.5, normal.y * 0.5 + 0.5, normal.z * 0.5 + 0.5, 1.0)
+            for loop_index in polygon.loop_indices:
+                attribute.data[loop_index].color = color
+    else:
+        depth_min, depth_max = depth_range
+        span = max(depth_max - depth_min, 1e-8)
+        for loop in mesh.loops:
+            world = obj.matrix_world @ mesh.vertices[loop.vertex_index].co
+            value = (world.dot(direction) - depth_min) / span
+            attribute.data[loop.index].color = (value, value, value, 1.0)
+    return temp
+
+
+def render_diagnostic_pass(name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
+    """Render a controlled Blender-native diagnostic pass.
+
+    Supported passes are `solid`, `wireframe`, `normal`, `depth`, and `component_mask`. Normal and
+    depth colors are generated on temporary copies of the modifier-evaluated meshes; source objects
+    and scene settings are restored. Camera/projection metadata and scene revision are returned so
+    an image cannot become detached from the state that produced it.
+    """
+    valid_passes = {"solid", "wireframe", "normal", "depth", "component_mask"}
+    if pass_type not in valid_passes:
+        return {"error": f"pass_type must be one of {sorted(valid_passes)}"}
+    names = [name] if isinstance(name, str) else list(name)
+    objs = []
+    for object_name in names:
+        obj = bpy.data.objects.get(object_name)
+        if obj is None or obj.type != "MESH":
+            return {"error": f"'{object_name}' is not a mesh object"}
+        objs.append(obj)
+    if view not in _VIEW_VECTORS:
+        return {"error": f"view must be one of {sorted(_VIEW_VECTORS)}"}
+    frame_names = names if frame_name is None else ([frame_name] if isinstance(frame_name, str) else list(frame_name))
+    frame_objs = []
+    for object_name in frame_names:
+        obj = bpy.data.objects.get(object_name)
+        if obj is None or obj.type != "MESH":
+            return {"error": f"frame object '{object_name}' is not a mesh object"}
+        frame_objs.append(obj)
+    bmin = bmax = None
+    all_frame_coords = []
+    for obj in frame_objs:
+        obj_min, obj_max = _evaluated_bbox_world(obj)
+        if obj_min is None:
+            continue
+        bmin = obj_min if bmin is None else mathutils.Vector(map(min, bmin, obj_min))
+        bmax = obj_max if bmax is None else mathutils.Vector(map(max, bmax, obj_max))
+        all_frame_coords.extend([obj_min, obj_max])
+    if bmin is None:
+        return {"error": "no evaluated vertices across the frame objects"}
+    center = (bmin + bmax) / 2.0
+    diag = (bmax - bmin).length
+    if diag < 1e-6:
+        return {"error": "combined evaluated bounding box is degenerate"}
+    direction = _VIEW_VECTORS[view]
+    depth_values = [point.dot(direction) for point in all_frame_coords]
+    depth_range = (min(depth_values), max(depth_values))
+
+    temp_objects = []
+    render_objects = objs
+    if pass_type in {"wireframe", "normal", "depth"}:
+        temp_objects = [_diagnostic_mesh_copy(obj, pass_type, direction, depth_range) for obj in objs]
+        render_objects = temp_objects
+
+    cam_data = bpy.data.cameras.new(name="__diagnostic_cam__")
+    cam_data.type = "ORTHO"
+    cam_data.ortho_scale = diag * margin
+    cam_obj = bpy.data.objects.new("__diagnostic_cam__", cam_data)
+    bpy.context.scene.collection.objects.link(cam_obj)
+    cam_obj.location = center + direction * diag * 2.0
+    cam_obj.rotation_euler = direction.to_track_quat("Z", "Y").to_euler()
+    camera_location = list(cam_obj.location)
+
+    scene = bpy.context.scene
+    shading = scene.display.shading
+    state = {
+        "camera": scene.camera,
+        "engine": scene.render.engine,
+        "resolution": (scene.render.resolution_x, scene.render.resolution_y),
+        "film_transparent": scene.render.film_transparent,
+        "filepath": scene.render.filepath,
+        "file_format": scene.render.image_settings.file_format,
+        "color_mode": scene.render.image_settings.color_mode,
+        "shading_type": shading.type,
+        "color_type": shading.color_type,
+        "single_color": tuple(shading.single_color),
+        "light": shading.light,
+        "show_shadows": shading.show_shadows,
+        "show_cavity": shading.show_cavity,
+    }
+    other_objects = [item for item in bpy.data.objects if item not in render_objects and item is not cam_obj]
+    hidden = {item.name: item.hide_render for item in other_objects}
+    object_colors = {obj.name: tuple(obj.color) for obj in objs}
+    for item in other_objects:
+        item.hide_render = True
+    if pass_type == "component_mask":
+        palette = ((1.0, 0.1, 0.1, 1.0), (0.1, 1.0, 0.1, 1.0), (0.1, 0.1, 1.0, 1.0), (1.0, 1.0, 0.1, 1.0))
+        for index, obj in enumerate(objs):
+            obj.color = palette[index % len(palette)]
+    try:
+        scene.camera = cam_obj
+        scene.render.engine = "BLENDER_WORKBENCH"
+        scene.render.resolution_x = resolution
+        scene.render.resolution_y = resolution
+        scene.render.film_transparent = True
+        scene.render.image_settings.file_format = "PNG"
+        scene.render.image_settings.color_mode = "RGBA"
+        scene.render.filepath = output_path
+        shading.type = "SOLID"
+        shading.light = "STUDIO" if pass_type == "solid" else "FLAT"
+        shading.show_shadows = pass_type == "solid"
+        shading.show_cavity = pass_type == "solid"
+        if pass_type in {"normal", "depth"}:
+            shading.color_type = "VERTEX"
+        elif pass_type == "component_mask":
+            shading.color_type = "OBJECT"
+        else:
+            shading.color_type = "SINGLE"
+            shading.single_color = (0.55, 0.55, 0.55) if pass_type == "solid" else (0.0, 0.0, 0.0)
+        out_dir = os.path.dirname(output_path)
+        if out_dir:
+            os.makedirs(out_dir, exist_ok=True)
+        bpy.ops.render.render(write_still=True)
+    finally:
+        scene.camera = state["camera"]
+        scene.render.engine = state["engine"]
+        scene.render.resolution_x, scene.render.resolution_y = state["resolution"]
+        scene.render.film_transparent = state["film_transparent"]
+        scene.render.filepath = state["filepath"]
+        scene.render.image_settings.file_format = state["file_format"]
+        scene.render.image_settings.color_mode = state["color_mode"]
+        shading.type = state["shading_type"]
+        shading.color_type = state["color_type"]
+        shading.single_color = state["single_color"]
+        shading.light = state["light"]
+        shading.show_shadows = state["show_shadows"]
+        shading.show_cavity = state["show_cavity"]
+        for item in other_objects:
+            item.hide_render = hidden[item.name]
+        for obj in objs:
+            obj.color = object_colors[obj.name]
+        for temp in temp_objects:
+            mesh = temp.data
+            bpy.data.objects.remove(temp, do_unlink=True)
+            bpy.data.meshes.remove(mesh)
+        bpy.data.objects.remove(cam_obj, do_unlink=True)
+        bpy.data.cameras.remove(cam_data)
+
+    image = bpy.data.images.load(output_path)
+    try:
+        pixels = image.pixels[:]
+        alpha = pixels[3::4]
+        rgb = list(zip(pixels[0::4], pixels[1::4], pixels[2::4]))
+        foreground = [color for color, a in zip(rgb, alpha) if a > 0.5]
+        unique_quantized = len({tuple(round(channel * 31) for channel in color) for color in foreground})
+        fill_ratio = sum(a > 0.5 for a in alpha) / len(alpha) if alpha else 0.0
+    finally:
+        bpy.data.images.remove(image)
+    return {
+        "output_path": output_path,
+        "pass_type": pass_type,
+        "view": view,
+        "projection": "ORTHO",
+        "resolution": [resolution, resolution],
+        "target_objects": names,
+        "frame_objects": frame_names,
+        "camera_location": camera_location,
+        "camera_ortho_scale": diag * margin,
+        "scene_revision": scene.get("scene_revision"),
+        "foreground_fill_ratio": round(fill_ratio, 6),
+        "foreground_unique_colors_5bit": unique_quantized,
+    }

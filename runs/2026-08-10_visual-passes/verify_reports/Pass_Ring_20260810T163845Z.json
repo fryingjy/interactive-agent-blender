@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\visual_pass_lab.blend",
+  "object_name": "Pass_Ring",
+  "geometry_source": "evaluated",
+  "verified_at": "2026-08-10T16:38:45Z",
+  "stats": {
+    "vertices": 192,
+    "edges": 384,
+    "faces": 192,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 0.2473746195668366
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

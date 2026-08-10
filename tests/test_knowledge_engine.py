@@ -14,8 +14,9 @@ from knowledge_engine.reasoning import (
 from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
-from knowledge_engine.visual_compare import compare_masks
+from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
+from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 
 import numpy as np
 
@@ -185,6 +186,32 @@ class VisualComparisonTests(unittest.TestCase):
         self.assertLess(result["silhouette_iou"], 1.0)
         self.assertGreater(result["centroid_error_normalized"], 0.0)
         self.assertGreater(result["symmetric_contour_error_normalized"], 0.0)
+
+    def test_negative_space_landmarks_and_components(self):
+        ring = np.ones((32, 32), dtype=bool)
+        ring[8:24, 8:24] = False
+        solid = np.ones((32, 32), dtype=bool)
+        self.assertEqual(int(negative_space_mask(ring).sum()), 256)
+        self.assertEqual(compare_masks(ring, solid)["negative_space_iou"], 0.0)
+        landmarks = compare_landmarks({"port": (8, 8)}, {"port": (9, 8)}, (32, 32))
+        self.assertGreater(landmarks["mean_error_normalized"], 0.0)
+        components = compare_component_masks({"body": ring}, {"body": ring.copy()})
+        self.assertEqual(components["mean_component_iou"], 1.0)
+
+
+class QualityReviewTests(unittest.TestCase):
+    def test_stage_gate_rejects_global_only_visual_evidence(self):
+        result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True})
+        self.assertFalse(result["pass"])
+        self.assertIn("worst-view IoU below 0.9", result["failures"])
+
+    def test_hard_failure_overrides_weighted_score(self):
+        result = aggregate_professional_review([
+            ReviewChannel("technical", 1.0, evidence="verify.json"),
+            ReviewChannel("surface", 0.95, hard_pass=False, evidence="surface.json"),
+        ])
+        self.assertFalse(result["pass"])
+        self.assertEqual(result["hard_failures"], ["surface"])
 
 
 class StrategyTests(unittest.TestCase):
