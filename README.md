@@ -587,6 +587,10 @@ retrieval, usage telemetry, uncertainty, and rebuild-decision foundations are im
 tested; external curriculum breadth and cross-asset promotion remain incomplete. Read it before starting
 research/learning-related work.
 
+`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` is the current directive-by-directive audit. It separates
+implemented local capabilities from the three inputs that cannot be fabricated: elapsed multi-day
+retention, a permitted external lesson, and a sealed unused held-out reference pool.
+
 ## Curriculum step D: subdivision-surface milestone (SoapDish)
 
 `runs/2026-08-07_soap-dish-subsurf/` — the first prop in this project where the control cage is

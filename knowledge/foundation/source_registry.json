@@ -743,5 +743,51 @@
       ],
       "experiments": ["runs/2026-08-10_bmesh-api/bmesh_api_report.json"]
     }
+  },
+  {
+    "id": "blender-manual-gltf-export",
+    "url": "https://docs.blender.org/manual/en/3.3/addons/import_export/scene_gltf2.html",
+    "local_path": null,
+    "title": "glTF 2.0 Import/Export",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 3.3 Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": ["gltf", "export", "triangulation", "uv-seams", "vertex-splitting"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "RUNTIME_VALIDATED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "glTF converts quads and n-gons to triangles during export",
+        "discontinuous UVs and flat-shaded edges can increase exported vertex counts because vertices are separated"
+      ],
+      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+    }
+  },
+  {
+    "id": "blender-manual-obj-export",
+    "url": "https://docs.blender.org/manual/en/5.0/files/import_export/obj.html",
+    "local_path": null,
+    "title": "Wavefront OBJ Import/Export",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": ["obj", "export", "uv", "materials", "axis-conversion"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "RUNTIME_VALIDATED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "OBJ has basic geometry and material support and may use a companion MTL file",
+        "UV, normal, material, triangulation, modifier, scale, and axis options affect interoperability"
+      ],
+      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+    }
   }
 ]

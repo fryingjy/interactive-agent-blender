@@ -246,3 +246,7 @@ Persistent Blender Session                       |
 
 The learning system and the modeling system are meant to eventually operate as one continuous
 system, not two separate projects bolted together.
+
+Current implementation and held-out contamination status are audited in
+`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` and
+`knowledge/foundation/benchmark_readiness.json`.
