@@ -14,13 +14,14 @@ open and is not falsely claimed.
 | Critical modifier breadth | standalone and second-shape Bevel, Mirror, Boolean, Solidify; Array, Shrinkwrap, Simple Deform | controlled evidence complete |
 | Secondary modifier breadth | Screw, Remesh, Decimate, Triangulate, Smooth, Corrective Smooth, Laplacian Smooth, Curve, Lattice | 9/9 controlled foundation cases; transfer mostly pending |
 | Contextual topology/SubD | pole, triangle/n-gon context, density, support spacing, cylindrical routing, terminations | controlled evidence complete |
-| Retopology foundations | low cage conformance, actual brush-sculpt handoff, deformation-density comparison, historical Mug rebuild | foundational evidence complete; production articulation breadth remains |
-| Sculpt foundations | Multires, voxel remesh, actual Draw brush mutation, and handoff to independently clean low cage | foundational evidence complete |
+| Retopology foundations | official planning lesson studied; low cage conformance, actual brush-sculpt handoff, sparse-vs-adequate deformation density, historical Mug rebuild | planning/density evidence complete; facial patch/pose transfer remains |
+| Sculpt foundations | official 25-minute lesson studied; Multires/voxel remesh; seven-stroke Draw/Crease mutation; false-FINISHED and smoothing controls; clean low-cage handoff | mechanism evidence complete; production form quality remains open |
 | UV/material/production | scale warning, unwrap, node state, slots, organization, packed tangent normal/PBR semantics, OBJ/GLB round trip | foundational evidence complete |
+| Seam-authored high/low bake | official UV lesson studied; authored cut graph on a different flared housing; real Cycles Selected-to-Active tangent bake; missing-source failure; Non-Color invariant | controlled PASS with 2/2 fresh-process mesh verification; production transfer pending |
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
-| External official lesson study | three Blender-authored CC BY 3.0 Fundamentals videos; decoded frames, audio, 126 timestamped machine-transcript segments, cross-checked notes | genuine visual/speech access; older UI and transcription errors explicitly bounded |
+| External official lesson study | six Blender-authored/Studio lessons; decoded frames/audio/captions, timestamped observations, UV bake, multi-stroke sculpt, and deformation-density transfer | genuine visual/speech access; older UI and transcription errors explicitly bounded |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
@@ -57,9 +58,9 @@ open and is not falsely claimed.
 
 ## Items that cannot honestly be completed from current inputs
 
-1. **Advanced expert video curriculum:** three official Blender Fundamentals lessons are now
-   processed with real frames/audio/machine transcripts, but advanced topology, sculpt, retopology,
-   UV/baking, and surface-judgment instruction remains absent.
+1. **Advanced expert video curriculum:** six official lessons are now processed with real
+   frames/audio/captions and source-to-skill experiments. Facial patch/pole transfer, production
+   sculpt/retopology, and surface-judgment instruction remain absent.
 2. **Multi-day retention:** two quizzes exist on the same date. Elapsed days cannot be manufactured
    within one execution session.
 3. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those

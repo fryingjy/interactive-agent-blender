@@ -1,11 +1,12 @@
 # Curriculum card: Sculpt, remesh, Multires, and retopology handoff
 
-**Status:** DOCS ✓ (Blender 4.1/5.0 Manual generations) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ~ | QUIZ pending | RUNTIME_USE ~ | SECOND_SHAPE ~
+**Status:** DOCS ✓ (Blender 4.1/5.0 Manual generations) | VIDEO ✓ (official Blender Studio) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ~ | SECOND_SHAPE ~
 
 Official sources:
 
 - <https://docs.blender.org/manual/en/5.0/sculpt_paint/sculpting/index.html>
 - <https://docs.blender.org/manual/en/5.0/modeling/meshes/retopology.html>
+- <https://studio.blender.org/training/blender-2-8-fundamentals/intro-sculpting/>
 
 ## Foundations
 
@@ -29,8 +30,19 @@ Evidence: `runs/2026-08-10_sculpt-export/`
 - The brush required a real `VIEW_3D` context, so the lab ran Blender in a hidden GUI process rather
   than pretending a headless geometry mutation was a brush test.
 
+Evidence: `runs/2026-08-10_multistroke-sculpt-learning/`
+
+- The official 25:11 lesson was inspected through 20 decoded frames and 380 authored-caption
+  segments, including brush effects, masking, symmetry, Dyntopo detail modes, and Multires.
+- Seven real Draw/Crease strokes on one continuous ellipsoid moved 5,812 vertices. A fresh Blender
+  process verified the developed surface as closed, outward, nondegenerate, and free of n-gons.
+- A failed first run proves `brush_stroke == FINISHED` does not prove mutation when scripted hit
+  locations are invalid. Geometry deltas are mandatory evidence.
+- Broad repeated smoothing changed volume by +20.94% on this path. This does not reproduce a
+  universal shrink rule; it confirms that smoothing can materially alter form and must be measured.
+
 ## Limitation
 
-This validates resolution mechanics and actual brush access, not organic sculpting judgment. A
-single stroke is not primary/secondary form design; anatomy/form evaluation and a
-sculpt-to-purposeful-retopology asset remain required.
+This validates multi-stroke access and mechanism-level form change, not professional organic
+sculpting judgment. Anatomy/form evaluation and an articulated sculpt-to-purposeful-retopology
+asset remain required.

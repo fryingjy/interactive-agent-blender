@@ -897,5 +897,100 @@
       ],
       "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"]
     }
+  },
+  {
+    "id": "blender-fundamentals-uv-unwrapping-video",
+    "url": "https://commons.wikimedia.org/wiki/File:UV_Unwrapping_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
+    "title": "UV Unwrapping - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
+    "topics": ["uv", "seams", "unwrap", "projection", "texture-distortion", "normal-baking"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 385.021,
+      "sha256": "655721f8e23dfaebae2cae43a83954814cd418077e1827511bc0c5ddfe784c21",
+      "transcript_segments": 70,
+      "direct_observations": [
+        "Standard Unwrap uses authored seams; projection and automatic algorithms are alternative strategies rather than universal replacements",
+        "Project from View can pass one view while stretching perpendicular faces",
+        "The seam explanation reasons from desired island connectivity and cut-open behavior"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-uv-unwrapping/video_ingest_report.json",
+        "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/uv_foundations.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-intro-sculpting-video",
+    "url": "https://studio.blender.org/training/blender-2-8-fundamentals/intro-sculpting/",
+    "local_path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
+    "title": "Intro to Sculpting - Blender 2.80 Fundamentals",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
+    "topics": ["sculpting", "brushes", "masking", "symmetry", "dyntopo", "multires"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 1511.125011,
+      "sha256": "71c396ed03432115608541af960baa34610ede26c7a559ef1baaf0fe3ee02e76",
+      "caption_segments": 380,
+      "direct_observations": [
+        "Clay and Clay Strips combine volume addition/removal with flattening, making them form-building rather than detail-stamping tools",
+        "Smooth averages vertex positions and can materially change volume; its effect must be evaluated rather than assumed",
+        "Dyntopo detail modes encode different scale assumptions while Multires preserves an explicit coarse-to-fine hierarchy",
+        "Masking protects regions and symmetry depends on object origin and rotation"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-intro-sculpting/video_ingest_report.json",
+        "runs/2026-08-10_multistroke-sculpt-learning/multistroke_sculpt_learning_report.json",
+        "runs/2026-08-10_multistroke-sculpt-learning/failed_attempt_missing_surface_locations.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/sculpt_foundations.md"]
+    }
+  },
+  {
+    "id": "blender-studio-planning-facial-retopology-video",
+    "url": "https://studio.blender.org/training/stylized-character-workflow/5e5407ec8faf011a381510d7/",
+    "local_path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
+    "title": "Planning the Facial Retopology",
+    "creator": "Julien Kaspar / Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.83-era workflow; inspected and mechanism-tested in Blender 5.2 on 2026-08-10",
+    "topics": ["retopology", "edge-flow", "articulation", "deformation", "poles", "patches"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 531.221333,
+      "sha256": "8ea01cc583cbda7dc7f8f07ece12141d04784a6d55b64bb13ee76627ba7f1121",
+      "caption_segments": 140,
+      "direct_observations": [
+        "General flow circles eyes, nose, mouth, chin and jaw to support both shape and muscle movement",
+        "Primary resting creases use close support while secondary compression creases preserve wider rest spacing",
+        "Articulation zones receive enough loops for arcs and perpendicular curvature support",
+        "Poles and redirection belong away from hard creases and heavy deformation on lower-motion surfaces",
+        "The topology plan remains editable in response to tested expressions"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-studio-planning-facial-retopology/video_ingest_report.json",
+        "runs/2026-08-10_sculpt-retopo-deformation/sculpt_retopology_deformation_report.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+    }
   }
 ]

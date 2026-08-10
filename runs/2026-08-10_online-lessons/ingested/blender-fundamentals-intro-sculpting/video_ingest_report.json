@@ -1,0 +1,181 @@
+{
+  "source_id": "blender-fundamentals-intro-sculpting",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\intro-to-sculpting.mp4",
+  "sha256": "71c396ed03432115608541af960baa34610ede26c7a559ef1baaf0fe3ee02e76",
+  "duration": 1511.125011,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": true,
+  "transcript": true,
+  "caption_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\intro-to-sculpting.vtt",
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\intro-to-sculpting.vtt",
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0001_000180.000s.png"
+    },
+    {
+      "timestamp": 360.0,
+      "decoded_at": 360.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0002_000360.000s.png"
+    },
+    {
+      "timestamp": 370.0,
+      "decoded_at": 370.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0003_000370.000s.png"
+    },
+    {
+      "timestamp": 520.0,
+      "decoded_at": 520.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0004_000520.000s.png"
+    },
+    {
+      "timestamp": 540.0,
+      "decoded_at": 540.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0005_000540.000s.png"
+    },
+    {
+      "timestamp": 650.0,
+      "decoded_at": 650.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0006_000650.000s.png"
+    },
+    {
+      "timestamp": 720.0,
+      "decoded_at": 720.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0007_000720.000s.png"
+    },
+    {
+      "timestamp": 805.0,
+      "decoded_at": 805.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0008_000805.000s.png"
+    },
+    {
+      "timestamp": 900.0,
+      "decoded_at": 900.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0009_000900.000s.png"
+    },
+    {
+      "timestamp": 1020.0,
+      "decoded_at": 1020.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0010_001020.000s.png"
+    },
+    {
+      "timestamp": 1080.0,
+      "decoded_at": 1080.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0011_001080.000s.png"
+    },
+    {
+      "timestamp": 1140.0,
+      "decoded_at": 1140.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0012_001140.000s.png"
+    },
+    {
+      "timestamp": 1250.0,
+      "decoded_at": 1250.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0013_001250.000s.png"
+    },
+    {
+      "timestamp": 1260.0,
+      "decoded_at": 1260.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0014_001260.000s.png"
+    },
+    {
+      "timestamp": 1310.0,
+      "decoded_at": 1310.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0015_001310.000s.png"
+    },
+    {
+      "timestamp": 1360.0,
+      "decoded_at": 1360.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0016_001360.000s.png"
+    },
+    {
+      "timestamp": 1430.0,
+      "decoded_at": 1430.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0017_001430.000s.png"
+    },
+    {
+      "timestamp": 1440.0,
+      "decoded_at": 1440.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0018_001440.000s.png"
+    },
+    {
+      "timestamp": 1495.0,
+      "decoded_at": 1495.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0019_001495.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 370.0,
+      "decoded_at": 370.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0003_000370.000s.png"
+    },
+    {
+      "timestamp": 520.0,
+      "decoded_at": 520.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0004_000520.000s.png"
+    },
+    {
+      "timestamp": 650.0,
+      "decoded_at": 650.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0006_000650.000s.png"
+    },
+    {
+      "timestamp": 805.0,
+      "decoded_at": 805.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0008_000805.000s.png"
+    },
+    {
+      "timestamp": 1020.0,
+      "decoded_at": 1020.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0010_001020.000s.png"
+    },
+    {
+      "timestamp": 1140.0,
+      "decoded_at": 1140.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0012_001140.000s.png"
+    },
+    {
+      "timestamp": 1250.0,
+      "decoded_at": 1250.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0013_001250.000s.png"
+    },
+    {
+      "timestamp": 1310.0,
+      "decoded_at": 1310.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0015_001310.000s.png"
+    },
+    {
+      "timestamp": 1360.0,
+      "decoded_at": 1360.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0016_001360.000s.png"
+    },
+    {
+      "timestamp": 1430.0,
+      "decoded_at": 1430.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0017_001430.000s.png"
+    },
+    {
+      "timestamp": 1495.0,
+      "decoded_at": 1495.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-sculpting\\frame_0019_001495.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "transcript_segment_count": 380,
+  "transcript_text_in_report": false,
+  "transcription": null,
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+  ]
+}

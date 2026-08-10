@@ -6,3 +6,5 @@ runs/*/blend/*.blend
 runs/*/media/
 **/generated_transcript.vtt
 **/speech_transcription_report.json
+runs/*/ingested/**/frame_*.png
+*.blend1

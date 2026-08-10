@@ -1,0 +1,142 @@
+{
+  "lab": "multi_stroke_sculpt_learning",
+  "blender_version": "5.2.0 LTS",
+  "lesson_claims_tested": [
+    "form is built by moving surface volume, not by assembling parts",
+    "brush radius and strength change the scale of the edit",
+    "smoothing averages vertices and can remove volume"
+  ],
+  "failures": [],
+  "fixture": "single continuous applied ellipsoid; no assembled primitive parts",
+  "operations": [
+    {
+      "tool": "Draw",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Draw",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Draw",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Draw",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Draw",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Crease",
+      "result": [
+        "FINISHED"
+      ]
+    },
+    {
+      "tool": "Crease",
+      "result": [
+        "FINISHED"
+      ]
+    }
+  ],
+  "baseline": {
+    "vertices": 10242,
+    "faces": 20480,
+    "volume": 4.523853730293856,
+    "bounds": {
+      "x": [
+        -1.119999885559082,
+        1.1200000047683716
+      ],
+      "y": [
+        -0.7199999690055847,
+        0.7199999690055847
+      ],
+      "z": [
+        -1.340000033378601,
+        1.340000033378601
+      ]
+    }
+  },
+  "developed": {
+    "vertices": 10242,
+    "faces": 20480,
+    "volume": 4.523853730293856,
+    "bounds": {
+      "x": [
+        -1.119999885559082,
+        1.1200000047683716
+      ],
+      "y": [
+        -0.7199999690055847,
+        0.7199999690055847
+      ],
+      "z": [
+        -1.340000033378601,
+        1.340000033378601
+      ]
+    }
+  },
+  "over_smoothed_failure": {
+    "stats": {
+      "vertices": 10242,
+      "faces": 20480,
+      "volume": 4.523853730293856,
+      "bounds": {
+        "x": [
+          -1.119999885559082,
+          1.1200000047683716
+        ],
+        "y": [
+          -0.7199999690055847,
+          0.7199999690055847
+        ],
+        "z": [
+          -1.340000033378601,
+          1.340000033378601
+        ]
+      }
+    },
+    "smooth_results": [
+      [
+        "FINISHED"
+      ],
+      [
+        "FINISHED"
+      ],
+      [
+        "FINISHED"
+      ],
+      [
+        "FINISHED"
+      ],
+      [
+        "FINISHED"
+      ]
+    ],
+    "volume_change_from_developed": 0.0,
+    "volume_change_fraction": 0.0
+  },
+  "moved_vertices": 0,
+  "max_displacement": 0.0,
+  "assertions": {
+    "seven_real_brush_strokes_finished": true,
+    "multi_stroke_form_moved_many_vertices": false,
+    "form_changed_measurably": false,
+    "smoothing_changed_volume": false
+  },
+  "pass": false
+}

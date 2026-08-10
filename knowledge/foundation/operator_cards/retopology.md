@@ -1,15 +1,20 @@
 # Curriculum card: Retopology and remeshing
 
-**Status:** DOCS ✓ (Blender 5.0 Manual generation) | EXPERIMENT ✓ | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ✓ | SECOND_SHAPE ~
+**Status:** DOCS ✓ (Blender 5.0 Manual generation) | VIDEO ✓ (Blender Studio) | EXPERIMENT ✓ | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ✓ | SECOND_SHAPE ~
 
 ## Official behavior studied
 
 Source: <https://docs.blender.org/manual/en/5.0/modeling/meshes/retopology.html>
 
+Video: <https://studio.blender.org/training/stylized-character-workflow/5e5407ec8faf011a381510d7/>
+
 - Voxel remesh rebuilds uniform volume-based topology; lower voxel size preserves more detail at higher density.
 - Voxel remesh is unsuitable as final deformation topology and is not the preferred route for Subdivision/Multires cages.
 - Quad remesh can better suit Subdivision, but automatic remesh still does not replace intentional deformation flow.
 - Manual retopology creates an overlapping mesh and uses overlay, Poly Build, snapping, and projection to match the source.
+- Plan loops from articulation, compression, and creases before drawing polygons. Put redirection
+  poles on flatter, lower-motion, or hidden surfaces rather than in hard creases or deformation arcs.
+- Attached deforming components should carry compatible flow when they must move in unison.
 
 ## Project evidence
 
@@ -23,6 +28,11 @@ has mean face-center surface error 0.0280. In a separate shared 70-degree bend, 
 cut mean surface error from the sparse 5-ring cage's 0.02958 to 0.01131 and maximum error from
 0.09754 to 0.03182. Density should therefore be allocated where deformation and changing radius
 need samples, not distributed uniformly by habit.
+
+The official planning lesson was inspected through 15 decoded frames and 140 authored-caption
+segments. The tube bend is a different-shape transfer of its articulation-density rule: the sparse
+failure has 2.62× the adequate cage's mean error and 3.07× its maximum error. This does not yet
+validate facial patch/pole routing, mouth interiors, or expression shape keys.
 
 ## Decision rule
 
