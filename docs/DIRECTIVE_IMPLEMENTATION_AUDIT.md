@@ -46,6 +46,8 @@ open and is not falsely claimed.
 | Self-session learning | 165 real decisions mined; multi-asset candidates guarded by replay; bevel replay validated on different asset | controlled pass; no automatic promotion |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
 | GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |
+| Supplied `.blend` example learning | six read-only structural audits plus controlled renders; component/high-low/modifier lessons separated from rejected quality assumptions | complete learning slice; examples are not blindly labeled professional |
+| Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 
 ## Important disproved assumptions retained
 
@@ -72,6 +74,10 @@ open and is not falsely claimed.
    claiming this from foundation fixtures or one asset.
 5. **Human/expert acceptance:** no independent experienced modeler supplied a quality review for
    new held-out outputs.
+
+The profile-authored sword rebuild closes the locally actionable primitive-assembly criticism for
+that reference. It does not close the human/expert acceptance gate or turn a reused reference into
+new held-out evidence.
 
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.

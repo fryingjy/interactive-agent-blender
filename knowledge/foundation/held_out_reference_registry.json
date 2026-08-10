@@ -12,6 +12,14 @@
         "target": 0.8,
         "independent_components_clean": "15/15",
         "artifact": "runs/2026-08-10_heldout-fantasy-sword/fantasy_sword_heldout.blend"
+      },
+      "quality_rebuild": {
+        "status": "COMPLETED_NOT_HELD_OUT",
+        "reason": "The original passed automated gates but remained visibly primitive-like.",
+        "normalized_front_silhouette_iou": 0.8369406389007742,
+        "independent_components_clean": "19/19",
+        "primitive_mesh_operators_used": 0,
+        "artifact": "runs/2026-08-10_profile-authored-sword/profile_authored_sword.blend"
       }
     },
     {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\ulyca3epaelm.webp", "status": "PROVIDED_UNMODELED_RESERVED_TRANSFER"},

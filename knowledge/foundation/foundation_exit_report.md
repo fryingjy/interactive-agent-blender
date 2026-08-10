@@ -198,6 +198,13 @@ earlier six-second project fixture remains pipeline-only evidence.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
+A later quality rebuild rejected the original held-out sword's primitive-like visible result despite
+its passing automated score. The replacement uses 19 profile/section/lathe/helix-authored semantic
+components without mesh primitive operators, improves normalized front IoU from 0.8285 to 0.8369,
+and passes fresh-process evaluated verification on 19/19 UV-bearing closed meshes. Because the same
+reference had already been used, this is corrective production evidence rather than another
+held-out generalization pass. See `runs/2026-08-10_profile-authored-sword/`.
+
 No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
 
 ## Stronger areas

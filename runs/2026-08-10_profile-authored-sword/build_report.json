@@ -1,0 +1,218 @@
+{
+  "benchmark": "profile_authored_fantasy_sword_001",
+  "construction_contract": {
+    "primitive_mesh_operators_used": 0,
+    "primary_methods": [
+      "authored x/z profile extrusion",
+      "sectioned diamond blade",
+      "lathed profile rings",
+      "explicit closed helical tube"
+    ],
+    "semantic_mesh_components": 19,
+    "required_components": [
+      "blade",
+      "central blade feature",
+      "layered guard",
+      "guard grooves",
+      "grip core",
+      "helical wrap",
+      "collars",
+      "pommel",
+      "gem"
+    ]
+  },
+  "objects": [
+    {
+      "name": "Blade_Profiled",
+      "vertices": 36,
+      "faces": 34,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Blade_Central_Inlay",
+      "vertices": 10,
+      "faces": 7,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Upper_Left",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Upper_Right",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Lower_Left",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Lower_Right",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Central_Shield",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Shield_Recess",
+      "vertices": 12,
+      "faces": 8,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Groove_01",
+      "vertices": 26,
+      "faces": 32,
+      "uv_layers": 1,
+      "modifiers": [
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Groove_02",
+      "vertices": 26,
+      "faces": 32,
+      "uv_layers": 1,
+      "modifiers": [
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Groove_03",
+      "vertices": 26,
+      "faces": 32,
+      "uv_layers": 1,
+      "modifiers": [
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Guard_Groove_04",
+      "vertices": 26,
+      "faces": 32,
+      "uv_layers": 1,
+      "modifiers": [
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Grip_Core",
+      "vertices": 64,
+      "faces": 50,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Grip_Upper_Collar",
+      "vertices": 48,
+      "faces": 34,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Grip_Lower_Collar",
+      "vertices": 48,
+      "faces": 34,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Grip_Helical_Wrap",
+      "vertices": 1502,
+      "faces": 1510,
+      "uv_layers": 1,
+      "modifiers": [
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Pommel_Faceted",
+      "vertices": 48,
+      "faces": 38,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Pommel_Recess",
+      "vertices": 48,
+      "faces": 34,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    },
+    {
+      "name": "Pommel_Ruby",
+      "vertices": 100,
+      "faces": 82,
+      "uv_layers": 1,
+      "modifiers": [
+        "BEVEL",
+        "TRIANGULATE"
+      ]
+    }
+  ],
+  "renders": [
+    "front_beauty.png",
+    "side_beauty.png",
+    "isometric_beauty.png",
+    "front_alpha.png"
+  ],
+  "blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_profile-authored-sword\\profile_authored_sword.blend"
+}
