@@ -19,8 +19,13 @@ they fail with a clear connection error otherwise, not a silent hang.
 import json
 import socket
 import struct
+import sys
+from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from knowledge_engine.surface_cause_classifier import SurfaceCauseEvidence, classify_surface_cause
 
 HOST = "localhost"
 PORT = 9878
@@ -92,6 +97,42 @@ def list_persistent_ids(object_name: str) -> dict:
 def get_evaluated_defect_regions(object_name: str, area_outlier_ratio: float = 0.05, angle_threshold_degrees: float = 10, angle_local_spike_ratio: float = 2.0, max_tickets: int = 20) -> dict:
     """Localize CANDIDATE SubD surface problem areas on object_name's evaluated mesh to actual positions, then map each to the nearest persistent-ID vertices/faces on the base control cage (spatial nearest-neighbor, not exact identity -- the evaluated mesh has no persistent IDs of its own). Unlike get_evaluated_state's surface_quality (global counts/max only), this returns individual tickets sorted by severity for triage -- where to look next, e.g. with render_silhouette on that region. HONEST LIMITATION: this does NOT reliably distinguish real pinching from healthy smooth curvature -- tested against a deliberately bad case and a known-clean mesh, severity scores landed in the same range for both. Treat tickets as candidates worth visual inspection, not confirmed defects; likely_pole_artifact flags a nearby non-4-valence control-cage vertex, which has inherently reduced Catmull-Clark smoothness and is often NOT a real defect on its own."""
     return _call("get_evaluated_defect_regions", name=object_name, area_outlier_ratio=area_outlier_ratio, angle_threshold_degrees=angle_threshold_degrees, angle_local_spike_ratio=angle_local_spike_ratio, max_tickets=max_tickets)
+
+
+@mcp.tool()
+def classify_surface_defect_cause(
+    base_geometry_changed: bool = False,
+    evaluated_geometry_changed: bool = False,
+    silhouette_or_depth_changed: bool = False,
+    face_orientation_or_split_normals_changed: bool = False,
+    normal_repair_neutralizes: bool = False,
+    material_state_changed: bool = False,
+    neutral_material_neutralizes: bool = False,
+    lighting_state_changed: bool = False,
+    neutral_lighting_neutralizes: bool = False,
+    bevel_parameters_changed: bool = False,
+    bevel_repair_neutralizes: bool = False,
+) -> dict:
+    """Classify GEOMETRY, NORMALS, MATERIAL, LIGHTING, or BEVEL_PROFILE from controlled intervention evidence. This does not diagnose a beauty image by itself. Supply state comparisons and whether the matching repair neutralized the discrepancy; mixed signatures return CONFLICTING and insufficient evidence returns UNRESOLVED."""
+    diagnosis = classify_surface_cause(SurfaceCauseEvidence(
+        base_geometry_changed=base_geometry_changed,
+        evaluated_geometry_changed=evaluated_geometry_changed,
+        silhouette_or_depth_changed=silhouette_or_depth_changed,
+        face_orientation_or_split_normals_changed=face_orientation_or_split_normals_changed,
+        normal_repair_neutralizes=normal_repair_neutralizes,
+        material_state_changed=material_state_changed,
+        neutral_material_neutralizes=neutral_material_neutralizes,
+        lighting_state_changed=lighting_state_changed,
+        neutral_lighting_neutralizes=neutral_lighting_neutralizes,
+        bevel_parameters_changed=bevel_parameters_changed,
+        bevel_repair_neutralizes=bevel_repair_neutralizes,
+    ))
+    return {
+        "cause": diagnosis.cause,
+        "confidence": diagnosis.confidence,
+        "reasons": list(diagnosis.reasons),
+        "next_action": diagnosis.next_action,
+    }
 
 
 @mcp.tool()

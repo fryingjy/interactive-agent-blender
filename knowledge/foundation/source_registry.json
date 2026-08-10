@@ -1059,5 +1059,40 @@
       ],
       "skills": ["knowledge/foundation/operator_cards/retopology.md"]
     }
+  },
+  {
+    "id": "blender-fundamentals-intro-shading-video",
+    "url": "https://www.youtube.com/watch?v=RRilLLyyn1Y",
+    "local_path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
+    "title": "Intro to Shading - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; context-separation mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["shading", "materials", "world", "render-engine", "viewport-context", "surface-diagnostics"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 276.521,
+      "sha256": "cdc7d3a0a49aee26b3624e74c044be88903d23f944f93e9000ddc80f8cf9639f",
+      "machine_transcript_segments": 47,
+      "decoded_frame_checkpoints": 11,
+      "license_source": "https://commons.wikimedia.org/wiki/File:Intro_to_Shading_-_Blender_2.80_Fundamentals.webm",
+      "direct_observations": [
+        "The Shading workspace separates object material, world, file/image, and node contexts",
+        "One object can carry multiple material slots, so localized appearance may be assignment rather than geometry",
+        "World nodes alter scene illumination/background without mutating the asset",
+        "Workbench, material preview, and rendered contexts expose different evidence and should be compared"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-intro-shading/video_ingest_report.json",
+        "runs/2026-08-10_surface-cause-classification/surface_cause_classification_report.json",
+        "runs/2026-08-10_surface-cause-classification/failed_runs.json",
+        "runs/2026-08-10_surface-cause-classification/fresh_collection_verify.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+    }
   }
 ]

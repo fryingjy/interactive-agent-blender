@@ -182,13 +182,13 @@ regression evidence rather than held-out judgment.
 
 ### Video and structured training
 
-Eight complete official Blender lessons were ingested through the approved-root pipeline: Modeling
+Nine complete official Blender lessons were ingested through the approved-root pipeline: Modeling
 Introduction, Extrude, Bevel Tool, UV Unwrapping, Intro to Sculpting, and Planning the Facial
-Retopology, Three Point Lighting, plus Snow - Stylized Character Retopology Live #2. They provide
-11,341.467 seconds of real video/audio and 108 decoded frame samples
+Retopology, Three Point Lighting, Snow - Stylized Character Retopology Live #2, plus Intro to
+Shading. They provide 11,617.988 seconds of real video/audio and 119 decoded frame samples
 (`runs/2026-08-10_online-lessons/`). The first four use CC BY 3.0 Wikimedia mirrors; the sculpt
 retopology, and lighting lessons are free official Blender Studio sources with 650 authored-caption segments. Local
-machine transcription/caption sidecars supplied 4,791 timestamped segments where creator captions were absent. Important
+machine transcription/caption sidecars supplied 4,838 timestamped segments where creator captions were absent. Important
 claims were checked against decoded frames, current official documentation, and Blender 5.2
 experiments. Machine wording remains fallible and is not treated as an authoritative quotation.
 The UV lesson produced an authored-seam tangent-bake test; the sculpt lesson produced a seven-stroke
@@ -202,6 +202,14 @@ eyelid/inner-mouth structures, and pole-placement reasoning. Its different-shape
 topology and a 92-degree bend constant while moving one identical five-pole pair: bend-zone mean
 deviation increased 3,437.77x when the pair sat inside articulation. Two invalid deformation-axis
 setups are retained. This does not substitute for a rigged facial expression test.
+
+The official Intro to Shading lesson was bounded to what its inspected frames support: material
+slots, world state, render engines, and viewport contexts can change appearance independently. Its
+different-shape transfer adds a typed conservative classifier for geometry, normals, material,
+lighting, and bevel-profile intervention signatures. Five controlled defects classified correctly,
+all were visibly measurable, and 5/5 meshes passed fresh verification after OpenGL-exit,
+empty-collection, and inward-winding failures were rejected. Mixed-cause production transfer remains
+unmeasured.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
@@ -233,14 +241,14 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
-4. Surface-defect cause classification beyond candidate signals and the now-validated grazing-light
-   observability rig.
+4. Production transfer of surface-defect cause classification. Candidate localization, grazing-light
+   observability, and five controlled intervention signatures now pass, but mixed real defects remain.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
    supplied references remain reserved for broader generalization evidence.
 6. Advanced external instruction now includes one long-form retopology live study; local transcription and
    authored-caption ingestion are functional, but rigged facial expression transfer, production
-   sculpt/retopology, and surface-defect cause classification remain.
+   sculpt/retopology, and mixed-cause production surface diagnosis remain.
 
 ## Exit decision
 
@@ -250,6 +258,6 @@ independent professional judgment remain below the gate.
 
 ## Highest-value next step
 
-Study an advanced form-design/retopology source and execute an articulated sculpt-to-deformation
-asset with independent surface and topology review. On a later calendar day, also run the retention
+Execute a rigged organic expression or joint-deformation transfer with purposeful production
+retopology and independent surface/topology review. On a later calendar day, also run the retention
 quiz; elapsed-time evidence cannot be manufactured in this session.

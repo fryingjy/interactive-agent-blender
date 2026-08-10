@@ -68,10 +68,10 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top comparison loop now measures silhouette, bounds, centroid, and contour regression, but it has not yet been used on a held-out or photoreal reference.
 
 The weakest breadth remains production-quality organic sculpting, production articulation/retopology,
-surface-defect cause classification, multi-day retrieval retention,
+mixed-cause surface-defect transfer, multi-day retrieval retention,
 professional visual judgment, and broader transfer validation.
 
-Video evidence is credited only for eight Blender-authored/Studio lessons actually decoded,
+Video evidence is credited only for nine Blender-authored/Studio lessons actually decoded,
 captioned or locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial
 mesh-fundamentals coverage; dedicated Extrude and Bevel lessons give substantial operator coverage;
 the UV, Sculpt, facial-planning, pole-placement, and lighting lessons now have different-shape experiments. The older Blender 2.80 UI is

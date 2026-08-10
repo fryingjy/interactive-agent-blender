@@ -26,7 +26,7 @@ visual-study credit.
 | P0 | Sculpt form development | primary/secondary/tertiary sequencing; brush family by surface effect; resolution strategy; masking/Face Sets | multi-stroke continuous form plus destructive overwork control | EXPERIMENTALLY_TESTED (fundamentals); production form pending |
 | P0 | Sculpt-to-retopology | cage planning, poles/loops, density transitions, projection error, deformation intent | articulated organic source, purposeful quad cage, deformation test | planning + advanced live lesson; density and pole-placement transfers tested; facial pose transfer pending |
 | P0 | UV and high/low baking | seam cut graph, distortion/packing/texel density, tangent convention, cage/ray margin | authored seams and Selected-to-Active bake on a different shape | EXPERIMENTALLY_TESTED |
-| P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | review-light observability tested; cause classification pending |
+| P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
 | P1 | Topology and SubD | pole placement, loop termination, curved holes, pinching and density | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
 | P1 | Hard surface | boolean/SubD/hybrid choice, modifier order, bevel hierarchy, cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
 | P1 | Reference modeling | perspective uncertainty, landmark ratios, silhouette and negative space | multi-view reference asset with measured checkpoints | partial; chair failure retained |
@@ -47,6 +47,7 @@ visual-study credit.
 | Blender Studio: Planning the Facial Retopology | 15 frames + 140 authored-caption segments | 70-degree tube bend isolates articulation density | sparse 5-ring cage has 2.62× mean and 3.07× max surface error | retopology card |
 | Blender Fundamentals: Three Point Lighting | 12 frames + 130 authored-caption segments | clean/dented curved product surface under two fixed rigs | empty render buffer; non-grazing three-light rig hid defect | surface diagnostics card |
 | Blender Studio: Snow Retopology Live #2 | 27 frames + 4,595 automatic-caption segments | identical five-pole pair moved between low-motion and bend zones on a tapered hose | two invalid Simple Deform axis/orientation setups | retopology card |
+| Blender Fundamentals: Intro to Shading | 11 frames + 47 machine-transcript segments | five single-cause interventions on an authored chamfered enclosure | OpenGL exit crash, empty collection audit, inward winding | surface diagnostics card + typed classifier |
 
 ## Breadth map from the supplied links
 
