@@ -3,9 +3,9 @@
 This is new territory for the project: every prior tool reads mesh DATA
 (vertices, edges, faces, custom attribute layers), never pixels. That was a
 deliberate founding constraint while the closed-loop typed-decision runtime
-was being proven out. The new master directive (docs/MASTER_DIRECTIVE.md,
-sections 10/50/55) explicitly calls for Blender-native rendering as the
-required next step toward actual image-reference modeling -- a real
+was being proven out. The master directive (docs/MASTER_DIRECTIVE.md,
+especially sections 11 and 12) requires Blender-native rendering for
+actual image-reference modeling -- a real
 reference photo cannot be compared against a mesh using vertex/face counts
 alone, it needs a rendered projection to compare against.
 

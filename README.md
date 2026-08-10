@@ -256,21 +256,20 @@ first real tool call landed correctly against the reloaded `Mug.blend`.
 
 ## Master directive: mode-correct reads + persistent IDs in selection
 
-`docs/MASTER_DIRECTIVE.md` — a large continuation/curriculum document pasted by the user,
-superseding ad-hoc scope decisions going forward. Its own section 3 is explicit that it does not
-override the repository: verify current state before trusting anything written there, including
-itself. Its section 55 gives a priority-ordered implementation list; the research/curriculum
-sections (23-50) are explicitly gated behind the closed-loop engineering items per the document's
-own sequencing rule, matching `docs/RESEARCH_ROADMAP.md`'s pre-existing gating — not started.
+`docs/MASTER_DIRECTIVE.md` is the durable operating contract for the project. It defines the
+evidence hierarchy, closed-loop modeling behavior, state and recovery requirements, quality
+model, research discipline, and evaluation rules. Commit-bound status and implementation queues
+remain in run evidence, foundation reports, and `docs/RESEARCH_ROADMAP.md`; current code and
+reproducible evidence take precedence over stale prose.
 
-Two items from the top of that list were completed and live-verified: **item 2** (migrate live
+Two previously prioritized items were completed and live-verified: **item 2** (migrate live
 topology reads to mode-correct APIs) and **item 3** (return persistent IDs alongside indices in
 selection/state). `blender_ops/state_probe.py`'s mesh-reading functions (`probe_object`,
 `mesh_health`, `valence_distribution`, `vertex_neighborhood`, `get_selection`) and
 `blender_ops/mesh_ops.py`'s internal read/write helpers all now route through `bmesh_io` instead of
 the old `bmesh.new()+from_mesh()` pattern, which — as already found live during the mug-handle fix
-— silently reads stale data when the object is in Edit Mode. Required proof (directive section 56,
-"Edit Mode truth"): entered Edit Mode on a scratch object, extruded a face via `bmesh.ops` *without
+— silently reads stale data when the object is in Edit Mode. The then-current directive required
+an "Edit Mode truth" proof: entered Edit Mode on a scratch object, extruded a face via `bmesh.ops` *without
 exiting Edit Mode*, then queried `state_probe.mesh_health`/`probe_object` and confirmed they
 reported the exact live edit-bmesh counts (12/20/11 verts/edges/faces), matching an independent
 ground-truth read, not the stale pre-extrude counts. `get_selection` now returns
@@ -349,7 +348,8 @@ against the live Mug afterward, unaffected throughout.
 
 ## Closing out the master directive's engineering priority list
 
-Told to keep going without stopping. Worked through nearly all of section 55's remaining items,
+Told to keep going without stopping. Worked through nearly all items in the then-current
+directive's engineering priority list,
 each live-tested, not just written:
 
 - **Item 5 (separate identifiers), completed**: `event_id` (distinct from `seq`, which is only
@@ -432,9 +432,8 @@ Not done, and not attempted without further instruction: **Blender-native visual
 default extrapolated from "keep going." Also not started: logging arbitrary `execute_blender_code`
 usage as a fallback-path metric (item 14's other half) — that tool lives in a separate MCP server
 (`blender-mcp`) this project doesn't control internally, so it isn't something addressable by
-editing this repo's code. The research/curriculum system (directive sections 23-50) remains
-explicitly gated behind this engineering work being reliable, per the directive's own sequencing
-rule — not started, as before.
+editing this repo's code. The research/curriculum system remained gated behind reliable
+closed-loop engineering under that directive's sequencing rule — not started, as before.
 
 ## Item 23: first real modeling session through the typed protocol, not raw code
 

@@ -1,4 +1,4 @@
-"""Explicit per-object modeling-stage tracking (directive section 11/12).
+"""Explicit per-object modeling-stage tracking (master directive section 5).
 
 "Do not polish detail while the major form is still wrong." The gadget
 prop this session (since deleted) violated this directly: primitives were
@@ -41,7 +41,7 @@ _KEY_STAGE = "modeling_stage"
 _KEY_LOG = "modeling_stage_log"
 
 # What each stage's own gate is supposed to check before advancing PAST it
-# -- directive section 11's own examples, plus the rest inferred from the
+# -- master directive section 5's stages, plus the rest inferred from the
 # same "do not polish detail while the major form is still wrong" logic.
 # Descriptive, not machine-enforced (see module docstring).
 GATE_CRITERIA = {

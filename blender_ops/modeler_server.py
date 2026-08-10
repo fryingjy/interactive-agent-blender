@@ -111,7 +111,7 @@ class ModelerServer:
         self.server_thread = None
 
         # Fresh per server start, not persisted to the .blend -- represents
-        # THIS running server instance (directive section 14: session
+        # THIS running server instance (master directive section 9: state
         # handshake). A Blender restart means a new session_id even if the
         # same file reloads; a client can use this to detect "am I still
         # talking to the same live session I was before."
@@ -198,13 +198,13 @@ class ModelerServer:
     # since the underlying transport is request/response) ---------------
 
     def _push_event(self, event_type, **data):
-        # event_id is a distinct identifier from seq (directive section 7:
+        # event_id is a distinct identifier from seq (master directive section 9:
         # keep session_id/scene_revision/decision_id/command_id/event_id
         # separate) -- seq is purely this queue's ordering, event_id is the
         # event's own identity, stable if it were ever persisted/replayed
         # independent of queue position.
         #
-        # Coalescing (directive section 9): one Blender operator can fire
+        # Coalescing: one Blender operator can fire
         # depsgraph_update_post many times for the same object in the same
         # logical change (observed live: a single mesh edit produces
         # separate updates for the object, its mesh data, the collection,
@@ -384,7 +384,7 @@ class ModelerServer:
         """Cheap liveness + identity check -- a client can call this after a
         reconnect to confirm it's still talking to the same Blender process
         and server session it was before (matching pid and session_id), per
-        directive section 14/16, rather than assuming a fresh connection
+        master directive sections 3 and 9, rather than assuming a fresh connection
         means a fresh, unrelated session."""
         return {
             "session_id": self.session_id,
@@ -566,7 +566,7 @@ class ModelerServer:
         if entry is None:
             raise ValueError(f"no pending decision {decision_id} (already committed, or begin_decision was never called)")
         # CORRECTION (found live, testing the mid-transaction-edit scenario
-        # directive section 56 asks for): begin_decision only proves the
+        # covered by master directive section 9): begin_decision only proves the
         # mesh was clean AT THAT MOMENT. Nothing previously re-checked
         # before the actual mutation ran -- a human edit landing between
         # begin_decision and perform_decision was silently absorbed with
@@ -577,7 +577,7 @@ class ModelerServer:
         # auto-refreshing the baseline here the way begin_decision's own
         # check does on failure -- that would silently fold the human's
         # edit into what the agent then treats as its own starting point,
-        # exactly what directive section 46 says not to do (human
+        # exactly what master directive sections 9 and 16 prohibit (human
         # corrections are evidence to reason about, not something to
         # silently absorb without surfacing).
         baseline_fp = entry.get("baseline_fingerprint")
