@@ -30,7 +30,10 @@
         "Use Limit Surface places verts at the theoretical infinite-subdivision position"
       ],
       "candidate_principles": [],
-      "experiments": [],
+      "experiments": [
+        "runs/2026-08-07_soap-dish-subsurf/",
+        "runs/2026-08-10_topology-subd/topology_subd_report.json"
+      ],
       "skills": []
     }
   },
@@ -99,7 +102,9 @@
         "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
       ],
       "candidate_principles": [],
-      "experiments": [],
+      "experiments": [
+        "runs/2026-08-10_topology-subd/topology_subd_report.json"
+      ],
       "skills": []
     }
   },

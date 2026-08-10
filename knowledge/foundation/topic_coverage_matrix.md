@@ -22,8 +22,8 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Rip | — | — | attempted | ✓ | ✓ | — | — |
 | Normals / orientation | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Smooth / Flat shading | — | — | ✓ | — | — | ✓ | ~ |
-| Topology fundamentals | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
-| Subdivision Surface | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Topology fundamentals | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Subdivision Surface | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Boolean modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Mirror modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Solidify modifier | ✓ | — | ✓ | ✓ | ~ | ~ | ✓ |

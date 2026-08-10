@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 72 controlled/reproduction cases are now recorded:
+Approximately 85 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -38,6 +38,7 @@ Approximately 72 controlled/reproduction cases are now recorded:
 - Six curved Solidify second-shape variants in `runs/2026-08-10_solidify-transfer/`.
 - Seven cylindrical Bevel/Mirror second-shape variants in `runs/2026-08-10_bevel-mirror-transfer/`.
 - Ten Array/Shrinkwrap/Simple-Deform/retopology variants in `runs/2026-08-10_array-deform-retopology/`.
+- Thirteen contextual topology/SubD specimens in `runs/2026-08-10_topology-subd/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -61,6 +62,8 @@ The curved Solidify transfer confirmed the scale warning on a different shape, c
 The cylindrical Bevel/Mirror transfer reproduced the Merge Distance dependency on a curved seam, showed unapplied Z scale doubling the measured world-space bevel band, and disproved the universal form of the earlier Mirror/Subdivision order rule: both orders were manifold on the exact-seam half-cylinder.
 
 The Array/deform/retopology lab confirmed additive array offsets and local-scale effects, reproduced a wrong-direction Shrinkwrap no-op, exposed a Simple Deform API amount-reset pitfall, showed low-density Twist creating four degenerate faces, and conformed a 42-vertex cage to a 1,984-vertex target. Its first two failed designs remain documented and were corrected through stronger controls.
+
+The topology/SubD lab compared pole valences, flat versus curved triangle/n-gon contexts, edge-spacing variation, support-loop width, cylindrical routing, and loop termination. It quantitatively showed that all-quads can still have poor density, while triangles/poles on flat surfaces can remain planar; the two closed support specimens independently verified clean.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
