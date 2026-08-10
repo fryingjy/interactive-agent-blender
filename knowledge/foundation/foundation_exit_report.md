@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 134 controlled/reproduction cases are now recorded:
+Approximately 135 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -46,6 +46,7 @@ Approximately 134 controlled/reproduction cases are now recorded:
 - Five Blender-native diagnostic visual passes and strict stage-gate attempts in `runs/2026-08-10_visual-passes/` and `runs/2026-08-10_stage-quality/`.
 - Four clean/pinched/uniform/wavy surface specimens in `runs/2026-08-10_surface-diagnostics/`.
 - Fifteen expanded typed-operation/registry/transaction cases in `runs/2026-08-10_expanded-typed-ops/`.
+- One semantic selected-region render/stale-region case in `runs/2026-08-10_semantic-region-render/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -100,6 +101,11 @@ including bridge, spin, loop-cut equivalent, bisect, symmetry, split, and separa
 transaction preserved surviving IDs and assigned all new loop-cut IDs; separate rollback restored
 the source and removed its created object. BMesh return-key and symmetrize-direction failures remain
 visible rather than being counted as first-try success.
+
+Persistent face regions can now be rendered against base-cage context and stale IDs are rejected
+before output. An edge-on false-positive image is preserved; final validation requires substantial
+target/context color pixels. Contour, negative-space, landmark, and component errors can now become
+localized priority tickets rather than only global metrics.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 

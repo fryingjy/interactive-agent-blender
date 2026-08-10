@@ -227,6 +227,12 @@ def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type:
 
 
 @mcp.tool()
+def render_semantic_region(object_name: str, region_id: str, output_path: str, view: str = "front", resolution: int = 512, margin: float = 1.15) -> dict:
+    """Render one persistent-ID face region against its base-cage context; stale regions are rejected."""
+    return _call("render_semantic_region", name=object_name, region_id=region_id, output_path=output_path, view=view, resolution=resolution, margin=margin)
+
+
+@mcp.tool()
 def heartbeat() -> dict:
     """Cheap liveness/identity check: session_id, process ID, current revision, uptime, and pending-decision count. Call after a reconnect to confirm you're still talking to the same Blender process and server session as before, not a fresh unrelated one."""
     return _call("heartbeat")

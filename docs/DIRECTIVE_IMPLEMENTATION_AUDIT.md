@@ -26,7 +26,9 @@ open and is not falsely claimed.
 | Strategy selection | representation/component/edit/repair choices with reasons/margins | 10/10 declared cases |
 | Multi-view comparison | fixed-frame front/side/top IoU, contour, bounds, centroid | synthetic controlled pass |
 | Rich visual channel | solid, evaluated wireframe, world-normal, depth, component masks with scene/camera metadata | controlled pass |
+| Selected-region visual channel | persistent-ID base-cage region/context mask, isometric view, stale-ID rejection | controlled pass |
 | Reference localization | enclosed negative space, named landmarks, semantic component masks | implemented and unit-tested |
+| Reference error tickets | contour/negative-space/landmark/component mismatches converted to localized priorities | implemented and unit-tested |
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |

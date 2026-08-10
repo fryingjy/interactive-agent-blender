@@ -30,6 +30,7 @@ KNOWN_ROLES = {
     "primary_form", "secondary_form", "outer_contour", "silhouette_feature",
     "corner", "transition", "support_loop", "feature_edge", "mirror_seam",
     "hole_boundary", "attachment_region", "bevel_edge",
+    "high_curvature", "flat_panel",
 }
 
 

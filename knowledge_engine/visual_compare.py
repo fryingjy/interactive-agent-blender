@@ -163,6 +163,41 @@ def compare_component_masks(reference: dict[str, np.ndarray], candidate: dict[st
     }
 
 
+def make_reference_tickets(
+    silhouette: dict | None = None,
+    landmarks: dict | None = None,
+    components: dict | None = None,
+    *,
+    view: str = "unknown",
+) -> list[dict]:
+    """Convert measured reference mismatches into sorted, localized next-action tickets."""
+    tickets = []
+    if silhouette:
+        contour = silhouette.get("symmetric_contour_error_normalized")
+        if contour is not None and contour > 0:
+            tickets.append({"type": "silhouette_contour", "target": view, "severity": float(contour), "evidence": contour})
+        negative = silhouette.get("negative_space_iou")
+        if negative is not None and negative < 1:
+            tickets.append({"type": "negative_space", "target": view, "severity": float(1 - negative), "evidence": negative})
+    if landmarks:
+        for name, error in landmarks.get("errors_normalized", {}).items():
+            if error > 0:
+                tickets.append({"type": "landmark", "target": name, "view": view, "severity": float(error), "evidence": error})
+        for name in landmarks.get("missing_landmarks", []):
+            tickets.append({"type": "missing_landmark", "target": name, "view": view, "severity": 1.0, "evidence": None})
+    if components:
+        for name, result in components.get("components", {}).items():
+            mismatch = 1.0 - result["silhouette_iou"]
+            if mismatch > 0:
+                tickets.append({"type": "component", "target": name, "view": view, "severity": float(mismatch), "evidence": result["silhouette_iou"]})
+        for name in components.get("missing_components", []):
+            tickets.append({"type": "missing_component", "target": name, "view": view, "severity": 1.0, "evidence": None})
+    tickets.sort(key=lambda item: (-item["severity"], item["type"], item["target"]))
+    for index, ticket in enumerate(tickets, start=1):
+        ticket["priority"] = index
+    return tickets
+
+
 def compare_image_files(reference_path: str | Path, candidate_path: str | Path) -> dict:
     return compare_masks(load_mask(reference_path), load_mask(candidate_path))
 

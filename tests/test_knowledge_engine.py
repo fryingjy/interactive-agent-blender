@@ -14,7 +14,7 @@ from knowledge_engine.reasoning import (
 from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
-from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, negative_space_mask
+from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 
@@ -197,6 +197,14 @@ class VisualComparisonTests(unittest.TestCase):
         self.assertGreater(landmarks["mean_error_normalized"], 0.0)
         components = compare_component_masks({"body": ring}, {"body": ring.copy()})
         self.assertEqual(components["mean_component_iou"], 1.0)
+        tickets = make_reference_tickets(
+            compare_masks(ring, solid),
+            {"errors_normalized": {"port": 0.1}, "missing_landmarks": ["button"]},
+            {"components": {}, "missing_components": ["handle"]},
+            view="front",
+        )
+        self.assertEqual(tickets[0]["severity"], 1.0)
+        self.assertEqual([item["priority"] for item in tickets], list(range(1, len(tickets) + 1)))
 
 
 class QualityReviewTests(unittest.TestCase):

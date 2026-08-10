@@ -35,6 +35,8 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
+| Semantic region rendering | ~ | — | ✓ | ✓ | — | ~ | — |
+| Localized reference tickets | ~ | — | ✓ | ✓ | — | ~ | — |
 | Evaluated surface diagnostics | ~ | — | ✓ | ✓ | — | ~ | ~ |
 | Machine-enforced stage gates | ~ | — | ✓ | ✓ | — | ~ | — |
 | Professional review aggregation | ~ | — | ✓ | ✓ | — | ~ | — |

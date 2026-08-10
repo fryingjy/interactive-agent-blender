@@ -7,6 +7,7 @@
 - **World normal:** direction color for discontinuities and faceting.
 - **Depth:** view-axis depth gradient for overlap and placement.
 - **Component mask:** categorical object separation for per-component comparison.
+- **Semantic region:** one persistent-ID base-cage face region against context, with stale-ID rejection.
 
 Every image must remain attached to scene revision, target/frame objects, camera, projection,
 resolution, and view. A saved file or successful render operator is insufficient; require nonblank
@@ -16,6 +17,9 @@ content and pass-specific variation.
 
 `runs/2026-08-10_visual-passes/` contains five final images, metadata, two preserved wireframe
 failures, a saved `.blend`, and independent evaluated-mesh verification.
+
+`runs/2026-08-10_semantic-region-render/` adds selected-region rendering, dominant-color content
+validation, an isometric view, and a preserved edge-on false positive.
 
 ## Limits
 

@@ -470,6 +470,10 @@ class ModelerServer:
             name, output_path, pass_type, view=view, resolution=resolution,
             margin=margin, frame_name=frame_name)
 
+    def cmd_render_semantic_region(self, name, region_id, output_path, view="front", resolution=512, margin=1.15):
+        return render_passes.render_semantic_region(
+            name, region_id, output_path, view=view, resolution=resolution, margin=margin)
+
     # ---- semantic regions (named groups of persistent-ID elements) ------
     # All free to call outside a decision transaction: they store/query
     # metadata about the mesh, they don't mutate its geometry.

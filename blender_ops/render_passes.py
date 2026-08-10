@@ -21,9 +21,11 @@ PNG directly IS the silhouette mask -- no thresholding or post-processing
 of a lit/shaded image required.
 """
 
+import json
 import math
 import os
 
+import bmesh
 import bpy
 import mathutils
 
@@ -31,6 +33,7 @@ _VIEW_VECTORS = {
     "front": mathutils.Vector((0.0, -1.0, 0.0)),
     "side": mathutils.Vector((1.0, 0.0, 0.0)),
     "top": mathutils.Vector((0.0, 0.0, 1.0)),
+    "isometric": mathutils.Vector((1.0, -1.0, 1.0)).normalized(),
 }
 
 
@@ -366,6 +369,11 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
         foreground = [color for color, a in zip(rgb, alpha) if a > 0.5]
         unique_quantized = len({tuple(round(channel * 31) for channel in color) for color in foreground})
         fill_ratio = sum(a > 0.5 for a in alpha) / len(alpha) if alpha else 0.0
+        dominant = {
+            "red": sum(r > g * 1.2 and r > b * 1.2 for r, g, b in foreground),
+            "green": sum(g > r * 1.2 and g > b * 1.2 for r, g, b in foreground),
+            "blue": sum(b > r * 1.2 and b > g * 1.2 for r, g, b in foreground),
+        }
     finally:
         bpy.data.images.remove(image)
     return {
@@ -381,4 +389,82 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
         "scene_revision": scene.get("scene_revision"),
         "foreground_fill_ratio": round(fill_ratio, 6),
         "foreground_unique_colors_5bit": unique_quantized,
+        "dominant_channel_pixel_counts": dominant,
     }
+
+
+def _object_from_face_group(source_obj, faces, name):
+    source_verts = sorted({vert for face in faces for vert in face.verts}, key=lambda vert: vert.index)
+    index = {vert: position for position, vert in enumerate(source_verts)}
+    mesh = bpy.data.meshes.new(name + "_Mesh")
+    mesh.from_pydata(
+        [tuple(vert.co) for vert in source_verts], [],
+        [[index[vert] for vert in face.verts] for face in faces],
+    )
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    bpy.context.scene.collection.objects.link(obj)
+    obj.matrix_world = source_obj.matrix_world.copy()
+    return obj
+
+
+def render_semantic_region(name, region_id, output_path, view="front", resolution=512, margin=1.15):
+    """Render one persistent-ID face region against the rest of its base cage.
+
+    The pass is explicitly base-cage evidence because evaluated modifiers do not preserve a stable
+    one-to-one face-ID mapping. It validates the region before rendering and reports missing IDs.
+    """
+    source = bpy.data.objects.get(name)
+    if source is None or source.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+    try:
+        regions = json.loads(source.get("agent_semantic_regions", "{}"))
+    except (TypeError, json.JSONDecodeError):
+        regions = {}
+    region = regions.get(region_id)
+    if region is None:
+        return {"error": f"no region '{region_id}' on '{name}'"}
+    target_ids = set(region.get("face_ids", []))
+    if not target_ids:
+        return {"error": f"region '{region_id}' has no face IDs"}
+    bm = bmesh.new()
+    bm.from_mesh(source.data)
+    bm.faces.ensure_lookup_table()
+    layer = bm.faces.layers.int.get("agent_face_id")
+    if layer is None:
+        bm.free()
+        return {"error": f"'{name}' has no persistent face-ID layer"}
+    found_ids = {face[layer] for face in bm.faces}
+    missing = sorted(target_ids - found_ids)
+    if missing:
+        bm.free()
+        return {"error": "semantic region is stale", "missing_face_ids": missing}
+    region_faces = [face for face in bm.faces if face[layer] in target_ids]
+    context_faces = [face for face in bm.faces if face[layer] not in target_ids]
+    temp_objects = []
+    try:
+        if context_faces:
+            temp_objects.append(_object_from_face_group(source, context_faces, "__region_context__"))
+        temp_objects.append(_object_from_face_group(source, region_faces, "__region_target__"))
+        result = render_diagnostic_pass(
+            [obj.name for obj in temp_objects], output_path, "component_mask",
+            view=view, resolution=resolution, margin=margin, frame_name=name,
+        )
+    finally:
+        bm.free()
+        for obj in temp_objects:
+            mesh = obj.data
+            bpy.data.objects.remove(obj, do_unlink=True)
+            bpy.data.meshes.remove(mesh)
+    result.update({
+        "pass_type": "semantic_region",
+        "source_object": name,
+        "region_id": region_id,
+        "region_role": region.get("role"),
+        "region_face_ids": sorted(target_ids),
+        "region_face_count": len(region_faces),
+        "context_face_count": len(context_faces),
+        "geometry_source": "BASE_CAGE",
+        "missing_face_ids": [],
+    })
+    return result
