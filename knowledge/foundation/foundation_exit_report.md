@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 85 controlled/reproduction cases are now recorded:
+Approximately 95 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -39,6 +39,7 @@ Approximately 85 controlled/reproduction cases are now recorded:
 - Seven cylindrical Bevel/Mirror second-shape variants in `runs/2026-08-10_bevel-mirror-transfer/`.
 - Ten Array/Shrinkwrap/Simple-Deform/retopology variants in `runs/2026-08-10_array-deform-retopology/`.
 - Thirteen contextual topology/SubD specimens in `runs/2026-08-10_topology-subd/`.
+- Ten UV/material/sculpt/production records in `runs/2026-08-10_uv-material-sculpt/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -64,6 +65,8 @@ The cylindrical Bevel/Mirror transfer reproduced the Merge Distance dependency o
 The Array/deform/retopology lab confirmed additive array offsets and local-scale effects, reproduced a wrong-direction Shrinkwrap no-op, exposed a Simple Deform API amount-reset pitfall, showed low-density Twist creating four degenerate faces, and conformed a 42-vertex cage to a 1,984-vertex target. Its first two failed designs remain documented and were corrected through stronger controls.
 
 The topology/SubD lab compared pole valences, flat versus curved triangle/n-gon contexts, edge-spacing variation, support-loop width, cylindrical routing, and loop termination. It quantitatively showed that all-quads can still have poor density, while triangles/poles on flat surfaces can remain planar; the two closed support specimens independently verified clean.
+
+The UV/material/sculpt lab quantified the non-uniform-scale unwrap warning, reproduced node-versus-material metadata divergence and orphan slots, exercised Multires and Voxel Remesh, and validated a minimal production-organization audit. Remesh retained populated UV data in Blender 5.2, but semantic correspondence remains unproven and is not credited as production-ready UV preservation.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 

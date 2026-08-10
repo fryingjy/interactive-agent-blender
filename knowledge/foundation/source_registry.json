@@ -627,5 +627,95 @@
         "runs/2026-08-07_mug-retopo/"
       ]
     }
+  },
+  {
+    "id": "blender-manual-uv-layout-workflow",
+    "url": "https://docs.blender.org/manual/en/dev/modeling/meshes/uv/workflows/layout.html",
+    "local_path": null,
+    "title": "UV Layout Workflow",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual generation; reproduced in Blender 5.2.0 LTS",
+    "topics": ["uv", "unwrap", "seams", "packing", "texel-density"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Complex meshes can be unwrapped in parts or through marked seams",
+        "Pack Islands resolves placement but layout may still need scale and distortion refinement",
+        "Minimize Stretch and Average Island Scale address different UV-quality signals"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-materials-introduction",
+    "url": "https://docs.blender.org/manual/en/latest/render/materials/introduction.html",
+    "local_path": null,
+    "title": "Materials Introduction",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["materials", "nodes", "pbr", "assignment"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Materials are data-blocks assignable to objects or mesh regions",
+        "Surface, volume, and displacement shaders define different appearance components",
+        "Node connections control rendered behavior"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-principled-bsdf",
+    "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html",
+    "local_path": null,
+    "title": "Principled BSDF",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["principled-bsdf", "pbr", "roughness", "metallic"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Principled BSDF combines physically based surface layers in one shader",
+        "Base Color, Metallic, and Roughness are render-affecting node inputs rather than material viewport metadata"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-sculpting-index",
+    "url": "https://docs.blender.org/manual/en/5.0/sculpt_paint/sculpting/index.html",
+    "local_path": null,
+    "title": "Sculpting",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; foundation mechanics reproduced in Blender 5.2.0 LTS",
+    "topics": ["sculpting", "brushes", "multires", "remesh", "face-sets"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Sculpting includes primary brush workflows, masks/Face Sets, filters, symmetry, adaptive resolution, and remesh controls",
+        "Resolution strategy is part of sculpt workflow and later retopology remains a distinct task"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
   }
 ]

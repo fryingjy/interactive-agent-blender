@@ -34,9 +34,10 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Retopology fundamentals | ✓ | — | ✓ | ✓ | — | ✓ | ~ |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
-| Sculpting | — | — | — | — | — | — | — |
-| UVs | — | — | ~ | ~ | — | ~ | — |
-| Materials / shading | — | — | ~ | ✓ | — | ~ | — |
+| Sculpting | ✓ | — | ✓ | ~ | — | — | ~ |
+| UVs | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
+| Materials / shading | ✓ | — | ✓ | ✓ | — | ✓ | ✓ |
+| Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 
 ## Current interpretation
