@@ -6,14 +6,9 @@ persistent_ids, decision_transaction, mesh_ops) -- smaller tool outputs,
 and a mutation surface that can't accidentally bypass the one-operation-
 per-decision rule the way a raw exec() call always can.
 
-This is a genuine, deliberately SMALL slice of a much larger proposed
-protocol (push events, semantic regions, viewport state, ownership
-locking, visual passes, ...). Rather than stub out twelve commands
-untested, this wires up a complete, live-verified round trip for a few:
-capability discovery, consolidated state, event polling, and the full
-begin -> perform -> verify -> commit decision lifecycle for a handful of
-real mesh_ops operations. Extending the operation registry in
-perform_decision() is the natural next step once this slice is proven.
+The protocol began as a deliberately small live-verified slice. It now includes capability/state
+inspection, events, semantic regions, visual/evaluated evidence, and an expanded typed mutation
+surface routed through the same begin -> perform -> verify -> commit/reject lifecycle.
 
 Threading model copied from addon.py's proven pattern: a daemon accept
 thread, a daemon thread per client connection, and bpy.app.timers.register
@@ -51,7 +46,7 @@ import semantic_regions
 import state_fingerprint
 import state_probe
 
-PROTOCOL_VERSION = "0.1"
+PROTOCOL_VERSION = "0.2"
 CAPABILITIES = [
     "selection_ids",
     "persistent_mesh_ids",
@@ -71,6 +66,9 @@ CAPABILITIES = [
     "native_silhouette_render",
     "curve_bevel_taper_geometry",
     "modeling_stage_tracking",
+    "expanded_typed_modeling_surface",
+    "diagnostic_visual_passes",
+    "surface_candidate_diagnostics",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -97,6 +95,19 @@ _OPS = {
     "scale_selection": mesh_ops.scale_selection,
     "inset_selection": mesh_ops.inset_selection,
     "subdivide_selection": mesh_ops.subdivide_selection,
+    "rotate_selection": mesh_ops.rotate_selection,
+    "bevel_selection": mesh_ops.bevel_selection,
+    "delete_selection": mesh_ops.delete_selection,
+    "dissolve_selection": mesh_ops.dissolve_selection,
+    "merge_selection": mesh_ops.merge_selection,
+    "fill_selection": mesh_ops.fill_selection,
+    "bridge_selection": mesh_ops.bridge_selection,
+    "spin_selection": mesh_ops.spin_selection,
+    "loop_cut_selection": mesh_ops.loop_cut_selection,
+    "bisect_selection": mesh_ops.bisect_selection,
+    "symmetrize_selection": mesh_ops.symmetrize_selection,
+    "split_selection": mesh_ops.split_selection,
+    "separate_selection": mesh_ops.separate_selection,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
 }

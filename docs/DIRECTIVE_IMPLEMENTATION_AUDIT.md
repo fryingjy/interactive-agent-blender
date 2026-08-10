@@ -30,6 +30,7 @@ open and is not falsely claimed.
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
+| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect/symmetrize/split/separate in protocol 0.2 | 15/15 controlled cases plus rollback/identity evidence |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
 | GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |

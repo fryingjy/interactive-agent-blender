@@ -258,7 +258,7 @@ def begin_decision(object_name: str, action_type: str) -> dict:
 
 @mcp.tool()
 def perform_decision(decision_id: str, operation: str, params: dict, command_id: str | None = None) -> dict:
-    """Perform the single sanctioned mutation for a pending decision_id. operation must be one of the available_operations reported by get_capabilities (currently: bevel_edges, merge_by_distance, add_ring_detail, recalc_normals, triangulate_ngons); params are that operation's keyword arguments. Pass a stable command_id to make retries safe: a repeated call with the same command_id returns the original stored result instead of mutating the mesh again."""
+    """Perform one sanctioned mutation for a pending decision. Choose an operation from get_capabilities; params are its keyword arguments. A stable command_id makes retries idempotent."""
     return _call("perform_decision", decision_id=decision_id, operation=operation, params=params, command_id=command_id)
 
 

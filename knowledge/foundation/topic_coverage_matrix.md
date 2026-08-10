@@ -45,6 +45,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
 | Export round-trip | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Typed modeling operation surface | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Modeling strategy selection | ~ | — | ✓ | ✓ | — | — | — |
 

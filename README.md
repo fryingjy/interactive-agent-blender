@@ -591,6 +591,11 @@ research/learning-related work.
 implemented local capabilities from the three inputs that cannot be fabricated: elapsed multi-day
 retention, a permitted external lesson, and a sealed unused held-out reference pool.
 
+The typed modeler protocol is now version 0.2. Its decision registry includes the original
+extrude/inset/move/scale/subdivide and modifier operations plus selection-driven rotate, bevel,
+delete, dissolve, merge, fill, bridge, spin, loop cut, bisect, symmetrize, split, and separate.
+See `runs/2026-08-10_expanded-typed-ops/` for transaction, identity, rollback, and failure evidence.
+
 ## Curriculum step D: subdivision-surface milestone (SoapDish)
 
 `runs/2026-08-07_soap-dish-subsurf/` — the first prop in this project where the control cage is

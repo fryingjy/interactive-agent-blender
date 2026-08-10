@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 119 controlled/reproduction cases are now recorded:
+Approximately 134 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -45,6 +45,7 @@ Approximately 119 controlled/reproduction cases are now recorded:
 - One actual Sculpt Mode brush mutation and two export/import round trips in `runs/2026-08-10_sculpt-export/`.
 - Five Blender-native diagnostic visual passes and strict stage-gate attempts in `runs/2026-08-10_visual-passes/` and `runs/2026-08-10_stage-quality/`.
 - Four clean/pinched/uniform/wavy surface specimens in `runs/2026-08-10_surface-diagnostics/`.
+- Fifteen expanded typed-operation/registry/transaction cases in `runs/2026-08-10_expanded-typed-ops/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -93,6 +94,12 @@ Evaluated-surface diagnostics now sharply separate a local sphere pinch and repe
 waviness from their controls using scale-normalized Laplacian concentration and sign oscillation.
 They remain candidate evidence because intentional hard cap transitions also score strongly; this
 limitation is measured and exposed through the typed evaluated-state response.
+
+The protocol 0.2 mutation registry now includes thirteen additional selection-driven operations,
+including bridge, spin, loop-cut equivalent, bisect, symmetry, split, and separate. A real
+transaction preserved surviving IDs and assigned all new loop-cut IDs; separate rollback restored
+the source and removed its created object. BMesh return-key and symmetrize-direction failures remain
+visible rather than being counted as first-try success.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 

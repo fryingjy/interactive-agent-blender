@@ -50,6 +50,7 @@ class DecisionTransaction:
         self._op_delta = None
         self._before_mesh_snapshot = None
         self._before_transform = None
+        self._before_object_names = None
         self.result = None
         self.reject_reason = None
 
@@ -89,6 +90,7 @@ class DecisionTransaction:
                 "transaction, advance the revision, and open a new one for the "
                 "next operation."
             )
+        self._before_object_names = set(bpy.data.objects.keys())
         if self.target_object:
             obj = bpy.data.objects[self.target_object]
             self._before_mesh_snapshot = obj.data.copy()
@@ -191,6 +193,14 @@ class DecisionTransaction:
         obj.location = self._before_transform["location"]
         obj.rotation_euler = self._before_transform["rotation_euler"]
         obj.scale = self._before_transform["scale"]
+        created_objects = sorted(set(bpy.data.objects.keys()) - (self._before_object_names or set()))
+        for object_name in created_objects:
+            created = bpy.data.objects.get(object_name)
+            if created is not None:
+                mesh = created.data if created.type == "MESH" else None
+                bpy.data.objects.remove(created, do_unlink=True)
+                if mesh is not None and mesh.users == 0:
+                    bpy.data.meshes.remove(mesh)
         self._rejected = True
         self.reject_reason = reason
         self._free_snapshot()
@@ -198,6 +208,7 @@ class DecisionTransaction:
             "rejected": True,
             "restored_revision": self.observed_revision,
             "reason": reason,
+            "removed_created_objects": created_objects,
         }
 
     def _free_snapshot(self):
