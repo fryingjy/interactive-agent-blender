@@ -38,8 +38,8 @@
 ## Newly completed after user inputs
 
 1. A user-supplied untouched fantasy reference entered benchmark B. The adaptive typed run produced
-   a saved multi-component asset and 15/15 independent evaluated-mesh passes. Its normalized front
-   silhouette IoU was 0.7254 and honestly failed the predeclared 0.80 visual gate.
+   a saved multi-component asset, 15/15 independent evaluated-mesh passes, and normalized front
+   silhouette IoU 0.8285 against the predeclared 0.80 visual gate.
 2. Three official Blender Fundamentals videos were obtained from their CC BY 3.0 Wikimedia Commons
    mirrors and genuinely ingested: 573.663 seconds, 21 decoded frames, and three audio streams. No
    captions/transcripts were present, so speech comprehension is not claimed.
@@ -52,7 +52,7 @@
    be honestly manufactured in this same-day run.
 2. Professional stages 4–7 require multiple successful unseen transfer assets with little human
    intervention and independent experienced-modeler acceptance. The supplied file inventory does
-   not replace that human review, and benchmark B's visual gate failed.
+   not replace that human review, and one passing held-out asset is not broad transfer evidence.
 
 Foundation status therefore remains `PARTIAL`, but held-out readiness is now `YES`: seven supplied
 references remain reserved for later transfer runs.

@@ -4,7 +4,7 @@
 
 **FOUNDATION STATUS: PARTIAL**
 
-**READY FOR HELD-OUT MODELING: YES — seven reserved references; latest run failed its visual gate**
+**READY FOR HELD-OUT MODELING: YES — benchmark B passed; seven references remain reserved**
 
 This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
 
@@ -212,15 +212,15 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
 4. Broader validated surface judgment beyond candidate pinching/waviness signals.
 5. Passing held-out visual modeling across multiple references without benchmark-specific builders;
-   benchmark B now has a technical pass but failed its 0.80 silhouette gate at 0.7254.
+   benchmark B passed at 0.8285 IoU, but seven reserved references have not yet tested transfer.
 6. Captioned/transcribed advanced external instruction; the completed official lessons provide real
    video/frame access but no transcript modality.
 
 ## Exit decision
 
-The foundation remains **PARTIAL**. External visual instruction and a genuine held-out run now
-exist, but the held-out visual gate failed; multi-day retention, successful cross-family transfer,
-and independent professional judgment remain below the gate.
+The foundation remains **PARTIAL**. External visual instruction and a genuine held-out visual and
+technical pass now exist; multi-day retention, successful cross-family transfer, and independent
+professional judgment remain below the gate.
 
 ## Highest-value next step
 

@@ -4,14 +4,15 @@
   "predeclared_target": 0.8,
   "initial_normalized_iou": 0.6892614332165027,
   "intermediate_normalized_iou": 0.6530631659056316,
+  "pre_final_normalized_iou": 0.7253858591797736,
   "final": {
-    "silhouette_iou": 0.7253858591797736,
-    "centroid_error_normalized": 0.028797622451133088,
+    "silhouette_iou": 0.8284689606696699,
+    "centroid_error_normalized": 0.018080771526484105,
     "bounding_box_error_normalized": 0.0,
-    "symmetric_contour_error_normalized": 0.011578315785436036,
+    "symmetric_contour_error_normalized": 0.0076309732834081104,
     "reference_pixels": 110555,
-    "candidate_pixels": 124201
+    "candidate_pixels": 118362
   },
-  "gate": "FAIL",
-  "interpretation": "The adaptive loop improved the final candidate over the 0.653 intermediate regression, but the long curved tip transition and vertically dense guard remain underfit. Technical cleanliness does not override this visual failure."
+  "gate": "PASS",
+  "interpretation": "A row-width audit localized the remaining errors: an overly high shoulder, low guard wings, and over-wide grip/pommel. Typed corrections through revision 120 raised IoU from 0.7254 to 0.8285 without changing the target or comparison method."
 }

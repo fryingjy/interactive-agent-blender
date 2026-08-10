@@ -4,7 +4,7 @@
 
 **Benchmark:** `heldout_b_fantasy_ceremonial_sword_001`
 
-**Outcome:** technical PASS; visual gate FAIL
+**Outcome:** PASS
 
 The user supplied the reference after the foundation/control implementation was complete. No
 asset-specific builder existed. The selected reference was measured before modeling and the other
@@ -13,7 +13,7 @@ weapon construction or engineering was performed.
 
 ## Closed-loop execution
 
-- Blender 5.2 remained in one persistent interactive process through revision 103.
+- Blender 5.2 remained in one persistent interactive process through revision 120.
 - Geometry decisions used the typed `begin -> perform -> verify -> commit` protocol.
 - The blade profile was observed by persistent vertex ID and adjusted ring-by-ring.
 - Rendered mask tickets drove later blade-width, root-width, guard-mass, grip-width, and jewel
@@ -34,9 +34,10 @@ four named materials, typed bevel modifiers, a front/side/isometric presentation
 - zero degenerate faces;
 - positive signed volume.
 
-The normalized front silhouette improved through the adaptive loop but finished at **0.725386**
-against the predeclared **0.80** threshold. The visual gate therefore fails. The largest remaining
-mismatches are the reference's longer curved tip transition and denser vertical guard silhouette.
+The normalized front silhouette first reached 0.725386, then a row-width audit localized an overly
+high blade shoulder, low guard wings, and over-wide lower components. Typed corrections raised the
+final score to **0.828469** against the predeclared **0.80** threshold, while normalized contour
+error fell to 0.007631. The visual gate passes without changing the target or alignment method.
 
 ## Artifacts
 
@@ -46,5 +47,5 @@ mismatches are the reference's longer curved tip transition and denser vertical 
 - `visual_comparison.json` — measured gate
 - `independent_verify/` — 15 fresh-process evaluated-mesh reports
 
-This run establishes real held-out control-loop and technical evidence. It does not establish a
-visual pass, professional acceptance, or broad transfer across the seven reserved references.
+This run establishes a real held-out control-loop, visual pass, and technical pass. It does not
+establish professional acceptance or broad transfer across the seven reserved references.

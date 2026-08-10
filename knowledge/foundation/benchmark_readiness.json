@@ -6,16 +6,16 @@
     "mug": "CONTAMINATED_BY_PRIOR_USE",
     "soap_dish": "CONTAMINATED_BY_PRIOR_USE",
     "speaker_enclosure": "CONTAMINATED_BY_PRIOR_USE",
-    "fantasy_ceremonial_sword_001": "COMPLETED_TECHNICAL_PASS_VISUAL_GATE_FAIL",
+    "fantasy_ceremonial_sword_001": "COMPLETED_PASS",
     "unused_references": 7
   },
   "ladder": [
     {"id": "A", "name": "Subdivision transfer", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_topology-subd/", "runs/2026-08-10_visual-comparison/"]},
-    {"id": "B", "name": "Actual image-reference hard surface", "status": "RUN_FAILED_VISUAL_GATE", "prerequisite_evidence": ["knowledge_engine/visual_compare.py", "runs/2026-08-10_heldout-fantasy-sword/"]},
+    {"id": "B", "name": "Actual image-reference hard surface", "status": "PASSED", "prerequisite_evidence": ["knowledge_engine/visual_compare.py", "runs/2026-08-10_heldout-fantasy-sword/"]},
     {"id": "C", "name": "Unknown-problem asset", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_sculpt-export/research_episode.md"]},
     {"id": "D", "name": "Transfer asset", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_solidify-transfer/", "runs/2026-08-10_bevel-mirror-transfer/"]},
     {"id": "E", "name": "Multi-component professional prop", "status": "BLOCKED_NO_UNUSED_REFERENCE", "prerequisite_evidence": ["runs/2026-08-07_speaker-typed-protocol/"]}
   ],
   "ready_for_held_out_modeling": true,
-  "reason": "The user supplied a new reference pack after foundation implementation. Benchmark B ran without an asset-specific builder: all 15 evaluated components passed independent mesh verification, while normalized front silhouette IoU reached 0.7254 and honestly failed the predeclared 0.80 gate. Seven supplied references remain unmodeled and reserved for later transfer runs."
+  "reason": "The user supplied a new reference pack after foundation implementation. Benchmark B ran without an asset-specific builder: normalized front silhouette IoU reached 0.8285 against the predeclared 0.80 gate, and all 15 evaluated components passed independent mesh verification. Seven supplied references remain unmodeled and reserved for later transfer runs."
 }

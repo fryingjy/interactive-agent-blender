@@ -4,11 +4,11 @@
   "references": [
     {
       "path": "C:\\Users\\odane\\Downloads\\blender\\ref\\matteo-swordconcept244.jpg",
-      "status": "COMPLETED_TECHNICAL_PASS_VISUAL_GATE_FAIL",
+      "status": "COMPLETED_PASS",
       "benchmark": "heldout_b_fantasy_ceremonial_sword_001",
       "first_used": "2026-08-10",
       "result": {
-        "normalized_front_silhouette_iou": 0.7253858591797736,
+        "normalized_front_silhouette_iou": 0.8284689606696699,
         "target": 0.8,
         "independent_components_clean": "15/15",
         "artifact": "runs/2026-08-10_heldout-fantasy-sword/fantasy_sword_heldout.blend"
