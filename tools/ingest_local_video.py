@@ -22,6 +22,14 @@ def main() -> None:
     parser.add_argument("--source-id", required=True)
     parser.add_argument("--coarse-interval", type=float, default=30.0)
     parser.add_argument("--fine-timestamp", type=float, action="append", default=[])
+    parser.add_argument("--transcribe-model", help="Optional faster-whisper model, e.g. tiny.en")
+    parser.add_argument("--transcript-language", default="en")
+    parser.add_argument("--machine-transcript-file")
+    parser.add_argument(
+        "--include-transcript-text",
+        action="store_true",
+        help="Embed transcript wording in the public ingest report (off by default)",
+    )
     args = parser.parse_args()
     result = ingest_video(
         args.video,
@@ -30,6 +38,10 @@ def main() -> None:
         source_id=args.source_id,
         coarse_interval=args.coarse_interval,
         fine_timestamps=args.fine_timestamp,
+        transcribe_model=args.transcribe_model,
+        transcript_language=args.transcript_language,
+        include_transcript_text=args.include_transcript_text,
+        machine_transcript_path=args.machine_transcript_file,
     )
     print(json.dumps(result, indent=2))
 

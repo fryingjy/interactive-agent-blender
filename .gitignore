@@ -3,3 +3,6 @@ __pycache__/
 gh_auth.log
 *.blend1
 runs/*/blend/*.blend
+runs/*/media/
+**/generated_transcript.vtt
+**/speech_transcription_report.json

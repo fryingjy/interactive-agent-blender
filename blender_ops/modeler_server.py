@@ -110,6 +110,7 @@ _OPS = {
     "separate_selection": mesh_ops.separate_selection,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
+    "set_shading": object_ops.set_shading,
 }
 
 
@@ -438,6 +439,9 @@ class ModelerServer:
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
+
+    def cmd_list_persistent_ids(self, name):
+        return state_probe.list_persistent_ids(name)
 
     def cmd_get_viewport_state(self):
         return state_probe.viewport_state()

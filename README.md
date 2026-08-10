@@ -583,17 +583,18 @@ specific instance.
 
 `docs/RESEARCH_ROADMAP.md` — the closed-loop runtime has substantial evidence and controlled
 documentation/experiment work is active. Approved-root document/video ingestion, structured
-retrieval, usage telemetry, uncertainty, and rebuild-decision foundations are implemented and
-tested; external curriculum breadth and cross-asset promotion remain incomplete. Read it before starting
+retrieval, usage telemetry, uncertainty, rebuild decisions, and local machine transcription are
+implemented and tested; external curriculum breadth and cross-asset promotion remain incomplete. Read it before starting
 research/learning-related work.
 
 `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` is the current directive-by-directive audit. It separates
-implemented local capabilities from the three inputs that cannot be fabricated: elapsed multi-day
-retention, a permitted external lesson, and a sealed unused held-out reference pool.
+implemented local capabilities from evidence that cannot be fabricated: elapsed multi-day
+retention, advanced lesson coverage, broad uncontaminated transfer, and experienced human review.
 
 The typed modeler protocol is now version 0.2. Its decision registry includes the original
 extrude/inset/move/scale/subdivide and modifier operations plus selection-driven rotate, bevel,
-delete, dissolve, merge, fill, bridge, spin, loop cut, bisect, symmetrize, split, and separate.
+delete, dissolve, merge, fill, bridge, spin, loop cut, Bisect clear/cap, symmetrize, split, separate,
+and smooth/flat shading. Bevel exposes explicit width type, profile, and overlap-clamp policy.
 See `runs/2026-08-10_expanded-typed-ops/` for transaction, identity, rollback, and failure evidence.
 
 Rejected transactions also have a multi-channel stress test in

@@ -34,6 +34,10 @@ def ingest_video(
     source_id: str,
     coarse_interval: float = 30.0,
     fine_timestamps: list[float] | None = None,
+    transcribe_model: str | None = None,
+    transcript_language: str | None = "en",
+    include_transcript_text: bool = False,
+    machine_transcript_path: str | Path | None = None,
 ) -> dict:
     video_path = Path(path).resolve()
     roots = [Path(item).resolve() for item in approved_roots]
@@ -61,7 +65,31 @@ def ingest_video(
             else float(stream.duration * stream.time_base) if stream.duration else 0.0
         )
 
-    sidecar = find_sidecar(video_path)
+    generated_transcription = None
+    source_sidecar = find_sidecar(video_path)
+    sidecar = source_sidecar
+    if machine_transcript_path and sidecar is None:
+        sidecar = Path(machine_transcript_path).resolve()
+        if not _inside(sidecar, roots):
+            raise PermissionError(f"transcript is outside approved roots: {sidecar}")
+        if not sidecar.is_file():
+            raise FileNotFoundError(sidecar)
+        generated_transcription = {
+            "backend": "local-machine-generated-sidecar",
+            "model": None,
+            "transcript_path": str(sidecar),
+            "limitations": ["Machine transcription may contain errors; verify important claims independently."],
+        }
+    elif transcribe_model and sidecar is None:
+        from .speech_transcribe import transcribe_video
+
+        generated_transcription = transcribe_video(
+            video_path,
+            output_dir=output,
+            model_name=transcribe_model,
+            language=transcript_language,
+        )
+        sidecar = Path(generated_transcription["transcript_path"])
     transcript_segments = parse_transcript(sidecar) if sidecar and sidecar.suffix.lower() != ".txt" else []
     targets = []
     cursor = 0.0
@@ -93,6 +121,15 @@ def ingest_video(
             for segment in transcript_segments
             if segment["text"].lower().startswith(("chapter", "section", "step"))
         ]
+    transcription_summary = None
+    if generated_transcription:
+        transcription_summary = {
+            key: value
+            for key, value in generated_transcription.items()
+            if key not in {"segments"}
+        }
+        transcription_summary["segment_count"] = len(transcript_segments)
+
     result = {
         "source_id": source_id,
         "local_path": str(video_path),
@@ -101,16 +138,24 @@ def ingest_video(
         "fps": fps,
         "video": True,
         "audio": bool(audio_streams),
-        "captions": bool(sidecar),
+        "captions": bool(source_sidecar),
         "transcript": bool(transcript_segments),
-        "caption_path": str(sidecar) if sidecar else None,
+        "caption_path": str(source_sidecar) if source_sidecar else None,
+        "transcript_path": str(sidecar) if sidecar else None,
         "chapters": chapters,
         "coarse_segments": frames,
         "fine_segments": [frame for frame in frames if frame["timestamp"] in set(fine_timestamps or [])],
-        "transcript_segments": transcript_segments,
+        "transcript_segments": transcript_segments if include_transcript_text else [],
+        "transcript_segment_count": len(transcript_segments),
+        "transcript_text_in_report": include_transcript_text,
+        "transcription": transcription_summary,
         "limitations": [
             "Frame extraction proves visual access, not comprehension.",
-            "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present.",
+            (
+                "Machine transcript is available but may contain errors; important claims require frame or official-doc corroboration."
+                if generated_transcription
+                else "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+            ),
         ],
     }
     (output / "video_ingest_report.json").write_text(json.dumps(result, indent=2), encoding="utf-8")

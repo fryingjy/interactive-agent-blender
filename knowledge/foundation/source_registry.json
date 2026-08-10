@@ -833,14 +833,15 @@
     "access": {"text": false, "video": true, "audio": true, "captions": false},
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 75.401,
       "sha256": "f6a6fef06ca3b89c133ada732909925af019e95f9306a7834715b885a99473a6",
       "direct_observations": [
         "A sampled frame at 45 seconds shows Blender's Modeling workspace in Edit Mode and the modifier category menu",
-        "The file contains both real video and audio streams; no captions or transcript were present"
+        "The file contains real video/audio and no creator captions; a local tiny.en machine transcript produced 23 timestamped segments",
+        "Transcript claims were checked against frames and current Blender documentation; exact wording remains fallible"
       ],
       "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json"]
     }
@@ -858,7 +859,7 @@
     "access": {"text": false, "video": true, "audio": true, "captions": false},
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 286.901,
@@ -866,7 +867,7 @@
       "direct_observations": [
         "A sampled frame at 180 seconds visibly distinguishes Extrude Region, Along Normals, Individual, and to Cursor variants",
         "A later sampled frame shows loop-cut-and-slide state during the lesson's supporting mesh-editing sequence",
-        "No speech comprehension is claimed because the source has no captions or transcript"
+        "A local tiny.en machine transcript produced 68 timestamped segments; frames and current docs corroborate the topology and variant distinctions"
       ],
       "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-extrude/video_ingest_report.json"]
     }
@@ -884,7 +885,7 @@
     "access": {"text": false, "video": true, "audio": true, "captions": false},
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio-stream-metadata"],
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 211.361,
@@ -892,7 +893,7 @@
       "direct_observations": [
         "Sampled frames at 180 and 195 seconds show the non-destructive Bevel modifier, Clamp Overlap, width/profile controls, and a change from no limit to Angle limit",
         "The visual evidence reinforces the existing rule to use Angle limiting when coplanar internal edges should remain unaffected",
-        "No speech comprehension is claimed because the source has no captions or transcript"
+        "A local tiny.en machine transcript produced 35 timestamped segments; frames and Blender 5.2 evidence corroborate the strategic distinctions"
       ],
       "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"]
     }

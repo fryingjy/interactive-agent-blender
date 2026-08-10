@@ -5,6 +5,7 @@ from pathlib import Path
 
 from knowledge_engine.ingest.document_ingest import crawl_local_documents, ingest_document
 from knowledge_engine.ingest.transcript_ingest import parse_transcript
+from knowledge_engine.ingest.speech_transcribe import write_webvtt
 from knowledge_engine.reasoning import (
     Diagnosis,
     RegionRepairHistory,
@@ -17,6 +18,7 @@ from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
+from knowledge_engine.planner import PlannerContext, plan_next_decision
 from knowledge_engine.session_learning import apply_replay_result, mine_session_events
 
 import numpy as np
@@ -107,6 +109,17 @@ class TranscriptTests(unittest.TestCase):
             segments = parse_transcript(path)
             self.assertEqual(len(segments), 2)
             self.assertEqual(segments[1]["start"], 1.5)
+
+    def test_generated_vtt_round_trip(self):
+        with tempfile.TemporaryDirectory() as temp:
+            path = write_webvtt([
+                {"start": 0.0, "end": 1.234, "text": "Inspect the silhouette."},
+                {"start": 61.5, "end": 63.0, "text": "Then inspect the surface."},
+            ], Path(temp) / "generated.vtt")
+            self.assertEqual(parse_transcript(path), [
+                {"start": 0.0, "end": 1.234, "text": "Inspect the silhouette."},
+                {"start": 61.5, "end": 63.0, "text": "Then inspect the surface."},
+            ])
 
 
 class RetrievalTests(unittest.TestCase):
@@ -260,6 +273,56 @@ class StrategyTests(unittest.TestCase):
         rebuild = choose_strategy(ModelingBrief(local_damage_fraction=0.6, failed_repairs=3, modifier_instability=0.8))["repair"]
         self.assertEqual(patch["choice"], "PATCH_REGION")
         self.assertEqual(rebuild["choice"], "REBUILD_REGION")
+
+
+class PlannerTests(unittest.TestCase):
+    def context(self, **changes):
+        values = dict(
+            task_id="test",
+            asset_id="asset",
+            stage="PROPORTION_SILHOUETTE",
+            session_id="session",
+            scene_revision=4,
+            active_object="Asset",
+            base_state={"mesh_health": {}},
+            evaluated_state={"mesh_health": {}},
+        )
+        values.update(changes)
+        return PlannerContext(**values)
+
+    def test_authority_and_external_edit_preempt_mutation(self):
+        wait = plan_next_decision(self.context(control_mode="USER_CONTROL"))
+        self.assertEqual(wait.disposition, "WAIT")
+        self.assertIsNone(wait.operation)
+        stale = plan_next_decision(self.context(external_edit_detected=True))
+        self.assertEqual(stale.action, "REOBSERVE_AFTER_EXTERNAL_EDIT")
+
+    def test_technical_failure_preempts_visual_ticket_and_can_rebuild(self):
+        repair = plan_next_decision(self.context(
+            evaluated_state={"mesh_health": {"non_manifold_edges": 4}},
+            visual_tickets=[{"type": "contour_error", "priority": 1, "severity": 1.0}],
+        ))
+        self.assertEqual(repair.action, "LOCALIZE_NON_MANIFOLD_REGION")
+        rebuild = plan_next_decision(self.context(
+            evaluated_state={"mesh_health": {"non_manifold_edges": 4}},
+            repair_history=RegionRepairHistory("seam", 3, 0.8, 0.0, 1.0),
+        ))
+        self.assertEqual(rebuild.action, "REBUILD_OPEN_REGION")
+
+    def test_uncertainty_visual_action_and_stage_advance(self):
+        research = plan_next_decision(self.context(diagnosis=Diagnosis("pinch", 0.3, ["healthy curvature"])))
+        self.assertEqual(research.disposition, "RESEARCH")
+        visual = plan_next_decision(self.context(visual_tickets=[{
+            "type": "contour_error", "target": "rim", "priority": 1, "severity": 0.8,
+            "suggested_operation": "scale_selection", "operation_params": {"factor": [1.05, 1, 1]},
+        }]))
+        self.assertEqual(visual.operation, "scale_selection")
+        self.assertEqual(visual.target_region, "rim")
+        advance = plan_next_decision(self.context(stage_evidence={
+            "view_count": 3, "worst_view_iou": 0.95, "multiview_regression_pass": True,
+        }))
+        self.assertEqual(advance.next_stage, "SECONDARY_FORMS")
+        self.assertEqual(advance.observed_revision, 4)
 
 
 class CurriculumInventoryTests(unittest.TestCase):

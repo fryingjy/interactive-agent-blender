@@ -14,11 +14,11 @@ incomplete; `OPEN` means no adequate evidence exists.
 | Mesh editing overview | Mesh Editing operator index | INDEXED | mandatory operator inventory plus prior labs/cards | child pages are not exhaustively studied |
 | Extrude / inset | Mesh Editing branch | USED | speaker, soap-dish, operator runs | formal parameter sweep is incomplete |
 | Bevel operation | Bevel Manual | TESTED/USED | operator card and prior runs | profile/custom-profile breadth |
-| Delete / dissolve | Mesh Editing branch | TESTED | operator and BMesh labs | complete child-page notes |
+| Delete / dissolve | Blender 5.2 Deleting & Dissolving page | TESTED | operator and BMesh labs plus current child-page card | parameter breadth beyond modeler-critical cases |
 | Merge by Distance | Mesh Editing + BMesh API | TESTED | BMesh lab | edit-mode operator parameter sweep |
-| Bridge / fill / grid fill | Mesh Editing branch | TESTED/USED | operator runs and failure records | more incompatible-loop shapes |
-| Bisect / spin / symmetrize | Mesh Editing branch | TESTED | operator runs | second-shape transfer is sparse |
-| Slides / rip | Mesh Editing branch | PARTIAL | operator run; headless rip failure | interactive-context rip evidence |
+| Bridge / fill / grid fill | Blender 5.2 Bridge and Grid Fill pages | TESTED/USED | operator runs and failure records | more incompatible-loop shapes and explicit Grid Fill span controls |
+| Bisect / spin / symmetrize | Blender 5.2 child pages + BMesh API | TESTED | operator runs; six-case clear/fill lab | second-shape transfer is sparse |
+| Slides / rip | Blender 5.2 Vertex Slide and Rip pages | PARTIAL | operator run; documented headless rip limitation | interactive-context rip evidence |
 | Normals / shading | Mesh Editing + BMesh API | TESTED/USED | BMesh normals and production sessions | custom normals/weighted normals |
 | Subdivision Surface | Subdivision Surface Manual | TESTED/USED | soap dish and topology/SubD lab | broader crease and boundary modes |
 | Bevel modifier | Bevel modifier Manual | TESTED | modifier and curved-transfer labs | custom profile and weight/vgroup limits |

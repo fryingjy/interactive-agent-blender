@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-10
 
-**Outcome:** multimodal ingestion PASS; transcript comprehension NOT CLAIMED
+**Outcome:** multimodal ingestion + local transcription PASS; transcript accuracy remains bounded
 
 Google-indexed Blender Studio pages returned HTTP 402 and YouTube extraction returned a bot-check,
 so neither route was bypassed. Wikimedia Commons provided the same official Blender Fundamentals
@@ -19,10 +19,11 @@ Direct visual observations include the Modeling workspace/modifier taxonomy, Ext
 Along Normals/Individual/to Cursor variants, and Bevel modifier width/profile/Clamp Overlap plus
 None-versus-Angle limit controls. These reinforce existing tested operator principles.
 
-The files contain video and audio but no captions or transcript. Frame extraction proves visual
-access, and audio probing proves a stream exists; neither proves speech comprehension. The source
-registry records that limitation. Downloaded media remain local evidence and are intentionally not
-published to GitHub; the three ingest reports and representative frames are sufficient to audit the
-pipeline and provenance.
+The files contain video and audio but no creator captions. A local faster-whisper `tiny.en` pass now
+provides timestamped machine transcripts (23 + 68 + 35 segments), with English detection probability
+reported as 1.0 for each file. Important instructional claims were cross-checked against decoded
+frames, current official docs, and existing Blender 5.2 labs in `lesson_study_report.md`; transcript
+wording is not treated as authoritative. Downloaded media remain local evidence and are intentionally
+not published to GitHub.
 
 Sources: Wikimedia Commons file pages for the Blender-authored CC BY 3.0 originals.

@@ -7,8 +7,9 @@
   "video": true,
   "audio": true,
   "captions": false,
-  "transcript": false,
+  "transcript": true,
   "caption_path": null,
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\generated_transcript.vtt",
   "chapters": [],
   "coarse_segments": [
     {
@@ -17,9 +18,9 @@
       "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0000_000000.000s.png"
     },
     {
-      "timestamp": 15.0,
-      "decoded_at": 15.007,
-      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0001_000015.000s.png"
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0001_000030.000s.png"
     },
     {
       "timestamp": 45.0,
@@ -27,31 +28,32 @@
       "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0002_000045.000s.png"
     },
     {
-      "timestamp": 65.0,
-      "decoded_at": 65.007,
-      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0003_000065.000s.png"
+      "timestamp": 60.0,
+      "decoded_at": 60.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0003_000060.000s.png"
     }
   ],
   "fine_segments": [
     {
-      "timestamp": 15.0,
-      "decoded_at": 15.007,
-      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0001_000015.000s.png"
-    },
-    {
       "timestamp": 45.0,
       "decoded_at": 45.007,
       "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0002_000045.000s.png"
-    },
-    {
-      "timestamp": 65.0,
-      "decoded_at": 65.007,
-      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\frame_0003_000065.000s.png"
     }
   ],
   "transcript_segments": [],
+  "transcript_segment_count": 23,
+  "transcript_text_in_report": false,
+  "transcription": {
+    "backend": "local-machine-generated-sidecar",
+    "model": null,
+    "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-modeling-intro\\generated_transcript.vtt",
+    "limitations": [
+      "Machine transcription may contain errors; verify important claims independently."
+    ],
+    "segment_count": 23
+  },
   "limitations": [
     "Frame extraction proves visual access, not comprehension.",
-    "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+    "Machine transcript is available but may contain errors; important claims require frame or official-doc corroboration."
   ]
 }

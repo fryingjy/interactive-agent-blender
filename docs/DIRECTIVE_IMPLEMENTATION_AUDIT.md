@@ -20,6 +20,7 @@ open and is not falsely claimed.
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
+| External official lesson study | three Blender-authored CC BY 3.0 Fundamentals videos; decoded frames, audio, 126 timestamped machine-transcript segments, cross-checked notes | genuine visual/speech access; older UI and transcription errors explicitly bounded |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
@@ -35,7 +36,8 @@ open and is not falsely claimed.
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
-| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect/symmetrize/split/separate in protocol 0.2 | 15/15 controlled cases plus rollback/identity evidence |
+| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.2 | expanded lab plus 6/6 Bisect mode cases and rollback/identity evidence |
+| Revision-bound planner contract | one local decision chosen from authority, external edits, technical failures, rebuild pressure, uncertainty, visual tickets, and stage evidence | 12/12 contract assertions plus unit coverage; broader runtime use remains sparse |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
 | Blender runtime API breadth | context/data/RNA types, depsgraph evaluation, handlers, timers, message bus, lifecycle cleanup | controlled lifecycle pass; asynchronous dispatch explicitly unclaimed |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
@@ -55,28 +57,32 @@ open and is not falsely claimed.
 
 ## Items that cannot honestly be completed from current inputs
 
-1. **External expert video curriculum:** the ingestion path works, but no user-provided or otherwise
-   permitted external lesson file exists. The six-second project fixture proves modalities only.
+1. **Advanced expert video curriculum:** three official Blender Fundamentals lessons are now
+   processed with real frames/audio/machine transcripts, but advanced topology, sculpt, retopology,
+   UV/baking, and surface-judgment instruction remains absent.
 2. **Multi-day retention:** two quizzes exist on the same date. Elapsed days cannot be manufactured
    within one execution session.
-3. **Held-out ladder:** every repository reference (Bottle, Mug, Soap Dish, Speaker Enclosure) has
-   already been used. Creating both a test reference and solver now would contaminate evaluation.
+3. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those
+   passes do not prove professional quality. A later chair attempt is explicitly retained as FAIL
+   because primitive assembly plus one-view IoU did not meet the directive.
 4. **Professional proficiency:** stages 4-7 require multiple unseen assets, shape families, strong
    visual/reference results, little intervention, and transfer. The directive explicitly forbids
    claiming this from foundation fixtures or one asset.
 5. **Human/expert acceptance:** no independent experienced modeler supplied a quality review for
    new held-out outputs.
 
-These are not software exceptions hidden as success. `benchmark_readiness.json` records the empty
-untouched reference pool and keeps all held-out stages unpassed.
+These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
+reference pool and keeps unpassed ladder stages unpassed.
 
 ## Readiness decision
 
-`FOUNDATION STATUS: PARTIAL` and `READY FOR HELD-OUT MODELING: NO` remain correct because the gate
-requires external structured/video learning where legally accessible, repeated retention, and
-valid held-out evaluation. Locally executable infrastructure, controlled labs, retrieval, strategy,
-visual measurement, sculpt access, export validation, and one research-return loop are in place.
+`FOUNDATION STATUS: PARTIAL` remains correct. The repository may be mechanically ready to run
+held-out experiments, but professional modeling should remain paused while locally actionable
+judgment gaps are still being closed. Infrastructure, controlled labs, real Fundamentals video
+study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
+research-return loop are in place.
 
-The next valid inputs are an unused reference set kept hidden until evaluation, a permitted expert
-lesson file, and a later-date quiz run. Until those exist, changing the gate to PASS would violate
-the directive's anti-fake-progress rules.
+The next valid work is advanced sculpt/retopo and complex UV/baking instruction plus experiments,
+broader planner runtime use, a later-date retention run, and independent experienced review. Until
+that evidence exists, changing the foundation or professional claim to PASS would violate the
+directive's anti-fake-progress rules.

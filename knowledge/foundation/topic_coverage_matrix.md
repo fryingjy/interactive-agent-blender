@@ -4,22 +4,22 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 | Topic | Docs | Video | Experiment | Failure case | Quiz | Runtime use | Second shape |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Mesh fundamentals | ~ | — | ~ | ~ | ✓ | ✓ | ~ |
-| Extrude | ~ | — | ✓ | ✓ | ~ | ✓ | ✓ |
+| Mesh fundamentals | ~ | ~ | ~ | ~ | ✓ | ✓ | ~ |
+| Extrude | ~ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
 | Inset | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
-| Bevel operation | ✓ | — | ✓ | ✓ | ~ | ✓ | ~ |
-| Bevel modifier | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
+| Bevel operation | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
+| Bevel modifier | ✓ | ~ | ✓ | ✓ | — | ~ | ✓ |
 | Loop cut / Subdivide | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Merge / Merge by Distance | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
-| Dissolve / Delete | — | — | ✓ | ~ | ✓ | ~ | — |
-| Bridge Edge Loops | — | — | ✓ | ✓ | ✓ | ✓ | ~ |
-| Fill / Grid Fill | — | — | ✓ | ✓ | ✓ | ~ | — |
-| Bisect | — | — | ~ | — | — | ~ | — |
-| Spin | — | — | ✓ | — | — | ~ | — |
-| Split / Separate | — | — | ✓ | ~ | ✓ | ~ | — |
-| Symmetrize | — | — | ✓ | ✓ | — | ~ | — |
-| Vertex / Edge Slide | — | — | ✓ | — | — | ~ | — |
-| Rip | — | — | attempted | ✓ | ✓ | — | — |
+| Dissolve / Delete | ✓ | — | ✓ | ~ | ✓ | ~ | — |
+| Bridge Edge Loops | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Fill / Grid Fill | ✓ | — | ✓ | ✓ | ✓ | ~ | — |
+| Bisect | ✓ | — | ✓ | ✓ | — | ~ | — |
+| Spin | ✓ | — | ✓ | — | — | ~ | — |
+| Split / Separate | ✓ | — | ✓ | ~ | ✓ | ~ | — |
+| Symmetrize | ✓ | — | ✓ | ✓ | — | ~ | — |
+| Vertex / Edge Slide | ✓ | — | ✓ | — | — | ~ | — |
+| Rip | ✓ | — | attempted | ✓ | ✓ | — | — |
 | Normals / orientation | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Smooth / Flat shading | — | — | ✓ | — | — | ✓ | ~ |
 | Topology fundamentals | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
@@ -66,6 +66,12 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top comparison loop now measures silhouette, bounds, centroid, and contour regression, but it has not yet been used on a held-out or photoreal reference.
 
-The weakest breadth remains real brush-based sculpting, export validation, external video-based learning, multi-day retrieval retention, held-out visual judgment, and broader transfer validation.
+The weakest breadth remains multi-stroke sculpting, production articulation/retopology, complex
+seam-authored UV/baking work, advanced external video instruction, multi-day retrieval retention,
+professional visual judgment, and broader transfer validation.
 
-Topic Video cells remain `—` because no external curriculum source has been studied. The local ingestion subsystem itself has processed and visually checked a project-owned MP4 with video, audio, captions, transcript, and timestamped frames; that fixture validates access mechanics but is not credited as subject-matter instruction.
+Video evidence is credited only for three Blender-authored Fundamentals lessons actually decoded,
+locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial
+mesh-fundamentals coverage; dedicated Extrude and Bevel lessons give substantial operator coverage;
+the Bevel modifier section is partial. The older Blender 2.80 UI is version-limited, and machine
+transcript wording is not treated as authoritative. All unrelated Video cells remain `—`.

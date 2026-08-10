@@ -385,18 +385,35 @@ def rotate_selection(name, angle, axis=(0.0, 0.0, 1.0), center=None):
     return len(selected)
 
 
-def bevel_selection(name, offset=0.02, segments=2):
-    """Bevel currently selected edges without accepting unstable raw indices."""
+def bevel_selection(name, offset=0.02, segments=2, offset_type="OFFSET", profile=0.5, clamp_overlap=False):
+    """Bevel selected edges with explicit width semantics and overlap policy."""
     obj, bm = _bm_from_object(name)
     selected = [edge for edge in bm.edges if edge.select]
     if not selected:
         _write_back(obj, bm)
         raise ValueError(f"no edges selected on '{name}' to bevel")
     before = _element_snapshot(bm)
-    bmesh.ops.bevel(bm, geom=selected, offset=offset, segments=segments, affect="EDGES")
+    bmesh.ops.bevel(
+        bm,
+        geom=selected,
+        offset=offset,
+        offset_type=offset_type,
+        segments=segments,
+        profile=profile,
+        affect="EDGES",
+        clamp_overlap=clamp_overlap,
+    )
     created = _clear_new_element_ids(bm, before)
     _write_back(obj, bm)
-    return {"selected_edges": len(selected), **created}
+    return {
+        "selected_edges": len(selected),
+        "offset": offset,
+        "offset_type": offset_type,
+        "segments": segments,
+        "profile": profile,
+        "clamp_overlap": clamp_overlap,
+        **created,
+    }
 
 
 def delete_selection(name):
@@ -514,8 +531,8 @@ def loop_cut_selection(name, cuts=1):
     return {"cuts": cuts, "created_geometry": sum(created.values()), **created}
 
 
-def bisect_selection(name, plane_co, plane_no, clear_inner=False, clear_outer=False):
-    """Knife/bisect selected geometry by a plane; optionally clear one side."""
+def bisect_selection(name, plane_co, plane_no, clear_inner=False, clear_outer=False, fill=False):
+    """Knife/bisect selected geometry by a plane; optionally clear and cap one side."""
     obj, bm = _bm_from_object(name)
     geom = [item for seq in (bm.verts, bm.edges, bm.faces) for item in seq if item.select]
     if not geom:
@@ -524,9 +541,30 @@ def bisect_selection(name, plane_co, plane_no, clear_inner=False, clear_outer=Fa
     before = _element_snapshot(bm)
     result = bmesh.ops.bisect_plane(bm, geom=geom, dist=1e-6, plane_co=plane_co, plane_no=plane_no, clear_inner=clear_inner, clear_outer=clear_outer)
     cut = result.get("geom_cut", [])
+    filled_faces = []
+    if fill:
+        if not (clear_inner or clear_outer):
+            _write_back(obj, bm)
+            raise ValueError("bisect fill requires clear_inner or clear_outer so the cut is a boundary")
+        cut_edges = [item for item in cut if isinstance(item, bmesh.types.BMEdge) and item.is_boundary]
+        if not cut_edges:
+            _write_back(obj, bm)
+            raise ValueError(f"bisect on '{name}' produced no boundary loop to fill")
+        fill_result = bmesh.ops.holes_fill(bm, edges=cut_edges, sides=0)
+        filled_faces = list(fill_result.get("faces", []))
+        if not filled_faces:
+            _write_back(obj, bm)
+            raise RuntimeError(f"bisect on '{name}' did not create a cap")
     created = _clear_new_element_ids(bm, before)
     _write_back(obj, bm)
-    return {"cut_geometry": len(cut), "clear_inner": clear_inner, "clear_outer": clear_outer, **created}
+    return {
+        "cut_geometry": len(cut),
+        "clear_inner": clear_inner,
+        "clear_outer": clear_outer,
+        "fill": fill,
+        "filled_faces": len(filled_faces),
+        **created,
+    }
 
 
 def symmetrize_selection(name, direction="-X_TO_+X", threshold=0.0001):

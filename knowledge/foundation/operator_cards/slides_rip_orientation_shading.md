@@ -1,6 +1,15 @@
 # Operator card: Vertex/Edge Slide, Rip, Face Orientation, Shade Smooth/Flat
 
-**Status:** DOCS pending | EXPERIMENT ✓ (3 of 4 succeeded; 1 real, informative failure) | FAILURE_CASE ✓ (rip) | QUIZ pending
+**Status:** DOCS ✓ (Blender 5.2 LTS Manual) | EXPERIMENT ✓ (3 of 4 succeeded; 1 real, informative failure) | FAILURE_CASE ✓ (rip) | QUIZ pending
+
+## Official sources
+
+- Vertex Slide: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/vertex/slide_vertices.html
+- Rip Vertices: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/vertex/rip_vertices.html
+
+Fetched successfully on 2026-08-10. Vertex Slide documents percentage versus Even distance,
+Flipped behavior, and clamping. Rip describes cursor-dependent side selection and quad-oriented
+limitations, explaining why selection alone was insufficient in the headless reproduction.
 
 ## Vertex Slide / Edge Slide -- confirmed constrained, not free movement
 `bpy.ops.transform.vert_slide(value=0.5)`: moved a cube corner vertex from `(-1,-1,-1)` to `(0,-1,-1)` -- slid exactly along one of its connected edges, not a free 3D translation. `bpy.ops.transform.edge_slide(value=0.5)` showed the same constrained behavior for a whole edge (`(-1,1,-1)-(-1,-1,-1)` -> `(0,1,-1)-(0,-1,-1)`). Useful for adjusting an existing loop's position without changing topology or breaking its relationship to neighboring geometry -- distinct from `move_selection` (this project's existing typed op), which is a free translate.

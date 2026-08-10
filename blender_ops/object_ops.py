@@ -74,6 +74,26 @@ def set_modifier_parameter(name, modifier_name, parameter, value):
     return {"modifier_name": modifier_name, "parameter": parameter, "value": getattr(mod, parameter)}
 
 
+def set_shading(name, smooth=True):
+    """Set polygon interpolation explicitly on one mesh object.
+
+    Smooth/flat shading changes the visible surface without changing topology, so it belongs in
+    the same one-decision transaction path as modifier edits rather than in presentation fallback
+    code.  The mesh snapshot owned by DecisionTransaction preserves polygon flags for rollback.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    value = bool(smooth)
+    changed = 0
+    for polygon in obj.data.polygons:
+        if polygon.use_smooth != value:
+            polygon.use_smooth = value
+            changed += 1
+    obj.data.update()
+    return {"smooth": value, "changed_polygons": changed, "polygon_count": len(obj.data.polygons)}
+
+
 def undo():
     """CORRECTION (found live, testing this against a scratch object):
     this does NOT reliably undo "the last decision." DecisionTransaction

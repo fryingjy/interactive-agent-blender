@@ -102,6 +102,27 @@ def get_selection(name):
     }
 
 
+def list_persistent_ids(name):
+    """Return every current persistent element ID, independent of selection.
+
+    `get_selection()` intentionally reports only the active selection.  An autonomous repair or
+    whole-component transform must also be able to explicitly target an object whose selection was
+    cleared by a mode change, modifier edit, save/load, or human click.  Returning stable IDs keeps
+    that retargeting read-only and auditable; callers still use `select_by_ids` before mutation.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+    persistent_ids.ensure_persistent_ids(name)
+    maps = persistent_ids.get_id_maps(name)
+    result = {}
+    for kind in ("verts", "edges", "faces"):
+        values = sorted(int(value) for value in maps[kind]["id_to_index"])
+        result[kind] = values
+        result[f"{kind}_count"] = len(values)
+    return result
+
+
 def vertex_neighborhood(name, vertex_index):
     """Local topology around one vertex: valence, whether it sits on a boundary
     (non-manifold edge), its immediate neighbors, and the edge lengths / face areas

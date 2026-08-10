@@ -19,9 +19,14 @@
       "detail": {
         "result": {
           "selected_edges": 12,
-          "new_verts": 32,
-          "new_edges": 60,
-          "new_faces": 30
+          "offset": 0.1,
+          "offset_type": "OFFSET",
+          "segments": 2,
+          "profile": 0.5,
+          "clamp_overlap": false,
+          "new_verts": 56,
+          "new_edges": 108,
+          "new_faces": 54
         },
         "before": {
           "verts": 8,
@@ -29,9 +34,9 @@
           "faces": 6
         },
         "after": {
-          "verts": 32,
-          "edges": 60,
-          "faces": 30
+          "verts": 56,
+          "edges": 108,
+          "faces": 54
         }
       }
     },
@@ -175,6 +180,8 @@
           "cut_geometry": 8,
           "clear_inner": false,
           "clear_outer": false,
+          "fill": false,
+          "filled_faces": 0,
           "new_verts": 4,
           "new_edges": 8,
           "new_faces": 4

@@ -1,0 +1,252 @@
+{
+  "cases": {
+    "ownership_wait": {
+      "disposition": "WAIT",
+      "action": "YIELD_CONTROL",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "control mode is USER_CONTROL"
+      ],
+      "expected_effect": "No mutation occurs while another owner controls the scene.",
+      "verification": [
+        "poll control mode before planning again"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": null,
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "external_edit": {
+      "disposition": "INSPECT",
+      "action": "REOBSERVE_AFTER_EXTERNAL_EDIT",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "the observed transaction baseline is stale"
+      ],
+      "expected_effect": "Replace stale topology, transform, modifier, and selection assumptions.",
+      "verification": [
+        "capture a new layered fingerprint",
+        "confirm a new observed revision"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": "get_full_state",
+      "operation_params": {
+        "object_name": "Asset"
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "technical_before_visual": {
+      "disposition": "ACT",
+      "action": "LOCALIZE_NON_MANIFOLD_REGION",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "evaluated mesh has 8 non-manifold edges",
+        "technical breakage has priority over visual polish"
+      ],
+      "expected_effect": "Identify or replace the smallest region responsible for the open/invalid surface.",
+      "verification": [
+        "evaluated non-manifold count decreases",
+        "visual silhouette does not regress"
+      ],
+      "observed_revision": 12,
+      "confidence": "MEDIUM",
+      "operation": "inspect_region",
+      "operation_params": {
+        "rings": 2
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "rebuild_pressure": {
+      "disposition": "ACT",
+      "action": "REBUILD_OPEN_REGION",
+      "target_object": "Asset",
+      "target_region": "rim",
+      "rationale": [
+        "evaluated mesh has 8 non-manifold edges",
+        "technical breakage has priority over visual polish",
+        "repeated repair evidence crosses the rebuild threshold"
+      ],
+      "expected_effect": "Identify or replace the smallest region responsible for the open/invalid surface.",
+      "verification": [
+        "evaluated non-manifold count decreases",
+        "visual silhouette does not regress"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": null,
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "low_confidence_research": {
+      "disposition": "RESEARCH",
+      "action": "RESOLVE_LOW_CONFIDENCE_DIAGNOSIS",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "diagnosis confidence 0.40 is below the action threshold",
+        "alternative: healthy curvature",
+        "alternative: bad pole"
+      ],
+      "expected_effect": "Obtain discriminating evidence before risking an artistic mutation.",
+      "verification": [
+        "state which alternative was ruled in or out",
+        "record source or local probe evidence"
+      ],
+      "observed_revision": 12,
+      "confidence": "LOW",
+      "operation": null,
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "missing_path_component": {
+      "disposition": "ACT",
+      "action": "BLOCK_OUT_MISSING_COMPONENT",
+      "target_object": "Asset",
+      "target_region": "cable",
+      "rationale": [
+        "highest-priority ticket is missing_component",
+        "form follows an editable path"
+      ],
+      "expected_effect": "Add the missing primary/secondary silhouette contribution as an editable component.",
+      "verification": [
+        "component mask is present",
+        "component graph remains valid",
+        "recompute silhouette metrics"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": "create_curve",
+      "operation_params": {
+        "component_id": "cable",
+        "representation": "CURVE"
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "measured_local_action": {
+      "disposition": "ACT",
+      "action": "CORRECT_LOCAL_REFERENCE_MISMATCH",
+      "target_object": "Asset",
+      "target_region": "outer_rim",
+      "rationale": [
+        "highest-priority visual ticket is contour_error",
+        "ticket severity is 0.700"
+      ],
+      "expected_effect": "Reduce the named local reference error without regressing other relevant views.",
+      "verification": [
+        "recompute the ticket metric",
+        "check all relevant views for regression",
+        "inspect evaluated surface"
+      ],
+      "observed_revision": 12,
+      "confidence": "MEDIUM",
+      "operation": "scale_selection",
+      "operation_params": {
+        "factor": [
+          1.05,
+          1,
+          1
+        ]
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "unlocalized_visual_inspection": {
+      "disposition": "INSPECT",
+      "action": "LOCALIZE_REFERENCE_MISMATCH",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "highest-priority visual ticket is contour_error",
+        "ticket severity is 0.700"
+      ],
+      "expected_effect": "Reduce the named local reference error without regressing other relevant views.",
+      "verification": [
+        "recompute the ticket metric",
+        "check all relevant views for regression",
+        "inspect evaluated surface"
+      ],
+      "observed_revision": 12,
+      "confidence": "LOW",
+      "operation": "render_semantic_region",
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    "stage_advance": {
+      "disposition": "ADVANCE_STAGE",
+      "action": "ADVANCE_MODELING_STAGE",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "PROPORTION_SILHOUETTE gate passed"
+      ],
+      "expected_effect": "Move the asset to SECONDARY_FORMS without changing geometry.",
+      "verification": [
+        "stage transition is persisted",
+        "scene revision is unchanged by evidence-only transition"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": "set_modeling_stage",
+      "operation_params": {
+        "stage": "SECONDARY_FORMS",
+        "evidence": {
+          "view_count": 3,
+          "worst_view_iou": 0.93,
+          "multiview_regression_pass": true
+        }
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": "SECONDARY_FORMS"
+    },
+    "missing_gate_evidence": {
+      "disposition": "INSPECT",
+      "action": "COLLECT_STAGE_GATE_EVIDENCE",
+      "target_object": "Asset",
+      "target_region": null,
+      "rationale": [
+        "missing evidence: technical_clean",
+        "missing evidence: topology_reviewed",
+        "missing evidence: evaluated_surface_reviewed"
+      ],
+      "expected_effect": "Resolve the next unsupported claim in the TOPOLOGY_SURFACE gate.",
+      "verification": [
+        "rerun the stage gate with newly observed evidence"
+      ],
+      "observed_revision": 12,
+      "confidence": "HIGH",
+      "operation": "get_full_state",
+      "operation_params": {
+        "object_name": "Asset"
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    }
+  },
+  "assertions": {
+    "ownership_never_mutates": true,
+    "external_edit_reobserves": true,
+    "technical_preempts_visual": true,
+    "repeated_failure_rebuilds": true,
+    "uncertainty_researches": true,
+    "path_component_uses_curve": true,
+    "ticket_can_drive_one_typed_action": true,
+    "unlocalized_ticket_inspects": true,
+    "passed_gate_advances": true,
+    "unsupported_gate_collects_evidence": true,
+    "every_contract_has_one_disposition": true,
+    "every_contract_is_revision_bound": true
+  },
+  "pass": true
+}

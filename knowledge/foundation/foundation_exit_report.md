@@ -187,8 +187,11 @@ CC BY 3.0 mirrors and ingested through the approved-root pipeline: Modeling Intr
 and Bevel Tool. Together they provide 573.663 seconds of real video, three audio streams, and 21
 decoded frame samples (`runs/2026-08-10_online-lessons/`). Visual observations include modeling
 workspace/modifier taxonomy, extrude variants, and Bevel modifier width/profile/Clamp Overlap plus
-None-versus-Angle limiting. No captions or transcript were present, so audio probing is not claimed
-as speech comprehension. The earlier six-second project fixture remains pipeline-only evidence.
+None-versus-Angle limiting. No creator captions were present. Local faster-whisper `tiny.en`
+transcription produced 126 timestamped segments (23 + 68 + 35), and important claims were checked
+against decoded frames, current official documentation, and Blender 5.2 experiments. Machine
+wording remains fallible and is not treated as an authoritative quotation. The earlier six-second
+project fixture remains pipeline-only evidence.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
@@ -214,8 +217,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
    supplied references remain reserved for broader generalization evidence.
-6. Captioned/transcribed advanced external instruction; the completed official lessons provide real
-   video/frame access but no transcript modality.
+6. Advanced external instruction beyond introductory Modeling/Extrude/Bevel; local transcription is
+   now functional, but topology, sculpt, retopology, UV/baking, and surface-judgment lessons remain.
 
 ## Exit decision
 
