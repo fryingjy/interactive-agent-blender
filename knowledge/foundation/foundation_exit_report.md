@@ -95,12 +95,12 @@ Failures remain visible and are not counted as successes merely because Blender 
 
 ### Retrieval and knowledge use
 
-- `quizzes/quiz_001.md` contains 13 answers produced from understanding.
+- `quizzes/quiz_001.md` contains 13 answers; `quiz_002.md` adds 15 fresh mechanism/evidence answers in a second same-day pass.
 - Modifier-order findings cover all four planned pairs, not two.
 - One stack-order skill has been promoted with experimental evidence.
 - Several project skills have prior runtime use, but cross-asset and second-shape validation is still sparse.
 
-Repeated retention has not yet been measured. The prior low-confidence area—automated pinching/curvature diagnosis—remains open.
+Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Multi-day retention and broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—remains open.
 
 ### Video and structured training
 
@@ -127,7 +127,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 2. Retopology curriculum and transfer tests.
 3. Sculpt, UV, materials, and production/export foundations.
 4. Modeler-relevant Python/BMesh documentation block.
-5. Repeated retention and real-session use of context-aware knowledge retrieval.
+5. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
 6. Visual surface judgment, especially pinching/highlight flow.
 7. Controlled visual second-shape validation for modifier-order guidance.
 8. An external permitted video/tutorial lesson studied through the validated local-ingestion path.

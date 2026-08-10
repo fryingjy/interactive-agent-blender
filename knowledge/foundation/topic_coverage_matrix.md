@@ -36,9 +36,10 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
 | Sculpting | ✓ | — | ✓ | ~ | — | — | ~ |
 | UVs | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
-| Materials / shading | ✓ | — | ✓ | ✓ | — | ✓ | ✓ |
+| Materials / shading | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
-| Blender Python / BMesh | ✓ | — | ✓ | ✓ | ~ | ✓ | ✓ |
+| Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 
 ## Current interpretation
 

@@ -122,7 +122,10 @@ runtime success, and Blender-version relevance. Ranking exposes a score breakdow
 revision change, action, result, measured effect, and unexpected effects. `reasoning.py` adds
 explicit diagnosis confidence, evidence-based region rebuild pressure, multi-view regression
 checks, and component-graph validation. Unit tests cover these mechanisms; real cross-session
-runtime use remains required before promotion claims.
+runtime use remains required before broad promotion claims. A first controlled use now exists in
+`runs/2026-08-10_knowledge-use/`: structured retrieval selected the historical material-slot
+skill, one revision-linked mutation reduced orphan slots from one to zero, and telemetry fed the
+measured success back into future ranking. This is one narrow use, not general runtime maturity.
 
 ## Four knowledge layers — never mix
 

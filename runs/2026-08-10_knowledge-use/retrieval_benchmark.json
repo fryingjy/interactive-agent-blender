@@ -1,0 +1,317 @@
+{
+  "benchmark": "structured_cross_session_skill_retrieval",
+  "records": [
+    {
+      "case_id": "boolean_tangent",
+      "context": {
+        "query": "tangent boolean groove degenerates",
+        "modeling_stage": null,
+        "workflow": "boolean",
+        "surface_type": null,
+        "defect": "non manifold zero length",
+        "local_topology": [],
+        "modifiers": [
+          "BOOLEAN"
+        ],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "boolean-groove-cut-topology-cleanup",
+      "actual_top_skill": "boolean-groove-cut-topology-cleanup",
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "boolean-groove-cut-topology-cleanup",
+          "score": 10.25,
+          "score_breakdown": {
+            "query": 4.5,
+            "modeling_stage": 0.0,
+            "workflow": 2.0,
+            "surface_type": 0.0,
+            "defect": 3.75,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+          "score": 6.0,
+          "score_breakdown": {
+            "query": 1.5,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 2.5,
+            "local_topology": 0.0,
+            "modifiers": 2.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "material-slot-orphan-assignment",
+          "score": 3.25,
+          "score_breakdown": {
+            "query": 0.0,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 1.25,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "material_orphan",
+      "context": {
+        "query": "unused material slot",
+        "modeling_stage": null,
+        "workflow": "materials",
+        "surface_type": null,
+        "defect": "orphan assignment",
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "material-slot-orphan-assignment",
+      "actual_top_skill": "material-slot-orphan-assignment",
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "material-slot-orphan-assignment",
+          "score": 9.1962,
+          "score_breakdown": {
+            "query": 5.1962,
+            "modeling_stage": 0.0,
+            "workflow": 2.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "diffuse-color-not-connected-to-bsdf",
+          "score": 1.7321,
+          "score_breakdown": {
+            "query": 1.7321,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "node_color",
+      "context": {
+        "query": "diffuse color not rendered",
+        "modeling_stage": null,
+        "workflow": "materials",
+        "surface_type": null,
+        "defect": "principled base color",
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
+      "actual_top_skill": "diffuse-color-not-connected-to-bsdf",
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "diffuse-color-not-connected-to-bsdf",
+          "score": 10.3301,
+          "score_breakdown": {
+            "query": 6.0,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 4.3301,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "material-slot-orphan-assignment",
+          "score": 5.5,
+          "score_breakdown": {
+            "query": 1.5,
+            "modeling_stage": 0.0,
+            "workflow": 2.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "boolean-groove-cut-topology-cleanup",
+          "score": 1.5,
+          "score_breakdown": {
+            "query": 1.5,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "subd_boundary",
+      "context": {
+        "query": "subdivision boundary pinching mismatch",
+        "modeling_stage": null,
+        "workflow": "subdivision",
+        "surface_type": null,
+        "defect": "boundary resolution",
+        "local_topology": [],
+        "modifiers": [
+          "SUBSURF"
+        ],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
+      "actual_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "subd.boundary_resolution.match_quads_over_triangulate",
+          "score": 11.5355,
+          "score_breakdown": {
+            "query": 6.0,
+            "modeling_stage": 0.0,
+            "workflow": 2.0,
+            "surface_type": 0.0,
+            "defect": 3.5355,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+          "score": 3.5,
+          "score_breakdown": {
+            "query": 1.5,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 2.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "mirror_stack",
+      "context": {
+        "query": "mirror subdivision seam",
+        "modeling_stage": null,
+        "workflow": "modifier-stack",
+        "surface_type": null,
+        "defect": "non manifold seam",
+        "local_topology": [],
+        "modifiers": [
+          "MIRROR",
+          "SUBSURF"
+        ],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
+      "actual_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+          "score": 13.7398,
+          "score_breakdown": {
+            "query": 5.1962,
+            "modeling_stage": 0.0,
+            "workflow": 2.8284,
+            "surface_type": 0.0,
+            "defect": 2.8868,
+            "local_topology": 0.0,
+            "modifiers": 2.8284,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "boolean-groove-cut-topology-cleanup",
+          "score": 7.4764,
+          "score_breakdown": {
+            "query": 1.7321,
+            "modeling_stage": 0.0,
+            "workflow": 1.4142,
+            "surface_type": 0.0,
+            "defect": 4.3301,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "subd.boundary_resolution.match_quads_over_triangulate",
+          "score": 1.7321,
+          "score_breakdown": {
+            "query": 1.7321,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "accuracy": 1.0,
+  "pass": true
+}
