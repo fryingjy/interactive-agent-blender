@@ -6,7 +6,7 @@
 
 **READY FOR HELD-OUT MODELING: NO**
 
-This report reflects repository evidence through `runs/2026-08-10_bevel-mirror-transfer/`. It is not a claim that the complete professional-modeling curriculum is finished.
+This report reflects repository evidence through `runs/2026-08-10_visual-comparison/`. It is not a claim that the complete professional-modeling curriculum is finished.
 
 ## Evidence summary
 
@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 104 controlled/reproduction cases are now recorded:
+Approximately 107 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -41,6 +41,7 @@ Approximately 104 controlled/reproduction cases are now recorded:
 - Thirteen contextual topology/SubD specimens in `runs/2026-08-10_topology-subd/`.
 - Ten UV/material/sculpt/production records in `runs/2026-08-10_uv-material-sculpt/`.
 - Nine modeler-relevant BMesh/API records in `runs/2026-08-10_bmesh-api/`.
+- Three fixed-frame visual variants compared across front, side, and top in `runs/2026-08-10_visual-comparison/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -70,6 +71,8 @@ The topology/SubD lab compared pole valences, flat versus curved triangle/n-gon 
 The UV/material/sculpt lab quantified the non-uniform-scale unwrap warning, reproduced node-versus-material metadata divergence and orphan slots, exercised Multires and Voxel Remesh, and validated a minimal production-organization audit. Remesh retained populated UV data in Blender 5.2, but semantic correspondence remains unproven and is not credited as production-ready UV preservation.
 
 The BMesh/API lab covered ownership/write-back, lookup-table requirements, duplicate and degenerate cleanup, triangulation mappings, dissolve selection scope, normal repair, custom UV data, and selection flushing. It preserved a broad Limited Dissolve over-deletion and two API-assumption crashes rather than counting operator calls as success.
+
+The visual-comparison lab fixed camera framing from the reference bounds and improved mean three-view silhouette IoU from 0.739 to 0.979 while reducing normalized contour error by about 90%. Every view improved and the corrected evaluated mesh independently verified clean. Because the reference and correction parameters share one synthetic lab generator, this is capability evidence, not held-out modeling evidence.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
@@ -128,7 +131,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 3. Sculpt, UV, materials, and production/export foundations.
 4. Modeler-relevant Python/BMesh documentation block.
 5. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
-6. Visual surface judgment, especially pinching/highlight flow.
+6. Visual surface judgment beyond silhouettes, especially pinching/highlight flow, landmarks, and negative space.
 7. Controlled visual second-shape validation for modifier-order guidance.
 8. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
 

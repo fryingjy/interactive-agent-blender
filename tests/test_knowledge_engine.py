@@ -14,6 +14,9 @@ from knowledge_engine.reasoning import (
 from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
+from knowledge_engine.visual_compare import compare_masks
+
+import numpy as np
 
 
 class SchemaTests(unittest.TestCase):
@@ -162,6 +165,25 @@ class ReasoningTests(unittest.TestCase):
             [{"from": "cap", "to": "body", "type": "attached"}],
         )
         self.assertTrue(graph["pass"])
+
+
+class VisualComparisonTests(unittest.TestCase):
+    def test_identical_masks_are_exact(self):
+        mask = np.zeros((64, 64), dtype=bool)
+        mask[16:48, 20:44] = True
+        result = compare_masks(mask, mask.copy())
+        self.assertEqual(result["silhouette_iou"], 1.0)
+        self.assertEqual(result["centroid_error_normalized"], 0.0)
+
+    def test_shift_is_detected(self):
+        reference = np.zeros((64, 64), dtype=bool)
+        candidate = np.zeros((64, 64), dtype=bool)
+        reference[16:48, 16:48] = True
+        candidate[16:48, 20:52] = True
+        result = compare_masks(reference, candidate)
+        self.assertLess(result["silhouette_iou"], 1.0)
+        self.assertGreater(result["centroid_error_normalized"], 0.0)
+        self.assertGreater(result["symmetric_contour_error_normalized"], 0.0)
 
 
 if __name__ == "__main__":

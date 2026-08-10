@@ -1,0 +1,14 @@
+{
+  "front": {
+    "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_front.png",
+    "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_front.png"
+  },
+  "side": {
+    "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_side.png",
+    "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_side.png"
+  },
+  "top": {
+    "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_top.png",
+    "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_top.png"
+  }
+}

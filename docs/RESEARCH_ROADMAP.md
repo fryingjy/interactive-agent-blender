@@ -197,6 +197,11 @@ quickly — same spirit as this project's mistake-detect-and-repair proofs).
 6. Proficient specialist (strong editable assets in a chosen domain, little intervention)
 7. Broader professional modeler (generalizes across asset categories/workflows)
 
+The fixed-frame visual comparator in `knowledge_engine/visual_compare.py` and
+`runs/2026-08-10_visual-comparison/` is a prerequisite for stages 3+, not evidence that stage 3
+has been passed. It prevents per-candidate camera framing from hiding proportion regressions and
+requires improvement across front, side, and top, but currently measures silhouettes only.
+
 **Held-out evaluation is mandatory**: never evaluate a stage using objects whose actions,
 dimensions, topology, decomposition, or helper code were touched during development of that
 stage's capability. Maintain references the agent only sees at evaluation time — this is what

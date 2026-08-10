@@ -1,0 +1,73 @@
+{
+  "views": {
+    "front": {
+      "width": 256,
+      "height": 256,
+      "reference_pixels": 15382,
+      "candidate_pixels": 15906,
+      "silhouette_iou": 0.9670564566830127,
+      "centroid_error_normalized": 0.0,
+      "bounding_box_error_normalized": 0.002762135864009951,
+      "symmetric_contour_error_normalized": 0.0026605968619576197,
+      "reference_bbox": [
+        40,
+        84,
+        215,
+        171
+      ],
+      "candidate_bbox": [
+        39,
+        83,
+        216,
+        172
+      ]
+    },
+    "side": {
+      "width": 256,
+      "height": 256,
+      "reference_pixels": 7648,
+      "candidate_pixels": 7790,
+      "silhouette_iou": 0.9812628336755647,
+      "centroid_error_normalized": 0.0,
+      "bounding_box_error_normalized": 0.0013810679320049755,
+      "symmetric_contour_error_normalized": 0.0017923529317966616,
+      "reference_bbox": [
+        84,
+        84,
+        171,
+        171
+      ],
+      "candidate_bbox": [
+        84,
+        83,
+        171,
+        172
+      ]
+    },
+    "top": {
+      "width": 256,
+      "height": 256,
+      "reference_pixels": 15382,
+      "candidate_pixels": 15556,
+      "silhouette_iou": 0.9888146052969915,
+      "centroid_error_normalized": 0.0,
+      "bounding_box_error_normalized": 0.0013810679320049755,
+      "symmetric_contour_error_normalized": 0.0017212175302708126,
+      "reference_bbox": [
+        40,
+        84,
+        215,
+        171
+      ],
+      "candidate_bbox": [
+        39,
+        84,
+        216,
+        171
+      ]
+    }
+  },
+  "mean_iou": 0.9790446318851895,
+  "worst_view_iou": 0.9670564566830127,
+  "mean_contour_error_normalized": 0.0020580557746750316
+}

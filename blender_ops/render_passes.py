@@ -53,7 +53,7 @@ def _evaluated_bbox_world(obj):
     return bmin, bmax
 
 
-def render_silhouette(name, output_path, view="front", resolution=512, margin=1.15):
+def render_silhouette(name, output_path, view="front", resolution=512, margin=1.15, frame_name=None):
     """Render a flat, unlit, transparent-background orthographic silhouette
     of object(s) `name`'s evaluated mesh to `output_path` (PNG). `name` may
     be a single object name or a list of names -- a multi-component prop
@@ -73,8 +73,16 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
     if view not in _VIEW_VECTORS:
         return {"error": f"view must be one of {sorted(_VIEW_VECTORS)}"}
 
+    frame_names = names if frame_name is None else ([frame_name] if isinstance(frame_name, str) else list(frame_name))
+    frame_objs = []
+    for frame_object_name in frame_names:
+        frame_obj = bpy.data.objects.get(frame_object_name)
+        if frame_obj is None or frame_obj.type != "MESH":
+            return {"error": f"frame object '{frame_object_name}' is not a mesh object"}
+        frame_objs.append(frame_obj)
+
     bmin = bmax = None
-    for obj in objs:
+    for obj in frame_objs:
         obj_min, obj_max = _evaluated_bbox_world(obj)
         if obj_min is None:
             continue
@@ -175,5 +183,6 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
         "output_path": output_path,
         "view": view,
         "resolution": resolution,
+        "frame_objects": frame_names,
         "silhouette_fill_ratio": round(filled / total, 4) if total else None,
     }
