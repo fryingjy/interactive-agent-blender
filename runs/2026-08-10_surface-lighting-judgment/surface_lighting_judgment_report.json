@@ -1,0 +1,38 @@
+{
+  "lab": "surface_lighting_judgment",
+  "blender_version": "5.2.0 LTS",
+  "controlled_variables": [
+    "topology",
+    "material",
+    "camera",
+    "engine",
+    "resolution",
+    "exposure"
+  ],
+  "defect": "localized 0.065-unit front-surface dent with rebound ring; silhouette unchanged",
+  "flat_front_failure": {
+    "mean_absolute_rgb": 0.0009720001744426554,
+    "max_absolute_rgb": 0.028758178154627483,
+    "pixels_over_0_015": 2628,
+    "pixel_count": 262144
+  },
+  "key_fill_rim_review": {
+    "mean_absolute_rgb": 0.0024965173541886543,
+    "max_absolute_rgb": 0.29281044999758404,
+    "pixels_over_0_015": 7691,
+    "pixel_count": 262144
+  },
+  "diagnostic_to_flat_mean_difference_ratio": 2.5684330310127326,
+  "outputs": {
+    "flat_front_failure_clean": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_surface-lighting-judgment\\flat_front_failure_clean.png",
+    "flat_front_failure_defect": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_surface-lighting-judgment\\flat_front_failure_defect.png",
+    "key_fill_rim_review_clean": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_surface-lighting-judgment\\key_fill_rim_review_clean.png",
+    "key_fill_rim_review_defect": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_surface-lighting-judgment\\key_fill_rim_review_defect.png"
+  },
+  "assertions": {
+    "defect_changes_pixels_under_both_rigs": true,
+    "asymmetric_review_reveals_more_mean_difference": true,
+    "asymmetric_review_reveals_more_changed_pixels": true
+  },
+  "pass": true
+}

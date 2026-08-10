@@ -26,7 +26,7 @@ visual-study credit.
 | P0 | Sculpt form development | primary/secondary/tertiary sequencing; brush family by surface effect; resolution strategy; masking/Face Sets | multi-stroke continuous form plus destructive overwork control | EXPERIMENTALLY_TESTED (fundamentals); production form pending |
 | P0 | Sculpt-to-retopology | cage planning, poles/loops, density transitions, projection error, deformation intent | articulated organic source, purposeful quad cage, deformation test | planning lesson + density transfer tested; facial patch/pose transfer pending |
 | P0 | UV and high/low baking | seam cut graph, distortion/packing/texel density, tangent convention, cage/ray margin | authored seams and Selected-to-Active bake on a different shape | EXPERIMENTALLY_TESTED |
-| P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | pending lesson |
+| P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | review-light observability tested; cause classification pending |
 | P1 | Topology and SubD | pole placement, loop termination, curved holes, pinching and density | curved multi-feature surface with bad/good routing | docs/labs exist; video pending |
 | P1 | Hard surface | boolean/SubD/hybrid choice, modifier order, bevel hierarchy, cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
 | P1 | Reference modeling | perspective uncertainty, landmark ratios, silhouette and negative space | multi-view reference asset with measured checkpoints | partial; chair failure retained |
@@ -45,6 +45,7 @@ visual-study credit.
 | Blender Fundamentals: UV Unwrapping | 13 frames + 70 transcript segments | flared housing, 27 seams, Cycles tangent bake | Project-from-View warning and missing-source bake rejection | UV foundations card |
 | Blender Fundamentals: Intro to Sculpting | 20 frames + 380 authored-caption segments | seven real Draw/Crease strokes on one continuous ellipsoid | false `FINISHED` with zero mutation; uncontrolled broad smoothing branch | sculpt foundations card |
 | Blender Studio: Planning the Facial Retopology | 15 frames + 140 authored-caption segments | 70-degree tube bend isolates articulation density | sparse 5-ring cage has 2.62× mean and 3.07× max surface error | retopology card |
+| Blender Fundamentals: Three Point Lighting | 12 frames + 130 authored-caption segments | clean/dented curved product surface under two fixed rigs | empty render buffer; non-grazing three-light rig hid defect | surface diagnostics card |
 
 ## Breadth map from the supplied links
 

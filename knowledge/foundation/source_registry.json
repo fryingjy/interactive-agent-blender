@@ -992,5 +992,37 @@
       ],
       "skills": ["knowledge/foundation/operator_cards/retopology.md"]
     }
+  },
+  {
+    "id": "blender-fundamentals-three-point-lighting-video",
+    "url": "https://studio.blender.org/training/blender-2-8-fundamentals/three-point-lighting/",
+    "local_path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
+    "title": "Three Point Lighting - Blender 2.80 Fundamentals",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; review-rig mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["lighting", "key-light", "fill-light", "rim-light", "surface-review", "visual-diagnostics"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 402.416667,
+      "sha256": "b221a62d5a41e803c6716b3b4dd454bf0e8147254f632ef345c66977c0251aaf",
+      "caption_segments": 130,
+      "direct_observations": [
+        "The key establishes the main direction while a weaker fill controls shadow contrast",
+        "A rim/back light separates the subject outline from the background",
+        "Light placement, relative power, and type are adapted to the scene rather than copied as a fixed preset"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-three-point-lighting/video_ingest_report.json",
+        "runs/2026-08-10_surface-lighting-judgment/surface_lighting_judgment_report.json",
+        "runs/2026-08-10_surface-lighting-judgment/failed_attempt_empty_render_result.json",
+        "runs/2026-08-10_surface-lighting-judgment/failed_attempt_nongrazing_three_point.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+    }
   }
 ]

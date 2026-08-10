@@ -21,7 +21,7 @@ open and is not falsely claimed.
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
-| External official lesson study | six Blender-authored/Studio lessons; decoded frames/audio/captions, timestamped observations, UV bake, multi-stroke sculpt, and deformation-density transfer | genuine visual/speech access; older UI and transcription errors explicitly bounded |
+| External official lesson study | seven Blender-authored/Studio lessons; decoded frames/audio/captions, timestamped observations, UV bake, sculpt, deformation-density, and review-light transfer | genuine visual/speech access; older UI and transcription errors explicitly bounded |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
@@ -37,6 +37,7 @@ open and is not falsely claimed.
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
+| Surface review lighting | official three-point lesson studied; flat-front vs clean/dent comparison; corrected grazing key exposes 2.57× mean and 2.93× thresholded pixel difference | observability pass; defect-cause classifier remains open |
 | Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.2 | expanded lab plus 6/6 Bisect mode cases and rollback/identity evidence |
 | Revision-bound planner contract | one local decision chosen from authority, external edits, technical failures, rebuild pressure, uncertainty, visual tickets, and stage evidence | 12/12 contract assertions plus unit coverage; broader runtime use remains sparse |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
@@ -58,9 +59,9 @@ open and is not falsely claimed.
 
 ## Items that cannot honestly be completed from current inputs
 
-1. **Advanced expert video curriculum:** six official lessons are now processed with real
+1. **Advanced expert video curriculum:** seven official lessons are now processed with real
    frames/audio/captions and source-to-skill experiments. Facial patch/pole transfer, production
-   sculpt/retopology, and surface-judgment instruction remain absent.
+   sculpt/retopology, and surface-defect cause classification remain absent.
 2. **Multi-day retention:** two quizzes exist on the same date. Elapsed days cannot be manufactured
    within one execution session.
 3. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those

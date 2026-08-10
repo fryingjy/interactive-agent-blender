@@ -45,6 +45,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Semantic region rendering | ~ | — | ✓ | ✓ | — | ~ | — |
 | Localized reference tickets | ~ | — | ✓ | ✓ | — | ~ | — |
 | Evaluated surface diagnostics | ~ | — | ✓ | ✓ | — | ~ | ~ |
+| Surface review lighting | ~ | ✓ | ✓ | ✓ | — | ~ | — |
 | Machine-enforced stage gates | ~ | — | ✓ | ✓ | — | ~ | — |
 | Professional review aggregation | ~ | — | ✓ | ✓ | — | ~ | — |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
@@ -67,7 +68,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top comparison loop now measures silhouette, bounds, centroid, and contour regression, but it has not yet been used on a held-out or photoreal reference.
 
 The weakest breadth remains production-quality organic sculpting, production articulation/retopology,
-advanced surface-judgment instruction, multi-day retrieval retention,
+surface-defect cause classification, multi-day retrieval retention,
 professional visual judgment, and broader transfer validation.
 
 Video evidence is credited only for five Blender-authored Fundamentals lessons actually decoded,

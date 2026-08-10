@@ -182,18 +182,19 @@ regression evidence rather than held-out judgment.
 
 ### Video and structured training
 
-Six complete official Blender lessons were ingested through the approved-root pipeline: Modeling
+Seven complete official Blender lessons were ingested through the approved-root pipeline: Modeling
 Introduction, Extrude, Bevel Tool, UV Unwrapping, Intro to Sculpting, and Planning the Facial
-Retopology. They provide 3,001.030 seconds of real video/audio and 69 decoded frame samples
+Retopology, plus Three Point Lighting. They provide 3,403.447 seconds of real video/audio and 81 decoded frame samples
 (`runs/2026-08-10_online-lessons/`). The first four use CC BY 3.0 Wikimedia mirrors; the sculpt
-and retopology lessons are free official Blender Studio sources with 520 authored-caption segments. Local
+retopology, and lighting lessons are free official Blender Studio sources with 650 authored-caption segments. Local
 faster-whisper supplied 196 timestamped segments where creator captions were absent. Important
 claims were checked against decoded frames, current official documentation, and Blender 5.2
 experiments. Machine wording remains fallible and is not treated as an authoritative quotation.
 The UV lesson produced an authored-seam tangent-bake test; the sculpt lesson produced a seven-stroke
 continuous-surface test and retained a false-`FINISHED` failure; retopology planning transferred to
-a sparse-versus-adequate articulation-density test. The earlier six-second project fixture remains
-pipeline-only evidence.
+a sparse-versus-adequate articulation-density test; three-point lighting transferred to a grazing
+surface-review rig that reveals a localized dent 2.57× more strongly than broad frontal light. The
+earlier six-second project fixture remains pipeline-only evidence.
 
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
@@ -218,13 +219,14 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
-4. Broader validated surface judgment beyond candidate pinching/waviness signals.
+4. Surface-defect cause classification beyond candidate signals and the now-validated grazing-light
+   observability rig.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
    supplied references remain reserved for broader generalization evidence.
 6. Advanced external instruction beyond current fundamentals/planning; local transcription and
    authored-caption ingestion are functional, but facial patch/pole expression transfer, production
-   sculpt/retopology, and surface-judgment lessons remain.
+   sculpt/retopology, and surface-defect cause classification remain.
 
 ## Exit decision
 
