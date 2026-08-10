@@ -35,10 +35,11 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
-| Sculpting | ✓ | — | ✓ | ~ | — | — | ~ |
+| Sculpting | ✓ | — | ✓ | ~ | — | ~ | ~ |
 | UVs | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
 | Materials / shading | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
+| Export round-trip | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Modeling strategy selection | ~ | — | ✓ | ✓ | — | — | — |

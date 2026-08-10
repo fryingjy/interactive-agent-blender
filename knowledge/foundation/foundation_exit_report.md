@@ -30,7 +30,7 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 107 controlled/reproduction cases are now recorded:
+Approximately 110 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
@@ -42,6 +42,7 @@ Approximately 107 controlled/reproduction cases are now recorded:
 - Ten UV/material/sculpt/production records in `runs/2026-08-10_uv-material-sculpt/`.
 - Nine modeler-relevant BMesh/API records in `runs/2026-08-10_bmesh-api/`.
 - Three fixed-frame visual variants compared across front, side, and top in `runs/2026-08-10_visual-comparison/`.
+- One actual Sculpt Mode brush mutation and two export/import round trips in `runs/2026-08-10_sculpt-export/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -73,6 +74,12 @@ The UV/material/sculpt lab quantified the non-uniform-scale unwrap warning, repr
 The BMesh/API lab covered ownership/write-back, lookup-table requirements, duplicate and degenerate cleanup, triangulation mappings, dissolve selection scope, normal repair, custom UV data, and selection flushing. It preserved a broad Limited Dissolve over-deletion and two API-assumption crashes rather than counting operator calls as success.
 
 The visual-comparison lab fixed camera framing from the reference bounds and improved mean three-view silhouette IoU from 0.739 to 0.979 while reducing normalized contour error by about 90%. Every view improved and the corrected evaluated mesh independently verified clean. Because the reference and correction parameters share one synthetic lab generator, this is capability evidence, not held-out modeling evidence.
+
+The interactive sculpt/export lab used a real `VIEW_3D` context and Draw brush, moving 248 of
+2,562 vertices with measurable displacement. OBJ and GLB were exported then re-imported with
+matching bounds, triangulated surface coverage, UV presence, and material presence. A failed GLB
+raw-count assertion is preserved: glTF legitimately triangulated polygons and split attribute
+vertices, so format-invariant verification replaced exact raw-count equality.
 
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
@@ -132,7 +139,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 ## Largest remaining gaps
 
 1. Real production retopology with deformation-aware transfer.
-2. Brush-based sculpt, complex UV, and production export evidence.
+2. Multi-stroke form sculpting, complex UV/textures, and target-engine export evidence.
 3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
 4. Visual surface judgment beyond silhouettes, especially pinching/highlight flow, landmarks, and negative space.
 5. Held-out modeling that tests strategy and visual loops without benchmark-specific builders.
