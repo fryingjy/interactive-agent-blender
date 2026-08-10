@@ -34,6 +34,7 @@ open and is not falsely claimed.
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates and oscillation/waviness signal exposed through typed state | controlled pass; contextual classifier remains partial |
 | Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect/symmetrize/split/separate in protocol 0.2 | 15/15 controlled cases plus rollback/identity evidence |
+| Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
 | Self-session learning | 165 real decisions mined; multi-asset candidates guarded by replay; bevel replay validated on different asset | controlled pass; no automatic promotion |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
@@ -47,6 +48,7 @@ open and is not falsely claimed.
 - Remesh retaining a populated UV layer does not prove semantic UV preservation.
 - glTF raw vertex/polygon counts are not Blender editable-topology invariants.
 - An index page does not prove every documentation child page was studied.
+- Blender datablock snapshots require dependency-aware cleanup; mesh-first removal invalidated the detached object snapshot.
 
 ## Items that cannot honestly be completed from current inputs
 

@@ -596,6 +596,11 @@ extrude/inset/move/scale/subdivide and modifier operations plus selection-driven
 delete, dissolve, merge, fill, bridge, spin, loop cut, bisect, symmetrize, split, and separate.
 See `runs/2026-08-10_expanded-typed-ops/` for transaction, identity, rollback, and failure evidence.
 
+Rejected transactions also have a multi-channel stress test in
+`runs/2026-08-10_transaction-rollback/`: Object Mode rejection restores mesh/UV/material data,
+modifiers, semantic and custom metadata, selection, active object, transform, and revision without
+using Blender's global undo stack.
+
 ## Curriculum step D: subdivision-surface milestone (SoapDish)
 
 `runs/2026-08-07_soap-dish-subsurf/` — the first prop in this project where the control cage is

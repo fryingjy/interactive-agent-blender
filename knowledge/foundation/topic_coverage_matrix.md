@@ -48,6 +48,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Export round-trip | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Typed modeling operation surface | ~ | — | ✓ | ✓ | — | ✓ | ~ |
+| Scoped transaction rollback | ~ | — | ✓ | ✓ | — | ✓ | — |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Documentation crawl tracking | ✓ | — | ✓ | ✓ | — | ~ | — |
 | Self-session learning/replay | ~ | — | ✓ | ✓ | — | ~ | ✓ |
