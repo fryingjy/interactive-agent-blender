@@ -24,7 +24,7 @@ Studied Tier A material includes:
 - Mesh Editing operator index.
 - Parts of the BMesh operators API.
 
-Coverage remains unsystematic across the full mesh-editing branch, broader modifier families, retopology, sculpting, UVs, materials, and the modeler-relevant Python/BMesh surface.
+`manual_modeling_walk.md` now maps every major modeling branch to official sources, evidence, and explicit open work. This closes the prior navigation gap but does not claim exhaustive study of every child page. Retopology, real brush sculpting, complex UV/export work, and less common modifier/API options remain incomplete.
 
 The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newest lab ran in installed Blender 5.2.0 LTS. Records preserve that version distinction.
 
@@ -105,6 +105,11 @@ Failures remain visible and are not counted as successes merely because Blender 
 
 Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Multi-day retention and broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—remains open.
 
+An inspectable strategy policy now ranks primary representation, component boundaries, edit mode,
+and repair-vs-rebuild independently. Its declared benchmark passed 10/10 cases and preserves a real
+CLI import-context failure and fix. Because cases live beside the runner, this is policy-level
+regression evidence rather than held-out judgment.
+
 ### Video and structured training
 
 No complete external video lesson has been studied. Historical attempts could not access YouTube modalities and correctly did not claim video understanding. Legal local ingestion is now implemented and exercised on a project-owned six-second MP4 with a real video stream, audio stream, WebVTT captions/transcript, and six timestamped frames (`runs/2026-08-10_video-ingestion/`). This validates modality handling, not expert curriculum knowledge. User-provided or otherwise permitted external lessons remain future evidence.
@@ -126,14 +131,12 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 ## Largest remaining gaps
 
-1. Systematic current Blender Manual coverage rather than isolated pages.
-2. Retopology curriculum and transfer tests.
-3. Sculpt, UV, materials, and production/export foundations.
-4. Modeler-relevant Python/BMesh documentation block.
-5. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
-6. Visual surface judgment beyond silhouettes, especially pinching/highlight flow, landmarks, and negative space.
-7. Controlled visual second-shape validation for modifier-order guidance.
-8. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
+1. Real production retopology with deformation-aware transfer.
+2. Brush-based sculpt, complex UV, and production export evidence.
+3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
+4. Visual surface judgment beyond silhouettes, especially pinching/highlight flow, landmarks, and negative space.
+5. Held-out modeling that tests strategy and visual loops without benchmark-specific builders.
+6. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
 
 ## Exit decision
 

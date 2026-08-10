@@ -41,6 +41,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Production organization | ~ | — | ✓ | ✓ | — | ~ | — |
 | Blender Python / BMesh | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Structured knowledge retrieval | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Modeling strategy selection | ~ | — | ✓ | ✓ | — | — | — |
 
 ## Current interpretation
 

@@ -15,6 +15,7 @@ from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_masks
+from knowledge_engine.strategy import ModelingBrief, choose_strategy
 
 import numpy as np
 
@@ -184,6 +185,19 @@ class VisualComparisonTests(unittest.TestCase):
         self.assertLess(result["silhouette_iou"], 1.0)
         self.assertGreater(result["centroid_error_normalized"], 0.0)
         self.assertGreater(result["symmetric_contour_error_normalized"], 0.0)
+
+
+class StrategyTests(unittest.TestCase):
+    def test_curve_and_separate_component_choice(self):
+        result = choose_strategy(ModelingBrief(follows_path=True, independent_motion_or_material=True))
+        self.assertEqual(result["representation"]["choice"], "CURVE")
+        self.assertEqual(result["components"]["choice"], "SEPARATE_COMPONENTS")
+
+    def test_rebuild_requires_accumulated_evidence(self):
+        patch = choose_strategy(ModelingBrief(local_damage_fraction=0.05))["repair"]
+        rebuild = choose_strategy(ModelingBrief(local_damage_fraction=0.6, failed_repairs=3, modifier_instability=0.8))["repair"]
+        self.assertEqual(patch["choice"], "PATCH_REGION")
+        self.assertEqual(rebuild["choice"], "REBUILD_REGION")
 
 
 if __name__ == "__main__":

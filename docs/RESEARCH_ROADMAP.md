@@ -202,6 +202,10 @@ The fixed-frame visual comparator in `knowledge_engine/visual_compare.py` and
 has been passed. It prevents per-candidate camera framing from hiding proportion regressions and
 requires improvement across front, side, and top, but currently measures silhouettes only.
 
+Early workflow selection is now inspectable through `knowledge_engine/strategy.py`. Its separate
+representation/component/edit/repair decisions expose scores, reasons, runner-up, margin, and
+confidence. The 10/10 declared-case benchmark is a regression test, not a held-out stage result.
+
 **Held-out evaluation is mandatory**: never evaluate a stage using objects whose actions,
 dimensions, topology, decomposition, or helper code were touched during development of that
 stage's capability. Maintain references the agent only sees at evaluation time — this is what
