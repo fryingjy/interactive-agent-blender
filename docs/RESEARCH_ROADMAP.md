@@ -1,8 +1,10 @@
 # Autonomous Research & Expertise Acquisition — Mandatory Future Subsystem
 
-**Status: not started. Gated behind the closed-loop runtime milestone (see Sequencing Rule
-below). Do not build this until that milestone is proven. Do not treat it as optional or
-drop it from scope — it is required for the professional-modeler end goal.**
+**Status: active foundation phase. The closed-loop runtime has substantial demonstrated evidence,
+and controlled documentation/experiment work has begun. The autonomous research engine, legal
+video ingestion, structured retrieval, and cross-asset promotion pipeline remain incomplete.
+Research should stay problem-driven and should not outrun the runtime's ability to apply and
+verify what it learns.**
 
 ## Why this exists
 
@@ -15,19 +17,22 @@ then close the loop by actually applying it to the task that triggered the searc
 ## Sequencing rule (binding)
 
 ```
-current milestone: prove genuine observe -> decide -> act -> verify -> adapt
-                    (see runs/2026-08-07_decision-cycles/, tools/decision_log.py)
+demonstrated base: observe -> decide -> act -> verify -> adapt
+                   (see runs/2026-08-07_decision-cycles/, tools/decision_log.py)
         |
         v
-   once that works reliably
+strengthen runtime reliability + foundation breadth
         |
         v
-autonomous research and expertise acquisition becomes the next major subsystem
+problem-driven research + controlled experiments
+        |
+        v
+structured retrieval, legal video ingestion, and cross-asset validation
 ```
 
-Do not build the research architecture during the closed-loop-runtime milestone. Do not skip
-straight to research breadth before the runtime loop is solid — see "Research breadth should
-grow with modeling ability" below.
+Do not mass-ingest sources merely to increase counts. Add research capabilities only when the
+closed-loop runtime can apply, verify, reject, and retain their output. See "Research breadth
+should grow with modeling ability" below.
 
 ## Target behavior
 

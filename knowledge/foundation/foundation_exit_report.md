@@ -1,101 +1,104 @@
-# Foundation exit report (interim, not final)
+# Foundation exit report
+
+**Updated:** 2026-08-10
 
 **FOUNDATION STATUS: PARTIAL**
 
-This is an honest interim checkpoint after one focused session of foundation-gate work, not a
-claim that the gate is complete. Per the directive's own rule ("Mark YES based on demonstrated
-understanding," not source count), this report marks the gate NOT yet passed.
+**READY FOR HELD-OUT MODELING: NO**
 
-## Coverage
+This report reflects repository evidence through `runs/2026-08-10_modifier-foundation/`. It is not a claim that the complete professional-modeling curriculum is finished.
 
-**Official modeling manual coverage:** Shallow. Fetched and read: Subdivision Surface Modifier,
-Empties (Image reference workflow), Editing Mesh Objects (operator index), Bevel. Not yet
-systematically walked: the full mesh-editing branch, modifier root beyond Subsurf, sculpting
-root, UV root, materials root.
+## Evidence summary
 
-**Official mesh-editing coverage:** Partial. See `topic_coverage_matrix.md` -- roughly 15
-mandatory operations got a fresh, real Blender reproduction this session (dissolve/delete,
-bridge/fill/grid_fill, bisect, spin, split/separate, symmetrize, slides, rip, shading). Several
-already had strong pre-existing coverage from this project's prior work (extrude, inset, bevel,
-subdivide, merge_by_distance) via real production use, not curriculum study.
+### Official documentation
 
-**Official modifier coverage:** Subdivision Surface (well-covered via SoapDish) and Boolean
-(well-covered via a real, promoted skill from prior work) remain the strongest. Bevel modifier
-(the non-destructive version, distinct from the Bevel tool) and Mirror are now covered
-specifically at their interaction points via stack-order testing (below), though not
-independently as standalone modifiers. **Update: all 4 directive-listed modifier stack-order
-pairs are now tested** (Mirror+Bevel, Boolean+Bevel, Mirror+Subdivision, Solidify+Bevel -- see
-`operator_cards/modifier_stack_order.md`), with one promoted to an executable skill
-(`knowledge/skills/mirror-before-bevel-subdivision-stack-order.json`): Mirror+Subdivision in the
-wrong order produces 16 non-manifold edges (a real break, not a style issue), and Solidify+Bevel
-in the wrong order makes Bevel a complete no-op.
+Studied Tier A material includes:
 
-**Python/BMesh documentation coverage:** Partial. Read the bmesh.ops API page (truncated, not the
-full page) plus cross-referenced a WebSearch for grid_fill's real signature. Have not
-systematically covered bpy.context/bpy.data/evaluated_get/handlers/timers as a block, though this
-project's own code already uses several of these correctly (evaluated_probe.py, modeler_server.py
-event handlers) from prior empirical work, not fresh doc study this session.
+- Subdivision Surface modifier.
+- Bevel Edit Mode operation.
+- Bevel modifier.
+- Mirror modifier.
+- Empties/Image Empty reference workflow.
+- Mesh Editing operator index.
+- Parts of the BMesh operators API.
 
-**Structured courses studied:** 0 lesson-by-lesson. CG Cookie's course overview page was read
-(real curriculum structure, author credentials, review consensus) but actual lesson content is
-paywalled/login-gated and video-based -- genuinely inaccessible, not skipped.
+Coverage remains unsystematic across the full mesh-editing branch, Boolean and Solidify standalone behavior, broader modifier families, retopology, sculpting, UVs, materials, and the modeler-relevant Python/BMesh surface.
 
-**Videos studied:** 0, structurally, not from lack of effort. See `source_registry.json`'s
-`youtube-general` entry: YouTube is confirmed unreachable from this environment via two
-independent tools (Browser, WebFetch), both redirected to a Google bot-check page. This affects
-every video source in the directive's curriculum equally (Blender Studio Fundamentals, CG Cookie
-lessons, Blender Secrets tips). Not attempted to bypass -- prohibited regardless of purpose. No
-video source in this report claims `video_frames`/`audio`/`captions`/`transcript` access it does
-not have.
+The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newest lab ran in installed Blender 5.2.0 LTS. Records preserve that version distinction.
 
-**Experiments completed:** ~27 distinct reproduction experiments this session (dissolve_verts,
-dissolve_edges, dissolve_faces, delete VERTS context, delete FACES_ONLY context, bridge_loops x3
-attempts, triangle_fill, grid_fill x3 attempts, bpy.ops.mesh.fill_grid simple case, bisect, spin,
-split, separate, symmetrize, vertex_slide, edge_slide, rip (failed), face-normal recalc,
-shade_smooth, Mirror+Bevel x2 orders, Boolean+Bevel x2 orders, Mirror+Subdivision x2 orders,
-Solidify+Bevel x2 orders) plus several more already-verified from this project's prior sessions
-(extrude, inset, bevel corner-ID behavior, subdivide resolution-mismatch, curve bevel-cap weld).
+### Controlled experiments
 
-**Failure-case experiments:** A genuine, real handful, not manufactured: bridge_loops on
-wire-edge rings filtered by `is_boundary` (silent no-op, root-caused to is_boundary requiring
-exactly 1 face), grid_fill on a multi-segment grid hole ("Connecting edge loops overlap", a real
-Blender-reported error, not silent), rip's `poll()` failure in headless context, one caught+fixed
-Python enum-value mistake (symmetrize direction), Mirror-before-Subdivision producing 16
-non-manifold edges (a genuine break, not a style issue), Bevel-before-Solidify being a complete
-no-op.
+Approximately 37 controlled/reproduction cases are now recorded:
 
-**Topics with strong retrieval:** Bevel corner-ID behavior, bridge_loops' is_boundary gotcha,
-grid_fill's real limitation, split-vs-separate distinction, rip's headless-context limitation, all
-4 modifier stack-order pairs -- each has a concrete, falsifiable, tested finding, not a vague
-impression. Confirmed via `quizzes/quiz_001.md`: 13 questions answered from understanding, not by
-re-reading notes while composing.
+- Roughly 27 prior operator and modifier-order cases.
+- Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
 
-**Topics still weak:** Everything sculpt/UV/materials-adjacent (not touched at all), Bevel
-modifier vs Bevel tool distinction as a standalone topic (only tested at stack-order interaction
-points), full mesh fundamentals doc coverage. Quiz-style retrieval is no longer untouched (13
-questions answered, one honestly flagged as low-confidence: automated pinch/curvature-defect
-detection, Q3), but has not been repeated on a second pass to check retention over time.
+Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
-**Candidate skills:** One promoted this session --
-`knowledge/skills/modifier-stack-order-subd-safe.json`, status EXPERIMENTALLY_TESTED (matched-pair
-controlled comparisons, not a single uncontrolled data point). The grid_fill limitation and
-bridge_loops gotcha remain strong candidates for a future skill entry once tested on a second
-case, per this project's own promotion discipline (CANDIDATE requires more than one data point
-before EXPERIMENTALLY_TESTED).
+The standalone modifier lab added:
 
-**Contradicted claims:** None yet identified against this project's prior documented knowledge.
+- Bevel `NONE` versus `ANGLE` limiting on triangulated planar faces.
+- Bevel segment-count density comparison.
+- Excessive Bevel width with Clamp Overlap enabled/disabled.
+- Mirror exact seam, below-threshold seam failure, larger-threshold repair, and Bisect behavior.
 
-**Rejected/weak sources:** `youtube-general` (Tier D by inaccessibility, not by content quality --
-unreachable), `blenderguru-donut-v5-page` (link wrapper, no independent written content).
+All seven encoded assertions passed. See `modifier_foundation_report.json` for evaluated measurements and `modifier_foundation_lab.blend` for the scene.
 
-**Known knowledge gaps:** Sculpting, UV unwrapping, materials, modifier stack-order rules,
-retopology as a deliberate curriculum (only ad hoc prior use), Bevel modifier specifically,
-quiz-based retrieval validation (not attempted at all).
+### Failure cases
 
-## READY FOR HELD-OUT MODELING: NO
+Meaningful failures or limitations include:
 
-Not because nothing was learned -- real, falsifiable, tested findings exist and are recorded
-above and in `knowledge/foundation/operator_cards/`. Because the gate's own checklist (systematic
-manual walk, modifier stack-order testing, quiz-based retrieval checks, 25+/10+ experiment
-targets) is only partially met. This report should be revisited and extended in a future session
-rather than treated as final.
+- Bridge-loop wire-edge filtering causing a silent no-op.
+- Grid Fill overlap failure on an unsuitable hole.
+- Rip operator context failure in headless mode.
+- Mirror-before-Subdivision producing non-manifold evaluated geometry in the tested stack.
+- Bevel-before-Solidify being a no-op on a single plane.
+- Mirror seam outside Merge Distance leaving eight boundary/non-manifold edges.
+- Excessive Bevel width with Clamp Overlap producing nearly collapsed edges despite remaining manifold.
+
+Failures remain visible and are not counted as successes merely because Blender returned without an exception.
+
+### Retrieval and knowledge use
+
+- `quizzes/quiz_001.md` contains 13 answers produced from understanding.
+- Modifier-order findings cover all four planned pairs, not two.
+- One stack-order skill has been promoted with experimental evidence.
+- Several project skills have prior runtime use, but cross-asset and second-shape validation is still sparse.
+
+Repeated retention has not yet been measured. The prior low-confidence area—automated pinching/curvature diagnosis—remains open.
+
+### Video and structured training
+
+No complete video lesson has been studied. Historical attempts could not access YouTube modalities and correctly did not claim video understanding. Local or user-provided legal video ingestion remains a future capability, not completed evidence.
+
+No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
+
+## Stronger areas
+
+- Closed-loop transaction and recovery infrastructure.
+- Persistent geometry identity and live state probing.
+- Core mesh operations used in production and controlled labs.
+- Subdivision and contextual topology fundamentals.
+- Modifier-order reasoning across four tested pairs.
+- Standalone Bevel/Mirror fundamentals.
+- Honest failure recording and independent technical verification.
+
+## Largest remaining gaps
+
+1. Systematic current Blender Manual coverage rather than isolated pages.
+2. Standalone Boolean and Solidify documentation/labs.
+3. Retopology curriculum and transfer tests.
+4. Sculpt, UV, materials, and production/export foundations.
+5. Modeler-relevant Python/BMesh documentation block.
+6. Repeated retention and context-aware knowledge retrieval.
+7. Visual surface judgment, especially pinching/highlight flow.
+8. Second-shape and cross-asset validation of learned guidance.
+9. Legal local video/tutorial ingestion with honest modality records.
+
+## Exit decision
+
+The foundation remains **PARTIAL**. Experiment count and one completed quiz are meaningful evidence, but breadth, repeated retrieval, runtime use, second-shape transfer, and visual judgment remain below the gate.
+
+## Highest-value next step
+
+Run the next second-shape modifier lab on curved/cylindrical geometry, including non-uniform-scale Bevel behavior and Mirror/SubD seam evaluation, then use the result to validate or narrow the new standalone guidance.

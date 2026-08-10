@@ -11,6 +11,8 @@ actual scene state over a local socket instead of interpreting rendered images.
 - `.mcp.json` — registers the `blender` MCP server (`uvx blender-mcp`) so an MCP-aware agent can
   connect to that running Blender session directly (`get_scene_info`, `execute_blender_code`,
   `get_object_info`, asset-generation tools, etc).
+- `tools/verify_mesh.py` — independently verifies saved base geometry by default; pass
+  `--evaluated` to verify the dependency-graph result after modifiers.
 
 ## Target benchmark
 
@@ -577,11 +579,12 @@ exact failure mode an earlier, since-deleted version of this project fell into. 
 location and parameters must come from the agent inspecting current state and deciding that
 specific instance.
 
-## Roadmap: autonomous research & expertise acquisition (not started)
+## Roadmap: autonomous research & expertise acquisition (foundation active)
 
-`docs/RESEARCH_ROADMAP.md` — a mandatory future subsystem, gated behind the closed-loop runtime
-milestone above being proven reliable. Not optional, not to be dropped from scope, not to be
-built early. Read it before starting any research/learning-related work.
+`docs/RESEARCH_ROADMAP.md` — the closed-loop runtime has substantial evidence and controlled
+documentation/experiment work is active. Autonomous research ingestion, structured retrieval,
+legal video processing, and cross-asset promotion remain incomplete. Read it before starting
+research/learning-related work.
 
 ## Curriculum step D: subdivision-surface milestone (SoapDish)
 

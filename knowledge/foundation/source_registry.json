@@ -74,6 +74,51 @@
     "skills": ["boolean-groove-cut-topology-cleanup (unrelated defect, same project)"]
   },
   {
+    "source_id": "blender-manual-bevel-modifier",
+    "title": "Bevel Modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Blender 4.5 LTS Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["bevel-modifier", "hard-surface", "modifiers"],
+    "modalities_inspected": ["text"],
+    "status": "EXPERIMENTALLY_TESTED",
+    "direct_observations": [
+      "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
+      "Limit methods include None, Angle, Weight attribute, and Vertex Group",
+      "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee"
+    ],
+    "candidate_principles": [
+      "Use Angle limiting when coplanar triangulation edges should not be beveled",
+      "Choose segment count from visual requirements because evaluated density rises quickly",
+      "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled"
+    ],
+    "experiments": ["runs/2026-08-10_modifier-foundation/modifier_foundation_report.json"],
+    "skills": []
+  },
+  {
+    "source_id": "blender-manual-mirror-modifier",
+    "title": "Mirror Modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/mirror.html",
+    "type": "official_docs",
+    "trust_tier": "A",
+    "version_scope": "Accessible 4.x Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["mirror-modifier", "symmetry", "modifiers"],
+    "modalities_inspected": ["text"],
+    "status": "EXPERIMENTALLY_TESTED",
+    "direct_observations": [
+      "The mirror plane comes from local object axes or a designated Mirror Object",
+      "Merge welds matching vertices only within Merge Distance",
+      "Clipping constrains Edit Mode movement but does not merge vertices already outside the threshold",
+      "Bisect cuts crossing geometry before mirroring"
+    ],
+    "candidate_principles": [
+      "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold"
+    ],
+    "experiments": ["runs/2026-08-10_modifier-foundation/modifier_foundation_report.json"],
+    "skills": []
+  },
+  {
     "source_id": "blender-api-bmesh-ops",
     "title": "BMesh Operators (bmesh.ops) Python API reference",
     "url": "https://docs.blender.org/api/current/bmesh.ops.html",

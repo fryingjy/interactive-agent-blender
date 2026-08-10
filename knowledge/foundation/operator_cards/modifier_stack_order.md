@@ -1,9 +1,9 @@
-# Operator card: Modifier stack order matters (directive explicitly flagged this as untested)
+# Operator card: Modifier stack order matters
 
-**Status:** DOCS pending (Manual modifier-stack pages not yet fetched) | EXPERIMENT ✓ 2 of 4 listed pairs | FAILURE_CASE n/a (both orders are "valid," they just produce different, real results -- the finding is that they're NOT interchangeable, not that one errors) | QUIZ pending
+**Status:** DOCS ~ (individual modifier pages studied; no universal order rule exists) | EXPERIMENT ✓ (all 4 planned pairs) | FAILURE_CASE ✓ | QUIZ ✓ | RUNTIME_USE ~ | SECOND_SHAPE pending
 
-Directive: "For important modifier pairs, explicitly test order... Never assume stack order is
-interchangeable." Confirmed correct with real, decisive, non-coincidental measurements (a first
+Operating rule: for important modifier pairs, test order rather than assuming the stack is
+interchangeable. Confirmed with real, decisive, non-coincidental measurements (a first
 naive test accidentally produced identical results for both orders because the test geometry
 didn't actually make the modifiers interact -- caught and corrected before drawing any
 conclusion, see below).
