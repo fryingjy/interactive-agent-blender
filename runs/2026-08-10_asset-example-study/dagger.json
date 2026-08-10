@@ -1,0 +1,98 @@
+{
+  "source_blend": "C:\\Users\\odane\\Downloads\\blender\\blend\\dagger.blend",
+  "blender_version": "5.2.0 LTS",
+  "scene": "Scene",
+  "collections": 2,
+  "objects_by_type": {
+    "MESH": 2
+  },
+  "mesh_totals": {
+    "objects": 2,
+    "vertices": 461717,
+    "faces": 923152,
+    "triangles": 922854,
+    "quads": 298,
+    "ngons": 0,
+    "boundary_edges": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 6
+  },
+  "modifier_counts": {
+    "NODES": 1
+  },
+  "materials": 1,
+  "images": 1,
+  "armatures": 0,
+  "actions": 0,
+  "mesh_names": [
+    "dagger_high",
+    "dagger_low"
+  ],
+  "largest_meshes": [
+    {
+      "name": "dagger_high",
+      "vertices": 461369,
+      "edges": 1384119,
+      "faces": 922746,
+      "triangles": 922746,
+      "quads": 0,
+      "ngons": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 6,
+      "uv_layers": 0,
+      "materials": 0,
+      "modifiers": [],
+      "dimensions": [
+        1.5775110721588135,
+        0.09541445970535278,
+        2.8145995140075684
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false
+    },
+    {
+      "name": "dagger_low",
+      "vertices": 348,
+      "edges": 758,
+      "faces": 406,
+      "triangles": 108,
+      "quads": 298,
+      "ngons": 0,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0,
+      "uv_layers": 1,
+      "materials": 0,
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true
+        }
+      ],
+      "dimensions": [
+        1.5855286121368408,
+        0.0954144299030304,
+        2.818697452545166
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false
+    }
+  ],
+  "assessment_limits": [
+    "Structural inventory does not establish artistic quality.",
+    "Open boundaries may be intentional and require object-level interpretation.",
+    "Base mesh counts do not include evaluated modifier geometry."
+  ]
+}
