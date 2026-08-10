@@ -1,271 +1,531 @@
 [
   {
-    "source_id": "blender-manual-subsurf",
-    "title": "Subdivision Surface Modifier",
+    "id": "blender-manual-subsurf",
     "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Subdivision Surface Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["subdivision-surface", "modifiers"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Catmull-Clark vs Simple subdivision modes; Simple only smooths non-coplanar geometry",
-      "Levels Viewport vs Render are independent, viewport should not exceed render",
-      "Use Limit Surface places verts at the theoretical infinite-subdivision position"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "subdivision-surface",
+      "modifiers"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Catmull-Clark vs Simple subdivision modes; Simple only smooths non-coplanar geometry",
+        "Levels Viewport vs Render are independent, viewport should not exceed render",
+        "Use Limit Surface places verts at the theoretical infinite-subdivision position"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-empties",
-    "title": "Empties (incl. Image Empty reference-modeling workflow)",
+    "id": "blender-manual-empties",
     "url": "https://docs.blender.org/manual/en/latest/modeling/empties.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Empties (incl. Image Empty reference-modeling workflow)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["reference-modeling", "empties"],
-    "modalities_inspected": ["text"],
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "reference-modeling",
+      "empties"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDIED",
-    "direct_observations": [
-      "Image Empty displays a reference photo directly in the 3D viewport for continuous comparison while modeling",
-      "Depth=Front + low Opacity is the recommended setting when using an image as a modeling reference"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Reference-based modeling should compare against the source continuously (or via repeated renders for a non-visual agent), not once at the end -- root cause of the first (rejected) gadget blockout attempt"
-    ],
-    "experiments": [],
-    "skills": []
+    "metadata": {
+      "direct_observations": [
+        "Image Empty displays a reference photo directly in the 3D viewport for continuous comparison while modeling",
+        "Depth=Front + low Opacity is the recommended setting when using an image as a modeling reference"
+      ],
+      "candidate_principles": [
+        "Reference-based modeling should compare against the source continuously (or via repeated renders for a non-visual agent), not once at the end -- root cause of the first (rejected) gadget blockout attempt"
+      ],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-mesh-editing-root",
-    "title": "Editing Mesh Objects (mesh editing operator index)",
+    "id": "blender-manual-mesh-editing-root",
     "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/index.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Editing Mesh Objects (mesh editing operator index)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["mesh-editing", "operator-index"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "mesh-editing",
+      "operator-index"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-bevel",
-    "title": "Bevel (edge/vertex)",
+    "id": "blender-manual-bevel",
     "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/bevel.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Bevel (edge/vertex)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["bevel", "hard-surface"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Width Type has 5 variants (Offset/Width/Depth/Percent/Absolute) with different meanings for the same Width number -- this project has only ever used bmesh.ops.bevel defaults, never explicitly varied Width Type",
-      "Clamp Overlap prevents overshoot past neighboring faces; Miter Outer/Inner controls extra geometry at multi-edge corners to avoid pinching"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "bevel",
+      "hard-surface"
     ],
-    "candidate_principles": [],
-    "experiments": ["see knowledge/foundation/operator_cards/bevel.md -- pre-existing project findings, not fresh this session"],
-    "skills": ["boolean-groove-cut-topology-cleanup (unrelated defect, same project)"]
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Width Type has 5 variants (Offset/Width/Depth/Percent/Absolute) with different meanings for the same Width number -- this project has only ever used bmesh.ops.bevel defaults, never explicitly varied Width Type",
+        "Clamp Overlap prevents overshoot past neighboring faces; Miter Outer/Inner controls extra geometry at multi-edge corners to avoid pinching"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "see knowledge/foundation/operator_cards/bevel.md -- pre-existing project findings, not fresh this session"
+      ],
+      "skills": [
+        "boolean-groove-cut-topology-cleanup (unrelated defect, same project)"
+      ]
+    }
   },
   {
-    "source_id": "blender-manual-bevel-modifier",
-    "title": "Bevel Modifier",
+    "id": "blender-manual-bevel-modifier",
     "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Bevel Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 4.5 LTS Manual; reproduced in Blender 5.2.0 LTS",
-    "topics": ["bevel-modifier", "hard-surface", "modifiers"],
-    "modalities_inspected": ["text"],
+    "version": "Blender 4.5 LTS Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "bevel-modifier",
+      "hard-surface",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
-    "direct_observations": [
-      "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
-      "Limit methods include None, Angle, Weight attribute, and Vertex Group",
-      "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Use Angle limiting when coplanar triangulation edges should not be beveled",
-      "Choose segment count from visual requirements because evaluated density rises quickly",
-      "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled",
-      "Apply or explicitly account for non-uniform object scale before judging world-space bevel width"
-    ],
-    "experiments": [
-      "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
-      "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
-    ],
-    "skills": []
+    "metadata": {
+      "direct_observations": [
+        "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
+        "Limit methods include None, Angle, Weight attribute, and Vertex Group",
+        "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee"
+      ],
+      "candidate_principles": [
+        "Use Angle limiting when coplanar triangulation edges should not be beveled",
+        "Choose segment count from visual requirements because evaluated density rises quickly",
+        "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled",
+        "Apply or explicitly account for non-uniform object scale before judging world-space bevel width"
+      ],
+      "experiments": [
+        "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-mirror-modifier",
-    "title": "Mirror Modifier",
+    "id": "blender-manual-mirror-modifier",
     "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/mirror.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Mirror Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Accessible 4.x Manual; reproduced in Blender 5.2.0 LTS",
-    "topics": ["mirror-modifier", "symmetry", "modifiers"],
-    "modalities_inspected": ["text"],
+    "version": "Accessible 4.x Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "mirror-modifier",
+      "symmetry",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
-    "direct_observations": [
-      "The mirror plane comes from local object axes or a designated Mirror Object",
-      "Merge welds matching vertices only within Merge Distance",
-      "Clipping constrains Edit Mode movement but does not merge vertices already outside the threshold",
-      "Bisect cuts crossing geometry before mirroring"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold",
-      "Treat Mirror/Subdivision order as topology-dependent and verify the evaluated seam instead of relying on a universal stack rule"
-    ],
-    "experiments": [
-      "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
-      "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
-    ],
-    "skills": []
+    "metadata": {
+      "direct_observations": [
+        "The mirror plane comes from local object axes or a designated Mirror Object",
+        "Merge welds matching vertices only within Merge Distance",
+        "Clipping constrains Edit Mode movement but does not merge vertices already outside the threshold",
+        "Bisect cuts crossing geometry before mirroring"
+      ],
+      "candidate_principles": [
+        "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold",
+        "Treat Mirror/Subdivision order as topology-dependent and verify the evaluated seam instead of relying on a universal stack rule"
+      ],
+      "experiments": [
+        "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-boolean-modifier",
-    "title": "Boolean Modifier",
+    "id": "blender-manual-boolean-modifier",
     "url": "https://docs.blender.org/manual/en/dev/modeling/modifiers/generate/booleans.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Boolean Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
-    "topics": ["boolean-modifier", "hard-surface", "modifiers"],
-    "modalities_inspected": ["text"],
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "boolean-modifier",
+      "hard-surface",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "RUNTIME_VALIDATED",
-    "direct_observations": [
-      "Difference subtracts source volume, Union combines volumes while removing interior faces, and Intersect retains shared volume",
-      "Fast is intended for speed but lacks robust overlapping-geometry support; Exact is slower and supports overlap/coplanarity",
-      "Manifold is usually fastest but requires manifold operands except for the documented Difference-with-plane case",
-      "Only manifold operands are guaranteed to produce proper results"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Inspect n-gons, degenerates, zero-length edges, shading, and editability even when a Boolean result is manifold",
-      "Avoid tangent or coincident cutter placement when a small strategy change can prevent solver slivers"
-    ],
-    "experiments": [
-      "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
-      "runs/2026-08-07_proof1-redo/",
-      "runs/2026-08-07_mug-adaptive/"
-    ],
-    "skills": ["boolean-groove-cut-topology-cleanup", "modifier-stack-order-subd-safe"]
+    "metadata": {
+      "direct_observations": [
+        "Difference subtracts source volume, Union combines volumes while removing interior faces, and Intersect retains shared volume",
+        "Fast is intended for speed but lacks robust overlapping-geometry support; Exact is slower and supports overlap/coplanarity",
+        "Manifold is usually fastest but requires manifold operands except for the documented Difference-with-plane case",
+        "Only manifold operands are guaranteed to produce proper results"
+      ],
+      "candidate_principles": [
+        "Inspect n-gons, degenerates, zero-length edges, shading, and editability even when a Boolean result is manifold",
+        "Avoid tangent or coincident cutter placement when a small strategy change can prevent solver slivers"
+      ],
+      "experiments": [
+        "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+        "runs/2026-08-07_proof1-redo/",
+        "runs/2026-08-07_mug-adaptive/"
+      ],
+      "skills": [
+        "boolean-groove-cut-topology-cleanup",
+        "modifier-stack-order-subd-safe"
+      ]
+    }
   },
   {
-    "source_id": "blender-manual-solidify-modifier",
-    "title": "Solidify Modifier",
+    "id": "blender-manual-solidify-modifier",
     "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/solidify.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Solidify Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
-    "topics": ["solidify-modifier", "thickness", "modifiers"],
-    "modalities_inspected": ["text"],
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "solidify-modifier",
+      "thickness",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
-    "direct_observations": [
-      "Thickness is calculated in local coordinates, so non-uniform object scale can vary world-space thickness",
-      "Offset places thickness relative to face normals",
-      "Fill Rim joins inner and outer boundaries",
-      "Even Thickness improves consistency but does not guarantee exact thickness for every topology"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Apply or explicitly account for non-uniform scale before judging wall thickness",
-      "Treat an intentionally open rim as a pipeline choice, not a closed solid"
-    ],
-    "experiments": [
-      "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
-      "runs/2026-08-10_solidify-transfer/solidify_transfer_report.json"
-    ],
-    "skills": ["modifier-stack-order-subd-safe"]
+    "metadata": {
+      "direct_observations": [
+        "Thickness is calculated in local coordinates, so non-uniform object scale can vary world-space thickness",
+        "Offset places thickness relative to face normals",
+        "Fill Rim joins inner and outer boundaries",
+        "Even Thickness improves consistency but does not guarantee exact thickness for every topology"
+      ],
+      "candidate_principles": [
+        "Apply or explicitly account for non-uniform scale before judging wall thickness",
+        "Treat an intentionally open rim as a pipeline choice, not a closed solid"
+      ],
+      "experiments": [
+        "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+        "runs/2026-08-10_solidify-transfer/solidify_transfer_report.json"
+      ],
+      "skills": [
+        "modifier-stack-order-subd-safe"
+      ]
+    }
   },
   {
-    "source_id": "blender-api-bmesh-ops",
-    "title": "BMesh Operators (bmesh.ops) Python API reference",
+    "id": "blender-api-bmesh-ops",
     "url": "https://docs.blender.org/api/current/bmesh.ops.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "BMesh Operators (bmesh.ops) Python API reference",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "current Blender Python API",
-    "topics": ["bmesh", "api", "grid_fill", "bridge_loops"],
-    "modalities_inspected": ["text"],
+    "version": "current Blender Python API",
+    "topics": [
+      "bmesh",
+      "api",
+      "grid_fill",
+      "bridge_loops"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDYING",
-    "direct_observations": [
-      "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
-      "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [],
-    "experiments": ["bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md"],
-    "skills": []
+    "metadata": {
+      "direct_observations": [
+        "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
+        "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blenderguru-donut-v5-page",
-    "title": "The Blender Donut 5.0 Tutorial (all links and resources)",
+    "id": "blenderguru-donut-v5-page",
     "url": "https://www.blenderguru.com/posts/blender-donut-v5-tutorial",
-    "type": "video",
+    "local_path": null,
+    "title": "The Blender Donut 5.0 Tutorial (all links and resources)",
+    "creator": "Andrew Price / Blender Guru",
+    "source_type": "video",
     "trust_tier": "B",
-    "version_scope": "Blender 5.0",
-    "topics": ["fundamentals", "reference-modeling"],
-    "modalities_inspected": ["text (page shell/links only)"],
-    "status": "REJECTED",
-    "direct_observations": [
-      "Page is a link-list wrapper around an embedded YouTube video -- no substantive written lesson content of its own"
+    "version": "Blender 5.0",
+    "topics": [
+      "fundamentals",
+      "reference-modeling"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "rejection_reason": "Actual instructional content is video-only (YouTube), confirmed unreachable this session (bot-check redirect via both the browser tool and WebFetch). Not promoted; would need the transcript/frames to be genuinely studied, which are not accessible."
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "REJECTED",
+    "rejected_reason": "Actual instructional content is video-only (YouTube), confirmed unreachable this session (bot-check redirect via both the browser tool and WebFetch). Not promoted; would need the transcript/frames to be genuinely studied, which are not accessible.",
+    "modalities_inspected": [
+      "text (page shell/links only)"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Page is a link-list wrapper around an embedded YouTube video -- no substantive written lesson content of its own"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "cgcookie-core-mesh-modeling",
-    "title": "CORE: Fundamentals of 3D Mesh Modeling (Jonathan Lampel)",
+    "id": "cgcookie-core-mesh-modeling",
     "url": "https://cgcookie.com/courses/core-fundamentals-mesh-modeling",
-    "type": "course",
+    "local_path": null,
+    "title": "CORE: Fundamentals of 3D Mesh Modeling (Jonathan Lampel)",
+    "creator": "CG Cookie",
+    "source_type": "course",
     "trust_tier": "B",
-    "version_scope": "current Blender",
-    "topics": ["mesh-fundamentals", "hard-surface", "subdivision-surface", "topology"],
-    "modalities_inspected": ["text (course overview/curriculum page only)"],
+    "version": "current Blender",
+    "topics": [
+      "mesh-fundamentals",
+      "hard-surface",
+      "subdivision-surface",
+      "topology"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "QUEUED",
-    "direct_observations": [
-      "Real, structured curriculum confirmed: Ch1 Intro to 3D Modeling, Ch2 Hard Surface Modeling, Ch3 Subdivision Surface Modeling, Ch4 Final Exercise",
-      "68 reviews, positive, mentions concrete habits (merge by distance, recalculate normals) matching this project's own established practices"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text (course overview/curriculum page only)"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "access_note": "Course page itself loads; actual lesson content is paywalled/login-gated and video-based -- not accessible without an account and without video capability. Curriculum structure is real evidence (author credentials, chapter breakdown, review consensus); lesson-by-lesson study is NOT possible in this environment."
+    "metadata": {
+      "direct_observations": [
+        "Real, structured curriculum confirmed: Ch1 Intro to 3D Modeling, Ch2 Hard Surface Modeling, Ch3 Subdivision Surface Modeling, Ch4 Final Exercise",
+        "68 reviews, positive, mentions concrete habits (merge by distance, recalculate normals) matching this project's own established practices"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": [],
+      "access_note": "Course page itself loads; actual lesson content is paywalled/login-gated and video-based -- not accessible without an account and without video capability. Curriculum structure is real evidence (author credentials, chapter breakdown, review consensus); lesson-by-lesson study is NOT possible in this environment."
+    }
   },
   {
-    "source_id": "blenderartists-modeling-support",
-    "title": "Latest Support/Modeling topics",
+    "id": "blenderartists-modeling-support",
     "url": "https://blenderartists.org/c/support/modeling/37",
-    "type": "forum",
+    "local_path": null,
+    "title": "Latest Support/Modeling topics",
+    "creator": "Blender Artists community",
+    "source_type": "forum",
     "trust_tier": "C",
-    "version_scope": "mixed/current",
-    "topics": ["community-troubleshooting"],
-    "modalities_inspected": ["text"],
+    "version": "mixed/current",
+    "topics": [
+      "community-troubleshooting"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDIED",
-    "direct_observations": ["Page loads correctly; not yet mined for a specific problem-driven query this session"],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Page loads correctly; not yet mined for a specific problem-driven query this session"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "youtube-general",
-    "title": "YouTube (all video sources: Blender Guru, CG Cookie, Blender Secrets, Blender Studio)",
+    "id": "youtube-general",
     "url": "https://www.youtube.com/",
-    "type": "video",
+    "local_path": null,
+    "title": "YouTube (all video sources: Blender Guru, CG Cookie, Blender Secrets, Blender Studio)",
+    "creator": "mixed creators",
+    "source_type": "video",
     "trust_tier": "D",
-    "version_scope": "n/a",
+    "version": "n/a",
     "topics": [],
-    "modalities_inspected": [],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "REJECTED",
-    "direct_observations": [
-      "Confirmed unreachable from this environment: both the interactive Browser tool and the server-side WebFetch tool independently redirected to https://www.google.com/sorry/index (a bot-detection challenge page) when attempting https://www.youtube.com/watch?v=-tbSCMbJA6o",
-      "Not attempted to bypass -- completing CAPTCHAs/bot-detection is prohibited regardless of purpose"
+    "rejected_reason": "No access to video_frames, audio, captions, or transcript for any YouTube-hosted source. Every video source in the directive's curriculum (Blender Studio Fundamentals, CG Cookie video lessons, Blender Secrets tips) is affected equally. Never claim video/audio access for these -- see Pass 0 access-truth requirement.",
+    "modalities_inspected": [],
+    "metadata": {
+      "direct_observations": [
+        "Confirmed unreachable from this environment: both the interactive Browser tool and the server-side WebFetch tool independently redirected to https://www.google.com/sorry/index (a bot-detection challenge page) when attempting https://www.youtube.com/watch?v=-tbSCMbJA6o",
+        "Not attempted to bypass -- completing CAPTCHAs/bot-detection is prohibited regardless of purpose"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
+  },
+  {
+    "id": "project-owned-modeling-video-ingestion-fixture",
+    "url": null,
+    "local_path": "runs/2026-08-10_video-ingestion/project_owned_modeling_lesson.mp4",
+    "title": "Inspect Cage, Evaluated Surface, and Multiple Views",
+    "creator": "interactive-agent-blender project",
+    "source_type": "video_fixture",
+    "trust_tier": "D",
+    "version": "Blender-agnostic ingestion fixture",
+    "topics": [
+      "video-ingestion",
+      "evaluated-surface",
+      "multi-view-review"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "rejection_reason": "No access to video_frames, audio, captions, or transcript for any YouTube-hosted source. Every video source in the directive's curriculum (Blender Studio Fundamentals, CG Cookie video lessons, Blender Secrets tips) is affected equally. Never claim video/audio access for these -- see Pass 0 access-truth requirement."
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "video_frames",
+      "audio_stream_metadata",
+      "captions",
+      "transcript"
+    ],
+    "metadata": {
+      "purpose": "End-to-end legal local-ingestion validation, not external curriculum evidence",
+      "duration_seconds": 6.0,
+      "fps": 6.0,
+      "report": "runs/2026-08-10_video-ingestion/ingested/video_ingest_report.json",
+      "limitations": [
+        "Project-owned synthetic fixture does not count as knowledge gained from an expert tutorial",
+        "Audio presence was verified at stream level; speech understanding was not claimed"
+      ]
+    }
   }
 ]

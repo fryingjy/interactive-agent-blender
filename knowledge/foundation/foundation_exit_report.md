@@ -89,7 +89,9 @@ Repeated retention has not yet been measured. The prior low-confidence area—au
 
 ### Video and structured training
 
-No complete video lesson has been studied. Historical attempts could not access YouTube modalities and correctly did not claim video understanding. Local or user-provided legal video ingestion remains a future capability, not completed evidence.
+No complete external video lesson has been studied. Historical attempts could not access YouTube modalities and correctly did not claim video understanding. Legal local ingestion is now implemented and exercised on a project-owned six-second MP4 with a real video stream, audio stream, WebVTT captions/transcript, and six timestamped frames (`runs/2026-08-10_video-ingestion/`). This validates modality handling, not expert curriculum knowledge. User-provided or otherwise permitted external lessons remain future evidence.
+
+The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
 No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
 
@@ -110,10 +112,10 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 2. Retopology curriculum and transfer tests.
 3. Sculpt, UV, materials, and production/export foundations.
 4. Modeler-relevant Python/BMesh documentation block.
-5. Repeated retention and context-aware knowledge retrieval.
+5. Repeated retention and real-session use of context-aware knowledge retrieval.
 6. Visual surface judgment, especially pinching/highlight flow.
 7. Controlled visual second-shape validation for modifier-order guidance.
-8. Legal local video/tutorial ingestion with honest modality records.
+8. An external permitted video/tutorial lesson studied through the validated local-ingestion path.
 
 ## Exit decision
 
@@ -121,4 +123,4 @@ The foundation remains **PARTIAL**. Experiment count and one completed quiz are 
 
 ## Highest-value next step
 
-Implement closest-surface and normal-projected wall-thickness measurement on an acute bent shell, then continue Bevel/Mirror second-shape transfer. Keep these separate from held-out benchmark assets.
+Complete systematic Manual/API breadth and the retopology/sculpt/UV/material foundation labs, then run repeated retrieval and visual-surface evaluation. Keep them separate from held-out benchmark assets.

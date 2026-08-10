@@ -582,8 +582,9 @@ specific instance.
 ## Roadmap: autonomous research & expertise acquisition (foundation active)
 
 `docs/RESEARCH_ROADMAP.md` — the closed-loop runtime has substantial evidence and controlled
-documentation/experiment work is active. Autonomous research ingestion, structured retrieval,
-legal video processing, and cross-asset promotion remain incomplete. Read it before starting
+documentation/experiment work is active. Approved-root document/video ingestion, structured
+retrieval, usage telemetry, uncertainty, and rebuild-decision foundations are implemented and
+tested; external curriculum breadth and cross-asset promotion remain incomplete. Read it before starting
 research/learning-related work.
 
 ## Curriculum step D: subdivision-surface milestone (SoapDish)

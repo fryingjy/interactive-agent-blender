@@ -1,8 +1,9 @@
 # Autonomous Research & Expertise Acquisition — Mandatory Future Subsystem
 
 **Status: active foundation phase. The closed-loop runtime has substantial demonstrated evidence,
-and controlled documentation/experiment work has begun. The autonomous research engine, legal
-video ingestion, structured retrieval, and cross-asset promotion pipeline remain incomplete.
+and controlled documentation/experiment work has begun. Legal local video/document ingestion,
+structured retrieval, usage telemetry, uncertainty, and rebuild-decision foundations are now
+implemented and tested; external curriculum breadth and cross-asset promotion remain incomplete.
 Research should stay problem-driven and should not outrun the runtime's ability to apply and
 verify what it learns.**
 
@@ -99,6 +100,29 @@ skills. Example candidate record:
 }
 ```
 Remains a candidate until experimentally tested.
+
+Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
+approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT
+captions, and extracts timestamped frames. `runs/2026-08-10_video-ingestion/` exercises the full
+path on a project-owned MP4 with audio and captions. This proves modality access and extraction,
+not outside tutorial expertise. The module deliberately contains no platform downloader.
+
+`knowledge_engine/ingest/document_ingest.py` restricts local reads to approved roots, extracts
+headings/parameter-warning candidates/links, fingerprints content, and emits a normalized source
+record. Approved web fetches require a hostname allowlist and reject redirects outside it.
+
+## Structured retrieval and learning state
+
+`knowledge_engine/retrieval.py` ranks both historical and promoted skill schemas using query,
+modeling stage, workflow, surface, defect, local topology, modifier state, reference issue,
+runtime success, and Blender-version relevance. Ranking exposes a score breakdown for audit.
+`knowledge/skill_store.py search-structured` is the CLI entry point.
+
+`knowledge_engine/telemetry.py` stores append-only skill usage with decision/asset IDs, scene
+revision change, action, result, measured effect, and unexpected effects. `reasoning.py` adds
+explicit diagnosis confidence, evidence-based region rebuild pressure, multi-view regression
+checks, and component-graph validation. Unit tests cover these mechanisms; real cross-session
+runtime use remains required before promotion claims.
 
 ## Four knowledge layers — never mix
 

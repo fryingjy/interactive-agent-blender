@@ -40,6 +40,6 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, and Solidify now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, and Mirror now have controlled curved second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule and still lacks controlled visual comparison.
 
-The weakest breadth remains sculpting, UV/material production, structured retopology, systematic API study, video-based learning, repeated retrieval, and transfer validation.
+The weakest breadth remains sculpting, UV/material production, structured retopology, systematic API study, external video-based learning, repeated retrieval use, and transfer validation.
 
-Video remains `—` because no source has been processed with honest access to instructional frames/audio/captions. This is an evidence state, not a claim that video is unnecessary.
+Topic Video cells remain `—` because no external curriculum source has been studied. The local ingestion subsystem itself has processed and visually checked a project-owned MP4 with video, audio, captions, transcript, and timestamped frames; that fixture validates access mechanics but is not credited as subject-matter instruction.
