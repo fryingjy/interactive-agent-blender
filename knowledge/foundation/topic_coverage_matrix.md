@@ -8,7 +8,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Extrude | ~ | — | ✓ | ✓ | ~ | ✓ | ✓ |
 | Inset | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Bevel operation | ✓ | — | ✓ | ✓ | ~ | ✓ | ~ |
-| Bevel modifier | ✓ | — | ✓ | ✓ | — | ~ | — |
+| Bevel modifier | ✓ | — | ✓ | ✓ | — | ~ | ✓ |
 | Loop cut / Subdivide | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Merge / Merge by Distance | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Dissolve / Delete | — | — | ✓ | ~ | ✓ | ~ | — |
@@ -25,9 +25,9 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Topology fundamentals | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Subdivision Surface | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Boolean modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Mirror modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | — |
+| Mirror modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Solidify modifier | ✓ | — | ✓ | ✓ | ~ | ~ | ✓ |
-| Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | — |
+| Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | ~ |
 | Retopology fundamentals | — | — | ~ | ✓ | — | ✓ | — |
 | Reference blockout | ✓ | — | ~ | ✓ | ✓ | ✓ | ~ |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
@@ -38,7 +38,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 
 ## Current interpretation
 
-The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, and Solidify now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence, and Solidify has controlled curved second-shape transfer; Bevel and Mirror still lack second-shape validation.
+The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, and Solidify now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, and Mirror now have controlled curved second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule and still lacks controlled visual comparison.
 
 The weakest breadth remains sculpting, UV/material production, structured retopology, systematic API study, video-based learning, repeated retrieval, and transfer validation.
 

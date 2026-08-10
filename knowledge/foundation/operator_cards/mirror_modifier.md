@@ -1,6 +1,6 @@
 # Operator card: Mirror modifier
 
-**Status:** DOCS ✓ (Blender Manual 4.2/4.5 generation) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ ~ | RUNTIME_USE ~ | SECOND_SHAPE pending
+**Status:** DOCS ✓ (Blender Manual 4.2/4.5 generation) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ ~ | RUNTIME_USE ~ | SECOND_SHAPE ✓
 
 ## Purpose
 
@@ -47,3 +47,11 @@ When a mirror seam remains visible or non-manifold, inspect:
 6. modifier order and evaluated, not only base-cage, topology.
 
 Do not increase Merge Distance blindly: a broad threshold can weld nearby geometry that was intended to remain distinct.
+
+## Cylindrical second-shape transfer
+
+Evidence: `runs/2026-08-10_bevel-mirror-transfer/`
+
+On a curved half-cylinder seam, exact placement closed cleanly, a 0.002-unit gap outside the 0.001 Merge Distance left 12 boundary/non-manifold edges, and a 0.010 threshold closed the same gap. Independent evaluated-mesh verification reproduced all three outcomes.
+
+On this exact curved seam, both `Mirror -> Subdivision` and `Subdivision -> Mirror` were closed, all-quad results with zero non-manifold edges. This narrows the earlier flat-seam stack-order finding: order can be consequential, but one primitive's failure is not a universal law. Verify the actual evaluated seam and visual surface.

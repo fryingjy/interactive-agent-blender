@@ -6,7 +6,7 @@
 
 **READY FOR HELD-OUT MODELING: NO**
 
-This report reflects repository evidence through `runs/2026-08-10_modifier-foundation/`. It is not a claim that the complete professional-modeling curriculum is finished.
+This report reflects repository evidence through `runs/2026-08-10_bevel-mirror-transfer/`. It is not a claim that the complete professional-modeling curriculum is finished.
 
 ## Evidence summary
 
@@ -30,12 +30,13 @@ The accessible Bevel modifier Manual is labeled Blender 4.5 LTS, while the newes
 
 ### Controlled experiments
 
-Approximately 55 controlled/reproduction cases are now recorded:
+Approximately 62 controlled/reproduction cases are now recorded:
 
 - Roughly 27 prior operator and modifier-order cases.
 - Ten standalone Bevel/Mirror variants in `runs/2026-08-10_modifier-foundation/`.
 - Twelve standalone Boolean/Solidify variants in `runs/2026-08-10_boolean-solidify-foundation/`.
 - Six curved Solidify second-shape variants in `runs/2026-08-10_solidify-transfer/`.
+- Seven cylindrical Bevel/Mirror second-shape variants in `runs/2026-08-10_bevel-mirror-transfer/`.
 
 Prior experiments cover dissolve/delete, bridge/fill/grid fill, bisect, spin, split/separate, symmetrize, slides, shading, and four modifier-order pairs. Project history also contains production use of extrude, inset, bevel, subdivision, booleans, curves, and retopology.
 
@@ -56,6 +57,8 @@ The Boolean/Solidify lab added:
 
 The curved Solidify transfer confirmed the scale warning on a different shape, compared five thickness modes, disproved two simplistic mode-ranking hypotheses, and exposed the need for closest-surface/normal-projected thickness metrics.
 
+The cylindrical Bevel/Mirror transfer reproduced the Merge Distance dependency on a curved seam, showed unapplied Z scale doubling the measured world-space bevel band, and disproved the universal form of the earlier Mirror/Subdivision order rule: both orders were manifold on the exact-seam half-cylinder.
+
 All seven Bevel/Mirror assertions and all nine Boolean/Solidify assertions passed. See the respective run reports and saved `.blend` scenes for evaluated measurements.
 
 ### Failure cases
@@ -65,7 +68,7 @@ Meaningful failures or limitations include:
 - Bridge-loop wire-edge filtering causing a silent no-op.
 - Grid Fill overlap failure on an unsuitable hole.
 - Rip operator context failure in headless mode.
-- Mirror-before-Subdivision producing non-manifold evaluated geometry in the tested stack.
+- Mirror-before-Subdivision producing non-manifold evaluated geometry in the original flat-seam stack, while a later curved exact seam remained manifold in both orders.
 - Bevel-before-Solidify being a no-op on a single plane.
 - Mirror seam outside Merge Distance leaving eight boundary/non-manifold edges.
 - Excessive Bevel width with Clamp Overlap producing nearly collapsed edges despite remaining manifold.
@@ -109,7 +112,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 4. Modeler-relevant Python/BMesh documentation block.
 5. Repeated retention and context-aware knowledge retrieval.
 6. Visual surface judgment, especially pinching/highlight flow.
-7. Second-shape validation for Bevel and Mirror guidance.
+7. Controlled visual second-shape validation for modifier-order guidance.
 8. Legal local video/tutorial ingestion with honest modality records.
 
 ## Exit decision

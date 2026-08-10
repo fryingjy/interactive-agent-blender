@@ -1,6 +1,6 @@
 # Operator card: Bevel modifier
 
-**Status:** DOCS ✓ (Blender Manual 4.5 LTS) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ~ | SECOND_SHAPE pending
+**Status:** DOCS ✓ (Blender Manual 4.5 LTS) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ~ | SECOND_SHAPE ✓
 
 ## Purpose
 
@@ -46,6 +46,14 @@ Both results remained manifold, but Clamp produced nearly collapsed edges. There
 > Clamp Overlap prevents a class of overlap; it does not guarantee healthy topology or a visually useful bevel at excessive width.
 
 Inspect evaluated edge lengths, corner topology, and highlights after large bevels. Manifoldness alone is insufficient.
+
+## Cylindrical second-shape transfer
+
+Evidence: `runs/2026-08-10_bevel-mirror-transfer/`
+
+A closed cylinder stretched to world height 4 was beveled at width 0.1 with one segment. Applying the Z scale before Bevel produced a measured world-space top band of 0.1. Leaving object Z scale at 2.0 produced a 0.2 band. Both evaluated meshes were closed and independently verified clean (allowing their two intentional cap n-gons).
+
+The scale warning therefore transferred beyond the original box-like cases: a manifold result can still have inconsistent world-space bevel width.
 
 ## Preconditions and verification
 

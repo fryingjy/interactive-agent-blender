@@ -91,9 +91,13 @@
     "candidate_principles": [
       "Use Angle limiting when coplanar triangulation edges should not be beveled",
       "Choose segment count from visual requirements because evaluated density rises quickly",
-      "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled"
+      "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled",
+      "Apply or explicitly account for non-uniform object scale before judging world-space bevel width"
     ],
-    "experiments": ["runs/2026-08-10_modifier-foundation/modifier_foundation_report.json"],
+    "experiments": [
+      "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+      "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+    ],
     "skills": []
   },
   {
@@ -113,9 +117,13 @@
       "Bisect cuts crossing geometry before mirroring"
     ],
     "candidate_principles": [
-      "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold"
+      "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold",
+      "Treat Mirror/Subdivision order as topology-dependent and verify the evaluated seam instead of relying on a universal stack rule"
     ],
-    "experiments": ["runs/2026-08-10_modifier-foundation/modifier_foundation_report.json"],
+    "experiments": [
+      "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+      "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+    ],
     "skills": []
   },
   {

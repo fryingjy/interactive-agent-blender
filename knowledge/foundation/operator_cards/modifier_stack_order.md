@@ -1,6 +1,6 @@
 # Operator card: Modifier stack order matters
 
-**Status:** DOCS ~ (individual modifier pages studied; no universal order rule exists) | EXPERIMENT ✓ (all 4 planned pairs) | FAILURE_CASE ✓ | QUIZ ✓ | RUNTIME_USE ~ | SECOND_SHAPE pending
+**Status:** DOCS ~ (individual modifier pages studied; no universal order rule exists) | EXPERIMENT ✓ (all 4 planned pairs) | FAILURE_CASE ✓ | QUIZ ✓ | RUNTIME_USE ~ | SECOND_SHAPE ~
 
 Operating rule: for important modifier pairs, test order rather than assuming the stack is
 interchangeable. Confirmed with real, decisive, non-coincidental measurements (a first
@@ -73,9 +73,19 @@ open boundary (confirmed: no evaluated vertices remain exactly at X=0 in this or
 seam-sample in the broken order which still shows verts sitting at X=0), and Mirror then
 duplicates that already-correct result without issue.
 
-**Conclusion, directly load-bearing for any future prop combining Mirror with Subdivision
-Surface: Subdivision must come BEFORE Mirror in the stack**, not after -- this is a correctness
-requirement here, not just a stylistic preference like Boolean+Bevel above.
+**Original-shape conclusion:** Subdivision before Mirror was required for this particular flat
+seam topology. A cylindrical second-shape test later showed both orders closed and all-quad, so
+this is not a universal modifier-order law. Treat it as a diagnosed topology-specific failure:
+test the evaluated seam on the actual cage and inspect visual continuity as well as manifoldness.
+
+### Cylindrical transfer boundary
+
+Evidence: `runs/2026-08-10_bevel-mirror-transfer/`
+
+On an exact-seam half-cylinder, Mirror -> Subdivision and Subdivision -> Mirror both evaluated
+to 482 vertices, 480 quad faces, and zero non-manifold edges. Their signed volumes differed
+slightly (about 4.3924 versus 4.3976), so topological cleanliness does not prove geometric or
+visual equivalence. This transfer result narrows, rather than erases, the earlier failure.
 
 ## Solidify + Bevel
 
@@ -100,7 +110,8 @@ Three different KINDS of stack-order consequence found, not the same lesson repe
    (Bevel first avoids carving the seam).
 2. **Boolean + Bevel**: both orders are valid AND visually reasonable -- a genuine strategic
    choice (Boolean first if the cut's rim should also be rounded).
-3. **Mirror + Subdivision**: only one order is even topologically valid (Subdivision first);
-   **Solidify + Bevel**: only one order makes Bevel do anything at all (Solidify first).
+3. **Mirror + Subdivision**: order caused a topological failure on one flat seam but both orders
+   were manifold on a curved exact seam; diagnose per topology. **Solidify + Bevel**: only one
+   tested order makes Bevel do anything at all on a single-face plane (Solidify first).
 Do not generalize "put X before Y" from one pair to another -- each pair was tested independently
 because the underlying reason differs each time.
