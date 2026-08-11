@@ -1,5 +1,5 @@
 {
-  "audit_date": "2026-08-10",
+  "audit_date": "2026-08-11",
   "policy": "No development fixture, previously used reference, asset-specific builder, or post-seen threshold may count as held-out evidence.",
   "reference_pool": {
     "bottle": "CONTAMINATED_BY_PRIOR_USE",
@@ -18,5 +18,5 @@
     {"id": "E", "name": "Multi-component professional prop", "status": "BLOCKED_HUMAN_REVIEW_REQUIRED", "prerequisite_evidence": ["runs/2026-08-07_speaker-typed-protocol/", "runs/2026-08-10_transfer-trident/"]}
   ],
   "ready_for_held_out_modeling": true,
-  "reason": "The user supplied a new reference pack after foundation implementation. Benchmark B ran without an asset-specific builder: normalized front silhouette IoU reached 0.8285 against the predeclared 0.80 gate, and all 15 evaluated components passed independent mesh verification. Its visible primitive-assembly weakness was later rejected and rebuilt as a 19-component profile-authored asset at 0.8369 IoU with 19/19 fresh-process evaluated meshes clean; because the reference was already used, this is quality-rebuild evidence rather than a new held-out pass. Transfer benchmark D passed on a different ornamental prop family at 0.6766 against its predeclared 0.65 gate, with 14/14 evaluated components independently clean. Six supplied references remain unmodeled and reserved."
+  "reason": "The user supplied a new reference pack after foundation implementation. Benchmark B ran without an asset-specific builder: normalized front silhouette IoU reached 0.8285 against the predeclared 0.80 gate, and all 15 evaluated components passed independent mesh verification. Its visible primitive-assembly weakness was later rejected and rebuilt as a 19-component profile-authored asset at 0.8369 IoU with 19/19 fresh-process evaluated meshes clean; because the reference was already used, this is quality-rebuild evidence rather than a new held-out pass. Transfer benchmark D passed on a different ornamental prop family at 0.6766 against its predeclared 0.65 gate, with 14/14 evaluated components independently clean. Six supplied references remain unmodeled and reserved. Per docs/DEVELOPMENT_PRIORITIES.md, the next benchmark must prioritize held-out hard-surface/SubD/reference-based prop work; sculpt-heavy organic benchmarks are deferred."
 }

@@ -68,6 +68,14 @@ Jaw + bilateral-smile rig and driven corrective pass an independent fresh-proces
 review. This validates localized deformation-region topology and corrective wiring on a facial
 shape; the subtle expression does not establish authored facial retopology or production acting.
 
+`runs/2026-08-11_expressive-facial-articulation/` demonstrates why topology acceptance must be
+regional and task-dependent. The official source is predominantly quad but not all-quad; the
+expression region contains 2,916 quads and 20 non-quads across 2,936 faces (99.3188% quads), while
+remaining closed and nondegenerate before and after Subdivision Surface evaluation. The failed
+absolute-quad gate is preserved. This supports contextual topology judgment, not autonomous
+retopology authorship. Under the current priority override, retopology fundamentals remain active
+for general prop repair and flow, while sculpt-heavy organic pipelines are deferred.
+
 ## Decision rule
 
 Retopology is goal-dependent. Preserve silhouette and important curvature first, then allocate density, route loops, isolate detail, and place unavoidable poles where deformation and highlights tolerate them. Use Shrinkwrap/snapping as projection aids; never credit them with solving edge flow automatically.

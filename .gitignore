@@ -3,6 +3,7 @@ __pycache__/
 gh_auth.log
 *.blend1
 runs/*/blend/*.blend
+runs/*/failed_*/*.blend
 runs/*/media/
 runs/*/.godot/
 *.glb.import

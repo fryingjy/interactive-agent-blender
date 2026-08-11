@@ -284,9 +284,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 ## Largest remaining gaps
 
-1. Production-quality organic form sculpting and full-character/facial articulation. Controlled
-   two-bone density, three-bone flex/splay/twist, and official-head jaw/smile corrective tests now
-   pass, but the facial expression is subtle and none establishes a professional character or rig.
+1. Professional hard-surface/SubD judgment, multi-view reference construction, topology strategy,
+   production-ready prop workflow, and low-intervention cross-asset transfer remain materially
+   incomplete. These are the active priorities under `docs/DEVELOPMENT_PRIORITIES.md`.
 2. Production transfer of seam-authored UV/high-to-low baking. The controlled flared-housing bake
    now passes a real Godot 4.7.1 import with explicit package tangents, normal-texture semantics,
    PBR factors, UVs, and scale; it is still not a production asset or human-reviewed render.
@@ -299,9 +299,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    supplied references remain reserved for broader generalization evidence. The later tactical-axe
    profile pass is useful cross-family corrective evidence but does not consume or satisfy that
    held-out reserve.
-6. Advanced external instruction now includes one long-form retopology live study; local transcription and
-   authored-caption ingestion are functional, and a bounded facial corrective transfer now passes.
-   Production sculpt/retopology and expressive facial acting remain.
+6. Advanced external instruction now includes one long-form retopology live study; local
+   transcription and authored-caption ingestion are functional. Retopology fundamentals remain
+   active, while production sculpting and advanced organic/facial specialization are deferred.
 
 ## Exit decision
 
@@ -311,6 +311,8 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Raise organic sculpt/retopology and facial-expression quality on a genuinely different asset, with
-visual checkpoints and no source-provided final topology. Continue retention checks over a longer
-interval without reusing answer text, and seek independent experienced review when available.
+Run a genuinely held-out hard-surface or curved-SubD multi-component prop through reference
+analysis, strategy selection, editable topology, fixed-view visual checkpoints, UV/material/export
+preparation, and independent verification. Exercise the runtime planner throughout, continue
+longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
+character benchmarks remain deferred.

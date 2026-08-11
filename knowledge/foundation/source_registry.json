@@ -1248,7 +1248,9 @@
       "use_boundary": "The official animation head supplies anatomy/topology; the experiment authors only rig, weighting, shape-key, driver, and corrective-transfer behavior.",
       "experiments": [
         "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_report.json",
-        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_verify.json"
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_verify.json",
+        "runs/2026-08-11_expressive-facial-articulation/expressive_facial_articulation_report.json",
+        "runs/2026-08-11_expressive-facial-articulation/expressive_facial_articulation_verify.json"
       ],
       "skills": [
         "knowledge/foundation/operator_cards/retopology.md",
@@ -1256,7 +1258,8 @@
       ],
       "limitations": [
         "The source mesh is not autonomous topology authorship.",
-        "The visible expression is subtle and does not establish production facial-animation quality."
+        "The visible expressions do not establish production facial-animation quality.",
+        "Advanced organic and facial specialization is deferred under docs/DEVELOPMENT_PRIORITIES.md."
       ]
     }
   }
