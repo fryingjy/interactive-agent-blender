@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_REFERENCE_EVIDENCE",
+  "problem": "Lower Eevee light energy reduced clipping but remained view-dependent: front/top were still near-white while the side lost nearly all surface information.",
+  "decision": "Use Blender Workbench studio lighting with shadows and cavity for scale-independent neutral form evidence across every fixed view.",
+  "evidence_boundary": "This observation repair is not credited as held-out candidate modeling."
+}

@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "policy": "References supplied after foundation implementation may enter evaluation. Seeing a thumbnail does not count as model development, but any asset used for implementation or tuning cannot be reused as held-out transfer evidence.",
   "references": [
     {
@@ -69,6 +69,36 @@
         "fresh_process_assertions": "15/15",
         "main_housing": "one connected 70-quad edited cage",
         "artifact": "runs/2026-08-11_heldout-boombox/final/heldout_boombox.blend"
+      }
+    },
+    {
+      "url": "https://polyhaven.com/a/Camera_01",
+      "status": "ONLINE_HELD_OUT_AUTOMATED_PASS_EXPERIENCED_REVIEW_REJECTED",
+      "benchmark": "heldout_cc0_camera_001",
+      "first_used": "2026-08-11",
+      "source_boundary": "Source geometry was isolated to neutral Workbench reference rendering; candidate construction used pixels only and excluded the loose strap by predeclared name filter.",
+      "held_out_result": {
+        "normalized_front_silhouette_iou": 0.90112,
+        "normalized_side_silhouette_iou": 0.886676,
+        "normalized_top_silhouette_iou": 0.827334,
+        "normalized_mean_silhouette_iou": 0.87171,
+        "predeclared_gates": {"front": 0.80, "side": 0.68, "top": 0.70, "mean": 0.76},
+        "fresh_process_assertions": "14/14",
+        "objects": 19,
+        "experienced_review": "REJECTED: compatible radial/detail forms were modeled as separate objects under an over-broad assembly interpretation",
+        "artifact": "runs/2026-08-11_heldout-camera-subd/final/heldout_camera_final.blend"
+      },
+      "corrective_result": {
+        "status": "COMPLETED_NOT_HELD_OUT",
+        "normalized_mean_silhouette_iou": 0.828676,
+        "fresh_process_assertions": "19/19",
+        "glb_roundtrip_assertions": "6/6",
+        "object_count": 1,
+        "connected_components": 1,
+        "base_quads": "256/256",
+        "authored_radial_vertices": 16,
+        "weighted_bevel_edges": 144,
+        "artifact": "runs/2026-08-11_connected-camera-corrective/connected_camera_corrective.blend"
       }
     }
   ]

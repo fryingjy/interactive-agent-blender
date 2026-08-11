@@ -33,6 +33,13 @@ UV/material/export/retopology/production, and 0-5% foundational sculpt maintenan
   a primarily higher-priority prop workflow.
 - New held-out work should favor electronics, mechanical or stylized equipment, furniture,
   containers, appliances, product-like assets, curved SubD objects, and complex hard-surface props.
+- For continuous product skins, predeclare one-object and one-connected-component expectations.
+  Grow compatible features from routed loops, inset, extrusion, bridge, spin, or related Edit Mode
+  operations. Separate objects require a real assembly, articulation, replacement, or output reason;
+  joining disconnected primitive-like shells does not satisfy the rule.
+- Keep radial control cages intentionally sparse. The camera correction supports 12-16 authored
+  vertices at that lens scale with SubD providing evaluated smoothness; this is evidence for a
+  tested scale, not a universal segment count.
 - The next-task question is: does this materially improve hard-surface, SubD, topology,
   reference-modeling, or production-prop capability? If not, defer it unless it blocks such work.
 

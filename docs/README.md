@@ -16,6 +16,9 @@
   retention lifecycle.
 - [`REPOSITORY_LAYOUT.md`](REPOSITORY_LAYOUT.md) — folder responsibilities and organization rules.
 
+- [`MATCAP_RESOURCES.md`](MATCAP_RESOURCES.md) — installed Blender 5.2 MatCap provenance,
+  verification, and review-channel guidance.
+
 ## Historical record
 
 - [`BENCHMARK_HISTORY.md`](BENCHMARK_HISTORY.md) — chronological implementation narrative retained

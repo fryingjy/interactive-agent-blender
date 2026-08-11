@@ -1,0 +1,48 @@
+{
+  "source": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\media\\Camera_01_1k.gltf",
+  "source_sha256": "9c5ca3104579c84ffcebdee5c6e5e09821fe8d4a5cd9ce95ed32d81507450ee3",
+  "license": "CC0 via Poly Haven",
+  "asset_page": "https://polyhaven.com/a/Camera_01",
+  "neutral_material_override": true,
+  "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
+  "excluded_source_objects": [
+    "Camera_01_strap"
+  ],
+  "exclude_name_regex": "strap",
+  "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
+  "views": [
+    "front",
+    "side",
+    "top",
+    "isometric"
+  ],
+  "silhouette_reports": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\reference\\reference_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "Camera_01"
+      ],
+      "silhouette_fill_ratio": 0.2354
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\reference\\reference_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "Camera_01"
+      ],
+      "silhouette_fill_ratio": 0.1202
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\reference\\reference_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "Camera_01"
+      ],
+      "silhouette_fill_ratio": 0.1624
+    }
+  ]
+}

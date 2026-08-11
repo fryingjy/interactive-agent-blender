@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_EVALUATED_TOPOLOGY",
+  "problem": "All three authored rectangular aperture frames were manifold at base, but their blanket Bevel modifiers each produced 64 evaluated non-manifold edges around inner/outer loops.",
+  "decision": "Preserve the failed detailed candidate, retain the connected all-quad frame meshes, and remove the unsafe frame bevels rather than weakening evaluated-geometry gates.",
+  "visual_note": "The overall detailed design was visually promising; rejection is scoped to evaluated frame topology."
+}

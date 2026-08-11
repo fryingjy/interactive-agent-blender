@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -32,10 +33,25 @@ VIEWS = {
 
 def args():
     values = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
-    if len(values) not in (2, 3):
-        raise SystemExit("expected SOURCE_GLTF OUTPUT_DIR [ASSET_PAGE] after --")
+    if len(values) not in (2, 3, 4):
+        raise SystemExit("expected SOURCE_GLTF OUTPUT_DIR [ASSET_PAGE] [EXCLUDE_NAME_REGEX] after --")
     asset_page = values[2] if len(values) == 3 else None
-    return Path(values[0]).resolve(), Path(values[1]).resolve(), asset_page
+    if len(values) >= 3:
+        asset_page = values[2]
+    exclude_name_regex = values[3] if len(values) == 4 else None
+    return Path(values[0]).resolve(), Path(values[1]).resolve(), asset_page, exclude_name_regex
+
+
+def assign_neutral_material(objects):
+    material = bpy.data.materials.new("Neutral reference clay")
+    material.use_nodes = True
+    principled = next(node for node in material.node_tree.nodes if node.type == "BSDF_PRINCIPLED")
+    principled.inputs["Base Color"].default_value = (0.16, 0.19, 0.23, 1.0)
+    principled.inputs["Metallic"].default_value = 0.08
+    principled.inputs["Roughness"].default_value = 0.42
+    for obj in objects:
+        obj.data.materials.clear()
+        obj.data.materials.append(material)
 
 
 def combined_bounds(objects):
@@ -63,42 +79,51 @@ def render_beauty(output, objects, center, diagonal, view):
     scene.camera = camera
     for obj in bpy.data.objects:
         obj.hide_render = obj not in objects and obj is not camera and obj.type != "LIGHT"
+    shading = scene.display.shading
+    scene.render.engine = "BLENDER_WORKBENCH"
+    shading.type = "SOLID"
+    shading.light = "STUDIO"
+    shading.color_type = "SINGLE"
+    shading.single_color = (0.32, 0.36, 0.42)
+    shading.show_shadows = True
+    shading.show_cavity = True
+    shading.cavity_type = "BOTH"
     scene.render.filepath = str(output / f"reference_{view}_beauty.png")
     bpy.ops.render.render(write_still=True)
     bpy.data.objects.remove(camera, do_unlink=True)
 
 
 def main():
-    source, output, asset_page = args()
+    source, output, asset_page, exclude_name_regex = args()
     output.mkdir(parents=True, exist_ok=True)
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
     bpy.ops.import_scene.gltf(filepath=str(source))
-    objects = [obj for obj in bpy.context.scene.objects if obj.type == "MESH"]
+    excluded = []
+    pattern = re.compile(exclude_name_regex, re.IGNORECASE) if exclude_name_regex else None
+    objects = []
+    for obj in bpy.context.scene.objects:
+        if obj.type != "MESH":
+            continue
+        if pattern and pattern.search(obj.name):
+            excluded.append(obj.name)
+            obj.hide_render = True
+            continue
+        objects.append(obj)
     if not objects:
         raise SystemExit("GLTF imported no mesh objects")
+    assign_neutral_material(objects)
     names = [obj.name for obj in objects]
     minimum, maximum = combined_bounds(objects)
     center = (minimum + maximum) * 0.5
     diagonal = (maximum - minimum).length
 
     scene = bpy.context.scene
-    scene.render.engine = "BLENDER_EEVEE"
+    scene.render.engine = "BLENDER_WORKBENCH"
     scene.render.resolution_x = scene.render.resolution_y = 720
     scene.render.resolution_percentage = 100
     scene.render.image_settings.file_format = "PNG"
     scene.world.color = (0.055, 0.055, 0.055)
-    for location, energy, size in [
-        (center + Vector((-diagonal, -diagonal, diagonal * 1.4)), 1150, diagonal),
-        (center + Vector((diagonal, -0.3 * diagonal, 0.5 * diagonal)), 650, diagonal * 0.8),
-        (center + Vector((0, diagonal, diagonal)), 900, diagonal * 0.7),
-    ]:
-        bpy.ops.object.light_add(type="AREA", location=location)
-        light = bpy.context.object
-        light.data.energy = energy
-        light.data.size = size
-        light.rotation_euler = (center - light.location).to_track_quat("-Z", "Y").to_euler()
-
     silhouettes = []
     for view in ("front", "side", "top"):
         silhouettes.append(render_silhouette(names, str(output / f"reference_{view}_mask.png"), view=view, resolution=720, margin=1.12, frame_name=names))
@@ -110,6 +135,10 @@ def main():
         "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "license": "CC0 via Poly Haven",
         "asset_page": asset_page,
+        "neutral_material_override": True,
+        "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
+        "excluded_source_objects": excluded,
+        "exclude_name_regex": exclude_name_regex,
         "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
         "views": ["front", "side", "top", "isometric"],
         "silhouette_reports": silhouettes,

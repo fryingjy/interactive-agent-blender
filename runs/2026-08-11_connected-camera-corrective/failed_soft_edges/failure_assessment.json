@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_EXPERIENCED_VISUAL_REVIEW",
+  "observation": "The one-component 16-vertex correction was clean and passed silhouette/export checks, but its lens transitions and product-shell edges remained visibly too soft.",
+  "decision": "Add a Bevel modifier limited by explicit edge weights before Subdivision Surface, following the user's demonstrated live modifier stack, and tighten existing shell support-loop spacing.",
+  "lesson": "Clean SubD topology and silhouette scores do not establish intentional hard-surface edge sharpness."
+}

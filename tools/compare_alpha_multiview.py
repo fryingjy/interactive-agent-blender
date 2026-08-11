@@ -51,9 +51,10 @@ def main():
     parser.add_argument("--side-min", type=float, default=0.97)
     parser.add_argument("--top-min", type=float, default=0.97)
     parser.add_argument("--mean-min", type=float, default=0.97)
+    parser.add_argument("--candidate-prefix", default="candidate", help="candidate mask filename prefix")
     args = parser.parse_args()
     views = {
-        view: compare(args.reference_dir / f"reference_{view}_mask.png", args.candidate_dir / f"candidate_{view}_mask.png")
+        view: compare(args.reference_dir / f"reference_{view}_mask.png", args.candidate_dir / f"{args.candidate_prefix}_{view}_mask.png")
         for view in ("front", "side", "top")
     }
     thresholds = {"front": args.front_min, "side": args.side_min, "top": args.top_min}

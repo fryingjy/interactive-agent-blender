@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED_VISUAL_QUALITY",
+  "observation": "The first one-component all-quad correction used a four-sided inset/extrusion for the lens. Subdivision rounded the barrel but left the terminal cap reading as a square plate.",
+  "root_cause": "The radial control loop had only four authored vertices, so the control cage encoded the wrong design shape even though it was manifold and all-quad.",
+  "decision": "Reject the technically passing result and route the front surface into a circular radial loop before extruding the lens.",
+  "lesson": "Connected topology is not sufficient by itself; the sparse control cage must still encode the intended silhouette."
+}

@@ -1,0 +1,80 @@
+{
+  "lab": "connected_camera_weighted_bevel_width_probe",
+  "records": [
+    {
+      "width": 0.028,
+      "bevel_only": {
+        "vertices": 690,
+        "faces": 688,
+        "non_manifold_edges": 48,
+        "degenerate_faces": 0
+      },
+      "bevel_then_subdivision": {
+        "vertices": 11082,
+        "faces": 11008,
+        "non_manifold_edges": 192,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "width": 0.018,
+      "bevel_only": {
+        "vertices": 690,
+        "faces": 688,
+        "non_manifold_edges": 48,
+        "degenerate_faces": 0
+      },
+      "bevel_then_subdivision": {
+        "vertices": 11082,
+        "faces": 11008,
+        "non_manifold_edges": 192,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "width": 0.012,
+      "bevel_only": {
+        "vertices": 690,
+        "faces": 688,
+        "non_manifold_edges": 48,
+        "degenerate_faces": 0
+      },
+      "bevel_then_subdivision": {
+        "vertices": 11082,
+        "faces": 11008,
+        "non_manifold_edges": 192,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "width": 0.008,
+      "bevel_only": {
+        "vertices": 690,
+        "faces": 688,
+        "non_manifold_edges": 48,
+        "degenerate_faces": 0
+      },
+      "bevel_then_subdivision": {
+        "vertices": 11082,
+        "faces": 11008,
+        "non_manifold_edges": 192,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "width": 0.004,
+      "bevel_only": {
+        "vertices": 690,
+        "faces": 688,
+        "non_manifold_edges": 48,
+        "degenerate_faces": 0
+      },
+      "bevel_then_subdivision": {
+        "vertices": 11082,
+        "faces": 11008,
+        "non_manifold_edges": 192,
+        "degenerate_faces": 0
+      }
+    }
+  ]
+}
