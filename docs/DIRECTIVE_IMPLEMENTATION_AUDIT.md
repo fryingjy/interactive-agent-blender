@@ -46,12 +46,14 @@ judgment and generalization priorities remain; the professional target is not fa
 | Problem-driven research | GLB false failure -> official docs -> invariant verifier -> skill -> task rerun | complete narrow episode |
 | Self-session learning | 165 real decisions mined; multi-asset candidates guarded by replay; bevel replay validated on different asset | controlled pass; no automatic promotion |
 | Independent verification | fresh-process mesh verifier used on lab outputs | complete for applicable meshes |
-| GitHub publication | incremental commits pushed to draft PR #2 | complete for this branch |
+| GitHub publication | incremental evidence is committed through scoped branches and merged pull requests into the default branch | current through the latest published increment |
 | Supplied `.blend` example learning | six read-only structural audits plus controlled renders; component/high-low/modifier lessons separated from rejected quality assumptions | complete learning slice; examples are not blindly labeled professional |
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 | Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
 | Online held-out multi-component prop | CC0 boombox source isolated to neutral pixels; predeclared front/side/top/mean gates; one connected 70-quad edited housing rather than stacked chassis primitives; linked speakers, Array vents, UVs, node materials; primitive-assembly and two bevel failures retained; 15/15 fresh-process scene assertions; GLB preserves 41 meshes, 15,292 evaluated triangles, dimensions, UVs, and seven material families | automated stylized held-out PASS at 0.816 mean IoU plus structural GLB round-trip PASS; exact surface graphics, named-engine visual review, broader transfer, and experienced acceptance remain open |
+| Second online held-out curved-SubD family | CC0 vintage camera neutral references; predeclared three-view gates; initial 19-object result reached 0.872 mean IoU and 14/14 fresh checks, but experienced review overturned it for treating compatible radial/details as separate assemblies | held-out automated metrics retained as PASS, professional-quality disposition REJECTED; post-review corrective evidence is not relabeled held out |
+| One-object camera corrective transfer | one object, one connected 256-quad manifold cage; rounded-rectangle front routed into a 16-edge circular inset and welded stepped lens; 144 weighted lens edges feed Bevel before SubD while the shell uses tight support loops; 0.829 mean IoU; 19/19 fresh checks; one-mesh GLB round trip with exact evaluated dimensions | corrective topology/production PASS; deliberately stylized, source-known, and not expert-approved |
 | Rigged facial corrective transfer | official CC0 animation head; Jaw + bilateral smile controls; combined-pose driver gated `0/0/0/1`; mouth mean error improves 2.08876x; 123 weighted jaw vertices touch only quads; all three evaluated heads independently clean | bounded mechanism/transfer PASS; expression is subtle and not production-quality facial acting |
 | Expressive regional coupling control | official CC0 head; mouth-only failure control versus integrated mouth/cheek/lower-lid/brow smile; nondeforming bilateral controls; five rejected revisions; fresh-process saved-scene verification | bounded technical/visual PASS; source supplies anatomy/topology and advanced organic follow-on is deferred |
 
@@ -100,6 +102,16 @@ objects are reserved for separate assemblies. Two evaluated bevel approaches wer
 visible corner spikes/fins despite clean manifold metrics. The final candidate passes its four
 predeclared normalized silhouette gates and 15/15 saved-scene assertions. This closes one automated
 ladder-E case, not professional or human acceptance.
+
+The later CC0 camera exposes a stricter version of the same lesson. Its first detailed candidate
+passed predeclared silhouette and fresh-process checks, but experienced review rejected the broad
+permission for separate radial/detail objects. That held-out result remains recorded as an
+automated pass and a professional-quality rejection. The post-review rebuild is one connected
+all-quad object: the front perimeter routes into a 16-edge circular inset, the lens grows through
+welded extrusion loops, and top controls grow from shell cells. A four-sided square-lens attempt and
+an editable-but-overdense 32-vertex radial cage are both retained as failures. The final correction
+passes 19/19 saved-file checks and a one-mesh GLB round trip, but is source-known corrective evidence
+and remains a stylized camera rather than expert-accepted production work.
 
 The official CC0 facial-head run closes the narrower missing rig/corrective transfer mechanism:
 driver edge cases, modifier wiring, localized jaw topology, and evaluated geometry now pass an

@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED_CONTROL_CAGE_DENSITY",
+  "observation": "The circular correction looked smooth, but its authored radial loops used 32 vertices.",
+  "root_cause": "Density was selected from a render-first habit instead of the minimum editable control-cage resolution required by Subdivision Surface.",
+  "decision": "Reduce every authored radial loop to 16 vertices and let two SubD levels provide evaluated smoothness.",
+  "lesson": "For this lens scale, 12-16 radial control vertices are sufficient; higher evaluated density belongs to SubD, not the editable cage."
+}

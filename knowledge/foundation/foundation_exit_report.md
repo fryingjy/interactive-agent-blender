@@ -286,8 +286,10 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 1. Professional hard-surface/SubD judgment, multi-view reference construction, topology strategy,
    production-ready prop workflow, and low-intervention cross-asset transfer remain materially
-   incomplete. One online held-out stylized boombox now passes its automated gates with a connected
-   edited housing, but one asset cannot establish breadth or professional acceptance.
+   incomplete. One online held-out stylized boombox passes its automated gates with a connected
+   edited housing. A second camera passed automated gates but failed experienced topology-strategy
+   review; the later one-component rebuild is corrective. This does not establish breadth or
+   professional acceptance.
 2. Production transfer of seam-authored UV/high-to-low baking. The controlled flared-housing bake
    now passes a real Godot 4.7.1 import with explicit package tangents, normal-texture semantics,
    PBR factors, UVs, and scale; it is still not a production asset or human-reviewed render.
@@ -299,6 +301,10 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    builders. The online CC0 boombox passes one predeclared multi-view case at 0.8159 mean IoU with
    15/15 fresh-process scene assertions and a structural GLB round trip, after primitive-assembly,
    bevel-damage, and false axis-verifier attempts were rejected.
+   A second CC0 camera reached its automated held-out gates at 0.8717 mean IoU, but experienced
+   review rejected the 19-object assembly strategy. Its post-review one-component correction passes
+   topology, silhouette, UV/material, and one-mesh GLB checks; because the stronger construction
+   rule was then known, that correction is not relabeled held out.
    Six supplied references remain reserved for broader generalization evidence.
 6. Advanced external instruction now includes one long-form retopology live study; local
    transcription and authored-caption ingestion are functional. Retopology fundamentals remain
@@ -312,8 +318,10 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Run a second unrelated held-out hard-surface or curved-SubD prop to test whether the connected-cage,
-evaluated-surface, and visual-gate lessons transfer without benchmark-specific intervention. Pair it
-with production texture/bake and named-engine visual review, exercise the runtime planner throughout, continue
+Run another unrelated held-out hard-surface or curved-SubD prop with the stronger one-object/
+connected-component rule predeclared wherever the design permits continuous topology. The previous
+second-family camera automated pass was overturned by experienced review, so it does not close the
+professional-quality breadth gate. Pair the next run with production texture/bake and named-engine
+visual review, exercise the runtime planner throughout, continue
 longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
 character benchmarks remain deferred.

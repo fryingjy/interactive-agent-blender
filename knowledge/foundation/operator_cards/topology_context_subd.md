@@ -44,3 +44,21 @@ Evidence: `runs/2026-08-11_heldout-boombox/`
 - Revolved profiles must not emit a full ring of coincident vertices at a zero-radius endpoint. Cap
   the adjacent nonzero ring or author a single pole; otherwise nominally closed radial parts contain
   zero-area faces.
+
+## Corrective transfer: one-object product form
+
+Evidence: `runs/2026-08-11_connected-camera-corrective/`
+
+- Object count is not enough. Joining disconnected shells into one Blender object does not satisfy
+  a connected-cage strategy; verify mesh connected-component count as well as scene object count.
+- When the body and detail can be manufactured/read as one continuous skin, route the base surface
+  into an inset loop and extrude that loop. The accepted camera routes a rounded-rectangle front
+  perimeter into a circular lens loop and grows the stepped barrel from that loop.
+- A technically clean four-sided lens failed visually because the cage encoded a square cap.
+  Sparse topology must still carry the intended design shape.
+- Thirty-two authored radial vertices were unnecessary. Sixteen control vertices plus two SubD
+  levels retained the circular result while reducing the base cage from 450 to 258 vertices. Treat
+  `12-16` as a tested range for this scale, not a universal cylinder rule.
+- The accepted result is one object, one connected component, 256/256 base quads, and 8,704/8,704
+  evaluated quads after weighted Bevel and SubD. Its GLB returns as one mesh with exact evaluated
+  bounds, UVs, and four materials.

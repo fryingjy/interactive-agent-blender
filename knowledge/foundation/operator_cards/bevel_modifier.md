@@ -55,6 +55,27 @@ A closed cylinder stretched to world height 4 was beveled at width 0.1 with one 
 
 The scale warning therefore transferred beyond the original box-like cases: a manifold result can still have inconsistent world-space bevel width.
 
+## Weighted-edge production transfer
+
+Evidence: `runs/2026-08-11_connected-camera-corrective/`
+
+Experienced review identified excessive softness after a clean one-component camera already passed
+silhouette and topology gates. A live user example demonstrated `Bevel` limited by edge weight before
+two SubD levels. On the corrective camera:
+
+- Weighting all 198 lens/front/back candidate edges sharpened the image but created 48 Bevel-stage
+  and 192 post-SubD non-manifold edges.
+- Reducing width from `0.028` to `0.004` did not change those counts, disproving excessive width as
+  the cause.
+- Scope probes isolated the cause: 14 front-perimeter weighted edges produced 12 Bevel-stage
+  non-manifold edges; 24 back/star-cap edges produced 36; 144 lens-ring edges produced zero before
+  and after SubD.
+- The accepted stack therefore uses 144 edges at weight `1.0`, Bevel width `0.028`, two Bevel
+  segments, then two SubD levels. The shell perimeter uses closer authored support loops instead.
+
+Weighted bevel is a fast sharpness control, not a blanket license. Probe edge scope separately from
+width and verify the evaluated mesh after every downstream modifier.
+
 ## Preconditions and verification
 
 - Apply or account for non-uniform object scale before judging world-space bevel consistency.

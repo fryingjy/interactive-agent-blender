@@ -112,6 +112,14 @@ The local Blender/MCP entry points are:
 
 ## Recent evidence landmarks
 
+- `runs/2026-08-11_connected-camera-corrective/` — post-review one-object camera rebuild: one
+  connected 256-quad control cage, 16-vertex radial loops, welded inset/extrusion details, 0.828
+  mean three-view IoU, weighted lens bevels, 19/19 fresh-process checks, and one-mesh GLB round trip. This is corrective,
+  not new held-out evidence; exact detail and expert acceptance remain open.
+- `runs/2026-08-11_heldout-camera-subd/` — second online CC0 held-out family whose 19-object
+  candidate passed automated gates but was explicitly overturned by experienced review for an
+  over-broad separate-assembly strategy. The rejection is retained as evidence, not hidden.
+
 - `runs/2026-08-11_heldout-boombox/` — online CC0 held-out multi-component prop with one connected
   edited housing cage, predeclared three-view silhouette gates, preserved topology/bevel failures,
   UV/material preparation, 15/15 scene assertions, and a fresh GLB round trip; human acceptance

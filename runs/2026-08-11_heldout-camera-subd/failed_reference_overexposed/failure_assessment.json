@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_REFERENCE_EVIDENCE",
+  "problem": "The neutral material removed magenta texture failures, but fixed 1150/650/900 W area lights clipped the 0.3 m product almost entirely white and erased useful surface structure.",
+  "decision": "Preserve the overexposed views and reduce the bound-relative review rig to 85/42/58 W with a darker rough neutral clay material.",
+  "evidence_boundary": "Lighting repair improves observation only and is not credited as held-out modeling performance."
+}

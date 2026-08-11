@@ -1,0 +1,80 @@
+{
+  "lab": "connected_camera_corrective",
+  "status": "corrective_after_experienced_human_rejection",
+  "objects": 1,
+  "construction": {
+    "starting_cages": 1,
+    "connected_components": 1,
+    "feature_method": "surface loop cells -> inset rings -> welded extrusion rings",
+    "disconnected_joined_shells": 0,
+    "mesh_primitive_operators_used": 0,
+    "authored_radial_vertices": 16,
+    "weighted_bevel_edges": 198,
+    "weighted_bevel_width": 0.028
+  },
+  "base_health": {
+    "vertices": 258,
+    "faces": 256,
+    "quads": 256,
+    "connected_components": 1,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "loose_vertices": 0
+  },
+  "evaluated_health": {
+    "vertices": 11082,
+    "faces": 11008,
+    "quads": 11008,
+    "connected_components": 1,
+    "non_manifold_edges": 192,
+    "degenerate_faces": 0,
+    "loose_vertices": 0
+  },
+  "silhouette_records": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_connected-camera-corrective\\connected_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected camera from one edited box cage"
+      ],
+      "silhouette_fill_ratio": 0.261
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_connected-camera-corrective\\connected_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected camera from one edited box cage"
+      ],
+      "silhouette_fill_ratio": 0.1064
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_connected-camera-corrective\\connected_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected camera from one edited box cage"
+      ],
+      "silhouette_fill_ratio": 0.1741
+    }
+  ],
+  "assertions": {
+    "exactly_one_mesh_object": true,
+    "base_is_one_connected_component": true,
+    "evaluated_is_one_connected_component": true,
+    "base_is_all_quad": true,
+    "evaluated_is_all_quad": true,
+    "base_is_closed_manifold": true,
+    "evaluated_is_closed_manifold": false,
+    "no_degenerate_or_loose_geometry": true,
+    "has_controlled_subdivision": true,
+    "weighted_bevel_precedes_subdivision": true,
+    "weighted_bevel_has_target_edges": true,
+    "has_populated_uvs": true,
+    "has_multiple_integrated_material_regions": true,
+    "no_mesh_primitive_operators": true,
+    "radial_control_cage_is_between_12_and_16_vertices": true
+  },
+  "pass": false
+}
