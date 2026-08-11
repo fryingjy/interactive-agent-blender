@@ -1,0 +1,219 @@
+{
+  "stage": 3,
+  "intent": "top-view fitting placement and manufactured edge finish",
+  "construction": "explicit authored radial profiles revolved around Z; no mesh primitive operators",
+  "mesh_primitive_operator_calls": 0,
+  "body_topology": "single connected all-quad revolved shell; corrugations, major hoops, and rolled seams are continuous profile loops",
+  "objects": [
+    "Barrel_Body_Profile",
+    "Recessed_Top_Lid",
+    "Large_Bung",
+    "Large_Bung_Collar",
+    "Small_Vent",
+    "Small_Vent_Collar"
+  ],
+  "renders": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        720,
+        720
+      ],
+      "target_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "camera_location": [
+        0.0,
+        -13.061856269836426,
+        0.0074999332427978516
+      ],
+      "camera_ortho_scale": 8.359588058032525,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.205284,
+      "foreground_unique_colors_5bit": 68,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "silhouette_fill_ratio": 0.2053
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_side_solid.png",
+      "pass_type": "solid",
+      "view": "side",
+      "projection": "ORTHO",
+      "resolution": [
+        720,
+        720
+      ],
+      "target_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "camera_location": [
+        13.061856269836426,
+        0.0,
+        0.0074999332427978516
+      ],
+      "camera_ortho_scale": 8.359588058032525,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.205284,
+      "foreground_unique_colors_5bit": 72,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "silhouette_fill_ratio": 0.2053
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_top_solid.png",
+      "pass_type": "solid",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        720,
+        720
+      ],
+      "target_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        13.069355964660645
+      ],
+      "camera_ortho_scale": 8.359588058032525,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.109273,
+      "foreground_unique_colors_5bit": 67,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "silhouette_fill_ratio": 0.1093
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\candidate_isometric_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        720,
+        720
+      ],
+      "target_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "frame_objects": [
+        "Barrel_Body_Profile",
+        "Recessed_Top_Lid",
+        "Large_Bung",
+        "Large_Bung_Collar",
+        "Small_Vent",
+        "Small_Vent_Collar"
+      ],
+      "camera_location": [
+        7.541265964508057,
+        -7.541265964508057,
+        7.548766136169434
+      ],
+      "camera_ortho_scale": 8.359588058032525,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.231047,
+      "foreground_unique_colors_5bit": 76,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    }
+  ]
+}

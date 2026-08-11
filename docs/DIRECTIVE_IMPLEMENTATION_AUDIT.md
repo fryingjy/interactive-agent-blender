@@ -1,6 +1,6 @@
 # Master directive implementation audit
 
-**Audit date:** 2026-08-10  
+**Audit date:** 2026-08-11
 **Branch:** `codex/improve-master-directive`  
 **Disposition:** all locally executable foundation priorities completed; professional target remains
 open and is not falsely claimed.
@@ -49,6 +49,7 @@ open and is not falsely claimed.
 | Supplied `.blend` example learning | six read-only structural audits plus controlled renders; component/high-low/modifier lessons separated from rejected quality assumptions | complete learning slice; examples are not blindly labeled professional |
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
+| Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
 
 ## Important disproved assumptions retained
 
@@ -80,6 +81,12 @@ that reference. It does not close the human/expert acceptance gate or turn a reu
 new held-out evidence. The subsequent tactical-axe transfer demonstrates that the profile workflow
 extends to a different hard-surface silhouette and real negative space, but it is also same-reference
 corrective evidence rather than an unseen professional-quality judgment.
+
+The later CC0 barrel run closes a separate topology criticism: manufactured hoops and corrugations
+that belong to one drum skin are now connected circumferential quad loops in the main body, not
+intersecting ring objects. A failed 0.5154-ratio blockout, a rejected separate-hoop version, and a
+96-degenerate evaluated bevel failure are retained in the evidence trail. The corrected result is a
+multi-view corrective benchmark, not a new held-out ladder pass.
 
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.

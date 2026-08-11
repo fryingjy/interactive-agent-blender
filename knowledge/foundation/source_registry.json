@@ -1202,5 +1202,28 @@
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
     "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "polyhaven-barrel-01-cc0",
+    "url": "https://polyhaven.com/a/Barrel_01",
+    "local_path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
+    "title": "Barrel 01",
+    "creator": "Poly Haven contributor",
+    "source_type": "cc0_reference_asset",
+    "trust_tier": "B",
+    "version": "downloaded 2026-08-11",
+    "topics": ["multi-view-reference", "profile-revolution", "hard-surface-topology"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["neutral-reference-renders"],
+    "metadata": {
+      "license": "CC0",
+      "sha256": "e084945dedd6a3379c6f3e97842cac89df7169797707e123a5e5b42c135d6888",
+      "use_boundary": "Source geometry generated neutral references only; topology was not inspected or copied.",
+      "experiments": ["runs/2026-08-11_multiview-barrel/"],
+      "skills": ["knowledge/foundation/operator_cards/profile_revolution_topology.md"],
+      "limitations": ["Asset-specific tuning makes this corrective evidence, not held-out evidence."]
+    }
   }
 ]
