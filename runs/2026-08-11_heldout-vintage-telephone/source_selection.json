@@ -1,0 +1,26 @@
+{
+  "declared_at": "2026-08-11T17:30:00Z",
+  "declared_before_source_download_or_render": true,
+  "asset_id": "vintage_telephone_wall_clock",
+  "asset_page": "https://polyhaven.com/a/vintage_telephone_wall_clock",
+  "creator": "Adrian C",
+  "license": "CC0",
+  "source_type": "isolated GLTF used only for neutral reference rendering",
+  "candidate_source_geometry_access": false,
+  "visual_thresholds": {
+    "front_iou_min": 0.78,
+    "side_iou_min": 0.68,
+    "top_iou_min": 0.68,
+    "mean_iou_min": 0.74
+  },
+  "required_continuous_cages": [
+    "main housing",
+    "handset"
+  ],
+  "required_production_handoff": [
+    "authored UVs",
+    "real tangent normal bake",
+    "GLB round trip",
+    "fresh Godot import"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "source": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\media\\vintage_telephone_wall_clock_1k.gltf",
+  "source_sha256": "9fc4dae50897d030a7410f7b3f57df032be15d4535ece7492829ac3d99d4729c",
+  "license": "CC0 via Poly Haven",
+  "asset_page": "https://polyhaven.com/a/vintage_telephone_wall_clock",
+  "neutral_material_override": true,
+  "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
+  "excluded_source_objects": [],
+  "exclude_name_regex": null,
+  "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
+  "views": [
+    "front",
+    "side",
+    "top",
+    "isometric"
+  ],
+  "silhouette_reports": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\reference\\reference_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "vintage_telephone_wall_clock"
+      ],
+      "silhouette_fill_ratio": 0.2747
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\reference\\reference_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "vintage_telephone_wall_clock"
+      ],
+      "silhouette_fill_ratio": 0.1157
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\reference\\reference_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "vintage_telephone_wall_clock"
+      ],
+      "silhouette_fill_ratio": 0.1019
+    }
+  ]
+}

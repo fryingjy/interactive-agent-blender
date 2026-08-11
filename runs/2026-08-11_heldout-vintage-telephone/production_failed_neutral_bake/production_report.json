@@ -1,0 +1,48 @@
+{
+  "lab": "heldout_vintage_telephone_production_handoff",
+  "blender_version": "5.2.0 LTS",
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\candidate_v3\\heldout_vintage_telephone.blend",
+  "failure_control": {
+    "rejected": true,
+    "error": "Error: No valid selected objects\n"
+  },
+  "bake": {
+    "operator_result": [
+      "FINISHED"
+    ],
+    "image": {
+      "size": [
+        256,
+        256
+      ],
+      "non_neutral_pixels": 0,
+      "channel_min": [
+        0.501960813999176,
+        0.501960813999176,
+        1.0
+      ],
+      "channel_max": [
+        0.501960813999176,
+        0.501960813999176,
+        1.0
+      ]
+    },
+    "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\production\\telephone_badge_tangent_normal.png"
+  },
+  "export": {
+    "operator_result": [
+      "FINISHED"
+    ],
+    "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-vintage-telephone\\production\\heldout_vintage_telephone.glb",
+    "bytes": 526984
+  },
+  "assertions": {
+    "missing_high_source_rejected": true,
+    "selected_to_active_bake_finished": true,
+    "normal_bake_has_signal": false,
+    "normal_image_non_color": true,
+    "normal_map_node_tangent": true,
+    "glb_export_finished": true
+  },
+  "pass": false
+}

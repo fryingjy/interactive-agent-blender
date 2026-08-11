@@ -1,0 +1,128 @@
+{
+  "measured_after_reference_render_before_candidate_modeling": true,
+  "method": "Neutral Workbench views and alpha masks only; no source mesh inspection.",
+  "image_resolution": [
+    720,
+    720
+  ],
+  "silhouette_bounds": {
+    "front": {
+      "bbox": [
+        186,
+        106,
+        534,
+        614
+      ],
+      "width": 348,
+      "height": 508,
+      "aspect_width_over_height": 0.685039,
+      "fill_ratio": 0.277857
+    },
+    "side": {
+      "bbox": [
+        262,
+        106,
+        458,
+        614
+      ],
+      "width": 196,
+      "height": 508,
+      "aspect_width_over_height": 0.385827,
+      "fill_ratio": 0.119228
+    },
+    "top": {
+      "bbox": [
+        186,
+        262,
+        534,
+        458
+      ],
+      "width": 348,
+      "height": 196,
+      "aspect_width_over_height": 1.77551,
+      "fill_ratio": 0.105502
+    }
+  },
+  "front_landmarks_pixels": {
+    "overall_bbox": [
+      186,
+      106,
+      534,
+      614
+    ],
+    "upper_housing_bbox": [
+      225,
+      106,
+      501,
+      482
+    ],
+    "lower_plinth_bbox": [
+      195,
+      464,
+      532,
+      614
+    ],
+    "recessed_face_bbox": [
+      252,
+      159,
+      478,
+      456
+    ],
+    "dial_center": [
+      365,
+      347
+    ],
+    "dial_outer_radius": 102,
+    "dial_inner_radius": 73,
+    "handset_left_bell_center": [
+      235,
+      494
+    ],
+    "handset_right_bell_center": [
+      489,
+      494
+    ],
+    "handset_bell_outer_radius": 38,
+    "handset_grip_bbox": [
+      268,
+      486,
+      456,
+      520
+    ],
+    "lower_panel_bbox": [
+      221,
+      536,
+      503,
+      604
+    ]
+  },
+  "normalized_landmarks": {
+    "upper_housing_width_over_overall_width": 0.7931,
+    "lower_plinth_width_over_overall_width": 0.9684,
+    "recessed_face_width_over_overall_width": 0.6494,
+    "dial_center_x_in_bbox": 0.5144,
+    "dial_center_y_in_bbox": 0.4744,
+    "dial_outer_diameter_over_overall_width": 0.5862,
+    "dial_inner_diameter_over_overall_width": 0.4195,
+    "handset_bell_center_span_over_overall_width": 0.7299,
+    "handset_outer_span_over_overall_width": 0.9483,
+    "handset_grip_width_over_overall_width": 0.5402,
+    "upper_housing_height_over_overall_height": 0.7402,
+    "lower_plinth_height_over_overall_height": 0.2953,
+    "body_depth_over_overall_height_from_side": 0.2244
+  },
+  "frozen_landmark_tolerances": {
+    "overall_aspect_relative": 0.06,
+    "housing_width_ratio_absolute": 0.05,
+    "lower_plinth_width_ratio_absolute": 0.04,
+    "dial_center_normalized_each_axis": 0.04,
+    "dial_outer_diameter_ratio_absolute": 0.05,
+    "handset_outer_span_ratio_absolute": 0.05,
+    "body_depth_ratio_absolute": 0.05
+  },
+  "hidden_form_uncertainty": [
+    "Rear mounting surface and internal clock/telephone mechanism are not visible and will remain simplified.",
+    "Cord attachment and exact cradle hardware are partially occluded; only visible silhouette and assembly logic are required.",
+    "Top and side orthographic views expose depth but not historical sheet-metal construction; candidate uses an editable SubD interpretation."
+  ]
+}
