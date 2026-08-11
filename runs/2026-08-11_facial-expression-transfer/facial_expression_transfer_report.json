@@ -1,0 +1,77 @@
+{
+  "lab": "official_human_base_mesh_facial_expression_transfer",
+  "blender_version": "5.2.0 LTS",
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_facial-expression-transfer\\media\\bundle\\human_base_meshes_bundle.blend",
+  "source_object": "GEO-head_animation_realistic",
+  "source_copy_center_world": [
+    1.4625468254089355,
+    -0.043138425797224045,
+    0.6929094195365906
+  ],
+  "feature_frame": {
+    "height": 0.37479591369628906,
+    "width": 0.2853630781173706,
+    "depth": 0.2517894208431244,
+    "front_y": -0.1258947104215622,
+    "mouth_z": -0.06184132575988768,
+    "chin_z": -0.10494285583496094,
+    "jaw_hinge_z": -0.026235713958740248
+  },
+  "expression": {
+    "jaw_rotation_x_degrees": 10.0,
+    "bilateral_smile_control": 1.0
+  },
+  "rig": "Jaw deform bone + non-deforming bilateral smile controls + driven combined-pose relative corrective",
+  "driver_values": {
+    "rest": 0.0,
+    "jaw_only": 0.0,
+    "smile_only": 0.0,
+    "combined": 1.0
+  },
+  "topology": {
+    "vertices": 3242,
+    "faces": 3234,
+    "quads": 3206,
+    "triangles": 18,
+    "ngons": 10,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "jaw_weighted_vertices": 123,
+    "non_quad_faces_touching_weighted_jaw": 0
+  },
+  "uncorrected": {
+    "mean": 0.00030780935983170125,
+    "max": 0.004032669123262167,
+    "mouth_mean": 0.0010066338390179322,
+    "mouth_max": 0.004032669123262167,
+    "mouth_faces": 2889
+  },
+  "corrected": {
+    "mean": 0.00018843981314456133,
+    "max": 0.0017201561713591218,
+    "mouth_mean": 0.00048192880905948977,
+    "mouth_max": 0.0017201561713591218,
+    "mouth_faces": 2887
+  },
+  "uncorrected_over_corrected_mouth_mean_ratio": 2.0887604560981377,
+  "assertions": {
+    "closed_source_copy": true,
+    "no_degenerate_faces": true,
+    "weighted_jaw_region_is_all_quad": true,
+    "jaw_region_has_targeted_density": true,
+    "corrective_zero_at_rest": true,
+    "corrective_rejects_jaw_only": true,
+    "corrective_rejects_smile_only": true,
+    "corrective_activates_combined": true,
+    "corrective_improves_mouth_mean": true,
+    "corrective_improves_mouth_max": true,
+    "meaningful_mouth_improvement": true
+  },
+  "pass": true,
+  "limitations": [
+    "The official CC0 animation base mesh supplies the anatomy and topology; this run tests rig/corrective transfer, not autonomous head modeling or retopology authorship.",
+    "The dense target and low-cage correction share an authored deformation hypothesis; nearest-surface improvement is mechanism evidence, not independent anatomical truth.",
+    "One combined jaw-open/smile pose does not establish a complete FACS set, lip sync, eyelid behavior, or production animator acceptance.",
+    "The source mesh contains non-quads outside the weighted jaw region; the weighted expression region is checked separately rather than relabeling the whole mesh all-quad."
+  ]
+}
