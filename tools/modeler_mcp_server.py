@@ -19,8 +19,13 @@ they fail with a clear connection error otherwise, not a silent hang.
 import json
 import socket
 import struct
+import sys
+from pathlib import Path
 
 from mcp.server.fastmcp import FastMCP
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from knowledge_engine.surface_cause_classifier import SurfaceCauseEvidence, classify_surface_cause
 
 HOST = "localhost"
 PORT = 9878
@@ -83,9 +88,51 @@ def get_selection(object_name: str) -> dict:
 
 
 @mcp.tool()
+def list_persistent_ids(object_name: str) -> dict:
+    """List every current vertex, edge, and face persistent agent_id on a mesh, regardless of selection. Use this before select_by_ids when a whole component or previously unselected region must be targeted explicitly after mode/modifier/save/UI changes."""
+    return _call("list_persistent_ids", name=object_name)
+
+
+@mcp.tool()
 def get_evaluated_defect_regions(object_name: str, area_outlier_ratio: float = 0.05, angle_threshold_degrees: float = 10, angle_local_spike_ratio: float = 2.0, max_tickets: int = 20) -> dict:
     """Localize CANDIDATE SubD surface problem areas on object_name's evaluated mesh to actual positions, then map each to the nearest persistent-ID vertices/faces on the base control cage (spatial nearest-neighbor, not exact identity -- the evaluated mesh has no persistent IDs of its own). Unlike get_evaluated_state's surface_quality (global counts/max only), this returns individual tickets sorted by severity for triage -- where to look next, e.g. with render_silhouette on that region. HONEST LIMITATION: this does NOT reliably distinguish real pinching from healthy smooth curvature -- tested against a deliberately bad case and a known-clean mesh, severity scores landed in the same range for both. Treat tickets as candidates worth visual inspection, not confirmed defects; likely_pole_artifact flags a nearby non-4-valence control-cage vertex, which has inherently reduced Catmull-Clark smoothness and is often NOT a real defect on its own."""
     return _call("get_evaluated_defect_regions", name=object_name, area_outlier_ratio=area_outlier_ratio, angle_threshold_degrees=angle_threshold_degrees, angle_local_spike_ratio=angle_local_spike_ratio, max_tickets=max_tickets)
+
+
+@mcp.tool()
+def classify_surface_defect_cause(
+    base_geometry_changed: bool = False,
+    evaluated_geometry_changed: bool = False,
+    silhouette_or_depth_changed: bool = False,
+    face_orientation_or_split_normals_changed: bool = False,
+    normal_repair_neutralizes: bool = False,
+    material_state_changed: bool = False,
+    neutral_material_neutralizes: bool = False,
+    lighting_state_changed: bool = False,
+    neutral_lighting_neutralizes: bool = False,
+    bevel_parameters_changed: bool = False,
+    bevel_repair_neutralizes: bool = False,
+) -> dict:
+    """Classify GEOMETRY, NORMALS, MATERIAL, LIGHTING, or BEVEL_PROFILE from controlled intervention evidence. This does not diagnose a beauty image by itself. Supply state comparisons and whether the matching repair neutralized the discrepancy; mixed signatures return CONFLICTING and insufficient evidence returns UNRESOLVED."""
+    diagnosis = classify_surface_cause(SurfaceCauseEvidence(
+        base_geometry_changed=base_geometry_changed,
+        evaluated_geometry_changed=evaluated_geometry_changed,
+        silhouette_or_depth_changed=silhouette_or_depth_changed,
+        face_orientation_or_split_normals_changed=face_orientation_or_split_normals_changed,
+        normal_repair_neutralizes=normal_repair_neutralizes,
+        material_state_changed=material_state_changed,
+        neutral_material_neutralizes=neutral_material_neutralizes,
+        lighting_state_changed=lighting_state_changed,
+        neutral_lighting_neutralizes=neutral_lighting_neutralizes,
+        bevel_parameters_changed=bevel_parameters_changed,
+        bevel_repair_neutralizes=bevel_repair_neutralizes,
+    ))
+    return {
+        "cause": diagnosis.cause,
+        "confidence": diagnosis.confidence,
+        "reasons": list(diagnosis.reasons),
+        "next_action": diagnosis.next_action,
+    }
 
 
 @mcp.tool()
@@ -216,8 +263,20 @@ def save_file(filepath: str | None = None) -> dict:
 
 @mcp.tool()
 def get_evaluated_state(object_name: str) -> dict:
-    """Read the modifier-EVALUATED mesh (what the surface actually looks like after the modifier stack runs, e.g. Subdivision Surface), not the base control cage every other state command reads. Returns mesh_health, valence_distribution, surface_quality (face-area outlier detection and max adjacent-face angle -- signals aimed at spotting subdivision pinching, which doesn't show up as a validity failure), and bounding_box (base-cage vs evaluated-surface dimensions/shrinkage_ratio_xyz per axis -- catches SubD silhouette shrinkage from missing support loops, which pinching signals alone can miss)."""
+    """Read modifier-evaluated health, topology, surface-quality, candidate pinch/waviness diagnostics, and cage-vs-result bounds. Surface diagnostics remain candidate evidence and require contextual visual review."""
     return _call("get_evaluated_state", name=object_name)
+
+
+@mcp.tool()
+def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
+    """Render a Blender-native solid, wireframe, normal, depth, or component_mask diagnostic PNG with scene revision and camera metadata."""
+    return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)
+
+
+@mcp.tool()
+def render_semantic_region(object_name: str, region_id: str, output_path: str, view: str = "front", resolution: int = 512, margin: float = 1.15) -> dict:
+    """Render one persistent-ID face region against its base-cage context; stale regions are rejected."""
+    return _call("render_semantic_region", name=object_name, region_id=region_id, output_path=output_path, view=view, resolution=resolution, margin=margin)
 
 
 @mcp.tool()
@@ -252,7 +311,7 @@ def begin_decision(object_name: str, action_type: str) -> dict:
 
 @mcp.tool()
 def perform_decision(decision_id: str, operation: str, params: dict, command_id: str | None = None) -> dict:
-    """Perform the single sanctioned mutation for a pending decision_id. operation must be one of the available_operations reported by get_capabilities (currently: bevel_edges, merge_by_distance, add_ring_detail, recalc_normals, triangulate_ngons); params are that operation's keyword arguments. Pass a stable command_id to make retries safe: a repeated call with the same command_id returns the original stored result instead of mutating the mesh again."""
+    """Perform one sanctioned mutation for a pending decision. Choose an operation from get_capabilities; params are its keyword arguments. A stable command_id makes retries idempotent."""
     return _call("perform_decision", decision_id=decision_id, operation=operation, params=params, command_id=command_id)
 
 

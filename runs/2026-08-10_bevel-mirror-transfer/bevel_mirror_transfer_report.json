@@ -1,0 +1,283 @@
+{
+  "lab": "bevel_mirror_cylindrical_second_shape_transfer",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "Mirror_Cylinder_ExactSeam",
+      "question": "Does a curved exact seam merge cleanly?",
+      "settings": {
+        "seam_x": 0.0,
+        "threshold": 0.001
+      },
+      "base": {
+        "vertices": 16,
+        "edges": 33,
+        "faces": 18
+      },
+      "evaluated": {
+        "vertices": 26,
+        "edges": 60,
+        "faces": 36,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 5.999999479357481,
+        "seam_vertices_x0": 6,
+        "top_band_depth": 2.0,
+        "world_z_values": [
+          1.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "object": "Mirror_Cylinder_Gap",
+      "question": "Does a curved seam outside the threshold stay open?",
+      "settings": {
+        "seam_x": 0.002,
+        "threshold": 0.001
+      },
+      "base": {
+        "vertices": 16,
+        "edges": 33,
+        "faces": 18
+      },
+      "evaluated": {
+        "vertices": 32,
+        "edges": 66,
+        "faces": 36,
+        "non_manifold_edges": 12,
+        "boundary_edges": 12,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 5.990405558544427,
+        "seam_vertices_x0": 0,
+        "top_band_depth": 2.0,
+        "world_z_values": [
+          1.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "object": "Mirror_Cylinder_RepairedThreshold",
+      "question": "Does a sufficient threshold close the curved seam?",
+      "settings": {
+        "seam_x": 0.002,
+        "threshold": 0.01
+      },
+      "base": {
+        "vertices": 16,
+        "edges": 33,
+        "faces": 18
+      },
+      "evaluated": {
+        "vertices": 26,
+        "edges": 60,
+        "faces": 36,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 6.0000000987871545,
+        "seam_vertices_x0": 6,
+        "top_band_depth": 2.0,
+        "world_z_values": [
+          1.0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "object": "Mirror_Then_SubD_Cylinder",
+      "question": "Does Mirror before SubD preserve a welded curved seam?",
+      "settings": {
+        "order": [
+          "MIRROR",
+          "SUBSURF"
+        ]
+      },
+      "base": {
+        "vertices": 16,
+        "edges": 33,
+        "faces": 18
+      },
+      "evaluated": {
+        "vertices": 482,
+        "edges": 960,
+        "faces": 480,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 4.3923925162422535,
+        "seam_vertices_x0": 24,
+        "top_band_depth": 0.00520799999999999,
+        "world_z_values": [
+          1.0,
+          0.994792,
+          0.989776,
+          0.958333,
+          0.954765,
+          0.9375,
+          0.859375,
+          0.8587,
+          0.856675,
+          0.856674,
+          0.666667,
+          0.364583,
+          0.0,
+          -0.364583,
+          -0.666667,
+          -0.856674,
+          -0.856675,
+          -0.8587,
+          -0.859375,
+          -0.9375,
+          -0.954765,
+          -0.958333,
+          -0.989776,
+          -0.994792,
+          -1.0
+        ]
+      }
+    },
+    {
+      "object": "SubD_Then_Mirror_Cylinder",
+      "question": "Does SubD before Mirror pull the open boundary away from the seam?",
+      "settings": {
+        "order": [
+          "SUBSURF",
+          "MIRROR"
+        ]
+      },
+      "base": {
+        "vertices": 16,
+        "edges": 33,
+        "faces": 18
+      },
+      "evaluated": {
+        "vertices": 482,
+        "edges": 960,
+        "faces": 480,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 4.397604831317399,
+        "seam_vertices_x0": 24,
+        "top_band_depth": 0.00520799999999999,
+        "world_z_values": [
+          1.0,
+          0.994792,
+          0.989776,
+          0.958333,
+          0.954765,
+          0.9375,
+          0.859375,
+          0.8587,
+          0.856674,
+          0.666667,
+          0.364583,
+          0.0,
+          -0.364583,
+          -0.666667,
+          -0.856674,
+          -0.8587,
+          -0.859375,
+          -0.9375,
+          -0.954765,
+          -0.958333,
+          -0.989776,
+          -0.994792,
+          -1.0
+        ]
+      }
+    },
+    {
+      "object": "Bevel_Cylinder_AppliedScale",
+      "question": "What is world bevel depth after applying Z scale?",
+      "settings": {
+        "width": 0.1,
+        "segments": 1,
+        "z_scale_applied": true
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 96,
+        "faces": 34
+      },
+      "evaluated": {
+        "vertices": 128,
+        "edges": 224,
+        "faces": 98,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 2,
+        "degenerate_faces": 0,
+        "signed_world_volume": 12.425151456860565,
+        "seam_vertices_x0": 8,
+        "top_band_depth": 0.10000000000000009,
+        "world_z_values": [
+          2.0,
+          1.9,
+          -1.9,
+          -2.0
+        ]
+      }
+    },
+    {
+      "object": "Bevel_Cylinder_UnappliedScale",
+      "question": "Does unapplied Z scale distort world bevel depth?",
+      "settings": {
+        "width": 0.1,
+        "segments": 1,
+        "object_scale": [
+          1,
+          1,
+          2
+        ],
+        "z_scale_applied": false
+      },
+      "base": {
+        "vertices": 64,
+        "edges": 96,
+        "faces": 34
+      },
+      "evaluated": {
+        "vertices": 128,
+        "edges": 224,
+        "faces": 98,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "ngons": 2,
+        "degenerate_faces": 0,
+        "signed_world_volume": 12.36452162801854,
+        "seam_vertices_x0": 8,
+        "top_band_depth": 0.19999999999999996,
+        "world_z_values": [
+          2.0,
+          1.8,
+          -1.8,
+          -2.0
+        ]
+      }
+    }
+  ],
+  "hypotheses": {
+    "mirror_before_subd_is_clean_on_open_half_cylinder": true,
+    "subd_before_mirror_is_clean_on_open_half_cylinder": true
+  },
+  "assertions": {
+    "exact_curved_seam_is_closed": true,
+    "outside_threshold_curved_seam_is_open": true,
+    "larger_threshold_repairs_curved_seam": true,
+    "both_stack_orders_were_evaluated": true,
+    "applied_bevel_is_closed": true,
+    "unapplied_bevel_is_closed": true,
+    "unapplied_z_scale_changes_bevel_band_depth": true
+  },
+  "pass": true
+}

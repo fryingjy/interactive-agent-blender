@@ -1,0 +1,59 @@
+{
+  "lab": "seam_authored_uv_and_high_low_normal_bake",
+  "blender_version": "5.2.0 LTS",
+  "lesson_source": "https://commons.wikimedia.org/wiki/File:UV_Unwrapping_-_Blender_2.80_Fundamentals.webm",
+  "official_corroboration": [
+    "https://docs.blender.org/manual/en/dev/modeling/meshes/uv/workflows/layout.html",
+    "https://docs.blender.org/manual/en/latest/render/cycles/baking.html",
+    "https://docs.blender.org/manual/en/dev/render/shader_nodes/vector/normal_map.html"
+  ],
+  "low_mesh": {
+    "vertices": 50,
+    "edges": 108,
+    "faces": 60
+  },
+  "high_mesh": {
+    "vertices": 1602,
+    "edges": 3264,
+    "faces": 1664
+  },
+  "uv": {
+    "seam_edges": 27,
+    "uv_loop_count": 216,
+    "minimum_face_uv_area": 0.003978293431563751,
+    "degenerate_uv_faces": 0,
+    "world_texel_ratio_cv": 0.12050293278835954,
+    "inside_unit_tile": true
+  },
+  "failure_control": {
+    "rejected": true,
+    "error": "Error: No valid selected objects\n"
+  },
+  "bake": {
+    "operator_result": [
+      "FINISHED"
+    ],
+    "image": {
+      "width": 256,
+      "height": 256,
+      "occupied_pixels": 65536,
+      "non_neutral_pixels": 27552,
+      "channel_standard_deviation": [
+        0.045745612233985565,
+        0.023525284786659804,
+        0.004048253117353759
+      ]
+    },
+    "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_uv-bake-learning\\housing_tangent_normal.png"
+  },
+  "assertions": {
+    "authored_seam_graph_matches_two_caps_and_one_longitudinal_cut": true,
+    "unwrap_has_no_degenerate_faces": true,
+    "packed_uvs_stay_in_unit_tile": true,
+    "missing_high_source_is_rejected": true,
+    "selected_to_active_bake_finishes": true,
+    "normal_bake_contains_surface_signal": true,
+    "normal_texture_is_non_color": true
+  },
+  "pass": true
+}

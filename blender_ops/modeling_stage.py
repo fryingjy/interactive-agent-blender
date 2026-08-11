@@ -1,4 +1,4 @@
-"""Explicit per-object modeling-stage tracking (directive section 11/12).
+"""Explicit per-object modeling-stage tracking (master directive section 5).
 
 "Do not polish detail while the major form is still wrong." The gadget
 prop this session (since deleted) violated this directly: primitives were
@@ -14,17 +14,20 @@ not a Python variable this session could lose or silently skip), so the
 current stage and its transition history persist in the .blend and survive
 a reconnect.
 
-This does NOT automatically verify gate criteria -- it cannot know whether
-"proportions are plausible" without the same kind of real measurement work
-tools/measure_reference.py does, which is asset-specific. What it enforces
-is that every transition is DECLARED with explicit evidence, creating an
-auditable record, rather than a stage being skipped silently under time
-pressure.
+`set_stage` preserves the original declaration/regression behavior. New forward transitions can
+use `advance_stage`, which validates structured evidence before changing persistent stage state.
+The validator checks required channels and declared thresholds; it cannot prove that a reference
+measurement or artistic review is itself expert-quality.
 """
 
 import json
 
 import bpy
+
+try:
+    from .stage_gates import evaluate_stage_gate
+except ImportError:
+    from stage_gates import evaluate_stage_gate
 
 STAGES = [
     "REFERENCE_ANALYSIS",
@@ -41,7 +44,7 @@ _KEY_STAGE = "modeling_stage"
 _KEY_LOG = "modeling_stage_log"
 
 # What each stage's own gate is supposed to check before advancing PAST it
-# -- directive section 11's own examples, plus the rest inferred from the
+# -- master directive section 5's stages, plus the rest inferred from the
 # same "do not polish detail while the major form is still wrong" logic.
 # Descriptive, not machine-enforced (see module docstring).
 GATE_CRITERIA = {
@@ -96,3 +99,22 @@ def set_stage(name, stage, evidence):
         "previous_stage": previous,
         "is_regression": STAGES.index(stage) < STAGES.index(previous) if previous in STAGES else False,
     }
+
+
+def advance_stage(name, stage, evidence, *, min_iou=0.9):
+    """Advance only when structured evidence passes the target stage gate.
+
+    `set_stage` remains available for explicit regression and legacy records. New forward
+    transitions should use this strict path; failed gates do not mutate object state or history.
+    """
+    if not isinstance(evidence, dict):
+        raise TypeError("strict stage evidence must be a dict")
+    previous = get_stage(name)
+    if previous in STAGES and stage in STAGES and STAGES.index(stage) < STAGES.index(previous):
+        raise ValueError("advance_stage cannot regress; use set_stage with explicit regression evidence")
+    gate = evaluate_stage_gate(stage, evidence, min_iou=min_iou)
+    if not gate["pass"]:
+        return {"name": name, "stage": previous, "requested_stage": stage, "advanced": False, "gate": gate}
+    result = set_stage(name, stage, {"structured_evidence": evidence, "gate": gate})
+    result.update({"advanced": True, "gate": gate})
+    return result

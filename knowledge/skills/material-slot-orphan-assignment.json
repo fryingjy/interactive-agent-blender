@@ -43,5 +43,24 @@
   "learned_at": "2026-08-07T09:20:00Z",
   "learned_during": "decision_cycles_finishing_touches",
   "source_session": "2026-08-07_decision-cycles",
-  "applicability": "Any time a material is programmatically assigned via data.materials.append() (or a material appears unassigned/unused after seeming to be set), check polygon.material_index distribution before trusting that shading is correct."
+  "applicability": "Any time a material is programmatically assigned via data.materials.append() (or a material appears unassigned/unused after seeming to be set), check polygon.material_index distribution before trusting that shading is correct.",
+  "runtime_usage": [
+    {
+      "skill_id": "material-slot-orphan-assignment",
+      "decision_id": "material-skill-use-001",
+      "asset_id": "controlled-material-cube",
+      "scene_revision_before": 0,
+      "scene_revision_after": 1,
+      "problem": "Accent material existed in slot 1 but no polygon used it",
+      "action": "Assign the intended top-half polygons to material slot 1",
+      "success": true,
+      "measured_effect": {
+        "orphan_slots_before": 1,
+        "orphan_slots_after": 0
+      },
+      "unexpected_effects": [],
+      "blender_version": "5.2.0 LTS",
+      "evidence": "runs/2026-08-10_knowledge-use/"
+    }
+  ]
 }

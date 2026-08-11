@@ -1,0 +1,83 @@
+[
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_front.png",
+    "view": "front",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.2315
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_front.png",
+    "view": "front",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.3048
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\corrected_front.png",
+    "view": "front",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.2348
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_side.png",
+    "view": "side",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.1158
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_side.png",
+    "view": "side",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.1064
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\corrected_side.png",
+    "view": "side",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.1139
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\reference_top.png",
+    "view": "top",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.2315
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\initial_top.png",
+    "view": "top",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.2132
+  },
+  {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-comparison\\corrected_top.png",
+    "view": "top",
+    "resolution": 256,
+    "frame_objects": [
+      "Visual_Reference"
+    ],
+    "silhouette_fill_ratio": 0.2294
+  }
+]

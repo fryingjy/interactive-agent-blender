@@ -1,0 +1,60 @@
+{
+  "lab": "multi_axis_flex_twist_driven_corrective",
+  "blender_version": "5.2.0 LTS",
+  "pose_degrees": {
+    "lower_flex_x": 72.0,
+    "lower_splay_z": 18.0,
+    "distal_twist_y": 58.0
+  },
+  "correction": "relative shape key with elbow/twist-root volume offsets driven by Lower X rotation and Twist Y rotation",
+  "modifier_order": [
+    "shape keys",
+    "Subdivision Surface",
+    "Armature"
+  ],
+  "driver_values": {
+    "rest": 0.0,
+    "flex_only": 0.0,
+    "twist_only": 0.0,
+    "combined_pose": 1.0
+  },
+  "dense_reference_volume": 5.250055034389486,
+  "uncorrected": {
+    "mean": 0.04318389598182044,
+    "max": 0.12682819366455078,
+    "joint_mean": 0.05805965266859238,
+    "joint_max": 0.12682819366455078,
+    "joint_faces": 940,
+    "signed_volume": 4.599452562342596
+  },
+  "corrected": {
+    "mean": 0.014650800895167853,
+    "max": 0.040385160595178604,
+    "joint_mean": 0.014947444710271847,
+    "joint_max": 0.026979822665452957,
+    "joint_faces": 928,
+    "signed_volume": 4.977225227238755
+  },
+  "uncorrected_over_corrected_joint_mean_ratio": 3.884252713020168,
+  "relative_volume_errors": {
+    "uncorrected": 0.12392298133738448,
+    "corrected": 0.05196703755743725
+  },
+  "assertions": {
+    "driver_is_zero_at_rest": true,
+    "driver_activates_at_combined_pose": true,
+    "driver_rejects_flex_only": true,
+    "driver_rejects_twist_only": true,
+    "corrective_improves_joint_mean": true,
+    "corrective_improves_joint_max": true,
+    "meaningful_joint_improvement": true,
+    "corrective_improves_volume_error": true,
+    "three_bone_weights_present": true
+  },
+  "pass": true,
+  "limitations": [
+    "The dense reference and low cage share an authored corrective hypothesis, so this proves transfer/mechanism rather than autonomous anatomical discovery.",
+    "This is one stylized limb-like form and one combined pose, not facial expression or full-character production evidence.",
+    "Nearest-surface and volume errors do not replace animator or deformation-specialist review."
+  ]
+}

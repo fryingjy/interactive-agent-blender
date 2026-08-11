@@ -1,0 +1,146 @@
+{
+  "source_id": "blender-studio-planning-facial-retopology",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\planning-facial-retopology.mp4",
+  "sha256": "8ea01cc583cbda7dc7f8f07ece12141d04784a6d55b64bb13ee76627ba7f1121",
+  "duration": 531.221333,
+  "fps": 30.0,
+  "video": true,
+  "audio": true,
+  "captions": true,
+  "transcript": true,
+  "caption_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\planning-facial-retopology.vtt",
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\planning-facial-retopology.vtt",
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 75.0,
+      "decoded_at": 75.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0001_000075.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0002_000090.000s.png"
+    },
+    {
+      "timestamp": 130.0,
+      "decoded_at": 130.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0003_000130.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0004_000180.000s.png"
+    },
+    {
+      "timestamp": 190.0,
+      "decoded_at": 190.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0005_000190.000s.png"
+    },
+    {
+      "timestamp": 245.0,
+      "decoded_at": 245.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0006_000245.000s.png"
+    },
+    {
+      "timestamp": 270.0,
+      "decoded_at": 270.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0007_000270.000s.png"
+    },
+    {
+      "timestamp": 300.0,
+      "decoded_at": 300.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0008_000300.000s.png"
+    },
+    {
+      "timestamp": 350.0,
+      "decoded_at": 350.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0009_000350.000s.png"
+    },
+    {
+      "timestamp": 360.0,
+      "decoded_at": 360.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0010_000360.000s.png"
+    },
+    {
+      "timestamp": 390.0,
+      "decoded_at": 390.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0011_000390.000s.png"
+    },
+    {
+      "timestamp": 450.0,
+      "decoded_at": 450.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0012_000450.000s.png"
+    },
+    {
+      "timestamp": 455.0,
+      "decoded_at": 455.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0013_000455.000s.png"
+    },
+    {
+      "timestamp": 505.0,
+      "decoded_at": 505.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0014_000505.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 75.0,
+      "decoded_at": 75.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0001_000075.000s.png"
+    },
+    {
+      "timestamp": 130.0,
+      "decoded_at": 130.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0003_000130.000s.png"
+    },
+    {
+      "timestamp": 190.0,
+      "decoded_at": 190.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0005_000190.000s.png"
+    },
+    {
+      "timestamp": 245.0,
+      "decoded_at": 245.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0006_000245.000s.png"
+    },
+    {
+      "timestamp": 300.0,
+      "decoded_at": 300.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0008_000300.000s.png"
+    },
+    {
+      "timestamp": 350.0,
+      "decoded_at": 350.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0009_000350.000s.png"
+    },
+    {
+      "timestamp": 390.0,
+      "decoded_at": 390.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0011_000390.000s.png"
+    },
+    {
+      "timestamp": 455.0,
+      "decoded_at": 455.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0013_000455.000s.png"
+    },
+    {
+      "timestamp": 505.0,
+      "decoded_at": 505.0,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-studio-planning-facial-retopology\\frame_0014_000505.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "transcript_segment_count": 140,
+  "transcript_text_in_report": false,
+  "transcription": null,
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Audio presence is stream-level metadata; no speech-to-text is claimed unless a transcript is present."
+  ]
+}

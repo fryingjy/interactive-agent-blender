@@ -22,7 +22,18 @@ Smooths a corner or edge by replacing it with new geometry across a controllable
 - Beveling 4 vertical corner edges on a boxy body turned the flat top/bottom quad caps into 8-sided n-gons (the corner clipping removes a triangle of material from each cap corner) — a real, expected geometric consequence of bevel on adjacent faces, not a bug, fixed with `triangulate_ngons`.
 
 ## Fresh reproduction this session
-Bevel is the single most load-bearing operation in this project (used in every hard-surface prop). Deferred a fresh from-scratch reproduction in favor of prioritizing operations this project has NEVER used (dissolve, bisect, bridge edge loops, spin, rip, split, separate, symmetrize, fill/grid fill, slides) -- see those cards for this session's actual new experiments. Width Type and Clamp Overlap remain a real, stated gap: this project has only ever used bmesh.ops.bevel's defaults, never explicitly varied Width Type or tested an intentionally-too-wide bevel against Clamp Overlap.
+Bevel is a load-bearing operation in this project. `runs/2026-08-10_bevel-parameters/` now reproduces
+all five Blender 5.2 BMesh width types and an intentionally oversized bevel with Clamp Overlap both
+off and on. At comparable nominal amounts, OFFSET, WIDTH, DEPTH, and PERCENT produced measurably
+different volume/area results; ABSOLUTE matched OFFSET on the equal-edge cube fixture, which narrows
+that equivalence to this geometry instead of universalizing it. Width numbers are not portable
+between modes.
+
+The 5.0-unit unclamped bevel remained manifold but expanded into a nonsensical 105.28-volume result.
+Clamping constrained it to 3.15 volume, yet the minimum face area fell to approximately `1.4e-14`.
+Therefore Clamp Overlap is a damage limiter, not a topology-quality guarantee. The typed operation
+now exposes `offset_type`, `profile`, and `clamp_overlap`; every result still requires evaluated
+surface and minimum-area inspection.
 
 ## When to use / not use
 Use for: softening a hard edge for realistic light response, adding a manufactured/machined look, avoiding a razor-sharp silhouette edge that would alias badly under subdivision or in a render.

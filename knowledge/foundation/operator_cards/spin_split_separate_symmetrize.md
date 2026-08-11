@@ -1,6 +1,16 @@
 # Operator card: Spin, Split vs Separate, Symmetrize
 
-**Status:** DOCS pending (Manual pages not yet fetched, API example script for spin read from bmesh.ops docs) | EXPERIMENT ✓ all four | FAILURE_CASE partial (one real enum-value mistake caught and fixed live) | QUIZ pending
+**Status:** DOCS ✓ (Blender 5.2 LTS Manual plus BMesh API) | EXPERIMENT ✓ all four | FAILURE_CASE partial (one real enum-value mistake caught and fixed live) | QUIZ pending
+
+## Official sources
+
+- Split: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/split.html
+- Separate: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/separate.html
+- Symmetrize: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/symmetrize.html
+- BMesh operators (`spin`): https://docs.blender.org/api/current/bmesh.ops.html
+
+The current Manual pages were fetched successfully on 2026-08-10. Split disconnects selected
+elements in the same object; Separate creates objects by Selection, Material, or Loose Parts.
 
 ## Spin
 `bmesh.ops.spin(bm, geom=<verts+edges>, angle=radians, steps=N, axis=(x,y,z), cent=(x,y,z), use_duplicate=False)` -- a lathe/revolve operation: sweeps input geometry around an axis, generating new geometry at each step.

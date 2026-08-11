@@ -1,0 +1,24 @@
+{
+  "benchmark_id": "transfer_d_stylized_trident_001",
+  "source_path": "C:\\Users\\odane\\Downloads\\blender\\ref\\f4fb9a354f6b40482eb243c49caec5b9.png",
+  "crop_path": "runs/2026-08-10_transfer-trident/reference_crop.png",
+  "safety_scope": "fictional magical digital prop; silhouette, topology, and material study only",
+  "measured_crop": {
+    "size_px": [140, 652],
+    "silhouette_bbox_px": {"x": [8, 126], "y": [105, 622]},
+    "silhouette_size_px": {"width": 118, "height": 517},
+    "aspect_ratio_width_over_height": 0.2282
+  },
+  "decomposition": {
+    "primary": ["long thin shaft", "three-prong head"],
+    "secondary": ["central spear diamond", "paired curved side prongs", "gem and crescent collar"],
+    "tertiary": ["small diagonal connectors", "cyan collar accent"]
+  },
+  "completion_criteria": {
+    "normalized_front_silhouette_iou_target": 0.65,
+    "technical": "all intended solids independently clean after evaluated modifiers",
+    "views": ["front", "isometric"],
+    "editable_source": true
+  },
+  "anti_contamination": "No implementation changes or asset-specific builder may be added during this transfer run."
+}

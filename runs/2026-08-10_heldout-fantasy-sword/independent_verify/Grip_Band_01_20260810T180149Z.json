@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_heldout-fantasy-sword\\fantasy_sword_heldout.blend",
+  "object_name": "Grip_Band_01",
+  "geometry_source": "evaluated",
+  "verified_at": "2026-08-10T18:01:49Z",
+  "stats": {
+    "vertices": 160,
+    "edges": 320,
+    "faces": 160,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 0.003337700621304119
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

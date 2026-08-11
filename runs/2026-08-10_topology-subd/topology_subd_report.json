@@ -1,0 +1,500 @@
+{
+  "lab": "topology_context_and_subdivision_surface",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "Pole_3_Flat",
+      "category": "pole",
+      "question": "How does a valence-3 pole behave on a flat open surface?",
+      "base": {
+        "vertices": 4,
+        "edges": 6,
+        "faces": 3,
+        "triangles": 3,
+        "quads": 0,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 4
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.7320507764816284
+      },
+      "evaluated": {
+        "vertices": 43,
+        "edges": 78,
+        "faces": 36,
+        "non_manifold_edges": 12,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.1599046419054804,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          0.6250000794728597,
+          0.5390625758156082,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Pole_5_Flat",
+      "category": "pole",
+      "question": "How does a valence-5 pole behave on a flat open surface?",
+      "base": {
+        "vertices": 6,
+        "edges": 10,
+        "faces": 5,
+        "triangles": 5,
+        "quads": 0,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 5,
+          "5": 1
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.1755704879760742
+      },
+      "evaluated": {
+        "vertices": 71,
+        "edges": 130,
+        "faces": 60,
+        "non_manifold_edges": 20,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.23708044414215393,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          0.8469267274039647,
+          0.805114864984704,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Pole_6_Flat",
+      "category": "pole",
+      "question": "How does a valence-6 pole behave on a flat open surface?",
+      "base": {
+        "vertices": 7,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 6,
+        "quads": 0,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 6,
+          "6": 1
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.0
+      },
+      "evaluated": {
+        "vertices": 85,
+        "edges": 156,
+        "faces": 72,
+        "non_manifold_edges": 24,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.278143487198269,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          0.833333432674408,
+          0.9583334451747979,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Triangle_Flat_Surface",
+      "category": "triangle_context",
+      "question": "How does one triangulated quad behave on a flat SubD patch?",
+      "base": {
+        "vertices": 9,
+        "edges": 13,
+        "faces": 5,
+        "triangles": 2,
+        "quads": 3,
+        "ngons": 0,
+        "valence_distribution": {
+          "2": 3,
+          "3": 5,
+          "5": 1
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.4142135381698608
+      },
+      "evaluated": {
+        "vertices": 89,
+        "edges": 160,
+        "faces": 72,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.26385012585005174,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          1.0000001192092896,
+          1.0000001192092896,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Triangle_Curved_Surface",
+      "category": "triangle_context",
+      "question": "How does one triangulated quad behave on a curved SubD patch?",
+      "base": {
+        "vertices": 9,
+        "edges": 13,
+        "faces": 5,
+        "triangles": 2,
+        "quads": 3,
+        "ngons": 0,
+        "valence_distribution": {
+          "2": 3,
+          "3": 5,
+          "5": 1
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.4552137853875993
+      },
+      "evaluated": {
+        "vertices": 89,
+        "edges": 160,
+        "faces": 72,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.2552935967505106,
+        "maximum_adjacent_face_angle_degrees": 7.602195206615537,
+        "z_range": [
+          0.1600000113248825,
+          0.4179688096046448
+        ],
+        "shrinkage_ratio_xyz": [
+          1.0000001192092896,
+          1.0000001192092896,
+          0.5159375965595245
+        ]
+      }
+    },
+    {
+      "object": "Ngon_Flat_Surface",
+      "category": "ngon_context",
+      "question": "How does a six-sided n-gon behave when flat?",
+      "base": {
+        "vertices": 6,
+        "edges": 6,
+        "faces": 1,
+        "triangles": 0,
+        "quads": 0,
+        "ngons": 1,
+        "valence_distribution": {
+          "2": 6
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.0
+      },
+      "evaluated": {
+        "vertices": 37,
+        "edges": 60,
+        "faces": 24,
+        "non_manifold_edges": 24,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.3716155041420936,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          0.8359376192092896,
+          0.9583334451747979,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Ngon_Curved_Surface",
+      "category": "ngon_context",
+      "question": "How does a six-sided n-gon behave when curved?",
+      "base": {
+        "vertices": 6,
+        "edges": 6,
+        "faces": 1,
+        "triangles": 0,
+        "quads": 0,
+        "ngons": 1,
+        "valence_distribution": {
+          "2": 6
+        },
+        "maximum_face_nonplanarity": 0.25980761647224426,
+        "edge_length_ratio": 1.0907316067967825
+      },
+      "evaluated": {
+        "vertices": 37,
+        "edges": 60,
+        "faces": 24,
+        "non_manifold_edges": 24,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.36047567928352287,
+        "maximum_adjacent_face_angle_degrees": 11.882626948138338,
+        "z_range": [
+          -0.14005255699157715,
+          0.14005255699157715
+        ],
+        "shrinkage_ratio_xyz": [
+          0.8359376192092896,
+          0.9583334451747979,
+          0.5390625528737693
+        ]
+      }
+    },
+    {
+      "object": "Spacing_Uniform",
+      "category": "edge_spacing",
+      "question": "What surface-density signal does uniform spacing produce?",
+      "base": {
+        "vertices": 12,
+        "edges": 17,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "valence_distribution": {
+          "2": 4,
+          "3": 6,
+          "4": 2
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.501501482150915
+      },
+      "evaluated": {
+        "vertices": 117,
+        "edges": 212,
+        "faces": 96,
+        "non_manifold_edges": 40,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.12438826553772069,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          1.0000001192092896,
+          1.0000001192092896,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Spacing_Uneven",
+      "category": "edge_spacing",
+      "question": "What surface-density signal does uneven spacing produce?",
+      "base": {
+        "vertices": 12,
+        "edges": 17,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "valence_distribution": {
+          "2": 4,
+          "3": 6,
+          "4": 2
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 15.999995231629555
+      },
+      "evaluated": {
+        "vertices": 117,
+        "edges": 212,
+        "faces": 96,
+        "non_manifold_edges": 40,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.5992410612733449,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          1.0000001192092896,
+          1.0000001192092896,
+          null
+        ]
+      }
+    },
+    {
+      "object": "Support_Tight",
+      "category": "support_loops",
+      "question": "How much silhouette does a tight support width retain?",
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 8
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.0
+      },
+      "evaluated": {
+        "vertices": 386,
+        "edges": 768,
+        "faces": 384,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.5499683137794515,
+        "maximum_adjacent_face_angle_degrees": 43.26580939178368,
+        "z_range": [
+          -0.9918982982635498,
+          0.9918980598449707
+        ],
+        "shrinkage_ratio_xyz": [
+          0.9918982982635498,
+          0.9918981790542603,
+          0.9918981790542603
+        ]
+      }
+    },
+    {
+      "object": "Support_Wide",
+      "category": "support_loops",
+      "question": "How does a wide support width broaden the transition?",
+      "base": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 8
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.0
+      },
+      "evaluated": {
+        "vertices": 386,
+        "edges": 768,
+        "faces": 384,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.3258790226866539,
+        "maximum_adjacent_face_angle_degrees": 24.519279459889404,
+        "z_range": [
+          -0.967592716217041,
+          0.9675926566123962
+        ],
+        "shrinkage_ratio_xyz": [
+          0.967592716217041,
+          0.9675926864147186,
+          0.9675926864147186
+        ]
+      }
+    },
+    {
+      "object": "Cylindrical_Quad_Routing",
+      "category": "cylindrical_routing",
+      "question": "Do matched circumferential loops preserve an all-quad cylindrical side?",
+      "base": {
+        "vertices": 48,
+        "edges": 80,
+        "faces": 32,
+        "triangles": 0,
+        "quads": 32,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 32,
+          "4": 16
+        },
+        "maximum_face_nonplanarity": 1.4901161193847656e-08,
+        "edge_length_ratio": 2.5629154257964037
+      },
+      "evaluated": {
+        "vertices": 576,
+        "edges": 1088,
+        "faces": 512,
+        "non_manifold_edges": 128,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 6.268893488789405e-05,
+        "maximum_adjacent_face_angle_degrees": 5.666794084061194,
+        "z_range": [
+          -1.0000001192092896,
+          1.0000001192092896
+        ],
+        "shrinkage_ratio_xyz": [
+          0.9746266603469849,
+          0.9746266603469849,
+          1.0000001192092896
+        ]
+      }
+    },
+    {
+      "object": "Loop_Termination_Valence5",
+      "category": "loop_termination",
+      "question": "Can a loop terminate through an explicit valence-5 pole on a flat region?",
+      "base": {
+        "vertices": 6,
+        "edges": 10,
+        "faces": 5,
+        "triangles": 5,
+        "quads": 0,
+        "ngons": 0,
+        "valence_distribution": {
+          "3": 5,
+          "5": 1
+        },
+        "maximum_face_nonplanarity": 0.0,
+        "edge_length_ratio": 1.1755704879760742
+      },
+      "evaluated": {
+        "vertices": 71,
+        "edges": 130,
+        "faces": 60,
+        "non_manifold_edges": 20,
+        "degenerate_faces": 0,
+        "area_coefficient_of_variation": 0.23708044414215393,
+        "maximum_adjacent_face_angle_degrees": 3.4150945850063755e-06,
+        "z_range": [
+          0.0,
+          0.0
+        ],
+        "shrinkage_ratio_xyz": [
+          0.8469267274039647,
+          0.805114864984704,
+          null
+        ]
+      }
+    }
+  ],
+  "assertions": {
+    "pole_valences_are_exact": true,
+    "flat_triangle_patch_stays_planar": true,
+    "curved_triangle_patch_has_normal_change": true,
+    "flat_ngon_is_planar": true,
+    "curved_ngon_is_nonplanar": true,
+    "uneven_spacing_increases_area_variation": true,
+    "tight_support_retains_more_silhouette": true,
+    "cylinder_side_is_all_quads": true,
+    "loop_termination_contains_valence5": true
+  },
+  "pass": true,
+  "interpretation_boundary": "These metrics expose context and surface behavior; they do not classify every pole, triangle, or n-gon as universally good or bad."
+}

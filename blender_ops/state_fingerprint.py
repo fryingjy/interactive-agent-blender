@@ -1,4 +1,4 @@
-"""Layered external-edit fingerprinting (directive section 5.2/56).
+"""Layered external-edit fingerprinting (master directive section 9).
 
 modeler_server.py's original _check_external_edit only diffed persistent-ID
 SETS -- it proves topology was added/removed, but a human can move existing

@@ -1,0 +1,131 @@
+{
+  "source_id": "blender-fundamentals-knife-tool-video",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\knife-tool.webm",
+  "sha256": "5ff38521bf17e0cba9faa01e163130f48aea4c2f00eb53f7d266113c0a1e1b6a",
+  "duration": 119.201,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": false,
+  "transcript": true,
+  "caption_path": null,
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\generated_transcript.vtt",
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 10.0,
+      "decoded_at": 10.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0001_000010.000s.png"
+    },
+    {
+      "timestamp": 20.0,
+      "decoded_at": 20.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0002_000020.000s.png"
+    },
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0003_000030.000s.png"
+    },
+    {
+      "timestamp": 40.0,
+      "decoded_at": 40.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0004_000040.000s.png"
+    },
+    {
+      "timestamp": 50.0,
+      "decoded_at": 50.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0005_000050.000s.png"
+    },
+    {
+      "timestamp": 60.0,
+      "decoded_at": 60.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0006_000060.000s.png"
+    },
+    {
+      "timestamp": 70.0,
+      "decoded_at": 70.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0007_000070.000s.png"
+    },
+    {
+      "timestamp": 80.0,
+      "decoded_at": 80.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0008_000080.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0009_000090.000s.png"
+    },
+    {
+      "timestamp": 100.0,
+      "decoded_at": 100.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0010_000100.000s.png"
+    },
+    {
+      "timestamp": 110.0,
+      "decoded_at": 110.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0011_000110.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 10.0,
+      "decoded_at": 10.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0001_000010.000s.png"
+    },
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0003_000030.000s.png"
+    },
+    {
+      "timestamp": 50.0,
+      "decoded_at": 50.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0005_000050.000s.png"
+    },
+    {
+      "timestamp": 70.0,
+      "decoded_at": 70.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0007_000070.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0009_000090.000s.png"
+    },
+    {
+      "timestamp": 110.0,
+      "decoded_at": 110.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\frame_0011_000110.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "transcript_segment_count": 23,
+  "transcript_text_in_report": false,
+  "transcription": {
+    "backend": "faster-whisper",
+    "model": "tiny.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "requested_language": "en",
+    "detected_language": "en",
+    "language_probability": 1,
+    "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\knife-tool.webm",
+    "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-knife-tool\\generated_transcript.vtt",
+    "limitations": [
+      "Machine transcription may contain errors; verify important claims against frames and official documentation.",
+      "Generated text is evidence of local speech processing, not creator-supplied captions."
+    ],
+    "segment_count": 23
+  },
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Machine transcript is available but may contain errors; important claims require frame or official-doc corroboration."
+  ]
+}

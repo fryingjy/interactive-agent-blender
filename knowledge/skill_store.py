@@ -4,6 +4,12 @@ import json
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
+
 SKILLS_DIR = Path(__file__).resolve().parent / "skills"
 
 REQUIRED_FIELDS = {
@@ -65,6 +71,18 @@ def main():
     p_search.add_argument("query")
     p_search.add_argument("--top-k", type=int, default=5)
 
+    p_structured = sub.add_parser("search-structured")
+    p_structured.add_argument("query")
+    p_structured.add_argument("--top-k", type=int, default=5)
+    p_structured.add_argument("--modeling-stage")
+    p_structured.add_argument("--workflow")
+    p_structured.add_argument("--surface-type")
+    p_structured.add_argument("--defect")
+    p_structured.add_argument("--local-topology", action="append", default=[])
+    p_structured.add_argument("--modifier", action="append", default=[])
+    p_structured.add_argument("--reference-issue")
+    p_structured.add_argument("--blender-version")
+
     p_get = sub.add_parser("get")
     p_get.add_argument("skill_id")
 
@@ -75,6 +93,28 @@ def main():
     if args.cmd == "search":
         results = search(args.query, args.top_k)
         print(json.dumps([{"id": s["id"], "title": s["title"]} for s in results], indent=2))
+    elif args.cmd == "search-structured":
+        context = RetrievalContext(
+            query=args.query,
+            modeling_stage=args.modeling_stage,
+            workflow=args.workflow,
+            surface_type=args.surface_type,
+            defect=args.defect,
+            local_topology=args.local_topology,
+            modifiers=args.modifier,
+            reference_issue=args.reference_issue,
+            blender_version=args.blender_version,
+        )
+        results = StructuredSkillStore(SKILLS_DIR).search(context, args.top_k)
+        print(json.dumps([
+            {
+                "skill_id": result["skill_id"],
+                "score": result["score"],
+                "score_breakdown": result["score_breakdown"],
+                "status": result["status"],
+            }
+            for result in results
+        ], indent=2))
     elif args.cmd == "get":
         skill = get(args.skill_id)
         if skill is None:

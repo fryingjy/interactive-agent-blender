@@ -6,14 +6,9 @@ persistent_ids, decision_transaction, mesh_ops) -- smaller tool outputs,
 and a mutation surface that can't accidentally bypass the one-operation-
 per-decision rule the way a raw exec() call always can.
 
-This is a genuine, deliberately SMALL slice of a much larger proposed
-protocol (push events, semantic regions, viewport state, ownership
-locking, visual passes, ...). Rather than stub out twelve commands
-untested, this wires up a complete, live-verified round trip for a few:
-capability discovery, consolidated state, event polling, and the full
-begin -> perform -> verify -> commit decision lifecycle for a handful of
-real mesh_ops operations. Extending the operation registry in
-perform_decision() is the natural next step once this slice is proven.
+The protocol began as a deliberately small live-verified slice. It now includes capability/state
+inspection, events, semantic regions, visual/evaluated evidence, and an expanded typed mutation
+surface routed through the same begin -> perform -> verify -> commit/reject lifecycle.
 
 Threading model copied from addon.py's proven pattern: a daemon accept
 thread, a daemon thread per client connection, and bpy.app.timers.register
@@ -51,7 +46,7 @@ import semantic_regions
 import state_fingerprint
 import state_probe
 
-PROTOCOL_VERSION = "0.1"
+PROTOCOL_VERSION = "0.2"
 CAPABILITIES = [
     "selection_ids",
     "persistent_mesh_ids",
@@ -71,6 +66,9 @@ CAPABILITIES = [
     "native_silhouette_render",
     "curve_bevel_taper_geometry",
     "modeling_stage_tracking",
+    "expanded_typed_modeling_surface",
+    "diagnostic_visual_passes",
+    "surface_candidate_diagnostics",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -97,8 +95,22 @@ _OPS = {
     "scale_selection": mesh_ops.scale_selection,
     "inset_selection": mesh_ops.inset_selection,
     "subdivide_selection": mesh_ops.subdivide_selection,
+    "rotate_selection": mesh_ops.rotate_selection,
+    "bevel_selection": mesh_ops.bevel_selection,
+    "delete_selection": mesh_ops.delete_selection,
+    "dissolve_selection": mesh_ops.dissolve_selection,
+    "merge_selection": mesh_ops.merge_selection,
+    "fill_selection": mesh_ops.fill_selection,
+    "bridge_selection": mesh_ops.bridge_selection,
+    "spin_selection": mesh_ops.spin_selection,
+    "loop_cut_selection": mesh_ops.loop_cut_selection,
+    "bisect_selection": mesh_ops.bisect_selection,
+    "symmetrize_selection": mesh_ops.symmetrize_selection,
+    "split_selection": mesh_ops.split_selection,
+    "separate_selection": mesh_ops.separate_selection,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
+    "set_shading": object_ops.set_shading,
 }
 
 
@@ -111,7 +123,7 @@ class ModelerServer:
         self.server_thread = None
 
         # Fresh per server start, not persisted to the .blend -- represents
-        # THIS running server instance (directive section 14: session
+        # THIS running server instance (master directive section 9: state
         # handshake). A Blender restart means a new session_id even if the
         # same file reloads; a client can use this to detect "am I still
         # talking to the same live session I was before."
@@ -198,13 +210,13 @@ class ModelerServer:
     # since the underlying transport is request/response) ---------------
 
     def _push_event(self, event_type, **data):
-        # event_id is a distinct identifier from seq (directive section 7:
+        # event_id is a distinct identifier from seq (master directive section 9:
         # keep session_id/scene_revision/decision_id/command_id/event_id
         # separate) -- seq is purely this queue's ordering, event_id is the
         # event's own identity, stable if it were ever persisted/replayed
         # independent of queue position.
         #
-        # Coalescing (directive section 9): one Blender operator can fire
+        # Coalescing: one Blender operator can fire
         # depsgraph_update_post many times for the same object in the same
         # logical change (observed live: a single mesh edit produces
         # separate updates for the object, its mesh data, the collection,
@@ -384,7 +396,7 @@ class ModelerServer:
         """Cheap liveness + identity check -- a client can call this after a
         reconnect to confirm it's still talking to the same Blender process
         and server session it was before (matching pid and session_id), per
-        directive section 14/16, rather than assuming a fresh connection
+        master directive sections 3 and 9, rather than assuming a fresh connection
         means a fresh, unrelated session."""
         return {
             "session_id": self.session_id,
@@ -428,6 +440,9 @@ class ModelerServer:
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
 
+    def cmd_list_persistent_ids(self, name):
+        return state_probe.list_persistent_ids(name)
+
     def cmd_get_viewport_state(self):
         return state_probe.viewport_state()
 
@@ -436,6 +451,7 @@ class ModelerServer:
             "mesh_health": evaluated_probe.evaluated_mesh_health(name),
             "valence_distribution": evaluated_probe.evaluated_valence_distribution(name),
             "surface_quality": evaluated_probe.evaluated_surface_quality(name),
+            "surface_diagnostics": evaluated_probe.evaluated_surface_diagnostics(name),
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
@@ -452,6 +468,15 @@ class ModelerServer:
         """Free to call outside a decision transaction -- a render is a
         read of the current state, not a mutation, same as get_full_state."""
         return render_passes.render_silhouette(name, output_path, view=view, resolution=resolution, margin=margin)
+
+    def cmd_render_diagnostic_pass(self, name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
+        return render_passes.render_diagnostic_pass(
+            name, output_path, pass_type, view=view, resolution=resolution,
+            margin=margin, frame_name=frame_name)
+
+    def cmd_render_semantic_region(self, name, region_id, output_path, view="front", resolution=512, margin=1.15):
+        return render_passes.render_semantic_region(
+            name, region_id, output_path, view=view, resolution=resolution, margin=margin)
 
     # ---- semantic regions (named groups of persistent-ID elements) ------
     # All free to call outside a decision transaction: they store/query
@@ -566,7 +591,7 @@ class ModelerServer:
         if entry is None:
             raise ValueError(f"no pending decision {decision_id} (already committed, or begin_decision was never called)")
         # CORRECTION (found live, testing the mid-transaction-edit scenario
-        # directive section 56 asks for): begin_decision only proves the
+        # covered by master directive section 9): begin_decision only proves the
         # mesh was clean AT THAT MOMENT. Nothing previously re-checked
         # before the actual mutation ran -- a human edit landing between
         # begin_decision and perform_decision was silently absorbed with
@@ -577,7 +602,7 @@ class ModelerServer:
         # auto-refreshing the baseline here the way begin_decision's own
         # check does on failure -- that would silently fold the human's
         # edit into what the agent then treats as its own starting point,
-        # exactly what directive section 46 says not to do (human
+        # exactly what master directive sections 9 and 16 prohibit (human
         # corrections are evidence to reason about, not something to
         # silently absorb without surfacing).
         baseline_fp = entry.get("baseline_fingerprint")

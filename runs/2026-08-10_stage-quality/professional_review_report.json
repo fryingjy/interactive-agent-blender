@@ -1,0 +1,56 @@
+{
+  "score": 0.677515,
+  "threshold": 0.85,
+  "hard_failures": [
+    "surface_highlight_judgment",
+    "reference_fidelity",
+    "generalization"
+  ],
+  "pass": false,
+  "channels": [
+    {
+      "name": "technical_validity",
+      "score": 1.0,
+      "weight": 1.2,
+      "hard_pass": true,
+      "evidence": "runs/2026-08-10_visual-comparison/verify_reports/Visual_Corrected_20260810T161916Z.json"
+    },
+    {
+      "name": "topology_context",
+      "score": 0.82,
+      "weight": 1.0,
+      "hard_pass": true,
+      "evidence": "runs/2026-08-10_topology-subd/topology_subd_report.json"
+    },
+    {
+      "name": "surface_highlight_judgment",
+      "score": 0.45,
+      "weight": 1.2,
+      "hard_pass": false,
+      "evidence": "knowledge/foundation/foundation_exit_report.md#largest-remaining-gaps"
+    },
+    {
+      "name": "reference_fidelity",
+      "score": 0.9790446318851895,
+      "weight": 1.2,
+      "hard_pass": false,
+      "evidence": "runs/2026-08-10_visual-comparison/visual_comparison_report.json (synthetic, not held-out)"
+    },
+    {
+      "name": "production_export",
+      "score": 0.8,
+      "weight": 0.8,
+      "hard_pass": true,
+      "evidence": "runs/2026-08-10_sculpt-export/sculpt_export_report.json"
+    },
+    {
+      "name": "generalization",
+      "score": 0.2,
+      "weight": 1.5,
+      "hard_pass": false,
+      "evidence": "knowledge/foundation/benchmark_readiness.json"
+    }
+  ],
+  "audit": "current_professional_readiness",
+  "interpretation": "FAIL is expected and honest: technical/synthetic evidence cannot override surface and held-out generalization gates."
+}

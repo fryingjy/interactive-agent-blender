@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_solidify-transfer\\solidify_transfer_lab.blend",
+  "object_name": "Solidify_Curved_UnappliedScale",
+  "geometry_source": "evaluated",
+  "verified_at": "2026-08-10T15:41:12Z",
+  "stats": {
+    "vertices": 42,
+    "edges": 80,
+    "faces": 40,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 1.0501361133205194
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

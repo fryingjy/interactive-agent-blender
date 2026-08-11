@@ -3,3 +3,13 @@ __pycache__/
 gh_auth.log
 *.blend1
 runs/*/blend/*.blend
+runs/*/media/
+runs/*/.godot/
+*.glb.import
+runs/*/*.png.import
+runs/2026-08-11_godot-engine-validation/*_housing_tangent_normal.png
+runs/2026-08-11_godot-engine-validation/*.uid
+**/generated_transcript.vtt
+**/speech_transcription_report.json
+runs/*/ingested/**/frame_*.png
+*.blend1

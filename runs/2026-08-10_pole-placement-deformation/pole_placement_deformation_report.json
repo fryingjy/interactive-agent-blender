@@ -1,0 +1,35 @@
+{
+  "source_principle": "Use poles/loop redirection to delimit patches and keep them away from important creases or deformation zones when possible.",
+  "different_shape": "non-face articulated tapered hose",
+  "controlled_variables": {
+    "radial_segments": 12,
+    "axial_rows": 19,
+    "subdivision_levels": 2,
+    "bend_degrees": 92,
+    "deformation": "identical analytic circular-arc mapping after evaluated Subdivision Surface",
+    "test_topology_difference": "one identical diagonal producing two 5-valence endpoints, placed either at axial cell 2 or bend-center cell 9"
+  },
+  "pole_away": {
+    "all_mean": 4.538559594791062e-05,
+    "all_max": 0.005734510254114866,
+    "bend_zone_mean": 4.136976507061967e-08,
+    "bend_zone_max": 1.8129394163679535e-07,
+    "bend_zone_vertices": 1296
+  },
+  "pole_in_bend": {
+    "all_mean": 5.206473033463305e-05,
+    "all_max": 0.006485532037913799,
+    "bend_zone_mean": 0.00014221976184966483,
+    "bend_zone_max": 0.006485532037913799,
+    "bend_zone_vertices": 1304
+  },
+  "bend_zone_mean_error_ratio_bad_over_good": 3437.7705942223893,
+  "pass": true,
+  "rejected_attempt": "The first experiment aligned the tube length and Bend modifier axis incorrectly, so the centerline stayed straight; its apparent ratio was invalid and was replaced by an explicit analytic bend.",
+  "limitations": [
+    "This is a controlled subdivided tube with an analytic bend, not a rigged face.",
+    "A single diagonal creates a 5-pole pair through triangles; it does not cover every all-quad redirection pattern.",
+    "Nearest-surface error measures geometric deviation from the all-quad control, not animation appeal."
+  ],
+  "artifact": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_pole-placement-deformation\\pole_placement_deformation.blend"
+}

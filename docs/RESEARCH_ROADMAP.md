@@ -1,8 +1,11 @@
 # Autonomous Research & Expertise Acquisition — Mandatory Future Subsystem
 
-**Status: not started. Gated behind the closed-loop runtime milestone (see Sequencing Rule
-below). Do not build this until that milestone is proven. Do not treat it as optional or
-drop it from scope — it is required for the professional-modeler end goal.**
+**Status: active foundation phase. The closed-loop runtime has substantial demonstrated evidence,
+and controlled documentation/experiment work has begun. Legal local video/document ingestion,
+structured retrieval, usage telemetry, uncertainty, and rebuild-decision foundations are now
+implemented and tested; external curriculum breadth and cross-asset promotion remain incomplete.
+Research should stay problem-driven and should not outrun the runtime's ability to apply and
+verify what it learns.**
 
 ## Why this exists
 
@@ -15,19 +18,22 @@ then close the loop by actually applying it to the task that triggered the searc
 ## Sequencing rule (binding)
 
 ```
-current milestone: prove genuine observe -> decide -> act -> verify -> adapt
-                    (see runs/2026-08-07_decision-cycles/, tools/decision_log.py)
+demonstrated base: observe -> decide -> act -> verify -> adapt
+                   (see runs/2026-08-07_decision-cycles/, tools/decision_log.py)
         |
         v
-   once that works reliably
+strengthen runtime reliability + foundation breadth
         |
         v
-autonomous research and expertise acquisition becomes the next major subsystem
+problem-driven research + controlled experiments
+        |
+        v
+structured retrieval, legal video ingestion, and cross-asset validation
 ```
 
-Do not build the research architecture during the closed-loop-runtime milestone. Do not skip
-straight to research breadth before the runtime loop is solid — see "Research breadth should
-grow with modeling ability" below.
+Do not mass-ingest sources merely to increase counts. Add research capabilities only when the
+closed-loop runtime can apply, verify, reject, and retain their output. See "Research breadth
+should grow with modeling ability" below.
 
 ## Target behavior
 
@@ -94,6 +100,32 @@ skills. Example candidate record:
 }
 ```
 Remains a candidate until experimentally tested.
+
+Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
+approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT
+captions, and extracts timestamped frames. `runs/2026-08-10_video-ingestion/` exercises the full
+path on a project-owned MP4 with audio and captions. This proves modality access and extraction,
+not outside tutorial expertise. The module deliberately contains no platform downloader.
+
+`knowledge_engine/ingest/document_ingest.py` restricts local reads to approved roots, extracts
+headings/parameter-warning candidates/links, fingerprints content, and emits a normalized source
+record. Approved web fetches require a hostname allowlist and reject redirects outside it.
+
+## Structured retrieval and learning state
+
+`knowledge_engine/retrieval.py` ranks both historical and promoted skill schemas using query,
+modeling stage, workflow, surface, defect, local topology, modifier state, reference issue,
+runtime success, and Blender-version relevance. Ranking exposes a score breakdown for audit.
+`knowledge/skill_store.py search-structured` is the CLI entry point.
+
+`knowledge_engine/telemetry.py` stores append-only skill usage with decision/asset IDs, scene
+revision change, action, result, measured effect, and unexpected effects. `reasoning.py` adds
+explicit diagnosis confidence, evidence-based region rebuild pressure, multi-view regression
+checks, and component-graph validation. Unit tests cover these mechanisms; real cross-session
+runtime use remains required before broad promotion claims. A first controlled use now exists in
+`runs/2026-08-10_knowledge-use/`: structured retrieval selected the historical material-slot
+skill, one revision-linked mutation reduced orphan slots from one to zero, and telemetry fed the
+measured success back into future ranking. This is one narrow use, not general runtime maturity.
 
 ## Four knowledge layers — never mix
 
@@ -165,6 +197,15 @@ quickly — same spirit as this project's mistake-detect-and-repair proofs).
 6. Proficient specialist (strong editable assets in a chosen domain, little intervention)
 7. Broader professional modeler (generalizes across asset categories/workflows)
 
+The fixed-frame visual comparator in `knowledge_engine/visual_compare.py` and
+`runs/2026-08-10_visual-comparison/` is a prerequisite for stages 3+, not evidence that stage 3
+has been passed. It prevents per-candidate camera framing from hiding proportion regressions and
+requires improvement across front, side, and top, but currently measures silhouettes only.
+
+Early workflow selection is now inspectable through `knowledge_engine/strategy.py`. Its separate
+representation/component/edit/repair decisions expose scores, reasons, runner-up, margin, and
+confidence. The 10/10 declared-case benchmark is a regression test, not a held-out stage result.
+
 **Held-out evaluation is mandatory**: never evaluate a stage using objects whose actions,
 dimensions, topology, decomposition, or helper code were touched during development of that
 stage's capability. Maintain references the agent only sees at evaluation time — this is what
@@ -205,3 +246,7 @@ Persistent Blender Session                       |
 
 The learning system and the modeling system are meant to eventually operate as one continuous
 system, not two separate projects bolted together.
+
+Current implementation and held-out contamination status are audited in
+`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` and
+`knowledge/foundation/benchmark_readiness.json`.

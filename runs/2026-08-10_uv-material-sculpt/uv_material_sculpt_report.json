@@ -1,0 +1,302 @@
+{
+  "lab": "uv_material_sculpt_production",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "UV_UnappliedScale",
+      "category": "uv",
+      "case": "seam unwrap with unapplied non-uniform scale",
+      "metrics": {
+        "uv_layer": true,
+        "seam_edges": 9,
+        "uv_bounds": {
+          "u": [
+            0.00199203216470778,
+            0.5039840936660767
+          ],
+          "v": [
+            0.0019920184276998043,
+            0.9980079531669617
+          ]
+        },
+        "minimum_face_uv_area": 0.06200296272975802,
+        "maximum_face_uv_area": 0.062002980354387116,
+        "world_texel_ratio_cv": 0.5345224898225006,
+        "all_uvs_inside_unit_tile": true
+      }
+    },
+    {
+      "object": "UV_AppliedScale",
+      "category": "uv",
+      "case": "seam unwrap after applying non-uniform scale",
+      "metrics": {
+        "uv_layer": true,
+        "seam_edges": 8,
+        "uv_bounds": {
+          "u": [
+            0.002648973371833563,
+            0.9973510503768921
+          ],
+          "v": [
+            0.0026489596348255873,
+            0.7538365125656128
+          ]
+        },
+        "minimum_face_uv_area": 0.05940776034141438,
+        "maximum_face_uv_area": 0.13208993485191253,
+        "world_texel_ratio_cv": 0.27780278896281196,
+        "all_uvs_inside_unit_tile": true
+      }
+    },
+    {
+      "object": "UV_SmartProject",
+      "category": "uv",
+      "case": "Smart UV Project packed layout",
+      "metrics": {
+        "uv_layer": true,
+        "seam_edges": 0,
+        "uv_bounds": {
+          "u": [
+            0.0039062597788870335,
+            0.6627604365348816
+          ],
+          "v": [
+            0.003906257450580597,
+            0.9960938096046448
+          ]
+        },
+        "minimum_face_uv_area": 0.10596377218361672,
+        "maximum_face_uv_area": 0.10596379029771841,
+        "world_texel_ratio_cv": 5.51283489917384e-08,
+        "all_uvs_inside_unit_tile": true
+      }
+    },
+    {
+      "object": "Material_DiffuseOnly",
+      "category": "material",
+      "case": "diffuse metadata changed but Principled Base Color untouched",
+      "metrics": {
+        "slots": [
+          {
+            "slot": 0,
+            "name": "DiffuseMetadataOnly",
+            "used": true,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.800000011920929,
+              0.05000000074505806,
+              0.019999999552965164,
+              1.0
+            ],
+            "principled_base_color": [
+              0.800000011920929,
+              0.800000011920929,
+              0.800000011920929,
+              1.0
+            ],
+            "roughness": 0.5,
+            "metallic": 0.0
+          }
+        ],
+        "orphan_slot_count": 0
+      }
+    },
+    {
+      "object": "Material_PrincipledConnected",
+      "category": "material",
+      "case": "Principled PBR values set on connected shader",
+      "metrics": {
+        "slots": [
+          {
+            "slot": 0,
+            "name": "PaintedMetal",
+            "used": true,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.07999999821186066,
+              0.20000000298023224,
+              0.699999988079071,
+              1.0
+            ],
+            "principled_base_color": [
+              0.07999999821186066,
+              0.20000000298023224,
+              0.699999988079071,
+              1.0
+            ],
+            "roughness": 0.3199999928474426,
+            "metallic": 0.8500000238418579
+          }
+        ],
+        "orphan_slot_count": 0
+      }
+    },
+    {
+      "object": "Material_OrphanSlot",
+      "category": "material",
+      "case": "second slot exists but no polygon uses it",
+      "metrics": {
+        "slots": [
+          {
+            "slot": 0,
+            "name": "Used",
+            "used": true,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.20000000298023224,
+              0.20000000298023224,
+              0.20000000298023224,
+              1.0
+            ],
+            "principled_base_color": [
+              0.20000000298023224,
+              0.20000000298023224,
+              0.20000000298023224,
+              1.0
+            ],
+            "roughness": 0.5,
+            "metallic": 0.0
+          },
+          {
+            "slot": 1,
+            "name": "Unused",
+            "used": false,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.800000011920929,
+              0.800000011920929,
+              0.800000011920929,
+              1.0
+            ],
+            "principled_base_color": [
+              0.800000011920929,
+              0.800000011920929,
+              0.800000011920929,
+              1.0
+            ],
+            "roughness": 0.5,
+            "metallic": 0.0
+          }
+        ],
+        "orphan_slot_count": 1
+      }
+    },
+    {
+      "object": "Material_AssignedSlots",
+      "category": "material",
+      "case": "both slots assigned reproducibly",
+      "metrics": {
+        "slots": [
+          {
+            "slot": 0,
+            "name": "Body",
+            "used": true,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.20000000298023224,
+              0.25,
+              0.30000001192092896,
+              1.0
+            ],
+            "principled_base_color": [
+              0.20000000298023224,
+              0.25,
+              0.30000001192092896,
+              1.0
+            ],
+            "roughness": 0.550000011920929,
+            "metallic": 0.0
+          },
+          {
+            "slot": 1,
+            "name": "Accent",
+            "used": true,
+            "principled_connected": true,
+            "diffuse_color": [
+              0.800000011920929,
+              0.20000000298023224,
+              0.05000000074505806,
+              1.0
+            ],
+            "principled_base_color": [
+              0.800000011920929,
+              0.20000000298023224,
+              0.05000000074505806,
+              1.0
+            ],
+            "roughness": 0.30000001192092896,
+            "metallic": 0.0
+          }
+        ],
+        "orphan_slot_count": 0
+      }
+    },
+    {
+      "object": "Sculpt_MultiresFoundation",
+      "category": "sculpt",
+      "case": "two Multires levels for non-destructive sculpt detail",
+      "modifier_levels": 2,
+      "metrics": {
+        "vertices": 98,
+        "edges": 192,
+        "faces": 96,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "object": "Sculpt_VoxelRemesh",
+      "category": "sculpt",
+      "case": "voxel remesh overlapping sculpt masses",
+      "before": {
+        "vertices": 324,
+        "edges": 960,
+        "faces": 640,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0
+      },
+      "after": {
+        "vertices": 484,
+        "edges": 964,
+        "faces": 482,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0
+      },
+      "uv_layers_before": 1,
+      "uv_layers_after": 1,
+      "nonzero_uv_loops_before": 1920,
+      "nonzero_uv_loops_after": 1928
+    },
+    {
+      "object": "PROD_MainBody",
+      "category": "production",
+      "case": "named collection/object/modifier with clean transforms",
+      "audit": {
+        "object_count": 1,
+        "unnamed_objects": [],
+        "unapplied_scale": [],
+        "unnamed_modifiers": [],
+        "hidden_objects": []
+      }
+    }
+  ],
+  "assertions": {
+    "applied_scale_improves_world_texel_consistency": true,
+    "smart_project_packs_inside_unit_tile": true,
+    "diffuse_metadata_does_not_change_principled_base": true,
+    "principled_shader_is_connected": true,
+    "pbr_values_reach_principled_inputs": true,
+    "orphan_slot_is_detected": true,
+    "assigned_slots_have_no_orphans": true,
+    "multires_has_two_levels": true,
+    "voxel_remesh_changes_topology": true,
+    "voxel_remesh_produces_manifold_result": true,
+    "pre_remesh_uv_data_was_meaningful": true,
+    "production_audit_is_clean": true
+  },
+  "pass": true
+}

@@ -1,0 +1,258 @@
+{
+  "lab": "solidify_curved_second_shape_transfer",
+  "blender_version": "5.2.0 LTS",
+  "blender_build_hash": "fbe6228777e7",
+  "records": [
+    {
+      "object": "Solidify_Curved_Simple",
+      "shape": "elliptical quarter-cylinder panel, scale baked",
+      "settings": {
+        "solidify_mode": "EXTRUDE",
+        "use_even_offset": false,
+        "nonmanifold_thickness_mode": null
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.0005163405496664
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 0.0,
+        "max_second_shell_source_distance": 0.20000008041968814
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.19999981150022206,
+        "maximum": 0.20000008041968814,
+        "mean": 0.19999992475575606,
+        "maximum_absolute_error": 1.884997779533215e-07,
+        "mean_absolute_error": 9.822129769441825e-08
+      }
+    },
+    {
+      "object": "Solidify_Curved_Simple_Even",
+      "shape": "elliptical quarter-cylinder panel, scale baked",
+      "settings": {
+        "solidify_mode": "EXTRUDE",
+        "use_even_offset": true,
+        "nonmanifold_thickness_mode": null
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.0220064142090735
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 0.0,
+        "max_second_shell_source_distance": 0.2187778931953998
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.19999997506383652,
+        "maximum": 0.2187778931953998,
+        "mean": 0.20588947628645102,
+        "maximum_absolute_error": 0.018777893195399797,
+        "mean_absolute_error": 0.005889490535687285
+      }
+    },
+    {
+      "object": "Solidify_Curved_Complex_Fixed",
+      "shape": "elliptical quarter-cylinder panel, scale baked",
+      "settings": {
+        "solidify_mode": "NON_MANIFOLD",
+        "use_even_offset": false,
+        "nonmanifold_thickness_mode": "FIXED"
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 0.9797188228228748
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 9.982710396919955e-06,
+        "max_second_shell_source_distance": 0.1999999378109254
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.1828430940834372,
+        "maximum": 0.20000991668647042,
+        "mean": 0.194461273261002,
+        "maximum_absolute_error": 0.017156905916562798,
+        "mean_absolute_error": 0.0055443614874956405
+      }
+    },
+    {
+      "object": "Solidify_Curved_Complex_Even",
+      "shape": "elliptical quarter-cylinder panel, scale baked",
+      "settings": {
+        "solidify_mode": "NON_MANIFOLD",
+        "use_even_offset": false,
+        "nonmanifold_thickness_mode": "EVEN"
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.0222306801128884
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 6.211707713883235e-05,
+        "max_second_shell_source_distance": 0.2187776548070881
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.20001569691914423,
+        "maximum": 0.21883487757730866,
+        "mean": 0.20592420011860466,
+        "maximum_absolute_error": 0.018834877577308645,
+        "mean_absolute_error": 0.005924200118604649
+      }
+    },
+    {
+      "object": "Solidify_Curved_Complex_Constraints",
+      "shape": "elliptical quarter-cylinder panel, scale baked",
+      "settings": {
+        "solidify_mode": "NON_MANIFOLD",
+        "use_even_offset": false,
+        "nonmanifold_thickness_mode": "CONSTRAINTS"
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.0220623089844594
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 1.1444091796875e-05,
+        "max_second_shell_source_distance": 0.2187776548070881
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.20000980493327133,
+        "maximum": 0.21878909715305866,
+        "mean": 0.2058996275922572,
+        "maximum_absolute_error": 0.018789097153058654,
+        "mean_absolute_error": 0.0058996275922571905
+      }
+    },
+    {
+      "object": "Solidify_Curved_UnappliedScale",
+      "shape": "elliptical quarter-cylinder via unapplied object scale",
+      "settings": {
+        "solidify_mode": "EXTRUDE",
+        "use_even_offset": false,
+        "object_scale": [
+          1.5,
+          0.75,
+          1.0
+        ],
+        "scale_applied": false
+      },
+      "base": {
+        "vertices": 21,
+        "edges": 32,
+        "faces": 12
+      },
+      "evaluated": {
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "signed_world_volume": 1.0501361133205194
+      },
+      "pairing": {
+        "source_vertices": 21,
+        "evaluated_vertices": 42,
+        "correspondence_valid": true,
+        "correspondence_pairs": 21,
+        "max_closest_shell_source_displacement": 0.0,
+        "max_second_shell_source_distance": 0.299999956289924
+      },
+      "wall_thickness": {
+        "requested": 0.2,
+        "minimum": 0.19207234188960454,
+        "maximum": 0.299999956289924,
+        "mean": 0.24163796195442466,
+        "maximum_absolute_error": 0.09999995628992397,
+        "mean_absolute_error": 0.046168005200502245
+      }
+    }
+  ],
+  "hypotheses": {
+    "simple_even_reduces_maximum_vertex_pair_error": false,
+    "complex_constraints_reduces_maximum_vertex_pair_error": false
+  },
+  "assertions": {
+    "all_applied_scale_variants_are_closed": true,
+    "all_variants_have_complete_shell_correspondence": true,
+    "applied_simple_hits_requested_vertex_pair_distance": true,
+    "complex_constraints_is_closed": true,
+    "unapplied_scale_has_more_thickness_error": true
+  },
+  "pass": true
+}

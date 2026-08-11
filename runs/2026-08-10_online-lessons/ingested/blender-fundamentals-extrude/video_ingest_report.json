@@ -1,0 +1,119 @@
+{
+  "source_id": "blender-fundamentals-extrude",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\extrude.webm",
+  "sha256": "2aa5cd83ce3e0915d55db4649cc1a7eb8629f0dc78c22daea78a267034c163c9",
+  "duration": 286.901,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": false,
+  "transcript": true,
+  "caption_path": null,
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\generated_transcript.vtt",
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0001_000030.000s.png"
+    },
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 60.0,
+      "decoded_at": 60.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0003_000060.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0004_000090.000s.png"
+    },
+    {
+      "timestamp": 120.0,
+      "decoded_at": 120.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0005_000120.000s.png"
+    },
+    {
+      "timestamp": 150.0,
+      "decoded_at": 150.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0006_000150.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0007_000180.000s.png"
+    },
+    {
+      "timestamp": 210.0,
+      "decoded_at": 210.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0008_000210.000s.png"
+    },
+    {
+      "timestamp": 225.0,
+      "decoded_at": 225.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0009_000225.000s.png"
+    },
+    {
+      "timestamp": 240.0,
+      "decoded_at": 240.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0010_000240.000s.png"
+    },
+    {
+      "timestamp": 250.0,
+      "decoded_at": 250.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0011_000250.000s.png"
+    },
+    {
+      "timestamp": 270.0,
+      "decoded_at": 270.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0012_000270.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0007_000180.000s.png"
+    },
+    {
+      "timestamp": 225.0,
+      "decoded_at": 225.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0009_000225.000s.png"
+    },
+    {
+      "timestamp": 250.0,
+      "decoded_at": 250.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\frame_0011_000250.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "transcript_segment_count": 68,
+  "transcript_text_in_report": false,
+  "transcription": {
+    "backend": "local-machine-generated-sidecar",
+    "model": null,
+    "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-extrude\\generated_transcript.vtt",
+    "limitations": [
+      "Machine transcription may contain errors; verify important claims independently."
+    ],
+    "segment_count": 68
+  },
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Machine transcript is available but may contain errors; important claims require frame or official-doc corroboration."
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "lab": "bevel_parameter_semantics",
+  "blender_version": "5.2.0 LTS",
+  "cases": [
+    {
+      "case_id": "width_type_offset",
+      "pass": true,
+      "input": {
+        "offset_type": "OFFSET",
+        "amount": 0.2,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 7.736295507695122,
+        "surface_area": 21.67932879924774,
+        "minimum_face_area": 0.018388038501143456,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "width_type_width",
+      "pass": true,
+      "input": {
+        "offset_type": "WIDTH",
+        "amount": 0.2,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 7.865588974351166,
+        "surface_area": 22.37316232547164,
+        "minimum_face_area": 0.009194010868668556,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "width_type_depth",
+      "pass": true,
+      "input": {
+        "offset_type": "DEPTH",
+        "amount": 0.2,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 7.487066362586005,
+        "surface_area": 20.678132086992264,
+        "minimum_face_area": 0.03677607700228691,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "width_type_percent",
+      "pass": true,
+      "input": {
+        "offset_type": "PERCENT",
+        "amount": 20.0,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 7.015075399584886,
+        "surface_area": 19.222279250621796,
+        "minimum_face_area": 0.07355213910341263,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "width_type_absolute",
+      "pass": true,
+      "input": {
+        "offset_type": "ABSOLUTE",
+        "amount": 0.2,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 7.736295507695122,
+        "surface_area": 21.67932879924774,
+        "minimum_face_area": 0.018388038501143456,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "huge_offset_clamp_false",
+      "pass": true,
+      "input": {
+        "offset_type": "OFFSET",
+        "amount": 5.0,
+        "clamp_overlap": false
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 105.281246715962,
+        "surface_area": 1394.57275390625,
+        "minimum_face_area": 11.492522239685059,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    },
+    {
+      "case_id": "huge_offset_clamp_true",
+      "pass": true,
+      "input": {
+        "offset_type": "OFFSET",
+        "amount": 5.0,
+        "clamp_overlap": true
+      },
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6
+      },
+      "after": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "volume": 3.1547007729494534,
+        "surface_area": 11.032820749912297,
+        "minimum_face_area": 1.4210854715202004e-14,
+        "non_manifold_edges": 0,
+        "new_faces_returned": 48
+      }
+    }
+  ],
+  "semantic_checks": {
+    "all_five_width_types_executed_cleanly": true,
+    "width_types_are_not_numerically_interchangeable": true,
+    "clamp_changes_huge_offset_result": true
+  },
+  "pass": true
+}

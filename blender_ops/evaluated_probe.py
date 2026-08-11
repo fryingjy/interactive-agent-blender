@@ -22,7 +22,10 @@ import bpy
 import bmesh
 import mathutils
 
-import bmesh_io
+try:
+    from . import bmesh_io
+except ImportError:
+    import bmesh_io
 
 
 def _read_evaluated_bmesh(obj):
@@ -128,6 +131,96 @@ def evaluated_surface_quality(name):
             "area_outlier_ratio": round(len(outliers) / len(areas_nonzero), 4) if areas_nonzero else 0,
             "max_adjacent_face_angle_radians": round(max_angle, 4),
             "angle_samples": angle_samples,
+        }
+    finally:
+        cleanup()
+
+
+def evaluated_surface_diagnostics(name, outlier_z_threshold=6.0):
+    """Report scale-normalized local surface concentration and oscillation signals.
+
+    This strengthens, but does not replace, visual judgment. A local Laplacian normal displacement
+    that is an extreme robust outlier is a pinching candidate. Repeated sign changes in meaningful
+    signed displacement are a waviness candidate. Results are descriptive with explicit thresholds;
+    topology boundaries and intentional corrugation can produce the same signals.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+    bm, cleanup = _read_evaluated_bmesh(obj)
+    try:
+        bm.verts.ensure_lookup_table()
+        bm.edges.ensure_lookup_table()
+        bm.normal_update()
+        edge_lengths = sorted(edge.calc_length() for edge in bm.edges if edge.calc_length() > 1e-9)
+        if not edge_lengths:
+            return {"error": "evaluated mesh has no measurable edges"}
+        median_edge = edge_lengths[len(edge_lengths) // 2]
+        samples = []
+        for vert in bm.verts:
+            neighbors = [edge.other_vert(vert) for edge in vert.link_edges]
+            if len(neighbors) < 2:
+                continue
+            mean = sum((neighbor.co for neighbor in neighbors), mathutils.Vector()) / len(neighbors)
+            laplacian = vert.co - mean
+            signed = laplacian.dot(vert.normal) / median_edge
+            normal_angles = [vert.normal.angle(neighbor.normal, 0.0) for neighbor in neighbors]
+            samples.append({
+                "index": vert.index,
+                "position": list(vert.co),
+                "signed_laplacian": signed,
+                "absolute_laplacian": abs(signed),
+                "mean_neighbor_normal_angle": sum(normal_angles) / len(normal_angles),
+            })
+        if not samples:
+            return {"error": "no evaluable vertices"}
+        absolute = sorted(item["absolute_laplacian"] for item in samples)
+        median = absolute[len(absolute) // 2]
+        deviations = sorted(abs(value - median) for value in absolute)
+        mad = deviations[len(deviations) // 2]
+        robust_scale = max(1.4826 * mad, median * 0.05, 1e-6)
+        for item in samples:
+            item["robust_outlier_z"] = (item["absolute_laplacian"] - median) / robust_scale
+        outliers = [item for item in samples if item["robust_outlier_z"] >= outlier_z_threshold]
+        outliers.sort(key=lambda item: item["robust_outlier_z"], reverse=True)
+
+        signed_by_index = {item["index"]: item["signed_laplacian"] for item in samples}
+        meaningful = max(median * 0.5, 0.02)
+        sign_edges = 0
+        sign_changes = 0
+        for edge in bm.edges:
+            a = signed_by_index.get(edge.verts[0].index)
+            b = signed_by_index.get(edge.verts[1].index)
+            if a is None or b is None or min(abs(a), abs(b)) < meaningful:
+                continue
+            sign_edges += 1
+            sign_changes += int(a * b < 0)
+        normal_angles = sorted(item["mean_neighbor_normal_angle"] for item in samples)
+        p95_index = min(len(normal_angles) - 1, int(len(normal_angles) * 0.95))
+        return {
+            "vertex_samples": len(samples),
+            "median_edge_length": round(median_edge, 8),
+            "median_absolute_laplacian": round(median, 8),
+            "laplacian_mad": round(mad, 8),
+            "max_robust_outlier_z": round(max(item["robust_outlier_z"] for item in samples), 4),
+            "pinch_candidate_count": len(outliers),
+            "pinch_candidates": [
+                {
+                    "evaluated_vertex_index": item["index"],
+                    "position": [round(value, 5) for value in item["position"]],
+                    "robust_outlier_z": round(item["robust_outlier_z"], 4),
+                    "signed_laplacian": round(item["signed_laplacian"], 6),
+                }
+                for item in outliers[:20]
+            ],
+            "meaningful_signed_edges": sign_edges,
+            "laplacian_sign_change_ratio": round(sign_changes / sign_edges, 6) if sign_edges else 0.0,
+            "mean_neighbor_normal_angle_p95_degrees": round(math.degrees(normal_angles[p95_index]), 4),
+            "classification": "CANDIDATE_EVIDENCE_ONLY",
+            "limitations": [
+                "boundaries and intentional corrugation can resemble defects",
+                "thresholds require validation by surface family and render/highlight inspection",
+            ],
         }
     finally:
         cleanup()

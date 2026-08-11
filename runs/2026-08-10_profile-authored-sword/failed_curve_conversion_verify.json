@@ -1,0 +1,18 @@
+{
+  "attempt": "curve-converted guard grooves and helical grip wrap",
+  "fresh_process_result": {
+    "mesh_objects": 19,
+    "clean_objects": 14,
+    "all_clean": false,
+    "failed_objects": {
+      "Guard_Groove_01": {"non_manifold_edges": 24},
+      "Guard_Groove_02": {"non_manifold_edges": 24},
+      "Guard_Groove_03": {"non_manifold_edges": 24},
+      "Guard_Groove_04": {"non_manifold_edges": 24},
+      "Grip_Helical_Wrap": {"non_manifold_edges": 32}
+    }
+  },
+  "diagnosis": "Converted curve bevel caps rendered as closed details but retained non-manifold seam edges in evaluated meshes.",
+  "correction": "Replace curve conversion with explicit transported cross-section rings, perimeter quads, and triangulated end-cap fans.",
+  "corrected_evidence": "fresh_collection_verify.json reports 19/19 clean after reopening the saved blend in a factory-startup Blender process."
+}

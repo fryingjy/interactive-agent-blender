@@ -1,165 +1,1263 @@
 [
   {
-    "source_id": "blender-manual-subsurf",
-    "title": "Subdivision Surface Modifier",
+    "id": "blender-manual-subsurf",
     "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/subdivision_surface.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Subdivision Surface Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["subdivision-surface", "modifiers"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Catmull-Clark vs Simple subdivision modes; Simple only smooths non-coplanar geometry",
-      "Levels Viewport vs Render are independent, viewport should not exceed render",
-      "Use Limit Surface places verts at the theoretical infinite-subdivision position"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "subdivision-surface",
+      "modifiers"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Catmull-Clark vs Simple subdivision modes; Simple only smooths non-coplanar geometry",
+        "Levels Viewport vs Render are independent, viewport should not exceed render",
+        "Use Limit Surface places verts at the theoretical infinite-subdivision position"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "runs/2026-08-07_soap-dish-subsurf/",
+        "runs/2026-08-10_topology-subd/topology_subd_report.json"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-empties",
-    "title": "Empties (incl. Image Empty reference-modeling workflow)",
+    "id": "blender-manual-empties",
     "url": "https://docs.blender.org/manual/en/latest/modeling/empties.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Empties (incl. Image Empty reference-modeling workflow)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["reference-modeling", "empties"],
-    "modalities_inspected": ["text"],
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "reference-modeling",
+      "empties"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDIED",
-    "direct_observations": [
-      "Image Empty displays a reference photo directly in the 3D viewport for continuous comparison while modeling",
-      "Depth=Front + low Opacity is the recommended setting when using an image as a modeling reference"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
     ],
-    "candidate_principles": [
-      "Reference-based modeling should compare against the source continuously (or via repeated renders for a non-visual agent), not once at the end -- root cause of the first (rejected) gadget blockout attempt"
-    ],
-    "experiments": [],
-    "skills": []
+    "metadata": {
+      "direct_observations": [
+        "Image Empty displays a reference photo directly in the 3D viewport for continuous comparison while modeling",
+        "Depth=Front + low Opacity is the recommended setting when using an image as a modeling reference"
+      ],
+      "candidate_principles": [
+        "Reference-based modeling should compare against the source continuously (or via repeated renders for a non-visual agent), not once at the end -- root cause of the first (rejected) gadget blockout attempt"
+      ],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-mesh-editing-root",
-    "title": "Editing Mesh Objects (mesh editing operator index)",
+    "id": "blender-manual-mesh-editing-root",
     "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/index.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Editing Mesh Objects (mesh editing operator index)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["mesh-editing", "operator-index"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "mesh-editing",
+      "operator-index"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Official operator taxonomy: Mesh/Vertex/Edge/Face/UV operator groups, used to derive this session's reproduction-lab operation list"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "runs/2026-08-10_topology-subd/topology_subd_report.json"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blender-manual-bevel",
-    "title": "Bevel (edge/vertex)",
+    "id": "blender-manual-bevel",
     "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/bevel.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "Bevel (edge/vertex)",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "Blender 5.2 LTS",
-    "topics": ["bevel", "hard-surface"],
-    "modalities_inspected": ["text"],
-    "status": "STUDIED",
-    "direct_observations": [
-      "Width Type has 5 variants (Offset/Width/Depth/Percent/Absolute) with different meanings for the same Width number -- this project has only ever used bmesh.ops.bevel defaults, never explicitly varied Width Type",
-      "Clamp Overlap prevents overshoot past neighboring faces; Miter Outer/Inner controls extra geometry at multi-edge corners to avoid pinching"
+    "version": "Blender 5.2 LTS",
+    "topics": [
+      "bevel",
+      "hard-surface"
     ],
-    "candidate_principles": [],
-    "experiments": ["see knowledge/foundation/operator_cards/bevel.md -- pre-existing project findings, not fresh this session"],
-    "skills": ["boolean-groove-cut-topology-cleanup (unrelated defect, same project)"]
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Width Type has 5 variants (Offset/Width/Depth/Percent/Absolute) with different meanings for the same Width number -- this project has only ever used bmesh.ops.bevel defaults, never explicitly varied Width Type",
+        "Clamp Overlap prevents overshoot past neighboring faces; Miter Outer/Inner controls extra geometry at multi-edge corners to avoid pinching"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "see knowledge/foundation/operator_cards/bevel.md -- pre-existing project findings, not fresh this session"
+      ],
+      "skills": [
+        "boolean-groove-cut-topology-cleanup (unrelated defect, same project)"
+      ]
+    }
   },
   {
-    "source_id": "blender-api-bmesh-ops",
-    "title": "BMesh Operators (bmesh.ops) Python API reference",
+    "id": "blender-manual-bevel-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+    "local_path": null,
+    "title": "Bevel Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 4.5 LTS Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "bevel-modifier",
+      "hard-surface",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
+        "Limit methods include None, Angle, Weight attribute, and Vertex Group",
+        "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee"
+      ],
+      "candidate_principles": [
+        "Use Angle limiting when coplanar triangulation edges should not be beveled",
+        "Choose segment count from visual requirements because evaluated density rises quickly",
+        "Inspect minimum edge length and corner quality even when Clamp Overlap is enabled",
+        "Apply or explicitly account for non-uniform object scale before judging world-space bevel width"
+      ],
+      "experiments": [
+        "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "blender-manual-mirror-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/mirror.html",
+    "local_path": null,
+    "title": "Mirror Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible 4.x Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "mirror-modifier",
+      "symmetry",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "The mirror plane comes from local object axes or a designated Mirror Object",
+        "Merge welds matching vertices only within Merge Distance",
+        "Clipping constrains Edit Mode movement but does not merge vertices already outside the threshold",
+        "Bisect cuts crossing geometry before mirroring"
+      ],
+      "candidate_principles": [
+        "Diagnose a failed seam from plane placement, transforms, vertex distance, Merge settings, and evaluated topology before raising the threshold",
+        "Treat Mirror/Subdivision order as topology-dependent and verify the evaluated seam instead of relying on a universal stack rule"
+      ],
+      "experiments": [
+        "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
+        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "blender-manual-boolean-modifier",
+    "url": "https://docs.blender.org/manual/en/dev/modeling/modifiers/generate/booleans.html",
+    "local_path": null,
+    "title": "Boolean Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "boolean-modifier",
+      "hard-surface",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "RUNTIME_VALIDATED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Difference subtracts source volume, Union combines volumes while removing interior faces, and Intersect retains shared volume",
+        "Fast is intended for speed but lacks robust overlapping-geometry support; Exact is slower and supports overlap/coplanarity",
+        "Manifold is usually fastest but requires manifold operands except for the documented Difference-with-plane case",
+        "Only manifold operands are guaranteed to produce proper results"
+      ],
+      "candidate_principles": [
+        "Inspect n-gons, degenerates, zero-length edges, shading, and editability even when a Boolean result is manifold",
+        "Avoid tangent or coincident cutter placement when a small strategy change can prevent solver slivers"
+      ],
+      "experiments": [
+        "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+        "runs/2026-08-07_proof1-redo/",
+        "runs/2026-08-07_mug-adaptive/"
+      ],
+      "skills": [
+        "boolean-groove-cut-topology-cleanup",
+        "modifier-stack-order-subd-safe"
+      ]
+    }
+  },
+  {
+    "id": "blender-manual-solidify-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/solidify.html",
+    "local_path": null,
+    "title": "Solidify Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "solidify-modifier",
+      "thickness",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Thickness is calculated in local coordinates, so non-uniform object scale can vary world-space thickness",
+        "Offset places thickness relative to face normals",
+        "Fill Rim joins inner and outer boundaries",
+        "Even Thickness improves consistency but does not guarantee exact thickness for every topology"
+      ],
+      "candidate_principles": [
+        "Apply or explicitly account for non-uniform scale before judging wall thickness",
+        "Treat an intentionally open rim as a pipeline choice, not a closed solid"
+      ],
+      "experiments": [
+        "runs/2026-08-10_boolean-solidify-foundation/boolean_solidify_report.json",
+        "runs/2026-08-10_solidify-transfer/solidify_transfer_report.json"
+      ],
+      "skills": [
+        "modifier-stack-order-subd-safe"
+      ]
+    }
+  },
+  {
+    "id": "blender-api-bmesh-ops",
     "url": "https://docs.blender.org/api/current/bmesh.ops.html",
-    "type": "official_docs",
+    "local_path": null,
+    "title": "BMesh Operators (bmesh.ops) Python API reference",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
     "trust_tier": "A",
-    "version_scope": "current Blender Python API",
-    "topics": ["bmesh", "api", "grid_fill", "bridge_loops"],
-    "modalities_inspected": ["text"],
-    "status": "STUDYING",
-    "direct_observations": [
-      "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
-      "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session"
+    "version": "current Blender Python API",
+    "topics": [
+      "bmesh",
+      "api",
+      "grid_fill",
+      "bridge_loops"
     ],
-    "candidate_principles": [],
-    "experiments": ["bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md"],
-    "skills": []
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
+        "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session",
+        "Standalone BMesh ownership requires explicit write-back/free; indexed sequences require current lookup tables",
+        "Scripts are responsible for valid selection/connectivity state and explicit edit-mesh updates"
+      ],
+      "candidate_principles": [],
+      "experiments": [
+        "bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md",
+        "runs/2026-08-10_bmesh-api/bmesh_api_report.json"
+      ],
+      "skills": []
+    }
   },
   {
-    "source_id": "blenderguru-donut-v5-page",
-    "title": "The Blender Donut 5.0 Tutorial (all links and resources)",
+    "id": "blenderguru-donut-v5-page",
     "url": "https://www.blenderguru.com/posts/blender-donut-v5-tutorial",
-    "type": "video",
+    "local_path": null,
+    "title": "The Blender Donut 5.0 Tutorial (all links and resources)",
+    "creator": "Andrew Price / Blender Guru",
+    "source_type": "video",
     "trust_tier": "B",
-    "version_scope": "Blender 5.0",
-    "topics": ["fundamentals", "reference-modeling"],
-    "modalities_inspected": ["text (page shell/links only)"],
-    "status": "REJECTED",
-    "direct_observations": [
-      "Page is a link-list wrapper around an embedded YouTube video -- no substantive written lesson content of its own"
+    "version": "Blender 5.0",
+    "topics": [
+      "fundamentals",
+      "reference-modeling"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "rejection_reason": "Actual instructional content is video-only (YouTube), confirmed unreachable this session (bot-check redirect via both the browser tool and WebFetch). Not promoted; would need the transcript/frames to be genuinely studied, which are not accessible."
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "REJECTED",
+    "rejected_reason": "Actual instructional content is video-only (YouTube), confirmed unreachable this session (bot-check redirect via both the browser tool and WebFetch). Not promoted; would need the transcript/frames to be genuinely studied, which are not accessible.",
+    "modalities_inspected": [
+      "text (page shell/links only)"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Page is a link-list wrapper around an embedded YouTube video -- no substantive written lesson content of its own"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "cgcookie-core-mesh-modeling",
-    "title": "CORE: Fundamentals of 3D Mesh Modeling (Jonathan Lampel)",
+    "id": "cgcookie-core-mesh-modeling",
     "url": "https://cgcookie.com/courses/core-fundamentals-mesh-modeling",
-    "type": "course",
+    "local_path": null,
+    "title": "CORE: Fundamentals of 3D Mesh Modeling (Jonathan Lampel)",
+    "creator": "CG Cookie",
+    "source_type": "course",
     "trust_tier": "B",
-    "version_scope": "current Blender",
-    "topics": ["mesh-fundamentals", "hard-surface", "subdivision-surface", "topology"],
-    "modalities_inspected": ["text (course overview/curriculum page only)"],
+    "version": "current Blender",
+    "topics": [
+      "mesh-fundamentals",
+      "hard-surface",
+      "subdivision-surface",
+      "topology"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "QUEUED",
-    "direct_observations": [
-      "Real, structured curriculum confirmed: Ch1 Intro to 3D Modeling, Ch2 Hard Surface Modeling, Ch3 Subdivision Surface Modeling, Ch4 Final Exercise",
-      "68 reviews, positive, mentions concrete habits (merge by distance, recalculate normals) matching this project's own established practices"
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text (course overview/curriculum page only)"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "access_note": "Course page itself loads; actual lesson content is paywalled/login-gated and video-based -- not accessible without an account and without video capability. Curriculum structure is real evidence (author credentials, chapter breakdown, review consensus); lesson-by-lesson study is NOT possible in this environment."
+    "metadata": {
+      "direct_observations": [
+        "Real, structured curriculum confirmed: Ch1 Intro to 3D Modeling, Ch2 Hard Surface Modeling, Ch3 Subdivision Surface Modeling, Ch4 Final Exercise",
+        "68 reviews, positive, mentions concrete habits (merge by distance, recalculate normals) matching this project's own established practices"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": [],
+      "access_note": "Course page itself loads; actual lesson content is paywalled/login-gated and video-based -- not accessible without an account and without video capability. Curriculum structure is real evidence (author credentials, chapter breakdown, review consensus); lesson-by-lesson study is NOT possible in this environment."
+    }
   },
   {
-    "source_id": "blenderartists-modeling-support",
-    "title": "Latest Support/Modeling topics",
+    "id": "blenderartists-modeling-support",
     "url": "https://blenderartists.org/c/support/modeling/37",
-    "type": "forum",
+    "local_path": null,
+    "title": "Latest Support/Modeling topics",
+    "creator": "Blender Artists community",
+    "source_type": "forum",
     "trust_tier": "C",
-    "version_scope": "mixed/current",
-    "topics": ["community-troubleshooting"],
-    "modalities_inspected": ["text"],
+    "version": "mixed/current",
+    "topics": [
+      "community-troubleshooting"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDIED",
-    "direct_observations": ["Page loads correctly; not yet mined for a specific problem-driven query this session"],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": []
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Page loads correctly; not yet mined for a specific problem-driven query this session"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
   },
   {
-    "source_id": "youtube-general",
-    "title": "YouTube (all video sources: Blender Guru, CG Cookie, Blender Secrets, Blender Studio)",
+    "id": "youtube-general",
     "url": "https://www.youtube.com/",
-    "type": "video",
+    "local_path": null,
+    "title": "YouTube (all video sources: Blender Guru, CG Cookie, Blender Secrets, Blender Studio)",
+    "creator": "mixed creators",
+    "source_type": "video",
     "trust_tier": "D",
-    "version_scope": "n/a",
+    "version": "n/a",
     "topics": [],
-    "modalities_inspected": [],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "REJECTED",
-    "direct_observations": [
-      "Confirmed unreachable from this environment: both the interactive Browser tool and the server-side WebFetch tool independently redirected to https://www.google.com/sorry/index (a bot-detection challenge page) when attempting https://www.youtube.com/watch?v=-tbSCMbJA6o",
-      "Not attempted to bypass -- completing CAPTCHAs/bot-detection is prohibited regardless of purpose"
+    "rejected_reason": "No access to video_frames, audio, captions, or transcript for any YouTube-hosted source. Every video source in the directive's curriculum (Blender Studio Fundamentals, CG Cookie video lessons, Blender Secrets tips) is affected equally. Never claim video/audio access for these -- see Pass 0 access-truth requirement.",
+    "modalities_inspected": [],
+    "metadata": {
+      "direct_observations": [
+        "Confirmed unreachable from this environment: both the interactive Browser tool and the server-side WebFetch tool independently redirected to https://www.google.com/sorry/index (a bot-detection challenge page) when attempting https://www.youtube.com/watch?v=-tbSCMbJA6o",
+        "Not attempted to bypass -- completing CAPTCHAs/bot-detection is prohibited regardless of purpose"
+      ],
+      "candidate_principles": [],
+      "experiments": [],
+      "skills": []
+    }
+  },
+  {
+    "id": "project-owned-modeling-video-ingestion-fixture",
+    "url": null,
+    "local_path": "runs/2026-08-10_video-ingestion/project_owned_modeling_lesson.mp4",
+    "title": "Inspect Cage, Evaluated Surface, and Multiple Views",
+    "creator": "interactive-agent-blender project",
+    "source_type": "video_fixture",
+    "trust_tier": "D",
+    "version": "Blender-agnostic ingestion fixture",
+    "topics": [
+      "video-ingestion",
+      "evaluated-surface",
+      "multi-view-review"
     ],
-    "candidate_principles": [],
-    "experiments": [],
-    "skills": [],
-    "rejection_reason": "No access to video_frames, audio, captions, or transcript for any YouTube-hosted source. Every video source in the directive's curriculum (Blender Studio Fundamentals, CG Cookie video lessons, Blender Secrets tips) is affected equally. Never claim video/audio access for these -- see Pass 0 access-truth requirement."
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "video_frames",
+      "audio_stream_metadata",
+      "captions",
+      "transcript"
+    ],
+    "metadata": {
+      "purpose": "End-to-end legal local-ingestion validation, not external curriculum evidence",
+      "duration_seconds": 6.0,
+      "fps": 6.0,
+      "report": "runs/2026-08-10_video-ingestion/ingested/video_ingest_report.json",
+      "limitations": [
+        "Project-owned synthetic fixture does not count as knowledge gained from an expert tutorial",
+        "Audio presence was verified at stream level; speech understanding was not claimed"
+      ]
+    }
+  },
+  {
+    "id": "blender-manual-array-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/array.html",
+    "local_path": null,
+    "title": "Array Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0/current Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["array-modifier", "repetition", "modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Relative, Constant, and Object offsets are additive",
+        "Fit and relative behavior depend on local-space dimensions",
+        "Adjacent copies can merge only within the configured distance"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-shrinkwrap-modifier",
+    "url": "https://docs.blender.org/manual/en/5.0/modeling/modifiers/deform/shrinkwrap.html",
+    "local_path": null,
+    "title": "Shrinkwrap Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["shrinkwrap-modifier", "retopology", "projection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Nearest Surface Point selects the closest target-surface point",
+        "Project uses selected local axes/directions and leaves vertices unchanged when no target is hit",
+        "Offset controls distance from the selected target position"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-simple-deform-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/simple_deform.html",
+    "local_path": null,
+    "title": "Simple Deform Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Blender 3.6/5.x Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["simple-deform", "twist", "bend", "modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Twist/Bend use angle while Taper/Stretch use factor",
+        "Deformation is local-space and origin dependent",
+        "Unsuitable axis/geometry combinations can produce no deformation"
+      ],
+      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-remeshing-retopology",
+    "url": "https://docs.blender.org/manual/en/5.0/modeling/meshes/retopology.html",
+    "local_path": null,
+    "title": "Remeshing and Retopology",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": ["retopology", "voxel-remesh", "quad-remesh", "shrinkwrap"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Voxel remesh creates uniform volume-based topology but is unsuitable as final deformation topology",
+        "Automatic remesh does not replace manual loop-flow decisions",
+        "Manual retopology uses an overlapping mesh, overlay, Poly Build, snapping, and projection"
+      ],
+      "experiments": [
+        "runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json",
+        "runs/2026-08-07_mug-retopo/"
+      ]
+    }
+  },
+  {
+    "id": "blender-manual-uv-layout-workflow",
+    "url": "https://docs.blender.org/manual/en/dev/modeling/meshes/uv/workflows/layout.html",
+    "local_path": null,
+    "title": "UV Layout Workflow",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual generation; reproduced in Blender 5.2.0 LTS",
+    "topics": ["uv", "unwrap", "seams", "packing", "texel-density"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Complex meshes can be unwrapped in parts or through marked seams",
+        "Pack Islands resolves placement but layout may still need scale and distortion refinement",
+        "Minimize Stretch and Average Island Scale address different UV-quality signals"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-materials-introduction",
+    "url": "https://docs.blender.org/manual/en/latest/render/materials/introduction.html",
+    "local_path": null,
+    "title": "Materials Introduction",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["materials", "nodes", "pbr", "assignment"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Materials are data-blocks assignable to objects or mesh regions",
+        "Surface, volume, and displacement shaders define different appearance components",
+        "Node connections control rendered behavior"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-principled-bsdf",
+    "url": "https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html",
+    "local_path": null,
+    "title": "Principled BSDF",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
+    "topics": ["principled-bsdf", "pbr", "roughness", "metallic"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Principled BSDF combines physically based surface layers in one shader",
+        "Base Color, Metallic, and Roughness are render-affecting node inputs rather than material viewport metadata"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-sculpting-index",
+    "url": "https://docs.blender.org/manual/en/5.0/sculpt_paint/sculpting/index.html",
+    "local_path": null,
+    "title": "Sculpting",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; foundation mechanics reproduced in Blender 5.2.0 LTS",
+    "topics": ["sculpting", "brushes", "multires", "remesh", "face-sets"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Sculpting includes primary brush workflows, masks/Face Sets, filters, symmetry, adaptive resolution, and remesh controls",
+        "Resolution strategy is part of sculpt workflow and later retopology remains a distinct task"
+      ],
+      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+    }
+  },
+  {
+    "id": "blender-api-bmesh-module",
+    "url": "https://docs.blender.org/api/current/bmesh.html",
+    "local_path": null,
+    "title": "BMesh Module",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Current Blender Python API; reproduced in Blender 5.2.0 LTS",
+    "topics": ["bmesh", "api", "ownership", "custom-data", "selection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "Standalone and Edit-mode BMesh access have different ownership/update responsibilities",
+        "Custom data such as UVs is accessed through element layers",
+        "Selection and mesh-validity conventions are not automatically enforced for scripts"
+      ],
+      "experiments": ["runs/2026-08-10_bmesh-api/bmesh_api_report.json"]
+    }
+  },
+  {
+    "id": "blender-manual-gltf-export",
+    "url": "https://docs.blender.org/manual/en/3.3/addons/import_export/scene_gltf2.html",
+    "local_path": null,
+    "title": "glTF 2.0 Import/Export",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 3.3 Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": ["gltf", "export", "triangulation", "uv-seams", "vertex-splitting"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "RUNTIME_VALIDATED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "glTF converts quads and n-gons to triangles during export",
+        "discontinuous UVs and flat-shaded edges can increase exported vertex counts because vertices are separated"
+      ],
+      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+    }
+  },
+  {
+    "id": "blender-manual-obj-export",
+    "url": "https://docs.blender.org/manual/en/5.0/files/import_export/obj.html",
+    "local_path": null,
+    "title": "Wavefront OBJ Import/Export",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.0 Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": ["obj", "export", "uv", "materials", "axis-conversion"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "RUNTIME_VALIDATED",
+    "rejected_reason": null,
+    "modalities_inspected": ["text"],
+    "metadata": {
+      "direct_observations": [
+        "OBJ has basic geometry and material support and may use a companion MTL file",
+        "UV, normal, material, triangulation, modifier, scale, and axis options affect interoperability"
+      ],
+      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+    }
+  },
+  {
+    "id": "blender-manual-secondary-modifier-index-20260810",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/index.html",
+    "local_path": null,
+    "title": "Object Modifiers index and indexed child-page excerpts",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 4.5/5.0 indexed Manual; behavior reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "screw", "remesh", "decimate", "triangulate", "smooth", "corrective-smooth",
+      "laplacian-smooth", "curve-modifier", "lattice-modifier"
+    ],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["search-indexed official text"],
+    "metadata": {
+      "direct_observations": [
+        "The official modifier index places Screw/Remesh/Decimate/Triangulate under Generate and Smooth/Corrective Smooth/Laplacian Smooth/Curve/Lattice under Deform",
+        "Screw revolves a profile with angle, axial offset, iterations and step density; profile alignment and axis are preconditions",
+        "Decimate targets face reduction and its collapse ratio is triangle-based; it is not intended to improve an already economical production cage",
+        "Corrective Smooth targets highly distorted deformations and commonly follows armature deformation; Only Smooth previews raw relaxation",
+        "Curve deformation depends on dominant axis and object/curve spatial relationship; Lattice provides non-destructive broad deformation through a control cage"
+      ],
+      "access_limit": "Direct latest child-page fetches returned HTTP 402; only official search-indexed text was observed, so exhaustive child-page study is not claimed",
+      "experiments": ["runs/2026-08-10_secondary-modifiers/secondary_modifier_report.json"],
+      "skills": ["knowledge/foundation/operator_cards/secondary_modifiers.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-modeling-intro-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Modeling_Introduction_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
+    "title": "Modeling Introduction - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["modeling-workflow", "modifiers", "edit-mode"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 75.401,
+      "sha256": "f6a6fef06ca3b89c133ada732909925af019e95f9306a7834715b885a99473a6",
+      "direct_observations": [
+        "A sampled frame at 45 seconds shows Blender's Modeling workspace in Edit Mode and the modifier category menu",
+        "The file contains real video/audio and no creator captions; a local tiny.en machine transcript produced 23 timestamped segments",
+        "Transcript claims were checked against frames and current Blender documentation; exact wording remains fallible"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-extrude-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Extrude_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/extrude.webm",
+    "title": "Extrude - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["extrude", "mesh-editing", "selection-context"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 286.901,
+      "sha256": "2aa5cd83ce3e0915d55db4649cc1a7eb8629f0dc78c22daea78a267034c163c9",
+      "direct_observations": [
+        "A sampled frame at 180 seconds visibly distinguishes Extrude Region, Along Normals, Individual, and to Cursor variants",
+        "A later sampled frame shows loop-cut-and-slide state during the lesson's supporting mesh-editing sequence",
+        "A local tiny.en machine transcript produced 68 timestamped segments; frames and current docs corroborate the topology and variant distinctions"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-extrude/video_ingest_report.json"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-bevel-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Bevel_Tool_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
+    "title": "Bevel Tool - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; inspected 2026-08-10",
+    "topics": ["bevel", "bevel-modifier", "limit-method", "hard-surface"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 211.361,
+      "sha256": "2f52c26b21a3a965770f4def08af32bb9d414895b82f837174d124fbe107d34f",
+      "direct_observations": [
+        "Sampled frames at 180 and 195 seconds show the non-destructive Bevel modifier, Clamp Overlap, width/profile controls, and a change from no limit to Angle limit",
+        "The visual evidence reinforces the existing rule to use Angle limiting when coplanar internal edges should remain unaffected",
+        "A local tiny.en machine transcript produced 35 timestamped segments; frames and Blender 5.2 evidence corroborate the strategic distinctions"
+      ],
+      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-uv-unwrapping-video",
+    "url": "https://commons.wikimedia.org/wiki/File:UV_Unwrapping_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
+    "title": "UV Unwrapping - Blender 2.80 Fundamentals",
+    "creator": "Blender",
+    "source_type": "official_training_video_cc_mirror",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
+    "topics": ["uv", "seams", "unwrap", "projection", "texture-distortion", "normal-baking"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "license": "CC BY 3.0",
+      "duration_seconds": 385.021,
+      "sha256": "655721f8e23dfaebae2cae43a83954814cd418077e1827511bc0c5ddfe784c21",
+      "transcript_segments": 70,
+      "direct_observations": [
+        "Standard Unwrap uses authored seams; projection and automatic algorithms are alternative strategies rather than universal replacements",
+        "Project from View can pass one view while stretching perpendicular faces",
+        "The seam explanation reasons from desired island connectivity and cut-open behavior"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-uv-unwrapping/video_ingest_report.json",
+        "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/uv_foundations.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-intro-sculpting-video",
+    "url": "https://studio.blender.org/training/blender-2-8-fundamentals/intro-sculpting/",
+    "local_path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
+    "title": "Intro to Sculpting - Blender 2.80 Fundamentals",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
+    "topics": ["sculpting", "brushes", "masking", "symmetry", "dyntopo", "multires"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 1511.125011,
+      "sha256": "71c396ed03432115608541af960baa34610ede26c7a559ef1baaf0fe3ee02e76",
+      "caption_segments": 380,
+      "direct_observations": [
+        "Clay and Clay Strips combine volume addition/removal with flattening, making them form-building rather than detail-stamping tools",
+        "Smooth averages vertex positions and can materially change volume; its effect must be evaluated rather than assumed",
+        "Dyntopo detail modes encode different scale assumptions while Multires preserves an explicit coarse-to-fine hierarchy",
+        "Masking protects regions and symmetry depends on object origin and rotation"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-intro-sculpting/video_ingest_report.json",
+        "runs/2026-08-10_multistroke-sculpt-learning/multistroke_sculpt_learning_report.json",
+        "runs/2026-08-10_multistroke-sculpt-learning/failed_attempt_missing_surface_locations.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/sculpt_foundations.md"]
+    }
+  },
+  {
+    "id": "blender-studio-planning-facial-retopology-video",
+    "url": "https://studio.blender.org/training/stylized-character-workflow/5e5407ec8faf011a381510d7/",
+    "local_path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
+    "title": "Planning the Facial Retopology",
+    "creator": "Julien Kaspar / Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.83-era workflow; inspected and mechanism-tested in Blender 5.2 on 2026-08-10",
+    "topics": ["retopology", "edge-flow", "articulation", "deformation", "poles", "patches"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 531.221333,
+      "sha256": "8ea01cc583cbda7dc7f8f07ece12141d04784a6d55b64bb13ee76627ba7f1121",
+      "caption_segments": 140,
+      "direct_observations": [
+        "General flow circles eyes, nose, mouth, chin and jaw to support both shape and muscle movement",
+        "Primary resting creases use close support while secondary compression creases preserve wider rest spacing",
+        "Articulation zones receive enough loops for arcs and perpendicular curvature support",
+        "Poles and redirection belong away from hard creases and heavy deformation on lower-motion surfaces",
+        "The topology plan remains editable in response to tested expressions"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-studio-planning-facial-retopology/video_ingest_report.json",
+        "runs/2026-08-10_sculpt-retopo-deformation/sculpt_retopology_deformation_report.json",
+        "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-three-point-lighting-video",
+    "url": "https://studio.blender.org/training/blender-2-8-fundamentals/three-point-lighting/",
+    "local_path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
+    "title": "Three Point Lighting - Blender 2.80 Fundamentals",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 concepts; review-rig mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["lighting", "key-light", "fill-light", "rim-light", "surface-review", "visual-diagnostics"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "metadata": {
+      "duration_seconds": 402.416667,
+      "sha256": "b221a62d5a41e803c6716b3b4dd454bf0e8147254f632ef345c66977c0251aaf",
+      "caption_segments": 130,
+      "direct_observations": [
+        "The key establishes the main direction while a weaker fill controls shadow contrast",
+        "A rim/back light separates the subject outline from the background",
+        "Light placement, relative power, and type are adapted to the scene rather than copied as a fixed preset"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-three-point-lighting/video_ingest_report.json",
+        "runs/2026-08-10_surface-lighting-judgment/surface_lighting_judgment_report.json",
+        "runs/2026-08-10_surface-lighting-judgment/failed_attempt_empty_render_result.json",
+        "runs/2026-08-10_surface-lighting-judgment/failed_attempt_nongrazing_three_point.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+    }
+  },
+  {
+    "id": "blender-studio-snow-retopology-live-2",
+    "url": "https://www.youtube.com/watch?v=tRqCeWZLqQo",
+    "local_path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
+    "title": "Snow - Stylized Character Retopology Live #2",
+    "creator": "Blender Studio",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "2021 workflow; pole-placement mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["retopology", "edge-flow", "poles", "patches", "deformation", "facial-topology"],
+    "access": {"text": true, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "automatic-captions"],
+    "metadata": {
+      "duration_seconds": 7938.020136,
+      "sha256": "c839efc9c4982e94b1cc01256165bd8afc88a5694d10202b9c5ceb7d5b8a79dd",
+      "automatic_caption_segments": 4595,
+      "decoded_frame_checkpoints": 27,
+      "direct_observations": [
+        "Three/five-pole redirections delimit readable facial patches without sending every loop through the head",
+        "Loops are reduced before low-demand neck and inner-ear regions while eye and mouth deformation retain stronger flow",
+        "Poles are kept away from proximity-loop creases and major articulation when possible",
+        "Loop paths are traced downstream to detect spirals, and localized relax protects landmarks and sharp folds",
+        "Inner mouth and eyelids are functional structures whose loop counts and expression behavior must be tested"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-studio-snow-retopology-live-2/video_ingest_report.json",
+        "runs/2026-08-10_pole-placement-deformation/pole_placement_deformation_report.json",
+        "runs/2026-08-10_pole-placement-deformation/failed_simple_deform_axis.json",
+        "runs/2026-08-10_pole-placement-deformation/fresh_collection_verify.json",
+        "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-intro-shading-video",
+    "url": "https://www.youtube.com/watch?v=RRilLLyyn1Y",
+    "local_path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
+    "title": "Intro to Shading - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; context-separation mechanism tested in Blender 5.2 on 2026-08-10",
+    "topics": ["shading", "materials", "world", "render-engine", "viewport-context", "surface-diagnostics"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 276.521,
+      "sha256": "cdc7d3a0a49aee26b3624e74c044be88903d23f944f93e9000ddc80f8cf9639f",
+      "machine_transcript_segments": 47,
+      "decoded_frame_checkpoints": 11,
+      "license_source": "https://commons.wikimedia.org/wiki/File:Intro_to_Shading_-_Blender_2.80_Fundamentals.webm",
+      "direct_observations": [
+        "The Shading workspace separates object material, world, file/image, and node contexts",
+        "One object can carry multiple material slots, so localized appearance may be assignment rather than geometry",
+        "World nodes alter scene illumination/background without mutating the asset",
+        "Workbench, material preview, and rendered contexts expose different evidence and should be compared"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-intro-shading/video_ingest_report.json",
+        "runs/2026-08-10_surface-cause-classification/surface_cause_classification_report.json",
+        "runs/2026-08-10_surface-cause-classification/failed_runs.json",
+        "runs/2026-08-10_surface-cause-classification/fresh_collection_verify.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-knife-tool-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Knife_Tool_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
+    "title": "Knife Tool - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
+    "topics": ["knife", "bisect", "topology", "local-cuts"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 119.201,
+      "sha256": "5ff38521bf17e0cba9faa01e163130f48aea4c2f00eb53f7d266113c0a1e1b6a",
+      "machine_transcript_segments": 23,
+      "decoded_frame_checkpoints": 12,
+      "direct_observations": [
+        "Knife paths remain provisional until confirmation, and stopping a path is distinct from cancelling the operation",
+        "Visible-only versus cut-through scope materially changes which faces receive topology",
+        "Bisect expresses an exact plane cut whose side-clearing choice determines whether a cap boundary exists"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-knife-tool/video_ingest_report.json",
+        "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
+        "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-loop-cut-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Loop_Cut_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/loop-cut.webm",
+    "title": "Loop Cut - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
+    "topics": ["loop-cut", "edge-ring", "topology", "density"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 190.321,
+      "sha256": "bd939693fc5af7c1c41b2dd9bbeffbdcea680043965c4d2ada87acbbc55a5922",
+      "machine_transcript_segments": 27,
+      "decoded_frame_checkpoints": 17,
+      "direct_observations": [
+        "The preview traces compatible face flow before a loop is inserted",
+        "Number of cuts and slide position are modeling decisions, not a generic request for more polygons",
+        "Inserted regions support later component-form edits such as localized extrusions"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-loop-cut/video_ingest_report.json",
+        "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
+        "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+    }
+  },
+  {
+    "id": "blender-manual-shape-keys-panel-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/animation/shape_keys/shape_keys_panel.html",
+    "title": "Shape Keys Panel",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["shape-keys", "relative-shapes", "corrective-shapes"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "blender-manual-drivers-panel-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/animation/drivers/drivers_panel.html",
+    "title": "Drivers Panel",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["drivers", "driver-variables", "transform-channels"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "blender-manual-armature-modifier-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/armature.html",
+    "title": "Armature Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["armature-modifier", "vertex-groups", "preserve-volume"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "polyhaven-barrel-01-cc0",
+    "url": "https://polyhaven.com/a/Barrel_01",
+    "local_path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
+    "title": "Barrel 01",
+    "creator": "Poly Haven contributor",
+    "source_type": "cc0_reference_asset",
+    "trust_tier": "B",
+    "version": "downloaded 2026-08-11",
+    "topics": ["multi-view-reference", "profile-revolution", "hard-surface-topology"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["neutral-reference-renders"],
+    "metadata": {
+      "license": "CC0",
+      "sha256": "e084945dedd6a3379c6f3e97842cac89df7169797707e123a5e5b42c135d6888",
+      "use_boundary": "Source geometry generated neutral references only; topology was not inspected or copied.",
+      "experiments": ["runs/2026-08-11_multiview-barrel/"],
+      "skills": ["knowledge/foundation/operator_cards/profile_revolution_topology.md"],
+      "limitations": ["Asset-specific tuning makes this corrective evidence, not held-out evidence."]
+    }
+  },
+  {
+    "id": "blender-human-base-meshes-bundle-v1",
+    "url": "https://video.blender.org/w/pCJmffT1w9r5Nexrs9SYLN",
+    "local_path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
+    "title": "Human Base Meshes Bundle v1.0.0",
+    "creator": "Blender Studio / Blender Foundation",
+    "source_type": "official_cc0_asset_bundle",
+    "trust_tier": "A",
+    "version": "v1.0.0; downloaded 2026-08-11; tested in Blender 5.2 LTS",
+    "topics": ["facial-topology", "retopology", "shape-keys", "armature", "corrective-deformation"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["read-only-blend-structure", "controlled-render"],
+    "metadata": {
+      "license": "CC0",
+      "download_url": "https://download.blender.org/demo/bundles/bundles-3.6/human-base-meshes-bundle-v1.0.0.zip",
+      "archive_sha256": "46a912c0524072ac3b78c35d5d2471df7b8df102394a050ca8cd7184e3393648",
+      "blend_sha256": "660e245812ef56768bc71293bd4c8bc1fd19a63710e16aafc8258a7351cbc35e",
+      "use_boundary": "The official animation head supplies anatomy/topology; the experiment authors only rig, weighting, shape-key, driver, and corrective-transfer behavior.",
+      "experiments": [
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_report.json",
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_verify.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/retopology.md",
+        "knowledge/foundation/operator_cards/corrective_shape_keys.md"
+      ],
+      "limitations": [
+        "The source mesh is not autonomous topology authorship.",
+        "The visible expression is subtle and does not establish production facial-animation quality."
+      ]
+    }
   }
 ]

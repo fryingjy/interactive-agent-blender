@@ -19,14 +19,14 @@
   ],
 
   "action_policy": [
-    "Subdivision Surface must be placed BEFORE Mirror in the modifier stack, not after. Mirror-before-Subdivision produces non-manifold edges at the seam even when Mirror's own vertex merge succeeds at the base-cage level -- this is a correctness requirement, not a style preference.",
+    "For Mirror plus Subdivision Surface, test both candidate orders on the actual seam topology. Subdivision-before-Mirror repaired the original flat-seam failure, but a later exact-seam half-cylinder stayed manifold in both orders; do not promote one shape's result into a universal order rule.",
     "Bevel should be placed BEFORE Mirror when a seamless join across the mirror plane is wanted. Mirror-before-Bevel causes Bevel to treat the former seam edges as ordinary edges and round/carve them, producing a visible facet at what should be a flat, continuous seam.",
     "Solidify must be placed BEFORE Bevel when starting from an open/flat mesh (e.g. a plane). Bevel on an unsolidified single-face plane has no dihedral angle to act on and is effectively a no-op; Solidify must run first to give the mesh real 3D form.",
     "Boolean before or after Bevel is a genuine strategic choice, not a correctness issue: Boolean-then-Bevel rounds the cut/hole rim too (more geometry); Bevel-then-Boolean leaves the cut sharp (less geometry). Choose based on whether the cut's edge should read as rounded or crisp."
   ],
 
   "expected_effects": [
-    "Mirror+Subdivision in the correct order (Subdivision first): 0 non-manifold edges in the evaluated mesh",
+    "Mirror+Subdivision: the selected order must have 0 non-manifold edges in the evaluated mesh and acceptable seam shape/highlight flow; topology-specific testing decides the order",
     "Mirror+Bevel in the correct order (Bevel first): a flat, unrounded seam face at the mirror plane, with the two halves reading as one continuous surface",
     "Solidify+Bevel in the correct order (Solidify first): the evaluated mesh's vertex/face count reflects real bevel geometry, not an unchanged flat shell"
   ],
@@ -37,7 +37,7 @@
   ],
 
   "failure_predicates": [
-    "evaluated_mesh_health.non_manifold_edges > 0 immediately after adding Subdivision Surface to a stack that already has Mirror above it",
+    "evaluated_mesh_health.non_manifold_edges > 0 after evaluating either tested Mirror/Subdivision order on the actual seam topology",
     "Bevel modifier added but the evaluated mesh's vertex/face count is unchanged from before adding it (Bevel silently doing nothing, usually because it ran before Solidify on a flat shell)"
   ],
 
@@ -57,12 +57,17 @@
     {
       "type": "controlled, matched-pair (this project's own reproduction lab, not an external tutorial)",
       "description": "Mirror+Subdivision: Mirror->Subdivision gave 171v/176f/16 non-manifold edges; Subdivision->Mirror gave 196v/192f/0 non-manifold edges, with the evaluated seam empty of exactly-on-plane vertices in the working order and populated with rounded-looking coordinates in the broken order. Mirror+Bevel: Mirror->Bevel gave 68v/67f/12 non-manifold with bevelled coordinates at the seam; Bevel->Mirror gave 108v/107f/4 non-manifold with a flat unbevelled seam face. Solidify+Bevel: Solidify->Bevel gave 56v/54f; Bevel->Solidify gave 8v/6f, identical to an un-bevelled solidified plane (confirming the no-op). Boolean+Bevel: both orders gave 0 non-manifold edges but different face counts (248v/216f vs 120v/88f), confirming this pair is a style choice, not a correctness issue.",
-      "limitation": "Tested on simple primitive shapes (cube, plane, cube+cylinder cutter), not yet on a real production prop combining these modifiers. Mirror+Subdivision and Mirror+Bevel were each tested with only one specific mirror-plane geometry (a flat face exactly on the plane); an angled or curved seam has not been tested and might behave differently."
+      "limitation": "Tested on simple primitive shapes (cube, plane, cube+cylinder cutter), not yet on a real production prop combining these modifiers. The original Mirror+Subdivision result was topology-specific and must be read alongside the curved transfer experiment."
+    },
+    {
+      "type": "controlled second-shape transfer",
+      "description": "On an exact-seam half-cylinder in runs/2026-08-10_bevel-mirror-transfer/, Mirror->Subdivision and Subdivision->Mirror both evaluated to 482 vertices, 480 quad faces, and 0 non-manifold edges. The intentionally offset Mirror seam produced 12 non-manifold edges and a larger Merge Distance repaired it. Independent evaluation of the saved blend reproduced all outcomes.",
+      "limitation": "Manifoldness and counts do not prove identical curvature or highlight flow. The two stack orders had slightly different signed volumes, and neither was judged with a controlled reflection render."
     }
   ],
 
   "runtime_usage": [],
 
   "status": "EXPERIMENTALLY_TESTED",
-  "status_note": "Genuine controlled comparison (matched pairs, same starting geometry, only modifier order varied), with clear, measured before/after evidence for each of the 4 directive-listed pairs -- meets this project's EXPERIMENTALLY_TESTED bar (unlike the earlier CANDIDATE-status SoapDish rim skill, which had only one uncontrolled real-world data point). Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED -- no real prop in this project has combined these modifiers yet; promote further only after genuine use on an actual asset."
+  "status_note": "Controlled matched-pair evidence exists for all four listed pairs, plus a cylindrical second-shape transfer for Mirror+Subdivision. The transfer disproved the universal version of the original order rule, so the skill now requires per-topology evaluation. Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED; no real prop has combined these modifiers and visual seam quality still needs controlled reflection evidence."
 }

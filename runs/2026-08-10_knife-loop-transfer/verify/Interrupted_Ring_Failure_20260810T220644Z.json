@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_knife-loop-transfer\\knife_loop_transfer.blend",
+  "object_name": "Interrupted_Ring_Failure",
+  "geometry_source": "evaluated",
+  "verified_at": "2026-08-10T22:06:44Z",
+  "stats": {
+    "vertices": 194,
+    "edges": 401,
+    "faces": 209,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 33.308812827494975
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

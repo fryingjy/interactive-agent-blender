@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_surface-lighting-judgment\\surface_lighting_judgment.blend",
+  "object_name": "ReviewSurface_LocalDent",
+  "geometry_source": "base",
+  "verified_at": "2026-08-10T19:55:26Z",
+  "stats": {
+    "vertices": 6050,
+    "edges": 12192,
+    "faces": 6144,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 3.4963861480881193
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

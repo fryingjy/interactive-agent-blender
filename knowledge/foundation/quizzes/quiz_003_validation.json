@@ -1,0 +1,20 @@
+{
+  "quiz": "knowledge/foundation/quizzes/quiz_003.md",
+  "validation_date": "2026-08-11",
+  "question_count": 20,
+  "minimum_answer_words": 31,
+  "median_answer_words": 39,
+  "maximum_sequence_similarity_to_any_quiz_001_or_002_answer": 0.23382045929018788,
+  "calendar_dates": [
+    "2026-08-08",
+    "2026-08-10",
+    "2026-08-11"
+  ],
+  "checks": {
+    "twenty_numbered_answers_present": true,
+    "every_answer_has_at_least_thirty_words": true,
+    "no_prior_answer_is_near_duplicate": true,
+    "cross_calendar_day_evidence_present": true
+  },
+  "boundary": "Structural length and low textual similarity verify a fresh answer set, not factual correctness or independent human proficiency. The quiz remains self-administered with ordinary conversation/repository context available."
+}

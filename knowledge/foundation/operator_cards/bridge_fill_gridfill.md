@@ -1,6 +1,15 @@
 # Operator card: Bridge Edge Loops, Fill, Grid Fill
 
-**Status:** DOCS ~ (API reference read for grid_fill's real signature; Manual pages for Bridge/Fill/Grid Fill not yet fetched) | EXPERIMENT ✓ (multiple rounds, including real failures) | FAILURE_CASE ✓✓ (two distinct, understood failure modes) | QUIZ pending
+**Status:** DOCS ✓ (Blender 5.2 LTS Manual) | EXPERIMENT ✓ (multiple rounds, including real failures) | FAILURE_CASE ✓✓ (two distinct, understood failure modes) | QUIZ pending
+
+## Official sources
+
+- Bridge Edge Loops: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/bridge_edge_loops.html
+- Grid Fill: https://docs.blender.org/manual/en/latest/modeling/meshes/editing/face/grid_fill.html
+
+Both current pages were fetched successfully on 2026-08-10 and identify controls relevant to the
+recorded failures: loop pairing/twist/cuts/interpolation for Bridge, and Span/Offset plus Simple
+Blending for Grid Fill. The Manual recommends equal vertex counts for predictable paired loops.
 
 Never used in this project before this session. All three are genuinely new ground, and two of the three initial attempts failed in real, informative ways -- documented here rather than only showing the eventual working case.
 

@@ -1,0 +1,164 @@
+{
+  "lab": "bisect_foundation",
+  "blender_version": "5.2.0 LTS",
+  "cases": [
+    {
+      "case_id": "cut_only",
+      "pass": true,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      },
+      "operation": {
+        "cut_geometry": 8,
+        "clear_inner": false,
+        "clear_outer": false,
+        "fill": false,
+        "filled_faces": 0,
+        "new_verts": 4,
+        "new_edges": 8,
+        "new_faces": 4
+      },
+      "after": {
+        "vertices": 12,
+        "edges": 20,
+        "faces": 10,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      }
+    },
+    {
+      "case_id": "clear_inner_open",
+      "pass": true,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      },
+      "operation": {
+        "cut_geometry": 8,
+        "clear_inner": true,
+        "clear_outer": false,
+        "fill": false,
+        "filled_faces": 0,
+        "new_verts": 4,
+        "new_edges": 7,
+        "new_faces": 0
+      },
+      "after": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 5,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "ngons": 0
+      }
+    },
+    {
+      "case_id": "clear_outer_open",
+      "pass": true,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      },
+      "operation": {
+        "cut_geometry": 8,
+        "clear_inner": false,
+        "clear_outer": true,
+        "fill": false,
+        "filled_faces": 0,
+        "new_verts": 4,
+        "new_edges": 5,
+        "new_faces": 4
+      },
+      "after": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 5,
+        "boundary_edges": 4,
+        "non_manifold_edges": 4,
+        "ngons": 0
+      }
+    },
+    {
+      "case_id": "clear_inner_filled",
+      "pass": true,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      },
+      "operation": {
+        "cut_geometry": 8,
+        "clear_inner": true,
+        "clear_outer": false,
+        "fill": true,
+        "filled_faces": 1,
+        "new_verts": 4,
+        "new_edges": 7,
+        "new_faces": 1
+      },
+      "after": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      }
+    },
+    {
+      "case_id": "clear_outer_filled",
+      "pass": true,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      },
+      "operation": {
+        "cut_geometry": 8,
+        "clear_inner": false,
+        "clear_outer": true,
+        "fill": true,
+        "filled_faces": 1,
+        "new_verts": 4,
+        "new_edges": 5,
+        "new_faces": 5
+      },
+      "after": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "boundary_edges": 0,
+        "non_manifold_edges": 0,
+        "ngons": 0
+      }
+    },
+    {
+      "case_id": "fill_without_clear_rejected",
+      "pass": true,
+      "error": "bisect fill requires clear_inner or clear_outer so the cut is a boundary"
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "pass": true
+}

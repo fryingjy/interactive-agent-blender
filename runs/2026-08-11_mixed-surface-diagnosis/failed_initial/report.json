@@ -1,0 +1,262 @@
+{
+  "lab": "mixed_cause_surface_diagnosis_on_connected_quad_barrel",
+  "blender_version": "5.2.0 LTS",
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\barrel_stage3.blend",
+  "source_object": "Barrel_Body_Profile",
+  "source_boundary": "reuses the source-tuned connected-quad barrel as a production-style diagnosis testbed; not held-out modeling evidence",
+  "causes_injected": [
+    "GEOMETRY",
+    "NORMALS",
+    "MATERIAL",
+    "BEVEL_PROFILE",
+    "LIGHTING"
+  ],
+  "mixed_error": {
+    "mean_absolute_rgb": 0.12484781056640076,
+    "max_absolute_rgb": 0.90326803488036,
+    "pixels_over_0_02": 178050,
+    "pixel_count": 322400
+  },
+  "ablation_errors": {
+    "GEOMETRY": {
+      "mean_absolute_rgb": 0.10414901514075726,
+      "max_absolute_rgb": 0.7503268222014109,
+      "pixels_over_0_02": 174401,
+      "pixel_count": 322400
+    },
+    "NORMALS": {
+      "mean_absolute_rgb": 0.10779257917489951,
+      "max_absolute_rgb": 0.7503268222014109,
+      "pixels_over_0_02": 175219,
+      "pixel_count": 322400
+    },
+    "MATERIAL": {
+      "mean_absolute_rgb": 0.10365123687912474,
+      "max_absolute_rgb": 0.7503268222014109,
+      "pixels_over_0_02": 172835,
+      "pixel_count": 322400
+    },
+    "BEVEL_PROFILE": {
+      "mean_absolute_rgb": 0.10417343161255949,
+      "max_absolute_rgb": 0.7830065712332726,
+      "pixels_over_0_02": 174618,
+      "pixel_count": 322400
+    },
+    "LIGHTING": {
+      "mean_absolute_rgb": 0.03529280592059806,
+      "max_absolute_rgb": 0.705882395307223,
+      "pixels_over_0_02": 93674,
+      "pixel_count": 322400
+    }
+  },
+  "ablation_evidence": [
+    {
+      "cause": "GEOMETRY",
+      "intervention_applied": true,
+      "target_state_changed": true,
+      "unrelated_states_held_constant": true,
+      "before_error": 0.12484781056640076,
+      "after_error": 0.10414901514075726,
+      "before_changed_pixels": 178050,
+      "after_changed_pixels": 174401
+    },
+    {
+      "cause": "NORMALS",
+      "intervention_applied": true,
+      "target_state_changed": true,
+      "unrelated_states_held_constant": true,
+      "before_error": 0.12484781056640076,
+      "after_error": 0.10779257917489951,
+      "before_changed_pixels": 178050,
+      "after_changed_pixels": 175219
+    },
+    {
+      "cause": "MATERIAL",
+      "intervention_applied": true,
+      "target_state_changed": true,
+      "unrelated_states_held_constant": true,
+      "before_error": 0.12484781056640076,
+      "after_error": 0.10365123687912474,
+      "before_changed_pixels": 178050,
+      "after_changed_pixels": 172835
+    },
+    {
+      "cause": "BEVEL_PROFILE",
+      "intervention_applied": true,
+      "target_state_changed": true,
+      "unrelated_states_held_constant": true,
+      "before_error": 0.12484781056640076,
+      "after_error": 0.10417343161255949,
+      "before_changed_pixels": 178050,
+      "after_changed_pixels": 174618
+    },
+    {
+      "cause": "LIGHTING",
+      "intervention_applied": true,
+      "target_state_changed": true,
+      "unrelated_states_held_constant": true,
+      "before_error": 0.12484781056640076,
+      "after_error": 0.03529280592059806,
+      "before_changed_pixels": 178050,
+      "after_changed_pixels": 93674
+    }
+  ],
+  "diagnosis": {
+    "status": "MULTI_CAUSE_CONFIRMED",
+    "causes": [
+      "LIGHTING",
+      "MATERIAL",
+      "GEOMETRY",
+      "BEVEL_PROFILE",
+      "NORMALS"
+    ],
+    "rejected": [],
+    "confidence": 0.95,
+    "reductions": [
+      [
+        "LIGHTING",
+        0.7173133772992564
+      ],
+      [
+        "MATERIAL",
+        0.1697792984203159
+      ],
+      [
+        "GEOMETRY",
+        0.16579221799516275
+      ],
+      [
+        "BEVEL_PROFILE",
+        0.16559664811138625
+      ],
+      [
+        "NORMALS",
+        0.13660817369664938
+      ]
+    ],
+    "next_action": "Repair causes in measured order, re-render after each change, and check for interactions."
+  },
+  "repair_sequence": [
+    {
+      "step": "repair_lighting",
+      "error": {
+        "mean_absolute_rgb": 0.035311874505038074,
+        "max_absolute_rgb": 0.7019608269135157,
+        "pixels_over_0_02": 93561,
+        "pixel_count": 322400
+      }
+    },
+    {
+      "step": "repair_material",
+      "error": {
+        "mean_absolute_rgb": 0.029086651670585894,
+        "max_absolute_rgb": 0.705882395307223,
+        "pixels_over_0_02": 89769,
+        "pixel_count": 322400
+      }
+    },
+    {
+      "step": "repair_normals",
+      "error": {
+        "mean_absolute_rgb": 0.12517330239102817,
+        "max_absolute_rgb": 0.90326803488036,
+        "pixels_over_0_02": 178048,
+        "pixel_count": 322400
+      }
+    },
+    {
+      "step": "repair_bevel",
+      "error": {
+        "mean_absolute_rgb": 0.006976378519976599,
+        "max_absolute_rgb": 0.32287584245204926,
+        "pixels_over_0_02": 23563,
+        "pixel_count": 322400
+      }
+    },
+    {
+      "step": "repair_geometry",
+      "error": {
+        "mean_absolute_rgb": 0.0064389468095460995,
+        "max_absolute_rgb": 0.0993464073787133,
+        "pixels_over_0_02": 20453,
+        "pixel_count": 322400
+      }
+    }
+  ],
+  "state_signatures": {
+    "mixed": {
+      "GEOMETRY": "72aa1a2e4800e6a3baa8b2d0dd50211d28da20e883b72f0eb9c08fc100138287",
+      "NORMALS": "bdaa7687b9a5723eabe935b445f6e999cc9fc0fbb5db152160333ac90ca9e24b",
+      "MATERIAL": "cbb8a05db842eaa038e57438d2806f989256413e3bb213c5d49667390a9b29b6",
+      "BEVEL_PROFILE": "99a3d04c8600c55441d62ed09e5bddc3be21502832466c5fa7a0e92849bf0f68"
+    },
+    "ablations": {
+      "GEOMETRY": {
+        "GEOMETRY": "42a25cf08b8561d98ab064fc5a4e6e4ac658f039b4e0d4263321f7d24b78e6aa",
+        "NORMALS": "bdaa7687b9a5723eabe935b445f6e999cc9fc0fbb5db152160333ac90ca9e24b",
+        "MATERIAL": "cbb8a05db842eaa038e57438d2806f989256413e3bb213c5d49667390a9b29b6",
+        "BEVEL_PROFILE": "99a3d04c8600c55441d62ed09e5bddc3be21502832466c5fa7a0e92849bf0f68"
+      },
+      "NORMALS": {
+        "GEOMETRY": "72aa1a2e4800e6a3baa8b2d0dd50211d28da20e883b72f0eb9c08fc100138287",
+        "NORMALS": "e9a88c1835c581f7678c6dfcec65aa3bd380c48304da3a1c84dfc7a716681a41",
+        "MATERIAL": "cbb8a05db842eaa038e57438d2806f989256413e3bb213c5d49667390a9b29b6",
+        "BEVEL_PROFILE": "99a3d04c8600c55441d62ed09e5bddc3be21502832466c5fa7a0e92849bf0f68"
+      },
+      "MATERIAL": {
+        "GEOMETRY": "72aa1a2e4800e6a3baa8b2d0dd50211d28da20e883b72f0eb9c08fc100138287",
+        "NORMALS": "bdaa7687b9a5723eabe935b445f6e999cc9fc0fbb5db152160333ac90ca9e24b",
+        "MATERIAL": "8f1e45e8d0cb4eeaf62cb2df1945e16a0f73686ac4fd82a0c9f8b3a93af659dc",
+        "BEVEL_PROFILE": "99a3d04c8600c55441d62ed09e5bddc3be21502832466c5fa7a0e92849bf0f68"
+      },
+      "BEVEL_PROFILE": {
+        "GEOMETRY": "72aa1a2e4800e6a3baa8b2d0dd50211d28da20e883b72f0eb9c08fc100138287",
+        "NORMALS": "bdaa7687b9a5723eabe935b445f6e999cc9fc0fbb5db152160333ac90ca9e24b",
+        "MATERIAL": "cbb8a05db842eaa038e57438d2806f989256413e3bb213c5d49667390a9b29b6",
+        "BEVEL_PROFILE": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "LIGHTING": {
+        "GEOMETRY": "72aa1a2e4800e6a3baa8b2d0dd50211d28da20e883b72f0eb9c08fc100138287",
+        "NORMALS": "bdaa7687b9a5723eabe935b445f6e999cc9fc0fbb5db152160333ac90ca9e24b",
+        "MATERIAL": "cbb8a05db842eaa038e57438d2806f989256413e3bb213c5d49667390a9b29b6",
+        "BEVEL_PROFILE": "99a3d04c8600c55441d62ed09e5bddc3be21502832466c5fa7a0e92849bf0f68"
+      }
+    }
+  },
+  "evaluated_health": {
+    "clean": {
+      "vertices": 5376,
+      "faces": 5376,
+      "triangles": 10752,
+      "degenerate_faces": 0
+    },
+    "mixed": {
+      "vertices": 10535,
+      "faces": 10534,
+      "triangles": 21070,
+      "degenerate_faces": 65
+    },
+    "repaired": {
+      "vertices": 5376,
+      "faces": 5376,
+      "triangles": 10752,
+      "degenerate_faces": 0
+    }
+  },
+  "assertions": {
+    "source_body_is_connected_all_quad": true,
+    "all_five_causes_confirmed_by_controlled_ablation": true,
+    "no_ablation_rejected": true,
+    "each_ablation_reduces_mean_error": true,
+    "sequential_repairs_nonincreasing": false,
+    "full_repair_matches_clean_render": false,
+    "full_repair_matches_clean_pixels": false,
+    "repaired_evaluated_has_no_degenerates": true
+  },
+  "pass": false,
+  "limitations": [
+    "The five faults are intentionally injected and their ground truth is known; this tests controlled diagnosis and repair, not diagnosis from an unknown beauty image.",
+    "The barrel was source-tuned in an earlier corrective benchmark, so this does not add held-out modeling evidence.",
+    "Pixel ablation measures this fixed camera/light/material setup and does not replace experienced surface review."
+  ]
+}

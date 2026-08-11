@@ -1,0 +1,156 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multiview-barrel\\stage3\\barrel_stage3.blend",
+  "collection": "MeasuredBarrel",
+  "geometry_source": "fresh-process evaluated dependency graph",
+  "objects": [
+    {
+      "name": "Barrel_Body_Profile",
+      "stats": {
+        "vertices": 5376,
+        "edges": 10752,
+        "faces": 5376,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 2.5412099110567015,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Recessed_Top_Lid",
+      "stats": {
+        "vertices": 578,
+        "edges": 1248,
+        "faces": 672,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.26550089093990237,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Large_Bung",
+      "stats": {
+        "vertices": 290,
+        "edges": 624,
+        "faces": 336,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.007547062510044646,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Large_Bung_Collar",
+      "stats": {
+        "vertices": 1536,
+        "edges": 3072,
+        "faces": 1536,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0017434297421850308,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Small_Vent",
+      "stats": {
+        "vertices": 290,
+        "edges": 624,
+        "faces": 336,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0021402023947597777,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Small_Vent_Collar",
+      "stats": {
+        "vertices": 1536,
+        "edges": 3072,
+        "faces": 1536,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.00042564235178097566,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    }
+  ],
+  "summary": {
+    "mesh_objects": 6,
+    "clean_objects": 6,
+    "all_clean": true
+  }
+}

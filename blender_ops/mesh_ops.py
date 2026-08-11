@@ -22,8 +22,11 @@ import bmesh
 import bpy
 import mathutils
 
-import bmesh_io
-import persistent_ids
+try:
+    from . import bmesh_io, persistent_ids
+except ImportError:
+    import bmesh_io
+    import persistent_ids
 
 
 def _bm_from_object(name):
@@ -41,6 +44,19 @@ def _bm_from_object(name):
 
 def _write_back(obj, bm):
     bmesh_io.write_bmesh(obj, bm)
+
+
+def _element_snapshot(bm):
+    return set(bm.verts), set(bm.edges), set(bm.faces)
+
+
+def _clear_new_element_ids(bm, before):
+    before_verts, before_edges, before_faces = before
+    new_verts = [item for item in bm.verts if item not in before_verts]
+    new_edges = [item for item in bm.edges if item not in before_edges]
+    new_faces = [item for item in bm.faces if item not in before_faces]
+    persistent_ids.clear_ids_in_open_bmesh(bm, verts=new_verts, edges=new_edges, faces=new_faces)
+    return {"new_verts": len(new_verts), "new_edges": len(new_edges), "new_faces": len(new_faces)}
 
 
 def merge_by_distance(name, dist=0.0001):
@@ -349,3 +365,292 @@ def scale_selection(name, factor, center=None):
     bmesh.ops.scale(bm, verts=selected_verts, vec=factor, space=mathutils.Matrix.Translation(-c))
     _write_back(obj, bm)
     return len(selected_verts)
+
+
+def rotate_selection(name, angle, axis=(0.0, 0.0, 1.0), center=None):
+    """Rotate selected vertices by radians around a local-space axis and selection median."""
+    obj, bm = _bm_from_object(name)
+    selected = [vert for vert in bm.verts if vert.select]
+    if not selected:
+        _write_back(obj, bm)
+        raise ValueError(f"no vertices selected on '{name}' to rotate")
+    pivot = mathutils.Vector(center) if center is not None else sum((v.co for v in selected), mathutils.Vector()) / len(selected)
+    axis_vector = mathutils.Vector(axis)
+    if axis_vector.length < 1e-9:
+        _write_back(obj, bm)
+        raise ValueError("rotation axis must be nonzero")
+    matrix = mathutils.Matrix.Rotation(angle, 4, axis_vector.normalized())
+    bmesh.ops.rotate(bm, verts=selected, cent=pivot, matrix=matrix)
+    _write_back(obj, bm)
+    return len(selected)
+
+
+def bevel_selection(name, offset=0.02, segments=2, offset_type="OFFSET", profile=0.5, clamp_overlap=False):
+    """Bevel selected edges with explicit width semantics and overlap policy."""
+    obj, bm = _bm_from_object(name)
+    selected = [edge for edge in bm.edges if edge.select]
+    if not selected:
+        _write_back(obj, bm)
+        raise ValueError(f"no edges selected on '{name}' to bevel")
+    before = _element_snapshot(bm)
+    bmesh.ops.bevel(
+        bm,
+        geom=selected,
+        offset=offset,
+        offset_type=offset_type,
+        segments=segments,
+        profile=profile,
+        affect="EDGES",
+        clamp_overlap=clamp_overlap,
+    )
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {
+        "selected_edges": len(selected),
+        "offset": offset,
+        "offset_type": offset_type,
+        "segments": segments,
+        "profile": profile,
+        "clamp_overlap": clamp_overlap,
+        **created,
+    }
+
+
+def delete_selection(name):
+    """Delete selected faces first, otherwise selected edges, otherwise vertices."""
+    obj, bm = _bm_from_object(name)
+    faces = [face for face in bm.faces if face.select]
+    edges = [edge for edge in bm.edges if edge.select]
+    verts = [vert for vert in bm.verts if vert.select]
+    if faces:
+        bmesh.ops.delete(bm, geom=faces, context="FACES")
+        domain, count = "faces", len(faces)
+    elif edges:
+        bmesh.ops.delete(bm, geom=edges, context="EDGES")
+        domain, count = "edges", len(edges)
+    elif verts:
+        bmesh.ops.delete(bm, geom=verts, context="VERTS")
+        domain, count = "verts", len(verts)
+    else:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to delete")
+    _write_back(obj, bm)
+    return {"domain": domain, "deleted": count}
+
+
+def dissolve_selection(name, use_verts=True):
+    """Dissolve the most specific selected domain while preserving surrounding surface."""
+    obj, bm = _bm_from_object(name)
+    faces = [face for face in bm.faces if face.select]
+    edges = [edge for edge in bm.edges if edge.select]
+    verts = [vert for vert in bm.verts if vert.select]
+    if faces:
+        bmesh.ops.dissolve_faces(bm, faces=faces, use_verts=use_verts)
+        domain, count = "faces", len(faces)
+    elif edges:
+        bmesh.ops.dissolve_edges(bm, edges=edges, use_verts=use_verts, use_face_split=False)
+        domain, count = "edges", len(edges)
+    elif verts:
+        bmesh.ops.dissolve_verts(bm, verts=verts, use_face_split=False, use_boundary_tear=False)
+        domain, count = "verts", len(verts)
+    else:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to dissolve")
+    _write_back(obj, bm)
+    return {"domain": domain, "dissolved": count}
+
+
+def merge_selection(name, center=None):
+    """Merge selected vertices to an explicit point or their median."""
+    obj, bm = _bm_from_object(name)
+    verts = [vert for vert in bm.verts if vert.select]
+    if len(verts) < 2:
+        _write_back(obj, bm)
+        raise ValueError(f"at least two vertices must be selected on '{name}' to merge")
+    point = mathutils.Vector(center) if center is not None else sum((v.co for v in verts), mathutils.Vector()) / len(verts)
+    bmesh.ops.pointmerge(bm, verts=verts, merge_co=point)
+    _write_back(obj, bm)
+    return {"merged_vertices": len(verts), "merge_point": list(point)}
+
+
+def fill_selection(name):
+    """Create faces from selected boundary edges/vertices using BMesh contextual creation."""
+    obj, bm = _bm_from_object(name)
+    edges = [edge for edge in bm.edges if edge.select]
+    verts = [vert for vert in bm.verts if vert.select]
+    if len(edges) < 3:
+        _write_back(obj, bm)
+        raise ValueError(f"at least three boundary edges must be selected on '{name}' to fill")
+    result = bmesh.ops.contextual_create(bm, geom=list({*edges, *verts}))
+    faces = [item for item in result.get("faces", []) if isinstance(item, bmesh.types.BMFace)]
+    persistent_ids.clear_ids_in_open_bmesh(bm, faces=faces)
+    _write_back(obj, bm)
+    return {"created_faces": len(faces)}
+
+
+def bridge_selection(name, use_merge=False, merge_factor=0.5):
+    """Bridge selected boundary edge loops."""
+    obj, bm = _bm_from_object(name)
+    edges = [edge for edge in bm.edges if edge.select and not edge.is_manifold]
+    if len(edges) < 4:
+        _write_back(obj, bm)
+        raise ValueError(f"selected boundary edges on '{name}' do not form bridgeable loops")
+    before = _element_snapshot(bm)
+    bmesh.ops.bridge_loops(bm, edges=edges, use_pairs=False, use_cyclic=False, use_merge=use_merge, merge_factor=merge_factor)
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {"input_edges": len(edges), "created_faces": created["new_faces"], **created}
+
+
+def spin_selection(name, angle, steps, center=(0.0, 0.0, 0.0), axis=(0.0, 0.0, 1.0), use_duplicate=False):
+    """Spin selected geometry around a local-space axis."""
+    obj, bm = _bm_from_object(name)
+    geom = [item for seq in (bm.verts, bm.edges, bm.faces) for item in seq if item.select]
+    if not geom:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to spin")
+    before = _element_snapshot(bm)
+    result = bmesh.ops.spin(bm, geom=geom, cent=center, axis=axis, angle=angle, steps=steps, use_duplicate=use_duplicate)
+    final_geometry = len(result.get("geom_last", []))
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {"steps": steps, "final_geometry": final_geometry, **created}
+
+
+def loop_cut_selection(name, cuts=1):
+    """Subdivide a selected edge ring as the typed loop-cut equivalent."""
+    obj, bm = _bm_from_object(name)
+    edges = [edge for edge in bm.edges if edge.select]
+    if not edges:
+        _write_back(obj, bm)
+        raise ValueError(f"no edge ring selected on '{name}' to cut")
+    selected = set(edges)
+    invalid_faces = []
+    for edge in edges:
+        for face in edge.link_faces:
+            selected_in_face = [candidate for candidate in face.edges if candidate in selected]
+            opposite = (
+                len(selected_in_face) == 2
+                and not (set(selected_in_face[0].verts) & set(selected_in_face[1].verts))
+            )
+            if len(face.verts) != 4 or not opposite:
+                invalid_faces.append(face)
+    if invalid_faces:
+        detail = {
+            "selected_edges": len(edges),
+            "invalid_adjacent_faces": len(set(invalid_faces)),
+            "requirement": "every traversed face must be a quad containing exactly two opposite selected ring edges",
+        }
+        _write_back(obj, bm)
+        raise ValueError(f"selection on '{name}' is not a continuous quad edge ring: {detail}")
+    before = _element_snapshot(bm)
+    bmesh.ops.subdivide_edgering(bm, edges=edges, cuts=cuts, profile_shape="SMOOTH", profile_shape_factor=0.0)
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {"cuts": cuts, "created_geometry": sum(created.values()), **created}
+
+
+def bisect_selection(name, plane_co, plane_no, clear_inner=False, clear_outer=False, fill=False):
+    """Knife/bisect selected geometry by a plane; optionally clear and cap one side."""
+    obj, bm = _bm_from_object(name)
+    geom = [item for seq in (bm.verts, bm.edges, bm.faces) for item in seq if item.select]
+    if not geom:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to bisect")
+    before = _element_snapshot(bm)
+    result = bmesh.ops.bisect_plane(bm, geom=geom, dist=1e-6, plane_co=plane_co, plane_no=plane_no, clear_inner=clear_inner, clear_outer=clear_outer)
+    cut = result.get("geom_cut", [])
+    filled_faces = []
+    if fill:
+        if not (clear_inner or clear_outer):
+            _write_back(obj, bm)
+            raise ValueError("bisect fill requires clear_inner or clear_outer so the cut is a boundary")
+        cut_edges = [item for item in cut if isinstance(item, bmesh.types.BMEdge) and item.is_boundary]
+        if not cut_edges:
+            _write_back(obj, bm)
+            raise ValueError(f"bisect on '{name}' produced no boundary loop to fill")
+        fill_result = bmesh.ops.holes_fill(bm, edges=cut_edges, sides=0)
+        filled_faces = list(fill_result.get("faces", []))
+        if not filled_faces:
+            _write_back(obj, bm)
+            raise RuntimeError(f"bisect on '{name}' did not create a cap")
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {
+        "cut_geometry": len(cut),
+        "clear_inner": clear_inner,
+        "clear_outer": clear_outer,
+        "fill": fill,
+        "filled_faces": len(filled_faces),
+        **created,
+    }
+
+
+def symmetrize_selection(name, direction="-X_TO_+X", threshold=0.0001):
+    """Mirror selected geometry across a principal local axis with weld tolerance."""
+    obj, bm = _bm_from_object(name)
+    geom = [item for seq in (bm.verts, bm.edges, bm.faces) for item in seq if item.select]
+    if not geom:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to symmetrize")
+    direction_map = {
+        "-X_TO_+X": "-X", "+X_TO_-X": "X",
+        "-Y_TO_+Y": "-Y", "+Y_TO_-Y": "Y",
+        "-Z_TO_+Z": "-Z", "+Z_TO_-Z": "Z",
+    }
+    bmesh_direction = direction_map.get(direction, direction)
+    before = _element_snapshot(bm)
+    result = bmesh.ops.symmetrize(bm, input=geom, direction=bmesh_direction, dist=threshold)
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {"direction": direction, "bmesh_direction": bmesh_direction, "result_geometry": sum(created.values()), **created}
+
+
+def split_selection(name):
+    """Disconnect selected geometry in-place while keeping it in the same object."""
+    obj, bm = _bm_from_object(name)
+    geom = [item for seq in (bm.verts, bm.edges, bm.faces) for item in seq if item.select]
+    if not geom:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to split")
+    before = _element_snapshot(bm)
+    result = bmesh.ops.split(bm, geom=geom, use_only_faces=False)
+    result_geometry = len(result.get("geom", []))
+    created = _clear_new_element_ids(bm, before)
+    _write_back(obj, bm)
+    return {"split_geometry": result_geometry, **created}
+
+
+def separate_selection(name, new_name=None):
+    """Move selected faces to a new object and report the identity boundary explicitly."""
+    obj, bm = _bm_from_object(name)
+    faces = [face for face in bm.faces if face.select]
+    if not faces:
+        _write_back(obj, bm)
+        raise ValueError(f"no faces selected on '{name}' to separate")
+    source_verts = sorted({vert for face in faces for vert in face.verts}, key=lambda vert: vert.index)
+    index = {vert: i for i, vert in enumerate(source_verts)}
+    vertices = [tuple(vert.co) for vert in source_verts]
+    polygons = [[index[vert] for vert in face.verts] for face in faces]
+    material_indices = [face.material_index for face in faces]
+    bmesh.ops.delete(bm, geom=faces, context="FACES")
+    _write_back(obj, bm)
+
+    mesh = bpy.data.meshes.new((new_name or name + "_Separated") + "_Mesh")
+    mesh.from_pydata(vertices, [], polygons)
+    mesh.update()
+    separated = bpy.data.objects.new(new_name or name + "_Separated", mesh)
+    for collection in obj.users_collection:
+        collection.objects.link(separated)
+    separated.matrix_world = obj.matrix_world.copy()
+    for material in obj.data.materials:
+        separated.data.materials.append(material)
+    for polygon, material_index in zip(separated.data.polygons, material_indices):
+        polygon.material_index = material_index
+    persistent_ids.ensure_persistent_ids(separated.name)
+    return {
+        "new_object": separated.name,
+        "separated_faces": len(polygons),
+        "identity_discontinuity": True,
+        "identity_note": "new object receives new persistent IDs; cross-object element identity is not silently reused",
+    }

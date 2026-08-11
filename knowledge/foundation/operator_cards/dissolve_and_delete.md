@@ -1,6 +1,14 @@
 # Operator card: Dissolve (verts/edges/faces) vs Delete
 
-**Status:** DOCS ~ (Manual "Deleting & Dissolving" page not yet fetched directly, behavior confirmed by direct reproduction instead) | EXPERIMENT ✓ | FAILURE_CASE ✓ (the whole point of this card IS the failure-mode distinction) | QUIZ pending
+**Status:** DOCS ✓ (Blender 5.2 LTS Manual) | EXPERIMENT ✓ | FAILURE_CASE ✓ (the whole point of this card IS the failure-mode distinction) | QUIZ pending
+
+## Official source
+
+- Blender 5.2 LTS Manual, **Deleting & Dissolving**:
+  https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/delete.html
+
+Fetched successfully on 2026-08-10. The current page distinguishes vertex/edge/face deletion,
+Only Edges & Faces, Only Faces, dissolve variants, Limited Dissolve, Edge Collapse, and Edge Loops.
 
 ## Core distinction, confirmed by direct reproduction (this session, fresh -- never used in this project before)
 

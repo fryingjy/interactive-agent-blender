@@ -1,0 +1,22 @@
+{
+  "audit_date": "2026-08-10",
+  "policy": "No development fixture, previously used reference, asset-specific builder, or post-seen threshold may count as held-out evidence.",
+  "reference_pool": {
+    "bottle": "CONTAMINATED_BY_PRIOR_USE",
+    "mug": "CONTAMINATED_BY_PRIOR_USE",
+    "soap_dish": "CONTAMINATED_BY_PRIOR_USE",
+    "speaker_enclosure": "CONTAMINATED_BY_PRIOR_USE",
+    "fantasy_ceremonial_sword_001": "COMPLETED_PASS",
+    "stylized_trident_001": "TRANSFER_D_COMPLETED_PASS",
+    "unused_references": 6
+  },
+  "ladder": [
+    {"id": "A", "name": "Subdivision transfer", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_topology-subd/", "runs/2026-08-10_visual-comparison/"]},
+    {"id": "B", "name": "Actual image-reference hard surface", "status": "PASSED_AND_QUALITY_REBUILT", "prerequisite_evidence": ["knowledge_engine/visual_compare.py", "runs/2026-08-10_heldout-fantasy-sword/", "runs/2026-08-10_profile-authored-sword/"]},
+    {"id": "C", "name": "Unknown-problem asset", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_sculpt-export/research_episode.md"]},
+    {"id": "D", "name": "Transfer asset", "status": "PASSED", "prerequisite_evidence": ["runs/2026-08-10_solidify-transfer/", "runs/2026-08-10_bevel-mirror-transfer/", "runs/2026-08-10_transfer-trident/"]},
+    {"id": "E", "name": "Multi-component professional prop", "status": "BLOCKED_HUMAN_REVIEW_REQUIRED", "prerequisite_evidence": ["runs/2026-08-07_speaker-typed-protocol/", "runs/2026-08-10_transfer-trident/"]}
+  ],
+  "ready_for_held_out_modeling": true,
+  "reason": "The user supplied a new reference pack after foundation implementation. Benchmark B ran without an asset-specific builder: normalized front silhouette IoU reached 0.8285 against the predeclared 0.80 gate, and all 15 evaluated components passed independent mesh verification. Its visible primitive-assembly weakness was later rejected and rebuilt as a 19-component profile-authored asset at 0.8369 IoU with 19/19 fresh-process evaluated meshes clean; because the reference was already used, this is quality-rebuild evidence rather than a new held-out pass. Transfer benchmark D passed on a different ornamental prop family at 0.6766 against its predeclared 0.65 gate, with 14/14 evaluated components independently clean. Six supplied references remain unmodeled and reserved."
+}

@@ -1,0 +1,468 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_profile-authored-sword\\profile_authored_sword.blend",
+  "collection": "PROFILE_AUTHORED_SWORD",
+  "geometry_source": "fresh-process evaluated dependency graph",
+  "objects": [
+    {
+      "name": "Blade_Profiled",
+      "stats": {
+        "vertices": 96,
+        "edges": 282,
+        "faces": 188,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 1.2649434345751025,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Blade_Central_Inlay",
+      "stats": {
+        "vertices": 88,
+        "edges": 258,
+        "faces": 172,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.20207922816632284,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Upper_Left",
+      "stats": {
+        "vertices": 128,
+        "edges": 378,
+        "faces": 252,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.11368057550266715,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Upper_Right",
+      "stats": {
+        "vertices": 128,
+        "edges": 378,
+        "faces": 252,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.113680576779953,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Lower_Left",
+      "stats": {
+        "vertices": 112,
+        "edges": 330,
+        "faces": 220,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.11925885245615674,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Lower_Right",
+      "stats": {
+        "vertices": 112,
+        "edges": 330,
+        "faces": 220,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.11925885394694016,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Central_Shield",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.46734570157164224,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Shield_Recess",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.13265171717712368,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Groove_01",
+      "stats": {
+        "vertices": 26,
+        "edges": 72,
+        "faces": 48,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0019422245189594177,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Groove_02",
+      "stats": {
+        "vertices": 26,
+        "edges": 72,
+        "faces": 48,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0019422245189594182,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Groove_03",
+      "stats": {
+        "vertices": 26,
+        "edges": 72,
+        "faces": 48,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0021832860640218564,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Guard_Groove_04",
+      "stats": {
+        "vertices": 26,
+        "edges": 72,
+        "faces": 48,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.0021832860640218555,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Core",
+      "stats": {
+        "vertices": 128,
+        "edges": 378,
+        "faces": 252,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.34619929456821347,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Upper_Collar",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.07060266278449383,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Lower_Collar",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.07124020022583936,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Helical_Wrap",
+      "stats": {
+        "vertices": 1502,
+        "edges": 4500,
+        "faces": 3000,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.030383697011007165,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Pommel_Faceted",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.23411389613695321,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Pommel_Recess",
+      "stats": {
+        "vertices": 144,
+        "edges": 426,
+        "faces": 284,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.04671911270826859,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Pommel_Ruby",
+      "stats": {
+        "vertices": 220,
+        "edges": 654,
+        "faces": 436,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.04379669345135568,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    }
+  ],
+  "summary": {
+    "mesh_objects": 19,
+    "clean_objects": 19,
+    "all_clean": true
+  }
+}

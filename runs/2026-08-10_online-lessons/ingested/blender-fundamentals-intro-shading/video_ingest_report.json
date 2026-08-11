@@ -1,0 +1,116 @@
+{
+  "source_id": "blender-fundamentals-intro-shading",
+  "local_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\intro-to-shading.webm",
+  "sha256": "cdc7d3a0a49aee26b3624e74c044be88903d23f944f93e9000ddc80f8cf9639f",
+  "duration": 276.521,
+  "fps": 24.0,
+  "video": true,
+  "audio": true,
+  "captions": false,
+  "transcript": true,
+  "caption_path": null,
+  "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\generated_transcript.vtt",
+  "chapters": [],
+  "coarse_segments": [
+    {
+      "timestamp": 0.0,
+      "decoded_at": 0.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0000_000000.000s.png"
+    },
+    {
+      "timestamp": 30.0,
+      "decoded_at": 30.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0001_000030.000s.png"
+    },
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 60.0,
+      "decoded_at": 60.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0003_000060.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0004_000090.000s.png"
+    },
+    {
+      "timestamp": 120.0,
+      "decoded_at": 120.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0005_000120.000s.png"
+    },
+    {
+      "timestamp": 150.0,
+      "decoded_at": 150.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0006_000150.000s.png"
+    },
+    {
+      "timestamp": 180.0,
+      "decoded_at": 180.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0007_000180.000s.png"
+    },
+    {
+      "timestamp": 210.0,
+      "decoded_at": 210.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0008_000210.000s.png"
+    },
+    {
+      "timestamp": 240.0,
+      "decoded_at": 240.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0009_000240.000s.png"
+    },
+    {
+      "timestamp": 270.0,
+      "decoded_at": 270.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0010_000270.000s.png"
+    }
+  ],
+  "fine_segments": [
+    {
+      "timestamp": 45.0,
+      "decoded_at": 45.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0002_000045.000s.png"
+    },
+    {
+      "timestamp": 90.0,
+      "decoded_at": 90.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0004_000090.000s.png"
+    },
+    {
+      "timestamp": 150.0,
+      "decoded_at": 150.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0006_000150.000s.png"
+    },
+    {
+      "timestamp": 240.0,
+      "decoded_at": 240.007,
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\frame_0009_000240.000s.png"
+    }
+  ],
+  "transcript_segments": [],
+  "transcript_segment_count": 47,
+  "transcript_text_in_report": false,
+  "transcription": {
+    "backend": "faster-whisper",
+    "model": "tiny.en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "requested_language": "en",
+    "detected_language": "en",
+    "language_probability": 1,
+    "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\media\\intro-to-shading.webm",
+    "transcript_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_online-lessons\\ingested\\blender-fundamentals-intro-shading\\generated_transcript.vtt",
+    "limitations": [
+      "Machine transcription may contain errors; verify important claims against frames and official documentation.",
+      "Generated text is evidence of local speech processing, not creator-supplied captions."
+    ],
+    "segment_count": 47
+  },
+  "limitations": [
+    "Frame extraction proves visual access, not comprehension.",
+    "Machine transcript is available but may contain errors; important claims require frame or official-doc corroboration."
+  ]
+}

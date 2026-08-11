@@ -3,6 +3,10 @@
 Run as:
     blender --background --python tools/verify_mesh.py -- <blend_path> <object_name> [--max-ngons 0]
 
+Add --evaluated to verify the dependency-graph result after modifiers instead
+of the editable base mesh. The default remains base-mesh verification for
+backward compatibility with existing evidence.
+
 Deliberately does NOT import anything from blender_ops/ — this must stay a fresh, independent
 check of a saved .blend file, sharing no code with whatever produced the mesh.
 """
@@ -28,6 +32,7 @@ def parse_args():
     parser.add_argument("--max-ngons", type=int, default=0)
     parser.add_argument("--max-non-manifold", type=int, default=0)
     parser.add_argument("--report-dir", default=None)
+    parser.add_argument("--evaluated", action="store_true")
     return parser.parse_args(argv)
 
 
@@ -41,8 +46,18 @@ def main():
         print("VERIFY_RESULT:" + json.dumps(result))
         sys.exit(2)
 
+    evaluated_obj = None
+    if args.evaluated:
+        depsgraph = bpy.context.evaluated_depsgraph_get()
+        evaluated_obj = obj.evaluated_get(depsgraph)
+        source_mesh = evaluated_obj.to_mesh()
+        source_matrix = evaluated_obj.matrix_world
+    else:
+        source_mesh = obj.data
+        source_matrix = obj.matrix_world
+
     bm = bmesh.new()
-    bm.from_mesh(obj.data)
+    bm.from_mesh(source_mesh)
     bm.verts.ensure_lookup_table()
     bm.edges.ensure_lookup_table()
     bm.faces.ensure_lookup_table()
@@ -55,7 +70,7 @@ def main():
 
     # Signed volume on a closed manifold mesh is positive only if normals are
     # consistently outward-facing -- a definitive check, not a heuristic.
-    bm.transform(obj.matrix_world)
+    bm.transform(source_matrix)
     signed_volume = bm.calc_volume(signed=True)
 
     stats = {
@@ -70,6 +85,8 @@ def main():
         "signed_volume": signed_volume,
     }
     bm.free()
+    if evaluated_obj is not None:
+        evaluated_obj.to_mesh_clear()
 
     checks = {
         "non_manifold_edges_ok": non_manifold_edges <= args.max_non_manifold,
@@ -83,6 +100,7 @@ def main():
     report = {
         "blend_path": str(Path(args.blend_path).resolve()),
         "object_name": args.object_name,
+        "geometry_source": "evaluated" if args.evaluated else "base",
         "verified_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "stats": stats,
         "checks": checks,

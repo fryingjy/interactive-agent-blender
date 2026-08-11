@@ -24,6 +24,7 @@ than something the log's numbers alone would hide.
 
 import bmesh
 import bpy
+import copy
 
 import decision_state
 import persistent_ids
@@ -50,6 +51,10 @@ class DecisionTransaction:
         self._op_delta = None
         self._before_mesh_snapshot = None
         self._before_transform = None
+        self._before_object_names = None
+        self._before_object_snapshot = None
+        self._before_selected = None
+        self._before_active_object = None
         self.result = None
         self.reject_reason = None
 
@@ -92,11 +97,17 @@ class DecisionTransaction:
         if self.target_object:
             obj = bpy.data.objects[self.target_object]
             self._before_mesh_snapshot = obj.data.copy()
+            self._before_object_snapshot = obj.copy()
+            self._before_selected = obj.select_get()
+            self._before_active_object = bpy.context.view_layer.objects.active.name if bpy.context.view_layer.objects.active else None
             self._before_transform = {
                 "location": tuple(obj.location),
                 "rotation_euler": tuple(obj.rotation_euler),
                 "scale": tuple(obj.scale),
             }
+        # Capture after transaction-owned snapshots are allocated so detached
+        # snapshot datablocks are never reported as objects created by fn().
+        self._before_object_names = set(bpy.data.objects.keys())
         self.result = fn(*args, **kwargs)
         self._performed = True
         return self.result
@@ -183,14 +194,24 @@ class DecisionTransaction:
             bm.from_mesh(self._before_mesh_snapshot)
             bmesh.update_edit_mesh(obj.data, loop_triangles=True, destructive=True)
         else:
-            bm = bmesh.new()
-            bm.from_mesh(self._before_mesh_snapshot)
-            bm.to_mesh(obj.data)
-            obj.data.update()
-            bm.free()
+            replaced_data = obj.data
+            restored_data = self._before_mesh_snapshot.copy()
+            restored_data.name = replaced_data.name
+            obj.data = restored_data
+            if replaced_data.users == 0:
+                bpy.data.meshes.remove(replaced_data)
         obj.location = self._before_transform["location"]
         obj.rotation_euler = self._before_transform["rotation_euler"]
         obj.scale = self._before_transform["scale"]
+        self._restore_object_channels(obj)
+        created_objects = sorted(set(bpy.data.objects.keys()) - (self._before_object_names or set()))
+        for object_name in created_objects:
+            created = bpy.data.objects.get(object_name)
+            if created is not None:
+                mesh = created.data if created.type == "MESH" else None
+                bpy.data.objects.remove(created, do_unlink=True)
+                if mesh is not None and mesh.users == 0:
+                    bpy.data.meshes.remove(mesh)
         self._rejected = True
         self.reject_reason = reason
         self._free_snapshot()
@@ -198,11 +219,57 @@ class DecisionTransaction:
             "rejected": True,
             "restored_revision": self.observed_revision,
             "reason": reason,
+            "removed_created_objects": created_objects,
         }
 
+    def _restore_object_channels(self, obj):
+        """Restore object metadata, modifiers, and object selection from the object snapshot."""
+        snapshot = self._before_object_snapshot
+        if snapshot is None:
+            return
+        for key in list(obj.keys()):
+            del obj[key]
+        for key in snapshot.keys():
+            obj[key] = copy.deepcopy(snapshot[key])
+
+        for modifier in list(obj.modifiers):
+            obj.modifiers.remove(modifier)
+        for source in snapshot.modifiers:
+            target = obj.modifiers.new(name=source.name, type=source.type)
+            for prop in source.bl_rna.properties:
+                identifier = prop.identifier
+                if identifier in {"rna_type", "name", "type"} or prop.is_readonly:
+                    continue
+                try:
+                    setattr(target, identifier, getattr(source, identifier))
+                except (AttributeError, TypeError, ValueError):
+                    # Runtime-only and collection properties are not universally assignable.
+                    continue
+        obj.select_set(bool(self._before_selected))
+        if self._before_active_object:
+            active = bpy.data.objects.get(self._before_active_object)
+            if active is not None:
+                bpy.context.view_layer.objects.active = active
+
     def _free_snapshot(self):
+        # The detached object copy still owns one user of the mesh snapshot.
+        # Remove it first: removing the mesh first invalidates the Object RNA
+        # wrapper and a later bpy.data.objects.remove() raises ReferenceError.
+        if self._before_object_snapshot is not None:
+            try:
+                if self._before_object_snapshot.name in bpy.data.objects:
+                    bpy.data.objects.remove(self._before_object_snapshot)
+            except ReferenceError:
+                # Blender may already have invalidated an unlinked snapshot as
+                # a side effect of datablock cleanup. It is then already free.
+                pass
+            self._before_object_snapshot = None
         if self._before_mesh_snapshot is not None:
-            bpy.data.meshes.remove(self._before_mesh_snapshot)
+            try:
+                if self._before_mesh_snapshot.name in bpy.data.meshes:
+                    bpy.data.meshes.remove(self._before_mesh_snapshot)
+            except ReferenceError:
+                pass
             self._before_mesh_snapshot = None
 
     def __exit__(self, exc_type, exc, tb):

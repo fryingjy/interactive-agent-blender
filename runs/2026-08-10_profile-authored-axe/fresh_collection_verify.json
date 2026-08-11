@@ -1,0 +1,180 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_profile-authored-axe\\profile_authored_axe.blend",
+  "collection": "ProfileAuthoredAxe",
+  "geometry_source": "fresh-process evaluated dependency graph",
+  "objects": [
+    {
+      "name": "Axe_FullTang_Body",
+      "stats": {
+        "vertices": 1230,
+        "edges": 3690,
+        "faces": 2460,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 4.182295623838607,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Raised_Grip_Scales",
+      "stats": {
+        "vertices": 392,
+        "edges": 1170,
+        "faces": 780,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 3.140697846653704,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Exposed_Cutting_Edge",
+      "stats": {
+        "vertices": 68,
+        "edges": 198,
+        "faces": 132,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.06569409186273302,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Fastener_01",
+      "stats": {
+        "vertices": 146,
+        "edges": 432,
+        "faces": 288,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.009699876651744113,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Fastener_02",
+      "stats": {
+        "vertices": 146,
+        "edges": 432,
+        "faces": 288,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.009699881139251182,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Fastener_03",
+      "stats": {
+        "vertices": 146,
+        "edges": 432,
+        "faces": 288,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.010104562562726129,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Grip_Fastener_04",
+      "stats": {
+        "vertices": 146,
+        "edges": 432,
+        "faces": 288,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 0.010104558884410978,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    }
+  ],
+  "summary": {
+    "mesh_objects": 7,
+    "clean_objects": 7,
+    "all_clean": true
+  }
+}

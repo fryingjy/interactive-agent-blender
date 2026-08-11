@@ -1,0 +1,84 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_rigged-joint-deformation\\rigged_joint_deformation.blend",
+  "collection": "RiggedJointSpecimens",
+  "geometry_source": "fresh-process evaluated dependency graph",
+  "objects": [
+    {
+      "name": "Dense_RiggedReference",
+      "stats": {
+        "vertices": 3042,
+        "edges": 6080,
+        "faces": 3040,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 4.557607816821513,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Purposeful_JointLoops",
+      "stats": {
+        "vertices": 1378,
+        "edges": 2752,
+        "faces": 1376,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 4.512005213695591,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    },
+    {
+      "name": "Sparse_JointFailure",
+      "stats": {
+        "vertices": 738,
+        "edges": 1472,
+        "faces": 736,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "degenerate_faces": 0,
+        "signed_volume": 4.395487207791519,
+        "uv_layers": 1
+      },
+      "checks": {
+        "closed_manifold": true,
+        "no_ngons": true,
+        "no_loose_geometry": true,
+        "no_degenerate_faces": true,
+        "outward_positive_volume": true,
+        "has_uv": true
+      },
+      "clean": true
+    }
+  ],
+  "summary": {
+    "mesh_objects": 3,
+    "clean_objects": 3,
+    "all_clean": true
+  }
+}
