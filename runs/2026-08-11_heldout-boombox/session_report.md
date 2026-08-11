@@ -47,6 +47,21 @@ connected edited housing, region-scoped recess treatment, connected handle topol
 speakers, Array counts, purposeful bevel stacks, populated UV loops, node materials, render
 evidence, source isolation, and exact declared silhouette gates.
 
+## Production export
+
+`tools/run_boombox_production_export.py` exports the accepted scene as GLB with evaluated modifiers.
+`tools/verify_boombox_production_export.py` then imports it in a fresh Blender factory process and
+directly reads the GLB 2.0 JSON chunk. The round trip preserves 41 semantic mesh objects, 15,292
+evaluated triangles, exact combined dimensions, all UV/material presence, and all seven material
+families. Every GLB primitive declares POSITION, NORMAL, and TEXCOORD_0; tangent attributes exist on
+the package where Blender could calculate them.
+
+The first verifier incorrectly expected Y-up package dimensions after Blender had already converted
+the import back to Z-up. That rejected assumption is preserved in `export/failed_axis_expectation.json`.
+Several radial meshes do not export tangents from their current smart-projected UVs. Because this
+asset has no tangent-normal textures, that is not a current semantic failure, but a future normal-map
+pass must repair/author those UVs and require tangents on every affected primitive.
+
 ## Limitations
 
 - This is a clean stylized interpretation, not a photoreal copy. Fine typography, exact grille
@@ -55,3 +70,5 @@ evidence, source isolation, and exact declared silhouette gates.
   surface judgment.
 - One held-out asset does not prove broad professional proficiency. No experienced artist has
   accepted the result.
+- The GLB round trip is structurally validated in Blender, not visually accepted in a named external
+  engine; tangent completeness for a future normal-mapped version remains open.

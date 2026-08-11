@@ -297,7 +297,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    transfer used intentionally injected ground truth and has no experienced surface review.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. The online CC0 boombox passes one predeclared multi-view case at 0.8159 mean IoU with
-   15/15 fresh-process assertions, after primitive-assembly and bevel-damage attempts were rejected.
+   15/15 fresh-process scene assertions and a structural GLB round trip, after primitive-assembly,
+   bevel-damage, and false axis-verifier attempts were rejected.
    Six supplied references remain reserved for broader generalization evidence.
 6. Advanced external instruction now includes one long-form retopology live study; local
    transcription and authored-caption ingestion are functional. Retopology fundamentals remain
@@ -313,6 +314,6 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 Run a second unrelated held-out hard-surface or curved-SubD prop to test whether the connected-cage,
 evaluated-surface, and visual-gate lessons transfer without benchmark-specific intervention. Pair it
-with production UV/bake/export review, exercise the runtime planner throughout, continue
+with production texture/bake and named-engine visual review, exercise the runtime planner throughout, continue
 longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
 character benchmarks remain deferred.
