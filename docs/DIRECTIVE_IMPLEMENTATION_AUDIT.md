@@ -36,8 +36,8 @@ judgment and generalization priorities remain; the professional target is not fa
 | Reference error tickets | contour/negative-space/landmark/component mismatches converted to localized priorities | implemented and unit-tested |
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
-| Surface localization | robust evaluated Laplacian pinch candidates plus typed intervention classifier for geometry/normals/material/lighting/bevel | controlled five-cause pass; mixed production causes remain open |
-| Surface review lighting | official three-point and shading lessons studied; grazing-light observability plus neutral-context interventions | controlled observability/classification pass; production transfer pending |
+| Surface localization | robust evaluated Laplacian pinch candidates plus typed single/mixed intervention classifiers for geometry/normals/material/lighting/bevel | five isolated causes plus adaptive five-cause connected-barrel transfer pass; unknown real defects remain open |
+| Surface review lighting | official three-point and shading lessons studied; grazing-light observability, neutral-context interventions, and fixed-seed Cycles ablation | controlled second-shape transfer passes; experienced review remains open |
 | Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.2 | expanded lab plus 6/6 Bisect mode cases and rollback/identity evidence |
 | Revision-bound planner contract | one local decision chosen from authority, external edits, technical failures, rebuild pressure, uncertainty, visual tickets, and stage evidence | 12/12 contract assertions plus unit coverage; broader runtime use remains sparse |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
@@ -67,7 +67,8 @@ judgment and generalization priorities remain; the professional target is not fa
 1. **Advanced expert video curriculum:** eleven official lessons are now processed with real
    frames/audio/captions and source-to-skill experiments. Pole placement has a controlled
    different-shape articulation transfer and a bounded facial corrective transfer. Production
-   sculpt/retopology, expressive facial acting, and mixed-cause production surface diagnosis remain absent.
+   sculpt/retopology and expressive facial acting remain absent. A known-ground-truth five-cause
+   surface transfer now passes, while unknown production diagnosis remains open.
 2. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those
    passes do not prove professional quality. A later chair attempt is explicitly retained as FAIL
    because primitive assembly plus one-view IoU did not meet the directive.
@@ -95,6 +96,12 @@ independent fresh-process verifier. Its render remains visually subtle, the sour
 and topology, and no animator reviewed it; it therefore does not close professional organic or
 facial-expression quality.
 
+The connected-barrel surface run closes the known-ground-truth mixed-cause transfer gap. Five
+simultaneous geometry/normals/material/lighting/bevel faults are independently ablated, then repaired
+adaptively to zero fixed-view error and exact clean state. Four failed render-authority approaches
+remain visible, and fresh verification catches the failed bevel's non-manifold/degenerate result.
+This does not establish diagnosis from an unknown production beauty image.
+
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.
 
@@ -106,8 +113,8 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work is production-style mixed-cause surface diagnosis, stronger organic sculpt/
-retopo and facial-expression quality, named external-engine bake validation, broader planner
+The next valid work is stronger organic sculpt/retopo and facial-expression quality, named
+external-engine bake validation, broader planner
 runtime use, longer-horizon retention, and independent experienced review. Until
 that evidence exists, changing the foundation or professional claim to PASS would violate the
 directive's anti-fake-progress rules.

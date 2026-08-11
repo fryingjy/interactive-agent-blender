@@ -174,7 +174,7 @@ Failures remain visible and are not counted as successes merely because Blender 
 - One stack-order skill has been promoted with experimental evidence.
 - Several project skills have prior runtime use, but cross-asset and second-shape validation is still sparse.
 
-Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Cross-calendar-day self-retrieval is now recorded across 2026-08-08, 2026-08-10, and 2026-08-11; independent and longer-horizon retention plus broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—now has controlled localization/classification evidence but mixed production transfer remains open.
+Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Cross-calendar-day self-retrieval is now recorded across 2026-08-08, 2026-08-10, and 2026-08-11; independent and longer-horizon retention plus broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—now has controlled localization/classification evidence plus a mixed five-cause transfer on the connected-quad barrel; unknown real-production diagnosis remains open.
 
 An inspectable strategy policy now ranks primary representation, component boundaries, edit mode,
 and repair-vs-rebuild independently. Its declared benchmark passed 10/10 cases and preserves a real
@@ -258,6 +258,17 @@ Armature/driver wiring is intact. The official mesh supplied anatomy/topology an
 expression is subtle, so this is mechanism transfer rather than production facial-artistry proof.
 See `runs/2026-08-11_facial-expression-transfer/`.
 
+Surface-cause classification now transfers from five isolated enclosure fixtures to five
+simultaneous faults on the connected-quad barrel. A state-controlled adaptive matrix repairs
+lighting, unnecessary bevel, material assignment, geometry, then normals; mean fixed-view error
+falls from `0.10833657` to zero and thresholded changed pixels from 104,319 to zero. The final
+clean/repaired image buffers and datablock states match exactly. Fresh verification confirms the
+repaired body is one closed 5,376-quad component and independently detects 67 degenerates plus 152
+non-manifold edges in the failed blanket-bevel state. Preset-order, Eevee sampling, stale-depsgraph,
+and light-cache failures remain preserved. Ground truth was intentionally injected, so unknown
+production defects and experienced review remain open. See
+`runs/2026-08-11_mixed-surface-diagnosis/`.
+
 No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
 
 ## Stronger areas
@@ -280,8 +291,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
 3. Longer-horizon/independent retention and broader real-session use of context-aware knowledge retrieval.
-4. Production transfer of surface-defect cause classification. Candidate localization, grazing-light
-   observability, and five controlled intervention signatures now pass, but mixed real defects remain.
+4. Unknown real-production surface-defect diagnosis. Candidate localization, grazing-light
+   observability, five isolated signatures, and a five-cause adaptive transfer now pass, but the
+   transfer used intentionally injected ground truth and has no experienced surface review.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
    builders. Benchmark B passed at 0.8285 IoU and transfer benchmark D passed at 0.6766 IoU; six
    supplied references remain reserved for broader generalization evidence. The later tactical-axe
@@ -289,7 +301,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    held-out reserve.
 6. Advanced external instruction now includes one long-form retopology live study; local transcription and
    authored-caption ingestion are functional, and a bounded facial corrective transfer now passes.
-   Production sculpt/retopology, expressive facial acting, and mixed-cause production surface diagnosis remain.
+   Production sculpt/retopology and expressive facial acting remain.
 
 ## Exit decision
 
@@ -299,7 +311,7 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Execute a production-style mixed-cause surface diagnosis in which geometry, normals, materials,
-lighting, and bevel state interact on one editable asset; require intervention ablation, fresh
-technical verification, and visual review. Continue later retention checks over a longer interval
-without reusing answer text.
+Validate the seam-authored tangent bake in a named external engine while preserving source UV,
+normal-map color-space, tangent, material, and scale semantics. Record both a successful import and
+a deliberate failure. Continue later retention checks over a longer interval without reusing
+answer text.

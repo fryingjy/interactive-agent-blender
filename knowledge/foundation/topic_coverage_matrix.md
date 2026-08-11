@@ -46,8 +46,8 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
 | Semantic region rendering | ~ | — | ✓ | ✓ | — | ~ | — |
 | Localized reference tickets | ~ | — | ✓ | ✓ | — | ~ | — |
-| Evaluated surface diagnostics | ~ | — | ✓ | ✓ | — | ~ | ~ |
-| Surface review lighting | ~ | ✓ | ✓ | ✓ | — | ~ | — |
+| Evaluated surface diagnostics | ~ | — | ✓ | ✓ | — | ✓ | ✓ |
+| Surface review lighting | ~ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
 | Machine-enforced stage gates | ~ | — | ✓ | ✓ | — | ~ | — |
 | Professional review aggregation | ~ | — | ✓ | ✓ | — | ~ | — |
 | Curve objects | ~ | — | ✓ | ✓ | — | ✓ | ~ |
@@ -71,7 +71,7 @@ The strongest evidence is concentrated in closed-loop runtime behavior, core mes
 
 The official-head facial transfer now gives second-shape corrective evidence with independent saved-rig
 verification, but its expression is subtle and does not establish production acting. The weakest breadth remains production-quality organic sculpting, full-character/facial articulation,
-mixed-cause surface-defect transfer, independent/long-horizon retrieval retention,
+unknown real-production surface diagnosis, independent/long-horizon retrieval retention,
 professional visual judgment, and broader transfer validation.
 
 Video evidence is credited only for eleven Blender-authored/Studio lessons actually decoded,
@@ -80,3 +80,8 @@ mesh-fundamentals coverage; dedicated Extrude and Bevel lessons give substantial
 the UV, Sculpt, facial-planning, pole-placement, and lighting lessons now have different-shape experiments. The older Blender 2.80 UI is
 version-limited, and machine transcript wording is not treated as authoritative. All unrelated
 Video cells remain `—`.
+
+The connected-barrel mixed-cause run provides second-shape runtime evidence for intervention-based
+surface diagnosis and review lighting: five simultaneous known faults are selected and repaired by
+an adaptive ablation matrix under fixed-seed Cycles, with exact clean-state recovery and independent
+mesh verification. It does not establish diagnosis of unknown production defects.
