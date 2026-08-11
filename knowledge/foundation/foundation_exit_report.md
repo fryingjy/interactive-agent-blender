@@ -302,9 +302,14 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    15/15 fresh-process scene assertions and a structural GLB round trip, after primitive-assembly,
    bevel-damage, and false axis-verifier attempts were rejected.
    A second CC0 camera reached its automated held-out gates at 0.8717 mean IoU, but experienced
-   review rejected the 19-object assembly strategy. Its post-review one-component correction passes
-   topology, silhouette, UV/material, and one-mesh GLB checks; because the stronger construction
-   rule was then known, that correction is not relabeled held out.
+   review rejected the 19-object assembly strategy. Its first post-review one-component correction
+   was also rejected because lens-only bevel weighting omitted intended sharp edges and four-sided
+   top controls merely looked rounded under SubD. The rebuilt 530-quad cage uses regular 12-edge
+   controls, begins from a literal box perimeter rather than a pre-rounded superellipse, and weights
+   all 492 semantically intended hard edges, including the four three-segment
+   longitudinal corner rails; base, Bevel-only, final SubD, UV/
+   material, silhouette, and one-mesh GLB checks pass. Because both stronger construction rules were
+   supplied during review, that correction is not relabeled held out.
    Six supplied references remain reserved for broader generalization evidence.
 6. Advanced external instruction now includes one long-form retopology live study; local
    transcription and authored-caption ingestion are functional. Retopology fundamentals remain

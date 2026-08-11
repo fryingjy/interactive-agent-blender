@@ -17,7 +17,16 @@ C:\Users\odane\AppData\Roaming\Blender Foundation\Blender\5.2\datafiles\studioli
 ```
 
 Files are prefixed `CC0_Hecko_` to preserve provenance and avoid collisions. A clean Blender 5.2
-process refreshed Studio Lights and recognized all 15 files as user-defined MatCaps.
+process refreshed Studio Lights and recognized all 15 files as user-defined MatCaps. The live
+Blender process was refreshed again on 2026-08-11 and recognized 42 usable MatCaps total: 27
+built-in review MatCaps plus the 15 CC0 user additions.
+
+Machine-readable local validation is recorded in
+`runs/2026-08-11_connected-camera-corrective/blender_environment_report.json`.
+
+A much larger public GitHub MatCap dump was reviewed but deliberately not installed: its own license
+notice says original author/source relationships were not retained. Quantity without usable
+provenance is not an acceptable asset-library upgrade.
 
 The images are intentionally not duplicated in this repository. They remain in Blender's user-data
 directory under their source license. A Blender process that was already running during installation
