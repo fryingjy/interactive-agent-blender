@@ -7,9 +7,10 @@ retains experimentally tested modeling knowledge.
 ## Current status
 
 **Foundation status: PARTIAL.** The Blender-control and verification infrastructure is substantial,
-but the repository does not claim professional-level generalization. Stronger organic form,
-expressive facial work, longer-horizon retention, unknown production-defect diagnosis, broader
-held-out assets, and experienced human review remain open.
+but the repository does not claim professional-level generalization. Stronger hard-surface/SubD
+judgment, multi-view reference modeling, production preparation, broader held-out assets,
+longer-horizon retention, and experienced human review remain open. Advanced sculpting and organic
+specialization are deliberately deferred.
 
 Current evidence includes:
 
@@ -35,6 +36,7 @@ The authoritative readiness decision is in
 | Operating contract | [`docs/MASTER_DIRECTIVE.md`](docs/MASTER_DIRECTIVE.md) |
 | Current requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) |
 | Research/learning roadmap | [`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md) |
+| Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Knowledge lifecycle | [`docs/KNOWLEDGE_SYSTEM.md`](docs/KNOWLEDGE_SYSTEM.md) |
 | Repository layout | [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) |
@@ -117,6 +119,8 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-10_online-lessons/` — decoded official lesson evidence and synchronized modalities.
 - `runs/2026-08-10_profile-authored-sword/` and `runs/2026-08-10_profile-authored-axe/` — corrective
   profile-authored hard-surface evidence.
+- `runs/2026-08-11_expressive-facial-articulation/` — independently verified regional smile
+  coupling with five preserved rejected iterations; organic follow-on is deferred.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

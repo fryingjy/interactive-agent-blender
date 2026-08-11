@@ -69,10 +69,13 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top loop measures silhouette, bounds, centroid, and contour regression. Same-reference profile modeling transferred from a fantasy sword to a tactical axe, then to a real multi-view rotational prop: the barrel body uses one connected 5,376-quad revolved shell with integrated hoops/corrugations and reaches 0.983 mean normalized three-view IoU. The barrel was tuned against its source and is corrective evidence, not held-out professional-quality proof.
 
-The official-head facial transfer now gives second-shape corrective evidence with independent saved-rig
-verification, but its expression is subtle and does not establish production acting. The weakest breadth remains production-quality organic sculpting, full-character/facial articulation,
-unknown real-production surface diagnosis, independent/long-horizon retrieval retention,
-professional visual judgment, and broader transfer validation.
+The official-head facial transfer and follow-on regional-coupling control give second-shape
+corrective evidence with independent saved-rig verification. The latter preserves five rejected
+visual/technical iterations and explicitly distinguishes 99.3188%-quad regional topology from an
+absolute all-quad claim. Neither establishes production acting or autonomous facial topology.
+Current active gaps are professional hard-surface/SubD judgment, multi-view reference modeling,
+unknown real-production surface diagnosis, production preparation, independent/long-horizon
+retrieval retention, and broader transfer validation. Advanced organic specialization is deferred.
 
 Video evidence is credited only for eleven Blender-authored/Studio lessons actually decoded,
 captioned or locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial

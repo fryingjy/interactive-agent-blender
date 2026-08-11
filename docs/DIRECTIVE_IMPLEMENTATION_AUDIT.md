@@ -1,7 +1,7 @@
 # Master directive implementation audit
 
 **Audit date:** 2026-08-11
-**Branch:** `codex/improve-master-directive`  
+**Branch:** repository default branch plus published evidence increments
 **Disposition:** substantial foundation evidence exists, but locally actionable professional-
 judgment and generalization priorities remain; the professional target is not falsely claimed.
 
@@ -52,6 +52,7 @@ judgment and generalization priorities remain; the professional target is not fa
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 | Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
 | Rigged facial corrective transfer | official CC0 animation head; Jaw + bilateral smile controls; combined-pose driver gated `0/0/0/1`; mouth mean error improves 2.08876x; 123 weighted jaw vertices touch only quads; all three evaluated heads independently clean | bounded mechanism/transfer PASS; expression is subtle and not production-quality facial acting |
+| Expressive regional coupling control | official CC0 head; mouth-only failure control versus integrated mouth/cheek/lower-lid/brow smile; nondeforming bilateral controls; five rejected revisions; fresh-process saved-scene verification | bounded technical/visual PASS; source supplies anatomy/topology and advanced organic follow-on is deferred |
 
 ## Important disproved assumptions retained
 
@@ -114,7 +115,8 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work is stronger organic sculpt/retopo and facial-expression quality, broader planner
-runtime use, longer-horizon retention, and independent experienced review. Until
+The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`: held-out hard-surface/SubD and
+reference-driven prop construction, contextual topology, modifier strategy, production preparation,
+broader planner runtime use, longer-horizon retention, and independent experienced review. Until
 that evidence exists, changing the foundation or professional claim to PASS would violate the
 directive's anti-fake-progress rules.

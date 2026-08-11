@@ -1,0 +1,187 @@
+{
+  "lab": "integrated_expressive_facial_articulation",
+  "blender_version": "5.2.0 LTS",
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_facial-expression-transfer\\media\\bundle\\human_base_meshes_bundle.blend",
+  "source_object": "GEO-head_animation_realistic",
+  "source_boundary": "official CC0 anatomy/topology; deformation and test authored here",
+  "feature_frame": {
+    "height": 0.37479591369628906,
+    "width": 0.2853630781173706,
+    "depth": 0.2517894208431244,
+    "front_y": -0.1258947104215622,
+    "mouth_z": -0.06184132575988768,
+    "cheek_z": -0.0037479591369628806,
+    "eye_z": 0.04497550964355468,
+    "brow_z": 0.07495918273925778,
+    "chin_z": -0.10494285583496094,
+    "jaw_hinge_z": -0.026235713958740248
+  },
+  "expression": {
+    "jaw_degrees": 14.0,
+    "bilateral_smile_control": 1.0
+  },
+  "landmark_indices": {
+    "corner_left": 1084,
+    "corner_right": 2626,
+    "cheek_left": 1234,
+    "cheek_right": 2775,
+    "lid_left": 472,
+    "lid_right": 2014,
+    "brow_left": 430,
+    "brow_right": 1972
+  },
+  "failure_mouth_only_landmark_deltas": {
+    "corner_left": [
+      -0.004265971481800079,
+      -0.0017097145318984985,
+      0.0039816200733184814
+    ],
+    "corner_right": [
+      0.0042882151901721954,
+      -0.0017194151878356934,
+      0.004003841429948807
+    ],
+    "cheek_left": [
+      -9.5367431640625e-07,
+      -3.3527612686157227e-07,
+      8.039642125368118e-07
+    ],
+    "cheek_right": [
+      9.57399606704712e-07,
+      -3.390014171600342e-07,
+      8.069910109043121e-07
+    ],
+    "lid_left": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "lid_right": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "brow_left": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "brow_right": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "integrated_landmark_deltas": {
+    "corner_left": [
+      -0.004265971481800079,
+      -0.0017498470842838287,
+      0.004061270505189896
+    ],
+    "corner_right": [
+      0.0042882151901721954,
+      -0.0017602676525712013,
+      0.00408492237329483
+    ],
+    "cheek_left": [
+      -9.5367431640625e-07,
+      -0.00590105727314949,
+      0.01171201467514038
+    ],
+    "cheek_right": [
+      9.57399606704712e-07,
+      -0.005917292088270187,
+      0.011744222603738308
+    ],
+    "lid_left": [
+      0.0,
+      -0.0038143396377563477,
+      0.00947558879852295
+    ],
+    "lid_right": [
+      0.0,
+      -0.0038215890526771545,
+      0.009492490440607071
+    ],
+    "brow_left": [
+      0.0,
+      -2.316385507583618e-05,
+      0.005586490035057068
+    ],
+    "brow_right": [
+      0.0,
+      -2.3171305656433105e-05,
+      0.00559002161026001
+    ]
+  },
+  "failure_coupling": {
+    "mouth": 0.0023669483202147985,
+    "cheek": 6.64050960757045e-05,
+    "lower_lid": 1.6831154835092933e-11,
+    "brow": 1.1455333930725237e-13
+  },
+  "integrated_coupling": {
+    "mouth": 0.003036970769126321,
+    "cheek": 0.0059941170191775165,
+    "lower_lid": 0.005665629744139869,
+    "brow": 0.0033539142165798464
+  },
+  "driver_values": {
+    "smile_rest": 0.0,
+    "smile_only": 1.0,
+    "smile_combined": 1.0,
+    "corrective_rest": 0.0,
+    "corrective_jaw_only": 0.0,
+    "corrective_smile_only": 0.0,
+    "corrective_combined": 1.0
+  },
+  "mouth_aperture": {
+    "upper_index": 2666,
+    "lower_index": 2657,
+    "rest": 0.10511934757232666,
+    "posed": 0.08315868675708771,
+    "increase": -0.021960660815238953
+  },
+  "topology": {
+    "vertices": 3242,
+    "faces": 3234,
+    "quads": 3206,
+    "triangles": 18,
+    "ngons": 10,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "jaw_weighted_vertices": 115,
+    "non_quad_faces_touching_weighted_jaw": 0
+  },
+  "visual_checkpoints": [
+    "expression_rest.png",
+    "expression_failure_mouth_only.png",
+    "expression_integrated.png",
+    "expression_comparison.png",
+    "expression_integrated_three_quarter.png",
+    "expression_integrated_wireframe.png"
+  ],
+  "assertions": {
+    "source_copy_closed": true,
+    "source_copy_nondegenerate": true,
+    "weighted_jaw_region_only_touches_quads": true,
+    "mouth_only_failure_lacks_eye_coupling": true,
+    "integrated_cheek_coupling_exceeds_failure": true,
+    "integrated_lid_coupling_exceeds_failure": true,
+    "integrated_brow_coupling_exceeds_failure": true,
+    "mouth_corners_raise_and_widen": false,
+    "cheeks_raise": true,
+    "lower_lids_raise": true,
+    "smile_driver_gates_rest_and_pose": true,
+    "corrective_gates_combined_pose": true,
+    "jaw_pose_increases_mouth_aperture": false,
+    "six_visual_checkpoints_written": true
+  },
+  "pass": false,
+  "limitations": [
+    "The official CC0 head supplies anatomy and topology; this is expression-articulation transfer, not autonomous head retopology.",
+    "The action-unit-like landmark thresholds are declared geometric heuristics, not clinical FACS coding or animator approval.",
+    "One broad smile/jaw pose does not establish a production facial pose library, speech shapes, asymmetry, or emotional acting range.",
+    "Eye and iris meshes are source accessories copied only to make eyelid behavior readable in controlled renders."
+  ]
+}

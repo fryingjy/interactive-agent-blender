@@ -47,3 +47,11 @@ nearest-surface error 2.08876x and maximum error 2.34436x. A separate fresh-proc
 the saved bones, modifiers, shape keys, driver variables, gating, jaw-region topology, and evaluated
 meshes. The expression is visually subtle, so this is transfer/mechanism evidence rather than a
 production facial-animation claim.
+
+`runs/2026-08-11_expressive-facial-articulation/` isolates a second failure mode: a mouth-only
+smile reads like a local sticker when cheeks, lower lids, and brows do not participate. The final
+shape couples those regions and is driven by two nondeforming controls, while five rejected
+iterations retain failed numeric gates, excessive eye/cheek compression, two visibly poor jaw/neck
+strategies, and an over-strict absolute-quad gate. A fresh factory-startup verifier checks the saved
+driver, landmarks, symmetry, topology health, and six renders without importing the generator.
+This is bounded coupling evidence on supplied CC0 anatomy/topology, not a production acting claim.

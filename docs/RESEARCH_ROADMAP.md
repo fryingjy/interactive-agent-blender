@@ -7,6 +7,14 @@ implemented and tested; external curriculum breadth and cross-asset promotion re
 Research should stay problem-driven and should not outrun the runtime's ability to apply and
 verify what it learns.**
 
+## Current specialization override (binding)
+
+`docs/DEVELOPMENT_PRIORITIES.md` governs near-term resource allocation. Research and benchmarks
+must currently emphasize hard-surface, SubD, topology, reference modeling, modifier strategy,
+retopology fundamentals, and production-ready prop workflows. Sculpting remains foundational but
+deferred; do not select new character, facial, anatomy, or sculpt-heavy benchmarks unless a minimal
+organic technique is strictly required by a higher-priority prop task.
+
 ## Why this exists
 
 `docs/EXPERIENCED_MODELER_TARGET.md`-style ambition (from the project's own history) keeps
