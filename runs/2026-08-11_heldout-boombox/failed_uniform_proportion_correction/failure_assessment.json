@@ -1,0 +1,7 @@
+{
+  "status": "REJECTED",
+  "action": "Applied uniform world-axis scaling X=0.985, Y=0.89, Z=1.07 after interpreting raw canvas bounds as a proportion failure.",
+  "before_normalized_iou": {"front": 0.878231, "side": 0.805454, "top": 0.894903, "mean": 0.859529},
+  "after_normalized_iou": {"front": 0.839298, "side": 0.762253, "top": 0.853747, "mean": 0.818433},
+  "decision": "Rollback the scaling. It worsened all normalized views and did not address the actual missing secondary-form/detail quality."
+}

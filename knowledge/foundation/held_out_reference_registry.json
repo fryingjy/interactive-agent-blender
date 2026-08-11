@@ -53,6 +53,23 @@
         "artifact": "runs/2026-08-10_profile-authored-axe/profile_authored_axe.blend"
       }
     },
-    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\medieval-swords-blades-shapes-edges-curvatures-varieties-knife-dagger-weapon-set-honor-authority-symbol-realistic-vector-illustration_1284-73163.avif", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"}
+    {"path": "C:\\Users\\odane\\Downloads\\blender\\ref\\medieval-swords-blades-shapes-edges-curvatures-varieties-knife-dagger-weapon-set-honor-authority-symbol-realistic-vector-illustration_1284-73163.avif", "status": "EXCLUDED_REALISTIC_WEAPON_SCOPE"},
+    {
+      "url": "https://polyhaven.com/a/boombox",
+      "status": "ONLINE_HELD_OUT_AUTOMATED_PASS_HUMAN_REVIEW_OPEN",
+      "benchmark": "heldout_cc0_boombox_001",
+      "first_used": "2026-08-11",
+      "source_boundary": "Source geometry was isolated to neutral reference rendering; candidate construction used pixels only.",
+      "result": {
+        "normalized_front_silhouette_iou": 0.87097,
+        "normalized_side_silhouette_iou": 0.75659,
+        "normalized_top_silhouette_iou": 0.820119,
+        "normalized_mean_silhouette_iou": 0.815893,
+        "predeclared_gates": {"front": 0.82, "side": 0.72, "top": 0.72, "mean": 0.78},
+        "fresh_process_assertions": "15/15",
+        "main_housing": "one connected 70-quad edited cage",
+        "artifact": "runs/2026-08-11_heldout-boombox/final/heldout_boombox.blend"
+      }
+    }
   ]
 }

@@ -112,6 +112,9 @@ The local Blender/MCP entry points are:
 
 ## Recent evidence landmarks
 
+- `runs/2026-08-11_heldout-boombox/` — online CC0 held-out multi-component prop with one connected
+  edited housing cage, predeclared three-view silhouette gates, preserved topology/bevel failures,
+  UV/material preparation, and 15/15 fresh-process assertions; human acceptance remains open.
 - `runs/2026-08-11_multiview-barrel/` — connected 5,376-quad barrel shell and multi-view checks.
 - `runs/2026-08-11_facial-expression-transfer/` — bounded driven facial-corrective mechanism.
 - `runs/2026-08-11_mixed-surface-diagnosis/` — adaptive five-cause diagnosis and exact clean-state
