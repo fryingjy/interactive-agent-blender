@@ -9,7 +9,8 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Inset | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Bevel operation | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
 | Bevel modifier | ✓ | ~ | ✓ | ✓ | — | ~ | ✓ |
-| Loop cut / Subdivide | ~ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Loop cut / Subdivide | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Knife / Bisect | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
 | Merge / Merge by Distance | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Dissolve / Delete | ✓ | — | ✓ | ~ | ✓ | ~ | — |
 | Bridge Edge Loops | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
@@ -71,7 +72,7 @@ The weakest breadth remains production-quality organic sculpting, full-character
 mixed-cause surface-defect transfer, multi-day retrieval retention,
 professional visual judgment, and broader transfer validation.
 
-Video evidence is credited only for nine Blender-authored/Studio lessons actually decoded,
+Video evidence is credited only for eleven Blender-authored/Studio lessons actually decoded,
 captioned or locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial
 mesh-fundamentals coverage; dedicated Extrude and Bevel lessons give substantial operator coverage;
 the UV, Sculpt, facial-planning, pole-placement, and lighting lessons now have different-shape experiments. The older Blender 2.80 UI is

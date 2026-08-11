@@ -524,6 +524,25 @@ def loop_cut_selection(name, cuts=1):
     if not edges:
         _write_back(obj, bm)
         raise ValueError(f"no edge ring selected on '{name}' to cut")
+    selected = set(edges)
+    invalid_faces = []
+    for edge in edges:
+        for face in edge.link_faces:
+            selected_in_face = [candidate for candidate in face.edges if candidate in selected]
+            opposite = (
+                len(selected_in_face) == 2
+                and not (set(selected_in_face[0].verts) & set(selected_in_face[1].verts))
+            )
+            if len(face.verts) != 4 or not opposite:
+                invalid_faces.append(face)
+    if invalid_faces:
+        detail = {
+            "selected_edges": len(edges),
+            "invalid_adjacent_faces": len(set(invalid_faces)),
+            "requirement": "every traversed face must be a quad containing exactly two opposite selected ring edges",
+        }
+        _write_back(obj, bm)
+        raise ValueError(f"selection on '{name}' is not a continuous quad edge ring: {detail}")
     before = _element_snapshot(bm)
     bmesh.ops.subdivide_edgering(bm, edges=edges, cuts=cuts, profile_shape="SMOOTH", profile_shape_factor=0.0)
     created = _clear_new_element_ids(bm, before)

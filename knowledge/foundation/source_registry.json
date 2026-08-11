@@ -1096,5 +1096,69 @@
       ],
       "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
     }
+  },
+  {
+    "id": "blender-fundamentals-knife-tool-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Knife_Tool_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
+    "title": "Knife Tool - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
+    "topics": ["knife", "bisect", "topology", "local-cuts"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 119.201,
+      "sha256": "5ff38521bf17e0cba9faa01e163130f48aea4c2f00eb53f7d266113c0a1e1b6a",
+      "machine_transcript_segments": 23,
+      "decoded_frame_checkpoints": 12,
+      "direct_observations": [
+        "Knife paths remain provisional until confirmation, and stopping a path is distinct from cancelling the operation",
+        "Visible-only versus cut-through scope materially changes which faces receive topology",
+        "Bisect expresses an exact plane cut whose side-clearing choice determines whether a cap boundary exists"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-knife-tool/video_ingest_report.json",
+        "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
+        "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+    }
+  },
+  {
+    "id": "blender-fundamentals-loop-cut-video",
+    "url": "https://commons.wikimedia.org/wiki/File:Loop_Cut_-_Blender_2.80_Fundamentals.webm",
+    "local_path": "runs/2026-08-10_online-lessons/media/loop-cut.webm",
+    "title": "Loop Cut - Blender 2.80 Fundamentals",
+    "creator": "Blender / Dillon Gu",
+    "source_type": "official_training_video",
+    "trust_tier": "A",
+    "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
+    "topics": ["loop-cut", "edge-ring", "topology", "density"],
+    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "metadata": {
+      "duration_seconds": 190.321,
+      "sha256": "bd939693fc5af7c1c41b2dd9bbeffbdcea680043965c4d2ada87acbbc55a5922",
+      "machine_transcript_segments": 27,
+      "decoded_frame_checkpoints": 17,
+      "direct_observations": [
+        "The preview traces compatible face flow before a loop is inserted",
+        "Number of cuts and slide position are modeling decisions, not a generic request for more polygons",
+        "Inserted regions support later component-form edits such as localized extrusions"
+      ],
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-loop-cut/video_ingest_report.json",
+        "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
+        "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
+      ],
+      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+    }
   }
 ]

@@ -1,0 +1,113 @@
+{
+  "lab": "knife_loop_cut_different_shape_transfer",
+  "blender_version": "5.2.0 LTS",
+  "source_lessons": [
+    "Knife Tool - Blender 2.80 Fundamentals",
+    "Loop Cut - Blender 2.80 Fundamentals"
+  ],
+  "current_manual_corroboration": [
+    "Blender 5.2 Knife Topology Tool",
+    "Blender 5.2 Loop Cut and Slide",
+    "Blender 5.2 Bisect"
+  ],
+  "specimens": {
+    "purposeful_loop_cut": {
+      "selected_ring_edges": 8,
+      "before": {
+        "vertices": 18,
+        "edges": 40,
+        "faces": 24,
+        "quads": 8,
+        "triangles": 16,
+        "ngons": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "minimum_edge_length": 0.5162363052368164
+      },
+      "operation": {
+        "cuts": 3,
+        "created_geometry": 96,
+        "new_verts": 24,
+        "new_edges": 48,
+        "new_faces": 24
+      },
+      "after": {
+        "vertices": 42,
+        "edges": 88,
+        "faces": 48,
+        "quads": 32,
+        "triangles": 16,
+        "ngons": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "minimum_edge_length": 0.5162363052368164
+      }
+    },
+    "interrupted_ring_failure": {
+      "selected_edges": 9,
+      "before": {
+        "vertices": 18,
+        "edges": 41,
+        "faces": 25,
+        "quads": 7,
+        "triangles": 18,
+        "ngons": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "minimum_edge_length": 0.5162363648414612
+      },
+      "operation": null,
+      "error": "ValueError: selection on 'Interrupted_Ring_Failure' is not a continuous quad edge ring: {'selected_edges': 9, 'invalid_adjacent_faces': 2, 'requirement': 'every traversed face must be a quad containing exactly two opposite selected ring edges'}",
+      "after": {
+        "vertices": 18,
+        "edges": 41,
+        "faces": 25,
+        "quads": 7,
+        "triangles": 18,
+        "ngons": 0,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "minimum_edge_length": 0.5162363648414612
+      }
+    },
+    "bisect": {
+      "invalid_fill_error": "ValueError: bisect fill requires clear_inner or clear_outer so the cut is a boundary",
+      "operation": {
+        "cut_geometry": 16,
+        "clear_inner": false,
+        "clear_outer": true,
+        "fill": true,
+        "filled_faces": 1,
+        "new_verts": 8,
+        "new_edges": 16,
+        "new_faces": 9
+      },
+      "after": {
+        "vertices": 25,
+        "edges": 48,
+        "faces": 25,
+        "quads": 16,
+        "triangles": 8,
+        "ngons": 1,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "minimum_edge_length": 0.5162363052368164
+      }
+    }
+  },
+  "assertions": {
+    "purposeful_ring_selected": true,
+    "three_complete_rings_created": true,
+    "purposeful_result_remains_closed": true,
+    "interrupted_quad_flow_is_not_complete_ring": true,
+    "fill_without_clear_is_rejected": true,
+    "bisect_clear_and_fill_caps_boundary": true,
+    "all_final_specimens_non_degenerate": true
+  },
+  "pass": true,
+  "interpretation": "Loop Cut is efficient only when compatible quad flow carries the intended ring. Knife/Bisect is the deterministic choice for a deliberate planar cross-section; filling is meaningful only after one side is cleared.",
+  "limitations": [
+    "The lesson UI is Blender 2.80; mechanism and options were checked against the Blender 5.2 manual.",
+    "This controlled housing test does not prove freehand modal Knife judgment or production asset quality."
+  ]
+}

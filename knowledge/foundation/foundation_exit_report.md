@@ -185,10 +185,10 @@ regression evidence rather than held-out judgment.
 Nine complete official Blender lessons were ingested through the approved-root pipeline: Modeling
 Introduction, Extrude, Bevel Tool, UV Unwrapping, Intro to Sculpting, and Planning the Facial
 Retopology, Three Point Lighting, Snow - Stylized Character Retopology Live #2, plus Intro to
-Shading. They provide 11,617.988 seconds of real video/audio and 119 decoded frame samples
+Shading, Knife, and Loop Cut. They provide 11,927.510 seconds of real video/audio and 148 decoded frame samples
 (`runs/2026-08-10_online-lessons/`). The first four use CC BY 3.0 Wikimedia mirrors; the sculpt
 retopology, and lighting lessons are free official Blender Studio sources with 650 authored-caption segments. Local
-machine transcription/caption sidecars supplied 4,838 timestamped segments where creator captions were absent. Important
+machine transcription/caption sidecars supplied 4,888 timestamped segments where creator captions were absent. Important
 claims were checked against decoded frames, current official documentation, and Blender 5.2
 experiments. Machine wording remains fallible and is not treated as an authoritative quotation.
 The UV lesson produced an authored-seam tangent-bake test; the sculpt lesson produced a seven-stroke

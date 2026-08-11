@@ -63,3 +63,27 @@ does not erase the remaining custom-profile/width-type experiment gap.
   documentation/evidence.
 - Speech comprehension is now genuinely present through timestamped machine transcripts, but exact
   wording is not treated as authoritative.
+
+## Knife Tool (119.201 s)
+
+- 00:13-00:53: a Knife path is provisional until explicitly confirmed; cancellation and stopping a
+  path are distinct actions.
+- 01:03-01:59: Bisect expresses a plane cut with side clearing and optional fill rather than a
+  freehand surface path.
+- Blender 5.2 corroboration adds occlusion/cut-through, angle constraints, midpoint snapping, and
+  the duplicate-vertex clipping-range limitation.
+
+## Loop Cut (190.321 s)
+
+- 00:10-00:35: the yellow preview traces the compatible face ring before geometry is created.
+- 00:40-01:31: slide placement, number of cuts, smoothness, and factor change the operation's
+  topology or position; a centered cut is an explicit choice.
+- 02:26-03:10: loops are added to create selectable regions for later form changes, not as a global
+  polygon-count goal.
+- Blender 5.2 corroboration adds Even/Flipped spacing, Clamp, Correct UVs, and the explicit
+  distinction between proportional and even-distance slides.
+
+The different-shape rounded-housing experiment exposed and fixed a false typed-operation contract:
+`loop_cut_selection` formerly subdivided a triangulated interruption. It now requires a continuous
+quad ring before mutation. Exact Bisect clear-and-fill passes; Fill without side clearing is
+rejected. See `runs/2026-08-10_knife-loop-transfer/`.

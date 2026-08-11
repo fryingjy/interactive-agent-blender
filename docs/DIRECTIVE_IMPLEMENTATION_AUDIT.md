@@ -21,7 +21,7 @@ open and is not falsely claimed.
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
-| External official lesson study | nine Blender-authored/Studio lessons; 11,617.988 seconds, 119 decoded frames, audio/captions, timestamped observations, and different-shape transfers | genuine visual/speech access; older UI and automatic-caption errors explicitly bounded |
+| External official lesson study | eleven Blender-authored/Studio lessons; 11,927.510 seconds, 148 decoded frames, audio/captions, timestamped observations, and different-shape transfers | genuine visual/speech access; older UI and automatic-caption errors explicitly bounded |
 | Documentation crawl completion | approved-root internal links, canonical/content dedupe, queue/page-limit completion states | controlled pass |
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
@@ -62,7 +62,7 @@ open and is not falsely claimed.
 
 ## Items that cannot honestly be completed from current inputs
 
-1. **Advanced expert video curriculum:** nine official lessons are now processed with real
+1. **Advanced expert video curriculum:** eleven official lessons are now processed with real
    frames/audio/captions and source-to-skill experiments. Pole placement has a controlled
    different-shape articulation transfer; rigged facial expression transfer, production
    sculpt/retopology, and mixed-cause production surface diagnosis remain absent.
