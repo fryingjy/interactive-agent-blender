@@ -1,0 +1,77 @@
+# Knowledge system
+
+## Purpose
+
+Knowledge must improve a modeling decision. Tutorial collection, transcripts, or notes alone do not
+count as learned capability.
+
+```text
+task gap
+-> retrieve existing knowledge
+-> research an allowed source when needed
+-> separate observation from interpretation
+-> reproduce in a controlled Blender lab
+-> retain failures and measure outcomes
+-> test on a different shape
+-> apply to the task that triggered research
+-> log runtime use and revise confidence
+```
+
+## Knowledge locations
+
+- `knowledge/foundation/source_registry.json` — normalized source identity, access modalities,
+  trust, version, experiments, and limitations.
+- `knowledge/foundation/operator_cards/` — concise executable guidance and bounded evidence.
+- `knowledge/foundation/topic_coverage_matrix.md` — docs/video/experiment/failure/quiz/runtime/
+  second-shape coverage.
+- `knowledge/foundation/quizzes/` — retrieval and retention checks performed without copying notes.
+- `knowledge/skills/` — runtime-oriented learned skills with applicability boundaries.
+- `knowledge/foundation/foundation_exit_report.md` — current capability gate.
+
+## Source hierarchy
+
+1. current Blender Manual, Python API, official training, and developer information;
+2. established professional educators;
+3. serious technical communities;
+4. weak or isolated advice as low-confidence hypotheses only.
+
+Video credit requires actual accessible modalities. Titles, descriptions, thumbnails, or transcripts
+alone are not equivalent to visual study. Record whether frames, audio, captions, transcripts, and
+chapters were available.
+
+## Promotion lifecycle
+
+```text
+CAPTURED
+-> INTERPRETED
+-> CANDIDATE
+-> EXPERIMENTALLY_TESTED
+-> TRANSFER_VALIDATED
+-> RUNTIME_VALIDATED
+-> PROMOTED
+```
+
+Also preserve `CONTRADICTED`, `DEPRECATED`, `VERSION_LIMITED`, and `INSUFFICIENT_EVIDENCE` states.
+Never overwrite conflicting evidence with a universal slogan.
+
+## Video/document ingestion
+
+Local media ingestion is deliberately legal and bounded:
+
+- only approved local roots and approved web hosts;
+- real stream probing, timestamped frame extraction, and VTT/SRT parsing;
+- no platform restriction bypass;
+- source observations, machine transcription, interpretation, and experiment results remain
+  distinct;
+- important claims return to current documentation and Blender reproduction.
+
+The current video evidence is summarized in
+`knowledge/foundation/video_learning_curriculum.md`; media files normally remain ignored under
+`runs/*/media/`.
+
+## Claim boundary
+
+A technique is not general merely because one controlled fixture passes. Promotion requires useful
+transfer, runtime application, measurable effect, and retained applicability limits. Held-out claims
+must not use assets whose dimensions, topology, decomposition, thresholds, or helper recipes were
+developed while building the capability.
