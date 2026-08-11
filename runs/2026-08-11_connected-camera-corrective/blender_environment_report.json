@@ -9,17 +9,14 @@
     "EdgeFlow",
     "auto_mirror",
     "bool_tool",
-    "nd",
     "tinycad_mesh_tools",
     "texel_density_checker",
     "magic_uv",
     "material_utilities",
     "bsurfaces_gpl_edition",
-    "measureit",
-    "print3d_toolbox",
-    "precision_drawing_tools_pdt"
+    "measureit"
   ],
-  "extension_validation": "Every listed module returned addon_utils.check(module) == [true, true] in the live Blender process; preferences were saved.",
+  "extension_validation": "Every retained bl_ext.blender_org.<package_id> module returned addon_utils.check(module) == [true, true] in the live Blender process; preferences were saved. At the user's request, the qualified nd, precision_drawing_tools_pdt, and print3d_toolbox modules were disabled and returned [false, false], their preference entries were absent, and their extension packages were removed.",
   "matcaps": {
     "recognized_total": 42,
     "recognized_builtin": 27,
