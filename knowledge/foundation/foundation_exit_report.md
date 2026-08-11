@@ -287,9 +287,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 1. Production-quality organic form sculpting and full-character/facial articulation. Controlled
    two-bone density, three-bone flex/splay/twist, and official-head jaw/smile corrective tests now
    pass, but the facial expression is subtle and none establishes a professional character or rig.
-2. Production transfer of seam-authored UV/high-to-low baking and a named external-engine
-   validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
-   housing, replacing the earlier synthetic-map-only evidence.
+2. Production transfer of seam-authored UV/high-to-low baking. The controlled flared-housing bake
+   now passes a real Godot 4.7.1 import with explicit package tangents, normal-texture semantics,
+   PBR factors, UVs, and scale; it is still not a production asset or human-reviewed render.
 3. Longer-horizon/independent retention and broader real-session use of context-aware knowledge retrieval.
 4. Unknown real-production surface-defect diagnosis. Candidate localization, grazing-light
    observability, five isolated signatures, and a five-cause adaptive transfer now pass, but the
@@ -311,7 +311,6 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Validate the seam-authored tangent bake in a named external engine while preserving source UV,
-normal-map color-space, tangent, material, and scale semantics. Record both a successful import and
-a deliberate failure. Continue later retention checks over a longer interval without reusing
-answer text.
+Raise organic sculpt/retopology and facial-expression quality on a genuinely different asset, with
+visual checkpoints and no source-provided final topology. Continue retention checks over a longer
+interval without reusing answer text, and seek independent experienced review when available.

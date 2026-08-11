@@ -1,0 +1,174 @@
+{
+  "lab": "independent_godot_tangent_bake_verification",
+  "method": "fresh temporary Godot project plus direct GLB 2.0 JSON inspection; no Blender API",
+  "engine": {
+    "executable": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_godot-engine-validation\\media\\Godot_v4.7.1-stable_win64_console.exe",
+    "executable_sha256": "35dab11e04ece16a2b93035e65204f4a944a3e00b020d43e54409193379d5eef",
+    "download_zip_sha256": "c7a289051eaefb460b0106b60e9cd5bee0ef55fd102dcb2bed1eb356cf3d90a1",
+    "official_download": "https://godotengine.org/download/archive/4.7.1-stable/"
+  },
+  "glb": {
+    "valid": {
+      "attributes": [
+        "NORMAL",
+        "POSITION",
+        "TANGENT",
+        "TEXCOORD_0"
+      ],
+      "has_normal_texture": true,
+      "has_base_color_texture": false,
+      "metallic_factor": 0.15000000596046448,
+      "roughness_factor": 0.41999998688697815,
+      "image_mime_types": [
+        "image/png"
+      ],
+      "sha256": "ae790410add9371511ad14e7e79fc4fa02af105408c93d5609ef1ebb14b3cf53"
+    },
+    "invalid_color_wiring": {
+      "attributes": [
+        "NORMAL",
+        "POSITION",
+        "TANGENT",
+        "TEXCOORD_0"
+      ],
+      "has_normal_texture": false,
+      "has_base_color_texture": true,
+      "metallic_factor": 0.15000000596046448,
+      "roughness_factor": 0.41999998688697815,
+      "image_mime_types": [
+        "image/png"
+      ],
+      "sha256": "c66c09b6ffa05f34f3bb10c0195d90fbebb9e005a9da99721ec94bd455c346f6"
+    }
+  },
+  "process": {
+    "import_returncode": 0,
+    "validation_returncode": 0,
+    "import_stdout_has_completion": true,
+    "validation_stdout_has_result": true,
+    "stderr": ""
+  },
+  "runtime": {
+    "assertions": {
+      "failure_control_detected": true,
+      "failure_import_still_loads": true,
+      "valid_import_loaded": true,
+      "valid_material_values_preserved": true,
+      "valid_normal_semantics_preserved": true,
+      "valid_scale_preserved": true,
+      "valid_tangents_preserved": true,
+      "valid_uv_preserved": true
+    },
+    "godot_version": {
+      "build": "official",
+      "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+      "hex": 263937,
+      "major": 4,
+      "minor": 7,
+      "patch": 1,
+      "status": "stable",
+      "string": "4.7.1-stable (official)",
+      "timestamp": 0
+    },
+    "invalid_color_wiring": {
+      "aabb_position_godot_xyz": [
+        -0.899999976158142,
+        -1.5,
+        -0.899999976158142
+      ],
+      "aabb_size_godot_xyz": [
+        1.79999995231628,
+        2.79999995231628,
+        1.79999995231628
+      ],
+      "albedo_texture_present": true,
+      "format_has_tangent": true,
+      "format_has_uv": true,
+      "index_count": 288,
+      "loaded": true,
+      "material_class": "StandardMaterial3D",
+      "mesh_found": true,
+      "metallic": 0.150000005960464,
+      "node_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "normal_count": 78,
+      "normal_enabled": false,
+      "normal_texture_present": false,
+      "path": "res://godot_tangent_bake_invalid_color_wiring.glb",
+      "roughness": 0.419999986886978,
+      "surface_count": 1,
+      "tangent_scalar_count": 312,
+      "uv_count": 78,
+      "vertex_count": 78
+    },
+    "lab": "godot_4_7_1_external_engine_tangent_bake_import",
+    "pass": true,
+    "valid": {
+      "aabb_position_godot_xyz": [
+        -0.899999976158142,
+        -1.5,
+        -0.899999976158142
+      ],
+      "aabb_size_godot_xyz": [
+        1.79999995231628,
+        2.79999995231628,
+        1.79999995231628
+      ],
+      "albedo_texture_present": false,
+      "format_has_tangent": true,
+      "format_has_uv": true,
+      "index_count": 288,
+      "loaded": true,
+      "material_class": "StandardMaterial3D",
+      "mesh_found": true,
+      "metallic": 0.150000005960464,
+      "node_scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "normal_count": 78,
+      "normal_enabled": true,
+      "normal_texture_present": true,
+      "path": "res://godot_tangent_bake_valid.glb",
+      "roughness": 0.419999986886978,
+      "surface_count": 1,
+      "tangent_scalar_count": 312,
+      "uv_count": 78,
+      "vertex_count": 78
+    }
+  },
+  "dimension_mapping": {
+    "blender_xyz": [
+      1.7999999523162842,
+      1.7999999523162842,
+      2.799999952316284
+    ],
+    "expected_godot_xyz_after_y_up_export": [
+      1.7999999523162842,
+      2.799999952316284,
+      1.7999999523162842
+    ],
+    "actual_godot_xyz": [
+      1.79999995231628,
+      2.79999995231628,
+      1.79999995231628
+    ]
+  },
+  "assertions": {
+    "fresh_godot_import_and_script_exit_zero": true,
+    "fresh_runtime_report_passes": true,
+    "named_engine_version_is_4_7_1_stable": true,
+    "valid_glb_declares_position_normal_tangent_uv": true,
+    "valid_glb_declares_normal_texture": true,
+    "invalid_control_declares_wrong_base_color_semantic": true,
+    "material_values_match_in_both_packages": true,
+    "normal_pixels_are_embedded_png": true,
+    "godot_axis_conversion_preserves_dimensions": true,
+    "runtime_detects_deliberate_semantic_failure": true
+  },
+  "pass": true
+}

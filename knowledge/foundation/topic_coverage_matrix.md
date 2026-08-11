@@ -85,3 +85,9 @@ The connected-barrel mixed-cause run provides second-shape runtime evidence for 
 surface diagnosis and review lighting: five simultaneous known faults are selected and repaired by
 an adaptive ablation matrix under fixed-seed Cycles, with exact clean-state recovery and independent
 mesh verification. It does not establish diagnosis of unknown production defects.
+
+The seam-authored UV bake now has named-engine transfer evidence in Godot 4.7.1. Direct GLB parsing
+and a fresh engine import verify UVs, explicit package tangents, normal-texture binding, PBR factors,
+unit scale, and axis-converted dimensions. A Base-Color miswiring control proves that successful
+import alone does not preserve tangent-normal semantics. This strengthens export/runtime evidence,
+but does not establish production texture quality across compression, mip levels, or engines.

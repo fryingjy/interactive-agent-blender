@@ -18,6 +18,7 @@ judgment and generalization priorities remain; the professional target is not fa
 | Sculpt foundations | official 25-minute lesson studied; Multires/voxel remesh; seven-stroke Draw/Crease mutation; false-FINISHED and smoothing controls; clean low-cage handoff | mechanism evidence complete; production form quality remains open |
 | UV/material/production | scale warning, unwrap, node state, slots, organization, packed tangent normal/PBR semantics, OBJ/GLB round trip | foundational evidence complete |
 | Seam-authored high/low bake | official UV lesson studied; authored cut graph on a different flared housing; real Cycles Selected-to-Active tangent bake; missing-source failure; Non-Color invariant | controlled PASS with 2/2 fresh-process mesh verification; production transfer pending |
+| Named external-engine bake import | Godot 4.7.1 fresh import; direct GLB package inspection; explicit UV/normal/tangent attributes; StandardMaterial normal binding; PBR factors; axis/scale check; deliberate Base-Color miswiring control | declared structural/material gate PASS; visual mip/compression and multi-engine review remain open |
 | Blender Python/BMesh | ownership, lookup tables, cleanup, triangulation maps, dissolve scope, normals, UV layers, selection | modeler-critical block complete |
 | Systematic docs map | `manual_modeling_walk.md` links branches to sources, evidence, and open child pages | complete as map, not exhaustive API reading |
 | Legal document/video ingestion | approved roots/hosts, VTT/SRT, local video/audio/frame extraction, project fixture | implementation validated |
@@ -113,8 +114,7 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work is stronger organic sculpt/retopo and facial-expression quality, named
-external-engine bake validation, broader planner
+The next valid work is stronger organic sculpt/retopo and facial-expression quality, broader planner
 runtime use, longer-horizon retention, and independent experienced review. Until
 that evidence exists, changing the foundation or professional claim to PASS would violate the
 directive's anti-fake-progress rules.

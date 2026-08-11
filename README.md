@@ -8,8 +8,8 @@ retains experimentally tested modeling knowledge.
 
 **Foundation status: PARTIAL.** The Blender-control and verification infrastructure is substantial,
 but the repository does not claim professional-level generalization. Stronger organic form,
-expressive facial work, named external-engine validation, longer-horizon retention, unknown
-production-defect diagnosis, broader held-out assets, and experienced human review remain open.
+expressive facial work, longer-horizon retention, unknown production-defect diagnosis, broader
+held-out assets, and experienced human review remain open.
 
 Current evidence includes:
 
@@ -22,7 +22,8 @@ Current evidence includes:
 - legal local video/document ingestion, 11 decoded Blender lessons, controlled reproduction labs,
   structured retrieval, quizzes, telemetry, and self-session replay;
 - profile-authored reference models, a connected-quad multi-view barrel, driven corrective transfer,
-  and adaptive mixed-cause surface diagnosis with preserved failed attempts.
+  adaptive mixed-cause surface diagnosis, and a real Godot tangent-bake import with deliberate
+  semantic failure evidence.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
