@@ -41,3 +41,11 @@ and axis-converted dimensions. An otherwise identical control with tangent-norma
 Base Color imports successfully but fails the normal-semantic assertions. Therefore verify both the
 delivery package and target runtime state: engine-side repair can hide a deficient export, while a
 successful import can hide incorrect texture semantics.
+
+`runs/2026-08-11_heldout-boombox/export/` applies the invariants to a real held-out 41-component
+prop. Fresh GLB re-import preserves 15,292 evaluated triangles, combined dimensions, UV/material
+presence, and seven material families; direct GLB parsing confirms POSITION, NORMAL, and TEXCOORD_0
+on every primitive. Its first verifier wrongly expected package Y-up dimensions after Blender had
+already converted the import back to Z-up. Tangent presence is intentionally reported rather than
+overclaimed: several radial smart-UV meshes cannot currently export tangents, which is acceptable
+without normal maps but becomes a hard UV/tangent repair gate if tangent-normal textures are added.
