@@ -1,0 +1,7 @@
+{
+  "status": "rejected_by_solid_view_review",
+  "technical_result": "492 intended-by-first-interpretation edges were weighted; base, Bevel-only, and SubD stages remained all-quad and manifold.",
+  "visual_failure": "The four selected rails were cardinal midlines, creating an unwanted hard horizontal seam across the camera side and corresponding top/bottom midline creases.",
+  "correction": "Move the rail chains to the four diagonal rounded-rectangle corner sectors (base indices 2, 6, 10, and 14).",
+  "lesson": "A clean semantic count is insufficient when the semantic location is wrong; fixed-view Solid/MatCap review must validate edge-weight placement."
+}

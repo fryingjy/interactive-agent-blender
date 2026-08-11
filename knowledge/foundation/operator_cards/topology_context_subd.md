@@ -56,9 +56,19 @@ Evidence: `runs/2026-08-11_connected-camera-corrective/`
   perimeter into a circular lens loop and grows the stepped barrel from that loop.
 - A technically clean four-sided lens failed visually because the cage encoded a square cap.
   Sparse topology must still carry the intended design shape.
-- Thirty-two authored radial vertices were unnecessary. Sixteen control vertices plus two SubD
-  levels retained the circular result while reducing the base cage from 450 to 258 vertices. Treat
-  `12-16` as a tested range for this scale, not a universal cylinder rule.
-- The accepted result is one object, one connected component, 256/256 base quads, and 8,704/8,704
+- Thirty-two authored vertices were unnecessary for small circular controls. The first correction's
+  four-sided top loops were also insufficient: SubD rounded them, but they remained rounded squares.
+  The final controls use regular 12-vertex loops measured for equal radius and angular spacing.
+- A 12-edge rectangular shell opening (five edges along each long side and one along each short side)
+  bridges one-to-one into each 12-edge circle with quads. This is the topology consequence of using
+  Edit Mode routing and extrusion instead of attaching a separate cylinder.
+- Sharpness begins in the control cage. An n=6 rounded-rectangle superellipse remained pill-shaped
+  even after the correct corner rails were weighted. An n=16 replacement improved it but still
+  encoded curvature before Bevel. The accepted cage is a literal box perimeter with flat sides and
+  exact 90-degree corner rails; Bevel alone controls the highlight width.
+- Treat `12-16` as a tested range for controls at this scale, not a universal cylinder rule. The lens
+  uses 24 because its radial loop matches a locally refined 24-edge body perimeter for an all-quad
+  bridge; density follows connectivity and silhouette needs.
+- The accepted result is one object, one connected component, 530/530 base quads, and 25,120/25,120
   evaluated quads after weighted Bevel and SubD. Its GLB returns as one mesh with exact evaluated
   bounds, UVs, and four materials.

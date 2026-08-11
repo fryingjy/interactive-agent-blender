@@ -671,3 +671,32 @@ gap directly — a process fix for future sessions (log every decision immediate
 rather than something to paper over this time. No genuine unresolvable topology problem has
 appeared yet, so per `docs/RESEARCH_ROADMAP.md` no research episode is triggered — watched
 honestly, not manufactured.
+
+## 2026-08-11: camera circular-control and complete sharpness correction
+
+Experienced review reopened the one-object camera after its first corrective pass. The accepted
+artifact still used four-sided top-control extrusions rounded by SubD, and its weighted Bevel covered
+only 144 lens edges. The rejected state is preserved under
+`runs/2026-08-11_connected-camera-corrective/failed_incomplete_weighting_square_controls/`.
+
+Read-only analysis of the user's unsaved Blender scene found a selected planar loop with zero
+measurable radial variation and a valid Mirror-first stack. That clarified the target: circularity
+must exist in the base loop rather than being implied by smoothing. The revised camera routes two
+12-edge openings into two regular 12-edge circles and extrudes all control steps from those welded
+loops. Radius and angular-gap variation are independently measured below `1e-5`.
+
+The first complete 480-edge semantic weight map exposed eight Bevel-stage non-manifold edges. Width
+ablation from `0.018` to `0.003` did not change the failure. Category isolation identified the front
+body ring; a winding audit then found locally inconsistent procedural strip orientation. Recalculate
+Outside normalized the connected component, after which all 480 then-identified body, lens, and
+control edges remained weighted while base, Bevel-only, and SubD stages passed closed-manifold/
+all-quad checks. Further user review identified four omitted longitudinal body corners. Weighting
+the cardinal midlines first produced an unwanted side seam despite technical validity; Solid review
+moved the weights to the four diagonal rounded-body corner chains. The final semantic map contains
+492 edges. A final live-scene comparison showed that the remaining softness came from the authored
+n=6 body superellipse, not bevel width: the user's width/minimum-dimension ratio was comparable.
+An n=16 body profile confined curvature more narrowly but was still rejected because it pre-rounded
+the body. The final revision uses a literal box perimeter with four flat sides and exact 90-degree
+corner rails; weighted Bevel creates the entire radius. Fresh verification passes 24/24 assertions;
+normalized three-view IoU remains passing at `0.821778`; and GLB round trip passes 6/6 as one mesh
+with exact evaluated dimensions.

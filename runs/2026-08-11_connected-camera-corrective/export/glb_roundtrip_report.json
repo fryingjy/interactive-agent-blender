@@ -2,21 +2,21 @@
   "lab": "connected_camera_glb_roundtrip",
   "source": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_connected-camera-corrective\\connected_camera_corrective.blend",
   "glb": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_connected-camera-corrective\\export\\connected_camera.glb",
-  "glb_bytes": 448972,
+  "glb_bytes": 1305060,
   "source_dimensions": [
-    6.04326,
+    6.099893,
     2.760001,
-    3.266874
+    3.404964
   ],
   "imported_dimensions": [
-    6.04326,
+    6.099893,
     2.760001,
-    3.266874
+    3.404964
   ],
   "dimension_max_error": 0.0,
   "imported_meshes": 1,
-  "imported_vertices": 10634,
-  "imported_polygons": 17408,
+  "imported_vertices": 31230,
+  "imported_polygons": 50240,
   "assertions": {
     "glb_is_nonempty": true,
     "one_mesh_round_trips": true,

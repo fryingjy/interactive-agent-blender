@@ -61,7 +61,8 @@ Evidence: `runs/2026-08-11_connected-camera-corrective/`
 
 Experienced review identified excessive softness after a clean one-component camera already passed
 silhouette and topology gates. A live user example demonstrated `Bevel` limited by edge weight before
-two SubD levels. On the corrective camera:
+two SubD levels. The first correction was itself overturned because lens-only weighting did not cover
+the object's intended hard edges. On the final corrective camera:
 
 - Weighting all 198 lens/front/back candidate edges sharpened the image but created 48 Bevel-stage
   and 192 post-SubD non-manifold edges.
@@ -70,11 +71,25 @@ two SubD levels. On the corrective camera:
 - Scope probes isolated the cause: 14 front-perimeter weighted edges produced 12 Bevel-stage
   non-manifold edges; 24 back/star-cap edges produced 36; 144 lens-ring edges produced zero before
   and after SubD.
-- The accepted stack therefore uses 144 edges at weight `1.0`, Bevel width `0.028`, two Bevel
-  segments, then two SubD levels. The shell perimeter uses closer authored support loops instead.
+- Rebuilt topology and consistent face winding permit all 492 semantically intended hard edges to
+  carry weight `1.0`: body perimeters (96), four three-segment longitudinal corner rails (12), lens
+  steps (216), and both control loop systems (84 each).
+- Bevel width `0.018`, two segments, then two SubD levels remains manifold at the isolated Bevel
+  stage and after SubD. A winding error in the assembled front annulus reproduced the earlier failure
+  independently of width; recalculating consistent outward normals repaired the root cause.
+- Tight support loops remain unweighted when their job is transition control rather than representing
+  a hard design edge. “Complete weighting” means every intended sharp edge, not every mesh edge.
+- Weight placement is a visual-semantic decision. A clean probe that weighted four cardinal midline
+  rails produced an unwanted side seam; fixed-view Solid review moved them to the four diagonal
+  rounded-body corner chains while retaining clean evaluated topology.
+- Bevel cannot reverse an overly soft base silhouette. The user's live camera used width `0.002`
+  over a `0.28047` minimum cage dimension (ratio `0.00713`), comparable to the candidate's ratio.
+  Its sharper result came from a literal box cage. Replacing n=6 with n=16 improved the candidate
+  but still pre-rounded it; the accepted revision removes the superellipse entirely. Four flat sides
+  and exact 90-degree rails now feed the same `0.018` weighted Bevel, which authors the full radius.
 
 Weighted bevel is a fast sharpness control, not a blanket license. Probe edge scope separately from
-width and verify the evaluated mesh after every downstream modifier.
+width, audit face winding, and verify the evaluated mesh after every downstream modifier.
 
 ## Preconditions and verification
 

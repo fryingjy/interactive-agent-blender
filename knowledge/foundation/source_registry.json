@@ -1285,5 +1285,40 @@
       "skills": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/export_roundtrip.md"],
       "limitations": ["Automated stylized pass only; exact graphics, wear, photoreal fidelity, named-engine visual acceptance, full tangent readiness for future normal maps, and experienced human acceptance remain open."]
     }
+  },
+  {
+    "id": "blender-manual-to-sphere-latest",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/transform/to_sphere.html",
+    "title": "To Sphere",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "latest page inspected 2026-08-11; Blender 5.2 runtime",
+    "topics": ["to-sphere", "circle", "edit-mode", "topology"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {
+      "experiments": ["runs/2026-08-11_connected-camera-corrective/"],
+      "skills": ["knowledge/foundation/operator_cards/circularize_planar_loop.md"],
+      "limitations": ["A scripted regular-circle equivalent was measured; interactive operator context was not automated in this run."]
+    }
+  },
+  {
+    "id": "blender-manual-looptools-circle-3-6",
+    "url": "https://docs.blender.org/manual/en/3.6/addons/mesh/looptools.html",
+    "title": "LoopTools Circle",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 3.6 documentation inspected 2026-08-11",
+    "topics": ["looptools", "circle", "regular-spacing", "best-fit"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "metadata": {
+      "skills": ["knowledge/foundation/operator_cards/circularize_planar_loop.md"],
+      "limitations": ["Version-limited official documentation; installed Blender 5.2 extension/operator identifier was not invoked."]
+    }
   }
 ]

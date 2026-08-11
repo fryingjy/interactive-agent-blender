@@ -12,14 +12,14 @@
         491
       ],
       "candidate_bbox_before_alignment": [
-        98,
-        218,
-        621,
-        501
+        99,
+        214,
+        620,
+        505
       ],
-      "iou": 0.902752,
-      "reference_recall": 0.942108,
-      "candidate_precision": 0.955772
+      "iou": 0.888246,
+      "reference_recall": 0.949391,
+      "candidate_precision": 0.932394
     },
     "side": {
       "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\reference\\reference_side_mask.png",
@@ -31,14 +31,14 @@
         491
       ],
       "candidate_bbox_before_alignment": [
-        240,
-        218,
-        479,
-        501
+        242,
+        214,
+        477,
+        505
       ],
-      "iou": 0.854574,
-      "reference_recall": 0.941876,
-      "candidate_precision": 0.90215
+      "iou": 0.846788,
+      "reference_recall": 0.925154,
+      "candidate_precision": 0.909064
     },
     "top": {
       "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-camera-subd\\reference\\reference_top_mask.png",
@@ -50,14 +50,14 @@
         510
       ],
       "candidate_bbox_before_alignment": [
-        98,
-        240,
-        621,
-        479
+        99,
+        242,
+        620,
+        477
       ],
-      "iou": 0.728701,
-      "reference_recall": 0.968544,
-      "candidate_precision": 0.746365
+      "iou": 0.730301,
+      "reference_recall": 0.968936,
+      "candidate_precision": 0.74781
     }
   },
   "thresholds": {
@@ -66,7 +66,7 @@
     "top": 0.7,
     "mean": 0.76
   },
-  "mean_iou": 0.828676,
+  "mean_iou": 0.821778,
   "assertions": {
     "front_iou_at_least_0.8": true,
     "side_iou_at_least_0.68": true,

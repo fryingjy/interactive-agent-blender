@@ -1,0 +1,261 @@
+{
+  "lab": "connected_camera_semantic_sharp_edge_probe",
+  "records": [
+    {
+      "scenario": "body_corner_rails",
+      "weighted_edges": 12,
+      "bevel_only": {
+        "vertices": 572,
+        "faces": 570,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9122,
+        "faces": 9120,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_perimeters",
+      "weighted_edges": 96,
+      "bevel_only": {
+        "vertices": 724,
+        "faces": 722,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 11554,
+        "faces": 11552,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "lens_steps",
+      "weighted_edges": 216,
+      "bevel_only": {
+        "vertices": 964,
+        "faces": 962,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 15394,
+        "faces": 15392,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "top_control_1",
+      "weighted_edges": 84,
+      "bevel_only": {
+        "vertices": 700,
+        "faces": 698,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 11170,
+        "faces": 11168,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "top_control_2",
+      "weighted_edges": 84,
+      "bevel_only": {
+        "vertices": 700,
+        "faces": 698,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 12
+      },
+      "full_stack": {
+        "vertices": 11170,
+        "faces": 11168,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_y_-0.82",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_y_-0.78",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_y_+0.78",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_y_+0.82",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "all_controls",
+      "weighted_edges": 168,
+      "bevel_only": {
+        "vertices": 868,
+        "faces": 866,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 13858,
+        "faces": 13856,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "all_except_body",
+      "weighted_edges": 384,
+      "bevel_only": {
+        "vertices": 1300,
+        "faces": 1298,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 20770,
+        "faces": 20768,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "all",
+      "weighted_edges": 492,
+      "bevel_only": {
+        "vertices": 1572,
+        "faces": 1570,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 25122,
+        "faces": 25120,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_front_width_0.014",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_front_width_0.010",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_front_width_0.006",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    {
+      "scenario": "body_front_width_0.003",
+      "weighted_edges": 24,
+      "bevel_only": {
+        "vertices": 580,
+        "faces": 578,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "full_stack": {
+        "vertices": 9250,
+        "faces": 9248,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    }
+  ]
+}
