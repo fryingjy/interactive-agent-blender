@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_VISUAL_SURFACE",
+  "cause": "The outer housing Bevel was limited by a perimeter vertex group, but on the cut grid the weights also affected connecting coplanar row and column edges. Evaluated corners formed fins and the lower front corners pinched even though manifold and degeneracy checks passed.",
+  "evidence_boundary": "The failed generated images were inspected before regeneration but were not retained; this assessment and decision-log entry preserve the failure claim without pretending an image artifact exists.",
+  "decision": "Remove the unsafe outer modifier. Keep the connected 70-quad authored cage and retain only the narrow region-scoped recess bevel, then rerender all final evidence."
+}

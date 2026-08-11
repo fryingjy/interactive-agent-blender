@@ -32,9 +32,10 @@ VIEWS = {
 
 def args():
     values = sys.argv[sys.argv.index("--") + 1 :] if "--" in sys.argv else []
-    if len(values) != 2:
-        raise SystemExit("expected SOURCE_GLTF OUTPUT_DIR after --")
-    return Path(values[0]).resolve(), Path(values[1]).resolve()
+    if len(values) not in (2, 3):
+        raise SystemExit("expected SOURCE_GLTF OUTPUT_DIR [ASSET_PAGE] after --")
+    asset_page = values[2] if len(values) == 3 else None
+    return Path(values[0]).resolve(), Path(values[1]).resolve(), asset_page
 
 
 def combined_bounds(objects):
@@ -68,7 +69,7 @@ def render_beauty(output, objects, center, diagonal, view):
 
 
 def main():
-    source, output = args()
+    source, output, asset_page = args()
     output.mkdir(parents=True, exist_ok=True)
     bpy.ops.object.select_all(action="SELECT")
     bpy.ops.object.delete(use_global=False)
@@ -108,7 +109,7 @@ def main():
         "source": str(source),
         "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
         "license": "CC0 via Poly Haven",
-        "asset_page": "https://polyhaven.com/a/Barrel_01",
+        "asset_page": asset_page,
         "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
         "views": ["front", "side", "top", "isometric"],
         "silhouette_reports": silhouettes,

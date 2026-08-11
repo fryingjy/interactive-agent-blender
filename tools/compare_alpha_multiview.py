@@ -47,17 +47,30 @@ def main():
     parser.add_argument("reference_dir", type=Path)
     parser.add_argument("candidate_dir", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--front-min", type=float, default=0.97)
+    parser.add_argument("--side-min", type=float, default=0.97)
+    parser.add_argument("--top-min", type=float, default=0.97)
+    parser.add_argument("--mean-min", type=float, default=0.97)
     args = parser.parse_args()
     views = {
         view: compare(args.reference_dir / f"reference_{view}_mask.png", args.candidate_dir / f"candidate_{view}_mask.png")
         for view in ("front", "side", "top")
     }
+    thresholds = {"front": args.front_min, "side": args.side_min, "top": args.top_min}
+    mean_iou = round(sum(item["iou"] for item in views.values()) / len(views), 6)
+    assertions = {
+        f"{view}_iou_at_least_{threshold}": views[view]["iou"] >= threshold
+        for view, threshold in thresholds.items()
+    }
+    assertions[f"mean_iou_at_least_{args.mean_min}"] = mean_iou >= args.mean_min
     report = {
         "method": "alpha masks; candidate bbox cropped and nearest-neighbor normalized into reference bbox",
         "normalization_warning": "Scores test normalized projected shape, not absolute framing, scale, or translation.",
         "views": views,
-        "mean_iou": round(sum(item["iou"] for item in views.values()) / len(views), 6),
-        "pass": all(item["iou"] >= 0.97 for item in views.values()),
+        "thresholds": {**thresholds, "mean": args.mean_min},
+        "mean_iou": mean_iou,
+        "assertions": assertions,
+        "pass": all(assertions.values()),
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, indent=2), encoding="utf-8")

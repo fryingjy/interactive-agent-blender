@@ -27,3 +27,20 @@ Evidence: `runs/2026-08-10_topology-subd/`
 Most planar specimens are intentionally open, so boundary-edge counts are expected and are not closed-solid failures. Conversely, clean manifoldness on the support cubes does not decide whether their highlight width fits a design.
 
 Use poles and loop terminations to redirect density where the resulting surface tolerates them. Keep nonplanar n-gons and abrupt density changes away from critical curved/highlight regions unless evaluated evidence supports the choice. Prefer measurable surface behavior over blanket topology slogans.
+
+## Production transfer: connected product housing
+
+Evidence: `runs/2026-08-11_heldout-boombox/`
+
+- When trim, recesses, ribs, or rings belong to one manufactured skin, first test whether cuts,
+  inset/extrusion, and loop routing can keep them in one editable cage. Do not substitute intersecting
+  primitives merely because the silhouette is easy to match.
+- Separate meshes remain appropriate for genuinely separate assemblies such as doors, knobs,
+  speakers, fasteners, handles, and repeated vent inserts.
+- A bevel limited by a vertex group may affect unintended connecting edges on a subdivided grid.
+  Inspect the evaluated result from an oblique fixed view; technical manifoldness does not catch
+  corner fins or pinching. In this run, removing the unsafe perimeter bevel and retaining only the
+  narrow recess treatment was the correct repair.
+- Revolved profiles must not emit a full ring of coincident vertices at a zero-radius endpoint. Cap
+  the adjacent nonzero ring or author a single pole; otherwise nominally closed radial parts contain
+  zero-area faces.

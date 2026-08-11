@@ -1,0 +1,6 @@
+{
+  "status": "FAIL_TECHNICAL",
+  "cause": "The shared lathe helper emitted a complete ring at each zero-radius endpoint. Every vertex in that ring was coincident, creating two zero-area faces per radial component.",
+  "affected_families": ["speaker rims", "speaker cones", "tweeters", "control knobs", "top dials", "antenna", "cassette reels", "fasteners"],
+  "decision": "Preserve this scene and repair the construction helper. Do not suppress or loosen the nondegenerate gate."
+}

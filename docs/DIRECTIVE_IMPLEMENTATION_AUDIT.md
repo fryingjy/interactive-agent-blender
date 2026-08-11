@@ -51,6 +51,7 @@ judgment and generalization priorities remain; the professional target is not fa
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 | Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
+| Online held-out multi-component prop | CC0 boombox source isolated to neutral pixels; predeclared front/side/top/mean gates; one connected 70-quad edited housing rather than stacked chassis primitives; linked speakers, Array vents, UVs, node materials; primitive-assembly and two bevel failures retained; 15/15 fresh-process assertions | automated stylized held-out PASS at 0.816 mean IoU; exact surface graphics, export review for this asset, broader transfer, and experienced acceptance remain open |
 | Rigged facial corrective transfer | official CC0 animation head; Jaw + bilateral smile controls; combined-pose driver gated `0/0/0/1`; mouth mean error improves 2.08876x; 123 weighted jaw vertices touch only quads; all three evaluated heads independently clean | bounded mechanism/transfer PASS; expression is subtle and not production-quality facial acting |
 | Expressive regional coupling control | official CC0 head; mouth-only failure control versus integrated mouth/cheek/lower-lid/brow smile; nondeforming bilateral controls; five rejected revisions; fresh-process saved-scene verification | bounded technical/visual PASS; source supplies anatomy/topology and advanced organic follow-on is deferred |
 
@@ -92,6 +93,14 @@ intersecting ring objects. A failed 0.5154-ratio blockout, a rejected separate-h
 96-degenerate evaluated bevel failure are retained in the evidence trail. The corrected result is a
 multi-view corrective benchmark, not a new held-out ladder pass.
 
+The online CC0 boombox is a genuinely held-out multi-component hard-surface increment. An initial
+automated pass was overturned when user review exposed stacked primitive housing construction. The
+accepted candidate instead uses one connected cut-grid housing with an inset front region; separate
+objects are reserved for separate assemblies. Two evaluated bevel approaches were also rejected for
+visible corner spikes/fins despite clean manifold metrics. The final candidate passes its four
+predeclared normalized silhouette gates and 15/15 saved-scene assertions. This closes one automated
+ladder-E case, not professional or human acceptance.
+
 The official CC0 facial-head run closes the narrower missing rig/corrective transfer mechanism:
 driver edge cases, modifier wiring, localized jaw topology, and evaluated geometry now pass an
 independent fresh-process verifier. Its render remains visually subtle, the source supplied anatomy
@@ -115,8 +124,8 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`: held-out hard-surface/SubD and
-reference-driven prop construction, contextual topology, modifier strategy, production preparation,
-broader planner runtime use, longer-horizon retention, and independent experienced review. Until
-that evidence exists, changing the foundation or professional claim to PASS would violate the
-directive's anti-fake-progress rules.
+The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`: a second unrelated held-out
+hard-surface/curved-SubD family, production UV/bake/export review on a real prop, broader planner
+runtime use, longer-horizon retention, and independent experienced review. Until that evidence
+exists, changing the foundation or professional claim to PASS would violate the directive's
+anti-fake-progress rules.

@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_VISUAL_STRATEGY",
+  "trigger": "User review correctly emphasized that Edit Mode, cuts, inset, and extrusion can derive many forms from one connected cage instead of stacking separate primitive boxes.",
+  "problem": "The candidate passed technical checks but represented chassis, fascia, and central recess as three overlapping box meshes. That was unnecessary primitive assembly for one manufactured housing.",
+  "decision": "Preserve the technically passing scene as rejected evidence. Rebuild the main housing as one connected grid-edited cage with the central front region inset; keep only physically separate doors, controls, speakers, handle, antenna, and trim as separate objects."
+}

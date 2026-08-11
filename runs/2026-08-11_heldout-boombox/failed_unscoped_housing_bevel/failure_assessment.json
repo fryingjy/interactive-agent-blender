@@ -1,0 +1,6 @@
+{
+  "status": "REJECTED_VISUAL_SURFACE",
+  "cause": "The first connected-cage housing used one angle-limited Bevel modifier across both exterior corners and the inset grid. It produced visible corner spikes and damaged the central transition.",
+  "decision": "Keep the connected cage, but test separately scoped exterior and recess bevels. Do not return to stacked fascia/recess boxes.",
+  "outcome": "The follow-up vertex-group perimeter bevel also failed visual review and is documented separately; only the narrow recess treatment survived."
+}
