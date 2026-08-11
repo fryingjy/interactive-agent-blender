@@ -168,12 +168,13 @@ Failures remain visible and are not counted as successes merely because Blender 
 
 ### Retrieval and knowledge use
 
-- `quizzes/quiz_001.md` contains 13 answers; `quiz_002.md` adds 15 fresh mechanism/evidence answers in a second same-day pass.
+- `quizzes/quiz_001.md` contains 13 answers; `quiz_002.md` adds 15 fresh mechanism/evidence answers;
+  `quiz_003.md` adds 20 fresh mechanism/context answers on 2026-08-11.
 - Modifier-order findings cover all four planned pairs, not two.
 - One stack-order skill has been promoted with experimental evidence.
 - Several project skills have prior runtime use, but cross-asset and second-shape validation is still sparse.
 
-Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Multi-day retention and broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—remains open.
+Structured retrieval returned the expected top skill in five of five context-rich cases. One retrieved material-slot skill was then used in Blender as a single mutation, reducing measured orphan slots from one to zero with revision-linked telemetry and independent verification. Cross-calendar-day self-retrieval is now recorded across 2026-08-08, 2026-08-10, and 2026-08-11; independent and longer-horizon retention plus broader production runtime use remain unmeasured. The prior low-confidence area—automated pinching/curvature diagnosis—now has controlled localization/classification evidence but mixed production transfer remains open.
 
 An inspectable strategy policy now ranks primary representation, component boundaries, edit mode,
 and repair-vs-rebuild independently. Its declared benchmark passed 10/10 cases and preserves a real
@@ -182,7 +183,7 @@ regression evidence rather than held-out judgment.
 
 ### Video and structured training
 
-Nine complete official Blender lessons were ingested through the approved-root pipeline: Modeling
+Eleven complete official Blender lessons were ingested through the approved-root pipeline: Modeling
 Introduction, Extrude, Bevel Tool, UV Unwrapping, Intro to Sculpting, and Planning the Facial
 Retopology, Three Point Lighting, Snow - Stylized Character Retopology Live #2, plus Intro to
 Shading, Knife, and Loop Cut. They provide 11,927.510 seconds of real video/audio and 148 decoded frame samples
@@ -258,7 +259,7 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 2. Production transfer of seam-authored UV/high-to-low baking and a named external-engine
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
-3. Multi-day retention and broader real-session use of context-aware knowledge retrieval.
+3. Longer-horizon/independent retention and broader real-session use of context-aware knowledge retrieval.
 4. Production transfer of surface-defect cause classification. Candidate localization, grazing-light
    observability, and five controlled intervention signatures now pass, but mixed real defects remain.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
@@ -273,11 +274,11 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 ## Exit decision
 
 The foundation remains **PARTIAL**. External visual instruction, a genuine held-out visual and
-technical pass, and one successful cross-family transfer now exist. Multi-day retention and
-independent professional judgment remain below the gate.
+technical pass, one successful cross-family transfer, and cross-calendar-day self-retrieval now
+exist. Independent/longer-horizon retention and professional judgment remain below the gate.
 
 ## Highest-value next step
 
 Execute a rigged facial expression or multi-axis joint/twist transfer with corrective shapes and
-independent surface/topology review. On a later calendar day, also run the retention
-quiz; elapsed-time evidence cannot be manufactured in this session.
+independent surface/topology review. Continue later retention checks over a longer interval without
+reusing answer text.

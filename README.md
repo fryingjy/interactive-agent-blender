@@ -588,7 +588,7 @@ implemented and tested; external curriculum breadth and cross-asset promotion re
 research/learning-related work.
 
 `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` is the current directive-by-directive audit. It separates
-implemented local capabilities from evidence that cannot be fabricated: elapsed multi-day
+implemented local capabilities from evidence that cannot be fabricated: long-horizon independent
 retention, advanced lesson coverage, broad uncontaminated transfer, and experienced human review.
 
 The typed modeler protocol is now version 0.2. Its decision registry includes the original

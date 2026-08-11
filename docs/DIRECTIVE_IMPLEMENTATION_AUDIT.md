@@ -26,7 +26,7 @@ open and is not falsely claimed.
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
 | Runtime skill telemetry | append-only revision-linked material skill use | validated once |
-| Retention | two same-day quizzes, second has 15 fresh mechanism/evidence answers | same-day complete; multi-day pending |
+| Retention | three quizzes across 2026-08-08, 2026-08-10, and 2026-08-11; latest has 20 fresh mechanism/context answers | cross-calendar-day self-retrieval demonstrated; independent/long-horizon retention remains open |
 | Uncertainty/rebuild | explicit confidence and repair-pressure policy | tested |
 | Strategy selection | representation/component/edit/repair choices with reasons/margins | 10/10 declared cases |
 | Multi-view comparison | fixed-frame front/side/top IoU, contour, bounds, centroid | synthetic controlled pass |
@@ -66,15 +66,13 @@ open and is not falsely claimed.
    frames/audio/captions and source-to-skill experiments. Pole placement has a controlled
    different-shape articulation transfer; rigged facial expression transfer, production
    sculpt/retopology, and mixed-cause production surface diagnosis remain absent.
-2. **Multi-day retention:** two quizzes exist on the same date. Elapsed days cannot be manufactured
-   within one execution session.
-3. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those
+2. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those
    passes do not prove professional quality. A later chair attempt is explicitly retained as FAIL
    because primitive assembly plus one-view IoU did not meet the directive.
-4. **Professional proficiency:** stages 4-7 require multiple unseen assets, shape families, strong
+3. **Professional proficiency:** stages 4-7 require multiple unseen assets, shape families, strong
    visual/reference results, little intervention, and transfer. The directive explicitly forbids
    claiming this from foundation fixtures or one asset.
-5. **Human/expert acceptance:** no independent experienced modeler supplied a quality review for
+4. **Human/expert acceptance:** no independent experienced modeler supplied a quality review for
    new held-out outputs.
 
 The profile-authored sword rebuild closes the locally actionable primitive-assembly criticism for
@@ -95,6 +93,6 @@ study, retrieval, strategy, visual measurement, sculpt access, export validation
 research-return loop are in place.
 
 The next valid work is advanced sculpt/retopo and complex UV/baking instruction plus experiments,
-broader planner runtime use, a later-date retention run, and independent experienced review. Until
+broader planner runtime use, longer-horizon retention, and independent experienced review. Until
 that evidence exists, changing the foundation or professional claim to PASS would violate the
 directive's anti-fake-progress rules.

@@ -69,7 +69,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top loop measures silhouette, bounds, centroid, and contour regression. Same-reference profile modeling has now transferred from a fantasy sword to a tactical axe at 0.9424 side-silhouette IoU and 0.7717 negative-space IoU, but photoreal multi-view and new held-out professional-quality judgment remain untested.
 
 The weakest breadth remains production-quality organic sculpting, full-character/facial articulation,
-mixed-cause surface-defect transfer, multi-day retrieval retention,
+mixed-cause surface-defect transfer, independent/long-horizon retrieval retention,
 professional visual judgment, and broader transfer validation.
 
 Video evidence is credited only for eleven Blender-authored/Studio lessons actually decoded,
