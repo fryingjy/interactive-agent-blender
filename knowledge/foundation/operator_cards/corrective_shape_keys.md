@@ -39,3 +39,11 @@ Current Blender 5.2 LTS Manual: Shape Keys Panel, Drivers Panel, and Armature Mo
 `runs/2026-08-11_multi-axis-corrective/`, a driven low cage reduces combined-pose joint mean error
 3.88425× and relative volume error from 12.3923% to 5.1967%, remains inactive at rest/flex-only/
 twist-only, and passes 3/3 fresh evaluated mesh checks.
+
+`runs/2026-08-11_facial-expression-transfer/` transfers the same combined-channel principle to
+Blender's official CC0 animation head. A Jaw + bilateral-smile driver remains `0/0/0` for the three
+edge cases and reaches `1.0` only in the combined pose. The corrective reduces mouth-region mean
+nearest-surface error 2.08876x and maximum error 2.34436x. A separate fresh-process verifier checks
+the saved bones, modifiers, shape keys, driver variables, gating, jaw-region topology, and evaluated
+meshes. The expression is visually subtle, so this is transfer/mechanism evidence rather than a
+production facial-animation claim.

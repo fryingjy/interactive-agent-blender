@@ -3,9 +3,12 @@
 from .retrieval import RetrievalContext, StructuredSkillStore
 from .reasoning import Diagnosis, RegionRepairHistory
 from .surface_cause_classifier import (
+    MixedSurfaceCauseDiagnosis,
+    SurfaceCauseAblation,
     SurfaceCauseDiagnosis,
     SurfaceCauseEvidence,
     classify_surface_cause,
+    diagnose_mixed_surface_causes,
 )
 from .telemetry import SkillUsageLog
 
@@ -15,7 +18,10 @@ __all__ = [
     "RetrievalContext",
     "SkillUsageLog",
     "StructuredSkillStore",
+    "MixedSurfaceCauseDiagnosis",
+    "SurfaceCauseAblation",
     "SurfaceCauseDiagnosis",
     "SurfaceCauseEvidence",
     "classify_surface_cause",
+    "diagnose_mixed_surface_causes",
 ]

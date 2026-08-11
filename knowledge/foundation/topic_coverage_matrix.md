@@ -40,7 +40,7 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 | Lattice modifier | ~ | — | ✓ | ~ | — | — | — |
 | Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | ~ |
 | Retopology fundamentals | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
-| Corrective shape keys / drivers | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
+| Corrective shape keys / drivers | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Reference blockout | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
@@ -69,7 +69,8 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 
 The strongest evidence is concentrated in closed-loop runtime behavior, core mesh operations, SubD, topology diagnosis, and selected hard-surface workflows. Standalone Bevel, Mirror, Boolean, Solidify, Array, Shrinkwrap, and Simple Deform now have documentation plus controlled Blender 5.2 experiments. Boolean has genuine runtime/cross-asset transfer evidence; Solidify, Bevel, Mirror, and Shrinkwrap now have controlled second-shape transfer. Modifier-order transfer remains partial because the curved Mirror/Subdivision result narrowed the earlier flat-seam rule. A fixed-frame synthetic front/side/top loop measures silhouette, bounds, centroid, and contour regression. Same-reference profile modeling transferred from a fantasy sword to a tactical axe, then to a real multi-view rotational prop: the barrel body uses one connected 5,376-quad revolved shell with integrated hoops/corrugations and reaches 0.983 mean normalized three-view IoU. The barrel was tuned against its source and is corrective evidence, not held-out professional-quality proof.
 
-The weakest breadth remains production-quality organic sculpting, full-character/facial articulation,
+The official-head facial transfer now gives second-shape corrective evidence with independent saved-rig
+verification, but its expression is subtle and does not establish production acting. The weakest breadth remains production-quality organic sculpting, full-character/facial articulation,
 mixed-cause surface-defect transfer, independent/long-horizon retrieval retention,
 professional visual judgment, and broader transfer validation.
 

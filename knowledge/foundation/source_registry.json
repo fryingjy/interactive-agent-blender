@@ -1225,5 +1225,39 @@
       "skills": ["knowledge/foundation/operator_cards/profile_revolution_topology.md"],
       "limitations": ["Asset-specific tuning makes this corrective evidence, not held-out evidence."]
     }
+  },
+  {
+    "id": "blender-human-base-meshes-bundle-v1",
+    "url": "https://video.blender.org/w/pCJmffT1w9r5Nexrs9SYLN",
+    "local_path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
+    "title": "Human Base Meshes Bundle v1.0.0",
+    "creator": "Blender Studio / Blender Foundation",
+    "source_type": "official_cc0_asset_bundle",
+    "trust_tier": "A",
+    "version": "v1.0.0; downloaded 2026-08-11; tested in Blender 5.2 LTS",
+    "topics": ["facial-topology", "retopology", "shape-keys", "armature", "corrective-deformation"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["read-only-blend-structure", "controlled-render"],
+    "metadata": {
+      "license": "CC0",
+      "download_url": "https://download.blender.org/demo/bundles/bundles-3.6/human-base-meshes-bundle-v1.0.0.zip",
+      "archive_sha256": "46a912c0524072ac3b78c35d5d2471df7b8df102394a050ca8cd7184e3393648",
+      "blend_sha256": "660e245812ef56768bc71293bd4c8bc1fd19a63710e16aafc8258a7351cbc35e",
+      "use_boundary": "The official animation head supplies anatomy/topology; the experiment authors only rig, weighting, shape-key, driver, and corrective-transfer behavior.",
+      "experiments": [
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_report.json",
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer_verify.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/retopology.md",
+        "knowledge/foundation/operator_cards/corrective_shape_keys.md"
+      ],
+      "limitations": [
+        "The source mesh is not autonomous topology authorship.",
+        "The visible expression is subtle and does not establish production facial-animation quality."
+      ]
+    }
   }
 ]

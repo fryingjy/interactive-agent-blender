@@ -60,6 +60,14 @@ joint mean error from `0.05805965` to `0.01494744` (3.88425×), joint maximum fr
 `0.02697982`, and relative volume error from 12.3923% to 5.1967%. This closes the controlled
 multi-axis/corrective mechanism gap, not facial expression or production-character quality.
 
+`runs/2026-08-11_facial-expression-transfer/` uses Blender's official CC0 animation head to test
+the next transfer. The source is closed and predominantly quad, but it contains 18 triangles and
+10 n-gons, so the run does not relabel it all-quad. Instead, the jaw mask was rebuilt after an
+over-broad 733-vertex failure so its final 123 weighted vertices touch only quad faces. The saved
+Jaw + bilateral-smile rig and driven corrective pass an independent fresh-process topology/driver
+review. This validates localized deformation-region topology and corrective wiring on a facial
+shape; the subtle expression does not establish authored facial retopology or production acting.
+
 ## Decision rule
 
 Retopology is goal-dependent. Preserve silhouette and important curvature first, then allocate density, route loops, isolate detail, and place unavoidable poles where deformation and highlights tolerate them. Use Shrinkwrap/snapping as projection aids; never credit them with solving edge flow automatically.

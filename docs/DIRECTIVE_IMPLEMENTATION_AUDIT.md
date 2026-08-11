@@ -2,8 +2,8 @@
 
 **Audit date:** 2026-08-11
 **Branch:** `codex/improve-master-directive`  
-**Disposition:** all locally executable foundation priorities completed; professional target remains
-open and is not falsely claimed.
+**Disposition:** substantial foundation evidence exists, but locally actionable professional-
+judgment and generalization priorities remain; the professional target is not falsely claimed.
 
 ## Implemented and evidenced
 
@@ -14,7 +14,7 @@ open and is not falsely claimed.
 | Critical modifier breadth | standalone and second-shape Bevel, Mirror, Boolean, Solidify; Array, Shrinkwrap, Simple Deform | controlled evidence complete |
 | Secondary modifier breadth | Screw, Remesh, Decimate, Triangulate, Smooth, Corrective Smooth, Laplacian Smooth, Curve, Lattice | 9/9 controlled foundation cases; transfer mostly pending |
 | Contextual topology/SubD | pole, triangle/n-gon context, density, support spacing, cylindrical routing, terminations | controlled evidence complete |
-| Retopology foundations | official planning/live lessons; sculpt handoff; analytic density/pole tests; two-bone density transfer; three-bone flex/splay/twist corrective with 3.88× joint-error improvement | planning/density/pole/joint-weight/multi-axis-corrective mechanisms complete; rigged facial expression transfer remains |
+| Retopology foundations | official planning/live lessons; sculpt handoff; analytic density/pole tests; two-bone density transfer; three-bone flex/splay/twist corrective with 3.88× joint-error improvement; official CC0 facial head with localized quad-only jaw mask and independently verified combined-pose corrective | facial rig/corrective mechanism transferred; authored facial retopology and production expression quality remain |
 | Sculpt foundations | official 25-minute lesson studied; Multires/voxel remesh; seven-stroke Draw/Crease mutation; false-FINISHED and smoothing controls; clean low-cage handoff | mechanism evidence complete; production form quality remains open |
 | UV/material/production | scale warning, unwrap, node state, slots, organization, packed tangent normal/PBR semantics, OBJ/GLB round trip | foundational evidence complete |
 | Seam-authored high/low bake | official UV lesson studied; authored cut graph on a different flared housing; real Cycles Selected-to-Active tangent bake; missing-source failure; Non-Color invariant | controlled PASS with 2/2 fresh-process mesh verification; production transfer pending |
@@ -50,6 +50,7 @@ open and is not falsely claimed.
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 | Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
+| Rigged facial corrective transfer | official CC0 animation head; Jaw + bilateral smile controls; combined-pose driver gated `0/0/0/1`; mouth mean error improves 2.08876x; 123 weighted jaw vertices touch only quads; all three evaluated heads independently clean | bounded mechanism/transfer PASS; expression is subtle and not production-quality facial acting |
 
 ## Important disproved assumptions retained
 
@@ -65,8 +66,8 @@ open and is not falsely claimed.
 
 1. **Advanced expert video curriculum:** eleven official lessons are now processed with real
    frames/audio/captions and source-to-skill experiments. Pole placement has a controlled
-   different-shape articulation transfer; rigged facial expression transfer, production
-   sculpt/retopology, and mixed-cause production surface diagnosis remain absent.
+   different-shape articulation transfer and a bounded facial corrective transfer. Production
+   sculpt/retopology, expressive facial acting, and mixed-cause production surface diagnosis remain absent.
 2. **Held-out breadth:** supplied references now exist and B/D have mechanical passes, but those
    passes do not prove professional quality. A later chair attempt is explicitly retained as FAIL
    because primitive assembly plus one-view IoU did not meet the directive.
@@ -88,6 +89,12 @@ intersecting ring objects. A failed 0.5154-ratio blockout, a rejected separate-h
 96-degenerate evaluated bevel failure are retained in the evidence trail. The corrected result is a
 multi-view corrective benchmark, not a new held-out ladder pass.
 
+The official CC0 facial-head run closes the narrower missing rig/corrective transfer mechanism:
+driver edge cases, modifier wiring, localized jaw topology, and evaluated geometry now pass an
+independent fresh-process verifier. Its render remains visually subtle, the source supplied anatomy
+and topology, and no animator reviewed it; it therefore does not close professional organic or
+facial-expression quality.
+
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.
 
@@ -99,7 +106,8 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work is advanced sculpt/retopo and complex UV/baking instruction plus experiments,
-broader planner runtime use, longer-horizon retention, and independent experienced review. Until
+The next valid work is production-style mixed-cause surface diagnosis, stronger organic sculpt/
+retopo and facial-expression quality, named external-engine bake validation, broader planner
+runtime use, longer-horizon retention, and independent experienced review. Until
 that evidence exists, changing the foundation or professional claim to PASS would violate the
 directive's anti-fake-progress rules.

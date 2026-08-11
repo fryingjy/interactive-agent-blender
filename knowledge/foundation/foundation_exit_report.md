@@ -248,6 +248,16 @@ tessellator assumptions, cropped framing, and a gray-background threshold failur
 Because this source was selected during implementation, the result is corrective transfer rather
 than held-out evidence. See `runs/2026-08-10_profile-authored-axe/`.
 
+The articulation sequence now also transfers to Blender's official CC0 Human Base Mesh animation
+head. A Jaw + bilateral-smile rig drives a relative combined-pose corrective that evaluates to
+`0.0` at rest, jaw-only, and smile-only and `1.0` for the combined pose. Mouth-region mean
+nearest-surface error falls from `0.00100663` to `0.00048193` (2.08876x), and maximum from
+`0.00403267` to `0.00172016`. A fresh-process verifier confirms all three saved heads are closed
+and nondegenerate at base/evaluated states, the 123 weighted jaw vertices touch only quads, and the
+Armature/driver wiring is intact. The official mesh supplied anatomy/topology and the visible
+expression is subtle, so this is mechanism transfer rather than production facial-artistry proof.
+See `runs/2026-08-11_facial-expression-transfer/`.
+
 No paywalled course is claimed as lesson-level study; only accessible curriculum/overview text was inspected.
 
 ## Stronger areas
@@ -264,8 +274,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 ## Largest remaining gaps
 
 1. Production-quality organic form sculpting and full-character/facial articulation. Controlled
-   two-bone density and three-bone flex/splay/twist corrective tests now pass, but these limb-like
-   forms are not claimed as a professional character form or expression rig.
+   two-bone density, three-bone flex/splay/twist, and official-head jaw/smile corrective tests now
+   pass, but the facial expression is subtle and none establishes a professional character or rig.
 2. Production transfer of seam-authored UV/high-to-low baking and a named external-engine
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
@@ -278,8 +288,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
    profile pass is useful cross-family corrective evidence but does not consume or satisfy that
    held-out reserve.
 6. Advanced external instruction now includes one long-form retopology live study; local transcription and
-   authored-caption ingestion are functional, but rigged facial expression transfer, production
-   sculpt/retopology, and mixed-cause production surface diagnosis remain.
+   authored-caption ingestion are functional, and a bounded facial corrective transfer now passes.
+   Production sculpt/retopology, expressive facial acting, and mixed-cause production surface diagnosis remain.
 
 ## Exit decision
 
@@ -289,5 +299,7 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Execute a rigged facial-expression transfer with corrective shapes and independent surface/topology
-review. Continue later retention checks over a longer interval without reusing answer text.
+Execute a production-style mixed-cause surface diagnosis in which geometry, normals, materials,
+lighting, and bevel state interact on one editable asset; require intervention ablation, fresh
+technical verification, and visual review. Continue later retention checks over a longer interval
+without reusing answer text.
