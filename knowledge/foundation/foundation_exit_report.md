@@ -282,6 +282,8 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 - Standalone Boolean/Solidify fundamentals, Boolean cross-asset runtime transfer, and Solidify curved second-shape transfer.
 - Honest failure recording and independent technical verification.
 
+The held-out vintage telephone wall-clock adds a third unrelated product family under gates frozen before source rendering. Its main housing and handset are separate but internally connected all-quad cages rather than primitive assemblies. Three-view normalized IoU is 0.839997, fresh Blender verification passes, a same-asset tangent-normal badge bake contains 26,290 non-neutral pixels, and Godot 4.7.1 preserves UVs, tangents, normal semantics, and unit scales. Two blockout failures, two neutral-bake failures, and a negative-scale engine failure remain preserved. This strengthens breadth and production handoff but is still automated evidence without independent expert acceptance. See `runs/2026-08-11_heldout-vintage-telephone/`.
+
 ## Largest remaining gaps
 
 1. Professional hard-surface/SubD judgment, multi-view reference construction, topology strategy,

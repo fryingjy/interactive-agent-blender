@@ -1,0 +1,13 @@
+{
+  "status": "FAIL",
+  "stage": "secondary_blockout",
+  "accepted_as_progress": false,
+  "reasons": [
+    "evaluated upper and lower trim bevels each produced 64 non-manifold boundary edges",
+    "front silhouette IoU 0.686527 below 0.78",
+    "top silhouette IoU 0.628827 below 0.68",
+    "mean silhouette IoU 0.691107 below 0.74"
+  ],
+  "diagnosis": "handset span was nearly twice the correct width relative to the housing, making the normalized body silhouette too narrow; secondary bevels were inappropriate for the thin trim topology",
+  "repair": "removed trim bevels, scaled handset span to the frozen landmark ratio, compressed the housing vertical profile, and re-anchored detail landmarks"
+}
