@@ -24,7 +24,7 @@ visual-study credit.
 | Priority | Track | Required reasoning outcome | Experiment requirement | Current state |
 | --- | --- | --- | --- | --- |
 | P0 | Sculpt form development | primary/secondary/tertiary sequencing; brush family by surface effect; resolution strategy; masking/Face Sets | multi-stroke continuous form plus destructive overwork control | EXPERIMENTALLY_TESTED (fundamentals); production form pending |
-| P0 | Sculpt-to-retopology | cage planning, poles/loops, density transitions, projection error, deformation intent | articulated organic source, purposeful quad cage, deformation test | planning + advanced live lesson; analytic and real-armature density transfers tested; facial pose transfer pending |
+| P0 | Sculpt-to-retopology | cage planning, poles/loops, density transitions, projection error, deformation intent | articulated organic source, purposeful quad cage, deformation test | planning + advanced live lesson; analytic, real-armature, and driven multi-axis corrective transfers tested; facial pose transfer pending |
 | P0 | UV and high/low baking | seam cut graph, distortion/packing/texel density, tangent convention, cage/ray margin | authored seams and Selected-to-Active bake on a different shape | EXPERIMENTALLY_TESTED |
 | P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
 | P1 | Topology and SubD | pole placement, loop termination, curved holes, pinching and density | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
@@ -33,7 +33,7 @@ visual-study credit.
 | P2 | Stylized/low-poly | shape language, simplification budget, silhouette hierarchy | same concept in two style constraints | pending |
 | P2 | Curves/procedural | when curves or Geometry Nodes outperform mesh editing | cable/trim/ornament transfer asset | mechanics partial |
 | P2 | Materials/lighting/render | material response as surface evidence; camera and light neutrality | neutral review rig versus beauty rig | materials partial; video pending |
-| P2 | Rigging/deformation | topology follows bending/compression requirements | bend test with density comparison | two-bone 82-degree weighted joint passes; twist/correctives/full-character transfer pending |
+| P2 | Rigging/deformation | topology follows bending/compression requirements | bend test with density comparison | three-bone flex/splay/twist plus gated corrective passes; full-character/facial transfer pending |
 
 ## Completed source-to-skill conversions
 
@@ -48,6 +48,8 @@ visual-study credit.
 | Blender Fundamentals: Three Point Lighting | 12 frames + 130 authored-caption segments | clean/dented curved product surface under two fixed rigs | empty render buffer; non-grazing three-light rig hid defect | surface diagnostics card |
 | Blender Studio: Snow Retopology Live #2 | 27 frames + 4,595 automatic-caption segments | identical five-pole pair moved between low-motion and bend zones on a tapered hose | two invalid Simple Deform axis/orientation setups | retopology card |
 | Blender Fundamentals: Intro to Shading | 11 frames + 47 machine-transcript segments | five single-cause interventions on an authored chamfered enclosure | OpenGL exit crash, empty collection audit, inward winding | surface diagnostics card + typed classifier |
+| Blender Fundamentals: Knife Tool | 12 frames + 23 machine-transcript segments | exact Bisect on a rounded equipment housing | invalid Fill-without-clear, import/render assumptions | mandatory mesh operation card |
+| Blender Fundamentals: Loop Cut | 17 frames + 27 machine-transcript segments | three complete rings on a rounded equipment housing | typed helper falsely subdivided a triangulated interruption, then rejected after contract fix | mandatory mesh operation card |
 
 ## Breadth map from the supplied links
 

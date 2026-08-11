@@ -1,0 +1,25 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_multi-axis-corrective\\multi_axis_corrective.blend",
+  "object_name": "Dense_Corrected_Reference",
+  "geometry_source": "evaluated",
+  "verified_at": "2026-08-11T12:41:29Z",
+  "stats": {
+    "vertices": 6338,
+    "edges": 12672,
+    "faces": 6336,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "loose_edges": 0,
+    "degenerate_faces": 0,
+    "signed_volume": 5.250055037513257
+  },
+  "checks": {
+    "non_manifold_edges_ok": true,
+    "ngons_ok": true,
+    "loose_geometry_ok": true,
+    "degenerate_faces_ok": true,
+    "normals_consistent_ok": true
+  },
+  "clean": true
+}

@@ -220,6 +220,16 @@ against a 47-ring rigged reference (6.28467x); joint maximum falls from `0.06306
 presentations remain documented. This is weighted joint evidence, not a full character or facial
 expression claim.
 
+The next articulation transfer adds a real three-bone `Upper`/`Lower`/`Twist` chain, smooth weights,
+72-degree flex, 18-degree splay, 58-degree distal twist, and a relative corrective shape driven by
+explicit local bone-rotation variables. The driver is 0.0 at rest, flex-only, and twist-only, and
+1.0 only for the combined pose. Against a dense corrected reference, the low cage's joint mean
+error falls from `0.05805965` to `0.01494744` (3.88425x), joint maximum from `0.12682819` to
+`0.02697982`, and relative volume error from 12.3923% to 5.1967%. All 3/3 evaluated posed meshes
+verify clean. Because reference and low cage share an authored correction hypothesis, this is
+mechanism/transfer evidence rather than anatomical discovery or facial-production proof. See
+`runs/2026-08-11_multi-axis-corrective/`.
+
 The source registry is normalized to explicit URL/local path, creator, type, trust tier, version, topics, access booleans, status, and rejection reason. Approved-root document ingestion, approved-host web fetching, structured skill retrieval, append-only skill telemetry, explicit uncertainty, multi-view regression checks, component-graph checks, and rebuild pressure are implemented with unit tests. Runtime and cross-session evidence remains sparse.
 
 A later quality rebuild rejected the original held-out sword's primitive-like visible result despite
@@ -253,9 +263,9 @@ No paywalled course is claimed as lesson-level study; only accessible curriculum
 
 ## Largest remaining gaps
 
-1. Production-quality organic form sculpting and full-character/facial articulation. A controlled
-   weighted two-bone joint now passes, but multi-stroke mechanics and this limb are not claimed as a
-   professional character form or expression rig.
+1. Production-quality organic form sculpting and full-character/facial articulation. Controlled
+   two-bone density and three-bone flex/splay/twist corrective tests now pass, but these limb-like
+   forms are not claimed as a professional character form or expression rig.
 2. Production transfer of seam-authored UV/high-to-low baking and a named external-engine
    validation. A real controlled Cycles Selected-to-Active tangent bake now passes on a flared
    housing, replacing the earlier synthetic-map-only evidence.
@@ -279,6 +289,5 @@ exist. Independent/longer-horizon retention and professional judgment remain bel
 
 ## Highest-value next step
 
-Execute a rigged facial expression or multi-axis joint/twist transfer with corrective shapes and
-independent surface/topology review. Continue later retention checks over a longer interval without
-reusing answer text.
+Execute a rigged facial-expression transfer with corrective shapes and independent surface/topology
+review. Continue later retention checks over a longer interval without reusing answer text.

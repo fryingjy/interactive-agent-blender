@@ -1160,5 +1160,47 @@
       ],
       "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
     }
+  },
+  {
+    "id": "blender-manual-shape-keys-panel-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/animation/shape_keys/shape_keys_panel.html",
+    "title": "Shape Keys Panel",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["shape-keys", "relative-shapes", "corrective-shapes"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "blender-manual-drivers-panel-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/animation/drivers/drivers_panel.html",
+    "title": "Drivers Panel",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["drivers", "driver-variables", "transform-channels"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+  },
+  {
+    "id": "blender-manual-armature-modifier-5-2",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/deform/armature.html",
+    "title": "Armature Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_manual",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["armature-modifier", "vertex-groups", "preserve-volume"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
   }
 ]

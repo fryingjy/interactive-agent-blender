@@ -1,6 +1,6 @@
 # Curriculum card: Retopology and remeshing
 
-**Status:** DOCS ✓ (Blender 5.0 Manual generation) | VIDEO ✓ (Blender Studio) | EXPERIMENT ✓ | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ✓ | SECOND_SHAPE ~
+**Status:** DOCS ✓ (Blender 5.2 Manual generation) | VIDEO ✓ (Blender Studio) | EXPERIMENT ✓ | FAILURE_CASE ✓ | QUIZ ✓ | RUNTIME_USE ✓ | SECOND_SHAPE ✓
 
 ## Official behavior studied
 
@@ -52,6 +52,13 @@ deviation from the 11-ring cage's `0.01887370` to `0.00300313` against a 47-ring
 (6.28467x), and joint maximum from `0.06306881` to `0.01436530`. Three posed meshes independently
 verify clean. This validates joint-density allocation on one weighted shape, not full-character or
 facial expression topology.
+
+`runs/2026-08-11_multi-axis-corrective/` adds a real three-bone flex/splay/twist pose and a relative
+shape key driven from explicit local bone-rotation variables. The corrective is inactive at rest,
+flex-only, and twist-only, but reaches 1.0 for 72° flex + 18° splay + 58° twist. It reduces low-cage
+joint mean error from `0.05805965` to `0.01494744` (3.88425×), joint maximum from `0.12682819` to
+`0.02697982`, and relative volume error from 12.3923% to 5.1967%. This closes the controlled
+multi-axis/corrective mechanism gap, not facial expression or production-character quality.
 
 ## Decision rule
 

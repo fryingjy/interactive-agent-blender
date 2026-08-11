@@ -40,6 +40,7 @@ Updated 2026-08-10. `✓` means substantial evidence, `~` partial evidence, and 
 | Lattice modifier | ~ | — | ✓ | ~ | — | — | — |
 | Modifier stack order | ~ | — | ✓ | ✓ | ✓ | ~ | ~ |
 | Retopology fundamentals | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
+| Corrective shape keys / drivers | ✓ | — | ✓ | ✓ | ✓ | ✓ | ~ |
 | Reference blockout | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
