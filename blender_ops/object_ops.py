@@ -167,6 +167,12 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
             continue
         attribute.data[edge_index].value = value
         assigned.append(int(agent_id))
+    # Persist exactly what this decision regarded as sharp so later review can
+    # distinguish an incomplete semantic map from an intentionally sparse one.
+    index_to_id = persistent_ids.get_id_maps(name)["edges"]["index_to_id"]
+    obj["hard_surface_intended_bevel_edge_ids"] = sorted(
+        int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 0.999
+    )
     obj.data.update()
     return {
         "attribute": "bevel_weight_edge",
@@ -174,6 +180,67 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
         "assigned_edge_ids": assigned,
         "missing_edge_ids": missing,
         "clear_others": bool(clear_others),
+    }
+
+
+def hard_surface_shading_audit(name):
+    """Read whether an annotated hard-surface mesh follows the active policy.
+
+    This intentionally cannot decide which unannotated edges *should* be
+    sharp. It verifies the narrower, auditable contract: identified semantic
+    edges are weighted, a WEIGHT Bevel is ordered before any SubD, the normal
+    policy is Smooth by Angle, and unapplied non-uniform scale is visible.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    persistent_ids.ensure_persistent_ids(name)
+    id_maps = persistent_ids.get_id_maps(name)["edges"]
+    attr = obj.data.attributes.get("bevel_weight_edge")
+    weighted_ids = []
+    if attr is not None and attr.domain == "EDGE":
+        weighted_ids = sorted(
+            int(id_maps["index_to_id"][index]) for index, item in enumerate(attr.data)
+            if item.value > 0.999 and index in id_maps["index_to_id"]
+        )
+    intended_ids = sorted(int(item) for item in obj.get("hard_surface_intended_bevel_edge_ids", []))
+    modifier_types = [modifier.type for modifier in obj.modifiers]
+    weighted_bevel_indices = [
+        index for index, modifier in enumerate(obj.modifiers)
+        if modifier.type == "BEVEL" and modifier.limit_method == "WEIGHT"
+    ]
+    subd_indices = [index for index, modifier in enumerate(obj.modifiers) if modifier.type == "SUBSURF"]
+    scale = tuple(float(item) for item in obj.scale)
+    uniform_scale = max(scale) - min(scale) < 1e-6
+    blanket_smooth = bool(obj.data.polygons) and all(poly.use_smooth for poly in obj.data.polygons)
+    checks = {
+        "semantic_intent_recorded": bool(intended_ids),
+        "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
+        "weight_limited_bevel_present": bool(weighted_bevel_indices),
+        "bevel_before_subd": not subd_indices or (bool(weighted_bevel_indices) and min(weighted_bevel_indices) < min(subd_indices)),
+        "smooth_by_angle_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
+        "uniform_object_scale": uniform_scale,
+        "not_unannotated_blanket_smooth": not (blanket_smooth and obj.get("shading_policy") != "SMOOTH_BY_ANGLE"),
+    }
+    passed = all(checks.values())
+    warnings = []
+    if not checks["semantic_intent_recorded"]:
+        warnings.append("No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.")
+    if not checks["uniform_object_scale"]:
+        warnings.append("Non-uniform object scale can distort Bevel width in world space.")
+    if not checks["smooth_by_angle_recorded"]:
+        warnings.append("Smooth by Angle was not recorded as the normal policy.")
+    if not checks["bevel_before_subd"]:
+        warnings.append("A WEIGHT-limited Bevel must precede Subdivision Surface for this policy.")
+    return {
+        "name": name,
+        "status": "PASS" if passed else "REVIEW_REQUIRED",
+        "checks": checks,
+        "weighted_edge_ids": weighted_ids,
+        "intended_bevel_edge_ids": intended_ids,
+        "modifier_types": modifier_types,
+        "object_scale": scale,
+        "warnings": warnings,
     }
 
 

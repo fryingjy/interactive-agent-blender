@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "blender_ops"))
 import persistent_ids
 from modeler_server import _OPS
 from modeler_server import ModelerServer
+from object_ops import hard_surface_shading_audit
 
 OUT = ROOT / "runs" / "2026-08-12_hard-surface-shading-policy"
 
@@ -54,6 +55,14 @@ def main():
     shade_verify = server.cmd_verify_decision(shade_decision["decision_id"])
     shade_commit = server.cmd_commit_decision(shade_decision["decision_id"])
     shading = shade_perform["result"]
+    audit = hard_surface_shading_audit(obj.name)
+    bpy.ops.mesh.primitive_cube_add(location=(4.0, 0.0, 0.0))
+    rejected = bpy.context.object
+    rejected.name = "Unannotated_Blanket_Smooth_Box"
+    rejected.scale = (1.0, 1.0, 1.5)
+    for polygon in rejected.data.polygons:
+        polygon.use_smooth = True
+    rejected_audit = hard_surface_shading_audit(rejected.name)
     types = [modifier.type for modifier in obj.modifiers]
     assertions = {
         "smooth_by_angle_operator_finished": shading["shading"] == "SMOOTH_BY_ANGLE",
@@ -66,9 +75,16 @@ def main():
         "weighted_bevel_precedes_subd": types[:2] == ["BEVEL", "SUBSURF"],
         "shading_policy_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
         "blanket_smooth_not_used_as_policy": obj.get("shading_policy") != "BLANKET_SMOOTH",
+        "hard_surface_policy_audit_passes": audit["status"] == "PASS",
+        "audit_rejects_unannotated_blanket_smooth": (
+            rejected_audit["status"] == "REVIEW_REQUIRED"
+            and not rejected_audit["checks"]["semantic_intent_recorded"]
+            and not rejected_audit["checks"]["uniform_object_scale"]
+            and not rejected_audit["checks"]["not_unannotated_blanket_smooth"]
+        ),
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
+    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
     (OUT / "hard_surface_shading_policy_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT / "hard_surface_shading_policy.blend"))
     print(json.dumps(report))

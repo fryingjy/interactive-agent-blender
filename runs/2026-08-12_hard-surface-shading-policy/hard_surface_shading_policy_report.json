@@ -18,10 +18,71 @@
     "missing_edge_ids": [],
     "clear_others": true
   },
+  "hard_surface_audit": {
+    "name": "Semantic_Hard_Surface_Box",
+    "status": "PASS",
+    "checks": {
+      "semantic_intent_recorded": true,
+      "semantic_weights_match_intent": true,
+      "weight_limited_bevel_present": true,
+      "bevel_before_subd": true,
+      "smooth_by_angle_recorded": true,
+      "uniform_object_scale": true,
+      "not_unannotated_blanket_smooth": true
+    },
+    "weighted_edge_ids": [
+      10,
+      12,
+      15,
+      18
+    ],
+    "intended_bevel_edge_ids": [
+      10,
+      12,
+      15,
+      18
+    ],
+    "modifier_types": [
+      "BEVEL",
+      "SUBSURF"
+    ],
+    "object_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "warnings": []
+  },
+  "rejected_fixture_audit": {
+    "name": "Unannotated_Blanket_Smooth_Box",
+    "status": "REVIEW_REQUIRED",
+    "checks": {
+      "semantic_intent_recorded": false,
+      "semantic_weights_match_intent": false,
+      "weight_limited_bevel_present": false,
+      "bevel_before_subd": true,
+      "smooth_by_angle_recorded": false,
+      "uniform_object_scale": false,
+      "not_unannotated_blanket_smooth": false
+    },
+    "weighted_edge_ids": [],
+    "intended_bevel_edge_ids": [],
+    "modifier_types": [],
+    "object_scale": [
+      1.0,
+      1.0,
+      1.5
+    ],
+    "warnings": [
+      "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+      "Non-uniform object scale can distort Bevel width in world space.",
+      "Smooth by Angle was not recorded as the normal policy."
+    ]
+  },
   "transactions": {
     "weight": {
       "begin": {
-        "decision_id": "dec_0_1786541886102",
+        "decision_id": "dec_0_1786545474881",
         "observed_revision": 0
       },
       "verify": {
@@ -61,13 +122,13 @@
         }
       },
       "commit": {
-        "decision_id": "dec_0_1786541886102",
+        "decision_id": "dec_0_1786545474881",
         "result_revision": 1
       }
     },
     "shading": {
       "begin": {
-        "decision_id": "dec_1_1786541886103",
+        "decision_id": "dec_1_1786545474883",
         "observed_revision": 1
       },
       "verify": {
@@ -107,7 +168,7 @@
         }
       },
       "commit": {
-        "decision_id": "dec_1_1786541886103",
+        "decision_id": "dec_1_1786545474883",
         "result_revision": 2
       }
     }
@@ -132,7 +193,9 @@
     "transaction_verification_observed": true,
     "weighted_bevel_precedes_subd": true,
     "shading_policy_recorded": true,
-    "blanket_smooth_not_used_as_policy": true
+    "blanket_smooth_not_used_as_policy": true,
+    "hard_surface_policy_audit_passes": true,
+    "audit_rejects_unannotated_blanket_smooth": true
   },
   "pass": true
 }

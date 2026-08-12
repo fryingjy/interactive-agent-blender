@@ -457,6 +457,9 @@ class ModelerServer:
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
+    def cmd_get_hard_surface_shading_audit(self, name):
+        return object_ops.hard_surface_shading_audit(name)
+
     def cmd_get_evaluated_defect_regions(self, name, area_outlier_ratio=0.05, angle_threshold_degrees=10, angle_local_spike_ratio=2.0, max_tickets=20):
         return evaluated_probe.evaluated_defect_regions(
             name, area_outlier_ratio=area_outlier_ratio,

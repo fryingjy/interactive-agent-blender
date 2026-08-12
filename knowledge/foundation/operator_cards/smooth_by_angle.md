@@ -41,6 +41,11 @@ and [`bpy.ops.object`](https://docs.blender.org/api/current/bpy.ops.object.html)
 Both are sanctioned decision operations; the agent must still observe the current cage and make one
 semantic decision before calling them. They are not procedural asset generators.
 
+`get_hard_surface_shading_audit(name)` is a read-only runtime review. It checks recorded semantic
+edge intent against the actual weight attribute, WEIGHT-Bevel presence/order, Smooth by Angle,
+and non-uniform scale. It deliberately returns `REVIEW_REQUIRED` when intent is absent: it cannot
+truthfully infer every sharp design edge from arbitrary geometry.
+
 The lab runs each operation through `ModelerServer`'s
 `begin_decision -> perform_decision -> verify_decision -> commit_decision` path. The semantic
 weight decision advances revision `0 -> 1`; Smooth by Angle advances it `1 -> 2`. An initial
@@ -63,4 +68,6 @@ runtime observation; real modifier changes must be their own typed decisions.
 
 `runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report. It
 verifies four deliberate vertical rails, persistent-ID weight assignment, `BEVEL -> SUBSURF` order,
-and Smooth by Angle without treating blanket smooth shading as the policy.
+and Smooth by Angle without treating blanket smooth shading as the policy. A separate rejected
+fixture is unannotated, blanket smooth, and non-uniformly scaled; the audit correctly returns
+`REVIEW_REQUIRED` rather than passing it on technical mesh validity.
