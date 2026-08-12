@@ -1,0 +1,30 @@
+{
+  "assertions": {
+    "expected_mesh_instances": true,
+    "fresh_asset_loaded": true,
+    "node_scales_are_unit": true,
+    "nonzero_surface_and_vertex_data": true,
+    "normal_texture_semantics_preserved": true,
+    "tangent_data_present": true,
+    "uv_data_present": true
+  },
+  "godot_version": {
+    "build": "official",
+    "hash": "a13da4feb8d8aefc283c3763d33a2f170a18d541",
+    "hex": 263937,
+    "major": 4,
+    "minor": 7,
+    "patch": 1,
+    "status": "stable",
+    "string": "4.7.1-stable (official)",
+    "timestamp": 0
+  },
+  "lab": "heldout_watering_can_godot_4_7_1_import",
+  "mesh_instances": 7,
+  "normal_mapped_surfaces": 1,
+  "pass": true,
+  "surfaces": 7,
+  "tangent_surfaces": 7,
+  "uv_surfaces": 7,
+  "vertices": 1368
+}

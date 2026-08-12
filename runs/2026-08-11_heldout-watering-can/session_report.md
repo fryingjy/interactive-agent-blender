@@ -35,10 +35,14 @@ presence, and clean evaluated meshes.
 
 `production/production_report.json` records a real Cycles selected-to-active tangent normal bake
 with 16,384 non-neutral pixels and a 87,272-byte GLB export. This is an automated production
-handoff check, not a named-engine visual review or experienced professional acceptance.
+handoff check. `production/godot_project/godot_import_report.json` adds a fresh Godot 4.7.1
+import: 7 mesh instances/surfaces, 1,368 vertices, UVs and tangents on all seven surfaces, one
+normal-mapped surface, and unit node scales. The first sandboxed Godot attempt imported the GLB but
+could not write Godot user settings and crashed; the first normal runtime attempt then exposed a
+typed-GDScript `fmt` inference error. Both failures were corrected before the passing run.
 
 ## Limits
 
 This benchmark adds a fourth unrelated hard-surface/product family, but it remains source-specific
 and automated. It does not establish broad low-intervention modeling ability, production texture
-quality under compression/mips, or human professional acceptance.
+quality under compression/mips beyond this Godot import, or human professional acceptance.
