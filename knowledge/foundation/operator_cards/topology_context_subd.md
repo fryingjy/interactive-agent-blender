@@ -30,7 +30,13 @@ Use poles and loop terminations to redirect density where the resulting surface 
 
 ## Production transfer: connected product housing
 
-Evidence: `runs/2026-08-11_heldout-boombox/`
+Evidence: this section's original example (a boombox benchmark) was rejected on direct human visual
+review for not resembling its reference at all -- wrong color, wrong proportions, generic detailing
+-- and its files were removed entirely (2026-08-12); see
+`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`. The topology-construction lessons below were not the cause
+of that rejection and remain independently supported by `runs/2026-08-11_connected-camera-corrective/`
+below, which demonstrates the same cut-grid-not-primitives principle on an asset that also passed
+human review.
 
 - When trim, recesses, ribs, or rings belong to one manufactured skin, first test whether cuts,
   inset/extrusion, and loop routing can keep them in one editable cage. Do not substitute intersecting

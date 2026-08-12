@@ -1,0 +1,19 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "source_file": "runs/2026-08-12_telephone-trim-bevel-corrective/heldout_vintage_telephone_production_trim_corrected.blend",
+  "reverted_objects": [
+    "Handset"
+  ],
+  "evaluated_health": {
+    "Handset": {
+      "evaluated_vertices": 2594,
+      "evaluated_faces": 2592,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "post_revert_audit_status": {
+    "Handset": "REVIEW_REQUIRED"
+  },
+  "all_clean": true
+}

@@ -1,5 +1,13 @@
 # Retroactive hard-surface shading policy audit
 
+> **2026-08-12 addendum:** the boombox findings below are historical. The boombox asset was
+> separately rejected on direct human visual review (did not resemble its reference at all) and all
+> boombox files, including the production `.blend` this report's boombox findings are based on, were
+> removed. `no_bevel_triage.json` and `retroactive_audit_report.json` in this run directory have had
+> their boombox entries removed to match; the boombox rows/counts described in the prose below no
+> longer correspond to any file in this repository and are kept only as a record of what was found
+> before the asset was removed.
+
 ## Scope
 
 `get_hard_surface_shading_audit()` (added and merged in PR #13, 2026-08-12) was built and verified

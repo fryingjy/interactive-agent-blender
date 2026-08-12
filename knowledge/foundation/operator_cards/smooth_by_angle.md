@@ -86,6 +86,43 @@ runtime observation; real modifier changes must be their own typed decisions.
 - A Bevel cannot undo a capsule-like base shape. Rebuild the primary cage when the silhouette is
   already wrong.
 
+## Confirmed failure: a geometric-angle threshold is not a valid sharp-edge selector
+
+This is the "weighting every edge" bullet above, but it was reproduced at scale by automation, not
+just theorized, and is worth its own record. This session's no-Bevel triage corrective scripts
+(`runs/2026-08-12_watering-can-secondary-bevel-corrective/`,
+`runs/2026-08-12_telephone-handset-bevel-corrective/`) selected sharp edges by a single rule: any
+edge with a dihedral angle over 25 degrees between its two faces gets a real geometric Bevel weight.
+Direct human visual review against the reference photos, and a follow-up comparison confirming it,
+found this was wrong for round members: the watering can's `Rose_Head`, `Connected_Tapered_Spout`,
+`Arched_Handle`, and the telephone's `Handset` are all smoothly rounded forms in their source
+photos. The rule conflates two different things:
+
+1. **Shading hardness** -- already handled correctly by Smooth by Angle alone, from geometric angle,
+   with no Bevel modifier needed at all.
+2. **Physical edge rounding** -- a real geometric operation that should only be applied where the
+   reference shows an actual machined/pressed seam.
+
+On a low-segment-count round member (8-16 sides around the circumference, not 100+), the natural
+angle between adjacent segments is large simply because there are few segments -- not because those
+edges are an intended hard transition. The rule selected nearly every circumferential edge on these
+parts and gave each one a real chamfer, turning "faceted-but-smoothly-shaded" (correct, matches the
+reference) into "actually faceted" (wrong, reads as a cut gemstone instead of a rounded nozzle or a
+bakelite receiver). `runs/2026-08-12_watering-can-rounded-parts-bevel-reverted/` and
+`runs/2026-08-12_telephone-handset-bevel-reverted/` remove the incorrect weighting, keeping only
+Smooth by Angle -- the same strategy `Connected_Vessel` already used successfully (real Bevel weight
+only at its genuine rim/shoulder seams, smooth shading elsewhere via adequate segment count).
+
+**The rule to apply instead:** decide which edges are sharp by checking the reference photo for that
+specific part, not by measuring an angle on the low-poly proxy. A part that reads as continuously
+curved in the reference (a nozzle, a handle, a receiver, a tube) should get Smooth by Angle alone,
+regardless of how large its base-cage facet angles are. A part that reads as having a real seam,
+lip, or machined edge in the reference gets `WEIGHT`-limited Bevel at exactly that seam. The technical
+audit (`get_hard_surface_shading_audit`) can verify that recorded intent matches the applied
+weights, but it cannot judge whether the intent itself was correct -- that check has to be a
+reference comparison, done per object, not a blanket geometric rule applied to every untreated
+object in one pass.
+
 ## Evidence
 
 `runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report, 18/18
@@ -93,7 +130,10 @@ assertions passing. It verifies four deliberate vertical rails, persistent-ID we
 `BEVEL -> SUBSURF` order, and Smooth by Angle without treating blanket smooth shading as the policy.
 A second fixture is unannotated, blanket smooth, and non-uniformly scaled; the audit correctly
 returns `REVIEW_REQUIRED` rather than passing it on technical mesh validity. A third fixture uses a
-real `ANGLE`-limited Bevel configured directly through `bpy` (reproducing the boombox pattern) with
-no `set_bevel_scoping` call; it also stays `REVIEW_REQUIRED`. A fourth fixture uses
-`set_bevel_scoping` through the real typed decision lifecycle and reaches `PASS`, proving the new
-mechanism is a genuine second auditable path rather than a blanket exemption for `ANGLE`/`VGROUP`.
+real `ANGLE`-limited Bevel configured directly through `bpy` with no `set_bevel_scoping` call; it
+also stays `REVIEW_REQUIRED`. A fourth fixture uses `set_bevel_scoping` through the real typed
+decision lifecycle and reaches `PASS`, proving the new mechanism is a genuine second auditable path
+rather than a blanket exemption for `ANGLE`/`VGROUP`. (The `ANGLE`-limited-Bevel example that
+originally motivated this mechanism was a held-out boombox benchmark, removed 2026-08-12 after being
+rejected on visual review for unrelated reasons -- color and proportion, not its bevel construction;
+the mechanism itself is validated independently by these lab fixtures.)

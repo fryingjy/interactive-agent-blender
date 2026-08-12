@@ -545,18 +545,31 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0/current Manual generations; reproduced in Blender 5.2.0 LTS",
-    "topics": ["array-modifier", "repetition", "modifiers"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "array-modifier",
+      "repetition",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Relative, Constant, and Object offsets are additive",
         "Fit and relative behavior depend on local-space dimensions",
         "Adjacent copies can merge only within the configured distance"
       ],
-      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+      "experiments": [
+        "runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"
+      ]
     }
   },
   {
@@ -568,18 +581,31 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
-    "topics": ["shrinkwrap-modifier", "retopology", "projection"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "shrinkwrap-modifier",
+      "retopology",
+      "projection"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Nearest Surface Point selects the closest target-surface point",
         "Project uses selected local axes/directions and leaves vertices unchanged when no target is hit",
         "Offset controls distance from the selected target position"
       ],
-      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+      "experiments": [
+        "runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"
+      ]
     }
   },
   {
@@ -591,18 +617,32 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Accessible Blender 3.6/5.x Manual generations; reproduced in Blender 5.2.0 LTS",
-    "topics": ["simple-deform", "twist", "bend", "modifiers"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "simple-deform",
+      "twist",
+      "bend",
+      "modifiers"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Twist/Bend use angle while Taper/Stretch use factor",
         "Deformation is local-space and origin dependent",
         "Unsuitable axis/geometry combinations can produce no deformation"
       ],
-      "experiments": ["runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"]
+      "experiments": [
+        "runs/2026-08-10_array-deform-retopology/array_deform_retopology_report.json"
+      ]
     }
   },
   {
@@ -614,11 +654,23 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0 Manual; reproduced in Blender 5.2.0 LTS",
-    "topics": ["retopology", "voxel-remesh", "quad-remesh", "shrinkwrap"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "retopology",
+      "voxel-remesh",
+      "quad-remesh",
+      "shrinkwrap"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Voxel remesh creates uniform volume-based topology but is unsuitable as final deformation topology",
@@ -640,18 +692,33 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0 Manual generation; reproduced in Blender 5.2.0 LTS",
-    "topics": ["uv", "unwrap", "seams", "packing", "texel-density"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "uv",
+      "unwrap",
+      "seams",
+      "packing",
+      "texel-density"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Complex meshes can be unwrapped in parts or through marked seams",
         "Pack Islands resolves placement but layout may still need scale and distortion refinement",
         "Minimize Stretch and Average Island Scale address different UV-quality signals"
       ],
-      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+      "experiments": [
+        "runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"
+      ]
     }
   },
   {
@@ -663,18 +730,32 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
-    "topics": ["materials", "nodes", "pbr", "assignment"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "materials",
+      "nodes",
+      "pbr",
+      "assignment"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Materials are data-blocks assignable to objects or mesh regions",
         "Surface, volume, and displacement shaders define different appearance components",
         "Node connections control rendered behavior"
       ],
-      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+      "experiments": [
+        "runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"
+      ]
     }
   },
   {
@@ -686,17 +767,31 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Accessible Manual generations; reproduced in Blender 5.2.0 LTS",
-    "topics": ["principled-bsdf", "pbr", "roughness", "metallic"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "principled-bsdf",
+      "pbr",
+      "roughness",
+      "metallic"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Principled BSDF combines physically based surface layers in one shader",
         "Base Color, Metallic, and Roughness are render-affecting node inputs rather than material viewport metadata"
       ],
-      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+      "experiments": [
+        "runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"
+      ]
     }
   },
   {
@@ -708,17 +803,32 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0 Manual; foundation mechanics reproduced in Blender 5.2.0 LTS",
-    "topics": ["sculpting", "brushes", "multires", "remesh", "face-sets"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "sculpting",
+      "brushes",
+      "multires",
+      "remesh",
+      "face-sets"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Sculpting includes primary brush workflows, masks/Face Sets, filters, symmetry, adaptive resolution, and remesh controls",
         "Resolution strategy is part of sculpt workflow and later retopology remains a distinct task"
       ],
-      "experiments": ["runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"]
+      "experiments": [
+        "runs/2026-08-10_uv-material-sculpt/uv_material_sculpt_report.json"
+      ]
     }
   },
   {
@@ -730,18 +840,33 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Current Blender Python API; reproduced in Blender 5.2.0 LTS",
-    "topics": ["bmesh", "api", "ownership", "custom-data", "selection"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "bmesh",
+      "api",
+      "ownership",
+      "custom-data",
+      "selection"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "Standalone and Edit-mode BMesh access have different ownership/update responsibilities",
         "Custom data such as UVs is accessed through element layers",
         "Selection and mesh-validity conventions are not automatically enforced for scripts"
       ],
-      "experiments": ["runs/2026-08-10_bmesh-api/bmesh_api_report.json"]
+      "experiments": [
+        "runs/2026-08-10_bmesh-api/bmesh_api_report.json"
+      ]
     }
   },
   {
@@ -753,18 +878,35 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 3.3 Manual; behavior reproduced in Blender 5.2.0 LTS",
-    "topics": ["gltf", "export", "triangulation", "uv-seams", "vertex-splitting"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "gltf",
+      "export",
+      "triangulation",
+      "uv-seams",
+      "vertex-splitting"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "RUNTIME_VALIDATED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "glTF converts quads and n-gons to triangles during export",
         "discontinuous UVs and flat-shaded edges can increase exported vertex counts because vertices are separated"
       ],
-      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
-      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+      "experiments": [
+        "runs/2026-08-10_sculpt-export/sculpt_export_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/export_roundtrip.md"
+      ]
     }
   },
   {
@@ -776,18 +918,35 @@
     "source_type": "official_docs",
     "trust_tier": "A",
     "version": "Blender 5.0 Manual; behavior reproduced in Blender 5.2.0 LTS",
-    "topics": ["obj", "export", "uv", "materials", "axis-conversion"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "obj",
+      "export",
+      "uv",
+      "materials",
+      "axis-conversion"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "RUNTIME_VALIDATED",
     "rejected_reason": null,
-    "modalities_inspected": ["text"],
+    "modalities_inspected": [
+      "text"
+    ],
     "metadata": {
       "direct_observations": [
         "OBJ has basic geometry and material support and may use a companion MTL file",
         "UV, normal, material, triangulation, modifier, scale, and axis options affect interoperability"
       ],
-      "experiments": ["runs/2026-08-10_sculpt-export/sculpt_export_report.json"],
-      "skills": ["knowledge/foundation/operator_cards/export_roundtrip.md"]
+      "experiments": [
+        "runs/2026-08-10_sculpt-export/sculpt_export_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/export_roundtrip.md"
+      ]
     }
   },
   {
@@ -800,13 +959,27 @@
     "trust_tier": "A",
     "version": "Blender 4.5/5.0 indexed Manual; behavior reproduced in Blender 5.2.0 LTS",
     "topics": [
-      "screw", "remesh", "decimate", "triangulate", "smooth", "corrective-smooth",
-      "laplacian-smooth", "curve-modifier", "lattice-modifier"
+      "screw",
+      "remesh",
+      "decimate",
+      "triangulate",
+      "smooth",
+      "corrective-smooth",
+      "laplacian-smooth",
+      "curve-modifier",
+      "lattice-modifier"
     ],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["search-indexed official text"],
+    "modalities_inspected": [
+      "search-indexed official text"
+    ],
     "metadata": {
       "direct_observations": [
         "The official modifier index places Screw/Remesh/Decimate/Triangulate under Generate and Smooth/Corrective Smooth/Laplacian Smooth/Curve/Lattice under Deform",
@@ -816,8 +989,12 @@
         "Curve deformation depends on dominant axis and object/curve spatial relationship; Lattice provides non-destructive broad deformation through a control cage"
       ],
       "access_limit": "Direct latest child-page fetches returned HTTP 402; only official search-indexed text was observed, so exhaustive child-page study is not claimed",
-      "experiments": ["runs/2026-08-10_secondary-modifiers/secondary_modifier_report.json"],
-      "skills": ["knowledge/foundation/operator_cards/secondary_modifiers.md"]
+      "experiments": [
+        "runs/2026-08-10_secondary-modifiers/secondary_modifier_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/secondary_modifiers.md"
+      ]
     }
   },
   {
@@ -829,11 +1006,24 @@
     "source_type": "official_training_video_cc_mirror",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; inspected 2026-08-10",
-    "topics": ["modeling-workflow", "modifiers", "edit-mode"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "modeling-workflow",
+      "modifiers",
+      "edit-mode"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 75.401,
@@ -843,7 +1033,9 @@
         "The file contains real video/audio and no creator captions; a local tiny.en machine transcript produced 23 timestamped segments",
         "Transcript claims were checked against frames and current Blender documentation; exact wording remains fallible"
       ],
-      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json"]
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json"
+      ]
     }
   },
   {
@@ -855,11 +1047,24 @@
     "source_type": "official_training_video_cc_mirror",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; inspected 2026-08-10",
-    "topics": ["extrude", "mesh-editing", "selection-context"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "extrude",
+      "mesh-editing",
+      "selection-context"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 286.901,
@@ -869,7 +1074,9 @@
         "A later sampled frame shows loop-cut-and-slide state during the lesson's supporting mesh-editing sequence",
         "A local tiny.en machine transcript produced 68 timestamped segments; frames and current docs corroborate the topology and variant distinctions"
       ],
-      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-extrude/video_ingest_report.json"]
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-extrude/video_ingest_report.json"
+      ]
     }
   },
   {
@@ -881,11 +1088,25 @@
     "source_type": "official_training_video_cc_mirror",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; inspected 2026-08-10",
-    "topics": ["bevel", "bevel-modifier", "limit-method", "hard-surface"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "bevel",
+      "bevel-modifier",
+      "limit-method",
+      "hard-surface"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "STUDIED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 211.361,
@@ -895,7 +1116,9 @@
         "The visual evidence reinforces the existing rule to use Angle limiting when coplanar internal edges should remain unaffected",
         "A local tiny.en machine transcript produced 35 timestamped segments; frames and Blender 5.2 evidence corroborate the strategic distinctions"
       ],
-      "experiments": ["runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"]
+      "experiments": [
+        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json"
+      ]
     }
   },
   {
@@ -907,11 +1130,27 @@
     "source_type": "official_training_video_cc_mirror",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
-    "topics": ["uv", "seams", "unwrap", "projection", "texture-distortion", "normal-baking"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "uv",
+      "seams",
+      "unwrap",
+      "projection",
+      "texture-distortion",
+      "normal-baking"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "license": "CC BY 3.0",
       "duration_seconds": 385.021,
@@ -926,7 +1165,9 @@
         "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-uv-unwrapping/video_ingest_report.json",
         "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/uv_foundations.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/uv_foundations.md"
+      ]
     }
   },
   {
@@ -938,11 +1179,27 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
-    "topics": ["sculpting", "brushes", "masking", "symmetry", "dyntopo", "multires"],
-    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "topics": [
+      "sculpting",
+      "brushes",
+      "masking",
+      "symmetry",
+      "dyntopo",
+      "multires"
+    ],
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": true
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "authored-captions"
+    ],
     "metadata": {
       "duration_seconds": 1511.125011,
       "sha256": "71c396ed03432115608541af960baa34610ede26c7a559ef1baaf0fe3ee02e76",
@@ -958,7 +1215,9 @@
         "runs/2026-08-10_multistroke-sculpt-learning/multistroke_sculpt_learning_report.json",
         "runs/2026-08-10_multistroke-sculpt-learning/failed_attempt_missing_surface_locations.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/sculpt_foundations.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/sculpt_foundations.md"
+      ]
     }
   },
   {
@@ -970,11 +1229,27 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.83-era workflow; inspected and mechanism-tested in Blender 5.2 on 2026-08-10",
-    "topics": ["retopology", "edge-flow", "articulation", "deformation", "poles", "patches"],
-    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "topics": [
+      "retopology",
+      "edge-flow",
+      "articulation",
+      "deformation",
+      "poles",
+      "patches"
+    ],
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": true
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "authored-captions"
+    ],
     "metadata": {
       "duration_seconds": 531.221333,
       "sha256": "8ea01cc583cbda7dc7f8f07ece12141d04784a6d55b64bb13ee76627ba7f1121",
@@ -991,7 +1266,9 @@
         "runs/2026-08-10_sculpt-retopo-deformation/sculpt_retopology_deformation_report.json",
         "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/retopology.md"
+      ]
     }
   },
   {
@@ -1003,11 +1280,27 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.80 concepts; review-rig mechanism tested in Blender 5.2 on 2026-08-10",
-    "topics": ["lighting", "key-light", "fill-light", "rim-light", "surface-review", "visual-diagnostics"],
-    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "topics": [
+      "lighting",
+      "key-light",
+      "fill-light",
+      "rim-light",
+      "surface-review",
+      "visual-diagnostics"
+    ],
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": true
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "authored-captions"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "authored-captions"
+    ],
     "metadata": {
       "duration_seconds": 402.416667,
       "sha256": "b221a62d5a41e803c6716b3b4dd454bf0e8147254f632ef345c66977c0251aaf",
@@ -1023,7 +1316,9 @@
         "runs/2026-08-10_surface-lighting-judgment/failed_attempt_empty_render_result.json",
         "runs/2026-08-10_surface-lighting-judgment/failed_attempt_nongrazing_three_point.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/surface_diagnostics.md"
+      ]
     }
   },
   {
@@ -1035,11 +1330,27 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "2021 workflow; pole-placement mechanism tested in Blender 5.2 on 2026-08-10",
-    "topics": ["retopology", "edge-flow", "poles", "patches", "deformation", "facial-topology"],
-    "access": {"text": true, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "retopology",
+      "edge-flow",
+      "poles",
+      "patches",
+      "deformation",
+      "facial-topology"
+    ],
+    "access": {
+      "text": true,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "automatic-captions"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "automatic-captions"
+    ],
     "metadata": {
       "duration_seconds": 7938.020136,
       "sha256": "c839efc9c4982e94b1cc01256165bd8afc88a5694d10202b9c5ceb7d5b8a79dd",
@@ -1059,7 +1370,9 @@
         "runs/2026-08-10_pole-placement-deformation/fresh_collection_verify.json",
         "runs/2026-08-10_rigged-joint-deformation/rigged_joint_deformation_report.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/retopology.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/retopology.md"
+      ]
     }
   },
   {
@@ -1071,11 +1384,27 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.80 UI; context-separation mechanism tested in Blender 5.2 on 2026-08-10",
-    "topics": ["shading", "materials", "world", "render-engine", "viewport-context", "surface-diagnostics"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "shading",
+      "materials",
+      "world",
+      "render-engine",
+      "viewport-context",
+      "surface-diagnostics"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "duration_seconds": 276.521,
       "sha256": "cdc7d3a0a49aee26b3624e74c044be88903d23f944f93e9000ddc80f8cf9639f",
@@ -1094,7 +1423,9 @@
         "runs/2026-08-10_surface-cause-classification/failed_runs.json",
         "runs/2026-08-10_surface-cause-classification/fresh_collection_verify.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/surface_diagnostics.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/surface_diagnostics.md"
+      ]
     }
   },
   {
@@ -1106,11 +1437,25 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
-    "topics": ["knife", "bisect", "topology", "local-cuts"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "knife",
+      "bisect",
+      "topology",
+      "local-cuts"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "duration_seconds": 119.201,
       "sha256": "5ff38521bf17e0cba9faa01e163130f48aea4c2f00eb53f7d266113c0a1e1b6a",
@@ -1126,7 +1471,9 @@
         "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
         "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"
+      ]
     }
   },
   {
@@ -1138,11 +1485,25 @@
     "source_type": "official_training_video",
     "trust_tier": "A",
     "version": "Blender 2.80 UI; mechanism checked against Blender 5.2 LTS Manual and runtime",
-    "topics": ["loop-cut", "edge-ring", "topology", "density"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
+    "topics": [
+      "loop-cut",
+      "edge-ring",
+      "topology",
+      "density"
+    ],
+    "access": {
+      "text": false,
+      "video": true,
+      "audio": true,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["video-frames", "audio", "machine-transcript"],
+    "modalities_inspected": [
+      "video-frames",
+      "audio",
+      "machine-transcript"
+    ],
     "metadata": {
       "duration_seconds": 190.321,
       "sha256": "bd939693fc5af7c1c41b2dd9bbeffbdcea680043965c4d2ada87acbbc55a5922",
@@ -1158,7 +1519,9 @@
         "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
         "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
       ],
-      "skills": ["knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"]
+      "skills": [
+        "knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"
+      ]
     }
   },
   {
@@ -1169,11 +1532,27 @@
     "source_type": "official_manual",
     "trust_tier": "A",
     "version": "Blender 5.2 LTS",
-    "topics": ["shape-keys", "relative-shapes", "corrective-shapes"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "shape-keys",
+      "relative-shapes",
+      "corrective-shapes"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+    "metadata": {
+      "experiments": [
+        "runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/corrective_shape_keys.md"
+      ]
+    }
   },
   {
     "id": "blender-manual-drivers-panel-5-2",
@@ -1183,11 +1562,27 @@
     "source_type": "official_manual",
     "trust_tier": "A",
     "version": "Blender 5.2 LTS",
-    "topics": ["drivers", "driver-variables", "transform-channels"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "drivers",
+      "driver-variables",
+      "transform-channels"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+    "metadata": {
+      "experiments": [
+        "runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/corrective_shape_keys.md"
+      ]
+    }
   },
   {
     "id": "blender-manual-armature-modifier-5-2",
@@ -1197,11 +1592,27 @@
     "source_type": "official_manual",
     "trust_tier": "A",
     "version": "Blender 5.2 LTS",
-    "topics": ["armature-modifier", "vertex-groups", "preserve-volume"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "armature-modifier",
+      "vertex-groups",
+      "preserve-volume"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "metadata": {"experiments": ["runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"], "skills": ["knowledge/foundation/operator_cards/corrective_shape_keys.md"]}
+    "metadata": {
+      "experiments": [
+        "runs/2026-08-11_multi-axis-corrective/multi_axis_corrective_report.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/corrective_shape_keys.md"
+      ]
+    }
   },
   {
     "id": "polyhaven-barrel-01-cc0",
@@ -1212,18 +1623,35 @@
     "source_type": "cc0_reference_asset",
     "trust_tier": "B",
     "version": "downloaded 2026-08-11",
-    "topics": ["multi-view-reference", "profile-revolution", "hard-surface-topology"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "multi-view-reference",
+      "profile-revolution",
+      "hard-surface-topology"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["neutral-reference-renders"],
+    "modalities_inspected": [
+      "neutral-reference-renders"
+    ],
     "metadata": {
       "license": "CC0",
       "sha256": "e084945dedd6a3379c6f3e97842cac89df7169797707e123a5e5b42c135d6888",
       "use_boundary": "Source geometry generated neutral references only; topology was not inspected or copied.",
-      "experiments": ["runs/2026-08-11_multiview-barrel/"],
-      "skills": ["knowledge/foundation/operator_cards/profile_revolution_topology.md"],
-      "limitations": ["Asset-specific tuning makes this corrective evidence, not held-out evidence."]
+      "experiments": [
+        "runs/2026-08-11_multiview-barrel/"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/profile_revolution_topology.md"
+      ],
+      "limitations": [
+        "Asset-specific tuning makes this corrective evidence, not held-out evidence."
+      ]
     }
   },
   {
@@ -1235,11 +1663,25 @@
     "source_type": "official_cc0_asset_bundle",
     "trust_tier": "A",
     "version": "v1.0.0; downloaded 2026-08-11; tested in Blender 5.2 LTS",
-    "topics": ["facial-topology", "retopology", "shape-keys", "armature", "corrective-deformation"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "facial-topology",
+      "retopology",
+      "shape-keys",
+      "armature",
+      "corrective-deformation"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
-    "modalities_inspected": ["read-only-blend-structure", "controlled-render"],
+    "modalities_inspected": [
+      "read-only-blend-structure",
+      "controlled-render"
+    ],
     "metadata": {
       "license": "CC0",
       "download_url": "https://download.blender.org/demo/bundles/bundles-3.6/human-base-meshes-bundle-v1.0.0.zip",
@@ -1266,24 +1708,41 @@
   {
     "id": "polyhaven-boombox-cc0-heldout",
     "url": "https://polyhaven.com/a/boombox",
-    "local_path": "runs/2026-08-11_heldout-boombox/media/boombox_1k.gltf",
+    "local_path": "REMOVED (was runs/2026-08-11_heldout-boombox/media/boombox_1k.gltf)",
     "title": "Boombox",
     "creator": "Poly Haven contributor",
     "source_type": "cc0_reference_asset",
     "trust_tier": "B",
     "version": "downloaded 2026-08-11",
-    "topics": ["held-out-reference", "multi-component-hard-surface", "multi-view-silhouette", "uv-material-preparation"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
-    "status": "EXPERIMENTALLY_TESTED",
-    "rejected_reason": null,
-    "modalities_inspected": ["neutral-reference-renders"],
+    "topics": [
+      "held-out-reference",
+      "multi-component-hard-surface",
+      "multi-view-silhouette",
+      "uv-material-preparation"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "REJECTED",
+    "rejected_reason": "Modeled candidate passed all automated silhouette/topology gates but was rejected on direct human visual comparison against this reference (2026-08-12): the model did not resemble the source (wrong color, wrong proportions, generic detailing). All experiment files were removed.",
+    "modalities_inspected": [
+      "neutral-reference-renders"
+    ],
     "metadata": {
       "license": "CC0",
       "sha256": "8f5851b81d0d0b16fadf9ca89133b59ee48718ed8d9f8244b87e4d293755d2d3",
       "use_boundary": "Source geometry generated neutral references only; candidate topology, modifiers, dimensions, and construction were not inspected or copied.",
-      "experiments": ["runs/2026-08-11_heldout-boombox/"],
-      "skills": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/export_roundtrip.md"],
-      "limitations": ["Automated stylized pass only; exact graphics, wear, photoreal fidelity, named-engine visual acceptance, full tangent readiness for future normal maps, and experienced human acceptance remain open."]
+      "experiments": [],
+      "skills": [
+        "knowledge/foundation/operator_cards/topology_context_subd.md",
+        "knowledge/foundation/operator_cards/export_roundtrip.md"
+      ],
+      "limitations": [
+        "Modeled candidate rejected on human visual review and removed 2026-08-12; this source remains recorded for provenance only, not as usable benchmark evidence."
+      ]
     }
   },
   {
@@ -1294,14 +1753,30 @@
     "source_type": "official_manual",
     "trust_tier": "A",
     "version": "latest page inspected 2026-08-11; Blender 5.2 runtime",
-    "topics": ["to-sphere", "circle", "edit-mode", "topology"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "to-sphere",
+      "circle",
+      "edit-mode",
+      "topology"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "EXPERIMENTALLY_TESTED",
     "rejected_reason": null,
     "metadata": {
-      "experiments": ["runs/2026-08-11_connected-camera-corrective/"],
-      "skills": ["knowledge/foundation/operator_cards/circularize_planar_loop.md"],
-      "limitations": ["A scripted regular-circle equivalent was measured; interactive operator context was not automated in this run."]
+      "experiments": [
+        "runs/2026-08-11_connected-camera-corrective/"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/circularize_planar_loop.md"
+      ],
+      "limitations": [
+        "A scripted regular-circle equivalent was measured; interactive operator context was not automated in this run."
+      ]
     }
   },
   {
@@ -1312,13 +1787,27 @@
     "source_type": "official_manual",
     "trust_tier": "A",
     "version": "Blender 3.6 documentation inspected 2026-08-11",
-    "topics": ["looptools", "circle", "regular-spacing", "best-fit"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "topics": [
+      "looptools",
+      "circle",
+      "regular-spacing",
+      "best-fit"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
     "status": "STUDIED",
     "rejected_reason": null,
     "metadata": {
-      "skills": ["knowledge/foundation/operator_cards/circularize_planar_loop.md"],
-      "limitations": ["Version-limited official documentation; installed Blender 5.2 extension/operator identifier was not invoked."]
+      "skills": [
+        "knowledge/foundation/operator_cards/circularize_planar_loop.md"
+      ],
+      "limitations": [
+        "Version-limited official documentation; installed Blender 5.2 extension/operator identifier was not invoked."
+      ]
     }
   }
 ]

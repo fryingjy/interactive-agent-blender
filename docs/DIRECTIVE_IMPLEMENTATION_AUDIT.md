@@ -1,6 +1,6 @@
 # Master directive implementation audit
 
-**Audit date:** 2026-08-11
+**Audit date:** 2026-08-12
 **Branch:** repository default branch plus published evidence increments
 **Disposition:** substantial foundation evidence exists, but locally actionable professional-
 judgment and generalization priorities remain; the professional target is not falsely claimed.
@@ -51,7 +51,7 @@ judgment and generalization priorities remain; the professional target is not fa
 | Profile-authored weapon quality rebuild | 19 semantic components, no mesh primitive operators, authored profiles/sections/lathed rings/closed helix, 0.8369 normalized IoU, 19/19 fresh-process evaluated meshes clean | local technical and visual gates pass; human acceptance remains open |
 | Cross-family profile-authored axe transfer | measured 35-point body contour, real aperture, separate raised scales/edge/fasteners, no mesh primitive operators, 0.9424 silhouette IoU, 0.7717 negative-space IoU, 7/7 fresh-process meshes clean | same-reference corrective transfer passes; hidden depth, multi-view quality, and human acceptance remain open |
 | Online multi-view rotational prop | CC0 source rendered into neutral front/side/top/isometric references; failed proportion checkpoint retained; one connected 5,376-quad body integrates rolled seams, major hoops, and 11 corrugations; 0.983 mean normalized three-view IoU; fitting landmark gates pass; 6/6 fresh-process evaluated meshes clean | corrective multi-view/topology pass; source-tuned and therefore not held-out; wear/decal and human acceptance remain open |
-| Online held-out multi-component prop | CC0 boombox source isolated to neutral pixels; predeclared front/side/top/mean gates; one connected 70-quad edited housing rather than stacked chassis primitives; linked speakers, Array vents, UVs, node materials; primitive-assembly and two bevel failures retained; 15/15 fresh-process scene assertions; GLB preserves 41 meshes, 15,292 evaluated triangles, dimensions, UVs, and seven material families | automated stylized held-out PASS at 0.816 mean IoU plus structural GLB round-trip PASS; exact surface graphics, named-engine visual review, broader transfer, and experienced acceptance remain open |
+| Online held-out multi-component prop (boombox) | Passed all automated gates (0.816 mean IoU, 15/15 assertions) but was **rejected on direct human visual comparison** -- did not resemble the reference at all. Removed entirely rather than kept as a false pass; see the "Boombox: rejected and removed" note below. | REJECTED; the clearest evidence in this project that automated silhouette/topology gates are not sufficient for visual fidelity |
 | Second online held-out curved-SubD family | CC0 vintage camera neutral references; predeclared three-view gates; initial 19-object result reached 0.872 mean IoU and 14/14 fresh checks, but experienced review overturned it for treating compatible radial/details as separate assemblies | held-out automated metrics retained as PASS, professional-quality disposition REJECTED; post-review corrective evidence is not relabeled held out |
 | Third unrelated held-out product family | CC0 vintage telephone wall clock; predeclared isolation/gates; one connected 208-quad housing cage and one connected 162-quad handset cage; 0.840 mean three-view IoU; asset-specific tangent bake; GLB plus fresh Godot 4.7.1 import | automated visual/topology/production PASS; expert acceptance and broad low-intervention proficiency remain open |
 | Fourth unrelated held-out product family | CC0 metal watering can; neutral-pixel-only source boundary; one 16-sided connected vessel cage, one 12-sided connected spout cage, and one closed all-quad handle path loft; 0.901 mean three-view IoU; fresh 9/9 Blender verification; selected-to-active tangent normal bake; GLB plus fresh Godot 4.7.1 import | automated visual/topology/production PASS; expert acceptance and broad low-intervention proficiency remain open |
@@ -99,13 +99,15 @@ intersecting ring objects. A failed 0.5154-ratio blockout, a rejected separate-h
 96-degenerate evaluated bevel failure are retained in the evidence trail. The corrected result is a
 multi-view corrective benchmark, not a new held-out ladder pass.
 
-The online CC0 boombox is a genuinely held-out multi-component hard-surface increment. An initial
-automated pass was overturned when user review exposed stacked primitive housing construction. The
-accepted candidate instead uses one connected cut-grid housing with an inset front region; separate
-objects are reserved for separate assemblies. Two evaluated bevel approaches were also rejected for
-visible corner spikes/fins despite clean manifold metrics. The final candidate passes its four
-predeclared normalized silhouette gates and 15/15 saved-scene assertions. This closes one automated
-ladder-E case, not professional or human acceptance.
+**Boombox: rejected and removed (2026-08-12).** The online CC0 boombox went through the same
+primitive-assembly and bevel-fin corrections as the barrel/camera above, and its final candidate
+passed its four predeclared normalized silhouette gates and 15/15 saved-scene assertions -- but
+those automated gates were not sufficient. Direct human visual comparison against the reference
+found the accepted model does not resemble the source at all: wrong color, wrong proportions,
+generic block detailing rather than the reference's actual form. Automated silhouette/IoU passing
+and genuine visual fidelity are not the same thing, and this is the clearest evidence of that gap in
+the whole project. All boombox run directories, tools, and evidence were removed rather than kept as
+a false "PASS." The lesson is retained here and in `smooth_by_angle.md`, not the asset itself.
 
 The later CC0 camera exposes a stricter version of the same lesson. Its first detailed candidate
 passed predeclared silhouette and fresh-process checks, but experienced review rejected the broad
@@ -153,52 +155,55 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`. Five unrelated held-out product
-families now exist (boombox, camera, telephone, watering can, desk lamp), so the family-breadth
-requirement is materially stronger than a single asset; the desk lamp remains the one open failure
-in that set. `runs/2026-08-12_shading-policy-retroactive-audit/` has since audited the other four
-against `get_hard_surface_shading_audit` and found a real, not merely cosmetic, gap with three
-distinct causes. Only one body per family (camera's cage, telephone's `Housing`, watering-can's
-`Connected_Vessel`) has a `WEIGHT`-limited Bevel with inspectable semantic edge-ID coverage — and a
-dihedral-angle triage of the 34 objects with no Bevel modifier found this is not confined to
-secondary detail: the telephone's `Handset` and the watering can's `Connected_Tapered_Spout` and
-`Arched_Handle` are themselves primary structural components (their own session reports describe
-them as closed all-quad cages on par with the housing/vessel) with real sharp edges up to 71-92
-degrees and zero edge treatment; only 1 of the 34 no-Bevel objects (a flat badge decal) is
-legitimately bevel-inapplicable. Separately, a meaningful fraction of secondary components genuinely
-do use a real, named `ANGLE`- or `VGROUP`-limited Bevel (30/41 boombox objects, 6/24 telephone
-objects) that the audit correctly distinguishes from having no bevel at all but still cannot verify
-against recorded intent. All identified primary-structural/detail no-Bevel gaps are now fixed:
-`runs/2026-08-12_watering-can-secondary-bevel-corrective/`,
-`runs/2026-08-12_telephone-handset-bevel-corrective/`, and
-`runs/2026-08-12_boombox-secondary-bevel-corrective/` rebuild `Connected_Tapered_Spout`,
-`Arched_Handle`, `Handset`, and 11 boombox parts (four cassette reels, four fascia fasteners, two
-speaker cones, the telescoping antenna) with semantic bevel weights, `WEIGHT`-limited Bevel, and
-Smooth by Angle. Every one passed cleanly on its first, most generous candidate bevel width. Each is
-independently verified clean and visually confirmed (MatCap before/after, including a dedicated
-edge-on rim-profile view for the boombox's small parts) as a real sharpening, not just a passing
-number; the corrected files are new artifacts alongside the untouched originals, not replacements.
-`get_hard_surface_shading_audit` also now has a second, real path to `PASS`: `set_bevel_scoping()`
-lets `ANGLE`/`VGROUP`-limited Bevel record deliberate intent (`hard_surface_bevel_scoping_method`
-plus a matching angle/vertex-group value), additively -- it does not retroactively grant intent to
-the boombox's other 30 `ANGLE`/`VGROUP` objects, which were configured directly through `bpy` before
-this operation existed and correctly remain `REVIEW_REQUIRED` (the lab's 18/18 assertions include
-both a fixture proving this non-retroactivity and one proving the new path reaches `PASS` through the
-real typed decision lifecycle). `runs/2026-08-12_telephone-trim-bevel-corrective/` and
-`runs/2026-08-12_watering-can-final-bevel-corrective/` close the remaining objects the no-Bevel
-triage identified: the telephone's `Clock_Face`, two trim panels, and 12 `Dial_Aperture*` objects,
-and the watering can's `Opening_Rim`, `Opening_Shadow`, and `Rose_Head`. Two telephone panels
-exposed a real topology defect (inconsistent face winding, not a width problem) that needed a
-disclosed "Recalculate Outside" repair before the bevel would apply cleanly; every other object in
-both runs applied on its first candidate width. This closes the no-Bevel triage's remaining-work
-list entirely: every object across all three retroactively-audited families the triage identified as
-a genuine gap now has a verified, visually-confirmed correction, and only the objects it correctly
-classified as legitimately flat remain untreated. Remaining locally actionable gaps: retrying the
+The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`. Four unrelated held-out product
+families remain (camera, telephone, watering can, desk lamp) after the boombox's removal; the desk
+lamp is still the one open outright failure in that set.
+
+**The shading-policy correction thread, and what it got wrong.** A retroactive audit
+(`runs/2026-08-12_shading-policy-retroactive-audit/`) found that only one body per family had a
+`WEIGHT`-limited Bevel with inspectable semantic edge-ID coverage, and that this gap reached primary
+structural components, not just secondary detail. Corrective passes
+(`runs/2026-08-12_watering-can-secondary-bevel-corrective/`,
+`runs/2026-08-12_telephone-handset-bevel-corrective/`,
+`runs/2026-08-12_telephone-trim-bevel-corrective/`,
+`runs/2026-08-12_watering-can-final-bevel-corrective/`) applied semantic bevel weighting to every
+identified object using an automated rule: weight every edge with a dihedral angle over 25 degrees.
+**Direct human visual review against the reference photos found this rule was wrong for round
+members.** The watering can's `Rose_Head`, `Connected_Tapered_Spout`, `Arched_Handle`, and the
+telephone's `Handset` are all smoothly rounded forms in their references; the automated rule
+selected nearly every circumferential edge on these low-segment-count round parts (large per-facet
+angle because there are few segments, not because those edges are an intended seam) and gave them
+real geometric bevels, turning smooth cylindrical/tapered shapes into visibly faceted ones. This
+reproduced, at scale and through automation, the exact failure this repository's own
+`smooth_by_angle.md` had already named ("weighting every edge ... does not mean every edge is a
+physical design edge"). `runs/2026-08-12_watering-can-rounded-parts-bevel-reverted/` and
+`runs/2026-08-12_telephone-handset-bevel-reverted/` remove the incorrect Bevel weighting from all
+four objects (keeping Smooth by Angle, matching `Connected_Vessel`'s own successful strategy of real
+Bevel weight only at genuine seams), independently verified and re-confirmed against the reference by
+eye. The telephone's flat trim (dial apertures, clock face, panels) used the same rule but is a
+different geometric class -- real rectangular hardware, where the reference does show genuine hard
+edges -- and a visual spot-check found it consistent with the reference; it was not reverted. The
+watering can's `Opening_Rim`/`Opening_Shadow` are left as an explicit open question: the reference
+does show a real pressed-lip edge there, and the visible faceting matches the pre-existing, already-
+accepted `Connected_Vessel` body's own segment count rather than a new defect.
+
+**Boombox: rejected and removed (2026-08-12).** Separately from the shading-policy work, the
+boombox benchmark passed every automated gate (0.816 mean IoU, 15/15 assertions) but was rejected on
+direct human visual comparison -- the accepted model did not resemble the reference at all (wrong
+color, wrong proportions, generic detailing). All boombox run directories, tools, and evidence were
+removed rather than kept as a false pass; see the table row above. Its removal also means the
+`ANGLE`/`VGROUP` second-sanctioned-intent-path mechanism (`set_bevel_scoping()`,
+`hard_surface_bevel_scoping_method`) is now validated purely through this repository's own lab
+fixtures (18/18 assertions, including one proving an unrecorded `ANGLE` bevel correctly stays
+`REVIEW_REQUIRED` and one proving a recorded one reaches `PASS`), not through any boombox example.
+
+Two independent, concrete lessons this session: automated silhouette/topology gates do not
+establish visual fidelity (boombox), and an automated geometric-angle heuristic is not a substitute
+for reference-driven judgment about which edges are meant to be sharp (the rounded-parts revert).
+Both are retained as evidence, not smoothed over. Remaining locally actionable gaps: retrying the
 desk lamp's proportions under the new shading policy without relabeling the prior attempt, deciding
-whether to retroactively record intent for the boombox's 30 `ANGLE`/`VGROUP` objects now that the
-mechanism exists (a judgment call about whether their existing parameters were actually deliberate,
-not something to assert without evidence), deciding whether the corrected files should replace their
-published production references, production texture/bake and named-engine visual review beyond the
-current Godot import checks, broader planner runtime use, and longer-horizon retention. Independent
-experienced review remains genuinely external. Until that evidence exists, changing the
+whether the corrected files should replace their published production references, production
+texture/bake and named-engine visual review beyond the current Godot import checks, broader planner
+runtime use, and longer-horizon retention. Independent experienced review remains genuinely
+external. Until that evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.

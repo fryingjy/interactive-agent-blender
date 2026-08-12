@@ -120,10 +120,9 @@ The local Blender/MCP entry points are:
   candidate passed automated gates but was explicitly overturned by experienced review for an
   over-broad separate-assembly strategy. The rejection is retained as evidence, not hidden.
 
-- `runs/2026-08-11_heldout-boombox/` — online CC0 held-out multi-component prop with one connected
-  edited housing cage, predeclared three-view silhouette gates, preserved topology/bevel failures,
-  UV/material preparation, 15/15 scene assertions, and a fresh GLB round trip; human acceptance
-  remains open.
+- Boombox benchmark: removed 2026-08-12. It passed every automated gate but was rejected on direct
+  human visual review for not resembling its reference at all; see
+  `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` for the retained lesson.
 - `runs/2026-08-11_multiview-barrel/` — connected 5,376-quad barrel shell and multi-view checks.
 - `runs/2026-08-11_facial-expression-transfer/` — bounded driven facial-corrective mechanism.
 - `runs/2026-08-11_mixed-surface-diagnosis/` — adaptive five-cause diagnosis and exact clean-state

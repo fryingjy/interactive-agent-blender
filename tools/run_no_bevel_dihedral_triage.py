@@ -15,7 +15,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "runs" / "2026-08-12_shading-policy-retroactive-audit"
 
 TARGETS = {
-    "heldout_cc0_boombox_001": ROOT / "runs/2026-08-11_heldout-boombox/final/heldout_boombox.blend",
     "heldout_cc0_vintage_telephone_001": ROOT / "runs/2026-08-11_heldout-vintage-telephone/production/heldout_vintage_telephone_production.blend",
     "heldout_cc0_watering_can_001": ROOT / "runs/2026-08-11_heldout-watering-can/production/heldout_watering_can_production.blend",
 }
