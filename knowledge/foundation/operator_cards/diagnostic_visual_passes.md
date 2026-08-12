@@ -3,6 +3,9 @@
 ## Passes
 
 - **Solid:** lit/cavity form inspection.
+- **MatCap:** fast Solid-mode highlight inspection for bevel continuity, unintended softness, faceting,
+  and waviness without material, light, or renderer setup. It is a review pass rather than beauty
+  output and must be read alongside evaluated geometry.
 - **Wireframe:** evaluated topology density and routing, rendered as temporary edge tubes.
 - **World normal:** direction color for discontinuities and faceting.
 - **Depth:** view-axis depth gradient for overlap and placement.
@@ -17,8 +20,10 @@ content and pass-specific variation.
 
 ## Evidence
 
-`runs/2026-08-10_visual-passes/` contains five final images, metadata, two preserved wireframe
-failures, a saved `.blend`, and independent evaluated-mesh verification.
+`runs/2026-08-10_visual-passes/` contains Solid, MatCap, wireframe, normal, depth, and component
+mask images with metadata, two preserved wireframe failures, a saved `.blend`, and independent
+evaluated-mesh verification. The Blender 5.2 MatCap pass reports 87 quantized foreground colors,
+compared with three required by its non-flatness assertion.
 
 `runs/2026-08-10_semantic-region-render/` adds selected-region rendering, dominant-color content
 validation, an isometric view, and a preserved edge-on false positive.
