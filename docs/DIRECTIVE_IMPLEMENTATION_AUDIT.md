@@ -178,14 +178,21 @@ Smooth by Angle. Every one passed cleanly on its first, most generous candidate 
 independently verified clean and visually confirmed (MatCap before/after, including a dedicated
 edge-on rim-profile view for the boombox's small parts) as a real sharpening, not just a passing
 number; the corrected files are new artifacts alongside the untouched originals, not replacements.
-Remaining locally actionable gaps: retrying the desk lamp's proportions under the new shading policy
-without relabeling the prior attempt, applying the same treatment to the still-untreated secondary
-components (telephone: `Dial_Aperture*`, `Clock_Face`, `Lower_Panel_Trim`, `Upper_Face_Trim`;
-watering can: `Opening_Rim`, `Opening_Shadow`, `Rose_Head`), deciding whether `ANGLE`/`VGROUP`-limited
-Bevel (the boombox's other 30 objects) should get its own fully-sanctioned auditable-intent mechanism
-rather than only a softer warning, deciding whether the three corrected files should replace their
-published production references, production texture/bake and named-engine visual review beyond the
-current Godot import checks, broader planner runtime use, and longer-horizon retention. Independent
-experienced review remains genuinely external. Until that
-evidence exists, changing the
+`get_hard_surface_shading_audit` also now has a second, real path to `PASS`: `set_bevel_scoping()`
+lets `ANGLE`/`VGROUP`-limited Bevel record deliberate intent (`hard_surface_bevel_scoping_method`
+plus a matching angle/vertex-group value), additively -- it does not retroactively grant intent to
+the boombox's other 30 `ANGLE`/`VGROUP` objects, which were configured directly through `bpy` before
+this operation existed and correctly remain `REVIEW_REQUIRED` (the lab's 18/18 assertions include
+both a fixture proving this non-retroactivity and one proving the new path reaches `PASS` through the
+real typed decision lifecycle). Remaining locally actionable gaps: retrying the desk lamp's
+proportions under the new shading policy without relabeling the prior attempt, applying the same
+treatment to the still-untreated secondary components (telephone: `Dial_Aperture*`, `Clock_Face`,
+`Lower_Panel_Trim`, `Upper_Face_Trim`; watering can: `Opening_Rim`, `Opening_Shadow`, `Rose_Head`),
+deciding whether to retroactively record intent for the boombox's 30 `ANGLE`/`VGROUP` objects now
+that the mechanism exists (a judgment call about whether their existing parameters were actually
+deliberate, not something to assert without evidence), deciding whether the corrected files should
+replace their published production references, production texture/bake and named-engine visual
+review beyond the current Godot import checks, broader planner runtime use, and longer-horizon
+retention. Independent experienced review remains genuinely external. Until that evidence exists,
+changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.

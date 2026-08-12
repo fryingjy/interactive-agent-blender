@@ -109,6 +109,14 @@ the absence of semantic edge selection. The tested default sequence is:
 Smooth by Angle does not repair wrong topology or missing bevels. It is a normal-interpolation
 policy after geometric edge intent has been authored.
 
+Step 3's `BEVEL` limit method is usually `WEIGHT` with edge weights from `set_bevel_weight_by_ids`,
+the only method that maps to inspectable persistent edge IDs. `ANGLE` and `VGROUP` limiting are also
+legitimate (see the cylindrical/production transfer sections above) and have their own typed,
+intent-recording path: `set_bevel_scoping(name, method, angle_deg=..., vertex_group=..., width=..., segments=...)`,
+documented in `smooth_by_angle.md`. Configuring `limit_method` directly through `bpy` without calling
+it leaves the object's intent unrecorded and `get_hard_surface_shading_audit` correctly returns
+`REVIEW_REQUIRED` for it, regardless of whether the resulting geometry is otherwise clean.
+
 ## Preconditions and verification
 
 - Apply or account for non-uniform object scale before judging world-space bevel consistency.

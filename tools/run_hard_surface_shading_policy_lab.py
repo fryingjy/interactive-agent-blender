@@ -72,6 +72,30 @@ def main():
     angle_bevel = angle_scoped.modifiers.new("Purposeful edge radius", "BEVEL")
     angle_bevel.limit_method = "ANGLE"; angle_bevel.angle_limit = 0.5235987756; angle_bevel.width = 0.05
     angle_scoped_audit = hard_surface_shading_audit(angle_scoped.name)
+    # A fourth fixture proves the new ANGLE intent-recording path (set_bevel_scoping)
+    # reaches PASS through the real typed decision lifecycle, while the third
+    # fixture above (raw bpy modifier assignment, no set_bevel_scoping call) must
+    # keep failing -- this mechanism never retroactively grants intent.
+    bpy.ops.mesh.primitive_cube_add(location=(8.0, 0.0, 0.0))
+    angle_intent = bpy.context.object
+    angle_intent.name = "Angle_Scoped_With_Recorded_Intent_Box"
+    angle_intent_decision = server.cmd_begin_decision(angle_intent.name, "record_angle_bevel_scoping")
+    angle_intent_perform = server.cmd_perform_decision(
+        angle_intent_decision["decision_id"], "set_bevel_scoping",
+        {"method": "ANGLE", "angle_deg": 45.0, "width": 0.05, "segments": 2},
+        command_id="hard_surface_angle_scoping_001",
+    )
+    angle_intent_verify = server.cmd_verify_decision(angle_intent_decision["decision_id"])
+    angle_intent_commit = server.cmd_commit_decision(angle_intent_decision["decision_id"])
+    shade_intent_decision = server.cmd_begin_decision(angle_intent.name, "smooth_by_angle")
+    server.cmd_perform_decision(
+        shade_intent_decision["decision_id"], "set_smooth_by_angle",
+        {"angle": 0.5235987756, "keep_sharp_edges": True},
+        command_id="hard_surface_angle_scoping_shading_001",
+    )
+    server.cmd_verify_decision(shade_intent_decision["decision_id"])
+    server.cmd_commit_decision(shade_intent_decision["decision_id"])
+    angle_intent_audit = hard_surface_shading_audit(angle_intent.name)
     types = [modifier.type for modifier in obj.modifiers]
     assertions = {
         "smooth_by_angle_operator_finished": shading["shading"] == "SMOOTH_BY_ANGLE",
@@ -97,9 +121,16 @@ def main():
             and not angle_scoped_audit["checks"]["semantic_intent_recorded"]
             and "ANGLE-limited Bevel" in " ".join(angle_scoped_audit["warnings"])
         ),
+        "unrecorded_angle_bevel_still_review_required": (
+            not angle_scoped_audit["checks"]["angle_or_vgroup_intent_recorded"]
+        ),
+        "recorded_angle_intent_reaches_pass": angle_intent_audit["status"] == "PASS",
+        "recorded_angle_intent_matches_actual_modifier": angle_intent_audit["checks"]["angle_or_vgroup_intent_matches_actual"],
+        "angle_intent_decision_committed": angle_intent_commit["result_revision"] == angle_intent_decision["observed_revision"] + 1,
+        "angle_intent_transaction_verified": angle_intent_verify["after"] is not None,
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "angle_scoped_fixture_audit": angle_scoped_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
+    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "angle_scoped_fixture_audit": angle_scoped_audit, "angle_intent_fixture_audit": angle_intent_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}, "angle_scoping": {"begin": angle_intent_decision, "verify": angle_intent_verify, "commit": angle_intent_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
     (OUT / "hard_surface_shading_policy_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT / "hard_surface_shading_policy.blend"))
     print(json.dumps(report))

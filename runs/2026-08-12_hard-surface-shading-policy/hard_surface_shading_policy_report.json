@@ -25,6 +25,8 @@
       "semantic_intent_recorded": true,
       "semantic_weights_match_intent": true,
       "weight_limited_bevel_present": true,
+      "angle_or_vgroup_intent_recorded": false,
+      "angle_or_vgroup_intent_matches_actual": false,
       "bevel_before_subd": true,
       "smooth_by_angle_recorded": true,
       "uniform_object_scale": true,
@@ -63,6 +65,8 @@
       "semantic_intent_recorded": false,
       "semantic_weights_match_intent": false,
       "weight_limited_bevel_present": false,
+      "angle_or_vgroup_intent_recorded": false,
+      "angle_or_vgroup_intent_matches_actual": false,
       "bevel_before_subd": true,
       "smooth_by_angle_recorded": false,
       "uniform_object_scale": false,
@@ -90,6 +94,8 @@
       "semantic_intent_recorded": false,
       "semantic_weights_match_intent": false,
       "weight_limited_bevel_present": false,
+      "angle_or_vgroup_intent_recorded": false,
+      "angle_or_vgroup_intent_matches_actual": false,
       "bevel_before_subd": true,
       "smooth_by_angle_recorded": false,
       "uniform_object_scale": true,
@@ -109,14 +115,43 @@
       1.0
     ],
     "warnings": [
-      "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+      "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
       "Smooth by Angle was not recorded as the normal policy."
     ]
+  },
+  "angle_intent_fixture_audit": {
+    "name": "Angle_Scoped_With_Recorded_Intent_Box",
+    "status": "PASS",
+    "checks": {
+      "semantic_intent_recorded": false,
+      "semantic_weights_match_intent": false,
+      "weight_limited_bevel_present": false,
+      "angle_or_vgroup_intent_recorded": true,
+      "angle_or_vgroup_intent_matches_actual": true,
+      "bevel_before_subd": true,
+      "smooth_by_angle_recorded": true,
+      "uniform_object_scale": true,
+      "not_unannotated_blanket_smooth": true
+    },
+    "bevel_limit_methods_present": [
+      "ANGLE"
+    ],
+    "weighted_edge_ids": [],
+    "intended_bevel_edge_ids": [],
+    "modifier_types": [
+      "BEVEL"
+    ],
+    "object_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "warnings": []
   },
   "transactions": {
     "weight": {
       "begin": {
-        "decision_id": "dec_0_1786547010582",
+        "decision_id": "dec_0_1786550663375",
         "observed_revision": 0
       },
       "verify": {
@@ -156,13 +191,13 @@
         }
       },
       "commit": {
-        "decision_id": "dec_0_1786547010582",
+        "decision_id": "dec_0_1786550663375",
         "result_revision": 1
       }
     },
     "shading": {
       "begin": {
-        "decision_id": "dec_1_1786547010584",
+        "decision_id": "dec_1_1786550663376",
         "observed_revision": 1
       },
       "verify": {
@@ -202,8 +237,54 @@
         }
       },
       "commit": {
-        "decision_id": "dec_1_1786547010584",
+        "decision_id": "dec_1_1786550663376",
         "result_revision": 2
+      }
+    },
+    "angle_scoping": {
+      "begin": {
+        "decision_id": "dec_2_1786550663382",
+        "observed_revision": 2
+      },
+      "verify": {
+        "action_type": "record_angle_bevel_scoping",
+        "op_delta": 0,
+        "before": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "after": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "id_delta": {
+          "verts": {
+            "added": [],
+            "removed": []
+          },
+          "edges": {
+            "added": [],
+            "removed": []
+          },
+          "faces": {
+            "added": [],
+            "removed": []
+          }
+        }
+      },
+      "commit": {
+        "decision_id": "dec_2_1786550663382",
+        "result_revision": 3
       }
     }
   },
@@ -230,7 +311,12 @@
     "blanket_smooth_not_used_as_policy": true,
     "hard_surface_policy_audit_passes": true,
     "audit_rejects_unannotated_blanket_smooth": true,
-    "audit_distinguishes_angle_scoping_from_no_bevel": true
+    "audit_distinguishes_angle_scoping_from_no_bevel": true,
+    "unrecorded_angle_bevel_still_review_required": true,
+    "recorded_angle_intent_reaches_pass": true,
+    "recorded_angle_intent_matches_actual_modifier": true,
+    "angle_intent_decision_committed": true,
+    "angle_intent_transaction_verified": true
   },
   "pass": true
 }
