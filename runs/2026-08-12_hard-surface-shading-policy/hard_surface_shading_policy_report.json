@@ -30,6 +30,9 @@
       "uniform_object_scale": true,
       "not_unannotated_blanket_smooth": true
     },
+    "bevel_limit_methods_present": [
+      "WEIGHT"
+    ],
     "weighted_edge_ids": [
       10,
       12,
@@ -65,6 +68,7 @@
       "uniform_object_scale": false,
       "not_unannotated_blanket_smooth": false
     },
+    "bevel_limit_methods_present": [],
     "weighted_edge_ids": [],
     "intended_bevel_edge_ids": [],
     "modifier_types": [],
@@ -79,10 +83,40 @@
       "Smooth by Angle was not recorded as the normal policy."
     ]
   },
+  "angle_scoped_fixture_audit": {
+    "name": "Angle_Scoped_No_Semantic_Intent_Box",
+    "status": "REVIEW_REQUIRED",
+    "checks": {
+      "semantic_intent_recorded": false,
+      "semantic_weights_match_intent": false,
+      "weight_limited_bevel_present": false,
+      "bevel_before_subd": true,
+      "smooth_by_angle_recorded": false,
+      "uniform_object_scale": true,
+      "not_unannotated_blanket_smooth": true
+    },
+    "bevel_limit_methods_present": [
+      "ANGLE"
+    ],
+    "weighted_edge_ids": [],
+    "intended_bevel_edge_ids": [],
+    "modifier_types": [
+      "BEVEL"
+    ],
+    "object_scale": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "warnings": [
+      "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+      "Smooth by Angle was not recorded as the normal policy."
+    ]
+  },
   "transactions": {
     "weight": {
       "begin": {
-        "decision_id": "dec_0_1786545474881",
+        "decision_id": "dec_0_1786547010582",
         "observed_revision": 0
       },
       "verify": {
@@ -122,13 +156,13 @@
         }
       },
       "commit": {
-        "decision_id": "dec_0_1786545474881",
+        "decision_id": "dec_0_1786547010582",
         "result_revision": 1
       }
     },
     "shading": {
       "begin": {
-        "decision_id": "dec_1_1786545474883",
+        "decision_id": "dec_1_1786547010584",
         "observed_revision": 1
       },
       "verify": {
@@ -168,7 +202,7 @@
         }
       },
       "commit": {
-        "decision_id": "dec_1_1786545474883",
+        "decision_id": "dec_1_1786547010584",
         "result_revision": 2
       }
     }
@@ -195,7 +229,8 @@
     "shading_policy_recorded": true,
     "blanket_smooth_not_used_as_policy": true,
     "hard_surface_policy_audit_passes": true,
-    "audit_rejects_unannotated_blanket_smooth": true
+    "audit_rejects_unannotated_blanket_smooth": true,
+    "audit_distinguishes_angle_scoping_from_no_bevel": true
   },
   "pass": true
 }

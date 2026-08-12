@@ -18,6 +18,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -29,7 +32,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -45,6 +48,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -70,6 +74,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -95,6 +100,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -120,6 +126,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -145,6 +152,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -156,7 +166,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -172,6 +182,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -183,7 +196,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -199,6 +212,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -210,7 +226,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -226,6 +242,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -237,7 +256,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -253,6 +272,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -264,7 +286,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -280,6 +302,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -291,7 +316,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -307,6 +332,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -318,7 +346,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -334,6 +362,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -359,6 +388,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -384,6 +414,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -409,6 +440,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -434,6 +466,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -445,7 +480,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -461,6 +496,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "VGROUP"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -472,7 +510,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses VGROUP-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -488,6 +526,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -499,7 +540,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -515,6 +556,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -526,7 +570,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -542,6 +586,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -554,7 +601,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -570,6 +617,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -582,7 +632,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -598,6 +648,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -623,6 +674,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -648,6 +700,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -659,7 +714,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -675,6 +730,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -686,7 +744,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -702,6 +760,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -727,6 +786,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -738,7 +800,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -754,6 +816,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -765,7 +830,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -781,6 +846,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -792,7 +860,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -808,6 +876,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -819,7 +890,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -835,6 +906,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -846,7 +920,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -862,6 +936,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -873,7 +950,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -889,6 +966,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -900,7 +980,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -916,6 +996,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -927,7 +1010,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -943,6 +1026,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -954,7 +1040,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -970,6 +1056,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -981,7 +1070,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -997,6 +1086,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1008,7 +1100,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1024,6 +1116,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1035,7 +1130,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1051,6 +1146,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1062,7 +1160,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1078,6 +1176,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1089,7 +1190,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         }
@@ -1113,6 +1214,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "WEIGHT"
+          ],
           "weighted_edge_ids": [
             534,
             536,
@@ -1642,6 +1746,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1667,6 +1772,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1678,7 +1786,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1694,6 +1802,9 @@
             "uniform_object_scale": false,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -1705,7 +1816,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Non-uniform object scale can distort Bevel width in world space.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
@@ -1722,6 +1833,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1747,6 +1859,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1772,6 +1885,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1797,6 +1911,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1822,6 +1937,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1847,6 +1963,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1872,6 +1989,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1897,6 +2015,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1922,6 +2041,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1947,6 +2067,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1972,6 +2093,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -1997,6 +2119,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2022,6 +2145,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -2034,7 +2160,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy.",
             "A WEIGHT-limited Bevel must precede Subdivision Surface for this policy."
           ]
@@ -2051,6 +2177,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -2079,6 +2206,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -2090,7 +2220,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2106,6 +2236,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2131,6 +2262,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "WEIGHT"
+          ],
           "weighted_edge_ids": [
             211,
             212,
@@ -2260,6 +2394,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -2271,7 +2408,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2287,6 +2424,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2312,6 +2450,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "ANGLE"
+          ],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [
@@ -2323,7 +2464,7 @@
             1.0
           ],
           "warnings": [
-            "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2339,6 +2480,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2372,6 +2514,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2397,6 +2540,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2422,6 +2566,9 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [
+            "WEIGHT"
+          ],
           "weighted_edge_ids": [
             164,
             166,
@@ -2642,6 +2789,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2667,6 +2815,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2692,6 +2841,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": false
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],
@@ -2717,6 +2867,7 @@
             "uniform_object_scale": true,
             "not_unannotated_blanket_smooth": true
           },
+          "bevel_limit_methods_present": [],
           "weighted_edge_ids": [],
           "intended_bevel_edge_ids": [],
           "modifier_types": [],

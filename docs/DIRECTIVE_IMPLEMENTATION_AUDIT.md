@@ -135,12 +135,12 @@ The vintage telephone and metal watering can each close one more unrelated held-
 fifth unrelated family and is retained honestly as REJECTED: its technical checks passed, but its
 best three-view mean silhouette IoU (0.4058) never approached its predeclared 0.66 gate, and live
 user review of its render identified a separate, real defect this repository had not been checking
-for: every prior held-out asset was blanket-smooth shaded with no recorded semantic bevel-edge
-intent, no WEIGHT-limited Bevel before Subdivision, and no auditable Smooth-by-Angle policy. That
-correction is now implemented as a typed operation plus a read-only `get_hard_surface_shading_audit`
-check, verified against both a passing annotated fixture and a rejected unannotated one, but it has
-not yet been applied to rebuild any of the five held-out families above; their production geometry
-predates the policy and their shading is not retroactively audited by this entry.
+for: the desk lamp itself was blanket-smooth shaded with no recorded semantic bevel-edge intent, no
+WEIGHT-limited Bevel before Subdivision, and no auditable Smooth-by-Angle policy. That correction is
+now implemented as a typed operation plus a read-only `get_hard_surface_shading_audit` check,
+verified against both a passing annotated fixture and a rejected unannotated one. It was not applied
+to rebuild any of the five held-out families above at the time; a subsequent retroactive audit
+(below) found the picture across those four is more varied than "every asset is blanket-smooth."
 
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.
@@ -157,16 +157,18 @@ The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`. Five unrelated hel
 families now exist (boombox, camera, telephone, watering can, desk lamp), so the family-breadth
 requirement is materially stronger than a single asset; the desk lamp remains the one open failure
 in that set. `runs/2026-08-12_shading-policy-retroactive-audit/` has since audited the other four
-against `get_hard_surface_shading_audit` and found a real, not merely cosmetic, gap: only each
-family's single primary body (housing/vessel/one-object cage) has a `WEIGHT`-limited Bevel; every
-secondary/detail component in the telephone (23/24) and watering can (6/7) is plain blanket
-Shade-Smooth with no semantic edge weighting, and the boombox has zero `WEIGHT` bevels anywhere
-because it used `ANGLE`-limited Bevel via vertex groups instead, which the audit does not currently
-recognize as a sanctioned alternative. Remaining locally actionable gaps: retrying the desk lamp's
-proportions under the new shading policy without relabeling the prior attempt, deciding whether
-`ANGLE`-limited Bevel should be a second sanctioned audit path or whether the boombox's secondary
-parts should be rebuilt under `WEIGHT`-limited Bevel, rebuilding the telephone/watering-can
-secondary components under the full policy, production texture/bake and named-engine visual review
+against `get_hard_surface_shading_audit` and found a real, not merely cosmetic, gap with three
+distinct causes: only each family's single primary body (housing/vessel/one-object cage) has a
+`WEIGHT`-limited Bevel with inspectable semantic edge-ID coverage; a meaningful fraction of
+secondary components genuinely do use a real, named `ANGLE`- or `VGROUP`-limited Bevel instead (30/41
+boombox objects, 6/24 telephone objects) that the audit correctly distinguishes from having no bevel
+at all but still cannot verify against recorded intent; and a real remainder (11/41 boombox, 17/24
+telephone, 6/7 watering-can objects) has no Bevel modifier of any kind, unclassified as to whether
+that is legitimate (flat/simple geometry) or a genuine gap. Remaining locally actionable gaps:
+retrying the desk lamp's proportions under the new shading policy without relabeling the prior
+attempt, triaging the no-bevel-at-all objects per family, deciding whether `ANGLE`/`VGROUP`-limited
+Bevel should get its own fully-sanctioned auditable-intent mechanism rather than only a softer
+warning, production texture/bake and named-engine visual review
 beyond the current Godot import checks, broader planner runtime use, and longer-horizon retention.
 Independent experienced review remains genuinely external. Until that evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
