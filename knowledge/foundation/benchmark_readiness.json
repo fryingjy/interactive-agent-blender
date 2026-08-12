@@ -12,17 +12,87 @@
     "heldout_cc0_camera_001": "AUTOMATED_PASS_HUMAN_REVIEW_OVERTURNED_THEN_CORRECTED",
     "heldout_cc0_vintage_telephone_001": "AUTOMATED_PASS_HUMAN_REVIEW_OPEN",
     "heldout_cc0_watering_can_001": "AUTOMATED_PASS_HUMAN_REVIEW_OPEN",
-    "heldout_cc0_desk_lamp_001": "REJECTED_VISUAL_GATES_RETAINED",
+    "heldout_cc0_desk_lamp_001": "REJECTED_TWICE_SECOND_ATTEMPT_IMPROVED_STILL_BELOW_GATES",
     "unused_references": 6
   },
   "ladder": [
-    {"id": "A", "name": "Subdivision transfer", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["runs/2026-08-10_topology-subd/", "runs/2026-08-10_visual-comparison/"]},
-    {"id": "B", "name": "Actual image-reference hard surface", "status": "PASSED_AND_QUALITY_REBUILT", "prerequisite_evidence": ["knowledge_engine/visual_compare.py", "runs/2026-08-10_heldout-fantasy-sword/", "runs/2026-08-10_profile-authored-sword/"]},
-    {"id": "C", "name": "Unknown-problem asset", "status": "NOT_RUN_HELD_OUT", "prerequisite_evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "runs/2026-08-10_topology-subd/"]},
-    {"id": "D", "name": "Transfer asset", "status": "PASSED", "prerequisite_evidence": ["runs/2026-08-10_solidify-transfer/", "runs/2026-08-10_bevel-mirror-transfer/", "runs/2026-08-10_transfer-trident/"]},
-    {"id": "E", "name": "Multi-component professional prop", "status": "AUTOMATED_GATES_PASS_HUMAN_REVIEW_REQUIRED", "prerequisite_evidence": ["runs/2026-08-07_speaker-typed-protocol/", "runs/2026-08-10_transfer-trident/", "runs/2026-08-11_heldout-camera-subd/", "runs/2026-08-11_connected-camera-corrective/", "runs/2026-08-11_heldout-vintage-telephone/", "runs/2026-08-11_heldout-watering-can/", "runs/2026-08-12_heldout-desk-lamp/"]}
+    {
+      "id": "A",
+      "name": "Subdivision transfer",
+      "status": "NOT_RUN_HELD_OUT",
+      "prerequisite_evidence": [
+        "runs/2026-08-10_topology-subd/",
+        "runs/2026-08-10_visual-comparison/"
+      ]
+    },
+    {
+      "id": "B",
+      "name": "Actual image-reference hard surface",
+      "status": "PASSED_AND_QUALITY_REBUILT",
+      "prerequisite_evidence": [
+        "knowledge_engine/visual_compare.py",
+        "runs/2026-08-10_heldout-fantasy-sword/",
+        "runs/2026-08-10_profile-authored-sword/"
+      ]
+    },
+    {
+      "id": "C",
+      "name": "Unknown-problem asset",
+      "status": "NOT_RUN_HELD_OUT",
+      "prerequisite_evidence": [
+        "knowledge/foundation/operator_cards/topology_context_subd.md",
+        "runs/2026-08-10_topology-subd/"
+      ]
+    },
+    {
+      "id": "D",
+      "name": "Transfer asset",
+      "status": "PASSED",
+      "prerequisite_evidence": [
+        "runs/2026-08-10_solidify-transfer/",
+        "runs/2026-08-10_bevel-mirror-transfer/",
+        "runs/2026-08-10_transfer-trident/"
+      ]
+    },
+    {
+      "id": "E",
+      "name": "Multi-component professional prop",
+      "status": "AUTOMATED_GATES_PASS_HUMAN_REVIEW_REQUIRED",
+      "prerequisite_evidence": [
+        "runs/2026-08-07_speaker-typed-protocol/",
+        "runs/2026-08-10_transfer-trident/",
+        "runs/2026-08-11_heldout-camera-subd/",
+        "runs/2026-08-11_connected-camera-corrective/",
+        "runs/2026-08-11_heldout-vintage-telephone/",
+        "runs/2026-08-11_heldout-watering-can/",
+        "runs/2026-08-12_heldout-desk-lamp/"
+      ]
+    }
   ],
   "ready_for_held_out_modeling": true,
-  "selection_priority": {"P0": ["tools", "mechanical parts", "appliances", "electronics", "containers", "furniture", "industrial and sci-fi props", "curved SubD objects", "complex multi-component products"], "P1": ["production-ready UV/bake/material/export transfer", "stylized or low-poly transfer", "curves/procedural transfer"], "P2_deferred": ["advanced sculpting", "character/facial assets", "anatomy", "advanced organic specialization"]},
-  "reason": "The online CC0 boombox benchmark passed its predeclared normalized front/side/top/mean silhouette gates at 0.8710/0.7566/0.8201/0.8159, with 15/15 fresh-process scene assertions and a 41-mesh GLB round trip -- but direct human visual comparison against the reference (2026-08-12) rejected it outright as not resembling the source at all (wrong color, wrong proportions, generic detailing); all boombox files, tools, and readiness entries were removed rather than kept as a false pass. This is the clearest evidence in this project that automated silhouette/topology gates do not establish visual fidelity. The CC0 camera family passed its own automated gates at 0.872 mean IoU but was overturned by experienced review for treating compatible radial details as separate assemblies; nine further rejected iterations (square lens, overdense controls, incomplete/misplaced weighting, and three pre-rounded-body attempts) are retained before the accepted one-object, literal-box, 492/492-weighted-edge correction reached 0.822 mean IoU and 24/24 fresh checks. The CC0 vintage telephone wall clock passed 0.840 mean IoU with a connected 208-quad housing and 162-quad handset, plus a real Cycles selected-to-active tangent bake and fresh Godot 4.7.1 import. The CC0 metal watering can passed 0.901 mean IoU with a 16-sided vessel, 12-sided spout, and one closed all-quad handle path loft (a converted-curve handle was rejected for non-manifold cap islands first), plus its own tangent bake and Godot import. The CC0 articulated desk-lamp attempt is retained as REJECTED: its all-quad mechanical assemblies passed technical checks but its best frozen three-view mean IoU was only 0.405845, not its 0.66 gate; live user feedback on this failure (blanket smooth shading with no semantic bevel weights or SubD) drove the hard-surface shading policy correction in `runs/2026-08-12_hard-surface-shading-policy/`. A follow-up no-Bevel triage then applied that policy to every untreated part across the telephone and watering can using a blanket dihedral-angle threshold -- which itself proved wrong on direct human review (2026-08-12): four genuinely round parts (the watering can's Rose_Head, Connected_Tapered_Spout, Arched_Handle, and the telephone's Handset) were given hard faceted bevel treatment despite reading as smoothly rounded in their reference photos, and the erroneous weighting was reverted in `runs/2026-08-12_watering-can-rounded-parts-bevel-reverted/` and `runs/2026-08-12_telephone-handset-bevel-reverted/`. Collectively this closes the automated portion of ladder E across four unrelated product families, not professional readiness: exact surface detail, broader held-out families, low-intervention runtime planning, and experienced human acceptance remain open for every passed entry above, and this session's own record shows automated gates and even a first visual pass are not sufficient without checking against the actual reference. Six supplied references remain unmodeled and reserved; sculpt-heavy organic benchmarks remain P2/KNOWN-DEFERRED."
+  "selection_priority": {
+    "P0": [
+      "tools",
+      "mechanical parts",
+      "appliances",
+      "electronics",
+      "containers",
+      "furniture",
+      "industrial and sci-fi props",
+      "curved SubD objects",
+      "complex multi-component products"
+    ],
+    "P1": [
+      "production-ready UV/bake/material/export transfer",
+      "stylized or low-poly transfer",
+      "curves/procedural transfer"
+    ],
+    "P2_deferred": [
+      "advanced sculpting",
+      "character/facial assets",
+      "anatomy",
+      "advanced organic specialization"
+    ]
+  },
+  "reason": "The online CC0 boombox benchmark passed its predeclared normalized front/side/top/mean silhouette gates at 0.8710/0.7566/0.8201/0.8159, with 15/15 fresh-process scene assertions and a 41-mesh GLB round trip -- but direct human visual comparison against the reference (2026-08-12) rejected it outright as not resembling the source at all (wrong color, wrong proportions, generic detailing); all boombox files, tools, and readiness entries were removed rather than kept as a false pass. This is the clearest evidence in this project that automated silhouette/topology gates do not establish visual fidelity. The CC0 camera family passed its own automated gates at 0.872 mean IoU but was overturned by experienced review for treating compatible radial details as separate assemblies; nine further rejected iterations (square lens, overdense controls, incomplete/misplaced weighting, and three pre-rounded-body attempts) are retained before the accepted one-object, literal-box, 492/492-weighted-edge correction reached 0.822 mean IoU and 24/24 fresh checks. The CC0 vintage telephone wall clock passed 0.840 mean IoU with a connected 208-quad housing and 162-quad handset, plus a real Cycles selected-to-active tangent bake and fresh Godot 4.7.1 import. The CC0 metal watering can passed 0.901 mean IoU with a 16-sided vessel, 12-sided spout, and one closed all-quad handle path loft (a converted-curve handle was rejected for non-manifold cap islands first), plus its own tangent bake and Godot import. The CC0 articulated desk-lamp attempt is retained as REJECTED: its all-quad mechanical assemblies passed technical checks but its best frozen three-view mean IoU was only 0.405845, not its 0.66 gate; live user feedback on this failure (blanket smooth shading with no semantic bevel weights or SubD) drove the hard-surface shading policy correction in `runs/2026-08-12_hard-surface-shading-policy/`. A follow-up no-Bevel triage then applied that policy to every untreated part across the telephone and watering can using a blanket dihedral-angle threshold -- which itself proved wrong on direct human review (2026-08-12): four genuinely round parts (the watering can's Rose_Head, Connected_Tapered_Spout, Arched_Handle, and the telephone's Handset) were given hard faceted bevel treatment despite reading as smoothly rounded in their reference photos, and the erroneous weighting was reverted in `runs/2026-08-12_watering-can-rounded-parts-bevel-reverted/` and `runs/2026-08-12_telephone-handset-bevel-reverted/`. Collectively this closes the automated portion of ladder E across four unrelated product families, not professional readiness: exact surface detail, broader held-out families, low-intervention runtime planning, and experienced human acceptance remain open for every passed entry above, and this session's own record shows automated gates and even a first visual pass are not sufficient without checking against the actual reference. Six supplied references remain unmodeled and reserved; sculpt-heavy organic benchmarks remain P2/KNOWN-DEFERRED. A second desk-lamp attempt (runs/2026-08-12_heldout-desk-lamp-v2/) diagnosed and fixed the first attempt's actual root cause -- the arm skeleton was built in the wrong world plane, so render_silhouette's front/side views were inverted relative to the reference, which is exactly why the first attempt's side-view IoU collapsed to 0.0045. Correcting the plane and widening undersized members raised mean IoU from 0.4058 to 0.4171 (side view alone: 0.2226 to 0.3360), with fresh-process verification now passing 0/10 objects showing any non-manifold edges, degenerate faces, or loose vertices. It still fails all four frozen gates and is not claimed as a pass; the value published is the diagnosed root-cause bug, not a status upgrade."
 }

@@ -1,0 +1,77 @@
+{
+  "method": "alpha masks; candidate bbox cropped and nearest-neighbor normalized into reference bbox",
+  "normalization_warning": "Scores test normalized projected shape, not absolute framing, scale, or translation.",
+  "views": {
+    "front": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp\\reference\\reference_front_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_front_mask.png",
+      "reference_bbox": [
+        301,
+        100,
+        418,
+        619
+      ],
+      "candidate_bbox_before_alignment": [
+        299,
+        119,
+        468,
+        648
+      ],
+      "iou": 0.328311,
+      "reference_recall": 0.440513,
+      "candidate_precision": 0.563122
+    },
+    "side": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp\\reference\\reference_side_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_side_mask.png",
+      "reference_bbox": [
+        181,
+        100,
+        538,
+        619
+      ],
+      "candidate_bbox_before_alignment": [
+        199,
+        119,
+        567,
+        648
+      ],
+      "iou": 0.336009,
+      "reference_recall": 0.510619,
+      "candidate_precision": 0.495612
+    },
+    "top": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp\\reference\\reference_top_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_top_mask.png",
+      "reference_bbox": [
+        301,
+        181,
+        418,
+        538
+      ],
+      "candidate_bbox_before_alignment": [
+        298,
+        199,
+        469,
+        568
+      ],
+      "iou": 0.586857,
+      "reference_recall": 0.838062,
+      "candidate_precision": 0.661917
+    }
+  },
+  "thresholds": {
+    "front": 0.68,
+    "side": 0.7,
+    "top": 0.58,
+    "mean": 0.66
+  },
+  "mean_iou": 0.417059,
+  "assertions": {
+    "front_iou_at_least_0.68": false,
+    "side_iou_at_least_0.7": false,
+    "top_iou_at_least_0.58": true,
+    "mean_iou_at_least_0.66": false
+  },
+  "pass": false
+}

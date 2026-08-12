@@ -205,10 +205,25 @@ fixtures (18/18 assertions, including one proving an unrecorded `ANGLE` bevel co
 Two independent, concrete lessons this session: automated silhouette/topology gates do not
 establish visual fidelity (boombox), and an automated geometric-angle heuristic is not a substitute
 for reference-driven judgment about which edges are meant to be sharp (the rounded-parts revert).
-Both are retained as evidence, not smoothed over. Remaining locally actionable gaps: retrying the
-desk lamp's proportions under the new shading policy without relabeling the prior attempt, deciding
-whether the corrected files should replace their published production references, production
-texture/bake and named-engine visual review beyond the current Godot import checks, broader planner
-runtime use, and longer-horizon retention. Independent experienced review remains genuinely
+Both are retained as evidence, not smoothed over.
+
+**Desk lamp: retried, still rejected, one real bug fixed.** `runs/2026-08-12_heldout-desk-lamp-v2/`
+measured explicit side-view joint landmarks from `tools/measure_reference.py`'s row-profile output
+before building anything (the first attempt's own stated next step), and found the actual root
+cause of its predecessor's catastrophic side-view failure (IoU 0.0045 at one point): the arm
+skeleton was built in the wrong world plane, so `render_silhouette`'s front/side cameras showed the
+zigzag profile and its edge-on compression backwards relative to the reference. Correcting the plane
+and widening undersized members raised mean IoU from 0.4058 to 0.4171 (side view alone: 0.2226 to
+0.3360); fresh-process verification passes 0/10 objects with any non-manifold edges, degenerate
+faces, or loose vertices. It still fails all four frozen gates and is not claimed as a pass -- the
+value is the diagnosed, reproducible root-cause bug, published as evidence the same way every
+rejected iteration in this project has been.
+
+Remaining locally actionable gaps: a third desk-lamp pass that measures member widths from the
+reference the same way joint positions were measured in this one (front-view recall was still only
+0.433, meaning the whole candidate remains too thin, not misplaced), deciding whether the corrected
+shading-policy files should replace their published production references, production texture/bake
+and named-engine visual review beyond the current Godot import checks, broader planner runtime use,
+and longer-horizon retention. Independent experienced review remains genuinely
 external. Until that evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
