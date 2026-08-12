@@ -58,6 +58,8 @@ judgment and generalization priorities remain; the professional target is not fa
 | One-object camera corrective transfer | one object, one connected 530-quad manifold cage derived from a literal box perimeter with no pre-rounded corners; two regular 12-edge top controls routed from 12-edge shell openings; 492/492 intended perimeter, corner-rail, lens, and control edges feed weighted Bevel before SubD; consistent winding/manifoldness pass at base/Bevel/final stages; 0.822 mean IoU; 24/24 fresh checks; one-mesh GLB round trip with exact evaluated dimensions | corrective topology/production PASS after repeated experienced-review corrections; deliberately stylized, source-known, and not independently expert-approved |
 | Rigged facial corrective transfer | official CC0 animation head; Jaw + bilateral smile controls; combined-pose driver gated `0/0/0/1`; mouth mean error improves 2.08876x; 123 weighted jaw vertices touch only quads; all three evaluated heads independently clean | bounded mechanism/transfer PASS; expression is subtle and not production-quality facial acting |
 | Expressive regional coupling control | official CC0 head; mouth-only failure control versus integrated mouth/cheek/lower-lid/brow smile; nondeforming bilateral controls; five rejected revisions; fresh-process saved-scene verification | bounded technical/visual PASS; source supplies anatomy/topology and advanced organic follow-on is deferred |
+| Fifth unrelated held-out product family (articulated) | CC0 desk lamp; predeclared front/side/top gates; all-quad mechanical arm/spring/clamp/shade assemblies passed technical checks across five revisions; best frozen three-view mean IoU only 0.4058 against a 0.66 gate | REJECTED and retained honestly rather than relabeled a pass; live user review of the render also identified blanket smooth shading with no semantic bevel weights/SubD, which drove the hard-surface shading policy correction below |
+| Hard-surface shading policy | `set_shading`/bevel-weight typed operations; Blender 5.2 lab proving semantic edge weight -> `BEVEL -> SUBSURF` -> Smooth by Angle; typed-transaction and rollback coverage; Workbench MatCap review pass; `get_hard_surface_shading_audit()` read-only check for recorded semantic intent, weighted-Bevel order, Smooth by Angle policy, and non-uniform scale, verified against both a passing annotated fixture and a rejected unannotated blanket-smooth fixture | implemented and independently fresh-process verified; the audit cannot infer sharp intent for arbitrary unannotated meshes and correctly reports `REVIEW_REQUIRED` rather than guessing |
 
 ## Important disproved assumptions retained
 
@@ -127,6 +129,19 @@ adaptively to zero fixed-view error and exact clean state. Four failed render-au
 remain visible, and fresh verification catches the failed bevel's non-manifold/degenerate result.
 This does not establish diagnosis from an unknown production beauty image.
 
+The vintage telephone and metal watering can each close one more unrelated held-out product family
+(third and fourth) with automated visual, topology, and production (tangent bake plus fresh Godot
+4.7.1 import) evidence. Neither reached independent expert review. The desk-lamp attempt is the
+fifth unrelated family and is retained honestly as REJECTED: its technical checks passed, but its
+best three-view mean silhouette IoU (0.4058) never approached its predeclared 0.66 gate, and live
+user review of its render identified a separate, real defect this repository had not been checking
+for: every prior held-out asset was blanket-smooth shaded with no recorded semantic bevel-edge
+intent, no WEIGHT-limited Bevel before Subdivision, and no auditable Smooth-by-Angle policy. That
+correction is now implemented as a typed operation plus a read-only `get_hard_surface_shading_audit`
+check, verified against both a passing annotated fixture and a rejected unannotated one, but it has
+not yet been applied to rebuild any of the five held-out families above; their production geometry
+predates the policy and their shading is not retroactively audited by this entry.
+
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.
 
@@ -138,8 +153,13 @@ judgment gaps are still being closed. Infrastructure, controlled labs, real Fund
 study, retrieval, strategy, visual measurement, sculpt access, export validation, and one narrow
 research-return loop are in place.
 
-The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`: a second unrelated held-out
-hard-surface/curved-SubD family, production texture/bake and named-engine visual review, broader
-planner runtime use, longer-horizon retention, and independent experienced review. Until that evidence
-exists, changing the foundation or professional claim to PASS would violate the directive's
+The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`. Five unrelated held-out product
+families now exist (boombox, camera, telephone, watering can, desk lamp), so the family-breadth
+requirement is materially stronger than a single asset; the desk lamp remains the one open failure
+in that set. Remaining locally actionable gaps: retrying the desk lamp's proportions under the new
+shading policy without relabeling the prior attempt, auditing the four passed families against
+`get_hard_surface_shading_audit` (none have been checked yet), production texture/bake and
+named-engine visual review beyond the current Godot import checks, broader planner runtime use, and
+longer-horizon retention. Independent experienced review remains genuinely external. Until that
+evidence exists, changing the foundation or professional claim to PASS would violate the directive's
 anti-fake-progress rules.
