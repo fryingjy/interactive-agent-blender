@@ -46,6 +46,16 @@ edge intent against the actual weight attribute, WEIGHT-Bevel presence/order, Sm
 and non-uniform scale. It deliberately returns `REVIEW_REQUIRED` when intent is absent: it cannot
 truthfully infer every sharp design edge from arbitrary geometry.
 
+`ANGLE` and `VGROUP`-limited Bevel are recognized as distinct, real scoping mechanisms (reported in
+`bevel_limit_methods_present`) and given a more accurate warning than "no bevel at all" when no
+`WEIGHT`-based intent is recorded, but they still cannot reach `PASS`: neither maps to inspectable
+persistent edge IDs the way the `hard_surface_intended_bevel_edge_ids` property does, so the audit
+cannot verify their coverage against a recorded semantic map. A retroactive run against the four
+already-published held-out families (`runs/2026-08-12_shading-policy-retroactive-audit/`) found the
+boombox's real construction uses `ANGLE`/`VGROUP`-limited Bevel throughout with no `WEIGHT` bevel
+anywhere; that is a legitimate, documented technique (`bevel_modifier.md` records `ANGLE` correctly
+excluding coplanar triangulation edges), not equivalent to having no deliberate edge treatment.
+
 The lab runs each operation through `ModelerServer`'s
 `begin_decision -> perform_decision -> verify_decision -> commit_decision` path. The semantic
 weight decision advances revision `0 -> 1`; Smooth by Angle advances it `1 -> 2`. An initial

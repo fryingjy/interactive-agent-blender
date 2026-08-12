@@ -205,9 +205,18 @@ def hard_surface_shading_audit(name):
         )
     intended_ids = sorted(int(item) for item in obj.get("hard_surface_intended_bevel_edge_ids", []))
     modifier_types = [modifier.type for modifier in obj.modifiers]
-    weighted_bevel_indices = [
-        index for index, modifier in enumerate(obj.modifiers)
-        if modifier.type == "BEVEL" and modifier.limit_method == "WEIGHT"
+    bevel_modifiers = [(index, modifier) for index, modifier in enumerate(obj.modifiers) if modifier.type == "BEVEL"]
+    weighted_bevel_indices = [index for index, modifier in bevel_modifiers if modifier.limit_method == "WEIGHT"]
+    # ANGLE and VGROUP are documented, deliberate scoping mechanisms distinct from WEIGHT
+    # (see knowledge/foundation/operator_cards/bevel_modifier.md: ANGLE correctly excluded
+    # coplanar triangulation edges in a controlled test). They are not treated as equivalent
+    # to a recorded semantic edge-ID map, because neither maps to inspectable persistent IDs
+    # the way `hard_surface_intended_bevel_edge_ids` does, but a bare limit_method of NONE
+    # (or no Bevel modifier at all) is a materially weaker, undifferentiated case.
+    bevel_scoping_methods = sorted({modifier.limit_method for _, modifier in bevel_modifiers})
+    non_weight_scoped_indices = [
+        index for index, modifier in bevel_modifiers
+        if modifier.limit_method in ("ANGLE", "VGROUP")
     ]
     subd_indices = [index for index, modifier in enumerate(obj.modifiers) if modifier.type == "SUBSURF"]
     scale = tuple(float(item) for item in obj.scale)
@@ -225,7 +234,15 @@ def hard_surface_shading_audit(name):
     passed = all(checks.values())
     warnings = []
     if not checks["semantic_intent_recorded"]:
-        warnings.append("No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.")
+        if non_weight_scoped_indices and not weighted_bevel_indices:
+            method_names = "/".join(bevel_scoping_methods)
+            warnings.append(
+                f"No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses "
+                f"{method_names}-limited Bevel, a deliberate but differently auditable scoping "
+                f"mechanism this check cannot yet compare against recorded intent."
+            )
+        else:
+            warnings.append("No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.")
     if not checks["uniform_object_scale"]:
         warnings.append("Non-uniform object scale can distort Bevel width in world space.")
     if not checks["smooth_by_angle_recorded"]:
@@ -236,6 +253,7 @@ def hard_surface_shading_audit(name):
         "name": name,
         "status": "PASS" if passed else "REVIEW_REQUIRED",
         "checks": checks,
+        "bevel_limit_methods_present": bevel_scoping_methods,
         "weighted_edge_ids": weighted_ids,
         "intended_bevel_edge_ids": intended_ids,
         "modifier_types": modifier_types,

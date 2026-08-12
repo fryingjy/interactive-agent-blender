@@ -63,6 +63,15 @@ def main():
     for polygon in rejected.data.polygons:
         polygon.use_smooth = True
     rejected_audit = hard_surface_shading_audit(rejected.name)
+    # A third fixture reproducing the retroactively-audited boombox pattern: a real,
+    # named ANGLE-limited Bevel (not absent, not blanket-smooth) with no recorded
+    # semantic edge-ID intent. The audit must distinguish this from "no bevel at all".
+    bpy.ops.mesh.primitive_cube_add(location=(-4.0, 0.0, 0.0))
+    angle_scoped = bpy.context.object
+    angle_scoped.name = "Angle_Scoped_No_Semantic_Intent_Box"
+    angle_bevel = angle_scoped.modifiers.new("Purposeful edge radius", "BEVEL")
+    angle_bevel.limit_method = "ANGLE"; angle_bevel.angle_limit = 0.5235987756; angle_bevel.width = 0.05
+    angle_scoped_audit = hard_surface_shading_audit(angle_scoped.name)
     types = [modifier.type for modifier in obj.modifiers]
     assertions = {
         "smooth_by_angle_operator_finished": shading["shading"] == "SMOOTH_BY_ANGLE",
@@ -82,9 +91,15 @@ def main():
             and not rejected_audit["checks"]["uniform_object_scale"]
             and not rejected_audit["checks"]["not_unannotated_blanket_smooth"]
         ),
+        "audit_distinguishes_angle_scoping_from_no_bevel": (
+            angle_scoped_audit["status"] == "REVIEW_REQUIRED"
+            and angle_scoped_audit["bevel_limit_methods_present"] == ["ANGLE"]
+            and not angle_scoped_audit["checks"]["semantic_intent_recorded"]
+            and "ANGLE-limited Bevel" in " ".join(angle_scoped_audit["warnings"])
+        ),
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
+    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "angle_scoped_fixture_audit": angle_scoped_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
     (OUT / "hard_surface_shading_policy_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT / "hard_surface_shading_policy.blend"))
     print(json.dumps(report))
