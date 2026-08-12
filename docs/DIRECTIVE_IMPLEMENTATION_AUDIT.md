@@ -184,8 +184,8 @@ plus a matching angle/vertex-group value), additively -- it does not retroactive
 the boombox's other 30 `ANGLE`/`VGROUP` objects, which were configured directly through `bpy` before
 this operation existed and correctly remain `REVIEW_REQUIRED` (the lab's 18/18 assertions include
 both a fixture proving this non-retroactivity and one proving the new path reaches `PASS` through the
-real typed decision lifecycle). `runs/2026-08-12_telephone-trim-bevel-corrective/` (pending merge)
-and `runs/2026-08-12_watering-can-final-bevel-corrective/` close the remaining objects the no-Bevel
+real typed decision lifecycle). `runs/2026-08-12_telephone-trim-bevel-corrective/` and
+`runs/2026-08-12_watering-can-final-bevel-corrective/` close the remaining objects the no-Bevel
 triage identified: the telephone's `Clock_Face`, two trim panels, and 12 `Dial_Aperture*` objects,
 and the watering can's `Opening_Rim`, `Opening_Shadow`, and `Rose_Head`. Two telephone panels
 exposed a real topology defect (inconsistent face winding, not a width problem) that needed a
