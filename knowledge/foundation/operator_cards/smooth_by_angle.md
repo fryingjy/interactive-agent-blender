@@ -41,6 +41,13 @@ and [`bpy.ops.object`](https://docs.blender.org/api/current/bpy.ops.object.html)
 Both are sanctioned decision operations; the agent must still observe the current cage and make one
 semantic decision before calling them. They are not procedural asset generators.
 
+The lab runs each operation through `ModelerServer`'s
+`begin_decision -> perform_decision -> verify_decision -> commit_decision` path. The semantic
+weight decision advances revision `0 -> 1`; Smooth by Angle advances it `1 -> 2`. An initial
+fixture variant added modifiers between those decisions outside the transaction and was correctly
+rejected as an external modifier-state edit. Fixture creation therefore occurs before the first
+runtime observation; real modifier changes must be their own typed decisions.
+
 ## Failure boundary
 
 - Blanket `polygon.use_smooth=True` is not a hard-surface default. It changes appearance only and
