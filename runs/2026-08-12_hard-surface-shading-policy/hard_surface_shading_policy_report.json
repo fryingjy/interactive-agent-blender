@@ -1,0 +1,41 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "shading": {
+    "shading": "SMOOTH_BY_ANGLE",
+    "angle": 0.5235987756,
+    "keep_sharp_edges": true,
+    "modifier_count": 2
+  },
+  "weights": {
+    "attribute": "bevel_weight_edge",
+    "weight": 1.0,
+    "assigned_edge_ids": [
+      10,
+      12,
+      15,
+      18
+    ],
+    "missing_edge_ids": [],
+    "clear_others": true
+  },
+  "modifier_types": [
+    "BEVEL",
+    "SUBSURF"
+  ],
+  "weighted_edges": [
+    10,
+    12,
+    15,
+    18
+  ],
+  "assertions": {
+    "smooth_by_angle_operator_finished": true,
+    "semantic_weight_count_is_four": true,
+    "typed_semantic_weight_assignment": true,
+    "typed_operations_registered": true,
+    "weighted_bevel_precedes_subd": true,
+    "shading_policy_recorded": true,
+    "blanket_smooth_not_used_as_policy": true
+  },
+  "pass": true
+}

@@ -1,0 +1,7 @@
+{
+  "stage": "bootstrap",
+  "accepted": false,
+  "error": "ModuleNotFoundError: knowledge_engine in factory-startup Blender process",
+  "effect": "No candidate geometry or render was produced.",
+  "repair": "Add the repository root to sys.path before importing the planner."
+}

@@ -1,0 +1,7 @@
+{
+  "stage": "candidate bootstrap",
+  "accepted": false,
+  "error": "UnboundLocalError: out due to output initialization being part of the one-line invalid-argument branch",
+  "effect": "Geometry was built in process but no candidate render or saved artifact was accepted.",
+  "repair": "Place output initialization after, rather than inside, the invalid-argument guard."
+}

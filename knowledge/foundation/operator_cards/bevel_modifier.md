@@ -91,6 +91,24 @@ the object's intended hard edges. On the final corrective camera:
 Weighted bevel is a fast sharpness control, not a blanket license. Probe edge scope separately from
 width, audit face winding, and verify the evaluated mesh after every downstream modifier.
 
+## Hard-surface shading policy
+
+Evidence: `runs/2026-08-12_hard-surface-shading-policy/`
+
+For Blender 5.2 hard-surface work, blanket `polygon.use_smooth=True` is not an acceptable surface
+strategy. It can visually erase a missing edge radius, make a flat transition look melted, and hide
+the absence of semantic edge selection. The tested default sequence is:
+
+1. classify design edges as sharp, curved, or intentionally smooth;
+2. assign edge weights only to sharp design edges;
+3. apply a scoped `BEVEL` before `SUBSURF` where a real radius and controlled curvature are both
+   needed;
+4. invoke `bpy.ops.object.shade_smooth_by_angle(angle, keep_sharp_edges=True)` for normals;
+5. inspect Solid/MatCap highlights and the evaluated mesh.
+
+Smooth by Angle does not repair wrong topology or missing bevels. It is a normal-interpolation
+policy after geometric edge intent has been authored.
+
 ## Preconditions and verification
 
 - Apply or account for non-uniform object scale before judging world-space bevel consistency.

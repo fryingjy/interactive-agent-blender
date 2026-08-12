@@ -62,6 +62,10 @@ specialization. Existing evidence remains **KNOWN / DEFERRED**; it is not delete
 - Keep radial control cages intentionally sparse. The camera correction supports 12-16 authored
   vertices at that lens scale with SubD providing evaluated smoothness; this is evidence for a
   tested scale, not a universal segment count.
+- Do not blanket-smooth hard-surface props. Identify intended sharp transitions first, assign
+  semantic weighted bevels where physical edge radius is required, use Bevel before SubD when both
+  modifiers apply, and use Blender's Smooth by Angle/Auto Smooth behavior for remaining normal
+  interpolation. SubD belongs only on continuous curved shells whose cage supports it.
 - The next-task question is: does this materially improve hard-surface, SubD, topology,
   reference-modeling, or production-prop capability? If not, defer it unless it blocks such work.
 

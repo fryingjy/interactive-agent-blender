@@ -111,6 +111,8 @@ _OPS = {
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
     "set_shading": object_ops.set_shading,
+    "set_smooth_by_angle": object_ops.set_smooth_by_angle,
+    "set_bevel_weight_by_ids": object_ops.set_bevel_weight_by_ids,
 }
 
 
