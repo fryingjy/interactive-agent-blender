@@ -168,12 +168,20 @@ degrees and zero edge treatment; only 1 of the 34 no-Bevel objects (a flat badge
 legitimately bevel-inapplicable. Separately, a meaningful fraction of secondary components genuinely
 do use a real, named `ANGLE`- or `VGROUP`-limited Bevel (30/41 boombox objects, 6/24 telephone
 objects) that the audit correctly distinguishes from having no bevel at all but still cannot verify
-against recorded intent. Remaining locally actionable gaps: retrying the desk lamp's proportions
-under the new shading policy without relabeling the prior attempt, rebuilding the telephone handset
-and watering-can spout/handle with semantic bevel weights (the highest-value fix, since these are
-primary bodies rather than trim), deciding whether `ANGLE`/`VGROUP`-limited Bevel should get its own
-fully-sanctioned auditable-intent mechanism rather than only a softer warning, production
-texture/bake and named-engine visual review beyond the current Godot import checks, broader planner
-runtime use, and longer-horizon retention. Independent experienced review remains genuinely external.
-Until that evidence exists, changing the
+against recorded intent. Both identified primary-body gaps are now fixed:
+`runs/2026-08-12_watering-can-secondary-bevel-corrective/` and
+`runs/2026-08-12_telephone-handset-bevel-corrective/` rebuild `Connected_Tapered_Spout`,
+`Arched_Handle`, and `Handset` with semantic bevel weights, `WEIGHT`-limited Bevel, and Smooth by
+Angle, each independently verified clean and visually confirmed (MatCap before/after) as a real
+sharpening, not just a passing number; the corrected files are new artifacts alongside the untouched
+originals, not replacements. Remaining locally actionable gaps: retrying the desk lamp's proportions
+under the new shading policy without relabeling the prior attempt, applying the same treatment to
+the remaining untreated secondary components (boombox: 11 objects; telephone: `Dial_Aperture*`,
+`Clock_Face`, `Lower_Panel_Trim`, `Upper_Face_Trim`; watering can: `Opening_Rim`, `Opening_Shadow`,
+`Rose_Head`), deciding whether `ANGLE`/`VGROUP`-limited Bevel should get its own fully-sanctioned
+auditable-intent mechanism rather than only a softer warning, deciding whether the two corrected
+files should replace their published production references, production texture/bake and
+named-engine visual review beyond the current Godot import checks, broader planner runtime use, and
+longer-horizon retention. Independent experienced review remains genuinely external. Until that
+evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
