@@ -1,7 +1,0 @@
-{
-  "status": "PASS_PRIMARY_FORM_ONLY",
-  "declared_normalized_iou_gates": {"front": 0.82, "side": 0.72, "top": 0.72, "mean": 0.78},
-  "measured_normalized_iou": {"front": 0.878231, "side": 0.805454, "top": 0.894903, "mean": 0.859529},
-  "interpretation": "The authored blockout clears the declared normalized silhouette gates. It remains visibly incomplete and cannot pass secondary-form, UV, material, topology, or production gates.",
-  "evidence_correction": "An earlier raw same-canvas comparison was mistakenly described as the declared gate. The brief explicitly declared normalized IoU; this record and the configurable evaluator correct that mismatch without deleting either render iteration."
-}

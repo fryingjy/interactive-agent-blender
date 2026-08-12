@@ -1,6 +1,0 @@
-{
-  "status": "REJECTED_VERIFIER_ASSUMPTION",
-  "observation": "The GLB re-import preserved 41 mesh objects, 15,292 evaluated triangles, UVs, seven material families, and actual dimensions [6.475, 1.85, 3.834074], but the first verifier expected [6.475, 3.834074, 1.85].",
-  "cause": "The verifier applied the package-level Y-up axis swap to a Blender re-import. Blender's glTF importer converts the package back to Blender Z-up, so round-trip scene dimensions should match source XYZ.",
-  "decision": "Preserve this failed assumption and compare source XYZ dimensions to Blender-reimported XYZ dimensions. Package-level axis declarations remain a separate direct-GLB concern."
-}

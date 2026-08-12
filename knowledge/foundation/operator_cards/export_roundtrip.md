@@ -42,10 +42,9 @@ Base Color imports successfully but fails the normal-semantic assertions. Theref
 delivery package and target runtime state: engine-side repair can hide a deficient export, while a
 successful import can hide incorrect texture semantics.
 
-`runs/2026-08-11_heldout-boombox/export/` applies the invariants to a real held-out 41-component
-prop. Fresh GLB re-import preserves 15,292 evaluated triangles, combined dimensions, UV/material
-presence, and seven material families; direct GLB parsing confirms POSITION, NORMAL, and TEXCOORD_0
-on every primitive. Its first verifier wrongly expected package Y-up dimensions after Blender had
-already converted the import back to Z-up. Tangent presence is intentionally reported rather than
-overclaimed: several radial smart-UV meshes cannot currently export tangents, which is acceptable
-without normal maps but becomes a hard UV/tangent repair gate if tangent-normal textures are added.
+(A held-out boombox export previously cited here applied the same invariants to a 41-component prop
+and caught the same Y-up/Z-up verifier bug. The boombox itself was later rejected on direct human
+visual review as not resembling its reference and its files were removed on 2026-08-12; the
+export-invariant lesson is independently retained via `runs/2026-08-11_heldout-watering-can/production/`
+and `runs/2026-08-11_heldout-vintage-telephone/production/`, both of which pass fresh GLB re-import
+and Godot 4.7.1 import checks.)

@@ -290,10 +290,12 @@ The held-out metal watering can adds a fourth unrelated hard-surface/product fam
 
 1. Professional hard-surface/SubD judgment, multi-view reference construction, topology strategy,
    production-ready prop workflow, and low-intervention cross-asset transfer remain materially
-   incomplete. One online held-out stylized boombox passes its automated gates with a connected
-   edited housing. A second camera passed automated gates but failed experienced topology-strategy
-   review; the later one-component rebuild is corrective. This does not establish breadth or
-   professional acceptance.
+   incomplete. A held-out stylized boombox passed its automated gates but was rejected on direct
+   human visual comparison against the reference (wrong color, wrong proportions, no real
+   resemblance) and its evidence was removed entirely rather than kept as a false pass -- the
+   clearest evidence in this project that automated silhouette/topology gates are not sufficient. A
+   second camera passed automated gates but failed experienced topology-strategy review; the later
+   one-component rebuild is corrective. This does not establish breadth or professional acceptance.
 2. Production transfer of seam-authored UV/high-to-low baking. The controlled flared-housing bake
    now passes a real Godot 4.7.1 import with explicit package tangents, normal-texture semantics,
    PBR factors, UVs, and scale; it is still not a production asset or human-reviewed render.
@@ -302,9 +304,10 @@ The held-out metal watering can adds a fourth unrelated hard-surface/product fam
    observability, five isolated signatures, and a five-cause adaptive transfer now pass, but the
    transfer used intentionally injected ground truth and has no experienced surface review.
 5. Broader held-out visual modeling across additional shape families without benchmark-specific
-   builders. The online CC0 boombox passes one predeclared multi-view case at 0.8159 mean IoU with
-   15/15 fresh-process scene assertions and a structural GLB round trip, after primitive-assembly,
-   bevel-damage, and false axis-verifier attempts were rejected.
+   builders. The online CC0 boombox passed one predeclared multi-view case at 0.8159 mean IoU with
+   15/15 fresh-process scene assertions after primitive-assembly, bevel-damage, and false
+   axis-verifier attempts were rejected -- but direct human review then rejected the asset itself as
+   not resembling the reference, and it was removed rather than counted as breadth evidence.
    A second CC0 camera reached its automated held-out gates at 0.8717 mean IoU, but experienced
    review rejected the 19-object assembly strategy. Its first post-review one-component correction
    was also rejected because lens-only bevel weighting omitted intended sharp edges and four-sided

@@ -15,7 +15,6 @@ sys.path.insert(0, str(ROOT / "blender_ops"))
 import object_ops  # noqa: E402
 
 TARGETS = {
-    "heldout_cc0_boombox_001": ROOT / "runs/2026-08-11_heldout-boombox/final/heldout_boombox.blend",
     "heldout_cc0_camera_001": ROOT / "runs/2026-08-11_connected-camera-corrective/connected_camera_corrective.blend",
     "heldout_cc0_vintage_telephone_001": ROOT / "runs/2026-08-11_heldout-vintage-telephone/production/heldout_vintage_telephone_production.blend",
     "heldout_cc0_watering_can_001": ROOT / "runs/2026-08-11_heldout-watering-can/production/heldout_watering_can_production.blend",

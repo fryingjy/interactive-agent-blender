@@ -1,0 +1,35 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "source_file": "runs/2026-08-12_watering-can-final-bevel-corrective/heldout_watering_can_production_fully_corrected.blend",
+  "reverted_objects": [
+    "Rose_Head",
+    "Connected_Tapered_Spout",
+    "Arched_Handle"
+  ],
+  "evaluated_health": {
+    "Rose_Head": {
+      "evaluated_vertices": 56,
+      "evaluated_faces": 54,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    },
+    "Connected_Tapered_Spout": {
+      "evaluated_vertices": 80,
+      "evaluated_faces": 78,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    },
+    "Arched_Handle": {
+      "evaluated_vertices": 116,
+      "evaluated_faces": 114,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "post_revert_audit_status": {
+    "Rose_Head": "REVIEW_REQUIRED",
+    "Connected_Tapered_Spout": "REVIEW_REQUIRED",
+    "Arched_Handle": "REVIEW_REQUIRED"
+  },
+  "all_clean": true
+}
