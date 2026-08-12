@@ -180,12 +180,17 @@ physical design edge"). `runs/2026-08-12_watering-can-rounded-parts-bevel-revert
 `runs/2026-08-12_telephone-handset-bevel-reverted/` remove the incorrect Bevel weighting from all
 four objects (keeping Smooth by Angle, matching `Connected_Vessel`'s own successful strategy of real
 Bevel weight only at genuine seams), independently verified and re-confirmed against the reference by
-eye. The telephone's flat trim (dial apertures, clock face, panels) used the same rule but is a
-different geometric class -- real rectangular hardware, where the reference does show genuine hard
-edges -- and a visual spot-check found it consistent with the reference; it was not reverted. The
-watering can's `Opening_Rim`/`Opening_Shadow` are left as an explicit open question: the reference
-does show a real pressed-lip edge there, and the visible faceting matches the pre-existing, already-
-accepted `Connected_Vessel` body's own segment count rather than a new defect.
+eye. A later structural check (grouping each object's weighted edges by dihedral angle and position,
+the same method that exposed the sword's continuous tapering line in
+`smooth_by_angle.md`'s live-scene section) confirms the remaining corrections did not share the same
+defect: the telephone's `Clock_Face`, `Lower_Panel_Trim`, and `Upper_Face_Trim` each weight edges
+that fall into exactly one discrete 90-degree bucket, and `Dial_Aperture` falls into exactly two
+(90 and 30 degrees) -- discrete-ring step transitions, never a continuously drifting line. The
+watering can's `Opening_Rim` (64 edges) and `Opening_Shadow` (32 edges) show the identical pattern:
+each forms exactly two distinct height rings, both entirely at 90 degrees. This is structurally the
+same signature as the mechanical plate in the live-scene section, not the sword or the reverted
+round parts, and closes what was previously left as an open question: these corrections are
+confirmed correct, not merely visually plausible.
 
 **Boombox: rejected and removed (2026-08-12).** Separately from the shading-policy work, the
 boombox benchmark passed every automated gate (0.816 mean IoU, 15/15 assertions) but was rejected on

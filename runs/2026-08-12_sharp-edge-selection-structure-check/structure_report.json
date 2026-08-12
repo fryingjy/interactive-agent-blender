@@ -1,0 +1,85 @@
+{
+  "heldout_cc0_watering_can_001": {
+    "Opening_Rim": {
+      "weighted_edge_count": 64,
+      "distinct_angle_buckets_deg": [
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Opening_Shadow": {
+      "weighted_edge_count": 32,
+      "distinct_angle_buckets_deg": [
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Connected_Vessel": {
+      "weighted_edge_count": 192,
+      "distinct_angle_buckets_deg": [
+        0,
+        4,
+        20,
+        27,
+        42,
+        43,
+        53,
+        70,
+        71,
+        76
+      ],
+      "classification": "CONTINUOUS_DRIFT_PATTERN_REVIEW_NEEDED"
+    }
+  },
+  "heldout_cc0_vintage_telephone_001": {
+    "Clock_Face": {
+      "weighted_edge_count": 32,
+      "distinct_angle_buckets_deg": [
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Lower_Panel_Trim": {
+      "weighted_edge_count": 24,
+      "distinct_angle_buckets_deg": [
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Upper_Face_Trim": {
+      "weighted_edge_count": 24,
+      "distinct_angle_buckets_deg": [
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Dial_Aperture": {
+      "weighted_edge_count": 36,
+      "distinct_angle_buckets_deg": [
+        30,
+        90
+      ],
+      "classification": "DISCRETE_RING_PATTERN"
+    },
+    "Main_Housing": {
+      "weighted_edge_count": 100,
+      "distinct_angle_buckets_deg": [
+        25,
+        34,
+        38,
+        40,
+        43,
+        49,
+        74,
+        75,
+        90,
+        91,
+        92,
+        94,
+        98
+      ],
+      "classification": "CONTINUOUS_DRIFT_PATTERN_REVIEW_NEEDED"
+    }
+  }
+}
+
