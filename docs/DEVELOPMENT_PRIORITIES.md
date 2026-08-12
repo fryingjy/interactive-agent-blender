@@ -22,6 +22,28 @@ skills that improve editable hard-surface and subdivision assets from references
 Directional allocation is 70-80% hard surface/SubD/topology/reference/modifiers, 15-25%
 UV/material/export/retopology/production, and 0-5% foundational sculpt maintenance.
 
+## Effective priority order
+
+### P0 — core professional modeling
+
+Mesh modeling fundamentals; topology, edge flow, poles, loop termination, and contextual
+quad/triangle/n-gon judgment; SubD; hard surface; modifier strategy (Mirror, Bevel, Boolean,
+SubD, Solidify, Array, Curve); reference and multi-view reasoning; silhouette/proportion;
+surface/highlight and shading/normal diagnosis; complex multi-component props; strategy
+selection; failure recovery; cross-asset transfer; held-out benchmarks; independent verification.
+
+### P1 — production modeling
+
+Retopology fundamentals; UVs; high/low workflows; baking; materials; inspection lighting and
+rendering; export; game-ready preparation; stylized/low-poly; curves/procedural modeling; and
+Geometry Nodes only where it materially improves the asset workflow.
+
+### P2 — deferred specialization
+
+Advanced sculpting, character/facial sculpting, advanced organic modeling, anatomy,
+character-specific workflows, advanced facial retopology, and character-deformation
+specialization. Existing evidence remains **KNOWN / DEFERRED**; it is not deleted or invalidated.
+
 ## Binding decisions
 
 - Sculpting remains in the knowledge base as **FOUNDATIONAL / DEFERRED**.

@@ -1,0 +1,187 @@
+{
+  "lab": "heldout_watering_can",
+  "stage": "candidate_v1",
+  "construction_status": "built from neutral renders only",
+  "objects": 6,
+  "mesh_primitive_operators_used": 0,
+  "mesh_records": {
+    "Connected_Vessel": {
+      "base": {
+        "vertices": 162,
+        "edges": 320,
+        "faces": 160,
+        "quads": 160,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      },
+      "evaluated": {
+        "vertices": 690,
+        "edges": 1376,
+        "faces": 688,
+        "quads": 688,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      }
+    },
+    "Connected_Tapered_Spout": {
+      "base": {
+        "vertices": 80,
+        "edges": 156,
+        "faces": 78,
+        "quads": 78,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      },
+      "evaluated": {
+        "vertices": 80,
+        "edges": 156,
+        "faces": 78,
+        "quads": 78,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      }
+    },
+    "Rose_Head": {
+      "base": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "quads": 54,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      },
+      "evaluated": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "quads": 54,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      }
+    },
+    "Arched_Handle": {
+      "base": {
+        "vertices": 88,
+        "edges": 162,
+        "faces": 76,
+        "quads": 64,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "connected_components": 3
+      },
+      "evaluated": {
+        "vertices": 88,
+        "edges": 162,
+        "faces": 76,
+        "quads": 64,
+        "non_manifold_edges": 32,
+        "degenerate_faces": 0,
+        "connected_components": 3
+      }
+    },
+    "Opening_Rim": {
+      "base": {
+        "vertices": 64,
+        "edges": 128,
+        "faces": 64,
+        "quads": 64,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      },
+      "evaluated": {
+        "vertices": 64,
+        "edges": 128,
+        "faces": 64,
+        "quads": 64,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      }
+    },
+    "Opening_Shadow": {
+      "base": {
+        "vertices": 50,
+        "edges": 96,
+        "faces": 48,
+        "quads": 48,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      },
+      "evaluated": {
+        "vertices": 50,
+        "edges": 96,
+        "faces": 48,
+        "quads": 48,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "connected_components": 1
+      }
+    }
+  },
+  "silhouette_records": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-watering-can\\candidate_v3\\candidate_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected_Vessel",
+        "Connected_Tapered_Spout",
+        "Rose_Head",
+        "Arched_Handle",
+        "Opening_Rim",
+        "Opening_Shadow"
+      ],
+      "silhouette_fill_ratio": 0.0859
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-watering-can\\candidate_v3\\candidate_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected_Vessel",
+        "Connected_Tapered_Spout",
+        "Rose_Head",
+        "Arched_Handle",
+        "Opening_Rim",
+        "Opening_Shadow"
+      ],
+      "silhouette_fill_ratio": 0.1114
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-11_heldout-watering-can\\candidate_v3\\candidate_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "Connected_Vessel",
+        "Connected_Tapered_Spout",
+        "Rose_Head",
+        "Arched_Handle",
+        "Opening_Rim",
+        "Opening_Shadow"
+      ],
+      "silhouette_fill_ratio": 0.1009
+    }
+  ],
+  "assertions": {
+    "source_geometry_not_imported": true,
+    "body_one_component_all_quad": true,
+    "spout_one_component_all_quad": true,
+    "body_and_spout_closed": true,
+    "body_uses_16_vertices": true,
+    "spout_uses_12_vertices": true,
+    "weighted_bevel_complete": true,
+    "handle_is_one_continuous_member": false,
+    "all_meshes_have_uvs_and_materials": true,
+    "all_evaluated_meshes_nondegenerate": true,
+    "silhouette_render_succeeded": true
+  },
+  "pass": false
+}

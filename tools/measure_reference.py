@@ -32,11 +32,30 @@ import numpy as np
 from PIL import Image
 
 
-def measure(image_path, bg_threshold=240):
-    img = Image.open(image_path).convert("RGB")
-    arr = np.array(img).astype(int)
-    is_bg = np.all(arr > bg_threshold, axis=2)
-    mask = ~is_bg
+def measure(image_path, bg_threshold=240, alpha_threshold=128):
+    """bg_threshold drives RGB-background detection (a photo/render on a
+    near-white background). alpha_threshold drives alpha-channel detection
+    instead, used automatically when the image has a real alpha channel
+    with actual variation -- this project's own render_silhouette() output
+    (transparent background, opaque black fill) has RGB=(0,0,0) for BOTH
+    background and foreground, so RGB-threshold detection cannot
+    distinguish them at all; only the alpha channel can. Found live
+    measuring the watering-can benchmark's reference masks, which are
+    exactly this format."""
+    img_raw = Image.open(image_path)
+    has_alpha = img_raw.mode in ("RGBA", "LA") or "transparency" in img_raw.info
+    if has_alpha:
+        img_rgba = img_raw.convert("RGBA")
+        alpha = np.array(img_rgba)[:, :, 3].astype(int)
+        if alpha.min() != alpha.max():
+            mask = alpha > alpha_threshold
+        else:
+            has_alpha = False
+    if not has_alpha:
+        img = img_raw.convert("RGB")
+        arr = np.array(img).astype(int)
+        is_bg = np.all(arr > bg_threshold, axis=2)
+        mask = ~is_bg
     ys, xs = np.where(mask)
     if len(xs) == 0:
         return {"error": "no non-background pixels found"}
@@ -58,7 +77,7 @@ def measure(image_path, bg_threshold=240):
             })
 
     return {
-        "image_size_px": list(img.size),
+        "image_size_px": list(img_raw.size),
         "silhouette_bbox_px": {"x": [x0, x1], "y": [y0, y1]},
         "silhouette_size_px": {"width": width, "height": height},
         "aspect_ratio_w_over_h": round(width / height, 4) if height else None,
