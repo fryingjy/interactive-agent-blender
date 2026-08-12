@@ -67,11 +67,38 @@ implemented, has a genuinely auditable path (`WEIGHT`) that only each family's p
 real-but-differently-auditable path (`ANGLE`/`VGROUP`) used by a meaningful fraction of secondary
 components, and a real no-bevel-at-all gap on the rest that has not been triaged.
 
+## No-Bevel triage (third pass)
+
+`tools/run_no_bevel_dihedral_triage.py` measures the actual dihedral angle of every edge on each of
+the 34 no-Bevel objects (11 boombox, 17 telephone, 6 watering-can) and classifies an object as
+`LEGITIMATELY_FLAT` only if its maximum dihedral angle is under 1 degree — i.e. it could not
+meaningfully be beveled at all. Output: `no_bevel_triage.json`.
+
+**Result: 33 of 34 are `UNTREATED_SHARP_EDGE_GAP`, not legitimately flat.** Only one object,
+`WateringCan_Baked_Badge` (a 4-vertex flat decal plane with zero two-face edges), is genuinely
+bevel-inapplicable. Every other no-Bevel object has real sharp geometry with a maximum dihedral angle
+between 58.5 and 139.4 degrees — most at exactly 90 degrees (cassette reels, fasteners, dial
+apertures, trim panels) — that received no edge treatment of any kind.
+
+This is a materially larger finding than "some decorative trim is unbeveled." Two of the untreated
+objects are entire **primary structural components**, not secondary detail, that their own session
+reports described as finished connected cages:
+
+- The vintage telephone's **`Handset`** (324 two-face edges, up to 168 over 25 degrees, max 71.82
+  degrees) — the session report calls it "one closed connected 162-quad longitudinal skin," on par
+  with the housing, but only the housing actually received the `WEIGHT`-limited Bevel.
+- The watering can's **`Connected_Tapered_Spout`** and **`Arched_Handle`** (156 and 228 two-face
+  edges respectively, up to 92.2 degrees) — both described in the session report as their own closed
+  all-quad path lofts alongside `Connected_Vessel`, but only the vessel received edge treatment.
+
+Only `Connected_Vessel` (watering can) and the telephone's `Housing` are confirmed to carry the full
+policy; their sibling primary components do not.
+
 ## Not done in this run
 
 - No production `.blend` was modified, re-shaded, or re-saved.
-- The 11/17/6 no-Bevel objects per family above have not been individually classified as
-  "legitimately simple" versus "missing intended treatment."
+- The untreated objects identified above have not been rebuilt with semantic bevel weights; this run
+  measures and classifies, it does not repair.
 - Retrying any of the four families' secondary components under the full `WEIGHT` policy, or
   deciding whether `ANGLE`/`VGROUP` should become a second fully-sanctioned `PASS` path with its own
   auditable-intent mechanism, is separate, larger follow-on work.
