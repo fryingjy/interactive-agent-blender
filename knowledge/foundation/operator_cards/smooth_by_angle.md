@@ -123,6 +123,34 @@ weights, but it cannot judge whether the intent itself was correct -- that check
 reference comparison, done per object, not a blanket geometric rule applied to every untreated
 object in one pass.
 
+## What correct selection actually looks like (live artist-scene inspection)
+
+Read-only inspection (`mcp__blender__execute_blender_code`, no file saved or mutated) of the user's
+own live reference scene -- a hard-surface mechanical plate and a faceted crystal-blade sword, both
+`Mirror -> Bevel(WEIGHT) -> Subdivision -> Smooth by Angle` -- makes the correct rule concrete:
+
+- **The mechanical plate**: all 153 weighted edges have a two-face dihedral angle of 90-146 degrees,
+  and none of them are mirror-seam edges. It is a simple box-derived part, so every real design edge
+  happens to be a right angle, and the mirror seam is a flat, invisible plane with nothing to
+  preserve. A threshold rule would have accidentally worked here -- which is exactly why it looked
+  plausible in the first place.
+- **The sword blade**: 43 weighted edges span 0-90.5 degrees, and a meaningful fraction of them
+  (edges with only one linked face in the base half-mesh) are **mirror-seam edges along the blade's
+  centerline** -- weighted specifically so the central ridge stays crisp once Mirror joins the two
+  halves and Subdivision would otherwise round it away. The remaining weighted edges trace one
+  continuous facet line running from the guard to the tip, and its measured angle changes
+  continuously along that single line -- about 67 degrees near the wide base, down to about 15
+  degrees near the narrow tip -- because the blade tapers. It is one intentional design line the
+  whole way, selected because it *is* that line, not because any individual edge cleared a angle
+  cutoff; a fixed threshold would have silently dropped its tip half.
+
+**The actual rule:** trace continuous design lines across the surface -- a mirror-seam ridge that
+should stay visible, a facet boundary that runs from one landmark to another -- and weight every
+edge along that traced line, even as its local angle drifts. Do not evaluate edges independently by
+angle. Whether a mirror seam itself needs weighting depends on whether the seam is a visible ridge
+in the design (the sword) or an invisible flat plane (the mechanical plate) -- another case that
+requires looking at the actual shape, not a rule that applies uniformly to every Mirror modifier.
+
 ## Evidence
 
 `runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report, 18/18
