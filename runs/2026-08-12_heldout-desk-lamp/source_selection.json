@@ -1,0 +1,22 @@
+{
+  "declared_at": "2026-08-12T11:10:00Z",
+  "declared_before_source_download_or_render": true,
+  "asset_id": "desk_lamp_arm_01",
+  "asset_page": "https://polyhaven.com/a/desk_lamp_arm_01",
+  "license": "CC0",
+  "source_type": "isolated GLTF used only for neutral reference rendering",
+  "candidate_source_geometry_access": false,
+  "visual_thresholds": {
+    "front_iou_min": 0.68,
+    "side_iou_min": 0.70,
+    "top_iou_min": 0.58,
+    "mean_iou_min": 0.66
+  },
+  "required_strategy": {
+    "articulated_assemblies": ["base clamp", "lower arm", "upper arm", "joint hubs", "lamp shade"],
+    "continuous_members": ["each arm housing", "each spring or cable path"],
+    "forbidden": ["disconnected primitive stacks standing in for articulated arms", "one joined mesh that prevents plausible articulation"]
+  },
+  "required_process_evidence": ["planner checkpoint at reference analysis", "planner checkpoint after primary blockout", "fresh independent Blender verification", "retained failure if encountered"],
+  "required_production_handoff": ["authored UVs", "GLB export", "fresh named-engine import"]
+}

@@ -111,6 +111,8 @@ _OPS = {
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
     "set_shading": object_ops.set_shading,
+    "set_smooth_by_angle": object_ops.set_smooth_by_angle,
+    "set_bevel_weight_by_ids": object_ops.set_bevel_weight_by_ids,
 }
 
 
@@ -454,6 +456,9 @@ class ModelerServer:
             "surface_diagnostics": evaluated_probe.evaluated_surface_diagnostics(name),
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
+
+    def cmd_get_hard_surface_shading_audit(self, name):
+        return object_ops.hard_surface_shading_audit(name)
 
     def cmd_get_evaluated_defect_regions(self, name, area_outlier_ratio=0.05, angle_threshold_degrees=10, angle_local_spike_ratio=2.0, max_tickets=20):
         return evaluated_probe.evaluated_defect_regions(

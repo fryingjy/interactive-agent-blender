@@ -1,0 +1,296 @@
+{
+  "lab": "heldout_desk_lamp",
+  "stage": "candidate_v1",
+  "construction": "neutral references only; procedural fallback does not count as typed runtime evidence",
+  "planner_checkpoints": [
+    {
+      "disposition": "INSPECT",
+      "action": "COLLECT_STAGE_GATE_EVIDENCE",
+      "target_object": null,
+      "target_region": null,
+      "rationale": [
+        "missing evidence: component_graph_pass",
+        "missing evidence: measured_ratio_count",
+        "missing evidence: uncertainty_recorded"
+      ],
+      "expected_effect": "Resolve the next unsupported claim in the REFERENCE_ANALYSIS gate.",
+      "verification": [
+        "rerun the stage gate with newly observed evidence"
+      ],
+      "observed_revision": 0,
+      "confidence": "HIGH",
+      "operation": "get_viewport_state",
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    },
+    {
+      "disposition": "INSPECT",
+      "action": "LOCALIZE_REFERENCE_MISMATCH",
+      "target_object": "LowerArmRailL",
+      "target_region": "arm span",
+      "rationale": [
+        "highest-priority visual ticket is contour_error",
+        "ticket severity is 0.700"
+      ],
+      "expected_effect": "Reduce the named local reference error without regressing other relevant views.",
+      "verification": [
+        "recompute the ticket metric",
+        "check all relevant views for regression",
+        "inspect evaluated surface"
+      ],
+      "observed_revision": 1,
+      "confidence": "LOW",
+      "operation": "render_semantic_region",
+      "operation_params": {},
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    }
+  ],
+  "mesh_records": {
+    "Clamp_Base": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "Clamp_Jaw": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "LowerArmRailL": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "LowerArmRailR": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "UpperArmRailL": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "UpperArmRailR": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "BaseHub": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "ElbowHub": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "ShadeHub": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "LowerTensionCable": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "UpperTensionCable": {
+      "base": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 44,
+        "faces": 42,
+        "quads": 42,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "Lamp_Shade": {
+      "base": {
+        "verts": 82,
+        "faces": 80,
+        "quads": 80,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 82,
+        "faces": 80,
+        "quads": 80,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    },
+    "Lamp_Bulb": {
+      "base": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      },
+      "evaluated": {
+        "verts": 32,
+        "faces": 30,
+        "quads": 30,
+        "components": 1,
+        "nonmanifold": 0,
+        "degenerate": 0
+      }
+    }
+  },
+  "assertions": {
+    "source_absent": true,
+    "primary_members_closed_all_quad": true,
+    "all_meshes_have_uv_material": true,
+    "articulated_assemblies_preserved": true,
+    "sparse_radial_controls": true,
+    "silhouette_renders": true,
+    "evaluated_clean": true
+  },
+  "pass": true
+}

@@ -34,6 +34,38 @@
       }
     },
     {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\matcap_front.png",
+      "pass_type": "matcap",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        256,
+        256
+      ],
+      "target_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "frame_objects": [
+        "Pass_Body",
+        "Pass_Ring"
+      ],
+      "camera_location": [
+        0.10500001907348633,
+        -8.56600284576416,
+        0.0
+      ],
+      "camera_ortho_scale": 5.139601540761962,
+      "scene_revision": 314,
+      "foreground_fill_ratio": 0.196518,
+      "foreground_unique_colors_5bit": 87,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
       "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_visual-passes\\wireframe_front.png",
       "pass_type": "wireframe",
       "view": "front",
@@ -168,6 +200,7 @@
     "all_have_camera_metadata": true,
     "wireframe_has_visible_edges": true,
     "wireframe_sparser_than_solid": true,
+    "matcap_has_surface_variation": true,
     "normal_has_direction_colors": true,
     "depth_has_gradient": true,
     "component_mask_has_multiple_colors": true

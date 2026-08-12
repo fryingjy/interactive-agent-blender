@@ -1,0 +1,9 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "phase": "transaction-path lab initial fixture variant",
+  "action": "Created BEVEL and SUBSURF modifiers directly after committing semantic bevel weights, before starting Smooth by Angle.",
+  "observed": "cmd_begin_decision rejected the next decision because the layered state fingerprint detected modifier changes outside the typed transaction path.",
+  "result": "REJECTED_AS_EXPECTED",
+  "correction": "Create fixed lab modifiers before the runtime baseline. In production, route a modifier change through its own typed decision before continuing.",
+  "claim_boundary": "This proves external modifier-state detection, not an accepted modeling result."
+}

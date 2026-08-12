@@ -38,7 +38,7 @@ def main():
 
     names = [body.name, ring.name]
     records = []
-    for pass_type in ("solid", "wireframe", "normal", "depth", "component_mask"):
+    for pass_type in ("solid", "matcap", "wireframe", "normal", "depth", "component_mask"):
         records.append(render_diagnostic_pass(names, str(out / f"{pass_type}_front.png"), pass_type, view="front", resolution=256, margin=1.2))
     by_type = {record["pass_type"]: record for record in records if "pass_type" in record}
     assertions = {
@@ -47,6 +47,7 @@ def main():
         "all_have_camera_metadata": all(record["projection"] == "ORTHO" and len(record["camera_location"]) == 3 for record in records),
         "wireframe_has_visible_edges": by_type["wireframe"]["foreground_fill_ratio"] > 0.0,
         "wireframe_sparser_than_solid": by_type["wireframe"]["foreground_fill_ratio"] < by_type["solid"]["foreground_fill_ratio"],
+        "matcap_has_surface_variation": by_type["matcap"]["foreground_unique_colors_5bit"] >= 3,
         "normal_has_direction_colors": by_type["normal"]["foreground_unique_colors_5bit"] >= 3,
         "depth_has_gradient": by_type["depth"]["foreground_unique_colors_5bit"] >= 3,
         "component_mask_has_multiple_colors": by_type["component_mask"]["foreground_unique_colors_5bit"] >= 2,

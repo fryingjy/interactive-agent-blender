@@ -228,12 +228,12 @@ def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
 def render_diagnostic_pass(name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
     """Render a controlled Blender-native diagnostic pass.
 
-    Supported passes are `solid`, `wireframe`, `normal`, `depth`, and `component_mask`. Normal and
+    Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, and `component_mask`. Normal and
     depth colors are generated on temporary copies of the modifier-evaluated meshes; source objects
     and scene settings are restored. Camera/projection metadata and scene revision are returned so
     an image cannot become detached from the state that produced it.
     """
-    valid_passes = {"solid", "wireframe", "normal", "depth", "component_mask"}
+    valid_passes = {"solid", "matcap", "wireframe", "normal", "depth", "component_mask"}
     if pass_type not in valid_passes:
         return {"error": f"pass_type must be one of {sorted(valid_passes)}"}
     names = [name] if isinstance(name, str) else list(name)
@@ -322,18 +322,20 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
         scene.render.image_settings.color_mode = "RGBA"
         scene.render.filepath = output_path
         shading.type = "SOLID"
-        shading.light = "STUDIO" if pass_type == "solid" else "FLAT"
-        shading.show_shadows = pass_type == "solid"
-        shading.show_cavity = pass_type == "solid"
+        # MatCap is intentionally a fast Solid-mode review pass: useful for
+        # highlight continuity, missing bevels, faceting, and soft corners
+        # without a material/light/render-engine setup. It is visual evidence,
+        # not a substitute for evaluated topology or a beauty render.
+        shading.light = "MATCAP" if pass_type == "matcap" else ("STUDIO" if pass_type == "solid" else "FLAT")
+        shading.show_shadows = pass_type in {"solid", "matcap"}
+        shading.show_cavity = pass_type in {"solid", "matcap"}
         if pass_type in {"normal", "depth"}:
             shading.color_type = "VERTEX"
         elif pass_type == "component_mask":
             shading.color_type = "OBJECT"
         else:
             shading.color_type = "SINGLE"
-            shading.single_color = (
-                (0.55, 0.55, 0.55) if pass_type == "solid" else (0.9, 0.9, 0.9)
-            )
+            shading.single_color = (0.55, 0.55, 0.55) if pass_type in {"solid", "matcap"} else (0.9, 0.9, 0.9)
         out_dir = os.path.dirname(output_path)
         if out_dir:
             os.makedirs(out_dir, exist_ok=True)

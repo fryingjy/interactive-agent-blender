@@ -336,6 +336,7 @@ class CurriculumInventoryTests(unittest.TestCase):
             "Bisect", "Bridge Edge Loops", "Spin", "Merge", "Merge by Distance", "Dissolve",
             "Delete", "Fill", "Grid Fill", "Edge Slide", "Vertex Slide", "Rip", "Split",
             "Separate", "Symmetrize", "Normals", "Shade Smooth", "Shade Flat",
+            "Smooth by Angle",
         }
         present = {
             line.split("|")[1].strip()

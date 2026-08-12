@@ -8,6 +8,11 @@ import time
 
 import bpy
 
+try:
+    from . import persistent_ids
+except ImportError:
+    import persistent_ids
+
 
 _PRIMITIVES = {
     "cube": bpy.ops.mesh.primitive_cube_add,
@@ -92,6 +97,151 @@ def set_shading(name, smooth=True):
             changed += 1
     obj.data.update()
     return {"smooth": value, "changed_polygons": changed, "polygon_count": len(obj.data.polygons)}
+
+
+def set_smooth_by_angle(name, angle=0.5235987756, keep_sharp_edges=True):
+    """Apply Blender's Smooth by Angle asset to one mesh.
+
+    This is the hard-surface default when a mesh needs normal interpolation
+    without smoothing across every design transition.  It deliberately does
+    not replace topology: first identify semantic hard edges, use a scoped
+    Bevel (normally WEIGHT) where a physical radius is required, put Bevel
+    before SubD when both are warranted, then use this for the remaining
+    normal split/shading behavior.  Do not call ``set_shading(..., True)`` as
+    a blanket substitute for that sequence.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    bpy.ops.object.select_all(action="DESELECT")
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
+    result = bpy.ops.object.shade_smooth_by_angle(
+        angle=float(angle), keep_sharp_edges=bool(keep_sharp_edges)
+    )
+    if "FINISHED" not in result:
+        raise RuntimeError(f"Smooth by Angle failed for '{name}': {result}")
+    obj["shading_policy"] = "SMOOTH_BY_ANGLE"
+    obj["smooth_by_angle_radians"] = float(angle)
+    obj["smooth_by_angle_keep_sharp_edges"] = bool(keep_sharp_edges)
+    return {
+        "shading": "SMOOTH_BY_ANGLE",
+        "angle": float(angle),
+        "keep_sharp_edges": bool(keep_sharp_edges),
+        "modifier_count": len(obj.modifiers),
+    }
+
+
+def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
+    """Assign a semantic bevel-weight set by persistent edge IDs.
+
+    The caller must first inspect the cage and choose the design edges that
+    require a physical radius. It is not a "make everything sharp" command.
+    Blender 5 stores this as the generic ``bevel_weight_edge`` float
+    attribute, so persistent IDs protect authored intent across unrelated
+    topology edits.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    if obj.mode == "EDIT":
+        raise ValueError("set_bevel_weight_by_ids requires Object Mode; leave Edit Mode before changing mesh attributes")
+    value = float(weight)
+    if not 0.0 <= value <= 1.0:
+        raise ValueError(f"weight must be in [0, 1], got {weight}")
+    persistent_ids.ensure_persistent_ids(name)
+    id_map = persistent_ids.get_id_maps(name)["edges"]["id_to_index"]
+    attribute = obj.data.attributes.get("bevel_weight_edge")
+    if attribute is None:
+        attribute = obj.data.attributes.new("bevel_weight_edge", "FLOAT", "EDGE")
+    if attribute.domain != "EDGE":
+        raise ValueError("bevel_weight_edge exists but is not an EDGE-domain attribute")
+    if clear_others:
+        for item in attribute.data:
+            item.value = 0.0
+    assigned, missing = [], []
+    for agent_id in edge_ids:
+        edge_index = id_map.get(int(agent_id))
+        if edge_index is None:
+            missing.append(int(agent_id))
+            continue
+        attribute.data[edge_index].value = value
+        assigned.append(int(agent_id))
+    # Persist exactly what this decision regarded as sharp so later review can
+    # distinguish an incomplete semantic map from an intentionally sparse one.
+    index_to_id = persistent_ids.get_id_maps(name)["edges"]["index_to_id"]
+    obj["hard_surface_intended_bevel_edge_ids"] = sorted(
+        int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 0.999
+    )
+    obj.data.update()
+    return {
+        "attribute": "bevel_weight_edge",
+        "weight": value,
+        "assigned_edge_ids": assigned,
+        "missing_edge_ids": missing,
+        "clear_others": bool(clear_others),
+    }
+
+
+def hard_surface_shading_audit(name):
+    """Read whether an annotated hard-surface mesh follows the active policy.
+
+    This intentionally cannot decide which unannotated edges *should* be
+    sharp. It verifies the narrower, auditable contract: identified semantic
+    edges are weighted, a WEIGHT Bevel is ordered before any SubD, the normal
+    policy is Smooth by Angle, and unapplied non-uniform scale is visible.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    persistent_ids.ensure_persistent_ids(name)
+    id_maps = persistent_ids.get_id_maps(name)["edges"]
+    attr = obj.data.attributes.get("bevel_weight_edge")
+    weighted_ids = []
+    if attr is not None and attr.domain == "EDGE":
+        weighted_ids = sorted(
+            int(id_maps["index_to_id"][index]) for index, item in enumerate(attr.data)
+            if item.value > 0.999 and index in id_maps["index_to_id"]
+        )
+    intended_ids = sorted(int(item) for item in obj.get("hard_surface_intended_bevel_edge_ids", []))
+    modifier_types = [modifier.type for modifier in obj.modifiers]
+    weighted_bevel_indices = [
+        index for index, modifier in enumerate(obj.modifiers)
+        if modifier.type == "BEVEL" and modifier.limit_method == "WEIGHT"
+    ]
+    subd_indices = [index for index, modifier in enumerate(obj.modifiers) if modifier.type == "SUBSURF"]
+    scale = tuple(float(item) for item in obj.scale)
+    uniform_scale = max(scale) - min(scale) < 1e-6
+    blanket_smooth = bool(obj.data.polygons) and all(poly.use_smooth for poly in obj.data.polygons)
+    checks = {
+        "semantic_intent_recorded": bool(intended_ids),
+        "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
+        "weight_limited_bevel_present": bool(weighted_bevel_indices),
+        "bevel_before_subd": not subd_indices or (bool(weighted_bevel_indices) and min(weighted_bevel_indices) < min(subd_indices)),
+        "smooth_by_angle_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
+        "uniform_object_scale": uniform_scale,
+        "not_unannotated_blanket_smooth": not (blanket_smooth and obj.get("shading_policy") != "SMOOTH_BY_ANGLE"),
+    }
+    passed = all(checks.values())
+    warnings = []
+    if not checks["semantic_intent_recorded"]:
+        warnings.append("No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.")
+    if not checks["uniform_object_scale"]:
+        warnings.append("Non-uniform object scale can distort Bevel width in world space.")
+    if not checks["smooth_by_angle_recorded"]:
+        warnings.append("Smooth by Angle was not recorded as the normal policy.")
+    if not checks["bevel_before_subd"]:
+        warnings.append("A WEIGHT-limited Bevel must precede Subdivision Surface for this policy.")
+    return {
+        "name": name,
+        "status": "PASS" if passed else "REVIEW_REQUIRED",
+        "checks": checks,
+        "weighted_edge_ids": weighted_ids,
+        "intended_bevel_edge_ids": intended_ids,
+        "modifier_types": modifier_types,
+        "object_scale": scale,
+        "warnings": warnings,
+    }
 
 
 def undo():

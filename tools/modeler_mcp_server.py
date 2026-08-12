@@ -268,8 +268,14 @@ def get_evaluated_state(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_hard_surface_shading_audit(object_name: str) -> dict:
+    """Audit a hard-surface mesh's recorded semantic bevel weights, WEIGHT Bevel/SubD order, Smooth by Angle policy, and object-scale warning. Missing semantic intent is reported as REVIEW_REQUIRED rather than inferred."""
+    return _call("get_hard_surface_shading_audit", name=object_name)
+
+
+@mcp.tool()
 def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
-    """Render a Blender-native solid, wireframe, normal, depth, or component_mask diagnostic PNG with scene revision and camera metadata."""
+    """Render a Blender-native solid, MatCap, wireframe, normal, depth, or component-mask diagnostic PNG with scene revision and camera metadata."""
     return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)
 
 
