@@ -13,6 +13,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -32,7 +34,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -43,6 +45,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -69,6 +73,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -95,6 +101,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -121,6 +129,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -147,6 +157,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -166,7 +178,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -177,6 +189,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -196,7 +210,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -207,6 +221,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -226,7 +242,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -237,6 +253,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -256,7 +274,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -267,6 +285,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -286,7 +306,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -297,6 +317,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -316,7 +338,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -327,6 +349,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -346,7 +370,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -357,6 +381,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -383,6 +409,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -409,6 +437,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -435,6 +465,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -461,6 +493,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -480,7 +514,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -491,6 +525,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -510,7 +546,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses VGROUP-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses VGROUP-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -521,6 +557,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -540,7 +578,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -551,6 +589,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -570,7 +610,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -581,6 +621,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -601,7 +643,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -612,6 +654,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -632,7 +676,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -643,6 +687,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -669,6 +715,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -695,6 +743,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -714,7 +764,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -725,6 +775,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -744,7 +796,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -755,6 +807,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -781,6 +835,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -800,7 +856,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -811,6 +867,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -830,7 +888,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -841,6 +899,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -860,7 +920,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -871,6 +931,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -890,7 +952,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -901,6 +963,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -920,7 +984,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -931,6 +995,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -950,7 +1016,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -961,6 +1027,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -980,7 +1048,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -991,6 +1059,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1010,7 +1080,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1021,6 +1091,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1040,7 +1112,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1051,6 +1123,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1070,7 +1144,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1081,6 +1155,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1100,7 +1176,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1111,6 +1187,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1130,7 +1208,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1141,6 +1219,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1160,7 +1240,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1171,6 +1251,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1190,7 +1272,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         }
@@ -1209,6 +1291,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": true,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1741,6 +1825,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1767,6 +1853,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1786,7 +1874,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -1797,6 +1885,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": false,
@@ -1816,7 +1906,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Non-uniform object scale can distort Bevel width in world space.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
@@ -1828,6 +1918,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1854,6 +1946,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1880,6 +1974,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1906,6 +2002,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1932,6 +2030,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1958,6 +2058,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -1984,6 +2086,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2010,6 +2114,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2036,6 +2142,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2062,6 +2170,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2088,6 +2198,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2114,6 +2226,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2140,6 +2254,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": false,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2160,9 +2276,9 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy.",
-            "A WEIGHT-limited Bevel must precede Subdivision Surface for this policy."
+            "The intent-recorded Bevel must precede Subdivision Surface for this policy."
           ]
         },
         "Handset": {
@@ -2172,6 +2288,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": false,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2191,7 +2309,7 @@
           "warnings": [
             "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
             "Smooth by Angle was not recorded as the normal policy.",
-            "A WEIGHT-limited Bevel must precede Subdivision Surface for this policy."
+            "The intent-recorded Bevel must precede Subdivision Surface for this policy."
           ]
         },
         "Hour_Hand": {
@@ -2201,6 +2319,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2220,7 +2340,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2231,6 +2351,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2257,6 +2379,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": true,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2389,6 +2513,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2408,7 +2534,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2419,6 +2545,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2445,6 +2573,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2464,7 +2594,7 @@
             1.0
           ],
           "warnings": [
-            "No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses ANGLE-limited Bevel, a deliberate but differently auditable scoping mechanism this check cannot yet compare against recorded intent.",
+            "No WEIGHT-based semantic edge-ID intent is recorded; this object uses ANGLE-limited Bevel but never recorded deliberate intent via set_bevel_scoping(), so it cannot be distinguished from an unmodified default.",
             "Smooth by Angle was not recorded as the normal policy."
           ]
         },
@@ -2475,6 +2605,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2509,6 +2641,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2535,6 +2669,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2561,6 +2697,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": true,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2784,6 +2922,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2810,6 +2950,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2836,6 +2978,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,
@@ -2862,6 +3006,8 @@
             "semantic_intent_recorded": false,
             "semantic_weights_match_intent": false,
             "weight_limited_bevel_present": false,
+            "angle_or_vgroup_intent_recorded": false,
+            "angle_or_vgroup_intent_matches_actual": false,
             "bevel_before_subd": true,
             "smooth_by_angle_recorded": false,
             "uniform_object_scale": true,

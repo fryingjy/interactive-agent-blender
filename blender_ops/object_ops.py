@@ -3,6 +3,7 @@ distinct from mesh_ops.py's mesh-editing bmesh helpers, since none of these
 touch bmesh at all.
 """
 
+import math
 import os
 import time
 
@@ -183,6 +184,64 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
     }
 
 
+def set_bevel_scoping(name, method, modifier_name=None, angle_deg=None, vertex_group=None, width=None, segments=None):
+    """Configure a Bevel modifier's scoping method and record matching deliberate
+    intent, for the two documented alternatives to WEIGHT (see bevel_modifier.md:
+    ANGLE correctly excludes coplanar triangulation edges in a controlled test).
+
+    Unlike WEIGHT (`set_bevel_weight_by_ids`, which maps to inspectable persistent
+    edge IDs), ANGLE and VGROUP intent is recorded as an explicit parameter value
+    the caller is asserting was a deliberate choice, not merely Blender's default
+    left untouched. This does not retroactively grant intent to an existing
+    unrecorded Bevel modifier; the caller must actively call this to claim it.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    if method not in ("ANGLE", "VGROUP"):
+        raise ValueError("set_bevel_scoping only handles ANGLE or VGROUP; use set_bevel_weight_by_ids for WEIGHT")
+    if method == "ANGLE" and angle_deg is None:
+        raise ValueError("angle_deg is required to record deliberate ANGLE intent")
+    if method == "VGROUP" and not vertex_group:
+        raise ValueError("vertex_group is required to record deliberate VGROUP intent")
+    if method == "VGROUP" and vertex_group not in obj.vertex_groups:
+        raise ValueError(f"vertex group '{vertex_group}' does not exist on '{name}'")
+
+    bevel = None
+    if modifier_name is not None:
+        bevel = obj.modifiers.get(modifier_name)
+        if bevel is None or bevel.type != "BEVEL":
+            raise ValueError(f"'{modifier_name}' is not a Bevel modifier on '{name}'")
+    else:
+        existing = [m for m in obj.modifiers if m.type == "BEVEL"]
+        bevel = existing[0] if existing else obj.modifiers.new("Semantic scoped edge radius", "BEVEL")
+
+    bevel.limit_method = method
+    if width is not None:
+        bevel.width = float(width)
+    if segments is not None:
+        bevel.segments = int(segments)
+    if method == "ANGLE":
+        bevel.angle_limit = math.radians(float(angle_deg))
+        obj["hard_surface_bevel_scoping_method"] = "ANGLE"
+        obj["hard_surface_bevel_angle_deg"] = float(angle_deg)
+        obj.pop("hard_surface_bevel_vertex_group", None)
+    else:
+        bevel.vertex_group = vertex_group
+        obj["hard_surface_bevel_scoping_method"] = "VGROUP"
+        obj["hard_surface_bevel_vertex_group"] = vertex_group
+        obj.pop("hard_surface_bevel_angle_deg", None)
+    obj.data.update()
+    return {
+        "modifier": bevel.name,
+        "limit_method": bevel.limit_method,
+        "angle_deg": float(angle_deg) if method == "ANGLE" else None,
+        "vertex_group": vertex_group if method == "VGROUP" else None,
+        "width": bevel.width,
+        "segments": bevel.segments,
+    }
+
+
 def hard_surface_shading_audit(name):
     """Read whether an annotated hard-surface mesh follows the active policy.
 
@@ -222,24 +281,60 @@ def hard_surface_shading_audit(name):
     scale = tuple(float(item) for item in obj.scale)
     uniform_scale = max(scale) - min(scale) < 1e-6
     blanket_smooth = bool(obj.data.polygons) and all(poly.use_smooth for poly in obj.data.polygons)
+
+    # Second, differently-shaped path to auditable intent: a caller that used
+    # set_bevel_scoping() to deliberately claim an ANGLE/VGROUP parameter, not
+    # merely leaving a modifier at whatever value it happened to have. This is
+    # additive -- it never grants intent to a bevel that never called it.
+    recorded_method = obj.get("hard_surface_bevel_scoping_method")
+    angle_scoped_indices = [index for index, modifier in bevel_modifiers if modifier.limit_method == "ANGLE"]
+    vgroup_scoped_indices = [index for index, modifier in bevel_modifiers if modifier.limit_method == "VGROUP"]
+    scoping_intent_recorded = recorded_method in ("ANGLE", "VGROUP")
+    scoping_intent_matches_actual = False
+    scoping_bevel_indices = []
+    if recorded_method == "ANGLE":
+        scoping_bevel_indices = angle_scoped_indices
+        recorded_angle = obj.get("hard_surface_bevel_angle_deg")
+        scoping_intent_matches_actual = bool(scoping_bevel_indices) and recorded_angle is not None and any(
+            abs(math.degrees(obj.modifiers[index].angle_limit) - float(recorded_angle)) < 0.01
+            for index in scoping_bevel_indices
+        )
+    elif recorded_method == "VGROUP":
+        scoping_bevel_indices = vgroup_scoped_indices
+        recorded_group = obj.get("hard_surface_bevel_vertex_group")
+        scoping_intent_matches_actual = bool(scoping_bevel_indices) and recorded_group is not None and any(
+            obj.modifiers[index].vertex_group == recorded_group for index in scoping_bevel_indices
+        )
+    angle_or_vgroup_path_ok = scoping_intent_recorded and scoping_intent_matches_actual
+    effective_bevel_indices = weighted_bevel_indices or (scoping_bevel_indices if angle_or_vgroup_path_ok else [])
+
     checks = {
         "semantic_intent_recorded": bool(intended_ids),
         "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
         "weight_limited_bevel_present": bool(weighted_bevel_indices),
-        "bevel_before_subd": not subd_indices or (bool(weighted_bevel_indices) and min(weighted_bevel_indices) < min(subd_indices)),
+        "angle_or_vgroup_intent_recorded": scoping_intent_recorded,
+        "angle_or_vgroup_intent_matches_actual": scoping_intent_matches_actual,
+        "bevel_before_subd": not subd_indices or (bool(effective_bevel_indices) and min(effective_bevel_indices) < min(subd_indices)),
         "smooth_by_angle_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
         "uniform_object_scale": uniform_scale,
         "not_unannotated_blanket_smooth": not (blanket_smooth and obj.get("shading_policy") != "SMOOTH_BY_ANGLE"),
     }
-    passed = all(checks.values())
+    weight_path_ok = checks["semantic_intent_recorded"] and checks["semantic_weights_match_intent"] and checks["weight_limited_bevel_present"]
+    passed = (
+        (weight_path_ok or angle_or_vgroup_path_ok)
+        and checks["bevel_before_subd"]
+        and checks["smooth_by_angle_recorded"]
+        and checks["uniform_object_scale"]
+        and checks["not_unannotated_blanket_smooth"]
+    )
     warnings = []
-    if not checks["semantic_intent_recorded"]:
+    if not weight_path_ok and not angle_or_vgroup_path_ok:
         if non_weight_scoped_indices and not weighted_bevel_indices:
             method_names = "/".join(bevel_scoping_methods)
             warnings.append(
-                f"No WEIGHT-based semantic edge-ID intent is recorded; this object instead uses "
-                f"{method_names}-limited Bevel, a deliberate but differently auditable scoping "
-                f"mechanism this check cannot yet compare against recorded intent."
+                f"No WEIGHT-based semantic edge-ID intent is recorded; this object uses "
+                f"{method_names}-limited Bevel but never recorded deliberate intent via "
+                f"set_bevel_scoping(), so it cannot be distinguished from an unmodified default."
             )
         else:
             warnings.append("No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.")
@@ -248,7 +343,7 @@ def hard_surface_shading_audit(name):
     if not checks["smooth_by_angle_recorded"]:
         warnings.append("Smooth by Angle was not recorded as the normal policy.")
     if not checks["bevel_before_subd"]:
-        warnings.append("A WEIGHT-limited Bevel must precede Subdivision Surface for this policy.")
+        warnings.append("The intent-recorded Bevel must precede Subdivision Surface for this policy.")
     return {
         "name": name,
         "status": "PASS" if passed else "REVIEW_REQUIRED",

@@ -48,13 +48,25 @@ truthfully infer every sharp design edge from arbitrary geometry.
 
 `ANGLE` and `VGROUP`-limited Bevel are recognized as distinct, real scoping mechanisms (reported in
 `bevel_limit_methods_present`) and given a more accurate warning than "no bevel at all" when no
-`WEIGHT`-based intent is recorded, but they still cannot reach `PASS`: neither maps to inspectable
-persistent edge IDs the way the `hard_surface_intended_bevel_edge_ids` property does, so the audit
-cannot verify their coverage against a recorded semantic map. A retroactive run against the four
-already-published held-out families (`runs/2026-08-12_shading-policy-retroactive-audit/`) found the
-boombox's real construction uses `ANGLE`/`VGROUP`-limited Bevel throughout with no `WEIGHT` bevel
-anywhere; that is a legitimate, documented technique (`bevel_modifier.md` records `ANGLE` correctly
-excluding coplanar triangulation edges), not equivalent to having no deliberate edge treatment.
+intent is recorded. A retroactive run against the four already-published held-out families
+(`runs/2026-08-12_shading-policy-retroactive-audit/`) found the boombox's real construction uses
+`ANGLE`/`VGROUP`-limited Bevel extensively with no `WEIGHT` bevel anywhere; that is a legitimate,
+documented technique (`bevel_modifier.md` records `ANGLE` correctly excluding coplanar triangulation
+edges), not equivalent to having no deliberate edge treatment.
+
+`set_bevel_scoping(name, method, angle_deg=..., vertex_group=..., width=..., segments=...)` is a
+second sanctioned decision operation, alongside `set_bevel_weight_by_ids`, giving `ANGLE`/`VGROUP`
+their own auditable path to `PASS` instead of only a softer warning. It records the caller's
+parameter as a deliberate claim (`hard_surface_bevel_scoping_method` plus the matching
+`hard_surface_bevel_angle_deg` or `hard_surface_bevel_vertex_group` property) -- not a default value
+the caller happened to leave untouched. The audit's `angle_or_vgroup_intent_recorded` and
+`angle_or_vgroup_intent_matches_actual` checks require both the property and the modifier's actual
+parameter to agree. This is strictly additive: an `ANGLE`/`VGROUP` Bevel configured directly through
+`bpy` (as every one of the boombox's 30 existing objects were, before this operation existed) never
+retroactively gains recorded intent and still returns `REVIEW_REQUIRED` -- the lab's third fixture
+proves this explicitly (`unrecorded_angle_bevel_still_review_required`), alongside a fourth fixture
+that reaches `PASS` through the real typed decision lifecycle
+(`recorded_angle_intent_reaches_pass`).
 
 The lab runs each operation through `ModelerServer`'s
 `begin_decision -> perform_decision -> verify_decision -> commit_decision` path. The semantic
@@ -76,8 +88,12 @@ runtime observation; real modifier changes must be their own typed decisions.
 
 ## Evidence
 
-`runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report. It
-verifies four deliberate vertical rails, persistent-ID weight assignment, `BEVEL -> SUBSURF` order,
-and Smooth by Angle without treating blanket smooth shading as the policy. A separate rejected
-fixture is unannotated, blanket smooth, and non-uniformly scaled; the audit correctly returns
-`REVIEW_REQUIRED` rather than passing it on technical mesh validity.
+`runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report, 18/18
+assertions passing. It verifies four deliberate vertical rails, persistent-ID weight assignment,
+`BEVEL -> SUBSURF` order, and Smooth by Angle without treating blanket smooth shading as the policy.
+A second fixture is unannotated, blanket smooth, and non-uniformly scaled; the audit correctly
+returns `REVIEW_REQUIRED` rather than passing it on technical mesh validity. A third fixture uses a
+real `ANGLE`-limited Bevel configured directly through `bpy` (reproducing the boombox pattern) with
+no `set_bevel_scoping` call; it also stays `REVIEW_REQUIRED`. A fourth fixture uses
+`set_bevel_scoping` through the real typed decision lifecycle and reaches `PASS`, proving the new
+mechanism is a genuine second auditable path rather than a blanket exemption for `ANGLE`/`VGROUP`.
