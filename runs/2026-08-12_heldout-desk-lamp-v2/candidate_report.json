@@ -1,0 +1,138 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "object_count": 10,
+  "object_names": [
+    "Clamp_Post",
+    "Clamp_Foot",
+    "Lower_Arm_Main",
+    "Lower_Arm_Funnel",
+    "Lower_Arm_Damper",
+    "Elbow_Joint",
+    "Upper_Arm_Main",
+    "Upper_Arm_Rail2",
+    "Shade_Joint",
+    "Shade"
+  ],
+  "base_vertices": 1416,
+  "base_faces": 1396,
+  "masks": {
+    "front": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_front_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_front_mask.png",
+        "view": "front",
+        "resolution": 768,
+        "frame_objects": [
+          "Clamp_Post",
+          "Clamp_Foot",
+          "Lower_Arm_Main",
+          "Lower_Arm_Funnel",
+          "Lower_Arm_Damper",
+          "Elbow_Joint",
+          "Upper_Arm_Main",
+          "Upper_Arm_Rail2",
+          "Shade_Joint",
+          "Shade"
+        ],
+        "silhouette_fill_ratio": 0.0296
+      }
+    },
+    "side": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_side_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_side_mask.png",
+        "view": "side",
+        "resolution": 768,
+        "frame_objects": [
+          "Clamp_Post",
+          "Clamp_Foot",
+          "Lower_Arm_Main",
+          "Lower_Arm_Funnel",
+          "Lower_Arm_Damper",
+          "Elbow_Joint",
+          "Upper_Arm_Main",
+          "Upper_Arm_Rail2",
+          "Shade_Joint",
+          "Shade"
+        ],
+        "silhouette_fill_ratio": 0.0304
+      }
+    },
+    "top": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_top_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_top_mask.png",
+        "view": "top",
+        "resolution": 768,
+        "frame_objects": [
+          "Clamp_Post",
+          "Clamp_Foot",
+          "Lower_Arm_Main",
+          "Lower_Arm_Funnel",
+          "Lower_Arm_Damper",
+          "Elbow_Joint",
+          "Upper_Arm_Main",
+          "Upper_Arm_Rail2",
+          "Shade_Joint",
+          "Shade"
+        ],
+        "silhouette_fill_ratio": 0.0507
+      }
+    },
+    "isometric": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_isometric_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-desk-lamp-v2\\candidate_isometric_mask.png",
+        "view": "isometric",
+        "resolution": 768,
+        "frame_objects": [
+          "Clamp_Post",
+          "Clamp_Foot",
+          "Lower_Arm_Main",
+          "Lower_Arm_Funnel",
+          "Lower_Arm_Damper",
+          "Elbow_Joint",
+          "Upper_Arm_Main",
+          "Upper_Arm_Rail2",
+          "Shade_Joint",
+          "Shade"
+        ],
+        "silhouette_fill_ratio": 0.0412
+      }
+    }
+  },
+  "landmarks_world": {
+    "shade_tip": [
+      0.5283840000000001,
+      3.0
+    ],
+    "shade_rim_l": [
+      0.024768000000000023,
+      2.508
+    ],
+    "shade_rim_r": [
+      1.003104,
+      2.508
+    ],
+    "shade_neck": [
+      0.16511999999999993,
+      2.265
+    ],
+    "upper_arm_top": [
+      -0.17131200000000005,
+      2.247
+    ],
+    "elbow": [
+      -0.986592,
+      1.614
+    ],
+    "base_joint": [
+      -0.10113599999999998,
+      0.6179999999999999
+    ],
+    "clamp_bottom": [
+      -0.014448000000000013,
+      0.0
+    ]
+  }
+}
