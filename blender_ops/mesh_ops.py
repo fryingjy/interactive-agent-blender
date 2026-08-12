@@ -150,7 +150,21 @@ def select_by_ids(name, vertex_ids=None, edge_ids=None, face_ids=None, extend=Fa
             if idx is not None:
                 seq[idx].select = True
                 counts[kind] += 1
-    bm.select_flush(True)
+    # CORRECTION (found live building the watering-can body ring cage):
+    # bm.select_flush(True) flushes UPWARD -- it selects any edge/face whose
+    # every vertex happens to already be selected. Direct assignment above
+    # already cascades DOWNWARD automatically (selecting an edge selects its
+    # verts; a face its edges+verts), which is the only cascade needed for
+    # bmesh validity. Flushing up silently over-selects: selecting all 16
+    # vertical edges of a 16-gon cylinder touches all 32 verts (100% of the
+    # mesh's verts, since each vert is exactly one vertical edge's endpoint),
+    # and flush(True) then re-selected every OTHER edge/face too (48 edges,
+    # 18 faces on a mesh that only has 48 edges / 18 faces total) because
+    # each was fully bounded by already-selected verts -- even though none
+    # of those other edges/faces were ever chosen by the caller. Confirmed
+    # directly: without the flush call, selection stayed exactly 16 edges /
+    # 0 faces, matching intent. No flush = no downward loss either, since
+    # verts still cascade automatically per-element above.
     _write_back(obj, bm)
     return counts
 

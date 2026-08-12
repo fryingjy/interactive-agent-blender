@@ -93,13 +93,17 @@ def annulus(name,z,inner,outer,height,segments,col,material):
     return make_obj(name,verts,faces,col,material,{'physical_role':'rolled opening rim','radial_vertices':segments})
 
 def curve_handle(col,material):
-    cu=bpy.data.curves.new('HandlePath','CURVE');cu.dimensions='3D';cu.resolution_u=2;cu.bevel_depth=.105;cu.bevel_resolution=2;cu.resolution_u=2;cu.use_fill_caps=True
-    sp=cu.splines.new('BEZIER');sp.bezier_points.add(4)
-    pts=[(0,1.22,1.18),(0,2.45,1.08),(0,3.05,.10),(0,2.55,-1.20),(0,1.38,-1.25)]
-    for bp,co in zip(sp.bezier_points,pts):bp.co=co;bp.handle_left_type='AUTO';bp.handle_right_type='AUTO'
-    ob=bpy.data.objects.new('Arched_Handle',cu);col.objects.link(ob);ob.data.materials.append(material);ob['construction']='one continuous path member';ob['primitive_operators_used']=0
-    bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.convert(target='MESH');ob=bpy.context.object;ob.name='Arched_Handle';ob.data.name='Arched_HandleMesh';ob['converted_from_continuous_curve']=True
-    uv=ob.data.uv_layers.new(name='UVMap') if not ob.data.uv_layers else ob.data.uv_layers.active
+    # A filled Curve converted in Blender 5.2 leaves its cap islands separate
+    # from the tube skin.  This explicit path loft keeps the same editable
+    # path logic but closes the endpoint grids into one all-quad manifold mesh.
+    pts=[(0,1.22,1.18),(0,1.82,1.25),(0,2.45,1.08),(0,2.90,.62),
+         (0,3.05,.10),(0,2.90,-.55),(0,2.55,-1.20),(0,1.95,-1.33),(0,1.38,-1.25)]
+    ob=path_loft('Arched_Handle',pts,[.105]*len(pts),4,col,material,{
+        'construction':'one continuous path loft with closed endpoint grids',
+        'primitive_operators_used':0,
+        'authored_continuous_path_loft':True,
+        'primary_all_quad_required':True,
+    })
     return ob
 
 def health(ob,evaluated=False):
@@ -150,7 +154,7 @@ def main():
         sil.append(render_silhouette(names,str(out/f'candidate_{view}_mask.png'),view=view,resolution=720,margin=1.12,frame_name=names));render_review(scene,out,objs,view)
     render_review(scene,out,objs,'isometric')
     records={o.name:{'base':health(o),'evaluated':health(o,True)} for o in objs}
-    assertions={'source_geometry_not_imported':not any('watering_can_metal_01' in o.name.lower() for o in bpy.data.objects),'body_one_component_all_quad':records[body.name]['base']['connected_components']==1 and records[body.name]['base']['faces']==records[body.name]['base']['quads'],'spout_one_component_all_quad':records[spout.name]['base']['connected_components']==1 and records[spout.name]['base']['faces']==records[spout.name]['base']['quads'],'body_and_spout_closed':records[body.name]['base']['non_manifold_edges']==0 and records[spout.name]['base']['non_manifold_edges']==0,'body_uses_16_vertices':body['radial_vertices']==16,'spout_uses_12_vertices':spout['radial_vertices']==12,'weighted_bevel_complete':body['intended_sharp_edge_count']==body['weighted_bevel_edges'] and body['weighted_bevel_edges']>0,'handle_is_one_continuous_member':bool(handle.get('converted_from_continuous_curve')) and records[handle.name]['connected_components']==1,'all_meshes_have_uvs_and_materials':all(o.data.uv_layers and o.data.materials for o in objs),'all_evaluated_meshes_nondegenerate':all(r['evaluated']['degenerate_faces']==0 for r in records.values()),'silhouette_render_succeeded':all('error' not in s for s in sil)}
+    assertions={'source_geometry_not_imported':not any('watering_can_metal_01' in o.name.lower() for o in bpy.data.objects),'body_one_component_all_quad':records[body.name]['base']['connected_components']==1 and records[body.name]['base']['faces']==records[body.name]['base']['quads'],'spout_one_component_all_quad':records[spout.name]['base']['connected_components']==1 and records[spout.name]['base']['faces']==records[spout.name]['base']['quads'],'body_and_spout_closed':records[body.name]['base']['non_manifold_edges']==0 and records[spout.name]['base']['non_manifold_edges']==0,'body_uses_16_vertices':body['radial_vertices']==16,'spout_uses_12_vertices':spout['radial_vertices']==12,'weighted_bevel_complete':body['intended_sharp_edge_count']==body['weighted_bevel_edges'] and body['weighted_bevel_edges']>0,'handle_is_one_continuous_member':bool(handle.get('authored_continuous_path_loft')) and records[handle.name]['base']['connected_components']==1 and records[handle.name]['base']['non_manifold_edges']==0 and records[handle.name]['base']['faces']==records[handle.name]['base']['quads'],'all_meshes_have_uvs_and_materials':all(o.data.uv_layers and o.data.materials for o in objs),'all_evaluated_meshes_nondegenerate':all(r['evaluated']['degenerate_faces']==0 for r in records.values()),'silhouette_render_succeeded':all('error' not in s for s in sil)}
     report={'lab':'heldout_watering_can','stage':'candidate_v1','construction_status':'built from neutral renders only','objects':len(objs),'mesh_primitive_operators_used':0,'mesh_records':records,'silhouette_records':sil,'assertions':assertions,'pass':all(assertions.values())}
     (out/'watering_can_report.json').write_text(json.dumps(report,indent=2),encoding='utf8');bpy.ops.wm.save_as_mainfile(filepath=str(out/'heldout_watering_can.blend'));print('WATERING_CAN_RESULT:'+json.dumps(report));raise SystemExit(0 if report['pass'] else 2)
 main()

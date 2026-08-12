@@ -21,19 +21,25 @@ visual-study credit.
 
 ## Ordered queue
 
+**2026-08-12 priority correction:** `docs/DEVELOPMENT_PRIORITIES.md` is the binding override for
+research, experiments, and benchmarks. P0 is core mesh/topology/SubD/hard-surface/reference/
+modifier/surface-judgment work; P1 is production modeling including retopology, UVs, baking,
+materials, export, stylized work, and appropriate curves/procedural work; P2 is advanced organic
+and character specialization. Sculpt knowledge is **KNOWN / DEFERRED**, not deleted. The earlier
+queue mislabeled several core tracks as P1 and several production tracks as P0; this table now
+matches the binding order without changing any underlying evidence.
+
 | Priority | Track | Required reasoning outcome | Experiment requirement | Current state |
 | --- | --- | --- | --- | --- |
-| P0 | Sculpt form development | primary/secondary/tertiary sequencing; brush family by surface effect; resolution strategy; masking/Face Sets | multi-stroke continuous form plus destructive overwork control | EXPERIMENTALLY_TESTED (fundamentals); production form pending |
-| P0 | Sculpt-to-retopology | cage planning, poles/loops, density transitions, projection error, deformation intent | articulated organic source, purposeful quad cage, deformation test | planning + advanced live lesson; analytic, real-armature, and driven multi-axis corrective transfers tested; facial pose transfer pending |
-| P0 | UV and high/low baking | seam cut graph, distortion/packing/texel density, tangent convention, cage/ray margin | authored seams and Selected-to-Active bake on a different shape | EXPERIMENTALLY_TESTED |
-| P0 | Surface/highlight judgment | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
-| P1 | Topology and SubD | pole placement, loop termination, curved holes, pinching and density | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
-| P1 | Hard surface | boolean/SubD/hybrid choice, modifier order, bevel hierarchy, cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
-| P1 | Reference modeling | perspective uncertainty, landmark ratios, silhouette and negative space | multi-view reference asset with measured checkpoints | single-view sword-to-axe profile transfer passes; gray-background mask and chair failures retained; multi-view remains partial |
-| P2 | Stylized/low-poly | shape language, simplification budget, silhouette hierarchy | same concept in two style constraints | pending |
-| P2 | Curves/procedural | when curves or Geometry Nodes outperform mesh editing | cable/trim/ornament transfer asset | mechanics partial |
-| P2 | Materials/lighting/render | material response as surface evidence; camera and light neutrality | neutral review rig versus beauty rig | materials partial; video pending |
-| P2 | Rigging/deformation | topology follows bending/compression requirements | bend test with density comparison | three-bone flex/splay/twist plus gated corrective passes; full-character/facial transfer pending |
+| P0 | Mesh, topology, and SubD | contextual edge flow; poles; loop termination; density; quad/triangle/n-gon judgment; pinching repair | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
+| P0 | Hard surface and modifier strategy | box/poly/SubD/boolean/hybrid choice; modifier order; bevel hierarchy; cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
+| P0 | Reference, silhouette, and professional strategy | perspective uncertainty; landmarks; component decomposition; negative space; multi-view correction and recovery | multi-view reference asset with measured checkpoints | single-view sword-to-axe profile transfer passes; gray-background mask and chair failures retained; multi-view remains partial |
+| P0 | Surface/highlight and shading diagnosis | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
+| P1 | Retopology fundamentals | cage planning; poles/loops; density transitions; projection error; deformation intent | articulated source, purposeful quad cage, deformation test | planning + advanced live lesson; analytic, real-armature, and driven multi-axis corrective transfers tested; facial pose transfer remains deferred specialization |
+| P1 | UV, high/low baking, materials, and export | seam cut graph; distortion/packing/texel density; tangent convention; cage/ray margin; inspection light; engine handoff | authored seams and Selected-to-Active bake on a different shape | EXPERIMENTALLY_TESTED |
+| P1 | Stylized/low-poly and curves/procedural | shape language; simplification; when curves or Geometry Nodes improve editability | same concept in two style constraints or a cable/trim/ornament transfer | stylized pending; curves mechanics partial |
+| P2 — KNOWN / DEFERRED | Sculpt form development | primary/secondary/tertiary sequencing; brush family by surface effect; resolution strategy; masking/Face Sets | multi-stroke continuous form plus destructive overwork control | EXPERIMENTALLY_TESTED fundamentals retained; production form not pursued while higher-priority gaps remain |
+| P2 — KNOWN / DEFERRED | Character/facial deformation specialization | character-specific topology follows bending/compression | bend test with density comparison | three-bone flex/splay/twist evidence retained; full-character/facial transfer is deferred |
 
 ## Completed source-to-skill conversions
 
