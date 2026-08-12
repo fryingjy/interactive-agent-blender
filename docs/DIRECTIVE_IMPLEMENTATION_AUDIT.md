@@ -168,30 +168,31 @@ degrees and zero edge treatment; only 1 of the 34 no-Bevel objects (a flat badge
 legitimately bevel-inapplicable. Separately, a meaningful fraction of secondary components genuinely
 do use a real, named `ANGLE`- or `VGROUP`-limited Bevel (30/41 boombox objects, 6/24 telephone
 objects) that the audit correctly distinguishes from having no bevel at all but still cannot verify
-against recorded intent. Both identified primary-body gaps are now fixed:
-`runs/2026-08-12_watering-can-secondary-bevel-corrective/` and
-`runs/2026-08-12_telephone-handset-bevel-corrective/` rebuild `Connected_Tapered_Spout`,
-`Arched_Handle`, and `Handset` with semantic bevel weights, `WEIGHT`-limited Bevel, and Smooth by
-Angle, each independently verified clean and visually confirmed (MatCap before/after) as a real
-sharpening, not just a passing number; the corrected files are new artifacts alongside the untouched
-originals, not replacements. `runs/2026-08-12_boombox-secondary-bevel-corrective/` (pending merge)
-closes the same gap for the boombox's 11 previously-untreated objects (four cassette reels, four
-fascia fasteners, two speaker cones, the telescoping antenna), all passing cleanly on their first,
-most generous candidate width. `get_hard_surface_shading_audit` also now has a second, real path to
-`PASS`: `set_bevel_scoping()` lets `ANGLE`/`VGROUP`-limited Bevel record deliberate intent
-(`hard_surface_bevel_scoping_method` plus a matching angle/vertex-group value), additively -- it does
-not retroactively grant intent to the boombox's other 30 `ANGLE`/`VGROUP` objects, which were
-configured directly through `bpy` before this operation existed and correctly remain
-`REVIEW_REQUIRED` (the lab's 18/18 assertions include both a fixture proving this non-retroactivity
-and one proving the new path reaches `PASS` through the real typed decision lifecycle). Remaining
-locally actionable gaps: retrying the desk lamp's proportions under the new shading policy without
-relabeling the prior attempt, applying the same treatment to the remaining untreated secondary
-components (telephone: `Dial_Aperture*`, `Clock_Face`, `Lower_Panel_Trim`, `Upper_Face_Trim`;
-watering can: `Opening_Rim`, `Opening_Shadow`, `Rose_Head`), deciding whether to retroactively record
-intent for the boombox's 30 `ANGLE`/`VGROUP` objects now that the mechanism exists (a judgment call
-about whether their existing parameters were actually deliberate, not something to assert without
-evidence), deciding whether the corrected files should replace their published production
-references, production texture/bake and named-engine visual review beyond the current Godot import
-checks, broader planner runtime use, and longer-horizon retention. Independent experienced review
-remains genuinely external. Until that evidence exists, changing the
+against recorded intent. All identified primary-structural/detail no-Bevel gaps are now fixed:
+`runs/2026-08-12_watering-can-secondary-bevel-corrective/`,
+`runs/2026-08-12_telephone-handset-bevel-corrective/`, and
+`runs/2026-08-12_boombox-secondary-bevel-corrective/` rebuild `Connected_Tapered_Spout`,
+`Arched_Handle`, `Handset`, and 11 boombox parts (four cassette reels, four fascia fasteners, two
+speaker cones, the telescoping antenna) with semantic bevel weights, `WEIGHT`-limited Bevel, and
+Smooth by Angle. Every one passed cleanly on its first, most generous candidate bevel width. Each is
+independently verified clean and visually confirmed (MatCap before/after, including a dedicated
+edge-on rim-profile view for the boombox's small parts) as a real sharpening, not just a passing
+number; the corrected files are new artifacts alongside the untouched originals, not replacements.
+`get_hard_surface_shading_audit` also now has a second, real path to `PASS`: `set_bevel_scoping()`
+lets `ANGLE`/`VGROUP`-limited Bevel record deliberate intent (`hard_surface_bevel_scoping_method`
+plus a matching angle/vertex-group value), additively -- it does not retroactively grant intent to
+the boombox's other 30 `ANGLE`/`VGROUP` objects, which were configured directly through `bpy` before
+this operation existed and correctly remain `REVIEW_REQUIRED` (the lab's 18/18 assertions include
+both a fixture proving this non-retroactivity and one proving the new path reaches `PASS` through the
+real typed decision lifecycle). Remaining locally actionable gaps: retrying the desk lamp's
+proportions under the new shading policy without relabeling the prior attempt, applying the same
+treatment to the still-untreated secondary components (telephone: `Dial_Aperture*`, `Clock_Face`,
+`Lower_Panel_Trim`, `Upper_Face_Trim`; watering can: `Opening_Rim`, `Opening_Shadow`, `Rose_Head`),
+deciding whether to retroactively record intent for the boombox's 30 `ANGLE`/`VGROUP` objects now
+that the mechanism exists (a judgment call about whether their existing parameters were actually
+deliberate, not something to assert without evidence), deciding whether the corrected files should
+replace their published production references, production texture/bake and named-engine visual
+review beyond the current Godot import checks, broader planner runtime use, and longer-horizon
+retention. Independent experienced review remains genuinely external. Until that evidence exists,
+changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
