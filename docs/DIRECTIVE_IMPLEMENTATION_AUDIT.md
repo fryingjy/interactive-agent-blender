@@ -158,17 +158,22 @@ families now exist (boombox, camera, telephone, watering can, desk lamp), so the
 requirement is materially stronger than a single asset; the desk lamp remains the one open failure
 in that set. `runs/2026-08-12_shading-policy-retroactive-audit/` has since audited the other four
 against `get_hard_surface_shading_audit` and found a real, not merely cosmetic, gap with three
-distinct causes: only each family's single primary body (housing/vessel/one-object cage) has a
-`WEIGHT`-limited Bevel with inspectable semantic edge-ID coverage; a meaningful fraction of
-secondary components genuinely do use a real, named `ANGLE`- or `VGROUP`-limited Bevel instead (30/41
-boombox objects, 6/24 telephone objects) that the audit correctly distinguishes from having no bevel
-at all but still cannot verify against recorded intent; and a real remainder (11/41 boombox, 17/24
-telephone, 6/7 watering-can objects) has no Bevel modifier of any kind, unclassified as to whether
-that is legitimate (flat/simple geometry) or a genuine gap. Remaining locally actionable gaps:
-retrying the desk lamp's proportions under the new shading policy without relabeling the prior
-attempt, triaging the no-bevel-at-all objects per family, deciding whether `ANGLE`/`VGROUP`-limited
-Bevel should get its own fully-sanctioned auditable-intent mechanism rather than only a softer
-warning, production texture/bake and named-engine visual review
-beyond the current Godot import checks, broader planner runtime use, and longer-horizon retention.
-Independent experienced review remains genuinely external. Until that evidence exists, changing the
+distinct causes. Only one body per family (camera's cage, telephone's `Housing`, watering-can's
+`Connected_Vessel`) has a `WEIGHT`-limited Bevel with inspectable semantic edge-ID coverage — and a
+dihedral-angle triage of the 34 objects with no Bevel modifier found this is not confined to
+secondary detail: the telephone's `Handset` and the watering can's `Connected_Tapered_Spout` and
+`Arched_Handle` are themselves primary structural components (their own session reports describe
+them as closed all-quad cages on par with the housing/vessel) with real sharp edges up to 71-92
+degrees and zero edge treatment; only 1 of the 34 no-Bevel objects (a flat badge decal) is
+legitimately bevel-inapplicable. Separately, a meaningful fraction of secondary components genuinely
+do use a real, named `ANGLE`- or `VGROUP`-limited Bevel (30/41 boombox objects, 6/24 telephone
+objects) that the audit correctly distinguishes from having no bevel at all but still cannot verify
+against recorded intent. Remaining locally actionable gaps: retrying the desk lamp's proportions
+under the new shading policy without relabeling the prior attempt, rebuilding the telephone handset
+and watering-can spout/handle with semantic bevel weights (the highest-value fix, since these are
+primary bodies rather than trim), deciding whether `ANGLE`/`VGROUP`-limited Bevel should get its own
+fully-sanctioned auditable-intent mechanism rather than only a softer warning, production
+texture/bake and named-engine visual review beyond the current Godot import checks, broader planner
+runtime use, and longer-horizon retention. Independent experienced review remains genuinely external.
+Until that evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.

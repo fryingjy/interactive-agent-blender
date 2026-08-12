@@ -1,0 +1,280 @@
+{
+  "heldout_cc0_boombox_001": [
+    {
+      "edges_with_two_faces": 72,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 48,
+      "name": "Cassette reel",
+      "vertex_count": 48,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 72,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 48,
+      "name": "Cassette reel.001",
+      "vertex_count": 48,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 72,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 48,
+      "name": "Cassette reel.002",
+      "vertex_count": 48,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 72,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 48,
+      "name": "Cassette reel.003",
+      "vertex_count": 48,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Fascia fastener",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Fascia fastener.001",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Fascia fastener.002",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Fascia fastener.003",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 320,
+      "max_dihedral_deg": 139.36,
+      "edges_over_25deg": 128,
+      "name": "Speaker cone L",
+      "vertex_count": 192,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 320,
+      "max_dihedral_deg": 139.36,
+      "edges_over_25deg": 128,
+      "name": "Speaker cone R",
+      "vertex_count": 192,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Telescoping antenna",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    }
+  ],
+  "heldout_cc0_vintage_telephone_001": [
+    {
+      "edges_with_two_faces": 48,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Clock_Face",
+      "vertex_count": 32,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_01",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_02",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_03",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_04",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_05",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_06",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_07",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_08",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_09",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_10",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 36,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 36,
+      "name": "Dial_Aperture_11",
+      "vertex_count": 24,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 324,
+      "max_dihedral_deg": 71.82,
+      "edges_over_25deg": 168,
+      "name": "Handset",
+      "vertex_count": 164,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 32,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 24,
+      "name": "Lower_Panel_Trim",
+      "vertex_count": 16,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 12,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 12,
+      "name": "Telephone_Baked_Badge",
+      "vertex_count": 8,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 32,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 24,
+      "name": "Upper_Face_Trim",
+      "vertex_count": 16,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    }
+  ],
+  "heldout_cc0_watering_can_001": [
+    {
+      "edges_with_two_faces": 228,
+      "max_dihedral_deg": 90.19,
+      "edges_over_25deg": 142,
+      "name": "Arched_Handle",
+      "vertex_count": 116,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 156,
+      "max_dihedral_deg": 92.22,
+      "edges_over_25deg": 84,
+      "name": "Connected_Tapered_Spout",
+      "vertex_count": 80,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 128,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 64,
+      "name": "Opening_Rim",
+      "vertex_count": 64,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 96,
+      "max_dihedral_deg": 90.0,
+      "edges_over_25deg": 32,
+      "name": "Opening_Shadow",
+      "vertex_count": 50,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 108,
+      "max_dihedral_deg": 58.51,
+      "edges_over_25deg": 64,
+      "name": "Rose_Head",
+      "vertex_count": 56,
+      "classification": "UNTREATED_SHARP_EDGE_GAP"
+    },
+    {
+      "edges_with_two_faces": 0,
+      "max_dihedral_deg": 0.0,
+      "edges_over_25deg": 0,
+      "name": "WateringCan_Baked_Badge",
+      "vertex_count": 4,
+      "classification": "LEGITIMATELY_FLAT"
+    }
+  ]
+}
