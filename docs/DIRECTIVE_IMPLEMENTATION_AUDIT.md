@@ -156,10 +156,17 @@ research-return loop are in place.
 The next valid work follows `docs/DEVELOPMENT_PRIORITIES.md`. Five unrelated held-out product
 families now exist (boombox, camera, telephone, watering can, desk lamp), so the family-breadth
 requirement is materially stronger than a single asset; the desk lamp remains the one open failure
-in that set. Remaining locally actionable gaps: retrying the desk lamp's proportions under the new
-shading policy without relabeling the prior attempt, auditing the four passed families against
-`get_hard_surface_shading_audit` (none have been checked yet), production texture/bake and
-named-engine visual review beyond the current Godot import checks, broader planner runtime use, and
-longer-horizon retention. Independent experienced review remains genuinely external. Until that
-evidence exists, changing the foundation or professional claim to PASS would violate the directive's
-anti-fake-progress rules.
+in that set. `runs/2026-08-12_shading-policy-retroactive-audit/` has since audited the other four
+against `get_hard_surface_shading_audit` and found a real, not merely cosmetic, gap: only each
+family's single primary body (housing/vessel/one-object cage) has a `WEIGHT`-limited Bevel; every
+secondary/detail component in the telephone (23/24) and watering can (6/7) is plain blanket
+Shade-Smooth with no semantic edge weighting, and the boombox has zero `WEIGHT` bevels anywhere
+because it used `ANGLE`-limited Bevel via vertex groups instead, which the audit does not currently
+recognize as a sanctioned alternative. Remaining locally actionable gaps: retrying the desk lamp's
+proportions under the new shading policy without relabeling the prior attempt, deciding whether
+`ANGLE`-limited Bevel should be a second sanctioned audit path or whether the boombox's secondary
+parts should be rebuilt under `WEIGHT`-limited Bevel, rebuilding the telephone/watering-can
+secondary components under the full policy, production texture/bake and named-engine visual review
+beyond the current Godot import checks, broader planner runtime use, and longer-horizon retention.
+Independent experienced review remains genuinely external. Until that evidence exists, changing the
+foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
