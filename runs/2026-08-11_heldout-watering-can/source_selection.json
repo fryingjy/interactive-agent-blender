@@ -1,0 +1,46 @@
+{
+  "declared_at": "2026-08-11T17:49:58.1566712Z",
+  "declared_before_source_download_or_render": true,
+  "asset_id": "watering_can_metal_01",
+  "asset_page": "https://polyhaven.com/a/watering_can_metal_01",
+  "creator": "Charles Nderitu",
+  "license": "CC0",
+  "source_type": "isolated GLTF used only for neutral reference rendering",
+  "candidate_source_geometry_access": false,
+  "visual_thresholds": {
+    "side_iou_min": 0.76,
+    "front_iou_min": 0.67,
+    "top_iou_min": 0.66,
+    "mean_iou_min": 0.72
+  },
+  "required_continuous_cages": [
+    "main vessel body including authored circumferential bands",
+    "tapered spout from base to rose connector",
+    "arched handle path"
+  ],
+  "allowed_separate_assemblies": [
+    "top opening rim or cap if physically assembled",
+    "perforated rose head",
+    "small attachment collars",
+    "production badge"
+  ],
+  "topology_rules": {
+    "body_radial_segments": 16,
+    "spout_radial_segments": 12,
+    "avoid_primitive_stack_for_body_bands": true,
+    "edit_mode_loop_strategy": true,
+    "weighted_bevel_or_bevel_modifier_for_intended_hard_edges": true
+  },
+  "required_process_evidence": [
+    "planner checkpoints",
+    "at least one retained failed revision if encountered",
+    "fresh independent Blender verification",
+    "cross-session retrieval/retention check"
+  ],
+  "required_production_handoff": [
+    "authored UVs",
+    "real tangent normal bake",
+    "GLB round trip",
+    "fresh Godot import"
+  ]
+}
