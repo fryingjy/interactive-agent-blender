@@ -184,18 +184,20 @@ plus a matching angle/vertex-group value), additively -- it does not retroactive
 the boombox's other 30 `ANGLE`/`VGROUP` objects, which were configured directly through `bpy` before
 this operation existed and correctly remain `REVIEW_REQUIRED` (the lab's 18/18 assertions include
 both a fixture proving this non-retroactivity and one proving the new path reaches `PASS` through the
-real typed decision lifecycle). `runs/2026-08-12_telephone-trim-bevel-corrective/` closes the
-telephone's remaining 15 untreated objects (`Clock_Face`, `Lower_Panel_Trim`, `Upper_Face_Trim`,
-12 `Dial_Aperture*`), built on top of the handset correction so the output carries both fixes; two of
-the panels initially failed at every candidate Bevel width with an identical non-manifold-edge count
-regardless of width, which is a real winding-inconsistency defect (16 of 32 edges each), not a width
-problem -- fixed with a disclosed "Recalculate Outside" repair before weighting, then applied
-cleanly. Remaining locally actionable gaps: retrying the desk lamp's proportions under the new
-shading policy without relabeling the prior attempt, applying the same treatment to the watering
-can's three still-untreated objects (`Opening_Rim`, `Opening_Shadow`, `Rose_Head`), deciding whether
-to retroactively record intent for the boombox's 30 `ANGLE`/`VGROUP` objects now that the mechanism
-exists (a judgment call about whether their existing parameters were actually deliberate, not
-something to assert without evidence), deciding whether the corrected files should replace their
+real typed decision lifecycle). `runs/2026-08-12_telephone-trim-bevel-corrective/` and
+`runs/2026-08-12_watering-can-final-bevel-corrective/` close the remaining objects the no-Bevel
+triage identified: the telephone's `Clock_Face`, two trim panels, and 12 `Dial_Aperture*` objects,
+and the watering can's `Opening_Rim`, `Opening_Shadow`, and `Rose_Head`. Two telephone panels
+exposed a real topology defect (inconsistent face winding, not a width problem) that needed a
+disclosed "Recalculate Outside" repair before the bevel would apply cleanly; every other object in
+both runs applied on its first candidate width. This closes the no-Bevel triage's remaining-work
+list entirely: every object across all three retroactively-audited families the triage identified as
+a genuine gap now has a verified, visually-confirmed correction, and only the objects it correctly
+classified as legitimately flat remain untreated. Remaining locally actionable gaps: retrying the
+desk lamp's proportions under the new shading policy without relabeling the prior attempt, deciding
+whether to retroactively record intent for the boombox's 30 `ANGLE`/`VGROUP` objects now that the
+mechanism exists (a judgment call about whether their existing parameters were actually deliberate,
+not something to assert without evidence), deciding whether the corrected files should replace their
 published production references, production texture/bake and named-engine visual review beyond the
 current Godot import checks, broader planner runtime use, and longer-horizon retention. Independent
 experienced review remains genuinely external. Until that evidence exists, changing the
