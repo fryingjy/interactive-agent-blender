@@ -1,0 +1,966 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\adventure time sword.blend",
+  "inspected_at": "2026-08-13T16:06:44Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 0,
+      "child_collections": [
+        "lowpoly",
+        "highpoly",
+        "model"
+      ]
+    },
+    {
+      "name": "lowpoly",
+      "depth": 1,
+      "object_count": 5,
+      "child_collections": []
+    },
+    {
+      "name": "highpoly",
+      "depth": 1,
+      "object_count": 5,
+      "child_collections": []
+    },
+    {
+      "name": "model",
+      "depth": 1,
+      "object_count": 6,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "1_high",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "highpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 9306,
+        "edges": 18608,
+        "polygons": 9304,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 9304,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": true,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "1_high.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OB1_high.001\", name=\"ant_landscape\", address=0x0000019622E70360>"
+      },
+      "mesh": {
+        "vertices": 122,
+        "edges": 225,
+        "polygons": 104,
+        "ngons": 1,
+        "triangles": 5,
+        "quads": 98,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": true,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.003000000026077032,
+          "segments": 2,
+          "limit_method": "WEIGHT",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        }
+      ]
+    },
+    {
+      "name": "1_low",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "lowpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 55,
+        "edges": 114,
+        "polygons": 61,
+        "ngons": 4,
+        "triangles": 21,
+        "quads": 36,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "material"
+        ],
+        "bevel_weight_attribute_present": true,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "2_high",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "highpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 1410,
+        "edges": 2816,
+        "polygons": 1408,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 1408,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "2_high.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OB2_high.001\", name=\"ant_landscape\", address=0x0000019622D3B660>"
+      },
+      "mesh": {
+        "vertices": 110,
+        "edges": 216,
+        "polygons": 108,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 108,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        }
+      ]
+    },
+    {
+      "name": "2_low",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "lowpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "material"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "3_high",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "highpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 8990,
+        "edges": 17728,
+        "polygons": 8736,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 8736,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "3_high.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OB3_high.001\", name=\"ant_landscape\", address=0x0000019622D3AB20>"
+      },
+      "mesh": {
+        "vertices": 336,
+        "edges": 606,
+        "polygons": 273,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 273,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 1,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "3_low",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "lowpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 496,
+        "edges": 930,
+        "polygons": 434,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 434,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "material"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "4_high",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "highpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 3167,
+        "edges": 6240,
+        "polygons": 3072,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 3072,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "4_high.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OB4_high.001\", name=\"ant_landscape\", address=0x0000019622D39020>"
+      },
+      "mesh": {
+        "vertices": 215,
+        "edges": 424,
+        "polygons": 208,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 208,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 1,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "4_low",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "lowpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 215,
+        "edges": 408,
+        "polygons": 192,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 192,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "material"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "5_high",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "highpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 4098,
+        "edges": 8064,
+        "polygons": 3968,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 3968,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "5_high.001",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OB5_high.001\", name=\"ant_landscape\", address=0x0000019622D275A0>"
+      },
+      "mesh": {
+        "vertices": 137,
+        "edges": 264,
+        "polygons": 128,
+        "ngons": 0,
+        "triangles": 16,
+        "quads": 112,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "5_low",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "lowpoly"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 274,
+        "edges": 528,
+        "polygons": 256,
+        "ngons": 0,
+        "triangles": 32,
+        "quads": 224,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "material"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Empty",
+      "type": "EMPTY",
+      "location": [
+        1.3368862867355347,
+        0.4129887521266937,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "model"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "empty_display_type": "IMAGE"
+    }
+  ],
+  "materials_total": 2,
+  "material_names": [
+    "Dots Stroke",
+    "material"
+  ],
+  "images_total": 3,
+  "image_names": [
+    "adventure time sword.jpg",
+    "Render Result",
+    "Untitled"
+  ]
+}

@@ -42,19 +42,30 @@ def main():
     }
     direction = directions.get(view, directions["iso"])
 
-    bpy.ops.object.camera_add(location=center + direction * diagonal * 2.2)
-    camera = bpy.context.object
-    camera.data.type = "ORTHO"
-    camera.data.ortho_scale = diagonal * 1.15
+    # Some source files leave scene.render.image_settings.file_format stuck
+    # on a movie format (FFMPEG) in a state that rejects direct reassignment
+    # outright ("enum 'PNG' not found in ('FFMPEG')") even though PNG is a
+    # normally-valid option -- found live on batarang.blend, not assumed.
+    # Rendering through a brand new scene (linking only the objects and
+    # camera actually needed) sidesteps whatever causes that instead of
+    # fighting the source file's own scene state. bpy.ops.render.render's
+    # own `scene` parameter targets it directly, no window/context switch
+    # needed (there is no window at all in --background mode).
+    render_scene = bpy.data.scenes.new("StudyRenderScene")
+    for obj in objs:
+        render_scene.collection.objects.link(obj)
+
+    camera_data = bpy.data.cameras.new("StudyCamera")
+    camera_data.type = "ORTHO"
+    camera_data.ortho_scale = diagonal * 1.15
+    camera = bpy.data.objects.new("StudyCamera", camera_data)
+    camera.location = center + direction * diagonal * 2.2
     camera.rotation_euler = direction.to_track_quat("Z", "Y").to_euler()
-    scene = bpy.context.scene
-    scene.camera = camera
+    render_scene.collection.objects.link(camera)
+    render_scene.camera = camera
 
-    for o in bpy.data.objects:
-        o.hide_render = o not in objs and o is not camera and o.type != "LIGHT"
-
-    shading = scene.display.shading
-    scene.render.engine = "BLENDER_WORKBENCH"
+    shading = render_scene.display.shading
+    render_scene.render.engine = "BLENDER_WORKBENCH"
     shading.type = "SOLID"
     shading.light = "STUDIO"
     shading.color_type = "SINGLE"
@@ -62,10 +73,11 @@ def main():
     shading.show_shadows = True
     shading.show_cavity = True
     shading.cavity_type = "BOTH"
-    scene.render.resolution_x = 1000
-    scene.render.resolution_y = 1000
-    scene.render.filepath = str(out_path)
-    bpy.ops.render.render(write_still=True)
+    render_scene.render.resolution_x = 1000
+    render_scene.render.resolution_y = 1000
+    render_scene.render.image_settings.file_format = "PNG"
+    render_scene.render.filepath = str(out_path)
+    bpy.ops.render.render(write_still=True, scene=render_scene.name)
     print("Saved:", out_path)
 
 

@@ -1861,5 +1861,356 @@
         "blender_ops/object_ops.py:hard_surface_shading_audit (third sanctioned crease_path_ok path)"
       ]
     }
+  },
+  {
+    "id": "professional-blend-batarang",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\batarang.blend",
+    "title": "batarang (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "hp/lp pipeline",
+      "pbr-baking",
+      "reference-image-empty"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Full production pipeline: Image Empty reference, editable 'Plane' (Mirror+Bevel+SubD+SmoothByAngle), baked batarang_high (15,970 verts, no modifiers), batarang_low (193 verts, 'lowpoly' collection) with real baked BaseColor/Metallic/Normal/Roughness PBR textures",
+        "'Plane' has a Bevel modifier present with 0/224 edges actually weighted, alongside 73/224 edges creased -- modifier presence alone is not evidence of active use"
+      ],
+      "candidate_principles": [
+        "Confirms real PBR bake pipeline matches this project's own telephone/watering-can bake practice",
+        "Modifier presence in a stack is not evidence it's doing anything; check actual weighted/creased edge counts"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/batarang/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-alien-force-watch",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\alien force watch.blend",
+    "title": "alien force watch (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "hp/lp pipeline",
+      "sculpt-integration",
+      "array-along-curve"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "56 objects, 7 collections: hp/lowpoly/model/runes/zbrush cut. Each numbered part (1-12) has a TRUE separately-retopologized low-poly mesh, not a modifier-toggle duplicate (e.g. part 8: 610-vert high cage vs. a distinct 768-vert low-poly retopology)",
+        "'runes' collection uses Mirror+Array+Bevel+SubD(x2)+Curve to repeat ornamental symbols along a curved path",
+        "'zbrush cut' collection holds a 307,744-vert untouched dense mesh used as a sculpt/bake source"
+      ],
+      "candidate_principles": [
+        "Real production low-poly is a genuine separate retopology, refining this project's simpler models/ convention",
+        "Array-along-Curve is a real technique for circular/curved ornamental repetition, not yet reproduced here"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/alien_force_watch/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-broken-sword",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\broken sword.blend",
+    "title": "broken sword (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "hp/lp pipeline",
+      "sculpt-integration",
+      "curve-based-parts"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "32 objects, 5 collections: Collection/hp/lp/zbrush hp. Grip wrap built from 14 separate small identical Solidify+SubD strip objects, not one continuous wrap mesh",
+        "zbrush hp collection holds untouched sculpted meshes up to 1,126,023 verts (wrap_high) used as bake sources",
+        "low-poly meshes carry a TRIANGULATE modifier for real-time engine export prep",
+        "pommel is a CURVE object (bevel-profile + path), confirming this project's curve_ops.py approach"
+      ],
+      "candidate_principles": [
+        "Repeated small identical objects is a valid alternative to one continuous wrap mesh",
+        "TRIANGULATE on final low-poly export targets is a real, minor technique this project hasn't used"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/broken_sword/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-adventure-time-sword",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\adventure time sword.blend",
+    "title": "adventure time sword (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "hp/lp pipeline"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "16 objects, 4 collections: lowpoly/highpoly/model, confirming the pipeline a 4th time",
+        "working 'model' collection's parts are laid out separated/exploded in space rather than assembled"
+      ],
+      "candidate_principles": [
+        "Building components in isolation before final assembly positioning is a real workflow detail"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/adventure_time_sword/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-asta",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\asta.blend",
+    "title": "asta (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "minimal-cage-forms"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Minimal file: 2 objects only. Wide flat blade uses just 6 base verts (Mirror+SubD) for its angular wedge cross-section"
+      ],
+      "candidate_principles": [
+        "A simple angular profile needs very little control geometry -- not every asset needs a complex cage"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/asta/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-axe",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\axe.blend",
+    "title": "axe (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "stacked-plate-construction"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "8 objects, single-stage (no hp/lp split). Grip built from stacked individual 'armor ring' plate objects rather than one continuous wrap"
+      ],
+      "candidate_principles": [
+        "Stacked individual plates is another valid alternative for a segmented handle/grip"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/axe/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-bat",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\bat.blend",
+    "title": "bat (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "minimal-cage-forms"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Simplest file studied: 1 object, 354 verts, Smooth by Angle only, no SubD/Bevel/crease modifiers at all"
+      ],
+      "candidate_principles": [
+        "A genuinely simple round/tapered body-of-revolution form needs only adequate base density + shading, confirming the wrench's own successful shaft/handle strategy"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/bat/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-ap15",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\ap15.blend",
+    "title": "ap15 (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "mechanical-precision-bevel"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "38 objects, 6 collections including a genuinely separate 'mag' sub-assembly and an 'anim' collection for rigged parts. Uses real Bevel+SubD extensively, unlike the fantasy-weapon files' crease preference"
+      ],
+      "candidate_principles": [
+        "Precision mechanical hard-surface (panel lines, slide serrations) favors Bevel over crease -- an evidence-based heuristic, not arbitrary"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/ap15/"
+      ],
+      "skills": []
+    }
+  },
+  {
+    "id": "professional-blend-ak47",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\ak47.blend",
+    "title": "ak47 (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "Blender 5.2",
+    "topics": [
+      "mechanical-precision-bevel"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "129 objects, 5 collections (model/model 2/lowpoly/highpoly), the most complex file studied. Modifier usage: Bevel 90x, SubD 96x, Mirror 74x, plus Remesh/CorrectiveSmooth/Boolean/Solidify/Array in smaller numbers",
+        "Curved magazine is a genuine overhung/hook-shaped part, the same structural category that repeatedly broke the wrench"
+      ],
+      "candidate_principles": [
+        "Confirms Bevel dominance for precision mechanical parts at real production scale",
+        "Overhung/hook shapes are normal in professional work and are handled via real component construction, not a parametric sweep"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/ak47/"
+      ],
+      "skills": []
+    }
   }
 ]

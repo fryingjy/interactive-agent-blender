@@ -1,0 +1,620 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\axe.blend",
+  "inspected_at": "2026-08-13T16:06:00Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 0,
+      "child_collections": [
+        "Collection"
+      ]
+    },
+    {
+      "name": "Collection",
+      "depth": 1,
+      "object_count": 8,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "Empty",
+      "type": "EMPTY",
+      "location": [
+        0.15023447573184967,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        -0.0,
+        -0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": true,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBEmpty\", name=\"ant_landscape\", address=0x0000022EDE0C9CE0>"
+      },
+      "empty_display_type": "IMAGE"
+    },
+    {
+      "name": "Plane.002",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.002\", name=\"ant_landscape\", address=0x0000022EDE0C99E0>"
+      },
+      "mesh": {
+        "vertices": 97,
+        "edges": 172,
+        "polygons": 76,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 76,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": true,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            true,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.003",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.003\", name=\"ant_landscape\", address=0x0000022EDE0C8DE0>"
+      },
+      "mesh": {
+        "vertices": 89,
+        "edges": 151,
+        "polygons": 63,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 63,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            true,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 3,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.004",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.004\", name=\"ant_landscape\", address=0x0000022EDE0C81E0>"
+      },
+      "mesh": {
+        "vertices": 183,
+        "edges": 326,
+        "polygons": 144,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 144,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.005",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.005\", name=\"ant_landscape\", address=0x0000022EDDFDF660>"
+      },
+      "mesh": {
+        "vertices": 24,
+        "edges": 36,
+        "polygons": 14,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 12,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.006",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        -0.0,
+        180.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.006\", name=\"ant_landscape\", address=0x0000022EDDFDEA60>"
+      },
+      "mesh": {
+        "vertices": 183,
+        "edges": 326,
+        "polygons": 144,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 144,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.007",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.007\", name=\"ant_landscape\", address=0x0000022EDDFDDFE0>"
+      },
+      "mesh": {
+        "vertices": 38,
+        "edges": 65,
+        "polygons": 28,
+        "ngons": 0,
+        "triangles": 2,
+        "quads": 26,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    },
+    {
+      "name": "Plane.008",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBPlane.008\", name=\"ant_landscape\", address=0x0000022EDDFDD4A0>"
+      },
+      "mesh": {
+        "vertices": 38,
+        "edges": 65,
+        "polygons": 28,
+        "ngons": 0,
+        "triangles": 2,
+        "quads": 26,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "use_axis": [
+            false,
+            true,
+            false
+          ],
+          "use_bisect_axis": [
+            false,
+            false,
+            false
+          ],
+          "merge_threshold": 0.0010000000474974513
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 4,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    }
+  ],
+  "materials_total": 1,
+  "material_names": [
+    "Dots Stroke"
+  ],
+  "images_total": 2,
+  "image_names": [
+    "a3d384c1c5902f9108cbc82dd5abc254.jpg",
+    "Render Result"
+  ]
+}
