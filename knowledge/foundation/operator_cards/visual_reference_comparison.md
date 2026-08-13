@@ -75,3 +75,14 @@ bug. It correctly confirmed `--in-plane-axis X --wide-view front`, and the resul
 dual-view-measured elliptical loft, a new construction strategy for this project) reached 0.924339
 mean silhouette IoU, the highest of any held-out asset here to date. This is the concrete evidence
 the check changes real modeling outcomes, not just avoids a documented past mistake.
+
+**Second gap in this same tool, found live 2026-08-13**: the check only verified that
+`--in-plane-axis` and `--wide-view` were self-consistent with EACH OTHER, never that the claimed
+`--wide-view` actually matched the reference's own measured aspect ratios (already printed in the
+report as `reference_aspect_ratios`, just never checked against). On the hand-plane benchmark this
+let a wrong-but-mutually-consistent pair (`--in-plane-axis Y --wide-view side`) report
+`orientation_consistent: true`, when the reference itself is wider in front (1.6708) than side
+(0.4286). `tools/verify_reference_view_orientation.py` now runs a second, independent check
+(`claim_matches_reference`) comparing the claim directly against `reference_aspect_ratios`; both
+checks must agree to pass. Confirmed this doesn't regress the desk-lamp evidence above (X still
+fails, Y still passes) before relying on it for the hand plane.

@@ -19,6 +19,19 @@ is spent.
 This does not replace measure_reference.py (which measures the reference
 itself) or real modeling judgment -- it only confirms the *plane assignment*
 is not inverted before landmark-based construction begins.
+
+CORRECTION (found live, hand-plane benchmark, 2026-08-13): the original
+version of this tool only checked that --in-plane-axis and --wide-view were
+self-consistent with EACH OTHER -- it never compared the claimed --wide-view
+against the reference's own measured aspect ratios (already printed in
+reference_aspect_ratios, just never checked). That meant a wrong but
+mutually-consistent pair could still report "orientation_consistent: true".
+This happened for real: the hand plane's reference is wider in "front"
+(aspect 1.67) than "side" (aspect 0.43), but this tool was first run with
+--in-plane-axis Y --wide-view side, which is internally self-consistent and
+passed, despite side being the WRONG view. main() now runs two independent
+checks -- probe self-consistency (original) and claim-vs-reference (new) --
+and both must agree for a pass.
 """
 from __future__ import annotations
 
@@ -126,9 +139,34 @@ def main():
     front_wider = probe_aspects["front"] > probe_aspects["side"]
     empirically_wide_view = "front" if front_wider else "side"
     if args.wide_view == "top":
-        ok = None  # not this tool's designed comparison; report data only
+        probe_ok = None  # not this tool's designed comparison; report data only
     else:
-        ok = empirically_wide_view == args.wide_view
+        probe_ok = empirically_wide_view == args.wide_view
+
+    # CORRECTION (found live, hand-plane benchmark, 2026-08-13): the check
+    # above only verifies that --in-plane-axis and --wide-view are SELF-
+    # CONSISTENT with each other -- it says nothing about whether --wide-view
+    # actually matches the reference. It is possible to pass a wrong but
+    # mutually-consistent pair (e.g. claim "side" is wide when the reference
+    # itself is wider in "front") and have probe_ok report True, because the
+    # probe only checks its own geometry, never ref_aspects. That is exactly
+    # what happened here: the reference's own reference_aspect_ratios (printed
+    # below) showed front=1.6708 > side=0.4286 -- front is the reference's
+    # real wide view -- but this tool was first run with --wide-view side and
+    # reported "consistent: true" anyway, because axis Y and wide-view side
+    # are indeed self-consistent, just both wrong for this reference. This
+    # second check closes that gap: it compares the reference's OWN measured
+    # front/side aspect ratios directly against the claimed --wide-view,
+    # independent of the probe.
+    if "front" in ref_aspects and "side" in ref_aspects and args.wide_view in ("front", "side"):
+        ref_front_wider = ref_aspects["front"] > ref_aspects["side"]
+        ref_empirically_wide_view = "front" if ref_front_wider else "side"
+        reference_ok = ref_empirically_wide_view == args.wide_view
+    else:
+        ref_empirically_wide_view = None
+        reference_ok = None
+
+    ok = probe_ok if reference_ok is None else (bool(probe_ok) and reference_ok)
 
     report = {
         "reference_dir": str(args.reference_dir),
@@ -137,18 +175,31 @@ def main():
         "reference_aspect_ratios": ref_aspects,
         "probe_aspect_ratios": probe_aspects,
         "probe_empirically_wider_of_front_vs_side": empirically_wide_view,
+        "probe_self_consistent": probe_ok,
+        "reference_empirically_wider_of_front_vs_side": ref_empirically_wide_view,
+        "claim_matches_reference": reference_ok,
         "orientation_consistent": ok,
     }
     print(json.dumps(report, indent=2))
-    if ok is None:
+    if probe_ok is None:
         print("\n--wide-view top is informational only; this tool's empirical check compares front vs side.", file=sys.stderr)
-    elif not ok:
+    if probe_ok is False:
         print(
-            f"\nORIENTATION MISMATCH: building the reference's detail along world axis "
-            f"{args.in_plane_axis!r} makes it wider in the {empirically_wide_view!r} render, "
-            f"not {args.wide_view!r} as claimed. Do not proceed with construction on this "
-            f"axis assignment -- this is the exact bug that produced the desk lamp's near-zero "
-            f"side-view IoU.",
+            f"\nORIENTATION MISMATCH (axis/claim self-consistency): building the reference's "
+            f"detail along world axis {args.in_plane_axis!r} makes it wider in the "
+            f"{empirically_wide_view!r} render, not {args.wide_view!r} as claimed. Do not proceed "
+            f"with construction on this axis assignment -- this is the exact bug that produced "
+            f"the desk lamp's near-zero side-view IoU.",
+            file=sys.stderr,
+        )
+    if reference_ok is False:
+        print(
+            f"\nORIENTATION MISMATCH (claim vs. actual reference): the reference's own measured "
+            f"aspect ratios show {ref_empirically_wide_view!r} is the wider view "
+            f"(front={ref_aspects.get('front')!r}, side={ref_aspects.get('side')!r}), not "
+            f"{args.wide_view!r} as claimed. A self-consistent axis/wide-view pair is not enough "
+            f"if the claimed wide-view itself is wrong -- re-check reference_aspect_ratios above "
+            f"before picking parameters.",
             file=sys.stderr,
         )
     raise SystemExit(0 if ok in (True, None) else 1)
