@@ -111,3 +111,14 @@ observations, candidate principles, reproduction experiments, and transfer evide
 `metadata` shape every other source already uses. Durable, reusable lessons still belong in
 `knowledge/foundation/operator_cards/` alongside every other operator card -- update an existing card
 when a studied file adds to a topic that already has one, rather than creating a duplicate.
+
+## Future connection to video study (not yet possible)
+
+A user-directed critique (2026-08-13) named a genuinely stronger version of this protocol: if a
+tutorial's own working `.blend` is available alongside its video, correlate video timestamp -> what
+the artist said -> what they did -> what actually changed in the `.blend` file, rather than studying
+either source alone. That is a real improvement over this protocol's current file-only study loop,
+but it requires the video-understanding pipeline in `docs/RESEARCH_ROADMAP.md` (speech/action
+alignment, Blender-action recognition) to exist first -- none of the ten files studied so far
+(`runs/2026-08-13_blend-file-study/`) came with a paired tutorial video, so this remains a documented
+future direction, not a capability to apply yet.

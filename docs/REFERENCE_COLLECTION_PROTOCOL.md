@@ -110,6 +110,22 @@ proportions, known dimensions, unknown dimensions, critical silhouettes, critica
 critical details, reference conflicts, modeling risks, confidence. This is the bridge between
 research and actual Blender actions.
 
+## Scene decomposition (structured, not just prose)
+
+The primary/secondary/tertiary and mechanical/product-object sections below produce prose. Before
+construction, that prose should also become a structured, checkable record via
+`knowledge_engine/scene_decomposition.py` (`Component`, `Relationship`, `SceneDecomposition`) --
+added 2026-08-13 directly in response to the adjustable wrench's actual failure mode: "I have a good
+silhouette" vs. "you didn't actually model the wrench." A clean silhouette/topology pass cannot by
+itself prove the object was decomposed into its real parts; `SceneDecomposition.check_object_coverage()`
+can, by comparing the declared primary components against the actual built object names and flagging
+any with no plausible match -- not sufficient on its own (a name match isn't a geometry match), but a
+real, mechanically-checkable red flag a silhouette pass cannot produce. Graph-shape validity
+(duplicate/missing ids, dangling relationships) delegates to the existing
+`knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from
+nowhere outside its own test -- this is now its first real caller, not a second parallel validator.
+See `runs/2026-08-13_telephone-rebuild/scene_decomposition.json` for a worked example.
+
 ## Primary / secondary / tertiary forms
 
 Primary defines identity and silhouette. Secondary defines construction and recognizable design.

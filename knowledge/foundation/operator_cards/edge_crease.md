@@ -124,6 +124,50 @@ discipline.
   only shows a completed choice, not the design reasoning behind it) -- this is inference, not
   observation, and is flagged as such rather than presented as a firm rule.
 
+## CRITICAL failure mode found on real transfer: crease breaks roundness on a revolved ring's own loop
+
+Found live rebuilding the watering can (`runs/2026-08-13_watering-can-rebuild/`, a genuinely
+different shape family from the box lab -- this is the cross-shape-family transfer the section above
+flagged as open, and it surfaced a real negative result, not a clean pass).
+
+Building the lid (a hemisphere dome lofted from stacked circular rings), the seat and shoulder rim
+loops were creased the same way the box lab creased its 4 vertical edges. The first render showed the
+dome as a visibly faceted 16-gon, not round at all. Root cause, understood only after direct visual
+inspection caught it (automated fresh-process checks all passed -- this was purely a shading/visual
+defect): **Bevel and crease are not interchangeable "sharp edge" mechanisms even when both are legal
+choices for the same edge.** A WEIGHT Bevel modifier *replaces* the sharp edge with fresh, unweighted
+geometry (a chamfer band); that new geometry has no crease/weight on its own tangential edges, so it is
+still free to round under a later Subdivision Surface. Crease has no such replacement -- it freezes
+the *exact* edges you give it in place, permanently. For a straight edge (the box lab's vertical
+edges) that costs nothing, since a straight line has no curvature to lose. For a **ring's own
+circumferential loop on a revolved/lofted shape**, those edges ARE the polygon's cross-sectional
+shape -- creasing them locks in the discrete N-gon forever, no matter the Subdivision Surface level.
+
+**Rule going forward: never crease a ring's own tangential loop on a circular-loft part if that ring
+needs to read as round.** Crease is for edges that are already straight/planar in their own tangential
+direction (a box edge, a panel-line break on a flat face) -- never for a boundary loop of a lofted
+revolve where the very shape being protected is the curve itself. If a circular-loft part needs a
+genuine hard seam (the vessel's rim, where a real stamped-metal fold is visible in the reference),
+Bevel+WEIGHT is the correct mechanism, not crease -- confirmed by the vessel's own rim staying
+perfectly round in the same rebuild. Where the reference shows no seam at all (the dome, the spout
+taper), the honest fix is no hard-edge treatment whatsoever, not defaulting to crease just because it
+exists as an option (see `mark_no_sharp_edges_needed`, added the same session for exactly this case).
+
+## Second, subtler failure mode: Smooth by Angle can silently reproduce the same bug
+
+After fixing the crease mistake above, the lid's small knob (built at half the ring density, 8 sides,
+no crease or Bevel applied at all) still rendered as a visible octagon. Cause: `shade_smooth_by_angle`
+marks BASE-mesh edges sharp wherever the angle between their two adjacent faces exceeds its threshold
+(30 degrees by default), and Subdivision Surface then respects that sharp flag exactly like a manual
+crease. An 8-sided boss has a 45-degree turning angle between adjacent side faces -- past the
+threshold -- so it got marked sharp automatically and stayed faceted under SubD regardless of
+subdivision level, with no explicit crease call anywhere. The dome and vessel (16 sides, 22.5 degrees)
+never hit this because they sit under the threshold. **Any circular detail with fewer than roughly 12
+sides is at real risk of Smooth by Angle silently locking in its own facets** -- this is the same
+underlying failure as the crease mistake above, triggered automatically rather than by an explicit
+call, so it is easy to miss even after fixing the first bug. Fixed by giving the knob the same ring
+density as the rest of the dome (16 sides) rather than halving it for a "small detail."
+
 ## Evidence
 
 `runs/2026-08-13_blend-file-study/battle_axe/` (inspection JSON, crease/node-group dump, reference

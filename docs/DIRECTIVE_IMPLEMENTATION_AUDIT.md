@@ -147,6 +147,23 @@ to rebuild any of the five held-out families above at the time; a subsequent ret
 These are not software exceptions hidden as success. `benchmark_readiness.json` records the actual
 reference pool and keeps unpassed ladder stages unpassed.
 
+**Status correction (2026-08-13): none of the watering-can paths in this section exist anymore.**
+Everything above describing the watering can (`Connected_Vessel`, `Rose_Head`,
+`Connected_Tapered_Spout`, `Arched_Handle`, `Opening_Rim`, `Opening_Shadow`, and every
+`runs/2026-08-1{1,2}_*watering-can*/` path) is a historical record of what was built and learned, not
+a description of anything currently on disk. The original build was purged on 2026-08-13 after live
+GUI feedback that its spout and handle were separate bolted-on primitives, not genuine edge-loop
+extrusions from the vessel's own mesh. Two rebuild attempts followed the same day (documented in
+`runs/2026-08-13_watering-can-rebuild/reference_analysis.md`); the second correctly fixed both the
+construction technique and a genuine vessel-proportion measurement question, but per explicit user
+instruction ("delete all blend files you tried making, they were all shit and unsuccessful") both
+rebuilds were deleted too, before a final verdict was reached. See
+`knowledge/foundation/benchmark_readiness.json`'s `heldout_cc0_watering_can_001` entry for the current
+status. The bevel-vs-round-part lesson this section documents (large per-facet angle on a
+low-segment round part is not evidence of an intended seam) remains valid and is unaffected by the
+file deletions -- it is captured independently in `knowledge/foundation/operator_cards/
+smooth_by_angle.md` and `edge_crease.md`, not only in this now-stale narrative.
+
 ## Readiness decision
 
 `FOUNDATION STATUS: PARTIAL` remains correct. The repository may be mechanically ready to run

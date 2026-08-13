@@ -1,0 +1,96 @@
+{
+  "blend_path": "C:\\Users\\odane\\AppData\\Local\\Temp\\4192_autosave.blend",
+  "inspected_at": "2026-08-13T17:25:10Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 0,
+      "child_collections": [
+        "base"
+      ]
+    },
+    {
+      "name": "base",
+      "depth": 1,
+      "object_count": 1,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "Cylinder",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "base"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "mesh": {
+        "vertices": 232,
+        "edges": 464,
+        "polygons": 232,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 232,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": true,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        },
+        {
+          "name": "Smooth by Angle",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Smooth by Angle"
+        }
+      ]
+    }
+  ],
+  "materials_total": 1,
+  "material_names": [
+    "Dots Stroke"
+  ],
+  "images_total": 1,
+  "image_names": [
+    "Render Result"
+  ]
+}

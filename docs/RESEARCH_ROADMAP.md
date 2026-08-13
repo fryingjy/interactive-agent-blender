@@ -83,6 +83,16 @@ topology"`, `site:blender.stackexchange.com subdivision corner pinching`,
 - **Tier D — weak/unverified**: isolated comments, short posts, unsourced claims. Can generate
   hypotheses only, with low initial confidence.
 
+## Reference Understanding / Scene Decomposition (implemented 2026-08-13)
+
+A user-directed critique of the current repo state named this as the biggest gap between "the brain"
+and genuinely perceptual judgment, citing the adjustable wrench directly: an automated pass can say
+"I have a good silhouette" while a human says "you didn't actually model the wrench." Implemented as
+`knowledge_engine/scene_decomposition.py` -- see `docs/REFERENCE_COLLECTION_PROTOCOL.md`'s "Scene
+decomposition" section for the full description and `runs/2026-08-13_telephone-rebuild/
+scene_decomposition.json` for a worked example. This closes one P0 item from that critique with real,
+tested code (`tests/test_knowledge_engine.py::SceneDecompositionTests`), not a stub.
+
 ## Video understanding is mandatory (once built)
 
 Title/description/thumbnail/transcript-alone is not equivalent to watching the tutorial. Combine
@@ -107,7 +117,27 @@ skills. Example candidate record:
   "confidence": 0.82
 }
 ```
-Remains a candidate until experimentally tested.
+Remains a candidate until experimentally tested. `observed_actions` should eventually be drawn from
+a controlled taxonomy (object create/delete/select, mode switch, extrude, inset, loop cut, bevel,
+move/rotate/scale, merge, bridge, dissolve, knife, boolean, mirror, subdivision, support loop, edge
+crease, bevel weight, normal edit, shading change) rather than free text, precisely so
+`spoken_reason` can be checked against the actual action type instead of just co-occurring in time --
+recognizing not just that a Bevel was applied but that "this edge needs a controlled manufactured
+radius and highlight" is the reason, which is the part that transfers to a different asset. Not
+implemented: this requires the action-recognition and speech/action alignment stages below, neither
+of which exist yet.
+
+**Planned, NOT YET IMPLEMENTED, module breakdown** for the day the sequencing rule above actually
+reaches "video understanding" (still gated behind documentation ingestion and forum research per
+"Research breadth grows with modeling ability" below -- recorded here as architecture, not scaffolded
+as empty files, per this project's own standing rule against half-finished implementations):
+`research/video_agent/{discovery,source_ranker,acquisition,metadata,audio,transcription,
+scene_segmentation,visual_events,blender_ui_understanding,speech_action_alignment,lesson_extractor,
+mistake_detector,technique_extractor,experiment_generator,knowledge_promoter,episode_store}.py`.
+`discovery.py`/`acquisition.py` (YouTube search and download) are explicitly the biggest open gap --
+today's `video_ingest.py` deliberately only accepts already-local, already-permitted video, and nothing
+in this project's toolset can fetch from a video platform; standing that up is real infrastructure
+work with its own permission/security surface, not a natural extension of the current ingester.
 
 Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
 approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT

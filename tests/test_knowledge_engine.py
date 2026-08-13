@@ -14,6 +14,7 @@ from knowledge_engine.reasoning import (
 )
 from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
+from knowledge_engine.scene_decomposition import Component, Relationship, SceneDecomposition
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
@@ -192,6 +193,66 @@ class ReasoningTests(unittest.TestCase):
             [{"from": "cap", "to": "body", "type": "attached"}],
         )
         self.assertTrue(graph["pass"])
+
+
+class SceneDecompositionTests(unittest.TestCase):
+    def _wrench_decomposition(self):
+        return SceneDecomposition(
+            object_name="adjustable pipe wrench",
+            components=[
+                Component("handle", "primary", "structural"),
+                Component("fixed_jaw", "primary", "structural"),
+                Component("movable_jaw", "primary", "structural"),
+                Component("adjustment_wheel", "secondary", "structural"),
+            ],
+            relationships=[
+                Relationship("movable_jaw", "fixed_jaw", "slides_relative_to"),
+                Relationship("adjustment_wheel", "movable_jaw", "interacts_with"),
+                Relationship("handle", "fixed_jaw", "transitions_into"),
+            ],
+        )
+
+    def test_valid_decomposition_passes(self):
+        decomp = self._wrench_decomposition()
+        decomp.validate()  # must not raise
+        self.assertEqual(
+            {c.name for c in decomp.primary_components()},
+            {"handle", "fixed_jaw", "movable_jaw"},
+        )
+
+    def test_empty_decomposition_rejected(self):
+        with self.assertRaises(ValueError):
+            SceneDecomposition(object_name="thing", components=[]).validate()
+
+    def test_invalid_relationship_type_rejected(self):
+        decomp = self._wrench_decomposition()
+        decomp.relationships.append(Relationship("handle", "movable_jaw", "not_a_real_type"))
+        with self.assertRaises(ValueError):
+            decomp.validate()
+
+    def test_dangling_relationship_rejected_via_shared_graph_validator(self):
+        decomp = self._wrench_decomposition()
+        decomp.relationships.append(Relationship("handle", "teeth", "interacts_with"))
+        with self.assertRaises(ValueError):
+            decomp.validate()
+
+    def test_coverage_check_passes_real_per_component_build(self):
+        decomp = self._wrench_decomposition()
+        result = decomp.check_object_coverage(["Handle", "Fixed_Jaw", "Movable_Jaw", "Adjustment_Wheel"])
+        self.assertTrue(result["coverage_ok"])
+        self.assertEqual(result["unmatched_primary_components"], [])
+
+    def test_coverage_check_catches_the_actual_wrench_failure(self):
+        """The real regression this module exists for: a single collapsed
+        object passes silhouette/topology checks but is not a decomposed
+        model. See knowledge/foundation/operator_cards/visual_reference_comparison.md."""
+        decomp = self._wrench_decomposition()
+        result = decomp.check_object_coverage(["Wrench_Body"])
+        self.assertFalse(result["coverage_ok"])
+        self.assertEqual(
+            set(result["unmatched_primary_components"]),
+            {"handle", "fixed_jaw", "movable_jaw"},
+        )
 
 
 class VisualComparisonTests(unittest.TestCase):

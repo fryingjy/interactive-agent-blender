@@ -1,0 +1,97 @@
+{
+  "blend_path": "C:\\Users\\odane\\AppData\\Local\\Temp\\4192_autosave.blend",
+  "objects": {
+    "Cylinder": {
+      "crease": {
+        "present": true,
+        "total_edges": 652,
+        "nonzero_edges": 70,
+        "value_histogram": {
+          "1.0": 70
+        }
+      }
+    }
+  },
+  "node_groups": {
+    "Smooth by Angle": {
+      "name": "Smooth by Angle",
+      "node_count": 14,
+      "nodes": [
+        {
+          "name": "Set Shade Smooth",
+          "type": "SET_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeSetShadeSmooth"
+        },
+        {
+          "name": "Set Shade Smooth.001",
+          "type": "SET_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeSetShadeSmooth",
+          "unlinked_input_defaults": {
+            "Selection": true,
+            "Shade Smooth": true
+          }
+        },
+        {
+          "name": "Group Output",
+          "type": "GROUP_OUTPUT",
+          "bl_idname": "NodeGroupOutput"
+        },
+        {
+          "name": "Edge Angle",
+          "type": "MESH_EDGE_ANGLE",
+          "bl_idname": "GeometryNodeInputMeshEdgeAngle"
+        },
+        {
+          "name": "Group Input",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        },
+        {
+          "name": "Is Edge Smooth",
+          "type": "INPUT_EDGE_SMOOTH",
+          "bl_idname": "GeometryNodeInputEdgeSmooth"
+        },
+        {
+          "name": "Is Shade Smooth",
+          "type": "INPUT_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeInputShadeSmooth"
+        },
+        {
+          "name": "Compare",
+          "type": "COMPARE",
+          "bl_idname": "FunctionNodeCompare"
+        },
+        {
+          "name": "Boolean Math.001",
+          "type": "BOOLEAN_MATH",
+          "bl_idname": "FunctionNodeBooleanMath"
+        },
+        {
+          "name": "Group Input.001",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        },
+        {
+          "name": "Group Input.002",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        },
+        {
+          "name": "Boolean Math",
+          "type": "BOOLEAN_MATH",
+          "bl_idname": "FunctionNodeBooleanMath"
+        },
+        {
+          "name": "Boolean Math.002",
+          "type": "BOOLEAN_MATH",
+          "bl_idname": "FunctionNodeBooleanMath"
+        },
+        {
+          "name": "Group Input.003",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        }
+      ]
+    }
+  }
+}

@@ -51,6 +51,21 @@ camera reframing conceal proportion changes.
   indistinguishable from a genuine proportion failure until the axes were checked directly. Step 0
   above exists specifically to catch this before it happens again.
 
+- **A quick visual glance can be wrong in the opposite direction from the boombox/wrench lesson.**
+  Those established that an automated pass (silhouette IoU, fresh-process checks) is not proof of
+  visual fidelity -- always look at the render. But looking is not infallible either: rebuilding the
+  watering can's vessel, a highly visually prominent curved element sitting right at one end (the
+  domed lid) repeatedly produced the wrong quick-glance judgment about which end of the tapered body
+  was actually wider, on at least four separate look-again attempts across one session, including a
+  scale-matched side-by-side overlay that itself likely had an uncorrected alignment artifact. Five
+  independent, non-redundant measurement methods (dense alpha-channel row profile, hard-edge
+  verification against shadow contamination, independent color-threshold measurement, precise dot
+  markers plotted at exact measured coordinates, and the top-down view's ring signature) all agreed
+  with each other and against the repeated glance. Neither "trust the automated number" nor "trust
+  the first glance" is safe alone on a shape with one visually dominant curved feature next to a
+  subtler, larger-extent flat taper -- corroborate across independent methods before locking in a
+  proportion decision, especially direction (wider-here-vs-there), not just magnitude.
+
 ## Evidence
 
 `tools/verify_reference_view_orientation.py`, run against
@@ -81,3 +96,7 @@ let a wrong-but-mutually-consistent pair (`--in-plane-axis Y --wide-view side`) 
 (`claim_matches_reference`) comparing the claim directly against `reference_aspect_ratios`; both
 checks must agree to pass. Confirmed this doesn't regress the desk-lamp evidence above (X still
 fails, Y still passes) before relying on it for the hand plane.
+
+`runs/2026-08-13_watering-can-rebuild/reference_analysis.md` records the vessel-taper glance-vs-
+measurement conflict in full (all five corroborating methods, the recorded conflict block per
+`docs/REFERENCE_COLLECTION_PROTOCOL.md`'s format, and the resolved modeling brief).

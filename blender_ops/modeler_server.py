@@ -115,6 +115,7 @@ _OPS = {
     "set_bevel_weight_by_ids": object_ops.set_bevel_weight_by_ids,
     "set_bevel_scoping": object_ops.set_bevel_scoping,
     "set_edge_crease_by_ids": object_ops.set_edge_crease_by_ids,
+    "mark_no_sharp_edges_needed": object_ops.mark_no_sharp_edges_needed,
 }
 
 

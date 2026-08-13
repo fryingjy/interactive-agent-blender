@@ -254,6 +254,34 @@ def set_edge_crease_by_ids(name, edge_ids, value=1.0, clear_others=False):
     }
 
 
+def mark_no_sharp_edges_needed(name, reason):
+    """Explicitly record that this mesh has no edges requiring Bevel or
+    crease at all -- a fourth, genuinely different sanctioned state, not a
+    weaker version of the other three.
+
+    Found necessary building a watering can's wire handle: a plain
+    round-profile curve-to-mesh tube has nothing that should ever read as
+    sharp, the same negative case `bat.blend` confirmed during the
+    professional-file study (one object, 354 verts, Smooth by Angle only, no
+    SubD/Bevel/crease at all). Without this, hard_surface_shading_audit's
+    three existing paths (WEIGHT-Bevel, ANGLE/VGROUP-Bevel, crease) all read
+    "no intent recorded" as a failure, which is correct for a part that
+    forgot to consider hard edges but wrong for a part that has none to
+    consider -- those are different situations and must not share one
+    unrecorded state. This requires an explicit call with a stated reason so
+    it stays auditable and distinguishable from silence, matching the other
+    three paths' own discipline.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    if not reason or not str(reason).strip():
+        raise ValueError("reason is required -- this must be a deliberate claim, not a silent default")
+    obj["hard_surface_no_sharp_edges_intended"] = True
+    obj["hard_surface_no_sharp_edges_reason"] = str(reason)
+    return {"name": name, "no_sharp_edges_intended": True, "reason": str(reason)}
+
+
 def set_bevel_scoping(name, method, modifier_name=None, angle_deg=None, vertex_group=None, width=None, segments=None):
     """Configure a Bevel modifier's scoping method and record matching deliberate
     intent, for the two documented alternatives to WEIGHT (see bevel_modifier.md:
@@ -397,6 +425,19 @@ def hard_surface_shading_audit(name):
     intended_crease_ids = sorted(int(item) for item in obj.get("hard_surface_intended_crease_edge_ids", []))
     crease_path_ok = bool(intended_crease_ids) and creased_ids == intended_crease_ids
 
+    # Fourth sanctioned path: an explicit, reasoned claim that this mesh has
+    # no edges that should ever be sharp (see mark_no_sharp_edges_needed).
+    # Only a mesh with zero Bevel modifiers and zero non-zero crease values
+    # can honestly make this claim -- otherwise geometry already contradicts
+    # the recorded intent.
+    no_sharp_edges_claimed = bool(obj.get("hard_surface_no_sharp_edges_intended"))
+    no_sharp_edges_path_ok = (
+        no_sharp_edges_claimed
+        and not bevel_modifiers
+        and not creased_ids
+        and not weighted_ids
+    )
+
     checks = {
         "semantic_intent_recorded": bool(intended_ids),
         "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
@@ -405,10 +446,13 @@ def hard_surface_shading_audit(name):
         "angle_or_vgroup_intent_matches_actual": scoping_intent_matches_actual,
         "crease_intent_recorded": bool(intended_crease_ids),
         "crease_matches_intent": crease_path_ok,
+        "no_sharp_edges_claimed": no_sharp_edges_claimed,
+        "no_sharp_edges_claim_matches_geometry": no_sharp_edges_path_ok,
         "bevel_before_subd": (
             not subd_indices
             or (bool(effective_bevel_indices) and min(effective_bevel_indices) < min(subd_indices))
             or (crease_path_ok and not bevel_modifiers)
+            or no_sharp_edges_path_ok
         ),
         "smooth_by_angle_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
         "uniform_object_scale": uniform_scale,
@@ -416,14 +460,19 @@ def hard_surface_shading_audit(name):
     }
     weight_path_ok = checks["semantic_intent_recorded"] and checks["semantic_weights_match_intent"] and checks["weight_limited_bevel_present"]
     passed = (
-        (weight_path_ok or angle_or_vgroup_path_ok or crease_path_ok)
+        (weight_path_ok or angle_or_vgroup_path_ok or crease_path_ok or no_sharp_edges_path_ok)
         and checks["bevel_before_subd"]
         and checks["smooth_by_angle_recorded"]
         and checks["uniform_object_scale"]
         and checks["not_unannotated_blanket_smooth"]
     )
     warnings = []
-    if not weight_path_ok and not angle_or_vgroup_path_ok and not crease_path_ok:
+    if no_sharp_edges_claimed and not no_sharp_edges_path_ok:
+        warnings.append(
+            "hard_surface_no_sharp_edges_intended is set but the mesh has a Bevel modifier, "
+            "weighted edges, or creased edges -- the claim contradicts the actual geometry."
+        )
+    if not weight_path_ok and not angle_or_vgroup_path_ok and not crease_path_ok and not no_sharp_edges_path_ok:
         if non_weight_scoped_indices and not weighted_bevel_indices:
             method_names = "/".join(bevel_scoping_methods)
             warnings.append(
