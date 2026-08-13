@@ -1,0 +1,77 @@
+{
+  "method": "alpha masks; candidate bbox cropped and nearest-neighbor normalized into reference bbox",
+  "normalization_warning": "Scores test normalized projected shape, not absolute framing, scale, or translation.",
+  "views": {
+    "front": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\reference\\reference_front_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_front_mask.png",
+      "reference_bbox": [
+        277,
+        52,
+        442,
+        667
+      ],
+      "candidate_bbox_before_alignment": [
+        298,
+        64,
+        469,
+        704
+      ],
+      "iou": 0.916856,
+      "reference_recall": 0.982389,
+      "candidate_precision": 0.932177
+    },
+    "side": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\reference\\reference_side_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_side_mask.png",
+      "reference_bbox": [
+        323,
+        52,
+        396,
+        667
+      ],
+      "candidate_bbox_before_alignment": [
+        346,
+        64,
+        421,
+        704
+      ],
+      "iou": 0.973018,
+      "reference_recall": 0.977776,
+      "candidate_precision": 0.995023
+    },
+    "top": {
+      "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\reference\\reference_top_mask.png",
+      "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_top_mask.png",
+      "reference_bbox": [
+        277,
+        323,
+        442,
+        396
+      ],
+      "candidate_bbox_before_alignment": [
+        298,
+        346,
+        469,
+        421
+      ],
+      "iou": 0.883142,
+      "reference_recall": 0.966318,
+      "candidate_precision": 0.911191
+    }
+  },
+  "thresholds": {
+    "front": 0.97,
+    "side": 0.97,
+    "top": 0.97,
+    "mean": 0.97
+  },
+  "mean_iou": 0.924339,
+  "assertions": {
+    "front_iou_at_least_0.97": false,
+    "side_iou_at_least_0.97": true,
+    "top_iou_at_least_0.97": false,
+    "mean_iou_at_least_0.97": false
+  },
+  "pass": false
+}

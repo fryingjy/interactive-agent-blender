@@ -1,0 +1,63 @@
+{
+  "objects": [
+    "Wrench_Body"
+  ],
+  "station_meta": {
+    "front_centerline_px": 404.41847826086956,
+    "side_centerline_px": 359.5,
+    "scale": 0.005,
+    "station_count": 78
+  },
+  "vertices_total": 2936,
+  "faces_total": 2934,
+  "masks": {
+    "front": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_front_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_front_mask.png",
+        "view": "front",
+        "resolution": 768,
+        "frame_objects": [
+          "Wrench_Body"
+        ],
+        "silhouette_fill_ratio": 0.1009
+      }
+    },
+    "side": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_side_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_side_mask.png",
+        "view": "side",
+        "resolution": 768,
+        "frame_objects": [
+          "Wrench_Body"
+        ],
+        "silhouette_fill_ratio": 0.0537
+      }
+    },
+    "top": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_top_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_top_mask.png",
+        "view": "top",
+        "resolution": 768,
+        "frame_objects": [
+          "Wrench_Body"
+        ],
+        "silhouette_fill_ratio": 0.0182
+      }
+    },
+    "isometric": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_isometric_mask.png",
+      "result": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\candidate_isometric_mask.png",
+        "view": "isometric",
+        "resolution": 768,
+        "frame_objects": [
+          "Wrench_Body"
+        ],
+        "silhouette_fill_ratio": 0.0712
+      }
+    }
+  }
+}

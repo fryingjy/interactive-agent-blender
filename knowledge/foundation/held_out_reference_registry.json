@@ -132,6 +132,37 @@
         "weighted_bevel_edges": 144,
         "artifact": "runs/2026-08-11_connected-camera-corrective/connected_camera_corrective.blend"
       }
+    },
+    {
+      "url": "https://polyhaven.com/a/adjustable_wrench",
+      "status": "ONLINE_HELD_OUT_AUTOMATED_BEST_RESULT_YET_STILL_BELOW_GATES_HUMAN_REVIEW_OPEN",
+      "benchmark": "heldout_cc0_adjustable_wrench_001",
+      "first_used": "2026-08-12",
+      "source_boundary": "Source geometry was isolated to neutral Workbench reference rendering; candidate construction used measured front/side row-width pixel data only, never source topology, names, modifiers, or materials.",
+      "orientation_check": {
+        "tool": "tools/verify_reference_view_orientation.py",
+        "in_plane_axis": "X",
+        "wide_view": "front",
+        "result": "consistent",
+        "note": "first genuinely prospective use of this tool on a new reference; prior validation was retroactive against the already-known desk-lamp bug"
+      },
+      "held_out_result": {
+        "normalized_front_silhouette_iou": 0.916856,
+        "normalized_side_silhouette_iou": 0.973018,
+        "normalized_top_silhouette_iou": 0.883142,
+        "normalized_mean_silhouette_iou": 0.924339,
+        "standing_gates": {
+          "front": 0.97,
+          "side": 0.97,
+          "top": 0.97,
+          "mean": 0.97
+        },
+        "gates_passed": "1/4 (side only)",
+        "fresh_process_verification": "clean: 0 non-manifold edges, 0 ngons, 0 loose geometry, 0 degenerate faces, positive signed volume",
+        "construction": "single continuous elliptical loft, 78 stations, every station's X/Y half-extent and center offset read from measured front/side reference row widths -- not a body of revolution or armature skeleton",
+        "reverted_investigation": "a second candidate split the loft into a separate Movable_Jaw part at rows confirmed two-lobe by direct pixel run-length analysis; measured front IoU regressed 0.916856 to 0.911423 and recall 0.982389 to 0.973345, so it was reverted rather than kept",
+        "artifact": "runs/2026-08-12_heldout-adjustable-wrench/candidate/heldout_adjustable_wrench.blend"
+      }
     }
   ]
 }

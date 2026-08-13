@@ -60,3 +60,10 @@ single-view object: 0.942380 silhouette IoU, 0.771739 negative-space IoU, 0.0013
 centroid error, and 0.001523 normalized contour error. An initial threshold of 240 included the
 light-gray background and yielded a meaningless 0.269494 IoU; threshold 220 was accepted only after
 mask and bounds inspection. This is corrective transfer evidence, not held-out or multi-view proof.
+
+`runs/2026-08-12_heldout-adjustable-wrench/` is step 0's first genuinely prospective use -- run
+before any construction on a brand-new CC0 reference, not retroactively against an already-known
+bug. It correctly confirmed `--in-plane-axis X --wide-view front`, and the resulting candidate (a
+dual-view-measured elliptical loft, a new construction strategy for this project) reached 0.924339
+mean silhouette IoU, the highest of any held-out asset here to date. This is the concrete evidence
+the check changes real modeling outcomes, not just avoids a documented past mistake.
