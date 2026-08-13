@@ -77,3 +77,21 @@ corrected small parts and the telephone's 15 corrected trim parts (dial aperture
 panels) used the same flawed selection method and have **not** been individually re-checked against
 their references in this pass -- the boombox asset was separately rejected and removed entirely on
 its own visual merits, and the telephone trim parts remain an open item.
+
+## Addendum 2026-08-13: the revert alone left them geometrically low-poly, not actually round
+
+Direct user review of a follow-up field report circled `Rose_Head` in a rendered screenshot and
+pointed out it still reads as a visibly faceted hexagonal shape even after the bevel revert above,
+and that no Subdivision Surface modifier appeared to have been used at all. Inspecting the file
+confirmed it directly: `Rose_Head` (56 verts), `Connected_Tapered_Spout` (80 verts), and
+`Arched_Handle` (116 verts) all had empty modifier lists. The bevel revert fixed the wrong defect --
+it removed an incorrect hard seam, but never checked whether the underlying cage had enough geometry
+or modifier-driven smoothing to read as round in the first place. Smooth shading alone cannot make a
+low-segment cage look round; that is a distinct defect from a wrongly hard-seamed one, and needs a
+distinct fix.
+
+`tools/fix_watering_can_rounded_parts_subd.py` adds a Subdivision Surface modifier (levels=2) to all
+three objects, without touching bevel weighting (per the same user note that nothing in that area
+should be bevel weighted). Fresh-process verification on the evaluated mesh of all three: 0
+non-manifold edges, 0 degenerate faces, 0 ngons. Edited the existing production file in place, not a
+new version.
