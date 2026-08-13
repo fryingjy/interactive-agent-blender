@@ -1,12 +1,43 @@
 # Foundation exit report
 
-**Updated:** 2026-08-10
+**Updated:** 2026-08-10 (see 2026-08-13 status correction below — this body text is stale in places
+and is kept as a historical record, not a current-state claim)
 
 **FOUNDATION STATUS: PARTIAL**
 
 **READY FOR HELD-OUT MODELING: YES — benchmarks B and D passed; six references remain reserved**
 
 This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
+
+## Status correction (2026-08-13)
+
+Per the durable rule "if prose conflicts with current code or reproducible evidence, evidence wins"
+(`docs/MASTER_DIRECTIVE.md`), the following body-text claims below are now stale:
+
+- **"The held-out vintage telephone wall-clock adds a third unrelated product family..."** and
+  **"The held-out metal watering can adds a fourth..."** (Stronger areas section): both original
+  builds, and two further telephone/watering-can rebuild attempts on 2026-08-13, were rejected on
+  direct human visual review and deleted entirely (no `.blend`, no build script, no render
+  survives), matching the boombox precedent this same report already documents. See
+  `knowledge/foundation/benchmark_readiness.json`'s `heldout_cc0_vintage_telephone_001` /
+  `heldout_cc0_watering_can_001` entries (both `REJECTED_ON_VISUAL_REVIEW_AND_REMOVED` or worse) and
+  `runs/2026-08-13_{telephone,watering-can}-rebuild/reference_analysis.md` for the full record.
+  Reference material, measurements, and lessons learned survive; the modeled assets do not.
+- Not mentioned anywhere below: the held-out CC0 adjustable wrench (reached 0.932 mean silhouette
+  IoU, the highest of any asset in this project, across four construction strategies) was also
+  rejected on visual review and removed on 2026-08-12/13 — a genuine hook/overhang shape-family
+  failure, not a surface-detail failure. See `knowledge/foundation/held_out_reference_registry.json`.
+- Not mentioned anywhere below: `knowledge_engine/scene_decomposition.py` (structured component/
+  relationship decomposition with a `check_object_coverage()` anti-collapse check, added
+  2026-08-13 directly in response to the wrench's own failure mode) and the full execution (not just
+  documentation) of `docs/REFERENCE_COLLECTION_PROTOCOL.md` against both rebuild attempts.
+- The "Largest remaining gaps" and "Highest-value next step" sections below remain directionally
+  correct (professional hard-surface/SubD judgment and broader held-out breadth are still the real
+  gaps) but should be read alongside the wrench/telephone/watering-can removals as further,
+  more severe evidence for gap #1, not as unrelated history.
+
+Do not edit the historical narrative below to retroactively hide these outcomes; this correction
+block exists so the report stays honest without rewriting what was actually claimed on 2026-08-10.
 
 ## Evidence summary
 

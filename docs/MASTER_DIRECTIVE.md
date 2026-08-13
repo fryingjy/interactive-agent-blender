@@ -391,7 +391,45 @@ highest-value next step
 
 Report only fields relevant to the session. Never pad reports with unmeasured claims.
 
-## 18. Current development rule
+## 18. Tool architecture: Cloudglue and the Blender Connector (2026-08-13)
+
+Two additional MCP connectors are available in this environment alongside the repository's own
+typed modeler: **Cloudglue** (`mcp__Cloudglue__*`, video understanding — `describe_video`,
+`search_video_moments`, `search_video_summaries`, `segment_video_chapters`,
+`extract_video_entities`, `segment_video_camera_shots`, confirmed functional via a live
+`list_collections` call) and a **Blender Connector** (`mcp__Blender__*`, broad live-Blender access —
+`execute_blender_code`, `get_objects_summary`, viewport/window screenshots,
+`get_blendfile_summary_*`, plus offline `search_manual_docs`/`search_api_docs` over the bundled
+Blender manual and Python API reference, confirmed functional standalone).
+
+Broad tools discover and observe; the narrow typed modeler establishes reproducible evidence. Do not
+let this collapse into one undifferentiated "AI can touch Blender" capability:
+
+- **Cloudglue** is a research source, equivalent in kind to a documentation page or forum post, not
+  a fact. A video showing a technique does not make the technique correct for the current asset;
+  treat its output as `SOURCE OBSERVATION` requiring the same `INTERPRETATION -> EXPERIMENTAL
+  EVIDENCE -> EXECUTABLE GUIDANCE` promotion path as any other source (Section 13). For held-out
+  benchmarks, never research the specific target asset after the benchmark is frozen — mark the
+  benchmark `CONTAMINATED` if this happens.
+- **Blender Connector** mutations bypass this repository's transaction/identity/rollback machinery.
+  A mutation performed through it must be disclosed as `BLENDER_CONNECTOR_BYPASS`, never silently
+  counted as `TYPED_MODELER` evidence, and must trigger external-edit reconciliation
+  (`check_external_edit`/re-probe) before the typed path resumes — the same discipline already
+  required for any other out-of-band edit (Section 9). Use it to observe, prototype, and discover;
+  formalize a capability into `blender_ops/` (with tests, rollback, and identity guarantees) before
+  relying on it for benchmark evidence.
+- Neither connector's live-instance tools work without their own server actually running (the
+  Blender Connector needs its addon started inside an open Blender session on port 9876, distinct
+  from `blender_ops/modeler_server.py`'s own port 9878) — confirmed live, not assumed; both report a
+  clear connection-refused/timeout rather than silently no-op.
+- Do not build a redundant video-transcription/frame-extraction stack or a redundant generic
+  Blender-Python bridge inside this repository merely because these connectors exist elsewhere in
+  the environment — they are not guaranteed available in every session, so `blender_ops/`'s own
+  typed surface and `knowledge_engine/ingest/video_ingest.py`'s local-file path remain the
+  repository's real, portable capability; the connectors are an accelerant when present, not a
+  replacement for owning the evidence trail.
+
+## 19. Current development rule
 
 Do not encode a commit-specific implementation queue in this document. Determine current priorities from the live repository, foundation reports, roadmap, failing tests, and latest evidence.
 
