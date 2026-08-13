@@ -134,10 +134,45 @@ as empty files, per this project's own standing rule against half-finished imple
 `research/video_agent/{discovery,source_ranker,acquisition,metadata,audio,transcription,
 scene_segmentation,visual_events,blender_ui_understanding,speech_action_alignment,lesson_extractor,
 mistake_detector,technique_extractor,experiment_generator,knowledge_promoter,episode_store}.py`.
-`discovery.py`/`acquisition.py` (YouTube search and download) are explicitly the biggest open gap --
-today's `video_ingest.py` deliberately only accepts already-local, already-permitted video, and nothing
-in this project's toolset can fetch from a video platform; standing that up is real infrastructure
-work with its own permission/security surface, not a natural extension of the current ingester.
+
+**Update (2026-08-13): the acquisition/description/segmentation gap above is now substantially closed
+by an external connector, not by code in this repo.** A CloudGlue MCP connector
+(`mcp__Cloudglue__*`) is connected and confirmed functional (`list_collections` round-tripped
+successfully). Its tools cover real pieces of the pipeline directly: `describe_video` accepts YouTube
+URLs natively (closing the "nothing in this project's toolset can fetch from a video platform" gap
+below), `segment_video_chapters` gives coarse segmentation, `search_video_moments` /
+`search_video_summaries` give semantic search across speech/on-screen-text/visual content within a
+collection, and `extract_video_entities` / `segment_video_camera_shots` add structured entity and
+shot-level detail. This is genuine external infrastructure for `discovery.py`-through-
+`scene_segmentation.py`'s job, not a research claim -- confirmed by a real, successful tool call, not
+assumed from the connector's description. What CloudGlue does NOT provide, and what still needs
+building on top of it if this thread is pursued: `blender_ui_understanding.py` (recognizing Blender-
+specific UI actions, not general video description), `speech_action_alignment.py` (tying a spoken
+timestamp to a specific modeling action rather than a general video moment), and everything from
+`lesson_extractor.py` onward (mistake/technique extraction into this project's own knowledge
+schemas). No video has actually been analyzed through this connector yet as of this note -- connected
+and tool-tested, not yet applied to a real Blender tutorial.
+
+A second connector (`mcp__Blender__*`, distinct from this project's own `blender_ops/` code and the
+existing `mcp__blender__*`/`mcp__modeler__*` tools) is also connected: `search_manual_docs` /
+`search_api_docs` do full-text search over the actual bundled Blender user manual and Python API
+reference and work standalone (confirmed live, no running Blender instance required) -- a direct,
+higher-fidelity replacement for ad hoc web-fetches when grounding a Tier-A documentation claim (see
+"Source hierarchy" below). Its live-instance tools (`get_objects_summary`, `execute_blender_code`,
+viewport/window screenshots, `get_blendfile_summary_*`) additionally give live introspection of a
+running Blender GUI, but require Blender open locally with this connector's own addon active --
+confirmed by a live connection attempt that correctly reported "Cannot connect to Blender at
+localhost:9876" when no instance was running, the same category of requirement as this project's own
+`blender_ops/modeler_server.py`.
+
+`discovery.py`/`acquisition.py` (YouTube search and download) are explicitly the biggest open gap in
+this repo's OWN code -- today's `video_ingest.py` deliberately only accepts already-local,
+already-permitted video, and nothing in this project's toolset can fetch from a video platform;
+standing that up is real infrastructure work with its own permission/security surface, not a natural
+extension of the current ingester. CloudGlue's `describe_video` narrows this gap for analysis
+(it fetches and analyzes a YouTube URL server-side without this repo needing its own downloader) but
+does not replace `video_ingest.py`'s own local-file, provenance-tracked path, and does not by itself
+implement the Blender-specific action recognition or knowledge-schema promotion this project needs.
 
 Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
 approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT
