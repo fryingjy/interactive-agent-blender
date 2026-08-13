@@ -7,6 +7,14 @@ camera reframing conceal proportion changes.
 
 ## Procedure
 
+0. **Before any real construction on an asymmetric or articulated reference**, confirm which world
+   plane the reference's "full profile" view actually corresponds to. Run
+   `tools/verify_reference_view_orientation.py <reference_dir> --in-plane-axis {X,Y,Z} --wide-view
+   {front,side}` with the axis you intend to build the primary detail along -- it builds a trivial
+   elongated proxy, renders it through the real `render_silhouette` pipeline, and empirically
+   confirms whether that axis reads as wide in front or side view, rather than assuming it. This
+   step exists because of a real, costly failure (see Evidence): a full articulated-lamp candidate
+   was built end to end in the wrong plane before the mismatch was discovered.
 1. Define reference bounds once and reuse them to frame every candidate render.
 2. Render at least front, side, and top silhouettes for forms that can be judged orthographically.
 3. Compare foreground IoU, centroid, bounding box, and contour distance per view.
@@ -24,8 +32,24 @@ camera reframing conceal proportion changes.
 - Orthographic agreement does not prove perspective or camera-matched agreement.
 - A light or non-white source background can become false foreground under a generic threshold;
   inspect the binary mask and foreground bounds before accepting any metric.
+- **Building the primary construction plane along the wrong world axis is invisible until first
+  render, and by then real construction time is already spent.** `render_silhouette`'s "front" looks
+  along -Y (exposes the X-Z plane) and "side" looks along +X (exposes the Y-Z plane) -- not the
+  reverse, and not something to assume from a reference image's own front/side labeling. A
+  full-length articulated desk-lamp candidate was built in the X-Z plane while its reference's full
+  profile was the Y-Z plane, producing a side-view IoU of 0.0045 (a near-complete miss) that was
+  indistinguishable from a genuine proportion failure until the axes were checked directly. Step 0
+  above exists specifically to catch this before it happens again.
 
 ## Evidence
+
+`tools/verify_reference_view_orientation.py`, run against
+`runs/2026-08-12_heldout-desk-lamp/reference/` in
+`runs/2026-08-12_reference-orientation-check/`: tested with `--in-plane-axis X` (the axis the first
+desk-lamp candidate actually used) correctly fails, reporting the probe reads wider in `front` than
+`side` -- the exact inversion that produced that candidate's 0.0045 side-view IoU. Tested with
+`--in-plane-axis Y` (the axis the corrected second candidate used) correctly passes. This is direct
+empirical proof the check would have caught the real bug before construction, not just after.
 
 `runs/2026-08-10_visual-comparison/` improved mean three-view IoU from 0.739440 to
 0.979045 and reduced mean normalized contour error from 0.021805 to 0.002058. This is controlled
