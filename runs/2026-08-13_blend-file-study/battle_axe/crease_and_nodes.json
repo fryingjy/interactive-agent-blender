@@ -1,0 +1,117 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\battle axe.blend",
+  "objects": {
+    "blade": {
+      "crease": {
+        "present": true,
+        "total_edges": 543,
+        "nonzero_edges": 141,
+        "value_histogram": {
+          "1.0": 141
+        }
+      }
+    },
+    "guard": {
+      "crease": {
+        "present": true,
+        "total_edges": 224,
+        "nonzero_edges": 64,
+        "value_histogram": {
+          "1.0": 64
+        }
+      }
+    },
+    "handle": {
+      "crease": {
+        "present": true,
+        "total_edges": 256,
+        "nonzero_edges": 48,
+        "value_histogram": {
+          "1.0": 48
+        }
+      }
+    },
+    "pommel": {
+      "crease": {
+        "present": true,
+        "total_edges": 288,
+        "nonzero_edges": 48,
+        "value_histogram": {
+          "1.0": 48
+        }
+      }
+    },
+    "wrap": {
+      "crease": {
+        "present": true,
+        "total_edges": 1907,
+        "nonzero_edges": 1094,
+        "value_histogram": {
+          "1.0": 1094
+        }
+      }
+    }
+  },
+  "node_groups": {
+    "Auto Smooth": {
+      "name": "Auto Smooth",
+      "node_count": 10,
+      "nodes": [
+        {
+          "name": "Group Output",
+          "type": "GROUP_OUTPUT",
+          "bl_idname": "NodeGroupOutput"
+        },
+        {
+          "name": "Group Input",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        },
+        {
+          "name": "Group Input.001",
+          "type": "GROUP_INPUT",
+          "bl_idname": "NodeGroupInput"
+        },
+        {
+          "name": "Set Shade Smooth",
+          "type": "SET_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeSetShadeSmooth"
+        },
+        {
+          "name": "Set Shade Smooth.001",
+          "type": "SET_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeSetShadeSmooth",
+          "unlinked_input_defaults": {
+            "Selection": true,
+            "Shade Smooth": true
+          }
+        },
+        {
+          "name": "Edge Angle",
+          "type": "MESH_EDGE_ANGLE",
+          "bl_idname": "GeometryNodeInputMeshEdgeAngle"
+        },
+        {
+          "name": "Is Edge Smooth",
+          "type": "INPUT_EDGE_SMOOTH",
+          "bl_idname": "GeometryNodeInputEdgeSmooth"
+        },
+        {
+          "name": "Is Face Smooth",
+          "type": "INPUT_SHADE_SMOOTH",
+          "bl_idname": "GeometryNodeInputShadeSmooth"
+        },
+        {
+          "name": "Boolean Math",
+          "type": "BOOLEAN_MATH",
+          "bl_idname": "FunctionNodeBooleanMath"
+        },
+        {
+          "name": "Compare",
+          "type": "COMPARE",
+          "bl_idname": "FunctionNodeCompare"
+        }
+      ]
+    }
+  }
+}

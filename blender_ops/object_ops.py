@@ -184,6 +184,76 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
     }
 
 
+def set_edge_crease_by_ids(name, edge_ids, value=1.0, clear_others=False):
+    """Assign a semantic edge-crease set by persistent edge IDs -- a second,
+    genuinely different sharp-edge mechanism from set_bevel_weight_by_ids,
+    not a synonym for it.
+
+    Crease protects a Subdivision Surface edge from the modifier's own
+    smoothing WITHOUT adding any geometry (no chamfer, no extra vertices);
+    Bevel adds a real physical radius as new geometry. They solve different
+    problems: Bevel is for an edge that needs an actual visible chamfer
+    width (the reference shows a machined/pressed radius); crease is for an
+    edge that just needs to stay sharp/flat despite an already-active SubD
+    modifier smoothing the rest of the object, at a fraction of the
+    evaluated polygon cost.
+
+    Found by studying a professional battle-axe .blend
+    (docs/BLEND_FILE_STUDY_PROTOCOL.md): every sharp edge across all 5 of
+    its objects uses full crease (value 1.0), zero Bevel modifiers anywhere.
+    Reproduced and validated in runs/2026-08-13_blend-file-study/
+    crease_experiment/: crease alone matches Bevel's sharp-edge read almost
+    exactly (98 vs. 290 evaluated verts on the same test cage) -- BUT ONLY
+    when the cage has adequate supporting topology. A bare single-quad face
+    bounded only by creased edges "pillows" (bulges outward) under SubD even
+    though its boundary edge itself stays sharp; the same face pre-
+    subdivided into a grid stays flat. This is not a flaw specific to
+    crease -- it's the same sparse-cage-under-SubD principle
+    knowledge/foundation/operator_cards/topology_context_subd.md already
+    documents, just visible here as pillowing instead of area-variation.
+    Callers must ensure adequate face density before relying on crease
+    alone for a flat-panel read.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    if obj.mode == "EDIT":
+        raise ValueError("set_edge_crease_by_ids requires Object Mode; leave Edit Mode before changing mesh attributes")
+    crease_value = float(value)
+    if not 0.0 <= crease_value <= 1.0:
+        raise ValueError(f"value must be in [0, 1], got {value}")
+    persistent_ids.ensure_persistent_ids(name)
+    id_map = persistent_ids.get_id_maps(name)["edges"]["id_to_index"]
+    attribute = obj.data.attributes.get("crease_edge")
+    if attribute is None:
+        attribute = obj.data.attributes.new("crease_edge", "FLOAT", "EDGE")
+    if attribute.domain != "EDGE":
+        raise ValueError("crease_edge exists but is not an EDGE-domain attribute")
+    if clear_others:
+        for item in attribute.data:
+            item.value = 0.0
+    assigned, missing = [], []
+    for agent_id in edge_ids:
+        edge_index = id_map.get(int(agent_id))
+        if edge_index is None:
+            missing.append(int(agent_id))
+            continue
+        attribute.data[edge_index].value = crease_value
+        assigned.append(int(agent_id))
+    index_to_id = persistent_ids.get_id_maps(name)["edges"]["index_to_id"]
+    obj["hard_surface_intended_crease_edge_ids"] = sorted(
+        int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 0.999
+    )
+    obj.data.update()
+    return {
+        "attribute": "crease_edge",
+        "value": crease_value,
+        "assigned_edge_ids": assigned,
+        "missing_edge_ids": missing,
+        "clear_others": bool(clear_others),
+    }
+
+
 def set_bevel_scoping(name, method, modifier_name=None, angle_deg=None, vertex_group=None, width=None, segments=None):
     """Configure a Bevel modifier's scoping method and record matching deliberate
     intent, for the two documented alternatives to WEIGHT (see bevel_modifier.md:
@@ -308,27 +378,52 @@ def hard_surface_shading_audit(name):
     angle_or_vgroup_path_ok = scoping_intent_recorded and scoping_intent_matches_actual
     effective_bevel_indices = weighted_bevel_indices or (scoping_bevel_indices if angle_or_vgroup_path_ok else [])
 
+    # Third, structurally different sanctioned path: full edge crease (see
+    # set_edge_crease_by_ids). Found by studying a professional battle-axe
+    # .blend (docs/BLEND_FILE_STUDY_PROTOCOL.md) -- every sharp edge across
+    # all 5 of its objects uses crease, zero Bevel modifiers anywhere.
+    # Reproduced and validated in runs/2026-08-13_blend-file-study/
+    # crease_experiment/. Crease has no Bevel-vs-SubD ordering dependency
+    # (the SubD modifier reads crease values directly), so a crease-only
+    # object with no Bevel modifier at all must not be penalized by the
+    # bevel_before_subd check below.
+    crease_attr = obj.data.attributes.get("crease_edge")
+    creased_ids = []
+    if crease_attr is not None and crease_attr.domain == "EDGE":
+        creased_ids = sorted(
+            int(id_maps["index_to_id"][index]) for index, item in enumerate(crease_attr.data)
+            if item.value > 0.999 and index in id_maps["index_to_id"]
+        )
+    intended_crease_ids = sorted(int(item) for item in obj.get("hard_surface_intended_crease_edge_ids", []))
+    crease_path_ok = bool(intended_crease_ids) and creased_ids == intended_crease_ids
+
     checks = {
         "semantic_intent_recorded": bool(intended_ids),
         "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
         "weight_limited_bevel_present": bool(weighted_bevel_indices),
         "angle_or_vgroup_intent_recorded": scoping_intent_recorded,
         "angle_or_vgroup_intent_matches_actual": scoping_intent_matches_actual,
-        "bevel_before_subd": not subd_indices or (bool(effective_bevel_indices) and min(effective_bevel_indices) < min(subd_indices)),
+        "crease_intent_recorded": bool(intended_crease_ids),
+        "crease_matches_intent": crease_path_ok,
+        "bevel_before_subd": (
+            not subd_indices
+            or (bool(effective_bevel_indices) and min(effective_bevel_indices) < min(subd_indices))
+            or (crease_path_ok and not bevel_modifiers)
+        ),
         "smooth_by_angle_recorded": obj.get("shading_policy") == "SMOOTH_BY_ANGLE",
         "uniform_object_scale": uniform_scale,
         "not_unannotated_blanket_smooth": not (blanket_smooth and obj.get("shading_policy") != "SMOOTH_BY_ANGLE"),
     }
     weight_path_ok = checks["semantic_intent_recorded"] and checks["semantic_weights_match_intent"] and checks["weight_limited_bevel_present"]
     passed = (
-        (weight_path_ok or angle_or_vgroup_path_ok)
+        (weight_path_ok or angle_or_vgroup_path_ok or crease_path_ok)
         and checks["bevel_before_subd"]
         and checks["smooth_by_angle_recorded"]
         and checks["uniform_object_scale"]
         and checks["not_unannotated_blanket_smooth"]
     )
     warnings = []
-    if not weight_path_ok and not angle_or_vgroup_path_ok:
+    if not weight_path_ok and not angle_or_vgroup_path_ok and not crease_path_ok:
         if non_weight_scoped_indices and not weighted_bevel_indices:
             method_names = "/".join(bevel_scoping_methods)
             warnings.append(
@@ -351,6 +446,8 @@ def hard_surface_shading_audit(name):
         "bevel_limit_methods_present": bevel_scoping_methods,
         "weighted_edge_ids": weighted_ids,
         "intended_bevel_edge_ids": intended_ids,
+        "creased_edge_ids": creased_ids,
+        "intended_crease_edge_ids": intended_crease_ids,
         "modifier_types": modifier_types,
         "object_scale": scale,
         "warnings": warnings,
