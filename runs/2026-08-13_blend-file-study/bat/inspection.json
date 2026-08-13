@@ -1,0 +1,88 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\bat.blend",
+  "inspected_at": "2026-08-13T16:08:21Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 0,
+      "child_collections": [
+        "Collection"
+      ]
+    },
+    {
+      "name": "Collection",
+      "depth": 1,
+      "object_count": 1,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "bat",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "ant_landscape": "<bpy id prop: owner=\"OBbat\", name=\"ant_landscape\", address=0x000001891DE35FE0>"
+      },
+      "mesh": {
+        "vertices": 354,
+        "edges": 704,
+        "polygons": 352,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 352,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Auto Smooth",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "node_group": "Auto Smooth"
+        }
+      ]
+    }
+  ],
+  "materials_total": 1,
+  "material_names": [
+    "Dots Stroke"
+  ],
+  "images_total": 1,
+  "image_names": [
+    "Render Result"
+  ]
+}

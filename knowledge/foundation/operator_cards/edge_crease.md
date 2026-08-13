@@ -88,6 +88,31 @@ object with zero Bevel modifiers reaches `status: "PASS"`.
   fully protecting the edge -- this card only tested and validated the full-crease (1.0) case, matching
   what the studied professional file actually used. Partial crease remains untested here.
 
+## Cross-file confirmation (9 more professional files studied, 2026-08-13)
+
+Extending the study to the other 9 files the user provided
+(`runs/2026-08-13_blend-file-study/`) gives a real pattern for WHEN professionals reach for crease
+vs. Bevel, not just that both exist:
+
+- **Stylized/fantasy weapons** (`axe.blend`, `batarang.blend`, `adventure time sword.blend`,
+  `broken sword.blend`) predominantly use crease, matching `battle axe.blend`.
+- **Precision mechanical firearms** (`ap15.blend`: 38 objects, real Bevel+SubD throughout;
+  `ak47.blend`: 129 objects, Bevel used 90 times vs. crease essentially absent) predominantly use
+  Bevel instead.
+
+Read together, this is a legible, evidence-based heuristic rather than an arbitrary style choice:
+Bevel's explicit, controllable physical radius suits machined/manufactured precision edges (panel
+lines, slide serrations); crease's cheaper, softer sharp read suits sculptural/stylized forms where
+no specific chamfer width needs to be legible. `bat.blend` (a plain tapered baseball bat, single
+object, no modifiers at all beyond Smooth by Angle) is the useful negative case: a genuinely simple
+round/tapered form needs neither technique, only adequate base density.
+
+`batarang.blend`'s "Plane" object also has a Bevel modifier present with **zero edges actually
+weighted** (0/224) alongside 73/224 edges creased -- direct evidence that a Bevel modifier merely
+existing in the stack is not evidence it's doing anything; check the actual weighted/creased edge
+count, not just modifier presence, matching this project's own `hard_surface_shading_audit()`
+discipline.
+
 ## What this does not establish
 
 - Only tested on a rectangular box fixture within this same lab (a within-lab transfer, box-with-

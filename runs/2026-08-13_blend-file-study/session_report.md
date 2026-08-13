@@ -86,9 +86,66 @@ Not yet done in this session -- the typed operation and audit path are ready to 
 been applied to a real held-out modeling task. This is the next real step for this specific
 capability, separate from continuing to the remaining 9 provided files.
 
-## What this does not establish
+## What this does not establish (as of the first file, battle axe)
 
 - Only one of ten provided files studied so far.
 - No genuine cross-shape-family transfer test yet, only within-lab.
 - No real-task application/measurement yet.
 - The "why crease over Bevel" reasoning is inference, not observed fact, and is documented as such.
+
+## Addendum: the remaining 9 files (lighter-weight pass)
+
+The first file (battle axe) got the full reproduce/transfer/validate/store cycle because it
+surfaced a genuinely new capability (edge crease). The remaining 9 files
+(`batarang`, `alien force watch`, `broken sword`, `adventure time sword`, `asta`, `axe`, `bat`,
+`ap15`, `ak47`) were each inspected (object/collection/modifier inventory) and rendered for direct
+visual comparison, with findings recorded as they emerged rather than run through a full lab cycle
+each -- reserving that deeper cycle for genuinely new techniques, not every repeated confirmation of
+one already found. Per-file evidence is under each file's own subdirectory here.
+
+Cross-file findings, most to least novel:
+
+1. **High-poly/low-poly production collection pipeline**, confirmed in 7/10 files with real baked
+   PBR textures on the low-poly target -- new operator card
+   `knowledge/foundation/operator_cards/highpoly_lowpoly_pipeline.md`. Refines this project's
+   `models/` convention: real production low-poly is a genuine separate retopology, not just a
+   modifier-toggle duplicate.
+2. **Crease vs. Bevel now has an evidence-based heuristic**, not just "both exist": stylized/fantasy
+   weapons favor crease (axe, batarang, both swords, confirming battle axe); precision mechanical
+   firearms favor Bevel (ap15: real Bevel+SubD throughout; ak47: Bevel used 90 times across 129
+   objects). Added to `edge_crease.md`.
+3. `batarang.blend`'s "Plane" object has a Bevel modifier present with **zero edges actually
+   weighted**, alongside 73 creased edges -- direct evidence that modifier presence alone (already a
+   known trap for the `hard_surface_shading_audit()` design) is not evidence of active use.
+4. `broken sword.blend`'s grip wrap is built from 14 separate small identical Solidify+SubD strip
+   objects, vs. `battle axe.blend`'s single continuous wrap mesh -- two valid alternative
+   constructions for the same visual result.
+5. `broken sword.blend` and `alien force watch.blend` both have a `zbrush hp`/`zbrush cut`
+   collection holding untouched, very dense sculpted meshes (up to 1,126,023 verts) used purely as
+   bake sources -- genuine sculpt-to-hardsurface integration, noted but not pursued further per this
+   project's own P2/deferred sculpting boundary.
+6. `alien force watch.blend`'s "runes" use Mirror + Array + Bevel + two Subdivision Surface passes +
+   a Curve modifier to repeat ornamental symbols along a curved path -- a real technique for
+   circular/curved-path ornamental repetition, noted but not reproduced in this pass.
+7. `bat.blend` (a plain tapered baseball bat) is a useful negative case: one object, 354 verts,
+   Smooth by Angle only, no SubD/Bevel/crease at all -- a genuinely simple body-of-revolution form
+   needs neither technique, only adequate base density. Directly confirms the wrench's own shaft/
+   handle strategy (measured loft + Smooth by Angle, no Bevel needed) was correct even though its
+   jaw/housing strategy was not.
+8. `ak47.blend`'s curved magazine is a real overhung/hook-shaped part, the same structural category
+   that repeatedly broke the wrench's jaw -- direct evidence this shape category is normal in
+   professional work and is handled through real component construction, not a parametric sweep
+   (though this specific part's own construction method was not traced in this pass).
+9. `adventure time sword.blend`'s working "model" collection lays its parts out separated/exploded
+   in space rather than assembled -- a workflow detail (build components in isolation, position
+   later), noted but not further investigated.
+
+## What this whole pass does not establish
+
+- No new typed capability was extracted from files 2-10 the way `set_edge_crease_by_ids` was from
+  file 1 -- their findings are organizational/confirmatory (pipeline structure, technique-choice
+  heuristics) rather than a new discrete Blender operation.
+- No genuine cross-shape-family TRANSFER test of the crease-vs-bevel heuristic itself (e.g.
+  deliberately building the same part both ways and measuring which reads better) -- this remains
+  inference from observed professional choices, not an experiment this project ran itself.
+- No real held-out modeling task has yet applied any of these 9 additional files' findings.
