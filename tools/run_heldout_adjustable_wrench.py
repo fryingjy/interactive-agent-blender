@@ -26,6 +26,29 @@ patched with an invented, unmeasured "tooth" shape. If gates fail specifically i
 the jaw region, that is the next real gap to close with actual evidence (e.g. a
 fill-ratio profile, not a bbox-width one, to detect a true two-lobe row) -- not a
 license to hand-sculpt an answer.
+
+CORRECTION (found on direct user review, 2026-08-13): the first version of this
+script shipped with zero bevel weighting, no Bevel modifier, and blanket
+use_smooth=True (no angle threshold, no recorded shading_policy) -- the whole
+established hard-surface policy in smooth_by_angle.md was skipped entirely when
+this asset used a new construction strategy. Every existing mesh-validity and
+silhouette check passed anyway, because none of them check for this. Fixed by
+applying that policy for real: weight the two reference-confirmed collar/step
+seams (see COLLAR_TRANSITION_Y below), Bevel (WEIGHT-limited) before
+Smooth by Angle. Also switched the ring parameterization from disk() (a
+square-to-circle mapping only angle-uniform for a fixed single radius) to equal
+angle, for clean circumferential edge loops instead of a warped grid -- a
+topology-quality defect separate from the shading-policy gap, also caught on
+direct review rather than by any automated check. Edited and re-saved in place
+into the same heldout_adjustable_wrench.blend rather than a new run/version.
+
+CONVENTION (2026-08-13): the working .blend now lives at models/adjustable_wrench.blend
+-- this project's new single consolidated folder for the actual, accurately-named,
+continuously-edited-in-place model files, per user instruction. Editing this asset
+means editing that file directly, not creating another timestamped copy. The
+runs/2026-08-12_heldout-adjustable-wrench/ directory remains the dated evidence
+record (reference renders, measurement JSON, IoU reports, session narrative) for
+this benchmark and is not duplicated into models/.
 """
 from __future__ import annotations
 
@@ -34,12 +57,15 @@ import math
 import sys
 from pathlib import Path
 
+import bmesh
 import bpy
 
 ROOT = Path(__file__).resolve().parents[1]
 REF_DIR = ROOT / "runs" / "2026-08-12_heldout-adjustable-wrench" / "reference"
 sys.path.insert(0, str(ROOT / "blender_ops"))
 from render_passes import render_silhouette  # noqa: E402
+import object_ops  # noqa: E402
+import persistent_ids  # noqa: E402
 
 
 def args():
@@ -112,17 +138,27 @@ def elliptical_loft(name, stations, grid_n, col, material, props=None):
     this project's existing ring_loft (single radius, fixed center) to an
     independently-measured X/Y half-extent and an offset center per station, so
     it can loft an asymmetric measured profile instead of only a body of
-    revolution."""
+    revolution.
+
+    Ring vertices are placed at equal angular spacing (cos/sin theta), not by
+    running boundary()'s square-perimeter indices through disk() the way
+    ring_loft/path_loft do for their single-radius circular rings. disk() is a
+    square-to-circle mapping that is only angle-uniform when every ring is the
+    same shape; here rx/ry (eccentricity) changes every ring, so the same
+    boundary index would land at a different true angle from one ring to the
+    next, producing an uneven, non-radial quad flow down the whole body
+    instead of clean circumferential edge loops -- a real topology-quality
+    defect independent of silhouette accuracy (caught on direct review, not by
+    any automated manifold/ngon check, which this passes either way)."""
     bc = boundary(grid_n)
     verts = []
     faces = []
     rings = []
     for cx, cy, z, rx, ry in stations:
         ring = []
-        for i, j in bc:
-            u = -1 + 2 * i / (grid_n - 1)
-            v = -1 + 2 * j / (grid_n - 1)
-            a, b = disk(u, v)
+        for k in range(len(bc)):
+            theta = 2 * math.pi * k / len(bc)
+            a, b = math.cos(theta), math.sin(theta)
             ring.append(len(verts))
             verts.append((cx + a * rx, cy + b * ry, z))
         rings.append(ring)
@@ -194,7 +230,80 @@ def load_stations(sample_stride=8):
         stations.append((cx, cy, z, rx, ry))
     stations.sort(key=lambda st: st[2])  # bottom (handle tip, z=0) to top (jaw tip)
     return stations, {"front_centerline_px": front_centerline, "side_centerline_px": side_centerline,
-                       "scale": SCALE, "station_count": len(stations)}
+                       "scale": SCALE, "station_count": len(stations), "y1_px": y1}
+
+
+# Genuine sharp seams, identified the same evidence-based way as the jaw fork
+# above -- not a blanket geometric-angle threshold (this project's own
+# documented Rose_Head/spout/handset regression is exactly why not). Found by
+# scanning the measured station radii for large station-to-station jumps
+# outside the already-known jaw/adjuster region (y_px > 150): a 37.5px front
+# half-width drop at y_px=340 (housing block ending, shaft beginning) and a
+# 10px side half-width jump at y_px=372 (shaft ending, handle collar
+# beginning). Both are directly visible in reference_side_beauty.png as crisp
+# machined steps, not smooth transitions. Each is weighted on both of its
+# bounding rings (the wide side and the narrow side of the step) for a
+# well-defined chamfer once beveled.
+COLLAR_TRANSITION_Y = [340, 348, 364, 372]
+
+
+def apply_hard_surface_shading_policy(obj_name, collar_y_values, y1, scale):
+    """Applies this project's established policy
+    (knowledge/foundation/operator_cards/smooth_by_angle.md): identify
+    reference-confirmed sharp edges, weight them, Bevel (WEIGHT-limited,
+    widest width that stays manifold/non-degenerate) before Smooth by Angle.
+    This was skipped entirely on the first version of this asset -- caught on
+    direct user review, not by any automated check, since a plain
+    smooth-shaded loft with no Bevel modifier passes every existing
+    mesh-validity and silhouette check without it."""
+    obj = bpy.data.objects[obj_name]
+    target_zs = [round((y1 - y) * scale, 6) for y in collar_y_values]
+
+    edge_ids_to_weight = []
+    persistent_ids.ensure_persistent_ids(obj_name)
+    index_to_id = persistent_ids.get_id_maps(obj_name)["edges"]["index_to_id"]
+    for edge in obj.data.edges:
+        z0 = obj.data.vertices[edge.vertices[0]].co.z
+        z1 = obj.data.vertices[edge.vertices[1]].co.z
+        if abs(z0 - z1) > 1e-5:
+            continue  # longitudinal edge, not a ring/circumferential edge
+        if any(abs(z0 - target) < 1e-4 for target in target_zs):
+            edge_ids_to_weight.append(index_to_id[edge.index])
+
+    weight_result = object_ops.set_bevel_weight_by_ids(obj_name, edge_ids_to_weight, weight=1.0)
+
+    accepted_width = None
+    attempts = []
+    for width in (0.03, 0.02, 0.012, 0.006):
+        existing = [m for m in obj.modifiers if m.type == "BEVEL"]
+        bevel = existing[0] if existing else obj.modifiers.new("Semantic weighted edge radius", "BEVEL")
+        bevel.limit_method = "WEIGHT"
+        bevel.width = width
+        bevel.segments = 2
+        depsgraph = bpy.context.evaluated_depsgraph_get()
+        eval_obj = obj.evaluated_get(depsgraph)
+        eval_mesh = eval_obj.to_mesh()
+        bm = bmesh.new()
+        bm.from_mesh(eval_mesh)
+        non_manifold = sum(1 for e in bm.edges if not e.is_manifold)
+        degenerate = sum(1 for f in bm.faces if f.calc_area() < 1e-8)
+        bm.free()
+        eval_obj.to_mesh_clear()
+        attempts.append({"width": width, "non_manifold_edges": non_manifold, "degenerate_faces": degenerate})
+        if non_manifold == 0 and degenerate == 0:
+            accepted_width = width
+            break
+        obj.modifiers.remove(bevel)
+
+    smooth_result = object_ops.set_smooth_by_angle(obj_name)
+
+    return {
+        "weighted_edge_ids": edge_ids_to_weight,
+        "weight_result": weight_result,
+        "bevel_width_attempts": attempts,
+        "accepted_bevel_width": accepted_width,
+        "smooth_by_angle": smooth_result,
+    }
 
 
 def main():
@@ -218,6 +327,11 @@ def main():
         },
     )
 
+    shading_result = apply_hard_surface_shading_policy(
+        "Wrench_Body", COLLAR_TRANSITION_Y, meta["y1_px"], meta["scale"]
+    )
+    audit = object_ops.hard_surface_shading_audit("Wrench_Body")
+
     bpy.ops.object.select_all(action="SELECT")
     all_objs = list(bpy.context.selected_objects)
     all_names = [ob.name for ob in all_objs]
@@ -228,7 +342,9 @@ def main():
         result = render_silhouette(all_names, str(mask_path), view=view, resolution=768)
         masks[view] = {"path": str(mask_path), "result": result}
 
-    bpy.ops.wm.save_as_mainfile(filepath=str(out / "heldout_adjustable_wrench.blend"))
+    models_dir = ROOT / "models"
+    models_dir.mkdir(parents=True, exist_ok=True)
+    bpy.ops.wm.save_as_mainfile(filepath=str(models_dir / "adjustable_wrench.blend"))
 
     verts_total = sum(len(ob.data.vertices) for ob in all_objs)
     faces_total = sum(len(ob.data.polygons) for ob in all_objs)
@@ -238,6 +354,8 @@ def main():
         "station_meta": meta,
         "vertices_total": verts_total,
         "faces_total": faces_total,
+        "shading_policy_result": shading_result,
+        "hard_surface_shading_audit": audit,
         "masks": masks,
     }
     (out / "candidate_report.json").write_text(json.dumps(report, indent=2))

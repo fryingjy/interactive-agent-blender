@@ -135,3 +135,35 @@ project is kept: the mistake was diagnosing a "defect" from a shaded render alon
 checking it against the actual reference at the same angle -- which is precisely the
 discipline this project's own boombox and camera lessons already established, now caught
 in real time instead of after a rejection.
+
+## Addendum 2026-08-13 (second): the established bevel-weight policy was skipped entirely
+
+Direct user review of the field report caught something the addendum above did not: the
+merged candidate had zero bevel weighting, no Bevel modifier, and blanket smooth shading
+with no recorded angle policy -- this project's own established hard-surface policy
+(`knowledge/foundation/operator_cards/smooth_by_angle.md`) was never applied to this asset
+at all. Every existing mesh-validity and silhouette check passed regardless, because none
+of them check for this; it took a human looking at the shaded render to notice.
+
+Fixed directly in `tools/run_heldout_adjustable_wrench.py` (edited and re-run in place, not
+a new script or a new run folder): scanned the measured station data for large
+station-to-station radius jumps outside the already-known jaw/adjuster region and found two
+-- a 37.5px front half-width drop at y_px=340 (housing block ending, shaft beginning) and a
+10px side half-width jump at y_px=372 (shaft ending, handle collar beginning) -- both
+directly visible as crisp machined steps in `reference_side_beauty.png`, not assumed from a
+blanket angle threshold (the same discipline the Rose_Head/spout regression established
+earlier this project). Weighted both rings bounding each step, added a WEIGHT-limited Bevel
+modifier (tried 0.03/0.02/0.012/0.006 width, 0.012 was the widest that stayed
+non-manifold/degenerate-free), then applied Smooth by Angle. `hard_surface_shading_audit`
+now reports `PASS`. Also switched the ring parameterization from `disk()` (a
+square-to-circle mapping only angle-uniform for a fixed single radius) to equal angle, for
+clean circumferential edge loops instead of a warped grid -- a separate topology-quality
+issue caught in the same review.
+
+Net effect on the frozen gates: mean IoU actually improved slightly, 0.924339 -> 0.926417
+(front 0.916856 -> 0.919703, side 0.973018 -> 0.976781, top essentially unchanged at
+0.882767) -- fixing the real gaps did not cost accuracy. Fresh-process verification stayed
+clean on both base and evaluated mesh. The working file now lives at
+`models/adjustable_wrench.blend` (this project's new single consolidated folder for
+accurately-named, continuously-edited-in-place model files, per user instruction) rather
+than a versioned copy inside this runs/ evidence folder.

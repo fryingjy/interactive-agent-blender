@@ -1,8 +1,8 @@
 {
-  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-12_heldout-adjustable-wrench\\candidate\\heldout_adjustable_wrench.blend",
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\models\\adjustable_wrench.blend",
   "object_name": "Wrench_Body",
   "geometry_source": "base",
-  "verified_at": "2026-08-13T12:18:57Z",
+  "verified_at": "2026-08-13T13:18:08Z",
   "stats": {
     "vertices": 2936,
     "edges": 5868,
@@ -12,7 +12,7 @@
     "loose_verts": 0,
     "loose_edges": 0,
     "degenerate_faces": 0,
-    "signed_volume": 0.2512595882707291
+    "signed_volume": 0.2512595890468954
   },
   "checks": {
     "non_manifold_edges_ok": true,
