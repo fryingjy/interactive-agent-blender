@@ -112,3 +112,26 @@ Renders: `candidate/candidate_{front,side,top,isometric}_mask.png`,
   visual review) and camera lesson (automated pass, rejected on experienced
   review) -- this candidate is offered for the same human visual check before any
   status is upgraded to a pass.
+
+## Addendum 2026-08-13: a shaded render, and a mistake caught before it was made
+
+A shaded Workbench beauty render of `Wrench_Body`
+(`candidate/candidate_isometric_beauty.png`, `tools/render_wrench_candidate_beauty.py`)
+was produced for reporting purposes -- the silhouette masks used for gating are flat,
+unlit fills and never show surface shape. It revealed a rippled, corkscrew-looking band
+in the jaw region that the flat masks had completely hidden, and it was initially treated
+as a real construction defect: a median-of-3 filter on the station center offset and a
+switch from the loft's disk()-based ring parameterization to an equal-angle one were both
+implemented and tested, on the (plausible-sounding but unverified) theory that noisy
+per-station offsets or angular misalignment between rings was causing a false twist. Both
+changes reduced front IoU (0.9169 -> 0.9092 with smoothing; unchanged again after the
+angle fix) with no visible change to the rendered ripple -- and comparing directly against
+`reference_isometric_beauty.png` at the same angle showed why: the real wrench has genuine
+ridged worm-screw threading in that exact spot. The loft's per-station measured width was
+faithfully reproducing real reference detail, not injecting an error. Both changes were
+reverted (`git checkout`) rather than kept, restoring the exact merged candidate. Kept as
+evidence here for the same reason every other investigated-and-rejected attempt in this
+project is kept: the mistake was diagnosing a "defect" from a shaded render alone, before
+checking it against the actual reference at the same angle -- which is precisely the
+discipline this project's own boombox and camera lessons already established, now caught
+in real time instead of after a rejection.

@@ -32,6 +32,14 @@ camera reframing conceal proportion changes.
 - Orthographic agreement does not prove perspective or camera-matched agreement.
 - A light or non-white source background can become false foreground under a generic threshold;
   inspect the binary mask and foreground bounds before accepting any metric.
+- A shaded/beauty render can show a visual pattern (rippling, a twist, an odd highlight) that looks
+  like a construction defect but is a faithful reproduction of real reference detail -- check the
+  same angle against the actual reference before spending time "fixing" it. A wrench candidate's
+  shaded render showed a rippled band that was initially diagnosed as a loft-parameterization bug and
+  two plausible-sounding corrections were built and measured (both reduced silhouette IoU with no
+  visible change to the pattern) before comparing against the reference at the same angle showed the
+  real object has genuine ridged worm-screw threading in that exact spot. See
+  `runs/2026-08-12_heldout-adjustable-wrench/session_report.md`'s 2026-08-13 addendum.
 - **Building the primary construction plane along the wrong world axis is invisible until first
   render, and by then real construction time is already spent.** `render_silhouette`'s "front" looks
   along -Y (exposes the X-Z plane) and "side" looks along +X (exposes the Y-Z plane) -- not the
