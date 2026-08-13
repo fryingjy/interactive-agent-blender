@@ -25,6 +25,7 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 | Normals / orientation | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Smooth / Flat shading | — | — | ✓ | — | — | ✓ | ~ |
 | Smooth by Angle / semantic weighted bevel policy | ~ | — | ✓ | ✓ | — | ✓ | — |
+| Edge Crease (SubD sharp-edge protection) | ✓ | — | ✓ | ✓ | — | ~ | ~ |
 | Topology fundamentals | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Subdivision Surface | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Boolean modifier | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |

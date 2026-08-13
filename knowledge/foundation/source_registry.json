@@ -1809,5 +1809,57 @@
         "Version-limited official documentation; installed Blender 5.2 extension/operator identifier was not invoked."
       ]
     }
+  },
+  {
+    "id": "professional-blend-battle-axe",
+    "url": null,
+    "local_path": "C:\\Users\\odane\\Downloads\\blender\\blend\\battle axe.blend",
+    "title": "Battle axe (user-provided professional reference .blend)",
+    "creator": "unknown (user's personal reference library)",
+    "source_type": "professional_blend_file",
+    "trust_tier": "B",
+    "version": "saved with Blender 5.2.44",
+    "topics": [
+      "edge-crease",
+      "subdivision-surface",
+      "hard-surface-component-decomposition",
+      "mirror-modifier",
+      "solidify-modifier",
+      "geometry-nodes-smooth-by-angle"
+    ],
+    "access": {
+      "text": false,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": true
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "blend_data"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "5 objects (blade, guard, handle, pommel, wrap), each a genuinely separate real mechanical/functional component, not one continuous swept form",
+        "Zero Bevel modifiers anywhere in the file; every sharp edge across all 5 objects uses full edge crease (crease_edge attribute value 1.0) instead",
+        "The 'Auto Smooth' Geometry Nodes modifier group present on 4 of 5 objects is node-for-node identical to Blender's own shade_smooth_by_angle output (Edge Angle -> Compare -> Boolean Math -> Set Shade Smooth), confirming this project's existing shading policy independently rather than contradicting it",
+        "blade uses a Mirror modifier (Y axis) over half the geometry; wrap uses Solidify (offset -1.0) then Subdivision then Auto Smooth",
+        "Base cage vertex counts are moderate-to-dense (112 to 1092 verts per object), not minimal boxes",
+        "All meshes are effectively all-quad (0 ngons across all 5 objects, 1 stray triangle on blade only)"
+      ],
+      "candidate_principles": [
+        "Full edge crease (1.0) is a valid, geometry-free alternative to Bevel+WEIGHT for keeping a SubD edge sharp, appropriate when no explicit chamfer width is needed by the reference",
+        "Crease-only sharp edges require the bounded face to already have adequate supporting density -- a single unsupported quad face pillows (bulges) under SubD even with a fully creased boundary; this is a precondition, not an incidental detail, and likely why the studied file's cages are all moderately dense"
+      ],
+      "experiments": [
+        "runs/2026-08-13_blend-file-study/battle_axe/ (inspection, crease/node dump, reference render)",
+        "runs/2026-08-13_blend-file-study/crease_experiment/ (crease vs. Bevel reproduction, 4 variants, fresh-process verified)"
+      ],
+      "skills": [
+        "blender_ops/object_ops.py:set_edge_crease_by_ids",
+        "blender_ops/object_ops.py:hard_surface_shading_audit (third sanctioned crease_path_ok path)"
+      ]
+    }
   }
 ]
