@@ -34,12 +34,14 @@ camera reframing conceal proportion changes.
   inspect the binary mask and foreground bounds before accepting any metric.
 - A shaded/beauty render can show a visual pattern (rippling, a twist, an odd highlight) that looks
   like a construction defect but is a faithful reproduction of real reference detail -- check the
-  same angle against the actual reference before spending time "fixing" it. A wrench candidate's
-  shaded render showed a rippled band that was initially diagnosed as a loft-parameterization bug and
-  two plausible-sounding corrections were built and measured (both reduced silhouette IoU with no
-  visible change to the pattern) before comparing against the reference at the same angle showed the
-  real object has genuine ridged worm-screw threading in that exact spot. See
-  `runs/2026-08-12_heldout-adjustable-wrench/session_report.md`'s 2026-08-13 addendum.
+  same angle against the actual reference before spending time "fixing" it, not just after.
+- A per-height cross-section sweep (an ellipse or any other center+extent parameterization, however
+  many independent parameters it takes) cannot represent a form with a genuine hook or overhang --
+  a component that curls back over itself is not star-shaped from any central axis at any height, no
+  matter how the cross-section is fit. Silhouette IoU can still read as high (front/side/top
+  projections can each look reasonable) while the actual 3D form is unrecognizable. A form like this
+  needs real component decomposition (separate parts for the overhanging piece, built from a traced
+  or hand-placed profile) instead.
 - **Building the primary construction plane along the wrong world axis is invisible until first
   render, and by then real construction time is already spent.** `render_silhouette`'s "front" looks
   along -Y (exposes the X-Z plane) and "side" looks along +X (exposes the Y-Z plane) -- not the
@@ -68,13 +70,6 @@ single-view object: 0.942380 silhouette IoU, 0.771739 negative-space IoU, 0.0013
 centroid error, and 0.001523 normalized contour error. An initial threshold of 240 included the
 light-gray background and yielded a meaningless 0.269494 IoU; threshold 220 was accepted only after
 mask and bounds inspection. This is corrective transfer evidence, not held-out or multi-view proof.
-
-`runs/2026-08-12_heldout-adjustable-wrench/` is step 0's first genuinely prospective use -- run
-before any construction on a brand-new CC0 reference, not retroactively against an already-known
-bug. It correctly confirmed `--in-plane-axis X --wide-view front`, and the resulting candidate (a
-dual-view-measured elliptical loft, a new construction strategy for this project) reached 0.924339
-mean silhouette IoU, the highest of any held-out asset here to date. This is the concrete evidence
-the check changes real modeling outcomes, not just avoids a documented past mistake.
 
 **Second gap in this same tool, found live 2026-08-13**: the check only verified that
 `--in-plane-axis` and `--wide-view` were self-consistent with EACH OTHER, never that the claimed

@@ -228,21 +228,16 @@ and longer-horizon retention. Independent experienced review remains genuinely
 external. Until that evidence exists, changing the
 foundation or professional claim to PASS would violate the directive's anti-fake-progress rules.
 
-**Adjustable wrench: new asset family, new construction strategy, best held-out result yet, still
-below gates.** `runs/2026-08-12_heldout-adjustable-wrench/` is this session's actual test of whether
-`tools/verify_reference_view_orientation.py` changes real workflow behavior rather than only
-documenting the desk-lamp lesson: run prospectively, before any construction, against a genuinely new
-CC0 reference, it correctly confirmed `--in-plane-axis X --wide-view front`. Construction used a new
-strategy for this project -- neither a body of revolution nor a multi-segment armature, but a single
-continuous elliptical loft whose 78 stations each read their X/Y half-extent and center offset
-directly from measured front and side reference row widths, closed into one all-quad manifold body.
-Result: mean IoU 0.924339 (front 0.916856, side 0.973018 -- clears its own 0.97 gate, top 0.883142),
-the highest of any held-out asset in this project (prior best still-open: watering can 0.901; prior
-best automated pass later rejected on review: boombox 0.816; worst case: desk lamp 0.417), with a
-clean fresh-process independent verification. It still fails the frozen gate on front and top and is
-**not claimed as a pass**. Direct pixel run-length analysis of the reference's front mask confirmed
-the jaw genuinely forks into two disjoint silhouette spans (fixed jaw vs. movable jaw); a second
-candidate that split the loft to model the movable jaw as a separate part was built and measured, and
-it regressed front IoU (0.916856 to 0.911423), so it was reverted -- recorded as an investigated,
-evidenced, and rejected attempt, not omitted or hidden. Human visual review against the reference,
-same as every other asset in this registry, remains open before any status upgrades to a pass.
+**Adjustable wrench: rejected on visual review across every construction strategy tried, removed.**
+A held-out CC0 adjustable wrench went through a single elliptical loft, an asymmetric quadrant-blend
+loft, and a traced-outline extrusion with separate movable-jaw and adjustment-wheel parts, reaching
+mean silhouette IoU as high as 0.932 -- the highest of any held-out asset in this project. Every
+version was rejected on direct human visual comparison: none of them read as a recognizable pipe
+wrench. Root cause: the fixed jaw is a genuine hook/overhang, structurally distinct from the movable
+jaw and adjustment wheel, and no per-height cross-section sweep -- however parameterized -- can
+represent a form that is not star-shaped from a central axis at every height. This is the sharpest
+version yet of the boombox's own lesson: automated silhouette agreement is not visual fidelity, and
+here it wasn't even the surface detail that was wrong, it was the shape family. All wrench files,
+tools, and readiness entries were removed rather than kept as a partial or false pass, per explicit
+user instruction. Ladder rungs A ("Subdivision transfer") and C ("Unknown-problem asset") remain
+`NOT_RUN_HELD_OUT`.
