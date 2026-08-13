@@ -135,35 +135,17 @@
     },
     {
       "url": "https://polyhaven.com/a/adjustable_wrench",
-      "status": "ONLINE_HELD_OUT_AUTOMATED_BEST_RESULT_YET_STILL_BELOW_GATES_HUMAN_REVIEW_OPEN",
+      "status": "REJECTED_ON_VISUAL_REVIEW_AND_REMOVED",
       "benchmark": "heldout_cc0_adjustable_wrench_001",
       "first_used": "2026-08-12",
       "source_boundary": "Source geometry was isolated to neutral Workbench reference rendering; candidate construction used measured front/side row-width pixel data only, never source topology, names, modifiers, or materials.",
-      "orientation_check": {
-        "tool": "tools/verify_reference_view_orientation.py",
-        "in_plane_axis": "X",
-        "wide_view": "front",
-        "result": "consistent",
-        "note": "first genuinely prospective use of this tool on a new reference; prior validation was retroactive against the already-known desk-lamp bug"
+      "result": {
+        "best_normalized_mean_silhouette_iou": 0.932413,
+        "note": "highest silhouette IoU of any held-out asset in this project, reached across several construction strategies (a single elliptical loft, a quadrant-blended asymmetric loft, and a traced-outline extrusion with separate Movable_Jaw and Adjustment_Wheel parts)",
+        "fresh_process_assertions": "clean on every version tested (0 non-manifold edges, 0 ngons, 0 degenerate faces)",
+        "artifact": "REMOVED (was models/adjustable_wrench.blend)"
       },
-      "held_out_result": {
-        "normalized_front_silhouette_iou": 0.919703,
-        "normalized_side_silhouette_iou": 0.976781,
-        "normalized_top_silhouette_iou": 0.882767,
-        "normalized_mean_silhouette_iou": 0.926417,
-        "standing_gates": {
-          "front": 0.97,
-          "side": 0.97,
-          "top": 0.97,
-          "mean": 0.97
-        },
-        "gates_passed": "1/4 (side only)",
-        "fresh_process_verification": "clean on base AND evaluated mesh: 0 non-manifold edges, 0 ngons, 0 loose geometry, 0 degenerate faces, positive signed volume",
-        "construction": "single continuous elliptical loft, 78 stations, every station's X/Y half-extent and center offset read from measured front/side reference row widths -- not a body of revolution or armature skeleton; ring vertices placed at equal angular spacing for clean circumferential edge loops",
-        "hard_surface_shading_policy": "corrected 2026-08-13 on direct user review -- the first version shipped with zero bevel weighting and blanket smooth shading, skipping this project's own established policy entirely. Fixed in place (same script, same file): weighted the two reference-confirmed collar/step seams (housing/shaft, shaft/handle), added a WEIGHT-limited Bevel modifier (0.012 width), applied Smooth by Angle. hard_surface_shading_audit now reports PASS. IoU improved slightly as a side effect, not the goal.",
-        "reverted_investigation": "a second candidate split the loft into a separate Movable_Jaw part at rows confirmed two-lobe by direct pixel run-length analysis; measured front IoU regressed 0.916856 to 0.911423 and recall 0.982389 to 0.973345, so it was reverted rather than kept",
-        "artifact": "models/adjustable_wrench.blend"
-      }
+      "rejection_note": "Every construction strategy tried was rejected on direct human visual comparison against the reference (2026-08-13): none of them produced a model that read as a recognizable pipe wrench, regardless of silhouette IoU. Root cause: a pipe wrench's fixed jaw is a genuine hook/overhang, structurally separate from the movable jaw and adjustment wheel -- no per-height cross-section sweep (an ellipse, or an asymmetric quadrant-blend) can represent that, however parameterized, because the object is not star-shaped from any central axis at any height. A traced-outline extrusion with real separate parts (Jaw_Housing, Movable_Jaw, Adjustment_Wheel) came closer -- adding a Subdivision Surface modifier fixed a related faceted-cage defect the same way it did on the watering can's Rose_Head -- but was still rejected as not good enough on direct review. All wrench run directories, tools, the models/ file, and readiness entries were removed rather than kept as a partial or false pass, per explicit user instruction, matching the boombox's own precedent."
     }
   ]
 }
