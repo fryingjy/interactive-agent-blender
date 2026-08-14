@@ -78,3 +78,24 @@ addressed: short ends are open (framed only by posts, no end panel), no bottom-f
 rendered in this checkpoint framing, and no bevel/wear detail has been added yet -- next passes
 should address whichever of these the reference makes clearly necessary, one at a time, checkpointing
 visually after each.
+
+## Checkpoint result (2026-08-14, blockout v2 — edge treatment)
+
+Re-examined the reference before assuming the open short ends were a defect: zoomed into the
+crate's visible right-hand end and confirmed it genuinely is open (interior debris visible through
+the gap) — not a simplification to fix, the original read was already correct.
+
+Applied this project's established hard-surface edge policy (`bevel_modifier.md`,
+`transaction_recovery.md`): `set_bevel_scoping(method="ANGLE", angle_deg=30, width=0.0015,
+segments=1)` then `set_smooth_by_angle()` on all 16 objects, matching the reference's worn,
+non-machined arrises rather than leaving razor-sharp CAD edges. `get_hard_surface_shading_audit`
+returns `PASS` on every spot-checked object (`angle_or_vgroup_intent_matches_actual: true`,
+`smooth_by_angle_recorded: true`). Fresh headless verification after: still 16/16 clean, every
+object now carrying exactly one `BEVEL` modifier. `checkpoint_blockout_v2_beveled.png` shows soft
+highlight lines along the previously razor-sharp edges — a small but genuine improvement toward
+the reference's worn-lumber look, not just a technical checkbox.
+
+Also discovered while batching this pass: `set_smooth_by_angle` does not add a persistent modifier
+(unlike `set_bevel_scoping`), so `check_external_edit`'s modifier-list diff never flags it as an
+external change on re-observation — confirmed via `get_hard_surface_shading_audit` directly rather
+than assumed, before abandoning the redundant re-adoption decisions.
