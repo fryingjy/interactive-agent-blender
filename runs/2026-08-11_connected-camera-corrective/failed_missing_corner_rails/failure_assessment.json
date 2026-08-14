@@ -1,6 +1,0 @@
-{
-  "status": "rejected_after_experienced_sharpness_review",
-  "technical_result": "480 weighted edges; true 12-vertex controls; clean base, Bevel-only, and SubD stages.",
-  "failure": "The four longitudinal rounded-body corner rails were omitted from the semantic bevel-weight map, leaving the camera's depth corners too soft.",
-  "correction": "Add all three edge segments along each of the four diagonal corner-rail chains (12 weighted edges total)."
-}

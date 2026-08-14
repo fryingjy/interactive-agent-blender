@@ -1,7 +1,0 @@
-{
-  "status": "PRIMARY_BLOCKOUT_PASS_SECONDARY_OPEN",
-  "normalized_silhouette_iou": {"front": 0.896866, "side": 0.883076, "top": 0.83266, "mean": 0.870867},
-  "technical": "Main body is one connected 56-vertex/54-quad support cage evaluating to 864 clean quads under Subdivision Surface; all 11 blockout meshes are clean.",
-  "accepted": ["primary width/height/depth", "lens projection and diameter family", "top control landmarks", "connected SubD body strategy"],
-  "open": ["asymmetric body character", "real aperture frames/glass", "front control language", "integrated material regions", "UVs and production materials", "export and independent verification"]
-}

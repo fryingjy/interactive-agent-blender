@@ -1,6 +1,0 @@
-{
-  "status": "rejected_after_live_scene_strategy_review",
-  "technical_result": "492 intended sharp edges weighted; 24/24 final assertions and silhouette thresholds passed.",
-  "failure": "The n=16 superellipse was much tighter than n=6 but still encoded rounded corners before Bevel. The requested workflow was to begin with a literal box and let weighted Bevel create the complete corner radius.",
-  "correction": "Replace the superellipse with four exact flat sides and four exact 90-degree corner rails while retaining only topology subdivisions needed for control routing."
-}

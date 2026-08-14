@@ -1,9 +1,0 @@
-{
-  "status": "REJECTED_REFERENCE_EVIDENCE",
-  "problems": [
-    "Missing external textures produced magenta/black beauty shading instead of a neutral surface read.",
-    "A loose accessory strap dominated auto-framing and reduced the camera body to a small fraction of each view."
-  ],
-  "decision": "Preserve the failed images, apply a neutral clay material inside the isolated reference renderer, and explicitly exclude the loose strap accessory while retaining the camera body and attached lugs.",
-  "evidence_boundary": "This renderer repair occurs after seeing the failed source render and therefore is not credited as held-out modeling capability."
-}

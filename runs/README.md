@@ -24,5 +24,14 @@ runs/YYYY-MM-DD_short-purpose/
 └── media/                 # ignored third-party/local source media
 ```
 
-Historical folders predate this convention and remain in place because their paths are cited by
-knowledge records and audits. Do not delete or rewrite failed evidence to improve a score.
+**Status correction (2026-08-14):** per explicit user instruction, every historical run folder was
+removed except `2026-08-13_blend-file-study` (the ten-professional-file `.blend` study), to clear
+the accumulated 1.7GB of build/render evidence. This directly contradicts the "historical folders
+remain in place" guidance above, which held until this date -- that guidance describes this
+project's default policy, not what actually happened here. Any `Evidence: runs/...` citation in
+`knowledge/foundation/operator_cards/*.md`, `docs/BENCHMARK_HISTORY.md`, or elsewhere pointing at a
+path other than `2026-08-13_blend-file-study` is now a dangling reference: the written finding
+still stands, but the raw reproducible artifact backing it no longer exists on disk (recoverable
+from git history prior to this date if ever needed). Do not silently rewrite those citations to hide
+this; if a citation is corrected, note that the underlying evidence was removed, not that it never
+existed.

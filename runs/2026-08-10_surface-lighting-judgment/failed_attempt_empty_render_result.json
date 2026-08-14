@@ -1,8 +1,0 @@
-{
-  "attempt": 1,
-  "render_outputs_written": 4,
-  "measurement_passed": false,
-  "error": "ZeroDivisionError while comparing an empty transient Render Result pixel buffer",
-  "correction": "Reload each saved PNG and measure its durable pixel data",
-  "lesson": "Successful render operators and existing output paths do not prove that in-memory verification data is populated"
-}
