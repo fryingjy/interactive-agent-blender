@@ -1,4 +1,10 @@
-# Blender video-learning curriculum
+# Blender video-learning curriculum (v1, superseded)
+
+**Superseded 2026-08-14 by `docs/BLENDER_MODELING_CURRICULUM_V2.md`** -- kept here as the historical
+record of what was actually processed under this list (17 of 20 entries; see
+`runs/2026-08-14_video-curriculum/video_manifest.json` for per-entry status and the run directories
+each entry maps to). New curriculum work should follow v2 and
+`docs/VIDEO_EXTRACTION_PROTOCOL.md`.
 
 Curated by the user (2026-08-14) as the training-video dataset for this project's video-knowledge
 pipeline (`knowledge_engine/video_knowledge.py`). The goal is not to summarize these videos --
