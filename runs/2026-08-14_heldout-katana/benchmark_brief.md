@@ -1,5 +1,18 @@
 # Held-out benchmark: stylized katana + saya (scabbard) + tsuba
 
+**Status (2026-08-14): PAUSED, deprioritized.** The blade blockout (typed-modeler revision 8) was
+built with an acknowledged flaw (an angular kink rather than a smooth sori curve) and the user
+called the direction out directly: "you were horribly inaccurate... start with simpler
+shapes/props/models and work your way up because you genuinely dont know what you're doing in
+terms of modelling it." The unsaved live-scene blade WIP was removed (nothing had been written to
+a `.blend` file yet, so nothing on disk was lost). This matches a now-consistent pattern across
+every complex held-out asset attempted in this project (boombox, camera assembly, adjustable
+wrench, watering can, telephone): automated/topology checks passed cleanly every time, yet direct
+visual review rejected the result every time. The reference material, frozen brief, and scene
+decomposition below remain as durable knowledge; the katana build itself does not resume until a
+run of genuinely simple shapes has been visually validated first, per
+`feedback_start_simple_build_modeling_skill` guidance.
+
 **Frozen before modeling**, per `docs/MASTER_DIRECTIVE.md` Section 3 and the pasted implementation
 directive's Phase A. Source: `held_out_reference_registry.json`'s
 `e1b39bffaae0d8e9dee5c2ff0d505895.png` entry (status `PROVIDED_UNMODELED_RESERVED_TRANSFER` prior to

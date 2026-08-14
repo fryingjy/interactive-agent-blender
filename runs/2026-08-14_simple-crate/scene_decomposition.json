@@ -1,0 +1,27 @@
+{
+  "object_name": "WoodenCrate",
+  "components": [
+    {
+      "name": "Corner_Post",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "4 instances, one per corner, each its own object -- genuinely separate boards."
+    },
+    {
+      "name": "Slat",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "12 instances (3 per long side x2, 3 top, 3 bottom), each its own object."
+    }
+  ],
+  "relationships": [
+    {
+      "from_component": "Slat",
+      "to_component": "Corner_Post",
+      "type": "fastens_to",
+      "notes": "Nailed to the corner posts, per the visible nail heads in the reference."
+    }
+  ]
+}
