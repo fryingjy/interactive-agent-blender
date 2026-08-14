@@ -487,3 +487,47 @@ than resumed unilaterally. Full cross-video synthesis (contradictions reconciled
 principles traced to root causes, 2 concrete untested hypotheses for the mug build's unresolved
 failures) is in `runs/2026-08-14_video-curriculum/synthesis.md` -- not yet updated with the 5
 extended videos' findings.
+
+## Update (2026-08-14, later): curriculum v2 adopted, first transfer test passed, second correction made live
+
+Adopted the user's own pasted curriculum restructuring (`docs/BLENDER_MODELING_CURRICULUM_V2.md`)
+and its 16-step extraction protocol (`docs/VIDEO_EXTRACTION_PROTOCOL.md`), which explicitly named
+this project's biggest gap: zero transfer-tested items despite 106 captured ones. Resumed modeling
+specifically to close that gap.
+
+Ran the first genuine transfer test in the project's history: a 5-vertex profile revolved with a
+Screw modifier, segment count changed live from 8 to 16 (40->80 verts, 0 degenerate faces at
+either setting) via `apply_transfer_test()` -- **PASS, TRANSFER_VALIDATED**
+(`runs/2026-08-14_transfer-test-screw-cylinder/`).
+
+Second attempt (Shrinkwrap + vertex-group for a mug handle) was interrupted mid-build by direct
+user correction: "your approach is still wrong stop and watch me do it and learn." The technique
+would have technically passed its own narrow claim (position/normal conforming) but was the wrong
+tool for a part that needs to read as structurally fused. Ceded control (`set_control_mode`),
+observed the user's live fix (join + bridge into one continuous mesh), and corrected the knowledge
+base and memory afterward rather than letting the technically-passing test stand unqualified. The
+generalized lesson: mechanism-validation is not the same claim as technique-choice-validation.
+Retired the mug from the active prop-candidate list per direct instruction; replaced it with a
+teapot (two grown appendages instead of one) and a lever door handle (a different base form factor).
+
+Found and fixed two real bugs in the typed protocol surface while building these tests:
+`set_modifier_parameter` couldn't resolve object-reference RNA properties (Shrinkwrap.target etc.)
+from a string name; `assign_vertex_group` didn't exist at all, so no modifier requiring a vertex
+group mask could be configured through the typed surface. Also ran a pyflakes pass across core
+modules and fixed the real dead-code hits it found.
+
+Continued the curriculum under "don't stop until it's done": processed 11 more videos (retopology,
+Parabox hard-surface, CG Boost 100+ tips, Blender Bash modifiers, JL Mussi cylinders, Blender Guru
+Anvil, Josh Gambrell tricks, CG Boost UV unwrapping, normal-vs-displacement, both Blender Guru PBR
+videos) without pausing for confirmation between them.
+
+**173 knowledge items now across 33 processed videos; 1 TRANSFER_VALIDATED, 172 CAPTURED.**
+
+Stopped mid-Level-8 (materials/shading) when Gemini's free-tier video-understanding quota
+(`GenerateRequestsPerDayPerProjectPerModel-FreeTier`, 20 requests/day for
+`models/gemini-3.7-flash-video-understanding-eap`) was exhausted -- confirmed via two retries with
+the API's own suggested backoff, both still 429. This is a real external daily cap, not a design
+choice; the Default Cube procedural-materials video (Level 8's last item) and anything requiring a
+further Gemini call are blocked until the quota resets. Field report republished
+(`https://claude.ai/code/artifact/fd49fe3a-a730-46e4-b33a-6b06f7e6f07e`) reflecting all of the above,
+including this blocker, rather than silently stalling.

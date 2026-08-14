@@ -99,13 +99,19 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
 ## Level 8 -- Materials and shading
 
 20. **Blender Guru -- PBR Materials Part 1.** `V3wghbZ-Vh4`. Conceptual PBR treatment, still useful
-    despite age. Not yet processed (deliberately -- texturing/shading is lower priority than modeling
-    per this curriculum's own structure; revisit once Levels 0-6 are solid).
+    despite age. Processed 2026-08-14 (`runs/2026-08-14_video-study-blenderguru-pbr-materials/`) --
+    6 items: Fresnel falloff, energy conservation (Cycles vs. legacy), F0/F90 grazing reflectance,
+    "everything has Fresnel", roughness-dampened edge Fresnel, roughness perceptual linearization.
 21. **Blender Guru -- PBR Materials Part 2: Metal.** `m1PkSViBi-M`. Physically plausible metal
-    specifically. Not yet processed.
+    specifically. Processed 2026-08-14 (`runs/2026-08-14_video-study-blenderguru-pbr-metal/`) --
+    5 items: zero-diffuse metals, wavelength-selective specular tinting, oxidation as a dielectric
+    layer over a conductor, measured real-world F0 values, binary conductor/dielectric metalness
+    masking.
 22. **Default Cube -- procedural material fundamentals.** `O3gLBhC353Y`. Explains underlying node
     behavior rather than demonstrating a finished material; recommended directly by a Blender Stack
-    Exchange discussion. Not yet processed.
+    Exchange discussion. **Blocked 2026-08-14**: Gemini's free-tier video-understanding quota
+    (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`, 20 requests/day) was exhausted immediately
+    before this video could be processed. Resume once the quota resets.
 
 ## Level 9 -- Normal maps / baking
 
