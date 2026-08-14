@@ -1,5 +1,10 @@
 # Reference: lever door handle (second replacement transfer-test candidate)
 
+**Built 2026-08-14** (`runs/2026-08-14_transfer-test-doorhandle-grown-lever/`): rose, boss, and
+lever arm as one continuous 300-vertex mesh, 0 non-manifold edges throughout. Transfer test PASSED
+against the connected-topology principle -- see the run's brief.md for the full record, including
+one honest limitation (the tip curve undershot the spec's 30-40deg target, landing closer to 8-9deg).
+
 Written proportions spec (no image download requested). A deliberately different form factor from
 the mug/teapot family (not a revolved vessel with an appendage) -- tests the same "connected
 topology, not a separate touching object" principle on a mechanical/hardware object instead of a

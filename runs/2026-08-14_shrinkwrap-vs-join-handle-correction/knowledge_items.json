@@ -1,0 +1,26 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A part meant to read as structurally fused to a body (a handle, a boss, a lever, any attachment that should look like one continuous surface, not a distinct component) must be grown directly from the body's own mesh -- extruded, loop-cut, inset-then-extruded, or bridged from the body's own topology -- not built as a separate object and conformed onto the body's surface afterward (e.g. via Shrinkwrap). Shrinkwrap-restricted conforming genuinely aligns a separate object's position and normals onto a target, but the result is still two mesh objects, not one continuous manifold -- correct for a distinct component (a bolt, a vent, a bracket, a decal) but not a substitute for join+bridge when the goal is a single fused surface.",
+    "source": {
+      "source_id": "live-user-demonstration-2026-08-14-mug-handle",
+      "start_seconds": 0,
+      "end_seconds": 0
+    },
+    "confidence": 0.6,
+    "supporting_evidence": "Direct live user demonstration (2026-08-14): mid-build, the user stopped an in-progress Shrinkwrap+vertex-group attachment attempt (\"your approach is still wrong stop and watch me do it and learn\") and built the correct version live -- a Torus joined into a Cylinder body, producing one continuous mesh (368 vertices, 0 non-manifold edges, 0 degenerate faces, valence mostly 4 with a small ring of 3/5-poles at the join seam). Full account in runs/2026-08-14_shrinkwrap-vs-join-handle-correction/brief.md.",
+    "status": "TRANSFER_VALIDATED",
+    "rejected_alternative": "Shrinkwrap + vertex-group restricted attachment of a separately-modeled part, for a component meant to read as fused rather than distinct",
+    "reason": "Shrinkwrap conforms a separate object's position/normals onto a target but never merges the two meshes -- it would pass its own narrow technical claim while still failing the actual goal of a single continuous, structurally fused surface. Mechanism-validation (does Shrinkwrap conform correctly) is not the same claim as technique-choice-validation (is Shrinkwrap the right tool for this specific goal).",
+    "captured_while_building": "mug_handle_join",
+    "transfer_tests": [
+      {
+        "target_asset": "DoorHandle_Rose",
+        "expected_effect": "a spindle boss and lever arm, grown entirely from the rose disc/boss mesh via inset+extrude+bridge (never a separate joined object), read as one continuous fused surface on a hardware object -- a different base form factor than the mug this principle was captured on",
+        "observed_effect": "built rose (disc with through-bore), boss (inset+extruded from the rose top face), and lever arm (inset+extruded from the boss outer wall, then 3 extrude+rotate steps for the downward curve) entirely through the typed decision-transaction protocol. Final mesh: 300 vertices, 600 edges, 300 faces, 0 non-manifold edges, 0 ngons, 0 degenerate faces at every single intermediate step (18 total decisions), valence distribution 292 quads / 4 tri-poles / 4 five-poles. No separate object was ever created for the boss or lever -- both exist only as extrusions of the rose's own mesh. Silhouette renders (top and front) confirm a correct lever-door-handle read: round rose with spindle hole, tapering arm, gentle downward curve at the tip.",
+        "pass": true,
+        "evidence_path": "runs/2026-08-14_transfer-test-doorhandle-grown-lever/"
+      }
+    ]
+  }
+]

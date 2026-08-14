@@ -531,3 +531,42 @@ choice; the Default Cube procedural-materials video (Level 8's last item) and an
 further Gemini call are blocked until the quota resets. Field report republished
 (`https://claude.ai/code/artifact/fd49fe3a-a730-46e4-b33a-6b06f7e6f07e`) reflecting all of the above,
 including this blocker, rather than silently stalling.
+
+## Update (2026-08-14, later still): second transfer test passed, on a genuinely different asset
+
+With the video pipeline blocked, pivoted to two things the Gemini quota doesn't gate: finished the
+pyflakes cleanup pass across `tools/*.py` (17 files, all genuinely-unused imports/locals; one
+legitimate re-export in `quality_review.py` fixed via explicit `__all__` instead of a false-positive
+finding) -- full 50-test suite still green -- then resumed modeling to close the "most of the base
+isn't transfer-tested" gap.
+
+Built a lever door handle (`DoorHandle_Rose`) entirely through the typed decision-transaction
+protocol: rose disc, spindle boss grown from the rose's own top face, lever arm grown from the
+boss's own outer wall and curved via three extrude+rotate steps -- 300 vertices, 0 non-manifold
+edges, 0 ngons, true at every one of 18 intermediate decisions, not just the end state. This
+specifically re-tests the connected-topology lesson from the earlier live mug-handle correction, but
+on a deliberately different base form (flat disc + bore, not a revolved vessel). Wrote the
+correction up as a proper `KnowledgeItem` for the first time (it had only existed as a brief.md and
+a memory entry until now) and ran `apply_transfer_test()` against it for real:
+`captured_while_building: "mug_handle_join"` correctly blocked reusing the mug itself as the test
+asset, and the door handle build passed. Status moved `CAPTURED` -> `TRANSFER_VALIDATED` -- the
+project's second genuinely transfer-tested item, and the first tested on an asset type it wasn't
+captured on.
+
+One real correction mid-build, handled cleanly rather than forced through: chained two
+`perform_decision` calls inside one transaction, which the external-edit detector correctly flagged
+as unexpected mid-transaction drift on the second call. Used `reject_decision` for a clean rollback
+and redid the two operations as separate transactions -- confirms the protocol wants exactly one
+`perform_decision` per begin/verify/commit cycle.
+
+Also reclaimed `AGENT_CONTROL` (left on `USER_CONTROL` since the earlier live correction) only after
+confirming, via `poll_events` and `get_full_state`, that the object the user had been live-editing
+(`Cylinder.001`, zero persistent-ID coverage, so never touched by the typed protocol) had gone quiet
+for ~19 minutes -- left it completely untouched and built the new work on a separate object, per the
+"don't resync/overwrite external state" lesson.
+
+One honest limitation: the lever's downward curve landed around 8-9 degrees, short of the
+reference spec's 30-40 degree target, because `rotate_selection` pivots around the selection's own
+median rather than an external joint further back -- still reads correctly in the silhouette
+renders, but the exact angle undershot the plan. Full account, including the transfer-test
+JSON payload, in `runs/2026-08-14_transfer-test-doorhandle-grown-lever/brief.md`.
