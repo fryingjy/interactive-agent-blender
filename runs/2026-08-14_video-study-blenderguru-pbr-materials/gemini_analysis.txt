@@ -1,0 +1,49 @@
+Here are 6 key moments from the tutorial that illustrate fundamental, transferable concepts of Physically Based Rendering (PBR):
+
+---
+
+### 1. Dielectric Materials with and without Angle-Dependent Reflection (Fresnel)
+* **Timestamp:** `00:13` – `00:23` (and previewed at `00:00`)
+* **What is visible:** Two shiny red spheres side-by-side labeled **"Incorrect"** and **"Correct"**. The incorrect sphere has a flat, uniform reflection across its entire surface, whereas the correct sphere features a distinct edge-glow/grazing-angle reflection that falls off toward the center.
+* **Physical Principle:** **Fresnel Reflection Falloff.** Non-metallic (dielectric) surfaces do not reflect light evenly at all angles; reflectance changes depending on the viewing angle relative to the surface normal.
+* **Why it matters:** Human eyes intuitively recognize uniform reflection as artificial "CG plastic." Accurate Fresnel falloff gives objects natural volume, surface curvature, and believable interaction with surrounding lighting.
+
+---
+
+### 2. Energy Conservation & Roughness Highlights (Cycles vs. Legacy Internal Renderers)
+* **Timestamp:** `08:30` – `10:20`
+* **What is visible:** Demonstration on the Suzanne monkey head. In Cycles (`08:30`), increasing glossy reflection automatically dims the red diffuse base color underneath, and increasing roughness widens the highlight while reducing its peak brightness. In Blender Internal (`09:45`), increasing specularity makes the highlight brighter without affecting diffuse light or realistically spreading energy.
+* **Physical Principle:** **Conservation of Energy.** A surface cannot bounce off more light energy than it receives. Reflected specular light and absorbed/scattered diffuse light must sum to $\le 100\%$. Furthermore, spreading a highlight across a rougher surface dilutes peak luminance across a wider area.
+* **Why it matters:** In non-PBR workflows, materials blow out into over-bright white spots under bright lights or look unnatural when moving between indoor and outdoor lighting environments. Energy conservation ensures materials remain balanced in any lighting setup.
+
+---
+
+### 3. The Grazing Angle Rule in the Real World
+* **Timestamp:** `12:17` – `12:55` (Lake) & `13:13` – `13:40` (Car Hood)
+* **What is visible:** High-resolution photographs overlaid with viewing angles. In the lake photo, water at a grazing angle ($70^\circ$) reflects the mountains like a perfect mirror, whereas water looked directly down into ($20^\circ$) is transparent, revealing the lakebed. The Ferrari hood demonstrates the exact same gradient from pure mirror-like reflection at shallow angles down to the red clear-coat base color facing the camera.
+* **Physical Principle:** **$F_0$ vs. $F_{90}$ Reflectance.** All smooth dielectric materials reflect virtually $100\%$ of incident light at grazing angles ($90^\circ$ from the normal, $F_{90}$), while reflecting only about $2\%\text{--}5\%$ when viewed directly face-on ($0^\circ$ incidence, $F_0$).
+* **Why it matters:** Many artists mistakenly believe specular reflection only exists near light sources or on mirrors. Understanding that *every* smooth dielectric becomes a mirror at grazing angles is essential for creating realistic clear coats, car paint, glazed ceramics, and water.
+
+---
+
+### 4. Specular Isolation on Seemingly "Diffuse-Only" Materials
+* **Timestamp:** `15:57` – `16:44`
+* **What is visible:** Polarized light photographs of cardboard showing isolated diffuse and specular layers side-by-side. Even dull, rough, matte brown cardboard visibly reveals a specular reflection coat at glancing angles.
+* **Physical Principle:** **"Everything Has Fresnel."** In reality, true 100% pure diffuse surfaces do not exist. Every solid dielectric material possesses both a diffuse scattering component and a surface reflection/specular component governed by Fresnel.
+* **Why it matters:** Turning specularity/reflection completely off on materials like cardboard, concrete, brick, or fabric makes them look flat and CG. Adding subtle specular reflectance with proper Fresnel immediately grounds them in reality.
+
+---
+
+### 5. Roughness Microfacets Dampening Grazing-Angle Fresnel
+* **Timestamp:** `22:58` – `23:46` (Photos) & `25:10` – `25:35` (Render Comparison)
+* **What is visible:** Comparison of a smooth billiard ball vs. a rough, weathered wooden ball, followed by a test render matrix comparing incorrect vs. correct Fresnel across 0%, 50%, and 100% roughness. In the incorrect setup, 100% rough surfaces still show a bright, sharp white rim around the sphere edge. In the correct setup, high roughness eliminates the white rim.
+* **Physical Principle:** **Microfacet Shadowing/Scattering on Rough Surfaces.** Rough surfaces consist of microscopic peaks and valleys (microfacets). Rays hitting at grazing angles bounce into adjacent microfacets or scatter randomly rather than reflecting cleanly into the camera, drastically reducing perceived edge Fresnel.
+* **Why it matters:** Standard Fresnel nodes in early shader graphs do not automatically account for roughness. Without correcting for this, rough objects develop an unphysical, fuzzy white outline that resembles a cartoon velvet rim instead of real matte material.
+
+---
+
+### 6. Perceptual Linearity in Roughness Values (Squaring Roughness)
+* **Timestamp:** `41:15` – `42:45`
+* **What is visible:** A strip of spheres showing raw mathematical roughness from `0.0` to `1.0`. The sharp reflection jumps drastically to full blur between `0.0` and `0.1`, while `0.2` through `1.0` show almost no noticeable change. Adding a `Power (exponent = 2.0)` math node remaps the progression into a smooth, even gradient.
+* **Physical Principle:** **Linear Perceptual Roughness vs. Microfacet Alpha.** The underlying microfacet models (like GGX) use an $\alpha = \text{roughness}^2$ relationship. Human perception of glossiness/blurriness is non-linear; without squaring the input, almost the entire usable artistic range is crammed into the first 10% of the slider.
+* **Why it matters:** Squaring the roughness input linearizes texture maps and slider controls, ensuring that roughness textures (scratches, smudges, weathering) show accurate, subtle micro-contrast rather than appearing completely blown out into max blur.

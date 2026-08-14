@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Non-metallic (dielectric) surfaces do not reflect light uniformly across their whole visible area -- reflectance depends on viewing angle relative to the surface normal (Fresnel falloff), typically reflecting only ~2-5% of light when viewed straight-on (F0) but rising toward ~100% at grazing angles (F90, near 90 degrees from the normal). A material with flat, uniform reflection across its entire surface reads as artificial 'CG plastic' precisely because it's missing this angle-dependent falloff.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 13, "end_seconds": 23},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 0:13-0:23, two red spheres are compared -- one with flat, uniform reflection (labeled 'Incorrect') reads as artificial, the other with grazing-angle-dependent reflection falloff (labeled 'Correct') reads as physically real.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Setting a material's reflectivity as a single flat value applied uniformly regardless of viewing angle",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A surface's reflected (specular) light and its absorbed/scattered (diffuse) light must together sum to no more than 100% of incoming light energy (energy conservation) -- shown as increasing glossy reflection automatically dimming the diffuse base color underneath, and increasing roughness widening a highlight while reducing its peak brightness (energy spread over a larger area). A pre-PBR shading model that increases specular brightness independently of the diffuse term, without this trade-off, produces materials that blow out into unnaturally bright spots under strong light or look wrong across different lighting environments.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 510, "end_seconds": 620},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 8:30-10:20, comparing Cycles (increasing glossiness dims the diffuse base and roughness widens/dims the highlight, respecting energy conservation) against an older renderer (increasing specularity brightens the highlight independently of diffuse, violating it) on the same Suzanne head.",
+    "status": "CAPTURED",
+    "rejected_alternative": "A shading model where specular and diffuse brightness are set independently with no shared energy budget",
+    "reason": "A surface can't emit more light energy than it receives; splitting a fixed energy budget between diffuse and specular (and spreading specular energy over a wider highlight as roughness increases) is what keeps a material physically plausible under any lighting condition.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Every smooth dielectric surface -- not just polished/mirror-like ones -- reflects nearly 100% of light at a grazing viewing angle while reflecting only a small percentage (roughly 2-5%) when viewed face-on, shown in real photographs: lake water viewed at a shallow ~70-degree angle mirrors the mountains, while the same water viewed steeply (~20 degrees) is transparent to the lakebed; a car hood's clear coat shows the identical gradient from mirror reflection at its grazing edges to the base paint color facing the camera directly. A common misconception is that specular reflection only exists near light sources or on obviously mirror-like materials.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 737, "end_seconds": 820},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 12:17-13:40, real photographs of lake water at different viewing angles and a car hood's clear coat both show the same gradient from near-mirror reflection at grazing angles down to the base color facing the camera.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Assuming specular/reflective behavior only applies to obviously shiny or mirror-like materials",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "True 100% purely-diffuse (matte, zero-specular) real-world surfaces essentially don't exist -- shown via polarized photography that isolates specular from diffuse light, revealing that even dull, rough, matte materials like brown cardboard have a visible specular reflection layer at glancing angles. Turning specular/reflection off entirely on materials like cardboard, concrete, brick, or fabric makes them read as flat and artificial; adding subtle Fresnel-driven specular grounds them in reality.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 957, "end_seconds": 1004},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 15:57-16:44, polarized-light photographs of cardboard isolate its specular and diffuse layers separately, revealing a real (if subtle) specular reflection component even on this apparently pure-matte material.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Setting a material's specular/reflection value to zero for anything that looks matte",
+    "reason": "Even visually matte materials have a real, if subtle, specular component driven by Fresnel; removing it entirely produces a flatter, less physically grounded look than including a small amount does.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "A naive Fresnel calculation (without accounting for surface roughness) produces an unphysical bright white rim around the silhouette of a fully rough (matte) object, because it doesn't account for microfacet shadowing/scattering -- on an actually rough surface, grazing-angle rays hit adjacent microscopic peaks and scatter randomly instead of reflecting cleanly toward the camera, which should suppress that edge highlight almost entirely as roughness increases. A render matrix comparing 0/50/100% roughness with 'incorrect' Fresnel still shows a bright rim even at 100% roughness; the 'correct' version eliminates it.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 1378, "end_seconds": 1535},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 22:58-25:35, a render comparison shows an 'incorrect' Fresnel implementation still producing a bright white silhouette rim on a 100%-rough sphere, while a roughness-aware 'correct' Fresnel implementation eliminates that unphysical rim.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a plain Fresnel node/calculation without factoring in surface roughness",
+    "reason": "Real rough surfaces scatter grazing-angle light across their microfacets rather than reflecting it cleanly; a Fresnel calculation that ignores roughness keeps a sharp edge-highlight that shouldn't be there on a genuinely matte material.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Raw mathematical roughness values (0.0-1.0) are perceptually non-linear -- nearly the entire visible change from sharp reflection to full blur happens between 0.0 and 0.1, while 0.2 through 1.0 show almost no further visible change, because underlying microfacet models (e.g. GGX) relate perceptual roughness to alpha as alpha = roughness^2. Squaring the roughness input (e.g. via a Power/exponent=2.0 math node) before feeding it into the shader remaps this into an evenly-distributed perceptual gradient, so roughness texture maps (scratches, smudges, weathering) show proportionate micro-contrast instead of being crammed into an unusably narrow slider range.",
+    "source": {"source_id": "V3wghbZ-Vh4", "start_seconds": 2475, "end_seconds": 2565},
+    "confidence": 0.45,
+    "supporting_evidence": "Gemini video-understanding observation: at 41:15-42:45, a strip of spheres shows raw roughness values 0.0-1.0 jumping from sharp reflection to full blur almost entirely within 0.0-0.1, with a Power(2.0) node remap producing a smooth, evenly-distributed gradient instead.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Feeding raw, unremapped roughness texture values directly into the shader's roughness input",
+    "reason": "The microfacet model's own alpha=roughness^2 relationship means an unremapped roughness value crams almost all visible variation into a tiny slice of the input range; squaring it first linearizes the perceptual response for texture-driven roughness variation.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
