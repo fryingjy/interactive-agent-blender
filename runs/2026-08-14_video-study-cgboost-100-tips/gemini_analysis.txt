@@ -1,0 +1,65 @@
+Here are key concrete modeling techniques and problem-solving workflows demonstrated in the video:
+
+---
+
+### 1. Enclosed Geometry Inspection via Clipping Border (`Alt + B`)
+* **Timestamp:** 15:32 – 15:52  
+* **Visible on Screen:** A hollow, closed robot head where the inner cavity wall cannot be easily reached or seen from standard viewport angles. The artist presses `Alt + B` and draws a box, creating a temporary spatial cross-section through the mesh that exposes the internal wall. An inset extrusion is performed directly inside the exposed cross-section, after which `Alt + B` clears the view.  
+* **Artist Action & Purpose:** Isolates and reveals interior geometry visually without hiding elements in the Outliner or modifying mesh structure.  
+* **Transferability:** Essential for modeling inside enclosed hollow shapes (cockpits, rooms, mechanical cavities) without disrupting outer mesh visibility.
+
+---
+
+### 2. Extending Sloped Open Edges via Unclamped Edge Slide (`G + G` → `Alt` / `C`)
+* **Timestamp:** 31:10 – 31:30  
+* **Visible on Screen:** The open bottom boundary of a tapered funnel. Standard edge slide (`G + G`) stops at the boundary edge. Pressing `Alt` (or `C`) disables clamp mode, projecting the edge slide ray beyond the original boundary along the exact angle of the adjacent faces.  
+* **Artist Action & Purpose:** Extends the tapered length of an open cylinder or funnel while strictly preserving the existing surface slope and conical angle.  
+* **Transferability:** Useful whenever extending bottle necks, spouts, nozzles, or tapered cones without manual scaling or angle recalculations.
+
+---
+
+### 3. Clean Cylindrical Capping via Grid Fill (`Ctrl + F` → Grid Fill)
+* **Timestamp:** 37:40 – 37:55  
+* **Visible on Screen:** An open top hole on a cylinder with an even vertex count along the perimeter edge loop. Instead of pressing `F` to create a large n-gon cap, `Ctrl + F` → **Grid Fill** is applied, creating a uniform quad topology grid with adjustable span and offset parameters in the Operator panel.  
+* **Artist Action & Purpose:** Closes open boundary loops with quad geometry rather than triangular poles or n-gons.  
+* **Transferability:** Crucial for capping circular openings cleanly when using Subdivision Surface modifiers, preventing central vertex pinching artifacts.
+
+---
+
+### 4. Sliding Angled Fittings via Active Normal Pivot
+* **Timestamp:** 50:33 – 51:18  
+* **Visible on Screen:** A cylindrical pipe angled arbitrarily in 3D space with a raised collar ring. In Edit Mode, standard local and global transforms shear and distort the collar when dragged. Setting Transform Orientation to **Normal** and Pivot Point to **Active Element** aligns the transform gizmo to a single selected face on the collar, allowing the entire ring to slide cleanly along the angled tube.  
+* **Artist Action & Purpose:** Uses a reference face normal to dictate the sliding axis of an entire multi-element selection without reorienting the master object.  
+* **Transferability:** Enables moving brackets, clamps, flanges, or bolts along arbitrarily angled pipes and surfaces without aligning models to world axes.
+
+---
+
+### 5. Crisp Hard-Surface Sub-D with Bevel Weights & Normal Hardening
+* **Timestamp:** 77:24 – 77:55  
+* **Visible on Screen:** A sub-d model exhibiting ugly pinching and shading artifacts along sharp corner transitions. The artist sets the Bevel modifier limit method to **Weight**, assigns `Mean Bevel Weight: 1.0` and `Mean Crease: 1.0` to targeted edge loops, and enables **Harden Normals** alongside **Auto Smooth**.  
+* **Artist Action & Purpose:** Enforces sharp, clean beveled transitions on subdivision surface meshes without introducing dense manual proximity support loops.  
+* **Transferability:** Streamlines non-destructive hard-surface modeling, keeping the base topology light and editable while maintaining crisp edges.
+
+---
+
+### 6. Restoring Broken Bevels on Boolean Cuts with the Weld Modifier
+* **Timestamp:** 79:08 – 79:55  
+* **Visible on Screen:** A boolean difference cut into the robot head causes the subsequent Bevel modifier to fail and collapse due to microscopic vertex overlaps along the cut line. Adding a **Weld** modifier between the Boolean and Bevel in the modifier stack merges nearby vertices based on a small distance threshold, restoring the bevel highlight along the seam.  
+* **Artist Action & Purpose:** Cleans up messy boolean intersection vertices procedurally so downstream modifiers calculate properly.  
+* **Transferability:** Standard fix for procedural hard-surface boolean workflows where cut boundaries generate sliver faces and break bevel limits.
+
+---
+
+### 7. Circular Mechanical Patterns via Linear Array & Simple Deform
+* **Timestamp:** 89:00 – 89:55  
+* **Visible on Screen:** A flat, linear gear-tooth strip with an **Array** modifier set to merge adjacent seams. Adding a **Simple Deform** modifier set to **Bend** at 360° along the Z-axis curls the linear strip into a complete circular gear ring, sealed with a final Weld modifier.  
+* **Artist Action & Purpose:** Models complex radial teeth and patterns on a flat 2D plane before bending them into a perfect cylinder procedurally.  
+* **Transferability:** Speeds up creation of gears, radial vents, tire treads, sprocket wheels, and circular dials without manual radial duplication.
+
+---
+
+### 8. Partial Surface Adhesion via Shrinkwrap & Weight Painting
+* **Timestamp:** 114:15 – 115:35  
+* **Visible on Screen:** A curved planar sheet (sticky note) floating above a curved surface. A **Shrinkwrap** modifier set to **Project** projects the entire mesh onto the hull, flattening it completely. In **Weight Paint** mode, painting only the top edge row into a Vertex Group restricts the shrinkwrap effect, keeping the adhesive strip stuck to the hull while the bottom edge curls outward freely.  
+* **Artist Action & Purpose:** Anchors one edge of an object flush against a target surface while retaining dimensional deformation and lift across the rest.  
+* **Transferability:** Ideal for adhering decals, bandages, tape strips, loose clothing patches, and stickers to complex curved geometry.
