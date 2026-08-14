@@ -429,6 +429,29 @@ let this collapse into one undifferentiated "AI can touch Blender" capability:
   repository's real, portable capability; the connectors are an accelerant when present, not a
   replacement for owning the evidence trail.
 
+## 19a. Continuation directive reconciliation (2026-08-14)
+
+A second external planning document (`AUTONOMOUS_BLENDER_PRO_MODELING_CONTINUATION_DIRECTIVE`) was
+supplied after Section 18's directive. Per Section 3's own authority order (user intent above any
+document), its "Benchmark Ladder" (its own Section 53) directly reinforces — rather than
+conflicts with — the live user correction that started the current simple-shapes curriculum:
+Level 1 is explicitly "simple single-component objects," escalating only through Levels 2-8 toward
+unseen complex references. This project's earlier repeated pattern (boombox, camera, wrench,
+watering can, telephone, the paused katana blade) skipped straight to Level 5+ complexity every
+time and failed direct visual review every time despite clean technical checks — exactly the
+"one successful asset is not generalization" / "automated metric PASS, human review REJECT" warning
+both directives repeat. The corrected reading: do not return to Level 5+ benchmarks until genuine
+Level 1 breadth exists — multiple simple, structurally different single/low-component objects,
+each independently checkpointed against a real reference — not one lucky asset.
+
+Known gaps between this document and current reality (same category as Section 18's reconciliation):
+it predates and does not reference the katana pause, the simple-crate work
+(`runs/2026-08-14_simple-crate/`), or CloudGlue running out of credits
+(`knowledge_engine/ingest/scene_document.py`). Its prescribed research/video/`.blend`-study tracks
+(its Sections 17-27) remain valid future work but are explicitly lower priority than closing Level 1
+breadth first, per its own Section 58 ("LEARN -> TEST -> APPLY -> MEASURE" over "WATCH -> WATCH ->
+WATCH").
+
 ## 19. Current development rule
 
 Do not encode a commit-specific implementation queue in this document. Determine current priorities from the live repository, foundation reports, roadmap, failing tests, and latest evidence.
