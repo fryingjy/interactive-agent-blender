@@ -9,7 +9,16 @@
     "rejected_alternative": "Building a standard Cylinder primitive with a fixed vertex count chosen up front, then discovering mid-build that the count was wrong and needing to restart or awkwardly hand-subdivide",
     "reason": "A baked-in primitive segment count can't be changed non-destructively once other modeling (booleans, etc.) is stacked on top; a Screw-modifier cylinder keeps the segment count as a live, adjustable parameter for the entire build.",
     "captured_while_building": null,
-    "transfer_tests": []
+    "status": "TRANSFER_VALIDATED",
+    "transfer_tests": [
+      {
+        "target_asset": "ScrewTest_Body",
+        "expected_effect": "segment count changeable after mesh creation via a live Screw-modifier parameter, without rebuilding the base mesh",
+        "observed_effect": "base mesh stayed at 5 vertices throughout; changing the Screw modifier's steps from 8 to 16 changed the evaluated mesh from 40 to 80 vertices (32 to 64 faces) with 0 degenerate faces and 0 pinch candidates at both settings -- core claim confirmed. NOT tested: the claim's stronger form (segment count stays adjustable even after later modifiers like Boolean are stacked on top) -- this run only tested the Screw modifier in isolation. See runs/2026-08-14_transfer-test-screw-cylinder/brief.md.",
+        "pass": true,
+        "evidence_path": "runs/2026-08-14_transfer-test-screw-cylinder/"
+      }
+    ]
   },
   {
     "knowledge_type": "PROCEDURE",
