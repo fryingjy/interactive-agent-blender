@@ -1,0 +1,50 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A grayscale bump/height map stores only 1-dimensional height data (luminance: black = indented, white = raised), while an RGB normal map stores full 3D directional surface-angle vectors across its three color channels (R/G/B roughly mapping to X/Y/Z) -- normal maps produce more accurate directional lighting/reflection behavior across complex surface angles than a bump map's simple up/down height cue can.",
+    "source": {"source_id": "o8vHEMOz7gI", "start_seconds": 62, "end_seconds": 72},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 1:02-1:12, a side-by-side comparison shows a grayscale bump map (black=indented, white=extruded) alongside an RGB normal map (R/G/B = X/Y/Z direction), illustrating that normal maps encode multi-directional angle data while bump maps encode only 1D height.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A normal map only fakes lighting response across a surface's face-on shading -- it never alters actual vertex positions, so a surface's outer silhouette/edge profile stays completely flat and unchanged even when the face-on shading convincingly suggests depth. This makes normal maps unreliable for any surface that will be viewed edge-on or at a grazing angle (brick corners, cobblestone ground at low camera angle) where the flat, undeformed silhouette breaks the illusion.",
+    "source": {"source_id": "o8vHEMOz7gI", "start_seconds": 120, "end_seconds": 135},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 2:00-2:15, a brick surface with a normal map shows convincing face-on depth in a Cycles render, but its outer silhouette/edges remain completely flat and straight like a bare plane when viewed from a low grazing angle.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a normal map for a surface that will be viewed significantly edge-on or at a grazing angle",
+    "reason": "Normal maps only affect shading calculation, never actual geometry, so any viewing angle that reveals the true silhouette exposes the surface as flat regardless of how convincing the normal-mapped shading looks face-on.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Micropolygon/adaptive displacement (Cycles Experimental Adaptive Subdivision with a material's Displacement+Bump setting) genuinely deforms the RENDERED surface with real depth and self-shadowing at render time, calculated dynamically based on camera distance -- but this only happens at render time; the actual viewport mesh in Solid mode stays exactly as simple as it was before (e.g. a flat 4-vertex plane), keeping scene navigation and viewport performance fast during staging/animation while still producing true geometric depth in the final render.",
+    "source": {"source_id": "o8vHEMOz7gI", "start_seconds": 248, "end_seconds": 271},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 4:08-4:31, a brick plane with Adaptive Subdivision and Displacement+Bump material settings shows convincing volumetric depth in the Cycles render, but switching to Solid viewport mode reveals the underlying mesh is still just a simple flat 4-vertex plane.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "True geometric displacement (heavily subdividing the base mesh in Edit Mode, then applying a Displace modifier linked to a height texture) physically moves vertex positions in the actual mesh -- necessary specifically when other scene elements must physically interact with the displaced surface (physics simulation, collision, 3D printing, sculpting on top of it), but comes at a real cost: resolution depends entirely on mesh tessellation density, and heavy displacement can drive face counts into the millions, at significantly higher memory/file-size/performance cost than shader-based (normal map or micropolygon) displacement.",
+    "source": {"source_id": "o8vHEMOz7gI", "start_seconds": 348, "end_seconds": 374},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:48-6:14, a heavily-subdivided plane with a Displace modifier physically deforms into real 3D peaks and valleys visible directly in Solid viewport mode, driving the mesh's face count from ~450,000 to over 1.9 million polygons.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using shader-based displacement (normal map or micropolygon adaptive subdivision) for a surface that other scene elements need to physically interact with",
+    "reason": "Shader-based displacement (normal maps, micropolygon) never actually moves real geometry, so nothing can physically collide with or sculpt against it -- true modifier-based displacement is required whenever that physical interaction is actually needed, despite its much higher performance cost.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

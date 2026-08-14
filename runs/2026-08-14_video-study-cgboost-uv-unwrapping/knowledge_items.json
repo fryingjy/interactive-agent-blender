@@ -1,0 +1,86 @@
+[
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Unwrapping an object that still has unapplied non-uniform object-mode scale (e.g. scaled (1.0, 2.0, 0.5) rather than (1.0, 1.0, 1.0)) produces stretched, distorted UV proportions, because Blender's unwrap algorithm calculates proportions from the unscaled base geometry, not the visually-scaled result. Fix: apply scale (Ctrl+A > Apply Scale) on every object before unwrapping it.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 102, "end_seconds": 130},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 1:42-2:10, object scale is checked and applied (Ctrl+A > Apply Scale) before unwrapping, since unapplied non-uniform scale causes the unwrap algorithm to calculate proportions from the unscaled base mesh.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Unwrapping directly without first checking/applying object scale",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To avoid confusion where the UV Editor appears to show only part of a mesh's UV map (it defaults to showing only currently-selected faces from the 3D viewport), enable 'UV Sync Selection' (the two-opposing-arrows icon in the UV Editor header) -- this keeps the full UV layout visible at all times while still keeping vertex/edge/face selection synchronized between the 2D UV view and the 3D viewport.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 264, "end_seconds": 287},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 4:24-4:47, toggling UV Sync Selection in the UV Editor header keeps the entire UV map visible while still syncing selection between the 3D viewport and the UV view.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To place seams cleanly on a small or obscured part of a multi-part mesh (e.g. a stem inside a fruit body, a screw inside a socket) without leaving Edit Mode: hover over the part to isolate, press L (Select Linked) to select just that connected piece, press H to hide the rest, mark seams on the now-unobstructed geometry, then Alt+H to reveal everything again.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 339, "end_seconds": 361},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:39-6:01, an apple's stem is isolated for seam placement by pressing L to select it, H to hide the surrounding body, marking seams, then Alt+H to restore visibility.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Attempting to select and mark seams on the small/obscured part while the rest of the mesh remains visible and selectable",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "After running UV > Unwrap, use the operator panel's 'Margin' slider (bottom-left, appears immediately after the unwrap operation) to add padding between separate UV islands -- a small margin (roughly 0.01-0.05) prevents texture bleeding/smearing across island borders during texture painting, baking, or mipmapping at lower resolutions.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 372, "end_seconds": 390},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 6:12-6:30, the Margin slider in the Unwrap operator panel is increased to add padding between separate UV islands, preventing texture bleed at their borders.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving UV islands with no margin/padding between them",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "UV islands should be moved/rotated (G/R) freely as needed, but should NOT be individually scaled to fit available empty space in the UV layout -- scaling one island larger than the others gives that section of the mesh a higher effective texel density (more texture pixels per unit of 3D surface area) than the rest, producing a visible resolution mismatch. If any resizing is needed, select ALL islands together (A, then S) and scale them uniformly as a group.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 423, "end_seconds": 455},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 7:03-7:35, individually scaling one UV island to fit empty layout space is called out as a mistake because it breaks uniform texel density across the mesh; scaling all islands together preserves it.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Individually scaling one UV island to better fill available layout space",
+    "reason": "Individual island scaling changes that region's texel density relative to the rest of the mesh, producing an inconsistent, visibly mismatched level of texture detail across the surface.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "For a modular prop with multiple separate objects that should share one texture atlas (e.g. a knife's blade and handle as separate objects): select all the related objects together in Object Mode, then press Tab to enter a unified multi-object Edit Mode -- all selected objects' UVs display and can be unwrapped/packed together in the UV Editor as one shared layout, instead of unwrapping and packing each object's UVs separately.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 528, "end_seconds": 552},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 8:48-9:12, selecting both a knife's handle and blade objects and entering multi-object Edit Mode together shows both objects' UVs simultaneously in the UV Editor, ready to unwrap and pack as one shared layout.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Unwrapping and packing each modular sub-component's UVs into a separate texture sheet",
+    "reason": "A shared UV layout across related sub-components keeps them on one material atlas with consistent scale, avoiding a manual merge step later.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "On hard-surface meshes where a normal edge-loop selection (Alt+Click) terminates early at a non-quad junction or sharp corner, use Ctrl+Click (Shortest Path selection) to jump straight from one edge to a distant edge along the same boundary -- Blender automatically highlights the connecting shortest edge path between them, marking a long seam in a couple of clicks instead of manually clicking every edge along a perimeter that loop-select can't traverse.",
+    "source": {"source_id": "xPoxqOcUzNQ", "start_seconds": 604, "end_seconds": 624},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 10:04-10:24, Ctrl+Click (Shortest Path) on a hard-surface knife blade's perimeter selects a long connecting edge path in two clicks, where loop-select would have stopped at non-quad topology.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually clicking every individual edge along a long hard-surface perimeter to build a seam selection",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

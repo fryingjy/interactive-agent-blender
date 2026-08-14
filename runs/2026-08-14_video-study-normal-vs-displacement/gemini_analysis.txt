@@ -1,0 +1,29 @@
+Here are four key visual demonstrations from the video illustrating the practical differences between normal maps, micropolygon displacement, and actual geometry displacement:
+
+---
+
+### 1. **01:02 – 01:12: Grayscale Bump Map vs. RGB Normal Map**
+* **What is visible on screen:** A side-by-side visual comparison displaying a grayscale stone wall texture labeled **BUMP MAP** (*Black = Indented, White = Extruded*) alongside a tangent-space blue/purple/green texture labeled **NORMAL MAP** (*R = X-axis, G = Y-axis, B = Z-axis*).
+* **Point being made:** Bump maps only store 1D height data (up/down intensity via luminance), whereas normal maps store multi-directional 3D angle vectors using RGB channels, providing much more accurate surface lighting and directional reflections.
+* **Why it matters for texturing decisions:** Normal maps are standard for modern real-time game engines and PBR pipelines because they capture directional light bounce across complex angles without any mesh deformation overhead.
+
+---
+
+### 2. **02:00 – 02:15: Normal Map Edge/Silhouette Inspection**
+* **What is visible on screen:** The brick texture applied with a normal map is rendered in Cycles from a low grazing angle. While the flat face appears to have depth and mortar crevices, the outer edges and silhouette remain completely flat, sharp, and straight like a basic sheet plane.
+* **Point being made:** Normal maps only simulate light behavior across surface normals—they do not alter the underlying vertex positions or outline silhouette.
+* **Why it matters for texturing decisions:** Normal maps are ideal for flat surfaces viewed mostly face-on, but fail if the object is viewed along edges or silhouettes (e.g., brick corners, cliffs, or cobblestone grounds viewed at low camera angles), where the lack of geometric depth breaks the illusion.
+
+---
+
+### 3. **04:08 – 04:31: Micropolygon Displacement (Rendered View vs. Solid Mode)**
+* **What is visible on screen:** With Cycles Experimental Adaptive Subdivision enabled and the material set to *Displacement and Bump*, the brick plane shows believable volumetric depth and brick extrusion in the rendered viewport (04:08). However, when switched back to Solid viewport mode (04:26), the mesh remains a simple, flat 4-vertex plane.
+* **Point being made:** Micropolygon/adaptive displacement subdivides and displaces surface points dynamically at render time based on camera distance, without permanently altering the base viewport geometry.
+* **Why it matters for texturing decisions:** This provides realistic depth and self-shadowing at render time while keeping the Blender scene light and viewport navigation fast during staging and animation.
+
+---
+
+### 4. **05:48 – 06:14: True Geometric Displacement via the Displace Modifier**
+* **What is visible on screen:** After heavily subdividing the plane in Edit Mode and applying a **Displace Modifier** linked to the height texture, the actual viewport mesh physically deforms into real 3D peaks and valleys visible directly in Solid mode (05:54), driving the scene face count above 450,000 to 1.9+ million polygons (06:10–06:18).
+* **Point being made:** True modifier displacement physically recalculates and moves vertex positions, meaning resolution depends strictly on mesh tessellation density.
+* **Why it matters for texturing decisions:** This is necessary when other scene elements must physically interact with the displaced surface (e.g., physics simulations, collision, 3D printing, or sculpting), but it significantly increases memory usage, file size, and scene performance overhead compared to shader-based displacement.
