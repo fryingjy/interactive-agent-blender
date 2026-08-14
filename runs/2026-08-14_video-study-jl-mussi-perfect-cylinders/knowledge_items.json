@@ -1,0 +1,86 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Comparing 12-, 24-, and 15-vertex circular caps side by side: the 24-vertex circle (divisible by 4) produces clean, perpendicular symmetry quadrants when opposing vertices are connected, while the 15-vertex circle (not divisible by 4) forces an off-center symmetry line and unequal edge spacing, producing visible pinching/warping under Subdivision Surface. This is now a THIRD independent source (after JL Mussi's earlier 5-tips video and Blender Bros' SubD fundamentals) converging on divisible-by-4 cylindrical segment counts specifically to guarantee orthogonal symmetry axes for downstream boolean cuts and junction edges.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 133, "end_seconds": 227},
+    "confidence": 0.7,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 2:13-3:47, side-by-side 12/24/15-vertex circles are compared -- the 24-vertex circle's opposing-vertex connections create clean perpendicular quadrants, while the 15-vertex circle's odd segmentation forces off-center symmetry and produces visible pinching under Subdivision Surface.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using an arbitrary vertex count for a cylindrical primitive not divisible by 4",
+    "reason": "Now converged across three independent sources: a segment count divisible by 4 guarantees orthogonal symmetry axes, which both aids downstream boolean/junction placement and avoids the pinching that odd/uneven segmentation produces under SubD.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When scaling a ring of faces inward to create a stepped diameter change on a cylinder (e.g. a collar or socket step), press S then Shift+Z (not just S) to constrain the scale to the X/Y plane only -- a plain S scale also compresses/stretches the selection along Z, squashing the vertical height of that section, while Shift+Z locks Z out so only the diameter changes.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 315, "end_seconds": 343},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:15-5:43, scaling a ring of cylinder faces inward with plain S also stretches them along Z; adding Shift+Z locks the Z axis out so the faces scale purely in diameter while preserving exact vertical height.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Scaling the ring of faces with a plain S, then manually correcting the resulting Z-axis stretch afterward",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To create a precise, non-destructively-adjustable mitered pipe elbow at a specific angle (45, 90, 120 degrees): place an Empty at the pipe's cut point, rotate the Empty to the desired miter angle, then add a Mirror modifier to the pipe targeting that Empty with 'Bisect' enabled on the relevant axis -- this cuts the pipe at exactly the Empty's angle and generates the mirrored elbow half in real time, with the joint angle and pipe proportions still adjustable afterward by moving/rotating the Empty rather than having committed to a Knife-tool cut.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 425, "end_seconds": 512},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 7:05-8:32, an Empty rotated 45 degrees drives a Mirror modifier with Bisect enabled on a vertical pipe, instantly cutting it at 45 degrees and generating a seamless mitered elbow, adjustable non-destructively via the Empty.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually cutting the pipe at the desired angle with the Knife tool or Shear",
+    "reason": "A Knife-tool cut commits to a fixed angle immediately; driving the cut through a rotated Empty and Mirror-Bisect keeps the joint angle and pipe proportions adjustable after the fact.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "When using weight-driven Bevel modifiers (Mean Bevel Weight assigned to edges, Limit Method 'Weight'), assigning full weight to a small/tight recessed detail's edges alongside the object's main silhouette edges causes the modifier's global bevel radius to clamp down to fit the tightest recess, crushing and pinching the wider primary bevels elsewhere on the object. Fix: set the tight recess's edges back to Mean Bevel Weight 0 (excluding them from the modifier), and give that small detail its own separate, manual, small-radius bevel (Ctrl+B) instead of routing it through the same shared modifier as the main silhouette bevels.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 643, "end_seconds": 726},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 10:43-12:06, giving a tight recessed panel-line's edges full Mean Bevel Weight causes the shared Bevel modifier to clamp its radius down for the whole object, pinching the main silhouette bevels; removing that weight and manually beveling the small recess separately fixes it.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Routing every bevel-worthy edge, including tight small-scale recesses, through the same shared weight-driven Bevel modifier",
+    "reason": "A single shared Bevel modifier's radius has to satisfy the tightest edge assigned to it; mixing micro-detail edges into the same modifier as the main silhouette forces the whole object's bevel width down to fit the smallest gap.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To convert a sharp mitered pipe elbow into a smooth swept/curved bend without rebuilding the connecting sockets: select the loop at the corner's base, press V (Rip) to disconnect it from the surrounding geometry, select the resulting isolated corner face island with L and delete it (X > Faces), then select the two now-open cylinder rims and use Edge > Bridge Edge Loops (increasing Number of Cuts and adjusting Smoothness) to generate a curved connector between them, preserving the original interface dimensions on both ends.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 1000, "end_seconds": 1055},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 16:40-17:35, ripping and deleting a mitered corner's isolated face island, then bridging the two resulting open cylinder rims with increased Number of Cuts, converts a sharp elbow into a smooth swept bend without rebuilding either socket.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Rebuilding the elbow from scratch as a swept/curved form",
+    "reason": "Ripping just the corner and bridging the two existing open rims reuses the already-correct socket geometry on both ends, avoiding a full rebuild just to change the elbow's sharpness.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "To mirror detailed geometry from one end of a symmetric object to the other (e.g. cloning a bottom socket collar to the top of a pipe): snap the object's own origin to the intended mirror plane point (Ctrl+Period to edit origin, then G+Z with vertex snapping), then in Edit Mode select all and use Mesh > Symmetrize (set to the correct axis direction) -- this bakes the mirrored geometry destructively into the mesh at the edit-mode level, rather than adding a Mirror modifier to the stack, keeping the modifier stack order clean for any booleans that come after.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 1340, "end_seconds": 1378},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 22:20-22:58, the object origin is snapped to the top edge vertex, then Mesh > Symmetrize (-Z to +Z) instantly clones the bottom socket collar's detail to the top, done at the mesh level instead of via a Mirror modifier.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Adding a Mirror modifier to the stack instead of using edit-mode Symmetrize",
+    "reason": "Symmetrize bakes the mirrored result directly into the mesh, avoiding an extra modifier in the stack that could complicate ordering relative to booleans added afterward.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To close an irregular open gap left at an angled boolean junction (e.g. where a branch pipe boolean-unions into a main pipe at an angle) into a flat, cleanly-mergeable boundary: select the loop bordering the gap, make one specific junction vertex the Active Element and set Transform Pivot Point to 'Active Element', then scale that selection to zero along the relevant axis (S, axis key, 0) -- the entire boundary loop snaps flat to exactly the active vertex's position on that axis, after which Merge by Distance closes the seam cleanly.",
+    "source": {"source_id": "XX1RCxid5QM", "start_seconds": 1690, "end_seconds": 1737},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 28:10-28:57, scaling a boundary loop to zero on the Z axis with Pivot Point set to Active Element (a chosen junction vertex) snaps the whole loop flat to that vertex's exact Z-height, enabling a clean Merge by Distance afterward.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually snapping/aligning each vertex of the irregular boundary loop by hand",
+    "reason": "Scaling to zero with an Active-Element pivot flattens the entire loop to one exact reference point in a single operation, instead of manually aligning each vertex individually.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

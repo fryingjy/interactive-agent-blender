@@ -1,0 +1,57 @@
+Here are seven concrete, transferable modeling techniques from the tutorial:
+
+---
+
+### 1. Evaluating Circle Vertex Counts for SubD Symmetry
+- **Timestamp:** 02:13 – 03:47
+- **What is visible on screen:** Side-by-side circular caps with 12, 24, and 15 vertices. The artist connects opposing vertices with `J`. On the 24-vertex circle, the center edges create clean, perpendicular quadrants (6 segments per quadrant). On the 15-vertex circle, odd-numbered segmentation forces an off-center symmetry line and unequal edge spacing, which introduces visible pinching and surface warps once a Subdivision Surface modifier (`Ctrl + 2`) is applied.
+- **Action & Reasoning:** Choosing 24 vertices as the base circle resolution because it is evenly divisible by 4. This guarantees orthogonal symmetry axes across both the X and Y planes, ensuring downstream boolean cuts and junction edges land cleanly on topology lines rather than bisecting irregular segments.
+- **Transferability:** Whenever modeling cylindrical bosses, holes, or pipe intersections intended for hard-surface subdivision modeling, using vertex counts divisible by 4 (e.g., 16, 24, 32) avoids uneven polygon distributions and asymmetric pinching.
+
+---
+
+### 2. Planar Constrained Scaling (`Shift + Z`) on Cylindrical Offsets
+- **Timestamp:** 05:15 – 05:43
+- **What is visible on screen:** An extruded cylinder with a ring of lower faces selected. When the artist presses `S` to scale inward, the cylinder faces stretch along the Z-axis as well. Pressing `Shift + Z` locks the Z-axis (leaving only the red and green constraint indicators active), allowing the faces to scale inward purely in diameter while preserving exact vertical height.
+- **Action & Reasoning:** Scaling with `Shift + Z` to create an inner stepped pipe collar without inadvertently squashing or extending the vertical dimensions of the cylinder segment.
+- **Transferability:** Standard workflow for stepping, insetting, or adjusting diameters on shafts, sockets, barrels, and threaded fittings without altering vertical measurements.
+
+---
+
+### 3. Parametric Mitered Elbow via Mirror Modifier & Rotated Empty
+- **Timestamp:** 07:05 – 08:32
+- **What is visible on screen:** A vertical pipe segment with an Empty placed at its top center edge loop. The Empty is rotated 45° on the Y-axis (`R Y 45`). A Mirror Modifier set to target the Empty with `Bisect X` enabled instantly cuts the pipe at 45° and generates a seamless, parametric 90° elbow joint in real time.
+- **Action & Reasoning:** Using a rotated Empty as a mirror/bisect plane rather than manually slicing with the Knife tool or Shear function. This allows non-destructive adjustments to the pipe length and proportions before baking the cut.
+- **Transferability:** Ideal for creating precise angled joints (45°, 90°, 120°) on railings, roll cages, HVAC ducting, or structural frames while keeping the base mesh editable.
+
+---
+
+### 4. Diagnosing and Fixing Bevel Modifier Clamping Issues
+- **Timestamp:** 10:43 – 12:06
+- **What is visible on screen:** A recessed panel line loop is cut into the collar. When a Mean Bevel Weight of `1.0` is assigned to the tight inner boundary edges of the recess, the global Bevel Modifier clamps heavily against adjacent edges. This crushes the outer corner bevel radius and creates pinched, razor-sharp artifacts under Subdivision Surface.
+- **Action & Reasoning:** The artist sets the Mean Bevel Weight on the narrow recess edges back to `0` and instead adds a small manual 2-segment bevel with `Ctrl + B` (Profile = 1.0). This prevents narrow geometry from dictating and clamping the maximum radius of the main modifier-driven bevels across the rest of the object.
+- **Transferability:** When using weight-based bevel modifiers, tight recesses and small edge details will clamp the modifier width for the entire mesh. Keeping micro-details off the modifier bevel weight list preserves smooth, wide primary highlights.
+
+---
+
+### 5. Converting Mitered Corners to Swept Elbows with Rip (`V`) and Bridge Loops
+- **Timestamp:** 16:40 – 17:35
+- **What is visible on screen:** On a duplicate of the sharp 90° mitered elbow, the artist selects the loop at the base of the corner, presses `V` to rip/disconnect it, selects the resulting corner polygon island with `L`, and deletes it (`X > Faces`). He then selects the two facing open cylinder rims and executes `Edge > Bridge Edge Loops`, increasing `Number of Cuts` to `8` and tweaking `Smoothness`.
+- **Action & Reasoning:** Replacing the sharp miter with a curved pipe bend without rebuilding the sockets or re-aligning the cylinders from scratch.
+- **Transferability:** Rapidly switching between sharp and radiused pipe/tube connections across complex modular assemblies while maintaining identical interface dimensions.
+
+---
+
+### 6. Origin Snapping and In-Mesh Symmetrize (`Mesh > Symmetrize`)
+- **Timestamp:** 22:20 – 22:58
+- **What is visible on screen:** In Object Mode, the artist activates origin editing (`Ctrl + Period`) and uses vertex snapping (`G Z`) to snap the object origin directly to the top edge vertex. Returning to Edit Mode, he selects all geometry (`A`) and runs `Mesh > Symmetrize` set to `-Z to +Z`, instantaneously cloning the detailed bottom socket collar to the top.
+- **Action & Reasoning:** Using Blender's direct origin transform and edit-mode `Symmetrize` tool to mirror geometry destructively on the mesh level rather than adding an extra Mirror modifier to the stack, keeping modifier order clean prior to boolean operations.
+- **Transferability:** Useful for quickly mirroring ends of symmetric props (dumbbells, double-ended wrenches, symmetric pipes, axles) without modifier clutter.
+
+---
+
+### 7. Closing Angled Boolean Gaps Using Active Element Planar Scaling (`S Z 0`)
+- **Timestamp:** 28:10 – 28:57
+- **What is visible on screen:** After cutting an angled branch pipe with a Boolean Union, an open triangular gap remains at the junction. The artist selects the loop bordering the gap, makes the junction intersection vertex the active element (highlighted white), sets the Transform Pivot Point to `Active Element` (`.`), and scales along Z to zero (`S Z 0`). The entire boundary loop snaps dead-flat to the exact Z-height of the active vertex, perfectly aligning the vertices for a clean `Merge by Distance` (`M`).
+- **Action & Reasoning:** Flattening an irregular boolean boundary loop directly to the Z-plane of a specific anchor vertex, eliminating manual vertex-by-vertex snapping and preventing misaligned shading seams at the junction.
+- **Transferability:** Essential cleanup technique for closing complex boolean seam gaps, cutting flat inspection ports, or planarizing angled transition geometry across curved surfaces.
