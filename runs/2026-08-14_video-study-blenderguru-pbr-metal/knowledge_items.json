@@ -1,0 +1,62 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Pure metals have zero diffuse reflection and exist entirely as specular reflection -- because a metal's dense free conduction electrons absorb essentially all light that penetrates the surface within nanometers, no light scatters back out as diffuse color the way it does in a dielectric. A raw metal shader should therefore never mix in a standard diffuse component; adding diffuse to a metal base makes it look milky, synthetic, or plastic instead of metallic.",
+    "source": {"source_id": "m1PkSViBi-M", "start_seconds": 295, "end_seconds": 435},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 4:55-7:15, side-by-side microscopic cross-section diagrams compare a non-metal (light refracts in, scatters, re-emerges as diffuse) against a metal (a red X over subsurface scattering shows all refracted light absorbed instead).",
+    "status": "CAPTURED",
+    "rejected_alternative": "Mixing a Diffuse BSDF into a metal material's shader",
+    "reason": "Real metals derive all of their visible color and brightness from specular reflection and roughness alone, with no diffuse scattering component; adding one contradicts the underlying physics and produces a plastic-like look.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Dielectric (non-metal) materials reflect light uniformly across all visible wavelengths, producing neutral/white specular highlights regardless of the material's base color -- but metals selectively absorb specific wavelengths during surface reflection itself, so the specular highlight color IS the metal's defining hue (e.g. gold absorbs blue wavelengths, leaving a yellow-orange reflection). Specular color on dielectrics (plastic, wood, ceramic, stone) should stay neutral/white; specular color on metals should carry the material's actual color.",
+    "source": {"source_id": "m1PkSViBi-M", "start_seconds": 511, "end_seconds": 575},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 8:31-9:35, a visual breakdown compares reflection colors across Gold, Copper, Silver, Aluminium, Iron, Titanium, and Platinum swatches alongside wavelength-specific absorption diagrams for each.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Tinting a dielectric material's specular highlight to match its base color, or leaving a metal's specular reflection neutral white",
+    "reason": "Non-metals and metals get their color from opposite parts of the shading model -- dielectrics from diffuse scattering under a neutral specular layer, metals from tinted specular reflection alone -- so swapping which layer carries the color breaks the physical basis for either.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A weathered or contaminated metal surface (rust, tarnish, patina, dirt, grease, paint) cannot be represented with a single uniform metal shader, because those surface layers are chemical insulators (dielectrics) sitting on top of the underlying conductor -- they behave with diffuse scattering, neutral Fresnel reflection, and standard dielectric refractive indices (~1.45-1.5), the opposite of the bare metal beneath them. Weathered metal assets need layered shading or a mask texture separating clean conductive metal regions from insulating contamination-layer regions.",
+    "source": {"source_id": "m1PkSViBi-M", "start_seconds": 927, "end_seconds": 1007},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 15:27-16:47, reference photographs of a rusted iron chain and a weathered bronze shield with verdigris patina are shown alongside diagrams of how the contamination layer changes the surface's light interaction from conductor to dielectric behavior.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Applying a single metal shader across an entire weathered/aged metal object",
+    "reason": "Oxidation and grime are physically dielectric coatings, not tinted metal, so any region covered by them needs dielectric shading parameters, not an extension of the underlying metal's conductor behavior.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Real metals do not reflect 100% of incident light at normal (straight-on) incidence -- measured F0 base reflectance values for real elements range roughly 60-98% depending on the metal (e.g. gold ~1.0/0.77/0.34 in linear RGB, silver ~0.97/0.96/0.92, iron ~0.56/0.57/0.58), with darker metals like iron, titanium, and nickel absorbing a substantial fraction of light even at direct viewing angles. Picking an arbitrary, fully-saturated RGB base color for a metal material instead of a measured reference value risks unrealistic blown-out highlights and breaks energy conservation across different HDR lighting environments.",
+    "source": {"source_id": "m1PkSViBi-M", "start_seconds": 1115, "end_seconds": 1195},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 18:35-19:55, a reference table from the Physically Based Rendering Encyclopedia lists measured linear-RGB base color values for real metals including gold, silver, and iron.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Choosing an arbitrary fully-saturated color for a metal's base/specular color instead of a measured real-world reflectance value",
+    "reason": "Real metals absorb a meaningful fraction of incident light even at F0 (face-on); an oversaturated guessed value overshoots real reflectance and produces highlights that blow out or look wrong once the lighting environment changes.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "At the level a PBR shader operates on, a homogeneous surface material is physically binary: a given point on a surface is either an electrical conductor (metal) or an electrical insulator (dielectric), never a blend of both. A multi-material prop (e.g. a tool with a wooden handle and a steel head) can therefore be textured as a single 'uber' material driven by one binary black/white Metalness mask -- rather than needing separate material slots or shader graphs per part -- since the mask simply routes each surface point to conductor or dielectric shading logic.",
+    "source": {"source_id": "m1PkSViBi-M", "start_seconds": 2870, "end_seconds": 2980},
+    "confidence": 0.45,
+    "supporting_evidence": "Gemini video-understanding observation: at 47:50-49:40, a game-asset texture breakdown shows Albedo, Roughness, Normal, and a black-and-white Metalness map isolating a non-metal component (black/0.0) from a metal component (white/1.0) of the same prop, all under one shared material.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Assigning a separate material slot and shader graph to each differently-conductive part of a multi-material prop",
+    "reason": "A binary metalness mask lets one shared shader correctly branch between conductor and dielectric behavior per-pixel, avoiding extra material slots and draw calls for props that mix metal and non-metal parts.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
