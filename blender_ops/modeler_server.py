@@ -705,6 +705,5 @@ def start():
 
 
 def stop():
-    global _server
     if _server is not None:
         _server.stop()

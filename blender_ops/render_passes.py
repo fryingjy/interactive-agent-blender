@@ -22,7 +22,6 @@ of a lit/shaded image required.
 """
 
 import json
-import math
 import os
 
 import bmesh

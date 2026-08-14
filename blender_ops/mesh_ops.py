@@ -614,7 +614,7 @@ def symmetrize_selection(name, direction="-X_TO_+X", threshold=0.0001):
     }
     bmesh_direction = direction_map.get(direction, direction)
     before = _element_snapshot(bm)
-    result = bmesh.ops.symmetrize(bm, input=geom, direction=bmesh_direction, dist=threshold)
+    bmesh.ops.symmetrize(bm, input=geom, direction=bmesh_direction, dist=threshold)
     created = _clear_new_element_ids(bm, before)
     _write_back(obj, bm)
     return {"direction": direction, "bmesh_direction": bmesh_direction, "result_geometry": sum(created.values()), **created}
