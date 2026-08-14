@@ -108,6 +108,7 @@ _OPS = {
     "symmetrize_selection": mesh_ops.symmetrize_selection,
     "split_selection": mesh_ops.split_selection,
     "separate_selection": mesh_ops.separate_selection,
+    "assign_vertex_group": mesh_ops.assign_vertex_group,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
     "set_shading": object_ops.set_shading,

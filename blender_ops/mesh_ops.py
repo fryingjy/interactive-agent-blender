@@ -635,6 +635,27 @@ def split_selection(name):
     return {"split_geometry": result_geometry, **created}
 
 
+def assign_vertex_group(name, group_name, weight=1.0):
+    """Create (if needed) a vertex group and assign the currently-selected vertices to it at
+    the given weight. The missing piece for vertex-group-restricted modifiers (Shrinkwrap,
+    Mirror, Bevel) -- those all take a vertex_group name, but nothing in the typed surface could
+    previously create or populate one."""
+    obj, bm = _bm_from_object(name)
+    if group_name not in obj.vertex_groups:
+        obj.vertex_groups.new(name=group_name)
+    group_index = obj.vertex_groups[group_name].index
+    deform_layer = bm.verts.layers.deform.verify()
+    assigned = 0
+    for vert in bm.verts:
+        if vert.select:
+            vert[deform_layer][group_index] = weight
+            assigned += 1
+    _write_back(obj, bm)
+    if assigned == 0:
+        raise ValueError(f"nothing selected on '{name}' to assign to vertex group '{group_name}'")
+    return {"group_name": group_name, "group_index": group_index, "assigned_count": assigned, "weight": weight}
+
+
 def separate_selection(name, new_name=None):
     """Move selected faces to a new object and report the identity boundary explicitly."""
     obj, bm = _bm_from_object(name)
