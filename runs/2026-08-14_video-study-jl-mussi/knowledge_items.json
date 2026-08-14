@@ -1,0 +1,82 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Detail placement should dictate mesh density, not the reverse -- add resolution where a feature needs it, work from detail outward, rather than pre-committing to a uniform density and forcing details into it.",
+    "source": {
+      "source_id": "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json (JL Mussi - Learn Blender 3D Modeling Under 97 Minutes! - youtube.com/watch?v=tRZh0K8R8mQ)",
+      "start_seconds": 840,
+      "end_seconds": 900
+    },
+    "confidence": 0.8,
+    "status": "CAPTURED",
+    "supporting_evidence": "\"One of the key beginner mistakes is with detail and then work your way out. Remember, details dictate density.\"",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Pulling beveled verts too close together (uneven spacing after a vertex bevel) produces pinching once a Subdivision Surface modifier is applied, even though the base cage looks fine at that stage.",
+    "source": {
+      "source_id": "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json (JL Mussi - Learn Blender 3D Modeling Under 97 Minutes! - youtube.com/watch?v=tRZh0K8R8mQ)",
+      "start_seconds": 1300,
+      "end_seconds": 1320
+    },
+    "confidence": 0.75,
+    "status": "CAPTURED",
+    "supporting_evidence": "\"we wouldn't want to drop this right about here. And that's because you see those three verts right there. When we go into subd mode, they're very close together. And that's going to cause pinching.\"",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Choose cylindrical/radial segment counts that are evenly divisible by four.",
+    "source": {
+      "source_id": "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json (JL Mussi - Learn Blender 3D Modeling Under 97 Minutes! - youtube.com/watch?v=tRZh0K8R8mQ)",
+      "start_seconds": 2260,
+      "end_seconds": 2280
+    },
+    "confidence": 0.85,
+    "status": "CAPTURED",
+    "supporting_evidence": "\"What I like to do is always have my cylindrical shapes divisible by four. Why? because it gives me even symmetry lines across the X, the Y, and the Z.\"",
+    "rejected_alternative": "an arbitrary/eyeballed segment count",
+    "reason": "divisible-by-four segment counts give even symmetry lines across all three axes, simplifying later mirroring and alignment work",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Add a new primitive while still in Edit Mode on the target object (not Object Mode) when it needs to become part of the same mesh, since Edit-Mode primitive creation already places the new geometry into the current object's own mesh data.",
+    "source": {
+      "source_id": "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json (JL Mussi - Learn Blender 3D Modeling Under 97 Minutes! - youtube.com/watch?v=tRZh0K8R8mQ)",
+      "start_seconds": 2440,
+      "end_seconds": 2460
+    },
+    "confidence": 0.8,
+    "status": "CAPTURED",
+    "supporting_evidence": "\"We want to do this in edit mode. If we do it in object, it's going to require an extra step because they're going to be separate objects and then we'll have to merge them. So basically dropping a primitive within edit mode, it's already dropping it with that same object.\"",
+    "rejected_alternative": "add the primitive in Object Mode, then join/merge the two separate objects afterward",
+    "reason": "Edit-Mode primitive creation skips the separate-objects state entirely, avoiding an explicit join step later",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "When a physical copy of the reference object is available, prefer studying it directly over relying only on photographs -- handling it and observing how light plays across its surfaces reveals shape information static images do not.",
+    "source": {
+      "source_id": "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json (JL Mussi - Learn Blender 3D Modeling Under 97 Minutes! - youtube.com/watch?v=tRZh0K8R8mQ)",
+      "start_seconds": 2580,
+      "end_seconds": 2600
+    },
+    "confidence": 0.7,
+    "status": "CAPTURED",
+    "supporting_evidence": "\"I like modeling real life objects, especially if you're a beginner, because having that physical object gives you the ability to move it and examine it and see how light reacts and you could actually see the shapes a lot better.\"",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

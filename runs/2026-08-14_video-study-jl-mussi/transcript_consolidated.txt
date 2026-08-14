@@ -1,0 +1,625 @@
+[00:00 - 00:20] Are you ready to level up your 30 modeling skills despite practicing for hours? Overwhelmed by finding the right tools, workflows, or even creating proper topology? [music] You're not alone. Many think mastering 3D modeling takes forever. But it doesn't have to be that way. This is what my 3D models used to look like back in college, [music] and this is how they look now.
+
+[00:20 - 00:40] Discovering the right workflow transformed my models from amateur to professional. I realized that you don't need decades. The right approach makes all the difference in the [music] world. In this Blender hard surface tutorial for beginners, you'll build a professional 3D model step by step with clean topology and see real improvement in under 2 hours. I'm JL Musei. I'm a
+
+[00:40 - 01:00] professional 3D artist with experience both in film and video games. I've created educational content for companies like Autodesk and my 3D software reviews [music] have been featured in PC Mag. I've even presented my 3D workflows as [music] sigraph. To help you follow along, I provided highresolution blueprints and various formats of this 3D model. You can
+
+[01:00 - 01:20] download them using the link in the description down below. Here's a quick breakdown of the project. We'll start the 3D modeling by creating the edge flow around the details on the top of the can using a flat plane. Then, we'll shape the top of [music] the can in 3D space. We'll use a similar workflow to create the top of the can, completing
+
+[01:20 - 01:40] the most complex details of this object. And finally, we'll create a series of extrusions to create the body of the can. So, enough yapping. Let's get started. We're going to start with a fresh Blender scene. If you're not seeing exactly what I'm seeing, you can go to file, new, general, and you should have something like this on your scene. I'm using Blender version 4.53.
+
+[01:40 - 02:00] So, this should work with older and newer versions of Blender as I'll be using most of the default tools and no added add-ons. Even though this is for complete beginners in order for me to cram as much value as humanly possible in the shortest amount of time, I'm
+
+[02:00 - 02:20] going to be focusing on the 3D modeling workflow. First thing that I'm going to do is go to the preferences and change three settings that are going to speed us up in our modeling process. I'll go to edit preferences and the first one is going to be under interface. I already have changed this. By default, this is set to one. This can cause some of your
+
+[02:20 - 02:40] menus and your icons to look relatively small. So if you want to increase the size, go ahead and up the resolution scale of Blender. The second one is with system. I believe by default this is set to 32. I'm going to increase this to 100. If you have a low number here and if you want to control Z past the
+
+[02:40 - 03:00] default, then you're going to be capped out. And lastly, I'll go to themes and I'm going to change the wire edit color. you're going to be provided higher resolution blueprints that have a black stroke. When we're in edit mode, if you're trying to overlay a black wireframe on top of a black stroke, visibility can become an issue. I'm going to click here. I already have a
+
+[03:00 - 03:20] value in mind. I'm going to hit controlV. I'm using hex color 66789E. You're welcome to use whatever value you want. I'm going to hit the hamburger icon here. One thing you'll notice is by default this is set to autosave preferences. However, if you have this disabled, make sure that you are saving
+
+[03:20 - 03:40] your preferences. If not, Blender won't remember those changes. I'll exit out of this. I'm going to hit one to jump into the front orthographic. And right now, you see that by default, Blender brings in a camera, a cube, and a light. We don't need those. So, I'm going to hit A on my keyboard. This is going to select everything within object mode. I can hit
+
+[03:40 - 04:00] delete. And now we're at a fresh start. The other thing that I want to do is switch from layout to modeling. This is going to give me more visual real estate and not going to give me any other panels that are not related to modeling. So I'm going to hit the modeling layout tab. It's going to revert me back to the user perspective. Again, I'll just simply hit one. And now we're going to
+
+[04:00 - 04:20] return to the front orthographic. From this point, we're ready to bring in our reference image. You can find those using the link down below. So I'll do shift A. I'll get an image and then reference. In the images directory of the project files, you'll find this blueprint PNG. You'll select it, do add empty image. Now we have our reference image properly loaded. Since we're
+
+[04:20 - 04:40] matching up two different views of this model, what I want to do is actually have some geometry in here to match these up in 3D space. Often times we try to eyeball this. When we start the modeling process, we figure out that one blueprint it's off. we have to stop and reposition that. So, this is the pro way
+
+[04:40 - 05:00] of actually making sure that all your reference images line up by using a volume. So, I'll do shift A, I'll do mesh, and we'll get a cube. If I hit N, by default, the cubes are pretty large as far as dimensions. You see that they're 2 m. And essentially what I'm doing is using the default scale of this
+
+[05:00 - 05:20] cube as kind of a proxy. Usually in 3D, you don't want to model too too large compared to your scene scale or too too small. So with this selected, I'm roughly going to just scale this about the height of a cube. And yes, even though technically in real world scale,
+
+[05:20 - 05:40] this is a gigantic can. I don't want to model this too much smaller than a default cube because when I bring in primitives, I'm going to have to keep scaling everything down, and I don't want that. Since we shrunk this, we can't see past this primitive. That's because we're in solid view. We can hover over here and we see that this is solid view. We want to go to wireframe.
+
+[05:40 - 06:00] So, we can do shift Z to switch between solid and wireframe mode. If you need to zoom in, you can select an object and hit period on the numpad. So, what I want to do is actually move this blueprint to be in the middle of this volume. I'm going to look at my right hand side here. And we see this little gizmo here. And this gizmo tells us the
+
+[06:00 - 06:20] axises that correspond to the direction we want to move. I'm going to select this, hit G, and start moving this. Moving this directly in the X can be kind of hard with just G as we're kind of working with also the Z as well. So, I'm going to rightclick this. Anytime that you start a transform and you change your mind, you can rightclick to
+
+[06:20 - 06:40] exit out of that operation. With this selected now, I can do G for the move tool, but I can hit X. Now, we can constrain this to the X axis. I like to work above the ground plane. Now, this is going to be hard to see because this reference image is blocking the grid. So, we're going to jump to the data properties here of this reference image.
+
+[06:40 - 07:00] And we're going to take opacity. And now you'll see that we could see through our image reference and see the grid. So, I'll do GZ this time. And we're going to plop this up. Essentially, what I like to do is use this grid as an imaginary ground plane. is just a matter of taking
+
+[07:00 - 07:20] the volume here that we had and we can move this up like this. So, I'm going to hit N to hide the end panel. I want to scale this to match the top. So, the top of this cube matches the top of this can. By default, Blender likes to scale from the origin, which is the same thing as a pivot point. And it's indicated by this little orange dot here. But we also
+
+[07:20 - 07:40] have this 3D cursor which can be thought of as a helper to help set the origin point or even be a pivot itself. So if we hit S and try to scale, you see that it's going to require to scale up a little bit and also move. So I'm going to rightclick to exit out of that and
+
+[07:40 - 08:00] control Z to go back to where we were. But we notice that our 3D cursor is already at the bottom here. So why don't we use this as a pivot and save ourselves a couple of moves. So, I'll hit period. I'll switch this over to 3D cursor. I'll hit S. And now you can see that we're essentially scaling from the bottom, making this much much easier. And now what we want to do is actually
+
+[08:00 - 08:20] scale this inward. So, if I go to perspective here and start scaling, you see that I'm scaling in all three axises. So, even though we're getting closer to the sides of this, we're losing the top. So, I'm going to control Z this. And Blender has a clever way of actually excluding a single axes from
+
+[08:20 - 08:40] your transforms. So what we ultimately want to do is just have the X and the Y but leave the Z out as we already established that. So I'm going to hit S. And then we can tell Blender to exclude the Z by doing shift Z. Now you see that both the red, which is the X, and the Y, which is the green, become active, but the Z is left out. And now we could
+
+[08:40 - 09:00] basically scale with those two axises, leaving the Z out of play. So what I'm going to do is hit one to return to the front view. I'll do S to scale. Shift Z. And now we could scale here. And if we go back to perspective, we can verify that the X and the Y got scaled and left the Z out. I'll hit one on the numpad
+
+[09:00 - 09:20] once more to return to the front view. I'll hit GX. And we're going to bump this right in the middle. And we're getting pretty close here. So, I'm going to align this right about the middle. I'll move this in the X just to get a little bit closer. And then again, we can select the box. Do S, shift Z one
+
+[09:20 - 09:40] more time just to nudge it. So, there's our perfect volume. And if we go to the perspective, this looks good. Now, we do have to do a couple more tweaks on the image data properties to get this properly set up. So, we'll select this reference image. We'll do G Y. Push this back in the Y. We only want these
+
+[09:40 - 10:00] blueprints visible in their corresponding orthographics, not the perspective. So, we want to be able to hit one, see this, and then pop over to perspective and have this disappear. So, with the image selected, we'll go to the data properties here. And you see that we have this option called perspective. So, we could uncheck this. Now, it's
+
+[10:00 - 10:20] gone from the perspective, but if we hit one here, it's visible in the orthographic. That's exactly what we want. The next thing that we want to set up is a system. So the blueprints are not selectable, but the mesh is. You could imagine that if we're working on our model, you know, maybe we drag marquee here, having this image be
+
+[10:20 - 10:40] selected and then we're moving this when we're just trying to move the can becomes a nightmare. Luckily, Blender makes this extremely easy to make a setup where one set of items, for example, reference images, is non selectable. So, I'm going to select my image here on the outliner. I'll hit M and we're going to create a new
+
+[10:40 - 11:00] collection. And this collection is going to house all our reference images and also the toggles that are going to allow us to disable the selectability of these images. So, we'll do collection. We'll name this reference. Hit create. I'll double click the image and do front. And I'll hit enter. Naming all your assets and having clean naming conventions is
+
+[11:00 - 11:20] extremely beneficial. Not only is it going to help you find and troubleshoot your scene, but also work with other people. Nobody wants to work behind a file that's all over the place and nothing is named. By default, Blender doesn't allow you to disable the selectability. So, we have to go to this little funnel icon here, which is the
+
+[11:20 - 11:40] filter, and enable the selection toggle. So, we're going to enable that. And now, you see that it's available to all our objects and collections within the outliner. find this reference and untick this here. And the beauty about this is that it disables the selectability of every single item within that
+
+[11:40 - 12:00] collection. I'm actually going to uncheck opacity here. And I think we're ready to bring in the top. So I'll hit seven to jump to the top view. Shift A once more. Image reference again. We'll select the blueprint. We'll add it in. We'll zoom out a little bit. I'll hit G. Kind of plop this in the middle. And we have the 3D cursor still in the middle.
+
+[12:00 - 12:20] So I'm going to hit period. Make sure we're set to 3D cursor, which we are. I'll hit S. And then now I could kind of scale within this volume here. I'll zoom in a little bit more. Kind of get the left and the right lined up. And now I can do G Y. Move this up slightly. I'll go to perspective here. I like to give myself a little bit more space. So I'll
+
+[12:20 - 12:40] do G Z. Push this down a little bit more. And I'll do the same exact thing. I'll disable this in the perspective. But when I hit seven, this is going to be clearly visible. Now, one thing you'll notice since this was the active collection, this was clicked. Blender actually created and dropped this image within this collection. So, any
+
+[12:40 - 13:00] collection that you have clicked, whatever you bring in through the ad menu is going to be automatically placed there. Select this, double click, rename it. We hit M. And now it's going to allow us to move this to an existing collection. So, I'll select reference. And now this is moved over. Alternatively, any of these objects you
+
+[13:00 - 13:20] can actually click and drag them into a collection itself. I'm going to control-z to undo that. So now this cube allowed us to match up the top. And then if I hit one, I can match up the front as well. This was only a bounding box essentially that allowed us to properly
+
+[13:20 - 13:40] ensure that when we create this can both reference images are going to line up properly to a 3D model. So we can delete this cube. You're doing great. You just set up the blueprints for your project. Having highquality reference images like this set up in the viewports of your 3D application will make the rest of the
+
+[13:40 - 14:00] project move forward much much smoother. Let's get to the fun part and start the 3D modeling. I'll hit seven to jump to the top view. Control spacebar to maximize the 3D viewport. And we're going to zoom in here, right at the top of the can. Here's our plan of attack. We're going to start by modeling the inner details of the can and laying out
+
+[14:00 - 14:20] the initial curvature here with some edge flow that follows these lines. As long as these divisions of edges match up with the outer perimeter, that's going to allow us to do a clean bridge and have nice even topology with the proper density in the middle. One of the key beginner mistakes is with
+
+[14:20 - 14:40] cylindrical shapes like this, they'll start from the outer ring and then start extruding inward. And the problem with this workflow is that at this stage, we really don't know exactly how many divisions we need to properly flesh out these inner details. That's why a safer workflow is to start with the pockets of
+
+[14:40 - 15:00] detail and then work your way out. Remember, details dictate density. I'll do shift A. I'll get a plane. This plane is going to probably come in quite a bit larger and we can't select it. I'll do control spacebar. And this is because this plane was actually created on this reference and the selectability is disabled. Simply delete the plane al
+
+[15:00 - 15:20] together. We're going to click this collection here and we'll simply rename this to can. But now by clicking this, this is going to be our active collection. So whatever we create will now be in that collection and also selectable. So I'll do shift a mesh plane. And now you see that this plane is within this collection. I'll hit S to
+
+[15:20 - 15:40] scale. I'm going to scale this down quite a bit. I'll do control spacebar to maximize my 3D viewport. Period on the numpad to frame on this. And now we're ready to begin. Up to this point, we've been working in object mode. And now it's time to dive in one level deeper and access the components into edit
+
+[15:40 - 16:00] mode. Blender is contextsensitive. So depending on the mode that you're in, you're going to get different menus at the top and on the left sidebar. If we look here and drop down, you see that we have a variety of modes. So once I hit tab to dive into edit mode, pay attention to the contextsensitive menus that now appear. And there we go. So now
+
+[16:00 - 16:20] we have menus for pretty much every component. And on the left hand side we have additional 3D modeling tools. We have three different component filters. So we could click this button here for vertex, this button for edges, and this button for faces. Alternatively, we can hit one for verts, two for edges, three
+
+[16:20 - 16:40] for faces. So I'll hit one to go to vert mode. Drag across here to select these verts. Look to the right hand side. We want to work with the Y. So we'll do G Y for the axis constraint. We're going to go ahead and line this up here. This is what I call blocking in the extreme. So, we're going to work in the top of the shape here and then the bottom of the
+
+[16:40 - 17:00] shape like this. So, I'll do G Y move this up. If we have wireframe shaded mode selected here, we can simply go to this little dropdown and you see that we have this X-ray toggle here. So, what we can do is basically just put a 0.5 and now we have this nice X-ray shading that makes our modeling a little bit easier to model on top of these blueprints. So,
+
+[17:00 - 17:20] I'll hit K to bring up my knife tool to actually start getting the angle here. Click here. Try to line this up. So, I'll do something like this. I'll hit enter to accept that. And then I'm simply going to hit two, select this edge. I'll do G and then X for my X constraint. I'll move it just like this. And I want to actually zoom out very,
+
+[17:20 - 17:40] very slightly. And I can do that with a controlled zoom. So, I'll do control middle mouse click. And you see that's a little bit more controlled versus just scrub mouse wheeling. And you see that we have that stepping. I'm simply just going to take this bottom vert here. I'll do GX and basically nudge it over.
+
+[17:40 - 18:00] I'll hit three to go to face mode. Depending on the shading mode that you're in within Blender, your face selections are going to change a little bit. So anytime that you're in wireframe, even with X-ray enabled, you're going to get a face center. If we actually go here to solid mode, you see that our face selection actually works a little bit different. So, we could actually click anywhere on the face,
+
+[18:00 - 18:20] it's selected. But if we go to wireframe again, you see that we can no longer do that. And Blender gives us a face center. So, just remember that if you're seeing these little dots here, these are called face centers. And in wireframe mode, you actually have to make sure you're hitting this box to select it. So, I'll do X. And the beautiful thing
+
+[18:20 - 18:40] about Blender is it actually gives you the submen once you hit X to ask you what components you want to delete. If you pay close attention, we have a little letter here that is actually highlighted. So this is a contextsensitive submen of the delete function. So now we could manually scroll down to faces once
+
+[18:40 - 19:00] we hit X, but we could easily hit F and it'll do it for us. So you can see that's a little bit of a faster way than having to manually look for your faces, your edges, or your vertices. If you pay attention to the highlighted letter once you hit X, we basically took out the left side. We want to mirror this
+
+[19:00 - 19:20] quickly to the right. We have a couple of options. We could drop in a mirror modifier, but in this case, I'm going to do a simpler solution, which is called symmetriize. If I do shift right click, I'm going to move the 3D cursor. The 3D cursor is basically a helper, but here lies the origin. And this is where the symmetriize tool works out of. So if this is not centered on your mesh, then
+
+[19:20 - 19:40] symmetriize is not going to behave like you want it. In this case, the origin is right in the middle. Anytime that you create a primitive, that origin by default will be in the middle unless you offset it. So I'm going to hit A to select all my faces here. I'll go to mesh and I'll go to symmetriize tools that I'm using quite a bit. I like to
+
+[19:40 - 20:00] either set a hotkey or a quick favorite. In this case, I'm going to set a quick favorite. We could simply rightclick on any command and we could add this to the quick favorites. Now, we have it set as a quick favorite. So, from this point forward, I'll be hitting Q and doing symmetriize. This flipped from the left to the right. Now, if this is going
+
+[20:00 - 20:20] backwards on you, this just means that you have to change the direction. So we could expand this menu here on the left and we could simply change this from X plus to X minus. In this case, the original direction was correct. So I'm going to leave this as is. From this point, we want to establish the curvature. And we're going to use a bevel command to actually start rounding
+
+[20:20 - 20:40] this out. We'll start with the top. So I'll simply go in here. I'll hit one for my verts. So I'll select this vert here. I'll hold down shift and select this vert here. So I'll do CtrlB to bevel. And you see that if we start pulling from here, nothing's going to happen. And that's because we have to tell Blender to look at the verts only. If we
+
+[20:40 - 21:00] had some depth here, that'd be different. Blender would bevel those edges by default. Since we're working with verts, we have to hit V and do this additional step. To get more divisions, we could drop the tool and then play with the settings afterwards, but we could do it on the fly by using the middle mouse wheel and scrubbing up. And
+
+[21:00 - 21:20] now you see that we get more divisions. get a middle ground of resolution. So, I don't want to go too light, but I also don't want to go too dense. Remember, if we go too dense here and we start connecting everything, this density is going to spread out through our mesh. And we're also going to be using subdeling where a lot of the smoothing is actually going to be taken care of by
+
+[21:20 - 21:40] the subd modifier itself. So, we don't have to go too too dense, but enough divisions to actually capture the curvature. Now, when you're beveling these, this is an important concept to understand. I'm going to right click to exit out of that. And I'm going to zoom in very close to the action here. I'll do controlB once more. V once more. And
+
+[21:40 - 22:00] now, I'm going to start pushing this in. Now, we don't want to have spacing like this. So, I'm going to go back to the divisions that I had. And we wouldn't want to drop this right about here. And that's because you see those three verts right there. When we go into subd mode, they're very close together. And that's going to cause pinching. So, what I'd rather do is actually push this all the
+
+[22:00 - 22:20] way down like this towards the middle. If we didn't have this vert, we could actually enable clamp overlap. And you see that clamp overlap would just allow us to not have these verts shoot across each other. However, since we had that vert there, that vert kind of stopped it. Anyways, so now you see that we have this pretty pristine even spacing here,
+
+[22:20 - 22:40] right? And that's because we kind of went all the way down to that center vert. I'll hit two to select this edge, but instead of grabbing it just with the grab tool, I want a little bit of a fall-off. So, I'm going to zoom out and I'm going to enable proportional editing. Proportional editing is going to allow us to move things with a fall-off. Usually, a fall-off allows us
+
+[22:40 - 23:00] to get a lot smoother movements and kind of reduce some of that jitter versus moving these verts by hand and messing up even spacing that we got from the bevel. Now, one thing about this proportional editing is one, you won't see it until a transforms activated. And two, it tends to come in very, very large compared to your shape. So, I'm
+
+[23:00 - 23:20] going to zoom out a little bit more here. And now, when I hit G, you'll see this activated. And pretty much, it's pretty large. So, I'll scrub mouse wheel up to shrink this down quite a bit. I could zoom in a little bit. One issue that I'm having is this brush is off to the left. So, I'm going to hit period here. And this is set to 3D cursor. So, what I'm going to do is actually switch this to medium point and it's going to
+
+[23:20 - 23:40] take the medium point of the selection. So, now if I hit G, our cursor and our proportional editing is going to be right there in the middle of those components. So, I'm going to move this up. And we could always hit G and actually shrink this down as needed to kind of just influence what we wanted
+
+[23:40 - 24:00] to. But you'll notice that these components within that radius actually move as well. Scale this up a little bit. You see that it's kind of nudging these up. Now I can disable proportional editing and kind of just nudge these manually. Since this one's on the center line, I'll do G and I'll do Y to constrain it and just plop this down.
+
+[24:00 - 24:20] When I bevel this bottom vert, I want to have even face distribution. Therefore, I want to keep the length relatively the same. Length is this. That's what's going to get you a nice even topology. And then when you add your subd modifier, that's going to translate to better results. I'm going to go ahead and select these bottom verts on the corner. CtrlB V. And now we can pull out
+
+[24:20 - 24:40] like this. We could increase our subdivisions. And we're kind of eyeballing this. And I think that looks pretty even. Now, one thing again is I don't want to leave this right like that. If we pay close attention to those verts, we want to just go all the way up like this. Kind of clamp that down. And
+
+[24:40 - 25:00] then we're going to go zoom in on this corner. I do recommend that you have clamp overlap set. I'll select these two verts. I'll hit O. That's the hot key to enable proportional editing. I'll do G. I'll bring this radius up here to basically engulf this entire curve. And then we'll simply pull this out. And
+
+[25:00 - 25:20] maybe what I'll do is actually pick up one more vert here. Do G. If you need more influence, you could always go up on the radius, but I want to get it close to home and then disable proportional editing and do smaller tweaks. And I'm essentially looking to put that vert right in the middle of those strokes. I'll do gy and I'll go
+
+[25:20 - 25:40] ahead and bump this up slightly. And this looks pretty good. Now, obviously, we only did work on the left. Let's mirror that over to the right again. I'll hit A. And this time, we'll hit Q instead of going through the mesh menu. Now, we just got done beveling. There's a good chance that these verts might not be merged right in the middle. So, we're
+
+[25:40 - 26:00] going to zoom in here. We'll select this top vert here, and then we'll pull off. So, even though they were on top of each other, they weren't merged. So, we need to merge these verts to avoid any future problems. I'll hit A to select all the verts. I'll hit M for merge. And then we'll do by distance. And if these things are close enough here with a small tolerance, they should snap together. If we go here, we select one
+
+[26:00 - 26:20] vert and move them. Now, you see that they're merged. I'm going to zoom out here. The next thing that I want is actually to be able to have the poly count of selected objects. And that's a display setting called statistics. So, we're going to enable that. And now for any components that we have selected, we're going to get statistics show up
+
+[26:20 - 26:40] here on the left hand side. The way that these statistics work is it's going to actually tell you all the components that you have on the right hand side. And then if we make a selection, for example, if I select this edge, hold on control just to get this shortest path, this range, you see that we have 10 out of 31 edges selected. This actually becomes quite beneficial when you're
+
+[26:40 - 27:00] doing clean modeling and you're trying to connect different edges. I'll hit three to go to face mode. I'll hit A for all. I'll hit I. We're going to go ahead and insert this. And now you see that we get this nice offset here. Just by inserting this, we're getting this other edge that we're going to need to create these details. So from this point, we
+
+[27:00 - 27:20] want to start thinking about the opening of the can here. We already have this nice radial flow. So we could actually do another inset to capture most of this. So again, I'll hit I and we'll bring this in. Now that we have this nice curvature, we want to start creating kind of this upper curved surface that basically is creating the
+
+[27:20 - 27:40] lid of this can. I'm actually going to take these center faces here and these center faces here. I'll do XF delete them. It's going to gut this out. And now I'm a little bit more freer to kind of start routing this towards the center. Now we want this edge here to actually flow with the curvature, hence
+
+[27:40 - 28:00] the name edge flow. So, I'm going to route this inward like this. I'll hit two to select this face. E to extrude. And now you see that we're flowing with the curvature. As we move this, you see that we're kind of angling this towards the curvature. And this is just going to give us a nice supporting loop around this edge. I'm going to move this over
+
+[28:00 - 28:20] like this. I'll hit two E to extrude. I'll do this couple more times. And again, I'm actually scanning the bottom of this as well to keep that density even. I'm going to extrude one more time towards the middle. Now, what we could actually do is scale some of these edges flat. So, I'll hit S to bring on my scale tool. X for my axis constraint and
+
+[28:20 - 28:40] then zero. And now, you see that we could flatten this out. And this is going to save us a little bit of work. Anytime that you're working with the symmetry line, you want everything nice and flat. Now that we have kind of this initial curvature, let's go ahead and smooth it out. So instead of manually moving this like this, since we actually have some initial curvature that looks pretty good, we could actually slide
+
+[28:40 - 29:00] these components by hitting double G. So now we could actually move this component, slide that vert along that edge. So double G once more with that vert selected. And I'm just kind of working the top here. And I'm just trying to get some nice angles here. I'm going to hit A to select everything. Q for my quick favorites. Symmetriize. And
+
+[29:00 - 29:20] now this is nice and even. I could actually work on the spacing a little bit more here. So, I'll do GX. Move this over. I'll hit A once more. Q. And then I'll do symmetriize just to mirror that over here. This is a little bit more details on that actual lid. So, we already have the radial here. So, I'll go into my edges. I'll alt leftclick.
+
+[29:20 - 29:40] It'll select this range. I'll hit period. And I want to make sure that I'm on medium point. That's going to capture the median point of my selection. Now, I can hit E to extrude. Hit S to switch to scale and I can scale inward. I'll hit S to scale. And now I want to scale in the Y just to close this gap a little bit. And now we're gonna again break down
+
+[29:40 - 30:00] into our individual verts and simply adjust them. One thing you'll notice about my workflow is I try to do the most amount of movements either with a transform, a proportional editing, and then use manual tweaking for smaller movements. So here I'll select these three verts. I'll do G Y move these down
+
+[30:00 - 30:20] and basically start lining this up to this edge. And anytime that you're working on a symmetry line, you want to make sure that you're using axis constraint to keep everything even. Sometimes with these corners, sometimes they need a little bit more love. We could either introduce more resolution here or we could basically start moving
+
+[30:20 - 30:40] components here. However, I don't like this solution because if we do this and we have a large span and this is actually pretty well spaced out. Just add a little bit more space here. And I'm actually going to take this edge here, double G to slide the entire edge.
+
+[30:40 - 31:00] I'm keeping an eye out for these to be relatively even. And now I could take this one here and actually bevel it. And beveling sometimes is a great way to create two edges out of one and kind of averaging them out at the same time. And now you see that I have this extra flow here and that's going to help further define this corner. If you ever used a package like Adobe Illustrator and this
+
+[31:00 - 31:20] is kind of the same way because we need more divisions to describe those tight corners especially if you want them to uphold that shape when using subd and anytime that you add resolution to a mesh space things out. So very few times unless you're doing holding edges should
+
+[31:20 - 31:40] you just not move anything. Polygonal modeling is a process of adding and always evaluating and making adjustments and making the most out of those new divisions. I'll hit A one more time. Q and then symmetriize. I'm going to take these edges here and just give it a little bit more spacing. So, I'll hit two to select my edges. I'll alt
+
+[31:40 - 32:00] leftclick to select this entire ring. And now we want to create this last pocket of detail on the lid of the can. I'll hit E to extrude, S to scale. We'll go ahead and extrude down like this just to kind of get the initial curvature. Now I'll hit SX. We're going to scale out a little bit. And then we'll do S Y
+
+[32:00 - 32:20] and scale in. I'm using the transforms as much as humanly possible to align this opening before I break into individual verts. So this align pretty well. And then here we have to manually adjust. I hit one and just basically start moving these verts, aligning them towards the opening. Now, one thing you
+
+[32:20 - 32:40] always want to keep in mind is the angles as well. So, you see that I'm shooting towards the middle of this opening. So, you wouldn't want to do something like this or something like this where you're not basically flowing into the opening as well as messing up the even spacing. Not only should you be mindful of the position of the vert, but
+
+[32:40 - 33:00] also the angle. Now, here we're getting a large spread. So, this is going to need a little bit more love. So, I'm going to double G. Slide it over like this. Double G. And now I'm starting to kind of fight my mesh. You see that? Like I'm basically trying to put this over to the left now that we have a
+
+[33:00 - 33:20] gigantic gap here. And if you're kind of playing the back and forth game, this is a usual indicator that you don't have enough resolution. You see that we're kind of starting to lose it here and start to lose it here. And this is where a lot of beginner 3D modelers also get stuck is not being comfortable with adding more resolution when it's time. It's definitely that time right here. So
+
+[33:20 - 33:40] again, I'll go ahead and select this edge loop here. I'll do CtrlB to bevel. We'll pull two edges out of this. Now we have more resolution to play with. So I'll take these verts here and just basically start sliding them over. Now one thing about vert sliding is it will kind of constrain it too much. So if you're off kind of the curvature, double
+
+[33:40 - 34:00] G is not going to work. So you have to know when to do edge slide and when you don't. But edge slide is indicated by those two arrows. So I'm just basically grabbing these and repositioning these verts. So now you see that this flow is staying pretty much on top of my
+
+[34:00 - 34:20] reference. All right. So I adjusted the verts to flow with my curvature here. And then also just kind of work on the spacing. And sometimes selecting edges is a lot more uniform than selecting verts. This looks good. I'll hit A for all. Q. We'll do symmetriize. And now we have this copied over. So now we want to go ahead and solve for this hole here.
+
+[34:20 - 34:40] These are pretty evenly spaced out. And it makes your life a lot easier when you're trying to fill gaps like this. So I'm going to go ahead and select these four edges. I'll select this first one here. I'll hold down control, leftclick. We selected this range and I'll hold down shift control and select this range as well. I'm going to rightclick and
+
+[34:40 - 35:00] we're going to do bridge edge loops. It's going to create a bridge and fill these up. We're going to be using this tool quite a bit. So I'm also going to set this as a quick favorite. I'll rightclick once more. I'll do add to quick favorites. Now if we hit Q, we both have symmetries and bridge edge loops. I'll do bridge edge loops from here. Now we see that we have two edges
+
+[35:00 - 35:20] here and we have two edges here and kind of this odd one out. So what I'm going to do is I'll zoom in here. I'll do CtrlR. It's going to drop a loop cut and I'll position it right here. I'm going to hit one to go to verge. Select this vert here. Select this vert here. I'll hit M. And then I'll do last. And now
+
+[35:20 - 35:40] this basically pinched here. Now I can take this, slide this up. And now we have two and two. So, I'm just going to basically create a little bit more room because we're starting to get a little bit tight up here at the top. We'll select both of these edges here. Both of these edges here. Hit Q. We'll do bridge edge loops. Basically, this properly
+
+[35:40 - 36:00] filled up. I'll work a little bit on the spacing here. So, I'll select this vert here. Double G. Slide this over. Slide this over. Slide this over. Slide this over. So, this is nice and even. I'll hit A to select all my components. Q for my quick favorites. and then we'll do symmetriize. Again, if you don't have this set up as your quick favorites,
+
+[36:00 - 36:20] symmetriize can be found under mesh and then symmetriize. So, I'll do it from this menu. Just quick favorites is much faster to get to. So, let's go ahead and cap the inside here. And I like to kind of jump around from my mesh from area to area. I don't want to sometimes focus too much on one particular part. Hit two for my edges. I'll hold on alt,
+
+[36:20 - 36:40] leftclick. I'll select this edge loop. And now what we can do is use grid fill to get us a nice result and fill this gap. Grid fill is actually found under the face menu. So I'll go to face and you see that we have grid fill here. So I'll do grid fill. Now if you have some issues, maybe if your topology is a
+
+[36:40 - 37:00] little bit different or you're getting a weird angle, sometimes you might have to play with the settings. I pretty much got it right on the money the first time. But if for some reason you need to adjust things, you can play around with the offset. You see that's kind of the overall rotation or sometimes it can be the span. You also want even quad distribution. What that basically means
+
+[37:00 - 37:20] is that you kind of want your quads relatively the same size. Now it doesn't have to be this density because some areas are naturally going to command a little bit more density. However, for example, this large span here is actually pretty big compared to the average polygon size. So I'll do ctrlr. We're going to drop a one loop cut
+
+[37:20 - 37:40] there. It's just going to give us some nice even density. And we're actually going to do the same thing here. So, the first thing that I want to do is actually start thinking about this cylindrical shape. When you're creating hard surface models, you always want to think about your symmetry lines. And symmetry lines are going to be a lot harder to do with specific poly counts.
+
+[37:40 - 38:00] What I like to do is always have my cylindrical shapes divisible by four. Why? because it gives me even symmetry lines across the X, the Y, and the Z. What I'm going to do is first get a sense of how dense we are here. And that way, we could kind of basically divide this while still have it be divisible by
+
+[38:00 - 38:20] four. Remember, we're about to create a circle, and we want this circle, the perimeter to actually match the perimeter of these edges. So, I just selected this boundary loop. We're sitting at 32. So, I think I'm going to shoot for 40. That's going to give me a nice even number that's divisible by four. So, knowing that I need 40, I'm
+
+[38:20 - 38:40] going to hit CtrlR, scrub mouse wheel, and now if I select this outer edge loop, now we have 40. And if you're not understanding this concept, I'll go ahead and show you real quick. I'll hit tab to dive into object mode. Shift A. And we're going to go ahead and actually get a cylinder. So, with this cylinder here, we can change the cap type to
+
+[38:40 - 39:00] triangle fan. I'm going to scale this down a little bit. move it off to the side. We can go into solid and I'm actually going to go to my viewport overlays and I'm going to enable my wireframe. This is something that you'll want to toggle on and off quite a bit when you're doing clean subdeling. Instead of manually ticking it here, we
+
+[39:00 - 39:20] can rightclick and we could add a quick favorites. I'll hit Q and I'll enable wireframe. Now, you might be wondering to yourself, what happened to our previous Quake favorites? Well, Blender is contextsensitive. They're still there. However, now we are working on object mode. So, Blender is smart enough to show you only your quick favorites in
+
+[39:20 - 39:40] the right context. We'll enable wireframe. And now we see the wires. So, if we select these edges here, this is 32 edges. Essentially, what this means, since this is evenly divisible by four, we actually have these key edges along each symmetry line in both of these axes. So, I could essentially model on
+
+[39:40 - 40:00] 1/4th and then mirror this a couple times to complete my whole object. But in the next case, I'm going to pan over here. I'll do shift rightclick, get my 3D cursor right here. And the beauty about having the 3D cursor, by default, Blender will generate your primitives in the middle of the 3D cursor. So, I'll do shift A again. I'll get a cylinder here,
+
+[40:00 - 40:20] but this time, let's go ahead and use an odd number. Instead of 34, we're going to use 37. So now if we scale this down and we look at those same exact symmetry lines, we start selecting edges, you see that these edges here are not straight. And if you're trying to do symmetrical
+
+[40:20 - 40:40] modeling, this can become a nightmare. So I'll select both of these meshes here, delete them. And that was my little bonus lesson on symmetry lines and cylindrical objects. Now it's time to build the outer circular perimeter of this. And we want to create a circle that has 40 divisions. So that way we could establish the outer perimeter and
+
+[40:40 - 41:00] then create a bridge. And we already have 40 edges here that we established. So we want to do this in edit mode. If we do it in object, it's going to require an extra step because they're going to be separate objects and then we'll have to merge them. So basically dropping a primitive within edit mode, it's already dropping it with that same object and essentially your objects are
+
+[41:00 - 41:20] already one mesh. The reason I offset this 3D cursor is because I'm going to show you how you can quickly center it around your selection. Remember, whatever primitive we drop, for example, this circle here, we scale out. See that it's going to get placed around this 3D cursor. So I'll undo this. Within edit
+
+[41:20 - 41:40] mode, I'll hit A for all. I'm going to do shift S. And then I'm going to go ahead and do cursor to selected. And now you see that our 3D cursor is in the middle of this shape. So now if I do shift A, drop a circle. Make sure the divisions is set to 40. We can go ahead and just scale this in. And then basically we could go ahead and just move this up to match it. Now it's time
+
+[41:40 - 42:00] to select both loops. I'll hold down alt double click here. It's going to select the entire loop. And then I'll hold down shift and then alt double click here. And now we have these entire two boundary loops selected. If we hover over here to the left, this is an important number. If we add 40 here and 40 here, this gives us 80 edges. So with
+
+[42:00 - 42:20] this information, we'll know that the bridge should work. So we'll do Q. Remember, we set that to bridge edge loops. If you forgot to do so, you could simply rightclick. Blender's smart enough to know that you got edges. Probably want to bridge them. You could do them from here. So we'll do bridge edge loops. And now this bridged out beautifully. Now, I see a small
+
+[42:20 - 42:40] discrepancy here with the positioning of this perimeter. So, alt leftclick and I'm going to do G Y. Move this up like this. Just a little bit closer to the original position. However, I'm going to scale it out a little bit more. I actually want more breathing room here. I don't like when I have a lot of these
+
+[42:40 - 43:00] edges very, very close. Sometimes that could tend to pinch. Now, if we go in perspective, I'm going to do shift Z here. It's going to get me into solid mode. See that we've done all this work to get this pretty clean edge flow, but we don't have any shapes here. So, let's start to give the top of the can some depth. I do recommend having a real
+
+[43:00 - 43:20] energy can drink nearby. I like modeling real life objects, especially if you're a beginner, because having that physical object gives you the ability to move it and examine it and see how light reacts and you could actually see the shapes a lot better. But if this is not possible, then simply having some image references
+
+[43:20 - 43:40] will suffice. So, we're going to start pushing this inner area in. So, what we can do is actually select one face here. Hold down alt, left click here. And you see that it's going to actually select the loop this way. In Blender, the direction of your loops is dictated on what proximity of the edge you click.
+
+[43:40 - 44:00] Meaning, if you wanted the loop selection to go from left to right, you basically select the face, hold down alt, but you would click, and I'm going to zoom in here. You would click closer to this edge here. So, basically, Blender knows to go this way. So, we're going to deselect that. And I'll click this again, but this time I'll hold down
+
+[44:00 - 44:20] alt and leftclick here near this edge. And you see the direction has changed. So, that's exactly what we want. I'm going to do Ctrl+. This is going to grow my selection. Blender calls it select more. From this point, we could basically invert the selection. Now, why did we do all this? Well, picking all
+
+[44:20 - 44:40] these faces in the middle, it just would have took more time. So being able to basically select loops, grow them, and then inverse it is a lot more powerful. To inverse this, we could do Ctrl I. And now this is flipped. We can go ahead and kind of angle this properly. Do G Z and push this down slightly. And now we're
+
+[44:40 - 45:00] getting kind of that nice little angle. But with these, it's actually very subtle. So I'm going to just do something like this. Look at the angle. Now it's time to select these faces in the middle. What we can do is just hit seven, go to the top, and instead of doing kind of this drag marquee select in Blender, it's called the select box.
+
+[45:00 - 45:20] Could actually hit W a couple times, and this is called the select circle. So sometimes with the select circle, we could paint our selections. And scooping up faces like this can be a little quicker, especially if they're kind of in a radial pocket like this. See, it doesn't take too long. There's a lot of ways of selecting in Blender, but here's
+
+[45:20 - 45:40] some different techniques that should speed you up. And it looks like I actually selected one loop too many. It's not a big deal. I can do control minus and we just shrunk that selection. And then we'll do G Z and push this down slightly. And we get that nice little angle here. Now, if I hit seven, do shift Z, this line right here indicates
+
+[45:40 - 46:00] the lid of this can. We're actually going to separate this. So, I'll do shift Z. I'm actually going to hit W a couple times. You see that when we hit W, it's actually going to cycle through our select methods. And we'll simply go back till I see the select box. That's the method that I like having as default. I'll hit two, alt, leftclick,
+
+[46:00 - 46:20] and select this loop. So, we want to go ahead and separate these parts. This will allow us to actually animate this opening if we need. And if you're doing any type of product rendering, a lot of times you might actually want this to be opened. So we can actually model this as a separate part. So the first thing that
+
+[46:20 - 46:40] we'll do is hit V, V is actually going to rip or separate these components. So one thing about ripping, if we rightclick here, now these are no longer connected. So if we select any of these faces here, hit L for length, you see that hitting this length, Blender is going to recognize that this is now a different polygon island that can be
+
+[46:40 - 47:00] moved like this. And if we select these verts here, you'll now notice that they're no longer attached. I'll right click to escape that. So I'll select this face. I'll hit L for length once more. And now I want to separate these. So I'll hit P. And we'll separate this by selection. Alternatively, you could do by loose parts. It's going to get us
+
+[47:00 - 47:20] to the same place. But if you had an object that had a bunch of basically disconnected parts, you could do by loose parts. It'll take care of that for you. So in this case I'll simply do selection. Now these are separate shapes. If we do control spacebar now you see that this is one object and this is a separate object. And now we're starting to get multiple parts. So we
+
+[47:20 - 47:40] want to start naming these. So this is going to be the can as it's going to be all one shape. This is going to be the lid. And just to be technical I actually looked up the part cuz I knew I was going to get that one comment in the comment section. This lid is actually called a vent or a score panel, but I'm going to keep this as lid. This makes
+
+[47:40 - 48:00] sense to me. However, if you're a CAN engineer, you're welcome to use the proper name. In object mode, I hit forward slash. This is going to isolate my object. I'll hit tab to dive into edit mode. Alt leftclick, select this loop here, and then I'll hit E and then Z to basically push down like this. Get
+
+[48:00 - 48:20] a little bit of depth here. I like to basically go and exaggerate some of these smaller tolerances when it comes to thickness. That's because if you do things to real life scale, a lot of times it can get lost. So, little thin areas like this, I like to push out a little bit more. Most humans are not
+
+[48:20 - 48:40] going to be able to notice the difference. However, they make the parts have a little bit more weight and they look better on renders and they don't get lost. I'll hit forward slash and we'll add the thickness here. Now, for this, I actually want to match the thickness of this. I'll dive into edit mode. Alt leftclick, select this loop, hit one to jump into the front view. And
+
+[48:40 - 49:00] now we could punch in here a little bit more. We'll do E to extrude, Z to constraint down. Now, I don't like to eyeball this. I like to be precise. And I'm actually pushing it down on purpose so you could clearly see the line. So, if we want to be very precise, we could use snapping. The snapping menu is right here. So we'll go ahead and go to
+
+[49:00 - 49:20] closest and then we'll do vertex. And now the snapping options are set. We have to enable snapping. So now hit this magnet here. Alternatively, we could do shift tab to toggle this on the fly. So we'll do G. Now we'll get to start moving and we'll do Z to constraint on
+
+[49:20 - 49:40] the Z-axis. Now if we wiggle over one of these verts, now this edge is basically flush on top of this one. I'll do control spacebar to maximize my 3D viewport and we'll do shift z here and see what we got. So we've done a lot of modeling and now we have even some depth. So now it's time to actually work
+
+[49:40 - 50:00] with subdivision surfaces. And subdivision surfaces are going to be activated via the subdivision modifier. So I'll do control spacebar once more and we could select this mesh here. We'll hit the little wrench icon and we'll go to add modifiers. We'll start typing in subdivision and you see
+
+[50:00 - 50:20] subdivision surfaces pops up. So we'll select this. We get a much smoother result. Now we do have a problem. If I hit Q, hide the wireframe. See that we lost a lot of the volume here. So even though this is properly modeled, we don't have enough reinforcing edges here to keep these edges actually creased up.
+
+[50:20 - 50:40] I'm going to switch the material. So, I'm going to go here to this dropdown. I'm going to use a mat cap. And this is one of my favorite mat caps in Blender, which is this studio light setup here. So, as soon as we enable this, this looks a little bit better. But the key thing about the mat caps is that we have this thing called cavity. So, when we
+
+[50:40 - 51:00] enable cavity, you see that we get a nice little pop here. And essentially what cavity does is it highlights the ridges and also the valleys. However, I do find that the valleys that that darkness can be a little bit too strong. So I like to dial this down to about 75.
+
+[51:00 - 51:20] So now this kind of looks a little bit muddy. What we can do is in the modifier itself, once in edit mode, I like to have this disabled and only visible in object mode. So you see that if we dive into edit mode, you see that we kind of get this weird overlay and it gets kind
+
+[51:20 - 51:40] of mushy and kind of hard to work through. So I like to disable the visibility here in edit mode and then hit tab to view the preview in object. This is going to speed up your subd modeling workflow. So we'll dive in again to edit mode. And now it's time to add a crease to these edges. Now, we're
+
+[51:40 - 52:00] going to select all the edges here that need to be creased like this. I'm also going to add this edge here. I'll hit N for the end panel, and you'll find this mean crease slider here. I'm going to set this to a value of one. And now we'll see that we get this sign color coding. I'm going to hit tab now to dive into object mode. And now we see the
+
+[52:00 - 52:20] effect that this has. So, we're getting a much better result. And if we see a little bit of faceting here, we can rightclick, do shade smooth, and we get a pretty clean result. You can try different mac materials as well. Though this red one is pretty common, this metal one looks nice as well.
+
+[52:20 - 52:40] But for my purposes, I'm going to go back to old faithful here and keep working. Now, one thing about creasing, especially with the mat caps, sometimes we get this kind of weird shading. I'm not worried about that because like I said, we can easily convert these creases over to essentially bevels and kind of actually have a little bit
+
+[52:40 - 53:00] cleaner shading if we need it. So now let's go ahead and do the same approach here. I'll hit tab to dive into edit mode. I'll select all the edges that need to be creased. Go to mean increase. Put a value of one. And now I'll dive into object mode. Instead of going via the modifier route, we could actually hit control two and Blender is going to
+
+[53:00 - 53:20] apply a level two modifier. So what level two means is that right here, this is the number of level viewport divisions and then render divisions. So essentially how subd works is you have different amounts that you could allocate to the viewport and also the
+
+[53:20 - 53:40] render. So, for example, if you didn't want something so heavy here while you're working, we could bring this down to one. Obviously, you see that it's going to be a little bit more faceted. However, at render time, you could still have this at level two or three if you need it. However, for this, if you have a normal PC, two should not be a problem to handle. Again, I'll right click here,
+
+[53:40 - 54:00] do shade smooth, and there we go. So, this is looking pretty good. Now, we're getting a little bit of a shape here. So, I'm going to hit seven, jump to the top. Now, with my can object selected, I'll hit tab to dive into edit mode. I'll hit shift tab to basically disable the snapping. Alt leftclick, select these loops, E to extrude, S to scale,
+
+[54:00 - 54:20] and I'm going to start scaling out like this. So, this that little gray thick line is actually a ridge. So, I'm going to go into perspective here, do GZ, and start basically pulling this down a little bit like this. So it has a little bit of an angle here. I'll hit seven to
+
+[54:20 - 54:40] jump to the top. E to extrude again. S to scale. And we'll go ahead and push out like this. So that dark gray line is basically a crease there. So from this point now, we need to extrude up. So I'm going to hit one here. Since we modeled kind of arbitrarily from the top view, this is all the way down. So, this is a good time to actually move this where it
+
+[54:40 - 55:00] needs to go because we're actually going to need pretty much the information here on the height of this lip. I'll do control spacebar. Anytime that I'm not using the outliner, I like to just maximize everything. And I'm going to hit N to hide the end panel as well. So, G Z plop this up right about here like this. And I'm going to drop this right
+
+[55:00 - 55:20] about here. So, from this point, we'll go back to perspective. Shift Z to go to shaded mode. tab to dive into edit mode. We're going to extrude this up in the Z. And I actually want to snap. Shift tab. And now snapping is enabled. So I'll do G Z kind of wiggle here. And we could verify this. If we do shift Z, these two
+
+[55:20 - 55:40] edges are perfectly snapped. Now we're going to create this little inner rounded lip that these cans have. So I'll do E Z to extrude up here like this. I'll go to perspective. I'll extrude one more time. So I'll hit E S to scale out. and it's a slight lip that actually has quite a bit of rounding. If
+
+[55:40 - 56:00] you're in close here and this starts to basically be kind of hard to control, we could right click to cancel that. And then we could reposition our cursor here. And we could do E to extrude once more. And now you see that we have a lot more control. So sometimes when you're very very close, you try to do things like scaling, it could be somewhat
+
+[56:00 - 56:20] cumbersome. I'll hit one to jump back to the front view. E to extrude one more time. Z. We're going to plop this up like this. Go to perspective. I'll do shift Z to enable shaded mode. I'll hit E to extrude one more time. S to basically get a small lip here. Basically just scaling this out. This
+
+[56:20 - 56:40] looks pretty good. I'll hit E one more time. Z. We're going to go and push down. Now, we've been doing quite a bit of switching between the different orthographics and perspective. Blender does have a quad view that is actually useful. Let's go ahead and enable that. So I'll do Ctrl Alt Q and this opens up quad view. This is a great method for
+
+[56:40 - 57:00] instances like this where you need access to all your three main orthographics as well as your perspective. Here we have our user perspective. We have our top, we have our front, and we have our right. This could save you a little bit of time in instances like this from switching back and forth. And here what I'll do is I'll do shift Z. We're gonna basically drop
+
+[57:00 - 57:20] down to wireframe. I'm going to zoom in here. I actually want to have a close eye on this action here. I could actually take this edge and move it up slightly in the Z. So, this looks good. And now I could get in close here, hit E, S, and bring this in. Sometimes this is hard to see until you hit one. And
+
+[57:20 - 57:40] now we're basically switching into vert mode. And this could be a little bit easier to see where essentially this depth is. So I'm actually paying attention to this vert here. We zoom in and that should give us kind of our extrude depth that aligns with pretty much this profile here. So I'll select
+
+[57:40 - 58:00] this edge loop here. Switch to solid mode. Hit E Z and start to work this in. So before we start working with the overall depth here and basically working the body of the can, I actually want to finish out creasing all these edges here. So we want to get out of quad view
+
+[58:00 - 58:20] here. So I'll do alt controll and q. And now we restored our user perspective and we're going to select all the edges here that need to be hardened. We could manually select all these edges. However, Blender does have some nifty filters. We could actually go to select. We could do select sharp edges. So if I want to deselect all these edges here
+
+[58:20 - 58:40] and also deselect the back edges, I want to make sure that I'm working on wireframe and not solid. So if I do control and drag here, you see that these are deselected. However, the ones on the back are still selected. So I'll hit one one more time shift Z to go into wireframe mode. This time we could drag
+
+[58:40 - 59:00] marquee. And now we selected all the edges that are front facing and back facing. So now these are all deselected. I'll do shift Z to return to solid mode. We'll get the trusty end panel back. I'll hit N. And for me increase, I'll put a value of one. Now you might be wondering why is there's this value here. Remember we already have creased
+
+[59:00 - 59:20] edges. So Blender is going to pretty much keep track of all the edges that you have and kind of give you this average. So if you have something there, don't worry about it. Some creasing values, we're simply adding more. So, with all the edges here selected, I'll hit one. And now, this has been updated. We'll hit tab to dive into edit mode. And what do you know? This is looking
+
+[59:20 - 59:40] pretty good. I actually made a small mistake. I need to remove the crease here. And you see how easy this is. This actually needs to have kind of a bevel, a nice curved profile. So, what I'll do is I'll hit tab to dive into edit mode. I'll simply alt leftclick and then we'll select the main crease. We'll hit zero.
+
+[59:40 - 01:00:00] And now these are no longer creased. What I'll do is I'll alt left click once more. I'll get in relatively close. I'll do CtrlB bevel this and add couple divisions here. And I think what I'm going to do I like three divisions, but I I don't want a little bit of a shelf here. So I'm actually going to do a clamp overlap. I'm going to push this all the way up. And then I'll simply do
+
+[01:00:00 - 01:00:20] clamp overlap. Those verts here, they're going to get merged. And then I can probably go in here and simply do control delete and delete this edge. Now we have this nice profile with three faces. So we'll hit tab. You see kind of the effect here that we have. So this is looking pretty good. I'm going to hit
+
+[01:00:20 - 01:00:40] forward slash here to get my lid back. You see that I forgot to move this. However, this is going to be pretty easy with snapping. So we'll do G Z kind of get this within the ballpark. We could zoom in a little bit more. enable our snapping. Do G Z once more. Wiggle right about here. We could hit one to verify
+
+[01:00:40 - 01:01:00] this. Shift Z. This looks to be pretty much where it needs to be. I'll hit shift Z. Hit N. This looks pretty good. Boom. You made it this far and I know you're serious about becoming a 3D modeling pro. And guess what? You're almost done with the most challenging part of this project. Let's move on and
+
+[01:01:00 - 01:01:20] create the tab. I'm going to hit seven. I'll do shift Z once more. And now we're going to begin modeling the tab. I'll hit A to select all my objects. H to hide them. Here's our plan of attack. We're going to use cylindrical caps to quickly get the base for our details within the tab. Since this is a more condensed shape, we'll be able to
+
+[01:01:20 - 01:01:40] actually tackle both the outer perimeter and the inner perimeter at the same time without having to worry too much about the overall density. I'll do shift rightclick. I'm going to go ahead and get my 3D cursor right here in the middle of the action. I'll do shift A mesh and I'll get a cylinder. I'm going to zoom out here. I'll set this to 24.
+
+[01:01:40 - 01:02:00] And I'm also going to set the cap field type to triangle fan. You see that center vert is now collapsed in the middle. I'm going to scale this in like so. I'll hit period to zoom in. S to scale. And then I'll do G Y. Plop this right about here. And you see what a great job this did of capturing that initial curvature without us having to
+
+[01:02:00 - 01:02:20] bevel. And that's one of the reasons too that I started with these fans here is that this is more of a true perfect radius. And what better way of getting that with a cylindrical cap. Before I move further, I want to go ahead and delete the depth of this. This is only going to get in my way. So I'll do shift
+
+[01:02:20 - 01:02:40] Z here to go to solid mode. Hit tab. Here's a quick tip for quickly selecting these caps. I'm going to hit one to go into vert mode. I'll select the center vert and we can do controll 3. What that's going to do is convert that one vert into faces. And now we can do ctrl i. We could do x and then we could do f.
+
+[01:02:40 - 01:03:00] So you see that leveraging selections and the ability to convert one component to the other is extremely powerful. I'll hit seven to return to the top view. It looks like I hid my references. And you see that the eyeball here got deactivated. And that was a result of me hitting one in object mode. It can hide
+
+[01:03:00 - 01:03:20] some of your collections. So I'll hit tab. Go to object mode. Hit one. And you see that that's being hidden. So I'll make sure this is activated once more. I'll hit tab to dive into edit mode. Shift Z to go into my X-ray mode. From this point, we want to go ahead and get another loop. I'll do control spacebar
+
+[01:03:20 - 01:03:40] to maximize my 3D viewport. One thing to keep in mind with this shape and this is why it's very important to have additional reference is some of these shape changes won't show up on blueprints and this is the case for this tab. So this tab, especially this center area here and this little button pin the
+
+[01:03:40 - 01:04:00] tab down on the top of the can. However, there's a small offset and a small fall-off that this happens as this little part right here is actually lower than the rest of the tab. So, this edge flow has to support that. And this is one of the important things about hard surface modeling is that you have to
+
+[01:04:00 - 01:04:20] have the edge flow support the shape changes. Select this center vert. We're going to do CtrlB V. And that's a quick way to bevel your vert. So now, as long as we break up that pole, we have the ability, since this is no longer gigantic tries, we could go in here and
+
+[01:04:20 - 01:04:40] add a loop cut by hitting control-R. So now we could match this up here like this. Most tools work better with quad modeling, and that's one of the added benefits of modeling with a clean mesh. What I'm going to do is select these edges here, do CtrlB, and essentially what I'm doing is blocking out kind of
+
+[01:04:40 - 01:05:00] my straightaway section. You see that? Now, we're kind of creating this straight edge. That's pretty much what we want. I'll select this edge, hold down control, select this range. We'll do G Y. Plop this over like this. I want to go ahead and start gutting some of this out because sometimes this additional topology when you're early on
+
+[01:05:00 - 01:05:20] blocking things out can get in the way. Once we establish this top loop, we'll be able to connect this a lot cleaner. I'm going to select this loop here. Ctrl leftclick deselect. And then we can go ahead and do XF and delete this. You see that the break here is happening a little bit underneath. So sometimes we
+
+[01:05:20 - 01:05:40] do have to adjust these shapes and be comfortable doing so. I'm going to take this vert here. I want to pull it straight up. So I'll do G Y and move it right about here. And then I'll take this vert here and kind of manually space it out a little bit more like this. So this looks good. I'll go in here and just finagle this a little bit more and then adjust this as well. I'll
+
+[01:05:40 - 01:06:00] do CtrlR and drop this next loop to define this little inner pocket of detail. And here I want to adjust this a little bit more to match the shape. So with the entire loop selected, I'll do S X. Scale it out a little bit. Make sure that these corners here are pretty much
+
+[01:06:00 - 01:06:20] flush with this edge here. So the best way to do this is go to our snap settings. Closest vertex. Snapping's already been lingering on. So just make sure that it's on. We'll do GX. And now we could wiggle here. And we have a flush edge here. And then same thing here. GX. Wiggle here. And now we're
+
+[01:06:20 - 01:06:40] nice and flush here. I'll take this vert gy bring it down. Take this vert gy wiggle over here. And now you see that we're nice and flush. I'll take this vert feather it this way. And then feather it this way. So I'm going to double G and slide this down. And keep in mind sliding kind of only works with
+
+[01:06:40 - 01:07:00] one edge at a time. So you can't do both edges at once. So I'm going to slide it a little bit to the right and a little bit down. And the more you work with slide components, you're going to get the hang of it. I'll hit A to select all my components. Q symmetriize. I think we're off to a good start. Let's repeat the same exact process right here at the
+
+[01:07:00 - 01:07:20] top of starting with a cylindrical cap. Now, one thing about this is that we want the 3D cursor to be in the middle of this shape. So, right now, by doing shift rightclick, we're kind of eyeballing the center. So what we can do simply select this cursor icon here. And now if we hold down leftclick here you
+
+[01:07:20 - 01:07:40] see that we're constantly moving this cursor. From this point we can hit X and access our axis constraints. The beauty about this since snapping is enabled and set to closest vertex. Now we can go ahead and wiggle over here and the 3D cursor is snapping to that vert which means it's on the center line of this.
+
+[01:07:40 - 01:08:00] That's exactly what we want. Now we can do shift A, get a another cylindrical cap set at 24. That's fine. S scale down. And you see that it fits flushly right in the center because the 3D cursor was set that way. We'll do S Y scale this down like so. And we're going
+
+[01:08:00 - 01:08:20] to manually have to adjust this. But you can see that having that 3D cursor in the middle just saved us a couple of seconds of probably toggling this thing back and forth, making sure it was snapped. and make sure that you're placing this shape in edit mode, not object. That saves you the added step of having to remmerge these once completed.
+
+[01:08:20 - 01:08:40] We're going to enable our select box. And these edges actually line up pretty well. I'm going to take this edge here. I'm going to hit O for my proportional editing. G Y and we're going to move this down like this. Now, let's go ahead and take care of the bottom here. So, I'm going to focus on the left side as this will get symmetriized anyways. I'll hit O to disable proportional editing.
+
+[01:08:40 - 01:09:00] Select this vert here. I'll hit G. Place this over like this. And I'm going to move this vert over like this. Now, one thing you'll notice here is from this shape, it goes from here. And then it kind of breaks into this flat area. So, I'm going to move this vert right about here, pretty much where that flat area starts. Before we continue, let's make
+
+[01:09:00 - 01:09:20] sure that we're gutting out the depth of this. Remember, this is a cylinder, so it does have depth. I'm going to peel these off slightly different since both of these cylindrical caps are all one mesh. If I hit all, you see that everything's going to get selected. So, the previous method of inverting the selection is not going to work. So, what
+
+[01:09:20 - 01:09:40] I'll do this time is actually alt leftclick, select this edge loop here, and we can hit V to rip. Right click. Now, these components are no longer selected. So, if I select this cap, Ctrl 3 G, you see that we can peel it off. I'm going to actually disable snapping. And now I can really take any of these
+
+[01:09:40 - 01:10:00] faces here. This is now a polygon island. I can hit L for length. XF, delete these faces. And now we have the clean cap. I'll hit seven to return to my top view. So now we have these faces here that we want scaled flat from this vert. So what I'm going to do is select all these here that need to be straight like this. And I'm purposely holding
+
+[01:10:00 - 01:10:20] down shift and selecting this one last. You see now that that is my active component. From this point I can hit period and we can set this to active element. So we'll do S for scale, Y for my axis constraint zero. And now it's going to scale flat based on that active component. You see what a powerful
+
+[01:10:20 - 01:10:40] workflow that could be. Essentially allowing you to use verts as pivot points. Now from this point I'm going to go ahead and vert slide this over and I'll do the same thing here and the same thing here. So, this looks pretty good. I can hit A for all. Q symmetriize. Let's go ahead and build out the outer shape here. And then we'll start
+
+[01:10:40 - 01:11:00] basically bridging some of these larger gaps. So, we want to start extruding this out to create the top of this tab. So, alt leftclick, select this entire loop. I'll hit period. And we don't want to work with active element. I just want to go ahead and go back to median point. It's going to take the median or the center of this selection. I'll hit E to
+
+[01:11:00 - 01:11:20] extrude, S to scale, and now we could scale outward like this. I'm basically watching the left and right corners of this. And then I'll do S one more time. Y. And then we'll scale up like this to capture that top curvature. So you see that working kind of with that radial. It was pretty easy to establish the top
+
+[01:11:20 - 01:11:40] shape. I'm going to deselect these top edges. I'm going to hit one here. And basically, it's going to switch from edges over to verts. I'll deselect this vert here and again shift rightclick. You'll see that it's white active, meaning that it's our active element. We'll hit period, set this back to active element. Looks like I had these
+
+[01:11:40 - 01:12:00] top verts selected by accident. So, I'll deselect these. I'll do s Y zero. You see now those are flattened out. And then we'll simply do gy and move these down. You'll notice that also your transform constraints actually get pinned down to your active element as that is set as your pivot. I'll do gx
+
+[01:12:00 - 01:12:20] move this over like this. So now we can start bridging some of these gaps here. I could start verse sliding these over to just get a little bit closer and creating a clean bridge. We can select these verts. We can do Q do bridge edge loops. These are not bridged. And
+
+[01:12:20 - 01:12:40] essentially, you're going through the process of bridging some of these gaps here. I'll take this vert double G, slide it over. When you only have two faces to bridge, you can also fill them. Hit F. And now these will be filled. So that works as well. I'm going to select these three faces here. I'll hit E to extrude. Z to axis constraint. I'll move
+
+[01:12:40 - 01:13:00] this right about here. Drop it. And then we could do S X0. We'll scale this flat. I could take both of these edges here, hit F to fill. Now, one thing that I want to make sure is that all these are perfectly flat. I'll select all these verts here. I'll make sure that they're merged. You see that we have six verts
+
+[01:13:00 - 01:13:20] here. If I hit M and then we do by distance and I amped this up a little bit more. You see that we lost one. That means that one vert was removed. And Blender will tell you at the bottom scale this flat as well. So, I'll do S X0. You see that we had a little slight shift here, but this is perfectly
+
+[01:13:20 - 01:13:40] straight. What I'll do from this point, I'll do GX and kind of figure out the pivot point that I want. So, I'm going to actually push this back slightly. Make sure that this vert is selected last. So, I'm going to deselect this vert and then hold down shift, select it again, make sure that's my active vert, and make sure that I'm on active element. And then from this point, I can
+
+[01:13:40 - 01:14:00] hit R to rotate. And this line is now straight, but we're getting kind of that little bit of an angle here on this tab. So, I'll hit a Q symmetriize. The next thing that I want to do is actually create a boundary loop. Boundary loops are a set of loops that run parallel
+
+[01:14:00 - 01:14:20] with your curvature and your openings. One reason for this is if you notice, for example, this vert here, this is what's called a pole. But we're gonna leave this as is on a curved surface because this will become an opening. And when we crease these edges, there's going to be a little bit of a curvature
+
+[01:14:20 - 01:14:40] there. And for this reason, poles on flat surfaces are fine. But when placed on edges, then you might get some pinching, and we don't want that. These added boundary loops are going to give us kind of a buffer and it's just going to lead to overall cleaner topology and actually give you more routing options for a cleaner mesh. So, think about
+
+[01:14:40 - 01:15:00] these as an extra buffer that protect your edges from shading errors or pinching. Let's go ahead and zoom out here. Blender has an incredible powerful tool to create these boundary loops very, very easily. What I'm going to do is select these two loops, deselect the bottom here, and then I'll shiftclick,
+
+[01:15:00 - 01:15:20] add these. I could have selected the outer, but the inner was easier to select. Then I'll do Ctrl I, inverse this. We're going to hit I for inset. And now you see that we're creating that little bit of a buffer. Come to a nice middle ground. If these boundary loops were a little bit too tight, then when
+
+[01:15:20 - 01:15:40] we go and add our subd modifier, we're going to get a very hard crease. If you look at these tabs, these corners on these tabs are extremely rounded. Now, one thing you'll notice is we might have to manually adjust this, but we got a lot of work essentially done for free. I'm going to select this loop here, hold down control, select this range, gy,
+
+[01:15:40 - 01:16:00] move this up like this. And I'm obviously not concerned about doing both sides because I will be using symmetries. Same thing here. I probably want to lower this a little bit more and feather this. So I'll select this range here. Gy, and I'll bring this down like this. I'll hit a Q symmetriize. And now
+
+[01:16:00 - 01:16:20] this gets flipped over. And you'll notice now by adding that boundary loop, essentially this pole actually got away from what's going to become an opening. I'm always looking to have clean or well spaced out quads. So, I'll double G, slide this over like this. Double G, slide this over. Double G, slide this
+
+[01:16:20 - 01:16:40] over. I'm also going to go in here and just feather some of these verts as well. So, let's focus on cleaning this up. This is starting to get a little bit sloppy. I'm going to select all these edges here. I'm going to do X. And we want to go ahead and dissolve these edges. That's because we want to keep that face in there. Get this vert here and this vert here. Hit J to join. And I
+
+[01:16:40 - 01:17:00] always like to start cleaning things up with a center vert there. If I hit J here, you see that not only this got connected, but this vert got placed. One important caveat of joining is that it won't work through gap. So for example, here if we delete these faces XF and we
+
+[01:17:00 - 01:17:20] try to essentially join these faces, it's not going to work. So if I hit J, nothing happens. I'm going to control Z this. for joint to work, you needed to go across a closed surface. Just kind of space these out a little bit better to see what we got. So, I'm basically taking the slide tool and assessing this
+
+[01:17:20 - 01:17:40] situation. Now, I want to start working in these round corners. If I zoom in here and we do our previous method of selecting these verts here, Ctrl +B and V, see that even though we're starting to get that curvature, we're starting to get a lot of messiness here. I'm going to control Z this. I'm gonna select these edges here and I'll do V to rip.
+
+[01:17:40 - 01:18:00] Right click. Now these are disconnected. And we could simply select these here in this corner like this. Hit V. And you see that they're no longer connected to my mesh. That's pretty much what I want at this point is for these to be connected. So now I can go back in here, do CtrlB, hit V. Make sure you have
+
+[01:18:00 - 01:18:20] clamp overlap enabled. And this looks good. Now we've introduced more edges. Some of these edges are going to flow out here towards the corner. CtrlR. Drop a loop cut right about here. I'm going to take this vert here and select this vert last. I'll hit M and then we'll do last. So now that's basically snapped
+
+[01:18:20 - 01:18:40] there. I'll take this vert here and this vert here. And it's very important that you know what your basically anchor verts are. Meaning that this is the vert that on the edge that we initially beveled. So, we want to respect that. We don't want to merge this one to this one. We want to merge this one to this one. So, we'll do M and then we'll do
+
+[01:18:40 - 01:19:00] last. And now we get the right pop and the right merge. And here, due to the bevel, looks like we have multiple vertices. So, the best way to clean this up is hit M and then we'll do by distance. You see that Blender is telling us it removed two verts. And now we could select both of these, hit M, and then do last. And that gets properly solved. We'll repeat the same process
+
+[01:19:00 - 01:19:20] here. And we could actually do this with three verts. So these two get selected. This one will be the last M. And then we'll do last. That gets merged. So here we're essentially missing a vert on this edge. An easy way of doing this is selecting the edge, rightclick, subdivide. Now we have this extra vert.
+
+[01:19:20 - 01:19:40] And then we can select this vert here. Hit M last. And now that's properly filled. Obviously we do have to clean this up, but this is looking pretty good. Now, let's start spacing some of this out and finalizing this center area. So, I'll go ahead and select this vert double G. Slide this over like this. Double G. Slide this over. And I'm
+
+[01:19:40 - 01:20:00] just spending a little bit of time essentially just feathering this out. And this is going to be important as this is going to give us a smooth result once we start shaping this in 3D space. Something that I like to do in areas like this is select the entire range and then hitting S, Y, and zero and just
+
+[01:20:00 - 01:20:20] straighten this out. You see this is kind of a large span. So we can do CtrlR. Now if you're seeing that the loop cut is not basically cutting all the way through is most likely we have a hanging vert or we don't have perfect quads. So one of the easy fixes is
+
+[01:20:20 - 01:20:40] visually this looks like all quads is selecting one vert a for all m and then we'll do by distance and you see that it removed one vertex probably in this area. So now if we do controlr you see that our loop cut works. You can even go to the even setting here see how that looks and then try to basically kind of
+
+[01:20:40 - 01:21:00] finagle it and drop it like this. However, I do like the averaging. So, I'll drop it again. And I'll take even off. I'm going to drop in here. And we obviously need an edge. So, we'll get our knife tool. I'll hit K to cut here. Most of these tools you could access your axis constraints. I'll hit X. I'll
+
+[01:21:00 - 01:21:20] cut here. Now, we have a perfectly straight cut. I'll take this vert here, double G, slide it over. I'm going to further work on this spacing just a little bit more. And remember, sometimes this goes a lot quicker if you select edges and do the edge slide versus vertices. So, let's finish our initial routing by cleaning up this center area
+
+[01:21:20 - 01:21:40] here. I'm going to hit K to bring up my knife tool. And what I like to do with some of these cuts here is basically just align the vert on a single plane. And that way, just join the straight angle here. I'll go ahead and make sure that I'm on closest vertex. Enable snapping. And then I just want this vert
+
+[01:21:40 - 01:22:00] to be flush here. So I'll do GX wiggle over here. I know these are in a perfect straight line. I can select both now. Hit J to join. I'm going to take this edge here and basically just slide it down. Don't want this gigantic gap here. So I'm going to kind of average this out and work with what I have. I really don't need to introduce more topology.
+
+[01:22:00 - 01:22:20] And I think I'm going to repeat the same process here to get basically straight edges here. I'm going to take this edge, right click, subdivide it, and I believe three subdivisions should give me the verts that I need. I'll do GX wiggle. GX wiggle. GX wiggle. And now I can go in
+
+[01:22:20 - 01:22:40] here, hit J to join. I'll get a nice straight edge all the way down. Instead of doing multiple joins, another option is deleting the faces, selecting basically these openings. And then now we could simply bridge. And there we go. Everything's nice and straight. A for
+
+[01:22:40 - 01:23:00] all Q symmetriize. And that gets plopped over to the other side. Now that we've essentially routed all our topology on this flat plane, let's go ahead and delete these inner areas that need to be openings. I'm going to select the center right here. Hit X. We'll do vertices. That got rid of that. And we can go ahead and select this loop of vertices.
+
+[01:23:00 - 01:23:20] Yes, you can select a loop of vertices just like you can select face loops and edge loops. And now we can go ahead and deselect the bottom and deselect this corner here. Again, we'll do X. And then we'll hit V for vertices. And now we have our opening. Let's pop this bad boy
+
+[01:23:20 - 01:23:40] in 3D space. And we have this wonkiness going on. However, this is not a problem. We most likely just snapped somehow and got this off a single plane, but we could simply hit A for all S and then Z for the Zaxis. So, we're scaling this flat in the Z. We'll hit zero. Now,
+
+[01:23:40 - 01:24:00] this is nice and flat. So, if we look at this, we kind of have this weird two-tone shading. Remember how we started this mesh by joining two different cylindrical caps? And sometimes when you do this, these face normals have different directions. So, what I'm going to do is show you what's happening so you could understand it and fix it in your upcoming projects. I'm
+
+[01:24:00 - 01:24:20] going to go to the mesh edit mode overlays and enable display normals. You see that these face normals are flipped. Faces in polygonal packages have a direction and this direction basically indicates the front of that polygon and
+
+[01:24:20 - 01:24:40] the rear of the polygon. And if you're merging two objects with different face directions, this is going to cause issues. So what we need to do is push all the faces towards the outside. Luckily, Blender has an easy way of doing this. I'll select one of these faces, hit A for all, alt N. This is my
+
+[01:24:40 - 01:25:00] normals menu here. Alternatively, you can get to it via mesh and normals. However, alt N is a lot quicker to do. So again, I'll do alt n and we're going to go ahead and do recalculate outside. The beauty of this is that Blender already has a default hotkey for recalculate outside, which is shift n.
+
+[01:25:00 - 01:25:20] So alt n will get you to this normals menu and then shift n will actually bypass every single menu and just recalculate outside. So we recalculate outside. You see all our normals are in the same direction and now we won't have any shading issues. I can go back and disable the face normals. So I can just
+
+[01:25:20 - 01:25:40] go back to mesh edit mode overlays. Uncheck that. And now this looks good. This is actually going to start getting kind of a nice taper. So I really want this curvature to be pristine. And I'm not really liking how this edge and this edge are not really flowing pretty much with the same curvature. So what I'm
+
+[01:25:40 - 01:26:00] going to do is first take this range here. I'm selecting one, holding down control, double G, slide this up like this. You see now it's a little bit more even. I'll take this. I'm going to do X, dissolve these edges. CtrlR. And now you see this loop cut is flowing with more that direction from that edge. So I
+
+[01:26:00 - 01:26:20] could plop it here. I'll move it over to the side a little bit. Now you see this flow is flowing a little bit better. And now we can go in here, hit J to join. Go in here. Hit J to join. Double G. Slide this over. Sometimes deleting your edges and then reintroducing that loop cut can
+
+[01:26:20 - 01:26:40] be a lot quicker. I'll hit A for all. Q symmetriize. Now it's time to push down this center area here. So I'm going to select pretty much this area like this. I'm going to enable quad view. Ctrl Alt Q. So we're going to maximize the use of all views in this movement. I'm going to actually add to my selection. I think
+
+[01:26:40 - 01:27:00] that's going to give me a better falloff. I'm just going to drop down the radius a little bit more. And I'll do GZ. Bring this down. Keeping an eye out on the right orthographic. And I think this looks pretty good. We got this nice falloff, which is what I wanted. So I'll do Ctrl Alt Q. And now we're done with quad view. I'm going to hit O. At any
+
+[01:27:00 - 01:27:20] point if you want to push and pull these edges along the normal, you can do Alt S. And that's called the shrink fatten tool. Basically, it's just going to push and pull your vert along the normal. But you see that we could really get in there and fine-tune some of these edges. Now, I'm pretty happy how this is, so I'm not going to do that. However, that is an option for you. So, now that we
+
+[01:27:20 - 01:27:40] have this, we want to add some thickness to this. I'm going to do control and spacebar. Before I add thickness, I need to figure out how thick this needs to be. Therefore, I need the pieces that I completed back in my viewport. So, I'll go ahead enable the viewport here, like this. And these are probably floating way higher up. I'll select the tab. I'll
+
+[01:27:40 - 01:28:00] do G Z. Move this here. Hit period on my numpad to basically zoom in. I'll hit Q. Enable my wireframe. GZ. Kind of move this down. And this looks pretty good. I can go to my add modifiers. Type in solidify. And now this is going to allow us to pull some thickness out of this
+
+[01:28:00 - 01:28:20] very, very easily. And as I mentioned earlier, I do like to cheat my thicknesses a little bit more, meaning that I like to go about 10 to 15% more than in real life, just because I like my shapes to be able to read, especially from a distance. I want to make sure now
+
+[01:28:20 - 01:28:40] that this bottom part kind of butts with the roof here of this can. So, I'll do G Z. You see that? It gives us that little bit of a gap, which these cans usually have. So let's do Ctrl 2, add a subd modifier. Right click, do shade smooth already by applying the subdivision modifier. You see that we get this nice
+
+[01:28:40 - 01:29:00] curvature. But I do want a little bit more control because I know that creasing is going to give me too hard of a value. You see that if we go in here and we start creasing all this, we're going to get a very tight corners that I don't like. So for these very reasons, I'm actually just going to zero all this out. We're gonna apply the solidifier
+
+[01:29:00 - 01:29:20] itself. Basically baking in that thickness. And now I'm going to disable the subd modifier within edit mode and dive into edit mode itself. We can go to select sharp edges. And Blender is smart enough to pick up all the hard edges. One thing I noticed is that it did pick
+
+[01:29:20 - 01:29:40] up these edges here. I definitely don't want these beveled. I'm going to go ahead and deselect this and deselect these as well. And a lot of times when I'm doing this type of work, I just like to do shift Z to verify that I have pretty much all the edges that are selected. So shift Z, Ctrl +B. We're going to just give this a nice rounded
+
+[01:29:40 - 01:30:00] corner. These are the settings that I'm using. And now with this little bit of manual beveling with some roundness, when we hit tab, this is going to give us exactly the control that we want. I'm going to make sure my reference is hidden and I'll enable my wireframe. Something that I'm noticing here is if I
+
+[01:30:00 - 01:30:20] do shift Z, see that our tab is actually a little bit off this center line of the grid and doesn't really align with the top of the can itself. Simple fix. We'll go to our snapping options. Make sure we're on active vertex. I'll do shift tab to make sure snapping is enabled. GX. And then we'll just kind of wiggle
+
+[01:30:20 - 01:30:40] over the grid here, the center line. You see this is perfectly snapped. I'll enable my reference once more in the outliner. We could rename this, but I rather do it here in the viewport. It's a little bit quicker and more intuitive. I'll hit F2. I'll name this tab. I'll hide the other components. And let's go ahead and create the little button that
+
+[01:30:40 - 01:31:00] goes on top of the tab here. I'll get my 3D cursor right about the middle here. I'll do shift a mesh. We'll get a circle. We're going to zoom out quite a bit here. This is going to become enlarge as usual. So, I'll drop this down to 16. I'll hit S. I'm going to scale this in quite a bit. I'll hit
+
+[01:31:00 - 01:31:20] period to zoom in on the action. And we're just going to basically get this right where it needs to be. We'll go to perspective, shift Z for solid mode. I'm going to disable snapping. We'll do G Z and move this down like this. So, I'm basically plopping this right when it becomes visible. That way, I know it's
+
+[01:31:20 - 01:31:40] right on top of the tab. I'll hit tab to dive into edit mode. F to fill. I to insert this. And we're going to give this a healthy inset. And then from here, we can go to face. And we can do a grid fill. And now we have a nice quad cap for this. We can hit tab. We can add another solidify modifier. To add this
+
+[01:31:40 - 01:32:00] modifier, I'm simply going to hit F3 this time. Instead of doing it to the right using the add modifier button, I'm going to type in solidify. There it is. And now we could basically give this some values. What I like to do when I'm building this is actually pull out a little bit. The last thing you want to do is be very, very close, have a
+
+[01:32:00 - 01:32:20] thickness that looks good, pull out, and see that it's very, very small. And like I mentioned previously, I like to exaggerate this as an artistic flare about 10% so my shapes read a little bit better in 3D space, especially thicknesses. So I'm happy how the solidify looks. We're going to hit apply. I'm going to bypass crease all
+
+[01:32:20 - 01:32:40] together and drop a bevel as a holding edge. However, I'm going to show you an important lesson about beveling and profiles. So I'll do shift DGX. Move this over. I'm going to isolate both of these. I'm going to select these edges here first and I'm going to drop a bevel with a profile of 0.5 which means
+
+[01:32:40 - 01:33:00] basically that you're adding curvature and then I'm going to select both of these edges here and it's going to give us the same profile but a shortcut while beveling you can hit P on your keyboard press one and now we don't have a profile. So you see this profile shape is set to one.
+
+[01:33:00 - 01:33:20] Now, this is a much more dangerous bevel than this. And I'll explain why. We do control 2, add a subd modifier, and we do shade smooth on both of these. Hide the wireframe. You see that we get a very similar result. We are going to get a little bit more rounding here. One way to combat that, if we wanted more rounding on these, is to basically space
+
+[01:33:20 - 01:33:40] out the bevel here. And you see that we're getting kind of a similar rounding just by working with the spacing. But the danger of this, if we go back and disable the subd modifier here, if you ever want to change this, since this was applied as a bevel here, not a modifier or not with creases, this is baked in.
+
+[01:33:40 - 01:34:00] So if you ever wanted to change this bevel profile, you're pretty much out of luck because if we go in here and we delete these edges here, which is essentially the middle edge, you'll see the problem that this caused. We don't have the same shape anymore. So, I strongly recommend that if you're beveling for holding edges, always
+
+[01:34:00 - 01:34:20] always have a profile of one. That way, it's not destroying your shape. I'm basically going to control Z all that. I'll delete this piece. And then I'll add my holding edges here with a profile of one. I'll hit control 2 to add my subd modifier. Right click, shade
+
+[01:34:20 - 01:34:40] smooth. And this looks pretty good. I'll bring back the rest of my can. That's what I'm talking about. You just finished the tab, wrapping up the most complex parts of this model. The rest of this model's details are much simpler, allowing us to complete it much quicker. Now, it's time to quickly build the body. To finish out the model, I'm going
+
+[01:34:40 - 01:35:00] to hit one to jump to the front view. Alt, leftclick, select these edges. E Z to extrude this. I'll extrude this right about here. S to scale out. And you see that I'm basically placing these hard corners here where the round ones will be. And then I'll let beveling take care of that rounding. I basically want to block out this main shape. E to extrude
+
+[01:35:00 - 01:35:20] again. Z for the Z-axis. And we're going to drop this right about here. I'll hit period to focus in on the action. E Z drop this down. S to scale inward. E again to extrude. Z for the Z-axis constraint. Drop this down right about here. S to scale in and shift Z to go
+
+[01:35:20 - 01:35:40] into wireframe if we need it. GZ. I'm going to go ahead and reposition this. I'm going to start working on the inside bottom of this. And on my left hand right now, I'm looking at a real life energy can drink for added reference. I'll hit E to extrude. S to scale in. I'll hit one to jump to the top. Shift Z. E to scale. Z again. I'm going to
+
+[01:35:40 - 01:36:00] scale this right about here. We'll jump back to the bottom. Shift Z for solid mode. E to extrude in S to scale. And on that hard inside corner of this shape, I want a very round bevel. And that's why I wouldn't leave a loop right here. So essentially what I want to do is be very very generous and look at my can and see
+
+[01:36:00 - 01:36:20] where this starts to flatten out. And I think somewhere close to the middle is basically where that taper stops. From this point, I'll do E to extrude S. I'll go to face grid fill. And I'll play with the offset here as well as the spans. And the main thing with grid fill is
+
+[01:36:20 - 01:36:40] when playing with the settings, you want to make sure that it aligns with the symmetry lines of your model. Now you see that we have this gigantic span that we left for a reason. This is because we want a very soft transition here. Now I'm going to select this edge loop here. I'll do Ctrl +B and I'm going to pull this out. I'm have a profile of 0.5 and
+
+[01:36:40 - 01:37:00] I'm pretty generous with the divisions here. We could always go after the fact and adjust this before committing to the changes. I'll hit one to jump to the front. I'll go ahead and select this loop here. I'll do Ctrl +B. And with a couple divisions, I'll kind of work in that curvature. Keep in mind, we don't need a lot of curvature. We're going to
+
+[01:37:00 - 01:37:20] let Subd do some of it. So, I think this looks pretty good. I'm going to select this loop here. Ctrl +B. For this one, I'm going to drop the divisions, but this is giving me kind of a smoother curvature. I'm also going to capture the roundness here. I'll do shift Z. I'll do CtrlB. I'm going to pull out some rounded corners here. I'll hit one to
+
+[01:37:20 - 01:37:40] return to the top. And then we'll bevel these edges here just to get some curvature to these shapes. Ctrl +B. So, I'm adding three divisions here. And just like I did at the bottom, I'm going to add two divisions here with the bevel. Shift Z. I'm going to return to shaded mode here. This metal lid, it's
+
+[01:37:40 - 01:38:00] kind of folded over. I'm gonna basically create a little bit of a crease. I'll do CtrlR, drop a loop cut right about there. And now, if I go to face selection, alt leftclick near this edge. You see that I'm selecting this loop. I'll hit one to go into the front view
+
+[01:38:00 - 01:38:20] once more. Shift Z for wireframe. E to extrude. Z to push up in the Z-axis. I'm just going to push this up. Shift Z once more. So, I'm going to rightclick shade smooth and then enable the wireframe. If we go back to our front view here, we see that we're losing a lot of this
+
+[01:38:20 - 01:38:40] volume here, a lot of this shape. And that's because again, this gigantic span and we don't have even quad distribution. I'm going to hit tab. You see how they shoot up way over here. We could remedy this by doing controlr and just adding a couple loop cuts. Now, we don't have to go as dense as areas where the pockets of details are. However, we
+
+[01:38:40 - 01:39:00] do have to find kind of that medium ground where we don't have those gigantic spans. And now, if we hit tab, you see the shape is being held up a lot better, especially these edges here. They're not shooting all the way down. So, we've completed all the modeling. The first thing that I'm going to do to finalize this model is make sure that
+
+[01:39:00 - 01:39:20] everything's properly named. We have the can, we have this little button here. So, I'm going to rename this to pin. We have our tab. And we have our lid. The second thing that I like to do after saving this is converting my creases that we still have into holding edges.
+
+[01:39:20 - 01:39:40] And by holding edges, I mean via a bevel. This is very easy to do, especially with the workflow that we did, especially on the top of the can here. If we dive into edit mode, see that we still have a lot of these creases. The reason I don't like creasing that much is if we go back to edit mode here, you see that sometimes
+
+[01:39:40 - 01:40:00] the shading can be a little bit wonky. And with creasing, usually it's a one or zero. So, you get to have a lot of super hard edges. We're actually going to compare the difference. So, what I'm going to do is do shift DGX, move this can over, and then I'll basically take both cans, forward slash isolate them. This is going to be kind of my crease version, and this is going
+
+[01:40:00 - 01:40:20] to be the version that I convert from creasing over to bevel. So, I'll dive into edit mode, and we could basically select these edges by the crease value. So, I'm going to select one of these edges here that's creased. And then I'll go to select similar crease. And just like magic, all those edges that were
+
+[01:40:20 - 01:40:40] creased now are selected. It looks like it didn't pick this one up. Most likely because it didn't have a similar crease value. So, I'll manually scoop that. But other than that, it just did a great job of selecting all these. Obviously, it's selecting everything in the scene here. So, I'll just deselect these. Now that
+
+[01:40:40 - 01:41:00] we have all the edges that we essentially want to convert to bevels, we could easily do so. So, I'll do CtrlB, start pulling out my bevels. Very, very important that your profile is set to one. So, I'll hit P1 just to do that. And then now we can start playing with the width like this. I'll hit A for all N and I'll make sure all
+
+[01:41:00 - 01:41:20] my creasing is off. I'll hit zero. And now I have nothing creased. everything beveled. We'll dive into object mode here. So, you can see the difference here with the beveled version and kind of the crease version, especially with the mat caps. Let's go ahead and change the shader to this. You see with
+
+[01:41:20 - 01:41:40] something highly specular, you see that the beveled edges just give you overall clean shading. You don't have kind of that weird banding that we're getting here. Let's switch to something even more obvious. You could see it here. kind of like this weird banding that we have. And then here we're getting something much much more pristine.
+
+[01:41:40 - 01:42:00] Obviously, if you wanted a little bit softer transitions and some of these, you can go back and adjust these and not do them all in a single swoop. So, for example, I kind of feel like these are a little bit too hard. So, we can go back in here. I'll get my Mac cap. I could manually select these
+
+[01:42:00 - 01:42:20] I could do Ctrl delete to essentially clear these out, reselect these, Ctrl +B. But in this case, we're going to give it much more width. And remember, the more spread out they are, the more rounding you're going to get on that corner. So, this looks good. Something
+
+[01:42:20 - 01:42:40] that I will stress again is though, make sure that you have a backup file of the creased version of your can, not with the baked in bevels, just in case you want to continue modeling or adjust edges. I'm going to delete this. I'll hit forward slash to bring everything back. Q to bring up the wireframe. Control spacebar to maximize our
+
+[01:42:40 - 01:43:00] viewport. And there is our finished energy can drink with proper topology, good spacing, good quad distribution, and overall great results. And if we take off the wireframe, you can see that the proof is in the pudding. We get a beautiful result. And something that I
+
+[01:43:00 - 01:43:20] recommend doing is applying even a more specular material. That's kind of a stress test. And if you've done clean modeling work, clean topology, these should hold up. And this is the true [music] test of a great hard surface modeler. Especially if you're doing subdoding and you can slap in a specular surface and have [music] really minimal
+
+[01:43:20 - 01:43:40] to no imperfections. You know that you're doing your job well. Congratulations. You did it. You completed the entire tutorial. Hopefully now you can put your new skills to work to [music] create the next great 3D model. Or who knows, you might even land a highpaying gig doing some product design renders. [music] Of course, since
+
+[01:43:40 - 01:44:00] you follow my tutorial, it's only fair we split it 50/50, huh? All right, I was just joking. But if you did find some value out of this tutorial, please give it a thumbs up and let [music] me know that you want more in-depth tutorials like this by subscribing to this channel. What was your biggest takeaway from this tutorial? Let me [music] know in the comment section down below. You
+
+[01:44:00 - 01:44:20] just completed this beginner's tutorial. You leveled up your 3D modeling skills and now you're ready to move on and create more complex hard surface pieces. [music] If you want to create those detailed models, you'll need to deepen your understanding of topology. [music] And for that I created this video right here.

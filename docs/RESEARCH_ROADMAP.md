@@ -216,6 +216,46 @@ and still has no legal way to acquire an actual external YouTube tutorial file -
 user to supply a local video (screen recording, or a file downloaded through means outside this
 project's own tooling) before it can be pointed at real external curriculum content.
 
+**Update (2026-08-14): the acquisition gap above closed, and the first real external tutorial was
+studied end to end.** Direct programmatic YouTube access (`fetch`, `XMLHttpRequest`, direct
+`/api/timedtext` requests) reproducibly returned HTTP 200 with an empty body regardless of method --
+neither confirmed as an extension side effect nor a deliberate platform restriction, and deliberately
+not probed further once that ambiguity was clear, per the standing rule against working around
+bot-detection. Live browser automation on the user's own authenticated session (not scraping --
+literally the same interaction a human doing this manually would perform) hit no restriction at all
+and confirmed clean access to the actual video and rendered captions. The user then connected
+**TubeAlfred**, a community MCP connector exposing YouTube data including
+`youtube_video_transcript`, which returned a complete, real, per-phrase-timestamped transcript
+(2,682 segments, 104 minutes) for JL Mussi's "Learn Blender 3D Modeling Under 97 Minutes!" on the
+first call -- the project's first successful automated acquisition of real external tutorial
+content. Saved to `runs/2026-08-14_video-study-jl-mussi/` (raw JSON + a 20-second-window
+consolidated transcript, matching this project's own scene-window convention). As an unverified
+community connector, its output is treated the same as any other source: `SOURCE OBSERVATION`,
+subject to the same promotion path as everything else, not a verified fact merely because the
+connector worked.
+
+**New capability: `knowledge_engine/video_knowledge.py`.** A structured, temporally-grounded
+knowledge-extraction schema (`KnowledgeItem`: `PROCEDURE`/`PRINCIPLE`/`DECISION`/`VISUAL_CUE`/
+`FAILURE`, each carrying a `SourceTimestamp`, required `supporting_evidence`, and a status following
+this project's own knowledge lifecycle) plus `apply_transfer_test`, which enforces the "a technique
+counts as learned only if it improves performance on an unseen object" rule directly in code --
+a transfer test targeting the same asset the knowledge was captured from is rejected outright,
+matching `session_learning.py`'s existing "no promotion without a declared replay" discipline for
+session-mined skills. Extraction itself is not automated: five real items were captured from the JL
+Mussi transcript by actually reading it (not generated from the title) -- among them, a `DECISION`
+that cylindrical segment counts should be divisible by four ("it gives me even symmetry lines across
+the X, the Y, and the Z") and a `FAILURE` that closely-spaced beveled verts pinch once Subdivision
+Surface is applied even though the base cage looks fine. All five validate cleanly and are saved to
+`runs/2026-08-14_video-study-jl-mussi/knowledge_items.json`; none has a transfer test yet, so none
+has been promoted past `CAPTURED` -- per the module's own rule, they are not yet trusted runtime
+knowledge. 15 new tests in `tests/test_video_knowledge.py`, full suite 50/50.
+
+A curated 20-video curriculum (`docs/VIDEO_LEARNING_CURRICULUM.md`), authored by the user, gives
+this pipeline a real backlog beyond this one video -- prioritized reference analysis, topology,
+SubD, and decision extraction over shortcut/UI-tour content, with an explicit "ultimate test"
+(unseen reference, extracted knowledge must transfer) that is now directly implemented rather than
+aspirational.
+
 Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
 approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT
 captions, and extracts timestamped frames. `runs/2026-08-10_video-ingestion/` exercises the full

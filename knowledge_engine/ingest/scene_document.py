@@ -41,7 +41,13 @@ def _format_timestamp(seconds: float) -> str:
 
 
 def _bucket_transcript(segments: list[dict], window: float, duration: float) -> list[dict]:
-    n_windows = max(1, int(duration // window) + (1 if duration % window else 0))
+    # A tiny epsilon absorbs ordinary container/encoder timing rounding (a real
+    # video's reported duration is essentially never an exact multiple of the
+    # scene window) so a few stray milliseconds don't spawn a near-empty trailing
+    # scene on their own.
+    epsilon = 0.25
+    remainder = duration % window
+    n_windows = max(1, int(duration // window) + (1 if remainder > epsilon else 0))
     buckets = [
         {"start": i * window, "end": min((i + 1) * window, duration), "lines": []}
         for i in range(n_windows)
