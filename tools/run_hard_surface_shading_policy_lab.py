@@ -80,7 +80,7 @@ def main():
     angle_intent = bpy.context.object
     angle_intent.name = "Angle_Scoped_With_Recorded_Intent_Box"
     angle_intent_decision = server.cmd_begin_decision(angle_intent.name, "record_angle_bevel_scoping")
-    angle_intent_perform = server.cmd_perform_decision(
+    server.cmd_perform_decision(
         angle_intent_decision["decision_id"], "set_bevel_scoping",
         {"method": "ANGLE", "angle_deg": 45.0, "width": 0.05, "segments": 2},
         command_id="hard_surface_angle_scoping_001",

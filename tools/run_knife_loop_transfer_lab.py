@@ -8,7 +8,6 @@ retains an interrupted-ring and an invalid fill request as failure evidence.
 from __future__ import annotations
 
 import json
-import math
 import sys
 from pathlib import Path
 

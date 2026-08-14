@@ -27,7 +27,7 @@ def make(name,verts,faces,col,material,props={}):
  # Do not blanket-smooth a hard-surface assembly. Rejected desk-lamp
  # candidates predate the policy; future accepted assets must explicitly use
  # semantic bevels and Smooth by Angle where their geometry calls for it.
- uv=me.uv_layers.new(name='UVMap');xs=[v.co.x for v in me.vertices];ys=[v.co.y for v in me.vertices];zs=[v.co.z for v in me.vertices];dx=max(xs)-min(xs) or 1;dy=max(ys)-min(ys) or 1;dz=max(zs)-min(zs) or 1
+ uv=me.uv_layers.new(name='UVMap');ys=[v.co.y for v in me.vertices];zs=[v.co.z for v in me.vertices];dy=max(ys)-min(ys) or 1;dz=max(zs)-min(zs) or 1
  for poly in me.polygons:
   for li in poly.loop_indices:
    co=me.vertices[me.loops[li].vertex_index].co;uv.data[li].uv=((co.y-min(ys))/dy,(co.z-min(zs))/dz)

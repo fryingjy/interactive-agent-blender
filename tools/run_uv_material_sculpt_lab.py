@@ -10,7 +10,7 @@ from pathlib import Path
 
 import bmesh
 import bpy
-from mathutils import Matrix, Vector
+from mathutils import Matrix
 
 
 def output_directory():

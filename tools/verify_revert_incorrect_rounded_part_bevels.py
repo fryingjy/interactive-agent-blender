@@ -12,7 +12,6 @@ import bpy
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "blender_ops"))
-from object_ops import hard_surface_shading_audit  # noqa: E402
 
 CAN_CORRECTED = ROOT / "runs/2026-08-12_watering-can-rounded-parts-bevel-reverted/heldout_watering_can_production_rounded_parts_reverted.blend"
 CAN_SOURCE = ROOT / "runs/2026-08-12_watering-can-final-bevel-corrective/heldout_watering_can_production_fully_corrected.blend"

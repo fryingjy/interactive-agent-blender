@@ -5,7 +5,6 @@ does not modify or re-save anything.
 """
 import json
 import math
-import sys
 from pathlib import Path
 
 import bmesh

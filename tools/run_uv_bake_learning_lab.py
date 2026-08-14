@@ -8,7 +8,6 @@ import statistics
 from pathlib import Path
 
 import bpy
-from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[1]

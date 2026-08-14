@@ -96,7 +96,7 @@ def make_tube(name, diagonal_ring, material):
     subdiv = obj.modifiers.new("Deformation subdivision", "SUBSURF")
     subdiv.levels = 2
     subdiv.render_levels = 2
-    triangulate = obj.modifiers.new("Evaluated triangle contract", "TRIANGULATE")
+    obj.modifiers.new("Evaluated triangle contract", "TRIANGULATE")
     return obj, radial, axis_rows
 
 

@@ -9,13 +9,11 @@ failure control.  Run in a normal (hidden is fine) Blender process, not --backgr
 from __future__ import annotations
 
 import json
-import math
 import traceback
 from pathlib import Path
 
 import bmesh
 import bpy
-from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[1]

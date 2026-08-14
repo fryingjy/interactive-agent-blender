@@ -18,7 +18,7 @@ X-Z plane with only minor Y-axis thickness, instead of guessing a pose.
 from __future__ import annotations
 import json, math, sys
 from pathlib import Path
-import bmesh, bpy
+import bpy
 from mathutils import Vector
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -92,8 +92,8 @@ def make_obj(name, verts, faces, col, material, props=None):
     for p in me.polygons:
         p.use_smooth = True
     uv = me.uv_layers.new(name="UVMap")
-    xs = [v.co.x for v in me.vertices]; ys = [v.co.y for v in me.vertices]; zs = [v.co.z for v in me.vertices]
-    dx = max(xs)-min(xs) or 1; dy = max(ys)-min(ys) or 1; dz = max(zs)-min(zs) or 1
+    xs = [v.co.x for v in me.vertices]; zs = [v.co.z for v in me.vertices]
+    dx = max(xs)-min(xs) or 1; dz = max(zs)-min(zs) or 1
     for p in me.polygons:
         for li in p.loop_indices:
             co = me.vertices[me.loops[li].vertex_index].co

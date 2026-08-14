@@ -11,7 +11,6 @@ import bpy
 ROOT=Path(__file__).resolve().parents[1]; OPS=ROOT/"blender_ops"
 if str(OPS) not in sys.path: sys.path.insert(0,str(OPS))
 
-import decision_state
 import persistent_ids
 import render_passes
 import semantic_regions

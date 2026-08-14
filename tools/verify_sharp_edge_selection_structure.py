@@ -23,7 +23,6 @@ CONTINUOUS_DRIFT_PATTERN as "look at this," never as "this is wrong."
 """
 import json
 import math
-import sys
 from pathlib import Path
 
 import bmesh

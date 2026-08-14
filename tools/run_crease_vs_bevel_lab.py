@@ -103,7 +103,6 @@ def main():
     world = bpy.data.worlds.new("World")
     world.use_nodes = True
     bpy.context.scene.world = world
-    col = bpy.context.scene.collection
 
     mat = bpy.data.materials.new("Lab Steel")
     mat.use_nodes = True
@@ -185,7 +184,7 @@ def main():
     subd_d = d.modifiers.new("Subdivision", "SUBSURF")
     subd_d.levels = 1
     subd_d.render_levels = 1
-    smooth_result_d = object_ops.set_smooth_by_angle("D_CreaseWithSupport")
+    object_ops.set_smooth_by_angle("D_CreaseWithSupport")
     audit_d = object_ops.hard_surface_shading_audit("D_CreaseWithSupport")
     report["D_CreaseWithSupport"] = evaluated_stats(d)
     report["D_CreaseWithSupport"].update({
@@ -203,7 +202,7 @@ def main():
     masks = {}
     for view in ("front", "iso"):
         mask_path = out / f"compare_{view}.png"
-        result = render_silhouette(all_names, str(mask_path), view=("isometric" if view == "iso" else view), resolution=900)
+        render_silhouette(all_names, str(mask_path), view=("isometric" if view == "iso" else view), resolution=900)
         masks[view] = str(mask_path)
 
     bpy.ops.wm.save_as_mainfile(filepath=str(out / "crease_vs_bevel_lab.blend"))

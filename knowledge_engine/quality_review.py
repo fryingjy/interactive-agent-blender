@@ -7,7 +7,9 @@ judgment and never turn a narrow technical check into a professional-capability 
 from __future__ import annotations
 
 from dataclasses import dataclass
-from blender_ops.stage_gates import evaluate_stage_gate  # re-exported for callers/tests
+from blender_ops.stage_gates import evaluate_stage_gate
+
+__all__ = ["ReviewChannel", "aggregate_professional_review", "evaluate_stage_gate"]
 
 
 @dataclass(frozen=True)
