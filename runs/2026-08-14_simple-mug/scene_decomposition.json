@@ -1,0 +1,13 @@
+{
+  "object_name": "Mug",
+  "components": [
+    {
+      "name": "Mug_Body",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": false,
+      "notes": "One connected revolved shell -- straight wall, flat base, rolled rim. Handle grown from this same mesh, not a separate object."
+    }
+  ],
+  "relationships": []
+}
