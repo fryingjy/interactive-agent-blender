@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To batch-select sharp/mechanical edges for creasing or beveling on a low-density SubD control cage without manually tracing complex loops (which break at non-standard 3-way/5-way junctions): select one representative sharp edge, use Select Similar (Shift+G) > Face Angles with a small angle threshold -- this selects every edge across the mesh with a matching angle break in one operation, regardless of topology flow.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 146, "end_seconds": 160},
+    "confidence": 0.65,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 2:26-2:40 the creator selects one perimeter edge, uses Select Similar > Face Angles (threshold ~0.041 rad), which instantly selects every matching sharp ridge around the mesh, then Shift+E creases them to 1.0.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually alt-clicking through each individual edge loop to select all sharp edges",
+    "reason": "Manual loop selection breaks down at non-standard junctions where more than two edges meet; angle-based selection works regardless of the surrounding topology structure.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A pure Edge Crease on a SubD edge produces a mathematically infinite-sharp edge that reads as artificial under lighting. To get a physically-plausible edge highlight instead: select the creased edges (Select Similar > Crease), set their Edge Bevel Weight to 1.0, add a Bevel modifier with Limit Method set to Weight, and enable Harden Normals -- this rounds the microscopic apex of the crease into a small, controlled highlight without adding to the low-poly control cage.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 206, "end_seconds": 236},
+    "confidence": 0.65,
+    "supporting_evidence": "Gemini video-understanding observation: at 3:26-3:56, a side-by-side comparison shows the crease-only result as an unnaturally sharp, razor-thin line; adding a weight-limited Bevel modifier with Harden Normals produces a realistic rounded highlight instead.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Relying on Edge Crease alone for a hard edge",
+    "reason": "Real manufactured edges always have a small radius; an infinitely sharp crease doesn't catch light the way a physical edge does, so a small weighted bevel is added on top to restore a believable highlight.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "On a mirrored half-mesh, if SubD and Bevel modifiers execute BEFORE the Mirror modifier in the stack, the seam along the mirror plane pinches/jaggedly distorts, because smoothing and beveling happen on vertices that are then split apart by the later mirror operation. Fix (Blender 4.2+): use 'Pin to Last' on the Subdivision and Bevel modifiers so Mirror always evaluates first regardless of the order they were added in, instead of manually re-dragging modifier order every time a new one is added.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 246, "end_seconds": 273},
+    "confidence": 0.65,
+    "supporting_evidence": "Gemini video-understanding observation: at 4:06-4:33, severe jagged pinching is visible at the mirror seam where SubD/Bevel ran before Mirror in the stack; using 'Pin to Last' on those modifiers forces Mirror to always evaluate first, and the seam immediately becomes flat and seamless.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually dragging modifier order back into place every time a new modifier is added to a mirrored mesh",
+    "reason": "Manual reordering has to be redone every time the stack changes; pinning a modifier to always-last (or the mirror to always-first) makes the correct order automatic going forward.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To generate a smooth, correctly-curved pipe/tube elbow connecting two cylinders at an arbitrary angle to each other: select the open edge rings of both cylinder ends in Edit Mode, use LoopTools > Bridge with an increased 'Number of Cuts' and adjustable 'Smoothness', rather than manually extruding/rotating segments to route between them.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 348, "end_seconds": 366},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:48-6:06, two cylinder tubes at a 90-degree angle have their open edge rings selected, then LoopTools > Bridge with Number of Cuts = 5 and a smoothness adjustment generates a smooth interpolated elbow between them.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually extruding and rotating segments to route a pipe between two misaligned cylinder endpoints",
+    "reason": "Bridge Edge Loops computes an interpolated curve between the two open boundaries directly, faster than manual segment-by-segment construction.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To attach a small floating detail (e.g. a thruster/vent/port) flush onto a curved hull without booleaning it into the hull's own topology: keep the detail as a separate mesh, select only its outer flange/contact vertices in Edit Mode, assign them to a vertex group, then add a Shrinkwrap modifier on the detail targeting the hull, restricted to that vertex group, positioned above the detail's own SubD modifier in the stack -- only the flange conforms to the hull's curvature while the rest of the detail keeps its own shape.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 428, "end_seconds": 458},
+    "confidence": 0.65,
+    "supporting_evidence": "Gemini video-understanding observation: at 7:08-7:38, a thruster port's outer flange vertices are grouped and a Shrinkwrap modifier restricted to that group (targeting the hull, placed above SubD) conforms only the flange to the hull's compound curve.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Boolean-cutting the detail into the hull's own SubD topology",
+    "reason": "Booleaning a detail directly into a curved SubD hull tends to destroy clean shading on the hull; keeping the detail as a separate, vertex-group-restricted shrinkwrapped mesh avoids touching the hull's own topology at all.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A floating detail that's been shrinkwrapped flush onto a hull can still show a visible dark shading seam at its boundary, because its vertex normals still point differently from the hull's normals even though the positions match. Fix: add a Data Transfer modifier on the detail, set Source to the hull object, enable Face Corner Data > Custom Normals with mapping 'Nearest Face Interpolated', restricted to the same contact vertex group -- this makes the boundary read as one continuous surface.",
+    "source": {"source_id": "Ml2t8uxPAQU", "start_seconds": 480, "end_seconds": 533},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 8:00-8:53, a shrinkwrapped flange still shows a hard shadow seam under lighting; a Data Transfer modifier copying interpolated custom normals from the hull, restricted to the flange vertex group, removes the seam entirely.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the shrinkwrapped detail with its own independent normals",
+    "reason": "Matching vertex position alone isn't enough for seamless shading; the normals themselves must also be transferred/interpolated from the target surface to eliminate the visible boundary.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

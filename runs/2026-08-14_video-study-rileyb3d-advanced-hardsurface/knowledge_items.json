@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To block out and sculpt an overall primary shape without moving many individual vertices by hand: add a Lattice object scaled to the bounding box of the (already subdivided) high-res mesh, add a Lattice modifier on the mesh targeting it, then move the lattice's own low-resolution control points to reshape the mesh. Add more lattice resolution only as needed, and increase the Lattice modifier's Strength property above 1.0 if the mesh visibly lags behind / isn't fully following the cage's movement.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 120, "end_seconds": 120},
+    "confidence": 0.7,
+    "supporting_evidence": "Direct quote (~2:00): \"a lattice is kind of like a cage we can place around a high resolution mesh to move it with fewer or low resolution points\"; and later: \"sometimes you'll find you want the points to have stronger control of the mesh maybe the mesh is lagging behind and not totally influenced by the lattice to adjust this go back to the lattice modifier and increase the overall strength you can type in values above one\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Directly grabbing and moving individual mesh vertices to block out the primary shape",
+    "reason": "A lattice lets a much smaller number of control points drive the whole high-resolution mesh at once, giving a smoother result while blocking out overall proportions faster than moving individual verts.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Before boolean-cutting a circular (or other precise) detail into a mesh, first count the exact vertex count of the target boundary loop using the viewport overlay 'Statistics' panel while that loop is selected, then build the cutter primitive (e.g. a cylinder) with that exact same vertex count -- this lets the resulting boolean-cut points be snapped/merged exactly onto pre-existing mesh points afterward instead of guessing alignment.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 348, "end_seconds": 348},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quote (~5:48): \"if we go to our viewport overlays we can turn on statistics and see exactly how many edges we currently have selected as you can see that's 24 edges or vertices we did this so we can add a cylinder that has the same amount of 24 vertices so we don't have to guess or try and make things line up later\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "'Topology redirect': after a boolean cut leaves awkward diagonal edges or misaligned corners, use the Knife tool (K) to manually draw new edges that continue the mesh's existing quad edge-flow direction across the cut boundary, then dissolve (Ctrl+X) the old edges that don't follow that flow. Described as an essential but practice-dependent intermediate skill -- requires holding a mental image of where the topology needs to go and cutting/dissolving toward it.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 488, "end_seconds": 488},
+    "confidence": 0.7,
+    "supporting_evidence": "Direct quote (~8:08): \"what we're doing here is called topology redirect it's an essential skill and one that'll take time to develop to get to a point where you can have a mental image of where you need to take things and how to get there\"; described in practice a few lines earlier: \"once we draw in the new we'll dissolve the old with ctrl x... the principle is we're going for Quad topology and we want that topology... to flow in a certain direction so I'm cutting in those parallel edges and dissolving anything that disrupts that on the diagonal\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Before cutting any secondary/tertiary detail into a blocked-out primary shape, duplicate the clean primary shape into its own disabled/hidden collection as a reference object. After cutting in new detail (which distorts the smooth silhouette near the cut), add a Shrinkwrap modifier on the working mesh targeting that saved reference object -- this reconforms the new cut-in geometry back to the original smooth primary surface instead of leaving it dented/misshapen.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 704, "end_seconds": 704},
+    "confidence": 0.7,
+    "supporting_evidence": "Direct quote (~11:44): \"we can reconformation utilizing a shrink wrap modifier just select the reference object as the Target\"; earlier setup: \"let's save our primary shape as it is for later reference do that by duplicating with shift d and moving it to a new collection with M we'll name that ref\"; reused again later in the same build (~13:40): \"now we can add a shrink wrap modifier again and set the target to our ref object\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually smoothing/sliding vertices by hand to fix the dent left by a boolean cut",
+    "reason": "Shrinkwrapping onto a saved pre-cut reference automatically restores the correct primary-shape curvature under the new detail, which is faster and more accurate than eyeballing vertex positions by hand.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Pressing O immediately after starting an Inset (I) toggles it into 'Outset' mode, which expands a face/loop boundary outward instead of inward -- used to brace/support an edge loop with extra geometry before subdivision, as an alternative to a plain loop cut when the boundary itself (not just a nearby parallel loop) needs reinforcing.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 996, "end_seconds": 996},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (~16:36-16:51): \"we can actually perform what's called an outset just press I to inset and then press o to toggle to the outset tool a surprising amount of blender users don't know this tool exists but this is a perfect example of when to use it we can also outset this inner surface here which is more even than we'd get with a loop cut\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a plain loop cut to brace the same boundary",
+    "reason": "The creator judged the outset result 'more even' than what a loop cut would produce for bracing that specific inner surface.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "VISUAL_CUE",
+    "claim": "The real acceptance test for a topology redirect (or for tolerating a resulting n-gon) is not 'are there zero n-gons' but 'does the actually-subdivided/smoothed mesh look clean' -- check the SubD-previewed result directly; a redirect that leaves one n-gon is fine if the subdivided surface shows no pinching or shading artifacts there.",
+    "source": {"source_id": "jbx5xz0uj7s", "start_seconds": 1080, "end_seconds": 1080},
+    "confidence": 0.72,
+    "supporting_evidence": "Direct quote (~18:00, following a knife-redirect near a loop cut): \"in some cases I'll just merge two existing points to one and while we do get an end gone the most important thing is checking out what things look like with the subdivided mesh in this case it's perfect no pinching no artifacts so we'll go ahead with a few endons\". Visually confirmed (2026-08-14) via Gemini video understanding on the actual video at this timestamp: the creator is shown checking the mesh in wireframe/edit mode for vertex alignment along the mirror axis from a top orthographic view, then switching to object mode with a shiny matcap material and rotating the model around specifically to inspect light reflections and surface curvature for irregularities -- matches the transcript's description of a visual acceptance check, not just a verbal claim.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

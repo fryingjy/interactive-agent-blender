@@ -1,0 +1,50 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "The specular highlight expected on the final shaded surface (from the reference, or from the intended form) is the deciding factor for where topology edges should be placed -- identify where the highlight needs to run first, and establish the edges that produce that highlight before adding any further support topology, rather than adding topology first and hoping it happens to support the right highlight.",
+    "source": {"source_id": "AOW1tBl9VLk", "start_seconds": 380, "end_seconds": 389},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quote (~6:20-6:29): \"how do we know when to use H flow is going to be based on this right here the highlights so the highlights are going to be defining or form defining and based on the highlights either on the reference or whatever object you're trying to create the highlights are going to be the finding Factor where we are looking for those biggest squats before we continue deeper into the topology\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "At the very start of any topology build (before adding any subdivisions or support loops), deliberately search for and establish the largest possible quads that are still roughly even in size with each other -- these become the shape-defining polygons that everything else is built from, and any unevenness introduced at this initial stage persists and compounds no matter how much further subdivision is added on top.",
+    "source": {"source_id": "AOW1tBl9VLk", "start_seconds": 165, "end_seconds": 220},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quotes: \"our job here at the very very start is going to be to search for those biggest [quads] and establish them first before doing anything else\" (~2:46); \"the reason for it is the following if I now start to add edge Loops they're just going to continue and continue and continue regardless of how much edges we add we are still maintaining that clean form that we had at the very beginning\"; \"this can be shape defining this one can be shape defining if we have too many polygons defining the shape is going to be much harder\" (~4:15-4:20)",
+    "status": "CAPTURED",
+    "rejected_alternative": "Starting to subdivide/add support loops before the initial large quads are confirmed even",
+    "reason": "Unevenness in the initial large quads propagates through every later subdivision; fixing it after the fact is harder than establishing it correctly from the start.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Manually 'balancing' one locally imbalanced area of topology (e.g. near a triangle) by nudging edges tends to shift the imbalance to an adjacent area rather than actually resolving it -- fixing one side degrades the other, and repeating the process just chases the imbalance around rather than eliminating it. The described way out is not more manual balancing but re-examining whether the *initial* blockout quads were established evenly in the first place.",
+    "source": {"source_id": "AOW1tBl9VLk", "start_seconds": 900, "end_seconds": 920},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (~15:04 area): \"what happens is that I Balance this one but now I unbalance this one so I previously I had something like this but now I have much worse situation but I fixed this one here so as you notice you're kind of like chasing yourself in a circle basically so you try to balance one end and when you balance that one end the other end becomes imbalanced\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Repeatedly hand-nudging edges near an imbalanced/triangulated area to try to even it out in place",
+    "reason": "Local edge-nudging around an imbalance was observed to just relocate the same problem rather than resolve it; the actual fix has to happen at the earlier, initial-blockout stage.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Topology redirection (turning a triangle into a merged/redirected edge, knife-cutting new parallel edges) should be reserved for closing down and fine-tuning a shape once its primary form is already established -- it is 'rarely, extremely rarely' the right tool for defining the primary shape itself, because relying on it that early causes the imbalance-chasing failure mode above.",
+    "source": {"source_id": "AOW1tBl9VLk", "start_seconds": 1016, "end_seconds": 1021},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (~16:56-17:01): \"this type of redirection that you see probably online a lot is never going to be used to define a shape but it's more going to be used to close down the shapes or to fine-tune the shapes prepare for detailing stage and what not so when you're practicing topology just make sure to avoid redirection in those beginning stages\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using knife-cut topology redirection as a primary technique for defining a shape's main form from the start",
+    "reason": "This refines the topology-redirect procedure already captured from RileyB3D's build (runs/2026-08-14_video-study-rileyb3d-advanced-hardsurface/): redirection is a legitimate finishing/cleanup tool, but this source explicitly warns it becomes a trap (the imbalance-chasing failure above) if leaned on to define primary form instead of used for closing/fine-tuning after the form is already established.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "note": "Extension beyond the original 20-entry curriculum (docs/VIDEO_LEARNING_CURRICULUM.md), added 2026-08-14 per direct user instruction to find more videos spanning beginner-to-pro and watch them properly (Gemini video-understanding, not transcript-only). These 5 videos were selected to span a genuine skill progression using creators/technique-categories not already covered by the original 20.",
+  "extraction_method": "Full-video Gemini 3.7 video-understanding-eap analysis (model watches the actual YouTube video and identifies specific timestamped, visually-grounded moments), not transcript-only. Gemini's output is treated as a SOURCE OBSERVATION per this project's knowledge discipline, not an infallible oracle -- reviewed and converted into KnowledgeItem entries, not pasted verbatim.",
+  "videos": [
+    {"tier": "beginner", "video_id": "Ml2t8uxPAQU", "title": "6 Blender Hard-Surface Modeling Tricks I Wish I Knew Earlier", "channel": "CG Boost", "length": "9:32", "run_dir": "runs/2026-08-14_video-study-cgboost-6-tricks/", "items": 6},
+    {"tier": "beginner (mistake-correction)", "video_id": "8HTlZIcqFR0", "title": "Your Hard Surface Models Look Amateur - Fix This in Blender", "channel": "CG VOICE", "length": "6:17", "run_dir": "runs/2026-08-14_video-study-cgvoice-amateur-mistakes/", "items": 5},
+    {"tier": "intermediate", "video_id": "3_RkY_mtlC4", "title": "Blender Hard Surface Modeling Tutorial - Curvy/Organic Shapes", "channel": "Blender Bros", "length": "19:21", "run_dir": "runs/2026-08-14_video-study-blenderbros-curvy-organic/", "items": 7},
+    {"tier": "professional/studio", "video_id": "xS2Bv7-cDe8", "title": "Blender Hard-Surface Modeling Techniques with Bryant Momo Koshu", "channel": "The Gnomon Workshop", "length": "29:42", "run_dir": "runs/2026-08-14_video-study-gnomon-bryant-momo-koshu/", "items": 6},
+    {"tier": "advanced", "video_id": "cbXWWE8-X0M", "title": "Hard Surface Modeling in Blender is EASY Once You Learn THIS!", "channel": "JL Mussi", "length": "27:32", "run_dir": "runs/2026-08-14_video-study-jl-mussi-easy-once-you-learn/", "items": 6}
+  ],
+  "totals": {"videos": 5, "items": 30}
+}

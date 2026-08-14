@@ -1,0 +1,57 @@
+Here are 7 key modeling moments from the video demonstrating transferable hard-surface and subdivision techniques:
+
+---
+
+### 1. Generating a Smooth Organic Shell from an Open Hull
+* **Timestamp:** `00:55`
+* **What is visible on screen:** A block with four loop cuts has its bottom, front, and back faces deleted, leaving only the top face and side skirts. When a Subdivision Surface modifier (`Ctrl + 4`) is added, the open mesh rounds out into a smooth, aerodynamic canopy/tunnel shape without any pinching at the ends.
+* **Action & Reasoning:** Rather than subdividing a closed cube (which causes pole pinching at 90° corners and collapses into a pill shape), the artist deletes bounding faces first. This allows SubD to treat the geometry as an open sheet, generating clean organic curvature.
+* **Transferable Takeaway:** When starting any curved mechanical housing (e.g., computer mouse shells, vehicle roofs, armor plating, or hair dryers), starting with an open ribbon/hull before subdividing avoids corner poles and complex topology.
+
+---
+
+### 2. Crease Weights for Non-Destructive SubD Ridges
+* **Timestamp:** `04:10`
+* **What is visible on screen:** In Edit Mode, the top central edge loop is selected. In the sidebar (`N` panel under *Item*), `Mean Crease` is set to `1.00`. In Solid View with *Auto Smooth* enabled, the subdivided surface instantly snaps into a sharp, crisp ridge running down the crest while the surrounding flanks remain smoothly curved.
+* **Action & Reasoning:** Adding support/proximity loops across a SubD mesh permanently bakes in extra edge density across the entire model. Using crease weights preserves a low-poly control cage, making overall form adjustments much easier.
+* **Transferable Takeaway:** Use edge crease weighting to establish primary character lines and hard transitions early in organic hard-surface concepting before committing to dense support loops.
+
+---
+
+### 3. Creating Longitudinal Troughs to Control Specular Highlights
+* **Timestamp:** `05:08`
+* **What is visible on screen:** The central crest edges are beveled and then translated downward along the Z-axis. In the solid viewport, the surface profile transitions from a simple convex arch to a subtle concave valley flanked by rounded shoulders, creating dual parallel specular highlight bands across the top.
+* **Action & Reasoning:** Simple convex curved shapes often look plain and blobby under lighting. Lowering the center to create a subtle dip breaks up the silhouette and makes light bounce across multiple distinct transitions.
+* **Transferable Takeaway:** Breaking flat or uniformly convex hulls with shallow channels or raised shoulders is a core industrial design technique to make surfaces look manufactured and structurally intentional.
+
+---
+
+### 4. Catching and Correcting Exponential Pre-SubD Bevel Density
+* **Timestamp:** `09:20`
+* **What is visible on screen:** In wireframe overlay (`Alt + V`), the applied subdivision reveals an overly dense band of micro-quads along the top bevel. The artist undoes the operation, enters Edit Mode, selects the extra intermediate bevel loops, and dissolves them (`Ctrl + X`), keeping only the primary perimeter edges before re-subdividing.
+* **Action & Reasoning:** Multi-segment bevels placed on a base mesh multiply exponentially when fed into Level 3 or 4 SubD, creating needlessly heavy topology that slows down viewport performance and causes boolean errors later.
+* **Transferable Takeaway:** When preparing a base cage for high-level SubD, keep bevels to minimal (single-segment chamfer) holding loops. Let the subdivision algorithm generate the smoothing density rather than stacking subdivided bevels.
+
+---
+
+### 5. Clearing Boolean Overlaps with MESHmachine Offset Cut
+* **Timestamp:** `11:50`
+* **What is visible on screen:** A boolean cutout creates non-planar geometry along the curved flank. Attempting to bevel the rim directly causes vertices to overlap neighboring wireframe edges. The artist runs `MESHmachine -> Offset Cut` and drags the mouse; the tool automatically clears away the surrounding messy polygon intersections, leaving a clean, uniform channel that is then cleanly beveled.
+* **Action & Reasoning:** Standard bevels fail when an edge is too close to adjacent vertices. Offset Cut swallows and rebuilds the neighboring geometry to create a safe boundary margin for the chamfer.
+* **Transferable Takeaway:** When chamfering boolean seams on dense, curved surfaces, you must clear out adjacent geometry into an offset buffer strip to prevent geometric clamping and overlapping artifacts.
+
+---
+
+### 6. Faking Edge Rounding on Complex Booleans with the Bevel Shader
+* **Timestamp:** `15:15`
+* **What is visible on screen:** In the Shader Editor, an `Input -> Bevel` node is added and connected directly to the `Normal` input of the Principled BSDF. In Cycles Rendered view, the razor-sharp boolean cut borders instantly appear softly rounded with realistic specular highlights, despite having no physical bevel modifier on the mesh.
+* **Action & Reasoning:** Adding physical bevel modifiers to dense, curved boolean intersections frequently causes shading errors, pinched corners, and geometry collisions. The Bevel shader alters surface normals at render time to fake a rounded edge without modifying the underlying topology.
+* **Transferable Takeaway:** For concept modeling, product visualization, or final rendering where mesh geometry does not need to be exported to a real-time game engine, the Bevel shader bypasses complex boolean cleanup entirely.
+
+---
+
+### 7. Deriving Panel Cutters Directly from Host Topology
+* **Timestamp:** `18:05`
+* **What is visible on screen:** The artist selects a strip of faces directly from the curved body, duplicates them (`Shift + D`), separates them into a new object (`P`), extrudes them outward through the hull, recalculates normals (`Shift + N`), and performs a Slash Boolean. This cuts a secondary panel seam that perfectly matches the compound curvature of the main body.
+* **Action & Reasoning:** Drawing a 2D cutter from scratch on a double-curved surface almost always leads to gaps or uneven slice depths. Extracting a patch of existing geometry guarantees the cutter conforms to the compound curvature.
+* **Transferable Takeaway:** When creating panel lines, access hatches, or layered armor on complex curved forms, duplicate and extrude patches of the host mesh to ensure the cut aligns with the surface curvature.

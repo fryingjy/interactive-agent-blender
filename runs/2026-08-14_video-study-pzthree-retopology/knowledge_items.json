@@ -1,0 +1,62 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Weighted-bevel workflow: instead of relying on angle-based auto-bevel, explicitly tag the edges that should be beveled with a Bevel Weight of 1 (via the Edge properties panel, N-panel), add a Bevel modifier set to use 'Weight' (not Angle) as its limit method, set Profile and Segments as desired, and critically set the modifier's 'Outer Miter' to 'Arc' (not the default) -- using the default/Sharp miter on a weighted bevel was directly observed to produce wrong/broken shading at corners.",
+    "source": {"source_id": "FgfMVkkSNfQ", "start_seconds": 625, "end_seconds": 625},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quote (~10:25): \"you can always use weighted bevels so you tag edges like this with a mean bevel weight usually of one you add a bevel modifier you're going to set profile to one bevel segments to two... and outer mitter set it to Arc or it won't do quite correct\"; reiterated later: \"even this bevel tool needs to be set to Art[Arc]... if that was set to Sharp it might cause problems in some places you're beveling\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the bevel's outer miter at its default/Sharp setting",
+    "reason": "The default miter setting was directly observed to break shading on the beveled corners; Arc fixed it. This is now the third independent source (with blenderbros-subd-hardsurface-2 and this video) converging on 'Bevel corner/miter must be set to Arc, not the default' -- worth treating as a strengthened, load-bearing rule rather than a one-off preference.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To add fine sculpted surface detail on top of a clean, low-poly, properly-quaded subdivision base mesh: once the base topology is verified clean (no major shading/topology errors), add a Multires modifier (not a regular Subdivision Surface modifier) and increase its sculpt-level resolution, then switch to Sculpt Mode and add detail directly at that higher resolution -- this preserves the clean low-poly cage underneath (still editable) while allowing genuinely sculpted fine detail on top, rather than needing to sculpt on a raw dense voxel-remesh mesh with no clean underlying topology.",
+    "source": {"source_id": "FgfMVkkSNfQ", "start_seconds": 1367, "end_seconds": 1367},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (~22:49-23:05): \"as long as we don't have major topology issues we can add a multi-res to this all right so that's the trick you want to add a multi reses and not a regular sub Vision\"; and later, describing the payoff: \"we go back into sculpt mode this is our resolution if we had hard surface Alphas this is the time to use them\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Sculpting fine detail directly on a raw voxel-remeshed mesh with no clean retopologized base",
+    "reason": "A Multires modifier on top of clean topology keeps the low-poly cage editable and combines the control of subdivision modeling with the expressiveness of sculpting, instead of committing entirely to one approach or the other.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Saving a .blend file while a Multires modifier is left in certain broken/inconsistent states relative to a Subdivision Surface modifier on the same mesh can produce a file that fails to load again -- if this happens, the fix is to append everything from the broken file into a fresh new Blender scene, not to keep trying to open the original file directly.",
+    "source": {"source_id": "FgfMVkkSNfQ", "start_seconds": 1415, "end_seconds": 1415},
+    "confidence": 0.5,
+    "supporting_evidence": "Direct quote (~23:26-23:50): \"get rid of this guy don't save your blender file until you do if you do I don't know if it's been fixed but last check if you have a multi-res in a subdivision you save your blender file when you try to load that blender file doesn't load no more you have to [append] everything from it to a new blender scene\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When decimating a high-poly bake source mesh down for a normal-map bake, apply several Decimate modifiers in a row using modest ratios each time (e.g. ~0.4-0.5) rather than one aggressive pass (e.g. straight to 0.1) -- multiple gentler decimation passes reduce face count with noticeably fewer introduced errors/artifacts than a single large reduction, even though it takes more steps.",
+    "source": {"source_id": "FgfMVkkSNfQ", "start_seconds": 4200, "end_seconds": 4200},
+    "confidence": 0.55,
+    "supporting_evidence": "Direct quote (~1:10:00 area, exact quote): \"a little trick here that I just learned recently is that when you decimate... use smaller values usually like [0.]8 instead of like 0.1 or something use smaller values it'll actually break apart a lot nicer but you got to use multiple multiple multiple decimates which is kind of annoying but you'll... get to a lower count... in triangles\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "A single aggressive Decimate pass straight to the target low face count",
+    "reason": "A single large-ratio decimate pass was found to break the mesh apart worse than several smaller-ratio passes reaching the same final count.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Standard retopology setup for tracing clean topology over a sculpted/voxel-remeshed reference mesh: enable Snapping with target 'Face', snap-to 'Project', alignment options 'Median' and 'Align Rotation to Target', enable Back Face Culling, and enable 'Project Individual Elements' (menu location moved in Blender 4.x); also check the mesh's 'Retopology' shading option and toggle x-ray (Alt+Z) so the reference mesh is visible through the new low-poly cage being built directly on its surface.",
+    "source": {"source_id": "FgfMVkkSNfQ", "start_seconds": 30, "end_seconds": 30},
+    "confidence": 0.5,
+    "supporting_evidence": "Direct quote (~0:30-1:00): \"you go to your snapping tools turn them on face project median align rotation Target back face color and project individual elements... you'll have a different little drop down icon but basically it's in here somewhere when you're in edit mode you'll see it and you can just check retopology hit altz\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

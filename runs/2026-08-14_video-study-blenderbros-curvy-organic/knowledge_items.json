@@ -1,0 +1,86 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To generate a smooth, pinch-free organic curved shell (a canopy, hood, or rounded housing) with Subdivision Surface, delete the bounding faces (bottom, front, back) of a boxy base mesh first so only an open 'ribbon' of side/top faces remains, THEN subdivide -- subdividing a fully closed cube instead causes pole-pinching at the 90-degree corners and tends to collapse toward a pill/capsule shape rather than the intended broad curved form.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 55, "end_seconds": 55},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 0:55, a block with loop cuts has its bottom/front/back faces deleted before a Subdivision Surface modifier is added; the resulting open mesh rounds into a smooth canopy shape with no corner pinching, in contrast to subdividing a fully closed cube.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Subdividing a fully closed cube/box mesh directly",
+    "reason": "A closed cube's corner poles collapse into pinched points under SubD; an open sheet with those bounding faces removed lets the algorithm generate clean curvature without that pinch.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For establishing primary form character lines early in a curved-hull concept (before committing to dense support-loop topology), Mean Crease (set via the N-panel Item tab) is preferred over adding physical support loops -- crease preserves a low-poly, easily-adjustable control cage while still producing a crisp SubD ridge, whereas support loops permanently bake extra density into the whole model even while the overall form is still being iterated on.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 250, "end_seconds": 250},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 4:10, a selected edge loop's Mean Crease is set to 1.00, instantly producing a sharp SubD ridge while the surrounding flanks stay smoothly curved, without adding new geometry to the control cage.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Adding physical support loops around the ridge immediately",
+    "reason": "Support loops lock in extra density across the whole model prematurely, making later broad-form changes harder; crease weighting keeps the cage light while the overall shape is still being iterated.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A simple, uniformly convex curved surface tends to look plain/blobby under lighting because it produces one smooth, undifferentiated highlight band; introducing a shallow concave channel or dip along the crest (flanked by rounded shoulders) breaks the silhouette into multiple distinct specular highlight bands, reading as more deliberately shaped and manufactured.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 308, "end_seconds": 308},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:08, beveling and lowering the central crest edges transitions the surface from a simple convex arch to a concave valley flanked by rounded shoulders, producing dual parallel specular highlight bands instead of one plain highlight.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the surface as a single uniform convex curve",
+    "reason": "A single uniformly convex surface produces only one smooth highlight and reads as plain; breaking it into multiple curvature transitions produces multiple distinct highlights that read as more intentional/manufactured.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Multi-segment bevels placed on a base control cage multiply exponentially once fed through a level 3-4 Subdivision Surface modifier, producing an unnecessarily dense band of micro-quads that slows the viewport and causes downstream boolean errors -- checked by viewing the subdivided result in wireframe (Alt+V). Fix: dissolve the extra intermediate bevel loops (Ctrl+X), keeping only a single-segment holding chamfer on the base cage, and let the subdivision algorithm itself generate the smoothing density rather than stacking pre-subdivided bevel geometry.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 560, "end_seconds": 560},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 9:20, wireframe overlay reveals an overly dense band of micro-quads from a multi-segment bevel after subdivision; the extra intermediate bevel loops are dissolved, keeping only the primary perimeter edges before re-subdividing.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a multi-segment bevel on the base control cage before subdividing",
+    "reason": "Multi-segment bevels add geometry that then gets multiplied again by subdivision, producing far more density than needed; a single-segment holding chamfer plus subdivision achieves the same smooth result far more efficiently.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When a boolean cutout on a curved surface leaves non-planar geometry too dense/close together for a direct bevel to work (bevel vertices collide with neighboring edges), the MESHmachine add-on's 'Offset Cut' tool clears a buffer margin around the cut boundary by rebuilding the surrounding polygon intersections, creating enough clearance for a subsequent clean bevel on the rim.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 710, "end_seconds": 710},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 11:50, a direct bevel attempt on a boolean cutout rim causes overlapping vertex artifacts; running MESHmachine's Offset Cut clears the surrounding messy intersections into a clean, uniform channel that then bevels correctly.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Attempting to bevel the boolean cutout rim directly without clearing surrounding geometry first",
+    "reason": "A direct bevel on geometry that's too dense/close together produces overlapping artifacts; clearing a buffer margin first gives the bevel operation room to work cleanly.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For concept modeling or final rendering (not real-time game-engine export), a Bevel shader node (Input > Bevel, connected to the Principled BSDF's Normal input) can fake a rounded, highlight-catching edge on complex boolean-cut geometry at render time, without adding a physical Bevel modifier -- avoiding the shading errors and pinched corners that physical bevels frequently cause on dense curved boolean intersections.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 915, "end_seconds": 915},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 15:15, a Bevel shader node connected to the Normal input makes razor-sharp boolean cut edges appear softly rounded with realistic highlights in Cycles rendered view, with no physical bevel modifier present on the mesh.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Adding a physical Bevel modifier to dense, curved boolean intersection geometry",
+    "reason": "Physical bevel modifiers frequently cause shading errors and geometry collisions on dense curved boolean cuts; the shader-based fake bevel achieves the visual result at render time without touching the actual topology -- but only works where real geometry export isn't required.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To cut a secondary panel seam that perfectly follows a double-curved body's compound curvature (rather than gapping or slicing at an uneven depth like a hand-drawn 2D cutter would): select a strip of faces directly from the host body itself, duplicate (Shift+D) and separate (P) them into their own object, extrude that patch outward through the hull, recalculate normals (Shift+N), then use it as the boolean cutter -- the cutter is guaranteed to match the host's curvature because it was derived from the host's own geometry.",
+    "source": {"source_id": "3_RkY_mtlC4", "start_seconds": 1085, "end_seconds": 1085},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 18:05, a strip of faces is duplicated and separated from the curved body, extruded outward, normals recalculated, then boolean-sliced -- producing a panel seam that perfectly matches the compound curvature of the main body.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Modeling a panel-line cutter shape from scratch to match a double-curved surface",
+    "reason": "A cutter built independently of the host surface almost always produces gaps or uneven cut depth on a compound curve; a cutter extracted directly from the host's own geometry is guaranteed to match its curvature exactly.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

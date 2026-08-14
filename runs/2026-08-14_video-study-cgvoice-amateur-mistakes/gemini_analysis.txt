@@ -1,0 +1,53 @@
+Here are the key practical modeling moments from the video, focusing on concrete mesh states and transferable hard-surface techniques:
+
+---
+
+### 1. Manual Edge Bevel to Catch Specular Highlights
+* **Timestamp:** `00:33` – `00:45`
+* **What is actually visible on screen:** A standard cube in Edit Mode with a single top edge selected. The artist presses `Ctrl+B` to create a 1-segment chamfer (bevel) across that edge. Switching back to Object Mode reveals a bright specular highlight catching along the beveled strip, whereas the untouched 90° edges remain visually dead and flat.
+* **What the artist does and why:** Applies a micro-bevel to replace a mathematically perfect 90° edge. Even on low-poly game assets, completely sharp edges do not exist in reality and fail to render specular glints from scene lighting.
+* **Transferability:** Whenever building any mechanical or manufactured object (e.g., crates, consoles, furniture, weapon frames), adding at least a 1-segment chamfer/bevel to visible silhouette edges provides the geometry required for the renderer's shader to catch edge highlights.
+
+---
+
+### 2. Edge Beveling Under Subdivision Surface for Controlled Fillets
+* **Timestamp:** `01:16` – `01:30`
+* **What is actually visible on screen:** An L-shaped mesh shell with a Level 2 Subdivision Surface modifier active. In Edit Mode, the artist selects the sharp interior corner edge and hits `Ctrl+B` to add a narrow 2-segment bevel. When shaded smooth, the viewport shows a tight, curvature-continuous fillet along the seam that reflects viewport lighting without collapsing the overall planar shape.
+* **What the artist does and why:** Uses edge beveling as supporting geometry (holding loops) directly inside a Subsurf workflow. This tightens the curvature radius at corners while allowing the subdivision algorithm to blend adjacent flat surfaces smoothly.
+* **Transferability:** Useful for high-poly baking workflows on any curved hard-surface parts (car body panels, electronic enclosures, curved armor plating) where sharp transitions need controlled softness without manual loop-cutting on every face.
+
+---
+
+### 3. The Boolean Failure: Misaligned Mesh Density Causing Shading Pinching
+* **Timestamp:** `03:00` – `03:20`
+* **What is actually visible on screen:** A smaller horizontal cylinder joined into a larger vertical cylinder via a Boolean Union. With viewport Cavity and Auto-Smooth enabled, severe dark shading distortions and pinching appear around the junction. When the artist enters Edit Mode and attempts to bevel the junction edge loop (`Ctrl+B`), the bevel vertices immediately collide with nearby unaligned cylinder edges, producing a tangled, overlapping mesh artifact.
+* **What the artist does and why:** Demonstrates *why* raw Booleans fail: uncontrolled, dense n-gons with vertices terminating extremely close to corners prevent clean edge beveling and cause normal interpolation errors.
+* **Transferability:** Diagnostic milestone: whenever shading pinching or bevel clipping occurs at an intersection seam on any model (pipes, weapon receivers, machined holes), it indicates unrouted Boolean vertex poles rather than a shading/normal calculation bug.
+
+---
+
+### 4. Topology Alignment & Knife Cut Clean-up for Cylindrical Intersections
+* **Timestamp:** `03:27` – `04:20`
+* **What is actually visible on screen:** 
+  1. The artist swaps the cutter cylinder to a lower 16-vertex resolution and aligns its top/bottom vertices precisely with the parent cylinder's existing edge rings.
+  2. After the Boolean Union, the Knife tool (`K`, constrained with `C`/`Z`/`X`) is used to draw straight horizontal and vertical extension lines across the parent cylinder faces from the junction vertices.
+  3. Stray vertices are merged (`M` $\rightarrow$ *At Last / By Distance*), and a single support ring is cut around the junction.
+  4. The junction loop is selected in Edge Mode (`Alt+Click`) and beveled smoothly with `Ctrl+B` (disabling *Loop Slide*), resulting in artifact-free curved shading.
+* **What the artist does and why:** By reducing cutter density and aligning vertices prior to the operation, the intersection creates manageable quad-friendly anchor points. Manually routing edges away from the joint distributes surface stress evenly across the cylinder's curved faces.
+* **Transferability:** Standard pipeline for cutting holes, nozzles, or port connectors into curved bodies (aircraft fuselages, rifle barrels, engine blocks) where clean bevels and flawless normal shading are mandatory.
+
+---
+
+### 5. Stepped Surface Layering (Breakup) to Eliminate Monolithic Flats
+* **Timestamp:** `04:44` – `05:04`
+* **What is actually visible on screen:** The artist replaces a flat, monolithic rectangular block with a version featuring three stepped depth layers. The surface is broken up using inset panels, recessed channel lines, angled vents, and perimeter chamfers, with distinct primary, secondary, and tertiary shelf levels catching lighting at different angles.
+* **What the artist does and why:** Large uninterrupted coplanar surfaces look synthetic and unconvincing in hard-surface design. Layering geometry into recessed and raised steps breaks up uniform specular reflections and adds perceived mechanical function.
+* **Transferability:** Direct technique for detailing large structural elements in sci-fi or mechanical props (heavy machinery housings, sci-fi bulkheads, weapon chassis, vehicle plating).
+
+---
+
+### 6. Human Base-Mesh Calibration for Scale & Ergonomics
+* **Timestamp:** `05:27` – `05:43`
+* **What is actually visible on screen:** A detailed Japanese gong model displayed in orthographic view. The artist imports a standard human T-pose mesh and snaps it to the 3D cursor right beside the gong. This visually reveals that the gong mallet hanging point, structural crossbeams, and striking face align realistically with human reach and standing height.
+* **What the artist does and why:** Calibrates scene scale and feature sizing against a human reference figure rather than relying on abstract metric grid units alone.
+* **Transferability:** Essential step for any prop, environment asset, vehicle interior, or weapon: comparing handles, steps, triggers, doors, and eye-level elements against a standard scale dummy ensures assets sit convincingly in-engine without feeling oversized or toy-like.

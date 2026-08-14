@@ -1,0 +1,62 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Boolean-modifier cuts produce geometry that is unreliable for anything beyond a quick visual sketch: the topology around the cut is irregular/non-quad, forcing reliance on auto-smooth or weighted-normal tricks to fake a clean shaded look, and those normal tricks don't transfer reliably to other software, UV mapping, transparency, subsurface scattering, or animation/deformation.",
+    "source": {"source_id": "HfTdQNECvtU", "start_seconds": 28, "end_seconds": 50},
+    "confidence": 0.8,
+    "supporting_evidence": "Direct quote (0:28-0:50): \"they give you severely limited geometry and are virtually useless in animation texturing deformation transparency and they'll always place restrictions on how closely your models can be seen in the rendered images relying on booleans to model is the 3d equivalent of finger painting\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To rebuild a boolean-style cut as clean SubD-friendly topology: (1) slide the nearest existing edge loops behind/around the intended cut boundary with G, (2) select the small cluster of faces spanning the cut, (3) use the Inset tool (I) -- it can taper inward across all three axes simultaneously, not just flatten -- to create a dedicated boundary ring right at the cut's edge, (4) delete the inset inner faces to leave a hole, (5) rebuild the hole with F (point-select a corner then F + right-click via the F2 addon, or edge-select the top edge and press F twice), (6) add a Ctrl+R loop that rides the new inset boundary and mark it as a seam so it can be alt-clicked and tightened/loosened independently with GG without disturbing the rest of the mesh.",
+    "source": {"source_id": "HfTdQNECvtU", "start_seconds": 154, "end_seconds": 300},
+    "confidence": 0.85,
+    "supporting_evidence": "Segments 2:34-5:00: \"let's just use the little geometry that we have so i'm going to click this loop near the cut...press g to slide it behind the cut... i'm going to press i to insert these faces and what a lot of people don't realize is that the inset tool can work across all three axes at the same time... now we can just press x and select faces to delete these faces which leaves us with this hole... select one of the corner points and press f and then immediately right click... if i press ctrl r i can add a loop which surrounds this cut because of the inset that we made earlier this will be our control loop... right click it and select mark seam... whenever this loop is selected just by alt clicking it i can always just press gg to tighten or loosen this curve\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Chose to rebuild the boolean-cut shape as native quad topology (inset + fill + control loop) rather than keep the Boolean modifier result finished with auto-smooth/weighted normals.",
+    "source": {"source_id": "HfTdQNECvtU", "start_seconds": 118, "end_seconds": 140},
+    "confidence": 0.8,
+    "supporting_evidence": "Direct quote (2:04-2:20): \"this one has a nice smooth cut out but really hard edges impossibly sharp you can kind of cheat with wedded normals and lots of other tricks but the flexibility is close to zero and the overall topology is absolutely terrible let's turn on wireframe display for this one and we can see what we have it's just awful\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Boolean modifier cut finished with auto-smooth shading / weighted normals to fake a smooth transition",
+    "reason": "The boolean+normals-cheat result has near-zero flexibility, terrible topology, and the normal trick doesn't transfer to other software or renderers, whereas rebuilding with inset+fill produces a lightweight, fully controllable, all-quad mesh usable anywhere.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Work order for hard-surface cuts on a mesh: handle all cuts that touch a corner or an outer edge first (outside-in), and only after that start cutting holes in the middle of a face -- middle holes still need their own inset boundary first to control how curvature flows into them.",
+    "source": {"source_id": "HfTdQNECvtU", "start_seconds": 421, "end_seconds": 441},
+    "confidence": 0.75,
+    "supporting_evidence": "Direct quote (7:01-7:18): \"generally we work from the outside to the inside of a mesh so we make all the cuts around the corners and the edges and any faces which go right up to a corner or an edge and then is the time to start cutting out the holes in the middle and then again they're all protected by insetting them first to create their own little boundary which controls the curvature flowing over the curves which make them\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "VISUAL_CUE",
+    "claim": "When a new support loop looks unwantedly curved/rounded instead of following a straight run between two other loops, press R right after confirming the loop-cut placement, then press F repeatedly until the loop straightens -- this is a general check for predictable SubD curvature.",
+    "source": {"source_id": "HfTdQNECvtU", "start_seconds": 287, "end_seconds": 296},
+    "confidence": 0.72,
+    "supporting_evidence": "Direct quote (4:47-4:56): \"it'll help you if the loops you add are aligned to the straight edge between them by pressing r after you confirm the loop and then pressing f until the loop goes straight this is a good general rule\". Visually spot-checked (2026-08-14) via a real browser frame at ~4:45 (thumbnail-preview capture, not the live video canvas, which does not render in this automated setup): the frame shows a rounded-cube corner mid-build with a visible loop running around the cut, consistent with the transcript's description of adding a support loop around the curved boundary at this exact point -- confirms the transcript accurately describes what was on screen at this timestamp, though the frame alone doesn't show the straightening action itself (R then F) since that's a discrete keypress sequence between frames, not a static state.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Support-loop direction relative to a curved surface's own curvature determines whether it pinches under a glossy shader: tight support edges running PARALLEL to a surface's curvature (e.g. vertical loops on a cylinder's rounded profile) visibly distort/pinch the specular highlight, while edges running PERPENDICULAR to the curvature (following the curve's own profile) show no distortion at all -- checked by rotating the mesh under a high-specularity matcap to see where the highlight breaks.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 200, "end_seconds": 200},
+    "confidence": 0.65,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 3:20, rotating a 24-sided cylinder under a glossy red matcap shows severe distortion along a vertical bevel (parallel to the cylinder's curvature) while horizontal loops (perpendicular to curvature) show zero artifacting.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Placing support loops without regard for their direction relative to the surface's curvature",
+    "reason": "Tight edges parallel to curvature disrupt normal interpolation across that curve; the same density of edges placed perpendicular to the curve follows its profile without distorting normals.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "'Diamond/pole corner reroute': when a support loop running down a curved surface's corner (e.g. around a rectangular cutout on a cylinder) is causing pinching because it continues parallel to the surface's curvature, dissolve the offending vertical edge, use the Knife/Join tool to draw a new diagonal edge across the corner vertex instead, then dissolve the remaining dangling edge -- this redirects the loop to run horizontally (perpendicular to the curvature) instead of continuing down the sensitive curved axis, while keeping the mesh 100% quads.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 345, "end_seconds": 345},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:45, a vertical corner support loop causing pinching is dissolved, a diagonal edge is drawn across the corner vertex with Join, and the remaining dangling edge is dissolved -- redirecting the loop away from the curved axis while keeping the mesh in quads.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the support loop running parallel to the surface's curvature through the corner",
+    "reason": "A support loop continuing parallel to curvature through a corner inherits the same pinching problem as any other curvature-parallel edge; rerouting it perpendicular to the curve at the corner avoids that while preserving all-quad topology.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "'Topology stopper': to prevent a local support loop (added for one detail, e.g. a cutout) from propagating all the way around a cylindrical/curved surface when a new Ctrl+R loop cut is added later, deliberately insert a 3-way or 5-way vertex junction (non-quad pole) at a chosen point near the detail -- a subsequent loop cut will stop at that junction instead of wrapping the whole circumference, keeping the extra density localized to just the region that needs it.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 425, "end_seconds": 425},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 7:05, a deliberate non-quad junction is created near the center symmetry line specifically so a later Ctrl+R loop cut stops there instead of wrapping around the entire cylinder circumference.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Letting a local support loop propagate all the way around the curved surface",
+    "reason": "An unstopped loop cut travels around the entire circumference of a cylindrical surface, adding density in clean open areas where it isn't needed and can introduce its own shading artifacts; a deliberate pole junction confines the density to the detail region.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To automatically resolve an irregular mix of triangles and n-gons left by a diagonal/angled knife cut across an otherwise-regular quad grid: add a Subdivision Surface modifier at level 1 and Apply it -- Catmull-Clark subdivision rules convert any combination of n-gons and triangles into pure quad topology at level 1, giving a clean quad base to continue detailing from instead of manually dissolving/rebuilding the irregular faces by hand.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 915, "end_seconds": 915},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 15:15, a flat grid with irregular triangles/n-gons from a diagonal knife cut is converted entirely into quads by adding a level-1 Subdivision Surface modifier and applying it.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually dissolving and rebuilding the irregular triangle/n-gon faces left by an angled cut",
+    "reason": "Manual cleanup of an arbitrary diagonal cut's resulting n-gons/triangles is tedious; applying one level of Catmull-Clark subdivision resolves it into quads automatically as a byproduct of the subdivision algorithm's own rules.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "After applying a Subdivision Surface level to bake in new geometry (e.g. to auto-quad an angled cut), edges that were meant to stay perfectly straight/planar come out slightly bowed from the smoothing -- select the row of vertices along that edge and scale to zero along the relevant axis (S, axis key, 0) to instantly flatten it back to a mathematically straight line, before using Vertex Slide to space the row evenly for uniform chamfer/bevel borders.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 1035, "end_seconds": 1035},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 17:15, edges defining an angled inset boundary appear bowed/wavy after applying subdivision; selecting the row and scaling to zero on the relevant axis instantly flattens them to a straight line.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually moving individual vertices to straighten a bowed edge one at a time",
+    "reason": "Manually straightening each vertex individually is slow and error-prone; scaling the whole selected row to zero on the perpendicular axis flattens the entire edge in one operation.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Rather than carving complex panel gaps/rims directly into a single continuous curved mesh (which forces high local topology density and pinching around every corner), separate the panel into its own object (Separate > By Loose Parts), then add a Solidify modifier ABOVE the Subdivision Surface modifier on that separated piece, with Solidify's Edge Data > Crease Inner/Outer/Rim all set to 1.0 -- this generates clean panel thickness and crisp seam edges procedurally without disturbing the parent mesh's own curvature or topology.",
+    "source": {"source_id": "cbXWWE8-X0M", "start_seconds": 1335, "end_seconds": 1335},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 22:15, a cutout is separated into its own object via By Loose Parts, then given a Solidify modifier above Subdivision Surface with Crease Inner/Outer/Rim set to 1.0, producing clean panel thickness and crisp seams without touching the parent mesh.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Carving the panel gap and its thickness directly into the single continuous parent mesh",
+    "reason": "Carving complex panel geometry into one continuous mesh forces dense supporting topology around every corner of the cut, risking pinching; separating the panel and using Solidify+Crease generates the thickness and crisp seams procedurally on an isolated, simpler piece instead.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

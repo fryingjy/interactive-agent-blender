@@ -1,0 +1,38 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Before applying a Catmull-Clark Subdivision Surface modifier, select the edges that should stay sharp or flat and use Shift+E (Edge Crease) to drag a partial or full crease into them -- this preserves hard/flat regions without needing separate bevel geometry, and can be tuned continuously rather than being all-or-nothing.",
+    "source": {"source_id": "SpYVIKsb294", "start_seconds": 257, "end_seconds": 294},
+    "confidence": 0.8,
+    "supporting_evidence": "Direct quote (4:17-4:51): \"before we actually apply the subdivision surface what we're going to do and this is the part that i didn't know for the longest time... we're going to select the edges that we want to keep sharp um and then i'm going to hit shift e and we can drag and sharpen these edges and they don't even need to be all the way sharp or we can make them totally flat\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For a 3D-print target, chose Subdivision Surface viewport/render level 4 over level 5 -- level 5 looked marginally smoother but produced an unnecessarily large vertex count, while level 4 was judged 'still super smooth' and a more realistic vertex count for slicing/printing.",
+    "source": {"source_id": "SpYVIKsb294", "start_seconds": 326, "end_seconds": 381},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (5:26-6:16): \"i'm going to crank this up let's do five let's do five ooh that is smooth... yeah that still might be a lot of vertices all right all right all right all right lesson learn lesson learn let's go back to four still super smooth... now we're at a realistic number of vertices for 3d printing\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Subdivision level 5",
+    "reason": "Level 5 added vertex count with no meaningful visible smoothness gain over level 4 for a physical print, and higher vertex counts risk slicer/printer problems.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "VISUAL_CUE",
+    "claim": "The 'On Cage' display option in Edit Mode snaps the visible edit-mode wireframe onto the modifier's predicted subdivided surface instead of showing the pre-subdivision control cage -- toggling it is a quick way to check where edits will actually land on the smoothed result before applying the modifier.",
+    "source": {"source_id": "SpYVIKsb294", "start_seconds": 203, "end_seconds": 225},
+    "confidence": 0.75,
+    "supporting_evidence": "Direct quote (3:23-3:39): \"if you go into tab into edit mode uh you can click this on cage this is going to snap your current faces onto the predicted subdivided face\". Visually confirmed (2026-08-14) via Gemini video understanding on the actual video at this timestamp: before toggling, the edit-mode wireframe shows as a separate low-poly cage surrounding the smoothed surface; after toggling On Cage, the wireframe/vertices visibly snap directly onto the contoured subdivided surface; toggling off reverts to the separate outer cage -- matches the claim precisely, upgraded from the earlier caveat about imprecise narration.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

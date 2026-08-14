@@ -405,3 +405,85 @@ system, not two separate projects bolted together.
 Current implementation and held-out contamination status are audited in
 `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` and
 `knowledge/foundation/benchmark_readiness.json`.
+
+## Update (2026-08-14, continued): curriculum processing in progress
+
+Per direct user instruction ("do EVERY video"), working through all 20 entries in
+`docs/VIDEO_LEARNING_CURRICULUM.md`, mapped to real video IDs in
+`runs/2026-08-14_video-curriculum/video_manifest.json`. Each processed video gets its own
+`runs/2026-08-14_video-study-<slug>/` directory with `transcript_full_text.txt` (or
+`transcript_raw.json` + `transcript_consolidated.txt` for the first, longest video) and
+`knowledge_items.json` (real, cited `KnowledgeItem` entries per `knowledge_engine/video_knowledge.py`,
+validated against the schema before being considered done).
+
+**9 of 20 entries processed as of this session** (entries 2, 3, 4, 7, 8, 9, 11, 12, 14 -- 29
+knowledge items total across those 9, all schema-validated, all status CAPTURED / none yet
+transfer-tested). Entries 3 (JL Mussi), 9 (Ian McGlasham SubD), 11 (Blender Bros SubD Hard Surface),
+and 14 (RileyB3D advanced hard surface / laundry bottle) were the highest-density sources so far --
+McGlasham's inset-and-fill boolean-replacement procedure and RileyB3D's lattice-blockout /
+vertex-count-matched-boolean / shrinkwrap-reconform / topology-redirect sequence are the strongest
+candidates for an eventual transfer test on a new build. Two videos (Grant Abbitt interface basics,
+CG Cookie workspace-setup part 1) were confirmed genuinely low-density per the curriculum's own
+"avoid overweighting UI-introduction videos" rule and were extracted honestly thin (1 item each)
+rather than padded.
+
+**Update (same session, continued): 15 of 20 entries now processed, 63 knowledge items total.**
+Per direct user instruction ("keep working but also make sure you are actually learning, and that
+goes for the ones already 'captured'"), added a genuine cross-video synthesis pass
+(`runs/2026-08-14_video-curriculum/synthesis.md`) rather than only accumulating more isolated
+CAPTURED items -- reconciled an apparent contradiction between two sources on boolean workflows,
+traced a 5-source convergence on SubD pinching back to its root cause (uneven initial-blockout
+quads, per Elementza), resolved a genuine tension between two sources on when topology redirection
+is/isn't appropriate, and found two concrete untested hypotheses for the mug build's two unresolved
+failures (Screw-modifier revolve instead of baked segment count; Shrinkwrap+vertex-group for
+handle attachment -- see memory `video-curriculum-mug-diagnosis.md`). One entry (16, original pick)
+was blocked -- no caption track available -- and was swapped for a different video by the same
+creator that does have captions, logged honestly in the manifest rather than skipped silently.
+
+**Update (same session, final): all 17 numbered curriculum entries now processed** (entry 1's
+modeling portion covered; its texturing/lighting/compositing portion deliberately left unprocessed,
+per the curriculum's own "lower priority: rendering tricks" guidance -- see the manifest note on
+entry 1). 76 knowledge items total across 17 processed videos. Entries 18-20 remain deferred
+categories (not single videos) pending specific selection.
+
+Mid-session, the user pushed back hard on transcript-only extraction ("you are currently only
+observing transcripts and not watching the videos") -- correctly, since several `VISUAL_CUE`-type
+claims were being inferred from spoken description rather than actually seen. Investigated real
+alternatives: yt-dlp direct download hit YouTube's bot-detection wall (declined to bypass via cookie
+extraction, per the standing rule against defeating anti-bot measures); the sandboxed in-app Browser
+tool initially rendered a black frame for the live video canvas (a real rendering limitation, not a
+block) but was later confirmed to render live video correctly once actually displayed. One item
+(McGlasham's loop-straightening `VISUAL_CUE`, in `mcglasham-subd`) was visually re-confirmed against
+a real frame as a proof of concept. Decision (mine, since the user delegated it): apply visual
+spot-checks forward for genuinely appearance-based claims, not a blanket backfill across the 66
+items already captured before that point -- most of those are grounded in direct quotes about
+spoken reasoning/decisions, which the transcript is solid primary evidence for.
+
+## Update (same session, continued): Gemini video-understanding wired up, extended beyond the 20-video curriculum
+
+User provided a Gemini API key (stored in `.env`, gitignored). Confirmed working via
+`models/gemini-3.7-flash-video-understanding-eap`, which genuinely watches a YouTube video rather
+than inferring from title/transcript -- validated by cross-checking its description of a specific
+timestamp against an actual browser frame grabbed at that same timestamp; they matched.
+
+Used this to backfill visual grounding on the 3 `VISUAL_CUE`-typed items that existed before this
+point (all 3 confirmed accurate; the `subd-3dprint` "On Cage" item's confidence rose the most since
+its source quote was garbled auto-captioning that the actual on-screen behavior fully vindicated).
+
+Then extended past the original 20-entry curriculum: found and processed 5 new videos spanning a
+genuine beginner-to-pro progression (CG Boost tricks -> CG VOICE mistake-correction -> Blender Bros
+curvy/organic -> The Gnomon Workshop professional training -> JL Mussi advanced topology), each
+analyzed by having Gemini watch the full video and report specific timestamped, visually-grounded
+moments (mesh state, modifier stack, exact settings), not narration paraphrase. Manifest:
+`runs/2026-08-14_video-curriculum/extended_videos_manifest.json`. This produced markedly denser,
+more technically precise items than transcript-only extraction did -- e.g. exact modifier stack
+order and settings values that a transcript alone never states clearly.
+
+**106 knowledge items now captured across 22 processed videos total.** None have a recorded transfer
+test yet -- per the project's own lifecycle they remain CAPTURED, not TRANSFER_VALIDATED, regardless
+of cross-source reinforcement; that requires trying them on an unseen build, which is blocked while
+modeling work is paused per direct user instruction. Flagged to the user as an open decision rather
+than resumed unilaterally. Full cross-video synthesis (contradictions reconciled, convergent
+principles traced to root causes, 2 concrete untested hypotheses for the mug build's unresolved
+failures) is in `runs/2026-08-14_video-curriculum/synthesis.md` -- not yet updated with the 5
+extended videos' findings.

@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "When laying out topology (splitting an n-gon into quads, planning corner counts), keep the number of edges/corners around a region a multiple of four -- it is what makes the region easy to connect back into clean quads.",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 129, "end_seconds": 140},
+    "confidence": 0.75,
+    "supporting_evidence": "Direct quote (~2:09): \"it's important to have um multiplication of four edges and Corners because it's easy to connect them to a quad and I'll show you this in a minute\" -- demonstrated immediately after on a plane split into 5 verts / 4 edges via the knife tool.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "On curved surfaces, quads/n-gons must stay roughly even in size and evenly spread; uneven sizing (e.g. sliding one edge loop closer to its neighbor) visibly distorts shading under Auto Smooth / SubD, producing pinching or flat patches. On genuinely flat surfaces this doesn't matter -- large n-gons are fine there and shading stays clean.",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 82, "end_seconds": 175},
+    "confidence": 0.75,
+    "supporting_evidence": "Direct quotes: \"if I'm going to move any of this uh of these edges even if I'm going to slide it slightly you will see we're going to have a distortion and shading okay and that's the reason why you want to maintain uh even size of your topology especially on uh curved surfaces it's not that important on flat surfaces\" (~3:00-3:52); confirmed later by disabling the modifier-in-edit-mode wireframe preview and showing the flat surface tolerates a massive n-gon with clean shading while the curved surface does not.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Support-loop topology should flow around/parallel to the feature it surrounds (a corner, bevel, or bend), not diverge across it -- when loops converge/diverge in the wrong direction at a corner, the SubD highlight running along that surface reads as an incorrect flat patch instead of a clean continuous bevel.",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 177, "end_seconds": 218},
+    "confidence": 0.7,
+    "supporting_evidence": "Direct quote (~6:45-8:16): \"here we have a bit of a problem you have this flat surface the reason why the shading is flat here is because the topology flow is just simply incorrect if I'm going to drop two Loops here you can see that these two Loops are actually diverging here in this corner... what we want we want topology to follow this Edge all around the mesh so this bevel is going to be really nice and clean\"",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To redirect topology flow around a shape/detail: select all the faces immediately around it, then Inset (I, without confirming an offset amount -- letting it create a full surrounding loop) rather than manually adding individual loop cuts one at a time -- this single operation creates a consistent boundary loop that redirects the surrounding flow to follow the shape.",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 210, "end_seconds": 218},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quote (~8:06-8:16): \"the way to achieve this is really easy all you need to do is Select everything on this plane here so we're going to select all these polygons and then we going to insert it so I'm going to press R to insert it and create a loop around the mesh\" (narrator says 'R' but describes the Inset operation/shortcut 'I'; treating this as an inset-based redirect, matching the demonstrated screen action).",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Avoid terminating a loop by creating a 'diamond' quad (three sharp/acute corners and one very wide corner) -- always orient the terminating quad so its corners face outward/evenly instead, and prefer transitioning polygon size gradually (small to medium to large across a few rows) rather than jumping directly from a very small polygon to a large neighboring one, since abrupt size jumps are more likely to deform badly on curved surfaces.",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 250, "end_seconds": 296},
+    "confidence": 0.65,
+    "supporting_evidence": "Direct quotes: \"small larger larger and then regular size\" (~9:44, describing easing polygon size); \"you never want to create situation like that... create a diamond... he has three angles that are sharp and one is very wide you're the one that you always wanted to have all the corners facing outside\" (~11:02-11:22)",
+    "status": "CAPTURED",
+    "rejected_alternative": "A terminating quad with 3 sharp corners + 1 wide corner (a 'diamond'), or an abrupt jump from very small to large polygon size",
+    "reason": "Diamond-shaped termination quads and abrupt size jumps are both more prone to visible pinching/distortion once the mesh is subdivided or deformed, versus gradual size transitions and evenly-angled termination quads.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Recommends beginners start hard-surface modeling with a Boolean + n-gon workflow rather than SubD, reserving SubD for once it's actually needed -- SubD requires simultaneously thinking creatively and logically/puzzle-like about topology flow, and is dramatically slower to execute (the creator's own example: a model built in ~9 minutes with Boolean/n-gon workflow took ~40 minutes to build correctly in SubD).",
+    "source": {"source_id": "xUEs7cszlb0", "start_seconds": 21, "end_seconds": 35},
+    "confidence": 0.6,
+    "supporting_evidence": "Direct quote (~0:21-0:35, and echoed near the end): \"this is exactly why we recommend Boolean and Eng gun workflow for beginners because it's much more intuitive much more fun much quicker\"; \"I have models which I created in 9 minutes and with subd the same model would take me 40 minutes so it's several times longer\"",
+    "status": "CAPTURED",
+    "rejected_alternative": "Starting beginners directly on a full SubD workflow",
+    "reason": "SubD is more abstract, requires more patience/practice, and is dramatically slower to execute than Boolean/n-gon workflow, so front-loading it can be discouraging before fundamentals are solid -- though the same instructor treats SubD as necessary once genuine production topology control is required.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
