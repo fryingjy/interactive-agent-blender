@@ -1,0 +1,86 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Instead of a destructive Ctrl+B bevel applied directly to raw geometry, select the silhouette edges that need a chamfer and set their Mean Bevel Weight (Item/Transform sidebar) to 1.0, then add a Bevel modifier with Limit Method set to 'Weight' -- this keeps the base mesh lightweight and lets bevel width/segment count be tuned at any later point non-destructively instead of being committed to at modeling time.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 315, "end_seconds": 335},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 5:15-5:35, the four vertical corner edges of a body box are set to Mean Bevel Weight 1.0, and a Bevel modifier with Limit Method 'Weight' drives the chamfer non-destructively.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Applying a direct Ctrl+B bevel to the raw mesh",
+    "reason": "A direct bevel commits to a specific width/segment count immediately and destructively; a weight-driven Bevel modifier keeps that decision editable for the rest of the build.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A boolean-cut seam has infinitely sharp, razor-thin edges by default. Placing a Bevel modifier AFTER the Boolean modifier in the stack (so it evaluates on the boolean's own resulting intersection edges) automatically chamfers the newly-generated seam into a rounded, manufactured-looking gap, without needing to manually select or loop-cut the boolean's own cut edges afterward.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 480, "end_seconds": 495},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 8:00-8:15, moving the Bevel modifier to evaluate after the Boolean modifier automatically rounds the boolean's own new intersection edges into a manufactured-looking seam.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually selecting and edge-loop-cutting the boolean's resulting seam edges to bevel them by hand",
+    "reason": "A Bevel modifier positioned after Boolean in the stack automatically picks up whatever edges the boolean generates, without needing to manually identify and select them after the fact.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A flat circular cap face (a dial, knob, or lens-like end) visibly pinches/warps radially toward its center under Subdivision Surface, because SubD algorithms struggle with a large n-gon or flat pole. Fix: select the circular face and press I (Inset) twice to create two concentric interior ring loops before subdividing -- this constrains the curvature-rounding effect to the outer border while the newly-isolated center stays flat and distortion-free.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 985, "end_seconds": 1010},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 16:25-16:50, a flat circular cap pinches radially under Subdivision Surface; two concentric insets on the face isolate the flat center from the edge-rounding curvature, eliminating the distortion.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Subdividing the flat circular cap face directly without any inset",
+    "reason": "SubD's rounding effect propagates all the way to a large flat face's center unless a boundary ring (an inset) constrains where the curvature is allowed to act.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The Skin modifier turns a simple chain of extruded vertices (a poly-line, no faces) into solid tubular geometry with per-vertex adjustable thickness (Ctrl+A, 'Skin Resize', to scale the envelope radius at each point along the chain) -- a way to rapidly generate variable-thickness tubular forms (cables, piping, wiring harnesses, antennas) from a simple vertex path instead of manually extruding and rotating cylinder segments along a curve.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 1815, "end_seconds": 1845},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 30:15-30:45, a single chain of extruded vertices gets a Skin modifier producing blocky tubular geometry, then Ctrl+A (Skin Resize) scales the envelope radius per-vertex before a Subdivision Surface modifier smooths it into a tube.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually extruding and rotating cylinder segments along a curved path",
+    "reason": "Manually building a curved tube segment-by-segment is slower than defining just the centerline path and letting the Skin modifier generate the volume with per-point thickness control.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "At a branching junction in a Skin-modifier chain (e.g. where a limb path meets a body path), the resulting geometry can come out twisted/crumpled because the Skin modifier calculates local orientation relative to whichever vertex it treats as the 'root', which is not always the intended anchor point. Fix: select the intended anchor vertex (e.g. the shoulder/junction point) and click 'Mark Root' in the Skin modifier's panel -- this re-centers the root and immediately straightens the previously twisted geometry.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 1862, "end_seconds": 1878},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 31:02-31:18, twisted/crumpled geometry at a limb-to-torso junction is fixed instantly by selecting the shoulder vertex and clicking Mark Root in the Skin modifier panel.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To diagnose whether a boolean cutter object has inverted (inward-facing) normals -- a common cause of booleans subtracting incorrectly and producing dark lighting artifacts -- enable the 'Face Orientation' viewport overlay (faces render blue if correctly outward-facing, red if inverted), select all faces on the flagged object in Edit Mode, and press Shift+N (Recalculate Normals Outside) to fix them in one step.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 2820, "end_seconds": 2850},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 47:00-47:30, the Face Orientation overlay shows a boolean cutter object rendering red (inverted normals) against the rest of the model's blue; selecting all and pressing Shift+N recalculates the normals outward and the object turns blue.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A bevel applied across a boolean cutout's corner can leave dark diagonal shading streaks across otherwise-flat surrounding panels, because the boolean's messy underlying triangulation twists vertex normals near the beveled boundary. Enabling 'Harden Normals' in the Bevel modifier's Shading settings transfers the true flat-face normal onto the beveled boundary vertices, eliminating the streaks without manual retopology -- a core technique for keeping complex boolean cutouts clean on hard-surface enclosures, panels, and vehicle bodywork.",
+    "source": {"source_id": "vPeeybzxfLI", "start_seconds": 3150, "end_seconds": 3200},
+    "confidence": 0.6,
+    "supporting_evidence": "Gemini video-understanding observation: at 52:30-53:20, a small corner bevel on a boolean vent cutout produces dark diagonal shading streaks across surrounding flat panels; enabling Harden Normals in the Bevel modifier's shading settings makes the streaks vanish instantly.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually retopologizing the beveled boundary to fix the shading streaks",
+    "reason": "Harden Normals fixes the shading artifact by correcting the normal vectors directly, avoiding the much slower path of manually rebuilding topology around every boolean cutout.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
