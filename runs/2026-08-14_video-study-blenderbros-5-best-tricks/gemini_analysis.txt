@@ -1,0 +1,36 @@
+Here are 5 concrete, transferable modeling techniques demonstrated in the video where specific mesh behavior, problem-solving, and visual feedback occur on screen:
+
+---
+
+### 1. 02:30 – 02:46 | Cutting the Cutter to Match Concentric Cylindrical Curvature
+* **What is visible on screen:** A large cylinder has a rectangular notch cut into its rim using a box cutter. The inner back wall of the cut is flat, which looks artificial against the cylinder's rounded contour. The artist unhides the live box cutter wireframe, places a second cylinder scaled to align with the outer rim, and performs a Boolean difference on the *cutter object itself*.
+* **What the artist does & why:** Instead of attempting to model a curved cutter from scratch, he subtracts geometry from the active cutter. The resulting boolean operation updates automatically, carving a curved rear wall that perfectly matches the base cylinder's concentric radius.
+* **Transferability to other objects:** Any time a mechanical housing, rim, or dial needs a recessed pocket, slot, or notch that conforms to an existing circular or cylindrical surface without manually projecting or snapping vertices.
+
+---
+
+### 2. 03:25 – 03:55 | "Stealing" Surface Geometry for Perfectly Matched Panel Lines
+* **What is visible on screen:** An L-shaped hard-surface bracket with rounded fillet transitions along its inner corner. The artist enters Edit Mode, selects the top faces across the corner curve, duplicates them (`Shift + D`), and separates them into a new object (`P` $\rightarrow$ Selection). He then trims the ends using BoxCutter, insets the patch (`I`), deletes the outer border ring, and cuts the resulting shape back into the main block.
+* **What the artist does & why:** Trying to draw a cutter by eye or manually beveling a custom cutter would never align accurately with the compound curve. Stealing the exact surface patch guarantees that the resulting recess and interior panel line mirror the underlying curvature without gap errors or misaligned bevels.
+* **Transferability to other objects:** Essential for creating conformal armor plates, grip cutouts, vents, or panel seams across complex curved surfaces (e.g., sci-fi hulls, vehicle chassis, weapon receivers).
+
+---
+
+### 3. 05:08 – 05:48 | Using MeshMachine `Offset Cut` to Create Buffer Loops on Curved Boolean Seams
+* **What is visible on screen:** A spherical body has a circular cutout. In Edit Mode, attempting a standard edge chamfer (`Ctrl + B`) creates severe geometry collapse and overlapping triangles against adjacent sphere vertices. The artist runs MeshMachine’s `Offset Cut` tool on the boundary edge, which generates an equidistant buffer ring of quads on both sides of the intersection seam, pushing nearby vertices away.
+* **What the artist does & why:** Standard edge bevels collide with adjacent polygon vertices on non-planar surfaces. The offset cut creates dedicated clearance ("buffer topology") around the cut boundary, allowing a clean, artifact-free chamfer/bevel to be applied along the seam.
+* **Transferability to other objects:** Critical whenever joining or cutting curved surfaces (pipes into spheres, angled ports on fuselages) where secondary bevels fail due to dense or uneven vertex spacing.
+
+---
+
+### 4. 07:40 – 08:05 | Isolating Boolean Shading Artifacts by Densing the Cutter's Subdivision
+* **What is visible on screen:** A cylinder cuts through a smooth-shaded UV sphere. On the main sphere, severe shading pinching and long, ugly gradient streaks stretch across the surface because the boolean created massive N-gons spanning multiple poles. The artist re-opens the live cutter cylinder in Edit Mode and adds dozens of horizontal loop cuts (`Ctrl + R`).
+* **What the artist does & why:** When the densely subdivided cutter interacts with the sphere, Blender transfers those extra edge cuts directly onto the boolean boundary wall. This localizes the N-gons into tiny, narrow strips along the rim, eliminating long-distance normal interpolation errors across the sphere's surface without requiring manual retopology.
+* **Transferability to other objects:** Any time a smooth, curved surface (such as a vehicle hood, helmet, or organic hard-surface panel) exhibits shading stretch after a boolean operation.
+
+---
+
+### 5. 09:32 – 10:05 | Live "Reverse Bevel" on Cutters via Normal Flipping
+* **What is visible on screen:** A cube with a cylindrical hole cut through it. The artist enters Edit Mode on the active cutter cylinder, selects the top perimeter, flips the face normals with `Alt + N`, and pulls a standard edge bevel (`Ctrl + B`). In the viewport, the live boolean cut on the cube immediately displays a countersunk, flared chamfer around the rim of the hole.
+* **What the artist does & why:** Standard beveling on a hole after applying a boolean is destructive and breaks future edits. By flipping the normals on the top of the cutter mesh before beveling, the boolean solver interprets the beveled volume in reverse, generating a clean outer chamfer while keeping the modifier stack entirely non-destructive and editable.
+* **Transferability to other objects:** Creating countersunk screw holes, ports, o-ring grooves, and flanged openings across flat or moderately curved panels without destructively applying modifiers.
