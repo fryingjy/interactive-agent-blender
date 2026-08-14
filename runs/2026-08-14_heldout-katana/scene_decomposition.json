@@ -1,0 +1,79 @@
+{
+  "object_name": "stylized katana + saya + tsuba",
+  "components": [
+    {
+      "name": "blade",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "curved, tapered profile-authored blade, one connected cage"
+    },
+    {
+      "name": "tsuba",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "ornamental guard disc with scalloped silhouette, center aperture matches blade cross-section"
+    },
+    {
+      "name": "tsuka",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "wrapped/ribbed cylindrical grip"
+    },
+    {
+      "name": "saya",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "curved tapered scabbard, open at one end, houses the blade when sheathed"
+    },
+    {
+      "name": "habaki",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "small collar visible between blade root and tsuba in the reference"
+    },
+    {
+      "name": "kashira",
+      "role": "tertiary",
+      "manufacture": "cosmetic",
+      "separately_manufactured": true,
+      "notes": "grip end cap, small detail visible in the unsheathed sub-view"
+    }
+  ],
+  "relationships": [
+    {
+      "from_component": "blade",
+      "to_component": "habaki",
+      "type": "transitions_into",
+      "notes": "blade root meets the collar"
+    },
+    {
+      "from_component": "habaki",
+      "to_component": "tsuba",
+      "type": "rests_on",
+      "notes": "collar seats against the guard"
+    },
+    {
+      "from_component": "tsuba",
+      "to_component": "tsuka",
+      "type": "transitions_into",
+      "notes": "guard meets the grip"
+    },
+    {
+      "from_component": "tsuka",
+      "to_component": "kashira",
+      "type": "transitions_into",
+      "notes": "grip ends in the cap"
+    },
+    {
+      "from_component": "blade",
+      "to_component": "saya",
+      "type": "rests_on",
+      "notes": "sheathed state -- blade slides into the scabbard, not fused"
+    }
+  ]
+}

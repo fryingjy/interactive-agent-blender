@@ -186,6 +186,36 @@ extension of the current ingester. CloudGlue's `describe_video` narrows this gap
 does not replace `video_ingest.py`'s own local-file, provenance-tracked path, and does not by itself
 implement the Blender-specific action recognition or knowledge-schema promotion this project needs.
 
+**Update (2026-08-14): CloudGlue's credits ran out mid-session (`describe_video` returned
+"Insufficient credits on account for this operation. This operation requires 196 credits."`,
+confirmed a real billing limit and not a connection break by immediately re-succeeding on the free
+`list_collections` call). Rather than wait, the observed CloudGlue output *schema* --
+`## File`/`## Title`/`## Summary`/`## Scenes` with `### Scene [MM:SS - MM:SS]` blocks and timestamped
+`**Speech:**` lines, chunked in ~20-second windows -- was reverse-engineered as a local module,
+`knowledge_engine/ingest/scene_document.py`, built entirely on this project's own already-existing,
+already-approved-roots-gated `video_ingest.py` (no new downloader, no bypass of the YouTube bot-check
+that blocked a direct scrape attempt earlier this session).**
+
+`build_scene_document()` buckets local frame extraction + parsed/transcribed speech into the same
+scene-window shape, sampling multiple frames per scene (not just one at the window boundary) so a
+reviewer has real intra-scene visual coverage. Critically, it does **not** claim CloudGlue's
+proprietary visual captioning: each scene's `visual_description` and the document's overall
+`summary` are left as an explicit `UNFILLED` placeholder naming the exact frame files to inspect,
+filled in only by `fill_visual_descriptions()` -- which is meant to be called by a vision-capable
+reviewer (Claude, reading the frame PNGs directly via `Read`) actually looking at the frames, not by
+any automated local model, since this project has no local vision-captioning backend. This was
+proven end-to-end, not just structurally: run against the existing project-owned fixture
+(`runs/2026-08-10_video-ingestion/project_owned_modeling_lesson.mp4`), the extracted frames were read
+directly and described from what was actually visible (colored instructional cards reading "STEP 1 /
+Inspect the base cage", "STEP 2 / Inspect the evaluated surface", "STEP 3 / Compare front, side, and
+top"), matching the parsed speech exactly, and persisted back through `fill_visual_descriptions`.
+Tests: `tests/test_ingest.py` (3 tests, approved-roots rejection, schema/frame-coverage shape,
+fill-and-persist round trip). The real limitation stands unchanged from the paragraph above: this
+reproduces CloudGlue's *orchestration*, not a replacement for its trained visual-understanding model,
+and still has no legal way to acquire an actual external YouTube tutorial file -- it requires the
+user to supply a local video (screen recording, or a file downloaded through means outside this
+project's own tooling) before it can be pointed at real external curriculum content.
+
 Implemented foundation: `knowledge_engine/ingest/video_ingest.py` accepts only explicitly
 approved local roots, probes real video/audio streams through PyAV, parses local VTT/SRT
 captions, and extracts timestamped frames. `runs/2026-08-10_video-ingestion/` exercises the full
