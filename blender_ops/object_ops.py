@@ -70,14 +70,38 @@ def add_modifier(name, modifier_type, modifier_name=None):
 
 
 def set_modifier_parameter(name, modifier_name, parameter, value):
+    """CORRECTION (found live, setting up a Shrinkwrap's `target` for the
+    handle-attachment transfer test): a modifier property that points at
+    another object (Shrinkwrap.target, Mirror.mirror_object, Boolean.object,
+    Array.offset_object, ...) is a bpy.types.Object reference, not a string --
+    `setattr(mod, 'target', 'SomeObjectName')` raises `expected a Object type,
+    not str`. Every other typed op in this module takes plain object *names*,
+    so resolving a string value against bpy.data.objects here (only for
+    properties whose RNA type is actually POINTER-to-Object) keeps that same
+    convention instead of forcing callers to know this one property behaves
+    differently."""
     obj = bpy.data.objects[name]
     mod = obj.modifiers.get(modifier_name)
     if mod is None:
         raise ValueError(f"no modifier '{modifier_name}' on '{name}' -- current modifiers: {[m.name for m in obj.modifiers]}")
     if not hasattr(mod, parameter):
         raise ValueError(f"modifier '{modifier_name}' ({mod.type}) has no parameter '{parameter}'")
+    prop_rna = mod.bl_rna.properties.get(parameter)
+    if (
+        isinstance(value, str)
+        and prop_rna is not None
+        and prop_rna.type == "POINTER"
+        and getattr(prop_rna.fixed_type, "identifier", None) == "Object"
+    ):
+        target_obj = bpy.data.objects.get(value)
+        if target_obj is None:
+            raise ValueError(f"'{parameter}' expects an object, but '{value}' does not exist in bpy.data.objects")
+        value = target_obj
     setattr(mod, parameter, value)
-    return {"modifier_name": modifier_name, "parameter": parameter, "value": getattr(mod, parameter)}
+    result_value = getattr(mod, parameter)
+    if isinstance(result_value, bpy.types.Object):
+        result_value = result_value.name
+    return {"modifier_name": modifier_name, "parameter": parameter, "value": result_value}
 
 
 def set_shading(name, smooth=True):

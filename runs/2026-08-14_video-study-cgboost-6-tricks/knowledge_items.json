@@ -55,7 +55,7 @@
     "supporting_evidence": "Gemini video-understanding observation: at 7:08-7:38, a thruster port's outer flange vertices are grouped and a Shrinkwrap modifier restricted to that group (targeting the hull, placed above SubD) conforms only the flange to the hull's compound curve.",
     "status": "CAPTURED",
     "rejected_alternative": "Boolean-cutting the detail into the hull's own SubD topology",
-    "reason": "Booleaning a detail directly into a curved SubD hull tends to destroy clean shading on the hull; keeping the detail as a separate, vertex-group-restricted shrinkwrapped mesh avoids touching the hull's own topology at all.",
+    "reason": "Booleaning a detail directly into a curved SubD hull tends to destroy clean shading on the hull; keeping the detail as a separate, vertex-group-restricted shrinkwrapped mesh avoids touching the hull's own topology at all. CORRECTION (2026-08-14, live user demonstration, see runs/2026-08-14_shrinkwrap-vs-join-handle-correction/): this scope is real and narrow -- it produces two mesh objects with conforming contact points, NOT single-mesh connected topology. Attempted as the fix for the mug build's handle-attachment problem and directly corrected by the user: a structural part meant to read as fused to the body (a handle, not a bolt/vent/decal) needs join+bridge, not Shrinkwrap, no matter how cleanly the contact points conform. Confirmed live: the user built the same handle by joining a bisected Torus into the body Cylinder, producing one continuous mesh (368 verts, 0 non-manifold edges, 0 degenerate faces) -- not two shrinkwrapped objects.",
     "captured_while_building": null,
     "transfer_tests": []
   },
@@ -67,7 +67,7 @@
     "supporting_evidence": "Gemini video-understanding observation: at 8:00-8:53, a shrinkwrapped flange still shows a hard shadow seam under lighting; a Data Transfer modifier copying interpolated custom normals from the hull, restricted to the flange vertex group, removes the seam entirely.",
     "status": "CAPTURED",
     "rejected_alternative": "Leaving the shrinkwrapped detail with its own independent normals",
-    "reason": "Matching vertex position alone isn't enough for seamless shading; the normals themselves must also be transferred/interpolated from the target surface to eliminate the visible boundary.",
+    "reason": "Matching vertex position alone isn't enough for seamless shading; the normals themselves must also be transferred/interpolated from the target surface to eliminate the visible boundary. Same scope correction as the previous item applies: this makes a separate object's shading READ as continuous, it does not make it structurally one mesh -- not a substitute for join+bridge on parts that need genuine connected topology.",
     "captured_while_building": null,
     "transfer_tests": []
   }
