@@ -150,8 +150,20 @@ building on top of it if this thread is pursued: `blender_ui_understanding.py` (
 specific UI actions, not general video description), `speech_action_alignment.py` (tying a spoken
 timestamp to a specific modeling action rather than a general video moment), and everything from
 `lesson_extractor.py` onward (mistake/technique extraction into this project's own knowledge
-schemas). No video has actually been analyzed through this connector yet as of this note -- connected
-and tool-tested, not yet applied to a real Blender tutorial.
+schemas). **Update (2026-08-13): now genuinely applied.** `describe_video` against a real, verified
+YouTube URL (found via `WebSearch`, not guessed) -- "The MOST IMPORTANT Hard Surface Modeling Tip -
+Edge Creasing" -- returned a full, accurate, timestamped scene-by-scene transcript with real
+technical argument structure, not a generic summary. Cross-checked against this project's own
+already-validated `edge_crease.md` findings (not accepted blindly, per Section "Multiple-video
+triangulation" logic even with only one video): the source argues against crease for hard-surface
+work, which on inspection is a real, additive mechanistic finding (a fully-sharp, zero-radius edge
+lacks the specular highlight a physical Bevel radius gives) rather than a contradiction of the
+tested crease-with-support-stays-flat result -- recorded as `SOURCE OBSERVATION` in
+`edge_crease.md`'s own "Video source" section, explicitly not promoted past that layer, with one
+concrete untested claim (crease values 0.7-1.0 reading identically) flagged for a real experiment
+before use. This is the first real instance of the `video observation -> hypothesis -> [pending]
+experiment -> transfer -> runtime use` loop Section 61 below describes, still short of the
+experiment/transfer/runtime steps.
 
 A second connector (`mcp__Blender__*`, distinct from this project's own `blender_ops/` code and the
 existing `mcp__blender__*`/`mcp__modeler__*` tools) is also connected: `search_manual_docs` /

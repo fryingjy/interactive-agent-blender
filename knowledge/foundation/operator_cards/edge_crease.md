@@ -113,6 +113,41 @@ existing in the stack is not evidence it's doing anything; check the actual weig
 count, not just modifier presence, matching this project's own `hard_surface_shading_audit()`
 discipline.
 
+## Video source (2026-08-13, via CloudGlue): a mechanistic "why" for the crease-vs-Bevel heuristic
+
+`SOURCE OBSERVATION`, not yet experimentally verified -- keep separate from the tested findings
+above per `docs/RESEARCH_ROADMAP.md`'s four knowledge layers. "The MOST IMPORTANT Hard Surface
+Modeling Tip - Edge Creasing" (youtube.com/watch?v=3sXbUC7l70w, retrieved and comprehended via the
+CloudGlue MCP connector, full scene-by-scene transcript with timestamps) argues against using crease
+for hard-surface work, on two claims:
+
+1. **A crease value between roughly 0.7 and 1.0 produces visually identical results** ("0.7, 0.71,
+   0.72, 73, all the way up until 1, it's all the same") -- a specific, testable claim this card's
+   own "what this does not establish" section already flagged as untested (only full crease=1.0 has
+   been tried here). Not yet reproduced.
+2. **A mathematically sharp edge (crease or otherwise zero-radius) reads less realistic under smooth
+   shading than a small real Bevel radius**, because a true zero-width edge cannot catch the subtle
+   specular highlight a physical chamfer does -- demonstrated by comparing a 2-level-SubD creased
+   cube (looks flat/synthetic, described in the video as "Minecraft"-like) against the same cube with
+   a small Bevel instead (reads as a realistic manufactured edge).
+
+**This is not a contradiction of the findings above -- it's a missing mechanistic reason, and it
+refines rather than overturns the existing crease-vs-Bevel heuristic.** Claim 2 is not really about
+crease as a mechanism; it's that *any* fully-sharp (value-1.0) edge, however produced, lacks a
+highlight a nonzero-radius chamfer has. The battle axe's crease-only choice is for a stylized asset
+where a fully-sharp read matches the reference's own intended look -- claim 2 would predict exactly
+this same "flat, no micro-highlight" character there, and the reference shows that character, so this
+is consistent, not contradictory. It sharpens the existing heuristic's "why": precision mechanical
+firearms (`ap15.blend`, `ak47.blend`) use real Bevel not merely by convention but because a
+manufactured edge visibly needs the highlight a physical radius provides; stylized weapons use crease
+because the reference calls for a flatter, non-highlighted read where that highlight would look wrong.
+
+Claim 1 (0.7-1.0 crease values behaving identically) is a concrete, cheap experiment to run before
+trusting it -- not yet done. Neither claim changes this card's own tested conclusion that crease with
+adequate support produces a genuinely flat, non-pillowed result; they add a *when to prefer Bevel over
+crease even though crease "works"* consideration (the reference wants a visible highlight) that this
+card did not previously have a mechanistic reason for.
+
 ## What this does not establish
 
 - Only tested on a rectangular box fixture within this same lab (a within-lab transfer, box-with-
