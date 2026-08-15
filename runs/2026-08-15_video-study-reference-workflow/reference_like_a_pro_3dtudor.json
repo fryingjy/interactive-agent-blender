@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-15T19:31:29.618908+00:00",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=QHUBIC6XD1Y",
+    "title": "Blender References Not Working | How To Set Up References Tutorial",
+    "author": "3DTudor"
+  },
+  "access": {
+    "method": "Gemini public YouTube URL video input",
+    "model": "gemini-3.6-flash",
+    "archived_source_video": false,
+    "analysis_status": "PARSED_JSON"
+  },
+  "knowledge_status": "CAPTURED",
+  "promotion_warning": "Requires external corroboration, controlled reproduction, and different-target transfer.",
+  "analysis": {
+    "video_identity": {
+      "title": "Blender 2.8 & PureRef Best Way to Use References in Blender",
+      "creator": "3D Tudor",
+      "subject": "Reference Image Setup in Blender 2.8 and PureRef Workflow for 3D Modeling"
+    },
+    "access_observation": {
+      "audio_used": true,
+      "visuals_used": true
+    },
+    "episodes": [
+      {
+        "start": "00:00",
+        "end": "00:53",
+        "observed_visual_fact": "The instructor opens Blender 2.8, deletes default scene objects, creates a cube, and uses Shift+A > Image > Reference while in Perspective View. The imported reference image plane aligns diagonally to the current viewport camera angle rather than an orthographic axis.",
+        "instructor_claim": "Demonstrates the common mistake of importing reference images in perspective view, causing misaligned reference planes when rotating around objects.",
+        "interpretation": "Importing a reference image plane while in standard perspective view locks its rotation vector to the active view camera orientation, rendering it unsuitable for orthographic tracing.",
+        "hypothesis": "Blender's default behavior for 'Image as Reference' uses the view angle matrix at the time of creation to establish object rotation.",
+        "reference_workflow_stage": "Initial Setup / Reference Import",
+        "concrete_action": "Press Shift+A -> Image -> Reference inside Perspective View.",
+        "reason": "Illustrate a common alignment error during reference setup in Blender.",
+        "failure_or_warning": "Importing reference planes in 3D perspective view creates an arbitrary angle aligned to the active viewport, causing misalignment during modeling.",
+        "transferable_principle": "Avoid importing reference cards in free perspective view when orthographic alignment is required."
+      },
+      {
+        "start": "00:53",
+        "end": "02:22",
+        "observed_visual_fact": "The instructor switches to Front Orthographic view (Numpad 1), imports the reference image plane, scales it, duplicates it with Shift+D, rotates it 90 degrees on the Z-axis (R Z 90), and toggles Wireframe mode (Z) to show cross-plane reference modeling around a 3D primitive.",
+        "instructor_claim": "Pressing 1 on the numpad puts you in front view straight on; importing reference here aligns it perfectly. Duplicating and rotating 90 degrees allows viewing references from all sides in wireframe mode.",
+        "interpretation": "Aligning reference cards strictly to principal orthographic axes enables accurate multi-view bounding box matching when working in wireframe/x-ray modes.",
+        "hypothesis": "A dual-card orthographic setup inside Blender improves proportion fidelity during initial blockout modeling.",
+        "reference_workflow_stage": "Orthographic Setup & Spatial Alignment",
+        "concrete_action": "Press Numpad 1, press Shift+A -> Image -> Reference, press Shift+D, press R Z 90, press Z to switch to Wireframe mode.",
+        "reason": "Create an accurate orthographic cross-reference card setup within the 3D viewport.",
+        "failure_or_warning": "None.",
+        "transferable_principle": "Always enter a locked orthographic view before importing reference image planes intended for direct 3D tracing."
+      },
+      {
+        "start": "02:22",
+        "end": "05:02",
+        "observed_visual_fact": "The instructor demonstrates PureRef software. He resizes the canvas, copies an image from Photoshop using Ctrl+C and pastes it into PureRef using Ctrl+V, toggles 'Always-on-Top' mode via Ctrl+Shift+A, crops an image using C + Left Click Drag, flips images using Alt+Shift+H and Alt+Shift+V, and opens the keybinding settings window.",
+        "instructor_claim": "PureRef is ideal for managing multiple reference images outside Blender, allowing always-on-top overlays, copy-pasting from Photoshop, instant cropping with C, and horizontal/vertical flipping.",
+        "interpretation": "Using an external floating canvas tool decouples project moodboards from 3D scene files, reducing viewport clutter and scene performance overhead.",
+        "hypothesis": "Overlay reference software reduces context-switching latency compared to switching application windows or populating the 3D scene with dozens of image planes.",
+        "reference_workflow_stage": "Moodboard & External Reference Management",
+        "concrete_action": "Press Ctrl+C in image editor, press Ctrl+V in PureRef, press Ctrl+Shift+A to lock Always-On-Top, hold C and drag mouse to crop image, press Alt+Shift+H to flip image horizontally, right-click -> Settings -> Key Bindings.",
+        "reason": "Demonstrate high-efficiency reference manipulation and organizational techniques using dedicated reference software.",
+        "failure_or_warning": "Overloading a 3D scene file with numerous high-resolution image planes can impair viewport performance and clutter outliners.",
+        "transferable_principle": "Utilize dedicated floating reference software (PureRef) set to 'Always on Top' for flexible moodboard management across 3D applications."
+      },
+      {
+        "start": "05:02",
+        "end": "05:54",
+        "observed_visual_fact": "The instructor opens a web browser to pureref.com, demonstrates where to download the stand-alone program for Windows, Mac, and Linux, notes donation options, and closes with channel credits.",
+        "instructor_claim": "PureRef is a standalone tool for Windows, Mac, and Linux available at pureref.com with free or donation-based download options.",
+        "interpretation": "PureRef is an accessible cross-platform reference tool suitable for digital artist workflows.",
+        "hypothesis": "N/A",
+        "reference_workflow_stage": "Tool Acquisition",
+        "concrete_action": "Navigate to pureref.com and demonstrate download selection options.",
+        "reason": "Direct viewers to the source of the reference management application.",
+        "failure_or_warning": "None.",
+        "transferable_principle": "Leverage cross-platform standalone utilities to standardize reference workflows across operating environments."
+      }
+    ],
+    "reference_categories": [
+      "orthographic_blueprints",
+      "concept_art",
+      "moodboards",
+      "texture_material_references",
+      "perspective_drawings"
+    ],
+    "acquisition_methods": [
+      "import_file_menu",
+      "copy_paste_clipboard",
+      "drag_and_drop"
+    ],
+    "organization_methods": [
+      "orthographic_viewport_cards",
+      "floating_always_on_top_canvas",
+      "custom_canvas_scaling_and_grouping"
+    ],
+    "selection_and_rejection_criteria": [
+      "orthographic_suitability_for_in_viewport_planes",
+      "detail_clarity_for_cropping_and_zooming",
+      "multi_angle_coverage_for_moodboards"
+    ],
+    "contradiction_handling": [
+      "Instructor demonstrates intentional error (perspective plane import) vs correct method (orthographic view import) to resolve camera projection misalignment."
+    ],
+    "iterative_research_triggers": [
+      "When orthographic geometry alone is insufficient to capture 3D form, switch to multi-angle moodboard references."
+    ],
+    "principles": [
+      "Always switch to a locked orthographic view before importing image planes intended for orthographic modeling alignment in Blender.",
+      "Use dedicated external reference tools like PureRef set to 'Always on Top' for moodboards and auxiliary references to avoid cluttering 3D scene data.",
+      "Crop, rotate, and flip reference images dynamically to inspect reverse angles or isolate specific details without destructive image editing."
+    ],
+    "limitations": [
+      "PureRef keybindings demonstrated are specific to PureRef software version features.",
+      "Viewport image plane performance may depend on Blender viewport shading settings and image resolution."
+    ],
+    "claims_requiring_external_verification": [
+      "PureRef software availability, platform support, and pricing/donation model at pureref.com."
+    ],
+    "proposed_experiments": [
+      "Compare modeling speed and viewport render performance when using 10 embedded image planes in Blender versus 10 images organized in PureRef on a single monitor setup."
+    ]
+  }
+}

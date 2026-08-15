@@ -1,0 +1,102 @@
+{
+  "verifier": "independent_bridge_correspondence",
+  "blender_version": "5.2.0 LTS",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_bridge-correspondence-control\\bridge_correspondence.blend",
+  "families": {
+    "circle": {
+      "default": {
+        "vertices": 16,
+        "edges": 24,
+        "faces": 8,
+        "quads": 8,
+        "non_quad_faces": 0,
+        "boundary_edges": 16,
+        "connector_edges": 8,
+        "non_manifold_connector_edges": 0,
+        "connector_length_total": 19.55376434326172,
+        "connector_length_max": 2.444220542907715,
+        "twist_offset": 2
+      },
+      "corrected": {
+        "vertices": 16,
+        "edges": 24,
+        "faces": 8,
+        "quads": 8,
+        "non_quad_faces": 0,
+        "boundary_edges": 16,
+        "connector_edges": 8,
+        "non_manifold_connector_edges": 0,
+        "connector_length_total": 12.800000190734863,
+        "connector_length_max": 1.600000023841858,
+        "twist_offset": 0
+      }
+    },
+    "rounded_rectangle": {
+      "default": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 12,
+        "quads": 12,
+        "non_quad_faces": 0,
+        "boundary_edges": 24,
+        "connector_edges": 12,
+        "non_manifold_connector_edges": 0,
+        "connector_length_total": 31.518848419189453,
+        "connector_length_max": 3.003382921218872,
+        "twist_offset": 3
+      },
+      "corrected": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 12,
+        "quads": 12,
+        "non_quad_faces": 0,
+        "boundary_edges": 24,
+        "connector_edges": 12,
+        "non_manifold_connector_edges": 0,
+        "connector_length_total": 19.200000286102295,
+        "connector_length_max": 1.600000023841858,
+        "twist_offset": 0
+      }
+    }
+  },
+  "unequal_guard": {
+    "vertices": 22,
+    "edges": 22,
+    "faces": 0,
+    "quads": 0,
+    "non_quad_faces": 0,
+    "boundary_edges": 22,
+    "connector_edges": 0,
+    "non_manifold_connector_edges": 0,
+    "connector_length_total": 0,
+    "connector_length_max": 0.0,
+    "twist_offset": 0
+  },
+  "partial_failure": {
+    "vertices": 16,
+    "edges": 16,
+    "faces": 0,
+    "quads": 0,
+    "non_quad_faces": 0,
+    "boundary_edges": 16,
+    "connector_edges": 0,
+    "non_manifold_connector_edges": 0,
+    "connector_length_total": 0,
+    "connector_length_max": 0.0,
+    "twist_offset": 0
+  },
+  "checks": {
+    "circle_complete_quad_tubes": true,
+    "circle_nonzero_error_was_corrected": true,
+    "circle_correction_reduces_connector_length": true,
+    "rounded_rectangle_complete_quad_tubes": true,
+    "rounded_rectangle_nonzero_error_was_corrected": true,
+    "rounded_rectangle_correction_reduces_connector_length": true,
+    "unequal_guard_left_source_loops_unbridged": true,
+    "partial_failure_left_source_loops_unbridged": true,
+    "all_diagnostic_renders_nonempty": true,
+    "no_transaction_snapshot_or_orphan_meshes_saved": true
+  },
+  "pass": true
+}

@@ -46,7 +46,7 @@ import semantic_regions
 import state_fingerprint
 import state_probe
 
-PROTOCOL_VERSION = "0.2"
+PROTOCOL_VERSION = "0.3"
 CAPABILITIES = [
     "selection_ids",
     "persistent_mesh_ids",
@@ -69,6 +69,7 @@ CAPABILITIES = [
     "expanded_typed_modeling_surface",
     "diagnostic_visual_passes",
     "surface_candidate_diagnostics",
+    "bridge_correspondence_analysis",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -441,7 +442,14 @@ class ModelerServer:
         return {"name": name, "stage": modeling_stage.get_stage(name), "log": modeling_stage.get_stage_log(name)}
 
     def cmd_set_modeling_stage(self, name, stage, evidence):
-        return modeling_stage.set_stage(name, stage, evidence)
+        if stage not in modeling_stage.STAGES:
+            raise ValueError(f"stage must be one of {modeling_stage.STAGES}")
+        current = modeling_stage.get_stage(name)
+        if current not in modeling_stage.STAGES:
+            raise ValueError(f"object {name!r} has invalid persisted modeling stage: {current!r}")
+        if modeling_stage.STAGES.index(stage) < modeling_stage.STAGES.index(current):
+            return modeling_stage.set_stage(name, stage, evidence)
+        return modeling_stage.advance_stage(name, stage, evidence)
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)
@@ -460,6 +468,14 @@ class ModelerServer:
             "surface_diagnostics": evaluated_probe.evaluated_surface_diagnostics(name),
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
+
+    def cmd_analyze_bridge_selection(self, name, twist_offsets=None, allow_unequal=False):
+        """Read-only simulation of candidate Bridge Edge Loops correspondences."""
+        return mesh_ops.analyze_bridge_selection(
+            name,
+            twist_offsets=twist_offsets,
+            allow_unequal=allow_unequal,
+        )
 
     def cmd_get_hard_surface_shading_audit(self, name):
         return object_ops.hard_surface_shading_audit(name)
@@ -671,7 +687,12 @@ class ModelerServer:
             )
         with self._pending_lock:
             del self._pending[decision_id]
-        return {"decision_id": decision_id, "abandoned": True, "reason": reason}
+        return {
+            "decision_id": decision_id,
+            "abandoned": True,
+            "reason": reason,
+            "failed_operation_rolled_back": entry["tx"]._failure_rolled_back,
+        }
 
     def cmd_reject_decision(self, decision_id, reason=""):
         """Transaction-owned rollback (directive P0.1): restore the target

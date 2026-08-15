@@ -1,0 +1,36 @@
+{
+  "measurement_policy": "Official dimensions set absolute scale; perspective photographs provide approximate normalized ratios only.",
+  "absolute_anchors_mm": {
+    "overall_height": {"value": 155.0, "source": "bialetti-official-spec-3cup", "confidence": "HIGH"},
+    "boiler_base_diameter": {"value": 72.0, "source": "bialetti-official-spec-3cup", "confidence": "HIGH"}
+  },
+  "normalized_observations": [
+    {
+      "id": "profile_overall_width_to_height",
+      "reference": "listing-picture-06-left-profile",
+      "value": 0.90,
+      "confidence": "LOW",
+      "use": "blockout range only; includes handle and spout under perspective"
+    },
+    {
+      "id": "boiler_base_diameter_to_height",
+      "reference": "official dimensions",
+      "value": 0.4645,
+      "confidence": "HIGH",
+      "use": "frozen primary-form gate"
+    },
+    {
+      "id": "collector_height_to_boiler_height",
+      "reference": "listing-picture-06-left-profile",
+      "value": 1.12,
+      "confidence": "LOW",
+      "use": "reversible blockout hypothesis; remeasure on aligned board before acceptance"
+    }
+  ],
+  "unmeasured_or_uncertain": [
+    "overall width including handle and spout has no authoritative dimension",
+    "boiler underside recess and stamping are unseen",
+    "wall thickness and casting draft vary and are not dimensioned",
+    "same-object listing may be an older production revision than the current official specification"
+  ]
+}

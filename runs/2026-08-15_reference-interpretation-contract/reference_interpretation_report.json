@@ -1,0 +1,299 @@
+{
+  "experiment": "evidence-bound reference interpretation contract",
+  "scope": "declared synthetic policy cases; no Blender, image inference, or held-out quality claim",
+  "object_families": [
+    "pendant lamp",
+    "appliance control panel"
+  ],
+  "cases": {
+    "baseline_without_reference_claims": {
+      "representation": {
+        "choice": "BOX_MESH",
+        "score": 3.0,
+        "runner_up": "CURVE",
+        "margin": 3.0,
+        "confidence": "HIGH",
+        "reasons": [
+          "shape family favors explicit planar proportions"
+        ],
+        "all_scores": {
+          "BOX_MESH": 3.0,
+          "CURVE": 0.0,
+          "SUBD_CAGE": 0.0
+        }
+      },
+      "components": {
+        "choice": "CONTINUOUS_MESH",
+        "score": 0.0,
+        "runner_up": "SEPARATE_COMPONENTS",
+        "margin": 0.0,
+        "confidence": "LOW",
+        "reasons": [],
+        "all_scores": {
+          "CONTINUOUS_MESH": 0.0,
+          "SEPARATE_COMPONENTS": 0.0
+        }
+      },
+      "editing": {
+        "choice": "DESTRUCTIVE_EDIT",
+        "score": 0.0,
+        "runner_up": "NONDESTRUCTIVE_MODIFIERS",
+        "margin": 0.0,
+        "confidence": "LOW",
+        "reasons": [],
+        "all_scores": {
+          "DESTRUCTIVE_EDIT": 0.0,
+          "NONDESTRUCTIVE_MODIFIERS": 0.0
+        }
+      },
+      "repair": {
+        "choice": "PATCH_REGION",
+        "score": 4.0,
+        "runner_up": "REBUILD_REGION",
+        "margin": 4.0,
+        "confidence": "HIGH",
+        "reasons": [
+          "damage is localized"
+        ],
+        "all_scores": {
+          "PATCH_REGION": 4.0,
+          "REBUILD_REGION": 0.0
+        }
+      }
+    },
+    "path_lamp": {
+      "readiness": {
+        "ready_for_blockout": true,
+        "missing_requirements": [],
+        "high_impact_unresolved_claims": [],
+        "research_questions": [],
+        "conflicting_modeling_signals": [],
+        "claim_counts_by_status": {
+          "OBSERVED": 2,
+          "STRONGLY_INFERRED": 2,
+          "UNKNOWN": 0,
+          "WEAKLY_INFERRED": 0
+        }
+      },
+      "derived_brief": {
+        "shape_family": "mechanical",
+        "smooth_continuous_surface": false,
+        "repeated_elements": false,
+        "symmetric": false,
+        "follows_path": true,
+        "destructive_required": false,
+        "deformation_expected": false,
+        "watertight_union_required": false,
+        "independent_motion_or_material": true,
+        "local_damage_fraction": 0.0,
+        "failed_repairs": 0,
+        "modifier_instability": 0.0,
+        "notes": [
+          "lamp-primary: Block the shade before fittings.",
+          "cable-path: Represent the cable with an editable curve.",
+          "cable-separate: Keep the cable as a separate component.",
+          "lamp-construction: Preserve three editable construction units."
+        ]
+      },
+      "decision": {
+        "disposition": "ACT",
+        "action": "BLOCK_OUT_MISSING_COMPONENT",
+        "target_object": "pendant lamp",
+        "target_region": "cable",
+        "rationale": [
+          "highest-priority ticket is missing_component",
+          "form follows an editable path",
+          "part has independent motion or material identity"
+        ],
+        "expected_effect": "Add the missing primary/secondary silhouette contribution as an editable component.",
+        "verification": [
+          "component mask is present",
+          "component graph remains valid",
+          "recompute silhouette metrics"
+        ],
+        "observed_revision": 7,
+        "confidence": "HIGH",
+        "operation": "create_curve",
+        "operation_params": {
+          "component_id": "cable",
+          "representation": "CURVE",
+          "component_policy": "SEPARATE_COMPONENTS",
+          "reference_claim_notes": [
+            "lamp-primary: Block the shade before fittings.",
+            "cable-path: Represent the cable with an editable curve.",
+            "cable-separate: Keep the cable as a separate component.",
+            "lamp-construction: Preserve three editable construction units."
+          ]
+        },
+        "retrieved_skill_ids": [],
+        "next_stage": null
+      }
+    },
+    "control_panel": {
+      "readiness": {
+        "ready_for_blockout": true,
+        "missing_requirements": [],
+        "high_impact_unresolved_claims": [],
+        "research_questions": [],
+        "conflicting_modeling_signals": [],
+        "claim_counts_by_status": {
+          "OBSERVED": 1,
+          "STRONGLY_INFERRED": 2,
+          "UNKNOWN": 0,
+          "WEAKLY_INFERRED": 1
+        }
+      },
+      "derived_brief": {
+        "shape_family": "mechanical",
+        "smooth_continuous_surface": false,
+        "repeated_elements": false,
+        "symmetric": false,
+        "follows_path": false,
+        "destructive_required": false,
+        "deformation_expected": false,
+        "watertight_union_required": false,
+        "independent_motion_or_material": true,
+        "local_damage_fraction": 0.0,
+        "failed_repairs": 0,
+        "modifier_instability": 0.0,
+        "notes": [
+          "housing-primary: Use a box mesh for the primary enclosure.",
+          "panel-separate: Keep the inset panel independently editable.",
+          "panel-construction: Preserve the reveal gap and separate panel boundary."
+        ]
+      },
+      "decision": {
+        "disposition": "ACT",
+        "action": "BLOCK_OUT_MISSING_COMPONENT",
+        "target_object": "appliance control panel",
+        "target_region": "control_panel",
+        "rationale": [
+          "highest-priority ticket is missing_component",
+          "shape family favors explicit planar proportions",
+          "part has independent motion or material identity"
+        ],
+        "expected_effect": "Add the missing primary/secondary silhouette contribution as an editable component.",
+        "verification": [
+          "component mask is present",
+          "component graph remains valid",
+          "recompute silhouette metrics"
+        ],
+        "observed_revision": 7,
+        "confidence": "HIGH",
+        "operation": "create_primitive",
+        "operation_params": {
+          "component_id": "control_panel",
+          "representation": "BOX_MESH",
+          "component_policy": "SEPARATE_COMPONENTS",
+          "reference_claim_notes": [
+            "housing-primary: Use a box mesh for the primary enclosure.",
+            "panel-separate: Keep the inset panel independently editable.",
+            "panel-construction: Preserve the reveal gap and separate panel boundary."
+          ]
+        },
+        "retrieved_skill_ids": [],
+        "next_stage": null
+      }
+    },
+    "unresolved_depth": {
+      "readiness": {
+        "ready_for_blockout": false,
+        "missing_requirements": [],
+        "high_impact_unresolved_claims": [
+          "socket-depth"
+        ],
+        "research_questions": [
+          "The rear socket projection is not visible."
+        ],
+        "conflicting_modeling_signals": [],
+        "claim_counts_by_status": {
+          "OBSERVED": 2,
+          "STRONGLY_INFERRED": 2,
+          "UNKNOWN": 1,
+          "WEAKLY_INFERRED": 0
+        }
+      },
+      "decision": {
+        "disposition": "RESEARCH",
+        "action": "RESOLVE_REFERENCE_UNCERTAINTY",
+        "target_object": "pendant lamp",
+        "target_region": null,
+        "rationale": [
+          "high-impact unresolved claim: socket-depth"
+        ],
+        "expected_effect": "Resolve the reference claim or keep the affected construction reversible before geometry hardens the guess.",
+        "verification": [
+          "bind each resolved claim to observed evidence or a cited inference",
+          "rerun reference blockout readiness",
+          "record rejected construction strategies"
+        ],
+        "observed_revision": 7,
+        "confidence": "HIGH",
+        "operation": null,
+        "operation_params": {
+          "missing_requirements": [],
+          "claim_ids": [
+            "socket-depth"
+          ],
+          "research_questions": [
+            "The rear socket projection is not visible."
+          ],
+          "conflicting_modeling_signals": []
+        },
+        "retrieved_skill_ids": [],
+        "next_stage": null
+      }
+    },
+    "conflicting_supported_claims": {
+      "readiness": {
+        "ready_for_blockout": false,
+        "missing_requirements": [],
+        "high_impact_unresolved_claims": [],
+        "research_questions": [],
+        "conflicting_modeling_signals": [
+          "follows_path"
+        ],
+        "claim_counts_by_status": {
+          "OBSERVED": 3,
+          "STRONGLY_INFERRED": 2,
+          "UNKNOWN": 0,
+          "WEAKLY_INFERRED": 0
+        }
+      }
+    },
+    "technical_preemption": {
+      "disposition": "ACT",
+      "action": "LOCALIZE_NON_MANIFOLD_REGION",
+      "target_object": "pendant lamp",
+      "target_region": null,
+      "rationale": [
+        "evaluated mesh has 3 non-manifold edges",
+        "technical breakage has priority over visual polish"
+      ],
+      "expected_effect": "Identify or replace the smallest region responsible for the open/invalid surface.",
+      "verification": [
+        "evaluated non-manifold count decreases",
+        "visual silhouette does not regress"
+      ],
+      "observed_revision": 7,
+      "confidence": "MEDIUM",
+      "operation": "inspect_region",
+      "operation_params": {
+        "rings": 2
+      },
+      "retrieved_skill_ids": [],
+      "next_stage": null
+    }
+  },
+  "assertions": {
+    "reference_claim_changes_lamp_representation": true,
+    "lamp_boundary_changes_component_policy": true,
+    "second_family_keeps_box_representation": true,
+    "weak_highlight_claim_does_not_force_curve": true,
+    "second_family_uses_separate_panel_policy": true,
+    "high_impact_unknown_becomes_research": true,
+    "supported_conflict_blocks_blockout": true,
+    "technical_breakage_retains_priority": true
+  },
+  "pass": true
+}

@@ -1,0 +1,193 @@
+{
+  "query": {
+    "query": "stepped wavy profile from uneven loop spacing before deformation",
+    "modeling_stage": "PROPORTION_SILHOUETTE",
+    "workflow": "subdivision deformation",
+    "surface_type": "smooth concave taper",
+    "defect": "uneven deformation density",
+    "local_topology": [
+      "connected quad rings",
+      "uneven axial spacing"
+    ],
+    "modifiers": [
+      "SUBSURF"
+    ],
+    "reference_issue": null,
+    "blender_version": "5.2"
+  },
+  "retrieved": [
+    {
+      "skill_id": "deformation.topology.uniform_rings_before_shaping",
+      "score": 25.1986,
+      "score_breakdown": {
+        "query": 7.0,
+        "modeling_stage": 1.7678,
+        "workflow": 2.8284,
+        "surface_type": 2.5981,
+        "defect": 4.3301,
+        "local_topology": 3.6742,
+        "modifiers": 2.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 1.0
+      },
+      "status": "TRANSFER_VALIDATED"
+    },
+    {
+      "skill_id": "material-slot-orphan-assignment",
+      "score": 4.25,
+      "score_breakdown": {
+        "query": 2.0,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 2.0,
+        "version_relevance": 0.25
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+      "score": 3.75,
+      "score_breakdown": {
+        "query": 2.0,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 2.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": -0.25
+      },
+      "status": "EXPERIMENTALLY_TESTED"
+    },
+    {
+      "skill_id": "boolean-groove-cut-topology-cleanup",
+      "score": 1.25,
+      "score_breakdown": {
+        "query": 1.0,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 0.25
+      },
+      "status": "UNKNOWN"
+    },
+    {
+      "skill_id": "diffuse-color-not-connected-to-bsdf",
+      "score": 1.25,
+      "score_breakdown": {
+        "query": 1.0,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 0.25
+      },
+      "status": "UNKNOWN"
+    }
+  ],
+  "ticket": {
+    "type": "uneven_deformation_density",
+    "target": "lamp_pedestal_waist",
+    "priority": 1,
+    "severity": 0.74,
+    "operation_params": {
+      "edge_ids": [
+        101,
+        102
+      ],
+      "cuts": 6
+    }
+  },
+  "without_skill": {
+    "disposition": "INSPECT",
+    "action": "LOCALIZE_REFERENCE_MISMATCH",
+    "target_object": "Pedestal",
+    "target_region": "lamp_pedestal_waist",
+    "rationale": [
+      "highest-priority visual ticket is uneven_deformation_density",
+      "ticket severity is 0.740"
+    ],
+    "expected_effect": "Reduce the named local reference error without regressing other relevant views.",
+    "verification": [
+      "recompute the ticket metric",
+      "check all relevant views for regression",
+      "inspect evaluated surface"
+    ],
+    "observed_revision": 7,
+    "confidence": "LOW",
+    "operation": "render_semantic_region",
+    "operation_params": {
+      "edge_ids": [
+        101,
+        102
+      ],
+      "cuts": 6
+    },
+    "retrieved_skill_ids": [],
+    "next_stage": null
+  },
+  "with_skill": {
+    "disposition": "ACT",
+    "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
+    "target_object": "Pedestal",
+    "target_region": "lamp_pedestal_waist",
+    "rationale": [
+      "highest-priority visual ticket is uneven_deformation_density",
+      "transfer-validated skill deformation.topology.uniform_rings_before_shaping matches this ticket",
+      "The transferred experiment showed that uniform pre-distribution materially improved profile accuracy and quad density at the same topology budget."
+    ],
+    "expected_effect": "Create a controllable, evenly distributed ring scaffold before the scoped smooth deformation.",
+    "verification": [
+      "confirm the loop traversed the intended quad ring only",
+      "measure ring spacing and affected-region quad aspect ratios",
+      "reapply or preview the deformation and compare the profile/silhouette",
+      "inspect the evaluated surface and all relevant views for regression"
+    ],
+    "observed_revision": 7,
+    "confidence": "MEDIUM",
+    "operation": "loop_cut_selection",
+    "operation_params": {
+      "edge_ids": [
+        101,
+        102
+      ],
+      "cuts": 6
+    },
+    "retrieved_skill_ids": [
+      "deformation.topology.uniform_rings_before_shaping",
+      "material-slot-orphan-assignment",
+      "modifier.stack_order.subd_safe_mirror_placement",
+      "boolean-groove-cut-topology-cleanup",
+      "diffuse-color-not-connected-to-bsdf"
+    ],
+    "next_stage": null
+  },
+  "checks": {
+    "expected_skill_retrieved_first": true,
+    "expected_skill_is_transfer_validated": true,
+    "without_skill_remains_inspection": true,
+    "with_skill_changes_to_scoped_action": true,
+    "scene_owned_target_and_parameters_preserved": true,
+    "skill_provenance_reaches_contract": true,
+    "technical_priority_not_bypassed": true
+  },
+  "pass": true,
+  "boundary": "Controlled planner proof only; runtime_usage remains empty until a real asset transaction uses and verifies this skill."
+}

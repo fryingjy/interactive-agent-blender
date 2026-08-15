@@ -1,0 +1,120 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "experiment_type": "deterministic controlled transfer; not adaptive modeling evidence",
+  "source_video": "yi87Dap_WOc",
+  "source_asset": "anvil waist",
+  "transfer_asset": "12-sided circular lamp pedestal",
+  "control": {
+    "ring_spacing_cv": 0.3898717737923585,
+    "profile_rmse": 0.015517102725965083,
+    "profile_max_abs_error": 0.03600000000000003,
+    "base_vertices": 156,
+    "base_edges": 308,
+    "base_faces": 154,
+    "connected_components": 1,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "non_quad_faces": 0,
+    "side_quad_aspect_p95": 3.246915361092608,
+    "side_quad_aspect_max": 3.246915361092608,
+    "modifier_types": [
+      "BEVEL",
+      "SUBSURF"
+    ],
+    "weighted_edge_count": 24,
+    "shading_policy": "SMOOTH_BY_ANGLE",
+    "evaluated": {
+      "vertices": 810,
+      "faces": 808,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "candidate": {
+    "ring_spacing_cv": 6.280369834735101e-16,
+    "profile_rmse": 0.0027779488154055917,
+    "profile_max_abs_error": 0.005484667446291058,
+    "base_vertices": 156,
+    "base_edges": 308,
+    "base_faces": 154,
+    "connected_components": 1,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0,
+    "non_quad_faces": 0,
+    "side_quad_aspect_p95": 1.4661295706815645,
+    "side_quad_aspect_max": 1.4661297241551274,
+    "modifier_types": [
+      "BEVEL",
+      "SUBSURF"
+    ],
+    "weighted_edge_count": 24,
+    "shading_policy": "SMOOTH_BY_ANGLE",
+    "evaluated": {
+      "vertices": 810,
+      "faces": 808,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "improvement": {
+    "profile_rmse_ratio": 0.1790249677703811,
+    "profile_rmse_reduction_percent": 82.09750322296189,
+    "side_quad_aspect_p95_reduction_percent": 54.84546384392963
+  },
+  "renders": {
+    "front_solid": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\comparison_front_solid.png",
+    "front_wire": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\comparison_front_wire.png",
+      "metadata": {
+        "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\comparison_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "A_Manual_Stepped_Control",
+          "B_Uniform_Ring_Candidate"
+        ],
+        "frame_objects": [
+          "A_Manual_Stepped_Control",
+          "B_Uniform_Ring_Candidate"
+        ],
+        "camera_location": [
+          0.0,
+          -16.318479537963867,
+          0.0
+        ],
+        "camera_ortho_scale": 9.138348897303477,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.029789,
+        "foreground_unique_colors_5bit": 4,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      },
+      "base_cage": true
+    },
+    "isometric_solid": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\comparison_isometric_solid.png"
+  },
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\uniform_deformation_transfer.blend",
+  "assertions": {
+    "both_connected": true,
+    "both_manifold": true,
+    "both_all_quad": true,
+    "identical_base_vertex_face_counts": true,
+    "candidate_spacing_uniform": true,
+    "control_spacing_is_uneven": true,
+    "candidate_profile_rmse_ratio": true,
+    "candidate_max_profile_error_lower": true,
+    "candidate_side_quad_p95_better": true,
+    "semantic_cap_weights_complete": true,
+    "modifier_policy_matches": true,
+    "evaluated_meshes_clean": true
+  },
+  "pass": true
+}

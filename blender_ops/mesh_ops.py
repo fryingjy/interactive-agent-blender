@@ -502,18 +502,209 @@ def fill_selection(name):
     return {"created_faces": len(faces)}
 
 
-def bridge_selection(name, use_merge=False, merge_factor=0.5):
-    """Bridge selected boundary edge loops."""
-    obj, bm = _bm_from_object(name)
+def _bridge_loop_components(edges):
+    """Return two closed selected-edge loop vertex sets or raise with a useful cause."""
+    if len(edges) < 6:
+        raise ValueError("a bridge requires two closed loops with at least three edges each")
+    edge_set = set(edges)
+    remaining = set(edges)
+    components = []
+    while remaining:
+        seed = remaining.pop()
+        component_edges = {seed}
+        stack = [seed]
+        while stack:
+            edge = stack.pop()
+            neighbors = {
+                linked
+                for vert in edge.verts
+                for linked in vert.link_edges
+                if linked in edge_set
+            }
+            new_edges = neighbors & remaining
+            remaining -= new_edges
+            component_edges |= new_edges
+            stack.extend(new_edges)
+        vertices = {vert for edge in component_edges for vert in edge.verts}
+        degrees = {
+            vert: sum(vert in edge.verts for edge in component_edges)
+            for vert in vertices
+        }
+        invalid = [vert for vert, degree in degrees.items() if degree != 2]
+        if invalid:
+            raise ValueError(
+                "selected bridge boundaries must be closed, non-branching loops; "
+                f"found {len(invalid)} vertices whose selected-edge degree is not 2"
+            )
+        components.append(vertices)
+    if len(components) != 2:
+        raise ValueError(f"bridge selection must contain exactly two loops, found {len(components)}")
+    return tuple(components)
+
+
+def _selected_bridge_edges(bm):
     edges = [edge for edge in bm.edges if edge.select and not edge.is_manifold]
-    if len(edges) < 4:
+    components = _bridge_loop_components(edges)
+    return edges, components
+
+
+def _validate_bridge_parameters(twist_offset, use_merge, merge_factor, allow_unequal):
+    if isinstance(twist_offset, bool) or not isinstance(twist_offset, int):
+        raise ValueError("bridge twist_offset must be an integer")
+    if not isinstance(use_merge, bool) or not isinstance(allow_unequal, bool):
+        raise ValueError("use_merge and allow_unequal must be booleans")
+    if isinstance(merge_factor, bool) or not isinstance(merge_factor, (int, float)):
+        raise ValueError("merge_factor must be numeric")
+    if not 0.0 <= float(merge_factor) <= 1.0:
+        raise ValueError("merge_factor must be in [0, 1]")
+
+
+def _bridge_case_metrics(bm, twist_offset):
+    edges, components = _selected_bridge_edges(bm)
+    before_edges = set(bm.edges)
+    before_faces = set(bm.faces)
+    bmesh.ops.bridge_loops(
+        bm,
+        edges=edges,
+        use_pairs=False,
+        use_cyclic=False,
+        use_merge=False,
+        merge_factor=0.5,
+        twist_offset=twist_offset,
+    )
+    new_edges = [edge for edge in bm.edges if edge not in before_edges]
+    new_faces = [face for face in bm.faces if face not in before_faces]
+    first, second = components
+    connectors = [
+        edge for edge in new_edges
+        if ((edge.verts[0] in first and edge.verts[1] in second)
+            or (edge.verts[1] in first and edge.verts[0] in second))
+    ]
+    lengths = [edge.calc_length() for edge in connectors]
+    return {
+        "twist_offset": twist_offset,
+        "created_faces": len(new_faces),
+        "quad_faces": sum(len(face.verts) == 4 for face in new_faces),
+        "non_quad_faces": sum(len(face.verts) != 4 for face in new_faces),
+        "degenerate_faces": sum(face.calc_area() <= 1e-12 for face in new_faces),
+        "connector_edges": len(connectors),
+        "non_manifold_connector_edges": sum(not edge.is_manifold for edge in connectors),
+        "connector_length_total": round(sum(lengths), 9),
+        "connector_length_max": round(max(lengths, default=0.0), 9),
+    }
+
+
+def analyze_bridge_selection(name, twist_offsets=None, allow_unequal=False):
+    """Simulate candidate loop correspondences without changing the source mesh.
+
+    The recommendation minimizes invalid/non-quad output first and connector length second. It is
+    geometric evidence for which offset deserves inspection, not an artistic acceptance decision.
+    """
+    if not isinstance(allow_unequal, bool):
+        raise ValueError("allow_unequal must be a boolean")
+    obj = bpy.data.objects[name]
+    source = bmesh_io.read_bmesh(obj)
+    base = source.copy()
+    if obj.mode != "EDIT":
+        source.free()
+    try:
+        edges, components = _selected_bridge_edges(base)
+        loop_sizes = [len(component) for component in components]
+        unequal = loop_sizes[0] != loop_sizes[1]
+        if unequal and not allow_unequal:
+            raise ValueError(
+                f"selected bridge loops have unequal vertex counts {loop_sizes}; "
+                "match loop density first or pass allow_unequal=True for an explicit diagnostic"
+            )
+        if twist_offsets is None:
+            offsets = list(range(max(loop_sizes)))
+        else:
+            if not isinstance(twist_offsets, (list, tuple)) or not twist_offsets:
+                raise ValueError("twist_offsets must be a non-empty list of integers")
+            offsets = []
+            for value in twist_offsets:
+                if isinstance(value, bool) or not isinstance(value, int):
+                    raise ValueError("every candidate twist offset must be an integer")
+                if value not in offsets:
+                    offsets.append(value)
+        if len(offsets) > 512:
+            raise ValueError("at most 512 candidate twist offsets may be analyzed")
+
+        cases = []
+        for offset in offsets:
+            candidate = base.copy()
+            try:
+                cases.append(_bridge_case_metrics(candidate, offset))
+            finally:
+                candidate.free()
+        ranking = sorted(
+            cases,
+            key=lambda case: (
+                case["degenerate_faces"],
+                case["non_quad_faces"],
+                case["non_manifold_connector_edges"],
+                case["connector_length_total"],
+                abs(case["twist_offset"]),
+                case["twist_offset"],
+            ),
+        )
+        return {
+            "object": name,
+            "input_edges": len(edges),
+            "loop_vertex_counts": loop_sizes,
+            "unequal_loop_counts": unequal,
+            "cases": cases,
+            "suggested_twist_offset": ranking[0]["twist_offset"],
+            "ranking": [case["twist_offset"] for case in ranking],
+            "selection_mutated": False,
+            "interpretation": (
+                "minimum connector length is a correspondence heuristic; inspect the resulting "
+                "surface and topology before accepting a bridge"
+            ),
+        }
+    finally:
+        base.free()
+
+
+def bridge_selection(
+    name, use_merge=False, merge_factor=0.5, twist_offset=0, allow_unequal=False
+):
+    """Bridge exactly two selected closed boundary loops with explicit correspondence control."""
+    _validate_bridge_parameters(twist_offset, use_merge, merge_factor, allow_unequal)
+    obj, bm = _bm_from_object(name)
+    try:
+        edges, components = _selected_bridge_edges(bm)
+    except ValueError:
         _write_back(obj, bm)
-        raise ValueError(f"selected boundary edges on '{name}' do not form bridgeable loops")
+        raise
+    loop_sizes = [len(component) for component in components]
+    unequal = loop_sizes[0] != loop_sizes[1]
+    if unequal and not allow_unequal:
+        _write_back(obj, bm)
+        raise ValueError(
+            f"selected bridge loops on '{name}' have unequal vertex counts {loop_sizes}; "
+            "match loop density first or pass allow_unequal=True explicitly"
+        )
     before = _element_snapshot(bm)
-    bmesh.ops.bridge_loops(bm, edges=edges, use_pairs=False, use_cyclic=False, use_merge=use_merge, merge_factor=merge_factor)
+    bmesh.ops.bridge_loops(
+        bm,
+        edges=edges,
+        use_pairs=False,
+        use_cyclic=False,
+        use_merge=use_merge,
+        merge_factor=float(merge_factor),
+        twist_offset=twist_offset,
+    )
     created = _clear_new_element_ids(bm, before)
     _write_back(obj, bm)
-    return {"input_edges": len(edges), "created_faces": created["new_faces"], **created}
+    return {
+        "input_edges": len(edges),
+        "loop_vertex_counts": loop_sizes,
+        "unequal_loop_counts": unequal,
+        "twist_offset": twist_offset,
+        "created_faces": created["new_faces"],
+        **created,
+    }
 
 
 def spin_selection(name, angle, steps, center=(0.0, 0.0, 0.0), axis=(0.0, 0.0, 1.0), use_duplicate=False):

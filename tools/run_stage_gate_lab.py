@@ -24,20 +24,26 @@ def main():
     obj = bpy.context.object
     obj.name = "StageGateAsset"
 
-    weak_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", {"dimensions_checked": True})
+    reference_evidence = {
+        "component_graph_pass": True, "measured_ratio_count": 3, "uncertainty_recorded": True,
+        "reference_set_audit_pass": True, "same_target_identity_pass": True,
+        "view_coverage_pass": True, "critical_property_coverage_pass": True,
+        "conflicts_resolved_pass": True,
+    }
+    weak_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", {**reference_evidence, "view_coverage_pass": False})
     state_after_weak = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
-    strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", {"dimensions_checked": True, "primary_components_present": True})
-    weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True})
+    strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", reference_evidence)
+    weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": False})
     state_after_weak_visual = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
-    strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.9670564566830127, "multiview_regression_pass": True})
+    strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": True})
     final_log = get_stage_log(obj.name)
     assertions = {
         "missing_evidence_rejected": not weak_primary["advanced"],
         "rejection_did_not_mutate": state_after_weak == {"stage": "REFERENCE_ANALYSIS", "log_count": 0},
         "primary_advanced": strong_primary["advanced"],
-        "below_threshold_visual_rejected": not weak_visual["advanced"],
+        "incomplete_primary_blockout_rejected": not weak_visual["advanced"],
         "visual_rejection_did_not_mutate": state_after_weak_visual == {"stage": "PRIMARY_BLOCKOUT", "log_count": 1},
-        "measured_multiview_evidence_advanced": strong_visual["advanced"],
+        "complete_primary_blockout_advanced": strong_visual["advanced"],
         "only_accepted_transitions_logged": len(final_log) == 2,
     }
     report = {

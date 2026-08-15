@@ -1,0 +1,58 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Organize a working reference board by functional purpose such as form and color, and annotate those groups so a source can be retrieved for the decision it supports.",
+    "source": {"source_id": "TNgWVyKSGfA", "start_seconds": 10, "end_seconds": 34},
+    "confidence": 0.68,
+    "supporting_evidence": "OBSERVED: the PureRef montage visibly groups bird, fish, and insect images and adds text notes including Main Form and Main Colour. INSTRUCTOR CLAIM: the course covers importing, manipulating, organizing, and using references beside another application. INTERPRETATION: role labels are more actionable than an unsorted image pile. HYPOTHESIS: property-scoped labels will reduce use of weak references for unrelated claims.",
+    "status": "CAPTURED", "rejected_alternative": "Treat every gathered image as equally active and authoritative", "reason": null, "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Use scene-aligned Blender references for calibrated orthographic construction and an external board for broad comparison, notes, and auxiliary references; the two layers solve different problems.",
+    "source": {"source_id": "QHUBIC6XD1Y", "start_seconds": 0, "end_seconds": 302},
+    "confidence": 0.72,
+    "supporting_evidence": "OBSERVED: importing in perspective produces a diagonally aligned card; importing in Front Orthographic aligns it to an axis. Later, PureRef is kept as a separate always-on-top board with crop and flip controls. INSTRUCTOR CLAIM: orthographic import fixes the Blender setup while PureRef manages many references. INTERPRETATION: these are complementary reference layers. HYPOTHESIS: separating them reduces scene clutter without losing broad evidence.",
+    "status": "CAPTURED", "rejected_alternative": "Force all collected references into Blender or keep all alignment-critical references only outside Blender", "reason": "Broad evidence management and axis-calibrated construction have different interaction and persistence needs.", "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Assign every secondary reference a named property role instead of allowing it to influence the whole target implicitly.",
+    "source": {"source_id": "3nJJ5r0kOy4", "start_seconds": 143, "end_seconds": 228},
+    "confidence": 0.75,
+    "supporting_evidence": "OBSERVED: the artist selects separate ArtStation works specifically for facial stylization, hair flow, and color saturation. INSTRUCTOR CLAIM: each secondary source should be chosen for a target-specific feature. INTERPRETATION: source-to-property mapping prevents accidental authority expansion. HYPOTHESIS: explicit claims will make reference conflicts and missing evidence easier to detect.",
+    "status": "CAPTURED", "rejected_alternative": "Let an attractive source silently control form, construction, detail, and material together", "reason": null, "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For exact reconstruction, same-target factual references control geometry; multi-source creative synthesis is reserved for declared design or adaptation tasks and cannot override target dimensions or construction.",
+    "source": {"source_id": "3nJJ5r0kOy4", "start_seconds": 106, "end_seconds": 228},
+    "confidence": 0.7,
+    "supporting_evidence": "OBSERVED: the artist combines a real portrait anchor with separate stylized face, hair, and palette sources to create a new portrait. INSTRUCTOR CLAIM: multiple sources produce original synthesis. INTERPRETATION: this is useful for ideation but conflicts with fidelity to one manufactured object. HYPOTHESIS: declaring task intent before sourcing will prevent variant mixing in reconstruction.",
+    "status": "CAPTURED", "rejected_alternative": "Apply creative multi-source synthesis indiscriminately to a specific real-world target", "reason": "A method for originality is not automatically a method for factual reconstruction.", "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A structured reference record should keep the visual evidence link or timestamp adjacent to the property claim it supports, enabling immediate audit rather than detached notes.",
+    "source": {"source_id": "pPEB5uEDY-Q", "start_seconds": 0, "end_seconds": 43},
+    "confidence": 0.66,
+    "supporting_evidence": "OBSERVED: a mechanics spreadsheet stores stable fields and linked YouTube clips, then a local visual wiki presents the same data with playable GIFs. INSTRUCTOR CLAIM: direct clips make visual verification immediate. INTERPRETATION: claims and media should remain joined through provenance. HYPOTHESIS: this will reduce unsupported geometric inferences in reference modeling.",
+    "status": "CAPTURED", "rejected_alternative": "Store conclusions separately from the source evidence needed to audit them", "reason": null, "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Choose reference fidelity according to task intent: faithful study, controlled adaptation, and composite ideation require different evidence and acceptance rules.",
+    "source": {"source_id": "KL0XOYdcL_E", "start_seconds": 0, "end_seconds": 223},
+    "confidence": 0.62,
+    "supporting_evidence": "OBSERVED: six animation examples range from close live-action matching to timing edits and composite mood boards. INSTRUCTOR CLAIM: there is no universal reference style; it should fit project needs. INTERPRETATION: static modeling likewise needs an explicit reconstruction/adaptation/design intent. HYPOTHESIS: intent-specific gates will outperform one universal reference score.",
+    "status": "CAPTURED", "rejected_alternative": "Use one fidelity policy for every reference-driven task", "reason": null, "captured_while_building": null, "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A source can provide one abstract property such as value, color relationship, or mechanical detail without becoming authoritative for its literal subject geometry.",
+    "source": {"source_id": "1X0Npd5REQw", "start_seconds": 128, "end_seconds": 330},
+    "confidence": 0.64,
+    "supporting_evidence": "OBSERVED: a snowy sunset is used for color/value relationships while NASA launch-pad photos are separately cropped for mechanical detail. INSTRUCTOR CLAIM: a source need not match the literal subject when only its palette or natural light relationships are needed. INTERPRETATION: authority is property-specific. HYPOTHESIS: purpose-scoped claims prevent material/style sources from authorizing dimensions.",
+    "status": "CAPTURED", "rejected_alternative": "Treat every property visible in a source as equally transferable to the target", "reason": null, "captured_while_building": null, "transfer_tests": []
+  }
+]

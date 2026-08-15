@@ -142,8 +142,8 @@ def get_modeling_stage(object_name: str) -> dict:
 
 
 @mcp.tool()
-def set_modeling_stage(object_name: str, stage: str, evidence: str) -> dict:
-    """Explicitly declare object_name has moved to `stage`, with `evidence` describing why that stage's gate criteria are judged met (see blender_ops/modeling_stage.py's GATE_CRITERIA for what each stage expects) -- not automatically verified, but logged, so the check has to be articulated rather than silently skipped. Moving backward (e.g. a later check reveals an earlier stage's judgment was wrong) is normal and logged as a regression, not an error."""
+def set_modeling_stage(object_name: str, stage: str, evidence: dict) -> dict:
+    """Move exactly one stage forward only after structured evidence passes the CURRENT stage's machine gate. Moving backward is an explicit logged regression. Forward transitions cannot skip stages or bypass the gate."""
     return _call("set_modeling_stage", name=object_name, stage=stage, evidence=evidence)
 
 
@@ -187,6 +187,21 @@ def get_viewport_state() -> dict:
 def inspect_region(object_name: str, center_ids: list[int], rings: int = 2) -> dict:
     """A local topology graph around one or more persistent vertex agent_ids, grown outward by `rings` edge-hops. Returns every vertex/edge/face touching the region (keyed by agent_id, not raw index), plus region-level quality signals: pole locations (valence != 4), edge-length ratio, face-area ratio, local triangle/quad/ngon counts, and connected-component count. Richer than get_selection/vertex_neighborhood for judging whether a specific area of the mesh reads as clean."""
     return _call("inspect_region", name=object_name, center_ids=center_ids, rings=rings)
+
+
+@mcp.tool()
+def analyze_bridge_selection(
+    object_name: str,
+    twist_offsets: list[int] | None = None,
+    allow_unequal: bool = False,
+) -> dict:
+    """Simulate Bridge Edge Loops offsets without mutating object_name. Returns loop counts, per-offset connector/topology metrics, and a minimum-connector-length suggestion. Unequal loop counts are rejected unless allow_unequal=True; a suggestion is diagnostic evidence, not automatic artistic approval."""
+    return _call(
+        "analyze_bridge_selection",
+        name=object_name,
+        twist_offsets=twist_offsets,
+        allow_unequal=allow_unequal,
+    )
 
 
 @mcp.tool()

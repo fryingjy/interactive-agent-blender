@@ -22,13 +22,15 @@
     "For Mirror plus Subdivision Surface, test both candidate orders on the actual seam topology. Subdivision-before-Mirror repaired the original flat-seam failure, but a later exact-seam half-cylinder stayed manifold in both orders; do not promote one shape's result into a universal order rule.",
     "Bevel should be placed BEFORE Mirror when a seamless join across the mirror plane is wanted. Mirror-before-Bevel causes Bevel to treat the former seam edges as ordinary edges and round/carve them, producing a visible facet at what should be a flat, continuous seam.",
     "Solidify must be placed BEFORE Bevel when starting from an open/flat mesh (e.g. a plane). Bevel on an unsolidified single-face plane has no dihedral angle to act on and is effectively a no-op; Solidify must run first to give the mesh real 3D form.",
-    "Boolean before or after Bevel is a genuine strategic choice, not a correctness issue: Boolean-then-Bevel rounds the cut/hole rim too (more geometry); Bevel-then-Boolean leaves the cut sharp (less geometry). Choose based on whether the cut's edge should read as rounded or crisp."
+    "Boolean before or after Bevel is a genuine strategic choice, not a correctness issue: Boolean-then-Bevel rounds the cut/hole rim too (more geometry); Bevel-then-Boolean leaves the cut sharp (less geometry). Choose based on whether the cut's edge should read as rounded or crisp.",
+    "For Bevel plus Subdivision Surface, choose by edge function rather than a universal stack order: Bevel->Subdivision makes a broad physical radius part of the smoothed form; crease/support protection plus Subdivision->Bevel adds a tighter final chamfer to an already controlled form. Never use an unprotected post-Subdivision weighted Bevel when the base design line must stay fixed, and inspect three-edge corners for concentrated highlights in the crease-protected path."
   ],
 
   "expected_effects": [
     "Mirror+Subdivision: the selected order must have 0 non-manifold edges in the evaluated mesh and acceptable seam shape/highlight flow; topology-specific testing decides the order",
     "Mirror+Bevel in the correct order (Bevel first): a flat, unrounded seam face at the mirror plane, with the two halves reading as one continuous surface",
-    "Solidify+Bevel in the correct order (Solidify first): the evaluated mesh's vertex/face count reflects real bevel geometry, not an unchanged flat shell"
+    "Solidify+Bevel in the correct order (Solidify first): the evaluated mesh's vertex/face count reflects real bevel geometry, not an unchanged flat shell",
+    "Bevel+Subdivision: the chosen order's radius, panel planarity, corner highlight concentration, and evaluated cost match the reference-defined edge function"
   ],
 
   "success_predicates": [
@@ -38,7 +40,8 @@
 
   "failure_predicates": [
     "evaluated_mesh_health.non_manifold_edges > 0 after evaluating either tested Mirror/Subdivision order on the actual seam topology",
-    "Bevel modifier added but the evaluated mesh's vertex/face count is unchanged from before adding it (Bevel silently doing nothing, usually because it ran before Solidify on a flat shell)"
+    "Bevel modifier added but the evaluated mesh's vertex/face count is unchanged from before adding it (Bevel silently doing nothing, usually because it ran before Solidify on a flat shell)",
+    "Post-Subdivision Bevel visibly rounds or relocates a design line that was not protected by crease/support topology, or creates concentrated corner highlights that contradict the reference"
   ],
 
   "recovery": [
@@ -63,11 +66,16 @@
       "type": "controlled second-shape transfer",
       "description": "On an exact-seam half-cylinder in runs/2026-08-10_bevel-mirror-transfer/, Mirror->Subdivision and Subdivision->Mirror both evaluated to 482 vertices, 480 quad faces, and 0 non-manifold edges. The intentionally offset Mirror seam produced 12 non-manifold edges and a larger Merge Distance repaired it. Independent evaluation of the saved blend reproduced all outcomes.",
       "limitation": "Manifoldness and counts do not prove identical curvature or highlight flow. The two stack orders had slightly different signed volumes, and neither was judged with a controlled reflection render."
+    },
+    {
+      "type": "controlled matched-cage visual and evaluated-surface comparison",
+      "description": "Blender 5.2 comparison in runs/2026-08-15_bevel-subd-order/ used identical supported all-quad box cages and the same 36 semantic design-edge segments. Bevel->Subdivision produced 2,400 evaluated quads, 0 localized pinch candidates, and a broad continuous MatCap highlight. Crease(0.75)+Subdivision->Bevel produced 1,176 quads and the flattest panels but 16 concentrated corner-curvature candidates. Unprotected Subdivision->Bevel had the same count and bounds as the protected variant yet visibly over-rounded the form, disproving count-only comparison. A fresh process independently verified modifier order, crease placement, topology health, and render dimensions.",
+      "limitation": "One supported rectangular box fixture; not transfer validation on a curved hull or production prop. The surface diagnostic reports candidates, not certain defects, and was interpreted alongside fixed-frame MatCap and evaluated-wire renders."
     }
   ],
 
   "runtime_usage": [],
 
   "status": "EXPERIMENTALLY_TESTED",
-  "status_note": "Controlled matched-pair evidence exists for all four listed pairs, plus a cylindrical second-shape transfer for Mirror+Subdivision. The transfer disproved the universal version of the original order rule, so the skill now requires per-topology evaluation. Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED; no real prop has combined these modifiers and visual seam quality still needs controlled reflection evidence."
+  "status_note": "Controlled matched-pair evidence exists for the original four modifier pairs, a cylindrical second-shape transfer for Mirror+Subdivision, and fixed-frame MatCap/evaluated-wire evidence for Bevel versus Subdivision order. The evidence rejects universal ordering and requires per-topology, reference-defined evaluation. Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED; Bevel/Subdivision still needs curved-hull or real-prop transfer."
 }

@@ -1,0 +1,35 @@
+{
+  "source_knowledge": {
+    "source_id": "yi87Dap_WOc",
+    "start_seconds": 307,
+    "end_seconds": 400,
+    "source_asset": "anvil waist"
+  },
+  "transfer_asset": "12-sided circular lamp pedestal",
+  "hypothesis": "For the same connected radial topology and vertex budget, uniformly spaced rings shaped after the full height is established will approximate a smooth target profile more accurately and with more even quad density than manually accumulated uneven extrude-and-scale steps.",
+  "negative_control": "One connected 12-sided mesh with 13 deliberately uneven ring heights and small deterministic per-step radius errors, representing accumulated manual step-extrusion imprecision.",
+  "candidate": "One connected 12-sided mesh with 13 uniformly spaced rings whose radii are sampled from the same declared target profile after the full height is established.",
+  "shared_conditions": {
+    "radial_segments": 12,
+    "ring_count": 13,
+    "base_topology": "closed, connected, all-quad",
+    "modifier_stack": ["weighted Bevel on 24 cap-perimeter edges", "Subdivision Surface"],
+    "shading": "Smooth by Angle",
+    "target_profile": "r(t) = 0.55 + 0.50*abs(t)^1.8 + 0.18*max(0,-t)^2, t=z/2.5"
+  },
+  "predeclared_gates": {
+    "both_objects_connected": true,
+    "both_objects_manifold": true,
+    "both_objects_all_quad": true,
+    "identical_base_vertex_and_face_counts": true,
+    "candidate_spacing_cv_max": 0.000001,
+    "control_spacing_cv_min": 0.25,
+    "candidate_profile_rmse_ratio_max": 0.60,
+    "candidate_profile_max_error_less_than_control": true,
+    "candidate_side_quad_aspect_p95_less_than_control": true,
+    "cap_weighted_edge_count_each": 24,
+    "evaluated_non_manifold_edges_each": 0,
+    "evaluated_degenerate_faces_each": 0
+  },
+  "claim_boundary": "The control deliberately contains uneven spacing and small manual radius errors; this tests the tutorial's demonstrated failure mode, not a universal claim that every manually stepped mesh must be inferior. A pass validates this principle for one different radial product form only."
+}

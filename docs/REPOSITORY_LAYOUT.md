@@ -35,9 +35,26 @@ Do not commit:
 - caches, temporary files, or duplicate renders not referenced by a report;
 - credentials, private data, or unlicensed assets.
 
+The tracked repository root is intentionally limited to `.gitignore`, `.mcp.json`, `README.md`,
+and `addon.py`. Current plans and policies belong under `docs/`; one-off status notes at the root
+become stale and should be consolidated into the authoritative documents or removed.
+
+Run `python tools/audit_repository.py` to reject tracked credentials, caches, Blender autosaves,
+unclassified root files, Python syntax errors, and exact duplicate tracked files. This audit does
+not label dated evidence "unused": run retention still follows the stability rule below.
+
 ## Stability rule
 
 Dated run paths are evidence identifiers and are referenced by reports, cards, and audits. Organize
 new work correctly at creation time; do not mass-move historical runs unless every reference and
 reproduction command is updated and revalidated. Current documentation may be reorganized more
 freely because Git preserves its history.
+
+## Evidence-retention boundary
+
+The user-directed 2026-08-14 cleanup removed most raw run folders from 2026-08-10 through
+2026-08-12 after their durable lessons had been consolidated. Documentation that still names one
+of those paths is a historical citation, not a promise that the artifact remains reproducible.
+Current claims must point to retained evidence, code, or a newer audit. Do not recreate deleted
+artifacts merely to make an old link resolve, and do not silently present historical prose as live
+validation.

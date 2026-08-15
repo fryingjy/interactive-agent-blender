@@ -12,6 +12,7 @@ from typing import Any
 
 from blender_ops.stage_gates import evaluate_stage_gate
 from knowledge_engine.reasoning import Diagnosis, RegionRepairHistory
+from knowledge_engine.scene_decomposition import SceneDecomposition
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 
 
@@ -25,6 +26,8 @@ STAGES = (
     "PRODUCTION_PREP",
     "FINAL_REVIEW",
 )
+
+PLANNER_ACTIONABLE_SKILL_STATUSES = {"TRANSFER_VALIDATED", "RUNTIME_VALIDATED", "PROMOTED"}
 
 
 @dataclass
@@ -48,7 +51,9 @@ class PlannerContext:
     diagnosis: Diagnosis | None = None
     repair_history: RegionRepairHistory | None = None
     brief: ModelingBrief = field(default_factory=ModelingBrief)
+    reference_decomposition: SceneDecomposition | None = None
     external_edit_detected: bool = False
+    intentional_non_manifold_edge_ids: tuple[int, ...] = ()
     minimum_stage_iou: float = 0.9
 
     def validate(self) -> None:
@@ -60,6 +65,10 @@ class PlannerContext:
             raise ValueError("session_id is required")
         if self.scene_revision < 0:
             raise ValueError("scene_revision must be non-negative")
+        if len(set(self.intentional_non_manifold_edge_ids)) != len(self.intentional_non_manifold_edge_ids):
+            raise ValueError("intentional_non_manifold_edge_ids must be unique persistent edge IDs")
+        if self.reference_decomposition is not None:
+            self.reference_decomposition.validate()
 
 
 @dataclass(frozen=True)
@@ -123,9 +132,178 @@ def _highest_ticket(context: PlannerContext) -> dict[str, Any] | None:
     )[0]
 
 
+def _skill_guided_ticket_decision(
+    context: PlannerContext, ticket: dict[str, Any]
+) -> DecisionContract | None:
+    """Use only transfer-validated-or-better knowledge to resolve a matching ticket.
+
+    A retrieved record does not get to invent targets or parameters. The visual/topology
+    ticket still owns those scene-specific facts; the skill contributes the operation,
+    expected effect, and verification policy for a narrow declared ticket type.
+    """
+    ticket_type = str(ticket.get("type", ""))
+    for retrieved in context.retrieved_skills:
+        skill = retrieved.get("skill", retrieved)
+        status = str(retrieved.get("status", skill.get("status", "UNKNOWN")))
+        hint = skill.get("planner_hint")
+        if status not in PLANNER_ACTIONABLE_SKILL_STATUSES or not isinstance(hint, dict):
+            continue
+        if ticket_type not in set(map(str, hint.get("trigger_ticket_types", []))):
+            continue
+        stages = set(map(str, hint.get("modeling_stages", [])))
+        if stages and context.stage not in stages:
+            continue
+        required_fields = set(map(str, hint.get("required_ticket_fields", [])))
+        if any(ticket.get(field) in (None, "", [], {}) for field in required_fields):
+            continue
+        operation = hint.get("operation")
+        if not operation:
+            continue
+        skill_id = retrieved.get("skill_id") or retrieved.get("id") or skill.get("skill_id") or skill.get("id")
+        return _contract(
+            context,
+            disposition="ACT",
+            action=str(hint.get("action", "APPLY_RETRIEVED_SKILL")),
+            operation=str(operation),
+            operation_params=dict(ticket.get("operation_params", {})),
+            target_object=context.active_object,
+            target_region=str(ticket.get("target")) if ticket.get("target") else None,
+            rationale=(
+                f"highest-priority visual ticket is {ticket_type}",
+                f"transfer-validated skill {skill_id} matches this ticket",
+                str(hint.get("reason", "use the validated local intervention before broader repair")),
+            ),
+            expected_effect=str(hint.get("expected_effect", "Reduce the named local defect.")),
+            verification=tuple(map(str, hint.get("verification", ["reinspect the affected region"]))),
+            confidence=str(hint.get("confidence", "MEDIUM")),
+        )
+    return None
+
+
+def _effective_brief(context: PlannerContext) -> ModelingBrief:
+    if context.reference_decomposition is None:
+        return context.brief
+    return context.reference_decomposition.to_modeling_brief(context.brief)
+
+
 def _next_stage(stage: str) -> str | None:
     index = STAGES.index(stage)
     return STAGES[index + 1] if index + 1 < len(STAGES) else None
+
+
+def _passed_stage_contract(
+    context: PlannerContext, target: str | None
+) -> DecisionContract:
+    """Return the single valid outcome for a passed stage gate."""
+    following = _next_stage(context.stage)
+    if following is None:
+        return _contract(
+            context,
+            disposition="COMPLETE",
+            action="ACCEPT_FINAL_REVIEW",
+            operation=None,
+            operation_params={},
+            target_object=target,
+            target_region=None,
+            rationale=(f"{context.stage} gate passed",),
+            expected_effect="Accept the independently verified asset without another mutation.",
+            verification=("persist final evidence", "save the editable source"),
+            confidence="HIGH",
+        )
+    return _contract(
+        context,
+        disposition="ADVANCE_STAGE",
+        action="ADVANCE_MODELING_STAGE",
+        operation="set_modeling_stage",
+        operation_params={"stage": following, "evidence": context.stage_evidence},
+        target_object=target,
+        target_region=None,
+        rationale=(f"{context.stage} gate passed",),
+        expected_effect=f"Move the asset to {following} without changing geometry.",
+        verification=(
+            "stage transition is persisted",
+            "scene revision is unchanged by evidence-only transition",
+        ),
+        confidence="HIGH",
+        next_stage=following,
+    )
+
+
+def _reference_decomposition_contract(
+    context: PlannerContext, target: str | None
+) -> DecisionContract | None:
+    """Require evidence-bound component claims after the reference-set audit passes."""
+    if context.reference_decomposition is None:
+        return None
+    readiness = context.reference_decomposition.blockout_readiness()
+    if readiness["ready_for_blockout"]:
+        return None
+    needs_research = bool(
+        readiness["high_impact_unresolved_claims"]
+        or readiness["conflicting_modeling_signals"]
+    )
+    return _contract(
+        context,
+        disposition="RESEARCH" if needs_research else "INSPECT",
+        action="RESOLVE_REFERENCE_UNCERTAINTY" if needs_research else "COMPLETE_REFERENCE_DECOMPOSITION",
+        operation=None,
+        operation_params={
+            "missing_requirements": readiness["missing_requirements"],
+            "claim_ids": readiness["high_impact_unresolved_claims"],
+            "research_questions": readiness["research_questions"],
+            "conflicting_modeling_signals": readiness["conflicting_modeling_signals"],
+        },
+        target_object=target,
+        target_region=None,
+        rationale=tuple(
+            [f"missing reference requirement: {item}" for item in readiness["missing_requirements"]]
+            + [f"high-impact unresolved claim: {item}" for item in readiness["high_impact_unresolved_claims"]]
+            + [f"conflicting modeling signal: {item}" for item in readiness["conflicting_modeling_signals"]]
+        ),
+        expected_effect="Resolve the reference claim or keep the affected construction reversible before geometry hardens the guess.",
+        verification=(
+            "bind each resolved claim to observed evidence or a cited inference",
+            "rerun reference blockout readiness",
+            "record rejected construction strategies",
+        ),
+        confidence="HIGH" if needs_research else "MEDIUM",
+    )
+
+
+def _reference_stage_contract(
+    context: PlannerContext, target: str | None
+) -> DecisionContract:
+    """Prevent every geometry action until structured reference evidence passes."""
+    gate = evaluate_stage_gate(
+        context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou
+    )
+    if gate["pass"]:
+        decomposition_gate = _reference_decomposition_contract(context, target)
+        if decomposition_gate is not None:
+            return decomposition_gate
+        return _passed_stage_contract(context, target)
+    queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
+    return _contract(
+        context,
+        disposition="RESEARCH",
+        action="TARGETED_REFERENCE_RESEARCH",
+        operation=None,
+        operation_params={"queries": list(queries)},
+        target_object=target,
+        target_region=None,
+        rationale=tuple(
+            gate["failures"] or [f"missing evidence: {item}" for item in gate["missing"]]
+        ),
+        expected_effect=(
+            "Acquire the missing same-target, view, dimension, or property evidence before "
+            "geometry is created."
+        ),
+        verification=(
+            "rerun the structured reference-set audit",
+            "do not model while the audit is incomplete",
+        ),
+        confidence="HIGH",
+    )
 
 
 def plan_next_decision(context: PlannerContext) -> DecisionContract:
@@ -167,8 +345,17 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="HIGH",
         )
 
+    # Reference readiness preempts every geometry mutation, including technical repair of a stale
+    # or placeholder object left in the scene.  Existing geometry is not evidence that modeling may
+    # continue.
+    if context.stage == "REFERENCE_ANALYSIS":
+        return _reference_stage_contract(context, target)
+
     health = _technical_health(context)
-    if health.get("non_manifold_edges", 0) > 0:
+    observed_non_manifold = int(health.get("non_manifold_edges", 0))
+    allowed_non_manifold = len(context.intentional_non_manifold_edge_ids)
+    unexpected_non_manifold = max(0, observed_non_manifold - allowed_non_manifold)
+    if unexpected_non_manifold > 0:
         history = context.repair_history.decision() if context.repair_history else None
         rebuild = history and history["decision"] == "REBUILD_REGION"
         return _contract(
@@ -180,7 +367,8 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             target_object=target,
             target_region=context.repair_history.region_id if context.repair_history else None,
             rationale=(
-                f"evaluated mesh has {health['non_manifold_edges']} non-manifold edges",
+                f"evaluated mesh has {observed_non_manifold} non-manifold edges; {allowed_non_manifold} are explicitly allowlisted intentional boundaries",
+                f"{unexpected_non_manifold} non-manifold edges remain unexplained",
                 "technical breakage has priority over visual polish",
                 *(('repeated repair evidence crosses the rebuild threshold',) if rebuild else ()),
             ),
@@ -204,6 +392,11 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="HIGH",
         )
 
+    if context.stage == "PRIMARY_BLOCKOUT":
+        decomposition_gate = _reference_decomposition_contract(context, target)
+        if decomposition_gate is not None:
+            return decomposition_gate
+
     if context.diagnosis and context.diagnosis.next_action() == "INSPECT_OR_RESEARCH":
         return _contract(
             context,
@@ -225,18 +418,32 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
         region = ticket.get("target")
         suggested = ticket.get("suggested_operation")
+        skill_guided = _skill_guided_ticket_decision(context, ticket)
+        if skill_guided is not None:
+            return skill_guided
         if ticket_type in {"missing_component", "component_mismatch"}:
-            strategy = choose_strategy(context.brief)
+            effective_brief = _effective_brief(context)
+            strategy = choose_strategy(effective_brief)
             representation = strategy["representation"]["choice"]
+            component_policy = strategy["components"]["choice"]
             return _contract(
                 context,
                 disposition="ACT",
                 action="BLOCK_OUT_MISSING_COMPONENT",
                 operation="create_curve" if representation == "CURVE" else "create_primitive",
-                operation_params={"component_id": region, "representation": representation},
+                operation_params={
+                    "component_id": region,
+                    "representation": representation,
+                    "component_policy": component_policy,
+                    "reference_claim_notes": list(effective_brief.notes),
+                },
                 target_object=target,
                 target_region=str(region) if region else None,
-                rationale=(f"highest-priority ticket is {ticket_type}", *tuple(strategy["representation"]["reasons"])),
+                rationale=(
+                    f"highest-priority ticket is {ticket_type}",
+                    *tuple(strategy["representation"]["reasons"]),
+                    *tuple(strategy["components"]["reasons"]),
+                ),
                 expected_effect="Add the missing primary/secondary silhouette contribution as an editable component.",
                 verification=("component mask is present", "component graph remains valid", "recompute silhouette metrics"),
                 confidence=strategy["representation"]["confidence"],
@@ -259,22 +466,8 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         )
 
     gate = evaluate_stage_gate(context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou)
-    following = _next_stage(context.stage)
-    if gate["pass"] and following:
-        return _contract(
-            context,
-            disposition="ADVANCE_STAGE",
-            action="ADVANCE_MODELING_STAGE",
-            operation="set_modeling_stage",
-            operation_params={"stage": following, "evidence": context.stage_evidence},
-            target_object=target,
-            target_region=None,
-            rationale=(f"{context.stage} gate passed",),
-            expected_effect=f"Move the asset to {following} without changing geometry.",
-            verification=("stage transition is persisted", "scene revision is unchanged by evidence-only transition"),
-            confidence="HIGH",
-            next_stage=following,
-        )
+    if gate["pass"]:
+        return _passed_stage_contract(context, target)
 
     return _contract(
         context,

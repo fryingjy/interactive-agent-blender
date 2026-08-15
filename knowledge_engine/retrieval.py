@@ -10,6 +10,9 @@ from pathlib import Path
 from typing import Any
 
 
+DEFAULT_MIN_RETRIEVAL_SCORE = 4.0
+
+
 def _tokens(value: Any) -> set[str]:
     if value is None:
         return set()
@@ -101,7 +104,21 @@ class StructuredSkillStore:
             return 0.25
         return -0.25
 
-    def search(self, context: RetrievalContext, top_k: int = 5) -> list[dict]:
+    def search(
+        self,
+        context: RetrievalContext,
+        top_k: int = 5,
+        min_score: float = DEFAULT_MIN_RETRIEVAL_SCORE,
+    ) -> list[dict]:
+        """Return ranked skills, abstaining when evidence is below ``min_score``.
+
+        A nonzero lexical overlap is not enough for planner use: generic words such as "surface"
+        or "deformation" otherwise make unrelated reference, UV, or rigging tickets retrieve a
+        weakly matching skill. Callers performing exploratory search may explicitly lower the
+        threshold, while runtime/planner callers get the calibrated abstention default.
+        """
+        if min_score < 0:
+            raise ValueError("min_score must be non-negative")
         weights = {
             "query": 3.0,
             "modeling_stage": 1.25,
@@ -126,7 +143,7 @@ class StructuredSkillStore:
             breakdown["runtime_success"] = round(self._runtime_score(skill), 4)
             breakdown["version_relevance"] = round(self._version_score(context.blender_version, skill), 4)
             score = sum(breakdown.values())
-            if score > 0:
+            if score >= min_score:
                 scored.append(
                     {
                         "skill_id": self.skill_id(skill),

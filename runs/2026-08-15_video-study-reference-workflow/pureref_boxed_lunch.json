@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-15T19:30:33.402551+00:00",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=TNgWVyKSGfA",
+    "title": "Using PureRef :  A Better Way to Work With Reference",
+    "author": "boxedlunchcreative"
+  },
+  "access": {
+    "method": "Gemini public YouTube URL video input",
+    "model": "gemini-3.6-flash",
+    "archived_source_video": false,
+    "analysis_status": "PARSED_JSON"
+  },
+  "knowledge_status": "CAPTURED",
+  "promotion_warning": "Requires external corroboration, controlled reproduction, and different-target transfer.",
+  "analysis": {
+    "video_identity": {
+      "title": "Intro To PureRef",
+      "creator": "Boxed Lunch Creative Inc.",
+      "subject": "Overview of PureRef reference management software features and workflow integration"
+    },
+    "access_observation": {
+      "audio_used": "Monologue voiceover narration detailing course curriculum over acoustic background music.",
+      "visuals_used": "Screen recording demonstrative montages of PureRef software interface, showing reference image importing, canvas manipulation, notes creation, color preference customization, and side-by-side usage with Photoshop."
+    },
+    "episodes": [
+      {
+        "start": "00:00",
+        "end": "00:10",
+        "observed_visual_fact": "Title screen displays 'Boxed Lunch Creative Inc.' and 'Intro To PureRef' logo animation.",
+        "instructor_claim": "The tutorial course introduces the fundamentals of PureRef for artists.",
+        "interpretation": "This clip serves as the opening title card establishing the brand and course topic.",
+        "hypothesis": "The course is aimed at digital artists seeking to organize their reference gathering workflow.",
+        "reference_workflow_stage": "Course Introduction",
+        "concrete_action": "Display introductory branding graphics.",
+        "reason": "Establish course context and source branding.",
+        "failure_or_warning": null,
+        "transferable_principle": "Clear branding and course context set expectations for workflow software training."
+      },
+      {
+        "start": "00:10",
+        "end": "00:34",
+        "observed_visual_fact": "Screen capture montage shows PureRef canvas with bird, fish, and insect images being moved, resized, grouped, annotated with text notes ('Main Form', 'Main Colour'), adjusted via preferences menu, and positioned next to Photoshop canvas.",
+        "instructor_claim": "The video covers importing images from computer and web, navigating PureRef, manipulating reference images, organizing references, working alongside other software, saving/exporting, and customization.",
+        "interpretation": "PureRef allows spatial organization, note-taking, and floating window management over active creative software like Photoshop without cluttering the main painting space.",
+        "hypothesis": "Using a dedicated reference viewer improves artist focus by decoupling image management from primary digital canvas tools.",
+        "reference_workflow_stage": "Reference Collection & Organization",
+        "concrete_action": "Drag images into canvas, create text notes for design aspects ('Main Form', 'Main Colour'), set overlay/opacity modes, and align next to digital painting software.",
+        "reason": "Keep key visual target points labeled and constantly visible while working in digital software.",
+        "failure_or_warning": "Unorganized reference clutter can reduce visual efficiency if images are not grouped logically.",
+        "transferable_principle": "Categorizing visual references into functional groups (e.g., form vs. color) accelerates accurate reference lookup during modeling or painting."
+      },
+      {
+        "start": "00:34",
+        "end": "00:54",
+        "observed_visual_fact": "Outro screen displays marketplace links (Artstation.com, Cubebrush.co) and contact email for Boxed Lunch Creative Inc.",
+        "instructor_claim": "PureRef is sure to improve any pipeline.",
+        "interpretation": "The video concludes by providing distribution platforms where full instructional modules can be accessed.",
+        "hypothesis": "Providing accessible reference organization tools directly impacts pipeline speed across 2D and 3D artwork disciplines.",
+        "reference_workflow_stage": "Course Conclusion / Distribution",
+        "concrete_action": "Provide call to action and platform links.",
+        "reason": "Guide viewers to access full course material.",
+        "failure_or_warning": null,
+        "transferable_principle": "Standardizing reference tools across a production pipeline enhances team communication and visual consistency."
+      }
+    ],
+    "reference_categories": [
+      "Primary shape references ('Main Form')",
+      "Color & surface palette references ('Main Colour')",
+      "Anatomical/biological reference collections (birds, aquatic animals, insects)"
+    ],
+    "acquisition_methods": [
+      "Importing local image files from disk",
+      "Direct web-to-canvas image grabbing/pasting"
+    ],
+    "organization_methods": [
+      "Spatial clustering by subject matter",
+      "Text label annotations ('Main Form', 'Main Colour')",
+      "Canvas scaling and zoom management",
+      "Always-on-top window layering adjacent to active DCC software"
+    ],
+    "selection_and_rejection_criteria": [
+      "Images are retained based on specific visual utility (form vs. color scheme)."
+    ],
+    "contradiction_handling": [
+      "Not explicitly demonstrated in this intro preview."
+    ],
+    "iterative_research_triggers": [
+      "Not explicitly demonstrated in this intro preview."
+    ],
+    "principles": [
+      "Decouple reference viewing from primary production canvases to preserve working area visual clarity.",
+      "Annotate visual reference boards by functional attributes (e.g., silhouette, color, texture) to facilitate quick reference retrieval."
+    ],
+    "limitations": [
+      "This video is a short promotional trailer/overview and does not contain detailed step-by-step hotkey demonstrations or full modeling tasks."
+    ],
+    "claims_requiring_external_verification": [
+      "PureRef is sure to improve any pipeline."
+    ],
+    "proposed_experiments": [
+      "Compare time-to-completion and reference lookup frequency between artists using in-app reference layers versus those using a dedicated PureRef board set to Always-on-Top."
+    ]
+  }
+}

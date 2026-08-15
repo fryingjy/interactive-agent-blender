@@ -1,0 +1,45 @@
+{
+  "run_id": "2026-08-15_addon-resource-safety",
+  "scope": "Blender connector add-on resource lifecycle and network fail-fast behavior",
+  "blender": {
+    "version": "5.2.0 LTS",
+    "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "factory_startup_import": "PASS",
+    "register": "PASS",
+    "unregister": "PASS"
+  },
+  "code_evidence": {
+    "requests_calls": 23,
+    "requests_calls_with_explicit_timeout": 23,
+    "api_timeout_seconds": [10, 30],
+    "download_timeout_seconds": [10, 120],
+    "private_tempfile_cleanup_uses": 0,
+    "direct_os_unlink_uses": 0,
+    "direct_os_remove_uses": 0,
+    "stream_helper_deduplicates_hyper3d_download_paths": true,
+    "partial_stream_failure_removes_file": true,
+    "polyhaven_hdri_is_packed_before_exact_file_cleanup": true,
+    "polyhaven_texture_maps_are_packed_before_exact_file_cleanup": true,
+    "polyhaven_model_directory_is_context_owned": true,
+    "sketchfab_directory_cleanup_runs_from_finally": true,
+    "hunyuan_async_import_cleanup_runs_from_finally": true,
+    "hunyuan_archive_cleanup_removes_full_extraction_tree": true
+  },
+  "validation": {
+    "pytest": {"status": "PASS", "passed": 72, "failed": 0},
+    "new_resource_safety_tests": {"status": "PASS", "passed": 4, "failed": 0},
+    "pyflakes": "PASS",
+    "compileall": "PASS",
+    "repository_audit": "PASS",
+    "git_diff_check": "PASS"
+  },
+  "purge_audit": {
+    "tracked_files_before_change": 488,
+    "exact_duplicate_groups": 0,
+    "forbidden_tracked_artifacts": 0,
+    "unclassified_root_files": 0,
+    "files_deleted": 0,
+    "disposition": "No purge performed: every candidate binary was unique retained run evidence, and no tracked cache, credential, autosave, or unclassified root file was found."
+  },
+  "bounded_claim": "This proves deterministic cleanup and timeout policy for the inspected add-on paths plus Blender 5.2 loadability. It does not prove successful live calls to every third-party service."
+}

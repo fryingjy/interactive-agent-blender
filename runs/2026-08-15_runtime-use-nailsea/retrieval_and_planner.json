@@ -1,0 +1,572 @@
+{
+  "query": {
+    "query": "blown glass candlestick smooth multi-lobed radial profile needs evenly distributed rings before shaping",
+    "modeling_stage": "PROPORTION_SILHOUETTE",
+    "workflow": "radial product modeling subdivision deformation",
+    "surface_type": "smooth taper flared profile",
+    "defect": "uneven deformation density",
+    "local_topology": [
+      "connected quad rings",
+      "two endpoint rings"
+    ],
+    "modifiers": [],
+    "reference_issue": null,
+    "blender_version": "5.2.0"
+  },
+  "retrieved": [
+    {
+      "skill_id": "deformation.topology.uniform_rings_before_shaping",
+      "score": 21.3932,
+      "score_breakdown": {
+        "query": 4.8107,
+        "modeling_stage": 1.7678,
+        "workflow": 4.4721,
+        "surface_type": 3.0,
+        "defect": 4.3301,
+        "local_topology": 2.0125,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 1.0
+      },
+      "status": "TRANSFER_VALIDATED",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\deformation-uniform-rings-before-shaping.json",
+      "skill": {
+        "skill_id": "deformation.topology.uniform_rings_before_shaping",
+        "title": "Establish uniform deformation rings before shaping a smooth profile",
+        "topic_tags": [
+          "deformation",
+          "loop cut",
+          "quad density",
+          "proportional editing",
+          "subdivision surface",
+          "smooth profile"
+        ],
+        "applicability": {
+          "modeling_stage": [
+            "PRIMARY_BLOCKOUT",
+            "PROPORTION_SILHOUETTE",
+            "TOPOLOGY_SURFACE"
+          ],
+          "workflow": [
+            "box modeling",
+            "radial product modeling",
+            "subdivision deformation"
+          ],
+          "surface_type": [
+            "smooth taper",
+            "concave waist",
+            "flared profile"
+          ],
+          "defect": [
+            "uneven deformation density",
+            "stepped profile",
+            "buckling",
+            "pinching"
+          ],
+          "local_topology": [
+            "connected quad rings",
+            "uneven axial spacing"
+          ],
+          "modifiers_involved": [
+            "SUBSURF"
+          ]
+        },
+        "preconditions": [
+          "the target surface is intended to deform as one continuous smooth form",
+          "the local topology can support a traversable quad ring",
+          "the current ticket identifies the affected region and supplies a valid loop-cut target/parameters"
+        ],
+        "required_observations": [
+          "ring spacing along the deformation axis",
+          "base-cage quad aspect ratios in the affected region",
+          "profile or silhouette deviation before and after shaping",
+          "evaluated surface for buckling, pinching, and manifoldness"
+        ],
+        "action_policy": [
+          "Establish the full primary extent first, then distribute enough rings uniformly before applying proportional, lattice, or similar broad deformation.",
+          "Use only enough rings to represent the curvature and output scale; the transfer used 13 axial rings and 12 radial vertices, not a blanket high-density mesh.",
+          "After the uniform base is established, move rings to match the target profile where the reference demands non-uniform curvature; uniform setup is a controllable starting distribution, not a ban on purposeful local density.",
+          "Do not apply this hint when the surface is intentionally stepped, the ring path is interrupted by poles/triangles, or a ticket has not localized a valid loop-cut target."
+        ],
+        "expected_effects": [
+          "lower profile approximation error for the same ring count when the alternative contains accumulated manual-step spacing/radius error",
+          "more even side-quad aspect ratios before deformation",
+          "a smoother and more controllable evaluated highlight flow"
+        ],
+        "failure_predicates": [
+          "the new ring does not traverse the intended quad region",
+          "added density creates pinching or unnecessary complexity without measurable silhouette improvement",
+          "another relevant view or surface channel regresses"
+        ],
+        "recovery": [
+          "reject or rollback the scoped loop-cut decision",
+          "inspect poles and ring continuity",
+          "use a local reroute, lattice, curve/profile construction, or fewer purposefully placed rings when uniform rings are not suitable"
+        ],
+        "planner_hint": {
+          "trigger_ticket_types": [
+            "uneven_deformation_density",
+            "stepped_profile",
+            "deformation_buckling"
+          ],
+          "modeling_stages": [
+            "PRIMARY_BLOCKOUT",
+            "PROPORTION_SILHOUETTE",
+            "TOPOLOGY_SURFACE"
+          ],
+          "required_ticket_fields": [
+            "target",
+            "operation_params"
+          ],
+          "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
+          "operation": "loop_cut_selection",
+          "reason": "The transferred experiment showed that uniform pre-distribution materially improved profile accuracy and quad density at the same topology budget.",
+          "expected_effect": "Create a controllable, evenly distributed ring scaffold before the scoped smooth deformation.",
+          "verification": [
+            "confirm the loop traversed the intended quad ring only",
+            "measure ring spacing and affected-region quad aspect ratios",
+            "reapply or preview the deformation and compare the profile/silhouette",
+            "inspect the evaluated surface and all relevant views for regression"
+          ],
+          "confidence": "MEDIUM"
+        },
+        "sources": [
+          {
+            "type": "video_observation",
+            "source_id": "yi87Dap_WOc",
+            "timestamp_seconds": [
+              307,
+              400
+            ],
+            "description": "Blender Guru deliberately demonstrates uneven manual extrude-and-scale spacing, then establishes the full height and adds uniformly spaced loop cuts before proportional deformation."
+          },
+          {
+            "type": "live_multimodal_cross_check",
+            "description": "The source lesson was independently spot-checked in the in-app browser and replayed through the committed Gemini video-understanding pipeline; the transfer claim remains grounded in the older tighter timestamp study rather than the generated source metadata."
+          }
+        ],
+        "experiments": [
+          {
+            "type": "controlled different-shape transfer",
+            "evidence_path": "runs/2026-08-15_video-transfer-uniform-deformation/",
+            "source_asset": "square-section anvil waist",
+            "transfer_asset": "12-sided circular lamp pedestal",
+            "result": "PASS",
+            "measurements": {
+              "candidate_profile_rmse_reduction_percent": 82.09750322296189,
+              "candidate_side_quad_aspect_p95_reduction_percent": 54.84546384392963,
+              "candidate_ring_spacing_cv": 6.280369834735101e-16,
+              "control_ring_spacing_cv": 0.3898717737923585,
+              "base_vertices_each": 156,
+              "base_faces_each": 154,
+              "non_quad_faces_each": 0,
+              "non_manifold_edges_each": 0
+            },
+            "limitations": "The negative control deliberately encodes uneven spacing and small deterministic manual radius errors. The result validates the tutorial's demonstrated failure mode on one radial product form; it does not prove that every manually stepped mesh is inferior or that all deformations require uniform density."
+          }
+        ],
+        "runtime_usage": [],
+        "version_scope": "Blender 5.2 LTS transfer; source tutorial used Blender 2.78.5 UI",
+        "status": "TRANSFER_VALIDATED",
+        "status_note": "A predeclared different-shape transfer passed both the modeling lab and an independent fresh-process verifier. The skill is planner-actionable only for matching localized tickets with scene-owned operation parameters; no real held-out asset runtime use has occurred yet."
+      }
+    },
+    {
+      "skill_id": "material-slot-orphan-assignment",
+      "score": 3.0518,
+      "score_breakdown": {
+        "query": 0.8018,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 2.0,
+        "version_relevance": 0.25
+      },
+      "status": "UNKNOWN",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\material-slot-orphan-assignment.json",
+      "skill": {
+        "id": "material-slot-orphan-assignment",
+        "title": "New material added via data.materials.append() renders unused because faces still point at the old slot index",
+        "topic_tags": [
+          "material",
+          "shading",
+          "slots",
+          "cleanup",
+          "finishing"
+        ],
+        "problem": "Calling obj.data.materials.append(new_mat) adds a new slot but does NOT reassign any polygon's material_index to point at it. If slot 0 already existed (e.g. empty/null from object creation) and the new material became slot 1, every face keeps material_index=0, so the newly 'assigned' material renders on zero faces even though it appears in the material list.",
+        "symptom": "obj.data.materials shows the expected material name(s), but sorted(set(p.material_index for p in obj.data.polygons)) == [0] where slot 0 is null or a different material -- the intended material is present but structurally orphaned.",
+        "fix": {
+          "summary": "After appending a material, explicitly set polygon.material_index to the new slot's index for the faces that should use it (usually all faces for a single-material object), then remove any now-empty slots.",
+          "bpy_bmesh_steps": [
+            "for p in obj.data.polygons: p.material_index = target_slot_index",
+            "obj.data.materials.pop(index=empty_slot_index)  # reindexes remaining slots automatically"
+          ],
+          "code_snippet": "verified directly against Bottle and Flashlight in runs/2026-08-07_decision-cycles/ (decisions 040-042)"
+        },
+        "evidence": {
+          "before": {
+            "bottle_slots": [
+              null,
+              "Bottle_Mat_v2"
+            ],
+            "faces_using_real_material": 0
+          },
+          "after": {
+            "bottle_slots": [
+              "Bottle_Mat_v2"
+            ],
+            "faces_using_real_material": 800
+          },
+          "decision_log_seq": {
+            "bottle_diagnosed": 41,
+            "bottle_fixed": 41,
+            "flashlight_fixed": 42
+          },
+          "session_id": "2026-08-07_decision-cycles",
+          "note": "bpy.ops.object.material_slot_remove_unused() reported 'Removed 1 slots' without fixing the actual defect -- verify with a direct polygon.material_index scan, don't trust the operator's own report"
+        },
+        "learned_at": "2026-08-07T09:20:00Z",
+        "learned_during": "decision_cycles_finishing_touches",
+        "source_session": "2026-08-07_decision-cycles",
+        "applicability": "Any time a material is programmatically assigned via data.materials.append() (or a material appears unassigned/unused after seeming to be set), check polygon.material_index distribution before trusting that shading is correct.",
+        "runtime_usage": [
+          {
+            "skill_id": "material-slot-orphan-assignment",
+            "decision_id": "material-skill-use-001",
+            "asset_id": "controlled-material-cube",
+            "scene_revision_before": 0,
+            "scene_revision_after": 1,
+            "problem": "Accent material existed in slot 1 but no polygon used it",
+            "action": "Assign the intended top-half polygons to material slot 1",
+            "success": true,
+            "measured_effect": {
+              "orphan_slots_before": 1,
+              "orphan_slots_after": 0
+            },
+            "unexpected_effects": [],
+            "blender_version": "5.2.0 LTS",
+            "evidence": "runs/2026-08-10_knowledge-use/"
+          }
+        ]
+      }
+    },
+    {
+      "skill_id": "diffuse-color-not-connected-to-bsdf",
+      "score": 1.0518,
+      "score_breakdown": {
+        "query": 0.8018,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 0.25
+      },
+      "status": "UNKNOWN",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\diffuse-color-not-connected-to-bsdf.json",
+      "skill": {
+        "id": "diffuse-color-not-connected-to-bsdf",
+        "title": "Setting material.diffuse_color does not affect the actual rendered Base Color on a node-based Principled BSDF material",
+        "topic_tags": [
+          "material",
+          "shading",
+          "color",
+          "nodes",
+          "bsdf",
+          "finishing"
+        ],
+        "problem": "material.diffuse_color is a legacy/display property. When use_nodes=True (the default for materials created via bpy.data.materials.new()), the actual rendered appearance comes from the node graph -- specifically the Principled BSDF's 'Base Color' input socket -- which defaults to gray [0.8,0.8,0.8,1.0] and is NOT automatically synced from diffuse_color.",
+        "symptom": "Code sets mat.diffuse_color = (r,g,b,1.0) and it appears to succeed (no error, the property reads back correctly), but the object renders/displays as flat default gray. Comparing bsdf.inputs['Base Color'].default_value against mat.diffuse_color reveals they differ.",
+        "fix": {
+          "summary": "Set the BSDF node's Base Color input directly, not (or in addition to) diffuse_color.",
+          "bpy_bmesh_steps": [
+            "bsdf = next(n for n in mat.node_tree.nodes if n.type == 'BSDF_PRINCIPLED')",
+            "bsdf.inputs['Base Color'].default_value = (r, g, b, 1.0)"
+          ],
+          "code_snippet": "verified directly on Bottle_Mat_v2, Flashlight_Mat_v2, SimpleBlock_Mat in runs/2026-08-07_decision-cycles/ (decisions 076-079)"
+        },
+        "evidence": {
+          "before": {
+            "bsdf_base_color": [
+              0.8,
+              0.8,
+              0.8,
+              1.0
+            ],
+            "diffuse_color_set_to": [
+              0.2,
+              0.5,
+              0.4,
+              1.0
+            ]
+          },
+          "after": {
+            "bsdf_base_color": [
+              0.2,
+              0.5,
+              0.4,
+              1.0
+            ]
+          },
+          "decision_log_seq": {
+            "bottle_diagnosed": 74,
+            "bottle_fixed": 75,
+            "flashlight_fixed": 76,
+            "simpleblock_fixed": 77
+          },
+          "session_id": "2026-08-07_decision-cycles",
+          "note": "found by comparing the two properties directly, not by visual inspection -- the bug was silent, no error, no warning"
+        },
+        "learned_at": "2026-08-07T10:30:00Z",
+        "learned_during": "decision_cycles_material_audit",
+        "source_session": "2026-08-07_decision-cycles",
+        "applicability": "Any time a material's color needs to be set programmatically on a node-based material (use_nodes=True), verify the BSDF's actual input sockets, not just diffuse_color -- especially since assigning diffuse_color silently succeeds with no indication the render output is unaffected."
+      }
+    },
+    {
+      "skill_id": "subd.boundary_resolution.match_quads_over_triangulate",
+      "score": 0.6444,
+      "score_breakdown": {
+        "query": 0.0,
+        "modeling_stage": 0.0,
+        "workflow": 0.8944,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": -0.25
+      },
+      "status": "CANDIDATE",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\subd-boundary-resolution-matched-quads-over-triangulation.json",
+      "skill": {
+        "skill_id": "subd.boundary_resolution.match_quads_over_triangulate",
+        "applicability": {
+          "workflow": "subdivision",
+          "surface": "any (rim/transition where two regions of a control cage meet at different subdivision resolutions)",
+          "defect": "n-gons at a resolution-mismatch boundary between a more-subdivided region and its unsubdivided neighbor"
+        },
+        "preconditions": [
+          "control cage feeds a Subdivision Surface modifier (Catmull-Clark)",
+          "one region was subdivided (e.g. subdivide_selection) without matching the surrounding, unsubdivided faces' shared boundary edges",
+          "the mismatch produced n-gons on the neighboring faces (observed: 7-sided, from 5 verts along the new-resolution shared edge + 2 original corners)"
+        ],
+        "required_observations": [
+          "evaluated_probe.evaluated_surface_quality (area_outlier_count, max_adjacent_face_angle_radians) before and after the fix",
+          "evaluated_probe.evaluated_valence_distribution -- specifically whether new poles cluster at the boundary/transition or stay confined to pre-existing corners"
+        ],
+        "action_policy": [
+          "Prefer re-topologizing the boundary so both sides share matching edge resolution (an all-quad grid across the transition), over the faster fix of triangulate_ngons on the mismatched faces, even when the affected region is currently flat (the condition under which triangulate_ngons was judged 'low risk' in the moment this was found).",
+          "This is stated by the human as a general quad-hygiene preference for subdivision control cages, not a claim specific to this one transition -- do not narrow the applicability to 'only curved transitions' or 'only where pinching is visually obvious' without separate evidence for that boundary."
+        ],
+        "expected_effects": [
+          "no new poles introduced at the resolution-mismatch boundary itself",
+          "evaluated surface shows no area-outlier cluster at the boundary",
+          "moderate, not extreme, max adjacent-face angle across the transition"
+        ],
+        "success_predicates": [
+          "evaluated_surface_quality.area_outlier_count == 0",
+          "evaluated_valence_distribution's non-4 poles are all traceable to pre-existing geometry (e.g. original box corners), none newly introduced at the boundary"
+        ],
+        "failure_predicates": [
+          "new valence-3/5 poles appear clustered at the boundary after the fix",
+          "area_outlier_count > 0 concentrated near the boundary"
+        ],
+        "recovery": [
+          "if the all-quad re-topology itself introduces new clustered poles at the boundary, that is real evidence AGAINST blanket-applying this preference at that specific geometry, not a reason to fall back to triangulation by default -- re-inspect and treat as a new, separate problem"
+        ],
+        "sources": [
+          {
+            "type": "human_correction",
+            "description": "User directly re-topologized the SoapDish rim by hand in the Blender GUI (live external edit, detected via check_external_edit), replacing an agent-applied triangulate_ngons fix with a resolution-matched all-quad grid.",
+            "stated_reasoning": "General quad hygiene in subdivision control cages -- not specifically about pole placement at this transition. Given directly when asked, after the fact, per directive section 46 ('human corrections are evidence, not automatically truth -- form a hypothesis').",
+            "trust_tier": "not applicable (Tier A-D is for external research sources; this is a direct, first-party correction from the project's own user, treated as real evidence in its own right, distinct from and not to be confused with a Tier-A/B external source)"
+          }
+        ],
+        "experiments": [
+          {
+            "type": "observational, not controlled",
+            "description": "Measured the evaluated mesh AFTER the human's fix (258v/512e/256f, valence {3: 8, 4: 250}, area_outlier_count 0, max_adjacent_face_angle_radians 0.802). Did NOT measure the evaluated quality of the original agent triangulate_ngons fix before it was overwritten by the live edit -- there is no direct A/B comparison, only the post-fix result plus the general knowledge (Blender Manual, general SubD theory) that triangles under Catmull-Clark can produce different curvature behavior than quads.",
+            "limitation": "No controlled minimal-scene experiment (directive section 41 style: variant A/B/C on a throwaway mesh) has been run yet to isolate whether the SPECIFIC improvement here came from 'quads vs triangles' or from 'matched vs mismatched resolution' -- these were changed together in the human's single fix, not independently."
+          }
+        ],
+        "runtime_usage": [],
+        "status": "CANDIDATE",
+        "status_note": "Not EXPERIMENTALLY_TESTED: evidence is one real observational data point from a live human correction plus post-fix measurement, not an isolated controlled experiment. Promote to EXPERIMENTALLY_TESTED only after a dedicated minimal-scene test separating the 'quads vs triangles' variable from the 'matched vs mismatched resolution' variable, per directive section 41."
+      }
+    },
+    {
+      "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+      "score": 0.5518,
+      "score_breakdown": {
+        "query": 0.8018,
+        "modeling_stage": 0.0,
+        "workflow": 0.0,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": -0.25
+      },
+      "status": "EXPERIMENTALLY_TESTED",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\modifier-stack-order-subd-safe.json",
+      "skill": {
+        "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+        "applicability": {
+          "workflow": "modifier-stack",
+          "modifiers_involved": [
+            "MIRROR",
+            "SUBSURF",
+            "BEVEL",
+            "SOLIDIFY",
+            "BOOLEAN"
+          ],
+          "defect": "non-manifold geometry or a no-op modifier caused by incorrect stack order"
+        },
+        "preconditions": [
+          "a modifier stack combines Mirror with Subdivision Surface, or Solidify with Bevel, or Boolean with Bevel, or Mirror with Bevel",
+          "the mesh has an open boundary that Mirror welds (Mirror+Subdivision, Mirror+Bevel), or is a flat/open shell that Solidify gives thickness to (Solidify+Bevel)"
+        ],
+        "required_observations": [
+          "evaluated mesh non_manifold_edges count (must be 0)",
+          "evaluated vertex positions near the mirror seam, to distinguish a genuinely flat/continuous seam from a carved/rounded one",
+          "evaluated vertex/face count, to detect a modifier silently doing nothing (e.g. Bevel on an unsolidified plane)"
+        ],
+        "action_policy": [
+          "For Mirror plus Subdivision Surface, test both candidate orders on the actual seam topology. Subdivision-before-Mirror repaired the original flat-seam failure, but a later exact-seam half-cylinder stayed manifold in both orders; do not promote one shape's result into a universal order rule.",
+          "Bevel should be placed BEFORE Mirror when a seamless join across the mirror plane is wanted. Mirror-before-Bevel causes Bevel to treat the former seam edges as ordinary edges and round/carve them, producing a visible facet at what should be a flat, continuous seam.",
+          "Solidify must be placed BEFORE Bevel when starting from an open/flat mesh (e.g. a plane). Bevel on an unsolidified single-face plane has no dihedral angle to act on and is effectively a no-op; Solidify must run first to give the mesh real 3D form.",
+          "Boolean before or after Bevel is a genuine strategic choice, not a correctness issue: Boolean-then-Bevel rounds the cut/hole rim too (more geometry); Bevel-then-Boolean leaves the cut sharp (less geometry). Choose based on whether the cut's edge should read as rounded or crisp."
+        ],
+        "expected_effects": [
+          "Mirror+Subdivision: the selected order must have 0 non-manifold edges in the evaluated mesh and acceptable seam shape/highlight flow; topology-specific testing decides the order",
+          "Mirror+Bevel in the correct order (Bevel first): a flat, unrounded seam face at the mirror plane, with the two halves reading as one continuous surface",
+          "Solidify+Bevel in the correct order (Solidify first): the evaluated mesh's vertex/face count reflects real bevel geometry, not an unchanged flat shell"
+        ],
+        "success_predicates": [
+          "evaluated_mesh_health.non_manifold_edges == 0",
+          "no evaluated vertices with visibly rounded/offset coordinates sitting exactly on the mirror plane when a flat seam was intended"
+        ],
+        "failure_predicates": [
+          "evaluated_mesh_health.non_manifold_edges > 0 after evaluating either tested Mirror/Subdivision order on the actual seam topology",
+          "Bevel modifier added but the evaluated mesh's vertex/face count is unchanged from before adding it (Bevel silently doing nothing, usually because it ran before Solidify on a flat shell)"
+        ],
+        "recovery": [
+          "reorder the modifier stack (Blender modifiers can be reordered without data loss -- this does not require rebuilding geometry) and re-check non_manifold_edges / vertex-face counts on the evaluated mesh"
+        ],
+        "sources": [
+          {
+            "type": "direct_experiment",
+            "description": "This project's own live reproduction, session 2026-08-07 (knowledge-first foundation phase): built matched pairs of scratch objects (a cube with its inner face touching a mirror plane; a plane for Solidify+Bevel) with modifiers added in both orders, compared via evaluated_probe-style inspection (vertex/face/non-manifold counts, seam vertex positions).",
+            "trust_tier": "not applicable (first-party direct experiment, not an external source)"
+          }
+        ],
+        "experiments": [
+          {
+            "type": "controlled, matched-pair (this project's own reproduction lab, not an external tutorial)",
+            "description": "Mirror+Subdivision: Mirror->Subdivision gave 171v/176f/16 non-manifold edges; Subdivision->Mirror gave 196v/192f/0 non-manifold edges, with the evaluated seam empty of exactly-on-plane vertices in the working order and populated with rounded-looking coordinates in the broken order. Mirror+Bevel: Mirror->Bevel gave 68v/67f/12 non-manifold with bevelled coordinates at the seam; Bevel->Mirror gave 108v/107f/4 non-manifold with a flat unbevelled seam face. Solidify+Bevel: Solidify->Bevel gave 56v/54f; Bevel->Solidify gave 8v/6f, identical to an un-bevelled solidified plane (confirming the no-op). Boolean+Bevel: both orders gave 0 non-manifold edges but different face counts (248v/216f vs 120v/88f), confirming this pair is a style choice, not a correctness issue.",
+            "limitation": "Tested on simple primitive shapes (cube, plane, cube+cylinder cutter), not yet on a real production prop combining these modifiers. The original Mirror+Subdivision result was topology-specific and must be read alongside the curved transfer experiment."
+          },
+          {
+            "type": "controlled second-shape transfer",
+            "description": "On an exact-seam half-cylinder in runs/2026-08-10_bevel-mirror-transfer/, Mirror->Subdivision and Subdivision->Mirror both evaluated to 482 vertices, 480 quad faces, and 0 non-manifold edges. The intentionally offset Mirror seam produced 12 non-manifold edges and a larger Merge Distance repaired it. Independent evaluation of the saved blend reproduced all outcomes.",
+            "limitation": "Manifoldness and counts do not prove identical curvature or highlight flow. The two stack orders had slightly different signed volumes, and neither was judged with a controlled reflection render."
+          }
+        ],
+        "runtime_usage": [],
+        "status": "EXPERIMENTALLY_TESTED",
+        "status_note": "Controlled matched-pair evidence exists for all four listed pairs, plus a cylindrical second-shape transfer for Mirror+Subdivision. The transfer disproved the universal version of the original order rule, so the skill now requires per-topology evaluation. Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED; no real prop has combined these modifiers and visual seam quality still needs controlled reflection evidence."
+      }
+    }
+  ],
+  "ticket": {
+    "type": "uneven_deformation_density",
+    "target": "Heldout_Candlestick full rotational profile",
+    "priority": 1,
+    "severity": 0.9,
+    "operation_params": {
+      "edge_ids": [
+        27,
+        28,
+        31,
+        34,
+        37,
+        40,
+        43,
+        46,
+        49,
+        52,
+        55,
+        58
+      ],
+      "cuts": 31
+    }
+  },
+  "decision": {
+    "disposition": "ACT",
+    "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
+    "target_object": "Heldout_Nailsea_Candlestick",
+    "target_region": "Heldout_Candlestick full rotational profile",
+    "rationale": [
+      "highest-priority visual ticket is uneven_deformation_density",
+      "transfer-validated skill deformation.topology.uniform_rings_before_shaping matches this ticket",
+      "The transferred experiment showed that uniform pre-distribution materially improved profile accuracy and quad density at the same topology budget."
+    ],
+    "expected_effect": "Create a controllable, evenly distributed ring scaffold before the scoped smooth deformation.",
+    "verification": [
+      "confirm the loop traversed the intended quad ring only",
+      "measure ring spacing and affected-region quad aspect ratios",
+      "reapply or preview the deformation and compare the profile/silhouette",
+      "inspect the evaluated surface and all relevant views for regression"
+    ],
+    "observed_revision": 1,
+    "confidence": "MEDIUM",
+    "operation": "loop_cut_selection",
+    "operation_params": {
+      "edge_ids": [
+        27,
+        28,
+        31,
+        34,
+        37,
+        40,
+        43,
+        46,
+        49,
+        52,
+        55,
+        58
+      ],
+      "cuts": 31
+    },
+    "retrieved_skill_ids": [
+      "deformation.topology.uniform_rings_before_shaping",
+      "material-slot-orphan-assignment",
+      "diffuse-color-not-connected-to-bsdf",
+      "subd.boundary_resolution.match_quads_over_triangulate",
+      "modifier.stack_order.subd_safe_mirror_placement"
+    ],
+    "next_stage": null
+  },
+  "checks": {
+    "skill_retrieved_rank_1": true,
+    "skill_transfer_validated_before_use": true,
+    "planner_acts": true,
+    "planner_selects_loop_cut": true,
+    "planner_preserves_scene_parameters": true,
+    "planner_carries_skill_provenance": true
+  },
+  "pass": true
+}

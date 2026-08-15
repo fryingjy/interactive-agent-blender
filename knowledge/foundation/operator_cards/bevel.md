@@ -1,6 +1,6 @@
 # Operator card: Bevel
 
-**Status:** DOCS ✓ | EXPERIMENT ✓ (pre-existing, this project) | FAILURE_CASE ✓ (pre-existing) | QUIZ pending
+**Status:** DOCS ✓ | EXPERIMENT ✓ (including modifier-order conflict) | FAILURE_CASE ✓ | QUIZ pending
 
 ## Source
 - Tier A: [Blender Manual — Bevel](https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/bevel.html), read 2026-08-07.
@@ -38,3 +38,19 @@ surface and minimum-area inspection.
 ## When to use / not use
 Use for: softening a hard edge for realistic light response, adding a manufactured/machined look, avoiding a razor-sharp silhouette edge that would alias badly under subdivision or in a render.
 Caution: on a subdivision control cage, an unbevelled hard edge reads as an unintended soft rounded corner under Catmull-Clark (see subdivision_surface.md) -- bevel vs support-loop choice is a real strategy decision, not interchangeable.
+
+## Bevel before or after Subdivision Surface (controlled reconciliation, 2026-08-15)
+
+The source conflict is real, but the experiment rejects a universal order. On identical supported
+all-quad box cages, weighted Bevel before Subdivision produced the broadest, smoothest radius and no
+localized pinch candidates, at 2,400 evaluated quad faces. Crease-protected Subdivision followed by
+weighted Bevel preserved the flattest panels and a tighter manufactured chamfer at 1,176 faces, but
+concentrated highlights at three-edge corners and produced 16 localized curvature candidates. A
+post-Subdivision Bevel without crease/support protection visibly over-rounded the design because
+Subdivision moved the intended edge before Bevel evaluated.
+
+Decision rule: use pre-Subdivision Bevel when the radius belongs to the smoothed primary form; use
+crease/support protection plus post-Subdivision Bevel for a final tight chamfer on an already
+controlled form, with explicit corner inspection. Never infer the right order from technical
+cleanliness alone; all three fixtures were closed, all-quad, and manifold. Evidence:
+`runs/2026-08-15_bevel-subd-order/`.

@@ -1,6 +1,6 @@
 # Master directive implementation audit
 
-**Audit date:** 2026-08-12
+**Audit date:** 2026-08-15
 **Branch:** repository default branch plus published evidence increments
 **Disposition:** substantial foundation evidence exists, but locally actionable professional-
 judgment and generalization priorities remain; the professional target is not falsely claimed.
@@ -36,10 +36,12 @@ judgment and generalization priorities remain; the professional target is not fa
 | Reference localization | enclosed negative space, named landmarks, semantic component masks | implemented and unit-tested |
 | Reference error tickets | contour/negative-space/landmark/component mismatches converted to localized priorities | implemented and unit-tested |
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
+| Reference-set readiness gate | same-target/variant identity, independent provenance, view/projection coverage, property-scoped authority, dimensional anchors, conflict resolution, and targeted search queries | unit and three-case controlled pass; runtime quality improvement not yet demonstrated |
+| General reference-workflow video study | seven user-supplied public videos analyzed through reproducible Gemini 3.6 audio/visual input; timestamped episodes, source-fitness limits, synthesis, and seven CAPTURED items | access/extraction complete; no item promoted and no new prop transfer yet |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates plus typed single/mixed intervention classifiers for geometry/normals/material/lighting/bevel | five isolated causes plus adaptive five-cause connected-barrel transfer pass; unknown real defects remain open |
 | Surface review lighting | official three-point and shading lessons studied; grazing-light observability, neutral-context interventions, and fixed-seed Cycles ablation | controlled second-shape transfer passes; experienced review remains open |
-| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.2 | expanded lab plus 6/6 Bisect mode cases and rollback/identity evidence |
+| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.3; Bridge includes read-only correspondence analysis, explicit twist offset, and unequal-density guard | expanded lab plus 6/6 Bisect mode cases, rollback/identity evidence, and two-shape bridge transfer |
 | Revision-bound planner contract | one local decision chosen from authority, external edits, technical failures, rebuild pressure, uncertainty, visual tickets, and stage evidence | 12/12 contract assertions plus unit coverage; broader runtime use remains sparse |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
 | Blender runtime API breadth | context/data/RNA types, depsgraph evaluation, handlers, timers, message bus, lifecycle cleanup | controlled lifecycle pass; asynchronous dispatch explicitly unclaimed |
@@ -258,3 +260,63 @@ here it wasn't even the surface detail that was wrong, it was the shape family. 
 tools, and readiness entries were removed rather than kept as a partial or false pass, per explicit
 user instruction. Ladder rungs A ("Subdivision transfer") and C ("Unknown-problem asset") remain
 `NOT_RUN_HELD_OUT`.
+
+## 2026-08-15 addendum: video knowledge reaches different-shape transfer and planner use
+
+`runs/2026-08-15_video-transfer-uniform-deformation/` closes one narrow but previously explicit
+learning-system gap. A timestamped video failure/principle pair was reproduced in Blender and
+transferred from an anvil waist to a circular lamp pedestal under a predeclared matched-topology
+contract. The candidate's profile RMSE fell 82.10% and side-quad aspect-ratio p95 fell 54.85%; a
+separate fresh-process verifier passed all declared mesh, ring, profile, modifier, and shading
+checks. The corresponding structured skill is retrieval-ranked and changes a matching planner
+ticket to a scoped action only at `TRANSFER_VALIDATED` or better.
+
+Disposition remains **PARTIAL**. This is deterministic controlled transfer, not a held-out adaptive
+asset, and the skill has no real runtime-use success yet. It improves evidence for the knowledge
+lifecycle and planner contract without changing the professional-readiness claim.
+
+## 2026-08-15 addendum: bridge correspondence control and failed-operation rollback
+
+`runs/2026-08-15_bridge-correspondence-control/` closes the previously documented typed-runtime gap
+around Bridge Edge Loops Twist. Protocol 0.3 exposes an integer `twist_offset`, adds a read-only
+candidate analyzer, validates exactly two closed non-branching loops, and rejects unequal loop counts
+unless a caller explicitly opts into diagnostic-risk behavior. Two controlled shape families show
+visible crossed/pinched failures and corrected all-quad correspondence; a fresh-process verifier
+measured 34.5% and 39.1% lower connector length and found no orphan transaction datablocks.
+
+The experiment also discovered a separate real transaction defect: an operation that mutated a mesh
+and then raised could leave partial state and snapshot-related datablocks because `perform()` never
+reached its performed flag. Failed operations now restore the transaction-owned mesh, transform,
+metadata, modifiers, and selection before re-raising. This is verified with a deliberate post-mutation
+exception and an unequal-density bridge rejection. The evidence remains bounded to controlled equal-
+density loops; it does not promote general modeling or professional readiness beyond **PARTIAL**.
+
+## 2026-08-15 addendum: connector resource lifecycle and measured purge audit
+
+`runs/2026-08-15_addon-resource-safety/` closes a bounded reliability defect in the root Blender
+connector add-on. All 23 external `requests` calls now carry explicit connect/read timeouts; duplicate
+Hyper3D temporary-download code is consolidated; partial streams roll back their file; and Poly
+Haven, Sketchfab, and Hunyuan temporary files/directories are owned by exact `finally` or context
+cleanup paths. The private global `tempfile._cleanup()` call and direct scattered unlink/remove calls
+are gone. A deliberate interrupted-stream test verifies the partial file is absent, the full suite
+passes 72 tests, and Blender 5.2 imports/registers/unregisters the complete add-on under factory
+startup.
+
+The accompanying purge audit deleted nothing: 488 pre-change tracked files contained zero exact
+duplicate groups, forbidden artifacts, or unclassified root files. Unique dated `.blend`, render,
+transcript, and video fixtures remain retained evidence under the master directive's stability and
+anti-fake-progress rules. This improves runtime hygiene; it does not change `FOUNDATION STATUS:
+PARTIAL` or substitute for the pending human reference-board review.
+
+## 2026-08-15 addendum: retrieval abstention and negative controls
+
+`runs/2026-08-15_retrieval-abstention/` records a real false-positive retrieval defect and its
+bounded correction. Before the fix, unrelated camera, UV, and rigging tickets retrieved unrelated
+skills at scores up to 3.3416 because every positive lexical overlap was accepted. Structured search
+now defaults to a calibrated 4.0 floor and can honestly return no skill. Eleven positive direct or
+paraphrased contexts and three unrelated abstention controls all pass, with a frozen 1.0 minimum
+top-result margin for positive cases.
+
+The regression set was authored after store inspection and threshold calibration. It proves the
+specified executable behavior, not independent or week-scale retention, and does not advance the
+professional-readiness claim beyond **PARTIAL**.

@@ -795,3 +795,152 @@ reference and get a professional model" remains unmet) rather than being a coinc
 videos got processed -- the same gap keeps surfacing from a completely different angle. The
 synthesis names concrete next-source types for the thin stages instead of just restating the gap.
 Curriculum doc updated with the honest strong/moderate/thin verdict.
+
+## Update -- 2026-08-15 (video principle transferred into planner behavior)
+
+Closed one concrete part of the video-learning loop instead of adding another summary. The anvil
+lesson's 05:07-06:40 sequence—manual step extrusion creates uneven spacing; establish full height
+and uniform loops before deformation—was reproduced and transferred to a different 12-sided
+circular lamp pedestal under a predeclared contract.
+
+At identical 156-vertex/154-quad topology, the uniform candidate reduced profile RMSE by 82.10%
+and side-quad aspect-ratio p95 by 54.85%. Both meshes remained one connected manifold object with
+24 explicitly selected cap-perimeter bevel edges, Bevel before SubD, and Smooth by Angle. A fresh
+Blender process independently reproduced every topology, profile, density, modifier, and shading
+gate. The failed 32-edge semantic selection and blank wireframe attempt remain documented rather
+than rewritten as success.
+
+The two source items are now `TRANSFER_VALIDATED`; the structured skill is top-ranked for a matching
+deformation-density query. A controlled planner proof shows the validated skill changes the same
+localized ticket from `INSPECT` to a scoped `loop_cut_selection`, while a merely captured skill does
+not act and non-manifold geometry still preempts it. `runtime_usage` remains empty because no real
+held-out asset has used the skill through a typed transaction yet; that is the next promotion gate.
+
+## Update -- 2026-08-15 (held-out runtime attempts rejected by human review)
+
+Two attempts tested the next promotion gate, but neither is being counted as successful runtime
+validation. The first used one CC0 museum photograph of an opalescent candlestick. It produced a
+real typed transaction trace and high normalized silhouette score, but human review correctly
+identified the core evidence error: a symmetry-reconstructed single view cannot establish accurate
+three-dimensional form. The run is retained with `REJECTED_AS_FULL_FORM_VALIDATION`; its metrics
+remain factual but cannot support skill promotion.
+
+The replacement run corrected the sourcing method before modeling: five photos of one specific
+Nailsea candlestick were collected from one listing, with a complete elevation, close upper/lower
+details, oblique top/bottom evidence, and a direct base view. Published 30.5 x 9 x 9 cm dimensions
+became frozen gates. This exposed a second real failure that normalized front IoU had hidden: SubD
+shrank the first evaluated build to 7.43 cm wide. A fresh-process cross-view verifier rejected it;
+the control cage was then compensated and reproduced 30.5000 x 9.0000 x 9.0000 cm, a circular
+hollow socket, one 396-vertex/384-quad cage, closed evaluated geometry, and front IoU 0.8479.
+
+Human review still rejected the corrected asset as insufficiently accurate. Therefore the skill
+remains `TRANSFER_VALIDATED`, `runtime_usage` stays empty, and no metric-only promotion is allowed.
+The next step is not further tuning of either candlestick: study the user's forthcoming videos on
+reference sourcing, selection, interpretation, and modeling-from-reference; reproduce and validate
+their methods; then attempt a different held-out prop. This is now the clearest active knowledge
+gap, consistent with the Level 14 synthesis finding that reference interpretation was the thinnest
+stage in the curriculum.
+
+## Update -- 2026-08-15 (reference-workflow curriculum and executable readiness gate)
+
+Processed all seven user-supplied general reference-workflow videos with actual public-video
+audio/visual input through Gemini 3.6 Flash. Every URL was independently resolved to its intended
+YouTube title/creator; raw timestamped analyses, source-fitness boundaries, cross-source synthesis,
+and seven validated-schema `CAPTURED` items are stored in
+`runs/2026-08-15_video-study-reference-workflow/`. None is promoted.
+
+The study resolved an important apparent contradiction: multi-source creative synthesis is useful
+for design, but exact reconstruction must converge on same-target/same-variant factual evidence.
+Implemented `knowledge_engine/reference_analysis.py` so image count, view count, provenance count,
+projection, purpose, dimensional authority, critical-property coverage, and conflicts are distinct.
+The planner now returns `TARGETED_REFERENCE_RESEARCH` with no Blender operation when evidence is
+insufficient.
+
+Also fixed a runtime enforcement defect discovered during this work: forward stage transitions had
+validated the destination gate while the planner validates the stage being completed, and the MCP
+command bypassed strict validation. Forward transitions now advance exactly one stage and validate
+the current stage; regressions remain explicit and logged. Controlled manifests correctly reject
+the single-photo candlestick and a mixed-camera-variant set while accepting the same-object Nailsea
+set as ready to begin. That acceptance does not overturn the human rejection of the Nailsea model.
+The next required evidence remains a human-reviewed reference-gathering-only exercise, then an
+equal-budget target-only versus structured-reference-set comparison on a new prop.
+
+## Update -- 2026-08-15 (bridge correspondence gap closed at controlled-transfer level)
+
+The documented Bridge Edge Loops Twist gap is now implemented through protocol 0.3. A read-only
+analyzer simulates candidate offsets on copied BMeshes, typed mutation accepts explicit
+`twist_offset`, and unequal loop density is rejected by default. Deliberately twisted circle and
+rounded-rectangle tubes were corrected in Blender 5.2, visually reviewed in solid/wireframe passes,
+and independently verified in a fresh process. The run also found and fixed automatic rollback after
+an operator mutates and then raises, including an orphan-datablock leak.
+
+This promotes only the narrow official-manual Twist claim to `TRANSFER_VALIDATED`. It does not
+validate semantic landmark pairing, unequal-density topology, or a held-out production prop. The
+roadmap priority therefore remains unchanged: complete the human-reviewed reference-gathering-only
+exercise, then compare target-only and structured-reference-set modeling at equal effort on a new
+prop before another difficult held-out build is accepted.
+
+## Update -- 2026-08-15 (reference-gathering-only exercise awaiting human review)
+
+`runs/2026-08-15_reference-gathering-bialetti/` applies the new readiness gate to a genuinely new
+non-weapon hard-surface target without opening Blender. It records eight purpose-scoped reference
+items from three provenance sources, twelve same-object views kept under ignored media, official
+155 mm / 72 mm dimensional anchors, ten critical properties, two explicit conflict resolutions,
+three bounded ratios, and an 11-component/10-relationship decomposition. The machine audit passes
+all seven checks and authorizes only a reversible blockout.
+
+The roadmap's human-review requirement remains deliberately separate. The local contact sheet has
+been visually inspected by the agent, but `human_review_gate.json` remains `PENDING_USER_REVIEW` and
+`modeling_authorized` remains false. The missing boiler underside and possible old/current production
+revision difference are visible uncertainties. The equal-effort comparison must not begin until the
+user accepts this board or directs a different target/reference search.
+
+## Update -- 2026-08-15 (retrieval now abstains from weak unrelated matches)
+
+An expanded retrieval probe exposed three concrete false positives: camera-perspective, UV-packing,
+and armature-deformation tickets retrieved unrelated skills at scores between 1.4142 and 3.3416.
+`StructuredSkillStore.search()` now uses a calibrated 4.0 default floor while retaining an explicit
+lower-threshold option for exploratory search. A frozen 14-case regression covers eleven direct or
+paraphrased positive contexts across all six current skills and three unrelated-ticket abstentions;
+all pass, and every positive top result clears a predeclared 1.0 margin.
+
+This improves executable memory safety and closes one wrong-retrieval mode. The set was authored
+after inspecting the store and calibrating the threshold, so it is regression evidence rather than
+held-out or independent retention. Longer-interval retrieval, broader real-session use, and the
+pending Bialetti human reference gate remain open.
+
+## Update -- 2026-08-15 (Bevel/SubD source conflict experimentally reconciled)
+
+Ran the controlled comparison owed by curriculum item #4 instead of resolving a source conflict by
+editing prose. Three identical 56-vertex/54-quad supported box cages used the same 36 semantic
+design-edge segments: weighted Bevel -> Subdivision; crease-protected Subdivision -> weighted
+Bevel; and an unprotected post-Subdivision Bevel negative control. All three remained closed,
+all-quad, manifold meshes, proving technical validity cannot select the workflow.
+
+The fixed-frame MatCap/evaluated-wire review and fresh-process verifier support a conditional rule.
+Pre-Subdivision Bevel produced the smoothest broad radius here (2,400 evaluated faces, zero
+localized pinch candidates). Crease-protected post-Subdivision Bevel preserved the flattest panels
+and a tighter chamfer at 1,176 faces, but concentrated highlights at box corners and produced 16
+localized curvature candidates. The unprotected post-Subdivision control visibly over-rounded the
+form even though its face count and bounds exactly matched the protected variant -- a directly
+preserved rejection of count-only judgment. Evidence: `runs/2026-08-15_bevel-subd-order/`.
+
+This closes the contradiction as a controlled experiment, not as transfer validation. The next
+promotion step is the same comparison on a curved hull or real prop whose reference declares
+whether the edge should be a broad radius or tight final chamfer.
+
+## Update -- 2026-08-15 (scoped Shrinkwrap footprint transfer)
+
+Closed the three-source-but-untested Shrinkwrap Project hypothesis with a controlled reproduction
+and different-curvature transfer. A closed 50-vertex/48-quad secondary mount was split semantically
+into a 25-vertex contact footprint and 25 upper structural vertices. On both a sphere and cylinder,
+Project limited to the footprint moved all intended vertices, preserved every upper vertex exactly,
+landed within 0.024 of the analytic host surface, and remained closed/manifold/non-degenerate.
+
+The controls establish why the details matter: an empty modifier vertex-group field projected the
+whole part, collapsed its volume nearly to zero, and produced 12 degenerate faces; the wrong local-Z
+direction moved zero vertices without throwing an error. The visual frame and fresh-process
+verifier retain both failures. The skill is `TRANSFER_VALIDATED`, not runtime promoted. It applies
+only to a physically separate assembled/movable/bolted component; continuous host transitions still
+require connected topology or a deliberate boolean/retopology strategy. Evidence:
+`runs/2026-08-15_shrinkwrap-footprint-transfer/`.

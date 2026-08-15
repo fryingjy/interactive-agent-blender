@@ -28,6 +28,12 @@ task gap
 - `knowledge/skills/` — runtime-oriented learned skills with applicability boundaries.
 - `knowledge/foundation/foundation_exit_report.md` — current capability gate.
 
+Structured runtime retrieval uses a calibrated default score floor and may return no skill. That
+abstention is intentional: weak lexical overlap must not turn an unrelated ticket into an executable
+hint. Use `knowledge/skill_store.py search-structured --min-score ...` only to lower the floor for
+explicit exploratory search, never silently for planner mutations. The frozen positive/negative
+regression cases live in `knowledge/foundation/retrieval_benchmark_cases.json`.
+
 ## Source hierarchy
 
 1. current Blender Manual, Python API, official training, and developer information;
@@ -64,6 +70,11 @@ Local media ingestion is deliberately legal and bounded:
 - source observations, machine transcription, interpretation, and experiment results remain
   distinct;
 - important claims return to current documentation and Blender reproduction.
+
+Public YouTube sources can additionally be passed by URL through Gemini's supported video input.
+The repository stores the prompt, source identity, model/access metadata, and timestamped analysis,
+not a copy of the video. Audio/visual analysis is still only `CAPTURED`; it must survive
+corroboration, controlled reproduction, different-target transfer, and runtime use before promotion.
 
 The current video evidence is summarized in
 `knowledge/foundation/video_learning_curriculum.md`; media files normally remain ignored under

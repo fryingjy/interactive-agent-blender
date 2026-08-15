@@ -168,7 +168,7 @@ def main():
     def registry():
         expected={"rotate_selection","bevel_selection","delete_selection","dissolve_selection","merge_selection","fill_selection","bridge_selection","spin_selection","loop_cut_selection","bisect_selection","symmetrize_selection","split_selection","separate_selection"}
         missing=sorted(expected-set(modeler_server._OPS))
-        assert not missing and modeler_server.PROTOCOL_VERSION=="0.2"
+        assert not missing and modeler_server.PROTOCOL_VERSION=="0.3"
         return {"protocol":modeler_server.PROTOCOL_VERSION,"registered":sorted(expected),"missing":missing}
     run_case(records,"modeler_registry_protocol",registry)
 

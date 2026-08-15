@@ -8,7 +8,11 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
+from knowledge_engine.retrieval import (
+    DEFAULT_MIN_RETRIEVAL_SCORE,
+    RetrievalContext,
+    StructuredSkillStore,
+)
 
 SKILLS_DIR = Path(__file__).resolve().parent / "skills"
 
@@ -74,6 +78,11 @@ def main():
     p_structured = sub.add_parser("search-structured")
     p_structured.add_argument("query")
     p_structured.add_argument("--top-k", type=int, default=5)
+    p_structured.add_argument(
+        "--min-score",
+        type=float,
+        default=DEFAULT_MIN_RETRIEVAL_SCORE,
+    )
     p_structured.add_argument("--modeling-stage")
     p_structured.add_argument("--workflow")
     p_structured.add_argument("--surface-type")
@@ -105,7 +114,11 @@ def main():
             reference_issue=args.reference_issue,
             blender_version=args.blender_version,
         )
-        results = StructuredSkillStore(SKILLS_DIR).search(context, args.top_k)
+        results = StructuredSkillStore(SKILLS_DIR).search(
+            context,
+            top_k=args.top_k,
+            min_score=args.min_score,
+        )
         print(json.dumps([
             {
                 "skill_id": result["skill_id"],

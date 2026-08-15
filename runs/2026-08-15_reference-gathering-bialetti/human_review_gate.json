@@ -1,0 +1,11 @@
+{
+  "target": "Bialetti Moka Express 3-cup classic aluminum",
+  "status": "PENDING_USER_REVIEW",
+  "questions": [
+    "Do the same-object views sufficiently establish the handle, spout, shell and lid forms?",
+    "Is using the current official 155 mm / 72 mm specification for the older-looking listing unit acceptable?",
+    "Is the missing boiler underside low priority for the comparison, or must another source be found first?"
+  ],
+  "modeling_authorized": false,
+  "reason": "The roadmap requires a human-reviewed reference-gathering-only exercise before another held-out build."
+}
