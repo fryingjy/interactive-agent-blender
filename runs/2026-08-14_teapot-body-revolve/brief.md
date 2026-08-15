@@ -1,11 +1,13 @@
-# Teapot body: revolved profile complete, spout attached on the THIRD attempt after root-causing the bug
+# Teapot body: body + spout complete, handle grown but not fully closed as a two-point loop
 
-**Final status: DONE.** Body + spout, one continuous manifold mesh, 211 vertices, 42 non-manifold
-edges (exactly the mouth + the intentional pour opening), 0 degenerate faces. The blocking bug from
-attempts 1-2 was root-caused with a controlled test and fixed for real -- see "Third attempt" below.
+**Final status:** body and spout are DONE -- one continuous manifold mesh, 343 vertices, 42
+non-manifold edges (exactly the mouth + the intentional pour opening), 0 degenerate faces. The
+spout's blocking bug was root-caused with a controlled test and fixed for real (see "Third attempt"
+below). The handle is grown and connected at its base, reading correctly as a curved hook in
+silhouette, but stops short of the reference spec's two-point closed loop -- see the dedicated
+section below for exactly why and what's needed to close that gap.
 
-**Status: body done and clean; spout not yet attached, after two separate attempts both reverted
-cleanly.** Started toward the teapot per `reference/teapot/notes.md` (the mug's replacement
+Started toward the teapot per `reference/teapot/notes.md` (the mug's replacement
 transfer-test candidate: two grown appendages instead of one). The user manually fixed the first
 attempt's leftover ugly repair patch (3 small ngons) mid-session -- confirmed via
 `get_full_state`'s external-edit detection, IDs re-synced cleanly, body was fully clean (0 ngons)
@@ -129,10 +131,43 @@ test and transfer-tested for real on the teapot spout (`apply_transfer_test`-equ
 status `TRANSFER_VALIDATED`) -- the project's third genuinely transfer-tested item, and the first
 one about the modeling *tooling itself* rather than a modeling technique.
 
+## Handle: grown as a curved arm, closed as a cantilevered hook rather than a true two-point loop
+
+Grew a handle arm from the wall opposite the spout (angle 180, z=1.4 ring -- confirmed reliable
+outward normal `(-0.988, -0.097, 0.123)` before extruding, same discipline as the fixed spout).
+Applied the extrude-ID fix throughout: 9 extrude+rotate segments (varying rotation angles, mostly
+positive since this side mirrors the spout's sign convention), tracking the correct cap via each
+step's own `id_delta` the whole way. The arm swept out, up and over, and back down near the body --
+directly measured at each step rather than assumed, same discipline as the spout.
+
+**Where it stopped short of the spec:** cut a second hole in the body wall near the tip's final
+position (angle ~150 degrees, the nearest available untouched wall -- the exact angle=180 wall at
+that height was already consumed by the arm's own base) and attempted `bridge_selection` to close
+the loop. The bridge produced a genuine topological defect: 10 of the tip's boundary edges ended up
+with 3 linked faces each instead of 2, traced to `bmesh.ops.bridge_loops` creating a *twisted* fan
+between the two loops (10 verts vs. 12) -- two of the new triangular faces shared the tip's edge but
+fanned out to nearly opposite points on the target loop (`y=+1.05` vs. `y=-1.03`), rather than a
+clean radial connection. Not a stale-ID issue this time (confirmed: deleting the suspected "extra"
+face made non-manifold edges go UP, not down, proving it was legitimate tube geometry, not a
+duplicate).
+
+Rather than hand-untangle a crossed bridge seam under time pressure, reverted the bridge cleanly
+(deleted its 32 faces), capped the arm's tip as a dead end, and re-filled the second hole back to
+flat wall. Result: **one continuous, fully manifold mesh** (343 verts, 42 non-manifold edges = only
+the mouth + spout tip, 0 degenerate faces) with the handle reading as a genuine curved hook grown
+from the body -- but attached at only ONE point, not the two-point closed loop the reference spec
+called for. In silhouette (front view) the arm's curve passes close enough to the body that it
+*reads* as an enclosed loop visually, even though it isn't topologically fused there.
+
+**Honest gap from spec:** this is a cantilevered curved handle, not the C-shaped two-attachment-point
+loop `reference/teapot/notes.md` describes. Closing that gap needs either (a) sizing the second hole
+to match the tip's vertex count exactly before bridging, so `bridge_loops` gets a clean 1:1
+correspondence, or (b) building the connecting geometry manually face-by-face instead of relying on
+`bridge_selection` for a mismatched pair. Worth a dedicated pass, not a live fix under an already-long
+session.
+
 ## Next step (not done in this pass)
 
-The handle (C-shaped, two attachment points, needs a real `bridge_selection` back into the body) is
-the remaining piece of the teapot. The chained-extrude bug is now understood and fixed, so this
-should not hit the same wall -- but the curve there is a full loop (out and back to a second
-attachment point), not a cantilevered tip like the spout, so it's still new territory worth treating
-carefully rather than assuming it's now trivial.
+Close the handle's loop properly (see above) if a true two-point-attached C-handle is wanted. The
+chained-extrude direction bug is fully resolved; the remaining gap is specifically about
+`bridge_selection` behavior on mismatched-size loops.
