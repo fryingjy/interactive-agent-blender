@@ -41,3 +41,11 @@ Dated run paths are evidence identifiers and are referenced by reports, cards, a
 new work correctly at creation time; do not mass-move historical runs unless every reference and
 reproduction command is updated and revalidated. Current documentation may be reorganized more
 freely because Git preserves its history.
+
+## Evidence-retention boundary
+
+The user-directed 2026-08-14 cleanup removed most earlier build/render run folders. A citation to
+a missing `runs/...` directory is historical prose, not a current reproducible artifact. Keep that
+distinction visible in navigation and status documentation: retain lessons and commit history, but
+do not label deleted outputs as presently verifiable evidence. `runs/README.md` is the authoritative
+record of this boundary.

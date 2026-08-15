@@ -6,41 +6,43 @@ retains experimentally tested modeling knowledge.
 
 ## Current status
 
-**Foundation status: PARTIAL.** The Blender-control and verification infrastructure is substantial,
-but the repository does not claim professional-level generalization. Stronger hard-surface/SubD
-judgment, multi-view reference modeling, production preparation, broader held-out assets,
-longer-horizon retention, and experienced human review remain open. Advanced sculpting and organic
-specialization are deliberately deferred.
+**Current post-purge status: PARTIAL.** The typed Blender runtime remains available, but the
+repository does not claim professional-level generalization. On 2026-08-14 the user directed the
+removal of accumulated historical build/render evidence; current work therefore starts from the
+retained blend-file study, simple connected-form exercises, problem-driven documentation/video
+study, and explicitly bounded transfer tests. Do not use prose that cites a missing `runs/...` path
+as if its artifact still existed.
 
-Current evidence includes:
+Current retained work includes:
 
-- typed modeling operations, persistent element IDs, semantic regions, state fingerprints, and
-  transaction-owned rollback;
-- base-cage, modifier-evaluated, technical, silhouette, wireframe, normal, depth, and component
-  evidence channels;
-- stage gates, reference measurements, localized mismatch tickets, strategy selection, and
-  professional-review aggregation;
-- legal local video/document ingestion, 11 decoded Blender lessons, controlled reproduction labs,
-  structured retrieval, quizzes, telemetry, and self-session replay;
-- profile-authored reference models, a connected-quad multi-view barrel, driven corrective transfer,
-  adaptive mixed-cause surface diagnosis, and a real Godot tangent-bake import with deliberate
-  semantic failure evidence.
+- typed modeling operations, persistent IDs, semantic regions, state fingerprints, transaction
+  rollback, and the expanded hard-surface intent/shading surface;
+- the professional `.blend` file study, including the evidence-backed distinction among semantic
+  weighted Bevel, ANGLE/VGROUP scope, edge crease, and intentional absence of hard edges;
+- the current curriculum and source-to-knowledge records, whose claims remain `CAPTURED` or
+  `CANDIDATE` until a different-shape transfer test validates them;
+- post-purge simple-form work: a screw/revolve transfer, a grown connected door-handle lever, and
+  a teapot body/spout/handle investigation with retained transaction and bridge-twist failures;
+- Level-14 professional-judgment synthesis, which rates the current knowledge as strong,
+  moderate, or thin rather than treating coverage counts as skill.
 
-The authoritative readiness decision is in
-[`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
+The current authority order is the live code, retained runs, and
+[`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md). See
+[`runs/README.md`](runs/README.md) for the evidence-retention boundary; the older foundation audit
+is historical context, not a live-evidence index.
 
 ## Start here
 
 | Need | Document or folder |
 | --- | --- |
 | Operating contract | [`docs/MASTER_DIRECTIVE.md`](docs/MASTER_DIRECTIVE.md) |
-| Current requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) |
+| Historical requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) — pre-purge citations may be unavailable locally |
 | Research/learning roadmap | [`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Knowledge lifecycle | [`docs/KNOWLEDGE_SYSTEM.md`](docs/KNOWLEDGE_SYSTEM.md) |
 | Repository layout | [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) |
-| Chronological project history | [`docs/BENCHMARK_HISTORY.md`](docs/BENCHMARK_HISTORY.md) |
+| Chronological project history | [`docs/BENCHMARK_HISTORY.md`](docs/BENCHMARK_HISTORY.md) — historical, not a live-evidence index |
 | Evidence conventions | [`runs/README.md`](runs/README.md) |
 
 ## Runtime loop
@@ -110,7 +112,14 @@ The local Blender/MCP entry points are:
 - Do not use real-world weapon-construction or engineering material as training data. Fictional
   prop art may use general modeling principles.
 
-## Recent evidence landmarks
+## Historical and retained evidence landmarks
+
+> **Retention boundary:** the historical entries below may cite run folders removed in the
+> 2026-08-14 cleanup. They are not current reproducible evidence. Use the retained current-work
+> links first: [`runs/2026-08-13_blend-file-study/`](runs/2026-08-13_blend-file-study/),
+> [`runs/2026-08-14_video-curriculum/`](runs/2026-08-14_video-curriculum/),
+> [`runs/2026-08-14_teapot-body-revolve/`](runs/2026-08-14_teapot-body-revolve/), and
+> [`runs/2026-08-15_synthesis-level14-professional-judgment/`](runs/2026-08-15_synthesis-level14-professional-judgment/).
 
 - `runs/2026-08-11_connected-camera-corrective/` — post-review one-object camera rebuild: one
   connected 256-quad control cage, 16-vertex radial loops, welded inset/extrusion details, 0.828
