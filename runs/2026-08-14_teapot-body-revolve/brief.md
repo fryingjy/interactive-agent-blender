@@ -1,4 +1,8 @@
-# Teapot body: revolved profile complete, TWO spout attempts reverted with a real unresolved bug found
+# Teapot body: revolved profile complete, spout attached on the THIRD attempt after root-causing the bug
+
+**Final status: DONE.** Body + spout, one continuous manifold mesh, 211 vertices, 42 non-manifold
+edges (exactly the mouth + the intentional pour opening), 0 degenerate faces. The blocking bug from
+attempts 1-2 was root-caused with a controlled test and fixed for real -- see "Third attempt" below.
 
 **Status: body done and clean; spout not yet attached, after two separate attempts both reverted
 cleanly.** Started toward the teapot per `reference/teapot/notes.md` (the mug's replacement
@@ -89,12 +93,46 @@ pressure -- stopping here rather than risking further mesh damage or shipping a 
 Fully reverted to a clean flat wall (161 verts, matching the pre-spout count exactly; 32
 non-manifold edges = mouth only; 0 degenerate faces) rather than leaving anything half-built.
 
+## Third attempt: root-caused on a controlled test, then fixed for real
+
+Built `ExtrudeBugTest_Cube` (a bare cube, away from the teapot) and extruded its +X face once.
+**Found it immediately:** the original face's persistent ID (23) was NOT deleted and NOT kept on
+the new cap -- it was silently reassigned to one of the new SIDE-WALL faces (center shifted 90
+degrees off-axis, normal rotated to match). The genuine new cap got a completely different, fresh
+ID. Confirmed the fix by extruding the CORRECT cap face a second time: direction was right
+(x: 1.0 -> 1.5, continuing straight out).
+
+This exactly explains all three teapot failures: every one of them reused a pre-extrude face ID for
+a follow-up extrude, which by then pointed at a side wall, not the cap. `inset_selection` genuinely
+does preserve the original ID on its shrunk inner patch (confirmed separately, still true) --
+`extrude_selection` does not behave the same way despite the surface-level similarity ("leaves the
+same patch, resized/moved, selected").
+
+**The fix applied:** after every `extrude_selection` call, read the new cap's face IDs from that
+same call's own `id_delta.faces.added`, filtered to faces whose vertices are entirely a subset of
+`id_delta.verts.added` (side walls mix new and old boundary vertices; the cap doesn't). Never reuse
+a pre-extrude ID for anything past that extrude.
+
+Rebuilt the spout a third time with this fix, re-selecting explicitly by the correct ID before
+every single `perform_decision` (also still needed, per bug #1 -- `commit_decision` resets
+selection to the whole mesh). Measured the new cap's average X position after every one of the 4
+extrude steps to confirm direction empirically rather than trusting it: 2.09 -> 2.591 -> 3.021 ->
+3.512 -> 4.005, monotonically outward the whole way. Opened the pour tip (deleted the final cap),
+applied the standing shading policy. Final: 211 verts, 417 edges, 206 faces, 42 non-manifold edges
+(32 mouth + 10 pour opening), 0 degenerate faces -- clean at every one of the ~10 decisions in this
+attempt, not just the end state. Front and top silhouette renders both read correctly as a genuine,
+symmetric teapot spout.
+
+Wrote this up as a proper `KnowledgeItem`
+(`runs/2026-08-14_extrude-id-reassignment-bugfix/knowledge_items.json`), captured on the bare-cube
+test and transfer-tested for real on the teapot spout (`apply_transfer_test`-equivalent PASS,
+status `TRANSFER_VALIDATED`) -- the project's third genuinely transfer-tested item, and the first
+one about the modeling *tooling itself* rather than a modeling technique.
+
 ## Next step (not done in this pass)
 
-**Before attempting the spout a third time:** investigate WHY chained extrudes fail directionally
-in this codebase -- read `extrude_face_region`'s actual behavior on a controlled test case (a bare
-cube, extrude twice in a row, check direction each time) rather than debugging live on a
-complicated tapered profile. This deserves a dedicated lab script, not another live attempt. The
-handle (C-shaped, two attachment points, needs a real `bridge_selection` back into the body) should
-wait until the chained-extrude direction bug is actually understood and fixed, since it will hit
-the exact same problem.
+The handle (C-shaped, two attachment points, needs a real `bridge_selection` back into the body) is
+the remaining piece of the teapot. The chained-extrude bug is now understood and fixed, so this
+should not hit the same wall -- but the curve there is a full loop (out and back to a second
+attachment point), not a cantilevered tip like the spout, so it's still new territory worth treating
+carefully rather than assuming it's now trivial.

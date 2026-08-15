@@ -1,0 +1,22 @@
+[
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "After extrude_selection's face-based path runs, the ORIGINAL selected face's persistent ID is silently reassigned to one of the NEW SIDE-WALL faces created by the extrusion -- not removed, and not kept on the new cap. Reusing a pre-extrude face ID to select 'the same patch' for a follow-up operation (e.g. a second extrude in a curve/pipe-building sequence) actually selects a side wall, which points roughly perpendicular to the tube's own length direction -- causing any subsequent extrude to move in an unintended direction (observed: inward instead of continuing outward) without any error or obviously-wrong intermediate state to flag it.",
+    "source": {"source_id": "controlled-bare-cube-repro-2026-08-14", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.6,
+    "supporting_evidence": "Controlled test: extruded a bare cube's +X face (agent_face_id 23) once. Afterward, ID 23 was found on a SIDE WALL of the extrusion (center shifted 90 degrees off-axis to (0.75,0,0.5), normal now (0,0,1) instead of the original (1,0,0)), while the genuine new cap (correctly positioned at x=1.0, normal (1,0,0)) had an entirely different, freshly-assigned ID (39). Extruding face 39 a second time correctly continued outward to x=1.5. This exact mechanism explains three consecutive direction failures on a teapot spout build earlier in the same session, where pre-extrude IDs were reused for follow-up extrudes.",
+    "status": "TRANSFER_VALIDATED",
+    "rejected_alternative": "Assuming a typed op's persistent-ID preservation behavior generalizes across all ops (inset_selection genuinely does keep the original ID on its shrunk cap; extrude_selection does not behave the same way, despite surface-level similarity)",
+    "reason": "inset_selection and extrude_selection both leave 'the same patch, resized/moved' selected afterward, which invites treating their ID-preservation behavior as equivalent -- they are not. Confirming this on a controlled, isolated test (bare cube) rather than continuing to guess on a complex tapered profile was what actually revealed the mechanism.",
+    "captured_while_building": "ExtrudeBugTest_Cube",
+    "transfer_tests": [
+      {
+        "target_asset": "Teapot_Body",
+        "expected_effect": "applying the fix (always read the new cap's face IDs from the immediately-preceding perform_decision's own id_delta.faces.added, filtered to faces whose vertices are a subset of id_delta.verts.added, rather than reusing any pre-extrude ID) allows a multi-segment curved extrusion (the teapot spout: base + taper + 3 curve segments) to complete with every single segment moving in the correct outward direction, verified by direct coordinate measurement at each step, not just visual inspection at the end",
+        "observed_effect": "rebuilt the spout from scratch applying the fix. All 4 extrude steps (base + 3 curve segments) moved correctly outward, confirmed by measuring the new cap's average X position after each one (2.09 -> 2.591 -> 3.021 -> 3.512 -> 4.005, monotonically increasing as expected for an outward-curving spout). Final mesh: 211 vertices, 417 edges, 206 faces, 42 non-manifold edges (exactly the mouth + the intentional open pour tip), 0 degenerate faces. Front and top silhouette renders confirm a correctly-read, symmetric teapot spout.",
+        "pass": true,
+        "evidence_path": "runs/2026-08-14_teapot-body-revolve/"
+      }
+    ]
+  }
+]
