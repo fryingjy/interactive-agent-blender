@@ -1,0 +1,63 @@
+{
+  "skill_id": "modifier.shrinkwrap.project_scoped_mount_footprint",
+  "applicability": {
+    "workflow": "secondary-part attachment",
+    "modifiers_involved": ["SHRINKWRAP"],
+    "defect": "a separate mounting footprint does not conform to a curved host while the upper component must retain its authored shape"
+  },
+  "preconditions": [
+    "the component is intentionally separate in the product or prop construction (movable, bolted, clamped, or assembled)",
+    "only the contact-footprint vertices should deform",
+    "the projection axis and direction intersect the intended host surface",
+    "the footprint has enough topology to represent the host curvature"
+  ],
+  "required_observations": [
+    "component-boundary reasoning: separate assembly versus genuinely continuous transition",
+    "selected footprint vertex-group membership",
+    "object local axes and positive/negative Project direction",
+    "grouped and ungrouped evaluated vertex displacement",
+    "missed projection vertices, degenerates, signed volume, and visual contact"
+  ],
+  "action_policy": [
+    "Create a vertex group containing only the contact footprint, not the whole secondary part.",
+    "Use Shrinkwrap Project on the local axis that points toward the host and enable only the verified hit direction.",
+    "Set the modifier's vertex_group to the footprint group before evaluating; an empty group field applies the deformation to the whole part.",
+    "Verify that every intended footprint vertex moved, every ungrouped structural vertex remained fixed, and the evaluated part retained non-degenerate volume.",
+    "Reject this strategy when the reference implies a continuous cast/welded surface; use connected topology or an explicit boolean/retopology workflow instead."
+  ],
+  "success_predicates": [
+    "all intended footprint vertices move onto the target within the declared offset/tolerance",
+    "ungrouped structural vertices have zero displacement",
+    "evaluated geometry has zero degenerates and retains meaningful signed volume",
+    "controlled visual review shows flush contact without whole-part collapse"
+  ],
+  "failure_predicates": [
+    "wrong projection direction moves zero intended vertices",
+    "empty modifier vertex_group deforms the entire component",
+    "whole-part projection collapses volume or creates degenerate faces",
+    "the component should be continuous with the host but remains a merely touching separate object"
+  ],
+  "recovery": [
+    "verify local axes and invert Project direction if no footprint vertices move",
+    "restore the explicit footprint vertex group if ungrouped structure moves",
+    "increase footprint density only where measured curvature error or visible faceting requires it",
+    "change representation to connected topology when component-boundary evidence rejects a separate assembly"
+  ],
+  "sources": [
+    {
+      "type": "expert video observations",
+      "description": "Three independently captured tutorial observations described vertex-group-scoped Shrinkwrap for conforming a mounting rim/footprint while preserving the rest of a secondary part; see curriculum item #4 and its linked video-study records.",
+      "trust_tier": "Tier B; visual/video observations remained hypotheses until the Blender transfer experiment"
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled reproduction plus different-curvature transfer",
+      "description": "runs/2026-08-15_shrinkwrap-footprint-transfer/ projects the same closed 50-vertex/48-quad mount onto a sphere and cylinder. In both scoped cases all 25 footprint vertices moved and all 25 upper vertices remained fixed; maximum analytic-host errors were below 0.024, with zero degenerates. The unscoped sphere control moved all 50 vertices, produced 12 degenerate faces, and collapsed signed volume nearly to zero. The wrong-direction control moved zero vertices. A fresh process independently verified the saved scene and evidence image.",
+      "limitation": "Controlled separate-mount fixtures only; no adaptive typed-runtime use on a real prop yet, and no claim about continuous/welded transitions."
+    }
+  ],
+  "runtime_usage": [],
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "Mechanism transferred from spherical to cylindrical curvature with preserved upper structure and explicit negative controls. Runtime planning/use on a real assembled prop remains required before RUNTIME_VALIDATED."
+}

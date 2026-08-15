@@ -795,3 +795,19 @@ reference and get a professional model" remains unmet) rather than being a coinc
 videos got processed -- the same gap keeps surfacing from a completely different angle. The
 synthesis names concrete next-source types for the thin stages instead of just restating the gap.
 Curriculum doc updated with the honest strong/moderate/thin verdict.
+
+## Update -- 2026-08-15 (scoped Shrinkwrap footprint transfer)
+
+Closed the three-source-but-untested Shrinkwrap Project hypothesis with a controlled reproduction
+and different-curvature transfer. A closed 50-vertex/48-quad secondary mount was split semantically
+into a 25-vertex contact footprint and 25 upper structural vertices. On both a sphere and cylinder,
+Project limited to the footprint moved all intended vertices, preserved every upper vertex exactly,
+landed within 0.024 of the analytic host surface, and remained closed/manifold/non-degenerate.
+
+The controls establish why the details matter: an empty modifier vertex-group field projected the
+whole part, collapsed its volume nearly to zero, and produced 12 degenerate faces; the wrong local-Z
+direction moved zero vertices without throwing an error. The visual frame and fresh-process
+verifier retain both failures. The skill is `TRANSFER_VALIDATED`, not runtime promoted. It applies
+only to a physically separate assembled/movable/bolted component; continuous host transitions still
+require connected topology or a deliberate boolean/retopology strategy. Evidence:
+`runs/2026-08-15_shrinkwrap-footprint-transfer/`.

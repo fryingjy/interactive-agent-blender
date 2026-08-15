@@ -22,3 +22,17 @@ A 42-vertex icosphere cage starting at radius 1.25 shrinkwrapped onto a 1,984-ve
 ## Decision rule
 
 Choose the wrap method from the modeling intent. Verify displacement magnitude, projection direction/local axes, missed vertices, offset, and silhouette. For retopology, Shrinkwrap helps conformance but does not design loop flow, pole placement, or deformation topology.
+
+## Vertex-group-scoped mounting footprint (transfer validated, 2026-08-15)
+
+`runs/2026-08-15_shrinkwrap-footprint-transfer/` tests the secondary-part attachment case directly.
+On the same closed 50-vertex/48-quad mount, Project limited to a 25-vertex footprint group conformed
+all footprint vertices to a sphere while leaving all 25 upper structure vertices exactly fixed. The
+same setup transferred to a cylinder with maximum analytic-surface error below 0.020 and remained
+closed, manifold, and non-degenerate. The unscoped control moved the entire part, collapsed its
+signed volume nearly to zero, and created 12 degenerate faces; the wrong-direction control moved
+zero vertices.
+
+Use this only when component-boundary evidence supports a separate assembled/movable/bolted part.
+It does not join the component to the host and is not a substitute for connected topology where the
+reference implies a continuous transition.
