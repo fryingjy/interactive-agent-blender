@@ -570,3 +570,37 @@ reference spec's 30-40 degree target, because `rotate_selection` pivots around t
 median rather than an external joint further back -- still reads correctly in the silhouette
 renders, but the exact angle undershot the plan. Full account, including the transfer-test
 JSON payload, in `runs/2026-08-14_transfer-test-doorhandle-grown-lever/brief.md`.
+
+## Update (2026-08-14, later): teapot body built clean; spout attempt reverted with two real bugs caught
+
+Started the teapot (the mug's harder replacement: two grown appendages, not one). Built
+`Teapot_Body` via the same validated `spin_selection` revolve mechanism as the first transfer test,
+plus `merge_by_distance` to fuse the axis-touching point's duplicate vertices -- 168 verts, 32
+non-manifold edges (exactly the intended open mouth), 0 degenerate faces.
+
+Attempting the spout (inset+extrude+curve from the wall's widest-point ring, the same technique
+that passed the door-handle transfer test) surfaced two real, previously-undocumented bugs in the
+typed protocol, both caught before they caused unrecoverable damage:
+
+1. `commit_decision` reset selection to the whole mesh (195 verts) instead of leaving the just-
+   extruded 13-vert tip ring selected, right before a `rotate_selection` call that would have
+   deformed the entire body. Caught via `get_selection`, rejected the pending decision before it
+   executed. Confirmed `reject_decision` only restores geometry/transform, not selection --
+   the identical pattern worked fine three times during the door-handle build, so this isn't
+   universal; don't trust selection persistence across a commit without checking.
+2. `extrude_selection`'s face-normal-direction assumption failed on the body's tapering shoulder
+   region -- the first extrude moved the attach patch inward (measured, not assumed: x went
+   2.162 -> 1.581) instead of outward, even though the body's overall normals were confirmed
+   correctly oriented elsewhere. Doubly-curved / tapering attachment points need their normal
+   checked directly before extruding, not assumed from "select wall faces, extrude."
+
+Recovered cleanly rather than leaving a mangled build: deleted all spout geometry by ID, found and
+removed 7 leftover vertices that had escaped the ID-based deletion (they kept their original face's
+low ID through `inset_selection`, which reuses rather than reassigns IDs for the shrunk patch), and
+closed the resulting hole back to a manifold wall in three incremental `fill_selection` passes.
+Final state: 32 non-manifold edges (mouth only), 0 degenerate faces -- genuinely clean, one small
+honest cosmetic blemish (a slightly non-planar repair patch, not a manifold defect) left as-is.
+Both bugs written up as a proper memory entry
+(`decision_transaction_protocol_gotchas.md`) with the exact fix pattern (re-select by ID before
+every `perform_decision`; verify normals directly on non-cylindrical attachment points) for the next
+attempt. Full account: `runs/2026-08-14_teapot-body-revolve/brief.md`.
