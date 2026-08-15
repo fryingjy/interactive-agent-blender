@@ -12,6 +12,7 @@ from typing import Any
 
 from blender_ops.stage_gates import evaluate_stage_gate
 from knowledge_engine.reasoning import Diagnosis, RegionRepairHistory
+from knowledge_engine.scene_decomposition import SceneDecomposition
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 
 
@@ -48,6 +49,7 @@ class PlannerContext:
     diagnosis: Diagnosis | None = None
     repair_history: RegionRepairHistory | None = None
     brief: ModelingBrief = field(default_factory=ModelingBrief)
+    reference_decomposition: SceneDecomposition | None = None
     external_edit_detected: bool = False
     minimum_stage_iou: float = 0.9
 
@@ -60,6 +62,8 @@ class PlannerContext:
             raise ValueError("session_id is required")
         if self.scene_revision < 0:
             raise ValueError("scene_revision must be non-negative")
+        if self.reference_decomposition is not None:
+            self.reference_decomposition.validate()
 
 
 @dataclass(frozen=True)
@@ -121,6 +125,12 @@ def _highest_ticket(context: PlannerContext) -> dict[str, Any] | None:
             str(item.get("type", "")),
         ),
     )[0]
+
+
+def _effective_brief(context: PlannerContext) -> ModelingBrief:
+    if context.reference_decomposition is None:
+        return context.brief
+    return context.reference_decomposition.to_modeling_brief(context.brief)
 
 
 def _next_stage(stage: str) -> str | None:
@@ -204,6 +214,40 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="HIGH",
         )
 
+    if context.reference_decomposition is not None and context.stage in {"REFERENCE_ANALYSIS", "PRIMARY_BLOCKOUT"}:
+        readiness = context.reference_decomposition.blockout_readiness()
+        if not readiness["ready_for_blockout"]:
+            needs_research = bool(
+                readiness["high_impact_unresolved_claims"]
+                or readiness["conflicting_modeling_signals"]
+            )
+            return _contract(
+                context,
+                disposition="RESEARCH" if needs_research else "INSPECT",
+                action="RESOLVE_REFERENCE_UNCERTAINTY" if needs_research else "COMPLETE_REFERENCE_DECOMPOSITION",
+                operation=None,
+                operation_params={
+                    "missing_requirements": readiness["missing_requirements"],
+                    "claim_ids": readiness["high_impact_unresolved_claims"],
+                    "research_questions": readiness["research_questions"],
+                    "conflicting_modeling_signals": readiness["conflicting_modeling_signals"],
+                },
+                target_object=target,
+                target_region=None,
+                rationale=tuple(
+                    [f"missing reference requirement: {item}" for item in readiness["missing_requirements"]]
+                    + [f"high-impact unresolved claim: {item}" for item in readiness["high_impact_unresolved_claims"]]
+                    + [f"conflicting modeling signal: {item}" for item in readiness["conflicting_modeling_signals"]]
+                ),
+                expected_effect="Resolve the reference claim or keep the affected construction reversible before geometry hardens the guess.",
+                verification=(
+                    "bind each resolved claim to observed evidence or a cited inference",
+                    "rerun reference blockout readiness",
+                    "record rejected construction strategies",
+                ),
+                confidence="HIGH" if needs_research else "MEDIUM",
+            )
+
     if context.diagnosis and context.diagnosis.next_action() == "INSPECT_OR_RESEARCH":
         return _contract(
             context,
@@ -226,17 +270,28 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         region = ticket.get("target")
         suggested = ticket.get("suggested_operation")
         if ticket_type in {"missing_component", "component_mismatch"}:
-            strategy = choose_strategy(context.brief)
+            effective_brief = _effective_brief(context)
+            strategy = choose_strategy(effective_brief)
             representation = strategy["representation"]["choice"]
+            component_policy = strategy["components"]["choice"]
             return _contract(
                 context,
                 disposition="ACT",
                 action="BLOCK_OUT_MISSING_COMPONENT",
                 operation="create_curve" if representation == "CURVE" else "create_primitive",
-                operation_params={"component_id": region, "representation": representation},
+                operation_params={
+                    "component_id": region,
+                    "representation": representation,
+                    "component_policy": component_policy,
+                    "reference_claim_notes": list(effective_brief.notes),
+                },
                 target_object=target,
                 target_region=str(region) if region else None,
-                rationale=(f"highest-priority ticket is {ticket_type}", *tuple(strategy["representation"]["reasons"])),
+                rationale=(
+                    f"highest-priority ticket is {ticket_type}",
+                    *tuple(strategy["representation"]["reasons"]),
+                    *tuple(strategy["components"]["reasons"]),
+                ),
                 expected_effect="Add the missing primary/secondary silhouette contribution as an editable component.",
                 verification=("component mask is present", "component graph remains valid", "recompute silhouette metrics"),
                 confidence=strategy["representation"]["confidence"],

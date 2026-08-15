@@ -37,6 +37,8 @@ The authoritative readiness decision is in
 | Current requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) |
 | Research/learning roadmap | [`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
+| Current capability gap matrix | [`docs/CURRENT_STATE_GAP_MATRIX.md`](docs/CURRENT_STATE_GAP_MATRIX.md) |
+| Reference-interpretation contract | [`docs/REFERENCE_INTERPRETATION.md`](docs/REFERENCE_INTERPRETATION.md) |
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Knowledge lifecycle | [`docs/KNOWLEDGE_SYSTEM.md`](docs/KNOWLEDGE_SYSTEM.md) |
 | Repository layout | [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) |

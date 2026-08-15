@@ -126,6 +126,15 @@ real, mechanically-checkable red flag a silhouette pass cannot produce. Graph-sh
 nowhere outside its own test -- this is now its first real caller, not a second parallel validator.
 See `runs/2026-08-13_telephone-rebuild/scene_decomposition.json` for a worked example.
 
+The evidence-bound extension is specified in `docs/REFERENCE_INTERPRETATION.md`. Important
+interpretations are typed as `OBSERVED`, `STRONGLY_INFERRED`, `WEAKLY_INFERRED`, or `UNKNOWN` and
+carry evidence, confidence, impact, component references, and a modeling consequence. The structured
+artifact covers the directive-required camera, form hierarchy, continuity/separation, negative-space,
+landmark, symmetry, repetition, thickness, depth/overlap, material-boundary, dimension, unknown,
+ambiguity, and construction fields. Only supported claims may change the strategy brief; important
+unknowns and contradictory supported signals block blockout and produce an actionable research
+contract. This preserves uncertainty instead of silently turning missing views into geometry.
+
 ## Primary / secondary / tertiary forms
 
 Primary defines identity and silhouette. Secondary defines construction and recognizable design.
