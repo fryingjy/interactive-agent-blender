@@ -1,0 +1,62 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Procedural shader nodes evaluate a mathematical function per-pixel/sample at render time rather than sampling a fixed grid of stored pixels the way a raster image texture does -- this gives procedural patterns resolution-independent sharpness at any zoom level, no VRAM/storage cost that scales with resolution, and exposed numeric parameters (radius, edge softness, thickness) that can be animated or driven by other nodes, none of which a baked raster texture can offer.",
+    "source": {"source_id": "O3gLBhC353Y", "start_seconds": 230, "end_seconds": 325},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 3:50-5:25, an imported raster circle PNG shows jagged pixelation when zoomed in closely, while a procedural math-node circle stays razor-sharp at the same zoom and exposes a live radius slider.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a raster/baked image texture for a pattern that needs to scale, animate, or stay sharp at arbitrary zoom",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Blender separates three distinct levels for materials: the mesh's per-face material-slot index (which slot a given polygon points to), the object's list of material slots (containers), and the material data-block itself (the actual node tree) -- multiple faces or objects referencing the SAME material data-block all update together when that node tree is edited, unless explicitly made single-user/unique. A material only appears on the specific faces that have been assigned to its slot via Edit Mode's Assign button, not automatically across the whole mesh.",
+    "source": {"source_id": "O3gLBhC353Y", "start_seconds": 1050, "end_seconds": 1250},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 17:30-20:50, two materials (Red, Yellow) are assigned to different face selections on one cube via material slots and the Assign button in Edit Mode; editing the yellow material's node network updates only the faces assigned to that slot.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Assuming a material edit will only affect the object currently being viewed, without checking whether its material data-block is shared with other faces or objects",
+    "reason": "Since multiple faces/objects can reference the identical material data-block, editing one node tree can silently change the appearance of everything else sharing it -- worth checking whether a material needs to be made single-user before editing it for one specific use.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Shader node sockets carry strictly typed data: gray sockets are 1-dimensional scalar floats (a single value/grayscale number), while yellow sockets are 3-dimensional vectors (RGB color, but also normals, texture coordinates, or any other 3-component data). Combine RGB / Separate RGB nodes convert between the two by packing or unpacking three scalar floats into/out of one vector socket -- e.g. 1.0 Red + 1.0 Green + 0.0 Blue combines into yellow.",
+    "source": {"source_id": "O3gLBhC353Y", "start_seconds": 2400, "end_seconds": 2710},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 40:00-45:10, Value (gray, scalar) nodes are fed into individual R/G/B sockets of a Combine RGB node (yellow, vector) to build colors, demonstrating that a vector socket is simply three independent scalar channels packed together.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "The Fac (factor) input on a Mix node (MixRGB, Mix Shader, ColorRamp, etc.) is the universal blending mechanism in Blender's shader system: a factor of 0.0 outputs the first input entirely, 1.0 outputs the second input entirely, and any value between linearly interpolates ('lerp') between them. A scalar mask -- built by comparing colors/distances with Math nodes and thresholding the result to a clean 0-1 range -- can be plugged into any Fac input to drive that blend spatially across the surface, which is the general mechanism behind layering materials (rust over paint) or varying a surface property (roughness, metallic) across a mesh.",
+    "source": {"source_id": "O3gLBhC353Y", "start_seconds": 3720, "end_seconds": 4295},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 62:00-64:45 and 70:00-71:35, Euclidean color-distance math (Subtract, Power, Add, Square Root) against a target background color, thresholded via a Greater Than node, produces a black-and-white mask that is plugged into a MixRGB node's Fac input to composite a new background behind a subject.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually painting or hand-authoring a blend mask instead of deriving it procedurally from existing data (color distance, position, noise) and feeding it into a Mix node's Fac input",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Basic arithmetic Math nodes applied to grayscale masks (values clamped to 0-1) behave identically to Boolean set operations: Add acts as OR/union (combines both regions), Multiply acts as AND/intersection (keeps only the overlap), and Subtract acts as a difference/NOT operation (removes one region from another, e.g. producing a crescent shape from two overlapping circles). Complex procedural patterns (brick bonds, tile grids, panel lines, damage/wear patterns) are built by combining simpler geometric or noise-based masks with these same three operations.",
+    "source": {"source_id": "O3gLBhC353Y", "start_seconds": 5500, "end_seconds": 5800},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 91:40-96:40, two overlapping circle masks are combined via Add (union of both circles), Multiply (only the overlapping intersection), and Subtract (a crescent-moon shape from one circle minus the other).",
+    "status": "CAPTURED",
+    "rejected_alternative": "Building each new procedural pattern shape from scratch rather than combining existing simpler masks with Boolean-equivalent math operations",
+    "reason": "Once a shape exists as a 0-1 mask, Add/Multiply/Subtract give a small, composable vocabulary for building arbitrarily complex patterns from simple primitives, rather than needing a bespoke node graph for every new pattern.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
