@@ -378,3 +378,37 @@ curriculum-design level.
   detailing" against a reference, ideally with a case where the artist revises the blockout after
   judging it wrong -- rather than more sequencing rules about cut order, which this batch already
   covers adequately.
+
+---
+
+## Addendum (2026-08-15, same session): a first search attempt against the reference-interpretation gap
+
+Following this synthesis' own recommendation, searched YouTube for a genuine narrated
+reference-critique/breakdown video and checked the two best-looking candidates directly, rather
+than assuming a title match would deliver the content:
+
+- **CRNT DESIGNERS -- "How I Modeled Sci-Fi Crate From Reference In Blender"** (`CLvm1722EXY`,
+  10:13, channel already used in this project via `crnt-boolean-triangle`). Checked via Gemini
+  video-understanding with a prompt specifically asking it to report honestly if the video turned
+  out to be generic technique demonstration rather than stretch thin moments into strong claims.
+  Result: the video has **no spoken narration at all** -- a silent timelapse with on-screen hotkey
+  overlays and background music. There is nothing to extract; reference interpretation requires the
+  artist to reason out loud, and this source cannot provide that regardless of what its geometry
+  actually shows.
+- **Michael McDowell -- "Blender: Modeling With References"** (`Mu_Z5Itw2aI`, 14:32). Has full
+  narration (auto-generated transcript read in full, ~12,700 characters). Result: entirely generic
+  tool-and-setup instruction using a banana as a placeholder example ("press G to move," "add a
+  Mirror modifier," "use proportional editing") -- the reference image itself is never actually
+  interpreted; the closest it comes is confirming two reference photos' proportions look
+  "approximately the same" before nudging one image a few pixels to align them, which is a
+  reference-*alignment* check, not an interpretation of ambiguous geometry. No claim extracted.
+
+**Both results are negative, and both are recorded here rather than silently discarded** so a
+future pass does not re-spend a search on either video. This is itself informative: two
+plausible-sounding, well-titled candidates in a row failed to contain the target content, which
+supports (rather than merely repeats) this document's own claim that generic "how to model from
+reference" tutorials are the wrong genre for this gap -- what's needed is closer to a critique
+session or narrated case study than a tutorial, and those appear to be rarer/harder to find via
+straightforward keyword search than technique tutorials are. Next attempt should consider named
+critique-format channels/series (art critique livestreams, portfolio-review content) rather than
+searching modeling-tutorial keywords again.
