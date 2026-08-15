@@ -71,6 +71,7 @@ CAPABILITIES = [
     "surface_candidate_diagnostics",
     "bridge_correspondence_analysis",
     "editable_high_low_variant_packaging",
+    "production_high_low_audit",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -481,6 +482,30 @@ class ModelerServer:
 
     def cmd_get_hard_surface_shading_audit(self, name):
         return object_ops.hard_surface_shading_audit(name)
+
+    def cmd_get_production_high_low_audit(
+        self,
+        high_name,
+        low_name,
+        silhouette_iou_by_view,
+        high_collection_name="HIGH_POLY",
+        low_collection_name="LOW_POLY",
+        max_low_to_high_face_ratio=0.65,
+        minimum_silhouette_iou=0.90,
+        minimum_view_count=2,
+        require_live_modifiers=True,
+    ):
+        return object_ops.production_high_low_audit(
+            high_name,
+            low_name,
+            silhouette_iou_by_view,
+            high_collection_name=high_collection_name,
+            low_collection_name=low_collection_name,
+            max_low_to_high_face_ratio=max_low_to_high_face_ratio,
+            minimum_silhouette_iou=minimum_silhouette_iou,
+            minimum_view_count=minimum_view_count,
+            require_live_modifiers=require_live_modifiers,
+        )
 
     def cmd_get_evaluated_defect_regions(self, name, area_outlier_ratio=0.05, angle_threshold_degrees=10, angle_local_spike_ratio=2.0, max_tickets=20):
         return evaluated_probe.evaluated_defect_regions(

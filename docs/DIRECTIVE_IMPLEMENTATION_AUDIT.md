@@ -350,3 +350,19 @@ mask checks reproduce the result. Fixture creation is disclosed deterministic se
 adaptive modeling. This closes the controlled secondary-view experiment named in the gap matrix;
 real photographic inference, real-prop runtime use, and professional acceptance remain open, so the
 foundation remains **PARTIAL**.
+
+## 2026-08-15 addendum: production high/low readiness audit
+
+`get_production_high_low_audit` now distinguishes rollback-owned editable duplicates from a
+technically production-ready low topology. `runs/2026-08-15_production-high-low-audit/` freezes and
+passes separate `HIGH_POLY`/`LOW_POLY` collection membership, independent mesh datablocks, lower
+base topology, one connected component, valid low UVs, three-view silhouette preservation, packed
+Selected-to-Active tangent-normal bakes, and independent low-only GLB imports for rounded-box and
+radial families. All source modifiers remain live and unapplied for the user; the pipeline contains
+no modifier-apply call and exports with modifier application disabled.
+
+An equal-cage control is classified `EDITABLE_VARIANT_ONLY`; one-view, missing-UV,
+missing-modifier, and disconnected-shell controls fail closed. A rejected four-ring radial cage is
+also retained in the report: its top IoU was 0.8247 until one profile-defining center ring raised it
+to 0.9592. The audit can observe current stacks but cannot reconstruct modifier history, and it does
+not author retopology on an unfamiliar real prop. Foundation status therefore remains **PARTIAL**.

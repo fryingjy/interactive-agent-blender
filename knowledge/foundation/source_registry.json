@@ -2472,5 +2472,33 @@
         "No real-prop typed transaction or human fidelity review"
       ]
     }
+  },
+  {
+    "id": "experiment-production-high-low-audit-2026-08-15",
+    "url": null,
+    "local_path": "runs/2026-08-15_production-high-low-audit/",
+    "title": "Production High/Low Readiness Audit",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["high-low", "retopology-audit", "UV", "normal-bake", "GLB-export", "live-modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "wireframe_render", "silhouette_mask", "normal_bake", "GLB", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_production-high-low-audit/"],
+      "direct_observations": [
+        "Rounded-box and radial pairs retain separate collections, independent meshes, live modifiers, valid low UVs, and three-view shape preservation",
+        "Equal-cage, one-view, missing-UV, missing-modifier, and disconnected-shell controls fail closed",
+        "Each low-only GLB independently re-imports with one mesh, UVs, material, and its own tangent-normal image"
+      ],
+      "limitations": [
+        "Controlled authored fixtures rather than autonomous unfamiliar-prop retopology",
+        "Current Blender state cannot prove that no modifier was applied earlier in asset history",
+        "No expert production-asset acceptance"
+      ]
+    }
   }
 ]

@@ -5,6 +5,7 @@ touch bmesh at all.
 
 import math
 import os
+import sys
 import time
 
 import bpy
@@ -202,6 +203,136 @@ def package_high_low_variants(
         "all_modifiers_unapplied": True,
         "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed",
     }
+
+
+def production_high_low_audit(
+    high_name,
+    low_name,
+    silhouette_iou_by_view,
+    high_collection_name="HIGH_POLY",
+    low_collection_name="LOW_POLY",
+    max_low_to_high_face_ratio=0.65,
+    minimum_silhouette_iou=0.90,
+    minimum_view_count=2,
+    require_live_modifiers=True,
+):
+    """Read-only audit separating production topology from editable duplicate packaging.
+
+    Current live modifier stacks are observable; past modifier application is not. The result keeps
+    that history boundary explicit and never infers retopology from collection names alone.
+    """
+    high = bpy.data.objects.get(high_name)
+    low = bpy.data.objects.get(low_name)
+    if high is None or high.type != "MESH":
+        raise ValueError(f"'{high_name}' must be an existing mesh object")
+    if low is None or low.type != "MESH":
+        raise ValueError(f"'{low_name}' must be an existing mesh object")
+    if high is low:
+        raise ValueError("high and low objects must differ")
+
+    def connected_components(obj):
+        adjacency = {vertex.index: set() for vertex in obj.data.vertices}
+        for edge in obj.data.edges:
+            a, b = edge.vertices
+            adjacency[a].add(b)
+            adjacency[b].add(a)
+        unseen = set(adjacency)
+        count = 0
+        while unseen:
+            count += 1
+            stack = [unseen.pop()]
+            while stack:
+                current = stack.pop()
+                neighbors = adjacency[current] & unseen
+                unseen.difference_update(neighbors)
+                stack.extend(neighbors)
+        return count
+
+    def uv_record(obj):
+        layer = obj.data.uv_layers.active
+        if layer is None:
+            return {
+                "layer": None,
+                "loop_count": 0,
+                "degenerate_faces": len(obj.data.polygons),
+                "inside_unit_tile": False,
+            }
+        degenerate = 0
+        inside = True
+        for polygon in obj.data.polygons:
+            coords = [layer.data[index].uv for index in polygon.loop_indices]
+            area = abs(sum(
+                coords[index].x * coords[(index + 1) % len(coords)].y
+                - coords[(index + 1) % len(coords)].x * coords[index].y
+                for index in range(len(coords))
+            ) * 0.5)
+            if area < 1e-10:
+                degenerate += 1
+            inside = inside and all(
+                -1e-6 <= uv.x <= 1.000001 and -1e-6 <= uv.y <= 1.000001
+                for uv in coords
+            )
+        return {
+            "layer": layer.name,
+            "loop_count": len(layer.data),
+            "degenerate_faces": degenerate,
+            "inside_unit_tile": inside,
+        }
+
+    high_collections = {collection.name for collection in high.users_collection}
+    low_collections = {collection.name for collection in low.users_collection}
+    separate_collections = bool(
+        high_collection_name in high_collections
+        and low_collection_name in low_collections
+        and low_collection_name not in high_collections
+        and high_collection_name not in low_collections
+    )
+    low_uv = uv_record(low)
+    repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if repo_root not in sys.path:
+        sys.path.insert(0, repo_root)
+    from knowledge_engine.high_low_audit import HighLowEvidence, audit_production_high_low
+
+    evidence = HighLowEvidence(
+        high_object=high.name,
+        low_object=low.name,
+        separate_collections=separate_collections,
+        independent_mesh_datablocks=high.data is not low.data,
+        high_base_faces=len(high.data.polygons),
+        low_base_faces=len(low.data.polygons),
+        high_connected_components=connected_components(high),
+        low_connected_components=connected_components(low),
+        high_live_modifiers=tuple(f"{modifier.name}:{modifier.type}" for modifier in high.modifiers),
+        low_live_modifiers=tuple(f"{modifier.name}:{modifier.type}" for modifier in low.modifiers),
+        low_uv_layer=low_uv["layer"],
+        low_uv_loop_count=low_uv["loop_count"],
+        low_degenerate_uv_faces=low_uv["degenerate_faces"],
+        low_uv_inside_unit_tile=low_uv["inside_unit_tile"],
+        silhouette_iou_by_view=dict(silhouette_iou_by_view),
+    )
+    result = audit_production_high_low(
+        evidence,
+        max_low_to_high_face_ratio=max_low_to_high_face_ratio,
+        minimum_silhouette_iou=minimum_silhouette_iou,
+        minimum_view_count=minimum_view_count,
+        require_live_modifiers=require_live_modifiers,
+    )
+    result["evidence"] = {
+        "high_object": evidence.high_object,
+        "low_object": evidence.low_object,
+        "high_collections": sorted(high_collections),
+        "low_collections": sorted(low_collections),
+        "independent_mesh_datablocks": evidence.independent_mesh_datablocks,
+        "high_base_faces": evidence.high_base_faces,
+        "low_base_faces": evidence.low_base_faces,
+        "high_connected_components": evidence.high_connected_components,
+        "low_connected_components": evidence.low_connected_components,
+        "high_live_modifiers": list(evidence.high_live_modifiers),
+        "low_live_modifiers": list(evidence.low_live_modifiers),
+        "low_uv": low_uv,
+        "silhouette_iou_by_view": evidence.silhouette_iou_by_view,
+    }
+    return result
 
 
 def set_shading(name, smooth=True):

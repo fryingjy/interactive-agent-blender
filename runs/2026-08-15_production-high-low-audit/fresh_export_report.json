@@ -1,0 +1,73 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "exports": {
+    "box": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_production-high-low-audit\\box_low.glb",
+      "operator_result": [
+        "FINISHED"
+      ],
+      "mesh_count": 1,
+      "mesh_names": [
+        "Box_LOW"
+      ],
+      "face_count": 12,
+      "uv_layers": {
+        "Box_LOW": [
+          "UVMap"
+        ]
+      },
+      "materials": [
+        "box_Low_Material"
+      ],
+      "images": [
+        "box_tangent_normal"
+      ],
+      "dimensions": {
+        "Box_LOW": [
+          4.0,
+          2.0,
+          3.0
+        ]
+      }
+    },
+    "radial": {
+      "path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_production-high-low-audit\\radial_low.glb",
+      "operator_result": [
+        "FINISHED"
+      ],
+      "mesh_count": 1,
+      "mesh_names": [
+        "Radial_LOW"
+      ],
+      "face_count": 120,
+      "uv_layers": {
+        "Radial_LOW": [
+          "UVMap"
+        ]
+      },
+      "materials": [
+        "radial_Low_Material"
+      ],
+      "images": [
+        "radial_tangent_normal"
+      ],
+      "dimensions": {
+        "Radial_LOW": [
+          2.859999895095825,
+          2.859999895095825,
+          3.0
+        ]
+      }
+    }
+  },
+  "checks": {
+    "box_imports": true,
+    "radial_imports": true,
+    "box_one_mesh": true,
+    "radial_one_mesh": true,
+    "box_has_uv_material_and_normal_image": true,
+    "radial_has_uv_material_and_normal_image": true
+  },
+  "pass": true,
+  "claim_boundary": "GLB payload verification does not prove target-engine shading parity."
+}

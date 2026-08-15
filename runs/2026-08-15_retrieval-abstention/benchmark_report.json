@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 18,
+  "case_count": 19,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -698,6 +698,78 @@
             "modifiers": 0.0,
             "reference_issue": 0.4419,
             "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "production_high_low_equal_cage",
+      "kind": "positive",
+      "context": {
+        "query": "low poly is only an equal base cage duplicate and modifiers must stay unapplied for user",
+        "modeling_stage": "PRODUCTION_PREP",
+        "workflow": "high-poly low-poly production audit",
+        "surface_type": null,
+        "defect": "equal base cage mislabeled as retopology",
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "production.high_low.readiness_audit",
+      "actual_top_skill": "production.high_low.readiness_audit",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 15.9486,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "production.high_low.readiness_audit",
+          "score": 22.1136,
+          "score_breakdown": {
+            "query": 9.75,
+            "modeling_stage": 1.7678,
+            "workflow": 4.4721,
+            "surface_type": 0.0,
+            "defect": 6.1237,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "reference.question-driven-targeted-research",
+          "score": 6.165,
+          "score_breakdown": {
+            "query": 2.25,
+            "modeling_stage": 0.0,
+            "workflow": 0.8944,
+            "surface_type": 0.0,
+            "defect": 1.0206,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+          "score": 6.0,
+          "score_breakdown": {
+            "query": 6.0,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
             "version_relevance": 0.0
           }
         }

@@ -95,6 +95,13 @@
       "minimum_top_margin": 1.0
     },
     {
+      "case_id": "production_high_low_equal_cage",
+      "kind": "positive",
+      "context": {"query": "low poly is only an equal base cage duplicate and modifiers must stay unapplied for user", "modeling_stage": "PRODUCTION_PREP", "workflow": "high-poly low-poly production audit", "defect": "equal base cage mislabeled as retopology"},
+      "expected_top_skill": "production.high_low.readiness_audit",
+      "minimum_top_margin": 1.0
+    },
+    {
       "case_id": "abstain_reference_camera",
       "kind": "abstention",
       "context": {"query": "camera focal length mismatch", "workflow": "reference modeling", "defect": "perspective distortion"},
