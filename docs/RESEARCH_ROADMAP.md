@@ -795,3 +795,23 @@ reference and get a professional model" remains unmet) rather than being a coinc
 videos got processed -- the same gap keeps surfacing from a completely different angle. The
 synthesis names concrete next-source types for the thin stages instead of just restating the gap.
 Curriculum doc updated with the honest strong/moderate/thin verdict.
+
+## Update -- 2026-08-15 (Bevel/SubD source conflict experimentally reconciled)
+
+Ran the controlled comparison owed by curriculum item #4 instead of resolving a source conflict by
+editing prose. Three identical 56-vertex/54-quad supported box cages used the same 36 semantic
+design-edge segments: weighted Bevel -> Subdivision; crease-protected Subdivision -> weighted
+Bevel; and an unprotected post-Subdivision Bevel negative control. All three remained closed,
+all-quad, manifold meshes, proving technical validity cannot select the workflow.
+
+The fixed-frame MatCap/evaluated-wire review and fresh-process verifier support a conditional rule.
+Pre-Subdivision Bevel produced the smoothest broad radius here (2,400 evaluated faces, zero
+localized pinch candidates). Crease-protected post-Subdivision Bevel preserved the flattest panels
+and a tighter chamfer at 1,176 faces, but concentrated highlights at box corners and produced 16
+localized curvature candidates. The unprotected post-Subdivision control visibly over-rounded the
+form even though its face count and bounds exactly matched the protected variant -- a directly
+preserved rejection of count-only judgment. Evidence: `runs/2026-08-15_bevel-subd-order/`.
+
+This closes the contradiction as a controlled experiment, not as transfer validation. The next
+promotion step is the same comparison on a curved hull or real prop whose reference declares
+whether the edge should be a broad radius or tight final chamfer.
