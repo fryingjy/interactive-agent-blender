@@ -49,15 +49,22 @@
   },
   {
     "knowledge_type": "FAILURE",
-    "claim": "Bridge Edge Loops has a 'Twist' parameter that offsets which target-loop vertex each source-loop vertex connects to, explicitly for controlling/avoiding an unwanted twist in the generated tube -- meaning bridging between two loops does NOT automatically find the most natural/untwisted vertex correspondence by default; the correspondence is a positional offset that can be wrong out of the box, especially between loops with different vertex counts.",
+    "claim": "Bridge Edge Loops has a 'Twist' parameter that offsets which target-loop vertex each source-loop vertex connects to. A wrong offset can create a visibly crossed or twisted tube, so loop correspondence must be inspected instead of judging success from face creation alone.",
     "source": {"source_id": "blender-manual-bpy.ops.mesh.bridge_edge_loops", "start_seconds": 0, "end_seconds": 0},
     "confidence": 0.55,
-    "supporting_evidence": "Official Blender manual: manual/modeling/meshes/editing/edge/bridge_edge_loops.rst -- 'Twist: Offsets the choice of target vertex which each source vertex is connected to. This makes the generated tube twist along its axis.' This directly explains an earlier real defect in this project's own work: bridging a 10-vertex teapot-handle-tip loop to a 12-vertex body-wall hole (runs/2026-08-14_teapot-body-revolve/brief.md) produced a genuinely twisted/crossed connection (10 edges ending up with 3 linked faces instead of 2) -- the typed protocol's own bridge_selection wrapper (blender_ops/mesh_ops.py) does not expose a twist parameter at all, so it always uses bmesh's default vertex correspondence, which this documentation confirms is not guaranteed correct, especially for mismatched loop sizes.",
-    "status": "CAPTURED",
+    "supporting_evidence": "Official Blender manual: manual/modeling/meshes/editing/edge/bridge_edge_loops.rst -- 'Twist: Offsets the choice of target vertex which each source vertex is connected to. This makes the generated tube twist along its axis.' Controlled Blender 5.2 evidence in runs/2026-08-15_bridge-correspondence-control/ deliberately applies bad nonzero offsets to equal-density circle and rounded-rectangle loops, reproduces crossed/pinched tubes, then corrects both through the typed runtime and independent verifier.",
+    "status": "TRANSFER_VALIDATED",
     "rejected_alternative": "Assuming bridge_selection's lack of a twist/correspondence parameter meant Blender's bridge operation always resolves the 'correct' loop correspondence automatically",
-    "reason": "The manual explicitly frames Twist as existing because the default correspondence can produce an unwanted twist -- this is the documented, named mechanism behind the teapot handle's crossed-bridge failure, not an unexplained anomaly. Fixing the typed bridge_selection op to expose a twist parameter (and ideally a way to preview/measure the correspondence before committing) is a concrete next step for a real second attempt at the handle's two-point loop.",
+    "reason": "The official parameter semantics and two controlled shape transfers establish the narrow mechanism. They do not prove that minimum connector length captures semantic artist intent, and they do not validate the earlier unequal-density teapot connection.",
     "captured_while_building": null,
-    "transfer_tests": []
+    "transfer_tests": [
+      {
+        "run": "runs/2026-08-15_bridge-correspondence-control/",
+        "shapes": ["8-sided circle", "12-sided rounded rectangle"],
+        "result": "PASS",
+        "boundary": "controlled equal-density loop correspondence; not held-out prop validation"
+      }
+    ]
   },
   {
     "knowledge_type": "PROCEDURE",

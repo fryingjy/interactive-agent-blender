@@ -57,6 +57,7 @@ class DecisionTransaction:
         self._before_active_object = None
         self.result = None
         self.reject_reason = None
+        self._failure_rolled_back = False
 
     def __enter__(self):
         actual = decision_state.current_revision()
@@ -98,6 +99,11 @@ class DecisionTransaction:
             obj = bpy.data.objects[self.target_object]
             self._before_mesh_snapshot = obj.data.copy()
             self._before_object_snapshot = obj.copy()
+            # Object.copy() keeps a user on the live mesh by default. Point the detached
+            # object snapshot at the transaction-owned mesh copy instead; otherwise a
+            # failed operation leaves the replaced live mesh orphaned but still retained
+            # until the object snapshot is freed.
+            self._before_object_snapshot.data = self._before_mesh_snapshot
             self._before_selected = obj.select_get()
             self._before_active_object = bpy.context.view_layer.objects.active.name if bpy.context.view_layer.objects.active else None
             self._before_transform = {
@@ -108,7 +114,24 @@ class DecisionTransaction:
         # Capture after transaction-owned snapshots are allocated so detached
         # snapshot datablocks are never reported as objects created by fn().
         self._before_object_names = set(bpy.data.objects.keys())
-        self.result = fn(*args, **kwargs)
+        try:
+            self.result = fn(*args, **kwargs)
+        except Exception as operation_error:
+            # An operator can mutate BMesh and then raise. Treating that as "never performed" and
+            # merely abandoning the transaction would preserve a partial edit and leak both
+            # snapshots. Restore atomically before propagating the original failure.
+            try:
+                if self.target_object:
+                    self._restore_target_snapshot()
+                self._failure_rolled_back = True
+            except Exception as rollback_error:
+                raise TransactionError(
+                    f"operation failed ({operation_error}); automatic rollback also failed "
+                    f"({rollback_error})"
+                ) from operation_error
+            finally:
+                self._free_snapshot()
+            raise
         self._performed = True
         return self.result
 
@@ -187,6 +210,19 @@ class DecisionTransaction:
             raise TransactionError("cannot reject: this transaction was already committed")
         if self._rejected:
             raise TransactionError("this transaction was already rejected")
+        created_objects = self._restore_target_snapshot()
+        self._rejected = True
+        self.reject_reason = reason
+        self._free_snapshot()
+        return {
+            "rejected": True,
+            "restored_revision": self.observed_revision,
+            "reason": reason,
+            "removed_created_objects": created_objects,
+        }
+
+    def _restore_target_snapshot(self):
+        """Restore every transaction-owned target channel without changing decision state."""
         obj = bpy.data.objects[self.target_object]
         if obj.mode == "EDIT":
             bm = bmesh.from_edit_mesh(obj.data)
@@ -195,11 +231,14 @@ class DecisionTransaction:
             bmesh.update_edit_mesh(obj.data, loop_triangles=True, destructive=True)
         else:
             replaced_data = obj.data
+            replaced_name = replaced_data.name
             restored_data = self._before_mesh_snapshot.copy()
-            restored_data.name = replaced_data.name
             obj.data = restored_data
             if replaced_data.users == 0:
                 bpy.data.meshes.remove(replaced_data)
+            # Rename only after the replaced datablock is gone so Blender does not append
+            # a numeric suffix and make a successful rollback observably change identity.
+            restored_data.name = replaced_name
         obj.location = self._before_transform["location"]
         obj.rotation_euler = self._before_transform["rotation_euler"]
         obj.scale = self._before_transform["scale"]
@@ -212,15 +251,7 @@ class DecisionTransaction:
                 bpy.data.objects.remove(created, do_unlink=True)
                 if mesh is not None and mesh.users == 0:
                     bpy.data.meshes.remove(mesh)
-        self._rejected = True
-        self.reject_reason = reason
-        self._free_snapshot()
-        return {
-            "rejected": True,
-            "restored_revision": self.observed_revision,
-            "reason": reason,
-            "removed_created_objects": created_objects,
-        }
+        return created_objects
 
     def _restore_object_channels(self, obj):
         """Restore object metadata, modifiers, and object selection from the object snapshot."""

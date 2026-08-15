@@ -190,6 +190,21 @@ def inspect_region(object_name: str, center_ids: list[int], rings: int = 2) -> d
 
 
 @mcp.tool()
+def analyze_bridge_selection(
+    object_name: str,
+    twist_offsets: list[int] | None = None,
+    allow_unequal: bool = False,
+) -> dict:
+    """Simulate Bridge Edge Loops offsets without mutating object_name. Returns loop counts, per-offset connector/topology metrics, and a minimum-connector-length suggestion. Unequal loop counts are rejected unless allow_unequal=True; a suggestion is diagnostic evidence, not automatic artistic approval."""
+    return _call(
+        "analyze_bridge_selection",
+        name=object_name,
+        twist_offsets=twist_offsets,
+        allow_unequal=allow_unequal,
+    )
+
+
+@mcp.tool()
 def create_region(object_name: str, region_id: str, role: str, vertex_ids: list[int] | None = None, edge_ids: list[int] | None = None, face_ids: list[int] | None = None) -> dict:
     """Name a persistent group of mesh elements (by agent_id, not index) for later reference -- e.g. 'outer_handle_curve' with role 'silhouette_feature'. Suggested roles: primary_form, secondary_form, outer_contour, silhouette_feature, corner, transition, support_loop, feature_edge, mirror_seam, hole_boundary, attachment_region, bevel_edge (any string is accepted; unrecognized roles are flagged, not rejected). All IDs must currently exist on the object."""
     return _call("create_region", name=object_name, region_id=region_id, role=role, vertex_ids=vertex_ids, edge_ids=edge_ids, face_ids=face_ids)

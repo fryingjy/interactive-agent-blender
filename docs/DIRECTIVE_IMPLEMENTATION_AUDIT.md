@@ -41,7 +41,7 @@ judgment and generalization priorities remain; the professional target is not fa
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates plus typed single/mixed intervention classifiers for geometry/normals/material/lighting/bevel | five isolated causes plus adaptive five-cause connected-barrel transfer pass; unknown real defects remain open |
 | Surface review lighting | official three-point and shading lessons studied; grazing-light observability, neutral-context interventions, and fixed-seed Cycles ablation | controlled second-shape transfer passes; experienced review remains open |
-| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.2 | expanded lab plus 6/6 Bisect mode cases and rollback/identity evidence |
+| Typed artistic operations | selection-driven rotate/bevel/delete/dissolve/merge/fill/bridge/spin/loop-cut/bisect+clear+cap/symmetrize/split/separate plus object shading in protocol 0.3; Bridge includes read-only correspondence analysis, explicit twist offset, and unequal-density guard | expanded lab plus 6/6 Bisect mode cases, rollback/identity evidence, and two-shape bridge transfer |
 | Revision-bound planner contract | one local decision chosen from authority, external edits, technical failures, rebuild pressure, uncertainty, visual tickets, and stage evidence | 12/12 contract assertions plus unit coverage; broader runtime use remains sparse |
 | Scoped rollback fidelity | geometry, UVs, materials, modifiers, semantic/custom metadata, face/object selection, active object, transform, created objects, revision | 8/8 Object Mode stress assertions plus independent mesh verification |
 | Blender runtime API breadth | context/data/RNA types, depsgraph evaluation, handlers, timers, message bus, lifecycle cleanup | controlled lifecycle pass; asynchronous dispatch explicitly unclaimed |
@@ -274,3 +274,19 @@ ticket to a scoped action only at `TRANSFER_VALIDATED` or better.
 Disposition remains **PARTIAL**. This is deterministic controlled transfer, not a held-out adaptive
 asset, and the skill has no real runtime-use success yet. It improves evidence for the knowledge
 lifecycle and planner contract without changing the professional-readiness claim.
+
+## 2026-08-15 addendum: bridge correspondence control and failed-operation rollback
+
+`runs/2026-08-15_bridge-correspondence-control/` closes the previously documented typed-runtime gap
+around Bridge Edge Loops Twist. Protocol 0.3 exposes an integer `twist_offset`, adds a read-only
+candidate analyzer, validates exactly two closed non-branching loops, and rejects unequal loop counts
+unless a caller explicitly opts into diagnostic-risk behavior. Two controlled shape families show
+visible crossed/pinched failures and corrected all-quad correspondence; a fresh-process verifier
+measured 34.5% and 39.1% lower connector length and found no orphan transaction datablocks.
+
+The experiment also discovered a separate real transaction defect: an operation that mutated a mesh
+and then raised could leave partial state and snapshot-related datablocks because `perform()` never
+reached its performed flag. Failed operations now restore the transaction-owned mesh, transform,
+metadata, modifiers, and selection before re-raising. This is verified with a deliberate post-mutation
+exception and an unequal-density bridge rejection. The evidence remains bounded to controlled equal-
+density loops; it does not promote general modeling or professional readiness beyond **PARTIAL**.

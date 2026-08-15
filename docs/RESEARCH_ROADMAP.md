@@ -864,3 +864,18 @@ the single-photo candlestick and a mixed-camera-variant set while accepting the 
 set as ready to begin. That acceptance does not overturn the human rejection of the Nailsea model.
 The next required evidence remains a human-reviewed reference-gathering-only exercise, then an
 equal-budget target-only versus structured-reference-set comparison on a new prop.
+
+## Update -- 2026-08-15 (bridge correspondence gap closed at controlled-transfer level)
+
+The documented Bridge Edge Loops Twist gap is now implemented through protocol 0.3. A read-only
+analyzer simulates candidate offsets on copied BMeshes, typed mutation accepts explicit
+`twist_offset`, and unequal loop density is rejected by default. Deliberately twisted circle and
+rounded-rectangle tubes were corrected in Blender 5.2, visually reviewed in solid/wireframe passes,
+and independently verified in a fresh process. The run also found and fixed automatic rollback after
+an operator mutates and then raises, including an orphan-datablock leak.
+
+This promotes only the narrow official-manual Twist claim to `TRANSFER_VALIDATED`. It does not
+validate semantic landmark pairing, unequal-density topology, or a held-out production prop. The
+roadmap priority therefore remains unchanged: complete the human-reviewed reference-gathering-only
+exercise, then compare target-only and structured-reference-set modeling at equal effort on a new
+prop before another difficult held-out build is accepted.

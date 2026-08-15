@@ -19,6 +19,27 @@ Never used in this project before this session. All three are genuinely new grou
 
 **Separate no-op, understood, not a bug**: bridging the top and bottom boundary rims of a cube that still has its 4 side faces intact (only top+bottom faces deleted via `context='FACES'`) produces 0 new faces. This is *correct* behavior, not a failure -- the two rims are already connected by a valid manifold path through the existing side walls, so there is nothing left to bridge. Bridge is for loops that are NOT already connected by faces.
 
+### Correspondence control and transfer (2026-08-15)
+
+`bridge_selection` now exposes Blender's integer `twist_offset` and rejects anything other than
+exactly two closed, non-branching loops. Equal loop density is the safe default: unequal counts are
+rejected before mutation unless `allow_unequal=True` is deliberately requested. The read-only
+`analyze_bridge_selection` operation copies the source BMesh, simulates candidate offsets, and ranks
+valid all-quad candidates by total connector length. It is available through the typed server and
+direct MCP surface.
+
+The controlled lab in `runs/2026-08-15_bridge-correspondence-control/` deliberately applied bad
+offsets to an 8-sided circular tube and a 12-sided rounded-rectangle tube, producing visibly crossed,
+pinched wireframes. Applying the measured correction to identical fixtures preserved the intended
+vertical correspondence. A fresh Blender process verified complete quad tubes and measured connector
+length reductions of 34.5% and 39.1%. The same lab proved unequal-count rejection and exact automatic
+rollback after a real vertex mutation raised an exception, with no orphan mesh datablocks retained.
+
+**Evidence boundary:** this is a controlled two-shape mechanics transfer, not a held-out prop or
+proof that shortest connectors encode artist intent. Symmetric loops can have tied offsets, feature
+landmarks can matter more than length, and unequal-density bridges still require topology planning.
+Always inspect the resulting surface and correspondence before accepting it.
+
 ## `bmesh.ops.grid_fill` / `bpy.ops.mesh.fill_grid`
 
 Real API-level finding (confirmed against the Blender Python API): the low-level `bmesh.ops.grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple)` has **no `span`/`offset` parameters** -- those exist only on the higher-level `bpy.ops.mesh.fill_grid(span, offset)`. Do not expect to control grid orientation/pairing from the low-level bmesh operator.

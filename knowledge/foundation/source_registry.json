@@ -2312,5 +2312,32 @@
     "access": {"text": false, "video": true, "audio": true, "captions": false},
     "status": "STUDIED", "rejected_reason": null, "modalities_inspected": ["video", "audio"],
     "metadata": {"experiments": ["runs/2026-08-15_video-study-reference-workflow/"], "limitations": ["2D photobashing; not geometry or dimension authority"]}
+  },
+  {
+    "id": "experiment-bridge-correspondence-control-2026-08-15",
+    "url": null,
+    "local_path": "runs/2026-08-15_bridge-correspondence-control/",
+    "title": "Typed Bridge Correspondence Control and Failure Rollback Lab",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["bridge-edge-loops", "twist-offset", "quad-topology", "transaction-rollback"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "solid_render", "wireframe_render", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_bridge-correspondence-control/"],
+      "direct_observations": [
+        "Bad nonzero twist offsets visibly crossed both controlled tubes",
+        "Measured corrections reduced connector length by 34.5% and 39.1%",
+        "Unequal-loop rejection and post-mutation exception rollback preserved exact state without orphan mesh datablocks"
+      ],
+      "limitations": [
+        "Controlled equal-density fixtures are not held-out production assets",
+        "Minimum connector length cannot establish semantic or artistic correspondence"
+      ]
+    }
   }
 ]
