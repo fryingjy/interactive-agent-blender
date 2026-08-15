@@ -83,8 +83,12 @@ Critical: this is the actual target capability ("here is a picture, build it").
 
 15. Reference-image modeling case study (same as #11).
 16. Reference-image setup tutorial: front/side/top references, orthographic alignment, image scale,
-    transparency, camera/view consistency, matching landmarks. Specific video not yet identified --
-    search and verify before treating any specific one as canonical.
+    transparency, camera/view consistency, matching landmarks. `lpIonmH90-k` ("How to Use
+    Background Images in Blender", Ryan King Art -- found via search). Processed
+    (`runs/2026-08-14_video-study-ryanking-reference-images/`, 5 items) -- orthographic-locked
+    import, reference Depth (Front/Back) for occlusion control, orthographic-only display to keep
+    perspective navigation clean, locking reference collections unselectable, and multi-view
+    landmark-based alignment to a shared origin. **Level 5 (the target capability) started, 1/2.**
 
 Reasoning process to learn (not a fixed shortcut sequence):
 ```

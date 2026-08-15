@@ -1,0 +1,41 @@
+Here are the key moments from the video illustrating fundamental, transferable techniques for setting up multi-view reference images in 3D modeling:
+
+---
+
+### 1. Adding Reference in Orthographic Views vs. Disabling "Align to View"
+* **Timestamp:** `00:48` – `02:24`
+* **What is visible on screen:** The presenter switches to Front Orthographic view (`Numpad 1`) before importing an image via `Shift + A` $\rightarrow$ `Image` $\rightarrow$ `Reference`. He also demonstrates the file browser sidebar toggle **"Align to View"**, showing what happens when images are imported in arbitrary perspective angles versus strict orthographic camera orientations.
+* **Underlying Principle:** Orthographic alignment ensures that 2D reference blueprints are placed perfectly flat along standard Cartesian planes (XY, XZ, YZ) without perspective distortion or accidental tilt angles.
+* **Why it's transferable:** Any hard-surface or organic model built from multi-view concept art requires parallel projection alignment. Importing while locked to orthographic views (Front `1`, Side `3`, Top `7`) guarantees that reference dimensions correspond directly to 3D spatial axes without manual rotation error.
+
+---
+
+### 2. Controlling Image Depth Display (Front vs. Back)
+* **Timestamp:** `03:20` – `04:09`
+* **What is visible on screen:** In the Object Data Properties panel for the reference empty, the presenter toggles **Depth** between `Default`, `Front`, and `Back`. When set to `Back`, 3D geometry in front of the image stays fully visible; when set to `Front`, the reference line art overlays on top of the 3D geometry regardless of depth ordering.
+* **Underlying Principle:** Managing reference visual priority relative to 3D meshes prevents opaque geometry from obstructing guide lines while modeling.
+* **Why it's transferable:** When extruding or sculpting complex meshes, geometry quickly hides background reference planes. Setting reference depth to `Back` allows unobstructed viewing of 3D forms, while setting it to `Front` (paired with low opacity) lets you trace silhouette lines directly over dense surface meshes.
+
+---
+
+### 3. Restricting View Orientation and Display Modes (Orthographic Only & Opacity)
+* **Timestamp:** `05:11` – `05:38`
+* **What is visible on screen:** In the image empty settings, the presenter unchecks **Perspective** under "Show In" (leaving only **Orthographic** active) and adjusts the **Opacity** slider to make the line art semi-transparent.
+* **Underlying Principle:** De-cluttering 3D viewport navigation while maintaining high contrast in orthographic modeling projections.
+* **Why it's transferable:** In complex modeling setups with multiple intersecting reference cards (front, side, top, rear), having flat planes floating in free perspective view obstructs viewport navigation. Hiding references in perspective mode allows you to inspect 3D forms cleanly while automatically displaying blueprints the moment you snap to standard orthographic views (`Numpad 1, 3, 7`).
+
+---
+
+### 4. Isolating References into Collections & Disabling Selection
+* **Timestamp:** `05:40` – `07:03`
+* **What is visible on screen:** The presenter selects all reference empties, moves them to a new collection named `"References"` (`M`), enables the **Selectable** filter toggle in the Outliner restriction toggles, and clicks the arrow icon to lock the entire collection.
+* **Underlying Principle:** Protecting guide geometry from accidental transformation during mesh editing and viewport selection.
+* **Why it's transferable:** Box-selecting or clicking vertices/edges near image boundaries frequently selects reference empties instead of mesh components. Locking selection for reference collections ensures uninterrupted workflow across all modeling projects.
+
+---
+
+### 5. Multi-View Axial Centering and Common Ground-Plane Alignment
+* **Timestamp:** `08:16` – `10:45`
+* **What is visible on screen:** The single blueprint sheet containing front, side, top, and rear drawings is duplicated (`Shift + D`), rotated $90^\circ$ or $180^\circ$ onto respective axes, and translated so that all views align to common reference markers (e.g., placing the contact patch of the tires precisely on the horizontal ground plane $Z=0$ and centering the vehicle symmetry line along the vertical axis).
+* **Underlying Principle:** Calibrating all reference cards to a shared global coordinate origin $(0,0,0)$ ensures that 3D vertices positioned in one view (e.g., Front) match their exact corresponding position in orthogonal views (e.g., Side and Top).
+* **Why it's transferable:** Concept sheets rarely have individual projections already centered on the 3D origin. Aligning all views to common landmark features (ground level, center symmetry line, vehicle wheelbase) ensures that mirror modifiers and multi-view box-modeling align accurately from start to finish.
