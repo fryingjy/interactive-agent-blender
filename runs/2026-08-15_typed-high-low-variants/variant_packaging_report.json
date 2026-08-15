@@ -1,0 +1,404 @@
+{
+  "lab": "typed_editable_high_low_variant_packaging",
+  "blender_version": "5.2.0 LTS",
+  "capabilities": {
+    "protocol_version": "0.3",
+    "blender_version": "5.2.0",
+    "pid": 18052,
+    "session_id": "2edd3a336711",
+    "started_at": 1786833097.529118,
+    "blend_filepath": null,
+    "capabilities": [
+      "selection_ids",
+      "persistent_mesh_ids",
+      "full_state",
+      "event_polling",
+      "decision_transactions",
+      "external_edit_detection",
+      "command_idempotency",
+      "session_handshake",
+      "control_mode",
+      "viewport_state",
+      "region_inspection",
+      "semantic_regions",
+      "evaluated_mesh_inspection",
+      "decision_rollback",
+      "layered_state_fingerprint",
+      "native_silhouette_render",
+      "curve_bevel_taper_geometry",
+      "modeling_stage_tracking",
+      "expanded_typed_modeling_surface",
+      "diagnostic_visual_passes",
+      "surface_candidate_diagnostics",
+      "bridge_correspondence_analysis",
+      "editable_high_low_variant_packaging"
+    ],
+    "available_operations": [
+      "add_modifier",
+      "add_ring_detail",
+      "assign_vertex_group",
+      "bevel_edges",
+      "bevel_selection",
+      "bisect_selection",
+      "bridge_selection",
+      "delete_selection",
+      "dissolve_selection",
+      "extrude_selection",
+      "fill_selection",
+      "inset_selection",
+      "loop_cut_selection",
+      "mark_no_sharp_edges_needed",
+      "merge_by_distance",
+      "merge_selection",
+      "move_selection",
+      "package_high_low_variants",
+      "recalc_normals",
+      "rotate_selection",
+      "scale_selection",
+      "separate_selection",
+      "set_bevel_scoping",
+      "set_bevel_weight_by_ids",
+      "set_edge_crease_by_ids",
+      "set_modifier_parameter",
+      "set_shading",
+      "set_smooth_by_angle",
+      "spin_selection",
+      "split_selection",
+      "subdivide_selection",
+      "symmetrize_selection",
+      "triangulate_ngons"
+    ]
+  },
+  "committed_transaction": {
+    "begin": {
+      "decision_id": "dec_0_1786833097531",
+      "observed_revision": 0
+    },
+    "perform": {
+      "decision_id": "dec_0_1786833097531",
+      "performed": true,
+      "result": {
+        "high": {
+          "object": "Fixture_HIGH",
+          "mesh": "Fixture_HIGH",
+          "collection": "HIGH_POLY",
+          "base_vertices": 8,
+          "base_edges": 12,
+          "base_faces": 6,
+          "modifiers": [
+            {
+              "name": "Editable_Subdivision",
+              "type": "SUBSURF",
+              "levels": 2,
+              "viewport_levels": 2,
+              "render_levels": 2
+            },
+            {
+              "name": "Editable_Thickness",
+              "type": "SOLIDIFY",
+              "levels": null,
+              "viewport_levels": null,
+              "render_levels": null
+            }
+          ],
+          "modifiers_applied": false,
+          "hidden_in_viewport": false,
+          "hidden_in_render": false
+        },
+        "low": {
+          "object": "Fixture_LOW",
+          "mesh": "Fixture_LOW_Mesh",
+          "collection": "LOW_POLY",
+          "base_vertices": 8,
+          "base_edges": 12,
+          "base_faces": 6,
+          "modifiers": [
+            {
+              "name": "Editable_Subdivision",
+              "type": "SUBSURF",
+              "levels": 0,
+              "viewport_levels": 0,
+              "render_levels": 0
+            },
+            {
+              "name": "Editable_Thickness",
+              "type": "SOLIDIFY",
+              "levels": null,
+              "viewport_levels": null,
+              "render_levels": null
+            }
+          ],
+          "modifiers_applied": false,
+          "hidden_in_viewport": true,
+          "hidden_in_render": true
+        },
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "all_modifiers_unapplied": true,
+        "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+      }
+    },
+    "verify": {
+      "action_type": "package_committed_editable_variants",
+      "op_delta": 0,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "after": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "id_delta": {
+        "verts": {
+          "added": [],
+          "removed": []
+        },
+        "edges": {
+          "added": [],
+          "removed": []
+        },
+        "faces": {
+          "added": [],
+          "removed": []
+        }
+      }
+    },
+    "close": {
+      "decision_id": "dec_0_1786833097531",
+      "result_revision": 1
+    }
+  },
+  "committed_high": {
+    "name": "Fixture_HIGH",
+    "mesh": "Fixture_HIGH",
+    "collections": [
+      "HIGH_POLY"
+    ],
+    "vertices": 8,
+    "faces": 6,
+    "modifiers": [
+      {
+        "name": "Editable_Subdivision",
+        "type": "SUBSURF",
+        "levels": 2,
+        "render_levels": 2
+      },
+      {
+        "name": "Editable_Thickness",
+        "type": "SOLIDIFY",
+        "levels": null,
+        "render_levels": null
+      }
+    ],
+    "variant": "HIGH_POLY",
+    "hidden": false
+  },
+  "committed_low": {
+    "name": "Fixture_LOW",
+    "mesh": "Fixture_LOW_Mesh",
+    "collections": [
+      "LOW_POLY"
+    ],
+    "vertices": 8,
+    "faces": 6,
+    "modifiers": [
+      {
+        "name": "Editable_Subdivision",
+        "type": "SUBSURF",
+        "levels": 0,
+        "render_levels": 0
+      },
+      {
+        "name": "Editable_Thickness",
+        "type": "SOLIDIFY",
+        "levels": null,
+        "render_levels": null
+      }
+    ],
+    "variant": "LOW_POLY",
+    "hidden": true
+  },
+  "rejected_transaction": {
+    "begin": {
+      "decision_id": "dec_1_1786833097537",
+      "observed_revision": 1
+    },
+    "perform": {
+      "decision_id": "dec_1_1786833097537",
+      "performed": true,
+      "result": {
+        "high": {
+          "object": "Rollback_HIGH",
+          "mesh": "Rollback_HIGH",
+          "collection": "ROLLBACK_HIGH_POLY",
+          "base_vertices": 24,
+          "base_edges": 36,
+          "base_faces": 14,
+          "modifiers": [
+            {
+              "name": "Editable_Subdivision",
+              "type": "SUBSURF",
+              "levels": 2,
+              "viewport_levels": 2,
+              "render_levels": 2
+            },
+            {
+              "name": "Editable_Thickness",
+              "type": "SOLIDIFY",
+              "levels": null,
+              "viewport_levels": null,
+              "render_levels": null
+            }
+          ],
+          "modifiers_applied": false,
+          "hidden_in_viewport": false,
+          "hidden_in_render": false
+        },
+        "low": {
+          "object": "Rollback_LOW",
+          "mesh": "Rollback_LOW_Mesh",
+          "collection": "ROLLBACK_LOW_POLY",
+          "base_vertices": 24,
+          "base_edges": 36,
+          "base_faces": 14,
+          "modifiers": [
+            {
+              "name": "Editable_Subdivision",
+              "type": "SUBSURF",
+              "levels": 0,
+              "viewport_levels": 0,
+              "render_levels": 0
+            },
+            {
+              "name": "Editable_Thickness",
+              "type": "SOLIDIFY",
+              "levels": null,
+              "viewport_levels": null,
+              "render_levels": null
+            }
+          ],
+          "modifiers_applied": false,
+          "hidden_in_viewport": false,
+          "hidden_in_render": false
+        },
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "all_modifiers_unapplied": true,
+        "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+      }
+    },
+    "verify": {
+      "action_type": "package_then_reject_variants",
+      "op_delta": 0,
+      "before": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "non_manifold_edges": 0,
+        "ngons": 2,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "after": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "non_manifold_edges": 0,
+        "ngons": 2,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "id_delta": {
+        "verts": {
+          "added": [],
+          "removed": []
+        },
+        "edges": {
+          "added": [],
+          "removed": []
+        },
+        "faces": {
+          "added": [],
+          "removed": []
+        }
+      }
+    },
+    "close": {
+      "decision_id": "dec_1_1786833097537",
+      "rejected": true,
+      "restored_revision": 1,
+      "reason": "rollback control",
+      "removed_created_objects": [
+        "Rollback_LOW"
+      ],
+      "removed_created_collections": [
+        "ROLLBACK_HIGH_POLY",
+        "ROLLBACK_LOW_POLY"
+      ]
+    }
+  },
+  "rollback_after": {
+    "name": "Rollback_HIGH",
+    "mesh": "Rollback_HIGH",
+    "collections": [
+      "Scene Collection"
+    ],
+    "vertices": 24,
+    "faces": 14,
+    "modifiers": [
+      {
+        "name": "Editable_Subdivision",
+        "type": "SUBSURF",
+        "levels": 2,
+        "render_levels": 2
+      },
+      {
+        "name": "Editable_Thickness",
+        "type": "SOLIDIFY",
+        "levels": null,
+        "render_levels": null
+      }
+    ],
+    "variant": null,
+    "hidden": false
+  },
+  "collision_error": "variant collections already exist: ['HIGH_POLY']",
+  "collision_abandon": {
+    "decision_id": "dec_1_1786833097539",
+    "abandoned": true,
+    "reason": "expected collision",
+    "failed_operation_rolled_back": true
+  },
+  "checks": {
+    "capability_reported": true,
+    "operation_registered": true,
+    "committed_separate_collections": true,
+    "committed_independent_meshes": true,
+    "committed_equal_base_counts": true,
+    "committed_modifiers_retained_unapplied": true,
+    "high_subd_preserved": true,
+    "low_subd_zero_but_present": true,
+    "variants_semantically_labeled": true,
+    "rollback_removed_created_object": true,
+    "rollback_removed_created_collections": true,
+    "rollback_restored_membership": true,
+    "rollback_restored_modifiers": true,
+    "rollback_removed_snapshot_meshes": true,
+    "rollback_kept_revision": true,
+    "collision_failed_before_persistent_change": true,
+    "collision_failure_auto_rolled_back": true
+  },
+  "pass": true,
+  "boundary": "This packages an independent editable duplicate with unapplied modifiers. It does not perform production retopology, UV authoring, baking, or export."
+}

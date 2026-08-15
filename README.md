@@ -24,7 +24,9 @@ Current evidence includes:
   structured retrieval, quizzes, telemetry, and self-session replay;
 - profile-authored reference models, a connected-quad multi-view barrel, driven corrective transfer,
   adaptive mixed-cause surface diagnosis, and a real Godot tangent-bake import with deliberate
-  semantic failure evidence.
+  semantic failure evidence;
+- rollback-owned high/low variant packaging with separate collections, independent editable cages,
+  and unapplied modifier stacks, including controlled rejection and real Nailsea runtime use.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

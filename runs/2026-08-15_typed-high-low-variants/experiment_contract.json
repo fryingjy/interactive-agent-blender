@@ -1,0 +1,18 @@
+{
+  "experiment": "typed editable high/low variant packaging",
+  "predeclared_requirements": [
+    "source/high and duplicate/low objects occupy separate collections",
+    "high and low use independent editable mesh datablocks",
+    "both retain their full live modifier stacks and no modifier is applied",
+    "the low Subdivision modifier remains present at level zero",
+    "transaction rejection restores original collection membership and removes created object, mesh, and collections",
+    "collection-name collision fails closed without persistent change",
+    "a fresh Blender process independently verifies the saved file"
+  ],
+  "explicit_non_claims": [
+    "no purpose-authored low-poly retopology",
+    "no UV authoring or transfer",
+    "no selected-to-active bake",
+    "no engine export"
+  ]
+}

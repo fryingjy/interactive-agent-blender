@@ -1,0 +1,93 @@
+{
+  "verification": "fresh_process_saved_blend_inspection",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_typed-high-low-variants\\typed_high_low_variants.blend",
+  "high": {
+    "collections": [
+      "HIGH_POLY"
+    ],
+    "base": {
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6
+    },
+    "evaluated": {
+      "vertices": 196,
+      "faces": 192
+    },
+    "modifiers": [
+      {
+        "name": "Editable_Subdivision",
+        "type": "SUBSURF",
+        "levels": 2,
+        "render_levels": 2
+      },
+      {
+        "name": "Editable_Thickness",
+        "type": "SOLIDIFY",
+        "levels": null,
+        "render_levels": null
+      }
+    ],
+    "persistent_ids": {
+      "point_count": 8,
+      "point_unique": 8,
+      "point_nonzero": true,
+      "face_count": 6,
+      "face_unique": 6,
+      "face_nonzero": true
+    }
+  },
+  "low": {
+    "collections": [
+      "LOW_POLY"
+    ],
+    "base": {
+      "vertices": 8,
+      "edges": 12,
+      "faces": 6
+    },
+    "evaluated": {
+      "vertices": 16,
+      "faces": 12
+    },
+    "modifiers": [
+      {
+        "name": "Editable_Subdivision",
+        "type": "SUBSURF",
+        "levels": 0,
+        "render_levels": 0
+      },
+      {
+        "name": "Editable_Thickness",
+        "type": "SOLIDIFY",
+        "levels": null,
+        "render_levels": null
+      }
+    ],
+    "persistent_ids": {
+      "point_count": 8,
+      "point_unique": 8,
+      "point_nonzero": true,
+      "face_count": 6,
+      "face_unique": 6,
+      "face_nonzero": true
+    }
+  },
+  "checks": {
+    "generator_report_passed": true,
+    "expected_objects_present": true,
+    "rollback_duplicate_absent": true,
+    "rollback_collections_absent": true,
+    "separate_variant_collections": true,
+    "independent_mesh_datablocks": true,
+    "equal_editable_base_topology": true,
+    "modifiers_live_on_both": true,
+    "high_subdivision_two": true,
+    "low_subdivision_zero": true,
+    "evaluated_geometry_differs_without_apply": true,
+    "semantic_labels_present": true,
+    "persistent_ids_complete": true
+  },
+  "pass": true,
+  "boundary": "This packages an independent editable duplicate with unapplied modifiers. It does not perform production retopology, UV authoring, baking, or export."
+}
