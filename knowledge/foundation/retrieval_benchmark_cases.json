@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Version 3 adds one positive and one nearby abstention after the question-driven reference skill was introduced. These are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 add paired positive/nearby-abstention cases after new reference skills were introduced. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -88,6 +88,13 @@
       "minimum_top_margin": 1.0
     },
     {
+      "case_id": "secondary_view_component_depth",
+      "kind": "positive",
+      "context": {"query": "front silhouette ties but top view reveals shallow separate faceplate", "modeling_stage": "REFERENCE_ANALYSIS", "workflow": "secondary-view component depth reconstruction", "reference_issue": "primary-view ambiguity about continuity and component depth"},
+      "expected_top_skill": "reference.secondary_view_component_strategy",
+      "minimum_top_margin": 1.0
+    },
+    {
       "case_id": "abstain_reference_camera",
       "kind": "abstention",
       "context": {"query": "camera focal length mismatch", "workflow": "reference modeling", "defect": "perspective distortion"},
@@ -97,6 +104,12 @@
       "case_id": "abstain_reference_color_grade",
       "kind": "abstention",
       "context": {"query": "reference image color grade mismatch", "workflow": "reference modeling", "defect": "white balance"},
+      "expected_top_skill": null
+    },
+    {
+      "case_id": "abstain_reference_material_boundary",
+      "kind": "abstention",
+      "context": {"query": "front panel paint color differs from housing", "workflow": "reference modeling", "reference_issue": "material color boundary without depth evidence"},
       "expected_top_skill": null
     },
     {

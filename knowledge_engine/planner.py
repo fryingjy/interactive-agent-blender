@@ -52,6 +52,7 @@ class PlannerContext:
     repair_history: RegionRepairHistory | None = None
     brief: ModelingBrief = field(default_factory=ModelingBrief)
     reference_decomposition: SceneDecomposition | None = None
+    component_strategy_resolution: dict[str, Any] | None = None
     external_edit_detected: bool = False
     intentional_non_manifold_edge_ids: tuple[int, ...] = ()
     minimum_stage_iou: float = 0.9
@@ -69,6 +70,14 @@ class PlannerContext:
             raise ValueError("intentional_non_manifold_edge_ids must be unique persistent edge IDs")
         if self.reference_decomposition is not None:
             self.reference_decomposition.validate()
+        if self.component_strategy_resolution is not None:
+            disposition = self.component_strategy_resolution.get("disposition")
+            if disposition not in {"TARGETED_REFERENCE_RESEARCH", "SELECT_STRATEGY"}:
+                raise ValueError(f"invalid component strategy disposition: {disposition}")
+            if disposition == "SELECT_STRATEGY" and self.component_strategy_resolution.get(
+                "chosen_policy"
+            ) not in {"CONTINUOUS_MESH", "SEPARATE_COMPONENTS"}:
+                raise ValueError("selected component strategy requires a valid chosen_policy")
 
 
 @dataclass(frozen=True)
@@ -281,6 +290,32 @@ def _reference_stage_contract(
         decomposition_gate = _reference_decomposition_contract(context, target)
         if decomposition_gate is not None:
             return decomposition_gate
+        resolution = context.component_strategy_resolution
+        if resolution and resolution["disposition"] == "TARGETED_REFERENCE_RESEARCH":
+            return _contract(
+                context,
+                disposition="RESEARCH",
+                action="RESOLVE_SECONDARY_VIEW_STRATEGY",
+                operation=None,
+                operation_params={
+                    "queries": list(resolution.get("queries", [])),
+                    "required_secondary_views": list(
+                        resolution.get("required_secondary_views", [])
+                    ),
+                },
+                target_object=target,
+                target_region=None,
+                rationale=(str(resolution.get("reason", "component strategy is unresolved")),),
+                expected_effect=(
+                    "Acquire a discriminating same-variant view before choosing continuous or "
+                    "separate construction."
+                ),
+                verification=(
+                    "rerun multi-view component-strategy resolution",
+                    "retain the rejected strategy and measured view scores",
+                ),
+                confidence="HIGH",
+            )
         return _passed_stage_contract(context, target)
     queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
     return _contract(
@@ -426,6 +461,9 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             strategy = choose_strategy(effective_brief)
             representation = strategy["representation"]["choice"]
             component_policy = strategy["components"]["choice"]
+            strategy_resolution = context.component_strategy_resolution
+            if strategy_resolution and strategy_resolution["disposition"] == "SELECT_STRATEGY":
+                component_policy = str(strategy_resolution["chosen_policy"])
             return _contract(
                 context,
                 disposition="ACT",
@@ -435,6 +473,12 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
                     "component_id": region,
                     "representation": representation,
                     "component_policy": component_policy,
+                    "component_strategy_candidate": (
+                        strategy_resolution.get("chosen_candidate_id")
+                        if strategy_resolution
+                        and strategy_resolution["disposition"] == "SELECT_STRATEGY"
+                        else None
+                    ),
                     "reference_claim_notes": list(effective_brief.notes),
                 },
                 target_object=target,
@@ -443,6 +487,12 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
                     f"highest-priority ticket is {ticket_type}",
                     *tuple(strategy["representation"]["reasons"]),
                     *tuple(strategy["components"]["reasons"]),
+                    *(
+                        (str(strategy_resolution.get("reason")),)
+                        if strategy_resolution
+                        and strategy_resolution["disposition"] == "SELECT_STRATEGY"
+                        else ()
+                    ),
                 ),
                 expected_effect="Add the missing primary/secondary silhouette contribution as an editable component.",
                 verification=("component mask is present", "component graph remains valid", "recompute silhouette metrics"),

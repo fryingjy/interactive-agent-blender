@@ -58,6 +58,21 @@ The policy contract is reproduced by
 declared object families. It does not prove image understanding, Blender execution, held-out transfer,
 or reference fidelity.
 
+## Secondary-view strategy resolution
+
+`knowledge_engine.component_strategy.resolve_component_strategy()` handles a narrower but
+load-bearing ambiguity: two constructions can share an exact front silhouette while disagreeing in
+depth. It requires explicit continuous and separate candidates, fixed-frame view metrics, and built
+object/connectivity evidence. A primary-view tie returns `TARGETED_REFERENCE_RESEARCH`; it cannot
+be resolved by a generic strategy prior. A same-variant side, top, or oblique view must clear both
+an absolute fit gate and a declared margin before the planner adopts a component policy.
+
+The Blender 5.2 experiment in `runs/2026-08-15_secondary-view-component-strategy/` transfers this
+mechanism from a rectangular to a 16-sided radial housing. Both controls score `1.0` from the front;
+top-view evidence rejects the separate faceplates at `0.711577` and `0.695574`. A fresh process
+verifies that the selected candidates are truly one object/one connected component. This is
+controlled reconstruction evidence, not automatic photographic inference or a held-out prop pass.
+
 ## Modeling rule
 
 Low-confidence regions must stay cheap to revise. A single candidate strategy is not certainty: keep

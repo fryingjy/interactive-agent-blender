@@ -377,3 +377,14 @@ candidates remain explicitly rejected; and underside/revision uncertainty has re
 constraints. Retrieval and Blender's strict stage gate enforce the corresponding runtime skill.
 This does not change the exit decision: human board review and the equal-budget target-only versus
 structured-reference comparison remain required before the next held-out modeling claim.
+
+### 2026-08-15 secondary-view strategy update
+
+A controlled Blender 5.2 experiment now proves one narrow depth-reasoning mechanism across
+rectangular and radial manufactured shapes. Front-only evidence leaves continuous and separate
+faceplate candidates exactly tied and the planner requests research. A fixed-frame top view rejects
+the separate controls by margins of `0.288423` and `0.304426`, after which the planner selects
+`CONTINUOUS_MESH` and records the measured candidate. Fresh-process topology checks prove the
+selected candidates are one object and one connected component. This upgrades the synthetic
+component/depth policy to controlled transfer, not real-image interpretation or held-out modeling;
+the exit decision remains **PARTIAL**.

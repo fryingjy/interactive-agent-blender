@@ -1,12 +1,12 @@
 # Current-state to professional-modeler gap matrix
 
-Updated: 2026-08-15 after the Nailsea correction and typed high/low packaging evidence. This matrix
+Updated: 2026-08-15 after question-driven research and secondary-view strategy evidence. This matrix
 distinguishes demonstrated evidence from capability still lacking proof.
 
 | Capability needed for the ultimate goal | Current evidence | State | Highest-value proof still required |
 | --- | --- | --- | --- |
 | Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records; Bialetti runtime use; strict stage rejection; focused controls | Reference policy runtime validated on one model-free product board; visual/modeling transfer unproven | Human-review the board, then show improved equal-budget Blender outcomes on unrelated objects |
-| Component/depth/continuity/separation reasoning | Typed categories, relationships, unknown handling, and candidate/rejected strategies on the current branch | Implemented as a contract; inference source still manual | Controlled component, depth-order, and continuous-vs-separate reconstruction experiments with secondary-view truth |
+| Component/depth/continuity/separation reasoning | Typed categories plus a two-family Blender experiment where front-identical continuous/separate candidates are resolved by top-view depth, connected-component truth, and planner gating | Controlled synthetic transfer; real-image inference and real-prop use remain manual/unproven | Apply the policy to unrelated real multi-view references, measure fidelity improvement, and obtain human review |
 | Knowledge changes runtime behavior | Supported claims now alter planner representation/component policy; weak/conflicting claims cannot silently harden | Demonstrated in declared policy cases | Runtime telemetry from actual Blender decisions and measured outcome improvement |
 | Bridge Edge Loops twist control | Protocol 0.3, typed `twist_offset`, unequal-density rejection, rollback, and two-shape Blender evidence are merged | Controlled transfer; real-asset use open | Apply to a real modeling case through the typed decision path |
 | Conditional Bevel/SubD order judgment | Matched-cage Blender 5.2 experiment and fresh verifier are merged | Experimentally tested, not runtime-transfer validated | Runtime retrieval/use on an unfamiliar hard-surface asset with visual surface review |

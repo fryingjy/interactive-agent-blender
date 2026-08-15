@@ -44,7 +44,8 @@ reference / brief / retrieved knowledge
 
 ## Policy and learning (`knowledge_engine/`)
 
-- `planner.py`, `reasoning.py`, and `strategy.py` select one local action from live evidence.
+- `planner.py`, `reasoning.py`, `strategy.py`, and `component_strategy.py` select one local action
+  from live evidence, including fail-closed secondary-view resolution of component depth/continuity.
 - `retrieval.py` ranks knowledge by query, stage, workflow, defect, topology, modifiers, prior use,
   and Blender-version relevance.
 - `surface_cause_classifier.py`, `visual_compare.py`, and `quality_review.py` aggregate bounded

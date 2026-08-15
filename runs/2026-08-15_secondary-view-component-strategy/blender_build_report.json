@@ -1,0 +1,712 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\secondary_view_component_strategy.blend",
+  "families": {
+    "box": {
+      "target": [
+        "Box_Target_Truth"
+      ],
+      "continuous": [
+        "Box_Continuous"
+      ],
+      "separate": [
+        "Box_Separate_Body",
+        "Box_Separate_Plate"
+      ]
+    },
+    "radial": {
+      "target": [
+        "Radial_Target_Truth"
+      ],
+      "continuous": [
+        "Radial_Continuous"
+      ],
+      "separate": [
+        "Radial_Separate_Body",
+        "Radial_Separate_Plate"
+      ]
+    }
+  },
+  "mask_evidence": {
+    "box": {
+      "front": {
+        "target": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_target_front.png",
+          "sha256": "4dc87cdf7ce744547f70324f76cf22c759cc463b9cdeb16fa8d03f87a1498920",
+          "equals_target": true
+        },
+        "continuous": {
+          "retained_path": null,
+          "sha256": "4dc87cdf7ce744547f70324f76cf22c759cc463b9cdeb16fa8d03f87a1498920",
+          "equals_target": true
+        },
+        "separate": {
+          "retained_path": null,
+          "sha256": "4dc87cdf7ce744547f70324f76cf22c759cc463b9cdeb16fa8d03f87a1498920",
+          "equals_target": true
+        }
+      },
+      "top": {
+        "target": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_target_top.png",
+          "sha256": "4dc87cdf7ce744547f70324f76cf22c759cc463b9cdeb16fa8d03f87a1498920",
+          "equals_target": true
+        },
+        "continuous": {
+          "retained_path": null,
+          "sha256": "4dc87cdf7ce744547f70324f76cf22c759cc463b9cdeb16fa8d03f87a1498920",
+          "equals_target": true
+        },
+        "separate": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_separate_top.png",
+          "sha256": "bcd5a296a00f45ef26eff55f061f8638153d0863ac0875cf962a0b6d20ea3d72",
+          "equals_target": false
+        }
+      }
+    },
+    "radial": {
+      "front": {
+        "target": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_target_front.png",
+          "sha256": "b62219e963efd8a39e02ac04d4a8bac84926099fa05ba89b043b7fd79c595ad1",
+          "equals_target": true
+        },
+        "continuous": {
+          "retained_path": null,
+          "sha256": "b62219e963efd8a39e02ac04d4a8bac84926099fa05ba89b043b7fd79c595ad1",
+          "equals_target": true
+        },
+        "separate": {
+          "retained_path": null,
+          "sha256": "b62219e963efd8a39e02ac04d4a8bac84926099fa05ba89b043b7fd79c595ad1",
+          "equals_target": true
+        }
+      },
+      "top": {
+        "target": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_target_top.png",
+          "sha256": "e27c123fbe21fa8648fe937d54e0a5728ab8cb12609763ee76f42bed8228af59",
+          "equals_target": true
+        },
+        "continuous": {
+          "retained_path": null,
+          "sha256": "e27c123fbe21fa8648fe937d54e0a5728ab8cb12609763ee76f42bed8228af59",
+          "equals_target": true
+        },
+        "separate": {
+          "retained_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_separate_top.png",
+          "sha256": "c77e4962399376b10859b9b613053091b1d0c95182a80f70aa451849abb7b13a",
+          "equals_target": false
+        }
+      }
+    }
+  },
+  "render_records": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_target_front.png",
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_continuous_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Continuous"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.224565505981445,
+        0.0
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 10,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_continuous_front_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Continuous"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.224565505981445,
+        0.0
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 3,
+      "dominant_channel_pixel_counts": {
+        "red": 37440,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_separate_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Separate_Body",
+        "Box_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.224565505981445,
+        0.0
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 10,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_separate_front_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Separate_Body",
+        "Box_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.224565505981445,
+        0.0
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 4,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 37440,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_target_top.png",
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\box_separate_top.png",
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.1791,
+      "retained": true
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_continuous_top_solid.png",
+      "pass_type": "solid",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Continuous"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.224565505981445
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 10,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_continuous_top_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Continuous"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.224565505981445
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.253906,
+      "foreground_unique_colors_5bit": 3,
+      "dominant_channel_pixel_counts": {
+        "red": 37440,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_separate_top_solid.png",
+      "pass_type": "solid",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Separate_Body",
+        "Box_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.224565505981445
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.179131,
+      "foreground_unique_colors_5bit": 10,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\box_separate_top_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Box_Separate_Body",
+        "Box_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.224565505981445
+      ],
+      "camera_ortho_scale": 7.212493663765224,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.179131,
+      "foreground_unique_colors_5bit": 9,
+      "dominant_channel_pixel_counts": {
+        "red": 23840,
+        "green": 2415,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_target_front.png",
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145,
+      "retained": false
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_continuous_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Continuous"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.806248664855957,
+        0.0
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.214457,
+      "foreground_unique_colors_5bit": 9,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_continuous_front_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Continuous"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.806248664855957,
+        0.0
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.214457,
+      "foreground_unique_colors_5bit": 3,
+      "dominant_channel_pixel_counts": {
+        "red": 31623,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_separate_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Separate_Body",
+        "Radial_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.806248664855957,
+        0.0
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.214457,
+      "foreground_unique_colors_5bit": 9,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_separate_front_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "front",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Separate_Body",
+        "Radial_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        -12.806248664855957,
+        0.0
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.214457,
+      "foreground_unique_colors_5bit": 4,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 31623,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_target_top.png",
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2103
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2103,
+      "retained": false
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\masks\\radial_separate_top.png",
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.1467,
+      "retained": true
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_continuous_top_solid.png",
+      "pass_type": "solid",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Continuous"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.806248664855957
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.210286,
+      "foreground_unique_colors_5bit": 43,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_continuous_top_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Continuous"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.806248664855957
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.210286,
+      "foreground_unique_colors_5bit": 2,
+      "dominant_channel_pixel_counts": {
+        "red": 31008,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_separate_top_solid.png",
+      "pass_type": "solid",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Separate_Body",
+        "Radial_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.806248664855957
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.146708,
+      "foreground_unique_colors_5bit": 48,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\review\\radial_separate_top_component_mask.png",
+      "pass_type": "component_mask",
+      "view": "top",
+      "projection": "ORTHO",
+      "resolution": [
+        384,
+        384
+      ],
+      "target_objects": [
+        "Radial_Separate_Body",
+        "Radial_Separate_Plate"
+      ],
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "camera_location": [
+        0.0,
+        0.0,
+        12.806248664855957
+      ],
+      "camera_ortho_scale": 7.555686775918668,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.146708,
+      "foreground_unique_colors_5bit": 10,
+      "dominant_channel_pixel_counts": {
+        "red": 19595,
+        "green": 1901,
+        "blue": 0
+      }
+    }
+  ],
+  "pass": true,
+  "claim_boundary": "Controlled fixture generation; strategy selection is analyzed separately."
+}
