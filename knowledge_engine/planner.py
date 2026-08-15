@@ -181,6 +181,77 @@ def _next_stage(stage: str) -> str | None:
     return STAGES[index + 1] if index + 1 < len(STAGES) else None
 
 
+def _passed_stage_contract(
+    context: PlannerContext, target: str | None
+) -> DecisionContract:
+    """Return the single valid outcome for a passed stage gate."""
+    following = _next_stage(context.stage)
+    if following is None:
+        return _contract(
+            context,
+            disposition="COMPLETE",
+            action="ACCEPT_FINAL_REVIEW",
+            operation=None,
+            operation_params={},
+            target_object=target,
+            target_region=None,
+            rationale=(f"{context.stage} gate passed",),
+            expected_effect="Accept the independently verified asset without another mutation.",
+            verification=("persist final evidence", "save the editable source"),
+            confidence="HIGH",
+        )
+    return _contract(
+        context,
+        disposition="ADVANCE_STAGE",
+        action="ADVANCE_MODELING_STAGE",
+        operation="set_modeling_stage",
+        operation_params={"stage": following, "evidence": context.stage_evidence},
+        target_object=target,
+        target_region=None,
+        rationale=(f"{context.stage} gate passed",),
+        expected_effect=f"Move the asset to {following} without changing geometry.",
+        verification=(
+            "stage transition is persisted",
+            "scene revision is unchanged by evidence-only transition",
+        ),
+        confidence="HIGH",
+        next_stage=following,
+    )
+
+
+def _reference_stage_contract(
+    context: PlannerContext, target: str | None
+) -> DecisionContract:
+    """Prevent every geometry action until structured reference evidence passes."""
+    gate = evaluate_stage_gate(
+        context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou
+    )
+    if gate["pass"]:
+        return _passed_stage_contract(context, target)
+    queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
+    return _contract(
+        context,
+        disposition="RESEARCH",
+        action="TARGETED_REFERENCE_RESEARCH",
+        operation=None,
+        operation_params={"queries": list(queries)},
+        target_object=target,
+        target_region=None,
+        rationale=tuple(
+            gate["failures"] or [f"missing evidence: {item}" for item in gate["missing"]]
+        ),
+        expected_effect=(
+            "Acquire the missing same-target, view, dimension, or property evidence before "
+            "geometry is created."
+        ),
+        verification=(
+            "rerun the structured reference-set audit",
+            "do not model while the audit is incomplete",
+        ),
+        confidence="HIGH",
+    )
+
+
 def plan_next_decision(context: PlannerContext) -> DecisionContract:
     """Return exactly one next action from the latest observed state.
 
@@ -219,6 +290,12 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             verification=("capture a new layered fingerprint", "confirm a new observed revision"),
             confidence="HIGH",
         )
+
+    # Reference readiness preempts every geometry mutation, including technical repair of a stale
+    # or placeholder object left in the scene.  Existing geometry is not evidence that modeling may
+    # continue.
+    if context.stage == "REFERENCE_ANALYSIS":
+        return _reference_stage_contract(context, target)
 
     health = _technical_health(context)
     observed_non_manifold = int(health.get("non_manifold_edges", 0))
@@ -277,39 +354,6 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="LOW",
         )
 
-    if context.stage == "REFERENCE_ANALYSIS":
-        gate = evaluate_stage_gate(context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou)
-        if gate["pass"]:
-            following = _next_stage(context.stage)
-            return _contract(
-                context,
-                disposition="ADVANCE_STAGE",
-                action="ADVANCE_MODELING_STAGE",
-                operation="set_modeling_stage",
-                operation_params={"stage": following, "evidence": context.stage_evidence},
-                target_object=target,
-                target_region=None,
-                rationale=("REFERENCE_ANALYSIS gate passed",),
-                expected_effect=f"Move the asset to {following} without changing geometry.",
-                verification=("stage transition is persisted", "scene revision is unchanged by evidence-only transition"),
-                confidence="HIGH",
-                next_stage=following,
-            )
-        queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
-        return _contract(
-            context,
-            disposition="RESEARCH",
-            action="TARGETED_REFERENCE_RESEARCH",
-            operation=None,
-            operation_params={"queries": list(queries)},
-            target_object=target,
-            target_region=None,
-            rationale=tuple(gate["failures"] or [f"missing evidence: {item}" for item in gate["missing"]]),
-            expected_effect="Acquire the missing same-target, view, dimension, or property evidence before geometry is created.",
-            verification=("rerun the structured reference-set audit", "do not model while the audit is incomplete"),
-            confidence="HIGH",
-        )
-
     ticket = _highest_ticket(context)
     if ticket is not None:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
@@ -352,22 +396,8 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         )
 
     gate = evaluate_stage_gate(context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou)
-    following = _next_stage(context.stage)
-    if gate["pass"] and following:
-        return _contract(
-            context,
-            disposition="ADVANCE_STAGE",
-            action="ADVANCE_MODELING_STAGE",
-            operation="set_modeling_stage",
-            operation_params={"stage": following, "evidence": context.stage_evidence},
-            target_object=target,
-            target_region=None,
-            rationale=(f"{context.stage} gate passed",),
-            expected_effect=f"Move the asset to {following} without changing geometry.",
-            verification=("stage transition is persisted", "scene revision is unchanged by evidence-only transition"),
-            confidence="HIGH",
-            next_stage=following,
-        )
+    if gate["pass"]:
+        return _passed_stage_contract(context, target)
 
     return _contract(
         context,

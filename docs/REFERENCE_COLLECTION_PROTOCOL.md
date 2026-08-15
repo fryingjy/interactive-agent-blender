@@ -56,6 +56,10 @@ whenever an unresolved modeling question appears.
 
 A beautiful image is not automatically accurate.
 
+Structured manifests encode these tiers as `VERY_HIGH`, `HIGH`, `USEFUL_VERIFY`, and
+`INSPIRATION`. A critical-property claim must have `MEDIUM` or `HIGH` confidence and a factual
+purpose before `knowledge_engine/reference_analysis.py` will count it as authoritative coverage.
+
 ## Corroboration and conflicts
 
 Seek multiple independent sources for important models (manufacturer drawing + front photograph +

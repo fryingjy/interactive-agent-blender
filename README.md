@@ -86,6 +86,7 @@ Run the fast regression suite from the repository root:
 
 ```powershell
 python -m pytest -q
+python tools/audit_repository.py
 ```
 
 Blender evidence scripts target Blender 5.2 LTS and are normally run in factory-startup background

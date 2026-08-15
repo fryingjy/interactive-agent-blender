@@ -19,6 +19,7 @@ from datetime import datetime
 import hashlib, hmac, base64
 import os.path as osp
 from contextlib import redirect_stdout, suppress
+from pathlib import Path
 
 bl_info = {
     "name": "Blender MCP",
@@ -35,6 +36,16 @@ RODIN_FREE_TRIAL_KEY = "vibecoding"
 # Add User-Agent as required by Poly Haven API
 REQ_HEADERS = requests.utils.default_headers()
 REQ_HEADERS.update({"User-Agent": "blender-mcp"})
+
+
+def _safe_extract_zip(archive, destination):
+    """Extract an archive only when every member stays inside ``destination``."""
+    root = Path(destination).resolve()
+    for member in archive.infolist():
+        target = (root / member.filename).resolve()
+        if target != root and root not in target.parents:
+            raise ValueError(f"Unsafe ZIP member path: {member.filename}")
+    archive.extractall(root)
 
 def get_blendermcp_addon_preferences(context=None):
     """Get add-on preferences object if available."""
@@ -327,7 +338,7 @@ class BlenderMCPServer:
             try:
                 print(f"Executing handler for {cmd_type}")
                 result = handler(**params)
-                print(f"Handler execution complete")
+                print("Handler execution complete")
                 return {"status": "success", "result": result}
             except Exception as e:
                 print(f"Error in handler: {str(e)}")
@@ -689,7 +700,7 @@ class BlenderMCPServer:
                     except Exception as e:
                         return {"error": f"Failed to set up HDRI in Blender: {str(e)}"}
                 else:
-                    return {"error": f"Requested resolution or format not available for this HDRI"}
+                    return {"error": "Requested resolution or format not available for this HDRI"}
 
             elif asset_type == "textures":
                 if not file_format:
@@ -740,7 +751,7 @@ class BlenderMCPServer:
                                             pass
 
                     if not downloaded_maps:
-                        return {"error": f"No texture maps found for the requested resolution and format"}
+                        return {"error": "No texture maps found for the requested resolution and format"}
 
                     # Create a new material with the downloaded textures
                     mat = bpy.data.materials.new(name=asset_id)
@@ -917,7 +928,7 @@ class BlenderMCPServer:
                         with suppress(Exception):
                             shutil.rmtree(temp_dir)
                 else:
-                    return {"error": f"Requested format or resolution not available for this model"}
+                    return {"error": "Requested format or resolution not available for this model"}
 
             else:
                 return {"error": f"Unsupported asset type: {asset_type}"}
@@ -1304,7 +1315,7 @@ class BlenderMCPServer:
             case "FAL_AI":
                 return self.create_rodin_job_fal_ai(*args, **kwargs)
             case _:
-                return f"Error: Unknown Hyper3D Rodin mode!"
+                return "Error: Unknown Hyper3D Rodin mode!"
 
     def create_rodin_job_main_site(
             self,
@@ -1380,7 +1391,7 @@ class BlenderMCPServer:
             case "FAL_AI":
                 return self.poll_rodin_job_status_fal_ai(*args, **kwargs)
             case _:
-                return f"Error: Unknown Hyper3D Rodin mode!"
+                return "Error: Unknown Hyper3D Rodin mode!"
 
     def poll_rodin_job_status_main_site(self, subscription_key: str):
         """Call the job status API to get the job status"""
@@ -1477,7 +1488,7 @@ class BlenderMCPServer:
                 if mesh_obj.data.name is not None:
                     mesh_obj.data.name = mesh_name
                 print(f"Mesh renamed to: {mesh_name}")
-        except Exception as e:
+        except Exception:
             print("Having issue with renaming, give up renaming.")
 
         return mesh_obj
@@ -1489,7 +1500,7 @@ class BlenderMCPServer:
             case "FAL_AI":
                 return self.import_generated_asset_fal_ai(*args, **kwargs)
             case _:
-                return f"Error: Unknown Hyper3D Rodin mode!"
+                return "Error: Unknown Hyper3D Rodin mode!"
 
     def import_generated_asset_main_site(self, task_uuid: str, name: str):
         """Fetch the generated asset, import into blender"""
@@ -1894,35 +1905,14 @@ class BlenderMCPServer:
             with open(zip_file_path, "wb") as f:
                 f.write(model_response.content)
 
-            # Extract the zip file with enhanced security
+            # Extract only after validating every member against the destination root.
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-                # More secure zip slip prevention
-                for file_info in zip_ref.infolist():
-                    # Get the path of the file
-                    file_path = file_info.filename
-
-                    # Convert directory separators to the current OS style
-                    # This handles both / and \ in zip entries
-                    target_path = os.path.join(temp_dir, os.path.normpath(file_path))
-
-                    # Get absolute paths for comparison
-                    abs_temp_dir = os.path.abspath(temp_dir)
-                    abs_target_path = os.path.abspath(target_path)
-
-                    # Ensure the normalized path doesn't escape the target directory
-                    if not abs_target_path.startswith(abs_temp_dir):
-                        with suppress(Exception):
-                            shutil.rmtree(temp_dir)
-                        return {"error": "Security issue: Zip contains files with path traversal attempt"}
-
-                    # Additional explicit check for directory traversal
-                    if ".." in file_path:
-                        with suppress(Exception):
-                            shutil.rmtree(temp_dir)
-                        return {"error": "Security issue: Zip contains files with directory traversal sequence"}
-
-                # If all files passed security checks, extract them
-                zip_ref.extractall(temp_dir)
+                try:
+                    _safe_extract_zip(zip_ref, temp_dir)
+                except ValueError as exc:
+                    with suppress(Exception):
+                        shutil.rmtree(temp_dir)
+                    return {"error": f"Security issue: {exc}"}
 
             # Find the main glTF file
             gltf_files = [f for f in os.listdir(temp_dir) if f.endswith('.gltf') or f.endswith('.glb')]
@@ -2195,7 +2185,7 @@ class BlenderMCPServer:
             case "LOCAL_API":
                 return self.create_hunyuan_job_local_site(*args, **kwargs)
             case _:
-                return f"Error: Unknown Hunyuan3D mode!"
+                return "Error: Unknown Hunyuan3D mode!"
 
     def create_hunyuan_job_main_site(
         self,
@@ -2409,7 +2399,6 @@ class BlenderMCPServer:
         temp_dir = tempfile.mkdtemp(prefix="tencent_obj_")
         zip_file_path = osp.join(temp_dir, "model.zip")
         obj_file_path = osp.join(temp_dir, "model.obj")
-        mtl_file_path = osp.join(temp_dir, "model.mtl")
 
         try:
             # Download ZIP file
@@ -2421,7 +2410,7 @@ class BlenderMCPServer:
 
             # Unzip the ZIP
             with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
-                zip_ref.extractall(temp_dir)
+                _safe_extract_zip(zip_ref, temp_dir)
 
             # Find the .obj file (there may be multiple, assuming the main file is model.obj)
             for file in os.listdir(temp_dir):
@@ -2474,40 +2463,48 @@ class BlenderMCPServer:
 # Blender Addon Preferences
 class BLENDERMCP_AddonPreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
-    
-    telemetry_consent: BoolProperty(
-        name="Allow Telemetry",
-        description="Allow collection of prompts, code snippets, and screenshots to help improve Blender MCP",
-        default=False
-    )
-    hyper3d_api_key: bpy.props.StringProperty(
-        name="Hyper3D API Key",
-        subtype="PASSWORD",
-        description="Persistent Hyper3D API Key",
-        default=""
-    )
-    sketchfab_api_key: bpy.props.StringProperty(
-        name="Sketchfab API Key",
-        subtype="PASSWORD",
-        description="Persistent Sketchfab API Key",
-        default=""
-    )
-    hunyuan3d_secret_id: bpy.props.StringProperty(
-        name="Hunyuan3D SecretId",
-        description="Persistent Hunyuan3D SecretId",
-        default=""
-    )
-    hunyuan3d_secret_key: bpy.props.StringProperty(
-        name="Hunyuan3D SecretKey",
-        subtype="PASSWORD",
-        description="Persistent Hunyuan3D SecretKey",
-        default=""
-    )
-    hunyuan3d_api_url: bpy.props.StringProperty(
-        name="Hunyuan3D API URL",
-        description="Persistent Hunyuan3D API URL",
-        default=""
-    )
+
+    # Blender registers properties from this mapping. Defining it explicitly preserves Blender's
+    # annotation contract while keeping generic Python static analyzers from interpreting property
+    # labels such as "PASSWORD" as forward type annotations.
+    __annotations__ = {
+        "telemetry_consent": BoolProperty(
+            name="Allow Telemetry",
+            description=(
+                "Allow collection of prompts, code snippets, and screenshots to help improve "
+                "Blender MCP"
+            ),
+            default=False,
+        ),
+        "hyper3d_api_key": bpy.props.StringProperty(
+            name="Hyper3D API Key",
+            subtype="PASSWORD",
+            description="Persistent Hyper3D API Key",
+            default="",
+        ),
+        "sketchfab_api_key": bpy.props.StringProperty(
+            name="Sketchfab API Key",
+            subtype="PASSWORD",
+            description="Persistent Sketchfab API Key",
+            default="",
+        ),
+        "hunyuan3d_secret_id": bpy.props.StringProperty(
+            name="Hunyuan3D SecretId",
+            description="Persistent Hunyuan3D SecretId",
+            default="",
+        ),
+        "hunyuan3d_secret_key": bpy.props.StringProperty(
+            name="Hunyuan3D SecretKey",
+            subtype="PASSWORD",
+            description="Persistent Hunyuan3D SecretKey",
+            default="",
+        ),
+        "hunyuan3d_api_url": bpy.props.StringProperty(
+            name="Hunyuan3D API URL",
+            description="Persistent Hunyuan3D API URL",
+            default="",
+        ),
+    }
 
     def draw(self, context):
         layout = self.layout

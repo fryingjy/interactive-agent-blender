@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Stricter decision-cycle log for Proof 1. Unlike action_log.py (which only
-records that an operation happened and was verified), this requires each
-entry to prove it was part of a genuine observe -> decide -> act -> verify
-cycle, chained to the previous one via Blender's own live revision counter
-(blender_ops/decision_state.py) -- not a value this script invents.
+"""Strict decision-cycle log for Proof 1.
+
+This supersedes the original action-only logger (retained in Git history). Each entry must prove it
+was part of a genuine observe -> decide -> act -> verify cycle, chained to the previous one via
+Blender's own live revision counter (blender_ops/decision_state.py), not a value this script invents.
 
 A batch of pre-planned actions run inside one Blender call cannot pass
 `verify-count` here: they'd all carry the same or overlapping

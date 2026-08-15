@@ -299,6 +299,15 @@ class QualityReviewTests(unittest.TestCase):
         self.assertFalse(result["pass"])
         self.assertIn("worst-view IoU below 0.9", result["failures"])
 
+    def test_stage_gate_reports_malformed_numeric_evidence_without_crashing(self):
+        result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {
+            "view_count": "three", "worst_view_iou": "high",
+            "multiview_regression_pass": True,
+        })
+        self.assertFalse(result["pass"])
+        self.assertIn("view_count must describe at least two relevant views", result["failures"])
+        self.assertIn("worst_view_iou must be a number in [0, 1]", result["failures"])
+
     def test_hard_failure_overrides_weighted_score(self):
         result = aggregate_professional_review([
             ReviewChannel("technical", 1.0, evidence="verify.json"),
@@ -404,6 +413,19 @@ class PlannerTests(unittest.TestCase):
         }))
         self.assertEqual(advance.next_stage, "SECONDARY_FORMS")
         self.assertEqual(advance.observed_revision, 4)
+
+    def test_passing_final_review_completes_instead_of_requesting_more_evidence(self):
+        complete = plan_next_decision(self.context(
+            stage="FINAL_REVIEW",
+            stage_evidence={
+                "independent_verification_pass": True,
+                "reference_review_pass": True,
+                "editable_source_saved": True,
+            },
+        ))
+        self.assertEqual(complete.disposition, "COMPLETE")
+        self.assertEqual(complete.action, "ACCEPT_FINAL_REVIEW")
+        self.assertIsNone(complete.operation)
 
     def test_transfer_validated_skill_changes_matching_ticket_to_scoped_action(self):
         ticket = {

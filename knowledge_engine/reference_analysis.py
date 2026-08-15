@@ -16,6 +16,8 @@ FACTUAL_PURPOSES = {
     "FUNCTIONAL", "MATERIAL", "CONTEXT",
 }
 VALID_PROJECTIONS = {"ORTHOGRAPHIC", "PERSPECTIVE", "UNKNOWN"}
+VALID_SOURCE_TIERS = {"VERY_HIGH", "HIGH", "USEFUL_VERIFY", "INSPIRATION"}
+AUTHORITATIVE_CONFIDENCE = {"MEDIUM", "HIGH"}
 
 
 @dataclass(frozen=True)
@@ -51,8 +53,12 @@ class ReferenceItem:
     def validate(self) -> None:
         if not all((self.reference_id, self.source_id, self.target_id, self.target_variant)):
             raise ValueError("reference identity and provenance fields are required")
+        if not self.view:
+            raise ValueError("reference view is required")
         if self.projection not in VALID_PROJECTIONS:
             raise ValueError(f"unknown projection: {self.projection}")
+        if self.source_tier not in VALID_SOURCE_TIERS:
+            raise ValueError(f"unknown source tier: {self.source_tier}")
         unknown = set(self.purposes) - FACTUAL_PURPOSES - {"INSPIRATION"}
         if unknown:
             raise ValueError(f"unknown reference purposes: {sorted(unknown)}")
@@ -67,6 +73,14 @@ class ReferenceConflict:
     description: str
     resolution: str = ""
     status: str = "OPEN"
+
+    def validate(self) -> None:
+        if not self.property_id or not self.reference_ids or not self.description:
+            raise ValueError("reference conflicts require a property, references, and description")
+        if self.status not in {"OPEN", "RESOLVED"}:
+            raise ValueError(f"unknown conflict status: {self.status}")
+        if self.status == "RESOLVED" and not self.resolution.strip():
+            raise ValueError("resolved reference conflicts require a recorded resolution")
 
 
 @dataclass(frozen=True)
@@ -94,8 +108,7 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
     if len(set(reference_ids)) != len(reference_ids):
         raise ValueError("reference_id values must be unique")
     for conflict in reference_set.conflicts:
-        if conflict.status not in {"OPEN", "RESOLVED"}:
-            raise ValueError(f"unknown conflict status: {conflict.status}")
+        conflict.validate()
 
     issues: list[str] = []
     queries: list[str] = []
@@ -104,7 +117,11 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         if item.target_id == reference_set.target_id
         and item.target_variant == reference_set.target_variant
     ]
-    mismatched = [item.reference_id for item in reference_set.items if item not in matching]
+    mismatched = [
+        item.reference_id for item in reference_set.items
+        if item.target_id != reference_set.target_id
+        or item.target_variant != reference_set.target_variant
+    ]
     if mismatched:
         issues.append(f"mixed target identity or variant: {', '.join(mismatched)}")
 
@@ -131,14 +148,23 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
 
     covered_properties: dict[str, list[str]] = {}
     invalid_claims: list[str] = []
+    low_authority_claims: list[str] = []
     for item in matching:
         for claim in item.claims:
             if claim.purpose not in item.purposes or claim.purpose == "INSPIRATION":
                 invalid_claims.append(f"{item.reference_id}:{claim.property_id}")
                 continue
+            if item.source_tier == "INSPIRATION" or claim.confidence not in AUTHORITATIVE_CONFIDENCE:
+                low_authority_claims.append(f"{item.reference_id}:{claim.property_id}")
+                continue
             covered_properties.setdefault(claim.property_id, []).append(item.reference_id)
     if invalid_claims:
         issues.append("claims lack matching factual purpose: " + ", ".join(invalid_claims))
+    if low_authority_claims:
+        issues.append(
+            "claims are too weak to establish authoritative properties: "
+            + ", ".join(low_authority_claims)
+        )
 
     missing_properties = sorted(set(reference_set.critical_properties) - set(covered_properties))
     for property_id in missing_properties:
@@ -163,7 +189,9 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         "view_coverage_pass": not missing_views,
         "orthographic_coverage_pass": not missing_ortho,
         "provenance_coverage_pass": len(source_ids) >= reference_set.minimum_independent_sources,
-        "critical_property_coverage_pass": not missing_properties and not invalid_claims,
+        "critical_property_coverage_pass": (
+            not missing_properties and not invalid_claims and not low_authority_claims
+        ),
         "dimensional_anchor_pass": bool(anchors) or not reference_set.require_dimensional_anchor,
         "conflicts_resolved_pass": not open_conflicts,
     }

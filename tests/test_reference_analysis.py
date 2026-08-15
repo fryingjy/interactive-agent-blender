@@ -112,6 +112,15 @@ class ReferenceAnalysisTests(unittest.TestCase):
         self.assertEqual(decision.action, "TARGETED_REFERENCE_RESEARCH")
         self.assertIsNone(decision.operation)
 
+    def test_reference_gate_preempts_technical_geometry_repair(self):
+        decision = plan_next_decision(PlannerContext(
+            task_id="task", asset_id="asset", stage="REFERENCE_ANALYSIS",
+            session_id="session", scene_revision=0, active_object="stale-blockout",
+            evaluated_state={"mesh_health": {"non_manifold_edges": 12}},
+        ))
+        self.assertEqual(decision.action, "TARGETED_REFERENCE_RESEARCH")
+        self.assertIsNone(decision.operation)
+
     def test_reference_stage_advances_only_with_full_evidence(self):
         evidence = {
             "component_graph_pass": True, "measured_ratio_count": 3,
@@ -137,6 +146,29 @@ class ReferenceAnalysisTests(unittest.TestCase):
         )
         self.assertTrue(evidence["reference_set_audit_pass"])
         self.assertEqual(evidence["reference_audit"]["target_id"], "prop")
+
+    def test_low_confidence_claim_cannot_authorize_a_critical_property(self):
+        weak = item(
+            "front", "source", target="prop", variant="v1",
+            claims=(PropertyClaim("outer_silhouette", "PRIMARY_FORM", "uncertain contour", "LOW"),),
+        )
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1", items=(weak,),
+            required_views=("front",), critical_properties=("outer_silhouette",),
+        ))
+        self.assertFalse(audit["checks"]["critical_property_coverage_pass"])
+        self.assertIn("front:outer_silhouette", " ".join(audit["issues"]))
+
+    def test_resolved_conflict_requires_a_recorded_resolution(self):
+        with self.assertRaisesRegex(ValueError, "recorded resolution"):
+            audit_reference_set(ReferenceSet(
+                target_id="prop", target_variant="v1",
+                items=(item("front", "source", target="prop", variant="v1"),),
+                required_views=("front",), critical_properties=(),
+                conflicts=(ReferenceConflict(
+                    "depth", ("front",), "two estimates", status="RESOLVED"
+                ),),
+            ))
 
 
 if __name__ == "__main__":

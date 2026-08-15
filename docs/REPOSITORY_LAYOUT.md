@@ -35,6 +35,14 @@ Do not commit:
 - caches, temporary files, or duplicate renders not referenced by a report;
 - credentials, private data, or unlicensed assets.
 
+The tracked repository root is intentionally limited to `.gitignore`, `.mcp.json`, `README.md`,
+and `addon.py`. Current plans and policies belong under `docs/`; one-off status notes at the root
+become stale and should be consolidated into the authoritative documents or removed.
+
+Run `python tools/audit_repository.py` to reject tracked credentials, caches, Blender autosaves,
+unclassified root files, Python syntax errors, and exact duplicate tracked files. This audit does
+not label dated evidence "unused": run retention still follows the stability rule below.
+
 ## Stability rule
 
 Dated run paths are evidence identifiers and are referenced by reports, cards, and audits. Organize

@@ -45,7 +45,6 @@ def align(reference: np.ndarray, candidate: np.ndarray) -> np.ndarray:
 
 def row_width_profile(mask: np.ndarray, samples: int = 241) -> np.ndarray:
     x0, y0, x1, y1 = bbox(mask)
-    height = y1 - y0
     width = max(1, x1 - x0)
     rows = np.linspace(y0, y1, samples).round().astype(int)
     values = []

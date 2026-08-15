@@ -46,7 +46,8 @@ _KEY_LOG = "modeling_stage_log"
 # What each stage's own gate is supposed to check before advancing PAST it
 # -- master directive section 5's stages, plus the rest inferred from the
 # same "do not polish detail while the major form is still wrong" logic.
-# Descriptive, not machine-enforced (see module docstring).
+# `advance_stage` machine-enforces the structured requirements in stage_gates.py. These strings are
+# human-readable summaries stored beside transition evidence for review.
 GATE_CRITERIA = {
     "REFERENCE_ANALYSIS": "same-target structured reference audit, required views, critical-property authority, conflicts, component decomposition, measured proportions, and uncertainty recorded before geometry",
     "PRIMARY_BLOCKOUT": "major proportions plausible; primary silhouette sufficiently close; component layout stable",
@@ -89,7 +90,8 @@ def set_stage(name, stage, evidence):
         "from": previous,
         "to": stage,
         "evidence": evidence,
-        "gate_criteria_for_to_stage": GATE_CRITERIA.get(stage),
+        "gate_criteria_for_completed_stage": GATE_CRITERIA.get(previous),
+        "gate_criteria_for_entered_stage": GATE_CRITERIA.get(stage),
     })
     obj[_KEY_LOG] = json.dumps(log)
 
