@@ -75,13 +75,15 @@ videos without that loop is the failure mode this curriculum exists to avoid.
      4 items) -- Draw Cables (first captured technique for cable/hose/wire-type parts, a category
      this project has never built) and a graduated weight-paint variant of the vertex-group
      Shrinkwrap technique (third independent confirmation of that mechanism now).
-   One of the two standing follow-ups is now experimentally resolved: the controlled matched-cage
+   Both standing follow-ups are now experimentally resolved. The controlled matched-cage
    comparison in `runs/2026-08-15_bevel-subd-order/` rejects a universal order. Pre-SubD Bevel made
    a broad radius part of the smoothed form; crease-protected post-SubD Bevel preserved flatter
    panels and a tighter final chamfer but concentrated curvature at box corners; unprotected
-   post-SubD Bevel visibly lost the design line. The remaining follow-up is the vertex-group-scoped
-   Shrinkwrap Project technique (now confirmed by 3 sources), still an untested hypothesis for the
-   mug's handle-attachment failure and worth testing rather than re-noting again.
+   post-SubD Bevel visibly lost the design line. The vertex-group-scoped Shrinkwrap Project
+   hypothesis is transfer validated in `runs/2026-08-15_shrinkwrap-footprint-transfer/`: a
+   scoped mount footprint conformed to both sphere and cylinder while preserving every ungrouped
+   upper vertex; the unscoped control collapsed into 12 degenerate faces and the wrong-direction
+   control was a complete no-op. Real-prop/runtime use remains open.
 5. **CG Boost -- Blender Hard-Surface Modeling Fundamentals.** `nsTjnQ067sw`. REQUIRED. **Already
    processed** -- `runs/2026-08-14_video-study-cgboost-hardsurface-fundamentals/` (5 items,
    transcript-only pass, pre-dates the Gemini video-understanding pipeline).
