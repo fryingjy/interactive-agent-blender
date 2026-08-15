@@ -16,11 +16,12 @@
           "same_target_identity_pass",
           "view_coverage_pass",
           "critical_property_coverage_pass",
-          "conflicts_resolved_pass"
+          "conflicts_resolved_pass",
+          "question_driven_research_pass"
         ],
         "missing": [],
         "failures": [
-          "required reference views are missing"
+          "high-impact reference questions remain open or unaudited"
         ],
         "pass": false
       }
@@ -41,7 +42,8 @@
           "same_target_identity_pass",
           "view_coverage_pass",
           "critical_property_coverage_pass",
-          "conflicts_resolved_pass"
+          "conflicts_resolved_pass",
+          "question_driven_research_pass"
         ],
         "missing": [],
         "failures": [],
@@ -98,7 +100,8 @@
           "same_target_identity_pass": true,
           "view_coverage_pass": true,
           "critical_property_coverage_pass": true,
-          "conflicts_resolved_pass": true
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
         },
         "gate": {
           "stage": "REFERENCE_ANALYSIS",
@@ -110,14 +113,16 @@
             "same_target_identity_pass",
             "view_coverage_pass",
             "critical_property_coverage_pass",
-            "conflicts_resolved_pass"
+            "conflicts_resolved_pass",
+            "question_driven_research_pass"
           ],
           "missing": [],
           "failures": [],
           "pass": true
         }
       },
-      "gate_criteria_for_to_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable"
+      "gate_criteria_for_completed_stage": "same-target structured reference audit, required views, critical-property authority, conflicts, component decomposition, measured proportions, and uncertainty recorded before geometry",
+      "gate_criteria_for_entered_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable"
     },
     {
       "from": "PRIMARY_BLOCKOUT",
@@ -138,11 +143,12 @@
           "pass": true
         }
       },
-      "gate_criteria_for_to_stage": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression"
+      "gate_criteria_for_completed_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable",
+      "gate_criteria_for_entered_stage": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression"
     }
   ],
   "assertions": {
-    "missing_evidence_rejected": true,
+    "open_reference_question_rejected": true,
     "rejection_did_not_mutate": true,
     "primary_advanced": true,
     "incomplete_primary_blockout_rejected": true,

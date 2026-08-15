@@ -79,10 +79,16 @@ professional modeling judgment. The Nailsea reference set can pass readiness whi
 model is still rejected by a human. Readiness is permission to begin a reversible blockout, not a
 quality certificate.
 
-## Next validation
+## Runtime validation update
 
-Before a new prop is modeled, run a reference-gathering-only exercise on an unfamiliar target and
-obtain human review of: target identification, unknowns, questions, source fitness, same-variant
-evidence, property authority, conflicts, and remaining uncertainty. Then compare equal-budget
-target-only versus structured-reference-set builds. Promotion requires the structured set to reduce
-structural mistakes and improve multi-view fidelity on more than one unrelated target.
+The model-free Bialetti exercise now applies the question-first principle through typed research
+records. Three unknowns generated exact searches, two official evidence links were accepted, five
+candidates were explicitly rejected, and two lower-impact uncertainties were deferred with
+reversible constraints. Retrieval and the strict Blender stage gate preserve the skill provenance
+and block an open high-impact question. Evidence:
+`runs/2026-08-15_question-driven-reference-research/`.
+
+This is bounded runtime validation of reference policy, not visual-modeling transfer. Human review
+of the board remains pending. The next required validation is still the equal-budget target-only
+versus structured-reference build, followed by an unrelated-target transfer. Promotion to general
+reference-driven modeling requires fewer structural mistakes and better multi-view fidelity.

@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 14,
+  "case_count": 16,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -120,7 +120,7 @@
       "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
       "actual_top_skill": "diffuse-color-not-connected-to-bsdf",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 4.8301,
+      "actual_top_margin": 10.3301,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -138,22 +138,6 @@
             "modifiers": 0.0,
             "reference_issue": 0.0,
             "runtime_success": 0.0,
-            "version_relevance": 0.0
-          }
-        },
-        {
-          "skill_id": "material-slot-orphan-assignment",
-          "score": 5.5,
-          "score_breakdown": {
-            "query": 1.5,
-            "modeling_stage": 0.0,
-            "workflow": 2.0,
-            "surface_type": 0.0,
-            "defect": 0.0,
-            "local_topology": 0.0,
-            "modifiers": 0.0,
-            "reference_issue": 0.0,
-            "runtime_success": 2.0,
             "version_relevance": 0.0
           }
         }
@@ -407,7 +391,7 @@
       "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
       "actual_top_skill": "diffuse-color-not-connected-to-bsdf",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 2.75,
+      "actual_top_margin": 7.75,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -425,22 +409,6 @@
             "modifiers": 0.0,
             "reference_issue": 0.0,
             "runtime_success": 0.0,
-            "version_relevance": 0.0
-          }
-        },
-        {
-          "skill_id": "material-slot-orphan-assignment",
-          "score": 5.0,
-          "score_breakdown": {
-            "query": 1.0,
-            "modeling_stage": 0.0,
-            "workflow": 2.0,
-            "surface_type": 0.0,
-            "defect": 0.0,
-            "local_topology": 0.0,
-            "modifiers": 0.0,
-            "reference_issue": 0.0,
-            "runtime_success": 2.0,
             "version_relevance": 0.0
           }
         }
@@ -608,6 +576,62 @@
       ]
     },
     {
+      "case_id": "question_driven_reference_unknown",
+      "kind": "positive",
+      "context": {
+        "query": "unknown boiler underside needs targeted evidence search and candidate rejection",
+        "modeling_stage": "REFERENCE_ANALYSIS",
+        "workflow": "question-driven evidence search",
+        "surface_type": null,
+        "defect": null,
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": "missing underside view and variant conflict",
+        "blender_version": null
+      },
+      "expected_top_skill": "reference.question-driven-targeted-research",
+      "actual_top_skill": "reference.question-driven-targeted-research",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 11.6551,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "reference.question-driven-targeted-research",
+          "score": 16.4498,
+          "score_breakdown": {
+            "query": 6.6408,
+            "modeling_stage": 1.7678,
+            "workflow": 4.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 2.0412,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "evidence-bound-reference-interpretation",
+          "score": 4.7947,
+          "score_breakdown": {
+            "query": 3.7947,
+            "modeling_stage": 0.0,
+            "workflow": 1.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
       "case_id": "abstain_reference_camera",
       "kind": "abstention",
       "context": {
@@ -616,6 +640,29 @@
         "workflow": "reference modeling",
         "surface_type": null,
         "defect": "perspective distortion",
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": null,
+      "actual_top_skill": null,
+      "minimum_top_margin": 0.0,
+      "actual_top_margin": null,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": []
+    },
+    {
+      "case_id": "abstain_reference_color_grade",
+      "kind": "abstention",
+      "context": {
+        "query": "reference image color grade mismatch",
+        "modeling_stage": null,
+        "workflow": "reference modeling",
+        "surface_type": null,
+        "defect": "white balance",
         "local_topology": [],
         "modifiers": [],
         "reference_issue": null,

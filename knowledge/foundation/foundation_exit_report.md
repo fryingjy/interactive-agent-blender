@@ -368,3 +368,12 @@ professional-quality breadth gate. Pair the next run with production texture/bak
 visual review, exercise the runtime planner throughout, continue
 longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
 character benchmarks remain deferred.
+
+### 2026-08-15 reference-gate update
+
+The Bialetti board now has question-driven search provenance rather than only coverage counts. Its
+official 3-cup envelope is resolved to 15 x 8.5 x 15.5 cm; five weak, conflicting, or wrong-revision
+candidates remain explicitly rejected; and underside/revision uncertainty has reversible modeling
+constraints. Retrieval and Blender's strict stage gate enforce the corresponding runtime skill.
+This does not change the exit decision: human board review and the equal-budget target-only versus
+structured-reference comparison remain required before the next held-out modeling claim.

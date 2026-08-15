@@ -230,6 +230,20 @@ the eventual model is accurate or professionally acceptable.
 Worked controls and a standalone verifier are in `runs/2026-08-15_reference-set-gate/` and
 `tools/verify_reference_set_gate.py`.
 
+### Question-driven research history
+
+Readiness coverage alone does not prove that important unknowns were actively researched.
+`ReferenceResearchQuestion` records the property, trigger, impact, exact queries, inspected
+`ResearchCandidate` records, accept/reject reasons, resolution, and any reversible modeling
+constraint. Accepted candidates must link to a factual `ReferenceItem`; rejected candidates remain
+visible rather than disappearing from the evidence trail.
+
+An open high-impact question now fails both the reference audit and the strict
+`REFERENCE_ANALYSIS` stage gate. A lower-impact question may be `DEFERRED` only after attempted
+research and only with an explicit modeling constraint. Controlled and real-board evidence is in
+`runs/2026-08-15_question-driven-reference-research/` and
+`runs/2026-08-15_reference-gathering-bialetti/`.
+
 ## Success criteria
 
 Reference collection is successful only if it improves the model: better proportions, better

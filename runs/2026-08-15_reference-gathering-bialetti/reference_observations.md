@@ -53,11 +53,22 @@ Source URLs:
   values are not averaged.
 - The same-object set does not show the boiler underside. No underside stamps or deep recesses may be
   invented. If modeling proceeds, keep that surface simple and reversible pending a direct source.
-- No authoritative overall width including handle/spout was found. Photo-derived width ratios are
-  blockout hypotheses, not frozen dimensions.
+- The overall width/depth question is no longer unresolved: a targeted follow-up found Bialetti's
+  official 3-cup envelope of
+  `15 x 8.5 x 15.5 cm`. It controls overall envelope dimensions only; the decorative SKU does not
+  authorize graphics, wear, or hidden construction.
 - The listing's packaging appears older than current official photography. Geometry transfer across
   production revisions remains a medium-confidence assumption and must be checked during human board
   review.
+
+## Question-driven follow-up
+
+The reference-workflow lesson's question-first rule was applied rather than gathering more images
+at random. Three questions generated six exact searches and seven inspected candidates. Two
+manufacturer evidence links were accepted into the factual set; a conflicting retailer dimension, two
+non-underside galleries, and vintage/revision-mismatched evidence were retained as rejected
+candidates with reasons. The direct underside remains deliberately deferred under a reversible
+modeling constraint instead of being silently invented.
 
 ## Human-review gate
 

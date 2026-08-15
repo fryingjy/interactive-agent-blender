@@ -15,5 +15,15 @@
     {"file": "media/same_object/listing_11.webp", "source_url": "https://i.ebayimg.com/images/g/C3gAAeSwTERoC7c0/s-l1600.webp", "sha256": "dc989ff929973a6cbceaf4e6bfe5eb173d7b4effb0b94c5f749bf0198f1458b7", "bytes": 356602, "classification": "box_side_operation"},
     {"file": "media/same_object/listing_12.webp", "source_url": "https://i.ebayimg.com/images/g/yaIAAeSwdnBoC7c0/s-l1600.webp", "sha256": "193343e2d7dd57a8e2f0aab3731d5bbc600129dc700dd221da3825547298a8d3", "bytes": 349176, "classification": "box_back_identity_and_safety"}
   ],
+  "targeted_research_items": [
+    {
+      "file": "media/targeted_research/etsy_vintage_primary.jpg",
+      "source_url": "https://i.etsystatic.com/21081115/r/il/12587d/8200851299/il_680x540.8200851299_ga5i.jpg",
+      "page_url": "https://www.etsy.com/hk-en/listing/4524215118/rare-mid-century-vintage-bialetti-moka",
+      "sha256": "fcb91c28a1b7657f3e65bc0078554a1975fa73dd2fa51e4e73bc964a811d4e81",
+      "bytes": 46053,
+      "classification": "rejected_vintage_variant_primary_view_not_target_underside"
+    }
+  ],
   "contact_sheet": "media/same_object_contact_sheet.png"
 }

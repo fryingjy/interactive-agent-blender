@@ -10,8 +10,8 @@ still `PENDING_USER_REVIEW`; `modeling_authorized` remains false.
 
 - Twelve photographs of one physical pre-owned 3-cup unit from one eBay listing, including four
   exterior orientations, open/interior views, lid underside, hinge, valve, box and manual.
-- Official Bialetti product/specification evidence for 155 mm overall height, 72 mm boiler-base
-  diameter, 130 ml capacity, aluminum body and thermoplastic handle/knob.
+- Official Bialetti product/specification evidence for a 15 x 8.5 x 15.5 cm overall envelope,
+  72 mm boiler-base diameter, 130 ml capacity, aluminum body and thermoplastic handle/knob.
 - Official Bialetti construction text identifying boiler, funnel/filter plate, collector, valve and
   gasket.
 - A 3-cup retailer exploded image for the visible component stack, with retailer dimensions rejected
@@ -21,8 +21,10 @@ still `PENDING_USER_REVIEW`; `modeling_authorized` remains false.
 
 ## Validation
 
-- Reference schema/audit: 8/8 matching items, 8 required views, 3 provenance sources.
-- Readiness checks: 7/7 pass; all 10 critical properties covered.
+- Reference schema/audit: 9/9 matching items, 8 required views, 4 provenance sources.
+- Readiness checks: 8/8 pass; all 12 critical properties covered.
+- Question-driven research: 3 questions, 7 inspected candidates, 2 accepted links, 5 explicit
+  rejections, 2 bounded deferrals, and no open high-impact question.
 - Dimensional anchors: 155 mm height, 72 mm base diameter, 130 ml capacity.
 - Structured decomposition: 11 components, 10 relationships, 4 primary silhouette components.
 - Conflicts: two recorded and resolved without averaging or invention.
@@ -50,7 +52,7 @@ python tools\verify_reference_set_gate.py runs\2026-08-15_reference-gathering-bi
 
 - No direct boiler-underside view was found. Underside stamps/recesses are prohibited from being
   invented and remain deferred.
-- Exact overall width including handle and spout is not authoritatively dimensioned.
+- Overall width/depth is now authoritatively bounded by Bialetti's 15 x 8.5 x 15.5 cm envelope.
 - The same-object box looks older than current official product pages; cross-revision geometry
   compatibility is medium confidence pending human review.
 

@@ -1,7 +1,7 @@
 {
-  "version": 2,
+  "version": 3,
   "frozen_on": "2026-08-15",
-  "calibration_note": "These cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. They are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Version 3 adds one positive and one nearby abstention after the question-driven reference skill was introduced. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -81,9 +81,22 @@
       "minimum_top_margin": 1.0
     },
     {
+      "case_id": "question_driven_reference_unknown",
+      "kind": "positive",
+      "context": {"query": "unknown boiler underside needs targeted evidence search and candidate rejection", "modeling_stage": "REFERENCE_ANALYSIS", "workflow": "question-driven evidence search", "reference_issue": "missing underside view and variant conflict"},
+      "expected_top_skill": "reference.question-driven-targeted-research",
+      "minimum_top_margin": 1.0
+    },
+    {
       "case_id": "abstain_reference_camera",
       "kind": "abstention",
       "context": {"query": "camera focal length mismatch", "workflow": "reference modeling", "defect": "perspective distortion"},
+      "expected_top_skill": null
+    },
+    {
+      "case_id": "abstain_reference_color_grade",
+      "kind": "abstention",
+      "context": {"query": "reference image color grade mismatch", "workflow": "reference modeling", "defect": "white balance"},
       "expected_top_skill": null
     },
     {

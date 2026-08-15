@@ -28,9 +28,12 @@ def main():
         "component_graph_pass": True, "measured_ratio_count": 3, "uncertainty_recorded": True,
         "reference_set_audit_pass": True, "same_target_identity_pass": True,
         "view_coverage_pass": True, "critical_property_coverage_pass": True,
-        "conflicts_resolved_pass": True,
+        "conflicts_resolved_pass": True, "question_driven_research_pass": True,
     }
-    weak_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", {**reference_evidence, "view_coverage_pass": False})
+    weak_primary = advance_stage(
+        obj.name, "PRIMARY_BLOCKOUT",
+        {**reference_evidence, "question_driven_research_pass": False},
+    )
     state_after_weak = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
     strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", reference_evidence)
     weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": False})
@@ -38,7 +41,7 @@ def main():
     strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": True})
     final_log = get_stage_log(obj.name)
     assertions = {
-        "missing_evidence_rejected": not weak_primary["advanced"],
+        "open_reference_question_rejected": not weak_primary["advanced"],
         "rejection_did_not_mutate": state_after_weak == {"stage": "REFERENCE_ANALYSIS", "log_count": 0},
         "primary_advanced": strong_primary["advanced"],
         "incomplete_primary_blockout_rejected": not weak_visual["advanced"],

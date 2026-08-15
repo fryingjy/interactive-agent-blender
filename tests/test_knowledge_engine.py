@@ -131,6 +131,17 @@ class TranscriptTests(unittest.TestCase):
 
 
 class RetrievalTests(unittest.TestCase):
+    def test_question_driven_reference_unknown_retrieves_specific_skill(self):
+        store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
+        results = store.search(RetrievalContext(
+            query="unknown boiler underside needs targeted evidence search and candidate rejection",
+            modeling_stage="REFERENCE_ANALYSIS",
+            workflow="question-driven evidence search",
+            reference_issue="missing underside view and variant conflict",
+        ))
+        self.assertTrue(results)
+        self.assertEqual(results[0]["skill_id"], "reference.question-driven-targeted-research")
+
     def test_structured_context_outranks_lexical_only_match(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -195,6 +206,27 @@ class RetrievalTests(unittest.TestCase):
         self.assertNotEqual(store.search(context, min_score=0.0), [])
         with self.assertRaisesRegex(ValueError, "non-negative"):
             store.search(context, min_score=-0.1)
+
+    def test_runtime_success_cannot_create_semantic_relevance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            (root / "weak.json").write_text(json.dumps({
+                "skill_id": "weak",
+                "title": "Reference candidate audit",
+                "runtime_usage": [{"success": True}],
+                "status": "RUNTIME_VALIDATED",
+            }), encoding="utf-8")
+            context = RetrievalContext(query="reference image color grade mismatch")
+            self.assertEqual(StructuredSkillStore(root).search(context, min_score=4.0), [])
+
+    def test_generic_workflow_cannot_create_relevance(self):
+        store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
+        context = RetrievalContext(
+            query="reference image color grade mismatch",
+            workflow="reference modeling",
+            defect="white balance",
+        )
+        self.assertEqual(store.search(context), [])
 
 
 class TelemetryTests(unittest.TestCase):
@@ -698,6 +730,7 @@ class PlannerTests(unittest.TestCase):
                 "view_coverage_pass": True,
                 "critical_property_coverage_pass": True,
                 "conflicts_resolved_pass": True,
+                "question_driven_research_pass": True,
             },
             reference_decomposition=decomp,
         ))

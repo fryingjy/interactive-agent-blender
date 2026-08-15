@@ -18,6 +18,9 @@ FACTUAL_PURPOSES = {
 VALID_PROJECTIONS = {"ORTHOGRAPHIC", "PERSPECTIVE", "UNKNOWN"}
 VALID_SOURCE_TIERS = {"VERY_HIGH", "HIGH", "USEFUL_VERIFY", "INSPIRATION"}
 AUTHORITATIVE_CONFIDENCE = {"MEDIUM", "HIGH"}
+VALID_RESEARCH_IMPACTS = {"LOW", "MEDIUM", "HIGH"}
+VALID_RESEARCH_STATUSES = {"OPEN", "RESOLVED", "DEFERRED"}
+VALID_CANDIDATE_DISPOSITIONS = {"ACCEPTED", "REJECTED", "PENDING"}
 
 
 @dataclass(frozen=True)
@@ -84,6 +87,87 @@ class ReferenceConflict:
 
 
 @dataclass(frozen=True)
+class ResearchCandidate:
+    """One inspected search result, including evidence that was rejected."""
+
+    candidate_id: str
+    source_url: str
+    source_id: str
+    observed_identity: str
+    observed_variant: str
+    purpose: str
+    disposition: str
+    reason: str
+    accepted_reference_id: str = ""
+    limitations: tuple[str, ...] = ()
+
+    def validate(self) -> None:
+        if not all(
+            (
+                self.candidate_id,
+                self.source_url,
+                self.source_id,
+                self.observed_identity,
+                self.observed_variant,
+                self.purpose,
+                self.reason,
+            )
+        ):
+            raise ValueError("research candidates require identity, provenance, purpose, and reason")
+        if self.purpose not in FACTUAL_PURPOSES | {"INSPIRATION"}:
+            raise ValueError(f"unknown research-candidate purpose: {self.purpose}")
+        if self.disposition not in VALID_CANDIDATE_DISPOSITIONS:
+            raise ValueError(f"unknown candidate disposition: {self.disposition}")
+        if self.disposition == "ACCEPTED" and not self.accepted_reference_id:
+            raise ValueError("accepted research candidates must link to a reference item")
+        if self.disposition != "ACCEPTED" and self.accepted_reference_id:
+            raise ValueError("only accepted candidates may link to a reference item")
+
+
+@dataclass(frozen=True)
+class ReferenceResearchQuestion:
+    """Question-driven search history tied to one uncertain target property."""
+
+    question_id: str
+    property_id: str
+    question: str
+    trigger: str
+    impact: str
+    search_queries: tuple[str, ...]
+    candidates: tuple[ResearchCandidate, ...]
+    status: str = "OPEN"
+    resolution: str = ""
+    modeling_constraint: str = ""
+
+    def validate(self) -> None:
+        if not all((self.question_id, self.property_id, self.question, self.trigger)):
+            raise ValueError("reference research questions require identity, property, question, and trigger")
+        if self.impact not in VALID_RESEARCH_IMPACTS:
+            raise ValueError(f"unknown research-question impact: {self.impact}")
+        if self.status not in VALID_RESEARCH_STATUSES:
+            raise ValueError(f"unknown research-question status: {self.status}")
+        queries = [query.strip() for query in self.search_queries]
+        if not queries or any(not query for query in queries):
+            raise ValueError("reference research questions require at least one non-empty search query")
+        if len(set(queries)) != len(queries):
+            raise ValueError("reference research search queries must be unique per question")
+        for candidate in self.candidates:
+            candidate.validate()
+        candidate_ids = [candidate.candidate_id for candidate in self.candidates]
+        if len(set(candidate_ids)) != len(candidate_ids):
+            raise ValueError("research candidate IDs must be unique per question")
+        accepted = [candidate for candidate in self.candidates if candidate.disposition == "ACCEPTED"]
+        if self.status == "RESOLVED" and (not self.resolution.strip() or not accepted):
+            raise ValueError("resolved research questions require a resolution and accepted evidence")
+        if self.status == "DEFERRED" and (
+            not self.resolution.strip() or not self.modeling_constraint.strip() or not self.candidates
+        ):
+            raise ValueError(
+                "deferred research questions require attempted candidates, a reason, and a modeling constraint"
+            )
+
+
+@dataclass(frozen=True)
 class ReferenceSet:
     target_id: str
     target_variant: str
@@ -94,6 +178,62 @@ class ReferenceSet:
     require_dimensional_anchor: bool = False
     minimum_independent_sources: int = 1
     conflicts: tuple[ReferenceConflict, ...] = ()
+    research_questions: tuple[ReferenceResearchQuestion, ...] = ()
+
+
+def audit_reference_research(
+    questions: tuple[ReferenceResearchQuestion, ...], reference_ids: set[str]
+) -> dict[str, Any]:
+    """Audit whether uncertainty led to traceable searches and bounded decisions."""
+    question_ids = [question.question_id for question in questions]
+    if len(set(question_ids)) != len(question_ids):
+        raise ValueError("reference research question IDs must be unique")
+    missing_reference_links: list[str] = []
+    accepted_reference_links: list[str] = []
+    open_questions: list[str] = []
+    blocking_questions: list[str] = []
+    deferred_questions: list[str] = []
+    modeling_constraints: list[str] = []
+    targeted_queries: list[str] = []
+    candidate_counts = {"ACCEPTED": 0, "REJECTED": 0, "PENDING": 0}
+
+    for question in questions:
+        question.validate()
+        for candidate in question.candidates:
+            candidate_counts[candidate.disposition] += 1
+            if candidate.disposition == "ACCEPTED":
+                accepted_reference_links.append(candidate.accepted_reference_id)
+                if candidate.accepted_reference_id not in reference_ids:
+                    missing_reference_links.append(
+                        f"{question.question_id}:{candidate.accepted_reference_id}"
+                    )
+        if question.status == "OPEN":
+            open_questions.append(question.question_id)
+            targeted_queries.extend(question.search_queries)
+            if question.impact == "HIGH":
+                blocking_questions.append(question.question_id)
+        elif question.status == "DEFERRED":
+            deferred_questions.append(question.question_id)
+            modeling_constraints.append(question.modeling_constraint)
+
+    checks = {
+        "question_records_valid": True,
+        "accepted_candidates_link_to_reference_items": not missing_reference_links,
+        "no_high_impact_question_open": not blocking_questions,
+    }
+    return {
+        "question_count": len(questions),
+        "candidate_counts": candidate_counts,
+        "accepted_reference_links": sorted(set(accepted_reference_links)),
+        "missing_reference_links": missing_reference_links,
+        "open_questions": open_questions,
+        "blocking_questions": blocking_questions,
+        "deferred_questions": deferred_questions,
+        "modeling_constraints": modeling_constraints,
+        "targeted_research_queries": list(dict.fromkeys(targeted_queries)),
+        "checks": checks,
+        "pass": all(checks.values()),
+    }
 
 
 def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
@@ -109,6 +249,10 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         raise ValueError("reference_id values must be unique")
     for conflict in reference_set.conflicts:
         conflict.validate()
+
+    research_audit = audit_reference_research(
+        reference_set.research_questions, set(reference_ids)
+    )
 
     issues: list[str] = []
     queries: list[str] = []
@@ -183,6 +327,14 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
     for property_id in open_conflicts:
         issues.append(f"unresolved reference conflict: {property_id}")
         queries.append(f"{reference_set.target_id} {reference_set.target_variant} {property_id.replace('_', ' ')} specification")
+    queries.extend(research_audit["targeted_research_queries"])
+    if research_audit["missing_reference_links"]:
+        issues.append(
+            "accepted research candidates lack matching reference items: "
+            + ", ".join(research_audit["missing_reference_links"])
+        )
+    for question_id in research_audit["blocking_questions"]:
+        issues.append(f"high-impact research question remains open: {question_id}")
 
     checks = {
         "same_target_identity_pass": not mismatched and bool(matching),
@@ -194,6 +346,7 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         ),
         "dimensional_anchor_pass": bool(anchors) or not reference_set.require_dimensional_anchor,
         "conflicts_resolved_pass": not open_conflicts,
+        "question_driven_research_pass": research_audit["pass"],
     }
     ready = all(checks.values())
     return {
@@ -208,6 +361,7 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         "dimensional_anchors": anchors,
         "issues": issues,
         "targeted_research_queries": list(dict.fromkeys(queries)),
+        "research_audit": research_audit,
         "pass": ready,
         "disposition": "READY_TO_MODEL" if ready else "TARGETED_RESEARCH",
     }
@@ -225,6 +379,24 @@ def reference_set_from_dict(payload: dict[str, Any]) -> ReferenceSet:
     conflicts = []
     for raw in payload.get("conflicts", []):
         conflicts.append(ReferenceConflict(**{**raw, "reference_ids": tuple(raw.get("reference_ids", []))}))
+    research_questions = []
+    for raw in payload.get("research_questions", []):
+        candidates = []
+        for candidate in raw.get("candidates", []):
+            candidates.append(
+                ResearchCandidate(
+                    **{**candidate, "limitations": tuple(candidate.get("limitations", []))}
+                )
+            )
+        research_questions.append(
+            ReferenceResearchQuestion(
+                **{
+                    **raw,
+                    "search_queries": tuple(raw.get("search_queries", [])),
+                    "candidates": tuple(candidates),
+                }
+            )
+        )
     return ReferenceSet(
         **{
             **payload,
@@ -233,6 +405,7 @@ def reference_set_from_dict(payload: dict[str, Any]) -> ReferenceSet:
             "critical_properties": tuple(payload.get("critical_properties", [])),
             "orthographic_required_views": tuple(payload.get("orthographic_required_views", [])),
             "conflicts": tuple(conflicts),
+            "research_questions": tuple(research_questions),
         }
     )
 
@@ -256,6 +429,10 @@ def build_reference_stage_evidence(
         "view_coverage_pass": bool(checks.get("view_coverage_pass")) and bool(checks.get("orthographic_coverage_pass")),
         "critical_property_coverage_pass": bool(checks.get("critical_property_coverage_pass")),
         "conflicts_resolved_pass": bool(checks.get("conflicts_resolved_pass")),
+        "question_driven_research_pass": bool(checks.get("question_driven_research_pass")),
         "targeted_research_queries": list(audit.get("targeted_research_queries", [])),
+        "modeling_constraints": list(
+            audit.get("research_audit", {}).get("modeling_constraints", [])
+        ),
         "reference_audit": audit,
     }
