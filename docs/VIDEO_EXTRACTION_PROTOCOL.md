@@ -55,15 +55,23 @@ diagnose the failure, and what alternative strategies exist."
   test must target a genuinely different asset than the one the knowledge was captured from, and
   status only advances to `TRANSFER_VALIDATED` on a real recorded pass.
 
-## The current real gap
+## Historical baseline and current transfer status
 
-As of 2026-08-14, **106 knowledge items exist across 22 processed videos, and zero have completed
-steps 11-14.** All remain at status `CAPTURED` (a few `PROMOTED`-adjacent via strong cross-source
+At protocol adoption on 2026-08-14, **106 knowledge items existed across 22 processed videos, and
+zero had completed steps 11-14.** All remained at status `CAPTURED` (a few `PROMOTED`-adjacent via strong cross-source
 convergence, but convergence across sources is not the same thing as a transfer test on new
-geometry, and the schema doesn't conflate them). Steps 11-14 require actually building something in
-Blender -- which is blocked while modeling work is paused per direct user instruction ("scrap this
-and all the other models for the time being"). This is the single most important unresolved
-tension in applying this protocol and is flagged to the user directly, not resolved unilaterally.
+geometry, and the schema doesn't conflate them).
+
+That zero-transfer baseline is now historical. `runs/2026-08-15_video-transfer-uniform-deformation/`
+reproduces the anvil tutorial's manual-step failure and transfers its uniform-ring principle to a
+different 12-sided circular lamp pedestal. The candidate reduced profile RMSE by 82.10% and
+side-quad aspect-ratio p95 by 54.85% at identical topology count; an independent fresh-process
+verifier reproduced the result. Two timestamped source items are now `TRANSFER_VALIDATED`, and the
+structured skill changes a matching planner ticket from inspection to a scoped loop-cut action.
+
+The broader gap remains: most captured video items still have no transfer evidence, and this skill
+has no successful real-asset `runtime_usage` entry. One controlled radial transfer is not broad
+professional modeling proficiency.
 
 ## Explicit warning (user's own words, preserved verbatim as the standing rule)
 

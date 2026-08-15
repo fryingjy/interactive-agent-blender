@@ -258,3 +258,17 @@ here it wasn't even the surface detail that was wrong, it was the shape family. 
 tools, and readiness entries were removed rather than kept as a partial or false pass, per explicit
 user instruction. Ladder rungs A ("Subdivision transfer") and C ("Unknown-problem asset") remain
 `NOT_RUN_HELD_OUT`.
+
+## 2026-08-15 addendum: video knowledge reaches different-shape transfer and planner use
+
+`runs/2026-08-15_video-transfer-uniform-deformation/` closes one narrow but previously explicit
+learning-system gap. A timestamped video failure/principle pair was reproduced in Blender and
+transferred from an anvil waist to a circular lamp pedestal under a predeclared matched-topology
+contract. The candidate's profile RMSE fell 82.10% and side-quad aspect-ratio p95 fell 54.85%; a
+separate fresh-process verifier passed all declared mesh, ring, profile, modifier, and shading
+checks. The corresponding structured skill is retrieval-ranked and changes a matching planner
+ticket to a scoped action only at `TRANSFER_VALIDATED` or better.
+
+Disposition remains **PARTIAL**. This is deterministic controlled transfer, not a held-out adaptive
+asset, and the skill has no real runtime-use success yet. It improves evidence for the knowledge
+lifecycle and planner contract without changing the professional-readiness claim.

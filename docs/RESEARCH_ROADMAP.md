@@ -795,3 +795,23 @@ reference and get a professional model" remains unmet) rather than being a coinc
 videos got processed -- the same gap keeps surfacing from a completely different angle. The
 synthesis names concrete next-source types for the thin stages instead of just restating the gap.
 Curriculum doc updated with the honest strong/moderate/thin verdict.
+
+## Update -- 2026-08-15 (video principle transferred into planner behavior)
+
+Closed one concrete part of the video-learning loop instead of adding another summary. The anvil
+lesson's 05:07-06:40 sequence—manual step extrusion creates uneven spacing; establish full height
+and uniform loops before deformation—was reproduced and transferred to a different 12-sided
+circular lamp pedestal under a predeclared contract.
+
+At identical 156-vertex/154-quad topology, the uniform candidate reduced profile RMSE by 82.10%
+and side-quad aspect-ratio p95 by 54.85%. Both meshes remained one connected manifold object with
+24 explicitly selected cap-perimeter bevel edges, Bevel before SubD, and Smooth by Angle. A fresh
+Blender process independently reproduced every topology, profile, density, modifier, and shading
+gate. The failed 32-edge semantic selection and blank wireframe attempt remain documented rather
+than rewritten as success.
+
+The two source items are now `TRANSFER_VALIDATED`; the structured skill is top-ranked for a matching
+deformation-density query. A controlled planner proof shows the validated skill changes the same
+localized ticket from `INSPECT` to a scoped `loop_cut_selection`, while a merely captured skill does
+not act and non-manifold geometry still preempts it. `runtime_usage` remains empty because no real
+held-out asset has used the skill through a typed transaction yet; that is the next promotion gate.

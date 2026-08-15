@@ -132,6 +132,11 @@ The local Blender/MCP entry points are:
   profile-authored hard-surface evidence.
 - `runs/2026-08-11_expressive-facial-articulation/` — independently verified regional smile
   coupling with five preserved rejected iterations; organic follow-on is deferred.
+- `runs/2026-08-15_video-transfer-uniform-deformation/` — direct transfer of the anvil video's
+  uniform-loop deformation lesson to a different 12-sided circular product form: identical
+  connected all-quad cages, 82.10% lower profile RMSE, 54.85% better side-quad aspect-ratio p95,
+  independent fresh-process verification, and a retrieval-to-planner behavior proof. This is a
+  controlled transfer, not held-out professional-asset evidence.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

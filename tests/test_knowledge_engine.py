@@ -385,6 +385,46 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(advance.next_stage, "SECONDARY_FORMS")
         self.assertEqual(advance.observed_revision, 4)
 
+    def test_transfer_validated_skill_changes_matching_ticket_to_scoped_action(self):
+        ticket = {
+            "type": "uneven_deformation_density",
+            "target": "pedestal_waist",
+            "priority": 1,
+            "severity": 0.7,
+            "operation_params": {"cuts": 6, "edge_ids": [11, 12]},
+        }
+        without_skill = plan_next_decision(self.context(visual_tickets=[ticket]))
+        self.assertEqual(without_skill.disposition, "INSPECT")
+
+        captured_skill = {
+            "skill_id": "uniform-rings",
+            "status": "CAPTURED",
+            "skill": {
+                "planner_hint": {
+                    "trigger_ticket_types": ["uneven_deformation_density"],
+                    "modeling_stages": ["PROPORTION_SILHOUETTE"],
+                    "required_ticket_fields": ["target", "operation_params"],
+                    "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
+                    "operation": "loop_cut_selection",
+                }
+            },
+        }
+        still_inspect = plan_next_decision(self.context(
+            visual_tickets=[ticket], retrieved_skills=[captured_skill]
+        ))
+        self.assertEqual(still_inspect.disposition, "INSPECT")
+
+        validated_skill = {**captured_skill, "status": "TRANSFER_VALIDATED"}
+        acted = plan_next_decision(self.context(
+            visual_tickets=[ticket], retrieved_skills=[validated_skill]
+        ))
+        self.assertEqual(acted.disposition, "ACT")
+        self.assertEqual(acted.action, "ESTABLISH_UNIFORM_DEFORMATION_RINGS")
+        self.assertEqual(acted.operation, "loop_cut_selection")
+        self.assertEqual(acted.operation_params, ticket["operation_params"])
+        self.assertEqual(acted.target_region, "pedestal_waist")
+        self.assertEqual(acted.retrieved_skill_ids, ("uniform-rings",))
+
 
 class CurriculumInventoryTests(unittest.TestCase):
     def test_every_mandatory_mesh_operator_is_in_inventory(self):

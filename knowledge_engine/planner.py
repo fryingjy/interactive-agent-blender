@@ -26,6 +26,8 @@ STAGES = (
     "FINAL_REVIEW",
 )
 
+PLANNER_ACTIONABLE_SKILL_STATUSES = {"TRANSFER_VALIDATED", "RUNTIME_VALIDATED", "PROMOTED"}
+
 
 @dataclass
 class PlannerContext:
@@ -121,6 +123,54 @@ def _highest_ticket(context: PlannerContext) -> dict[str, Any] | None:
             str(item.get("type", "")),
         ),
     )[0]
+
+
+def _skill_guided_ticket_decision(
+    context: PlannerContext, ticket: dict[str, Any]
+) -> DecisionContract | None:
+    """Use only transfer-validated-or-better knowledge to resolve a matching ticket.
+
+    A retrieved record does not get to invent targets or parameters. The visual/topology
+    ticket still owns those scene-specific facts; the skill contributes the operation,
+    expected effect, and verification policy for a narrow declared ticket type.
+    """
+    ticket_type = str(ticket.get("type", ""))
+    for retrieved in context.retrieved_skills:
+        skill = retrieved.get("skill", retrieved)
+        status = str(retrieved.get("status", skill.get("status", "UNKNOWN")))
+        hint = skill.get("planner_hint")
+        if status not in PLANNER_ACTIONABLE_SKILL_STATUSES or not isinstance(hint, dict):
+            continue
+        if ticket_type not in set(map(str, hint.get("trigger_ticket_types", []))):
+            continue
+        stages = set(map(str, hint.get("modeling_stages", [])))
+        if stages and context.stage not in stages:
+            continue
+        required_fields = set(map(str, hint.get("required_ticket_fields", [])))
+        if any(ticket.get(field) in (None, "", [], {}) for field in required_fields):
+            continue
+        operation = hint.get("operation")
+        if not operation:
+            continue
+        skill_id = retrieved.get("skill_id") or retrieved.get("id") or skill.get("skill_id") or skill.get("id")
+        return _contract(
+            context,
+            disposition="ACT",
+            action=str(hint.get("action", "APPLY_RETRIEVED_SKILL")),
+            operation=str(operation),
+            operation_params=dict(ticket.get("operation_params", {})),
+            target_object=context.active_object,
+            target_region=str(ticket.get("target")) if ticket.get("target") else None,
+            rationale=(
+                f"highest-priority visual ticket is {ticket_type}",
+                f"transfer-validated skill {skill_id} matches this ticket",
+                str(hint.get("reason", "use the validated local intervention before broader repair")),
+            ),
+            expected_effect=str(hint.get("expected_effect", "Reduce the named local defect.")),
+            verification=tuple(map(str, hint.get("verification", ["reinspect the affected region"]))),
+            confidence=str(hint.get("confidence", "MEDIUM")),
+        )
+    return None
 
 
 def _next_stage(stage: str) -> str | None:
@@ -225,6 +275,9 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
         region = ticket.get("target")
         suggested = ticket.get("suggested_operation")
+        skill_guided = _skill_guided_ticket_decision(context, ticket)
+        if skill_guided is not None:
+            return skill_guided
         if ticket_type in {"missing_component", "component_mismatch"}:
             strategy = choose_strategy(context.brief)
             representation = strategy["representation"]["choice"]

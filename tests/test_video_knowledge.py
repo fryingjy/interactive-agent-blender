@@ -1,4 +1,6 @@
+import json
 import unittest
+from pathlib import Path
 
 from knowledge_engine.video_knowledge import KnowledgeItem, SourceTimestamp, apply_transfer_test
 
@@ -108,6 +110,24 @@ class TransferTestTests(unittest.TestCase):
             "evidence_path": "runs/2026-08-14_simple-mug/checkpoint.png",
         })
         self.assertEqual(updated["status"], "CONTRADICTED")
+
+
+class RepositoryTransferEvidenceTests(unittest.TestCase):
+    def test_anvil_failure_and_uniform_ring_principle_have_real_transfer_evidence(self):
+        root = Path(__file__).resolve().parents[1]
+        items = json.loads((
+            root / "runs" / "2026-08-14_video-study-blenderguru-anvil" / "knowledge_items.json"
+        ).read_text(encoding="utf-8"))
+        by_start = {item["source"]["start_seconds"]: item for item in items}
+        for start in (307, 366):
+            item = by_start[start]
+            self.assertEqual(item["status"], "TRANSFER_VALIDATED")
+            self.assertEqual(len(item["transfer_tests"]), 1)
+            transfer = item["transfer_tests"][0]
+            self.assertTrue(transfer["pass"])
+            self.assertEqual(transfer["target_asset"], "12-sided circular lamp pedestal")
+            evidence = root / transfer["evidence_path"]
+            self.assertTrue(evidence.exists(), evidence)
 
 
 if __name__ == "__main__":

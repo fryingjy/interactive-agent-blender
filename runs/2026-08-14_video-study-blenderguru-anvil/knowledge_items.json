@@ -29,11 +29,19 @@
     "source": {"source_id": "yi87Dap_WOc", "start_seconds": 307, "end_seconds": 340},
     "confidence": 0.55,
     "supporting_evidence": "Gemini video-understanding observation: at 5:07-5:40, repeated manual extrude-then-scale steps are shown deliberately producing an uneven, stepped pyramid with inconsistent ring spacing, presented as the intuitive-but-wrong approach.",
-    "status": "CAPTURED",
+    "status": "TRANSFER_VALIDATED",
     "rejected_alternative": "Building a tapered form step-by-step via repeated extrude-then-scale operations",
     "reason": "Manually varying extrusion/scale amount at each step compounds spacing inconsistency; extruding the full form first and then subdividing uniformly separates the 'how much geometry' decision from the 'what shape' decision.",
     "captured_while_building": null,
-    "transfer_tests": []
+    "transfer_tests": [
+      {
+        "target_asset": "12-sided circular lamp pedestal",
+        "expected_effect": "Compared with accumulated manual extrude-and-scale steps at the same ring/vertex budget, establishing the full height and then shaping uniformly distributed rings should reduce profile error and uneven quad density.",
+        "observed_effect": "The uniform candidate reduced profile RMSE by 82.10% and side-quad aspect-ratio p95 by 54.85%; both variants remained connected, manifold, and all-quad with identical 156-vertex/154-face cages.",
+        "pass": true,
+        "evidence_path": "runs/2026-08-15_video-transfer-uniform-deformation/"
+      }
+    ]
   },
   {
     "knowledge_type": "PRINCIPLE",
@@ -41,11 +49,19 @@
     "source": {"source_id": "yi87Dap_WOc", "start_seconds": 366, "end_seconds": 400},
     "confidence": 0.5,
     "supporting_evidence": "Gemini video-understanding observation: at 6:06-6:40, a tall extrusion is pre-divided into 12 evenly-spaced horizontal loop cuts specifically to give any later deformation operation a uniform grid to work with.",
-    "status": "CAPTURED",
+    "status": "TRANSFER_VALIDATED",
     "rejected_alternative": "Deforming a section that still has uneven/sparse loop-cut spacing",
     "reason": null,
     "captured_while_building": null,
-    "transfer_tests": []
+    "transfer_tests": [
+      {
+        "target_asset": "12-sided circular lamp pedestal",
+        "expected_effect": "Uniform axial rings should provide a more controllable smooth-profile scaffold than unevenly spaced rings before deformation, without increasing topology count.",
+        "observed_effect": "At identical topology count, candidate ring-spacing CV was effectively zero versus 0.38987 for the control; profile RMSE was 0.002778 versus 0.015517, and independent Blender verification reproduced the improvement.",
+        "pass": true,
+        "evidence_path": "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json"
+      }
+    ]
   },
   {
     "knowledge_type": "PROCEDURE",

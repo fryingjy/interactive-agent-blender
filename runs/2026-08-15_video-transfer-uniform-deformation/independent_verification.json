@@ -1,0 +1,85 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_video-transfer-uniform-deformation\\uniform_deformation_transfer.blend",
+  "independent_of_modeling_script": true,
+  "control": {
+    "base": {
+      "vertices": 156,
+      "edges": 308,
+      "faces": 154,
+      "non_quad_faces": 0,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1
+    },
+    "ring_count": 13,
+    "vertices_per_ring": [
+      12
+    ],
+    "ring_radius_variation_max": 3.4533338855169404e-08,
+    "angular_gap_error_max": 5.943363790006373e-08,
+    "ring_spacing_cv": 0.38987177379237087,
+    "profile_rmse": 0.015517106739992396,
+    "profile_max_abs_error": 0.035999986925871585,
+    "side_quad_aspect_p95": 3.246915361092608,
+    "modifier_types": [
+      "BEVEL",
+      "SUBSURF"
+    ],
+    "bevel_limit_method": "WEIGHT",
+    "weighted_edge_count": 24,
+    "shading_policy": "SMOOTH_BY_ANGLE",
+    "evaluated": {
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "candidate": {
+    "base": {
+      "vertices": 156,
+      "edges": 308,
+      "faces": 154,
+      "non_quad_faces": 0,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0,
+      "connected_components": 1
+    },
+    "ring_count": 13,
+    "vertices_per_ring": [
+      12
+    ],
+    "ring_radius_variation_max": 3.695288097738114e-08,
+    "angular_gap_error_max": 4.543099463294453e-08,
+    "ring_spacing_cv": 1.1313708485179261e-07,
+    "profile_rmse": 0.0027779600638329245,
+    "profile_max_abs_error": 0.005484676238125874,
+    "side_quad_aspect_p95": 1.4661295706815645,
+    "modifier_types": [
+      "BEVEL",
+      "SUBSURF"
+    ],
+    "bevel_limit_method": "WEIGHT",
+    "weighted_edge_count": 24,
+    "shading_policy": "SMOOTH_BY_ANGLE",
+    "evaluated": {
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "checks": {
+    "exact_objects_present": true,
+    "base_topology_identical": true,
+    "base_mesh_counts_expected": true,
+    "connected_all_quad_manifold": true,
+    "twelve_vertices_per_ring": true,
+    "rings_are_circular": true,
+    "uniform_spacing_gate": true,
+    "negative_control_spacing_gate": true,
+    "profile_rmse_improves": true,
+    "profile_max_error_improves": true,
+    "quad_density_improves": true,
+    "semantic_shading_policy": true,
+    "evaluated_meshes_clean": true
+  },
+  "pass": true
+}
