@@ -1,0 +1,38 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "For multi-view reference modeling, use Toggle Quad View (Ctrl+Alt+Q) to split the 3D viewport into four panes, then set a separate background/reference image in each of the Top, Front, and Right (side) orthographic panes, positioned to align with a starting cube's actual location -- this lets all three reference views be checked simultaneously while modeling instead of switching between single-view orthographic snaps.",
+    "source": {"source_id": "blender.stackexchange.com/questions/63246", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly (2026-08-15), highest-voted answer (110 votes, Paul Gonet): 'First add a cube. Use Toggle Quad View option (Ctrl+Alt+Q) to split the screen into quarters and set separate background images for each one. Adjust their positions, so they fit the cube position in Top, Front and Right 3D views... Thanks to quad view you may control the shape of the mesh in every view at once.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Switching between single-view orthographic snaps (Numpad 1/3/7) one at a time to check alignment against each reference separately -- the approach implicit in the Ryan King reference-image video already processed for this project (runs/2026-08-14_video-study-ryanking-reference-images/), which set up multiple reference planes but didn't establish a simultaneous-multi-view checking method.",
+    "reason": "Complements the already-captured reference-image-import knowledge (orthographic-locked import, Depth for occlusion, orthographic-only display) with the actual verification workflow: Quad View is how the multi-view alignment gets CHECKED continuously while modeling, not just set up once at import time.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The manual (pre-Bisect-toggle) way to start a Mirror-modifier workflow on a fresh cube: bisect the cube with a loop cut (Ctrl+R), delete one half of the resulting geometry (X), then add a Mirror Modifier so modeling one half automatically produces the symmetric other half.",
+    "source": {"source_id": "blender.stackexchange.com/questions/63246", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly, same answer: 'Divide the cube into two identical parts with Ctrl+R and delete one half of it (X). Add a Mirror Modifier to it. Now you may model just one half of the mesh and the other one'll behave symmetrical.'",
+    "status": "CONTRADICTED",
+    "rejected_alternative": "Modeling both halves of a symmetric object by hand without a Mirror modifier at all, which this answer correctly identifies as slower and error-prone for symmetric hard-surface parts.",
+    "reason": "This exact method (loop-cut, delete half, then Mirror modifier) is the destructive approach that this project's OWN same-day source (CG Boost 100+ Tips, tip #84, runs/2026-08-15_video-study-cgboost-100-tips-modifiers/) shows is now avoidable: the Mirror modifier's own Bisect option clips and mirrors a full or already-asymmetric mesh directly, non-destructively, without a separate manual delete-half step. Recorded as CONTRADICTED (superseded, not wrong for its time) rather than silently treated as the current best method -- both sources agree a Mirror modifier is the right tool, but disagree on how to get into the one-half-editable state.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The basic reference-based blockout sequence: extrude a starting cube to roughly fit the background reference drawings' silhouette first, THEN subdivide progressively to add more geometry and refine detail -- not the reverse order (dense geometry first, then trying to shape it to match references).",
+    "source": {"source_id": "blender.stackexchange.com/questions/63246", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly, same answer: 'Start with extruding the cube to create a basic shape that fits the background drawings. Then subdivide it successfuly to add more and more geometry and details.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Starting with a high-poly or heavily-subdivided base mesh and trying to sculpt/push it into the reference's silhouette, which risks the same unevenness-in-initial-quads problem already documented in this project's SubD-pinching convergence finding (five independent sources, traced to uneven blockout quads, not support-loop placement).",
+    "reason": "Directly matches this project's own reasoning-process note already written into curriculum Level 5 ('reference -> orthographic views -> establish proportions -> primitive/blockout -> extrusion -> multi-view checking -> Subdivision') -- independent forum confirmation of an order already adopted, not a new claim, but worth having a cited source for it rather than treating it as self-evident.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

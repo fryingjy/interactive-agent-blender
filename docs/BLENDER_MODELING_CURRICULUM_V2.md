@@ -84,7 +84,11 @@ videos without that loop is the failure mode this curriculum exists to avoid.
     7 items).
 11. **Blender Stack Exchange -- reference-image modeling case study.** Not a video --
     `blender.stackexchange.com/questions/63246`. Multi-view reference modeling, Mirror, extrusion,
-    Subdivision. Read, not watched. Not yet processed.
+    Subdivision. Read, not watched. Processed
+    (`runs/2026-08-15_forum-study-blender-se-reference-modeling/`, 3 items) -- Toggle Quad View for
+    simultaneous multi-reference checking, the (now-superseded, per the same-day 100+ Tips finding)
+    manual bisect+delete+Mirror sequence, and confirmation of the extrude-then-subdivide blockout
+    order.
 
 ## Level 4 -- Hard-surface modeling
 
@@ -106,7 +110,10 @@ Critical: this is the actual target capability ("here is a picture, build it").
     (`runs/2026-08-14_video-study-ryanking-reference-images/`, 5 items) -- orthographic-locked
     import, reference Depth (Front/Back) for occlusion control, orthographic-only display to keep
     perspective navigation clean, locking reference collections unselectable, and multi-view
-    landmark-based alignment to a shared origin. **Level 5 (the target capability) started, 1/2.**
+    landmark-based alignment to a shared origin. **Level 5 (the target capability) sources 2/2 --
+    but this means the two listed learning sources are processed, NOT that the target capability
+    itself ("give it any reference and get a professional model") has been demonstrated. That
+    remains unmet per the 2026-08-14 external assessment on file in `docs/RESEARCH_ROADMAP.md`.**
 
 Reasoning process to learn (not a fixed shortcut sequence):
 ```
