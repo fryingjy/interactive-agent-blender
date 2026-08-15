@@ -14,11 +14,15 @@ videos without that loop is the failure mode this curriculum exists to avoid.
 
 ## Level 0 -- Blender fundamentals
 
-1. **Blender Guru -- Beginner Blender Tutorial (2026).** `z-Xl9tGqH14`. REQUIRED. Navigation, basic
-   modeling, modifiers, references, materials, UVs, Geometry Nodes.
-   Status: partially processed (`runs/2026-08-14_video-study-blenderguru-beginner-course/`) --
-   modeling portion covered (donut/mug/handle/plate), texturing/lighting/Geometry-Nodes portion not
-   yet covered.
+1. **Blender Guru -- Beginner Blender Tutorial (2026).** `z-Xl9tGqH14` (4h19m). REQUIRED.
+   Navigation, basic modeling, modifiers, references, materials, UVs, Geometry Nodes. Fully
+   processed across two passes: modeling portion (donut/mug/handle/plate) in
+   `runs/2026-08-14_video-study-blenderguru-beginner-course/` (10 items); texturing/UV/scattering
+   (Geometry Nodes)/lighting portion in
+   `runs/2026-08-14_video-study-blenderguru-beginner-course-part2/` (6 items) -- Non-Color texture
+   space + normal-map decoding, in-shader non-destructive color grading, cylindrical-UV seam
+   placement + Gridify, vertex-group-masked GN scattering, per-instance Color-Ramp randomization,
+   and light-radius-driven shadow softness/three-point lighting. **Item 1 (REQUIRED) now complete.**
 2. **Blender Guru -- Beginner Blender 4.0 Tutorial.** `4haAdmHqGOw`. REQUIRED/supplementary.
    Extrusion, Subdivision, Solidify, Shrinkwrap, reference-image modeling, organization. Older
    version, useful for the same reasoning taught a second way. Processed
