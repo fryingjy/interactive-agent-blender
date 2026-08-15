@@ -2500,5 +2500,33 @@
         "No expert production-asset acceptance"
       ]
     }
+  },
+  {
+    "id": "experiment-video-episode-review-gate-2026-08-15",
+    "url": null,
+    "local_path": "runs/2026-08-15_video-episode-review-gate/",
+    "title": "Independent Speech-to-Visible-Action Episode Review Gate",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "2026-08-15",
+    "topics": ["video-learning", "frame-review", "speech-action-alignment", "Gemini-provenance"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["local_video", "extracted_frames", "VTT", "browser_player_state", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_video-episode-review-gate/"],
+      "direct_observations": [
+        "A project-owned episode passed nine source, reviewer, frame, timing, speech, and alignment predicates",
+        "Six pending/rejection controls fail closed",
+        "The public YouTube page identity loaded but no media frame decoded; embed fallback returned error 153"
+      ],
+      "limitations": [
+        "The passing visual sequence is a synthetic project-owned lesson rather than an actual Blender viewport action",
+        "The public tutorial remains pending external frame review",
+        "Frame verification does not validate or promote a transferable modeling principle"
+      ]
+    }
   }
 ]
