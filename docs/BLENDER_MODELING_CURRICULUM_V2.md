@@ -35,8 +35,8 @@ videos without that loop is the failure mode this curriculum exists to avoid.
    processed** -- `runs/2026-08-14_video-study-cgboost-hardsurface-fundamentals/` (5 items,
    transcript-only pass, pre-dates the Gemini video-understanding pipeline).
 6. **The Parabox EN -- Hard Surface Modeling in Blender.** `vPeeybzxfLI`. REQUIRED. References, body
-   construction, boolean details, buttons, holes, lettering, components, materials, rendering. Not
-   yet processed.
+   construction, boolean details, buttons, holes, lettering, components, materials, rendering.
+   Processed (`runs/2026-08-14_video-study-parabox-hardsurface/`, 7 items).
 7. **CG Boost -- 6 Hard-Surface Modeling Tricks I Wish I Knew Earlier.** `Ml2t8uxPAQU`. REQUIRED.
    **Already processed** -- `runs/2026-08-14_video-study-cgboost-6-tricks/` (6 items, Gemini
    video-understanding pass).
@@ -45,15 +45,17 @@ videos without that loop is the failure mode this curriculum exists to avoid.
 
 8. **Blender Bash -- All 54 Modifiers Explained.** `idcFMhoSdIc`. REQUIRED as an overview. Use for
    conceptual purpose only -- verify current behavior against the Blender Manual before trusting any
-   specific claim, since the video is older than the current Blender version. Not yet processed.
+   specific claim, since the video is older than the current Blender version.
+   Processed (`runs/2026-08-14_video-study-blenderbash-54-modifiers/`, 4 items).
 
 ## Level 3 -- Topology
 
 (Item 9 is CG Boost Retopology, already listed as #3 -- part of both fundamentals and topology.)
 
-10. **JL Mussi -- Perfect Cylinders / No Shading Errors.** URL to verify by title/channel search
-    (source flagged this URL as unconfirmed). HIGH priority -- connects topology directly to surface
-    quality/shading rather than polygon counting. Not yet processed.
+10. **JL Mussi -- Perfect Cylinders / No Shading Errors.** `XX1RCxid5QM` (found and confirmed by
+    title/channel search). HIGH priority -- connects topology directly to surface quality/shading
+    rather than polygon counting. Processed (`runs/2026-08-14_video-study-jl-mussi-perfect-cylinders/`,
+    7 items).
 11. **Blender Stack Exchange -- reference-image modeling case study.** Not a video --
     `blender.stackexchange.com/questions/63246`. Multi-view reference modeling, Mirror, extrusion,
     Subdivision. Read, not watched. Not yet processed.
@@ -84,17 +86,21 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
 
 ## Level 6 -- Intermediate modeling
 
-17. **Blender Guru -- Intermediate Modeling / Anvil series** (channel: `@blenderguru`). HIGH
-    priority. Jump from beginner to an actual intermediate asset workflow; later parts cover final
-    modeling touches leading into UV work. Treat as modeling reasoning/training data, not current-API
-    documentation (older Blender version). Not yet processed.
+17. **Blender Guru -- Intermediate Modeling / Anvil series** (channel: `@blenderguru`). `yi87Dap_WOc`.
+    HIGH priority. Jump from beginner to an actual intermediate asset workflow; later parts cover
+    final modeling touches leading into UV work. Treat as modeling reasoning/training data, not
+    current-API documentation (older Blender version).
+    Processed (`runs/2026-08-14_video-study-blenderguru-anvil/`, 7 items) -- Part 1 only; later
+    parts of the series not yet located/processed.
 
 ## Level 7 -- UVs
 
-18. **CG Boost -- UV Unwrapping** (channel: `@cgboost`). Full beginner UV-unwrapping workflow. Not
-    yet processed.
+18. **CG Boost -- UV Unwrapping** (channel: `@cgboost`). `xPoxqOcUzNQ`. Full beginner UV-unwrapping
+    workflow. Processed (`runs/2026-08-14_video-study-cgboost-uv-unwrapping/`, 7 items).
 19. **Josh Gambrell -- Simple UV workflow.** Practical hard-surface UV technique, repeatedly
-    recommended in Blender community discussions. Not yet processed.
+    recommended in Blender community discussions. Not yet processed -- not the same video as
+    `runs/2026-08-14_video-study-blenderbros-5-best-tricks/` (`uWyKgmTWQGE`, a different
+    Blender-Bros-channel video processed under the general hard-surface pass, item still open).
 
 ## Level 8 -- Materials and shading
 
@@ -109,14 +115,14 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
     masking.
 22. **Default Cube -- procedural material fundamentals.** `O3gLBhC353Y`. Explains underlying node
     behavior rather than demonstrating a finished material; recommended directly by a Blender Stack
-    Exchange discussion. **Blocked 2026-08-14**: Gemini's free-tier video-understanding quota
-    (`GenerateRequestsPerDayPerProjectPerModel-FreeTier`, 20 requests/day) was exhausted immediately
-    before this video could be processed. Resume once the quota resets.
+    Exchange discussion. Processed (`runs/2026-08-14_video-study-default-cube-procedural-materials/`,
+    5 items) once the Gemini free-tier daily quota reset. **Level 8 complete, 3/3.**
 
 ## Level 9 -- Normal maps / baking
 
 23. **Normal/displacement workflow.** `pMT0eMcUlK8`. Distinction between actual geometry, shading
-    detail, normal information, and displacement. Not yet processed.
+    detail, normal information, and displacement. Processed
+    (`runs/2026-08-14_video-study-normal-vs-displacement/`, 4 items).
 
 ## Level 10 -- Production asset workflow
 
@@ -152,6 +158,15 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
     reference interpretation -> blockout decision -> representation choice -> topology decision
     -> modifier decision -> detail decision -> surface/shading decision -> mistake -> correction
     ```
+    Substantially covered already via videos processed outside this list's exact numbering, during
+    the extended-curriculum push: `blenderbros-subd-hardsurface(-2)`, `blenderbros-subd-hive-controller`,
+    `blenderbros-tertiary-details`, `blenderbros-decals-workflow`, `blenderbros-curvy-organic`,
+    `blenderbros-5-best-tricks`, `cgcookie-hardsurface-intro`, `cgvoice-amateur-mistakes`,
+    `crnt-boolean-triangle`, `elementza-clean-topology`, `grant-abbitt-beginners`, `gnomon-bryant-momo-koshu`,
+    `jl-mussi` / `jl-mussi-5-tips` / `jl-mussi-easy-once-you-learn`, `mcglasham-subd`, `pzthree-retopology`,
+    `rileyb3d-advanced-hardsurface`, `subd-3dprint` (all under `runs/2026-08-14_video-study-*/`). Not
+    exhaustively cross-referenced against the reasoning-chain framework above; worth a dedicated
+    synthesis pass rather than treating "processed" as "fully extracted for this specific level's goal."
 
 ## Level 15 -- Sculpting (LAST, deliberately deferred)
 
