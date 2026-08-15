@@ -40,6 +40,32 @@ diagnose the failure, and what alternative strategies exist."
 15. The resulting knowledge must be retrievable by the modeling planner and must actually influence
     future modeling decisions -- not sit inert in a JSON file.
 
+## Reproducible Gemini acquisition
+
+The previously used Gemini method is now executable through
+`tools/analyze_video_with_gemini.py`. It uses Google's official `google-genai` SDK and passes a
+public YouTube URL directly as video input; it does not download or archive the video.
+
+```powershell
+python tools/analyze_video_with_gemini.py `
+  "https://www.youtube.com/watch?v=VIDEO_ID" `
+  --output "runs/YYYY-MM-DD_video-study-name/gemini_structured_analysis.json"
+```
+
+The command loads `GEMINI_API_KEY` from the environment or the gitignored `.env`. Never put the key
+in a command, report, prompt, or committed file. Use `--dry-run` to validate a URL and inspect the
+secret-free request summary without consuming API quota.
+
+Install the official Python client with `pip install google-genai` if it is not already available.
+The implementation follows Google's current [video-understanding](https://ai.google.dev/gemini-api/docs/video-understanding)
+and [structured-output](https://ai.google.dev/gemini-api/docs/structured-output) guidance. The
+default model is explicit and can be overridden with `--model` when the supported model list changes.
+
+Gemini output is saved as `MODEL_EXTRACTED_UNVERIFIED`. That label may only be advanced after an
+independent reviewer checks representative timestamps against the visible video and audible speech.
+This prevents a structured model response from being mistaken for proof that the source was
+correctly understood.
+
 ## How this maps onto the existing implementation
 
 - Steps 1-8 map onto `knowledge_engine/video_knowledge.py`'s `KnowledgeItem` schema: `knowledge_type`
