@@ -76,6 +76,12 @@ The repository stores the prompt, source identity, model/access metadata, and ti
 not a copy of the video. Audio/visual analysis is still only `CAPTURED`; it must survive
 corroboration, controlled reproduction, different-target transfer, and runtime use before promotion.
 
+Independent episode review is a separate gate. `knowledge_engine.video_episode_review` requires
+source identity, a reviewer other than the extracting model, before/during/after frames, overlapping
+speech, and explicit action alignment. `apply_independent_episode_reviews` binds that evidence to the
+same video ID and timestamp range before Gemini provenance can advance. Pending access is not a
+contradiction, and frame verification alone never promotes a modeling principle.
+
 The current video evidence is summarized in
 `knowledge/foundation/video_learning_curriculum.md`; media files normally remain ignored under
 `runs/*/media/`.

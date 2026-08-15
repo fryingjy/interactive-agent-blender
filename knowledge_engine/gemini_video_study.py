@@ -357,3 +357,61 @@ def write_analysis(result: dict[str, Any], output_path: str | Path) -> Path:
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return target
+
+
+def apply_independent_episode_reviews(
+    result: dict[str, Any], reviews_by_episode: dict[int, dict[str, Any]]
+) -> dict[str, Any]:
+    """Attach independent frame/speech reviews without allowing self-verification.
+
+    Every review must identify the requested YouTube video and the same episode range. Partial
+    review remains partial; one explicit contradiction rejects independent verification. This
+    changes extraction provenance only and never promotes a modeling skill.
+    """
+    provenance = result.get("provenance") or {}
+    analysis = result.get("analysis") or {}
+    episodes = analysis.get("episodes") or []
+    requested_id = youtube_video_id(provenance.get("requested_source_url", ""))
+    attached: dict[str, dict[str, Any]] = {}
+    dispositions = []
+    for raw_index, review in reviews_by_episode.items():
+        index = int(raw_index)
+        if index < 0 or index >= len(episodes):
+            raise IndexError(f"episode review index out of range: {index}")
+        if str(review.get("source_id")) != requested_id:
+            raise ValueError("independent review source does not match requested video")
+        reviewed_range = review.get("episode") or []
+        expected = episodes[index]
+        if len(reviewed_range) != 2 or any(
+            abs(float(actual) - float(wanted)) > 0.5
+            for actual, wanted in zip(
+                reviewed_range,
+                (expected["start_seconds"], expected["end_seconds"]),
+            )
+        ):
+            raise ValueError("independent review timestamp range does not match episode")
+        disposition = review.get("disposition")
+        if disposition not in {"VERIFIED", "PENDING_REVIEW", "REJECTED"}:
+            raise ValueError("independent review has an invalid disposition")
+        if bool(review.get("pass")) != (disposition == "VERIFIED"):
+            raise ValueError("independent review pass flag contradicts its disposition")
+        attached[str(index)] = review
+        dispositions.append(disposition)
+
+    if "REJECTED" in dispositions:
+        verification_status = "INDEPENDENT_REVIEW_REJECTED"
+    elif len(attached) == len(episodes) and episodes and all(
+        disposition == "VERIFIED" for disposition in dispositions
+    ):
+        verification_status = "INDEPENDENTLY_FRAME_VERIFIED"
+    else:
+        verification_status = "PARTIAL_INDEPENDENT_REVIEW"
+    return {
+        **result,
+        "provenance": {
+            **provenance,
+            "verification_status": verification_status,
+            "independent_episode_reviews": attached,
+            "knowledge_promotion_unchanged": True,
+        },
+    }

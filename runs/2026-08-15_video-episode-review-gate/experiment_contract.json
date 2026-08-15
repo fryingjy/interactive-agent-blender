@@ -1,0 +1,31 @@
+{
+  "experiment": "fail-closed speech-to-visible-action episode review",
+  "frozen_before_implementation": true,
+  "fixture": "project-owned six-second modeling lesson with video, audio stream, and authored VTT",
+  "required_evidence": {
+    "source_identity_verified": true,
+    "independent_reviewer": true,
+    "minimum_frame_observations": 3,
+    "required_temporal_positions": ["BEFORE", "DURING", "AFTER"],
+    "visible_action_observed": true,
+    "speech_overlap_required": true,
+    "speech_action_alignment": "ALIGNED",
+    "frame_paths_must_exist": true
+  },
+  "required_controls": [
+    "model extraction without independent reviewer",
+    "missing AFTER frame",
+    "spoken segment outside episode",
+    "verified source-id mismatch",
+    "explicit visible-action mismatch",
+    "public-video browser with source identity but no decoded media frames"
+  ],
+  "required_outputs": [
+    "fine frames around the selected episode",
+    "transcript segments retained for the local fixture",
+    "review report with individual predicates and disposition",
+    "browser failure record for the real public tutorial",
+    "tests for pass, pending, and rejected states"
+  ],
+  "claim_boundary": "This validates a review gate on a project-owned fixture. It does not independently verify the public tutorial episode, which remains blocked because the in-app YouTube player exposed identity but no decoded frames."
+}

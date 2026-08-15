@@ -366,3 +366,19 @@ missing-modifier, and disconnected-shell controls fail closed. A rejected four-r
 also retained in the report: its top IoU was 0.8247 until one profile-defining center ring raised it
 to 0.9592. The audit can observe current stacks but cannot reconstruct modifier history, and it does
 not author retopology on an unfamiliar real prop. Foundation status therefore remains **PARTIAL**.
+
+## 2026-08-15 addendum: independent video-episode review gate
+
+`knowledge_engine.video_episode_review` now fails closed between model extraction and verified
+tutorial evidence. A verified episode requires same-source identity, an independent reviewer,
+existing before/during/after frames bracketing the timestamp range, overlapping speech, a visibly
+observed action, and explicit alignment. Missing evidence remains pending; direct visual or speech
+contradictions are rejected. Gemini provenance can advance only through a matching video ID and
+episode range, and this review still does not promote a modeling skill by itself.
+
+`runs/2026-08-15_video-episode-review-gate/` passes the mechanism on a project-owned six-second
+fixture and six controls. The attempted real review of `yi87Dap_WOc` remains honestly pending: the
+YouTube page identity loaded, but its media element decoded no frames and the embed fallback returned
+error 153. No public video was archived. The mechanism gap narrows, but real visible Blender-action
+verification, reproduction, transfer, and runtime use remain open; foundation status stays
+**PARTIAL**.

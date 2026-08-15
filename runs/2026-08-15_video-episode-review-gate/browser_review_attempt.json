@@ -1,0 +1,21 @@
+{
+  "requested_url": "https://www.youtube.com/watch?v=yi87Dap_WOc",
+  "page_title": "Blender Intermediate Modelling Tutorial - Part 1 - YouTube",
+  "source_identity_visible": true,
+  "intended_episode_seconds": [307, 400],
+  "direct_player_observation": {
+    "current_time": 0,
+    "duration": null,
+    "paused": true,
+    "ready_state": 0,
+    "decoded_frame_observed": false
+  },
+  "embed_fallback": {
+    "url": "https://www.youtube.com/embed/yi87Dap_WOc?start=307&autoplay=0",
+    "visible_error": "Error 153: Video player configuration error",
+    "decoded_frame_observed": false
+  },
+  "disposition": "PENDING_EXTERNAL_FRAME_REVIEW",
+  "reason": "The page title and duration label establish source identity only. They do not verify the claimed Blender action because neither player path exposed a decoded media frame.",
+  "video_archived": false
+}

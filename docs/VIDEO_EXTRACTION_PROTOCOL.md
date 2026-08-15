@@ -66,6 +66,19 @@ independent reviewer checks representative timestamps against the visible video 
 This prevents a structured model response from being mistaken for proof that the source was
 correctly understood.
 
+`knowledge_engine.video_episode_review` and `tools/review_video_episode.py` now enforce that
+advancement. A review requires independent before/during/after frame observations, real frame paths,
+overlapping transcript evidence, source identity, and explicit speech/action alignment. Missing
+evidence remains `PENDING_REVIEW`; an observed contradiction is `REJECTED`.
+`apply_independent_episode_reviews` additionally binds each report to the requested video ID and the
+Gemini episode's timestamp range. A model-generated `VIDEO` label cannot verify itself, and a frame
+review does not promote the extracted modeling principle without reproduction and transfer.
+
+`runs/2026-08-15_video-episode-review-gate/` validates this mechanism on a project-owned fixture.
+The real YouTube player check is retained as pending because page identity loaded but no media frame
+decoded; an embed fallback returned error 153. This is a controlled review-gate proof, not a claim
+that the public Blender tutorial was independently watched through the browser.
+
 Source identity is now fail-closed. For discovery-bound study, the request carries the queue's
 video ID, exact title, creator, and duration. The model-reported URL must identify the same video,
 and all metadata must match before output is written. `runs/2026-08-15_video-discovery-queue/`

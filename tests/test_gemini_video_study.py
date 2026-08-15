@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from knowledge_engine.gemini_video_study import (
+    apply_independent_episode_reviews,
     analyze_youtube_video,
     build_request,
     load_dotenv,
@@ -196,6 +197,64 @@ class GeminiVideoStudyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             target = write_analysis({"text": "topology → transfer"}, Path(directory) / "analysis.json")
             self.assertEqual(json.loads(target.read_text(encoding="utf-8"))["text"], "topology → transfer")
+
+
+    def test_independent_review_can_advance_matching_episode_only(self):
+        result = {
+            "provenance": {
+                "requested_source_url": "https://www.youtube.com/watch?v=abc123",
+                "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+            },
+            "analysis": _analysis(),
+        }
+        review = {
+            "source_id": "abc123",
+            "episode": [10.0, 20.0],
+            "disposition": "VERIFIED",
+            "pass": True,
+        }
+        updated = apply_independent_episode_reviews(result, {0: review})
+        self.assertEqual(
+            updated["provenance"]["verification_status"],
+            "INDEPENDENTLY_FRAME_VERIFIED",
+        )
+        self.assertTrue(updated["provenance"]["knowledge_promotion_unchanged"])
+        self.assertEqual(result["provenance"]["verification_status"], "MODEL_EXTRACTED_UNVERIFIED")
+
+    def test_partial_or_rejected_review_cannot_become_verified(self):
+        result = {
+            "provenance": {"requested_source_url": "https://youtu.be/abc123"},
+            "analysis": _analysis(),
+        }
+        for disposition, expected in (
+            ("PENDING_REVIEW", "PARTIAL_INDEPENDENT_REVIEW"),
+            ("REJECTED", "INDEPENDENT_REVIEW_REJECTED"),
+        ):
+            review = {
+                "source_id": "abc123",
+                "episode": [10.0, 20.0],
+                "disposition": disposition,
+                "pass": disposition == "VERIFIED",
+            }
+            with self.subTest(disposition=disposition):
+                updated = apply_independent_episode_reviews(result, {0: review})
+                self.assertEqual(updated["provenance"]["verification_status"], expected)
+
+    def test_review_rejects_cross_video_or_wrong_timestamp(self):
+        result = {
+            "provenance": {"requested_source_url": "https://youtu.be/abc123"},
+            "analysis": _analysis(),
+        }
+        base = {
+            "source_id": "abc123",
+            "episode": [10.0, 20.0],
+            "disposition": "VERIFIED",
+            "pass": True,
+        }
+        with self.assertRaisesRegex(ValueError, "source"):
+            apply_independent_episode_reviews(result, {0: {**base, "source_id": "wrong"}})
+        with self.assertRaisesRegex(ValueError, "timestamp"):
+            apply_independent_episode_reviews(result, {0: {**base, "episode": [1.0, 2.0]}})
 
 
 if __name__ == "__main__":
