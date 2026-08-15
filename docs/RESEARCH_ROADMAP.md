@@ -627,3 +627,33 @@ than shipping a broken or half-built spout. Documented in
 bare-cube test (extrude twice in a row, check direction each time) before attempting the spout a
 third time -- the door-handle build's identical-looking 3x extrude+rotate pattern worked correctly,
 so whatever differs between that build and the teapot's is the actual thing to isolate.
+
+## Update (2026-08-14, later still): root-caused and fixed the chained-extrude bug; spout complete
+
+Followed through on the recommended controlled repro instead of guessing further live. Built a
+bare cube away from the teapot, extruded its +X face once, then directly inspected where the
+original face's persistent ID ended up. **Found it immediately:** the ID was reassigned to one of
+the new SIDE-WALL faces (center shifted 90 degrees off-axis, normal rotated to match), not deleted
+and not kept on the new cap -- the genuine cap got a completely different, freshly-assigned ID.
+Confirmed the fix by extruding the correct cap face a second time: direction was right.
+
+This exactly explains all three teapot failures -- each one reused a pre-extrude face ID for a
+follow-up extrude, which by then pointed at a side wall roughly perpendicular to the tube's
+intended direction. `inset_selection` genuinely does preserve IDs on its shrunk cap (confirmed
+separately, still true); `extrude_selection` does not, despite the surface-level similarity.
+
+Rebuilt the spout a third time applying the fix throughout (always read the new cap's IDs from
+that step's own `id_delta.faces.added`, filtered to all-new-vertex faces, never reuse a pre-extrude
+ID). Measured the new cap's position after every one of the 4 extrude steps to confirm direction
+empirically: x went 2.09 -> 2.591 -> 3.021 -> 3.512 -> 4.005, monotonically outward the entire way.
+Final body: 211 vertices, 42 non-manifold edges (32 mouth + 10 intentional pour opening), 0
+degenerate faces. Front and top silhouette renders both read as a correct, symmetric teapot spout.
+
+Wrote the bug up as a proper `KnowledgeItem`
+(`runs/2026-08-14_extrude-id-reassignment-bugfix/knowledge_items.json`), captured on the bare-cube
+test and transfer-tested for real on the teapot spout -- status `TRANSFER_VALIDATED`. This is the
+project's third genuinely transfer-tested item, and notably the first one about the modeling
+tooling itself rather than a modeling technique or principle. Full account:
+`runs/2026-08-14_teapot-body-revolve/brief.md`. Remaining teapot work: the C-shaped handle, which
+needs a real `bridge_selection` back into the body at a second attachment point -- new territory
+even with the extrude bug fixed, since it's a full loop rather than a cantilevered tip.
