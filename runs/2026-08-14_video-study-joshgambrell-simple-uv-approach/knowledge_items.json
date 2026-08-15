@@ -1,0 +1,62 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "For hard-surface UV unwrapping, use Select Sharp Edges then Mark Seam to auto-generate an initial seam layout from the mesh's own mechanical angle transitions before manually adding/removing anything, and switch the Unwrap operator's method from the default Angle-Based to Conformal -- Conformal preserves 90-degree angles and geometric proportions on mechanical shapes better, while Angle-Based is tuned for organic topology.",
+    "source": {"source_id": "ww5BP-T28Ow", "start_seconds": 128, "end_seconds": 160},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 2:08-2:40, Select Sharp Edges + Mark Seam generates an automated seam baseline, then the Unwrap operator panel is switched from Angle-Based to Conformal.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually tracing seams along every mechanical edge by hand, or leaving the Unwrap method on Angle-Based (tuned for organic topology) for a hard-surface object",
+    "reason": "Sharp-edge-driven auto-seams give a working baseline immediately on a mechanical shape's crisp angle transitions, and Conformal preserves right angles better than the organic-tuned Angle-Based solver -- both save time versus starting from a fully manual seam pass.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "On a planar or gently-curved surface, an automatically-placed seam that isn't actually needed should be cleared (select the seam edges, Clear Seam) -- unnecessary seams on low-curvature surfaces produce visible texture-continuity breaks and mipmap discontinuities with no corresponding stretching benefit, and also fragment the UV layout into more islands than necessary, hurting packing efficiency.",
+    "source": {"source_id": "ww5BP-T28Ow", "start_seconds": 215, "end_seconds": 245},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 3:35-4:05, seams across a top face and its bevels are selected and Clear Seam is applied; a checker-pattern test texture then blends smoothly across that curvature with no visible break.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving every auto-generated sharp-edge seam in place regardless of whether that specific edge's curvature actually requires a cut",
+    "reason": "A seam is only earning its cost (a visible texture break, an extra island) if the surface it cuts would otherwise stretch meaningfully -- flat or gently-curved regions rarely need it.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A closed topological ring or cylindrical loop (a hole boundary, a bolt socket rim, an inset cutout edge) cannot lay flat in 2D UV space without a cut along its length, since a 2D planar map cannot represent a closed loop without stretching -- place a single cross-cut seam at one position around the ring, ideally somewhere visually inconspicuous (hidden under an overhang, facing away from the primary viewing angle), to unwrap it into a clean flat strip instead of a distorted doughnut-shaped island.",
+    "source": {"source_id": "ww5BP-T28Ow", "start_seconds": 311, "end_seconds": 365},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 5:11-6:05, a closed interior perimeter (a hole/socket rim) initially unwraps into a distorted ring-shaped island; placing one cross-cut seam on its less-visible side immediately resolves it into a clean flat strip.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving a closed ring/loop boundary unseamed and accepting the resulting UV distortion",
+    "reason": "Any closed loop in the mesh maps to a closed loop in UV space, which necessarily distorts under a 2D flattening unless cut open somewhere -- placing that one required cut in an inconspicuous location avoids a visible seam artifact while still resolving the stretching.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Placing seams on BOTH sides of a bevel/chamfer strip isolates that strip into its own tiny, thin UV island, which is prone to checker-pattern/texture misalignment against its neighbors and carries a high risk of pixel bleeding during texture baking due to its small size. Bevels and chamfers should almost always stay attached to (share an island with) one of their adjacent main faces rather than being cut free as an independent sliver.",
+    "source": {"source_id": "ww5BP-T28Ow", "start_seconds": 380, "end_seconds": 410},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 6:20-6:50, small isolated micro-islands along a transition bevel cause checker-pattern misalignment; deleting the duplicate inner seams merges the chamfer faces back into the main surrounding strip, resolving it.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Seaming a bevel/chamfer on both edges so it forms its own separate, independent UV island",
+    "reason": "A thin isolated bevel island is both visually prone to misalignment against its neighboring islands and, being so small in UV space, has a disproportionately high risk of texture-bake pixel bleeding at its edges -- keeping it attached to a neighboring main-face island avoids both problems.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A single very long, thin UV island (e.g. a perimeter strip spanning the full height of the 0-1 UV tile) forces the whole UV packing to scale down to fit that one island's extreme aspect ratio, wasting a large fraction of the available texture space (observed: over 60% of the tile left empty). Adding a seam partway along the strip to split it into two or more shorter, closer-to-square segments and re-packing fills the tile far more densely, directly increasing effective texel density (texture resolution) across the whole model for the same texture size.",
+    "source": {"source_id": "ww5BP-T28Ow", "start_seconds": 764, "end_seconds": 855},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 12:44-14:15, a continuous perimeter island spans the full height of the UV square, leaving most of the tile empty during packing; splitting it with an added seam into shorter segments and re-packing fills the tile densely.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving an extreme-aspect-ratio (very long, thin) island unsplit in the UV layout",
+    "reason": "UV packers can't rotate a long thin island to better use square texture space without wasting the perpendicular dimension -- one dominant extreme-aspect island caps the maximum useful scale for the entire layout, so splitting it into closer-to-square pieces is usually a net win for texel density even though it adds a seam.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

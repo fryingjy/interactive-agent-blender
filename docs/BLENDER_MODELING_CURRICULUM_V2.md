@@ -101,10 +101,14 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
 
 18. **CG Boost -- UV Unwrapping** (channel: `@cgboost`). `xPoxqOcUzNQ`. Full beginner UV-unwrapping
     workflow. Processed (`runs/2026-08-14_video-study-cgboost-uv-unwrapping/`, 7 items).
-19. **Josh Gambrell -- Simple UV workflow.** Practical hard-surface UV technique, repeatedly
-    recommended in Blender community discussions. Not yet processed -- not the same video as
-    `runs/2026-08-14_video-study-blenderbros-5-best-tricks/` (`uWyKgmTWQGE`, a different
-    Blender-Bros-channel video processed under the general hard-surface pass, item still open).
+19. **Josh Gambrell -- Simple UV workflow.** `ww5BP-T28Ow` ("A Simple Approach to UVs (Practical
+    Example)", found via title search on the Josh - Blender Bros channel; not the same video as
+    `runs/2026-08-14_video-study-blenderbros-5-best-tricks/`, `uWyKgmTWQGE`). Practical hard-surface
+    UV technique, repeatedly recommended in Blender community discussions. Processed
+    (`runs/2026-08-14_video-study-joshgambrell-simple-uv-approach/`, 5 items) -- sharp-edge
+    auto-seams + Conformal unwrap, clearing unneeded seams on low-curvature surfaces, cutting closed
+    rings/holes, keeping bevels attached to their neighbor island, and splitting extreme-aspect-ratio
+    islands for packing efficiency. **Level 7 (UVs) complete, 2/2.**
 
 ## Level 8 -- Materials and shading
 
