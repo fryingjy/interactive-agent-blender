@@ -771,3 +771,27 @@ objects into perfect bevels" is judgment-only (no new mechanics): a third indepe
 confirming full-blockout-before-any-bevels sequencing, plus principles about bevel placement and
 width as silhouette-design decisions. 11 items total; curriculum doc and the bevel-weight policy
 memory both updated.
+
+## Update -- 2026-08-15 (continued 3)
+
+Ran the Level 14 synthesis pass the curriculum doc had been flagging as owed since the extended-
+curriculum push: cross-referenced all 87 knowledge items across the 20 "professional breakdown"
+video runs against the 9-stage reasoning-chain framework (reference interpretation -> blockout ->
+representation choice -> topology -> modifier -> detail -> surface/shading -> mistake ->
+correction). No new videos watched -- pure meta-analysis of knowledge already on file.
+
+Honest result, not a rubber-stamp: five stages (topology, modifier, detail, surface/shading,
+mistake->correction) are strongly evidenced, several rules cross-validated independently across 3
+separate runs (the Bevel-miter-must-be-Arc rule, the Shrinkwrap+Data-Transfer attach combo, the
+origin-must-be-reset-before-mirroring failure). Two stages are moderate but narrower than they look
+(blockout decision is mostly sequencing rules, not proportion judgment; representation choice has 7
+candidate items but only one -- a professional explicitly rejecting boolean-driven geometry in favor
+of native topology, with named consequences -- is a real live narrated decision rather than a
+retrofitted technique claim). One stage is thin to the point of near-absence: reference
+interpretation. Of 87 items, exactly one actually closes the loop from "here is what the reference
+shows" to "here is the geometric decision that produced." This independently confirms this
+project's own already-flagged capability gap (the 2026-08-14 external assessment: "give it any
+reference and get a professional model" remains unmet) rather than being a coincidence of which
+videos got processed -- the same gap keeps surfacing from a completely different angle. The
+synthesis names concrete next-source types for the thin stages instead of just restating the gap.
+Curriculum doc updated with the honest strong/moderate/thin verdict.

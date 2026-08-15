@@ -266,9 +266,26 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
     `blenderbros-5-best-tricks`, `cgcookie-hardsurface-intro`, `cgvoice-amateur-mistakes`,
     `crnt-boolean-triangle`, `elementza-clean-topology`, `grant-abbitt-beginners`, `gnomon-bryant-momo-koshu`,
     `jl-mussi` / `jl-mussi-5-tips` / `jl-mussi-easy-once-you-learn`, `mcglasham-subd`, `pzthree-retopology`,
-    `rileyb3d-advanced-hardsurface`, `subd-3dprint` (all under `runs/2026-08-14_video-study-*/`). Not
-    exhaustively cross-referenced against the reasoning-chain framework above; worth a dedicated
-    synthesis pass rather than treating "processed" as "fully extracted for this specific level's goal."
+    `rileyb3d-advanced-hardsurface`, `subd-3dprint` (all under `runs/2026-08-14_video-study-*/`).
+    **Synthesis pass done 2026-08-15** (`runs/2026-08-15_synthesis-level14-professional-judgment/synthesis.md`,
+    87 items across all 20 runs cross-referenced against the 9-stage chain, no new videos watched --
+    a meta-analysis of existing extraction, not new extraction). Honest result: **strong** on
+    topology decision, modifier decision, detail decision, surface/shading decision, and
+    mistake->correction (5-10+ items each, several rules cross-validated across 3 independent runs,
+    e.g. Bevel-miter-must-be-Arc). **Moderate** on blockout decision (mostly sequencing rules, not
+    proportion-judgment) and representation choice (7 candidate items, but only one --
+    `mcglasham-subd`'s explicit boolean-vs-native-topology rejection -- is a real narrated live
+    decision between named alternatives; the rest are retrofitted technique claims). **Thin to
+    near-absence**: reference interpretation -- of 87 items, exactly ONE
+    (`elementza-clean-topology`'s highlight-position-drives-topology-placement) actually closes the
+    loop from "here is what the reference shows" to "here is the specific decision that produced."
+    This matches, rather than coincidentally overlaps with, this project's own separately-flagged
+    gap (the 2026-08-14 external assessment on file in `docs/RESEARCH_ROADMAP.md`: "give it any
+    reference and get a professional model" remains unmet) -- confirms it's a real capability gap,
+    not an artifact of which 20 videos happened to get processed. The synthesis names what kind of
+    NEW source would actually fill each thin stage (a narrated reference-critique/breakdown video
+    for reference interpretation, not another hard-surface tutorial; a side-by-side
+    representation-tradeoff comparison for representation choice) rather than just restating the gap.
 
 ## Level 15 -- Sculpting (LAST, deliberately deferred)
 
