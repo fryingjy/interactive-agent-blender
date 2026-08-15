@@ -171,8 +171,11 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
   `.blend`, MatCap render, report, and independent verification.
 - `runs/2026-08-15_reference-interpretation-contract/` - evidence-bound silhouette, boundary,
   uncertainty, and target-identity decisions integrated into stage progression.
-- `runs/2026-08-15_gemini-pipeline-validation/` - reproducible structured-video analysis output with
-  source and observation boundaries.
+- `runs/2026-08-15_gemini-pipeline-validation/` - retained failed provenance control: the executable
+  Gemini request returned a different source ID and is now explicitly rejected.
+- `runs/2026-08-15_video-discovery-queue/` - live metadata-only lesson discovery, known-source and
+  held-out contamination filters, strict source binding, one retained cross-video rejection, and
+  one independently detected timestamp defect; no video was archived and no lesson was promoted.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 

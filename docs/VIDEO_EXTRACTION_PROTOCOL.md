@@ -66,6 +66,18 @@ independent reviewer checks representative timestamps against the visible video 
 This prevents a structured model response from being mistaken for proof that the source was
 correctly understood.
 
+Source identity is now fail-closed. For discovery-bound study, the request carries the queue's
+video ID, exact title, creator, and duration. The model-reported URL must identify the same video,
+and all metadata must match before output is written. `runs/2026-08-15_video-discovery-queue/`
+proved why this is mandatory: an unconstrained call returned a coherent analysis of a completely
+different tutorial. The earlier Gemini pipeline-validation artifact is retroactively rejected for
+the same URL mismatch. Request-owned URL rewriting is forbidden because it can hide cross-video
+attribution.
+
+Use `tools/discover_video_lessons.py` to create metadata-only queues. Discovery uses no media
+download and promotes no knowledge; popularity and title fit are only triage signals. Bind a queued
+candidate into analysis with `tools/analyze_video_with_gemini.py --discovery-queue ... --rank N`.
+
 ## How this maps onto the existing implementation
 
 - Steps 1-8 map onto `knowledge_engine/video_knowledge.py`'s `KnowledgeItem` schema: `knowledge_type`

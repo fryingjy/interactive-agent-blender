@@ -1,0 +1,204 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "prompt_version": "blender-video-study-v1",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": "v1_ChdpOXVBYXRLR09OV2pfdU1QOEpxUnVRWRIXaTl1QWF0S0dPTldqX3VNUDhKcVJ1UVk",
+    "reported_source_url": "https://www.youtube.com/watch?v=0w1g02L688g",
+    "reported_source_matches_request": false,
+    "verification_status": "REJECTED_SOURCE_IDENTITY_MISMATCH",
+    "video_archived": false
+  },
+  "analysis": {
+    "source": {
+      "title": "Retopology Explained in 6 Minutes",
+      "creator": "Nizzarts",
+      "url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+      "duration_seconds": 379,
+      "blender_version_mentions": [
+        "2.8x"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Manual retopology workflow: surface snapping, edge-flow harness construction, quad density reduction, grid filling, shrinkwrap projection fixes, and multiresolution reshape transfer.",
+    "episodes": [
+      {
+        "start_seconds": 112,
+        "end_seconds": 147,
+        "timestamp_label": "01:52 - 02:27",
+        "modeling_stage": "Snapping Setup & Initial Extrusion",
+        "problem": "Newly generated mesh geometry does not conform to the high-poly sculpt surface.",
+        "observed_fact": "Face Snapping is configured with 'Closest', 'Project Individual Elements', and Affect 'Move, Rotate, Scale'. Extruded quad strips conform to eyebrow surface.",
+        "instructor_claim": "Snapping settings force newly extruded vertices to stick directly to the sculpt surface.",
+        "interpretation": "Face snapping with individual element projection ensures vertices lie on the target surface during manual extrusion.",
+        "hypothesis": "Dynamic Shrinkwrap modifier during drafting could provide realtime snapping without manual re-projection.",
+        "reference_evidence": "Snapping popover UI configuration at 01:56.",
+        "modeling_decision": "Enable face snapping with individual projection and transform affectors before extruding.",
+        "visible_action": "Configures snapping options, creates a plane, extrudes edge strips across the eyebrow.",
+        "spoken_reason": "Snapping keeps geometry on the surface; Mirror modifier doubles construction speed.",
+        "topology_surface_effect": "Quad strip follows surface contours of the high-poly brow.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Projecting extruded vertices directly onto high-poly surfaces during layout prevents geometry off-set.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 162,
+        "end_seconds": 225,
+        "timestamp_label": "02:42 - 03:45",
+        "modeling_stage": "Topology Harness / Edge Flow Layout",
+        "problem": "Extending topology sequentially from top to bottom creates edge-flow mismatches across key features.",
+        "observed_fact": "Rings of quad strips are placed around eyes, mouth, chest, crotch, and joints before bridging open gaps.",
+        "instructor_claim": "'Divide and Conquer' builds key landmark loops first to establish edge flow before filling patches.",
+        "interpretation": "Prioritizing primary deformation loops establishes mesh structure and prevents uncontrolled loop propagation.",
+        "hypothesis": "Filling patches sequentially without landmark loops causes pole misplacements around deforming joints.",
+        "reference_evidence": "Anatomical key loops highlighted at 03:40.",
+        "modeling_decision": "Construct closed loop harnesses around major anatomical landmarks before patching intermediate surface gaps.",
+        "visible_action": "Extrudes circular quad rings around eyes, mouth, torso boundaries, and limbs.",
+        "spoken_reason": "Prevents filling areas with geometry that later fails to align with main anatomical flows.",
+        "topology_surface_effect": "Defines circular edge loops around primary deforming zones.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Isolate critical edge-flow loops surrounding deformation landmarks before filling intervening surface patches.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 253,
+        "end_seconds": 265,
+        "timestamp_label": "04:13 - 04:25",
+        "modeling_stage": "Density Transitions & Pole Placement",
+        "problem": "Transitioning between high-density and low-density mesh regions while maintaining quad topology.",
+        "observed_fact": "2D topological diagrams illustrate 2:1, 4:1, 3:1, 4:2, and 5:3 edge reduction patterns using quads and poles.",
+        "instructor_claim": "Only triangles end edge flow; four-sided quads redirect edge flow into different directions.",
+        "interpretation": "Strategic placement of 3-way and 5-way poles enables edge count reduction while preserving all-quad structure.",
+        "hypothesis": "Using triangles or N-gons in transition zones causes shading artifacts under subdivision.",
+        "reference_evidence": "Reduction diagram schemas displayed at 04:16.",
+        "modeling_decision": "Utilize standardized quad reduction patterns to merge parallel edge loops.",
+        "visible_action": "Displays 2D diagrams showing flow paths and pole layouts for multi-edge reductions.",
+        "spoken_reason": "Maintains clean, controllable topology across areas with changing detail requirements.",
+        "topology_surface_effect": "Merges multiple parallel edge loops into fewer loops without introducing triangles.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Use standard quad-based pole reduction patterns to transition mesh density seamlessly without breaking edge flow.",
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 266,
+        "end_seconds": 282,
+        "timestamp_label": "04:26 - 04:42",
+        "modeling_stage": "Patch Filling",
+        "problem": "Efficiently closing large multi-sided gaps between established edge loops.",
+        "observed_fact": "An open boundary loop on the skull is selected and filled using Edit Mode > Face > Grid Fill.",
+        "instructor_claim": "Grid Fill populates large topological holes with an even grid of quad faces.",
+        "interpretation": "Grid Fill requires an even number of perimeter vertices to calculate clean cross-grid quad topology.",
+        "hypothesis": "Manual face-by-face filling on large planar or curved patches increases construction time unnecessarily.",
+        "reference_evidence": "Grid Fill executed on head model at 04:38.",
+        "modeling_decision": "Apply Grid Fill on enclosed boundary loops to bridge open topology gaps.",
+        "visible_action": "Selects boundary edges on cranial mesh and executes Grid Fill with active parameters.",
+        "spoken_reason": "Automatically populates clean quad grids across large open surface regions.",
+        "topology_surface_effect": "Fills open boundary with aligned quad mesh grid following surrounding curvature.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Automated grid filling tools rapidly bridge open quad boundaries when perimeter vertex counts are balanced.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 287,
+        "end_seconds": 324,
+        "timestamp_label": "04:47 - 05:24",
+        "modeling_stage": "Surface Preservation & Artifact Correction",
+        "problem": "Low-poly retopology lacks fine detail and suffers projection artifacts in tight concavities like ears.",
+        "observed_fact": "Shrinkwrap and Subdivision Surface modifiers project low-poly mesh onto sculpt. Surface pinching occurs around the ear concavity, which is corrected by manually moving low-poly vertices in Edit Mode.",
+        "instructor_claim": "Adjusting base geometry resolves severe surface stretching and projection glitches near complex geometry.",
+        "interpretation": "Ray projection algorithms fail on overlapping concavities unless base vertices are positioned near target features.",
+        "hypothesis": "Increasing shrinkwrap offset or changing wrap mode to Project may reduce initial ear clipping.",
+        "reference_evidence": "Mesh distortion and vertex tweak on ear shown at 05:20.",
+        "modeling_decision": "Combine Shrinkwrap and Subdivision modifiers, then manually adjust misplaced vertices over tight recesses.",
+        "visible_action": "Adds Shrinkwrap and Subsurf modifiers; grabs and adjusts ear vertices to fix projection distortion.",
+        "spoken_reason": "Manual vertex adjustment resolves projection stretching and holes in dense anatomical features.",
+        "topology_surface_effect": "Restores smooth surface projection over intricate mesh concavities.",
+        "failure": "Shrinkwrap modifier creates mesh clipping and severe surface stretching around ear folds.",
+        "correction": "Manually grab and re-position problematic low-poly vertices closer to ear contours in Edit Mode.",
+        "alternatives": "",
+        "transferable_principle": "Projection modifiers require manual vertex alignment near tight concavities to prevent projection artifacts.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 325,
+        "end_seconds": 354,
+        "timestamp_label": "05:25 - 05:54",
+        "modeling_stage": "High-Poly Multires Transfer",
+        "problem": "Maintaining multi-level sculpt detail on the clean low-poly retopologized mesh.",
+        "observed_fact": "Applies Shrinkwrap/Subsurf on base model. On duplicate mesh, adds Multires, subdivides to matching level, selects base mesh then Multires duplicate, and clicks 'Reshape' under Multires settings.",
+        "instructor_claim": "Reshape transfers high-poly sculpt detail onto a Multires modifier for multi-level sculpting and performance control.",
+        "interpretation": "Reshaping projects external spatial data into multires displacement levels for efficient viewport handling.",
+        "hypothesis": "Baking normal maps directly would yield similar visual results without high memory overhead for real-time rendering.",
+        "reference_evidence": "Multires Reshape button clicked in UI at 05:44.",
+        "modeling_decision": "Transfer high-frequency sculpt geometry to Multires modifier using Reshape function.",
+        "visible_action": "Sets up Multires modifier, subdivides mesh, selects source and target, executes Reshape command.",
+        "spoken_reason": "Allows toggling between low-poly base and high-detail sculpt levels on retopologized mesh.",
+        "topology_surface_effect": "Embeds detailed sculpt displacements into multi-level resolution hierarchy on clean quad mesh.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Reshaping multiresolution meshes against projected surfaces retains sculpt details within an editable multi-level topology.",
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "00:00 - 01:51: Overview of retopology concepts, rigging performance lag demo, and method comparison slides.",
+      "03:46 - 04:12: Portfolio showcase slides and general presentation.",
+      "05:55 - 06:19: Non-modeling outro, social links, and channel promotions."
+    ],
+    "limitations": [
+      "Video summarizes high-level workflow; specific keypress shortcuts are not consistently displayed on screen.",
+      "Edge reduction patterns are presented via 2D schematics rather than live 3D mesh modeling."
+    ]
+  }
+}

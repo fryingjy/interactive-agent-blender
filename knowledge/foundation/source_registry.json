@@ -2339,5 +2339,55 @@
         "Minimum connector length cannot establish semantic or artistic correspondence"
       ]
     }
+  },
+  {
+    "id": "youtube-noggi-retopologize-anything",
+    "url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+    "local_path": null,
+    "title": "How To Retopologize ANYTHING in Blender in Less Than 6 Minutes",
+    "creator": "Noggi",
+    "source_type": "educational_video",
+    "trust_tier": "C",
+    "version": "accessed 2026-08-15",
+    "topics": ["retopology", "edge-flow", "density-transition", "surface-projection"],
+    "access": {"text": false, "video": true, "audio": true, "captions": true},
+    "status": "QUEUED",
+    "rejected_reason": null,
+    "modalities_inspected": ["video", "audio", "captions"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_video-discovery-queue/"],
+      "limitations": [
+        "Independent review was partial because browser frame capture failed",
+        "The structured Grid Fill episode began too early relative to live playback",
+        "No principle was reproduced, transferred, or promoted"
+      ]
+    }
+  },
+  {
+    "id": "experiment-video-discovery-provenance-2026-08-15",
+    "url": null,
+    "local_path": "runs/2026-08-15_video-discovery-queue/",
+    "title": "Metadata-only Video Discovery and Source-Identity Validation",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "2026-08-15",
+    "topics": ["video-discovery", "source-provenance", "curriculum-triage", "gemini-video"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["public_metadata", "video", "audio", "captions", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_video-discovery-queue/"],
+      "direct_observations": [
+        "Three live metadata queries produced fifteen unique candidates without downloading media",
+        "One unconstrained Gemini call substituted a different video and is retained as rejected",
+        "Strict metadata binding produced the requested source but independent review found a timestamp defect"
+      ],
+      "limitations": [
+        "Metadata ranking is not a source-quality judgment",
+        "Visible action recognition, reproduction, transfer, and runtime use remain unproven"
+      ]
+    }
   }
 ]
