@@ -1,0 +1,50 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To cut clean holes into a curved tube/hose object built from a Bevel-Depth curve, duplicate the source curve and hide the duplicate BEFORE cutting any holes into the converted mesh -- then use a Data Transfer modifier (Face Corner Data > Custom Normals > Projected Face Interpolated, source = the hidden clean duplicate) to pull the undamaged curve's smooth shading back onto the holed mesh, since cutting holes directly into a converted curve-mesh produces severe shading artifacts that persist even after applying a bevel to the hole edges.",
+    "source": {"source_id": "FjWrEccXREY", "start_seconds": 215, "end_seconds": 266},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly (transcript, 2026-08-15): 'the main issue here is the shading is going to be absolutely terrible... what we actually want to do instead is before we add any of these details here, we want to duplicate this curve and then just hide it. We're going to transfer the shading information over... we'll just go to face corner data, custom normals, and then the projected face interpolated. It's going to transfer that shading over.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Cutting holes directly into the curve-derived mesh and accepting or fighting the resulting shading artifacts with Smooth-by-Angle alone, which the video shows does not resolve them.",
+    "reason": "A curve-to-mesh workflow (bevel-depth curve + Ctrl+A 'visual geometry to mesh') is one candidate technique this project has not yet tried for building tubular/curved parts (the teapot spout/handle and padlock/stapler shackle were all built via manual extrude-and-rotate chains instead, which repeatedly hit bugs) -- if this path is tried, cutting holes into the result will need this specific pre-duplicate-and-hide sequencing to avoid a real, demonstrated shading failure.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "When a Data Transfer's source and target objects have mismatched shell thickness (e.g. target has a Solidify modifier applied on the outer wall but not on interior cap faces), scope the Data Transfer to a Vertex Group covering only the region with matching thickness (selected via Select Sharp Edges > Mark Seam > L-select the bounded region) rather than applying the transfer to the whole mesh at once.",
+    "source": {"source_id": "FjWrEccXREY", "start_seconds": 315, "end_seconds": 353},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly (transcript): 'this one doesn't have a thickness to it. And this one has a thickness, so it's transferring like weird. So, all I want to do is select the outer area here... simply go here into edge mode, select sharp edges. We're going to right click to mark seam. And then I can go into face mode and press the L key... Now we're just going to add in a vertex group and assign that.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Applying Data Transfer to the entire mesh in one pass regardless of whether every region has matching source/target topology (thickness), which the video shows produces incorrect results specifically on the mismatched region.",
+    "reason": "A Data Transfer modifier is not in this project's typed op surface yet, but if adopted, this project-region-scoping caveat (matching thickness is a precondition, not automatic) would need to be respected -- otherwise a partial-thickness object (like the stapler's base plate, which has a different profile than the main body) could silently get bad results from an unscoped Data Transfer.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Loop Tools' Circle operator (N-panel > Edit > LoopTools > Circle) can force an arbitrary vertex loop into a mathematically perfect circle in one click, as an alternative to eyeballing a circular shape via Bevel Vertices (Ctrl+Shift+B) segment count and profile-shape adjustment.",
+    "source": {"source_id": "FjWrEccXREY", "start_seconds": 154, "end_seconds": 184},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly (transcript): 'technically what you could do is you could go to loop tools and then choose circle. And that would just force it into a circle... if you want it to be a perfect circle, just go in... just go to circle and that's going to make it into a circle.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually tuning Bevel Vertices segment count and profile shape to eyeball a circular cross-section, which this same video's own narration acknowledges is imprecise ('depending on the profile shape, I can kind of eyeball it').",
+    "reason": "Independently confirms the Loop Tools Circle finding already captured today from the CG Boost 100+ Tips video (runs/2026-08-15_video-study-cgboost-100-tips-meshmodeling/) -- a second, unrelated source treats it as the standard way to get a perfect circular loop, raising confidence in that technique for any future circular-hole/boss requirement.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Solidify (thickness) and Auto Smooth must be applied to a mesh BEFORE running a Data Transfer that pulls custom normals from a clean duplicate -- applying Solidify AFTER the Data Transfer destroys the transferred shading, because Solidify changes the mesh's face-corner topology that the transferred normal data was matched against.",
+    "source": {"source_id": "FjWrEccXREY", "start_seconds": 273, "end_seconds": 302},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly (transcript): 'once I add a solidify modifier, it's going to just completely destroy the shading... essentially, what we want to do before we do the data transfer at all, is we want to run our solidify. We can add our auto smooth... And then we need to apply the solidify here.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Adding Solidify at any point in the modifier stack without regard to Data Transfer ordering, assuming modifier order among Solidify/Smooth/Data-Transfer doesn't matter as long as all three are present.",
+    "reason": "A specific, non-obvious ordering constraint for a modifier combination (Solidify + Data Transfer) this project hasn't used yet -- worth having on file before the combination is tried for the first time, rather than rediscovering the failure live.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

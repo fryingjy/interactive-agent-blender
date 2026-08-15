@@ -752,3 +752,22 @@ photos for actual edge sharpness before spending effort solving a topology probl
 show does not need solving -- plus an explicit rejection of Ctrl+E Rotate Edge in favor of
 delete-face+Alt+M merge for edge-flow redirection. 23 items total across the three parts. Curriculum
 doc and the bevel/SubD-contradiction memory note both updated.
+
+## Update -- 2026-08-15 (continued 2)
+
+Surveyed curriculum item #14's target channel (Josh Gambrell, now rebranded "Josh - Blender
+Bros") for the first time -- mostly Hard Ops/Boxcutter/Plasticity add-on tutorials and business
+content now, not pure technique videos. Selected and processed the 3 highest-value hard-surface
+videos (transcript-only). Most valuable: "How to fix SHADING ERRORS in Blender" draws a real,
+previously-undocumented boundary on this project's own bevel-weight policy -- Weighted Normal only
+fixes flat-surface bevel shading distortion, not curved-surface distortion (a bent/non-planar face
+is a different problem entirely, needing clean topology, denser geometry, or a Data Transfer
+modifier instead). Every hard-surface asset built this session has curved surfaces, so this is
+immediately load-bearing, not hypothetical -- added to the bevel-weight policy memory as a flagged
+boundary condition. "PERFECT curves with holes" independently confirms Loop Tools Circle (also
+found today via CG Boost) and adds a curve-to-mesh construction path for tubular parts, genuinely
+different from this project's repeated extrude-and-rotate-chain approach. "CONVERT your blocky
+objects into perfect bevels" is judgment-only (no new mechanics): a third independent source
+confirming full-blockout-before-any-bevels sequencing, plus principles about bevel placement and
+width as silhouette-design decisions. 11 items total; curriculum doc and the bevel-weight policy
+memory both updated.

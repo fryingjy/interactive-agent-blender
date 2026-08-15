@@ -95,9 +95,28 @@ videos without that loop is the failure mode this curriculum exists to avoid.
 12-13. CG Boost Hard-Surface Fundamentals and 6 Tricks (already listed as #5 and #7) -- revisit with
     focus on blockout, primitive construction, boolean usage, component construction, decals,
     materials, workflow order (12) and curves/cables/pipe joins/decals/normals/speed workflows (13).
-14. **Josh Gambrell -- Hard Surface Modeling** (channel: `@JoshGambrell`). Do not ingest the whole
-    channel -- identify the highest-value hard-surface videos specifically and study those per the
-    extraction protocol. Not yet processed; channel not yet surveyed.
+14. **Josh Gambrell -- Hard Surface Modeling** (channel: `@JoshGambrell`, now rebranded "Josh -
+    Blender Bros"). Do not ingest the whole channel -- identify the highest-value hard-surface
+    videos specifically and study those per the extraction protocol. Channel surveyed 2026-08-15
+    (full recent-videos listing reviewed; channel is now mostly Hard Ops/Boxcutter/Plasticity
+    add-on tutorials and business content, not pure technique videos -- 3 videos selected as
+    highest-value and processed, transcript-only):
+    - **"How to fix SHADING ERRORS in Blender"** (`EdEIUkWzYY0`, 13:07,
+      `runs/2026-08-15_video-study-blenderbros-shading-errors/`, 4 items) -- most valuable of the
+      three: draws a real, previously-undocumented boundary on this project's own bevel-weight
+      policy (Weighted Normal fixes flat-surface bevel shading distortion but NOT curved-surface
+      distortion, which is a different problem requiring clean topology / denser geometry / Data
+      Transfer instead), plus a Mark-Sharp-splits-into-two-holding-edges-on-bevel failure mode.
+    - **"PERFECT curves with holes in Blender"** (`FjWrEccXREY`, 9:24,
+      `runs/2026-08-15_video-study-blenderbros-perfect-curves-holes/`, 4 items) -- a curve-to-mesh
+      construction method for tubular parts with holes (genuinely different from this project's
+      repeated extrude-and-rotate-chain approach), plus independent confirmation of Loop Tools
+      Circle for perfect circular holes (also found today via CG Boost 100+ Tips).
+    - **"CONVERT your blocky objects into perfect bevels"** (`bgxT83mPTzI`, 10:37,
+      `runs/2026-08-15_video-study-blenderbros-blocky-to-bevels/`, 3 items) -- judgment-level
+      principles only (no new mechanics): full-blockout-before-any-bevels (a third independent
+      source for this sequencing), bevel edge placement as a silhouette-design decision, bevel
+      width as a tunable soft/hard design axis per edge.
 
 ## Level 5 -- Reference-based modeling
 
