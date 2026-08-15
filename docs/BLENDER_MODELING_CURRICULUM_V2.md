@@ -127,8 +127,22 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
     HIGH priority. Jump from beginner to an actual intermediate asset workflow; later parts cover
     final modeling touches leading into UV work. Treat as modeling reasoning/training data, not
     current-API documentation (older Blender version).
-    Processed (`runs/2026-08-14_video-study-blenderguru-anvil/`, 7 items) -- Part 1 only; later
-    parts of the series not yet located/processed.
+    Processed (`runs/2026-08-14_video-study-blenderguru-anvil/`, 7 items) -- Part 1. **Series now
+    complete, all 4 modeling parts processed (transcript-only, 2026-08-15):**
+    Part 2 (`WxMwa0njGSM`, "Boolean!", `runs/2026-08-15_video-study-blenderguru-anvil-part2/`, 8
+    items) -- boolean setup/cleanup; confirms this project's existing boolean-workflow gap (no Weld
+    modifier, no post-boolean bevel -- this video uses manual Remove Doubles + quad-preserving
+    knife-cuts instead, and defers edge rounding to support loops, not a bevel, at any point).
+    Part 3 (`lITV4F_P4E0`, "Sharpening Edges", `runs/2026-08-15_video-study-blenderguru-anvil-part3/`,
+    6 items) -- a third, bevel-free edge-sharpness technique (support/proximity loops narrowing the
+    Subdivision Surface averaging span) that doesn't resolve the live Bevel-before-vs-after-SubD
+    contradiction (see item #4 above) but adds a real adjacent data point: Edge Crease only behaves
+    predictably at maximum value, not partial values.
+    Part 4 (`9ViVKUiG8ks`, "Final Touches", `runs/2026-08-15_video-study-blenderguru-anvil-part4/`,
+    9 items) -- edge-flow redirection via delete-face+Alt+M merge (Ctrl+E Rotate Edge explicitly
+    rejected as too imprecise), and a real judgment-call principle: check reference photos for
+    actual edge sharpness *before* spending effort solving a topology problem that reference may
+    show doesn't need solving at all.
 
 ## Level 7 -- UVs
 

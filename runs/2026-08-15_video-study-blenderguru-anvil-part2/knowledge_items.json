@@ -1,0 +1,98 @@
+[
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For a mesh region where multiple different slopes/curves intersect and don't reduce to a single primitive shape (the anvil's cutout notch), Boolean subtraction with a positioned cylinder operand is presented as 'the correct way' to build the cutout, in preference to either manually pushing vertices into a rough approximate shape or making knife cuts across the top view and deleting the resulting faces.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 94.0, "end_seconds": 163.9},
+    "confidence": 0.5,
+    "supporting_evidence": "94.0s: 'you've got let's say you had three modelers... they could have come up with three different solutions'; 101.8-120.2s describes one hypothetical approach as 'messy cuts... not too keen on clean meshes', another as 'top view, I'm going to perform some knife cuts along here, I might delete those faces'; 134.0-142.6s: 'the third way, the way I'm going to show you, is what I think is the correct way for something like this, which is a Boolean operation.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually pushing vertices into a rough approximate shape ('messy cuts'), or making knife cuts in top view and deleting the resulting faces.",
+    "reason": "Framed explicitly as the instructor's own judgment call for this specific class of shape (multiple intersecting slopes that don't reduce to one primitive) -- not a claim that Boolean is universally the best tool, but a deliberate choice recorded with its rejected alternatives.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To set up a subtractive Boolean modifier: add and roughly position the cutting shape (operand) first (exact placement not required yet), then make sure the mesh you want to KEEP -- not the operand -- is the active/selected object before adding the modifier (the instructor notes he mis-selected the operand instead 'like three times' during practice). Add Modifier > Boolean, use the eyedropper field to pick the operand object (the modifier shows red/invalid until an object is assigned), then change Operation from the modifier's default Intersect to Difference to subtract the operand instead of keeping only the overlap.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 222.2, "end_seconds": 291.8},
+    "confidence": 0.55,
+    "supporting_evidence": "237.2-254.0s: 'select the mesh that you want to keep... I only saying this cuz I've done this... like three times I think I selected the cylinder first without thinking'; 256.6-270.8s: 'select the Anvil then go to the modifier stack, add modifier... boing... it's red by default because it hasn't got an object... click that eyedropper... select the cylinder'; 272.4-288.6s: 'it's putting itself inside the cylinder, so it's performing it the opposite that we want, so instead of intersect we're going to change it to difference... we now have a cut in our Anvil.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the Boolean operation on its default Intersect setting, or making the operand (rather than the mesh to keep) the active object before adding the modifier.",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "VISUAL_CUE",
+    "claim": "Two overlapping solid meshes set up for a Boolean cut look identical to non-overlapping meshes under default Solid shading, because opaque surfaces hide the overlap, making it hard to judge where the operand actually intersects the base mesh. The fix demonstrated: on the operand object, in Object Properties under Viewport Display, change Maximum Draw Type from Textured to Wire, so the operand renders wireframe-only and its position relative to the mesh underneath stays visible while it's being nudged into place.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 291.8, "end_seconds": 319.1},
+    "confidence": 0.55,
+    "supporting_evidence": "294.0-299.2s: 'when you look at it in solid view mode you can't see anything because they are two shapes literally intersecting with each other and you can't see inside them'; 301.2-309.8s: 'here's a little tip, if you go to the object settings and underneath display, if you change the maximum draw type from textured to wire, now it won't show you anything beyond wire'; 312.3-319.1s: 'now you can move it around and you can see how it's actually affecting your mesh underneath it.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Positioning the operand blind under Solid shading, or repeatedly jumping into Edit Mode / toggling the whole viewport to wireframe just to check placement.",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Rather than modeling a symmetric Boolean cutout on both sides of an object separately, cut only one side, then add a Mirror modifier below the Boolean modifier in the stack (mirror evaluated after the boolean) with only the correct axis enabled (the video corrects an initial wrong default of mirroring on both X and Y down to just Y). Before deleting the now-redundant mesh half, add a loop cut across the seam first -- deleting the half without that loop cut would leave the two mirrored halves with nothing joining them together at the seam.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 368.7, "end_seconds": 462.6},
+    "confidence": 0.5,
+    "supporting_evidence": "368.7-381.0s: 'what about the other side... no because we are artists and we are lazy... we can perform a mirror operation for the other side... add a mirror, so the mirror is after the boolean, underneath'; 396.2-416.1s: 'it's mirroring itself both ways which is incorrect so uncheck that, what you're looking for is the Y axis'; 419.2-444.2s: 'you have got mesh on both sides of that origin point... if you were to delete these vertices... you would see we don't have anything that's joining them together, so before you delete them make sure that you do a loop cut right here'; 454.7-462.6s: select half, delete vertices, 'cool so we got it on both sides now.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually cutting and cleaning up the same Boolean shape twice, once per side, or deleting half the mesh before adding a connecting loop cut at the seam.",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "Before clicking Apply on any modifier (Boolean included), duplicate the current object and move the duplicate to a spare 'trash' layer/collection first, as a manual undo-safety backup -- attributed in the narration as a habit also used by 'Andy Galic'.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 488.1, "end_seconds": 518.7},
+    "confidence": 0.55,
+    "supporting_evidence": "488.1-496.4s: 'before you click apply on any modifier I always recommend that you first of all duplicate what you have and then move it to what is called a trash layer'; 500.4-513.2s: 'it's a little tip, I think Andy Galic does it as well... you keep things on a spare layer just in case you need to go back to it, because otherwise if you've applied it and then later on you decided you don't like the shape you can't change it.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Applying the modifier directly with no backup copy, relying only on undo history to recover the pre-apply state.",
+    "reason": "Applying a modifier is destructive; once it's applied and the undo history is gone there is no way back to the pre-apply state except through a separately kept duplicate, so the duplicate-and-park-on-a-spare-layer habit is the stated insurance against that.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "The Boolean modifier's output mesh can look fine in Edit Mode under default Solid shading ('you got a nice line across here, what's the problem') while actually containing n-gons (5+ vertex faces, and sometimes fewer than 4) at the cut seam instead of clean quads. This defect stays invisible until a Subdivision Surface modifier is added, at which point the n-gon regions pinch and distort into a visibly broken mess. The stated rule of thumb: meshes intended for Subsurf need 4 vertices per face everywhere -- 3 or 5+ both cause problems, because face direction/edge-flow breaks down outside of quads.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 550.2, "end_seconds": 706.8},
+    "confidence": 0.55,
+    "supporting_evidence": "559.6-568.0s: 'the booing operator generally makes a mess of your mesh... if you look at it in edit mode you might not be able to see a problem... what's the problem'; 641.7-671.1s: 'because of the subsurf modifier... if we were to do that with our mesh right now you will see the problem... this no longer looks like a nice clean shape, looks like something a Jedi should fall into'; 677.2-696.6s: 'these faces are made up of not four vertices, they are made up of five or more or even less... whenever you have three, whenever you have five or more, you're going to have problems.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Judging Boolean output as clean/finished purely from its appearance in flat-shaded Edit Mode, without checking it under a Subdivision Surface modifier.",
+    "reason": "This is presented as the central caveat about Boolean in the whole video: raw Boolean output can't be trusted as production-ready mesh whenever the object will later get a Subsurf modifier, so topology has to be checked and fixed before relying on it.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The video's preferred fix for a boolean-created n-gon seam (over manually deleting geometry and hand-rebuilding faces) is: enable the Knife tool (K), turn on angle-constrain (C, snaps to 45-degree increments) and cut a straight line across the n-gon following an existing edge direction -- this adds vertices while preserving the original face rather than requiring manual re-triangulation. Where the new cut meets the boundary it creates a near-duplicate vertex; double-tapping G performs an Edge Slide, used here to slide that new vertex directly onto the existing vertex it should merge with. Finally, selecting the whole mesh and running Remove Doubles (W > Remove Doubles / merge-by-distance) collapses every coincident pair created this way back into a single clean quad mesh in one pass.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 797.5, "end_seconds": 1068.4},
+    "confidence": 0.5,
+    "supporting_evidence": "800.2-803.0s: 'there's a much easier way which I guess I learned years later, and that is to use the knife tool'; 861.0-898.4s: 'when it gets close to an edge it snaps to it... c for constrain to angle... it's now snapping it to 45 degree increments'; 927.2-957.7s: 'if you double tap G what it's doing is it's doing an edge slide... if you just slide it all the way... I've now got two vertices right on top of each other'; 971.5-1005.0s: 'if you select everything and then just hit W, you'll see something here that says remove doubles... it searches the whole mesh and if it finds any vertices that are on top of each other it will merge them together... removed two vertices.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "The 'hard way' shown first: manually deleting the offending edge/vertices, extruding new edges down, hand-building each new quad face with F, and recalculating normals afterward -- described by the instructor as his own older, slower method ('the old method that old Andrew would have used').",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To close the remaining open seam at the mirror plane without a separate Weld modifier or manual merge step: select only the boundary ring edge loop (deselecting the end pieces), extrude it along the Y axis inward into the mesh, and rely on the Mirror modifier's 'Clipping' option (already enabled on the same modifier) to automatically snap the extruded edge onto the mirror plane once it gets close, instead of leaving overlapping duplicate geometry at the seam that would need a separate cleanup pass.",
+    "source": {"source_id": "WxMwa0njGSM", "start_seconds": 1195.7, "end_seconds": 1253.6},
+    "confidence": 0.45,
+    "supporting_evidence": "1195.7-1220.0s: 'I'll just close up the bottom here... select all this... deselect these end pieces so I've just got the ring, and then I'm going to extrude it along the Y axis so it extrudes into itself'; 1223.0-1233.9s: 'because we've got the mirror turned on... we can turn on clipping... when you've got clipping what it'll do is that now when it gets close they'll stick together'; 1243.7-1247.8s: 'I'll make a face there cuz I know that's four vertices... we've done it.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Extruding the seam closed without Mirror Clipping enabled, which would leave overlapping/unwelded duplicate geometry at the mirror plane requiring a manual Remove Doubles pass afterward.",
+    "reason": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

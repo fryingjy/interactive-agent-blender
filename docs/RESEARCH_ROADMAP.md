@@ -736,3 +736,19 @@ candidate for the T-junction ngon bug hit three times this session, not yet test
 project's typed `mesh_ops.py` (no equivalent operation exists there yet). Two independent
 alternative hole-cutting techniques also surfaced (Bridge Edge Loops between matching opposing
 faces; Loop Tools Circle). Eight items captured; curriculum doc and this roadmap updated.
+
+## Update -- 2026-08-15 (continued)
+
+Closed out curriculum item #17: processed the remaining 3 parts of Blender Guru's 4-part anvil
+modeling series (transcript-only, via TubeAlfred, dispatched to three parallel background agents
+since each transcript exceeded the single-call token limit). Part 2 (Boolean) confirms this
+project's existing boolean-cleanup gap rather than closing it -- the video uses manual Remove
+Doubles plus quad-preserving knife cuts, never a Weld modifier, and defers edge rounding to support
+loops rather than a post-boolean bevel at any point. Part 3 (Sharpening Edges) adds a third,
+bevel-free technique to the live Bevel-before-vs-after-Subdivision-Surface question found earlier
+the same day: support/proximity loops, with Edge Crease explicitly rejected as unreliable except at
+maximum value. Part 4 (Final Touches) contributes a real judgment-call principle -- check reference
+photos for actual edge sharpness before spending effort solving a topology problem reference may
+show does not need solving -- plus an explicit rejection of Ctrl+E Rotate Edge in favor of
+delete-face+Alt+M merge for edge-flow redirection. 23 items total across the three parts. Curriculum
+doc and the bevel/SubD-contradiction memory note both updated.
