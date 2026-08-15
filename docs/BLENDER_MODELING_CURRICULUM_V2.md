@@ -26,7 +26,8 @@ videos without that loop is the failure mode this curriculum exists to avoid.
    Shrinkwrap-above-Solidify stack order, mask+Mesh-Filter uniform sculpt deformation, Geometry
    Nodes point-distribute scattering, and clamped-bevel hard-surface profile modeling.
 3. **CG Boost -- Retopology in Blender.** `X2GNyEUvpD4`. Later but required. Snapping, Shrinkwrap,
-   F2, LoopTools, topology cleanup. Not yet processed.
+   F2, LoopTools, topology cleanup. Processed (`runs/2026-08-14_video-study-cgboost-retopology/`,
+   7 items).
 
 ## Level 1 -- Core modeling
 
