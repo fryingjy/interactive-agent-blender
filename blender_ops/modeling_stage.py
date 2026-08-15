@@ -48,7 +48,7 @@ _KEY_LOG = "modeling_stage_log"
 # same "do not polish detail while the major form is still wrong" logic.
 # Descriptive, not machine-enforced (see module docstring).
 GATE_CRITERIA = {
-    "REFERENCE_ANALYSIS": "component decomposition and measured proportions/ratios recorded (not eyeballed) before any geometry is created",
+    "REFERENCE_ANALYSIS": "same-target structured reference audit, required views, critical-property authority, conflicts, component decomposition, measured proportions, and uncertainty recorded before geometry",
     "PRIMARY_BLOCKOUT": "major proportions plausible; primary silhouette sufficiently close; component layout stable",
     "PROPORTION_SILHOUETTE": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression",
     "SECONDARY_FORMS": "distinct sub-components/features present and correctly placed, still without fine surface detail",
@@ -102,7 +102,7 @@ def set_stage(name, stage, evidence):
 
 
 def advance_stage(name, stage, evidence, *, min_iou=0.9):
-    """Advance only when structured evidence passes the target stage gate.
+    """Advance only when evidence passes the stage being completed.
 
     `set_stage` remains available for explicit regression and legacy records. New forward
     transitions should use this strict path; failed gates do not mutate object state or history.
@@ -110,9 +110,14 @@ def advance_stage(name, stage, evidence, *, min_iou=0.9):
     if not isinstance(evidence, dict):
         raise TypeError("strict stage evidence must be a dict")
     previous = get_stage(name)
-    if previous in STAGES and stage in STAGES and STAGES.index(stage) < STAGES.index(previous):
+    if stage not in STAGES:
+        raise ValueError(f"stage must be one of {STAGES}")
+    if previous in STAGES and STAGES.index(stage) < STAGES.index(previous):
         raise ValueError("advance_stage cannot regress; use set_stage with explicit regression evidence")
-    gate = evaluate_stage_gate(stage, evidence, min_iou=min_iou)
+    expected = STAGES[STAGES.index(previous) + 1] if previous in STAGES and previous != STAGES[-1] else None
+    if stage != expected:
+        raise ValueError(f"forward transition must be exactly {previous} -> {expected}; requested {stage}")
+    gate = evaluate_stage_gate(previous, evidence, min_iou=min_iou)
     if not gate["pass"]:
         return {"name": name, "stage": previous, "requested_stage": stage, "advanced": False, "gate": gate}
     result = set_stage(name, stage, {"structured_evidence": evidence, "gate": gate})

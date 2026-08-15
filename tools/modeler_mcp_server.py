@@ -142,8 +142,8 @@ def get_modeling_stage(object_name: str) -> dict:
 
 
 @mcp.tool()
-def set_modeling_stage(object_name: str, stage: str, evidence: str) -> dict:
-    """Explicitly declare object_name has moved to `stage`, with `evidence` describing why that stage's gate criteria are judged met (see blender_ops/modeling_stage.py's GATE_CRITERIA for what each stage expects) -- not automatically verified, but logged, so the check has to be articulated rather than silently skipped. Moving backward (e.g. a later check reveals an earlier stage's judgment was wrong) is normal and logged as a regression, not an error."""
+def set_modeling_stage(object_name: str, stage: str, evidence: dict) -> dict:
+    """Move exactly one stage forward only after structured evidence passes the CURRENT stage's machine gate. Moving backward is an explicit logged regression. Forward transitions cannot skip stages or bypass the gate."""
     return _call("set_modeling_stage", name=object_name, stage=stage, evidence=evidence)
 
 

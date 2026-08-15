@@ -840,3 +840,27 @@ reference sourcing, selection, interpretation, and modeling-from-reference; repr
 their methods; then attempt a different held-out prop. This is now the clearest active knowledge
 gap, consistent with the Level 14 synthesis finding that reference interpretation was the thinnest
 stage in the curriculum.
+
+## Update -- 2026-08-15 (reference-workflow curriculum and executable readiness gate)
+
+Processed all seven user-supplied general reference-workflow videos with actual public-video
+audio/visual input through Gemini 3.6 Flash. Every URL was independently resolved to its intended
+YouTube title/creator; raw timestamped analyses, source-fitness boundaries, cross-source synthesis,
+and seven validated-schema `CAPTURED` items are stored in
+`runs/2026-08-15_video-study-reference-workflow/`. None is promoted.
+
+The study resolved an important apparent contradiction: multi-source creative synthesis is useful
+for design, but exact reconstruction must converge on same-target/same-variant factual evidence.
+Implemented `knowledge_engine/reference_analysis.py` so image count, view count, provenance count,
+projection, purpose, dimensional authority, critical-property coverage, and conflicts are distinct.
+The planner now returns `TARGETED_REFERENCE_RESEARCH` with no Blender operation when evidence is
+insufficient.
+
+Also fixed a runtime enforcement defect discovered during this work: forward stage transitions had
+validated the destination gate while the planner validates the stage being completed, and the MCP
+command bypassed strict validation. Forward transitions now advance exactly one stage and validate
+the current stage; regressions remain explicit and logged. Controlled manifests correctly reject
+the single-photo candlestick and a mixed-camera-variant set while accepting the same-object Nailsea
+set as ready to begin. That acceptance does not overturn the human rejection of the Nailsea model.
+The next required evidence remains a human-reviewed reference-gathering-only exercise, then an
+equal-budget target-only versus structured-reference-set comparison on a new prop.

@@ -46,6 +46,8 @@ Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and 
 | Retopology fundamentals | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
 | Corrective shape keys / drivers | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Reference blockout | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Reference sourcing / purpose classification | ✓ | ✓ | ✓ | ✓ | — | — | — |
+| Structured reference-set readiness | ✓ | ✓ | ✓ | ✓ | — | — | — |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
 | Semantic region rendering | ~ | — | ✓ | ✓ | — | ~ | — |
@@ -80,6 +82,12 @@ absolute all-quad claim. Neither establishes production acting or autonomous fac
 Current active gaps are professional hard-surface/SubD judgment, multi-view reference modeling,
 unknown real-production surface diagnosis, production preparation, independent/long-horizon
 retrieval retention, and broader transfer validation. Advanced organic specialization is deferred.
+
+Seven supplied general reference-workflow videos were studied on 2026-08-15 with real audio/visual
+input and timestamped episodes. Their synthesis produced a machine-enforced reference-set audit and
+three controlled failure/readiness cases. Video and experiment coverage is therefore real for
+reference sourcing/readiness, but runtime and second-shape cells remain empty: no new held-out prop
+has yet demonstrated that the structured set improves modeling quality.
 
 Video evidence is credited only for eleven Blender-authored/Studio lessons actually decoded,
 captioned or locally transcribed, and cross-checked on 2026-08-10. The Modeling Introduction lesson gives partial

@@ -194,6 +194,29 @@ Do not use one image to judge everything.
 Important conclusions enter the existing `knowledge/foundation/source_registry.json` /
 `docs/KNOWLEDGE_SYSTEM.md` lifecycle, not a separate system.
 
+## Machine-enforced reference-set contract
+
+The prose rules above are enforced by `knowledge_engine/reference_analysis.py`. A manifest records
+the exact target and variant, each reference's provenance source, purpose, view, projection,
+property-scoped claims, dimensional anchors, limitations, and explicit conflicts. The audit keeps
+these concepts separate:
+
+- five views from one listing are five views but one provenance source;
+- a perspective photograph that looks frontal is not an orthographic drawing;
+- an inspiration image cannot authorize a dimensional or construction claim;
+- an image of a different variant cannot fill a missing view for the target variant;
+- an unresolved critical conflict forces targeted research;
+- a dimensional anchor counts only when its reference is explicitly scoped to `DIMENSION`.
+
+The disposition is `READY_TO_MODEL` or `TARGETED_RESEARCH`. The planner responds to the latter with
+no Blender operation. `build_reference_stage_evidence()` maps the audit into the strict
+`REFERENCE_ANALYSIS` stage gate; entry into `PRIMARY_BLOCKOUT` is blocked until that current-stage
+gate passes. Passing means only that a reversible blockout is justified. It does not certify that
+the eventual model is accurate or professionally acceptable.
+
+Worked controls and a standalone verifier are in `runs/2026-08-15_reference-set-gate/` and
+`tools/verify_reference_set_gate.py`.
+
 ## Success criteria
 
 Reference collection is successful only if it improves the model: better proportions, better
@@ -220,12 +243,10 @@ not a beautiful reference board -- the objective is a better model.
 
 ## Relationship to the video-learning roadmap
 
-A separate, larger critique (recorded 2026-08-13, not yet implemented) argues the project's video
-ingestion pipeline (`docs/RESEARCH_ROADMAP.md`, `video_ingest.py`) is an honest foundation --
-real stream/audio/transcript/frame access with provenance tracking -- but not yet an autonomous
-"watches a tutorial and understands it" system: it lacks YouTube discovery/acquisition, speech-to-
-visual-action temporal alignment, Blender-action recognition tied to spoken reasoning, and automated
-mistake/recovery extraction from tutorials. That is tracked as a distinct, larger future subsystem
-(a `video_agent/` pipeline: discovery -> acquisition -> transcription -> scene segmentation ->
-speech/action alignment -> lesson extraction -> mistake detection -> technique extraction ->
-Blender experiment -> knowledge promotion) and is not implemented by this document.
+The local-file ingestion path remains available for user-provided media. Public YouTube study now
+also has a reproducible Gemini caller (`tools/analyze_youtube_reference_workflow.py`) that consumes
+the real audio/visual stream without downloading or archiving the video. The seven-video reference
+study and honest source-fitness synthesis are in
+`runs/2026-08-15_video-study-reference-workflow/`. This closes reproducible public-video access and
+timestamped episode extraction for this curriculum; it does not close automatic discovery,
+speech-to-Blender-action recognition, source truthfulness, reproduction, transfer, or promotion.

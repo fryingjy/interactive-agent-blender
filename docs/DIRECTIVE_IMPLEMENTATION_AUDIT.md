@@ -1,6 +1,6 @@
 # Master directive implementation audit
 
-**Audit date:** 2026-08-12
+**Audit date:** 2026-08-15
 **Branch:** repository default branch plus published evidence increments
 **Disposition:** substantial foundation evidence exists, but locally actionable professional-
 judgment and generalization priorities remain; the professional target is not falsely claimed.
@@ -36,6 +36,8 @@ judgment and generalization priorities remain; the professional target is not fa
 | Reference localization | enclosed negative space, named landmarks, semantic component masks | implemented and unit-tested |
 | Reference error tickets | contour/negative-space/landmark/component mismatches converted to localized priorities | implemented and unit-tested |
 | Enforced stage gates | structured evidence validation before persistent Blender stage mutation | controlled pass |
+| Reference-set readiness gate | same-target/variant identity, independent provenance, view/projection coverage, property-scoped authority, dimensional anchors, conflict resolution, and targeted search queries | unit and three-case controlled pass; runtime quality improvement not yet demonstrated |
+| General reference-workflow video study | seven user-supplied public videos analyzed through reproducible Gemini 3.6 audio/visual input; timestamped episodes, source-fitness limits, synthesis, and seven CAPTURED items | access/extraction complete; no item promoted and no new prop transfer yet |
 | Professional review | weighted channels plus non-overridable hard failures | implemented; current readiness honestly fails |
 | Surface localization | robust evaluated Laplacian pinch candidates plus typed single/mixed intervention classifiers for geometry/normals/material/lighting/bevel | five isolated causes plus adaptive five-cause connected-barrel transfer pass; unknown real defects remain open |
 | Surface review lighting | official three-point and shading lessons studied; grazing-light observability, neutral-context interventions, and fixed-seed Cycles ablation | controlled second-shape transfer passes; experienced review remains open |

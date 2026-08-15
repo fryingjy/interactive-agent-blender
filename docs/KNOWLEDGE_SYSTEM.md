@@ -65,6 +65,11 @@ Local media ingestion is deliberately legal and bounded:
   distinct;
 - important claims return to current documentation and Blender reproduction.
 
+Public YouTube sources can additionally be passed by URL through Gemini's supported video input.
+The repository stores the prompt, source identity, model/access metadata, and timestamped analysis,
+not a copy of the video. Audio/visual analysis is still only `CAPTURED`; it must survive
+corroboration, controlled reproduction, different-target transfer, and runtime use before promotion.
+
 The current video evidence is summarized in
 `knowledge/foundation/video_learning_curriculum.md`; media files normally remain ignored under
 `runs/*/media/`.

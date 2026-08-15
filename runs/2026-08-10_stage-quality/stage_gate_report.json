@@ -1,0 +1,154 @@
+{
+  "lab": "machine_enforced_modeling_stage_gates",
+  "attempts": [
+    {
+      "name": "StageGateAsset",
+      "stage": "REFERENCE_ANALYSIS",
+      "requested_stage": "PRIMARY_BLOCKOUT",
+      "advanced": false,
+      "gate": {
+        "stage": "REFERENCE_ANALYSIS",
+        "required": [
+          "component_graph_pass",
+          "measured_ratio_count",
+          "uncertainty_recorded",
+          "reference_set_audit_pass",
+          "same_target_identity_pass",
+          "view_coverage_pass",
+          "critical_property_coverage_pass",
+          "conflicts_resolved_pass"
+        ],
+        "missing": [],
+        "failures": [
+          "required reference views are missing"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "name": "StageGateAsset",
+      "stage": "PRIMARY_BLOCKOUT",
+      "previous_stage": "REFERENCE_ANALYSIS",
+      "is_regression": false,
+      "advanced": true,
+      "gate": {
+        "stage": "REFERENCE_ANALYSIS",
+        "required": [
+          "component_graph_pass",
+          "measured_ratio_count",
+          "uncertainty_recorded",
+          "reference_set_audit_pass",
+          "same_target_identity_pass",
+          "view_coverage_pass",
+          "critical_property_coverage_pass",
+          "conflicts_resolved_pass"
+        ],
+        "missing": [],
+        "failures": [],
+        "pass": true
+      }
+    },
+    {
+      "name": "StageGateAsset",
+      "stage": "PRIMARY_BLOCKOUT",
+      "requested_stage": "PROPORTION_SILHOUETTE",
+      "advanced": false,
+      "gate": {
+        "stage": "PRIMARY_BLOCKOUT",
+        "required": [
+          "dimensions_checked",
+          "primary_components_present"
+        ],
+        "missing": [],
+        "failures": [
+          "primary components missing"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "name": "StageGateAsset",
+      "stage": "PROPORTION_SILHOUETTE",
+      "previous_stage": "PRIMARY_BLOCKOUT",
+      "is_regression": false,
+      "advanced": true,
+      "gate": {
+        "stage": "PRIMARY_BLOCKOUT",
+        "required": [
+          "dimensions_checked",
+          "primary_components_present"
+        ],
+        "missing": [],
+        "failures": [],
+        "pass": true
+      }
+    }
+  ],
+  "final_stage": "PROPORTION_SILHOUETTE",
+  "stage_log": [
+    {
+      "from": "REFERENCE_ANALYSIS",
+      "to": "PRIMARY_BLOCKOUT",
+      "evidence": {
+        "structured_evidence": {
+          "component_graph_pass": true,
+          "measured_ratio_count": 3,
+          "uncertainty_recorded": true,
+          "reference_set_audit_pass": true,
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "conflicts_resolved_pass": true
+        },
+        "gate": {
+          "stage": "REFERENCE_ANALYSIS",
+          "required": [
+            "component_graph_pass",
+            "measured_ratio_count",
+            "uncertainty_recorded",
+            "reference_set_audit_pass",
+            "same_target_identity_pass",
+            "view_coverage_pass",
+            "critical_property_coverage_pass",
+            "conflicts_resolved_pass"
+          ],
+          "missing": [],
+          "failures": [],
+          "pass": true
+        }
+      },
+      "gate_criteria_for_to_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable"
+    },
+    {
+      "from": "PRIMARY_BLOCKOUT",
+      "to": "PROPORTION_SILHOUETTE",
+      "evidence": {
+        "structured_evidence": {
+          "dimensions_checked": true,
+          "primary_components_present": true
+        },
+        "gate": {
+          "stage": "PRIMARY_BLOCKOUT",
+          "required": [
+            "dimensions_checked",
+            "primary_components_present"
+          ],
+          "missing": [],
+          "failures": [],
+          "pass": true
+        }
+      },
+      "gate_criteria_for_to_stage": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression"
+    }
+  ],
+  "assertions": {
+    "missing_evidence_rejected": true,
+    "rejection_did_not_mutate": true,
+    "primary_advanced": true,
+    "incomplete_primary_blockout_rejected": true,
+    "visual_rejection_did_not_mutate": true,
+    "complete_primary_blockout_advanced": true,
+    "only_accepted_transitions_logged": true
+  },
+  "pass": true
+}

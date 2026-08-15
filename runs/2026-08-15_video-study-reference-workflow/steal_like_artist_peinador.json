@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-15T19:31:51.698977+00:00",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=3nJJ5r0kOy4",
+    "title": "STEAL like an ARTIST -  How to use References",
+    "author": "Lucas Peinador"
+  },
+  "access": {
+    "method": "Gemini public YouTube URL video input",
+    "model": "gemini-3.6-flash",
+    "archived_source_video": false,
+    "analysis_status": "PARSED_JSON"
+  },
+  "knowledge_status": "CAPTURED",
+  "promotion_warning": "Requires external corroboration, controlled reproduction, and different-target transfer.",
+  "analysis": {
+    "video_identity": {
+      "title": "How to Steal Art (without being a d***)",
+      "creator": "Lucas Peinador",
+      "subject": "Using multiple art and photo references to synthesize original digital artwork without plagiarizing."
+    },
+    "access_observation": {
+      "audio_used": "Spoken English voiceover commentary by creator Lucas Peinador throughout the video, accompanied by background acoustic/lo-fi music and occasional sound effects.",
+      "visuals_used": "On-camera microphone studio shots, screen recordings of Instagram and ArtStation profile browsing, graphics overlays of artist profiles and book covers, and speed-paint screen recordings in Adobe Photoshop showing canvas setup, reference layout, sketching, and digital painting."
+    },
+    "episodes": [
+      {
+        "start": "00:00",
+        "end": "01:05",
+        "observed_visual_fact": "Lucas addresses the camera, showing examples of tracing call-outs on social media before presenting his thesis that he never works without reference photos or artwork.",
+        "instructor_claim": "All original artwork contains elements taken from references, such as pose, lighting, or color.",
+        "interpretation": "Artists frequently face accusations of copying when using references improperly, but using zero references is impractical for professional production.",
+        "hypothesis": "Establishing a systematic reference workflow protects against direct plagiarism while improving output quality.",
+        "reference_workflow_stage": "Problem Identification & Thesis Formulation",
+        "concrete_action": "Acknowledges dependence on reference material and sets up the distinction between copying and synthesizing.",
+        "reason": "To frame the discussion around professional reference usage rather than shameful hidden copying.",
+        "failure_or_warning": "Relying purely on unguided memory or single-source tracing leads to either stiff art or public call-outs for tracing.",
+        "transferable_principle": "Acknowledge references as essential tools rather than shortcuts to be hidden."
+      },
+      {
+        "start": "01:06",
+        "end": "01:45",
+        "observed_visual_fact": "Lucas browses photographer Sean Archer's Instagram profile and selects a portrait photo of model Nadin Kriger (@nkriger).",
+        "instructor_claim": "The main reference provides the foundational anchor for pose and lighting.",
+        "interpretation": "A primary photo reference serves as a real-world anchor for physical anatomy, gesture, and light direction.",
+        "hypothesis": "Using a photo rather than existing stylized artwork for the main pose reduces secondary stylization artifacts.",
+        "reference_workflow_stage": "Main Reference Selection",
+        "concrete_action": "Selects a single photography portrait for pose, head tilt, and lighting direction.",
+        "reason": "Pose and lighting are hardest to construct from memory and are best derived from real lighting capture.",
+        "failure_or_warning": "Choosing a stylized drawing as a primary pose reference risks copying another artist's structural mistakes or unique shorthand.",
+        "transferable_principle": "Use real-life photography or raw light captures for primary pose and illumination structure."
+      },
+      {
+        "start": "01:46",
+        "end": "02:22",
+        "observed_visual_fact": "Graphic of Austin Kleon's book 'Steal Like An Artist' appears alongside on-screen formulas: 1 Reference = Thief; 1 Reference + N References = Original.",
+        "instructor_claim": "Borrowing from a single source makes you a copycat; combining multiple sources creates an original work.",
+        "interpretation": "Originality in commercial art is the fusion of diverse, un-trackable influences.",
+        "hypothesis": "Increasing the number of distinct reference sources makes attribution to any single source impossible, yielding a unique style synthesis.",
+        "reference_workflow_stage": "Theoretical Reference Strategy",
+        "concrete_action": "Establishes a rule to gather multiple secondary style/detail references alongside the main reference.",
+        "reason": "To prevent the final piece from looking like a direct derivative of one creator.",
+        "failure_or_warning": "Using only one reference source inevitably produces direct plagiarism or uninspired copies.",
+        "transferable_principle": "Combine elements from multiple independent sources to achieve creative synthesis."
+      },
+      {
+        "start": "02:23",
+        "end": "03:48",
+        "observed_visual_fact": "Lucas scrolls through his ArtStation likes board and selects artwork by Samuel Youn (facial stylization), Mioree (hair flow/ribbon shape), and Ilya Kuvshinov (color saturation).",
+        "instructor_claim": "Secondary references should be chosen target-specifically for facial structure, hair rendering, or color accents.",
+        "interpretation": "Rather than copying an entire artwork, the artist dissects liked images into modular attributes (face shape, hair silhouette, color saturation).",
+        "hypothesis": "Modular reference collection allows precise control over individual aesthetic parameters.",
+        "reference_workflow_stage": "Secondary Reference Aggregation",
+        "concrete_action": "Collects three distinct artist images, assigning each a specific role: face structure, hair shape, and color intent.",
+        "reason": "Assigning explicit functional roles to references prevents mental clutter and conflicting aesthetic choices.",
+        "failure_or_warning": "Selecting secondary references without specific intent leads to stylistic clash.",
+        "transferable_principle": "Assign a dedicated purpose (e.g., gesture, hair structure, palette, eye detail) to every secondary reference."
+      },
+      {
+        "start": "03:49",
+        "end": "05:20",
+        "observed_visual_fact": "In Photoshop, Lucas places the four reference images on the left side of the canvas. He begins sketching the head using a downward triangle shape for the jaw while matching the pose from the photo.",
+        "instructor_claim": "Do not copy the reference line for line; extract the underlying structural idea and exaggerate key features.",
+        "interpretation": "The sketch translates photo anatomy into stylized geometry (inverted triangle face, oversized eyes) inspired by Samuel Youn while maintaining Nadin Kriger's head angle.",
+        "hypothesis": "Combining geometric face abstraction with photographic posture yields a balanced stylized portrait.",
+        "reference_workflow_stage": "Synthesis & Rough Sketching",
+        "concrete_action": "Pins all reference images directly visible on screen, then sketches structural guidelines combining the photo pose with stylized face proportions.",
+        "reason": "Having references visible simultaneously prevents drifting back into pure copying or unguided guessing.",
+        "failure_or_warning": "Tracing directly over the photo destroys dynamic stylization and produces lifeless linework.",
+        "transferable_principle": "Translate photographic references into exaggerated structural shapes during early layout."
+      },
+      {
+        "start": "05:21",
+        "end": "07:22",
+        "observed_visual_fact": "Timelapse shows skin tone blocking and shading while pop-culture graphics (Avatar, Pocahontas, Smurfs, Cuphead, 1930s cartoons) illustrate asset mashups.",
+        "instructor_claim": "Nothing is entirely original; major media properties succeed by combining existing mechanics and visual styles.",
+        "interpretation": "Creativity is undetected remixing of established cultural and visual tropes.",
+        "hypothesis": "Viewing art history as a continuous chain of reinterpretation eliminates perfectionism regarding 'pure' originality.",
+        "reference_workflow_stage": "Form Blocking & Conceptual Framing",
+        "concrete_action": "Paints soft values and skin tones on canvas while reflecting on high-level artistic synthesis.",
+        "reason": "Maintains steady rendering momentum by maintaining clear conceptual separation between inspiration and execution.",
+        "failure_or_warning": "Striving for impossible absolute originality causes creative block and reliance on worn-out personal habits.",
+        "transferable_principle": "Treat artistic creation as an intentional mashup of existing visual ideas."
+      },
+      {
+        "start": "07:23",
+        "end": "08:09",
+        "observed_visual_fact": "Lucas continues painting facial features, eyes, and hair rendering in Photoshop with references pinned adjacent to the painting canvas.",
+        "instructor_claim": "Working without references only rehearses what you already know; using references forces you to learn new information every time you paint.",
+        "interpretation": "References act as external memory expansions that inject novel visual data into every project.",
+        "hypothesis": "Consistent reference usage accelerates skill growth compared to drawing purely from memory.",
+        "reference_workflow_stage": "Refinement & Value Painting",
+        "concrete_action": "Refine eye highlights, nose contouring, and lip values against the photo reference lighting.",
+        "reason": "To check realistic light falloff and specular behavior against actual photographic data.",
+        "failure_or_warning": "Relying strictly on memory leads to repeating comfortable, repetitive shorthand solutions.",
+        "transferable_principle": "Use references actively during rendering to expand visual knowledge rather than repeating known formulas."
+      },
+      {
+        "start": "08:10",
+        "end": "09:13",
+        "observed_visual_fact": "Lucas zooms into the face and hair details, comparing his drawing decisions against Samuel Youn's big-eye proportions and Mioree's flat paper-like hair strand shapes.",
+        "instructor_claim": "Ask 'Why?' the artist made specific design choices instead of just copying the visual surface.",
+        "interpretation": "Reverse-engineering an artist's structural intent (e.g., using big eyes to increase cuteness, flat ribbon shapes for hair floatation) enables functional adaptation.",
+        "hypothesis": "Understanding the design rationale behind reference features allows better integration into custom pieces.",
+        "reference_workflow_stage": "Analytical Feature Integration",
+        "concrete_action": "Analyzes why Samuel Youn uses wide eye sockets and why Mioree uses ribbon-like hair locks, then applies those rules to the active painting.",
+        "reason": "Underlying principles can be adapted flexibly, whereas superficial copying produces stiff results.",
+        "failure_or_warning": "Copying stylistic quirks without understanding their purpose results in incoherent character design.",
+        "transferable_principle": "Analyze the functional design intent behind reference features before applying them."
+      },
+      {
+        "start": "09:14",
+        "end": "10:37",
+        "observed_visual_fact": "Lucas applies final color grading, freckles, eye glints, and edge sharpening. The finished painting is displayed alongside the original four reference images.",
+        "instructor_claim": "Proper multi-reference synthesis results in an image where viewers cannot trace the work back to any single original source.",
+        "interpretation": "Although individual references influenced pose, face shape, hair, and color, the combined result presents as a cohesive, original piece in Lucas's personal style.",
+        "hypothesis": "Even if individual reference goals drift during painting (e.g., changing color palette mid-process), multi-source mixing guarantees a unique outcome.",
+        "reference_workflow_stage": "Final Polishing & Audit",
+        "concrete_action": "Applies final texture overlays, adjusts warmth, and evaluates the complete image against the source board.",
+        "reason": "Ensures all disparate influences have merged into a unified render style.",
+        "failure_or_warning": "If one reference dominates the final look overwhelmingly, the synthesis has failed.",
+        "transferable_principle": "Evaluate completed work to verify that no single reference source dominates the final visual identity."
+      },
+      {
+        "start": "10:38",
+        "end": "11:24",
+        "observed_visual_fact": "Lucas returns to full-screen camera view, leans in close to emphasize crediting references, asks a audience prompt, and signs off.",
+        "instructor_claim": "Always credit your references and inspiration sources.",
+        "interpretation": "Ethical reference usage includes transparency about key inspirations.",
+        "hypothesis": "Crediting sources builds professional trust and normalizes healthy reference culture.",
+        "reference_workflow_stage": "Attribution & Wrap-up",
+        "concrete_action": "Lists artist handles on screen (@nkriger, Samuel Youn, Mioree, Ilya Kuvshinov) and encourages viewers to credit their influences.",
+        "reason": "Maintains professional integrity within the art community.",
+        "failure_or_warning": "Hiding reference sources under claims of 100% unassisted imagination invites scrutiny and community backlash.",
+        "transferable_principle": "Attribute major inspiration and reference sources openly."
+      }
+    ],
+    "reference_categories": [
+      "Primary Pose and Lighting (Real-world photography)",
+      "Facial Structure and Proportion Stylization (2D concept art)",
+      "Hair Flow and Silhouette Form (2D illustration)",
+      "Color Palette and Saturation Intent (Digital portraiture)"
+    ],
+    "acquisition_methods": [
+      "Instagram photography portfolio search",
+      "ArtStation curated likes/bookmarks collection",
+      "Art book design principles ('Steal Like An Artist' by Austin Kleon)"
+    ],
+    "organization_methods": [
+      "Pinning multiple reference images directly onto the active digital painting canvas border adjacent to the working artwork",
+      "Categorizing references mentally by specific functional duty (Pose/Light vs. Structure vs. Hair vs. Color)"
+    ],
+    "selection_and_rejection_criteria": {
+      "selection": "Clear lighting angle, compelling facial gesture, strong geometric simplification in artist styles, modular relevance to specific painting sub-tasks.",
+      "rejection": "Single-source reliance, direct line tracing, unanalyzed stylistic quirks, color palettes that conflict with active render mood during execution."
+    },
+    "contradiction_handling": "When the intended color palette reference (Ilya Kuvshinov) conflicted with the evolving warm skin tones during rendering, the artist discarded the color ref's specific palette and adapted warm hues natively while retaining the structural synthesis.",
+    "iterative_research_triggers": "When starting the initial head sketch (checking jaw geometry), when rendering eye sockets (checking proportion rules), and when shaping hair strands (checking ribbon silhouette forms).",
+    "principles": [
+      "Never work without reference material.",
+      "1 Reference = Plagiarism/Copying; Multiple References = Original Synthesis.",
+      "Use real photography for pose/lighting anchors and stylized art for feature/proportion inspiration.",
+      "Deconstruct references into specific functional assignments (pose, face shape, hair flow, palette).",
+      "Analyze 'why' an artist made a design choice before applying it.",
+      "Credit all reference creators openly."
+    ],
+    "limitations": "The video demonstrates a 2D digital portrait painting workflow. While the principles of multi-source reference synthesis apply directly to 3D concepting and blockouts, software-specific 3D viewport setups or mesh alignment techniques are not demonstrated.",
+    "claims_requiring_external_verification": [
+      "Attribution of the book 'Steal Like An Artist' concepts to Austin Kleon.",
+      "Attribution of the quote 'Good artists copy, great artists steal' to Pablo Picasso / Steve Jobs / T.S. Eliot."
+    ],
+    "proposed_experiments": [
+      "Set up a 3D character blockout exercise using one real-world photo for posture/proportions and three distinct stylized concept pieces for head geometry, armor detailing, and color mapping.",
+      "Compare a single-reference 3D sculpt against a multi-reference 3D sculpt to evaluate visual originality and resistance to direct copy accusations."
+    ]
+  }
+}

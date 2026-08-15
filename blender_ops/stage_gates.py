@@ -6,7 +6,11 @@ from typing import Any
 
 
 STAGE_REQUIREMENTS = {
-    "REFERENCE_ANALYSIS": ("component_graph_pass", "measured_ratio_count", "uncertainty_recorded"),
+    "REFERENCE_ANALYSIS": (
+        "component_graph_pass", "measured_ratio_count", "uncertainty_recorded",
+        "reference_set_audit_pass", "same_target_identity_pass", "view_coverage_pass",
+        "critical_property_coverage_pass", "conflicts_resolved_pass",
+    ),
     "PRIMARY_BLOCKOUT": ("dimensions_checked", "primary_components_present"),
     "PROPORTION_SILHOUETTE": ("view_count", "worst_view_iou", "multiview_regression_pass"),
     "SECONDARY_FORMS": ("secondary_components_present", "placement_checked"),
@@ -27,6 +31,11 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             if not evidence["component_graph_pass"]: failures.append("component graph invalid")
             if evidence["measured_ratio_count"] < 1: failures.append("no measured ratios")
             if not evidence["uncertainty_recorded"]: failures.append("reference uncertainty omitted")
+            if not evidence["reference_set_audit_pass"]: failures.append("reference set is not ready to model")
+            if not evidence["same_target_identity_pass"]: failures.append("reference set mixes target identities or variants")
+            if not evidence["view_coverage_pass"]: failures.append("required reference views are missing")
+            if not evidence["critical_property_coverage_pass"]: failures.append("critical properties lack authoritative evidence")
+            if not evidence["conflicts_resolved_pass"]: failures.append("reference conflicts remain unresolved")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")

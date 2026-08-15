@@ -441,7 +441,10 @@ class ModelerServer:
         return {"name": name, "stage": modeling_stage.get_stage(name), "log": modeling_stage.get_stage_log(name)}
 
     def cmd_set_modeling_stage(self, name, stage, evidence):
-        return modeling_stage.set_stage(name, stage, evidence)
+        current = modeling_stage.get_stage(name)
+        if modeling_stage.STAGES.index(stage) < modeling_stage.STAGES.index(current):
+            return modeling_stage.set_stage(name, stage, evidence)
+        return modeling_stage.advance_stage(name, stage, evidence)
 
     def cmd_get_selection(self, name):
         return state_probe.get_selection(name)

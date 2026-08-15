@@ -36,6 +36,7 @@ The authoritative readiness decision is in
 | Operating contract | [`docs/MASTER_DIRECTIVE.md`](docs/MASTER_DIRECTIVE.md) |
 | Current requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) |
 | Research/learning roadmap | [`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md) |
+| Reference sourcing and analysis | [`docs/REFERENCE_COLLECTION_PROTOCOL.md`](docs/REFERENCE_COLLECTION_PROTOCOL.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Knowledge lifecycle | [`docs/KNOWLEDGE_SYSTEM.md`](docs/KNOWLEDGE_SYSTEM.md) |
@@ -68,8 +69,8 @@ problem -> retrieve -> research -> hypothesize -> reproduce -> measure
 
 - `blender_ops/` — Blender-side typed operations, state authority, transactions, identity,
   semantic regions, render passes, stage gates, and evaluated probes.
-- `knowledge_engine/` — retrieval, strategy, reasoning, review, telemetry, learning, and visual
-  comparison policies that can run outside Blender.
+- `knowledge_engine/` — retrieval, strategy, structured reference readiness, reasoning, review,
+  telemetry, learning, and visual comparison policies that can run outside Blender.
 - `knowledge/` — source registry, operator cards, quizzes, promoted skills, and foundation reports.
 - `tools/` — MCP entry points, reproducible Blender labs, audits, comparators, and independent
   verifiers.
@@ -137,6 +138,11 @@ The local Blender/MCP entry points are:
   connected all-quad cages, 82.10% lower profile RMSE, 54.85% better side-quad aspect-ratio p95,
   independent fresh-process verification, and a retrieval-to-planner behavior proof. This is a
   controlled transfer, not held-out professional-asset evidence.
+- `runs/2026-08-15_video-study-reference-workflow/` — seven supplied reference-workflow videos
+  analyzed through public-video input with timestamped audio/visual episodes, source-fitness limits,
+  and seven unpromoted captured principles.
+- `runs/2026-08-15_reference-set-gate/` — controls proving that image count, view count, provenance
+  count, target identity, and property authority are not interchangeable.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-15T19:32:46.281490+00:00",
+  "source": {
+    "url": "https://www.youtube.com/watch?v=pPEB5uEDY-Q",
+    "title": "Claude Solved Game Research",
+    "author": "KazKalur"
+  },
+  "access": {
+    "method": "Gemini public YouTube URL video input",
+    "model": "gemini-3.6-flash",
+    "archived_source_video": false,
+    "analysis_status": "PARSED_JSON"
+  },
+  "knowledge_status": "CAPTURED",
+  "promotion_warning": "Requires external corroboration, controlled reproduction, and different-target transfer.",
+  "analysis": {
+    "video_identity": {
+      "title": "Automating Game Mechanics Research & Visual Wiki Generation with Claude Code",
+      "creator": "Game Design Workflow / Claude Code Agent User",
+      "subject": "Automating action game mechanics documentation, research, and local visual wiki creation using AI coding agents."
+    },
+    "access_observation": {
+      "audio_used": "Voiceover narration describing the purpose of building a mechanics master log, automating data gathering via Claude Code agent, and establishing a local visual wiki with video clips/GIFs.",
+      "visuals_used": "Google Sheets master log spreadsheet, VS Code terminal running Claude Code agent automation scripts, YouTube video reference clips, and a custom web-based local visual wiki for game characters."
+    },
+    "episodes": [
+      {
+        "start": "00:00",
+        "end": "00:11",
+        "observed_visual_fact": "Displays a Google Sheets spreadsheet titled 'Mechanics Log' detailing character abilities, input commands, targeting types, core damage/CC effects, cooldowns, and video links across various games.",
+        "instructor_claim": "The designer maintains a master log of game mechanics across many titles to capture research and reference for action game mechanics and ability kits.",
+        "interpretation": "Structured tabular data allows quantitative analysis and systematic comparison of action mechanics across different games.",
+        "hypothesis": "Standardizing game mechanics into categorized attributes helps designers recognize balance patterns and kit structures.",
+        "reference_workflow_stage": "Data structuring and initial reference cataloging.",
+        "concrete_action": "Maintained a Google Sheet tracking ability ranges, targeting logic, cooldowns, and visual links.",
+        "reason": "To catalog action game mechanics into a centralized, comparable format.",
+        "failure_or_warning": "Manual entry of deep mechanical data across dozens of games is highly labor-intensive and hard to maintain.",
+        "transferable_principle": "Organize reference mechanics into standardized schema fields (range, target, cooldown, effect type) for clear comparative analysis."
+      },
+      {
+        "start": "00:11",
+        "end": "00:18",
+        "observed_visual_fact": "Opens a hyperlinked YouTube video showing Captain America's 'Freedom Charge' ability in Marvel Rivals with timestamped gameplay footage.",
+        "instructor_claim": "Reference video clips are linked directly within the mechanics log for instant visual verification.",
+        "interpretation": "Linking numerical metrics to video evidence provides concrete visual context for abstract stat values.",
+        "hypothesis": "Direct video links reduce ambiguity between technical stat descriptions and visual execution.",
+        "reference_workflow_stage": "Reference verification and visual audit.",
+        "concrete_action": "Navigated from spreadsheet link to timestamped gameplay footage.",
+        "reason": "To verify animation timing, area-of-effect visual footprints, and character movement dynamics.",
+        "failure_or_warning": "External web links can become broken or lose timestamp sync if source videos are removed.",
+        "transferable_principle": "Pair qualitative visual media directly with quantitative mechanical specifications."
+      },
+      {
+        "start": "00:19",
+        "end": "00:22",
+        "observed_visual_fact": "Shows VS Code editor running a Claude Code agent executing automated tasks like research, updating markdown files, generating GIFs, and calling external APIs.",
+        "instructor_claim": "The research and logging process was automated using a Claude Code agent.",
+        "interpretation": "CLI agents can perform autonomous web scraping, video asset downloading, GIF slicing, and database generation.",
+        "hypothesis": "Automating reference gathering via AI agents eliminates tedious manual data entry and asset trimming.",
+        "reference_workflow_stage": "Automated data pipeline execution.",
+        "concrete_action": "Executed bash automation scripts via Claude Code agent to gather character data and generate media assets.",
+        "reason": "To automate repetitive web searching, data parsing, and media cropping tasks.",
+        "failure_or_warning": "High API token usage can occur during heavy batch scraping and text processing runs.",
+        "transferable_principle": "Leverage agentic scripting to automate time-consuming reference gathering pipelines."
+      },
+      {
+        "start": "00:22",
+        "end": "00:32",
+        "observed_visual_fact": "Displays auto-populated spreadsheet rows updating across multiple games (e.g., Marvel Rivals, 2XKO fighting game guide footage).",
+        "instructor_claim": "The agent populates sheets per game, attaching video timestamps and skill metadata.",
+        "interpretation": "Multi-agent tasks can extract structured mechanical data from unstructured game guides and gameplay clips across different genres.",
+        "hypothesis": "Cross-genre data ingestion provides broader design insights than staying within a single title type.",
+        "reference_workflow_stage": "Multi-game reference ingestion.",
+        "concrete_action": "Ingested ability data and timestamp links across fighting games and hero shooters.",
+        "reason": "To build a cross-genre catalog of action combat mechanics.",
+        "failure_or_warning": "Inaccurate source guides or community wikis can propagate incorrect numbers into the master database.",
+        "transferable_principle": "Apply uniform data structures across diverse genres to identify universal combat principles."
+      },
+      {
+        "start": "00:33",
+        "end": "00:43",
+        "observed_visual_fact": "Transitions to a locally hosted web application ('Marvel Rivals Visual Wiki') presenting character cards (Hulk, Venom, Thor) with automatically clipped gameplay GIFs, stat badges, and descriptions.",
+        "instructor_claim": "A parallel agent builds a local visual wiki based on the spreadsheet data, clipping GIFs to present contents in an easy-to-navigate form.",
+        "interpretation": "A visual wiki provides a superior user experience compared to raw spreadsheets for browsing combat animations and visual effects.",
+        "hypothesis": "Interactive visual dashboards increase usability and adoption during active game design and art reviews.",
+        "reference_workflow_stage": "Visual wiki generation and interactive review.",
+        "concrete_action": "Rendered a web-based visual wiki dashboard featuring automated GIF previews and categorized ability tags.",
+        "reason": "To make gameplay references visually intuitive and quickly browsable.",
+        "failure_or_warning": "Auto-generated GIF clips may cut off key animation frames if timestamp boundaries are inaccurate.",
+        "transferable_principle": "Transform flat tabular reference logs into interactive visual media hubs for rapid design evaluation."
+      },
+      {
+        "start": "00:44",
+        "end": "01:14",
+        "observed_visual_fact": "Browses Iron Man's character page in the visual wiki, clicking through media modals displaying playable video/GIF loops of Unibeam, Armor Overdrive, and Micro-Missile Barrage.",
+        "instructor_claim": "The pipeline from concept to execution took less than a day, establishing a strong foundation that can be updated over time.",
+        "interpretation": "Rapid automated prototyping of toolchains allows designers to create custom reference systems with low setup friction.",
+        "hypothesis": "Having direct access to looped move animations alongside hit data accelerates 3D ability design and balance iteration.",
+        "reference_workflow_stage": "Reference application and animation review.",
+        "concrete_action": "Reviewed individual move animations (Iron Man Unibeam, Micro-Missiles) inside full-screen detail modals.",
+        "reason": "To analyze specific animation timing, particle trajectories, and visual impact cues.",
+        "failure_or_warning": "Initial token/api expenditure is high during initial project setup.",
+        "transferable_principle": "Maintain local, interactive media playback systems alongside numerical parameters to streamline combat design decisions."
+      }
+    ],
+    "reference_categories": [
+      "Spreadsheet Master Logs (Google Sheets)",
+      "Video Reference Clips (YouTube Timestamped Videos)",
+      "Generated Media Assets (Looping Gameplay GIFs)",
+      "Structured Web Wikis (Local HTML/Web Dashboards)",
+      "CLI Code Automation Scripts (Claude Code Agent Logs)"
+    ],
+    "acquisition_methods": [
+      "Web searching character wikis and official game databases",
+      "Automated scraping of video guides and timestamped media URLs",
+      "CLI agent processing for data extraction and formatting",
+      "Automatic video trimming and GIF conversion of move clips"
+    ],
+    "organization_methods": [
+      "Tabular spreadsheet columns organized by Skill, Input, TAB Type, Targeting, Range, Core Effects, Cooldown, and Link",
+      "Character-level tagging by role (e.g., Vanguard, Duelist, Strategist)",
+      "Grid-based visual character selector in a local web application",
+      "Modal overlays pairing looped gameplay video with quantitative ability stats"
+    ],
+    "selection_and_rejection_criteria": [
+      "Retain abilities with clear mechanical descriptions, quantitative damage/cooldown values, and visual footage",
+      "Filter out unverified community claims or entries lacking video proof",
+      "Prioritize games with distinct, well-defined action combat mechanics (e.g., Hero Shooters, Fighting Games)"
+    ],
+    "contradiction_handling": [
+      "Cross-reference community guide numbers against primary video footage to ensure timestamp accuracy and patch validity."
+    ],
+    "iterative_research_triggers": [
+      "Addition of new playable characters or balance patches in target games",
+      "Missing visual footage or timestamp misalignment in existing entries",
+      "Expansion of research scope into new game titles or genres"
+    ],
+    "principles": [
+      "Pair quantitative mechanics data directly with looping visual footage",
+      "Automate repetitive reference collection using agentic code workflows",
+      "Structure cross-game data into uniform schemas to enable comparative design analysis",
+      "Build local, lightweight presentation layers (wikis/dashboards) to improve data usability during active design phases"
+    ],
+    "limitations": [
+      "This video demonstrates documentation workflow tooling rather than hands-on 3D mesh modeling or sculpting.",
+      "High initial token consumption for LLM code agents during batch extraction.",
+      "Automated web scraping is susceptible to breaking when source website structures or YouTube link formats change."
+    ],
+    "claims_requiring_external_verification": [
+      "The claim that the complete pipeline from concept to working visual wiki was executed in less than one day.",
+      "Accuracy of specific damage/cooldown numbers listed in the spreadsheet for Marvel Rivals and 2XKO."
+    ],
+    "proposed_experiments": [
+      "Test the agent workflow on a new game genre (e.g., Souls-like action RPGs) to see if the schema fields adapt without structural changes.",
+      "Compare manual spreadsheet construction time versus automated agent-driven creation to quantify productivity gains and token costs."
+    ]
+  }
+}

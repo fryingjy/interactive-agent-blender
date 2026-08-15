@@ -277,6 +277,39 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="LOW",
         )
 
+    if context.stage == "REFERENCE_ANALYSIS":
+        gate = evaluate_stage_gate(context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou)
+        if gate["pass"]:
+            following = _next_stage(context.stage)
+            return _contract(
+                context,
+                disposition="ADVANCE_STAGE",
+                action="ADVANCE_MODELING_STAGE",
+                operation="set_modeling_stage",
+                operation_params={"stage": following, "evidence": context.stage_evidence},
+                target_object=target,
+                target_region=None,
+                rationale=("REFERENCE_ANALYSIS gate passed",),
+                expected_effect=f"Move the asset to {following} without changing geometry.",
+                verification=("stage transition is persisted", "scene revision is unchanged by evidence-only transition"),
+                confidence="HIGH",
+                next_stage=following,
+            )
+        queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
+        return _contract(
+            context,
+            disposition="RESEARCH",
+            action="TARGETED_REFERENCE_RESEARCH",
+            operation=None,
+            operation_params={"queries": list(queries)},
+            target_object=target,
+            target_region=None,
+            rationale=tuple(gate["failures"] or [f"missing evidence: {item}" for item in gate["missing"]]),
+            expected_effect="Acquire the missing same-target, view, dimension, or property evidence before geometry is created.",
+            verification=("rerun the structured reference-set audit", "do not model while the audit is incomplete"),
+            confidence="HIGH",
+        )
+
     ticket = _highest_ticket(context)
     if ticket is not None:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
