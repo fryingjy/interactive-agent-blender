@@ -37,8 +37,26 @@ videos without that loop is the failure mode this curriculum exists to avoid.
 
 4. **CG Boost -- 100+ Tips to Boost Modeling in Blender.** `JMBMHSca_j0`. REQUIRED. Broad exposure
    to modeling techniques and viewport workflows. Revisit at Level 10 with a different question
-   ("why would a professional choose this tool here" instead of "what does this tool do"). Not yet
-   processed (first pass).
+   ("why would a professional choose this tool here" instead of "what does this tool do"). First
+   pass IN PROGRESS, chapter-by-chapter (video is 1:57:05, too long for one extraction pass).
+   Processed so far (`runs/2026-08-15_video-study-cgboost-100-tips-meshmodeling/`, 8 items):
+   **Mesh Modeling chapter only** (29:22-58:16, tips #30-62) -- most notably a genuine, sourced fix
+   candidate for the project's repeatedly-confirmed T-junction ngon bug (Connect Vertex Path, `J`,
+   splits an existing face along a vertex path instead of inserting a mid-edge vertex into a shared
+   boundary edge), plus two independent alternative hole-cutting techniques (Bridge Edge Loops
+   between matching opposing faces; Loop Tools Circle) and Grid Fill / batch non-manifold repair /
+   Offset Edge Slide. **Modifiers chapter also processed**
+   (`runs/2026-08-15_video-study-cgboost-100-tips-modifiers/`, 6 items, 1:07:24-1:42:01, tips
+   #74-93) -- most notably a genuine, sourced CONTRADICTION with this project's standing
+   Bevel-before-Subdivision-Surface policy (a "Clean Hard-Surface Sub-D Modeling" technique orders
+   Bevel AFTER Subdivision instead, to avoid pinched shading on curved hulls; flagged as unresolved,
+   not silently adopted -- see `blender-modeling-technique-corrections` memory), a Weld-modifier
+   technique for beveling boolean-cut seams (a real gap -- this project's boolean workflow has never
+   included that cleanup step), a Quad Sphere construction avoiding UV-Sphere pole-pinching, and
+   independent confirmation of the vertex-group-scoped Shrinkwrap-Project mechanism already flagged
+   as an untested hypothesis for the mug's handle-attachment failure. Remaining chapters (User
+   Interface, Selection, Transformation, Organization, Bonus) not yet processed -- none flagged
+   urgent.
 5. **CG Boost -- Blender Hard-Surface Modeling Fundamentals.** `nsTjnQ067sw`. REQUIRED. **Already
    processed** -- `runs/2026-08-14_video-study-cgboost-hardsurface-fundamentals/` (5 items,
    transcript-only pass, pre-dates the Gemini video-understanding pipeline).

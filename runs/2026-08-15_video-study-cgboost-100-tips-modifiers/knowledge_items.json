@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A demonstrated 'Clean Hard-Surface Sub-D Modeling' technique orders the stack as Crease/Weight the base mesh -> Subdivision Surface -> Bevel (Limit Method Weight, Harden Normals, after/below Subdivision) -- the REVERSE of this project's own standing policy (blender-modeling-technique-corrections.md #2: 'sharp edges get bevel weight + a Bevel modifier ordered BEFORE Subdivision Surface'). The video frames Bevel-after-SubD as specifically avoiding pinched/distorted shading on curved hard-surface hulls that a pre-SubD bevel can produce.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 4569, "end_seconds": 4677},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-15, Modifiers chapter pass, 1:07:24-1:42:01): at 76:09-77:57, the demonstrated stack order is Crease/Bevel-Weight on the base mesh, then Subdivision Surface (Ctrl+2), then a Bevel modifier UNDER/AFTER Subdivision with Limit Method Weight and Harden Normals -- explicitly contrasted against 'a traditional Sub-D workflow [that] often places Bevel before Sub-D.'",
+    "status": "CONTRADICTED",
+    "rejected_alternative": "Silently adopting this order and overwriting the existing Bevel-before-SubD policy without reconciling why two credible sources disagree, or silently ignoring this source because it conflicts with an already-established project convention.",
+    "reason": "This is a genuine, sourced disagreement with an existing standing policy, not a new topic -- it needs to be flagged and reconciled (likely: which order is correct probably depends on WHERE the bevel is used -- a physically-radiused edge that should read as round even far from camera vs. a crisp mechanical seam -- rather than one order being universally right), not silently resolved in either direction. Recorded as CAPTURED/CONFLICT rather than folded into the policy until an actual reconciliation pass or a controlled test (bevel-before-SubD vs. bevel-after-SubD on the same test edge, compared for pinching) is done.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When different edge sets on the same object need different bevel segment counts/widths/profiles that a single Bevel modifier's one Limit Method (Angle or Weight) can't express together, stack multiple Bevel modifiers, each scoped to a different Vertex Group (Limit Method: Vertex Group) containing only that edge set's vertices.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 4406, "end_seconds": 4568},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 73:26-76:08, multiple Bevel modifiers are stacked, each set to Limit Method: Vertex Group, with loop cuts used where necessary to isolate the target vertices into separate vertex groups -- solving cases where a single global Angle/Weight limit can't express two genuinely different bevel treatments on one body.",
+    "status": "CAPTURED",
+    "rejected_alternative": "A single Bevel modifier with one global width/segment setting applied uniformly via bevel-weight, forcing every weighted edge to share the same physical bevel radius even when reference photos show visibly different fillet sizes on different parts of the same object.",
+    "reason": "Extends this project's existing single-Bevel-modifier-by-weight policy for cases with genuinely different bevel radii on one asset (e.g. a large primary silhouette rounding vs. a tight panel-seam chamfer) -- not yet needed on any built asset, but a real capability gap in the current typed op surface (add_modifier/set_modifier_parameter can already do this manually; no vertex-group-scoped-bevel convenience wrapper exists).",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A Weld modifier (small merge distance, ~0.01-0.05cm) inserted between a Boolean modifier and a subsequent Bevel modifier merges the near-coincident/zero-length edges a boolean cut leaves at its intersection boundary, which otherwise block Bevel's Clamp Overlap from expanding the fillet cleanly at that seam.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 4678, "end_seconds": 4805},
+    "confidence": 0.55,
+    "supporting_evidence": "Gemini video-understanding observation: at 77:58-80:05, stack order Boolean -> Weld (small distance) -> Bevel (Angle) is demonstrated specifically to clean up boolean-intersection microgeometry that would otherwise prevent the Bevel modifier from filleting the cut seam.",
+    "status": "CAPTURED",
+    "rejected_alternative": "This project's current boolean workflow (add_modifier BOOLEAN, set operand/operation, apply, delete cutter) with no Weld or Bevel cleanup step afterward -- leaves cut seams sharp/unfilleted and potentially carrying boolean-artifact micro-geometry.",
+    "reason": "Directly fills a stated gap: this project has never added a Weld modifier or a post-boolean Bevel to any built asset. Relevant the next time a boolean cut needs a filleted (not razor-sharp) seam -- e.g. a cast-metal object where boolean-cut edges should read as machined/rounded, not knife-edge.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A Cube + Subdivision Surface + Cast modifier (Cast type: Sphere, Factor 1.0) produces an all-quad sphere with uniform topology, avoiding both the UV-Sphere's polar triangle-fan pinching and the Icosphere's uneven triangulation -- relevant whenever a spherical hard-surface part needs to be cleanly cut, beveled, or subdivided further (domes, ball joints, round housings).",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 5752, "end_seconds": 5871},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 95:52-97:51, a Quad Sphere (Cube -> Subdivision Surface -> Cast-to-Sphere Factor 1.0, or the built-in Add Mesh Extra Objects 'Round Cube') is directly contrasted with UV-Sphere polar pinching and Icosphere triangulation artifacts under further subdivision/beveling.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Blender's default UV Sphere or Icosphere primitives for any round hard-surface part that will later need holes cut or edges beveled -- both have topology defects (pole pinching, uneven triangle flow) that this project's own mesh-validity-vs-mesh-quality lesson says automated checks won't catch but wireframe/SubD inspection will.",
+    "reason": "This project has not yet needed a true sphere primitive, but the next time one is needed (a rounded knob, a ball joint, a dome) this is the correct starting primitive rather than create_primitive('sphere', ...) as currently exposed, which likely wraps a UV-Sphere.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A Shrinkwrap modifier set to Project mode, scoped to a Vertex Group containing only a secondary part's mounting-footprint verts, conforms that footprint flush against a curved host-body surface without manual boolean bridging or retopology -- the mounting rim deforms to match the host's curvature while the rest of the secondary part stays untouched.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 6009, "end_seconds": 6115},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 100:09-101:55, a sensor-mount's base rim is isolated into a Vertex Group, then a Shrinkwrap modifier (Project mode, local Z-axis) targets it at a curved body mesh, conforming only that footprint flush against the double-curved hull.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually sculpting/moving the mounting footprint's vertices by hand to match the host surface's curvature, or booleaning the two parts together and losing the ability to move the secondary part independently afterward.",
+    "reason": "This is the same Shrinkwrap-based handle-snap mechanism flagged as an untested hypothesis in [[video-curriculum-mug-diagnosis]] for the mug's unresolved handle-attachment failure -- independent confirmation from a second source that vertex-group-scoped Shrinkwrap Project is a real, established technique for exactly this kind of problem (conforming one part's attachment footprint to another's curved surface), not a one-off guess. Raises confidence that this hypothesis is worth actually testing on the mug, not just noting as plausible.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Enabling Bisect (and Flip if needed) on a Mirror modifier lets it be added to an already-asymmetric or already-applied mesh directly -- the modifier clips off the unwanted side and mirrors the kept side across the axis, instead of requiring the artist to manually delete half the mesh in Edit Mode first.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 4960, "end_seconds": 5036},
+    "confidence": 0.45,
+    "supporting_evidence": "Gemini video-understanding observation: at 82:40-83:56, Mirror modifier's Bisect option is enabled on an asymmetric/already-applied mesh, dynamically clipping and mirroring the desired side across the centerline without manual half-mesh deletion.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually selecting and deleting half the mesh in Edit Mode before adding a Mirror modifier -- destructive and hard to undo if the wrong half is deleted or the asset later needs to return to being asymmetric.",
+    "reason": "A lower-risk way to add symmetry to an asset built without one from the start (e.g. recovering symmetry on a mesh edited unevenly by hand in the GUI), non-destructive and reversible by just disabling Bisect again.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

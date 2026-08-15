@@ -692,3 +692,47 @@ faces before bridging) as a lower-confidence, community-sourced supplement. Six 
 `decision_transaction_protocol_gotchas.md` updated with the confirmed mechanism and a concrete
 next step (expose `twist` on `bridge_selection`) instead of leaving the bug as "unresolved, cause
 unknown."
+
+## Update -- 2026-08-15
+
+Pivoted from curriculum work to a held-out reference-reconstruction test (per prior explicit
+user approval), starting with a padlock. Reference-collection protocol followed genuinely: real
+Wikimedia Commons photos, explicit MEDIUM/LOW confidence statements, a written modeling plan
+before touching Blender. Body + shackle-hole blockout progressed, but three separate attempts to
+cut two discrete shackle-leg holes (`subdivide_selection`, then `bisect_selection` on an isolated
+inset face, then `bisect_selection` again) all hit the same T-junction ngon bug: any bmesh
+operation that inserts a vertex into a face boundary edge shared with an unselected neighbor face
+turns that neighbor into an ngon. Simplified to a single slot as a stated, honest workaround. The
+shackle arc (extrude+rotate chain, 2 of 8 planned 22.5-degree segments) was found not to track the
+intended analytic circle cleanly on inspection. Direct user feedback: "poorly done job scrap and
+try something else" -- the padlock was deleted from the live scene rather than patched.
+
+Restarted the held-out test with a desk stapler instead (no fragile curved-tube appendage,
+breaking the failure pattern from three prior curved-appendage attempts: teapot spout x3, teapot
+handle bridge-twist, padlock shackle). Per direct user instruction ("you can use my actual browser
+this time"), references were gathered from the user's own logged-in Chrome rather than the
+sandboxed browser -- this reached real manufacturer-listed dimensions (Swingline 747 Classic,
+7.4 x 1.7 x 2.6 inches) instead of photo-estimated proportions, a meaningfully stronger reference
+basis than the padlock had. Built the body from real dimensions, shaped a shallow arched top via
+`loop_cut_selection` on the length-direction edge ring (a full topological ring cut, not a
+per-face subdivide -- deliberately avoids the T-junction bug rather than re-triggering it), added
+a hinge-seam bevel and a flared base plate, and began applying the standing bevel-weight policy
+(sharp edges on the base plate weighted, Bevel modifier before Subdivision Surface). Mid-sequence,
+the user manually added the Subdivision Surface modifier live in the Blender GUI -- correctly
+recognized as a collision to observe and continue from, not overwrite (per
+[[live-blender-gui-collision-handling]]). The modeler typed server then dropped its connection
+mid-operation; before it could be re-established, direct user instruction: "scrap the modelling
+tests and continue with the curriculum until you're done." Both `reference/padlock/notes.md` and
+`reference/stapler/notes.md` are left in place as honest records; `Stapler_Body` is left as-is in
+the live scene (not cleaned up, since no destructive action was requested).
+
+Resumed curriculum work: began the first pass on curriculum item #4 (CG Boost's 100+ Tips to
+Boost Modeling in Blender, REQUIRED, previously entirely unprocessed), chapter-by-chapter since the
+full video is nearly two hours. Started with the Mesh Modeling chapter specifically (not the
+video's first chapter) because it connects directly to live project problems. This paid off
+immediately: the video documents Connect Vertex Path (`J`) as splitting an existing face along a
+vertex path rather than inserting a vertex into a shared boundary edge -- a genuine, sourced fix
+candidate for the T-junction ngon bug hit three times this session, not yet tested against this
+project's typed `mesh_ops.py` (no equivalent operation exists there yet). Two independent
+alternative hole-cutting techniques also surfaced (Bridge Edge Loops between matching opposing
+faces; Loop Tools Circle). Eight items captured; curriculum doc and this roadmap updated.
