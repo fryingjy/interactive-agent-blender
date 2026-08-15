@@ -230,7 +230,8 @@
     "rejected": true,
     "restored_revision": 0,
     "reason": "channel restoration test",
-    "removed_created_objects": []
+    "removed_created_objects": [],
+    "removed_created_collections": []
   },
   "assertions": {
     "mutation_changed_state": true,

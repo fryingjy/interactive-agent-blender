@@ -320,3 +320,17 @@ top-result margin for positive cases.
 The regression set was authored after store inspection and threshold calibration. It proves the
 specified executable behavior, not independent or week-scale retention, and does not advance the
 professional-readiness claim beyond **PARTIAL**.
+
+## 2026-08-15 addendum: rollback-owned editable high/low variants
+
+`package_high_low_variants` is now a typed runtime operation rather than asset-specific raw Blender
+code. It creates separate high/low collections and independent editable cages while retaining both
+modifier stacks unapplied. Transaction rollback now restores root or named collection membership
+and removes operation-created objects, meshes, and empty collections. Collision validation fails
+closed before persistent change.
+
+`runs/2026-08-15_typed-high-low-variants/` passes controlled commit/reject/failure cases and a
+fresh-process saved-file verifier. `runs/2026-08-15_nailsea-form-correction/` was regenerated through
+the typed operation and independently confirms the same contract on the real corrected asset. This
+is runtime validation of editable internal variants. It does not implement production low-poly
+retopology, UV authoring, baking, or export, so the foundation remains **PARTIAL**.

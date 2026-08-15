@@ -104,6 +104,106 @@ def set_modifier_parameter(name, modifier_name, parameter, value):
     return {"modifier_name": modifier_name, "parameter": parameter, "value": result_value}
 
 
+def package_high_low_variants(
+    name,
+    low_object_name,
+    high_collection_name="HIGH_POLY",
+    low_collection_name="LOW_POLY",
+    low_subd_levels=0,
+    hide_low=True,
+):
+    """Package one cage as separate editable high/low collection variants.
+
+    This is non-destructive packaging, not retopology: the low object gets an
+    independent copy of the base mesh and modifier stack. Subdivision remains
+    present at ``low_subd_levels`` and no modifier is applied.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' must be an existing mesh object")
+    low_object_name = str(low_object_name).strip()
+    high_collection_name = str(high_collection_name).strip()
+    low_collection_name = str(low_collection_name).strip()
+    if not low_object_name or not high_collection_name or not low_collection_name:
+        raise ValueError("low object and collection names cannot be empty")
+    if low_object_name == name:
+        raise ValueError("low_object_name must differ from the high/source object name")
+    if high_collection_name == low_collection_name:
+        raise ValueError("high and low collection names must differ")
+    if (
+        not isinstance(low_subd_levels, int)
+        or isinstance(low_subd_levels, bool)
+        or not 0 <= low_subd_levels <= 6
+    ):
+        raise ValueError("low_subd_levels must be an integer between 0 and 6")
+    if low_object_name in bpy.data.objects:
+        raise ValueError(f"object '{low_object_name}' already exists")
+    collisions = [
+        collection_name
+        for collection_name in (high_collection_name, low_collection_name)
+        if collection_name in bpy.data.collections
+    ]
+    if collisions:
+        raise ValueError(f"variant collections already exist: {collisions}")
+
+    high_collection = bpy.data.collections.new(high_collection_name)
+    low_collection = bpy.data.collections.new(low_collection_name)
+    bpy.context.scene.collection.children.link(high_collection)
+    bpy.context.scene.collection.children.link(low_collection)
+    for collection in list(obj.users_collection):
+        collection.objects.unlink(obj)
+    high_collection.objects.link(obj)
+    obj["production_variant"] = "HIGH_POLY"
+
+    low = obj.copy()
+    low.data = obj.data.copy()
+    low.name = low_object_name
+    low.data.name = f"{low_object_name}_Mesh"
+    low["production_variant"] = "LOW_POLY"
+    low_collection.objects.link(low)
+    for modifier in low.modifiers:
+        if modifier.type == "SUBSURF":
+            modifier.levels = low_subd_levels
+            modifier.render_levels = low_subd_levels
+    low.hide_render = bool(hide_low)
+    low.hide_set(bool(hide_low))
+
+    def modifier_record(target):
+        return [
+            {
+                "name": modifier.name,
+                "type": modifier.type,
+                "levels": getattr(modifier, "levels", None),
+                "viewport_levels": getattr(modifier, "levels", None),
+                "render_levels": getattr(modifier, "render_levels", None),
+            }
+            for modifier in target.modifiers
+        ]
+
+    def variant_record(target, collection):
+        return {
+            "object": target.name,
+            "mesh": target.data.name,
+            "collection": collection.name,
+            "base_vertices": len(target.data.vertices),
+            "base_edges": len(target.data.edges),
+            "base_faces": len(target.data.polygons),
+            "modifiers": modifier_record(target),
+            "modifiers_applied": False,
+            "hidden_in_viewport": target.hide_get(),
+            "hidden_in_render": target.hide_render,
+        }
+
+    return {
+        "high": variant_record(obj, high_collection),
+        "low": variant_record(low, low_collection),
+        "separate_collections": True,
+        "independent_mesh_datablocks": obj.data is not low.data,
+        "all_modifiers_unapplied": True,
+        "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed",
+    }
+
+
 def set_shading(name, smooth=True):
     """Set polygon interpolation explicitly on one mesh object.
 

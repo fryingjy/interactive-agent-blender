@@ -2,9 +2,9 @@
   "blender": {
     "protocol_version": "0.3",
     "blender_version": "5.2.0",
-    "pid": 13668,
-    "session_id": "14bdffd269e0",
-    "started_at": 1786832283.3697531,
+    "pid": 15208,
+    "session_id": "f8aa7a7120a7",
+    "started_at": 1786833116.6915789,
     "blend_filepath": null,
     "capabilities": [
       "selection_ids",
@@ -28,7 +28,8 @@
       "expanded_typed_modeling_surface",
       "diagnostic_visual_passes",
       "surface_candidate_diagnostics",
-      "bridge_correspondence_analysis"
+      "bridge_correspondence_analysis",
+      "editable_high_low_variant_packaging"
     ],
     "available_operations": [
       "add_modifier",
@@ -48,6 +49,7 @@
       "merge_by_distance",
       "merge_selection",
       "move_selection",
+      "package_high_low_variants",
       "recalc_normals",
       "rotate_selection",
       "scale_selection",
@@ -66,12 +68,12 @@
     ]
   },
   "reference_measurement": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_runtime-use-nailsea\\reference_measurement.json",
-  "object": "Corrected_Nailsea_Candlestick",
+  "object": "Corrected_Nailsea_Candlestick_HIGH",
   "scene_mesh_objects": [
-    "Corrected_Nailsea_Candlestick"
+    "Corrected_Nailsea_Candlestick_HIGH"
   ],
   "modeling_scene_mesh_objects": [
-    "Corrected_Nailsea_Candlestick"
+    "Corrected_Nailsea_Candlestick_HIGH"
   ],
   "saved_scene_mesh_objects": [
     "Corrected_Nailsea_Candlestick_HIGH",
@@ -157,7 +159,7 @@
         "target_radius": 1.9360997299651574,
         "scale_factor": 0.4006968684795446,
         "redistribution_decision_id": null,
-        "decision_id": "dec_2_1786832285801"
+        "decision_id": "dec_2_1786833119380"
       },
       {
         "ring_index_bottom_to_top": 1,
@@ -181,8 +183,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.9791125335527755,
         "scale_factor": 0.8235205588045805,
-        "redistribution_decision_id": "dec_3_1786832285827",
-        "decision_id": "dec_4_1786832285848"
+        "redistribution_decision_id": "dec_3_1786833119414",
+        "decision_id": "dec_4_1786833119440"
       },
       {
         "ring_index_bottom_to_top": 2,
@@ -206,8 +208,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 4.70560952806175,
         "scale_factor": 0.9738770028214317,
-        "redistribution_decision_id": "dec_5_1786832285884",
-        "decision_id": "dec_6_1786832285916"
+        "redistribution_decision_id": "dec_5_1786833119471",
+        "decision_id": "dec_6_1786833119505"
       },
       {
         "ring_index_bottom_to_top": 3,
@@ -231,8 +233,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 4.73058277582944,
         "scale_factor": 0.9790454876992521,
-        "redistribution_decision_id": "dec_7_1786832285945",
-        "decision_id": "dec_8_1786832285977"
+        "redistribution_decision_id": "dec_7_1786833119536",
+        "decision_id": "dec_8_1786833119558"
       },
       {
         "ring_index_bottom_to_top": 4,
@@ -256,8 +258,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 4.438456438150461,
         "scale_factor": 0.9185867691235974,
-        "redistribution_decision_id": "dec_9_1786832286000",
-        "decision_id": "dec_10_1786832286027"
+        "redistribution_decision_id": "dec_9_1786833119583",
+        "decision_id": "dec_10_1786833119604"
       },
       {
         "ring_index_bottom_to_top": 5,
@@ -281,8 +283,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.9958847883551685,
         "scale_factor": 0.8269917591113854,
-        "redistribution_decision_id": "dec_11_1786832286052",
-        "decision_id": "dec_12_1786832286076"
+        "redistribution_decision_id": "dec_11_1786833119630",
+        "decision_id": "dec_12_1786833119655"
       },
       {
         "ring_index_bottom_to_top": 6,
@@ -306,8 +308,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.464203120445226,
         "scale_factor": 0.7169544629627366,
-        "redistribution_decision_id": "dec_13_1786832286099",
-        "decision_id": "dec_14_1786832286123"
+        "redistribution_decision_id": "dec_13_1786833119682",
+        "decision_id": "dec_14_1786833119709"
       },
       {
         "ring_index_bottom_to_top": 7,
@@ -331,8 +333,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.984092989486508,
         "scale_factor": 0.617590456541474,
-        "redistribution_decision_id": "dec_15_1786832286150",
-        "decision_id": "dec_16_1786832286181"
+        "redistribution_decision_id": "dec_15_1786833119731",
+        "decision_id": "dec_16_1786833119753"
       },
       {
         "ring_index_bottom_to_top": 8,
@@ -356,8 +358,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.6088121437226426,
         "scale_factor": 0.5399220093170938,
-        "redistribution_decision_id": "dec_17_1786832286201",
-        "decision_id": "dec_18_1786832286224"
+        "redistribution_decision_id": "dec_17_1786833119774",
+        "decision_id": "dec_18_1786833119800"
       },
       {
         "ring_index_bottom_to_top": 9,
@@ -381,8 +383,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.251827514115591,
         "scale_factor": 0.46604016275464943,
-        "redistribution_decision_id": "dec_19_1786832286245",
-        "decision_id": "dec_20_1786832286268"
+        "redistribution_decision_id": "dec_19_1786833119823",
+        "decision_id": "dec_20_1786833119847"
       },
       {
         "ring_index_bottom_to_top": 10,
@@ -406,8 +408,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.8983912680544188,
         "scale_factor": 0.3928926927085552,
-        "redistribution_decision_id": "dec_21_1786832286290",
-        "decision_id": "dec_22_1786832286314"
+        "redistribution_decision_id": "dec_21_1786833119871",
+        "decision_id": "dec_22_1786833119893"
       },
       {
         "ring_index_bottom_to_top": 11,
@@ -431,8 +433,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.5047475306463591,
         "scale_factor": 0.3114238456059154,
-        "redistribution_decision_id": "dec_23_1786832286337",
-        "decision_id": "dec_24_1786832286362"
+        "redistribution_decision_id": "dec_23_1786833119919",
+        "decision_id": "dec_24_1786833119942"
       },
       {
         "ring_index_bottom_to_top": 12,
@@ -456,8 +458,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.6655510695013582,
         "scale_factor": 0.34470388457414897,
-        "redistribution_decision_id": "dec_25_1786832286395",
-        "decision_id": "dec_26_1786832286418"
+        "redistribution_decision_id": "dec_25_1786833119964",
+        "decision_id": "dec_26_1786833119988"
       },
       {
         "ring_index_bottom_to_top": 13,
@@ -481,8 +483,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.1110433190313564,
         "scale_factor": 0.43690334442417983,
-        "redistribution_decision_id": "dec_27_1786832286441",
-        "decision_id": "dec_28_1786832286463"
+        "redistribution_decision_id": "dec_27_1786833120011",
+        "decision_id": "dec_28_1786833120072"
       },
       {
         "ring_index_bottom_to_top": 14,
@@ -506,8 +508,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.0943849297817523,
         "scale_factor": 0.4334557098302998,
-        "redistribution_decision_id": "dec_29_1786832286487",
-        "decision_id": "dec_30_1786832286511"
+        "redistribution_decision_id": "dec_29_1786833120113",
+        "decision_id": "dec_30_1786833120150"
       },
       {
         "ring_index_bottom_to_top": 15,
@@ -531,8 +533,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.7860414849466242,
         "scale_factor": 0.36964068478308565,
-        "redistribution_decision_id": "dec_31_1786832286540",
-        "decision_id": "dec_32_1786832286573"
+        "redistribution_decision_id": "dec_31_1786833120177",
+        "decision_id": "dec_32_1786833120204"
       },
       {
         "ring_index_bottom_to_top": 16,
@@ -556,8 +558,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.132196209875051,
         "scale_factor": 0.44128116494095176,
-        "redistribution_decision_id": "dec_33_1786832286600",
-        "decision_id": "dec_34_1786832286642"
+        "redistribution_decision_id": "dec_33_1786833120241",
+        "decision_id": "dec_34_1786833120282"
       },
       {
         "ring_index_bottom_to_top": 17,
@@ -581,8 +583,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.851114972630471,
         "scale_factor": 0.5900692115838123,
-        "redistribution_decision_id": "dec_35_1786832286685",
-        "decision_id": "dec_36_1786832286727"
+        "redistribution_decision_id": "dec_35_1786833120337",
+        "decision_id": "dec_36_1786833120404"
       },
       {
         "ring_index_bottom_to_top": 18,
@@ -606,8 +608,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.053845201713291,
         "scale_factor": 0.6320264344904486,
-        "redistribution_decision_id": "dec_37_1786832286781",
-        "decision_id": "dec_38_1786832286815"
+        "redistribution_decision_id": "dec_37_1786833120483",
+        "decision_id": "dec_38_1786833120595"
       },
       {
         "ring_index_bottom_to_top": 19,
@@ -631,8 +633,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.759829448692345,
         "scale_factor": 0.571176680887483,
-        "redistribution_decision_id": "dec_39_1786832286851",
-        "decision_id": "dec_40_1786832286916"
+        "redistribution_decision_id": "dec_39_1786833120680",
+        "decision_id": "dec_40_1786833120873"
       },
       {
         "ring_index_bottom_to_top": 20,
@@ -656,8 +658,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.2413149271776356,
         "scale_factor": 0.46386446870311754,
-        "redistribution_decision_id": "dec_41_1786832286968",
-        "decision_id": "dec_42_1786832287026"
+        "redistribution_decision_id": "dec_41_1786833120956",
+        "decision_id": "dec_42_1786833121047"
       },
       {
         "ring_index_bottom_to_top": 21,
@@ -681,8 +683,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.7965695714174104,
         "scale_factor": 0.3718195866312884,
-        "redistribution_decision_id": "dec_43_1786832287066",
-        "decision_id": "dec_44_1786832287174"
+        "redistribution_decision_id": "dec_43_1786833121120",
+        "decision_id": "dec_44_1786833121182"
       },
       {
         "ring_index_bottom_to_top": 22,
@@ -706,8 +708,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.4576702671630366,
         "scale_factor": 0.30168069458822827,
-        "redistribution_decision_id": "dec_45_1786832287217",
-        "decision_id": "dec_46_1786832287317"
+        "redistribution_decision_id": "dec_45_1786833121235",
+        "decision_id": "dec_46_1786833121276"
       },
       {
         "ring_index_bottom_to_top": 23,
@@ -731,8 +733,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.4787308316029104,
         "scale_factor": 0.3060394071529064,
-        "redistribution_decision_id": "dec_47_1786832287365",
-        "decision_id": "dec_48_1786832287417"
+        "redistribution_decision_id": "dec_47_1786833121310",
+        "decision_id": "dec_48_1786833121338"
       },
       {
         "ring_index_bottom_to_top": 24,
@@ -756,8 +758,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.9454801894008782,
         "scale_factor": 0.4026382564476429,
-        "redistribution_decision_id": "dec_49_1786832287490",
-        "decision_id": "dec_50_1786832287542"
+        "redistribution_decision_id": "dec_49_1786833121365",
+        "decision_id": "dec_50_1786833121392"
       },
       {
         "ring_index_bottom_to_top": 25,
@@ -781,8 +783,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.462279528594813,
         "scale_factor": 0.5095954930209026,
-        "redistribution_decision_id": "dec_51_1786832287602",
-        "decision_id": "dec_52_1786832287649"
+        "redistribution_decision_id": "dec_51_1786833121426",
+        "decision_id": "dec_52_1786833121466"
       },
       {
         "ring_index_bottom_to_top": 26,
@@ -806,8 +808,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.0731029202871754,
         "scale_factor": 0.6360120285211625,
-        "redistribution_decision_id": "dec_53_1786832287691",
-        "decision_id": "dec_54_1786832287722"
+        "redistribution_decision_id": "dec_53_1786833121505",
+        "decision_id": "dec_54_1786833121540"
       },
       {
         "ring_index_bottom_to_top": 27,
@@ -831,8 +833,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.346698483286563,
         "scale_factor": 0.6926356020008848,
-        "redistribution_decision_id": "dec_55_1786832287751",
-        "decision_id": "dec_56_1786832287789"
+        "redistribution_decision_id": "dec_55_1786833121562",
+        "decision_id": "dec_56_1786833121588"
       },
       {
         "ring_index_bottom_to_top": 28,
@@ -856,8 +858,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 3.0564100112298807,
         "scale_factor": 0.6325572496781365,
-        "redistribution_decision_id": "dec_57_1786832287826",
-        "decision_id": "dec_58_1786832287849"
+        "redistribution_decision_id": "dec_57_1786833121614",
+        "decision_id": "dec_58_1786833121636"
       },
       {
         "ring_index_bottom_to_top": 29,
@@ -881,8 +883,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.5916429907490546,
         "scale_factor": 0.5363686666227654,
-        "redistribution_decision_id": "dec_59_1786832287874",
-        "decision_id": "dec_60_1786832287900"
+        "redistribution_decision_id": "dec_59_1786833121658",
+        "decision_id": "dec_60_1786833121682"
       },
       {
         "ring_index_bottom_to_top": 30,
@@ -906,8 +908,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.847303971800842,
         "scale_factor": 0.3823196218532313,
-        "redistribution_decision_id": "dec_61_1786832287926",
-        "decision_id": "dec_62_1786832287947"
+        "redistribution_decision_id": "dec_61_1786833121705",
+        "decision_id": "dec_62_1786833121727"
       },
       {
         "ring_index_bottom_to_top": 31,
@@ -931,8 +933,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.36914458726582,
         "scale_factor": 0.28335934359280424,
-        "redistribution_decision_id": "dec_63_1786832287972",
-        "decision_id": "dec_64_1786832287996"
+        "redistribution_decision_id": "dec_63_1786833121749",
+        "decision_id": "dec_64_1786833121773"
       },
       {
         "ring_index_bottom_to_top": 32,
@@ -956,8 +958,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.2552330949904444,
         "scale_factor": 0.2597841229922641,
-        "redistribution_decision_id": "dec_65_1786832288022",
-        "decision_id": "dec_66_1786832288045"
+        "redistribution_decision_id": "dec_65_1786833121797",
+        "decision_id": "dec_66_1786833121820"
       },
       {
         "ring_index_bottom_to_top": 33,
@@ -981,8 +983,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.6039453195238194,
         "scale_factor": 0.33195390547220577,
-        "redistribution_decision_id": "dec_67_1786832288072",
-        "decision_id": "dec_68_1786832288097"
+        "redistribution_decision_id": "dec_67_1786833121845",
+        "decision_id": "dec_68_1786833121869"
       },
       {
         "ring_index_bottom_to_top": 34,
@@ -1006,8 +1008,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.3863695456376497,
         "scale_factor": 0.2869242358204412,
-        "redistribution_decision_id": "dec_69_1786832288124",
-        "decision_id": "dec_70_1786832288160"
+        "redistribution_decision_id": "dec_69_1786833121892",
+        "decision_id": "dec_70_1786833121920"
       },
       {
         "ring_index_bottom_to_top": 35,
@@ -1031,8 +1033,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.157586439749444,
         "scale_factor": 0.2395750870800104,
-        "redistribution_decision_id": "dec_71_1786832288185",
-        "decision_id": "dec_72_1786832288208"
+        "redistribution_decision_id": "dec_71_1786833121941",
+        "decision_id": "dec_72_1786833121965"
       },
       {
         "ring_index_bottom_to_top": 36,
@@ -1056,8 +1058,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.5854261927036843,
         "scale_factor": 0.32812117102730337,
-        "redistribution_decision_id": "dec_73_1786832288234",
-        "decision_id": "dec_74_1786832288257"
+        "redistribution_decision_id": "dec_73_1786833121987",
+        "decision_id": "dec_74_1786833122009"
       },
       {
         "ring_index_bottom_to_top": 37,
@@ -1081,8 +1083,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.928990328557801,
         "scale_factor": 0.39922550063800105,
-        "redistribution_decision_id": "dec_75_1786832288280",
-        "decision_id": "dec_76_1786832288303"
+        "redistribution_decision_id": "dec_75_1786833122034",
+        "decision_id": "dec_76_1786833122057"
       },
       {
         "ring_index_bottom_to_top": 38,
@@ -1106,8 +1108,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.6232153192119785,
         "scale_factor": 0.3359420412129127,
-        "redistribution_decision_id": "dec_77_1786832288329",
-        "decision_id": "dec_78_1786832288354"
+        "redistribution_decision_id": "dec_77_1786833122083",
+        "decision_id": "dec_78_1786833122109"
       },
       {
         "ring_index_bottom_to_top": 39,
@@ -1131,8 +1133,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.7202348312476141,
         "scale_factor": 0.3560212830269655,
-        "redistribution_decision_id": "dec_79_1786832288377",
-        "decision_id": "dec_80_1786832288413"
+        "redistribution_decision_id": "dec_79_1786833122132",
+        "decision_id": "dec_80_1786833122154"
       },
       {
         "ring_index_bottom_to_top": 40,
@@ -1156,8 +1158,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.2785056442140634,
         "scale_factor": 0.4715614915487711,
-        "redistribution_decision_id": "dec_81_1786832288440",
-        "decision_id": "dec_82_1786832288463"
+        "redistribution_decision_id": "dec_81_1786833122176",
+        "decision_id": "dec_82_1786833122201"
       },
       {
         "ring_index_bottom_to_top": 41,
@@ -1181,8 +1183,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 2.337200481235301,
         "scale_factor": 0.48370902559690115,
-        "redistribution_decision_id": "dec_83_1786832288487",
-        "decision_id": "dec_84_1786832288509"
+        "redistribution_decision_id": "dec_83_1786833122224",
+        "decision_id": "dec_84_1786833122251"
       },
       {
         "ring_index_bottom_to_top": 42,
@@ -1206,8 +1208,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.9967039904404378,
         "scale_factor": 0.41323957845110193,
-        "redistribution_decision_id": "dec_85_1786832288531",
-        "decision_id": "dec_86_1786832288558"
+        "redistribution_decision_id": "dec_85_1786833122273",
+        "decision_id": "dec_86_1786833122297"
       },
       {
         "ring_index_bottom_to_top": 43,
@@ -1231,8 +1233,8 @@
         "radius_before": 4.831831447327606,
         "target_radius": 1.495948163965598,
         "scale_factor": 0.3096027210951198,
-        "redistribution_decision_id": "dec_87_1786832288580",
-        "decision_id": "dec_88_1786832288603"
+        "redistribution_decision_id": "dec_87_1786833122319",
+        "decision_id": "dec_88_1786833122344"
       },
       {
         "ring_index_bottom_to_top": 44,
@@ -1257,7 +1259,7 @@
         "target_radius": 0.8114783216027873,
         "scale_factor": 0.16794425270186122,
         "redistribution_decision_id": null,
-        "decision_id": "dec_89_1786832288627"
+        "decision_id": "dec_89_1786833122369"
       }
     ]
   },
@@ -1267,7 +1269,7 @@
   },
   "stage_transitions": [
     {
-      "name": "Corrected_Nailsea_Candlestick",
+      "name": "Corrected_Nailsea_Candlestick_HIGH",
       "stage": "PRIMARY_BLOCKOUT",
       "previous_stage": "REFERENCE_ANALYSIS",
       "is_regression": false,
@@ -1290,7 +1292,7 @@
       }
     },
     {
-      "name": "Corrected_Nailsea_Candlestick",
+      "name": "Corrected_Nailsea_Candlestick_HIGH",
       "stage": "PROPORTION_SILHOUETTE",
       "previous_stage": "PRIMARY_BLOCKOUT",
       "is_regression": false,
@@ -1307,26 +1309,27 @@
       }
     }
   ],
-  "loop_cut_decision_id": "dec_1_1786832283382",
-  "cap_delete_decision_id": "dec_0_1786832283373",
-  "shading_decision_id": "dec_98_1786832288991",
+  "loop_cut_decision_id": "dec_1_1786833116707",
+  "cap_delete_decision_id": "dec_0_1786833116697",
+  "shading_decision_id": "dec_98_1786833122562",
   "modifier_decision_ids": [
-    "dec_90_1786832288648",
-    "dec_91_1786832288674",
-    "dec_92_1786832288693",
-    "dec_93_1786832288715",
-    "dec_94_1786832288737",
-    "dec_95_1786832288760",
-    "dec_96_1786832288782",
-    "dec_97_1786832288932"
+    "dec_90_1786833122391",
+    "dec_91_1786833122413",
+    "dec_92_1786833122432",
+    "dec_93_1786833122453",
+    "dec_94_1786833122474",
+    "dec_95_1786833122496",
+    "dec_96_1786833122518",
+    "dec_97_1786833122539"
   ],
-  "transaction_count": 99,
+  "transaction_count": 100,
   "transaction_summary": {
     "operation_counts": {
       "add_modifier": 2,
       "delete_selection": 1,
       "loop_cut_selection": 1,
       "move_selection": 43,
+      "package_high_low_variants": 1,
       "scale_selection": 45,
       "set_modifier_parameter": 6,
       "set_smooth_by_angle": 1
@@ -1716,7 +1719,7 @@
       "view": "front",
       "resolution": 720,
       "frame_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "silhouette_fill_ratio": 0.0975
     },
@@ -1730,10 +1733,10 @@
         720
       ],
       "target_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "frame_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "camera_location": [
         0.0,
@@ -1760,10 +1763,10 @@
         720
       ],
       "target_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "frame_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "camera_location": [
         0.0,
@@ -1790,10 +1793,10 @@
         720
       ],
       "target_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "frame_objects": [
-        "Corrected_Nailsea_Candlestick"
+        "Corrected_Nailsea_Candlestick_HIGH"
       ],
       "camera_location": [
         0.0,
@@ -1814,20 +1817,23 @@
   "production_variants": {
     "high": {
       "object": "Corrected_Nailsea_Candlestick_HIGH",
-      "mesh": "Corrected_Nailsea_Candlestick_HIGH_Mesh",
+      "mesh": "Corrected_Nailsea_Candlestick_HIGH",
       "collection": "HIGH_POLY",
       "base_vertices": 540,
+      "base_edges": 1068,
       "base_faces": 528,
       "modifiers": [
         {
           "name": "Surface_Smoothing",
           "type": "SUBSURF",
+          "levels": 2,
           "viewport_levels": 2,
           "render_levels": 2
         },
         {
           "name": "Glass_Wall",
           "type": "SOLIDIFY",
+          "levels": null,
           "viewport_levels": null,
           "render_levels": null
         }
@@ -1841,17 +1847,20 @@
       "mesh": "Corrected_Nailsea_Candlestick_LOW_Mesh",
       "collection": "LOW_POLY",
       "base_vertices": 540,
+      "base_edges": 1068,
       "base_faces": 528,
       "modifiers": [
         {
           "name": "Surface_Smoothing",
           "type": "SUBSURF",
+          "levels": 0,
           "viewport_levels": 0,
           "render_levels": 0
         },
         {
           "name": "Glass_Wall",
           "type": "SOLIDIFY",
+          "levels": null,
           "viewport_levels": null,
           "render_levels": null
         }
@@ -1861,7 +1870,10 @@
       "hidden_in_render": true
     },
     "separate_collections": true,
-    "all_modifiers_unapplied": true
+    "independent_mesh_datablocks": true,
+    "all_modifiers_unapplied": true,
+    "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed",
+    "typed_decision_id": "dec_99_1786833126521"
   },
   "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_nailsea-form-correction\\corrected_nailsea_candlestick.blend",
   "boundary": "Rotational primary-form correction from a measured front profile. Material appearance and historically exact hidden construction remain outside this experiment; dimensions and top form require the independent saved-scene verifier."

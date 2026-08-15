@@ -189,64 +189,6 @@ def cage_audit() -> dict:
         bm.free()
 
 
-def package_unapplied_variants(source_name: str) -> dict:
-    """Duplicate the verified cage into collection-scoped editable variants."""
-    source = bpy.data.objects[source_name]
-    scene_root = bpy.context.scene.collection
-    high_collection = bpy.data.collections.new("HIGH_POLY")
-    low_collection = bpy.data.collections.new("LOW_POLY")
-    scene_root.children.link(high_collection)
-    scene_root.children.link(low_collection)
-
-    for collection in list(source.users_collection):
-        collection.objects.unlink(source)
-    source.name = f"{source_name}_HIGH"
-    source.data.name = f"{source_name}_HIGH_Mesh"
-    source["production_variant"] = "HIGH_POLY"
-    high_collection.objects.link(source)
-
-    low = source.copy()
-    low.data = source.data.copy()
-    low.name = f"{source_name}_LOW"
-    low.data.name = f"{source_name}_LOW_Mesh"
-    low["production_variant"] = "LOW_POLY"
-    low_collection.objects.link(low)
-    for modifier in low.modifiers:
-        if modifier.type == "SUBSURF":
-            modifier.levels = 0
-            modifier.render_levels = 0
-    low.hide_render = True
-    low.hide_set(True)
-
-    def variant_record(obj, collection_name: str) -> dict:
-        return {
-            "object": obj.name,
-            "mesh": obj.data.name,
-            "collection": collection_name,
-            "base_vertices": len(obj.data.vertices),
-            "base_faces": len(obj.data.polygons),
-            "modifiers": [
-                {
-                    "name": modifier.name,
-                    "type": modifier.type,
-                    "viewport_levels": getattr(modifier, "levels", None),
-                    "render_levels": getattr(modifier, "render_levels", None),
-                }
-                for modifier in obj.modifiers
-            ],
-            "modifiers_applied": False,
-            "hidden_in_viewport": obj.hide_get(),
-            "hidden_in_render": obj.hide_render,
-        }
-
-    return {
-        "high": variant_record(source, high_collection.name),
-        "low": variant_record(low, low_collection.name),
-        "separate_collections": True,
-        "all_modifiers_unapplied": True,
-    }
-
-
 def transact(server: ModelerServer, action: str, operation: str, params: dict, log: list[dict]) -> dict:
     begun = server.cmd_begin_decision(OBJECT_NAME, action)
     performed = server.cmd_perform_decision(
@@ -490,7 +432,26 @@ def main() -> int:
         ),
     }
     modeling_scene_mesh_objects = sorted(obj.name for obj in bpy.data.objects if obj.type == "MESH")
-    production_variants = package_unapplied_variants(OBJECT_NAME) if args.production_variants else None
+    production_variants = None
+    if args.production_variants:
+        variant_base_name = OBJECT_NAME[:-5] if OBJECT_NAME.endswith("_HIGH") else OBJECT_NAME
+        variant_record = transact(
+            server,
+            "package_editable_high_low_variants",
+            "package_high_low_variants",
+            {
+                "low_object_name": f"{variant_base_name}_LOW",
+                "high_collection_name": "HIGH_POLY",
+                "low_collection_name": "LOW_POLY",
+                "low_subd_levels": 0,
+                "hide_low": True,
+            },
+            transactions,
+        )
+        production_variants = {
+            **variant_record["perform"]["result"],
+            "typed_decision_id": variant_record["begin"]["decision_id"],
+        }
     blend_path = output / args.blend_name
     server.cmd_save_file(str(blend_path))
     report = {

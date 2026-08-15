@@ -13,10 +13,12 @@ The corrected result is one connected 12-sided rotational shell: 540 vertices, 1
 inward Solidify produces a closed evaluated mesh and a visible hollow socket. Smooth by Angle is
 retained; no fake stacked primitives or structural ridge cylinders were added.
 
-The saved production file contains editable `HIGH_POLY` and `LOW_POLY` collections. Each contains
-one copy of that connected cage. Both keep their Subdivision and Solidify modifiers unapplied; the
-high variant uses SubD level 2 and the low variant keeps SubD at level 0. The overlapping low object
-is hidden from viewport/render by default and can be revealed from its collection when needed.
+The saved production file contains editable `HIGH_POLY` and `LOW_POLY` collections created through
+the rollback-owned typed `package_high_low_variants` operation. Each contains one independent copy
+of that connected cage. Both keep their Subdivision and Solidify modifiers unapplied; the high
+variant uses SubD level 2 and the low variant keeps SubD at level 0. The overlapping low object is
+hidden from viewport/render by default and can be revealed from its collection when needed. This is
+editable variant packaging, not a claim of purpose-authored production retopology.
 
 ## Measured comparison
 
@@ -53,7 +55,7 @@ the Bialetti reference gate remains model-free and pending.
 ## Reproduction
 
 ```powershell
-blender --background --factory-startup --python tools/run_runtime_candlestick.py -- --output runs/2026-08-15_nailsea-form-correction --measurement runs/2026-08-15_runtime-use-nailsea/reference_measurement.json --reference-evidence runs/2026-08-15_nailsea-form-correction/reference_stage_evidence.json --object-name Corrected_Nailsea_Candlestick --height 30.5 --max-width 9.663663 --radial-vertices 12 --rings 45 --blend-name corrected_nailsea_candlestick.blend --smooth-shell --adaptive-profile --profile-smoothing-window 21 --compact-report --production-variants
+blender --background --factory-startup --python tools/run_runtime_candlestick.py -- --output runs/2026-08-15_nailsea-form-correction --measurement runs/2026-08-15_runtime-use-nailsea/reference_measurement.json --reference-evidence runs/2026-08-15_nailsea-form-correction/reference_stage_evidence.json --object-name Corrected_Nailsea_Candlestick_HIGH --height 30.5 --max-width 9.663663 --radial-vertices 12 --rings 45 --blend-name corrected_nailsea_candlestick.blend --smooth-shell --adaptive-profile --profile-smoothing-window 21 --compact-report --production-variants
 python tools/evaluate_profile_correction.py runs/2026-08-15_runtime-use-nailsea/reference_silhouette.png runs/2026-08-15_runtime-use-nailsea/final_candidate_mask.png runs/2026-08-15_nailsea-form-correction/final_candidate_mask.png runs/2026-08-15_nailsea-form-correction
 blender --background runs/2026-08-15_nailsea-form-correction/corrected_nailsea_candlestick.blend --python tools/verify_runtime_candlestick_blend.py -- --run-dir runs/2026-08-15_nailsea-form-correction --object-name Corrected_Nailsea_Candlestick_HIGH
 ```

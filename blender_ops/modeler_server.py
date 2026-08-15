@@ -70,6 +70,7 @@ CAPABILITIES = [
     "diagnostic_visual_passes",
     "surface_candidate_diagnostics",
     "bridge_correspondence_analysis",
+    "editable_high_low_variant_packaging",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -112,6 +113,7 @@ _OPS = {
     "assign_vertex_group": mesh_ops.assign_vertex_group,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
+    "package_high_low_variants": object_ops.package_high_low_variants,
     "set_shading": object_ops.set_shading,
     "set_smooth_by_angle": object_ops.set_smooth_by_angle,
     "set_bevel_weight_by_ids": object_ops.set_bevel_weight_by_ids,

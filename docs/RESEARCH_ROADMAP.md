@@ -988,3 +988,22 @@ Relative to the rejected baseline, front silhouette IoU rose from 0.848 to 0.955
 the documented 9 x 9 x 30.5 cm target. This remains `CORRECTED_PENDING_HUMAN_FORM_REVIEW`: the old
 rejection is not erased, multi-view artistic acceptance is not inferred from metrics, and no skill
 is promoted. Evidence: `runs/2026-08-15_nailsea-form-correction/`.
+
+## Update -- 2026-08-15 (typed editable high/low packaging and runtime transfer)
+
+Replaced the Nailsea generator's asset-specific duplicate/collection helper with the typed
+`package_high_low_variants` operation. It keeps the source as the high variant, creates an
+independent editable low mesh, places each in a separate collection, copies the live modifier stack,
+sets only the low Subdivision level, and applies no modifiers. Transaction ownership now includes
+the target's collection membership and newly created collections as well as object, mesh, transform,
+metadata, modifier, and selection state.
+
+The controlled lab commits one package, rejects a second after mutation, and rejects a collection-
+name collision before persistent change. A separate Blender process verifies independent cages,
+equal base topology, live Subdivision/Solidify stacks, different evaluated density without applying
+anything, complete persistent IDs, and removal of every rollback-created object, mesh, and
+collection. The real Nailsea artifact was regenerated through the typed operation and passed its
+fresh saved-scene verifier with `HIGH_POLY`/`LOW_POLY` isolation and both stacks unapplied.
+
+This closes editable internal variant packaging, not true production retopology. Purpose-authored
+low topology, UVs, bake transfer, and export remain separate open work.

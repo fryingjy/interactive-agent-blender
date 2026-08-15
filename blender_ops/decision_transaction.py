@@ -52,6 +52,9 @@ class DecisionTransaction:
         self._before_mesh_snapshot = None
         self._before_transform = None
         self._before_object_names = None
+        self._before_collection_names = None
+        self._before_target_collection_names = None
+        self._removed_created_collections = []
         self._before_object_snapshot = None
         self._before_selected = None
         self._before_active_object = None
@@ -114,6 +117,11 @@ class DecisionTransaction:
         # Capture after transaction-owned snapshots are allocated so detached
         # snapshot datablocks are never reported as objects created by fn().
         self._before_object_names = set(bpy.data.objects.keys())
+        self._before_collection_names = set(bpy.data.collections.keys())
+        if self.target_object:
+            self._before_target_collection_names = [
+                collection.name for collection in bpy.data.objects[self.target_object].users_collection
+            ]
         try:
             self.result = fn(*args, **kwargs)
         except Exception as operation_error:
@@ -219,6 +227,7 @@ class DecisionTransaction:
             "restored_revision": self.observed_revision,
             "reason": reason,
             "removed_created_objects": created_objects,
+            "removed_created_collections": self._removed_created_collections,
         }
 
     def _restore_target_snapshot(self):
@@ -243,6 +252,20 @@ class DecisionTransaction:
         obj.rotation_euler = self._before_transform["rotation_euler"]
         obj.scale = self._before_transform["scale"]
         self._restore_object_channels(obj)
+        for collection in list(obj.users_collection):
+            collection.objects.unlink(obj)
+        for collection_name in self._before_target_collection_names or []:
+            collection = bpy.data.collections.get(collection_name)
+            if collection is None and bpy.context.scene.collection.name == collection_name:
+                # The scene's master collection can own objects and appears in
+                # Object.users_collection, but it is not a member of
+                # bpy.data.collections. Resolve that root explicitly.
+                collection = bpy.context.scene.collection
+            if collection is None:
+                raise TransactionError(
+                    f"cannot restore target collection '{collection_name}' because it was removed"
+                )
+            collection.objects.link(obj)
         created_objects = sorted(set(bpy.data.objects.keys()) - (self._before_object_names or set()))
         for object_name in created_objects:
             created = bpy.data.objects.get(object_name)
@@ -251,6 +274,19 @@ class DecisionTransaction:
                 bpy.data.objects.remove(created, do_unlink=True)
                 if mesh is not None and mesh.users == 0:
                     bpy.data.meshes.remove(mesh)
+        created_collections = sorted(
+            set(bpy.data.collections.keys()) - (self._before_collection_names or set())
+        )
+        for collection_name in created_collections:
+            collection = bpy.data.collections.get(collection_name)
+            if collection is None:
+                continue
+            if collection.objects or collection.children:
+                raise TransactionError(
+                    f"cannot remove transaction-created collection '{collection_name}' because it is not empty"
+                )
+            bpy.data.collections.remove(collection)
+        self._removed_created_collections = created_collections
         return created_objects
 
     def _restore_object_channels(self, obj):

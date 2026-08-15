@@ -199,7 +199,7 @@
   "decision": {
     "disposition": "ACT",
     "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
-    "target_object": "Corrected_Nailsea_Candlestick",
+    "target_object": "Corrected_Nailsea_Candlestick_HIGH",
     "target_region": "Heldout_Candlestick full rotational profile",
     "rationale": [
       "highest-priority visual ticket is uneven_deformation_density",
