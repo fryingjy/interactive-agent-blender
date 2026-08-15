@@ -967,3 +967,24 @@ therefore `INDEPENDENT_REVIEW_PARTIAL_TIMESTAMP_DEFECT`, not learned knowledge. 
 discovery and one provenance failure mode; reliable visible-action review, tight speech/action
 alignment, reproduction, transfer, and runtime use remain open. Evidence:
 `runs/2026-08-15_video-discovery-queue/`.
+
+## Update -- 2026-08-15 (rejected Nailsea form corrected, still awaiting human review)
+
+Revisited the retained rejected Nailsea candlestick after the user correctly called out its weak
+form. The failure was mechanical uniform axial sampling: 33 evenly spaced loops left too little
+control at tight transitions, and Subdivision erased important changes in the measured profile. A
+reusable bounded sampler now redistributes a 45-loop budget toward measured slope and curvature
+while preserving one connected 12-sided all-quad shell.
+
+The work also exposed and fixed two runtime defects. The old generator used a superseded prose-only
+stage transition instead of strict structured evidence. More seriously, exact rounded-Z grouping
+split BMesh loop-cut rings where one radial edge differed by tiny floating-point amounts, producing
+an `11 + 1` helical distortion. Generator and independent verifier now use bounded axial clustering.
+The final fresh-process verifier sees exactly 45 planar 12-vertex rings and passes every topology,
+modifier, evaluated-health, dimension, circularity, hollow-socket, and render check.
+
+Relative to the rejected baseline, front silhouette IoU rose from 0.848 to 0.955, profile RMSE fell
+68.47%, and contour error fell 74.54%. Evaluated dimensions are 8.981 x 8.981 x 30.500 cm against
+the documented 9 x 9 x 30.5 cm target. This remains `CORRECTED_PENDING_HUMAN_FORM_REVIEW`: the old
+rejection is not erased, multi-view artistic acceptance is not inferred from metrics, and no skill
+is promoted. Evidence: `runs/2026-08-15_nailsea-form-correction/`.

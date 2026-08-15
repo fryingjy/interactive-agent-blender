@@ -176,6 +176,10 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-15_video-discovery-queue/` - live metadata-only lesson discovery, known-source and
   held-out contamination filters, strict source binding, one retained cross-video rejection, and
   one independently detected timestamp defect; no video was archived and no lesson was promoted.
+- `runs/2026-08-15_nailsea-form-correction/` - correction of the retained rejected candlestick:
+  curvature-aware loop redistribution on one connected 12-sided quad shell, 0.955 front IoU,
+  published-dimension recovery, and a passing fresh-process Blender verifier. Human form approval
+  remains pending and no skill was promoted.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 

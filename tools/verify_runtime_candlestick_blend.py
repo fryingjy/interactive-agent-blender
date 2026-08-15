@@ -37,6 +37,22 @@ def radial_cv(verts) -> float:
     return statistics.pstdev(radii) / mean if mean else 0.0
 
 
+def cluster_axial_rings(verts, tolerance: float = 1e-5) -> list[list]:
+    """Group rings despite harmless floating-point drift from typed transforms."""
+    ordered = sorted(verts, key=lambda vert: float(vert.co.z))
+    rings: list[list] = []
+    for vert in ordered:
+        if not rings:
+            rings.append([vert])
+            continue
+        center_z = statistics.fmean(float(item.co.z) for item in rings[-1])
+        if abs(float(vert.co.z) - center_z) <= tolerance:
+            rings[-1].append(vert)
+        else:
+            rings.append([vert])
+    return rings
+
+
 def main() -> int:
     args = parse_args()
     run = (ROOT / args.run_dir).resolve()
@@ -53,10 +69,7 @@ def main() -> int:
     bm.faces.ensure_lookup_table()
     edge_layer = bm.edges.layers.int.get("agent_edge_id")
     boundary_ids = sorted(edge[edge_layer] for edge in bm.edges if edge.is_boundary) if edge_layer else []
-    ring_verts: dict[float, list] = {}
-    for vert in bm.verts:
-        ring_verts.setdefault(round(float(vert.co.z), 6), []).append(vert)
-    ordered_rings = [ring_verts[key] for key in sorted(ring_verts)]
+    ordered_rings = cluster_axial_rings(bm.verts)
     components = 0
     remaining = set(bm.verts)
     while remaining:
@@ -80,8 +93,8 @@ def main() -> int:
         "loose_vertices": sum(not vert.link_edges for vert in bm.verts),
         "degenerate_faces": sum(face.calc_area() < 1e-8 for face in bm.faces),
         "connected_components": components,
-        "ring_count": len(ring_verts),
-        "vertices_per_ring": sorted({len(verts) for verts in ring_verts.values()}),
+        "ring_count": len(ordered_rings),
+        "vertices_per_ring": sorted({len(verts) for verts in ordered_rings}),
         "bottom_ring_radial_cv": radial_cv(ordered_rings[0]),
         "top_ring_radial_cv": radial_cv(ordered_rings[-1]),
         "boundary_edge_ids": boundary_ids,
@@ -137,9 +150,17 @@ def main() -> int:
     if published:
         ratio_error = abs(evaluated_form["width_height_ratio"] - published["width"] / published["height"])
     cross_view = contract["frozen_acceptance_gates"].get("cross_view_form", {})
+    variants = contract["strategy"].get("production_variants", {})
+    high_variant = bpy.data.objects.get(variants.get("high_object", "")) if variants else None
+    low_variant = bpy.data.objects.get(variants.get("low_object", "")) if variants else None
+    high_collections = {collection.name for collection in high_variant.users_collection} if high_variant else set()
+    low_collections = {collection.name for collection in low_variant.users_collection} if low_variant else set()
+    high_modifier_types = [modifier.type for modifier in high_variant.modifiers] if high_variant else []
+    low_modifier_types = [modifier.type for modifier in low_variant.modifiers] if low_variant else []
+    low_subd = next((modifier for modifier in low_variant.modifiers if modifier.type == "SUBSURF"), None) if low_variant else None
     checks = {
-        "one_mesh_object": len(objects) == 1,
-        "expected_object_name": objects[0].name == args.object_name if len(objects) == 1 else False,
+        "expected_mesh_object_count": len(objects) == expected["objects"],
+        "expected_object_name": obj.name == args.object_name,
         "base_counts_match_contract": (
             audit["vertices"] == expected["vertices"] and audit["edges"] == expected.get("edges", audit["edges"])
             and audit["faces"] == expected["faces"] and audit["quads"] == expected["quads"]
@@ -165,6 +186,18 @@ def main() -> int:
         "fresh_silhouette_rendered": "error" not in render and Path(render["output_path"]).exists(),
         "fresh_top_evidence_rendered": "error" not in top_silhouette and "error" not in top_solid,
     }
+    if variants:
+        checks.update({
+            "high_low_objects_exist": high_variant is not None and low_variant is not None,
+            "high_low_separate_collections": (
+                high_collections == {variants["high_collection"]}
+                and low_collections == {variants["low_collection"]}
+            ),
+            "high_modifiers_unapplied": high_modifier_types == ["SUBSURF", "SOLIDIFY"],
+            "low_modifiers_unapplied": low_modifier_types == ["SUBSURF", "SOLIDIFY"],
+            "low_subd_kept_at_zero": bool(low_subd and low_subd.levels == 0 and low_subd.render_levels == 0),
+            "variant_cages_are_independent": high_variant.data is not low_variant.data,
+        })
     report = {
         "method": "fresh Blender 5.2 factory process loaded the saved blend; no generator import",
         "blend_filepath": bpy.data.filepath,
@@ -174,6 +207,12 @@ def main() -> int:
         "evaluated_health": evaluated,
         "evaluated_form": evaluated_form,
         "modifier_types": modifier_types,
+        "production_variants": {
+            "high_collections": sorted(high_collections),
+            "low_collections": sorted(low_collections),
+            "high_modifier_types": high_modifier_types,
+            "low_modifier_types": low_modifier_types,
+        } if variants else None,
         "render": render,
         "top_silhouette_render": top_silhouette,
         "top_solid_render": top_solid,

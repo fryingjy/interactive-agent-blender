@@ -1,0 +1,16 @@
+{
+  "component_graph_pass": true,
+  "measured_ratio_count": 2,
+  "uncertainty_recorded": true,
+  "reference_set_audit_pass": true,
+  "same_target_identity_pass": true,
+  "view_coverage_pass": true,
+  "critical_property_coverage_pass": true,
+  "conflicts_resolved_pass": true,
+  "evidence_sources": [
+    "runs/2026-08-15_runtime-use-nailsea/experiment_contract.json",
+    "runs/2026-08-15_runtime-use-nailsea/reference_notes.md",
+    "runs/2026-08-15_runtime-use-nailsea/reference_measurement.json"
+  ],
+  "limitations": "The source board passed its recorded same-object/dimension checks, but the prior model was human-rejected and this correction still requires human form review."
+}
