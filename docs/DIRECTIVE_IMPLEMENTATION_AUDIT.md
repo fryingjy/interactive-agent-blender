@@ -307,3 +307,16 @@ duplicate groups, forbidden artifacts, or unclassified root files. Unique dated 
 transcript, and video fixtures remain retained evidence under the master directive's stability and
 anti-fake-progress rules. This improves runtime hygiene; it does not change `FOUNDATION STATUS:
 PARTIAL` or substitute for the pending human reference-board review.
+
+## 2026-08-15 addendum: retrieval abstention and negative controls
+
+`runs/2026-08-15_retrieval-abstention/` records a real false-positive retrieval defect and its
+bounded correction. Before the fix, unrelated camera, UV, and rigging tickets retrieved unrelated
+skills at scores up to 3.3416 because every positive lexical overlap was accepted. Structured search
+now defaults to a calibrated 4.0 floor and can honestly return no skill. Eleven positive direct or
+paraphrased contexts and three unrelated abstention controls all pass, with a frozen 1.0 minimum
+top-result margin for positive cases.
+
+The regression set was authored after store inspection and threshold calibration. It proves the
+specified executable behavior, not independent or week-scale retention, and does not advance the
+professional-readiness claim beyond **PARTIAL**.

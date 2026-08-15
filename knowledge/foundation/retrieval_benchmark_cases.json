@@ -1,0 +1,102 @@
+{
+  "version": 2,
+  "frozen_on": "2026-08-15",
+  "calibration_note": "These cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. They are regression cases, not held-out evidence.",
+  "cases": [
+    {
+      "case_id": "boolean_tangent",
+      "kind": "positive",
+      "context": {"query": "tangent boolean groove degenerates", "workflow": "boolean", "defect": "non manifold zero length", "modifiers": ["BOOLEAN"]},
+      "expected_top_skill": "boolean-groove-cut-topology-cleanup",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "material_orphan",
+      "kind": "positive",
+      "context": {"query": "unused material slot", "workflow": "materials", "defect": "orphan assignment"},
+      "expected_top_skill": "material-slot-orphan-assignment",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "node_color",
+      "kind": "positive",
+      "context": {"query": "diffuse color not rendered", "workflow": "materials", "defect": "principled base color"},
+      "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "subd_boundary",
+      "kind": "positive",
+      "context": {"query": "subdivision boundary pinching mismatch", "workflow": "subdivision", "defect": "boundary resolution", "modifiers": ["SUBSURF"]},
+      "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "mirror_stack",
+      "kind": "positive",
+      "context": {"query": "mirror subdivision seam", "workflow": "modifier-stack", "defect": "non manifold seam", "modifiers": ["MIRROR", "SUBSURF"]},
+      "expected_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "boolean_paraphrase",
+      "kind": "positive",
+      "context": {"query": "cutter leaves sliver faces after difference", "workflow": "boolean", "defect": "zero area polygons", "modifiers": ["BOOLEAN"]},
+      "expected_top_skill": "boolean-groove-cut-topology-cleanup",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "slot_paraphrase",
+      "kind": "positive",
+      "context": {"query": "surface still uses previous shader after appending another material", "workflow": "materials", "defect": "faces material index points old slot"},
+      "expected_top_skill": "material-slot-orphan-assignment",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "node_paraphrase",
+      "kind": "positive",
+      "context": {"query": "script changes viewport swatch but Principled render stays gray", "workflow": "materials", "defect": "node base color mismatch"},
+      "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "boundary_paraphrase",
+      "kind": "positive",
+      "context": {"query": "rim grid has unequal edge counts and seven sided faces", "workflow": "subdivision", "defect": "resolution mismatch boundary", "modifiers": ["SUBSURF"]},
+      "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "stack_paraphrase",
+      "kind": "positive",
+      "context": {"query": "flat sheet bevel creates no geometry before thickness", "workflow": "modifier-stack", "defect": "bevel no-op", "modifiers": ["SOLIDIFY", "BEVEL"]},
+      "expected_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "uniform_rings_paraphrase",
+      "kind": "positive",
+      "context": {"query": "pedestal waist buckles after sequential extrude scale", "workflow": "radial product modeling", "defect": "uneven axial spacing stepped profile", "local_topology": ["connected quad rings"], "modifiers": ["SUBSURF"]},
+      "expected_top_skill": "deformation.topology.uniform_rings_before_shaping",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "abstain_reference_camera",
+      "kind": "abstention",
+      "context": {"query": "camera focal length mismatch", "workflow": "reference modeling", "defect": "perspective distortion"},
+      "expected_top_skill": null
+    },
+    {
+      "case_id": "abstain_uv_pack",
+      "kind": "abstention",
+      "context": {"query": "UV islands overlap after pack", "workflow": "UV", "defect": "texel density"},
+      "expected_top_skill": null
+    },
+    {
+      "case_id": "abstain_rigging",
+      "kind": "abstention",
+      "context": {"query": "armature elbow collapses", "workflow": "rigging", "defect": "weight paint deformation"},
+      "expected_top_skill": null
+    }
+  ]
+}

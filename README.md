@@ -155,6 +155,8 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-15_addon-resource-safety/` - Blender 5.2-validated connector cleanup: bounded HTTP
   timeouts, shared streamed downloads, exact temporary-resource ownership, and a measured decision
   not to delete unique retained evidence.
+- `runs/2026-08-15_retrieval-abstention/` - frozen positive/paraphrase and unrelated-ticket negative
+  controls proving that weak lexical overlap now abstains instead of emitting a planner hint.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

@@ -28,6 +28,12 @@ task gap
 - `knowledge/skills/` — runtime-oriented learned skills with applicability boundaries.
 - `knowledge/foundation/foundation_exit_report.md` — current capability gate.
 
+Structured runtime retrieval uses a calibrated default score floor and may return no skill. That
+abstention is intentional: weak lexical overlap must not turn an unrelated ticket into an executable
+hint. Use `knowledge/skill_store.py search-structured --min-score ...` only to lower the floor for
+explicit exploratory search, never silently for planner mutations. The frozen positive/negative
+regression cases live in `knowledge/foundation/retrieval_benchmark_cases.json`.
+
 ## Source hierarchy
 
 1. current Blender Manual, Python API, official training, and developer information;

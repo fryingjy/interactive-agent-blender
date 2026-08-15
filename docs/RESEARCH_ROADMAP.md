@@ -894,3 +894,17 @@ been visually inspected by the agent, but `human_review_gate.json` remains `PEND
 `modeling_authorized` remains false. The missing boiler underside and possible old/current production
 revision difference are visible uncertainties. The equal-effort comparison must not begin until the
 user accepts this board or directs a different target/reference search.
+
+## Update -- 2026-08-15 (retrieval now abstains from weak unrelated matches)
+
+An expanded retrieval probe exposed three concrete false positives: camera-perspective, UV-packing,
+and armature-deformation tickets retrieved unrelated skills at scores between 1.4142 and 3.3416.
+`StructuredSkillStore.search()` now uses a calibrated 4.0 default floor while retaining an explicit
+lower-threshold option for exploratory search. A frozen 14-case regression covers eleven direct or
+paraphrased positive contexts across all six current skills and three unrelated-ticket abstentions;
+all pass, and every positive top result clears a predeclared 1.0 margin.
+
+This improves executable memory safety and closes one wrong-retrieval mode. The set was authored
+after inspecting the store and calibrating the threshold, so it is regression evidence rather than
+held-out or independent retention. Longer-interval retrieval, broader real-session use, and the
+pending Bialetti human reference gate remain open.

@@ -155,6 +155,40 @@ class RetrievalTests(unittest.TestCase):
             self.assertEqual(results[0]["skill_id"], "specific")
             self.assertGreater(results[0]["score_breakdown"]["defect"], 0)
 
+    def test_weak_unrelated_overlap_abstains_by_default(self):
+        store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
+        cases = [
+            RetrievalContext(
+                query="camera focal length mismatch",
+                workflow="reference modeling",
+                defect="perspective distortion",
+            ),
+            RetrievalContext(
+                query="UV islands overlap after pack",
+                workflow="UV",
+                defect="texel density",
+            ),
+            RetrievalContext(
+                query="armature elbow collapses",
+                workflow="rigging",
+                defect="weight paint deformation",
+            ),
+        ]
+        for context in cases:
+            with self.subTest(query=context.query):
+                self.assertEqual(store.search(context), [])
+
+    def test_exploratory_search_can_lower_abstention_threshold(self):
+        store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
+        context = RetrievalContext(
+            query="camera focal length mismatch",
+            workflow="reference modeling",
+            defect="perspective distortion",
+        )
+        self.assertNotEqual(store.search(context, min_score=0.0), [])
+        with self.assertRaisesRegex(ValueError, "non-negative"):
+            store.search(context, min_score=-0.1)
+
 
 class TelemetryTests(unittest.TestCase):
     def test_append_and_summary(self):
