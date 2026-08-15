@@ -944,3 +944,26 @@ verifier retain both failures. The skill is `TRANSFER_VALIDATED`, not runtime pr
 only to a physically separate assembled/movable/bolted component; continuous host transitions still
 require connected topology or a deliberate boolean/retopology strategy. Evidence:
 `runs/2026-08-15_shrinkwrap-footprint-transfer/`.
+
+## Update -- 2026-08-15 (portable video discovery and fail-closed provenance)
+
+Implemented the repository-owned discovery step without turning “stock up” into an archive.
+`knowledge_engine/ingest/video_discovery.py` uses `yt-dlp --flat-playlist` for public metadata only,
+ranks triage value with explicit limitations, excludes already registered IDs, blocks held-out
+target terms and deferred topics, and emits a queue whose only next state is multimodal extraction.
+A three-query live run retained 15 unique candidates, excluded ten known sources, downloaded no
+media, and promoted no knowledge.
+
+The first Gemini analysis of queue rank 1 exposed a more important defect: it reported another
+video's ID, title, creator, and lesson while the wrapper replaced that URL with the requested URL
+and accepted the structure. The pipeline now rejects every unverifiable or different model-reported
+ID. Queue-bound analysis also requires exact title/creator and duration-with-tolerance agreement.
+The earlier Gemini pipeline-validation artifact is retroactively marked rejected for the same
+broken identity chain.
+
+A strict retry passed identity binding, but independent browser review found its Grid Fill range
+started too early and could not complete visible-frame checks because capture timed out. The run is
+therefore `INDEPENDENT_REVIEW_PARTIAL_TIMESTAMP_DEFECT`, not learned knowledge. This closes
+discovery and one provenance failure mode; reliable visible-action review, tight speech/action
+alignment, reproduction, transfer, and runtime use remain open. Evidence:
+`runs/2026-08-15_video-discovery-queue/`.

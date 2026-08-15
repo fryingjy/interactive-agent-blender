@@ -7,7 +7,7 @@
     "interaction_id": "v1_Chc2cTZBYW95TE1faWYtOFlQeTlXQ21BNBIXNnE2QWFveUxNX2lmLThZUHk5V0NtQTQ",
     "reported_source_url": "https://www.youtube.com/watch?v=132A89i34dQ",
     "reported_source_matches_request": false,
-    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "verification_status": "REJECTED_SOURCE_IDENTITY_MISMATCH",
     "video_archived": false
   },
   "analysis": {

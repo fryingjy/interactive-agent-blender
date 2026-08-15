@@ -1,0 +1,523 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-08-15T21:55:02.368199+00:00",
+  "queries": [
+    "Blender hard surface subdivision topology curved product workflow",
+    "Blender reference modeling workflow multi view proportion blockout",
+    "Blender retopology edge flow density poles hard surface"
+  ],
+  "discovery_summaries": [
+    {
+      "query": "Blender reference modeling workflow multi view proportion blockout",
+      "requested_limit": 8,
+      "candidate_video_ids": [
+        "kTQqVNh1REk",
+        "13UN1Lju5Hs"
+      ],
+      "rejected": [
+        {
+          "video_id": "4k8QReCNPNI",
+          "reason": "held-out target contamination risk",
+          "matched_terms": [
+            "camera"
+          ]
+        },
+        {
+          "video_id": "J2_uiUEcY7w",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "character",
+            "sculpt"
+          ]
+        },
+        {
+          "video_id": "GAIZkIfXXjQ",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "animation",
+            "character"
+          ]
+        },
+        {
+          "video_id": "QlBs-i41u3I",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "zbrush"
+          ]
+        },
+        {
+          "video_id": "zXm-mYeApQQ",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "character"
+          ]
+        },
+        {
+          "video_id": "fHZ4FRhIPeU",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "zbrush"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Blender hard surface subdivision topology curved product workflow",
+      "requested_limit": 8,
+      "candidate_video_ids": [
+        "k2vTtHj0MME",
+        "PGqpFHyQfK0",
+        "DkA0A8tmbqE",
+        "WzS_P24XvU4",
+        "tfmmZ5vdzjk",
+        "13UN1Lju5Hs"
+      ],
+      "rejected": [
+        {
+          "video_id": "FB8rBDLw3iE",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "character"
+          ]
+        },
+        {
+          "video_id": "BR1OJNLgN3c",
+          "reason": "current curriculum priority exclusion",
+          "matched_terms": [
+            "sculpt"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Blender retopology edge flow density poles hard surface",
+      "requested_limit": 8,
+      "candidate_video_ids": [
+        "sCdhkLUCV8A",
+        "V2Zbb_JRiY8",
+        "HGL6QpVRyXk",
+        "AZsmakJi1WY",
+        "MD1QmdqXRfc",
+        "wRPtxydqDuE",
+        "yOq464RuonI",
+        "P-Z_TBH-Qkw"
+      ],
+      "rejected": []
+    }
+  ],
+  "candidate_count": 15,
+  "candidates": [
+    {
+      "video_id": "sCdhkLUCV8A",
+      "url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+      "title": "How To Retopologize ANYTHING in Blender in Less Than 6 Minutes",
+      "creator": "Noggi",
+      "duration_seconds": 379.0,
+      "view_count": 789536,
+      "description": "Retopologize anything in Blender. In 6 minutes you'll learn Blender modeling, retopology, edge flow and more tips and tricks to ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 4.9586,
+      "selection_reasons": [
+        "metadata covers 3/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 1,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "V2Zbb_JRiY8",
+      "url": "https://www.youtube.com/watch?v=V2Zbb_JRiY8",
+      "title": "Every 3D Artist Should Know how to Solved Edge Poles in Topology",
+      "creator": "CRNT DESIGNERS",
+      "duration_seconds": 208.0,
+      "view_count": 113622,
+      "description": "In this blender tutorial I have explain how to solved edge poles. Edge Pole is a very important topic in topology, You can use them ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 3.7962,
+      "selection_reasons": [
+        "metadata covers 2/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 2,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "k2vTtHj0MME",
+      "url": "https://www.youtube.com/watch?v=k2vTtHj0MME",
+      "title": "Easy hard surface sci-fi panels in Blender",
+      "creator": "Aaron Van de Weijenberg",
+      "duration_seconds": 220.0,
+      "view_count": 41416,
+      "description": "In this video I'll show how I make hard-surface panels quickly without using booleans in Blender. I use this technique all the time ...",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow"
+      ],
+      "metadata_relevance_score": 3.7414,
+      "selection_reasons": [
+        "metadata covers 2/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 3,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "PGqpFHyQfK0",
+      "url": "https://www.youtube.com/watch?v=PGqpFHyQfK0",
+      "title": "SubD Workflow: Modeling a Simple Object",
+      "creator": "Blind Rhino",
+      "duration_seconds": 1271.0,
+      "view_count": 303577,
+      "description": "The video demonstrates SubD modeling. You will be able to see the workflow with the mesh and pick up some tips for modeling.",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow"
+      ],
+      "metadata_relevance_score": 2.9924,
+      "selection_reasons": [
+        "metadata covers 1/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 4,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "kTQqVNh1REk",
+      "url": "https://www.youtube.com/watch?v=kTQqVNh1REk",
+      "title": "Modular Modeling | Assembly Tips & Tricks",
+      "creator": "Kurt B",
+      "duration_seconds": 479.0,
+      "view_count": 24328,
+      "description": "In this tutorial, I'll share valuable tips and tricks for modeling and assembling a building using modular assets. While I am utilizing ...",
+      "source_queries": [
+        "Blender reference modeling workflow multi view proportion blockout"
+      ],
+      "metadata_relevance_score": 2.8554,
+      "selection_reasons": [
+        "metadata covers 1/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 5,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "HGL6QpVRyXk",
+      "url": "https://www.youtube.com/watch?v=HGL6QpVRyXk",
+      "title": "Change Your Understanding of Topology In Six Minutes",
+      "creator": "DECODED",
+      "duration_seconds": 418.0,
+      "view_count": 1085231,
+      "description": "A good understanding of topology is a vital skill that every VFX artist should have in their arsenal. In this video, I'll break down a ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 2.4,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 6,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "DkA0A8tmbqE",
+      "url": "https://www.youtube.com/watch?v=DkA0A8tmbqE",
+      "title": "Why THIS is my Favorite Modeling Technique",
+      "creator": "Kaizen",
+      "duration_seconds": 774.0,
+      "view_count": 495773,
+      "description": "There's a bunch of methods when it comes to 3D modeling. Now I don't know which is the best, but I do know which is my favorite.",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow"
+      ],
+      "metadata_relevance_score": 2.3619,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 7,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "AZsmakJi1WY",
+      "url": "https://www.youtube.com/watch?v=AZsmakJi1WY",
+      "title": "Become a Topology PRO with these Five Tips",
+      "creator": "DECODED",
+      "duration_seconds": 553.0,
+      "view_count": 410013,
+      "description": "Five tips to level up your topology skills. Click this link to find out more about the ASUS ProArt 16 Studiobook ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 2.3516,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 8,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "MD1QmdqXRfc",
+      "url": "https://www.youtube.com/watch?v=MD1QmdqXRfc",
+      "title": "Blender - Topology Fundamentals",
+      "creator": "PzThree",
+      "duration_seconds": 2924.0,
+      "view_count": 356916,
+      "description": "Learn the basics of 3d models and their geometry. This information should help you when it comes to creating your own 3d ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 2.1441,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 9,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "wRPtxydqDuE",
+      "url": "https://www.youtube.com/watch?v=wRPtxydqDuE",
+      "title": "Mastering 3D Modeling: Top 5 Topology Mistakes to Avoid",
+      "creator": "On Mars 3D",
+      "duration_seconds": 569.0,
+      "view_count": 265850,
+      "description": "Master 3D Modeling and Topology Today: https://www.onmars3d.com/ One thing that never changes is the mistakes we make ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 2.1281,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 10,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "WzS_P24XvU4",
+      "url": "https://www.youtube.com/watch?v=WzS_P24XvU4",
+      "title": "Blender Secrets - Perfect topology on Curved surfaces using Shrinkwrap and Base Objects",
+      "creator": "Blender Secrets",
+      "duration_seconds": 62.0,
+      "view_count": 55243,
+      "description": "When modeling a circular object or other non-flat surface, you can add holes and other details using Knife Cut and Loop Tools.",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow"
+      ],
+      "metadata_relevance_score": 2.0642,
+      "selection_reasons": [
+        "metadata covers 3/7 meaningful query terms",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content",
+        "short duration may omit reasoning, failure, and recovery"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 11,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "yOq464RuonI",
+      "url": "https://www.youtube.com/watch?v=yOq464RuonI",
+      "title": "Blender Pro Tips - How to Get Clean Topology Every time",
+      "creator": "Thomas Colin 3D",
+      "duration_seconds": 720.0,
+      "view_count": 61557,
+      "description": "Download my 3D Modeling ebook here : Payhip : https://payhip.com/ThomasColin3D ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 2.0487,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 12,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "P-Z_TBH-Qkw",
+      "url": "https://www.youtube.com/watch?v=P-Z_TBH-Qkw",
+      "title": "Mastering Blender Topology : Understand This VITAL Mesh Pattern",
+      "creator": "Grant Abbitt (Gabbitt)",
+      "duration_seconds": 326.0,
+      "view_count": 22214,
+      "description": "blender3d #topology #hardsurface Learn the crucial topology pattern you need to master in Blender! This video shows you how to ...",
+      "source_queries": [
+        "Blender retopology edge flow density poles hard surface"
+      ],
+      "metadata_relevance_score": 1.9933,
+      "selection_reasons": [
+        "metadata covers 0/7 meaningful query terms",
+        "duration supports a substantive lesson",
+        "public view count provides a weak discoverability signal only"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 13,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "13UN1Lju5Hs",
+      "url": "https://www.youtube.com/watch?v=13UN1Lju5Hs",
+      "title": "The easiest modeling technique? Blender Secrets",
+      "creator": "Blender Secrets",
+      "duration_seconds": 47.0,
+      "view_count": 468216,
+      "description": "This simple but powerful modeling technique, which you might call the \"double subdiv method\" is great for quickly creating base ...",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow",
+        "Blender reference modeling workflow multi view proportion blockout"
+      ],
+      "metadata_relevance_score": 0.4659,
+      "selection_reasons": [
+        "metadata covers 1/7 meaningful query terms",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content",
+        "short duration may omit reasoning, failure, and recovery"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 14,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    },
+    {
+      "video_id": "tfmmZ5vdzjk",
+      "url": "https://www.youtube.com/watch?v=tfmmZ5vdzjk",
+      "title": "4 random bevel / topology tips - Blender Secrets",
+      "creator": "Blender Secrets",
+      "duration_seconds": 49.0,
+      "view_count": 91622,
+      "description": "More Blender tips: https://www.3DSecrets.com Follow Blender Secrets on Patreon https://www.patreon.com/c/BlenderSecrets ...",
+      "source_queries": [
+        "Blender hard surface subdivision topology curved product workflow"
+      ],
+      "metadata_relevance_score": 0.3774,
+      "selection_reasons": [
+        "metadata covers 1/7 meaningful query terms",
+        "public view count provides a weak discoverability signal only",
+        "channel identity is platform-verified, not technically validated"
+      ],
+      "risks": [
+        "title/description relevance is not proof of instructional quality or video content",
+        "short duration may omit reasoning, failure, and recovery"
+      ],
+      "status": "DISCOVERED_METADATA_ONLY",
+      "video_archived": false,
+      "knowledge_promoted": false,
+      "queue_rank": 15,
+      "next_gate": "MULTIMODAL_EXTRACTION"
+    }
+  ],
+  "media_downloaded": false,
+  "promotion_count": 0,
+  "excluded_video_ids": [
+    "-tbSCMbJA6o",
+    "1X0Npd5REQw",
+    "3nJJ5r0kOy4",
+    "8ocmPR_EprE",
+    "KL0XOYdcL_E",
+    "QHUBIC6XD1Y",
+    "RRilLLyyn1Y",
+    "TNgWVyKSGfA",
+    "pPEB5uEDY-Q",
+    "tRqCeWZLqQo"
+  ]
+}

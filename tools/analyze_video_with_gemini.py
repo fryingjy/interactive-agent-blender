@@ -23,7 +23,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Extract timestamped multimodal Blender-learning episodes without downloading video."
     )
-    parser.add_argument("url", help="Public HTTPS YouTube watch URL")
+    parser.add_argument("url", nargs="?", help="Public HTTPS YouTube watch URL")
+    parser.add_argument("--discovery-queue", type=Path, help="Use a ranked candidate from a discovery queue")
+    parser.add_argument("--rank", type=int, default=1, help="Queue rank used with --discovery-queue")
     parser.add_argument("--output", type=Path, help="JSON evidence output path")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--focus", default="")
@@ -34,14 +36,31 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    expected_source = None
+    source_url = args.url
+    if args.discovery_queue:
+        if args.url:
+            parser.error("provide either URL or --discovery-queue, not both")
+        queue = json.loads(args.discovery_queue.read_text(encoding="utf-8"))
+        expected_source = next(
+            (item for item in queue.get("candidates", []) if item.get("queue_rank") == args.rank),
+            None,
+        )
+        if expected_source is None:
+            parser.error(f"queue has no candidate at rank {args.rank}")
+        source_url = expected_source["url"]
+    if not source_url:
+        parser.error("URL or --discovery-queue is required")
+
     if args.dry_run:
-        request = build_request(args.url, args.model, args.focus)
+        request = build_request(source_url, args.model, args.focus, expected_source)
         summary = {
             "model": request["model"],
             "video_uri": request["input"][1]["uri"],
             "prompt_version": "blender-video-study-v1",
             "structured_output": True,
             "video_archived": False,
+            "discovery_identity_bound": expected_source is not None,
         }
         print(json.dumps(summary, indent=2))
         return 0
@@ -49,9 +68,10 @@ def main() -> int:
     if args.output is None:
         parser.error("--output is required unless --dry-run is used")
     result = analyze_youtube_video(
-        args.url,
+        source_url,
         model=args.model,
         focus=args.focus,
+        expected_source=expected_source,
     )
     target = write_analysis(result, args.output)
     print(f"wrote unverified Gemini extraction: {target}")

@@ -1,0 +1,175 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": "v1_ChdqOXlBYXFpQ0N0YkktOFlQNElTcmtRbxIXajl5QWFxaUNDdGJJLThZUDRJU3JrUW8",
+    "reported_source_url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+    "reported_source_matches_request": true,
+    "verification_status": "INDEPENDENT_REVIEW_PARTIAL_TIMESTAMP_DEFECT",
+    "video_archived": false
+  },
+  "analysis": {
+    "source": {
+      "title": "How To Retopologize ANYTHING in Blender in Less Than 6 Minutes",
+      "creator": "Noggi",
+      "url": "https://www.youtube.com/watch?v=sCdhkLUCV8A",
+      "duration_seconds": 379.0,
+      "blender_version_mentions": []
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Manual retopology workflow, snapping configuration, edge-flow structure, quad-based density reductions, and detail projection.",
+    "episodes": [
+      {
+        "start_seconds": 112.0,
+        "end_seconds": 168.0,
+        "timestamp_label": "01:52 - 02:48",
+        "modeling_stage": "Setup & Initial Mesh Creation",
+        "problem": "Conforming newly created retopology geometry directly to a high-poly sculpt surface.",
+        "observed_fact": "Snap options set to Face, Closest, Project Individual Elements, and Affect Move/Rotate/Scale enabled. A single plane is extruded along eyebrow landmarks.",
+        "instructor_claim": "Enabling face snapping with individual element projection ensures all transformed vertices stick to the underlying mesh.",
+        "interpretation": "Standard face-snapping setup for manual retopology overlay.",
+        "hypothesis": "",
+        "reference_evidence": "3D viewport snapping menu configuration and plane extrusion along head sculpt surface.",
+        "modeling_decision": "Configure Face Snap with Project Individual Elements and apply a Mirror Modifier for symmetrical retopology.",
+        "visible_action": "Configured snapping settings in viewport header, added plane, extruded edge loop over eyebrow.",
+        "spoken_reason": "Project individual elements allows pivot points and individual vertices to stick directly to the sculpt surface during transform.",
+        "topology_surface_effect": "Extruded quad strip hugs high-poly scalp and brow contour precisely.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Bmesh Retopo overlays or specialized retopology add-ons.",
+        "transferable_principle": "Enable Face Snapping with 'Project Individual Elements' to constrain manually extruded retopology geometry to high-poly target surfaces.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 168.0,
+        "end_seconds": 225.0,
+        "timestamp_label": "02:48 - 03:45",
+        "modeling_stage": "Edge Flow & Layout",
+        "problem": "Structuring retopology across complex anatomical forms without losing edge flow control.",
+        "observed_fact": "Closed face loops are extruded around eyes, mouth, chest, and crotch before filling internal areas.",
+        "instructor_claim": "The divide-and-conquer strategy establishes key facial and body harnesses to isolate sections and ensure proper deformation flow.",
+        "interpretation": "Building key anatomical boundary loops prior to infill prevents dead-end edge loops.",
+        "hypothesis": "",
+        "reference_evidence": "Highlighted pink face loops around eyes, mouth, chest, and limbs.",
+        "modeling_decision": "Lay down primary face loops on major landmarks before filling intermediate gaps.",
+        "visible_action": "Extruded connected face rings outlining major muscle groups and facial features.",
+        "spoken_reason": "Constructing a harness splits the mesh into manageable sections and guarantees optimal edge flow for animation.",
+        "topology_surface_effect": "Defines key deformation loops aligned with anatomical contours.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Establish perimeter edge loops around primary anatomical landmarks before filling interior surface patches.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 225.0,
+        "end_seconds": 265.0,
+        "timestamp_label": "03:45 - 04:25",
+        "modeling_stage": "Topology Optimization & Reduction",
+        "problem": "Transitioning mesh density between high-detail and low-detail body areas using quads.",
+        "observed_fact": "Diagrams illustrate 90-degree loop turns and specific quad reduction ratios (2-to-1, 4-to-1, 3-to-1, 4-to-2, 5-to-3).",
+        "instructor_claim": "Only triangles terminate edge flow; four-sided quads redirect flow into different directions.",
+        "interpretation": "Poles and specific quad layouts control mesh density transitions while maintaining quad dominance.",
+        "hypothesis": "",
+        "reference_evidence": "2D topological reduction pattern diagrams showing flow paths in color.",
+        "modeling_decision": "Implement standard quad-reduction diamond structures to reduce edge count across planar spans.",
+        "visible_action": "Demonstrated topological diagrams for edge-count reduction and flow redirection.",
+        "spoken_reason": "Reductions prevent unnecessarily dense geometry from propagating into low-detail regions.",
+        "topology_surface_effect": "Reduces localized face count while preserving quad topology.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Use standard quad reduction patterns to scale mesh density down across transition zones without introducing N-gons.",
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 265.0,
+        "end_seconds": 287.0,
+        "timestamp_label": "04:25 - 04:47",
+        "modeling_stage": "Surface Patching",
+        "problem": "Filling large open quad-bounded holes within the retopology structure efficiently.",
+        "observed_fact": "Boundary loop selected on cranial opening; Grid Fill executed from Edit Mode menu generating uniform face patch.",
+        "instructor_claim": "Grid Fill automatically patches topological openings with a clean grid of quad faces.",
+        "interpretation": "Grid Fill requires an even number of boundary vertices to compute successfully.",
+        "hypothesis": "",
+        "reference_evidence": "Selection of head patch hole and execution of Edit Mode > Face > Grid Fill.",
+        "modeling_decision": "Execute Grid Fill to bridge large planar or rounded boundary openings.",
+        "visible_action": "Selected hole boundary edges, ran Grid Fill, adjusted offset/span settings.",
+        "spoken_reason": "Fills remaining topological gaps quickly with even grid geometry.",
+        "topology_surface_effect": "Converts open boundary loop into a uniform, continuous quad mesh grid.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Manual face bridging or F-fill fan interpolation.",
+        "transferable_principle": "Apply Grid Fill to bridge even-sided topological openings with structured quad grids.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 287.0,
+        "end_seconds": 354.0,
+        "timestamp_label": "04:47 - 05:54",
+        "modeling_stage": "Detail Projection & Reshaping",
+        "problem": "Transferring high-frequency sculpted details onto low-poly retopologized geometry.",
+        "observed_fact": "Shrinkwrap and Subdivision modifiers applied to retopo mesh. Distortion around ear adjusted manually. Alternatively, Multiresolution modifier applied and Reshape executed relative to original sculpt.",
+        "instructor_claim": "Using Multiresolution Reshape captures high-poly sculpt details onto a multi-level retopologized mesh.",
+        "interpretation": "Shrinkwrap projects surface location; Multires Reshape bakes surface detail into multi-resolution levels.",
+        "hypothesis": "",
+        "reference_evidence": "Modifier stack setup, ear vertex adjustment, Multires Reshape button execution.",
+        "modeling_decision": "Combine Shrinkwrap/Subdivision or Multiresolution Reshape to project high-poly details onto low-poly base.",
+        "visible_action": "Added Shrinkwrap, set target, added Subdivision, tweaked ear vertices, applied Multires Reshape.",
+        "spoken_reason": "Restores sculpted surface detail onto low-poly topology for multi-resolution editing or baking.",
+        "topology_surface_effect": "Conforms low-poly retopology mesh surface precisely to high-poly sculpt details.",
+        "failure": "Severe surface clipping and stretching occurred around complex geometry (ear) during initial projection.",
+        "correction": "Manually adjusted vertices away from extreme overhangs on ear to eliminate projection artifacts.",
+        "alternatives": "Baking normal maps directly without high-poly mesh displacement.",
+        "transferable_principle": "Combine multi-resolution subdivision with detail projection tools to transfer high-frequency sculpt detail onto optimized base topology.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "00:00 - 01:52: General introduction, definition of retopology, viewport performance lag demonstration, and high-level overview of manual/automatic/recycled retopology approaches.",
+      "05:54 - 06:19: Outro summary, social media links, channel subscription requests, and community links."
+    ],
+    "limitations": [
+      "Blender version is not explicitly stated in the UI or vocal narrative.",
+      "Specific hotkeys used during quad extrusions are not displayed on screen."
+    ]
+  }
+}

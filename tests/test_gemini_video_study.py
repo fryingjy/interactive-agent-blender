@@ -10,6 +10,7 @@ from knowledge_engine.gemini_video_study import (
     build_request,
     load_dotenv,
     validate_analysis,
+    validate_expected_source,
     validate_youtube_url,
     youtube_video_id,
     write_analysis,
@@ -83,6 +84,19 @@ class GeminiVideoStudyTests(unittest.TestCase):
         self.assertEqual(request["response_format"]["mime_type"], "application/json")
         self.assertIn("observed_fact", request["response_format"]["schema"]["properties"]["episodes"]["items"]["required"])
 
+    def test_request_binds_discovery_identity_into_prompt(self):
+        expected = {
+            "url": "https://www.youtube.com/watch?v=abc123",
+            "title": "Exact Lesson",
+            "creator": "Exact Artist",
+            "duration_seconds": 100,
+        }
+        request = build_request(expected["url"], expected_source=expected)
+        prompt = request["input"][0]["text"]
+        self.assertIn("Exact Lesson", prompt)
+        self.assertIn("Untrusted public-source metadata", prompt)
+        self.assertIn("Do not substitute", prompt)
+
     def test_validation_requires_visible_evidence(self):
         data = _analysis()
         data["episodes"][0]["evidence_modalities"] = ["CAPTIONS"]
@@ -96,6 +110,15 @@ class GeminiVideoStudyTests(unittest.TestCase):
     def test_validation_accepts_canonical_short_url_for_same_video(self):
         data = _analysis("https://youtu.be/abc123")
         validate_analysis(data, "https://www.youtube.com/watch?v=abc123")
+
+    def test_expected_source_rejects_title_creator_and_duration_substitution(self):
+        expected = {"title": "Tutorial", "creator": "Artist", "duration_seconds": 100}
+        validate_expected_source(_analysis(), expected)
+        for field, value in (("title", "Other"), ("creator", "Other"), ("duration_seconds", 160)):
+            data = _analysis()
+            data["source"][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, "does not match"):
+                validate_expected_source(data, expected)
 
     def test_dotenv_does_not_overwrite_existing_key(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -127,7 +150,7 @@ class GeminiVideoStudyTests(unittest.TestCase):
         self.assertEqual(result["provenance"]["verification_status"], "MODEL_EXTRACTED_UNVERIFIED")
         self.assertFalse(result["provenance"]["video_archived"])
 
-    def test_request_owned_url_overrides_model_reported_url(self):
+    def test_rejects_unverifiable_model_reported_url(self):
         requested = "https://www.youtube.com/watch?v=abc123"
         reported = "I inspected the supplied video input"
         payload = _analysis(requested)
@@ -146,10 +169,28 @@ class GeminiVideoStudyTests(unittest.TestCase):
                 return Interaction()
 
         with patch.dict(os.environ, {"GEMINI_API_KEY": "secret"}, clear=False):
-            result = analyze_youtube_video(requested, client_factory=Client)
-        self.assertEqual(result["analysis"]["source"]["url"], requested)
-        self.assertEqual(result["provenance"]["reported_source_url"], reported)
-        self.assertFalse(result["provenance"]["reported_source_matches_request"])
+            with self.assertRaisesRegex(ValueError, "cross-video attribution"):
+                analyze_youtube_video(requested, client_factory=Client)
+
+    def test_rejects_different_valid_model_reported_url(self):
+        requested = "https://www.youtube.com/watch?v=abc123"
+        payload = _analysis("https://www.youtube.com/watch?v=wrong456")
+
+        class Interaction:
+            output_text = json.dumps(payload)
+            model = "gemini-test"
+            id = "interaction-3"
+
+        class Client:
+            def __init__(self, api_key):
+                self.interactions = self
+
+            def create(self, **request):
+                return Interaction()
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "secret"}, clear=False):
+            with self.assertRaisesRegex(ValueError, "cross-video attribution"):
+                analyze_youtube_video(requested, client_factory=Client)
 
     def test_write_analysis_round_trips_utf8_json(self):
         with tempfile.TemporaryDirectory() as directory:

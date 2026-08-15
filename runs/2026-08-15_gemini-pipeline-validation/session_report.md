@@ -32,18 +32,19 @@ late silhouette correction.
 ## Important failure found
 
 Gemini reported `https://www.youtube.com/watch?v=132A89i34dQ` in its generated source metadata even
-though the request supplied `yi87Dap_WOc` and the extracted content correctly described the Blender
-Guru anvil lesson. The pipeline now treats source identity as request-owned provenance, preserves the
-model-reported value for audit, and records whether it matches. Generated source metadata is not
-silently trusted.
+though the request supplied `yi87Dap_WOc`. The implementation at the time treated the URL as
+request-owned and preserved only a mismatch flag. The later source-identity audit below determined
+that this was insufficient and now rejects the artifact rather than repairing its provenance.
 
 The first prompt also allowed some episode ranges to become broader than ideal and included at least
 one plausible alternative not clearly shown. The committed prompt therefore asks for one decision per
 tight interval and forbids unshown alternatives outside the HYPOTHESIS field.
 
-## Verdict
+## Superseding verdict (2026-08-15 source-identity audit)
 
-The acquisition path is operational and reproducible, but this extraction remains
-`MODEL_EXTRACTED_UNVERIFIED`; two spot checks do not validate every field or promote any principle.
-The correct next gate is more timestamp verification, then controlled reproduction and transfer on
-different geometry.
+This extraction is now `REJECTED_SOURCE_IDENTITY_MISMATCH`. Request-owned URL rewriting made the
+record look bound to the requested source even though Gemini reported another video ID. Partial
+content convergence and two browser spot checks cannot repair that broken chain of custody. The
+pipeline remains technically callable, but no extraction is admissible unless the model-reported
+video ID matches the request and its title, creator, and duration match independently discovered
+metadata. No principle from this artifact is promoted.
