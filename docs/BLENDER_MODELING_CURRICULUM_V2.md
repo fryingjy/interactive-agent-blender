@@ -187,6 +187,27 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
     primary modeling solution -- the target capability is reasoning from reference to professional
     hard-surface/production model, and sculpting is not the primary path there.
 
+## Level 16 -- Official documentation and community knowledge (ongoing, not a single pass)
+
+**Governing rule, same as the video track**: read purposefully and extract real, cited
+`KnowledgeItem`s (`source_id` = the manual page or forum thread URL) via
+`mcp__Blender__search_manual_docs` / `search_api_docs` and targeted web search of Blender Stack
+Exchange / Blender Artists -- not a "skim the whole manual" pass. Started 2026-08-14 per direct
+instruction to actually learn the documentation and forums, not just reference them in passing
+(the project had one prior manual citation, curriculum item #11, before this).
+
+30. **Official Blender manual -- Bevel, Weighted Normal modifier, Bridge Edge Loops.** Processed
+    (`runs/2026-08-14_docs-study-bevel-weighted-normal-bridge/`, 6 items, 5 from the manual + 1 from
+    a Blender Artists forum thread). Chosen deliberately, not at random: connects directly to this
+    project's standing bevel-weight policy (Face Strength + Weighted Normal Face Influence is a
+    winner-take-all mechanism, not a blend) and root-causes an unresolved bug from the same session
+    (Bridge Edge Loops' undocumented-in-this-project `Twist` parameter explains the teapot handle's
+    twisted-bridge failure; the typed `bridge_selection` wrapper doesn't expose it yet -- a concrete
+    fix, not just a diagnosis).
+31. Remaining manual sections and forum topics: not yet scoped. Pick the next topic by relevance to
+    active work (an unresolved bug, a standing policy, a curriculum gap) the same way item 30 was
+    chosen, rather than working through the manual's table of contents in order.
+
 ## Study order (phases, not strict sequential blocking -- later phases can start once earlier ones
 are "solid enough," per the extraction protocol's verification loop, not once every video is watched)
 

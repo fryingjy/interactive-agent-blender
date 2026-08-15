@@ -657,3 +657,38 @@ tooling itself rather than a modeling technique or principle. Full account:
 `runs/2026-08-14_teapot-body-revolve/brief.md`. Remaining teapot work: the C-shaped handle, which
 needs a real `bridge_selection` back into the body at a second attachment point -- new territory
 even with the extrude bug fixed, since it's a full loop rather than a cantilevered tip.
+
+## Update (2026-08-14, later): reconciled stale curriculum tracking, grew the handle, started an official-documentation/forum track
+
+Reconciled `docs/BLENDER_MODELING_CURRICULUM_V2.md` against actual `runs/` output -- six items (3,
+6, 8, 10, 17, 18) were marked "not yet processed" despite having been genuinely processed earlier
+in the session; the doc just never got updated back. Fixed each with its real run directory and
+item count, and documented ~17 additional videos processed outside the list's exact numbering
+(mostly Level 14 professional-judgment material).
+
+Continued the curriculum for real: processed the Default Cube procedural-materials video (Gemini
+quota had reset), Blender Guru's Beginner 4.0 tutorial, Josh Gambrell's UV workflow (found via
+title search), and Polygon Runway's Winter Café stylized-modeling walkthrough (also found via
+title search) -- 20 new items across four videos, closing out Levels 7, 8, and 13 completely.
+
+Grew the teapot handle as a 9-segment curved arm using the now-fixed extrude technique -- every
+segment confirmed moving correctly by direct measurement. Attempting to close it into a true
+two-point C-loop via `bridge_selection` hit a different, real bug: unequal loop sizes (10 vs 12
+vertices) produced a genuinely twisted connection (10 edges with 3 linked faces instead of 2).
+Confirmed as real, not a stale-ID repeat: deleting the suspected extra face made non-manifold
+edges go up, not down. Reverted cleanly and finished the handle as a capped cantilevered hook
+rather than ship broken topology -- attached at one point on the body, not the spec's two.
+
+Per direct instruction, started treating the official Blender manual and community forums as real
+sources under the same extraction discipline as the video curriculum (new Level 16, not a
+one-time skim). First pass: Bevel, Weighted Normal modifier, and Bridge Edge Loops manual pages,
+chosen specifically because they connect to live project work rather than at random -- and this
+paid off immediately. The manual's Bridge Edge Loops page documents a `Twist` parameter that
+"offsets the choice of target vertex which each source vertex is connected to" and can make the
+generated tube twist -- this is the actual, documented root cause of the teapot handle's crossed
+bridge, which this project's own `bridge_selection` wrapper never exposed as a parameter. A
+Blender Artists forum thread on the same symptom added a practical workaround (inset both end
+faces before bridging) as a lower-confidence, community-sourced supplement. Six items captured;
+`decision_transaction_protocol_gotchas.md` updated with the confirmed mechanism and a concrete
+next step (expose `twist` on `bridge_selection`) instead of leaving the bug as "unresolved, cause
+unknown."
