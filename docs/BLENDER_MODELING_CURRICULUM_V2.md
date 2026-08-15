@@ -21,7 +21,10 @@ videos without that loop is the failure mode this curriculum exists to avoid.
    yet covered.
 2. **Blender Guru -- Beginner Blender 4.0 Tutorial.** `4haAdmHqGOw`. REQUIRED/supplementary.
    Extrusion, Subdivision, Solidify, Shrinkwrap, reference-image modeling, organization. Older
-   version, useful for the same reasoning taught a second way. Not yet processed.
+   version, useful for the same reasoning taught a second way. Processed
+   (`runs/2026-08-14_video-study-blenderguru-beginner-4.0/`, 5 items) -- SubD/Catmull-Clark,
+   Shrinkwrap-above-Solidify stack order, mask+Mesh-Filter uniform sculpt deformation, Geometry
+   Nodes point-distribute scattering, and clamped-bevel hard-surface profile modeling.
 3. **CG Boost -- Retopology in Blender.** `X2GNyEUvpD4`. Later but required. Snapping, Shrinkwrap,
    F2, LoopTools, topology cleanup. Not yet processed.
 
