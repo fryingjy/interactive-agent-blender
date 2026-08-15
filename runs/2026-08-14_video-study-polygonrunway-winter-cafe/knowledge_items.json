@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For a scene meant to be viewed from one fixed angle (an isometric diorama, a stylized still), set up the camera (Orthographic type, locked to the intended viewing angle, e.g. a 45-degree isometric view) BEFORE modeling the props, rather than modeling everything freely and framing a shot afterward. Composing the view first lets silhouette readability, negative space, and visual balance be evaluated from the actual viewer angle throughout the build, and avoids wasting time detailing geometry that will never be seen (back faces, hidden interiors).",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 29, "end_seconds": 65},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation (2026-08-14, watched full video): at 0:29-1:05, immediately after extruding the basic room boundary, an Orthographic camera is added, its Orthographic Scale adjusted, and it's locked to a standard 45-degree isometric viewpoint (Numpad 0).",
+    "status": "CAPTURED",
+    "rejected_alternative": "Modeling all props and geometry freely, then framing/composing the final shot only after the model is complete",
+    "reason": "Without a fixed early camera, there's no way to know which geometry will actually be visible, risking wasted detail work on hidden areas and making it harder to judge silhouette/composition until the whole scene is already built.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Stylized props read as stylized partly through slightly exaggerated, chunkier proportions than a realistic reference would use (thicker tabletops, chunkier furniture legs, deeper cushions) -- blocking out these volumes with simple extruded cubes/scaled planes and no bevels or fine detail FIRST establishes the spatial hierarchy and sightlines, before any time is spent on modifiers, bevels, or sub-objects that would be wasted if the blockout proportions later need to change.",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 838, "end_seconds": 958},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 13:58-15:58, the interior's main structures (coffee table, bar counter, wall shelving, bench seating) are quickly blocked out with simple extruded cubes and scaled planes, with intentionally exaggerated/chunky proportions and no surface detail yet.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Modeling stylized props at realistic (non-exaggerated) proportions, or adding bevels/detail before the blockout's spatial hierarchy is confirmed",
+    "reason": "Committing detail work (bevels, modifiers, sub-objects) before the blockout's proportions and spatial relationships are settled risks having to redo that detail work if the blockout needs adjustment; exaggerated chunky proportions are also part of what reads visually as 'stylized' rather than realistic.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "For dense repeated organic decoration (pine-needle garlands, leaves, small repeated clusters) along a guide path (a roof trim, a window frame edge loop), model ONE clean modular cluster segment once, then distribute copies along the guide edge/curve via an instancing or particle system, rather than hand-placing each individual element -- this keeps density editable and consistent, and keeps the polycount controlled since only one unique cluster mesh needs to exist.",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 1390, "end_seconds": 1535},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 23:10-25:35, a single branch segment with angled pine-needle pins is modeled once, then distributed along the roof trim and window frame edge loops via an instancing/particle system to create a full garland.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Hand-placing and duplicating hundreds of individual decorative elements (leaves, needles) by hand along a guide path",
+    "reason": "Hand-placing each element is slow to build and hard to adjust afterward (changing density or the element design means redoing every placement), while instancing one clean modular cluster along a guide keeps both density and the cluster's own design centrally editable.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A quick, rough pressure-based Cloth simulation (a flat subdivided box mesh, Cloth modifier with internal Pressure enabled, run for a few frames) inflates into a naturally plush, rounded pillow/cushion shape in seconds, which can then take a Subdivision Surface modifier for a smooth final result -- this is faster and produces more naturally organic softness than hand-modeling seams, creases, and rounded pillow volumes manually.",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 1597, "end_seconds": 1646},
+    "confidence": 0.45,
+    "supporting_evidence": "Gemini video-understanding observation: at 26:37-27:26, a flat subdivided box mesh with a Cloth modifier (internal Pressure enabled) is simulated for a few frames, inflating into a plush rounded seat pillow before a Subdivision Surface modifier is applied.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Hand-modeling a soft cushion/pillow shape directly (manually sculpting or extruding rounded volumes and creases)",
+    "reason": "Manually achieving convincing organic softness (natural rounding, sag, subtle creases) through direct modeling is slow and prone to looking stiff or artificial; a physics-based pressure simulation reaches a naturally plush result automatically in a handful of simulated frames.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "For stylized hard-surface props (a Moka coffee pot, mugs, bottles, plates), building from LOW-sided primitives (e.g. 6-8 sides for a faceted pot, 12-16 for a cup, well below what a realistic render would use) with a Bevel modifier softening the edges produces a toy-like, hand-crafted look that catches specular rim lighting softly -- razor-sharp realistic edges read as harsh in stylized rendering, while excessive polygon segment counts lose the crisp faceted silhouette that gives stylized props their charm.",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 2180, "end_seconds": 2345},
+    "confidence": 0.5,
+    "supporting_evidence": "Gemini video-understanding observation: at 36:20-37:30 and 38:20-39:05, a Moka coffee pot, mugs, wine bottles, and plates are built from low-vertex cylinders (6-8 sides for the pot, 12-16 for cups) with stepped extrusions and Bevel modifiers softening the edges.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using high segment-count cylinders and razor-sharp (unbevelled) edges for stylized hard-surface props, matching realistic-render conventions",
+    "reason": "A stylized aesthetic depends on a visibly faceted, slightly toy-like silhouette softened just enough to catch light gently -- high-poly smooth cylinders with sharp edges read as realistic/harsh rather than stylized, defeating the intended look.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Stylized dioramas/scenes convey mood and miniature appeal largely through lighting color-temperature contrast: warm emissive materials and point lights on interior light sources (hanging bulbs, fairy lights, candles) placed against a cool, dark ambient/exterior backdrop (a dark blue twilight) creates an inviting, cozy read. Point lights placed directly inside the glowing-bulb meshes themselves (rather than as generic scene fill) illuminate nearby surfaces (wood grain, fabric) with localized, physically-motivated falloff.",
+    "source": {"source_id": "pUdHo2maqTM", "start_seconds": 3200, "end_seconds": 3665},
+    "confidence": 0.45,
+    "supporting_evidence": "Gemini video-understanding observation: at 53:20-54:30 and 60:00-61:05, warm emissive materials are assigned to hanging globe lamps, a fairy-light string is added along the counter, and warm point lights are placed around candles/bulbs, contrasted against a cool dark-blue twilight ambient backdrop.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using flat, uniform-temperature scene lighting instead of a deliberate warm-interior/cool-exterior color contrast",
+    "reason": "Warm/cool color contrast is a primary driver of mood and coziness in stylized lighting, and localized point lights inside actual light-source meshes produce physically-grounded falloff on nearby surfaces rather than generic flat illumination.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

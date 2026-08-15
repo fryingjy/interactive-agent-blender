@@ -153,9 +153,13 @@ reference -> orthographic views -> establish proportions -> primitive/blockout
 
 ## Level 13 -- Stylized modeling
 
-27. **Polygon Runway -- full environment/object modeling process** (e.g. a Central Perk Café-style
-    long-form walkthrough). Exact current video URL not confirmed by the source -- locate by title
-    search rather than trusting a placeholder link. Not yet processed.
+27. **Polygon Runway -- full environment/object modeling process.** `pUdHo2maqTM` ("Winter Café
+    Illustration in Blender - 3D Modeling Process", found via title search -- a genuine long-form
+    full-scene walkthrough matching this item's description). Processed
+    (`runs/2026-08-14_video-study-polygonrunway-winter-cafe/`, 6 items) -- camera-first composition,
+    exaggerated stylized blockout proportions, modular instance-scattering for organic decoration,
+    pressure-based Cloth sim as a soft-prop shortcut, low-sided-primitive-plus-bevel stylized
+    hard-surface look, and warm/cool lighting contrast for mood. **Level 13 complete, 1/1.**
 
 ## Level 14 -- Professional modeling judgment
 
