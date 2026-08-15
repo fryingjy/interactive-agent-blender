@@ -290,3 +290,20 @@ reached its performed flag. Failed operations now restore the transaction-owned 
 metadata, modifiers, and selection before re-raising. This is verified with a deliberate post-mutation
 exception and an unequal-density bridge rejection. The evidence remains bounded to controlled equal-
 density loops; it does not promote general modeling or professional readiness beyond **PARTIAL**.
+
+## 2026-08-15 addendum: connector resource lifecycle and measured purge audit
+
+`runs/2026-08-15_addon-resource-safety/` closes a bounded reliability defect in the root Blender
+connector add-on. All 23 external `requests` calls now carry explicit connect/read timeouts; duplicate
+Hyper3D temporary-download code is consolidated; partial streams roll back their file; and Poly
+Haven, Sketchfab, and Hunyuan temporary files/directories are owned by exact `finally` or context
+cleanup paths. The private global `tempfile._cleanup()` call and direct scattered unlink/remove calls
+are gone. A deliberate interrupted-stream test verifies the partial file is absent, the full suite
+passes 72 tests, and Blender 5.2 imports/registers/unregisters the complete add-on under factory
+startup.
+
+The accompanying purge audit deleted nothing: 488 pre-change tracked files contained zero exact
+duplicate groups, forbidden artifacts, or unclassified root files. Unique dated `.blend`, render,
+transcript, and video fixtures remain retained evidence under the master directive's stability and
+anti-fake-progress rules. This improves runtime hygiene; it does not change `FOUNDATION STATUS:
+PARTIAL` or substitute for the pending human reference-board review.

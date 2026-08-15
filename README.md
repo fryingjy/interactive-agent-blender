@@ -152,5 +152,9 @@ The local Blender/MCP entry points are:
   hard-surface target: same-object multi-angle evidence, official dimensions, explicit conflicts,
   structured decomposition, and a passing machine gate held behind pending human review.
 
+- `runs/2026-08-15_addon-resource-safety/` - Blender 5.2-validated connector cleanup: bounded HTTP
+  timeouts, shared streamed downloads, exact temporary-resource ownership, and a measured decision
+  not to delete unique retained evidence.
+
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

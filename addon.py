@@ -37,6 +37,12 @@ RODIN_FREE_TRIAL_KEY = "vibecoding"
 REQ_HEADERS = requests.utils.default_headers()
 REQ_HEADERS.update({"User-Agent": "blender-mcp"})
 
+# Requests defaults to no timeout, which can leave Blender's UI-side integration blocked
+# indefinitely when an external asset service stalls.  Keep connection failures responsive while
+# allowing large model downloads substantially more time to stream.
+API_TIMEOUT = (10, 30)
+DOWNLOAD_TIMEOUT = (10, 120)
+
 
 def _safe_extract_zip(archive, destination):
     """Extract an archive only when every member stays inside ``destination``."""
@@ -46,6 +52,36 @@ def _safe_extract_zip(archive, destination):
         if target != root and root not in target.parents:
             raise ValueError(f"Unsafe ZIP member path: {member.filename}")
     archive.extractall(root)
+
+
+def _unlink_quietly(path):
+    """Remove one temporary file without touching unrelated tempfile state."""
+    if not path:
+        return
+    with suppress(OSError):
+        Path(path).unlink()
+
+
+def _download_to_temp_file(url, *, prefix="blender-mcp-", suffix="", headers=None):
+    """Stream ``url`` to a closed temporary file and remove partial output on failure."""
+    temp_path = None
+    try:
+        with tempfile.NamedTemporaryFile(delete=False, prefix=prefix, suffix=suffix) as temp_file:
+            temp_path = temp_file.name
+            with requests.get(
+                url,
+                stream=True,
+                timeout=DOWNLOAD_TIMEOUT,
+                headers=headers,
+            ) as response:
+                response.raise_for_status()
+                for chunk in response.iter_content(chunk_size=8192):
+                    if chunk:
+                        temp_file.write(chunk)
+        return temp_path
+    except Exception:
+        _unlink_quietly(temp_path)
+        raise
 
 def get_blendermcp_addon_preferences(context=None):
     """Get add-on preferences object if available."""
@@ -560,7 +596,11 @@ class BlenderMCPServer:
             if asset_type not in ["hdris", "textures", "models", "all"]:
                 return {"error": f"Invalid asset type: {asset_type}. Must be one of: hdris, textures, models, all"}
 
-            response = requests.get(f"https://api.polyhaven.com/categories/{asset_type}", headers=REQ_HEADERS)
+            response = requests.get(
+                f"https://api.polyhaven.com/categories/{asset_type}",
+                headers=REQ_HEADERS,
+                timeout=API_TIMEOUT,
+            )
             if response.status_code == 200:
                 return {"categories": response.json()}
             else:
@@ -582,7 +622,7 @@ class BlenderMCPServer:
             if categories:
                 params["categories"] = categories
 
-            response = requests.get(url, params=params, headers=REQ_HEADERS)
+            response = requests.get(url, params=params, headers=REQ_HEADERS, timeout=API_TIMEOUT)
             if response.status_code == 200:
                 # Limit the response size to avoid overwhelming Blender
                 assets = response.json()
@@ -602,7 +642,11 @@ class BlenderMCPServer:
     def download_polyhaven_asset(self, asset_id, asset_type, resolution="1k", file_format=None):
         try:
             # First get the files information
-            files_response = requests.get(f"https://api.polyhaven.com/files/{asset_id}", headers=REQ_HEADERS)
+            files_response = requests.get(
+                f"https://api.polyhaven.com/files/{asset_id}",
+                headers=REQ_HEADERS,
+                timeout=API_TIMEOUT,
+            )
             if files_response.status_code != 200:
                 return {"error": f"Failed to get asset files: {files_response.status_code}"}
 
@@ -618,16 +662,16 @@ class BlenderMCPServer:
                     file_info = files_data["hdri"][resolution][file_format]
                     file_url = file_info["url"]
 
-                    # For HDRIs, we need to save to a temporary file first
-                    # since Blender can't properly load HDR data directly from memory
-                    with tempfile.NamedTemporaryFile(suffix=f".{file_format}", delete=False) as tmp_file:
-                        # Download the file
-                        response = requests.get(file_url, headers=REQ_HEADERS)
-                        if response.status_code != 200:
-                            return {"error": f"Failed to download HDRI: {response.status_code}"}
-
-                        tmp_file.write(response.content)
-                        tmp_path = tmp_file.name
+                    # Blender needs a file path for HDR/EXR loading. The helper removes partial
+                    # downloads, and the exact completed file is removed after packing.
+                    try:
+                        tmp_path = _download_to_temp_file(
+                            file_url,
+                            suffix=f".{file_format}",
+                            headers=REQ_HEADERS,
+                        )
+                    except requests.RequestException as exc:
+                        return {"error": f"Failed to download HDRI: {exc}"}
 
                     try:
                         # Create a new world if none exists
@@ -653,6 +697,7 @@ class BlenderMCPServer:
                         env_tex = node_tree.nodes.new(type='ShaderNodeTexEnvironment')
                         env_tex.location = (-400, 0)
                         env_tex.image = bpy.data.images.load(tmp_path)
+                        env_tex.image.pack()
 
                         # Use a color space that exists in all Blender versions
                         if file_format.lower() == 'exr':
@@ -686,12 +731,6 @@ class BlenderMCPServer:
                         # Set as active world
                         bpy.context.scene.world = world
 
-                        # Clean up temporary file
-                        try:
-                            tempfile._cleanup()  # This will clean up all temporary files
-                        except:
-                            pass
-
                         return {
                             "success": True,
                             "message": f"HDRI {asset_id} imported successfully",
@@ -699,6 +738,8 @@ class BlenderMCPServer:
                         }
                     except Exception as e:
                         return {"error": f"Failed to set up HDRI in Blender: {str(e)}"}
+                    finally:
+                        _unlink_quietly(tmp_path)
                 else:
                     return {"error": "Requested resolution or format not available for this HDRI"}
 
@@ -715,40 +756,30 @@ class BlenderMCPServer:
                                 file_info = files_data[map_type][resolution][file_format]
                                 file_url = file_info["url"]
 
-                                # Use NamedTemporaryFile like we do for HDRIs
-                                with tempfile.NamedTemporaryFile(suffix=f".{file_format}", delete=False) as tmp_file:
-                                    # Download the file
-                                    response = requests.get(file_url, headers=REQ_HEADERS)
-                                    if response.status_code == 200:
-                                        tmp_file.write(response.content)
-                                        tmp_path = tmp_file.name
+                                try:
+                                    tmp_path = _download_to_temp_file(
+                                        file_url,
+                                        suffix=f".{file_format}",
+                                        headers=REQ_HEADERS,
+                                    )
+                                except requests.RequestException:
+                                    continue
+                                try:
+                                    # Load and pack before deleting the backing file.
+                                    image = bpy.data.images.load(tmp_path)
+                                    image.name = f"{asset_id}_{map_type}.{file_format}"
+                                    image.pack()
 
-                                        # Load image from temporary file
-                                        image = bpy.data.images.load(tmp_path)
-                                        image.name = f"{asset_id}_{map_type}.{file_format}"
+                                    if map_type in ['color', 'diffuse', 'albedo']:
+                                        with suppress(Exception):
+                                            image.colorspace_settings.name = 'sRGB'
+                                    else:
+                                        with suppress(Exception):
+                                            image.colorspace_settings.name = 'Non-Color'
 
-                                        # Pack the image into .blend file
-                                        image.pack()
-
-                                        # Set color space based on map type
-                                        if map_type in ['color', 'diffuse', 'albedo']:
-                                            try:
-                                                image.colorspace_settings.name = 'sRGB'
-                                            except:
-                                                pass
-                                        else:
-                                            try:
-                                                image.colorspace_settings.name = 'Non-Color'
-                                            except:
-                                                pass
-
-                                        downloaded_maps[map_type] = image
-
-                                        # Clean up temporary file
-                                        try:
-                                            os.unlink(tmp_path)
-                                        except:
-                                            pass
+                                    downloaded_maps[map_type] = image
+                                finally:
+                                    _unlink_quietly(tmp_path)
 
                     if not downloaded_maps:
                         return {"error": "No texture maps found for the requested resolution and format"}
@@ -847,15 +878,13 @@ class BlenderMCPServer:
                     file_url = file_info["url"]
 
                     # Create a temporary directory to store the model and its dependencies
-                    temp_dir = tempfile.mkdtemp()
-                    main_file_path = ""
-
-                    try:
+                    with tempfile.TemporaryDirectory(prefix="blender-mcp-polyhaven-") as temp_dir:
+                        main_file_path = ""
                         # Download the main model file
                         main_file_name = file_url.split("/")[-1]
                         main_file_path = os.path.join(temp_dir, main_file_name)
 
-                        response = requests.get(file_url, headers=REQ_HEADERS)
+                        response = requests.get(file_url, headers=REQ_HEADERS, timeout=DOWNLOAD_TIMEOUT)
                         if response.status_code != 200:
                             return {"error": f"Failed to download model: {response.status_code}"}
 
@@ -887,7 +916,11 @@ class BlenderMCPServer:
                                 os.makedirs(os.path.dirname(include_file_path), exist_ok=True)
 
                                 # Download the included file
-                                include_response = requests.get(include_url, headers=REQ_HEADERS)
+                                include_response = requests.get(
+                                    include_url,
+                                    headers=REQ_HEADERS,
+                                    timeout=DOWNLOAD_TIMEOUT,
+                                )
                                 if include_response.status_code == 200:
                                     with open(include_file_path, "wb") as f:
                                         f.write(include_response.content)
@@ -921,12 +954,6 @@ class BlenderMCPServer:
                             "message": f"Model {asset_id} imported successfully",
                             "imported_objects": imported_objects
                         }
-                    except Exception as e:
-                        return {"error": f"Failed to import model: {str(e)}"}
-                    finally:
-                        # Clean up temporary directory
-                        with suppress(Exception):
-                            shutil.rmtree(temp_dir)
                 else:
                     return {"error": "Requested format or resolution not available for this model"}
 
@@ -1345,7 +1372,8 @@ class BlenderMCPServer:
                 headers={
                     "Authorization": f"Bearer {api_key}",
                 },
-                files=files
+                files=files,
+                timeout=DOWNLOAD_TIMEOUT,
             )
             data = response.json()
             return data
@@ -1377,7 +1405,8 @@ class BlenderMCPServer:
                     "Authorization": f"Key {api_key}",
                     "Content-Type": "application/json",
                 },
-                json=req_data
+                json=req_data,
+                timeout=API_TIMEOUT,
             )
             data = response.json()
             return data
@@ -1406,6 +1435,7 @@ class BlenderMCPServer:
             json={
                 "subscription_key": subscription_key,
             },
+            timeout=API_TIMEOUT,
         )
         data = response.json()
         return {
@@ -1422,6 +1452,7 @@ class BlenderMCPServer:
             headers={
                 "Authorization": f"KEY {api_key}",
             },
+            timeout=API_TIMEOUT,
         )
         data = response.json()
         return data
@@ -1514,43 +1545,24 @@ class BlenderMCPServer:
             },
             json={
                 'task_uuid': task_uuid
-            }
+            },
+            timeout=API_TIMEOUT,
         )
         data_ = response.json()
-        temp_file = None
+        temp_path = None
         for i in data_["list"]:
             if i["name"].endswith(".glb"):
-                temp_file = tempfile.NamedTemporaryFile(
-                    delete=False,
-                    prefix=task_uuid,
-                    suffix=".glb",
-                )
-
                 try:
-                    # Download the content
-                    response = requests.get(i["url"], stream=True)
-                    response.raise_for_status()  # Raise an exception for HTTP errors
-
-                    # Write the content to the temporary file
-                    for chunk in response.iter_content(chunk_size=8192):
-                        temp_file.write(chunk)
-
-                    # Close the file
-                    temp_file.close()
-
+                    temp_path = _download_to_temp_file(i["url"], prefix=f"{task_uuid}-", suffix=".glb")
                 except Exception as e:
-                    # Clean up the file if there's an error
-                    temp_file.close()
-                    os.unlink(temp_file.name)
                     return {"succeed": False, "error": str(e)}
-
                 break
         else:
             return {"succeed": False, "error": "Generation failed. Please first make sure that all jobs of the task are done and then try again later."}
 
         try:
             obj = self._clean_imported_glb(
-                filepath=temp_file.name,
+                filepath=temp_path,
                 mesh_name=name
             )
             result = {
@@ -1570,6 +1582,8 @@ class BlenderMCPServer:
             }
         except Exception as e:
             return {"succeed": False, "error": str(e)}
+        finally:
+            _unlink_quietly(temp_path)
 
     def import_generated_asset_fal_ai(self, request_id: str, name: str):
         """Fetch the generated asset, import into blender"""
@@ -1580,38 +1594,23 @@ class BlenderMCPServer:
             f"https://queue.fal.run/fal-ai/hyper3d/requests/{request_id}",
             headers={
                 "Authorization": f"Key {api_key}",
-            }
+            },
+            timeout=API_TIMEOUT,
         )
         data_ = response.json()
-        temp_file = None
-
-        temp_file = tempfile.NamedTemporaryFile(
-            delete=False,
-            prefix=request_id,
-            suffix=".glb",
-        )
-
+        temp_path = None
         try:
-            # Download the content
-            response = requests.get(data_["model_mesh"]["url"], stream=True)
-            response.raise_for_status()  # Raise an exception for HTTP errors
-
-            # Write the content to the temporary file
-            for chunk in response.iter_content(chunk_size=8192):
-                temp_file.write(chunk)
-
-            # Close the file
-            temp_file.close()
-
+            temp_path = _download_to_temp_file(
+                data_["model_mesh"]["url"],
+                prefix=f"{request_id}-",
+                suffix=".glb",
+            )
         except Exception as e:
-            # Clean up the file if there's an error
-            temp_file.close()
-            os.unlink(temp_file.name)
             return {"succeed": False, "error": str(e)}
 
         try:
             obj = self._clean_imported_glb(
-                filepath=temp_file.name,
+                filepath=temp_path,
                 mesh_name=name
             )
             result = {
@@ -1631,6 +1630,8 @@ class BlenderMCPServer:
             }
         except Exception as e:
             return {"succeed": False, "error": str(e)}
+        finally:
+            _unlink_quietly(temp_path)
     #endregion
  
     #region Sketchfab API
@@ -1852,6 +1853,7 @@ class BlenderMCPServer:
         - normalize_size: If True, scale the model so its largest dimension equals target_size
         - target_size: The target size in Blender units (meters) for the largest dimension
         """
+        temp_dir = None
         try:
             api_key = self._get_sketchfab_api_key()
             if not api_key:
@@ -1893,13 +1895,13 @@ class BlenderMCPServer:
                 return {"error": "No download URL available for this model. Make sure the model is downloadable and you have access."}
 
             # Download the model (already has timeout)
-            model_response = requests.get(download_url, timeout=60)  # 60 second timeout
+            model_response = requests.get(download_url, timeout=DOWNLOAD_TIMEOUT)
 
             if model_response.status_code != 200:
                 return {"error": f"Model download failed with status code {model_response.status_code}"}
 
             # Save to temporary file
-            temp_dir = tempfile.mkdtemp()
+            temp_dir = tempfile.mkdtemp(prefix="blender-mcp-sketchfab-")
             zip_file_path = os.path.join(temp_dir, f"{uid}.zip")
 
             with open(zip_file_path, "wb") as f:
@@ -1910,16 +1912,12 @@ class BlenderMCPServer:
                 try:
                     _safe_extract_zip(zip_ref, temp_dir)
                 except ValueError as exc:
-                    with suppress(Exception):
-                        shutil.rmtree(temp_dir)
                     return {"error": f"Security issue: {exc}"}
 
             # Find the main glTF file
             gltf_files = [f for f in os.listdir(temp_dir) if f.endswith('.gltf') or f.endswith('.glb')]
 
             if not gltf_files:
-                with suppress(Exception):
-                    shutil.rmtree(temp_dir)
                 return {"error": "No glTF file found in the downloaded model"}
 
             main_file = os.path.join(temp_dir, gltf_files[0])
@@ -1930,10 +1928,6 @@ class BlenderMCPServer:
             # Get the imported objects
             imported_objects = list(bpy.context.selected_objects)
             imported_object_names = [obj.name for obj in imported_objects]
-
-            # Clean up temporary files
-            with suppress(Exception):
-                shutil.rmtree(temp_dir)
 
             # Find root objects (objects without parents in the imported set)
             root_objects = [obj for obj in imported_objects if obj.parent is None]
@@ -2045,6 +2039,10 @@ class BlenderMCPServer:
             import traceback
             traceback.print_exc()
             return {"error": f"Failed to download model: {str(e)}"}
+        finally:
+            if temp_dir:
+                with suppress(Exception):
+                    shutil.rmtree(temp_dir)
     #endregion
 
     #region Hunyuan3D
@@ -2246,7 +2244,8 @@ class BlenderMCPServer:
             response = requests.post(
                 endpoint,
                 headers = headers,
-                data = json.dumps(data)
+                data = json.dumps(data),
+                timeout=API_TIMEOUT,
             )
 
             if response.status_code == 200:
@@ -2261,6 +2260,7 @@ class BlenderMCPServer:
         self,
         text_prompt: str = None,
         image: str = None):
+        temp_file_name = None
         try:
             base_url = self._get_hunyuan3d_api_url().rstrip('/')
             octree_resolution = bpy.context.scene.blendermcp_hunyuan3d_octree_resolution
@@ -2290,7 +2290,7 @@ class BlenderMCPServer:
             if image:
                 if re.match(r'^https?://', image, re.IGNORECASE) is not None:
                     try:
-                        resImg = requests.get(image)
+                        resImg = requests.get(image, timeout=DOWNLOAD_TIMEOUT)
                         resImg.raise_for_status()
                         image_base64 = base64.b64encode(resImg.content).decode("ascii")
                         data["image"] = image_base64
@@ -2308,6 +2308,7 @@ class BlenderMCPServer:
             response = requests.post(
                 f"{base_url}/generate",
                 json = data,
+                timeout=DOWNLOAD_TIMEOUT,
             )
 
             if response.status_code != 200:
@@ -2322,8 +2323,10 @@ class BlenderMCPServer:
 
             # Import the GLB file in the main thread
             def import_handler():
-                bpy.ops.import_scene.gltf(filepath=temp_file_name)
-                os.unlink(temp_file.name)
+                try:
+                    bpy.ops.import_scene.gltf(filepath=temp_file_name)
+                finally:
+                    _unlink_quietly(temp_file_name)
                 return None
             
             bpy.app.timers.register(import_handler)
@@ -2333,6 +2336,7 @@ class BlenderMCPServer:
                 "message": "Generation and Import glb succeeded"
             }
         except Exception as e:
+            _unlink_quietly(temp_file_name)
             print(f"An error occurred: {e}")
             return {"error": str(e)}
         
@@ -2373,7 +2377,8 @@ class BlenderMCPServer:
             response = requests.post(
                 endpoint,
                 headers=headers,
-                data=json.dumps(data)
+                data=json.dumps(data),
+                timeout=API_TIMEOUT,
             )
 
             if response.status_code == 200:
@@ -2402,7 +2407,7 @@ class BlenderMCPServer:
 
         try:
             # Download ZIP file
-            zip_response = requests.get(zip_file_url, stream=True)
+            zip_response = requests.get(zip_file_url, stream=True, timeout=DOWNLOAD_TIMEOUT)
             zip_response.raise_for_status()
             with open(zip_file_path, "wb") as f:
                 for chunk in zip_response.iter_content(chunk_size=8192):
@@ -2450,14 +2455,9 @@ class BlenderMCPServer:
         except Exception as e:
             return {"succeed": False, "error": str(e)}
         finally:
-            #  Clean up temporary zip and obj, save texture and mtl
-            try:
-                if os.path.exists(zip_file_path):
-                    os.remove(zip_file_path) 
-                if os.path.exists(obj_file_path):
-                    os.remove(obj_file_path)
-            except Exception as e:
-                print(f"Failed to clean up temporary directory {temp_dir}: {e}")
+            # Remove the full extraction tree, including MTL and texture dependencies.
+            with suppress(Exception):
+                shutil.rmtree(temp_dir)
     #endregion
 
 # Blender Addon Preferences
