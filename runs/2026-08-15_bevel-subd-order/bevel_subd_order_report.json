@@ -1,0 +1,361 @@
+{
+  "lab": "bevel_before_vs_after_subdivision",
+  "blender_version": "5.2.0 LTS",
+  "source_conflict": {
+    "standing_project_path": "semantic weighted Bevel before Subdivision",
+    "captured_tutorial_path": "crease/weight base edges, Subdivision, then weighted Bevel with Harden Normals"
+  },
+  "fixture": "identical 3x3-supported all-quad rectangular box cages; 36 semantic outer design-edge segments",
+  "records": {
+    "A_PreSubD_Bevel": {
+      "base": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "design_edges": 36
+      },
+      "modifier_order": [
+        "BEVEL",
+        "SUBSURF"
+      ],
+      "health": {
+        "vertices": 2402,
+        "edges": 4800,
+        "faces": 2400,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "surface_quality": {
+        "face_count": 2400,
+        "min_area": 0.00010658,
+        "max_area": 0.027418,
+        "median_area": 0.00491,
+        "area_outlier_count": 40,
+        "area_outlier_ratio": 0.0167,
+        "max_adjacent_face_angle_radians": 0.3539,
+        "angle_samples": 4800
+      },
+      "surface_diagnostics": {
+        "vertex_samples": 2402,
+        "median_edge_length": 0.08055389,
+        "median_absolute_laplacian": 0.01453154,
+        "laplacian_mad": 0.00649226,
+        "max_robust_outlier_z": 1.9922,
+        "pinch_candidate_count": 0,
+        "pinch_candidates": [],
+        "meaningful_signed_edges": 1064,
+        "laplacian_sign_change_ratio": 0.0,
+        "mean_neighbor_normal_angle_p95_degrees": 11.9778,
+        "classification": "CANDIDATE_EVIDENCE_ONLY",
+        "limitations": [
+          "boundaries and intentional corrugation can resemble defects",
+          "thresholds require validation by surface family and render/highlight inspection"
+        ]
+      },
+      "shape": {
+        "bounds_xyz": [
+          2.5,
+          1.700001,
+          1.24
+        ],
+        "axis_planar_face_ratio": 0.32
+      }
+    },
+    "B_PostSubD_Bevel_Creased": {
+      "base": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "design_edges": 36
+      },
+      "modifier_order": [
+        "SUBSURF",
+        "BEVEL"
+      ],
+      "health": {
+        "vertices": 1178,
+        "edges": 2352,
+        "faces": 1176,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "surface_quality": {
+        "face_count": 1176,
+        "min_area": 0.00024794,
+        "max_area": 0.029514,
+        "median_area": 0.014639,
+        "area_outlier_count": 32,
+        "area_outlier_ratio": 0.0272,
+        "max_adjacent_face_angle_radians": 0.7389,
+        "angle_samples": 2352
+      },
+      "surface_diagnostics": {
+        "vertex_samples": 1178,
+        "median_edge_length": 0.10333335,
+        "median_absolute_laplacian": 0.0168675,
+        "laplacian_mad": 0.0168675,
+        "max_robust_outlier_z": 6.7382,
+        "pinch_candidate_count": 16,
+        "pinch_candidates": [
+          {
+            "evaluated_vertex_index": 871,
+            "position": [
+              -1.2098,
+              -0.81369,
+              0.51667
+            ],
+            "robust_outlier_z": 6.7382,
+            "signed_laplacian": 0.185375
+          },
+          {
+            "evaluated_vertex_index": 916,
+            "position": [
+              1.2098,
+              0.81369,
+              -0.51667
+            ],
+            "robust_outlier_z": 6.7382,
+            "signed_laplacian": 0.185374
+          },
+          {
+            "evaluated_vertex_index": 889,
+            "position": [
+              -1.2098,
+              0.81369,
+              -0.51667
+            ],
+            "robust_outlier_z": 6.7382,
+            "signed_laplacian": 0.185374
+          },
+          {
+            "evaluated_vertex_index": 1072,
+            "position": [
+              1.2098,
+              0.81369,
+              0.51667
+            ],
+            "robust_outlier_z": 6.7382,
+            "signed_laplacian": 0.185374
+          },
+          {
+            "evaluated_vertex_index": 943,
+            "position": [
+              1.2098,
+              -0.81369,
+              -0.51667
+            ],
+            "robust_outlier_z": 6.7382,
+            "signed_laplacian": 0.185374
+          },
+          {
+            "evaluated_vertex_index": 982,
+            "position": [
+              -1.2098,
+              -0.81369,
+              -0.51667
+            ],
+            "robust_outlier_z": 6.7381,
+            "signed_laplacian": 0.185373
+          },
+          {
+            "evaluated_vertex_index": 1018,
+            "position": [
+              -1.2098,
+              0.81369,
+              0.51667
+            ],
+            "robust_outlier_z": 6.7381,
+            "signed_laplacian": 0.185372
+          },
+          {
+            "evaluated_vertex_index": 1126,
+            "position": [
+              1.2098,
+              -0.81369,
+              0.51667
+            ],
+            "robust_outlier_z": 6.7381,
+            "signed_laplacian": 0.185372
+          },
+          {
+            "evaluated_vertex_index": 745,
+            "position": [
+              -1.14217,
+              0.8104,
+              -0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.16936
+          },
+          {
+            "evaluated_vertex_index": 759,
+            "position": [
+              1.14217,
+              -0.8104,
+              -0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.16936
+          },
+          {
+            "evaluated_vertex_index": 750,
+            "position": [
+              -1.14217,
+              0.8104,
+              0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.16936
+          },
+          {
+            "evaluated_vertex_index": 738,
+            "position": [
+              -1.14217,
+              -0.8104,
+              0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.169359
+          },
+          {
+            "evaluated_vertex_index": 781,
+            "position": [
+              1.14217,
+              0.8104,
+              0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.169359
+          },
+          {
+            "evaluated_vertex_index": 774,
+            "position": [
+              1.14217,
+              0.8104,
+              -0.58368
+            ],
+            "robust_outlier_z": 6.0978,
+            "signed_laplacian": 0.169359
+          },
+          {
+            "evaluated_vertex_index": 729,
+            "position": [
+              -1.14217,
+              -0.8104,
+              -0.58368
+            ],
+            "robust_outlier_z": 6.0977,
+            "signed_laplacian": 0.169359
+          },
+          {
+            "evaluated_vertex_index": 764,
+            "position": [
+              1.14217,
+              -0.8104,
+              0.58368
+            ],
+            "robust_outlier_z": 6.0977,
+            "signed_laplacian": 0.169359
+          }
+        ],
+        "meaningful_signed_edges": 1012,
+        "laplacian_sign_change_ratio": 0.0,
+        "mean_neighbor_normal_angle_p95_degrees": 17.5043,
+        "classification": "CANDIDATE_EVIDENCE_ONLY",
+        "limitations": [
+          "boundaries and intentional corrugation can resemble defects",
+          "thresholds require validation by surface family and render/highlight inspection"
+        ]
+      },
+      "shape": {
+        "bounds_xyz": [
+          2.5,
+          1.700001,
+          1.24
+        ],
+        "axis_planar_face_ratio": 0.510204
+      }
+    },
+    "C_PostSubD_Bevel_Unprotected": {
+      "base": {
+        "vertices": 56,
+        "edges": 108,
+        "faces": 54,
+        "design_edges": 36
+      },
+      "modifier_order": [
+        "SUBSURF",
+        "BEVEL"
+      ],
+      "health": {
+        "vertices": 1178,
+        "edges": 2352,
+        "faces": 1176,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "surface_quality": {
+        "face_count": 1176,
+        "min_area": 0.00029216,
+        "max_area": 0.029514,
+        "median_area": 0.01249,
+        "area_outlier_count": 16,
+        "area_outlier_ratio": 0.0136,
+        "max_adjacent_face_angle_radians": 0.7094,
+        "angle_samples": 2352
+      },
+      "surface_diagnostics": {
+        "vertex_samples": 1178,
+        "median_edge_length": 0.10333335,
+        "median_absolute_laplacian": 0.04345596,
+        "laplacian_mad": 0.02562795,
+        "max_robust_outlier_z": 2.5107,
+        "pinch_candidate_count": 0,
+        "pinch_candidates": [],
+        "meaningful_signed_edges": 1464,
+        "laplacian_sign_change_ratio": 0.016393,
+        "mean_neighbor_normal_angle_p95_degrees": 13.2731,
+        "classification": "CANDIDATE_EVIDENCE_ONLY",
+        "limitations": [
+          "boundaries and intentional corrugation can resemble defects",
+          "thresholds require validation by surface family and render/highlight inspection"
+        ]
+      },
+      "shape": {
+        "bounds_xyz": [
+          2.5,
+          1.700001,
+          1.24
+        ],
+        "axis_planar_face_ratio": 0.204082
+      }
+    }
+  },
+  "assertions": {
+    "identical_base_topology": true,
+    "pre_subd_order_is_bevel_then_subsurf": true,
+    "post_subd_orders_are_subsurf_then_bevel": true,
+    "all_evaluated_meshes_are_closed_quad_manifold": true,
+    "all_strategies_add_evaluated_geometry": true,
+    "surface_strategies_produce_distinct_planarity_signals": true,
+    "creased_post_subd_fixture_concentrates_more_local_curvature_than_pre_subd": true
+  },
+  "interpretation_boundary": [
+    "Technical health does not decide which edge character matches a reference.",
+    "Pre-SubD Bevel makes the radius part of the smoothed form; post-SubD Bevel adds a final chamfer to an already evaluated form.",
+    "Post-SubD Bevel without crease protection is a negative control because Subdivision can move the intended design line before Bevel evaluates.",
+    "Choose by desired radius, silhouette, highlight flow, and topology cost on the actual asset; neither order is universal."
+  ],
+  "rejected_check": "Evaluated face counts and bounding boxes did not distinguish the creased and unprotected post-SubD variants; those coarse checks were rejected in favor of fixed-frame visual review plus measured planarity/local-curvature signals.",
+  "renders": [
+    "bevel_subd_order_matcap.png",
+    "bevel_subd_order_wire.png"
+  ],
+  "pass": true
+}
