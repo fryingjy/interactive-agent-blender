@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Current, evidence-led field report for interactive-agent-blender.">
+  <title>interactive-agent-blender — field report</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0a0f16; --panel:#111a24; --line:#263648; --ink:#edf4fb; --muted:#9fb1c4; --accent:#67d5bc; --warn:#f3c969; --bad:#ff9a86; }
+    * { box-sizing:border-box } body { margin:0; background:radial-gradient(circle at top left,#142638 0,#0a0f16 43rem); color:var(--ink); font:16px/1.5 Inter,ui-sans-serif,system-ui,sans-serif }
+    a { color:#8bdbc9 } a:hover { color:#d5fff6 } .shell { width:min(1180px,calc(100% - 32px)); margin:auto }
+    header { padding:72px 0 34px; border-bottom:1px solid var(--line) } .eyebrow { color:var(--accent); letter-spacing:.14em; font-size:.75rem; font-weight:700; text-transform:uppercase }
+    h1 { max-width:14ch; margin:.3rem 0 .8rem; font-size:clamp(2.5rem,6vw,5rem); line-height:.98; letter-spacing:-.055em } h2 { margin:0 0 .6rem; font-size:1.35rem } h3 { margin:.1rem 0 .45rem; font-size:1rem }
+    .lede { max-width:66ch; color:var(--muted); font-size:1.1rem }.stamp { display:inline-flex; gap:.55rem; align-items:center; margin-top:1.2rem; padding:.45rem .7rem; border:1px solid #806932; border-radius:999px; color:var(--warn); font-size:.86rem }
+    main { padding:32px 0 70px } .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:16px }.card { background:color-mix(in srgb,var(--panel) 90%,transparent); border:1px solid var(--line); border-radius:14px; padding:20px; box-shadow:0 12px 32px #0002 }
+    .summary { grid-column:span 4; min-height:178px }.summary strong { display:block; margin:.3rem 0; font-size:1.8rem; letter-spacing:-.04em }.summary p,.card p { margin:.35rem 0; color:var(--muted) }
+    .wide { grid-column:span 12 }.timeline { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:16px }.event { border-left:2px solid var(--line); padding:0 0 0 13px }.event time { color:var(--accent); font-weight:700; font-size:.82rem }.event p { font-size:.91rem }
+    .controls { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 18px } button { border:1px solid var(--line); border-radius:999px; background:#0c141d; color:var(--muted); cursor:pointer; padding:.45rem .72rem; font:inherit; font-size:.86rem } button:hover,button[aria-pressed="true"] { border-color:var(--accent); color:var(--ink); background:#173333 }
+    .evidence { display:grid; grid-template-columns:repeat(3,1fr); gap:12px }.evidence article { border:1px solid var(--line); background:#0c141d; padding:16px; border-radius:10px }.tag { display:inline-block; margin-bottom:.55rem; color:var(--accent); font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase }.boundary { border-color:#754139; background:linear-gradient(120deg,#211817,#111a24) }.boundary .tag { color:var(--bad) }
+    details { border-top:1px solid var(--line); padding-top:14px } summary { cursor:pointer; color:var(--ink); font-weight:650 } ul { margin:.55rem 0; padding-left:1.15rem; color:var(--muted) }
+    footer { color:var(--muted); font-size:.85rem; padding:20px 0 44px; border-top:1px solid var(--line) }
+    @media (max-width:800px) { .summary { grid-column:span 12 }.timeline,.evidence { grid-template-columns:1fr } header { padding-top:46px } }
+  </style>
+</head>
+<body>
+  <header><div class="shell">
+    <div class="eyebrow">Evidence-led project status</div>
+    <h1>Field report</h1>
+    <p class="lede">A readable map of what the Blender modeling system can demonstrate now, what it is actively learning, and what remains unproven. This report deliberately separates retained evidence from historical claims.</p>
+    <div class="stamp">● Current overall readiness: PARTIAL</div>
+  </div></header>
+  <main class="shell">
+    <section class="grid" aria-label="Current status">
+      <article class="card summary"><div class="eyebrow">Runtime</div><strong>Substantial</strong><p>Typed operations, decision-owned rollback, persistent geometry IDs, state fingerprints, modifier/evaluated probes, and native visual checks are present.</p></article>
+      <article class="card summary"><div class="eyebrow">Learning</div><strong>Active</strong><p>Video, manual, forum, and local-document study are converted into timestamped, bounded knowledge claims that still require reproduction and transfer.</p></article>
+      <article class="card summary"><div class="eyebrow">Professional judgment</div><strong>Not proven</strong><p>Reference interpretation, proportions, topology strategy across unfamiliar assets, and experienced human acceptance remain the central gate.</p></article>
+      <article class="card wide"><h2>What changed recently</h2><p>Current work is intentionally knowledge-first. The system is no longer treating operator coverage or a clean mesh as proof of professional modeling ability.</p>
+        <div class="timeline">
+          <div class="event"><time>2026-08-10</time><h3>Foundation recorded</h3><p>Initial runtime, evidence, and readiness report established. Much of its raw run evidence is now historical.</p></div>
+          <div class="event"><time>2026-08-13</time><h3>Professional-file study retained</h3><p>Ten real <code>.blend</code> files were inspected as a durable study of production structure.</p></div>
+          <div class="event"><time>2026-08-14</time><h3>Curriculum + transfer</h3><p>Structured video/manual study expanded alongside connected-topology and revolve/extrude transfer exercises.</p></div>
+          <div class="event"><time>2026-08-15</time><h3>Honest synthesis</h3><p>Professional judgment was rated strong, moderate, or thin by evidence—not rubber-stamped complete.</p></div>
+        </div>
+      </article>
+      <article class="card wide"><h2>Evidence navigator</h2><p>Filter the current evidence by purpose. Each card links to the source record rather than presenting a detached claim.</p>
+        <div class="controls" role="toolbar" aria-label="Evidence filters">
+          <button type="button" data-filter="all" aria-pressed="true">All</button><button type="button" data-filter="runtime" aria-pressed="false">Runtime</button><button type="button" data-filter="study" aria-pressed="false">Study</button><button type="button" data-filter="transfer" aria-pressed="false">Transfer</button><button type="button" data-filter="boundary" aria-pressed="false">Open limits</button>
+        </div>
+        <div class="evidence" id="evidence">
+          <article data-kind="study"><span class="tag">Study</span><h3>Professional .blend-file study</h3><p>Retained inspection evidence from ten professional files; useful for observing structure, not a substitute for reproducing the artist’s judgment.</p><a href="../../runs/2026-08-13_blend-file-study/">Open retained run</a></article>
+          <article data-kind="study"><span class="tag">Study</span><h3>Video-learning curriculum</h3><p>Structured lesson records across modeling, modifiers, UVs, materials, topology, and reference workflows. Video intake is learning input, not an archive.</p><a href="../../runs/2026-08-14_video-curriculum/">Open curriculum record</a></article>
+          <article data-kind="transfer"><span class="tag">Transfer</span><h3>Connected-topology exercises</h3><p>Grown door-handle and screw/revolve cylinder tests keep the focus on editable connected form instead of primitive assembly.</p><a href="../../runs/2026-08-14_transfer-test-doorhandle-grown-lever/">Door handle</a> · <a href="../../runs/2026-08-14_transfer-test-screw-cylinder/">Screw cylinder</a></article>
+          <article data-kind="runtime"><span class="tag">Runtime</span><h3>Hard-surface intent paths</h3><p>Weighted bevel, explicit angle/vertex-group scope, crease, and a deliberate “no sharp edges” path reduce blanket smoothing and make shading decisions auditable.</p><a href="../../knowledge/foundation/operator_cards/smooth_by_angle.md">Read policy card</a></article>
+          <article data-kind="runtime"><span class="tag">Runtime</span><h3>Research loop</h3><p>Retrieve → research → hypothesize → reproduce → measure → retain/reject → apply. Sources are not promoted merely because they were watched or read.</p><a href="../RESEARCH_ROADMAP.md">Open roadmap</a></article>
+          <article class="boundary" data-kind="boundary"><span class="tag">Open limit</span><h3>Reference judgment remains thin</h3><p>The project does not yet demonstrate reliable professional reconstruction across new assets. Visual acceptance still overrides technical cleanliness.</p><a href="../../knowledge/foundation/foundation_exit_report.md">Read readiness boundary</a></article>
+        </div>
+      </article>
+      <article class="card wide"><h2>What the system should do next</h2>
+        <details open><summary>Keep source study tied to a real failure or modeling decision</summary><ul><li>Resolve the Bevel-versus-Subdivision ordering question with controlled experiments, not documentation alone.</li><li>Finish the typed bridge-loop twist control and reproduce its effect before retrying two-point handle attachment.</li><li>Transfer validated techniques to a meaningfully different prop before promotion.</li></ul></details>
+        <details><summary>Maintain an honest evidence boundary</summary><ul><li>Historical 2026-08-10–12 raw artifacts were intentionally purged; their prose citations are historical navigation, not live reproducibility.</li><li>Retained reports and current code supersede old status language when they disagree.</li><li>Do not resume difficult assets merely because the runtime has more features.</li></ul></details>
+      </article>
+    </section>
+  </main>
+  <footer><div class="shell">Maintained as a lightweight static report so it opens locally and on GitHub without a build step. Last reconciled against local <code>main</code> and GitHub history on 2026-08-15.</div></footer>
+  <script>
+    const buttons = [...document.querySelectorAll('[data-filter]')];
+    const cards = [...document.querySelectorAll('#evidence article')];
+    buttons.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      cards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.kind !== filter; });
+    }));
+  </script>
+</body>
+</html>

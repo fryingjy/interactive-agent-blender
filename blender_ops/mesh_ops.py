@@ -502,18 +502,33 @@ def fill_selection(name):
     return {"created_faces": len(faces)}
 
 
-def bridge_selection(name, use_merge=False, merge_factor=0.5):
-    """Bridge selected boundary edge loops."""
+def bridge_selection(name, use_merge=False, merge_factor=0.5, twist=0):
+    """Bridge selected boundary edge loops with an intentional integer twist offset.
+
+    ``twist`` maps to Blender's ``bmesh.ops.bridge_loops(..., twist_offset=...)``.
+    It changes which target-loop vertex each source-loop vertex joins; it does not
+    make incompatible loop counts or a poor attachment location production-safe.
+    """
+    if isinstance(twist, bool) or not isinstance(twist, int):
+        raise ValueError("bridge twist must be an integer offset")
     obj, bm = _bm_from_object(name)
     edges = [edge for edge in bm.edges if edge.select and not edge.is_manifold]
     if len(edges) < 4:
         _write_back(obj, bm)
         raise ValueError(f"selected boundary edges on '{name}' do not form bridgeable loops")
     before = _element_snapshot(bm)
-    bmesh.ops.bridge_loops(bm, edges=edges, use_pairs=False, use_cyclic=False, use_merge=use_merge, merge_factor=merge_factor)
+    bmesh.ops.bridge_loops(
+        bm,
+        edges=edges,
+        use_pairs=False,
+        use_cyclic=False,
+        use_merge=use_merge,
+        merge_factor=merge_factor,
+        twist_offset=twist,
+    )
     created = _clear_new_element_ids(bm, before)
     _write_back(obj, bm)
-    return {"input_edges": len(edges), "created_faces": created["new_faces"], **created}
+    return {"input_edges": len(edges), "twist": twist, "created_faces": created["new_faces"], **created}
 
 
 def spin_selection(name, angle, steps, center=(0.0, 0.0, 0.0), axis=(0.0, 0.0, 1.0), use_duplicate=False):

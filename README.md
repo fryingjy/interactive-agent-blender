@@ -40,6 +40,7 @@ The authoritative readiness decision is in
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
 | Knowledge lifecycle | [`docs/KNOWLEDGE_SYSTEM.md`](docs/KNOWLEDGE_SYSTEM.md) |
 | Repository layout | [`docs/REPOSITORY_LAYOUT.md`](docs/REPOSITORY_LAYOUT.md) |
+| Interactive field report | [`docs/field-report/index.html`](docs/field-report/index.html) |
 | Chronological project history | [`docs/BENCHMARK_HISTORY.md`](docs/BENCHMARK_HISTORY.md) |
 | Evidence conventions | [`runs/README.md`](runs/README.md) |
 

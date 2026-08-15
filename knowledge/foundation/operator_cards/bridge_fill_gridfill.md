@@ -19,6 +19,8 @@ Never used in this project before this session. All three are genuinely new grou
 
 **Separate no-op, understood, not a bug**: bridging the top and bottom boundary rims of a cube that still has its 4 side faces intact (only top+bottom faces deleted via `context='FACES'`) produces 0 new faces. This is *correct* behavior, not a failure -- the two rims are already connected by a valid manifold path through the existing side walls, so there is nothing left to bridge. Bridge is for loops that are NOT already connected by faces.
 
+**Typed control update (2026-08-15):** `mesh_ops.bridge_selection(..., twist=<integer>)` now exposes Blender 5.2's low-level `twist_offset` parameter. The new controlled lab uses two matched 8-vertex loops and proves that `twist=2` changes the actual cross-loop vertex pairing while preserving eight quad faces and manifold bridge edges (the two open rims remain intentionally boundary edges). This solves the runtime omission that prevented an intentional pairing choice. It does **not** claim that twist alone repairs the earlier teapot handle: its two loops had unequal counts (10 and 12), so matching attachment-loop density and inspecting the bridge remain required before using a bridge in a production prop. Evidence: `runs/2026-08-15_bridge-twist-control/bridge_twist_control_report.json`.
+
 ## `bmesh.ops.grid_fill` / `bpy.ops.mesh.fill_grid`
 
 Real API-level finding (confirmed against the Blender Python API): the low-level `bmesh.ops.grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple)` has **no `span`/`offset` parameters** -- those exist only on the higher-level `bpy.ops.mesh.fill_grid(span, offset)`. Do not expect to control grid orientation/pairing from the low-level bmesh operator.

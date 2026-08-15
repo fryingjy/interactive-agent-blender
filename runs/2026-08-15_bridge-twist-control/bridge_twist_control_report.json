@@ -1,0 +1,118 @@
+{
+  "lab": "typed_bridge_twist_control",
+  "blender_version": "5.2.0 LTS",
+  "fixture": "two equal eight-vertex wire loops bridged through mesh_ops.bridge_selection",
+  "api_signature": "bmesh.ops.bridge_loops(..., twist_offset=0)",
+  "cases": {
+    "twist_0": {
+      "twist": 0,
+      "operation": {
+        "input_edges": 16,
+        "twist": 0,
+        "created_faces": 8,
+        "new_verts": 0,
+        "new_edges": 8,
+        "new_faces": 8
+      },
+      "faces": 8,
+      "quad_faces": 8,
+      "open_boundary_edges": 16,
+      "bridge_edges": 8,
+      "non_manifold_bridge_edges": 0,
+      "cross_loop_pairs": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    "twist_2": {
+      "twist": 2,
+      "operation": {
+        "input_edges": 16,
+        "twist": 2,
+        "created_faces": 8,
+        "new_verts": 0,
+        "new_edges": 8,
+        "new_faces": 8
+      },
+      "faces": 8,
+      "quad_faces": 8,
+      "open_boundary_edges": 16,
+      "bridge_edges": 8,
+      "non_manifold_bridge_edges": 0,
+      "cross_loop_pairs": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          7,
+          2
+        ]
+      ]
+    }
+  },
+  "assertions": {
+    "blender_api_exposes_twist_offset": true,
+    "wrapper_reports_requested_zero_twist": true,
+    "wrapper_reports_requested_offset_twist": true,
+    "matched_loops_make_complete_quad_tubes": true,
+    "open_rims_are_expected_and_bridge_edges_are_manifold": true,
+    "twist_changes_target_pairing": true
+  },
+  "boundary": "This proves target-pairing control for equal loops. It does not validate bridging unequal loops or repair the prior teapot handle automatically.",
+  "pass": true
+}

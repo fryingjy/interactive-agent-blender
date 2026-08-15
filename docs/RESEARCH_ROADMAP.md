@@ -795,3 +795,24 @@ reference and get a professional model" remains unmet) rather than being a coinc
 videos got processed -- the same gap keeps surfacing from a completely different angle. The
 synthesis names concrete next-source types for the thin stages instead of just restating the gap.
 Curriculum doc updated with the honest strong/moderate/thin verdict.
+
+## Update -- 2026-08-15 (bridge control + current field report)
+
+Closed the narrow runtime omission identified during the teapot-handle investigation without
+overstating what it means. Blender 5.2 exposes `twist_offset` on
+`bmesh.ops.bridge_loops`; `mesh_ops.bridge_selection` now exposes that exact capability as a
+validated integer `twist` argument. The clean factory-startup lab
+`runs/2026-08-15_bridge-twist-control/` proves that `twist=2` changes actual cross-loop vertex
+pairing from the zero-offset pairing while maintaining eight quad faces and eight manifold bridge
+edges on two matched eight-vertex loops. It also records the intentionally open tube rims as
+boundary edges, rather than incorrectly treating them as a topology failure.
+
+This is a control fix, not a retroactive teapot success. The original handle had unequal 10- and
+12-vertex attachment loops; twist chooses a pairing, but does not supply compatible density,
+placement, or professional curvature judgment. Any retry must first make the attachment loops
+compatible and inspect the resulting bridge visually and technically.
+
+Added `docs/field-report/index.html`, a repository-owned interactive current-status view. It
+separates retained post-purge evidence from historical claims, links claims back to source records,
+and states the same professional-judgment boundary as the readiness report. It is deliberately a
+dependency-free browser artifact rather than an unmaintained frontend scaffold.
