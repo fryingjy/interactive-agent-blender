@@ -1007,3 +1007,25 @@ fresh saved-scene verifier with `HIGH_POLY`/`LOW_POLY` isolation and both stacks
 
 This closes editable internal variant packaging, not true production retopology. Purpose-authored
 low topology, UVs, bake transfer, and export remain separate open work.
+
+## Update -- 2026-08-15 (question-driven reference research reaches runtime gating)
+
+Applied the already completed seven-video reference-workflow synthesis instead of replaying the
+videos or collecting more notes. `ReferenceResearchQuestion` and `ResearchCandidate` now retain the
+unknown property, trigger, impact, exact queries, every inspected candidate, accept/reject reason,
+linked factual reference, resolution, and reversible modeling constraint. An open high-impact
+question blocks both the reference audit and Blender's strict `REFERENCE_ANALYSIS` transition.
+
+The Bialetti reference-only board generated three questions and six exact searches. Bialetti's
+official 3-cup 15 x 8.5 x 15.5 cm envelope was accepted; conflicting retailer dimensions,
+non-underside galleries, and vintage/revision-mismatched candidates were retained as five explicit
+rejections. The unresolved underside and revision compatibility are bounded by two reversible
+constraints rather than invented. Retrieval ranks the new skill first for a matching unknown and
+the planner contract retains that provenance.
+
+All positive and four negative controls pass, including a real Blender 5.2 stage transition that
+refuses unaudited question evidence without mutating stage state. This is runtime validation of one
+reference-policy skill, not proof that the resulting model will be more accurate. Human board review
+and the equal-budget target-only versus structured-reference build remain open. Evidence:
+`runs/2026-08-15_question-driven-reference-research/` and
+`runs/2026-08-15_reference-gathering-bialetti/`.

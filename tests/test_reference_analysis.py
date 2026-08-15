@@ -3,11 +3,14 @@ import unittest
 from knowledge_engine.planner import PlannerContext, plan_next_decision
 from knowledge_engine.reference_analysis import (
     PropertyClaim,
+    ReferenceResearchQuestion,
+    ResearchCandidate,
     ReferenceConflict,
     ReferenceItem,
     ReferenceSet,
     audit_reference_set,
     build_reference_stage_evidence,
+    reference_set_from_dict,
 )
 
 
@@ -21,6 +24,112 @@ def item(reference_id, source_id, *, target="nailsea", variant="30.5cm", view="f
 
 
 class ReferenceAnalysisTests(unittest.TestCase):
+    def test_open_high_impact_question_blocks_modeling_and_emits_exact_query(self):
+        question = ReferenceResearchQuestion(
+            question_id="rear-construction",
+            property_id="rear_mount",
+            question="How is the rear mount attached?",
+            trigger="The target photograph occludes the rear face.",
+            impact="HIGH",
+            search_queries=("prop v1 rear mount teardown",),
+            candidates=(),
+        )
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1",
+            items=(item("front", "source", target="prop", variant="v1"),),
+            required_views=("front",), critical_properties=(),
+            research_questions=(question,),
+        ))
+        self.assertFalse(audit["checks"]["question_driven_research_pass"])
+        self.assertEqual(audit["disposition"], "TARGETED_RESEARCH")
+        self.assertIn("prop v1 rear mount teardown", audit["targeted_research_queries"])
+
+    def test_deferred_low_impact_question_requires_reversible_constraint(self):
+        candidate = ResearchCandidate(
+            candidate_id="different-variant",
+            source_url="https://example.com/vintage",
+            source_id="vintage-listing",
+            observed_identity="prop",
+            observed_variant="vintage",
+            purpose="DETAIL",
+            disposition="REJECTED",
+            reason="Different variant cannot authorize target geometry.",
+        )
+        question = ReferenceResearchQuestion(
+            question_id="underside-stamp",
+            property_id="underside_stamp",
+            question="What stamp is on the underside?",
+            trigger="No supplied view exposes the base.",
+            impact="LOW",
+            search_queries=("prop v1 underside stamp",),
+            candidates=(candidate,),
+            status="DEFERRED",
+            resolution="No matching evidence found.",
+            modeling_constraint="Keep the underside unmarked and separately editable.",
+        )
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1",
+            items=(item("front", "source", target="prop", variant="v1"),),
+            required_views=("front",), critical_properties=(),
+            research_questions=(question,),
+        ))
+        self.assertTrue(audit["checks"]["question_driven_research_pass"])
+        self.assertIn(
+            "Keep the underside unmarked and separately editable.",
+            audit["research_audit"]["modeling_constraints"],
+        )
+
+    def test_resolved_question_requires_accepted_reference_link(self):
+        payload = {
+            "target_id": "prop", "target_variant": "v1",
+            "required_views": ["front"], "critical_properties": [],
+            "items": [{
+                "reference_id": "front", "source_id": "source", "target_id": "prop",
+                "target_variant": "v1", "purposes": ["PRIMARY_FORM"], "view": "front",
+                "projection": "PERSPECTIVE", "source_tier": "USEFUL_VERIFY",
+            }],
+            "research_questions": [{
+                "question_id": "dimensions", "property_id": "width",
+                "question": "What is the width?", "trigger": "No scale anchor.", "impact": "HIGH",
+                "search_queries": ["prop v1 official width"], "status": "RESOLVED",
+                "resolution": "Official page supplies width.", "candidates": [{
+                    "candidate_id": "official", "source_url": "https://example.com/official",
+                    "source_id": "official", "observed_identity": "prop",
+                    "observed_variant": "v1", "purpose": "DIMENSION", "disposition": "ACCEPTED",
+                    "reason": "Manufacturer specification.", "accepted_reference_id": "missing-item",
+                }],
+            }],
+        }
+        audit = audit_reference_set(reference_set_from_dict(payload))
+        self.assertFalse(audit["checks"]["question_driven_research_pass"])
+        self.assertIn("dimensions:missing-item", audit["research_audit"]["missing_reference_links"])
+
+    def test_resolved_question_accepts_linked_reference_and_counts_rejection(self):
+        accepted = ResearchCandidate(
+            candidate_id="official", source_url="https://example.com/official",
+            source_id="official", observed_identity="prop", observed_variant="v1",
+            purpose="DIMENSION", disposition="ACCEPTED", reason="Manufacturer specification.",
+            accepted_reference_id="front",
+        )
+        rejected = ResearchCandidate(
+            candidate_id="retailer", source_url="https://example.com/retailer",
+            source_id="retailer", observed_identity="prop", observed_variant="unknown",
+            purpose="DIMENSION", disposition="REJECTED", reason="Variant is not established.",
+        )
+        question = ReferenceResearchQuestion(
+            question_id="dimensions", property_id="width", question="What is the width?",
+            trigger="No scale anchor.", impact="HIGH", search_queries=("prop v1 official width",),
+            candidates=(accepted, rejected), status="RESOLVED",
+            resolution="Use the manufacturer specification.",
+        )
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1",
+            items=(item("front", "source", target="prop", variant="v1"),),
+            required_views=("front",), critical_properties=(), research_questions=(question,),
+        ))
+        self.assertTrue(audit["checks"]["question_driven_research_pass"])
+        self.assertEqual(audit["research_audit"]["candidate_counts"]["REJECTED"], 1)
+
     def test_five_views_from_one_listing_are_not_five_independent_sources(self):
         refs = tuple(item(f"photo-{view}", "listing-1", view=view) for view in ("front", "side", "rear", "top", "bottom"))
         audit = audit_reference_set(ReferenceSet(
@@ -127,6 +236,7 @@ class ReferenceAnalysisTests(unittest.TestCase):
             "uncertainty_recorded": True, "reference_set_audit_pass": True,
             "same_target_identity_pass": True, "view_coverage_pass": True,
             "critical_property_coverage_pass": True, "conflicts_resolved_pass": True,
+            "question_driven_research_pass": True,
         }
         decision = plan_next_decision(PlannerContext(
             task_id="task", asset_id="asset", stage="REFERENCE_ANALYSIS",
@@ -145,6 +255,7 @@ class ReferenceAnalysisTests(unittest.TestCase):
             uncertainty_recorded=True,
         )
         self.assertTrue(evidence["reference_set_audit_pass"])
+        self.assertTrue(evidence["question_driven_research_pass"])
         self.assertEqual(evidence["reference_audit"]["target_id"], "prop")
 
     def test_low_confidence_claim_cannot_authorize_a_critical_property(self):

@@ -1,0 +1,631 @@
+{
+  "experiment": "question_driven_reference_research_contract",
+  "manifest": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_reference-gathering-bialetti\\reference_manifest.json",
+  "baseline": {
+    "target_id": "bialetti_moka_express_3_cup",
+    "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+    "reference_count": 9,
+    "matching_reference_count": 9,
+    "independent_source_count": 4,
+    "view_count": 8,
+    "checks": {
+      "same_target_identity_pass": true,
+      "view_coverage_pass": true,
+      "orthographic_coverage_pass": true,
+      "provenance_coverage_pass": true,
+      "critical_property_coverage_pass": true,
+      "dimensional_anchor_pass": true,
+      "conflicts_resolved_pass": true,
+      "question_driven_research_pass": true
+    },
+    "covered_properties": {
+      "overall_height": [
+        "bialetti-official-spec-3cup",
+        "bialetti-official-3cup-envelope"
+      ],
+      "boiler_base_diameter": [
+        "bialetti-official-spec-3cup"
+      ],
+      "overall_width_including_handle_spout": [
+        "bialetti-official-3cup-envelope"
+      ],
+      "overall_depth": [
+        "bialetti-official-3cup-envelope"
+      ],
+      "octagonal_primary_silhouette": [
+        "listing-picture-03-front",
+        "listing-pictures-07-08-top-open"
+      ],
+      "valve_placement": [
+        "listing-picture-03-front"
+      ],
+      "upper_lower_mass_ratio": [
+        "listing-picture-04-right-profile",
+        "listing-picture-06-left-profile"
+      ],
+      "spout_profile": [
+        "listing-picture-04-right-profile",
+        "listing-picture-06-left-profile"
+      ],
+      "handle_negative_space": [
+        "listing-picture-05-rear",
+        "listing-picture-06-left-profile"
+      ],
+      "hinge_and_lid_relationship": [
+        "listing-picture-05-rear",
+        "listing-picture-09-lid-underside"
+      ],
+      "upper_chamber_interior": [
+        "listing-pictures-07-08-top-open"
+      ],
+      "component_stack": [
+        "retailer-exploded-3cup"
+      ]
+    },
+    "dimensional_anchors": [
+      "overall height 155 mm",
+      "boiler base diameter 72 mm",
+      "capacity 130 ml",
+      "overall envelope 15 x 8.5 x 15.5 cm",
+      "capacity 130 ml"
+    ],
+    "issues": [],
+    "targeted_research_queries": [],
+    "research_audit": {
+      "question_count": 3,
+      "candidate_counts": {
+        "ACCEPTED": 2,
+        "REJECTED": 5,
+        "PENDING": 0
+      },
+      "accepted_reference_links": [
+        "bialetti-official-3cup-envelope",
+        "bialetti-official-spec-3cup"
+      ],
+      "missing_reference_links": [],
+      "open_questions": [],
+      "blocking_questions": [],
+      "deferred_questions": [
+        "q-boiler-underside",
+        "q-production-revision"
+      ],
+      "modeling_constraints": [
+        "Keep the boiler underside simple, unmarked, separately revisable, and excluded from fidelity scoring until a direct same-variant view is acquired.",
+        "Do not transfer current decorative graphics, handle details, hinge details, casting marks, or underside features into the older-looking target unless same-revision evidence supports them."
+      ],
+      "targeted_research_queries": [],
+      "checks": {
+        "question_records_valid": true,
+        "accepted_candidates_link_to_reference_items": true,
+        "no_high_impact_question_open": true
+      },
+      "pass": true
+    },
+    "pass": true,
+    "disposition": "READY_TO_MODEL"
+  },
+  "negative_controls": {
+    "open_high_impact_question": {
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "reference_count": 9,
+      "matching_reference_count": 9,
+      "independent_source_count": 4,
+      "view_count": 8,
+      "checks": {
+        "same_target_identity_pass": true,
+        "view_coverage_pass": true,
+        "orthographic_coverage_pass": true,
+        "provenance_coverage_pass": true,
+        "critical_property_coverage_pass": true,
+        "dimensional_anchor_pass": true,
+        "conflicts_resolved_pass": true,
+        "question_driven_research_pass": false
+      },
+      "covered_properties": {
+        "overall_height": [
+          "bialetti-official-spec-3cup",
+          "bialetti-official-3cup-envelope"
+        ],
+        "boiler_base_diameter": [
+          "bialetti-official-spec-3cup"
+        ],
+        "overall_width_including_handle_spout": [
+          "bialetti-official-3cup-envelope"
+        ],
+        "overall_depth": [
+          "bialetti-official-3cup-envelope"
+        ],
+        "octagonal_primary_silhouette": [
+          "listing-picture-03-front",
+          "listing-pictures-07-08-top-open"
+        ],
+        "valve_placement": [
+          "listing-picture-03-front"
+        ],
+        "upper_lower_mass_ratio": [
+          "listing-picture-04-right-profile",
+          "listing-picture-06-left-profile"
+        ],
+        "spout_profile": [
+          "listing-picture-04-right-profile",
+          "listing-picture-06-left-profile"
+        ],
+        "handle_negative_space": [
+          "listing-picture-05-rear",
+          "listing-picture-06-left-profile"
+        ],
+        "hinge_and_lid_relationship": [
+          "listing-picture-05-rear",
+          "listing-picture-09-lid-underside"
+        ],
+        "upper_chamber_interior": [
+          "listing-pictures-07-08-top-open"
+        ],
+        "component_stack": [
+          "retailer-exploded-3cup"
+        ]
+      },
+      "dimensional_anchors": [
+        "overall height 155 mm",
+        "boiler base diameter 72 mm",
+        "capacity 130 ml",
+        "overall envelope 15 x 8.5 x 15.5 cm",
+        "capacity 130 ml"
+      ],
+      "issues": [
+        "high-impact research question remains open: q-overall-envelope"
+      ],
+      "targeted_research_queries": [
+        "site:bialetti.com Moka Express 3 cups 130 ml dimensions official",
+        "Bialetti Moka Express 3 cup overall width depth handle spout"
+      ],
+      "research_audit": {
+        "question_count": 3,
+        "candidate_counts": {
+          "ACCEPTED": 2,
+          "REJECTED": 5,
+          "PENDING": 0
+        },
+        "accepted_reference_links": [
+          "bialetti-official-3cup-envelope",
+          "bialetti-official-spec-3cup"
+        ],
+        "missing_reference_links": [],
+        "open_questions": [
+          "q-overall-envelope"
+        ],
+        "blocking_questions": [
+          "q-overall-envelope"
+        ],
+        "deferred_questions": [
+          "q-boiler-underside",
+          "q-production-revision"
+        ],
+        "modeling_constraints": [
+          "Keep the boiler underside simple, unmarked, separately revisable, and excluded from fidelity scoring until a direct same-variant view is acquired.",
+          "Do not transfer current decorative graphics, handle details, hinge details, casting marks, or underside features into the older-looking target unless same-revision evidence supports them."
+        ],
+        "targeted_research_queries": [
+          "site:bialetti.com Moka Express 3 cups 130 ml dimensions official",
+          "Bialetti Moka Express 3 cup overall width depth handle spout"
+        ],
+        "checks": {
+          "question_records_valid": true,
+          "accepted_candidates_link_to_reference_items": true,
+          "no_high_impact_question_open": false
+        },
+        "pass": false
+      },
+      "pass": false,
+      "disposition": "TARGETED_RESEARCH"
+    },
+    "broken_accepted_reference_link": {
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "reference_count": 9,
+      "matching_reference_count": 9,
+      "independent_source_count": 4,
+      "view_count": 8,
+      "checks": {
+        "same_target_identity_pass": true,
+        "view_coverage_pass": true,
+        "orthographic_coverage_pass": true,
+        "provenance_coverage_pass": true,
+        "critical_property_coverage_pass": true,
+        "dimensional_anchor_pass": true,
+        "conflicts_resolved_pass": true,
+        "question_driven_research_pass": false
+      },
+      "covered_properties": {
+        "overall_height": [
+          "bialetti-official-spec-3cup",
+          "bialetti-official-3cup-envelope"
+        ],
+        "boiler_base_diameter": [
+          "bialetti-official-spec-3cup"
+        ],
+        "overall_width_including_handle_spout": [
+          "bialetti-official-3cup-envelope"
+        ],
+        "overall_depth": [
+          "bialetti-official-3cup-envelope"
+        ],
+        "octagonal_primary_silhouette": [
+          "listing-picture-03-front",
+          "listing-pictures-07-08-top-open"
+        ],
+        "valve_placement": [
+          "listing-picture-03-front"
+        ],
+        "upper_lower_mass_ratio": [
+          "listing-picture-04-right-profile",
+          "listing-picture-06-left-profile"
+        ],
+        "spout_profile": [
+          "listing-picture-04-right-profile",
+          "listing-picture-06-left-profile"
+        ],
+        "handle_negative_space": [
+          "listing-picture-05-rear",
+          "listing-picture-06-left-profile"
+        ],
+        "hinge_and_lid_relationship": [
+          "listing-picture-05-rear",
+          "listing-picture-09-lid-underside"
+        ],
+        "upper_chamber_interior": [
+          "listing-pictures-07-08-top-open"
+        ],
+        "component_stack": [
+          "retailer-exploded-3cup"
+        ]
+      },
+      "dimensional_anchors": [
+        "overall height 155 mm",
+        "boiler base diameter 72 mm",
+        "capacity 130 ml",
+        "overall envelope 15 x 8.5 x 15.5 cm",
+        "capacity 130 ml"
+      ],
+      "issues": [
+        "accepted research candidates lack matching reference items: q-overall-envelope:missing"
+      ],
+      "targeted_research_queries": [],
+      "research_audit": {
+        "question_count": 3,
+        "candidate_counts": {
+          "ACCEPTED": 2,
+          "REJECTED": 5,
+          "PENDING": 0
+        },
+        "accepted_reference_links": [
+          "bialetti-official-spec-3cup",
+          "missing"
+        ],
+        "missing_reference_links": [
+          "q-overall-envelope:missing"
+        ],
+        "open_questions": [],
+        "blocking_questions": [],
+        "deferred_questions": [
+          "q-boiler-underside",
+          "q-production-revision"
+        ],
+        "modeling_constraints": [
+          "Keep the boiler underside simple, unmarked, separately revisable, and excluded from fidelity scoring until a direct same-variant view is acquired.",
+          "Do not transfer current decorative graphics, handle details, hinge details, casting marks, or underside features into the older-looking target unless same-revision evidence supports them."
+        ],
+        "targeted_research_queries": [],
+        "checks": {
+          "question_records_valid": true,
+          "accepted_candidates_link_to_reference_items": false,
+          "no_high_impact_question_open": true
+        },
+        "pass": false
+      },
+      "pass": false,
+      "disposition": "TARGETED_RESEARCH"
+    },
+    "missing_deferred_constraint_error": "deferred research questions require attempted candidates, a reason, and a modeling constraint",
+    "failing_stage_gate": {
+      "stage": "REFERENCE_ANALYSIS",
+      "required": [
+        "component_graph_pass",
+        "measured_ratio_count",
+        "uncertainty_recorded",
+        "reference_set_audit_pass",
+        "same_target_identity_pass",
+        "view_coverage_pass",
+        "critical_property_coverage_pass",
+        "conflicts_resolved_pass",
+        "question_driven_research_pass"
+      ],
+      "missing": [],
+      "failures": [
+        "high-impact reference questions remain open or unaudited"
+      ],
+      "pass": false
+    }
+  },
+  "passing_stage_gate": {
+    "stage": "REFERENCE_ANALYSIS",
+    "required": [
+      "component_graph_pass",
+      "measured_ratio_count",
+      "uncertainty_recorded",
+      "reference_set_audit_pass",
+      "same_target_identity_pass",
+      "view_coverage_pass",
+      "critical_property_coverage_pass",
+      "conflicts_resolved_pass",
+      "question_driven_research_pass"
+    ],
+    "missing": [],
+    "failures": [],
+    "pass": true
+  },
+  "retrieval": [
+    {
+      "skill_id": "reference.question-driven-targeted-research",
+      "score": 14.7592,
+      "score_breakdown": {
+        "query": 6.6408,
+        "modeling_stage": 1.7678,
+        "workflow": 2.3094,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 2.0412,
+        "runtime_success": 2.0,
+        "version_relevance": 0.0
+      },
+      "status": "RUNTIME_VALIDATED",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\question-driven-reference-research.json",
+      "skill": {
+        "skill_id": "reference.question-driven-targeted-research",
+        "title": "Turn important reference unknowns into targeted, auditable research",
+        "topic_tags": [
+          "reference gathering",
+          "question driven search",
+          "unknown geometry",
+          "candidate rejection",
+          "source provenance",
+          "variant conflict",
+          "reversible modeling constraint"
+        ],
+        "problem": "An occluded view, missing dimension, or conflicting variant can silently become invented geometry when the agent gathers images broadly or treats every search result as equally authoritative.",
+        "status": "RUNTIME_VALIDATED",
+        "applicability": {
+          "modeling_stage": [
+            "REFERENCE_ANALYSIS",
+            "PRIMARY_BLOCKOUT"
+          ],
+          "workflow": [
+            "question-driven evidence search",
+            "same-variant source audit",
+            "reconstruction uncertainty resolution"
+          ],
+          "reference_issue": [
+            "missing view",
+            "unknown construction",
+            "hidden geometry",
+            "missing dimension",
+            "variant conflict",
+            "weak source authority"
+          ],
+          "exclusions": [
+            "random bulk image gathering",
+            "inspiration overriding factual reconstruction",
+            "deferred high-impact uncertainty without a human decision"
+          ]
+        },
+        "preconditions": [
+          "the target and intended variant are explicitly identified",
+          "the uncertainty names a property that could affect modeling or evaluation",
+          "the current evidence does not already resolve the question"
+        ],
+        "required_observations": [
+          "why the current set cannot answer the question",
+          "the modeling impact if the answer is wrong",
+          "source identity and variant for every inspected candidate",
+          "the exact claim each accepted source is allowed to support"
+        ],
+        "action_policy": [
+          "Turn the unknown into one property-scoped question and one or more exact search queries.",
+          "Record inspected candidates even when rejected, including provenance, observed variant, and rejection reason.",
+          "Link accepted candidates to factual ReferenceItem records; never let an accepted conclusion float free of its source.",
+          "Keep high-impact questions open until accepted evidence or a human decision resolves them.",
+          "A lower-impact question may be deferred only with a concrete reversible modeling constraint and an evaluation exclusion.",
+          "Return to targeted research when modeling reveals a new important uncertainty."
+        ],
+        "expected_effects": [
+          "fewer unsupported hidden-form inventions",
+          "clear separation between same-variant evidence and attractive but irrelevant results",
+          "a planner-visible stop condition when important evidence is still missing",
+          "cheap revision of explicitly deferred low-impact geometry"
+        ],
+        "failure_predicates": [
+          "a high-impact question remains open while blockout begins",
+          "an accepted candidate does not link to a reference item",
+          "a deferred question has no modeling constraint",
+          "a different variant silently authorizes target geometry",
+          "search quantity is reported as success without property coverage"
+        ],
+        "recovery": [
+          "regress to REFERENCE_ANALYSIS",
+          "emit the exact unresolved query",
+          "reject or narrow the unsupported candidate",
+          "remove geometry that relied on the unsupported claim or keep it isolated and revisable"
+        ],
+        "sources": [
+          {
+            "type": "video_synthesis",
+            "source_id": "runs/2026-08-15_video-study-reference-workflow/",
+            "description": "Seven user-supplied reference-workflow videos converged on purpose-scoped sources, schema-visible missing evidence, and task-specific fidelity; all raw items remain separately bounded."
+          },
+          {
+            "type": "video_observation",
+            "source_id": "3nJJ5r0kOy4",
+            "timestamp_seconds": [
+              143,
+              228
+            ],
+            "description": "The artist assigns different secondary sources to specific facial, hair, and color properties rather than letting one source control the whole design."
+          },
+          {
+            "type": "video_observation",
+            "source_id": "pPEB5uEDY-Q",
+            "timestamp_seconds": [
+              0,
+              43
+            ],
+            "description": "The demonstrated visual wiki keeps stable evidence fields and direct source clips adjacent to claims."
+          }
+        ],
+        "experiments": [
+          {
+            "type": "controlled policy and stage-gate verification",
+            "evidence_path": "runs/2026-08-15_question-driven-reference-research/",
+            "result": "PASS",
+            "controls": [
+              "open high-impact question",
+              "broken accepted-reference link",
+              "deferred question without constraint",
+              "failed strict stage evidence"
+            ]
+          }
+        ],
+        "runtime_usage": [
+          {
+            "target": "Bialetti Moka Express 3-cup reference-only exercise",
+            "evidence_path": "runs/2026-08-15_reference-gathering-bialetti/",
+            "success": true,
+            "result": "Resolved the official overall envelope, retained five rejected candidates, and bounded underside/revision uncertainty without authorizing modeling."
+          }
+        ],
+        "version_scope": "Reference policy is Blender-version independent; strict stage-gate behavior verified with Blender 5.2 LTS.",
+        "status_note": "Runtime validated for question-driven reference gating on one real product board. It is not transfer validated and has not yet demonstrated improved model fidelity in the pending equal-budget comparison."
+      }
+    },
+    {
+      "skill_id": "evidence-bound-reference-interpretation",
+      "score": 6.1041,
+      "score_breakdown": {
+        "query": 3.7947,
+        "modeling_stage": 0.0,
+        "workflow": 2.3094,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.0,
+        "runtime_success": 0.0,
+        "version_relevance": 0.0
+      },
+      "status": "EXPERIMENTALLY_TESTED",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\evidence-bound-reference-interpretation.json",
+      "skill": {
+        "skill_id": "evidence-bound-reference-interpretation",
+        "title": "Gate modeling strategy on evidence-bound reference claims",
+        "topic_tags": [
+          "reference-interpretation",
+          "scene-decomposition",
+          "strategy-selection",
+          "uncertainty",
+          "planning"
+        ],
+        "problem": "A plausible prose description or silhouette can harden uncertain reference guesses into the wrong representation, component boundary, or depth structure before the model is cheap to revise.",
+        "status": "EXPERIMENTALLY_TESTED",
+        "applicability": {
+          "workflow": "reference-driven modeling before and during primary blockout",
+          "required_inputs": [
+            "typed components and relationships",
+            "claim-level evidence status and confidence",
+            "modeling consequences",
+            "candidate and rejected strategies"
+          ],
+          "exclusions": [
+            "automatic visual inference is not provided",
+            "weak or unknown claims cannot drive strategy booleans",
+            "policy success is not Blender or reference-fidelity proof"
+          ]
+        },
+        "action_policy": [
+          "Record each important interpretation as OBSERVED, STRONGLY_INFERRED, WEAKLY_INFERRED, or UNKNOWN.",
+          "Require concrete evidence for observed and strongly inferred claims.",
+          "Block blockout on high-impact weak/unknown claims or contradictory supported modeling signals.",
+          "Translate only observed/strongly inferred modeling signals into the strategy brief.",
+          "Keep weak areas reversible and preserve rejected construction strategies with reasons.",
+          "Verify the resulting Blender geometry and reference fidelity through separate truth channels."
+        ],
+        "evidence": [
+          {
+            "run": "runs/2026-08-15_reference-interpretation-contract/reference_interpretation_report.json",
+            "scope": "declared pure-Python policy cases across pendant-lamp and appliance-panel families",
+            "result": "supported claims changed representation/component policy; weak claims were ignored; unknown/conflicting claims blocked modeling"
+          },
+          {
+            "run": "runs/2026-08-15_reference-interpretation-contract/reference_interpretation_verify.json",
+            "scope": "fresh-process serialized-artifact verification",
+            "result": "pending generation at commit preparation"
+          }
+        ],
+        "promotion_limit": "Not TRANSFER_VALIDATED or RUNTIME_VALIDATED until real image interpretation changes Blender construction and improves measured outcomes on unrelated assets."
+      }
+    }
+  ],
+  "planner_contract": {
+    "disposition": "RESEARCH",
+    "action": "TARGETED_REFERENCE_RESEARCH",
+    "target_object": null,
+    "target_region": null,
+    "rationale": [
+      "missing evidence: component_graph_pass",
+      "missing evidence: measured_ratio_count",
+      "missing evidence: uncertainty_recorded",
+      "missing evidence: reference_set_audit_pass",
+      "missing evidence: same_target_identity_pass",
+      "missing evidence: view_coverage_pass",
+      "missing evidence: critical_property_coverage_pass",
+      "missing evidence: conflicts_resolved_pass",
+      "missing evidence: question_driven_research_pass"
+    ],
+    "expected_effect": "Acquire the missing same-target, view, dimension, or property evidence before geometry is created.",
+    "verification": [
+      "rerun the structured reference-set audit",
+      "do not model while the audit is incomplete"
+    ],
+    "observed_revision": 0,
+    "confidence": "HIGH",
+    "operation": null,
+    "operation_params": {
+      "queries": [
+        "site:bialetti.com Moka Express 3 cups 130 ml dimensions official",
+        "Bialetti Moka Express 3 cup overall width depth handle spout"
+      ]
+    },
+    "retrieved_skill_ids": [
+      "reference.question-driven-targeted-research",
+      "evidence-bound-reference-interpretation"
+    ],
+    "next_stage": null
+  },
+  "checks": {
+    "bialetti_reference_set_ready": true,
+    "three_questions_recorded": true,
+    "candidate_dispositions_exact": true,
+    "two_deferred_constraints_preserved": true,
+    "no_high_impact_question_open": true,
+    "open_high_question_blocks_modeling": true,
+    "broken_accepted_link_fails": true,
+    "deferred_without_constraint_rejected": true,
+    "stage_gate_accepts_complete_research": true,
+    "stage_gate_rejects_unaudited_questions": true,
+    "skill_retrieval_ranks_question_driven_research_first": true,
+    "planner_research_contract_retains_skill_provenance": true
+  },
+  "pass": true,
+  "boundary": "This proves executable research provenance and gating behavior. It does not replace the pending human board review or prove that a model will be accurate."
+}

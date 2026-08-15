@@ -10,6 +10,7 @@ STAGE_REQUIREMENTS = {
         "component_graph_pass", "measured_ratio_count", "uncertainty_recorded",
         "reference_set_audit_pass", "same_target_identity_pass", "view_coverage_pass",
         "critical_property_coverage_pass", "conflicts_resolved_pass",
+        "question_driven_research_pass",
     ),
     "PRIMARY_BLOCKOUT": ("dimensions_checked", "primary_components_present"),
     "PROPORTION_SILHOUETTE": ("view_count", "worst_view_iou", "multiview_regression_pass"),
@@ -42,6 +43,7 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             if not evidence["view_coverage_pass"]: failures.append("required reference views are missing")
             if not evidence["critical_property_coverage_pass"]: failures.append("critical properties lack authoritative evidence")
             if not evidence["conflicts_resolved_pass"]: failures.append("reference conflicts remain unresolved")
+            if not evidence["question_driven_research_pass"]: failures.append("high-impact reference questions remain open or unaudited")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")

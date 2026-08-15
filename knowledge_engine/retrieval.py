@@ -11,6 +11,15 @@ from typing import Any
 
 
 DEFAULT_MIN_RETRIEVAL_SCORE = 4.0
+MIN_QUERY_CONTRIBUTION = 1.5
+SPECIFIC_CONTEXT_CHANNELS = (
+    "modeling_stage",
+    "surface_type",
+    "defect",
+    "local_topology",
+    "modifiers",
+    "reference_issue",
+)
 
 
 def _tokens(value: Any) -> set[str]:
@@ -114,8 +123,12 @@ class StructuredSkillStore:
 
         A nonzero lexical overlap is not enough for planner use: generic words such as "surface"
         or "deformation" otherwise make unrelated reference, UV, or rigging tickets retrieve a
-        weakly matching skill. Callers performing exploratory search may explicitly lower the
-        threshold, while runtime/planner callers get the calibrated abstention default.
+        weakly matching skill. A candidate must clear ``min_score`` from semantic context alone and
+        must also have either a meaningful query match or a match in a specific typed channel. A
+        broad workflow label cannot establish relevance by itself. Runtime success and version
+        relevance rank already-relevant skills; historical success cannot create relevance. Callers
+        performing exploratory search may explicitly lower the threshold, while runtime/planner
+        callers get the calibrated abstention default.
         """
         if min_score < 0:
             raise ValueError("min_score must be non-negative")
@@ -138,7 +151,10 @@ class StructuredSkillStore:
                 contribution = weight * self._overlap(value, fields[key])
                 breakdown[key] = round(contribution, 4)
             semantic_score = sum(breakdown.values())
-            if semantic_score <= 0:
+            if semantic_score < min_score:
+                continue
+            has_specific_match = any(breakdown[key] > 0.0 for key in SPECIFIC_CONTEXT_CHANNELS)
+            if min_score > 0 and breakdown["query"] < MIN_QUERY_CONTRIBUTION and not has_specific_match:
                 continue
             breakdown["runtime_success"] = round(self._runtime_score(skill), 4)
             breakdown["version_relevance"] = round(self._version_score(context.blender_version, skill), 4)

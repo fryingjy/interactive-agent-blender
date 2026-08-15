@@ -26,7 +26,9 @@ Current evidence includes:
   adaptive mixed-cause surface diagnosis, and a real Godot tangent-bake import with deliberate
   semantic failure evidence;
 - rollback-owned high/low variant packaging with separate collections, independent editable cages,
-  and unapplied modifier stacks, including controlled rejection and real Nailsea runtime use.
+  and unapplied modifier stacks, including controlled rejection and real Nailsea runtime use;
+- question-driven reference research that records exact searches, accepted and rejected candidates,
+  reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

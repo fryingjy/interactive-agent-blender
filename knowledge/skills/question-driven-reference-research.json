@@ -1,0 +1,116 @@
+{
+  "skill_id": "reference.question-driven-targeted-research",
+  "title": "Turn important reference unknowns into targeted, auditable research",
+  "topic_tags": [
+    "reference gathering",
+    "question driven search",
+    "unknown geometry",
+    "candidate rejection",
+    "source provenance",
+    "variant conflict",
+    "reversible modeling constraint"
+  ],
+  "problem": "An occluded view, missing dimension, or conflicting variant can silently become invented geometry when the agent gathers images broadly or treats every search result as equally authoritative.",
+  "status": "RUNTIME_VALIDATED",
+  "applicability": {
+    "modeling_stage": ["REFERENCE_ANALYSIS", "PRIMARY_BLOCKOUT"],
+    "workflow": [
+      "question-driven evidence search",
+      "same-variant source audit",
+      "reconstruction uncertainty resolution"
+    ],
+    "reference_issue": [
+      "missing view",
+      "unknown construction",
+      "hidden geometry",
+      "missing dimension",
+      "variant conflict",
+      "weak source authority"
+    ],
+    "exclusions": [
+      "random bulk image gathering",
+      "inspiration overriding factual reconstruction",
+      "deferred high-impact uncertainty without a human decision"
+    ]
+  },
+  "preconditions": [
+    "the target and intended variant are explicitly identified",
+    "the uncertainty names a property that could affect modeling or evaluation",
+    "the current evidence does not already resolve the question"
+  ],
+  "required_observations": [
+    "why the current set cannot answer the question",
+    "the modeling impact if the answer is wrong",
+    "source identity and variant for every inspected candidate",
+    "the exact claim each accepted source is allowed to support"
+  ],
+  "action_policy": [
+    "Turn the unknown into one property-scoped question and one or more exact search queries.",
+    "Record inspected candidates even when rejected, including provenance, observed variant, and rejection reason.",
+    "Link accepted candidates to factual ReferenceItem records; never let an accepted conclusion float free of its source.",
+    "Keep high-impact questions open until accepted evidence or a human decision resolves them.",
+    "A lower-impact question may be deferred only with a concrete reversible modeling constraint and an evaluation exclusion.",
+    "Return to targeted research when modeling reveals a new important uncertainty."
+  ],
+  "expected_effects": [
+    "fewer unsupported hidden-form inventions",
+    "clear separation between same-variant evidence and attractive but irrelevant results",
+    "a planner-visible stop condition when important evidence is still missing",
+    "cheap revision of explicitly deferred low-impact geometry"
+  ],
+  "failure_predicates": [
+    "a high-impact question remains open while blockout begins",
+    "an accepted candidate does not link to a reference item",
+    "a deferred question has no modeling constraint",
+    "a different variant silently authorizes target geometry",
+    "search quantity is reported as success without property coverage"
+  ],
+  "recovery": [
+    "regress to REFERENCE_ANALYSIS",
+    "emit the exact unresolved query",
+    "reject or narrow the unsupported candidate",
+    "remove geometry that relied on the unsupported claim or keep it isolated and revisable"
+  ],
+  "sources": [
+    {
+      "type": "video_synthesis",
+      "source_id": "runs/2026-08-15_video-study-reference-workflow/",
+      "description": "Seven user-supplied reference-workflow videos converged on purpose-scoped sources, schema-visible missing evidence, and task-specific fidelity; all raw items remain separately bounded."
+    },
+    {
+      "type": "video_observation",
+      "source_id": "3nJJ5r0kOy4",
+      "timestamp_seconds": [143, 228],
+      "description": "The artist assigns different secondary sources to specific facial, hair, and color properties rather than letting one source control the whole design."
+    },
+    {
+      "type": "video_observation",
+      "source_id": "pPEB5uEDY-Q",
+      "timestamp_seconds": [0, 43],
+      "description": "The demonstrated visual wiki keeps stable evidence fields and direct source clips adjacent to claims."
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled policy and stage-gate verification",
+      "evidence_path": "runs/2026-08-15_question-driven-reference-research/",
+      "result": "PASS",
+      "controls": [
+        "open high-impact question",
+        "broken accepted-reference link",
+        "deferred question without constraint",
+        "failed strict stage evidence"
+      ]
+    }
+  ],
+  "runtime_usage": [
+    {
+      "target": "Bialetti Moka Express 3-cup reference-only exercise",
+      "evidence_path": "runs/2026-08-15_reference-gathering-bialetti/",
+      "success": true,
+      "result": "Resolved the official overall envelope, retained five rejected candidates, and bounded underside/revision uncertainty without authorizing modeling."
+    }
+  ],
+  "version_scope": "Reference policy is Blender-version independent; strict stage-gate behavior verified with Blender 5.2 LTS.",
+  "status_note": "Runtime validated for question-driven reference gating on one real product board. It is not transfer validated and has not yet demonstrated improved model fidelity in the pending equal-budget comparison."
+}

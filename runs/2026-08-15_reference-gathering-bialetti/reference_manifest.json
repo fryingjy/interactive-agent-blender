@@ -14,6 +14,8 @@
   "critical_properties": [
     "overall_height",
     "boiler_base_diameter",
+    "overall_width_including_handle_spout",
+    "overall_depth",
     "octagonal_primary_silhouette",
     "upper_lower_mass_ratio",
     "spout_profile",
@@ -42,6 +44,23 @@
       ],
       "dimensional_anchors": ["overall height 155 mm", "boiler base diameter 72 mm", "capacity 130 ml"],
       "limitations": ["Official dimension source is a current 3-cup color SKU; finish differs but declared Moka Express geometry and size match the classic 3-cup family"]
+    },
+    {
+      "reference_id": "bialetti-official-3cup-envelope",
+      "source_id": "bialetti-official-dg-3cup",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["DIMENSION", "MATERIAL"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_width_including_handle_spout", "purpose": "DIMENSION", "observation": "Bialetti's 3-cup Moka Express specification gives a 15 cm overall envelope dimension across handle and spout", "confidence": "HIGH"},
+        {"property_id": "overall_depth", "purpose": "DIMENSION", "observation": "Bialetti's 3-cup Moka Express specification gives an 8.5 cm overall depth", "confidence": "HIGH"},
+        {"property_id": "overall_height", "purpose": "DIMENSION", "observation": "The same official 3-cup specification gives 15.5 cm height, agreeing with the existing official anchor", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["overall envelope 15 x 8.5 x 15.5 cm", "capacity 130 ml"],
+      "limitations": ["Decorative Dolce & Gabbana finish differs; this item authorizes only the official 3-cup envelope and material family, not surface graphics"]
     },
     {
       "reference_id": "listing-picture-03-front",
@@ -169,6 +188,134 @@
       "description": "The same-object listing never turns the boiler over, so underside stamps and recess depth are unseen.",
       "resolution": "Keep the underside low confidence and out of primary silhouette acceptance. Do not invent stamps or detailed recess geometry; acquire a direct underside source before final underside detailing if the asset proceeds.",
       "status": "RESOLVED"
+    }
+  ],
+  "research_questions": [
+    {
+      "question_id": "q-overall-envelope",
+      "property_id": "overall_width_including_handle_spout",
+      "question": "What is the authoritative overall width and depth including the handle and spout?",
+      "trigger": "The same-object photographs provide only perspective ratios and retailer dimensions conflict.",
+      "impact": "HIGH",
+      "search_queries": [
+        "site:bialetti.com Moka Express 3 cups 130 ml dimensions official",
+        "Bialetti Moka Express 3 cup overall width depth handle spout"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "official-dg-3cup-envelope",
+          "source_url": "https://www.bialetti.com/it_en/leopardo-moka-express-3-cup-dolce-gabbana.html",
+          "source_id": "bialetti-official-dg-3cup",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "3-cup 130 ml aluminum decorative finish",
+          "purpose": "DIMENSION",
+          "disposition": "ACCEPTED",
+          "reason": "The manufacturer explicitly gives 15 x 8.5 x 15.5 cm for the 3-cup 130 ml Moka Express family.",
+          "accepted_reference_id": "bialetti-official-3cup-envelope",
+          "limitations": ["The decorative finish cannot authorize the classic target's graphics or wear"]
+        },
+        {
+          "candidate_id": "homepro-18cm-envelope",
+          "source_url": "https://www.homepro.co.th/p/1140797?lang=th",
+          "source_id": "homepro-product-1140797",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "3-cup variant not revision-bound",
+          "purpose": "DIMENSION",
+          "disposition": "REJECTED",
+          "reason": "The retailer reports 18 x 10 x 10 cm, conflicts with the manufacturer, and does not define the orientation or production revision.",
+          "limitations": ["Retailer metadata is not dimensional authority when the manufacturer supplies a direct specification"]
+        }
+      ],
+      "status": "RESOLVED",
+      "resolution": "Use Bialetti's 15 x 8.5 x 15.5 cm 3-cup envelope; reject the conflicting retailer dimensions."
+    },
+    {
+      "question_id": "q-boiler-underside",
+      "property_id": "boiler_underside",
+      "question": "Does the target-era 3-cup boiler underside contain a recess or geometry that changes the primary form?",
+      "trigger": "The same-object listing never turns the boiler over.",
+      "impact": "LOW",
+      "search_queries": [
+        "Bialetti Moka Express 3 cup underside bottom view 130ml",
+        "Bialetti 3 cup bottom stamp moka underside"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "same-object-ebay-no-underside",
+          "source_url": "https://www.ebay.com/itm/197253718978",
+          "source_id": "ebay-listing-197253718978",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "same physical pre-owned 3-cup target",
+          "purpose": "DETAIL",
+          "disposition": "REJECTED",
+          "reason": "All twelve images were inspected, but none directly exposes the boiler underside.",
+          "limitations": ["Absence of a view is not evidence of a flat or stamped underside"]
+        },
+        {
+          "candidate_id": "etsy-midcentury-bottom-stamp",
+          "source_url": "https://www.etsy.com/hk-en/listing/4524215118/rare-mid-century-vintage-bialetti-moka",
+          "source_id": "etsy-vintage-4524215118",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "mid-century Crusinallo 3-cup with early factory stamp",
+          "purpose": "DETAIL",
+          "disposition": "REJECTED",
+          "reason": "The listing discusses an early triangular bottom stamp but is a materially older production variant than the target unit.",
+          "limitations": ["Useful revision evidence; unsafe authority for current target underside geometry"]
+        },
+        {
+          "candidate_id": "homepro-gallery-no-direct-underside",
+          "source_url": "https://www.homepro.co.th/p/1140797?lang=th",
+          "source_id": "homepro-product-1140797",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "3-cup variant not revision-bound",
+          "purpose": "DETAIL",
+          "disposition": "REJECTED",
+          "reason": "Search and gallery metadata did not establish a direct underside view, and the page's dimensions conflict with Bialetti.",
+          "limitations": ["A search-result thumbnail description is not sufficient geometric evidence"]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "No direct same-variant underside evidence was found after targeted searching; this does not block primary or secondary form work.",
+      "modeling_constraint": "Keep the boiler underside simple, unmarked, separately revisable, and excluded from fidelity scoring until a direct same-variant view is acquired."
+    },
+    {
+      "question_id": "q-production-revision",
+      "property_id": "production_revision_compatibility",
+      "question": "Which current official facts can safely transfer to the older-looking same-object listing unit?",
+      "trigger": "The listing packaging appears older than current official photography.",
+      "impact": "MEDIUM",
+      "search_queries": [
+        "Bialetti Moka Express 3 cup old new model comparison",
+        "Bialetti Moka Express 3 cup production revision handle casting"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "official-current-0001162",
+          "source_url": "https://www.bialetti.com/us_en/moka-pot-3-cup-italian-coffee-maker.html",
+          "source_id": "bialetti-official-product",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "current SKU 0001162/SV 3-cup",
+          "purpose": "DIMENSION",
+          "disposition": "ACCEPTED",
+          "reason": "The official page establishes current product identity, 3-cup capacity, aluminum body, and Moka Express family, but not complete revision equivalence.",
+          "accepted_reference_id": "bialetti-official-spec-3cup",
+          "limitations": ["Does not prove unchanged handle, hinge, casting seams, graphics, or underside"]
+        },
+        {
+          "candidate_id": "vintage-crusinallo-revision",
+          "source_url": "https://www.etsy.com/hk-en/listing/4524215118/rare-mid-century-vintage-bialetti-moka",
+          "source_id": "etsy-vintage-4524215118",
+          "observed_identity": "Bialetti Moka Express",
+          "observed_variant": "mid-century Crusinallo 3-cup",
+          "purpose": "CONTEXT",
+          "disposition": "REJECTED",
+          "reason": "It proves production-era markings differ, so it cannot be merged into the target's factual geometry set.",
+          "limitations": ["Retained only as evidence that revision mixing is a real risk"]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "Current official material and dimensions may control scale and material family; the same-object listing alone controls visible shape and construction.",
+      "modeling_constraint": "Do not transfer current decorative graphics, handle details, hinge details, casting marks, or underside features into the older-looking target unless same-revision evidence supports them."
     }
   ]
 }

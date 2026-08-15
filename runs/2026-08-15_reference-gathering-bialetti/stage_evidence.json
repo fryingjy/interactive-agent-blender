@@ -10,6 +10,11 @@
   "view_coverage_pass": true,
   "critical_property_coverage_pass": true,
   "conflicts_resolved_pass": true,
+  "question_driven_research_pass": true,
+  "modeling_constraints": [
+    "Keep the boiler underside simple, unmarked, separately revisable, and excluded from fidelity scoring until a direct same-variant view is acquired.",
+    "Do not transfer current decorative graphics, handle details, hinge details, casting marks, or underside features into the older-looking target unless same-revision evidence supports them."
+  ],
   "machine_disposition": "READY_TO_MODEL",
   "human_review_status": "PENDING_USER_REVIEW",
   "modeling_authorized": false,
