@@ -36,13 +36,20 @@ not to be a file this pipeline generation produced for any of these runs. All 20
 knowledge items already carry direct quotes/timestamps and are the intended unit of extracted
 knowledge. This is flagged here rather than silently substituted.
 
-**Volume reviewed:** 87 knowledge items across the 20 runs (all `PRINCIPLE` / `PROCEDURE` /
+**Volume reviewed (corrected by independent corpus audit):** 90 knowledge items across the 20 runs
+(all `PRINCIPLE` / `PROCEDURE` /
 `DECISION` / `FAILURE` / `VISUAL_CUE` types combined). Counts per run: subd-hardsurface 6,
-subd-hardsurface-2 4, subd-hive-controller 5, tertiary-details 5, decals-workflow 3, curvy-organic
+subd-hardsurface-2 4, subd-hive-controller 6, tertiary-details 5, decals-workflow 3, curvy-organic
 7, 5-best-tricks 5, cgcookie-hardsurface-intro 1, cgvoice-amateur-mistakes 5,
 crnt-boolean-triangle 2, elementza-clean-topology 4, grant-abbitt-beginners 1,
-gnomon-bryant-momo-koshu 6, jl-mussi 5, jl-mussi-5-tips 5, jl-mussi-easy-once-you-learn 5,
-mcglasham-subd 5, pzthree-retopology 5, rileyb3d-advanced-hardsurface 5, subd-3dprint 3.
+gnomon-bryant-momo-koshu 6, jl-mussi 5, jl-mussi-5-tips 5, jl-mussi-easy-once-you-learn 6,
+mcglasham-subd 5, pzthree-retopology 5, rileyb3d-advanced-hardsurface 6, subd-3dprint 3.
+
+The original synthesis text said 87 because those three runs were each understated by one item.
+`runs/2026-08-15_level14-synthesis-audit/level14_synthesis_audit.json` independently hashes and
+loads all 20 authoritative files, checks all 90 items' minimum schema/source ranges, and records the
+effect of each reconciled item. Two had already been discussed below despite the count typo; the
+third adds a real representation-choice decision and is now included explicitly.
 
 Below, each of the 9 stages gets its own section listing the items that are genuine evidence for
 *that specific stage* (an item is cited under more than one stage where it truly earns it -- e.g.
@@ -137,6 +144,11 @@ decision between named alternatives for a specific part. One item genuinely does
   cage, instead of sculpting directly on a raw voxel-remeshed mesh with no clean underlying topology
   -- a real mesh-plus-multires-vs-sculpt representation call, though narrower than a full
   sculpt-vs-hard-surface-mesh decision.
+- **jl-mussi-easy-once-you-learn** (`cbXWWE8-X0M`): explicitly rejects carving complex panel gaps
+  directly into one continuous curved shell because that spreads density and pinching through the
+  parent surface; separates the panel and gives that part its own Solidify-above-SubD stack instead.
+  This is a direct continuous-vs-separate construction decision and was missing from the original
+  representation-choice list.
 
 ## 4. Topology decision
 
@@ -331,14 +343,15 @@ and representation choice. Blockout has five real items, but nearly all of them 
 *sequencing* rules (what order to cut/subdivide/detail in) rather than the proportion-judgment call
 the stage name implies ("is the blockout right yet, and how do I know"). Representation choice
 turned out to have more candidate items than the curriculum doc's own hint predicted it might --
-seven items genuinely reason about mesh vs. curve vs. modifier-driven vs. shader-fake vs. sculpt for
-a specific part -- but only one of them (mcglasham-subd) is a professional explicitly narrating a
-live decision between named alternatives in the moment, with reasoning about consequences
-(deformation, UV, cross-software transfer). The rest are "this trick beats the naive approach
-because of mechanical property X," which is real evidence but a shallower form of the reasoning the
-stage is meant to capture.
+eight items genuinely reason about mesh vs. curve vs. modifier-driven vs. shader-fake vs. sculpt for
+a specific part. Two are especially explicit alternative-based construction calls:
+mcglasham-subd rejects Boolean-driven geometry for native topology based on deformation, UV, and
+cross-software consequences; jl-mussi-easy-once-you-learn rejects carving a panel into one curved
+shell in favor of a separate Solidify/SubD part to contain density and pinching. The remaining items
+are mostly "this trick beats the naive approach because of mechanical property X," which is real
+evidence but a shallower form of the reasoning the stage is meant to capture.
 
-**Thin to the point of near-absence:** reference interpretation. Across all 87 items in all 20
+**Thin to the point of near-absence:** reference interpretation. Across all 90 items in all 20
 runs, exactly one item (`elementza-clean-topology`) actually closes the loop from "here is what the
 reference shows" to "here is the specific geometric decision that observation produced." Everything
 else adjacent to reference use in this batch is either a preference about *which kind* of reference
