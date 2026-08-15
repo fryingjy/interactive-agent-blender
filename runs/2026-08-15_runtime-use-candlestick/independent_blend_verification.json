@@ -1,0 +1,80 @@
+{
+  "method": "fresh Blender 5.2 factory process loaded the saved blend; no generator import",
+  "blend_filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_runtime-use-candlestick\\heldout_candlestick.blend",
+  "blender_version": "5.2.0 LTS",
+  "mesh_objects": [
+    "Heldout_Candlestick"
+  ],
+  "base_audit": {
+    "vertices": 300,
+    "edges": 588,
+    "faces": 288,
+    "quads": 288,
+    "non_quad_faces": 0,
+    "boundary_edges": 24,
+    "non_manifold_edges": 24,
+    "loose_vertices": 0,
+    "degenerate_faces": 0,
+    "connected_components": 1,
+    "ring_count": 25,
+    "vertices_per_ring": [
+      12
+    ],
+    "boundary_edge_ids": [
+      25,
+      26,
+      29,
+      30,
+      32,
+      33,
+      35,
+      36,
+      38,
+      39,
+      41,
+      42,
+      44,
+      45,
+      47,
+      48,
+      50,
+      51,
+      53,
+      54,
+      56,
+      57,
+      59,
+      60
+    ]
+  },
+  "evaluated_health": {
+    "vertices": 300,
+    "edges": 588,
+    "faces": 288,
+    "non_manifold_edges": 24,
+    "ngons": 0,
+    "loose_verts": 0,
+    "degenerate_faces": 0
+  },
+  "render": {
+    "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_runtime-use-candlestick\\independent_candidate_mask.png",
+    "view": "front",
+    "resolution": 720,
+    "frame_objects": [
+      "Heldout_Candlestick"
+    ],
+    "silhouette_fill_ratio": 0.1225
+  },
+  "checks": {
+    "one_mesh_object": true,
+    "expected_object_name": true,
+    "base_counts_match_generator": true,
+    "all_quad_cage": true,
+    "twenty_five_twelve_vertex_rings": true,
+    "boundary_ids_match_declared_allowlist": true,
+    "smooth_by_angle_persisted": true,
+    "evaluated_has_only_declared_boundaries": true,
+    "fresh_silhouette_rendered": true
+  },
+  "pass_geometry_and_render": true
+}

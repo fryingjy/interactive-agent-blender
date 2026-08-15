@@ -51,6 +51,7 @@ class PlannerContext:
     repair_history: RegionRepairHistory | None = None
     brief: ModelingBrief = field(default_factory=ModelingBrief)
     external_edit_detected: bool = False
+    intentional_non_manifold_edge_ids: tuple[int, ...] = ()
     minimum_stage_iou: float = 0.9
 
     def validate(self) -> None:
@@ -62,6 +63,8 @@ class PlannerContext:
             raise ValueError("session_id is required")
         if self.scene_revision < 0:
             raise ValueError("scene_revision must be non-negative")
+        if len(set(self.intentional_non_manifold_edge_ids)) != len(self.intentional_non_manifold_edge_ids):
+            raise ValueError("intentional_non_manifold_edge_ids must be unique persistent edge IDs")
 
 
 @dataclass(frozen=True)
@@ -218,7 +221,10 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         )
 
     health = _technical_health(context)
-    if health.get("non_manifold_edges", 0) > 0:
+    observed_non_manifold = int(health.get("non_manifold_edges", 0))
+    allowed_non_manifold = len(context.intentional_non_manifold_edge_ids)
+    unexpected_non_manifold = max(0, observed_non_manifold - allowed_non_manifold)
+    if unexpected_non_manifold > 0:
         history = context.repair_history.decision() if context.repair_history else None
         rebuild = history and history["decision"] == "REBUILD_REGION"
         return _contract(
@@ -230,7 +236,8 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             target_object=target,
             target_region=context.repair_history.region_id if context.repair_history else None,
             rationale=(
-                f"evaluated mesh has {health['non_manifold_edges']} non-manifold edges",
+                f"evaluated mesh has {observed_non_manifold} non-manifold edges; {allowed_non_manifold} are explicitly allowlisted intentional boundaries",
+                f"{unexpected_non_manifold} non-manifold edges remain unexplained",
                 "technical breakage has priority over visual polish",
                 *(('repeated repair evidence crosses the rebuild threshold',) if rebuild else ()),
             ),

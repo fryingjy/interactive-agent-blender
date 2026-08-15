@@ -815,3 +815,28 @@ deformation-density query. A controlled planner proof shows the validated skill 
 localized ticket from `INSPECT` to a scoped `loop_cut_selection`, while a merely captured skill does
 not act and non-manifold geometry still preempts it. `runtime_usage` remains empty because no real
 held-out asset has used the skill through a typed transaction yet; that is the next promotion gate.
+
+## Update -- 2026-08-15 (held-out runtime attempts rejected by human review)
+
+Two attempts tested the next promotion gate, but neither is being counted as successful runtime
+validation. The first used one CC0 museum photograph of an opalescent candlestick. It produced a
+real typed transaction trace and high normalized silhouette score, but human review correctly
+identified the core evidence error: a symmetry-reconstructed single view cannot establish accurate
+three-dimensional form. The run is retained with `REJECTED_AS_FULL_FORM_VALIDATION`; its metrics
+remain factual but cannot support skill promotion.
+
+The replacement run corrected the sourcing method before modeling: five photos of one specific
+Nailsea candlestick were collected from one listing, with a complete elevation, close upper/lower
+details, oblique top/bottom evidence, and a direct base view. Published 30.5 x 9 x 9 cm dimensions
+became frozen gates. This exposed a second real failure that normalized front IoU had hidden: SubD
+shrank the first evaluated build to 7.43 cm wide. A fresh-process cross-view verifier rejected it;
+the control cage was then compensated and reproduced 30.5000 x 9.0000 x 9.0000 cm, a circular
+hollow socket, one 396-vertex/384-quad cage, closed evaluated geometry, and front IoU 0.8479.
+
+Human review still rejected the corrected asset as insufficiently accurate. Therefore the skill
+remains `TRANSFER_VALIDATED`, `runtime_usage` stays empty, and no metric-only promotion is allowed.
+The next step is not further tuning of either candlestick: study the user's forthcoming videos on
+reference sourcing, selection, interpretation, and modeling-from-reference; reproduce and validate
+their methods; then attempt a different held-out prop. This is now the clearest active knowledge
+gap, consistent with the Level 14 synthesis finding that reference interpretation was the thinnest
+stage in the curriculum.

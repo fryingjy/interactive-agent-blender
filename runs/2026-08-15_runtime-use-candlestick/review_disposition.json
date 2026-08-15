@@ -1,0 +1,15 @@
+{
+  "disposition": "REJECTED_AS_FULL_FORM_VALIDATION",
+  "reason": "Human review correctly identified that the experiment fitted one symmetry-reconstructed photograph without first collecting enough same-object views to establish actual three-dimensional form.",
+  "what_remains_valid": [
+    "the typed transaction trace is real",
+    "the saved-scene topology audit is real",
+    "the reported single-view normalized silhouette metrics are real"
+  ],
+  "what_is_not_valid": [
+    "claiming the asset is an accurate candlestick reconstruction",
+    "promoting the learned skill to RUNTIME_VALIDATED from this run",
+    "treating a high one-view IoU as proof of correct three-dimensional form"
+  ],
+  "replacement_plan": "Use one same-object multi-photo listing with stated dimensions, including full elevation, close profile details, oblique/top opening, and bottom views; rebuild under a revised multi-reference contract."
+}

@@ -370,6 +370,26 @@ class PlannerTests(unittest.TestCase):
         ))
         self.assertEqual(rebuild.action, "REBUILD_OPEN_REGION")
 
+    def test_explicit_intentional_boundary_allowlist_does_not_hide_excess_breakage(self):
+        ticket = {
+            "type": "contour_error", "target": "open_glass_lip", "priority": 1,
+            "severity": 0.8, "suggested_operation": "scale_selection",
+            "operation_params": {"factor": [1.05, 1.05, 1.0]},
+        }
+        allowed = plan_next_decision(self.context(
+            evaluated_state={"mesh_health": {"non_manifold_edges": 4}},
+            intentional_non_manifold_edge_ids=(101, 102, 103, 104),
+            visual_tickets=[ticket],
+        ))
+        self.assertEqual(allowed.operation, "scale_selection")
+        excess = plan_next_decision(self.context(
+            evaluated_state={"mesh_health": {"non_manifold_edges": 5}},
+            intentional_non_manifold_edge_ids=(101, 102, 103, 104),
+            visual_tickets=[ticket],
+        ))
+        self.assertEqual(excess.action, "LOCALIZE_NON_MANIFOLD_REGION")
+        self.assertIn("1 non-manifold edges remain unexplained", excess.rationale)
+
     def test_uncertainty_visual_action_and_stage_advance(self):
         research = plan_next_decision(self.context(diagnosis=Diagnosis("pinch", 0.3, ["healthy curvature"])))
         self.assertEqual(research.disposition, "RESEARCH")

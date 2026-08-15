@@ -6,6 +6,8 @@ gh_auth.log
 runs/*/blend/*.blend
 runs/*/failed_*/*.blend
 runs/*/media/
+runs/*/asymmetric/
+runs/*/reference_segmentation_preview.png
 runs/*/.godot/
 *.glb.import
 runs/*/*.png.import
