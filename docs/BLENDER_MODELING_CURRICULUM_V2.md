@@ -37,26 +37,50 @@ videos without that loop is the failure mode this curriculum exists to avoid.
 
 4. **CG Boost -- 100+ Tips to Boost Modeling in Blender.** `JMBMHSca_j0`. REQUIRED. Broad exposure
    to modeling techniques and viewport workflows. Revisit at Level 10 with a different question
-   ("why would a professional choose this tool here" instead of "what does this tool do"). First
-   pass IN PROGRESS, chapter-by-chapter (video is 1:57:05, too long for one extraction pass).
-   Processed so far (`runs/2026-08-15_video-study-cgboost-100-tips-meshmodeling/`, 8 items):
-   **Mesh Modeling chapter only** (29:22-58:16, tips #30-62) -- most notably a genuine, sourced fix
-   candidate for the project's repeatedly-confirmed T-junction ngon bug (Connect Vertex Path, `J`,
-   splits an existing face along a vertex path instead of inserting a mid-edge vertex into a shared
-   boundary edge), plus two independent alternative hole-cutting techniques (Bridge Edge Loops
-   between matching opposing faces; Loop Tools Circle) and Grid Fill / batch non-manifold repair /
-   Offset Edge Slide. **Modifiers chapter also processed**
-   (`runs/2026-08-15_video-study-cgboost-100-tips-modifiers/`, 6 items, 1:07:24-1:42:01, tips
-   #74-93) -- most notably a genuine, sourced CONTRADICTION with this project's standing
-   Bevel-before-Subdivision-Surface policy (a "Clean Hard-Surface Sub-D Modeling" technique orders
-   Bevel AFTER Subdivision instead, to avoid pinched shading on curved hulls; flagged as unresolved,
-   not silently adopted -- see `blender-modeling-technique-corrections` memory), a Weld-modifier
-   technique for beveling boolean-cut seams (a real gap -- this project's boolean workflow has never
-   included that cleanup step), a Quad Sphere construction avoiding UV-Sphere pole-pinching, and
-   independent confirmation of the vertex-group-scoped Shrinkwrap-Project mechanism already flagged
-   as an untested hypothesis for the mug's handle-attachment failure. Remaining chapters (User
-   Interface, Selection, Transformation, Organization, Bonus) not yet processed -- none flagged
-   urgent.
+   ("why would a professional choose this tool here" instead of "what does this tool do") -- that
+   SECOND pass is still not done; what follows is the first pass only. **First pass COMPLETE,
+   all 7 chapters processed** (video is 1:57:05; processed chapter-by-chapter across
+   2026-08-15, mesh-modeling/modifiers chapters via Gemini video-understanding, the rest
+   transcript-only since visual observation wasn't available/needed for their content). 44 items
+   total across 7 run directories:
+   - **Mesh Modeling** (29:22-58:16, tips #30-62, `runs/2026-08-15_video-study-cgboost-100-tips-meshmodeling/`,
+     8 items) -- a genuine, sourced fix candidate for the project's repeatedly-confirmed T-junction
+     ngon bug (Connect Vertex Path, `J`, splits an existing face along a vertex path instead of
+     inserting a mid-edge vertex into a shared boundary edge), plus two independent alternative
+     hole-cutting techniques (Bridge Edge Loops between matching opposing faces; Loop Tools Circle)
+     and Grid Fill / batch non-manifold repair / Offset Edge Slide.
+   - **Modifiers** (1:07:24-1:42:01, tips #74-93, `runs/2026-08-15_video-study-cgboost-100-tips-modifiers/`,
+     6 items) -- a genuine, sourced CONTRADICTION with this project's standing Bevel-before-SubD
+     policy (flagged unresolved, see `blender-modeling-technique-corrections` memory), a Weld-modifier
+     technique for beveling boolean-cut seams (a real gap), a Quad Sphere construction avoiding
+     UV-Sphere pole-pinching, and independent confirmation of the vertex-group-scoped
+     Shrinkwrap-Project mechanism already flagged for the mug's handle-attachment failure.
+   - **User Interface** (0:00-24:42, tips #01-22, `runs/2026-08-15_video-study-cgboost-100-tips-userinterface/`,
+     7 items) -- deliberately fewer items (lower-value UI/viewport convenience vs. this project's
+     topology/SubD/boolean priorities): MatCap/Cavity shading for reading surface defects, Local
+     View over hide-invert-unhide, Align View to Face Normal for flatness checks, Quad View.
+   - **Selection** (24:42-29:22, tips #23-29, `runs/2026-08-15_video-study-cgboost-100-tips-selection/`,
+     5 items) -- Select Linked with Delimit:Seam, invert-the-smaller-selection strategy, Checker
+     Deselect, Select Shortest Path/Fill Region, Select Similar.
+   - **Transformation** (58:16-1:07:24, tips #63-73, `runs/2026-08-15_video-study-cgboost-100-tips-transformation/`,
+     8 items) -- Snap to Surface as a second, distinct mechanism from Shrinkwrap for conforming
+     discrete parts to curved hosts (one-time interactive snap vs. persistent modifier), plus a
+     Duplicate-Linked/Copy-Object-Data kitbash workflow for modular hardware.
+   - **Organization** (1:42:01-1:49:27, tips #94-100, `runs/2026-08-15_video-study-cgboost-100-tips-organization/`,
+     6 items) -- Collection Instances + Mirror Collections as whole-assembly symmetry (distinct scope
+     from the Modifiers chapter's Mirror-modifier-Bisect, which is single-mesh); flagged the
+     part-group collection nesting shown here as an untested, plausible extension to (not a
+     replacement for) this project's Model/low-poly collection convention.
+   - **Bonus** (1:49:27-1:56:03, tips #101-102, `runs/2026-08-15_video-study-cgboost-100-tips-bonus/`,
+     4 items) -- Draw Cables (first captured technique for cable/hose/wire-type parts, a category
+     this project has never built) and a graduated weight-paint variant of the vertex-group
+     Shrinkwrap technique (third independent confirmation of that mechanism now).
+   Two standing follow-ups from this pass remain open, not resolved by any of the above: (1) the
+   Bevel-before-vs-after-SubD contradiction needs a controlled test, not a documentation edit
+   (confirmed the manual itself doesn't state a preference either -- see
+   `runs/2026-08-15_docs-study-bevel-harden-normals/`); (2) the vertex-group-scoped Shrinkwrap
+   Project technique (now confirmed 3 times) is still just an untested hypothesis for the mug's
+   handle-attachment failure -- worth actually trying, not re-noting as plausible again.
 5. **CG Boost -- Blender Hard-Surface Modeling Fundamentals.** `nsTjnQ067sw`. REQUIRED. **Already
    processed** -- `runs/2026-08-14_video-study-cgboost-hardsurface-fundamentals/` (5 items,
    transcript-only pass, pre-dates the Gemini video-understanding pipeline).
@@ -270,9 +294,18 @@ instruction to actually learn the documentation and forums, not just reference t
     (Bridge Edge Loops' undocumented-in-this-project `Twist` parameter explains the teapot handle's
     twisted-bridge failure; the typed `bridge_selection` wrapper doesn't expose it yet -- a concrete
     fix, not just a diagnosis).
-31. Remaining manual sections and forum topics: not yet scoped. Pick the next topic by relevance to
-    active work (an unresolved bug, a standing policy, a curriculum gap) the same way item 30 was
-    chosen, rather than working through the manual's table of contents in order.
+31. **Official Blender manual -- Bevel modifier Harden Normals / Face Strength.** Processed
+    (`runs/2026-08-15_docs-study-bevel-harden-normals/`, 2 items). Chosen to try to resolve the
+    live Bevel-before-vs-after-Subdivision-Surface contradiction (item #4 above) via the manual --
+    it doesn't (the manual documents modifier options, not workflow-ordering recommendations; that
+    question stays genuinely open, ruled out "check the manual" as the way to resolve it). Did
+    surface two real, useful findings anyway: Harden Normals as a possible one-checkbox alternative
+    to a separate Weighted Normal modifier pass for flat-surface bevel shading, and confirmation
+    that Face Strength is explicitly meant to pair with a Weighted Normal modifier placed AFTER
+    Bevel (a different, already-settled ordering question from the open SubD one).
+32. Remaining manual sections and forum topics: not yet scoped. Pick the next topic by relevance to
+    active work (an unresolved bug, a standing policy, a curriculum gap) the same way items 30-31
+    were chosen, rather than working through the manual's table of contents in order.
 
 ## Study order (phases, not strict sequential blocking -- later phases can start once earlier ones
 are "solid enough," per the extraction protocol's verification loop, not once every video is watched)

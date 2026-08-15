@@ -1,0 +1,50 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To draw free-form cables/hoses routed between existing objects: add a curve (Shift+A > Curve), in the curve's Geometry settings increase Bevel Depth (~0.25) for thickness and set the Shape resolution to 64 for a smooth round cross-section, then in Edit Mode select-all and delete the default control points so the curve starts empty, and use the Draw tool to hand-draw the cable path. With the curve's projection depth set to Surface, 3D-cursor placement (Shift+right-click) is used first to position where a new curve/segment starts.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 6567, "end_seconds": 6619},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript [1:49:31-1:50:19]: 'hit SHIFT + A, go to curve, add some kind of curve... under geometry increase the depths of the bevel. Let's use a value of 0.25... under the shape let's set the resolution to 64... Now in edit mode, select everything and delete it... With SHIFT, right-click, you can position the 3D cursor and then at this position, the new curve will be added... now let's use this draw tool here. And now we can draw some nice cables.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Modeling a cable as a tube mesh (extruded/spun profile) built vertex-by-vertex, or using the curve's default two-point spline and manually dragging control points into a path shape -- both far slower for routing many organic, non-planar cable runs between parts than a bevelled curve drawn freehand with the Draw tool.",
+    "reason": "This project has not yet built or attached any cable/hose/wire-type part to an asset (e.g. a robot's power cord, a machine's hydraulic line). A bevelled-curve-plus-draw-tool workflow is the first captured technique for that whole category of geometry, distinct from this project's current edge-loop/mesh-based construction approach.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "When drawing a curve directly on a mesh surface (Draw tool, projection depth = Surface), the curve's Offset parameter must be raised from its default of 0 to 1 so the beveled cable sits flush on top of the surface instead of centered on it. At Offset 0 the curve's own centerline is placed exactly on the surface, which buries roughly half the cable's cross-section inside the mesh.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 6649, "end_seconds": 6673},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript [1:50:49-1:51:13]: 'let's change the projection depth to surface... right now you can see the offset is set to zero. That means if I draw the curve, it will be placed on the surface, but the curve itself will be placed on the surface, that means half of the cable is inside the mesh. And if we set the offset to be one, it will be placed perfectly on the surface, as you can see. And now we can go crazy, we can draw cables everywhere on the surface.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving Offset at its default 0 and accepting (or manually nudging afterward) a cable that is half-embedded in the host mesh -- the narration frames this explicitly as the wrong default for surface-hugging cable runs.",
+    "reason": "This is a specific, easy-to-miss parameter default that silently produces a visibly wrong result (intersecting/buried geometry) unless changed; worth recording as a decision point rather than folding into the general Draw Cables procedure, since the failure mode (offset=0) looks superficially fine until inspected closely.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "A '3D sticky note' base is built as: a plane, moved aside and subdivided (4 subdivisions), with its origin moved (via proportional-editing-free G move in local transform orientation) to the center of what will be the top contact face and oriented so local Y points 'forward' and local Z points up; then one edge loop near an edge is raised with proportional editing (Sharp falloff) to give the card a slight bend; then, in Object Mode, Shade Smooth plus a Subdivision Surface modifier (level 2) for a smooth card, with the outer boundary edges given Mean Crease = 1 in Edit Mode so the card's silhouette stays sharp-edged while the interior surface smooths; then a Solidify modifier (~0.03 thickness, oriented so thickness points upward) gives it physical thickness, and Auto Smooth is enabled to avoid shading artifacts from the crease/solidify combination.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 6715, "end_seconds": 6785},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the transcript [1:51:55-1:53:05]: 'hit SHIFT + A, create a new plane... scale it smaller, right-click subdivide, and down here increases subdivisions to four... move everything down here so that the origin of this object is in the center of this top face... enable proportional editing and use this sharp curve... move this up a little bit... back in object mode, right click, shade smooth, then let's add the subsurf modifier... set this to two, and in edit mode, let's select all the outer edges here... set the mean crease to one... let's also add a solidify modifier... maybe 0.03... let's also enable auto smooths.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Modeling the card's bend and thickness directly into the base mesh's vertices (hand-sculpted curvature, manually extruded thickness) instead of using non-destructive Subsurf + Mean Crease for the shape and Solidify for the thickness -- harder to iterate on and not reusable as a duplicatable asset with adjustable modifier parameters.",
+    "reason": "A minor, self-contained modeling pattern (crease-for-sharp-silhouette + Subsurf-for-smooth-interior + Solidify-for-thickness on a thin card shape) that is not currently in this project's asset-building vocabulary; low priority since sticky notes are a workflow-annotation prop, not a part type this project is likely to build soon, but cheap to record while already reading this chapter.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To make a flat part conform only at its base/contact area to an arbitrary curved host surface (not its whole body), add a Shrinkwrap modifier (mode: Project, with Negative enabled and a small positive Offset to avoid intersection), targeting the host object, and scope its effect with an initially-empty Vertex Group assigned to the modifier's Vertex Group field. Because the group starts empty (all weights 0), no vertex projects onto the host by default; switching to Weight Paint mode and painting weights (0-1, via brush Weight and Strength settings) onto only the base-contact vertices lets the artist graduate how strongly each vertex snaps to the host surface, rather than a binary in/out membership -- avoiding both 'nothing sticks' (empty group) and 'the whole part crushes onto the surface' (full group) failure modes. Face snapping plus 'project individual elements'-type snapping options are also enabled so the part can be dragged around and re-stuck to the surface interactively; switching the modifier's target object lets the same part be moved to conform to a different host surface.",
+    "source": {"source_id": "JMBMHSca_j0", "start_seconds": 6803, "end_seconds": 6954},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the transcript [1:53:23-1:55:54]: 'these parts are not really sticking to the surface. So let's fix that... let's add the shrinkwrap modifier... make sure that we use a bit of offset... change the mode to project, and also enable negative... the whole note is projected on the surface, we only want to project the top part... let's go over to vertex groups, create a new empty vertex group and put it into the shrinkwrap modifier... since the vertex group is empty, no vertex will be projected... switch over to weight paint mode... we can give each vertex... a weight between zero and one... with weight you define the maximum value and with strength you define how much you wanna draw per stroke... if we make it too strong we get some weird bending... go to the shrinkwrap modifier and change the target object.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving the Shrinkwrap modifier unscoped (no vertex group), which the narration shows projects the entire note flat onto the host surface instead of just its base -- or manually moving/rotating the note by eye to approximate contact, which does not update automatically if the note or host later moves.",
+    "reason": "This is a graduated, weight-painted variant of the vertex-group-scoped Shrinkwrap-Project technique already captured from this video's Modifiers chapter for a mounting-footprint case (binary group membership). Here the group starts empty and is built up with continuous 0-1 weight-paint values instead, which is a materially different (softer, blendable) control scheme worth recording separately rather than merging with the earlier binary-group item.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

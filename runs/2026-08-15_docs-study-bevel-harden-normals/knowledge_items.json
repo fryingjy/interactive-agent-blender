@@ -1,0 +1,26 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The Bevel modifier has a built-in 'Harden Normals' option (Options > Shading) that adjusts the bevel faces' per-vertex normals to shade smoothly into the surrounding (flat) faces, without affecting the surrounding faces' own normals -- this achieves the same flat-surface bevel-shading fix this project has been using a separate Weighted Normal modifier for, in one option on the Bevel modifier itself. Requires a custom split normals attribute, which Blender creates automatically if missing.",
+    "source": {"source_id": "blender-manual-modeling/modifiers/generate/bevel", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.65,
+    "supporting_evidence": "Read directly from the bundled Blender manual (2026-08-15), Bevel Modifier > Options > Shading: 'Harden Normals: When enabled, the per-vertex face normals of the bevel faces are adjusted to match the surrounding faces, and the normals of the surrounding faces are not affected. This will keep the surrounding faces flat (if they were before), with the bevel faces shading smoothly into them. For this effect to work, a mesh must have a custom split normals attribute. As a convenience, a custom_normal attribute will be created if one does not already exist.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Always adding a separate Weighted Normal modifier after the Bevel modifier to fix flat-surface bevel shading, which is this project's current approach and requires an extra modifier + Face Strength setup step.",
+    "reason": "Directly simplifies this project's standing bevel-weight/shading policy for the flat-surface case specifically (see the same-day boundary-condition finding that Weighted Normal only helps flat surfaces, runs/2026-08-15_video-study-blenderbros-shading-errors/): Harden Normals may make a separate Weighted Normal modifier pass unnecessary for flat-surface bevels, reducing the modifier stack by one step. Not yet tested on a live asset -- CAPTURED, not yet CANDIDATE.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "The Bevel modifier's 'Face Strength' option (None/New/Affected/All) is explicitly documented as designed to be used together with a Weighted Normal modifier placed AFTER the Bevel modifier in the stack (with that modifier's Face Influence option enabled) -- Face Strength marks which faces should 'win' the normal-averaging conflict at a bevel seam, and Weighted Normal is what actually reads and applies that marking.",
+    "source": {"source_id": "blender-manual-modeling/modifiers/generate/bevel", "start_seconds": 0, "end_seconds": 0},
+    "confidence": 0.6,
+    "supporting_evidence": "Read directly from the bundled Blender manual: 'Face Strength: Set Face Strength on the faces involved in the bevel, according to the mode specified here. This can be used in conjunction with a following Weighted Normals modifier (with the Face Influence option checked).'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Setting Face Strength without a following Weighted Normal modifier (has no visible effect on its own -- it's metadata another modifier reads) or adding a Weighted Normal modifier with Face Influence enabled but no Face Strength values set on the mesh (nothing to read, so the influence option does nothing).",
+    "reason": "Confirms and makes precise the existing project note in decision_transaction_protocol_gotchas.md ('Face Strength + Weighted Normal Face Influence is a winner-take-all mechanism') with the manual's own wording, and clarifies modifier ORDER for this specific pairing (Weighted Normal after Bevel) -- a different, already-settled ordering question from the still-open Bevel-vs-Subdivision-Surface order contradiction.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
