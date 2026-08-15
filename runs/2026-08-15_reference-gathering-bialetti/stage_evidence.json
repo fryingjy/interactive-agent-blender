@@ -1,0 +1,17 @@
+{
+  "stage": "REFERENCE_ANALYSIS",
+  "component_graph_pass": true,
+  "component_count": 11,
+  "relationship_count": 10,
+  "measured_ratio_count": 3,
+  "uncertainty_recorded": true,
+  "reference_set_audit_pass": true,
+  "same_target_identity_pass": true,
+  "view_coverage_pass": true,
+  "critical_property_coverage_pass": true,
+  "conflicts_resolved_pass": true,
+  "machine_disposition": "READY_TO_MODEL",
+  "human_review_status": "PENDING_USER_REVIEW",
+  "modeling_authorized": false,
+  "boundary": "Machine readiness permits only a reversible blockout; the roadmap's required human board review has not happened."
+}

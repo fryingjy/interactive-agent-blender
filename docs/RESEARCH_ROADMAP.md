@@ -879,3 +879,18 @@ validate semantic landmark pairing, unequal-density topology, or a held-out prod
 roadmap priority therefore remains unchanged: complete the human-reviewed reference-gathering-only
 exercise, then compare target-only and structured-reference-set modeling at equal effort on a new
 prop before another difficult held-out build is accepted.
+
+## Update -- 2026-08-15 (reference-gathering-only exercise awaiting human review)
+
+`runs/2026-08-15_reference-gathering-bialetti/` applies the new readiness gate to a genuinely new
+non-weapon hard-surface target without opening Blender. It records eight purpose-scoped reference
+items from three provenance sources, twelve same-object views kept under ignored media, official
+155 mm / 72 mm dimensional anchors, ten critical properties, two explicit conflict resolutions,
+three bounded ratios, and an 11-component/10-relationship decomposition. The machine audit passes
+all seven checks and authorizes only a reversible blockout.
+
+The roadmap's human-review requirement remains deliberately separate. The local contact sheet has
+been visually inspected by the agent, but `human_review_gate.json` remains `PENDING_USER_REVIEW` and
+`modeling_authorized` remains false. The missing boiler underside and possible old/current production
+revision difference are visible uncertainties. The equal-effort comparison must not begin until the
+user accepts this board or directs a different target/reference search.

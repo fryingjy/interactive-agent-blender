@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-15_reference-gathering-bialetti\\reference_manifest.json",
+      "audit": {
+        "target_id": "bialetti_moka_express_3_cup",
+        "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+        "reference_count": 8,
+        "matching_reference_count": 8,
+        "independent_source_count": 3,
+        "view_count": 8,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true
+        },
+        "covered_properties": {
+          "overall_height": [
+            "bialetti-official-spec-3cup"
+          ],
+          "boiler_base_diameter": [
+            "bialetti-official-spec-3cup"
+          ],
+          "octagonal_primary_silhouette": [
+            "listing-picture-03-front",
+            "listing-pictures-07-08-top-open"
+          ],
+          "valve_placement": [
+            "listing-picture-03-front"
+          ],
+          "upper_lower_mass_ratio": [
+            "listing-picture-04-right-profile",
+            "listing-picture-06-left-profile"
+          ],
+          "spout_profile": [
+            "listing-picture-04-right-profile",
+            "listing-picture-06-left-profile"
+          ],
+          "handle_negative_space": [
+            "listing-picture-05-rear",
+            "listing-picture-06-left-profile"
+          ],
+          "hinge_and_lid_relationship": [
+            "listing-picture-05-rear",
+            "listing-picture-09-lid-underside"
+          ],
+          "upper_chamber_interior": [
+            "listing-pictures-07-08-top-open"
+          ],
+          "component_stack": [
+            "retailer-exploded-3cup"
+          ]
+        },
+        "dimensional_anchors": [
+          "overall height 155 mm",
+          "boiler base diameter 72 mm",
+          "capacity 130 ml"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

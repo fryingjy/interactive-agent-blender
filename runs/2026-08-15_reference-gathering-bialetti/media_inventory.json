@@ -1,0 +1,19 @@
+{
+  "redistribution_policy": "Source images stay under ignored media/ and are not committed. This inventory preserves provenance and integrity only.",
+  "listing_url": "https://www.ebay.com/itm/197253718978",
+  "items": [
+    {"file": "media/same_object/listing_01.webp", "source_url": "https://i.ebayimg.com/images/g/Q~sAAeSwdHZoC7c0/s-l1600.webp", "sha256": "562040b69972b0262b092bcae56285b3e7f67b25056b9af1303959d5e1513c01", "bytes": 373514, "classification": "set_with_box_and_manual"},
+    {"file": "media/same_object/listing_02.webp", "source_url": "https://i.ebayimg.com/images/g/WowAAeSwzKloC7cy/s-l1600.webp", "sha256": "112d22ac8b2671c754af0147b883baa96478d777c44511ce1140fe1f6502edce", "bytes": 371144, "classification": "set_with_box"},
+    {"file": "media/same_object/listing_03.webp", "source_url": "https://i.ebayimg.com/images/g/6HEAAeSwOLZoC7cy/s-l1600.webp", "sha256": "04acb75f97c68fb0a5d581877870330925dbc5a48438214cec4a7cfa6cd40552", "bytes": 173768, "classification": "front_spout_and_valve"},
+    {"file": "media/same_object/listing_04.webp", "source_url": "https://i.ebayimg.com/images/g/BykAAeSwGYhoC7cy/s-l1600.webp", "sha256": "e3d4223448c97c1e63ef6da754e0bd9ab1f17ea3164450f6fdd89f574d55055e", "bytes": 257144, "classification": "right_profile_brand_side"},
+    {"file": "media/same_object/listing_05.webp", "source_url": "https://i.ebayimg.com/images/g/4aQAAeSwMD1oC7cy/s-l1600.webp", "sha256": "98ec38ee6964b8ea5c53276448188c936c81eb81f5fda793dd9c97f310d66b46", "bytes": 183420, "classification": "rear_handle"},
+    {"file": "media/same_object/listing_06.webp", "source_url": "https://i.ebayimg.com/images/g/oL4AAeSwN-9oC7cz/s-l1600.webp", "sha256": "ddea409dbc0ebeeee13333a4028db570674d3fba1330eef61245136a0a383381", "bytes": 243110, "classification": "left_profile_spout_handle_valve"},
+    {"file": "media/same_object/listing_07.webp", "source_url": "https://i.ebayimg.com/images/g/Q~QAAeSwdHZoC7cz/s-l1600.webp", "sha256": "1db22a3808e5fb359fe7fec37fa2c0dfa9dc79910f2e5d2bfe54ac2c194a0d4b", "bytes": 168368, "classification": "top_open_full"},
+    {"file": "media/same_object/listing_08.webp", "source_url": "https://i.ebayimg.com/images/g/dH8AAeSwdhpoC7cz/s-l1600.webp", "sha256": "93114a4dc47581c090890bf133152d4e6920b03f03978e1626d9314431fd13d0", "bytes": 157356, "classification": "top_interior_close"},
+    {"file": "media/same_object/listing_09.webp", "source_url": "https://i.ebayimg.com/images/g/vHUAAeSwZptoC7cz/s-l1600.webp", "sha256": "b6f12a6fb96d6e2e1890017bf97da470081890ddfafc2eb322bd200b5318d2cc", "bytes": 199472, "classification": "lid_underside_and_hinge"},
+    {"file": "media/same_object/listing_10.webp", "source_url": "https://i.ebayimg.com/images/g/E6UAAeSw0E9oC7c0/s-l1600.webp", "sha256": "42bb6618a0f10dbe2c6f15995eda0dead22653c2cfb3baa00ffd6de8cd9d991f", "bytes": 327994, "classification": "box_front_identity"},
+    {"file": "media/same_object/listing_11.webp", "source_url": "https://i.ebayimg.com/images/g/C3gAAeSwTERoC7c0/s-l1600.webp", "sha256": "dc989ff929973a6cbceaf4e6bfe5eb173d7b4effb0b94c5f749bf0198f1458b7", "bytes": 356602, "classification": "box_side_operation"},
+    {"file": "media/same_object/listing_12.webp", "source_url": "https://i.ebayimg.com/images/g/yaIAAeSwdnBoC7c0/s-l1600.webp", "sha256": "193343e2d7dd57a8e2f0aab3731d5bbc600129dc700dd221da3825547298a8d3", "bytes": 349176, "classification": "box_back_identity_and_safety"}
+  ],
+  "contact_sheet": "media/same_object_contact_sheet.png"
+}

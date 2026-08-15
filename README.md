@@ -148,6 +148,9 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-15_bridge-correspondence-control/` — protocol 0.3 bridge-twist analysis and typed
   control, two-shape crossed-to-clean quad transfer, unequal-density rejection, and exact rollback
   after a post-mutation failure; independently verified without orphan mesh datablocks.
+- `runs/2026-08-15_reference-gathering-bialetti/` — a model-free reference exercise for a new
+  hard-surface target: same-object multi-angle evidence, official dimensions, explicit conflicts,
+  structured decomposition, and a passing machine gate held behind pending human review.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.

@@ -1,0 +1,174 @@
+{
+  "target_id": "bialetti_moka_express_3_cup",
+  "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+  "required_views": [
+    "front_spout",
+    "right_profile",
+    "rear_handle",
+    "left_profile",
+    "top_open",
+    "lid_underside",
+    "exploded",
+    "specification"
+  ],
+  "critical_properties": [
+    "overall_height",
+    "boiler_base_diameter",
+    "octagonal_primary_silhouette",
+    "upper_lower_mass_ratio",
+    "spout_profile",
+    "handle_negative_space",
+    "hinge_and_lid_relationship",
+    "valve_placement",
+    "upper_chamber_interior",
+    "component_stack"
+  ],
+  "orthographic_required_views": [],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 3,
+  "items": [
+    {
+      "reference_id": "bialetti-official-spec-3cup",
+      "source_id": "bialetti-official-product",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["DIMENSION", "MATERIAL"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_height", "purpose": "DIMENSION", "observation": "Bialetti lists 155 mm height for the 3-cup Moka Express geometry", "confidence": "HIGH"},
+        {"property_id": "boiler_base_diameter", "purpose": "DIMENSION", "observation": "Bialetti lists a 72 mm boiler-base diameter", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["overall height 155 mm", "boiler base diameter 72 mm", "capacity 130 ml"],
+      "limitations": ["Official dimension source is a current 3-cup color SKU; finish differs but declared Moka Express geometry and size match the classic 3-cup family"]
+    },
+    {
+      "reference_id": "listing-picture-03-front",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["PRIMARY_FORM", "DETAIL"],
+      "view": "front_spout",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "octagonal_primary_silhouette", "purpose": "PRIMARY_FORM", "observation": "Front view shows the eight-facet boiler, narrower threaded waist, collector shoulders, centered spout and lid peak", "confidence": "MEDIUM"},
+        {"property_id": "valve_placement", "purpose": "DETAIL", "observation": "Valve sits high on one boiler facet below the threaded seam", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Wide-angle perspective and countertop shadow; no orthographic authority"]
+    },
+    {
+      "reference_id": "listing-picture-04-right-profile",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "view": "right_profile",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "upper_lower_mass_ratio", "purpose": "PRIMARY_FORM", "observation": "Collector is visibly taller than the boiler while the threaded waist is a distinct shallow band", "confidence": "MEDIUM"},
+        {"property_id": "spout_profile", "purpose": "PRIMARY_FORM", "observation": "Spout projects from the collector wall as a tapered open channel rather than a separate cylindrical nozzle", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Three-quarter perspective; use for shape relationships, not direct tracing"]
+    },
+    {
+      "reference_id": "listing-picture-05-rear",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "view": "rear_handle",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "handle_negative_space", "purpose": "PRIMARY_FORM", "observation": "Rear view establishes handle thickness, centerline, taper and the open clearance behind the collector", "confidence": "MEDIUM"},
+        {"property_id": "hinge_and_lid_relationship", "purpose": "CONSTRUCTION", "observation": "Metal hinge is centered above the handle attachment and the lid rotates independently of the collector", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Handle partly occludes collector rear facets"]
+    },
+    {
+      "reference_id": "listing-picture-06-left-profile",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "DETAIL"],
+      "view": "left_profile",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "handle_negative_space", "purpose": "PRIMARY_FORM", "observation": "Profile shows the swept handle opening, upper attachment block and free lower grip tip", "confidence": "MEDIUM"},
+        {"property_id": "spout_profile", "purpose": "PRIMARY_FORM", "observation": "Profile resolves the spout lip, underside and short forward projection", "confidence": "MEDIUM"},
+        {"property_id": "upper_lower_mass_ratio", "purpose": "PRIMARY_FORM", "observation": "Full profile provides a measurable height and width relationship across collector, waist and boiler", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Perspective image; normalized ratios are approximate"]
+    },
+    {
+      "reference_id": "listing-pictures-07-08-top-open",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["CONSTRUCTION", "DETAIL"],
+      "view": "top_open",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "upper_chamber_interior", "purpose": "CONSTRUCTION", "observation": "Open views show the eight-sided chamber, rounded floor transition, central delivery column and integrated spout channel", "confidence": "MEDIUM"},
+        {"property_id": "octagonal_primary_silhouette", "purpose": "CONSTRUCTION", "observation": "Plan view confirms the collector rim remains eight-sided while the spout extends one sector", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Foreshortened overhead views; interior wear can be mistaken for geometry"]
+    },
+    {
+      "reference_id": "listing-picture-09-lid-underside",
+      "source_id": "ebay-listing-197253718978",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["CONSTRUCTION", "DETAIL"],
+      "view": "lid_underside",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "hinge_and_lid_relationship", "purpose": "CONSTRUCTION", "observation": "Underside view shows a separately cast eight-sided lid with radial ribs, center fastener and hinge barrels", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Close perspective exaggerates lid relative to collector"]
+    },
+    {
+      "reference_id": "retailer-exploded-3cup",
+      "source_id": "bol-product-9200000002756730",
+      "target_id": "bialetti_moka_express_3_cup",
+      "target_variant": "classic_aluminum_130ml_72mm_base_155mm_height",
+      "purposes": ["CONSTRUCTION", "FUNCTIONAL"],
+      "view": "exploded",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "claims": [
+        {"property_id": "component_stack", "purpose": "CONSTRUCTION", "observation": "Exploded product image separates collector/lid, filter plate, gasket, funnel basket and boiler", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Retailer gallery contains inconsistent text metadata, so it is used only for visible component separation"]
+    }
+  ],
+  "conflicts": [
+    {
+      "property_id": "overall_height",
+      "reference_ids": ["bialetti-official-spec-3cup", "listing-picture-06-left-profile"],
+      "description": "Retailers report values from 155 to 180 mm and some list implausible width/depth values without defining orientation or whether packaging is included.",
+      "resolution": "Use Bialetti's 155 mm current 3-cup specification as the absolute height anchor. Reject 170-180 mm retailer values as non-authoritative; retain the listing only for normalized shape ratios.",
+      "status": "RESOLVED"
+    },
+    {
+      "property_id": "boiler_underside",
+      "reference_ids": ["listing-picture-03-front"],
+      "description": "The same-object listing never turns the boiler over, so underside stamps and recess depth are unseen.",
+      "resolution": "Keep the underside low confidence and out of primary silhouette acceptance. Do not invent stamps or detailed recess geometry; acquire a direct underside source before final underside detailing if the asset proceeds.",
+      "status": "RESOLVED"
+    }
+  ]
+}
