@@ -49,3 +49,12 @@ Dated run paths are evidence identifiers and are referenced by reports, cards, a
 new work correctly at creation time; do not mass-move historical runs unless every reference and
 reproduction command is updated and revalidated. Current documentation may be reorganized more
 freely because Git preserves its history.
+
+## Evidence-retention boundary
+
+The user-directed 2026-08-14 cleanup removed most raw run folders from 2026-08-10 through
+2026-08-12 after their durable lessons had been consolidated. Documentation that still names one
+of those paths is a historical citation, not a promise that the artifact remains reproducible.
+Current claims must point to retained evidence, code, or a newer audit. Do not recreate deleted
+artifacts merely to make an old link resolve, and do not silently present historical prose as live
+validation.

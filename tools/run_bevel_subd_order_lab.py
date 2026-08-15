@@ -14,7 +14,6 @@ renders.  It does not convert those signals into a universal artistic winner.
 from __future__ import annotations
 
 import json
-import math
 import sys
 from pathlib import Path
 

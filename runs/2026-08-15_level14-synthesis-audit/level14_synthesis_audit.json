@@ -1,7 +1,7 @@
 {
   "audit": "Level 14 synthesis against authoritative knowledge_items.json corpus",
   "synthesis_path": "runs/2026-08-15_synthesis-level14-professional-judgment/synthesis.md",
-  "synthesis_sha256_at_audit": "3d4d51bd66b04bc512d00d3fa61fddbd71dc0e63995f0e88a769061beedf56c3",
+  "synthesis_sha256_at_audit": "be42178d1f2180b24ca01b7905ab3fe50fa4b9873c75d37d1fdf769a17cbc692",
   "actual_total": 90,
   "prior_claimed_total": 87,
   "type_counts": {

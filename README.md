@@ -81,6 +81,7 @@ problem -> retrieve -> research -> hypothesize -> reproduce -> measure
   retained failures.
 - `reference/` — project-owned benchmark/reference inputs and notes.
 - `docs/` — current contracts, architecture, audits, roadmap, and historical narrative.
+- `docs/field-report/` — dependency-free interactive status and retained-evidence navigator.
 
 ## Local validation
 
@@ -115,6 +116,11 @@ The local Blender/MCP entry points are:
   prop art may use general modeling principles.
 
 ## Recent evidence landmarks
+
+The 2026-08-10 through 2026-08-12 paths below are historical citations: their raw folders were
+intentionally removed during the 2026-08-14 cleanup after durable lessons were consolidated. They
+must not be treated as currently reproducible evidence. See `docs/REPOSITORY_LAYOUT.md` for the
+retention boundary and `docs/field-report/index.html` for links to retained, inspectable evidence.
 
 - `runs/2026-08-11_connected-camera-corrective/` — post-review one-object camera rebuild: one
   connected 256-quad control cage, 16-vertex radial loops, welded inset/extrusion details, 0.828
@@ -159,6 +165,16 @@ The local Blender/MCP entry points are:
   not to delete unique retained evidence.
 - `runs/2026-08-15_retrieval-abstention/` - frozen positive/paraphrase and unrelated-ticket negative
   controls proving that weak lexical overlap now abstains instead of emitting a planner hint.
+- `runs/2026-08-15_bevel-subd-order/` - controlled, rendered modifier-order comparison with an
+  independent verification record.
+- `runs/2026-08-15_shrinkwrap-footprint-transfer/` - bounded projection transfer with retained
+  `.blend`, MatCap render, report, and independent verification.
+- `runs/2026-08-15_reference-interpretation-contract/` - evidence-bound silhouette, boundary,
+  uncertainty, and target-identity decisions integrated into stage progression.
+- `runs/2026-08-15_gemini-pipeline-validation/` - reproducible structured-video analysis output with
+  source and observation boundaries.
+- `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
+  judgment synthesis claims.
 
 Use the foundation report and implementation audit for the complete, bounded interpretation of
 these runs.
