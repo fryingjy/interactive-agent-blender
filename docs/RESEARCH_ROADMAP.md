@@ -604,3 +604,26 @@ Both bugs written up as a proper memory entry
 (`decision_transaction_protocol_gotchas.md`) with the exact fix pattern (re-select by ID before
 every `perform_decision`; verify normals directly on non-cylindrical attachment points) for the next
 attempt. Full account: `runs/2026-08-14_teapot-body-revolve/brief.md`.
+
+## Update (2026-08-14, later still): second spout attempt, three more chained-extrude failures -- real unresolved bug found
+
+The user manually fixed the first attempt's leftover ugly repair patch (3 ngons -> 0) mid-session;
+confirmed clean via `get_full_state`'s external-edit detection before continuing.
+
+Reattached the spout at the z=0.51 ring using the directly-measured reliable normal, applying the
+"re-select by ID before every `perform_decision`" fix throughout. The first extrude from the
+original wall worked correctly (measured: x 2.09 -> 2.591). Every extrude after that failed, three
+different ways: an anisotropic taper likely shearing the tilted ring's plane before the next
+extrude; an edge-based extrude (no cap face available) using boundary-vertex normals, which
+represent a rim's radial direction, not a tube's length direction; and -- most surprisingly -- a
+clean face-based extrude of a freshly-`fill_selection`-closed cap, which still went inward despite
+having a single well-formed face to compute a normal from.
+
+**This is now a confirmed, unresolved, 3-for-3 bug in chained `extrude_selection` calls specific
+to this build** -- not something to keep guessing at live. Reverted fully back to a clean flat
+wall (161 verts, exactly matching the pre-spout count; 32 non-manifold edges = mouth only) rather
+than shipping a broken or half-built spout. Documented in
+`decision_transaction_protocol_gotchas.md` with the recommendation to root-cause it on a controlled
+bare-cube test (extrude twice in a row, check direction each time) before attempting the spout a
+third time -- the door-handle build's identical-looking 3x extrude+rotate pattern worked correctly,
+so whatever differs between that build and the teapot's is the actual thing to isolate.

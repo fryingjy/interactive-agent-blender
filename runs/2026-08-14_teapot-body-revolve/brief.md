@@ -1,8 +1,11 @@
-# Teapot body: revolved profile complete, spout attempt reverted with lessons kept
+# Teapot body: revolved profile complete, TWO spout attempts reverted with a real unresolved bug found
 
-**Status: body done and clean; spout not yet attached (reverted after a real bug, not silently
-abandoned).** Started toward the teapot per `reference/teapot/notes.md` (the mug's replacement
-transfer-test candidate: two grown appendages instead of one).
+**Status: body done and clean; spout not yet attached, after two separate attempts both reverted
+cleanly.** Started toward the teapot per `reference/teapot/notes.md` (the mug's replacement
+transfer-test candidate: two grown appendages instead of one). The user manually fixed the first
+attempt's leftover ugly repair patch (3 small ngons) mid-session -- confirmed via
+`get_full_state`'s external-edit detection, IDs re-synced cleanly, body was fully clean (0 ngons)
+before the second attempt began.
 
 ## What was built successfully
 
@@ -55,10 +58,43 @@ of the original 4 clean quads) creates a faint concave notch visible in the fron
 render -- not a manifold defect, `recalc_normals` didn't change it (so it isn't a backface-culling
 artifact, just a slightly non-planar small patch). Left as-is rather than over-engineered away.
 
+## Second attempt: reattached lower, direction confirmed on the FIRST extrude, then failed three more times
+
+Reattached at the z=0.51 ring using the directly-measured reliable normal `(0.922, 0.091, -0.376)`.
+Applied the "re-select by ID before every `perform_decision`" fix throughout. The very first
+extrude from the original wall worked correctly -- measured, not assumed: x went 2.09 -> 2.591,
+genuinely outward. Everything after that first extrude failed, in three different ways, each a
+real attempt at a fix rather than a repeat of the same mistake:
+
+1. **Anisotropic taper then extrude:** scaling the tip ring by `(1, 0.7, 0.7)` in world-aligned
+   axes (not the ring's own tilted local frame) likely sheared the ring's plane, since this ring's
+   normal has real Y and Z components (not just X). The next extrude moved inward (x: 2.591 ->
+   2.241). Reverted; hypothesis untested further since the next two attempts also failed.
+2. **Edge-based extrude of an open rim:** with no cap face to select, `extrude_selection` fell back
+   to its edge path, which uses averaged boundary-vertex normals -- and a rim's vertex normal
+   represents the tube's *radial* direction at that cross-section, not its *length* direction.
+   Barely moved in X, mostly drifted sideways/down. Reverted.
+3. **Face-based extrude of a freshly-filled, clean cap:** filled the open rim with
+   `fill_selection` (closed cleanly, 32 non-manifold edges = mouth only, confirmed clean), selected
+   the new cap faces specifically, extruded. Still moved inward (x: ~2.6 -> 2.318). This was the
+   most surprising failure -- a proper single-normal-bearing cap face, freshly created, still gave
+   the wrong direction. Reverted.
+
+**This is now a real, unresolved, three-times-confirmed bug in chained/repeated
+`extrude_selection` calls** -- the FIRST extrude from an original wall face reliably goes the
+correct direction; SUBSEQUENT extrudes building on the newly-created geometry (regardless of
+whether that geometry came from taper+extrude, edge-extrude, or a fresh fill+extrude) have failed
+every single time in this session, 3 for 3. Not something to keep guessing at live under time
+pressure -- stopping here rather than risking further mesh damage or shipping a broken build.
+Fully reverted to a clean flat wall (161 verts, matching the pre-spout count exactly; 32
+non-manifold edges = mouth only; 0 degenerate faces) rather than leaving anything half-built.
+
 ## Next step (not done in this pass)
 
-Reattach the spout lower on the body, at the z=0.51 ring, where the outward normal was directly
-measured and confirmed reliable: `(0.922, 0.091, -0.376)` at a face near angle 0 -- clearly
-X-dominant and outward, unlike the ambiguous z=1.4 ring. Apply the "always re-select by ID before
-each perform_decision" fix throughout. The handle (C-shaped, two attachment points, needs a real
-`bridge_selection` back into the body) is a further stretch goal beyond that.
+**Before attempting the spout a third time:** investigate WHY chained extrudes fail directionally
+in this codebase -- read `extrude_face_region`'s actual behavior on a controlled test case (a bare
+cube, extrude twice in a row, check direction each time) rather than debugging live on a
+complicated tapered profile. This deserves a dedicated lab script, not another live attempt. The
+handle (C-shaped, two attachment points, needs a real `bridge_selection` back into the body) should
+wait until the chained-extrude direction bug is actually understood and fixed, since it will hit
+the exact same problem.
