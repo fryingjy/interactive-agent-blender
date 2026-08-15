@@ -14,7 +14,14 @@ from knowledge_engine.reasoning import (
 )
 from knowledge_engine.retrieval import RetrievalContext, StructuredSkillStore
 from knowledge_engine.schemas import AccessRecord, SourceRecord
-from knowledge_engine.scene_decomposition import Component, Relationship, SceneDecomposition
+from knowledge_engine.scene_decomposition import (
+    CLAIM_CATEGORIES,
+    Component,
+    ReferenceClaim,
+    Relationship,
+    SceneDecomposition,
+    StrategyCandidate,
+)
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
@@ -246,6 +253,97 @@ class SceneDecompositionTests(unittest.TestCase):
             ],
         )
 
+    def _strict_lantern_decomposition(self, extra_claims=None):
+        claims = [
+            ReferenceClaim(
+                "body-form",
+                "primary_forms",
+                "The main body is a broad tapered shell.",
+                "OBSERVED",
+                0.95,
+                evidence=["front reference: outer contour narrows toward the top"],
+                modeling_consequence="Start from a proportion-controlled box cage.",
+                impact="high",
+                component_refs=["body"],
+            ),
+            ReferenceClaim(
+                "handle-path",
+                "continuous_surfaces",
+                "The handle follows one continuous arch.",
+                "STRONGLY_INFERRED",
+                0.8,
+                evidence=["front reference: uninterrupted handle silhouette"],
+                modeling_consequence="Use an editable curve for the handle blockout.",
+                impact="high",
+                component_refs=["handle"],
+                modeling_signals={"follows_path": True},
+            ),
+            ReferenceClaim(
+                "separate-handle",
+                "separate_parts",
+                "The handle is manufactured separately from the shell.",
+                "STRONGLY_INFERRED",
+                0.78,
+                evidence=["front reference: visible pivot gaps at both handle ends"],
+                modeling_consequence="Keep the handle independently editable.",
+                impact="high",
+                component_refs=["body", "handle"],
+                modeling_signals={"independent_motion_or_material": True},
+            ),
+            ReferenceClaim(
+                "construction",
+                "construction_hypotheses",
+                "A box-modeled shell plus a curve handle preserves the visible boundaries.",
+                "STRONGLY_INFERRED",
+                0.82,
+                evidence=["body-form", "handle-path", "separate-handle"],
+                modeling_consequence="Keep shell and handle as separate editable components.",
+                impact="high",
+                component_refs=["body", "handle"],
+            ),
+        ]
+        claims.extend(extra_claims or [])
+        return SceneDecomposition(
+            object_name="stylized lantern",
+            object_class="portable light",
+            reference_style="concept",
+            components=[
+                Component(
+                    "body", "primary", "structural", False,
+                    evidence_status="OBSERVED", confidence=0.95,
+                    evidence=["front reference: dominant enclosing silhouette"],
+                ),
+                Component(
+                    "handle", "primary", "structural", True,
+                    evidence_status="OBSERVED", confidence=0.9,
+                    evidence=["front reference: handle is separated by two negative-space gaps"],
+                ),
+            ],
+            relationships=[
+                Relationship(
+                    "handle", "body", "attached_to",
+                    evidence_status="STRONGLY_INFERRED", confidence=0.8,
+                    evidence=["front reference: handle endpoints meet side pivots"],
+                ),
+            ],
+            claims=claims,
+            strategies=[
+                StrategyCandidate(
+                    "shell-plus-curve-handle",
+                    "BOX_MESH + CURVE",
+                    ["body-form", "handle-path", "separate-handle", "construction"],
+                ),
+                StrategyCandidate(
+                    "single-monolithic-shell",
+                    "CONTINUOUS_MESH",
+                    ["separate-handle"],
+                    status="rejected",
+                    rejection_reason="Would erase the observed pivot gaps and component boundary.",
+                ),
+            ],
+            require_evidence_bindings=True,
+        )
+
     def test_valid_decomposition_passes(self):
         decomp = self._wrench_decomposition()
         decomp.validate()  # must not raise
@@ -287,6 +385,86 @@ class SceneDecompositionTests(unittest.TestCase):
             set(result["unmatched_primary_components"]),
             {"handle", "fixed_jaw", "movable_jaw"},
         )
+
+    def test_observed_claim_requires_concrete_evidence(self):
+        decomp = self._strict_lantern_decomposition()
+        decomp.claims[0].evidence = []
+        with self.assertRaisesRegex(ValueError, "requires concrete evidence"):
+            decomp.validate()
+
+    def test_strict_decomposition_requires_supported_primary_components(self):
+        decomp = self._strict_lantern_decomposition()
+        decomp.components[0].evidence_status = "UNKNOWN"
+        decomp.components[0].confidence = 0.1
+        decomp.components[0].evidence = []
+        with self.assertRaisesRegex(ValueError, "evidence-bound primary components"):
+            decomp.validate()
+
+    def test_high_impact_unknown_blocks_blockout_and_becomes_research_question(self):
+        decomp = self._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "rear-depth",
+                "depth_order",
+                "Whether the rear housing projects beyond the body is unknown.",
+                "UNKNOWN",
+                0.1,
+                impact="high",
+                component_refs=["body"],
+            ),
+        ])
+        readiness = decomp.blockout_readiness()
+        self.assertFalse(readiness["ready_for_blockout"])
+        self.assertEqual(readiness["high_impact_unresolved_claims"], ["rear-depth"])
+        self.assertIn("rear housing", readiness["research_questions"][0])
+
+    def test_structured_artifact_contains_every_directive_field(self):
+        artifact = self._strict_lantern_decomposition().to_dict()
+        required = {
+            "target", "object_class", "reference_style", "camera_assumptions",
+            "primary_forms", "secondary_forms", "tertiary_forms", "components",
+            "relationships", "continuous_surfaces", "separate_parts", "negative_spaces",
+            "landmarks", "symmetry", "repetition", "thickness_hypotheses", "depth_order",
+            "material_boundaries", "construction_hypotheses", "known_dimensions",
+            "estimated_dimensions", "unknowns", "ambiguities", "confidence_by_claim",
+            "candidate_modeling_strategies", "rejected_strategies",
+        }
+        self.assertTrue(required.issubset(artifact))
+        self.assertEqual(tuple(CLAIM_CATEGORIES), tuple(dict.fromkeys(CLAIM_CATEGORIES)))
+
+    def test_only_supported_claims_change_modeling_strategy(self):
+        decomp = self._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "weak-counterclaim",
+                "ambiguities",
+                "The handle may be a rigid polygonal extrusion.",
+                "WEAKLY_INFERRED",
+                0.35,
+                evidence=["single blurred crop"],
+                modeling_consequence="Do not harden this guess.",
+                modeling_signals={"follows_path": False},
+            ),
+        ])
+        brief = decomp.to_modeling_brief(ModelingBrief(follows_path=False))
+        self.assertTrue(brief.follows_path)
+        self.assertTrue(brief.independent_motion_or_material)
+        self.assertIn("handle-path", " ".join(brief.notes))
+
+    def test_conflicting_supported_signals_block_strategy(self):
+        decomp = self._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "supported-counterclaim",
+                "ambiguities",
+                "A second clear view shows the handle does not follow a path.",
+                "OBSERVED",
+                0.9,
+                evidence=["side reference: straight segmented handle profile"],
+                modeling_consequence="Resolve the conflicting representation evidence.",
+                modeling_signals={"follows_path": False},
+            ),
+        ])
+        self.assertEqual(decomp.blockout_readiness()["conflicting_modeling_signals"], ["follows_path"])
+        with self.assertRaisesRegex(ValueError, "conflicting evidence-bound modeling signal"):
+            decomp.to_modeling_brief()
 
 
 class VisualComparisonTests(unittest.TestCase):
@@ -500,6 +678,61 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(acted.operation_params, ticket["operation_params"])
         self.assertEqual(acted.target_region, "pedestal_waist")
         self.assertEqual(acted.retrieved_skill_ids, ("uniform-rings",))
+
+    def test_reference_uncertainty_blocks_blockout_with_a_research_contract(self):
+        decomp = SceneDecompositionTests()._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "rear-depth", "depth_order",
+                "Whether the rear housing projects beyond the body is unknown.",
+                "UNKNOWN", 0.1, impact="high", component_refs=["body"],
+            ),
+        ])
+        decision = plan_next_decision(self.context(
+            stage="REFERENCE_ANALYSIS",
+            stage_evidence={
+                "component_graph_pass": True,
+                "measured_ratio_count": 3,
+                "uncertainty_recorded": True,
+                "reference_set_audit_pass": True,
+                "same_target_identity_pass": True,
+                "view_coverage_pass": True,
+                "critical_property_coverage_pass": True,
+                "conflicts_resolved_pass": True,
+            },
+            reference_decomposition=decomp,
+        ))
+        self.assertEqual(decision.disposition, "RESEARCH")
+        self.assertEqual(decision.action, "RESOLVE_REFERENCE_UNCERTAINTY")
+        self.assertEqual(decision.operation_params["claim_ids"], ["rear-depth"])
+        self.assertIn("rear housing", decision.operation_params["research_questions"][0])
+
+    def test_technical_breakage_still_preempts_reference_uncertainty(self):
+        decomp = SceneDecompositionTests()._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "rear-depth", "depth_order", "Rear depth is unknown.",
+                "UNKNOWN", 0.1, impact="high", component_refs=["body"],
+            ),
+        ])
+        decision = plan_next_decision(self.context(
+            stage="PRIMARY_BLOCKOUT",
+            evaluated_state={"mesh_health": {"non_manifold_edges": 4}},
+            reference_decomposition=decomp,
+        ))
+        self.assertEqual(decision.action, "LOCALIZE_NON_MANIFOLD_REGION")
+
+    def test_evidence_bound_claims_change_representation_and_component_policy(self):
+        decomp = SceneDecompositionTests()._strict_lantern_decomposition()
+        decision = plan_next_decision(self.context(
+            visual_tickets=[{
+                "type": "missing_component", "target": "handle", "priority": 1, "severity": 1.0,
+            }],
+            brief=ModelingBrief(follows_path=False, independent_motion_or_material=False),
+            reference_decomposition=decomp,
+        ))
+        self.assertEqual(decision.operation, "create_curve")
+        self.assertEqual(decision.operation_params["representation"], "CURVE")
+        self.assertEqual(decision.operation_params["component_policy"], "SEPARATE_COMPONENTS")
+        self.assertTrue(any("handle-path" in note for note in decision.operation_params["reference_claim_notes"]))
 
 
 class CurriculumInventoryTests(unittest.TestCase):

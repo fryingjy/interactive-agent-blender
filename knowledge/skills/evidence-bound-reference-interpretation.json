@@ -1,0 +1,48 @@
+{
+  "skill_id": "evidence-bound-reference-interpretation",
+  "title": "Gate modeling strategy on evidence-bound reference claims",
+  "topic_tags": [
+    "reference-interpretation",
+    "scene-decomposition",
+    "strategy-selection",
+    "uncertainty",
+    "planning"
+  ],
+  "problem": "A plausible prose description or silhouette can harden uncertain reference guesses into the wrong representation, component boundary, or depth structure before the model is cheap to revise.",
+  "status": "EXPERIMENTALLY_TESTED",
+  "applicability": {
+    "workflow": "reference-driven modeling before and during primary blockout",
+    "required_inputs": [
+      "typed components and relationships",
+      "claim-level evidence status and confidence",
+      "modeling consequences",
+      "candidate and rejected strategies"
+    ],
+    "exclusions": [
+      "automatic visual inference is not provided",
+      "weak or unknown claims cannot drive strategy booleans",
+      "policy success is not Blender or reference-fidelity proof"
+    ]
+  },
+  "action_policy": [
+    "Record each important interpretation as OBSERVED, STRONGLY_INFERRED, WEAKLY_INFERRED, or UNKNOWN.",
+    "Require concrete evidence for observed and strongly inferred claims.",
+    "Block blockout on high-impact weak/unknown claims or contradictory supported modeling signals.",
+    "Translate only observed/strongly inferred modeling signals into the strategy brief.",
+    "Keep weak areas reversible and preserve rejected construction strategies with reasons.",
+    "Verify the resulting Blender geometry and reference fidelity through separate truth channels."
+  ],
+  "evidence": [
+    {
+      "run": "runs/2026-08-15_reference-interpretation-contract/reference_interpretation_report.json",
+      "scope": "declared pure-Python policy cases across pendant-lamp and appliance-panel families",
+      "result": "supported claims changed representation/component policy; weak claims were ignored; unknown/conflicting claims blocked modeling"
+    },
+    {
+      "run": "runs/2026-08-15_reference-interpretation-contract/reference_interpretation_verify.json",
+      "scope": "fresh-process serialized-artifact verification",
+      "result": "pending generation at commit preparation"
+    }
+  ],
+  "promotion_limit": "Not TRANSFER_VALIDATED or RUNTIME_VALIDATED until real image interpretation changes Blender construction and improves measured outcomes on unrelated assets."
+}
