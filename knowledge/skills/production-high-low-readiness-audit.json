@@ -1,0 +1,61 @@
+{
+  "skill_id": "production.high_low.readiness_audit",
+  "title": "Distinguish an editable equal-cage variant from a production low topology",
+  "topic_tags": ["high-poly", "low-poly", "retopology", "live modifiers", "UV", "normal bake", "export"],
+  "problem": "A duplicate of the high-poly base cage can be placed in a LOW_POLY collection and have Subdivision disabled, yet still be mislabeled as production retopology even though its base topology, UV readiness, bake target, and export evidence are missing.",
+  "status": "TRANSFER_VALIDATED",
+  "applicability": {
+    "modeling_stage": "PRODUCTION_PREP",
+    "workflow": "high-poly low-poly production audit",
+    "defect": "equal base cage mislabeled as retopology or modifiers applied before user approval",
+    "required_inputs": [
+      "separate HIGH_POLY and LOW_POLY collection membership",
+      "base-cage topology counts and connected-component counts",
+      "current modifier stacks",
+      "low UV evidence",
+      "fixed-frame silhouette measurements from at least two relevant views"
+    ],
+    "exclusions": [
+      "claiming historical modifier state from current Blender data",
+      "inferring purposeful retopology from collection names or a lower face count alone",
+      "using one silhouette view as proof of three-dimensional shape preservation"
+    ]
+  },
+  "action_policy": [
+    "Keep source high and low objects in separate collections with independent mesh datablocks.",
+    "Leave source modifiers live and unapplied; let the user decide when to apply them.",
+    "Classify equal base cages as EDITABLE_VARIANT_ONLY, never as production retopology.",
+    "Require materially lower low-cage topology, one connected component where the form is continuous, valid UVs, and multiview silhouette preservation.",
+    "Verify the editable source in a fresh Blender process and verify each exported payload independently.",
+    "Record that current live stacks are observable but prior modifier application cannot be reconstructed from Blender state."
+  ],
+  "failure_predicates": [
+    "high and low share a mesh datablock or cross-own the required collections",
+    "low and high have equal base-face counts",
+    "a continuous form contains disconnected joined shells",
+    "low UVs are absent, degenerate, or outside the declared tile",
+    "fewer than the required views pass the frozen silhouette gate",
+    "a required source modifier stack is absent or the build pipeline calls modifier_apply"
+  ],
+  "recovery": [
+    "retain the equal-cage pair only as an editable internal variant",
+    "author a purpose-built low cage that preserves the missing profile or landmark",
+    "restore live modifier stacks from the editable checkpoint",
+    "unwrap and rebake before export",
+    "add a discriminating view rather than lowering the multiview gate"
+  ],
+  "evidence": [
+    {
+      "run": "runs/2026-08-15_production-high-low-audit/fresh_source_audit.json",
+      "scope": "rounded rectangular and 12-sided radial low-cage families in Blender 5.2",
+      "result": "both purpose-authored pairs pass; equal-cage, one-view, missing-UV, missing-modifier, and disconnected-shell controls fail closed"
+    },
+    {
+      "run": "runs/2026-08-15_production-high-low-audit/fresh_export_report.json",
+      "scope": "independent low-only GLB round trips",
+      "result": "each export imports as one mesh with its own UV, material, and tangent-normal image"
+    }
+  ],
+  "runtime_usage": [],
+  "promotion_limit": "Controlled two-family audit and authored fixtures only. The runtime still does not autonomously infer or author retopology on an unfamiliar real prop, and no expert has accepted a resulting production asset."
+}

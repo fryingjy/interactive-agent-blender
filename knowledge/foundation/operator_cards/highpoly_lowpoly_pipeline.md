@@ -1,6 +1,6 @@
 # Operator card: high-poly/low-poly production collection pipeline
 
-**Status:** OBSERVED (7/10 studied professional files) | TYPED PACKAGING VALIDATED | RUNTIME USE VALIDATED | TRUE RETOPOLOGY PENDING
+**Status:** OBSERVED (7/10 studied professional files) | TYPED PACKAGING VALIDATED | PRODUCTION AUDIT TRANSFER VALIDATED | AUTONOMOUS RETOPOLOGY PENDING
 
 ## What it is
 
@@ -35,12 +35,20 @@ This is the correct quick packaging mechanism when the user wants to apply modif
 also honest about its limit: identical base counts do not make the duplicate a production low-poly
 retopology.
 
-### True production low-poly — still pending
+### Production low-poly readiness — audit validated, autonomous authoring pending
 
 A production low-poly requires separate topology chosen for silhouette, deformation, UV layout,
-baking, and export constraints. The runtime does not yet infer or author that retopology. UV transfer,
-selected-to-active baking, and engine export have separate evidence elsewhere in the repository, but
-they are not combined here into an autonomous high-to-low retopology pipeline.
+baking, and export constraints. `get_production_high_low_audit` now combines read-only Blender
+evidence for collection isolation, independent mesh datablocks, materially lower base topology,
+connectivity, low UV validity, multiview silhouette preservation, and current live modifier stacks.
+It classifies an equal cage as `EDITABLE_VARIANT_ONLY` even when the object is named low-poly and is
+stored in a separate collection.
+
+The audit does not infer authoring history. A lower face ratio is necessary evidence in this
+controlled contract, not proof that a human or agent purposefully retopologized the object. Blender
+can show that modifiers are live now; it cannot prove that no modifier was applied earlier. The
+controlled build therefore also keeps a static no-`modifier_apply` check, a scene declaration, and a
+fresh-process source inspection. All modifiers remain unapplied for the user.
 
 ## Runtime evidence
 
@@ -52,8 +60,14 @@ they are not combined here into an autonomous high-to-low retopology pipeline.
   stacks are unapplied, and a fresh Blender verifier passes the production-variant checks.
 - `runs/2026-08-13_blend-file-study/{batarang,alien_force_watch,broken_sword,adventure_time_sword,
   ap15,ak47}/inspection.json` — observed professional-file organization and distinct topology evidence.
+- `runs/2026-08-15_production-high-low-audit/` — two controlled shape families, a rejected radial
+  cage that omitted a profile-defining ring, three-view silhouette gates, valid low UVs, real Cycles
+  Selected-to-Active tangent bakes, low-only GLBs, fresh source/export verification, and five
+  fail-closed controls. `HIGH_POLY` and `LOW_POLY` remain separate and all source Bevel modifiers
+  remain live and unapplied.
 
 ## Promotion boundary
 
-Typed editable-variant packaging is `RUNTIME_VALIDATED`. Autonomous production retopology remains
-unimplemented and must not inherit that status.
+Typed editable-variant packaging is `RUNTIME_VALIDATED`, and the production-readiness audit is
+`TRANSFER_VALIDATED` across two controlled families. Autonomous production retopology remains
+unimplemented and must not inherit either status.

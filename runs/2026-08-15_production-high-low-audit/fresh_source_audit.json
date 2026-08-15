@@ -1,0 +1,307 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_production-high-low-audit\\production_high_low_audit.blend",
+  "audits": {
+    "box": {
+      "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": true,
+        "low_uv_ready": true,
+        "multiview_shape_preserved": true,
+        "current_modifier_stacks_live": true
+      },
+      "pass": true,
+      "editable_variant_only": false,
+      "face_ratio": 0.2727272727272727,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 3,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [],
+      "evidence": {
+        "high_object": "Box_HIGH",
+        "low_object": "Box_LOW",
+        "high_collections": [
+          "HIGH_POLY"
+        ],
+        "low_collections": [
+          "LOW_POLY"
+        ],
+        "independent_mesh_datablocks": true,
+        "high_base_faces": 22,
+        "low_base_faces": 6,
+        "high_connected_components": 1,
+        "low_connected_components": 1,
+        "high_live_modifiers": [
+          "Manual Bevel - Unapplied:BEVEL"
+        ],
+        "low_live_modifiers": [
+          "Manual Bevel - Unapplied:BEVEL"
+        ],
+        "low_uv": {
+          "layer": "UVMap",
+          "loop_count": 24,
+          "degenerate_faces": 0,
+          "inside_unit_tile": true
+        },
+        "silhouette_iou_by_view": {
+          "front": 0.9968361481217415,
+          "side": 1.0,
+          "top": 1.0
+        }
+      }
+    },
+    "radial": {
+      "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": true,
+        "low_uv_ready": true,
+        "multiview_shape_preserved": true,
+        "current_modifier_stacks_live": true
+      },
+      "pass": true,
+      "editable_variant_only": false,
+      "face_ratio": 0.08333333333333333,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 3,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [],
+      "evidence": {
+        "high_object": "Radial_HIGH",
+        "low_object": "Radial_LOW",
+        "high_collections": [
+          "HIGH_POLY"
+        ],
+        "low_collections": [
+          "LOW_POLY"
+        ],
+        "independent_mesh_datablocks": true,
+        "high_base_faces": 864,
+        "low_base_faces": 72,
+        "high_connected_components": 1,
+        "low_connected_components": 1,
+        "high_live_modifiers": [
+          "Manual Bevel - Unapplied:BEVEL"
+        ],
+        "low_live_modifiers": [
+          "Manual Bevel - Unapplied:BEVEL"
+        ],
+        "low_uv": {
+          "layer": "UVMap",
+          "loop_count": 264,
+          "degenerate_faces": 0,
+          "inside_unit_tile": true
+        },
+        "silhouette_iou_by_view": {
+          "front": 0.9906821652279597,
+          "side": 0.990743914981145,
+          "top": 0.9592354346627459
+        }
+      }
+    }
+  },
+  "equal_cage_control": {
+    "disposition": "EDITABLE_VARIANT_ONLY",
+    "checks": {
+      "separate_collections": true,
+      "independent_mesh_datablocks": true,
+      "purpose_authored_lower_topology": false,
+      "single_connected_component_each": true,
+      "low_uv_ready": false,
+      "multiview_shape_preserved": true,
+      "current_modifier_stacks_live": true
+    },
+    "pass": false,
+    "editable_variant_only": true,
+    "face_ratio": 1.0,
+    "thresholds": {
+      "max_low_to_high_face_ratio": 0.65,
+      "minimum_silhouette_iou": 0.9,
+      "minimum_view_count": 2,
+      "require_live_modifiers": true
+    },
+    "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+    "failures": [
+      "purpose_authored_lower_topology",
+      "low_uv_ready"
+    ],
+    "evidence": {
+      "high_object": "Equal_Cage_HIGH",
+      "low_object": "Equal_Cage_LOW",
+      "high_collections": [
+        "EQUAL_HIGH"
+      ],
+      "low_collections": [
+        "EQUAL_LOW"
+      ],
+      "independent_mesh_datablocks": true,
+      "high_base_faces": 22,
+      "low_base_faces": 22,
+      "high_connected_components": 1,
+      "low_connected_components": 1,
+      "high_live_modifiers": [
+        "Manual Bevel - Unapplied:BEVEL"
+      ],
+      "low_live_modifiers": [
+        "Manual Bevel - Unapplied:BEVEL"
+      ],
+      "low_uv": {
+        "layer": null,
+        "loop_count": 0,
+        "degenerate_faces": 22,
+        "inside_unit_tile": false
+      },
+      "silhouette_iou_by_view": {
+        "front": 1.0,
+        "side": 1.0,
+        "top": 1.0
+      }
+    }
+  },
+  "negative_controls": {
+    "one_view_only": {
+      "disposition": "REVIEW_REQUIRED",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": true,
+        "low_uv_ready": true,
+        "multiview_shape_preserved": false,
+        "current_modifier_stacks_live": true
+      },
+      "pass": false,
+      "editable_variant_only": false,
+      "face_ratio": 0.2727272727272727,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 2,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [
+        "multiview_shape_preserved"
+      ]
+    },
+    "missing_uv": {
+      "disposition": "REVIEW_REQUIRED",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": true,
+        "low_uv_ready": false,
+        "multiview_shape_preserved": true,
+        "current_modifier_stacks_live": true
+      },
+      "pass": false,
+      "editable_variant_only": false,
+      "face_ratio": 0.2727272727272727,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 2,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [
+        "low_uv_ready"
+      ]
+    },
+    "missing_live_low_modifier": {
+      "disposition": "REVIEW_REQUIRED",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": true,
+        "low_uv_ready": true,
+        "multiview_shape_preserved": true,
+        "current_modifier_stacks_live": false
+      },
+      "pass": false,
+      "editable_variant_only": false,
+      "face_ratio": 0.2727272727272727,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 2,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [
+        "current_modifier_stacks_live"
+      ]
+    },
+    "disconnected_low_shells": {
+      "disposition": "REVIEW_REQUIRED",
+      "checks": {
+        "separate_collections": true,
+        "independent_mesh_datablocks": true,
+        "purpose_authored_lower_topology": true,
+        "single_connected_component_each": false,
+        "low_uv_ready": true,
+        "multiview_shape_preserved": true,
+        "current_modifier_stacks_live": true
+      },
+      "pass": false,
+      "editable_variant_only": false,
+      "face_ratio": 0.2727272727272727,
+      "thresholds": {
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.9,
+        "minimum_view_count": 2,
+        "require_live_modifiers": true
+      },
+      "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+      "failures": [
+        "single_connected_component_each"
+      ]
+    }
+  },
+  "image_checks": {
+    "box": {
+      "packed": true,
+      "non_color": true,
+      "normal_node_connected": true,
+      "non_neutral_pixels": 14416
+    },
+    "radial": {
+      "packed": true,
+      "non_color": true,
+      "normal_node_connected": true,
+      "non_neutral_pixels": 11237
+    }
+  },
+  "checks": {
+    "build_script_has_no_modifier_apply_call": true,
+    "export_explicitly_preserves_modifier_stack": true,
+    "scene_declares_no_pipeline_modifier_application": true,
+    "box_production_audit_passes": true,
+    "radial_production_audit_passes": true,
+    "equal_cage_is_not_retopology": true,
+    "one_view_control_fails": true,
+    "missing_uv_control_fails": true,
+    "missing_modifier_control_fails": true,
+    "disconnected_shell_control_fails": true,
+    "both_bakes_packed_non_color_and_connected": true,
+    "all_source_objects_keep_live_modifiers": true,
+    "all_source_objects_mark_manual_application_policy": true
+  },
+  "pass": true,
+  "claim_boundary": "This validates a production-readiness audit and two controlled purpose-authored pairs. It does not autonomously infer or author retopology on an unfamiliar real prop."
+}

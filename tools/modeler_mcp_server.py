@@ -289,6 +289,33 @@ def get_hard_surface_shading_audit(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_production_high_low_audit(
+    high_object_name: str,
+    low_object_name: str,
+    silhouette_iou_by_view: dict[str, float],
+    high_collection_name: str = "HIGH_POLY",
+    low_collection_name: str = "LOW_POLY",
+    max_low_to_high_face_ratio: float = 0.65,
+    minimum_silhouette_iou: float = 0.90,
+    minimum_view_count: int = 2,
+    require_live_modifiers: bool = True,
+) -> dict:
+    """Audit separate high/low collections, genuinely lower base topology, connectivity, UV validity, multiview shape preservation, and live unapplied modifier stacks. Equal cages are classified as editable variants, not production retopology."""
+    return _call(
+        "get_production_high_low_audit",
+        high_name=high_object_name,
+        low_name=low_object_name,
+        silhouette_iou_by_view=silhouette_iou_by_view,
+        high_collection_name=high_collection_name,
+        low_collection_name=low_collection_name,
+        max_low_to_high_face_ratio=max_low_to_high_face_ratio,
+        minimum_silhouette_iou=minimum_silhouette_iou,
+        minimum_view_count=minimum_view_count,
+        require_live_modifiers=require_live_modifiers,
+    )
+
+
+@mcp.tool()
 def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
     """Render a Blender-native solid, MatCap, wireframe, normal, depth, or component-mask diagnostic PNG with scene revision and camera metadata."""
     return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)

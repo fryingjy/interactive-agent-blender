@@ -24,16 +24,16 @@ exploratory callers can explicitly lower it. Runtime success and Blender-version
 only candidates that independently clear the semantic floor. A broad workflow match must also be
 supported by either a meaningful query match or a specific typed context channel; this prevents
 generic `reference modeling` overlap from routing color grading into geometry strategy. The CLI
-exposes `--min-score`, and negative thresholds are rejected. A declarative 18-case regression set
+exposes `--min-score`, and negative thresholds are rejected. A declarative 19-case regression set
 covers direct and paraphrased positive contexts plus five unrelated-ticket abstention controls.
 Positive cases also require at least a 1.0 top-result margin.
 
 ## Evidence
 
-- 13/13 positive contexts retrieved the intended top skill.
+- 14/14 positive contexts retrieved the intended top skill.
 - 5/5 unrelated contexts returned no skill.
-- All 13 positives exceeded the frozen 1.0 top-result margin; minimum observed margin: 3.6742.
-- The current repository-wide pass contains 123 tests and 12 subtests; Pyflakes, compileall,
+- All 14 positives exceeded the frozen 1.0 top-result margin; minimum observed margin: 3.6742.
+- The current repository-wide pass contains 130 tests and 12 subtests; Pyflakes, compileall,
   repository audit, JSON parsing, and diff checks pass.
 
 ## Boundary
