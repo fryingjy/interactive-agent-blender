@@ -1,0 +1,236 @@
+{
+  "audit": "Level 14 synthesis against authoritative knowledge_items.json corpus",
+  "synthesis_path": "runs/2026-08-15_synthesis-level14-professional-judgment/synthesis.md",
+  "synthesis_sha256_at_audit": "3d4d51bd66b04bc512d00d3fa61fddbd71dc0e63995f0e88a769061beedf56c3",
+  "actual_total": 90,
+  "prior_claimed_total": 87,
+  "type_counts": {
+    "DECISION": 10,
+    "FAILURE": 10,
+    "PRINCIPLE": 20,
+    "PROCEDURE": 47,
+    "VISUAL_CUE": 3
+  },
+  "runs": {
+    "blenderbros-subd-hardsurface": {
+      "path": "runs/2026-08-14_video-study-blenderbros-subd-hardsurface/knowledge_items.json",
+      "sha256": "d97545a444cec08247b702f61a77bb38a915d0c062c041414d7bd514ce2777c3",
+      "actual_count": 6,
+      "synthesis_claimed_count": 6,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "blenderbros-subd-hardsurface-2": {
+      "path": "runs/2026-08-14_video-study-blenderbros-subd-hardsurface-2/knowledge_items.json",
+      "sha256": "571242408ffb08c3013032bbcc208d8db498590a01e38dfbd6465480d298765c",
+      "actual_count": 4,
+      "synthesis_claimed_count": 4,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "blenderbros-subd-hive-controller": {
+      "path": "runs/2026-08-14_video-study-blenderbros-subd-hive-controller/knowledge_items.json",
+      "sha256": "a5d87e285d9b08eb8a0e6c72e2fc7beff0769ed63b9b7ffdff26aa0e5f053f45",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    },
+    "blenderbros-tertiary-details": {
+      "path": "runs/2026-08-14_video-study-blenderbros-tertiary-details/knowledge_items.json",
+      "sha256": "1e7a01e482bf833d946e5144185d2a2aa4690d137187aa839fac726e62cecef3",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "blenderbros-decals-workflow": {
+      "path": "runs/2026-08-14_video-study-blenderbros-decals-workflow/knowledge_items.json",
+      "sha256": "ed675384e4fd40184bd6085287a80810bb4e0fb36b2767bac7b0842b595a9011",
+      "actual_count": 3,
+      "synthesis_claimed_count": 3,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "blenderbros-curvy-organic": {
+      "path": "runs/2026-08-14_video-study-blenderbros-curvy-organic/knowledge_items.json",
+      "sha256": "fdbb10e9ecb8d11d6474e46b10e06fa3a73cad054061569e0088f136c55367a0",
+      "actual_count": 7,
+      "synthesis_claimed_count": 7,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "blenderbros-5-best-tricks": {
+      "path": "runs/2026-08-14_video-study-blenderbros-5-best-tricks/knowledge_items.json",
+      "sha256": "61e2007473a06254d296abd233288f8bf3eb2662fbe19ea59a8f47504c568466",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "cgcookie-hardsurface-intro": {
+      "path": "runs/2026-08-14_video-study-cgcookie-hardsurface-intro/knowledge_items.json",
+      "sha256": "b63c431550e6c4aa05e07f0ca5a54ac26e61fa8cbd47b68e80889ecb162c54c3",
+      "actual_count": 1,
+      "synthesis_claimed_count": 1,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "cgvoice-amateur-mistakes": {
+      "path": "runs/2026-08-14_video-study-cgvoice-amateur-mistakes/knowledge_items.json",
+      "sha256": "1145643735463f1fabb31e2d3b506fe0676fef7d9920c78b1415c55e017904b2",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "crnt-boolean-triangle": {
+      "path": "runs/2026-08-14_video-study-crnt-boolean-triangle/knowledge_items.json",
+      "sha256": "14fe0373ac310e84475510d321b1d7464122e1ab5b9de78c454e5e2e06257223",
+      "actual_count": 2,
+      "synthesis_claimed_count": 2,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "elementza-clean-topology": {
+      "path": "runs/2026-08-14_video-study-elementza-clean-topology/knowledge_items.json",
+      "sha256": "08ec35f0a40fa0cf1c27e8b240bf62b69728a24f24aa474acbfd6e3ff97e99d7",
+      "actual_count": 4,
+      "synthesis_claimed_count": 4,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "grant-abbitt-beginners": {
+      "path": "runs/2026-08-14_video-study-grant-abbitt-beginners/knowledge_items.json",
+      "sha256": "6aced803d1e91da2a892d4e128abbce2375aebfe59b18f05e4b208fbfd8631c0",
+      "actual_count": 1,
+      "synthesis_claimed_count": 1,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "gnomon-bryant-momo-koshu": {
+      "path": "runs/2026-08-14_video-study-gnomon-bryant-momo-koshu/knowledge_items.json",
+      "sha256": "1fbe084cfea4093112b871b47acb5a127ebf7de311355cf151a84eb8856a1613",
+      "actual_count": 6,
+      "synthesis_claimed_count": 6,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "jl-mussi": {
+      "path": "runs/2026-08-14_video-study-jl-mussi/knowledge_items.json",
+      "sha256": "68172a42f8b40f1c9db67ec63fcd16a6c9ad3046b987cb2c30723c69d5e08845",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "jl-mussi-5-tips": {
+      "path": "runs/2026-08-14_video-study-jl-mussi-5-tips/knowledge_items.json",
+      "sha256": "1e793c023b57d7244699a1d0b50e55bdcee5dab65f5fa49340ed68543a53afb2",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "jl-mussi-easy-once-you-learn": {
+      "path": "runs/2026-08-14_video-study-jl-mussi-easy-once-you-learn/knowledge_items.json",
+      "sha256": "f485b5ef4ba9eb137a3c53aa6f8ce9ff4214d33ec6023bd1e01778bf18d99bb6",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    },
+    "mcglasham-subd": {
+      "path": "runs/2026-08-14_video-study-mcglasham-subd/knowledge_items.json",
+      "sha256": "91d298edf70e96dd9784db161340d10d015516cb674b27b0652d87b2b713c461",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "pzthree-retopology": {
+      "path": "runs/2026-08-14_video-study-pzthree-retopology/knowledge_items.json",
+      "sha256": "577dd2e34011009765ea1aef4fb799bdb25e8f7d42c124c9051d2152dda76469",
+      "actual_count": 5,
+      "synthesis_claimed_count": 5,
+      "count_delta": 0,
+      "brief_md_present": false
+    },
+    "rileyb3d-advanced-hardsurface": {
+      "path": "runs/2026-08-14_video-study-rileyb3d-advanced-hardsurface/knowledge_items.json",
+      "sha256": "3b2d627e10fb737dae266d3f704779498a11bf52452b2f718054a54415454b86",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    },
+    "subd-3dprint": {
+      "path": "runs/2026-08-14_video-study-subd-3dprint/knowledge_items.json",
+      "sha256": "9fa4ca1d9e14fd06f23cc0b4b94e6ca0551bd78f8f0971c6b2366e2bd894e722",
+      "actual_count": 3,
+      "synthesis_claimed_count": 3,
+      "count_delta": 0,
+      "brief_md_present": false
+    }
+  },
+  "count_mismatches": {
+    "blenderbros-subd-hive-controller": {
+      "path": "runs/2026-08-14_video-study-blenderbros-subd-hive-controller/knowledge_items.json",
+      "sha256": "a5d87e285d9b08eb8a0e6c72e2fc7beff0769ed63b9b7ffdff26aa0e5f053f45",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    },
+    "jl-mussi-easy-once-you-learn": {
+      "path": "runs/2026-08-14_video-study-jl-mussi-easy-once-you-learn/knowledge_items.json",
+      "sha256": "f485b5ef4ba9eb137a3c53aa6f8ce9ff4214d33ec6023bd1e01778bf18d99bb6",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    },
+    "rileyb3d-advanced-hardsurface": {
+      "path": "runs/2026-08-14_video-study-rileyb3d-advanced-hardsurface/knowledge_items.json",
+      "sha256": "3b2d627e10fb737dae266d3f704779498a11bf52452b2f718054a54415454b86",
+      "actual_count": 6,
+      "synthesis_claimed_count": 5,
+      "count_delta": 1,
+      "brief_md_present": false
+    }
+  },
+  "schema_errors": [],
+  "exact_duplicate_record_count": 0,
+  "omitted_item_reconciliation": {
+    "blenderbros-subd-hive-controller[5]": {
+      "stage_effect": "blockout decision",
+      "finding": "Already discussed in the prose; count was understated only."
+    },
+    "jl-mussi-easy-once-you-learn[5]": {
+      "stage_effect": "representation choice",
+      "finding": "Previously absent from that section; explicitly favors a separate Solidify/SubD panel over carving one continuous curved shell."
+    },
+    "rileyb3d-advanced-hardsurface[5]": {
+      "stage_effect": "topology and surface acceptance",
+      "finding": "Already discussed in the prose; count was understated only."
+    }
+  },
+  "verdict_effect": {
+    "reference_interpretation": "Still thin: none of the three reconciled items interprets an ambiguous visible cue into a target-specific geometric decision.",
+    "blockout_decision": "Still moderate; the sixth hive-controller item was already discussed despite the count typo.",
+    "representation_choice": "Still moderate but stronger: coverage is eight candidate items, with the separate-panel decision added as a second explicit alternative-based construction choice.",
+    "strong_stages": "Unchanged; the Riley visual-cue item was already discussed despite the count typo."
+  },
+  "assertions": {
+    "all_20_declared_run_directories_loaded": true,
+    "corpus_contains_90_items": true,
+    "prior_synthesis_claimed_87_items": true,
+    "exactly_three_run_count_mismatches": true,
+    "each_mismatch_is_plus_one": true,
+    "all_items_pass_minimum_schema": true,
+    "no_exact_duplicate_records": true,
+    "no_brief_md_files_exist_in_batch": true,
+    "all_allowed_knowledge_types_are_represented": true
+  },
+  "pass": true
+}
