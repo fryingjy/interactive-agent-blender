@@ -334,3 +334,19 @@ fresh-process saved-file verifier. `runs/2026-08-15_nailsea-form-correction/` wa
 the typed operation and independently confirms the same contract on the real corrected asset. This
 is runtime validation of editable internal variants. It does not implement production low-poly
 retopology, UV authoring, baking, or export, so the foundation remains **PARTIAL**.
+
+## 2026-08-15 addendum: secondary-view component strategy
+
+`knowledge_engine.component_strategy` now fails closed when continuous and separate construction
+candidates are tied in the primary view. The planner returns `RESOLVE_SECONDARY_VIEW_STRATEGY`
+before leaving `REFERENCE_ANALYSIS`; after a discriminating view clears frozen fit and margin gates,
+the measured policy overrides a generic component prior and retains the rejected alternative.
+
+`runs/2026-08-15_secondary-view-component-strategy/` tests rectangular and 16-sided radial
+families in Blender 5.2. Both candidate strategies score `1.0` front IoU. Top-view IoU stays `1.0`
+for one-object/one-component continuous bodies but falls to `0.711577` and `0.695574` for narrow
+bodies carrying separate faceplates. Fresh-process object, connectivity, dimension, collection, and
+mask checks reproduce the result. Fixture creation is disclosed deterministic setup, not typed
+adaptive modeling. This closes the controlled secondary-view experiment named in the gap matrix;
+real photographic inference, real-prop runtime use, and professional acceptance remain open, so the
+foundation remains **PARTIAL**.

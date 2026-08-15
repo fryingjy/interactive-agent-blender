@@ -1029,3 +1029,21 @@ reference-policy skill, not proof that the resulting model will be more accurate
 and the equal-budget target-only versus structured-reference build remain open. Evidence:
 `runs/2026-08-15_question-driven-reference-research/` and
 `runs/2026-08-15_reference-gathering-bialetti/`.
+
+## Update -- 2026-08-15 (secondary-view depth changes construction strategy)
+
+Closed the gap matrix's controlled component/depth reconstruction experiment without bypassing the
+pending Bialetti human gate. Rectangular and 16-sided radial fixtures each pit one continuous
+full-depth body against a narrow body plus separate full-front faceplate. Their front silhouettes
+are exactly identical (`1.0` IoU), so the executable policy refuses to choose and the planner emits
+`RESOLVE_SECONDARY_VIEW_STRATEGY` with no Blender mutation.
+
+The fixed-frame top view preserves `1.0` IoU for the continuous candidates and reduces the separate
+controls to `0.711577` and `0.695574`. Both exceed the frozen `0.15` decision margin. The resolved
+evidence overrides a deliberately conflicting generic separate-material prior, and a fresh Blender
+process confirms one-object/one-component continuity rather than joined disconnected shells.
+
+This promotes the narrow secondary-view strategy skill to `TRANSFER_VALIDATED` across controlled
+shape families. It does not infer depth from photographs, authorize the Bialetti model, or prove
+professional fidelity. The next promotion gate is a real unrelated multi-view prop decision with
+typed runtime telemetry and human visual comparison.

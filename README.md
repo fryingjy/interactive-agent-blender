@@ -28,7 +28,9 @@ Current evidence includes:
 - rollback-owned high/low variant packaging with separate collections, independent editable cages,
   and unapplied modifier stacks, including controlled rejection and real Nailsea runtime use;
 - question-driven reference research that records exact searches, accepted and rejected candidates,
-  reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates.
+  reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates;
+- secondary-view component-strategy evidence that makes front-only ambiguity trigger research and
+  uses measured top-view depth to choose continuous versus separate construction across two shapes.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

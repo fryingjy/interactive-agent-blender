@@ -1,0 +1,603 @@
+{
+  "experiment": "secondary-view truth for continuous-versus-separate component strategy",
+  "blender_version": "5.2.0 LTS",
+  "families": {
+    "box": {
+      "metrics": {
+        "continuous": {
+          "front": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 38232,
+            "candidate_pixels": 38232,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              74,
+              111,
+              309,
+              272
+            ],
+            "candidate_bbox": [
+              74,
+              111,
+              309,
+              272
+            ]
+          },
+          "top": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 38232,
+            "candidate_pixels": 38232,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              74,
+              111,
+              309,
+              272
+            ],
+            "candidate_bbox": [
+              74,
+              111,
+              309,
+              272
+            ]
+          }
+        },
+        "separate": {
+          "front": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 38232,
+            "candidate_pixels": 38232,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              74,
+              111,
+              309,
+              272
+            ],
+            "candidate_bbox": [
+              74,
+              111,
+              309,
+              272
+            ]
+          },
+          "top": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 38232,
+            "candidate_pixels": 27205,
+            "silhouette_iou": 0.7115766896840343,
+            "centroid_error_normalized": 0.004856509021861824,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.023127872386110547,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              74,
+              111,
+              309,
+              272
+            ],
+            "candidate_bbox": [
+              74,
+              111,
+              309,
+              272
+            ]
+          }
+        }
+      },
+      "primary_only_resolution": {
+        "primary_view": "front",
+        "primary_scores": {
+          "box-continuous": 1.0,
+          "box-separate": 1.0
+        },
+        "primary_gap": 0.0,
+        "primary_ambiguous": true,
+        "required_secondary_views": [],
+        "thresholds": {
+          "primary_ambiguity_max": 0.01,
+          "secondary_margin_min": 0.15,
+          "secondary_iou_min": 0.8
+        },
+        "disposition": "TARGETED_REFERENCE_RESEARCH",
+        "chosen_candidate_id": null,
+        "chosen_policy": null,
+        "reason": "primary view is ambiguous and no secondary view was supplied",
+        "queries": [
+          "acquire a same-variant side, top, or oblique view that reveals component depth"
+        ]
+      },
+      "multiview_resolution": {
+        "primary_view": "front",
+        "primary_scores": {
+          "box-continuous": 1.0,
+          "box-separate": 1.0
+        },
+        "primary_gap": 0.0,
+        "primary_ambiguous": true,
+        "required_secondary_views": [
+          "top"
+        ],
+        "thresholds": {
+          "primary_ambiguity_max": 0.01,
+          "secondary_margin_min": 0.15,
+          "secondary_iou_min": 0.8
+        },
+        "disposition": "SELECT_STRATEGY",
+        "chosen_candidate_id": "box-continuous",
+        "chosen_policy": "CONTINUOUS_MESH",
+        "secondary_scores": {
+          "box-continuous": 1.0,
+          "box-separate": 0.7115766896840343
+        },
+        "secondary_margin": 0.2884233103159657,
+        "rejected_candidates": [
+          {
+            "candidate_id": "box-separate",
+            "component_policy": "SEPARATE_COMPONENTS",
+            "reason": "secondary-view mean IoU 0.711577 is below selected candidate 1.000000"
+          }
+        ],
+        "reason": "secondary-view evidence resolves a primary-view construction ambiguity"
+      },
+      "planner": {
+        "primary_only": {
+          "disposition": "RESEARCH",
+          "action": "RESOLVE_SECONDARY_VIEW_STRATEGY",
+          "target_object": null,
+          "target_region": null,
+          "rationale": [
+            "primary view is ambiguous and no secondary view was supplied"
+          ],
+          "expected_effect": "Acquire a discriminating same-variant view before choosing continuous or separate construction.",
+          "verification": [
+            "rerun multi-view component-strategy resolution",
+            "retain the rejected strategy and measured view scores"
+          ],
+          "observed_revision": 1,
+          "confidence": "HIGH",
+          "operation": null,
+          "operation_params": {
+            "queries": [
+              "acquire a same-variant side, top, or oblique view that reveals component depth"
+            ],
+            "required_secondary_views": []
+          },
+          "retrieved_skill_ids": [],
+          "next_stage": null
+        },
+        "secondary_resolved": {
+          "disposition": "ACT",
+          "action": "BLOCK_OUT_MISSING_COMPONENT",
+          "target_object": "Housing",
+          "target_region": "front-boundary",
+          "rationale": [
+            "highest-priority ticket is missing_component",
+            "shape family favors explicit planar proportions",
+            "part has independent motion or material identity",
+            "secondary-view evidence resolves a primary-view construction ambiguity"
+          ],
+          "expected_effect": "Add the missing primary/secondary silhouette contribution as an editable component.",
+          "verification": [
+            "component mask is present",
+            "component graph remains valid",
+            "recompute silhouette metrics"
+          ],
+          "observed_revision": 2,
+          "confidence": "HIGH",
+          "operation": "create_primitive",
+          "operation_params": {
+            "component_id": "front-boundary",
+            "representation": "BOX_MESH",
+            "component_policy": "CONTINUOUS_MESH",
+            "component_strategy_candidate": "box-continuous",
+            "reference_claim_notes": []
+          },
+          "retrieved_skill_ids": [],
+          "next_stage": null
+        }
+      },
+      "topology": {
+        "target": {
+          "object_names": [
+            "Box_Target_Truth"
+          ],
+          "object_count": 1,
+          "connected_component_count": 1,
+          "vertex_count": 8,
+          "face_count": 6,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.400000095367432,
+            3.0,
+            3.0
+          ],
+          "component_policies": [
+            "CONTINUOUS_MESH"
+          ],
+          "candidate_ids": [
+            "target"
+          ]
+        },
+        "continuous": {
+          "object_names": [
+            "Box_Continuous"
+          ],
+          "object_count": 1,
+          "connected_component_count": 1,
+          "vertex_count": 8,
+          "face_count": 6,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.400000095367432,
+            3.0,
+            3.0
+          ],
+          "component_policies": [
+            "CONTINUOUS_MESH"
+          ],
+          "candidate_ids": [
+            "box-continuous"
+          ]
+        },
+        "separate": {
+          "object_names": [
+            "Box_Separate_Body",
+            "Box_Separate_Plate"
+          ],
+          "object_count": 2,
+          "connected_component_count": 2,
+          "vertex_count": 16,
+          "face_count": 12,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.400000095367432,
+            3.0,
+            3.0
+          ],
+          "component_policies": [
+            "SEPARATE_COMPONENTS"
+          ],
+          "candidate_ids": [
+            "box-separate"
+          ]
+        }
+      }
+    },
+    "radial": {
+      "metrics": {
+        "continuous": {
+          "front": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 32232,
+            "candidate_pixels": 32232,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              90,
+              90,
+              293,
+              293
+            ],
+            "candidate_bbox": [
+              90,
+              90,
+              293,
+              293
+            ]
+          },
+          "top": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 31722,
+            "candidate_pixels": 31722,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              89,
+              115,
+              294,
+              268
+            ],
+            "candidate_bbox": [
+              89,
+              115,
+              294,
+              268
+            ]
+          }
+        },
+        "separate": {
+          "front": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 32232,
+            "candidate_pixels": 32232,
+            "silhouette_iou": 1.0,
+            "centroid_error_normalized": 0.0,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.0,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              90,
+              90,
+              293,
+              293
+            ],
+            "candidate_bbox": [
+              90,
+              90,
+              293,
+              293
+            ]
+          },
+          "top": {
+            "width": 384,
+            "height": 384,
+            "reference_pixels": 31722,
+            "candidate_pixels": 22065,
+            "silhouette_iou": 0.6955740495555135,
+            "centroid_error_normalized": 0.004817628202737145,
+            "bounding_box_error_normalized": 0.0,
+            "symmetric_contour_error_normalized": 0.022461549150399537,
+            "negative_space_iou": 1.0,
+            "reference_negative_space_pixels": 0,
+            "candidate_negative_space_pixels": 0,
+            "reference_bbox": [
+              89,
+              115,
+              294,
+              268
+            ],
+            "candidate_bbox": [
+              89,
+              115,
+              294,
+              268
+            ]
+          }
+        }
+      },
+      "primary_only_resolution": {
+        "primary_view": "front",
+        "primary_scores": {
+          "radial-continuous": 1.0,
+          "radial-separate": 1.0
+        },
+        "primary_gap": 0.0,
+        "primary_ambiguous": true,
+        "required_secondary_views": [],
+        "thresholds": {
+          "primary_ambiguity_max": 0.01,
+          "secondary_margin_min": 0.15,
+          "secondary_iou_min": 0.8
+        },
+        "disposition": "TARGETED_REFERENCE_RESEARCH",
+        "chosen_candidate_id": null,
+        "chosen_policy": null,
+        "reason": "primary view is ambiguous and no secondary view was supplied",
+        "queries": [
+          "acquire a same-variant side, top, or oblique view that reveals component depth"
+        ]
+      },
+      "multiview_resolution": {
+        "primary_view": "front",
+        "primary_scores": {
+          "radial-continuous": 1.0,
+          "radial-separate": 1.0
+        },
+        "primary_gap": 0.0,
+        "primary_ambiguous": true,
+        "required_secondary_views": [
+          "top"
+        ],
+        "thresholds": {
+          "primary_ambiguity_max": 0.01,
+          "secondary_margin_min": 0.15,
+          "secondary_iou_min": 0.8
+        },
+        "disposition": "SELECT_STRATEGY",
+        "chosen_candidate_id": "radial-continuous",
+        "chosen_policy": "CONTINUOUS_MESH",
+        "secondary_scores": {
+          "radial-continuous": 1.0,
+          "radial-separate": 0.6955740495555135
+        },
+        "secondary_margin": 0.3044259504444865,
+        "rejected_candidates": [
+          {
+            "candidate_id": "radial-separate",
+            "component_policy": "SEPARATE_COMPONENTS",
+            "reason": "secondary-view mean IoU 0.695574 is below selected candidate 1.000000"
+          }
+        ],
+        "reason": "secondary-view evidence resolves a primary-view construction ambiguity"
+      },
+      "planner": {
+        "primary_only": {
+          "disposition": "RESEARCH",
+          "action": "RESOLVE_SECONDARY_VIEW_STRATEGY",
+          "target_object": null,
+          "target_region": null,
+          "rationale": [
+            "primary view is ambiguous and no secondary view was supplied"
+          ],
+          "expected_effect": "Acquire a discriminating same-variant view before choosing continuous or separate construction.",
+          "verification": [
+            "rerun multi-view component-strategy resolution",
+            "retain the rejected strategy and measured view scores"
+          ],
+          "observed_revision": 1,
+          "confidence": "HIGH",
+          "operation": null,
+          "operation_params": {
+            "queries": [
+              "acquire a same-variant side, top, or oblique view that reveals component depth"
+            ],
+            "required_secondary_views": []
+          },
+          "retrieved_skill_ids": [],
+          "next_stage": null
+        },
+        "secondary_resolved": {
+          "disposition": "ACT",
+          "action": "BLOCK_OUT_MISSING_COMPONENT",
+          "target_object": "Housing",
+          "target_region": "front-boundary",
+          "rationale": [
+            "highest-priority ticket is missing_component",
+            "shape family favors explicit planar proportions",
+            "part has independent motion or material identity",
+            "secondary-view evidence resolves a primary-view construction ambiguity"
+          ],
+          "expected_effect": "Add the missing primary/secondary silhouette contribution as an editable component.",
+          "verification": [
+            "component mask is present",
+            "component graph remains valid",
+            "recompute silhouette metrics"
+          ],
+          "observed_revision": 2,
+          "confidence": "HIGH",
+          "operation": "create_primitive",
+          "operation_params": {
+            "component_id": "front-boundary",
+            "representation": "BOX_MESH",
+            "component_policy": "CONTINUOUS_MESH",
+            "component_strategy_candidate": "radial-continuous",
+            "reference_claim_notes": []
+          },
+          "retrieved_skill_ids": [],
+          "next_stage": null
+        }
+      },
+      "topology": {
+        "target": {
+          "object_names": [
+            "Radial_Target_Truth"
+          ],
+          "object_count": 1,
+          "connected_component_count": 1,
+          "vertex_count": 32,
+          "face_count": 18,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.0,
+            3.000000238418579,
+            4.0
+          ],
+          "component_policies": [
+            "CONTINUOUS_MESH"
+          ],
+          "candidate_ids": [
+            "target"
+          ]
+        },
+        "continuous": {
+          "object_names": [
+            "Radial_Continuous"
+          ],
+          "object_count": 1,
+          "connected_component_count": 1,
+          "vertex_count": 32,
+          "face_count": 18,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.0,
+            3.000000238418579,
+            4.0
+          ],
+          "component_policies": [
+            "CONTINUOUS_MESH"
+          ],
+          "candidate_ids": [
+            "radial-continuous"
+          ]
+        },
+        "separate": {
+          "object_names": [
+            "Radial_Separate_Body",
+            "Radial_Separate_Plate"
+          ],
+          "object_count": 2,
+          "connected_component_count": 2,
+          "vertex_count": 64,
+          "face_count": 36,
+          "modifier_count": 0,
+          "dimensions_xyz": [
+            4.0,
+            3.0000001192092896,
+            4.0
+          ],
+          "component_policies": [
+            "SEPARATE_COMPONENTS"
+          ],
+          "candidate_ids": [
+            "radial-separate"
+          ]
+        }
+      }
+    }
+  },
+  "assertions": {
+    "box_front_continuous_matches": true,
+    "box_front_separate_matches": true,
+    "box_primary_view_is_ambiguous": true,
+    "box_primary_only_requires_research": true,
+    "box_continuous_top_matches": true,
+    "box_separate_top_rejected": true,
+    "box_secondary_margin_passes": true,
+    "box_continuous_strategy_selected": true,
+    "box_planner_uses_measured_strategy": true,
+    "box_fresh_masks_reproduce": true,
+    "radial_front_continuous_matches": true,
+    "radial_front_separate_matches": true,
+    "radial_primary_view_is_ambiguous": true,
+    "radial_primary_only_requires_research": true,
+    "radial_continuous_top_matches": true,
+    "radial_separate_top_rejected": true,
+    "radial_secondary_margin_passes": true,
+    "radial_continuous_strategy_selected": true,
+    "radial_planner_uses_measured_strategy": true,
+    "radial_fresh_masks_reproduce": true,
+    "fresh_process_structure_passes": true
+  },
+  "pass": true,
+  "claim_boundary": "Controlled synthetic reconstruction evidence only. It does not infer components from photographs, validate a held-out prop, or replace human visual review."
+}

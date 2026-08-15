@@ -1,0 +1,299 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-15_secondary-view-component-strategy\\secondary_view_component_strategy.blend",
+  "families": {
+    "box": {
+      "target": {
+        "object_names": [
+          "Box_Target_Truth"
+        ],
+        "object_count": 1,
+        "connected_component_count": 1,
+        "vertex_count": 8,
+        "face_count": 6,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.400000095367432,
+          3.0,
+          3.0
+        ],
+        "component_policies": [
+          "CONTINUOUS_MESH"
+        ],
+        "candidate_ids": [
+          "target"
+        ]
+      },
+      "continuous": {
+        "object_names": [
+          "Box_Continuous"
+        ],
+        "object_count": 1,
+        "connected_component_count": 1,
+        "vertex_count": 8,
+        "face_count": 6,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.400000095367432,
+          3.0,
+          3.0
+        ],
+        "component_policies": [
+          "CONTINUOUS_MESH"
+        ],
+        "candidate_ids": [
+          "box-continuous"
+        ]
+      },
+      "separate": {
+        "object_names": [
+          "Box_Separate_Body",
+          "Box_Separate_Plate"
+        ],
+        "object_count": 2,
+        "connected_component_count": 2,
+        "vertex_count": 16,
+        "face_count": 12,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.400000095367432,
+          3.0,
+          3.0
+        ],
+        "component_policies": [
+          "SEPARATE_COMPONENTS"
+        ],
+        "candidate_ids": [
+          "box-separate"
+        ]
+      }
+    },
+    "radial": {
+      "target": {
+        "object_names": [
+          "Radial_Target_Truth"
+        ],
+        "object_count": 1,
+        "connected_component_count": 1,
+        "vertex_count": 32,
+        "face_count": 18,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.0,
+          3.000000238418579,
+          4.0
+        ],
+        "component_policies": [
+          "CONTINUOUS_MESH"
+        ],
+        "candidate_ids": [
+          "target"
+        ]
+      },
+      "continuous": {
+        "object_names": [
+          "Radial_Continuous"
+        ],
+        "object_count": 1,
+        "connected_component_count": 1,
+        "vertex_count": 32,
+        "face_count": 18,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.0,
+          3.000000238418579,
+          4.0
+        ],
+        "component_policies": [
+          "CONTINUOUS_MESH"
+        ],
+        "candidate_ids": [
+          "radial-continuous"
+        ]
+      },
+      "separate": {
+        "object_names": [
+          "Radial_Separate_Body",
+          "Radial_Separate_Plate"
+        ],
+        "object_count": 2,
+        "connected_component_count": 2,
+        "vertex_count": 64,
+        "face_count": 36,
+        "modifier_count": 0,
+        "dimensions_xyz": [
+          4.0,
+          3.0000001192092896,
+          4.0
+        ],
+        "component_policies": [
+          "SEPARATE_COMPONENTS"
+        ],
+        "candidate_ids": [
+          "radial-separate"
+        ]
+      }
+    }
+  },
+  "renders": [
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2539,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Box_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.1791,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "front",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2145,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2103,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.2103,
+      "retained": false
+    },
+    {
+      "output_path": null,
+      "view": "top",
+      "resolution": 384,
+      "frame_objects": [
+        "Radial_Target_Truth"
+      ],
+      "silhouette_fill_ratio": 0.1467,
+      "retained": false
+    }
+  ],
+  "mask_hash_matches": {
+    "box": {
+      "front": {
+        "target": true,
+        "continuous": true,
+        "separate": true
+      },
+      "top": {
+        "target": true,
+        "continuous": true,
+        "separate": true
+      }
+    },
+    "radial": {
+      "front": {
+        "target": true,
+        "continuous": true,
+        "separate": true
+      },
+      "top": {
+        "target": true,
+        "continuous": true,
+        "separate": true
+      }
+    }
+  },
+  "checks": {
+    "exact_mesh_object_set": true,
+    "expected_collections_present": true,
+    "scene_contract_bound": true,
+    "continuous_candidates_one_object": true,
+    "continuous_candidates_one_connected_component": true,
+    "separate_candidates_two_objects": true,
+    "separate_candidates_two_connected_components": true,
+    "no_fixture_modifiers": true,
+    "all_renders_completed": true,
+    "all_mask_hashes_reproduced": true
+  },
+  "pass": true
+}

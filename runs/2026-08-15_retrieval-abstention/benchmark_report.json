@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 16,
+  "case_count": 18,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -628,6 +628,78 @@
             "runtime_success": 0.0,
             "version_relevance": 0.0
           }
+        },
+        {
+          "skill_id": "reference.secondary_view_component_strategy",
+          "score": 4.1755,
+          "score_breakdown": {
+            "query": 1.8974,
+            "modeling_stage": 1.7678,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.5103,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "secondary_view_component_depth",
+      "kind": "positive",
+      "context": {
+        "query": "front silhouette ties but top view reveals shallow separate faceplate",
+        "modeling_stage": "REFERENCE_ANALYSIS",
+        "workflow": "secondary-view component depth reconstruction",
+        "surface_type": null,
+        "defect": null,
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": "primary-view ambiguity about continuity and component depth",
+        "blender_version": null
+      },
+      "expected_top_skill": "reference.secondary_view_component_strategy",
+      "actual_top_skill": "reference.secondary_view_component_strategy",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 7.0754,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "reference.secondary_view_component_strategy",
+          "score": 14.0769,
+          "score_breakdown": {
+            "query": 4.7434,
+            "modeling_stage": 1.7678,
+            "workflow": 4.4721,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 3.0936,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "reference.question-driven-targeted-research",
+          "score": 7.0015,
+          "score_breakdown": {
+            "query": 1.8974,
+            "modeling_stage": 1.7678,
+            "workflow": 0.8944,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.4419,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
         }
       ]
     },
@@ -666,6 +738,29 @@
         "local_topology": [],
         "modifiers": [],
         "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": null,
+      "actual_top_skill": null,
+      "minimum_top_margin": 0.0,
+      "actual_top_margin": null,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": []
+    },
+    {
+      "case_id": "abstain_reference_material_boundary",
+      "kind": "abstention",
+      "context": {
+        "query": "front panel paint color differs from housing",
+        "modeling_stage": null,
+        "workflow": "reference modeling",
+        "surface_type": null,
+        "defect": null,
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": "material color boundary without depth evidence",
         "blender_version": null
       },
       "expected_top_skill": null,

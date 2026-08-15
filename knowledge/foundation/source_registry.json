@@ -2445,5 +2445,32 @@
         "The equal-budget modeling comparison and cross-target transfer remain unrun"
       ]
     }
+  },
+  {
+    "id": "experiment-secondary-view-component-strategy-2026-08-15",
+    "url": null,
+    "local_path": "runs/2026-08-15_secondary-view-component-strategy/",
+    "title": "Secondary-View Component Depth and Continuity Strategy",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["reference-interpretation", "multi-view", "component-depth", "continuous-topology", "strategy-selection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "solid_render", "component_mask", "silhouette_mask", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-15_secondary-view-component-strategy/"],
+      "direct_observations": [
+        "Continuous and separate-faceplate candidates both reached 1.0 front IoU in rectangular and radial families",
+        "The top view reduced separate-candidate IoU to 0.711577 and 0.695574 while continuous candidates remained 1.0",
+        "The planner researched with primary-only evidence and selected CONTINUOUS_MESH after secondary evidence"
+      ],
+      "limitations": [
+        "Synthetic controlled geometry rather than photographic inference",
+        "No real-prop typed transaction or human fidelity review"
+      ]
+    }
   }
 ]
