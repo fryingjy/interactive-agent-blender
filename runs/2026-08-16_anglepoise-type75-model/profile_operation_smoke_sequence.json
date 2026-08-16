@@ -1,0 +1,21 @@
+[
+  {
+    "label": "create_profile_smoke",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "ProfileSmoke",
+      "segments": 12,
+      "profile": [[1.0, 0.0], [1.0, 1.0], [0.8, 1.0], [0.8, 0.0]]
+    }
+  },
+  {
+    "label": "inspect_profile_smoke",
+    "command": "get_full_state",
+    "params": {"name": "ProfileSmoke"}
+  },
+  {
+    "label": "inspect_profile_smoke_evaluated",
+    "command": "get_evaluated_state",
+    "params": {"name": "ProfileSmoke"}
+  }
+]

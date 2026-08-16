@@ -1,0 +1,1034 @@
+[
+  {
+    "label": "convert_left_spring_to_editable_mesh",
+    "command": "convert_curve_to_mesh",
+    "params": {
+      "name": "Type75_LowerSpring_Left_HIGH",
+      "merge_dist": 0.0001,
+      "replace_source": true
+    }
+  },
+  {
+    "label": "convert_right_spring_to_editable_mesh",
+    "command": "convert_curve_to_mesh",
+    "params": {
+      "name": "Type75_LowerSpring_Right_HIGH",
+      "merge_dist": 0.0001,
+      "replace_source": true
+    }
+  },
+  {
+    "label": "create_center_spring",
+    "command": "create_curve",
+    "params": {
+      "name": "Type75_LowerSpring_Center_HIGH",
+      "points": [
+        [
+          -0.05,
+          0.18,
+          3.35
+        ],
+        [
+          -0.14463,
+          0.12728,
+          3.44517
+        ],
+        [
+          -0.17263,
+          0,
+          3.50687
+        ],
+        [
+          -0.10641,
+          -0.12728,
+          3.52124
+        ],
+        [
+          0.02643,
+          -0.18,
+          3.50214
+        ],
+        [
+          0.15927,
+          -0.12728,
+          3.48304
+        ],
+        [
+          0.22549,
+          0,
+          3.49741
+        ],
+        [
+          0.19749,
+          0.12728,
+          3.55912
+        ],
+        [
+          0.10286,
+          0.18,
+          3.65429
+        ],
+        [
+          0.00823,
+          0.12728,
+          3.74946
+        ],
+        [
+          -0.01977,
+          0,
+          3.81116
+        ],
+        [
+          0.04644,
+          -0.12728,
+          3.82553
+        ],
+        [
+          0.17929,
+          -0.18,
+          3.80643
+        ],
+        [
+          0.31213,
+          -0.12728,
+          3.78733
+        ],
+        [
+          0.37835,
+          0,
+          3.8017
+        ],
+        [
+          0.35034,
+          0.12728,
+          3.8634
+        ],
+        [
+          0.25571,
+          0.18,
+          3.95857
+        ],
+        [
+          0.16109,
+          0.12728,
+          4.05374
+        ],
+        [
+          0.13308,
+          0,
+          4.11544
+        ],
+        [
+          0.1993,
+          -0.12728,
+          4.12981
+        ],
+        [
+          0.33214,
+          -0.18,
+          4.11071
+        ],
+        [
+          0.46499,
+          -0.12728,
+          4.09162
+        ],
+        [
+          0.5312,
+          0,
+          4.10599
+        ],
+        [
+          0.5032,
+          0.12728,
+          4.16769
+        ],
+        [
+          0.40857,
+          0.18,
+          4.26286
+        ],
+        [
+          0.31394,
+          0.12728,
+          4.35803
+        ],
+        [
+          0.28594,
+          0,
+          4.41973
+        ],
+        [
+          0.35216,
+          -0.12728,
+          4.4341
+        ],
+        [
+          0.485,
+          -0.18,
+          4.415
+        ],
+        [
+          0.61784,
+          -0.12728,
+          4.3959
+        ],
+        [
+          0.68406,
+          0,
+          4.41027
+        ],
+        [
+          0.65606,
+          0.12728,
+          4.47197
+        ],
+        [
+          0.56143,
+          0.18,
+          4.56714
+        ],
+        [
+          0.4668,
+          0.12728,
+          4.66231
+        ],
+        [
+          0.4388,
+          0,
+          4.72401
+        ],
+        [
+          0.50501,
+          -0.12728,
+          4.73838
+        ],
+        [
+          0.63786,
+          -0.18,
+          4.71929
+        ],
+        [
+          0.7707,
+          -0.12728,
+          4.70019
+        ],
+        [
+          0.83692,
+          0,
+          4.71456
+        ],
+        [
+          0.80891,
+          0.12728,
+          4.77626
+        ],
+        [
+          0.71429,
+          0.18,
+          4.87143
+        ],
+        [
+          0.61966,
+          0.12728,
+          4.9666
+        ],
+        [
+          0.59165,
+          0,
+          5.0283
+        ],
+        [
+          0.65787,
+          -0.12728,
+          5.04267
+        ],
+        [
+          0.79071,
+          -0.18,
+          5.02357
+        ],
+        [
+          0.92356,
+          -0.12728,
+          5.00447
+        ],
+        [
+          0.98977,
+          0,
+          5.01884
+        ],
+        [
+          0.96177,
+          0.12728,
+          5.08054
+        ],
+        [
+          0.86714,
+          0.18,
+          5.17571
+        ],
+        [
+          0.77251,
+          0.12728,
+          5.27088
+        ],
+        [
+          0.74451,
+          0,
+          5.33259
+        ],
+        [
+          0.81073,
+          -0.12728,
+          5.34696
+        ],
+        [
+          0.94357,
+          -0.18,
+          5.32786
+        ],
+        [
+          1.07641,
+          -0.12728,
+          5.30876
+        ],
+        [
+          1.14263,
+          0,
+          5.32313
+        ],
+        [
+          1.11463,
+          0.12728,
+          5.38483
+        ],
+        [
+          1.02,
+          0.18,
+          5.48
+        ]
+      ],
+      "bevel_depth": 0.055,
+      "closed": false,
+      "curve_type": "POLY"
+    }
+  },
+  {
+    "label": "convert_center_spring_to_editable_mesh",
+    "command": "convert_curve_to_mesh",
+    "params": {
+      "name": "Type75_LowerSpring_Center_HIGH",
+      "merge_dist": 0.0001,
+      "replace_source": true
+    }
+  },
+  {
+    "label": "create_elbow_tension_loop",
+    "command": "create_curve",
+    "params": {
+      "name": "Type75_ElbowTensionLoop_HIGH",
+      "points": [
+        [
+          6.55,
+          0.66,
+          14.65
+        ],
+        [
+          6.85,
+          0.66,
+          15.02
+        ],
+        [
+          7.35,
+          0.66,
+          15.28
+        ],
+        [
+          7.85,
+          0.66,
+          15.1
+        ],
+        [
+          8.08,
+          0.66,
+          14.7
+        ],
+        [
+          7.95,
+          0.66,
+          14.25
+        ],
+        [
+          7.52,
+          0.66,
+          13.95
+        ],
+        [
+          7.02,
+          0.66,
+          13.92
+        ]
+      ],
+      "bevel_depth": 0.075,
+      "closed": false,
+      "curve_type": "NURBS"
+    }
+  },
+  {
+    "label": "convert_elbow_tension_loop",
+    "command": "convert_curve_to_mesh",
+    "params": {
+      "name": "Type75_ElbowTensionLoop_HIGH",
+      "merge_dist": 0.0001,
+      "replace_source": true
+    }
+  },
+  {
+    "label": "create_connected_shade_cap",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "Type75_ShadeCap_HIGH",
+      "segments": 16,
+      "profile": [
+        [
+          0.9,
+          3.7
+        ],
+        [
+          0.92,
+          3.78
+        ],
+        [
+          0.82,
+          3.88
+        ],
+        [
+          0.36,
+          3.91
+        ],
+        [
+          0.12,
+          3.88
+        ],
+        [
+          0.12,
+          3.72
+        ]
+      ]
+    }
+  },
+  {
+    "label": "tilt_shade_cap",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "align_shade_cap_to_shade_axis",
+      "operation": "rotate_selection",
+      "params": {
+        "angle": 0.14,
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "label": "position_shade_cap",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "seat_shade_cap_in_neck",
+      "operation": "move_selection",
+      "params": {
+        "delta": [
+          -5.4,
+          0,
+          16.8
+        ]
+      }
+    }
+  },
+  {
+    "label": "create_shade_switch",
+    "command": "create_primitive",
+    "params": {
+      "name": "Type75_ShadeSwitch_HIGH",
+      "primitive_type": "cylinder",
+      "location": [
+        -4.855,
+        0,
+        20.67
+      ],
+      "radius": 0.34,
+      "depth": 0.16,
+      "vertices": 16
+    }
+  },
+  {
+    "label": "tilt_shade_switch",
+    "transaction": {
+      "name": "Type75_ShadeSwitch_HIGH",
+      "action_type": "align_switch_to_shade_axis",
+      "operation": "rotate_selection",
+      "params": {
+        "angle": 0.14,
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "label": "create_shade_diffuser",
+    "command": "create_primitive",
+    "params": {
+      "name": "Type75_Diffuser_HIGH",
+      "primitive_type": "cylinder",
+      "location": [
+        -5.892,
+        0,
+        13.304
+      ],
+      "radius": 2.66,
+      "depth": 0.12,
+      "vertices": 16
+    }
+  },
+  {
+    "label": "tilt_shade_diffuser",
+    "transaction": {
+      "name": "Type75_Diffuser_HIGH",
+      "action_type": "align_diffuser_to_shade_opening",
+      "operation": "rotate_selection",
+      "params": {
+        "angle": 0.14,
+        "axis": [
+          0,
+          1,
+          0
+        ],
+        "center": [
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  {
+    "label": "subdivide_shade_cap",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "add_live_shade_cap_subdivision",
+      "operation": "add_modifier",
+      "params": {
+        "modifier_type": "SUBSURF",
+        "modifier_name": "Subdivision"
+      }
+    }
+  },
+  {
+    "label": "set_shade_cap_subdivision",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "set_shade_cap_subdivision",
+      "operation": "set_modifier_parameter",
+      "params": {
+        "modifier_name": "Subdivision",
+        "parameter": "levels",
+        "value": 1
+      }
+    }
+  },
+  {
+    "label": "smooth_shade_cap",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "smooth_formed_shade_cap",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "record_shade_cap_smooth_intent",
+    "transaction": {
+      "name": "Type75_ShadeCap_HIGH",
+      "action_type": "record_continuous_shade_cap",
+      "operation": "mark_no_sharp_edges_needed",
+      "params": {
+        "reason": "Shallow formed cap uses profile curvature and SubD; no semantic knife edge is intended."
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_ElbowPin_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowPin_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_ElbowPin_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowPin_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_BasePivotPin_HIGH",
+    "transaction": {
+      "name": "Type75_BasePivotPin_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_BasePivotPin_HIGH",
+    "transaction": {
+      "name": "Type75_BasePivotPin_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_ShadePivotPin_HIGH",
+    "transaction": {
+      "name": "Type75_ShadePivotPin_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_ShadePivotPin_HIGH",
+    "transaction": {
+      "name": "Type75_ShadePivotPin_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_ElbowWasher_Left_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowWasher_Left_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_ElbowWasher_Left_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowWasher_Left_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_ElbowWasher_Right_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowWasher_Right_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_ElbowWasher_Right_HIGH",
+    "transaction": {
+      "name": "Type75_ElbowWasher_Right_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_ShadeSwitch_HIGH",
+    "transaction": {
+      "name": "Type75_ShadeSwitch_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_ShadeSwitch_HIGH",
+    "transaction": {
+      "name": "Type75_ShadeSwitch_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "bevel_Type75_Diffuser_HIGH",
+    "transaction": {
+      "name": "Type75_Diffuser_HIGH",
+      "action_type": "add_physical_machined_edge_radius",
+      "operation": "set_bevel_scoping",
+      "params": {
+        "method": "ANGLE",
+        "angle_deg": 35,
+        "width": 0.045,
+        "segments": 2
+      }
+    }
+  },
+  {
+    "label": "smooth_Type75_Diffuser_HIGH",
+    "transaction": {
+      "name": "Type75_Diffuser_HIGH",
+      "action_type": "apply_machined_part_smooth_by_angle",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      }
+    }
+  },
+  {
+    "label": "capture_component_coverage_and_advance",
+    "advance_with_component_coverage": {
+      "name": "Type75_Base_HIGH",
+      "stage": "PROPORTION_SILHOUETTE",
+      "dimensions_checked": true,
+      "primary_components_present": true,
+      "decomposition": {
+        "object_name": "Anglepoise Type 75 Desk Lamp",
+        "components": [
+          {
+            "name": "Type75_Base_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_Shank_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerYoke_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerArm_Left_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerArm_Right_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_UpperArm_Left_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_UpperArm_Right_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_Shade_HIGH",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_BasePivotPin_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_ElbowPin_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_ShadePivotPlate_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_ShadePivotPin_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerSpring_Left_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerSpring_Right_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_LowerSpring_Center_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_ShadeCap_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_ShadeSwitch_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          },
+          {
+            "name": "Type75_Diffuser_HIGH",
+            "role": "secondary",
+            "manufacture": "structural",
+            "separately_manufactured": true
+          }
+        ],
+        "relationships": []
+      }
+    }
+  },
+  {
+    "label": "inspect_center_spring",
+    "command": "get_full_state",
+    "params": {
+      "name": "Type75_LowerSpring_Center_HIGH"
+    }
+  },
+  {
+    "label": "inspect_shade_cap",
+    "command": "get_full_state",
+    "params": {
+      "name": "Type75_ShadeCap_HIGH"
+    }
+  },
+  {
+    "label": "render_secondary_side",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": [
+        "Type75_Base_HIGH",
+        "Type75_Shank_HIGH",
+        "Type75_LowerYoke_HIGH",
+        "Type75_LowerArm_Left_HIGH",
+        "Type75_LowerArm_Right_HIGH",
+        "Type75_UpperArm_Left_HIGH",
+        "Type75_UpperArm_Right_HIGH",
+        "Type75_ElbowPin_HIGH",
+        "Type75_Shade_HIGH",
+        "Type75_BasePivotPin_HIGH",
+        "Type75_ShadePivotPlate_HIGH",
+        "Type75_ShadePivotPin_HIGH",
+        "Type75_ElbowWasher_Left_HIGH",
+        "Type75_ElbowWasher_Right_HIGH",
+        "Type75_LowerSpring_Left_HIGH",
+        "Type75_LowerSpring_Right_HIGH",
+        "Type75_LowerSpring_Center_HIGH",
+        "Type75_ElbowTensionLoop_HIGH",
+        "Type75_ShadeCap_HIGH",
+        "Type75_ShadeSwitch_HIGH",
+        "Type75_Diffuser_HIGH"
+      ],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_03_side_matcap.png",
+      "pass_type": "matcap",
+      "view": "front",
+      "resolution": 1000,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_secondary_front",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": [
+        "Type75_Base_HIGH",
+        "Type75_Shank_HIGH",
+        "Type75_LowerYoke_HIGH",
+        "Type75_LowerArm_Left_HIGH",
+        "Type75_LowerArm_Right_HIGH",
+        "Type75_UpperArm_Left_HIGH",
+        "Type75_UpperArm_Right_HIGH",
+        "Type75_ElbowPin_HIGH",
+        "Type75_Shade_HIGH",
+        "Type75_BasePivotPin_HIGH",
+        "Type75_ShadePivotPlate_HIGH",
+        "Type75_ShadePivotPin_HIGH",
+        "Type75_ElbowWasher_Left_HIGH",
+        "Type75_ElbowWasher_Right_HIGH",
+        "Type75_LowerSpring_Left_HIGH",
+        "Type75_LowerSpring_Right_HIGH",
+        "Type75_LowerSpring_Center_HIGH",
+        "Type75_ElbowTensionLoop_HIGH",
+        "Type75_ShadeCap_HIGH",
+        "Type75_ShadeSwitch_HIGH",
+        "Type75_Diffuser_HIGH"
+      ],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_03_front_matcap.png",
+      "pass_type": "matcap",
+      "view": "side",
+      "resolution": 1000,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_secondary_iso",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": [
+        "Type75_Base_HIGH",
+        "Type75_Shank_HIGH",
+        "Type75_LowerYoke_HIGH",
+        "Type75_LowerArm_Left_HIGH",
+        "Type75_LowerArm_Right_HIGH",
+        "Type75_UpperArm_Left_HIGH",
+        "Type75_UpperArm_Right_HIGH",
+        "Type75_ElbowPin_HIGH",
+        "Type75_Shade_HIGH",
+        "Type75_BasePivotPin_HIGH",
+        "Type75_ShadePivotPlate_HIGH",
+        "Type75_ShadePivotPin_HIGH",
+        "Type75_ElbowWasher_Left_HIGH",
+        "Type75_ElbowWasher_Right_HIGH",
+        "Type75_LowerSpring_Left_HIGH",
+        "Type75_LowerSpring_Right_HIGH",
+        "Type75_LowerSpring_Center_HIGH",
+        "Type75_ElbowTensionLoop_HIGH",
+        "Type75_ShadeCap_HIGH",
+        "Type75_ShadeSwitch_HIGH",
+        "Type75_Diffuser_HIGH"
+      ],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_03_iso_matcap.png",
+      "pass_type": "matcap",
+      "view": "isometric",
+      "resolution": 1000,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_secondary_side_wire",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": [
+        "Type75_Base_HIGH",
+        "Type75_Shank_HIGH",
+        "Type75_LowerYoke_HIGH",
+        "Type75_LowerArm_Left_HIGH",
+        "Type75_LowerArm_Right_HIGH",
+        "Type75_UpperArm_Left_HIGH",
+        "Type75_UpperArm_Right_HIGH",
+        "Type75_ElbowPin_HIGH",
+        "Type75_Shade_HIGH",
+        "Type75_BasePivotPin_HIGH",
+        "Type75_ShadePivotPlate_HIGH",
+        "Type75_ShadePivotPin_HIGH",
+        "Type75_ElbowWasher_Left_HIGH",
+        "Type75_ElbowWasher_Right_HIGH",
+        "Type75_LowerSpring_Left_HIGH",
+        "Type75_LowerSpring_Right_HIGH",
+        "Type75_LowerSpring_Center_HIGH",
+        "Type75_ElbowTensionLoop_HIGH",
+        "Type75_ShadeCap_HIGH",
+        "Type75_ShadeSwitch_HIGH",
+        "Type75_Diffuser_HIGH"
+      ],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_03_side_wire.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 1000,
+      "margin": 1.12
+    }
+  }
+]

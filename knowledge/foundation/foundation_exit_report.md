@@ -369,17 +369,20 @@ visual review, exercise the runtime planner throughout, continue
 longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
 character benchmarks remain deferred.
 
-### 2026-08-16 reference-gate status
+### 2026-08-16 active reference-modeling status
 
-The reusable question-driven policy retains typed unknowns, exact searches, candidate decisions,
-and reversible constraints. The active Swingline 747 board has machine-ready current-gallery and
-official-dimension evidence. Exact-variant feature text and the official gallery also support one
-continuous rubberized base pad, while hidden underside detail is explicitly deferred. It remains
-behind independent human reference review and therefore cannot yet authorize a blockout or support
-a held-out modeling claim. The review board now emits the exact decision schema consumed by a
-dedicated recorder; audit and construction-plan digests prevent an approval from silently carrying
-across changed evidence, and approval is limited to a reversible primary blockout. This completes
-the handoff mechanism but does not supply the still-missing human decision.
+Pre-model HTML boards and approval gates are no longer part of the active workflow. The C38 received
+a qualified human stage pass only after broad shell/base Bevel was replaced with live crease-
+controlled SubD; the exact review record explicitly denies final or production approval.
+
+Benchmark prop 3 is now the Slate Grey standard-base Anglepoise Type 75. Five manufacturer evidence
+items cover full and compressed poses, frontal linkage spacing, shade/mount detail, and technical
+dimensions. The audit is `READY_TO_MODEL` with hidden underside/internal hardware deferred rather
+than invented. The resulting typed-runtime candidate uses connected 16-segment quad profile cages
+for base, shank, shade, and cap; box-derived creased arm cages; and separate pins/springs only at
+real assembly boundaries. Twenty-one independent high/low editable pairs are in separate
+collections with live unapplied modifiers, and fresh saved-file verification passes. These are
+editable low-SubD variants, not production retopology, and no human likeness approval is claimed.
 
 While that external gate remains pending, current production evidence was strengthened without
 touching the target. The verified official seam-directed UV episode now has a current Blender 5.2

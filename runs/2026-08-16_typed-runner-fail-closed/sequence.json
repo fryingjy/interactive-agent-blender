@@ -1,0 +1,12 @@
+[
+  {
+    "label": "missing_object_must_fail",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "AbsentObject",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_typed-runner-fail-closed/should_not_exist.png",
+      "pass_type": "solid",
+      "view": "front"
+    }
+  }
+]

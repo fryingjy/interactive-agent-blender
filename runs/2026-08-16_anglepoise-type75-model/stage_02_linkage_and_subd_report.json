@@ -1,0 +1,5185 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_anglepoise-type75-model\\stage_02_linkage_and_subd_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_anglepoise-type75-model\\type75_stage_01_primary_envelope.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_anglepoise-type75-model\\type75_stage_02_linkage_and_subd.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "40f90fa815fa",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_base_pivot_pin",
+      "command": "create_primitive",
+      "params": {
+        "name": "Type75_BasePivotPin_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          0,
+          4.3
+        ],
+        "radius": 0.32,
+        "depth": 1.55,
+        "vertices": 12
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_BasePivotPin_HIGH",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          4.300000190734863
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "orient_base_pivot_pin",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_BasePivotPin_HIGH",
+        "action_type": "orient_base_pivot_pin_transverse",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.5707963267948966,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_12_1786905065616",
+          "observed_revision": 12
+        },
+        "perform": {
+          "decision_id": "dec_12_1786905065616",
+          "performed": true,
+          "result": 24
+        },
+        "verify": {
+          "action_type": "orient_base_pivot_pin_transverse",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_12_1786905065616",
+          "result_revision": 13
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_shade_pivot_plate",
+      "command": "create_primitive",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "primitive_type": "cube",
+        "location": [
+          -4.15,
+          0,
+          17
+        ],
+        "size": 2
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "type": "MESH",
+        "location": [
+          -4.150000095367432,
+          0.0,
+          17.0
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "label": "shape_shade_pivot_plate",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "shape_shade_mount_plate",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            0.48,
+            0.63,
+            0.68
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_13_1786905065622",
+          "observed_revision": 13
+        },
+        "perform": {
+          "decision_id": "dec_13_1786905065622",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "shape_shade_mount_plate",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_13_1786905065622",
+          "result_revision": 14
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "tilt_shade_pivot_plate",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "align_shade_mount_plate",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 0.14,
+          "axis": [
+            0,
+            1,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_14_1786905065624",
+          "observed_revision": 14
+        },
+        "perform": {
+          "decision_id": "dec_14_1786905065624",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "align_shade_mount_plate",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_14_1786905065624",
+          "result_revision": 15
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "create_shade_pivot_pin",
+      "command": "create_primitive",
+      "params": {
+        "name": "Type75_ShadePivotPin_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          -4.15,
+          0,
+          17
+        ],
+        "radius": 0.34,
+        "depth": 1.48,
+        "vertices": 12
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_ShadePivotPin_HIGH",
+        "type": "MESH",
+        "location": [
+          -4.150000095367432,
+          0.0,
+          17.0
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "label": "orient_shade_pivot_pin",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPin_HIGH",
+        "action_type": "orient_shade_pivot_pin_transverse",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.5707963267948966,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_15_1786905065629",
+          "observed_revision": 15
+        },
+        "perform": {
+          "decision_id": "dec_15_1786905065629",
+          "performed": true,
+          "result": 24
+        },
+        "verify": {
+          "action_type": "orient_shade_pivot_pin_transverse",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_15_1786905065629",
+          "result_revision": 16
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "create_elbow_washer_left",
+      "command": "create_primitive",
+      "params": {
+        "name": "Type75_ElbowWasher_Left_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          7.3,
+          -0.73,
+          14.3
+        ],
+        "radius": 0.48,
+        "depth": 0.12,
+        "vertices": 12
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_ElbowWasher_Left_HIGH",
+        "type": "MESH",
+        "location": [
+          7.300000190734863,
+          -0.7300000190734863,
+          14.300000190734863
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "label": "orient_elbow_washer_left",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ElbowWasher_Left_HIGH",
+        "action_type": "orient_elbow_washer",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.5707963267948966,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_16_1786905065636",
+          "observed_revision": 16
+        },
+        "perform": {
+          "decision_id": "dec_16_1786905065636",
+          "performed": true,
+          "result": 24
+        },
+        "verify": {
+          "action_type": "orient_elbow_washer",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_16_1786905065636",
+          "result_revision": 17
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "create_elbow_washer_right",
+      "command": "create_primitive",
+      "params": {
+        "name": "Type75_ElbowWasher_Right_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          7.3,
+          0.73,
+          14.3
+        ],
+        "radius": 0.48,
+        "depth": 0.12,
+        "vertices": 12
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_ElbowWasher_Right_HIGH",
+        "type": "MESH",
+        "location": [
+          7.300000190734863,
+          0.7300000190734863,
+          14.300000190734863
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "label": "orient_elbow_washer_right",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ElbowWasher_Right_HIGH",
+        "action_type": "orient_elbow_washer",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.5707963267948966,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_17_1786905065646",
+          "observed_revision": 17
+        },
+        "perform": {
+          "decision_id": "dec_17_1786905065646",
+          "performed": true,
+          "result": 24
+        },
+        "verify": {
+          "action_type": "orient_elbow_washer",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_17_1786905065646",
+          "result_revision": 18
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "create_lower_spring_left",
+      "command": "create_curve",
+      "params": {
+        "name": "Type75_LowerSpring_Left_HIGH",
+        "points": [
+          [
+            -0.26,
+            -0.52,
+            3.25
+          ],
+          [
+            -0.36556,
+            -0.57858,
+            3.35476
+          ],
+          [
+            -0.39715,
+            -0.72,
+            3.42221
+          ],
+          [
+            -0.32413,
+            -0.86142,
+            3.4369
+          ],
+          [
+            -0.17714,
+            -0.92,
+            3.41429
+          ],
+          [
+            -0.03016,
+            -0.86142,
+            3.39167
+          ],
+          [
+            0.04286,
+            -0.72,
+            3.40637
+          ],
+          [
+            0.01127,
+            -0.57858,
+            3.47382
+          ],
+          [
+            -0.09429,
+            -0.52,
+            3.57857
+          ],
+          [
+            -0.19984,
+            -0.57858,
+            3.68333
+          ],
+          [
+            -0.23143,
+            -0.72,
+            3.75078
+          ],
+          [
+            -0.15841,
+            -0.86142,
+            3.76547
+          ],
+          [
+            -0.01143,
+            -0.92,
+            3.74286
+          ],
+          [
+            0.13556,
+            -0.86142,
+            3.72024
+          ],
+          [
+            0.20857,
+            -0.72,
+            3.73494
+          ],
+          [
+            0.17699,
+            -0.57858,
+            3.80239
+          ],
+          [
+            0.07143,
+            -0.52,
+            3.90714
+          ],
+          [
+            -0.03413,
+            -0.57858,
+            4.0119
+          ],
+          [
+            -0.06572,
+            -0.72,
+            4.07935
+          ],
+          [
+            0.0073,
+            -0.86142,
+            4.09404
+          ],
+          [
+            0.15429,
+            -0.92,
+            4.07143
+          ],
+          [
+            0.30127,
+            -0.86142,
+            4.04882
+          ],
+          [
+            0.37429,
+            -0.72,
+            4.06351
+          ],
+          [
+            0.3427,
+            -0.57858,
+            4.13096
+          ],
+          [
+            0.23714,
+            -0.52,
+            4.23571
+          ],
+          [
+            0.13159,
+            -0.57858,
+            4.34047
+          ],
+          [
+            0.1,
+            -0.72,
+            4.40792
+          ],
+          [
+            0.17301,
+            -0.86142,
+            4.42261
+          ],
+          [
+            0.32,
+            -0.92,
+            4.4
+          ],
+          [
+            0.46699,
+            -0.86142,
+            4.37739
+          ],
+          [
+            0.54,
+            -0.72,
+            4.39208
+          ],
+          [
+            0.50841,
+            -0.57858,
+            4.45953
+          ],
+          [
+            0.40286,
+            -0.52,
+            4.56429
+          ],
+          [
+            0.2973,
+            -0.57858,
+            4.66904
+          ],
+          [
+            0.26571,
+            -0.72,
+            4.73649
+          ],
+          [
+            0.33873,
+            -0.86142,
+            4.75118
+          ],
+          [
+            0.48571,
+            -0.92,
+            4.72857
+          ],
+          [
+            0.6327,
+            -0.86142,
+            4.70596
+          ],
+          [
+            0.70572,
+            -0.72,
+            4.72065
+          ],
+          [
+            0.67413,
+            -0.57858,
+            4.7881
+          ],
+          [
+            0.56857,
+            -0.52,
+            4.89286
+          ],
+          [
+            0.46301,
+            -0.57858,
+            4.99761
+          ],
+          [
+            0.43143,
+            -0.72,
+            5.06506
+          ],
+          [
+            0.50444,
+            -0.86142,
+            5.07976
+          ],
+          [
+            0.65143,
+            -0.92,
+            5.05714
+          ],
+          [
+            0.79841,
+            -0.86142,
+            5.03453
+          ],
+          [
+            0.87143,
+            -0.72,
+            5.04922
+          ],
+          [
+            0.83984,
+            -0.57858,
+            5.11667
+          ],
+          [
+            0.73429,
+            -0.52,
+            5.22143
+          ],
+          [
+            0.62873,
+            -0.57858,
+            5.32618
+          ],
+          [
+            0.59714,
+            -0.72,
+            5.39363
+          ],
+          [
+            0.67016,
+            -0.86142,
+            5.40833
+          ],
+          [
+            0.81714,
+            -0.92,
+            5.38571
+          ],
+          [
+            0.96413,
+            -0.86142,
+            5.3631
+          ],
+          [
+            1.03715,
+            -0.72,
+            5.37779
+          ],
+          [
+            1.00556,
+            -0.57858,
+            5.44524
+          ],
+          [
+            0.9,
+            -0.52,
+            5.55
+          ]
+        ],
+        "bevel_depth": 0.065,
+        "closed": false,
+        "curve_type": "POLY"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_LowerSpring_Left_HIGH",
+        "type": "CURVE",
+        "point_count": 57,
+        "bevel_depth": 0.065
+      }
+    },
+    {
+      "index": 12,
+      "label": "create_lower_spring_right",
+      "command": "create_curve",
+      "params": {
+        "name": "Type75_LowerSpring_Right_HIGH",
+        "points": [
+          [
+            -0.26,
+            0.92,
+            3.25
+          ],
+          [
+            -0.36556,
+            0.86142,
+            3.35476
+          ],
+          [
+            -0.39715,
+            0.72,
+            3.42221
+          ],
+          [
+            -0.32413,
+            0.57858,
+            3.4369
+          ],
+          [
+            -0.17714,
+            0.52,
+            3.41429
+          ],
+          [
+            -0.03016,
+            0.57858,
+            3.39167
+          ],
+          [
+            0.04286,
+            0.72,
+            3.40637
+          ],
+          [
+            0.01127,
+            0.86142,
+            3.47382
+          ],
+          [
+            -0.09429,
+            0.92,
+            3.57857
+          ],
+          [
+            -0.19984,
+            0.86142,
+            3.68333
+          ],
+          [
+            -0.23143,
+            0.72,
+            3.75078
+          ],
+          [
+            -0.15841,
+            0.57858,
+            3.76547
+          ],
+          [
+            -0.01143,
+            0.52,
+            3.74286
+          ],
+          [
+            0.13556,
+            0.57858,
+            3.72024
+          ],
+          [
+            0.20857,
+            0.72,
+            3.73494
+          ],
+          [
+            0.17699,
+            0.86142,
+            3.80239
+          ],
+          [
+            0.07143,
+            0.92,
+            3.90714
+          ],
+          [
+            -0.03413,
+            0.86142,
+            4.0119
+          ],
+          [
+            -0.06572,
+            0.72,
+            4.07935
+          ],
+          [
+            0.0073,
+            0.57858,
+            4.09404
+          ],
+          [
+            0.15429,
+            0.52,
+            4.07143
+          ],
+          [
+            0.30127,
+            0.57858,
+            4.04882
+          ],
+          [
+            0.37429,
+            0.72,
+            4.06351
+          ],
+          [
+            0.3427,
+            0.86142,
+            4.13096
+          ],
+          [
+            0.23714,
+            0.92,
+            4.23571
+          ],
+          [
+            0.13159,
+            0.86142,
+            4.34047
+          ],
+          [
+            0.1,
+            0.72,
+            4.40792
+          ],
+          [
+            0.17301,
+            0.57858,
+            4.42261
+          ],
+          [
+            0.32,
+            0.52,
+            4.4
+          ],
+          [
+            0.46699,
+            0.57858,
+            4.37739
+          ],
+          [
+            0.54,
+            0.72,
+            4.39208
+          ],
+          [
+            0.50841,
+            0.86142,
+            4.45953
+          ],
+          [
+            0.40286,
+            0.92,
+            4.56429
+          ],
+          [
+            0.2973,
+            0.86142,
+            4.66904
+          ],
+          [
+            0.26571,
+            0.72,
+            4.73649
+          ],
+          [
+            0.33873,
+            0.57858,
+            4.75118
+          ],
+          [
+            0.48571,
+            0.52,
+            4.72857
+          ],
+          [
+            0.6327,
+            0.57858,
+            4.70596
+          ],
+          [
+            0.70572,
+            0.72,
+            4.72065
+          ],
+          [
+            0.67413,
+            0.86142,
+            4.7881
+          ],
+          [
+            0.56857,
+            0.92,
+            4.89286
+          ],
+          [
+            0.46301,
+            0.86142,
+            4.99761
+          ],
+          [
+            0.43143,
+            0.72,
+            5.06506
+          ],
+          [
+            0.50444,
+            0.57858,
+            5.07976
+          ],
+          [
+            0.65143,
+            0.52,
+            5.05714
+          ],
+          [
+            0.79841,
+            0.57858,
+            5.03453
+          ],
+          [
+            0.87143,
+            0.72,
+            5.04922
+          ],
+          [
+            0.83984,
+            0.86142,
+            5.11667
+          ],
+          [
+            0.73429,
+            0.92,
+            5.22143
+          ],
+          [
+            0.62873,
+            0.86142,
+            5.32618
+          ],
+          [
+            0.59714,
+            0.72,
+            5.39363
+          ],
+          [
+            0.67016,
+            0.57858,
+            5.40833
+          ],
+          [
+            0.81714,
+            0.52,
+            5.38571
+          ],
+          [
+            0.96413,
+            0.57858,
+            5.3631
+          ],
+          [
+            1.03715,
+            0.72,
+            5.37779
+          ],
+          [
+            1.00556,
+            0.86142,
+            5.44524
+          ],
+          [
+            0.9,
+            0.92,
+            5.55
+          ]
+        ],
+        "bevel_depth": 0.065,
+        "closed": false,
+        "curve_type": "POLY"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_LowerSpring_Right_HIGH",
+        "type": "CURVE",
+        "point_count": 57,
+        "bevel_depth": 0.065
+      }
+    },
+    {
+      "index": 13,
+      "label": "add_Type75_Base_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Base_HIGH",
+        "action_type": "add_live_subdivision_to_connected_profile",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_18_1786905065657",
+          "observed_revision": 18
+        },
+        "perform": {
+          "decision_id": "dec_18_1786905065657",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_to_connected_profile",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_18_1786905065657",
+          "result_revision": 19
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "set_Type75_Base_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Base_HIGH",
+        "action_type": "set_profile_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_19_1786905065667",
+          "observed_revision": 19
+        },
+        "perform": {
+          "decision_id": "dec_19_1786905065667",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_19_1786905065667",
+          "result_revision": 20
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "set_Type75_Base_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Base_HIGH",
+        "action_type": "set_profile_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_20_1786905065674",
+          "observed_revision": 20
+        },
+        "perform": {
+          "decision_id": "dec_20_1786905065674",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_20_1786905065674",
+          "result_revision": 21
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "smooth_Type75_Base_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Base_HIGH",
+        "action_type": "apply_profile_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_21_1786905065681",
+          "observed_revision": 21
+        },
+        "perform": {
+          "decision_id": "dec_21_1786905065681",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_profile_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_21_1786905065681",
+          "result_revision": 22
+        }
+      }
+    },
+    {
+      "index": 17,
+      "label": "record_Type75_Base_HIGH_smooth_intent",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Base_HIGH",
+        "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+        "operation": "mark_no_sharp_edges_needed",
+        "params": {
+          "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_22_1786905065694",
+          "observed_revision": 22
+        },
+        "perform": {
+          "decision_id": "dec_22_1786905065694",
+          "performed": true,
+          "result": {
+            "name": "Type75_Base_HIGH",
+            "no_sharp_edges_intended": true,
+            "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+          }
+        },
+        "verify": {
+          "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_22_1786905065694",
+          "result_revision": 23
+        }
+      }
+    },
+    {
+      "index": 18,
+      "label": "add_Type75_Shank_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shank_HIGH",
+        "action_type": "add_live_subdivision_to_connected_profile",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_23_1786905065700",
+          "observed_revision": 23
+        },
+        "perform": {
+          "decision_id": "dec_23_1786905065700",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_to_connected_profile",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_23_1786905065700",
+          "result_revision": 24
+        }
+      }
+    },
+    {
+      "index": 19,
+      "label": "set_Type75_Shank_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shank_HIGH",
+        "action_type": "set_profile_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_24_1786905065704",
+          "observed_revision": 24
+        },
+        "perform": {
+          "decision_id": "dec_24_1786905065704",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_24_1786905065704",
+          "result_revision": 25
+        }
+      }
+    },
+    {
+      "index": 20,
+      "label": "set_Type75_Shank_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shank_HIGH",
+        "action_type": "set_profile_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_25_1786905065708",
+          "observed_revision": 25
+        },
+        "perform": {
+          "decision_id": "dec_25_1786905065708",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_25_1786905065708",
+          "result_revision": 26
+        }
+      }
+    },
+    {
+      "index": 21,
+      "label": "smooth_Type75_Shank_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shank_HIGH",
+        "action_type": "apply_profile_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_26_1786905065712",
+          "observed_revision": 26
+        },
+        "perform": {
+          "decision_id": "dec_26_1786905065712",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_profile_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_26_1786905065712",
+          "result_revision": 27
+        }
+      }
+    },
+    {
+      "index": 22,
+      "label": "record_Type75_Shank_HIGH_smooth_intent",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shank_HIGH",
+        "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+        "operation": "mark_no_sharp_edges_needed",
+        "params": {
+          "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_27_1786905065726",
+          "observed_revision": 27
+        },
+        "perform": {
+          "decision_id": "dec_27_1786905065726",
+          "performed": true,
+          "result": {
+            "name": "Type75_Shank_HIGH",
+            "no_sharp_edges_intended": true,
+            "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+          }
+        },
+        "verify": {
+          "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_27_1786905065726",
+          "result_revision": 28
+        }
+      }
+    },
+    {
+      "index": 23,
+      "label": "add_Type75_Shade_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shade_HIGH",
+        "action_type": "add_live_subdivision_to_connected_profile",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_28_1786905065736",
+          "observed_revision": 28
+        },
+        "perform": {
+          "decision_id": "dec_28_1786905065736",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_to_connected_profile",
+          "op_delta": 0,
+          "before": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_28_1786905065736",
+          "result_revision": 29
+        }
+      }
+    },
+    {
+      "index": 24,
+      "label": "set_Type75_Shade_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shade_HIGH",
+        "action_type": "set_profile_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_29_1786905065760",
+          "observed_revision": 29
+        },
+        "perform": {
+          "decision_id": "dec_29_1786905065760",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_29_1786905065760",
+          "result_revision": 30
+        }
+      }
+    },
+    {
+      "index": 25,
+      "label": "set_Type75_Shade_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shade_HIGH",
+        "action_type": "set_profile_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_30_1786905065786",
+          "observed_revision": 30
+        },
+        "perform": {
+          "decision_id": "dec_30_1786905065786",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "set_profile_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_30_1786905065786",
+          "result_revision": 31
+        }
+      }
+    },
+    {
+      "index": 26,
+      "label": "smooth_Type75_Shade_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shade_HIGH",
+        "action_type": "apply_profile_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_31_1786905065802",
+          "observed_revision": 31
+        },
+        "perform": {
+          "decision_id": "dec_31_1786905065802",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_profile_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_31_1786905065802",
+          "result_revision": 32
+        }
+      }
+    },
+    {
+      "index": 27,
+      "label": "record_Type75_Shade_HIGH_smooth_intent",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_Shade_HIGH",
+        "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+        "operation": "mark_no_sharp_edges_needed",
+        "params": {
+          "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_32_1786905065828",
+          "observed_revision": 32
+        },
+        "perform": {
+          "decision_id": "dec_32_1786905065828",
+          "performed": true,
+          "result": {
+            "name": "Type75_Shade_HIGH",
+            "no_sharp_edges_intended": true,
+            "reason": "Continuous formed radial shell; profile loops and live SubD define its curvature without a semantic knife edge."
+          }
+        },
+        "verify": {
+          "action_type": "record_no_semantic_sharp_edges_on_formed_shell",
+          "op_delta": 0,
+          "before": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 336,
+            "edges": 672,
+            "faces": 336,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_32_1786905065828",
+          "result_revision": 33
+        }
+      }
+    },
+    {
+      "index": 28,
+      "label": "crease_Type75_LowerYoke_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerYoke_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_33_1786905065838",
+          "observed_revision": 33
+        },
+        "perform": {
+          "decision_id": "dec_33_1786905065838",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_33_1786905065838",
+          "result_revision": 34
+        }
+      }
+    },
+    {
+      "index": 29,
+      "label": "add_Type75_LowerYoke_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerYoke_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_34_1786905065840",
+          "observed_revision": 34
+        },
+        "perform": {
+          "decision_id": "dec_34_1786905065840",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_34_1786905065840",
+          "result_revision": 35
+        }
+      }
+    },
+    {
+      "index": 30,
+      "label": "set_Type75_LowerYoke_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerYoke_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_35_1786905065841",
+          "observed_revision": 35
+        },
+        "perform": {
+          "decision_id": "dec_35_1786905065841",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_35_1786905065841",
+          "result_revision": 36
+        }
+      }
+    },
+    {
+      "index": 31,
+      "label": "set_Type75_LowerYoke_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerYoke_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_36_1786905065843",
+          "observed_revision": 36
+        },
+        "perform": {
+          "decision_id": "dec_36_1786905065843",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_36_1786905065843",
+          "result_revision": 37
+        }
+      }
+    },
+    {
+      "index": 32,
+      "label": "smooth_Type75_LowerYoke_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerYoke_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_37_1786905065844",
+          "observed_revision": 37
+        },
+        "perform": {
+          "decision_id": "dec_37_1786905065844",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_37_1786905065844",
+          "result_revision": 38
+        }
+      }
+    },
+    {
+      "index": 33,
+      "label": "crease_Type75_LowerArm_Left_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_38_1786905065849",
+          "observed_revision": 38
+        },
+        "perform": {
+          "decision_id": "dec_38_1786905065849",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_38_1786905065849",
+          "result_revision": 39
+        }
+      }
+    },
+    {
+      "index": 34,
+      "label": "add_Type75_LowerArm_Left_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_39_1786905065855",
+          "observed_revision": 39
+        },
+        "perform": {
+          "decision_id": "dec_39_1786905065855",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_39_1786905065855",
+          "result_revision": 40
+        }
+      }
+    },
+    {
+      "index": 35,
+      "label": "set_Type75_LowerArm_Left_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_40_1786905065858",
+          "observed_revision": 40
+        },
+        "perform": {
+          "decision_id": "dec_40_1786905065858",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_40_1786905065858",
+          "result_revision": 41
+        }
+      }
+    },
+    {
+      "index": 36,
+      "label": "set_Type75_LowerArm_Left_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_41_1786905065859",
+          "observed_revision": 41
+        },
+        "perform": {
+          "decision_id": "dec_41_1786905065859",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_41_1786905065859",
+          "result_revision": 42
+        }
+      }
+    },
+    {
+      "index": 37,
+      "label": "smooth_Type75_LowerArm_Left_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_42_1786905065860",
+          "observed_revision": 42
+        },
+        "perform": {
+          "decision_id": "dec_42_1786905065860",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_42_1786905065860",
+          "result_revision": 43
+        }
+      }
+    },
+    {
+      "index": 38,
+      "label": "crease_Type75_LowerArm_Right_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Right_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_43_1786905065865",
+          "observed_revision": 43
+        },
+        "perform": {
+          "decision_id": "dec_43_1786905065865",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_43_1786905065865",
+          "result_revision": 44
+        }
+      }
+    },
+    {
+      "index": 39,
+      "label": "add_Type75_LowerArm_Right_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Right_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_44_1786905065867",
+          "observed_revision": 44
+        },
+        "perform": {
+          "decision_id": "dec_44_1786905065867",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_44_1786905065867",
+          "result_revision": 45
+        }
+      }
+    },
+    {
+      "index": 40,
+      "label": "set_Type75_LowerArm_Right_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Right_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_45_1786905065869",
+          "observed_revision": 45
+        },
+        "perform": {
+          "decision_id": "dec_45_1786905065869",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_45_1786905065869",
+          "result_revision": 46
+        }
+      }
+    },
+    {
+      "index": 41,
+      "label": "set_Type75_LowerArm_Right_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Right_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_46_1786905065872",
+          "observed_revision": 46
+        },
+        "perform": {
+          "decision_id": "dec_46_1786905065872",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_46_1786905065872",
+          "result_revision": 47
+        }
+      }
+    },
+    {
+      "index": 42,
+      "label": "smooth_Type75_LowerArm_Right_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_LowerArm_Right_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_47_1786905065875",
+          "observed_revision": 47
+        },
+        "perform": {
+          "decision_id": "dec_47_1786905065875",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_47_1786905065875",
+          "result_revision": 48
+        }
+      }
+    },
+    {
+      "index": 43,
+      "label": "crease_Type75_UpperArm_Left_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_48_1786905065878",
+          "observed_revision": 48
+        },
+        "perform": {
+          "decision_id": "dec_48_1786905065878",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_48_1786905065878",
+          "result_revision": 49
+        }
+      }
+    },
+    {
+      "index": 44,
+      "label": "add_Type75_UpperArm_Left_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_49_1786905065879",
+          "observed_revision": 49
+        },
+        "perform": {
+          "decision_id": "dec_49_1786905065879",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_49_1786905065879",
+          "result_revision": 50
+        }
+      }
+    },
+    {
+      "index": 45,
+      "label": "set_Type75_UpperArm_Left_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_50_1786905065880",
+          "observed_revision": 50
+        },
+        "perform": {
+          "decision_id": "dec_50_1786905065880",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_50_1786905065880",
+          "result_revision": 51
+        }
+      }
+    },
+    {
+      "index": 46,
+      "label": "set_Type75_UpperArm_Left_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_51_1786905065882",
+          "observed_revision": 51
+        },
+        "perform": {
+          "decision_id": "dec_51_1786905065882",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_51_1786905065882",
+          "result_revision": 52
+        }
+      }
+    },
+    {
+      "index": 47,
+      "label": "smooth_Type75_UpperArm_Left_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_52_1786905065883",
+          "observed_revision": 52
+        },
+        "perform": {
+          "decision_id": "dec_52_1786905065883",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_52_1786905065883",
+          "result_revision": 53
+        }
+      }
+    },
+    {
+      "index": 48,
+      "label": "crease_Type75_UpperArm_Right_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Right_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_53_1786905065890",
+          "observed_revision": 53
+        },
+        "perform": {
+          "decision_id": "dec_53_1786905065890",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_53_1786905065890",
+          "result_revision": 54
+        }
+      }
+    },
+    {
+      "index": 49,
+      "label": "add_Type75_UpperArm_Right_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Right_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_54_1786905065895",
+          "observed_revision": 54
+        },
+        "perform": {
+          "decision_id": "dec_54_1786905065895",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_54_1786905065895",
+          "result_revision": 55
+        }
+      }
+    },
+    {
+      "index": 50,
+      "label": "set_Type75_UpperArm_Right_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Right_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_55_1786905065898",
+          "observed_revision": 55
+        },
+        "perform": {
+          "decision_id": "dec_55_1786905065898",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_55_1786905065898",
+          "result_revision": 56
+        }
+      }
+    },
+    {
+      "index": 51,
+      "label": "set_Type75_UpperArm_Right_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Right_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_56_1786905065900",
+          "observed_revision": 56
+        },
+        "perform": {
+          "decision_id": "dec_56_1786905065900",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_56_1786905065900",
+          "result_revision": 57
+        }
+      }
+    },
+    {
+      "index": 52,
+      "label": "smooth_Type75_UpperArm_Right_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_UpperArm_Right_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_57_1786905065904",
+          "observed_revision": 57
+        },
+        "perform": {
+          "decision_id": "dec_57_1786905065904",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_57_1786905065904",
+          "result_revision": 58
+        }
+      }
+    },
+    {
+      "index": 53,
+      "label": "crease_Type75_ShadePivotPlate_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "retain_box_derived_manufactured_edges_with_crease",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.82,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_58_1786905065908",
+          "observed_revision": 58
+        },
+        "perform": {
+          "decision_id": "dec_58_1786905065908",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.82,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "retain_box_derived_manufactured_edges_with_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_58_1786905065908",
+          "result_revision": 59
+        }
+      }
+    },
+    {
+      "index": 54,
+      "label": "add_Type75_ShadePivotPlate_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "add_live_subdivision_after_crease",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_59_1786905065910",
+          "observed_revision": 59
+        },
+        "perform": {
+          "decision_id": "dec_59_1786905065910",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_live_subdivision_after_crease",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_59_1786905065910",
+          "result_revision": 60
+        }
+      }
+    },
+    {
+      "index": 55,
+      "label": "set_Type75_ShadePivotPlate_HIGH_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "set_box_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_60_1786905065911",
+          "observed_revision": 60
+        },
+        "perform": {
+          "decision_id": "dec_60_1786905065911",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_60_1786905065911",
+          "result_revision": 61
+        }
+      }
+    },
+    {
+      "index": 56,
+      "label": "set_Type75_ShadePivotPlate_HIGH_render_subd",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "set_box_render_subdivision_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_61_1786905065912",
+          "observed_revision": 61
+        },
+        "perform": {
+          "decision_id": "dec_61_1786905065912",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "set_box_render_subdivision_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_61_1786905065912",
+          "result_revision": 62
+        }
+      }
+    },
+    {
+      "index": 57,
+      "label": "smooth_Type75_ShadePivotPlate_HIGH",
+      "command": "transaction",
+      "params": {
+        "name": "Type75_ShadePivotPlate_HIGH",
+        "action_type": "apply_box_smooth_by_angle",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_62_1786905065914",
+          "observed_revision": 62
+        },
+        "perform": {
+          "decision_id": "dec_62_1786905065914",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "apply_box_smooth_by_angle",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_62_1786905065914",
+          "result_revision": 63
+        }
+      }
+    },
+    {
+      "index": 58,
+      "label": "audit_lower_arm_crease",
+      "command": "get_hard_surface_shading_audit",
+      "params": {
+        "name": "Type75_LowerArm_Left_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_LowerArm_Left_HIGH",
+        "status": "REVIEW_REQUIRED",
+        "checks": {
+          "semantic_intent_recorded": false,
+          "semantic_intent_explicitly_declared": false,
+          "semantic_weights_match_intent": false,
+          "weight_limited_bevel_present": false,
+          "angle_or_vgroup_intent_recorded": false,
+          "angle_or_vgroup_intent_matches_actual": false,
+          "crease_intent_recorded": true,
+          "crease_matches_intent": false,
+          "no_sharp_edges_claimed": false,
+          "no_sharp_edges_claim_matches_geometry": false,
+          "bevel_before_subd": false,
+          "smooth_by_angle_recorded": true,
+          "uniform_object_scale": true,
+          "not_unannotated_blanket_smooth": true
+        },
+        "bevel_limit_methods_present": [],
+        "weighted_edge_ids": [],
+        "intended_bevel_edge_ids": [],
+        "bevel_intent_source": "LEGACY_UNSPECIFIED",
+        "missing_weight_edge_ids": [],
+        "unexpected_weight_edge_ids": [],
+        "creased_edge_ids": [],
+        "intended_crease_edge_ids": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "modifier_types": [
+          "SUBSURF"
+        ],
+        "object_scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "warnings": [
+          "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+          "The intent-recorded Bevel must precede Subdivision Surface for this policy."
+        ]
+      }
+    },
+    {
+      "index": 59,
+      "label": "audit_upper_arm_crease",
+      "command": "get_hard_surface_shading_audit",
+      "params": {
+        "name": "Type75_UpperArm_Left_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Type75_UpperArm_Left_HIGH",
+        "status": "REVIEW_REQUIRED",
+        "checks": {
+          "semantic_intent_recorded": false,
+          "semantic_intent_explicitly_declared": false,
+          "semantic_weights_match_intent": false,
+          "weight_limited_bevel_present": false,
+          "angle_or_vgroup_intent_recorded": false,
+          "angle_or_vgroup_intent_matches_actual": false,
+          "crease_intent_recorded": true,
+          "crease_matches_intent": false,
+          "no_sharp_edges_claimed": false,
+          "no_sharp_edges_claim_matches_geometry": false,
+          "bevel_before_subd": false,
+          "smooth_by_angle_recorded": true,
+          "uniform_object_scale": true,
+          "not_unannotated_blanket_smooth": true
+        },
+        "bevel_limit_methods_present": [],
+        "weighted_edge_ids": [],
+        "intended_bevel_edge_ids": [],
+        "bevel_intent_source": "LEGACY_UNSPECIFIED",
+        "missing_weight_edge_ids": [],
+        "unexpected_weight_edge_ids": [],
+        "creased_edge_ids": [],
+        "intended_crease_edge_ids": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "modifier_types": [
+          "SUBSURF"
+        ],
+        "object_scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "warnings": [
+          "No persistent semantic bevel-edge intent is recorded; edge completeness cannot be judged.",
+          "The intent-recorded Bevel must precede Subdivision Surface for this policy."
+        ]
+      }
+    },
+    {
+      "index": 60,
+      "label": "inspect_base_evaluated",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "Type75_Base_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 2048,
+          "edges": 4096,
+          "faces": 2048,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 2048
+        },
+        "surface_quality": {
+          "face_count": 2048,
+          "min_area": 0.0032742,
+          "max_area": 0.151854,
+          "median_area": 0.038729,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 0.738,
+          "angle_samples": 4096
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 2048,
+          "median_edge_length": 0.22681515,
+          "median_absolute_laplacian": 0.03340979,
+          "laplacian_mad": 0.01827444,
+          "max_robust_outlier_z": 3.1905,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 2832,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 17.8615,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            7.8,
+            7.8,
+            0.87
+          ],
+          "evaluated_dimensions": [
+            7.5599,
+            7.5599,
+            0.8427
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9692,
+            0.9692,
+            0.9687
+          ],
+          "base_bounds": {
+            "min": [
+              -3.9,
+              -3.9,
+              0.05
+            ],
+            "max": [
+              3.9,
+              3.9,
+              0.92
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -3.7799,
+              -3.7799,
+              0.068
+            ],
+            "max": [
+              3.7799,
+              3.7799,
+              0.9108
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 61,
+      "label": "inspect_shade_evaluated",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "Type75_Shade_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 5376,
+          "edges": 10752,
+          "faces": 5376,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 5376
+        },
+        "surface_quality": {
+          "face_count": 5376,
+          "min_area": 0.0021541,
+          "max_area": 0.054595,
+          "median_area": 0.029536,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.4577,
+          "angle_samples": 10752
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 5376,
+          "median_edge_length": 0.19289237,
+          "median_absolute_laplacian": 0.02510597,
+          "laplacian_mad": 0.00950696,
+          "max_robust_outlier_z": 2.0289,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 6592,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 15.8432,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            5.8225,
+            5.88,
+            7.958
+          ],
+          "evaluated_dimensions": [
+            5.6442,
+            5.6928,
+            7.8627
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9694,
+            0.9682,
+            0.988
+          ],
+          "base_bounds": {
+            "min": [
+              -8.7996,
+              -2.94,
+              12.7315
+            ],
+            "max": [
+              -2.9772,
+              2.94,
+              20.6895
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -8.7138,
+              -2.8464,
+              12.7978
+            ],
+            "max": [
+              -3.0696,
+              2.8464,
+              20.6605
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 62,
+      "label": "render_mechanism_side",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_side_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_side_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "frame_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "camera_location": [
+          -0.4668858051300049,
+          -54.89063262939453,
+          10.364277839660645
+        ],
+        "camera_ortho_scale": 30.73875459231748,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.0441,
+        "foreground_unique_colors_5bit": 99,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 63,
+      "label": "render_mechanism_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "frame_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "camera_location": [
+          54.42374801635742,
+          0.0,
+          10.364277839660645
+        ],
+        "camera_ortho_scale": 30.73875459231748,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.043037,
+        "foreground_unique_colors_5bit": 95,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 64,
+      "label": "render_mechanism_side_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_side_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_02_side_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "frame_objects": [
+          "Type75_Base_HIGH",
+          "Type75_Shank_HIGH",
+          "Type75_LowerYoke_HIGH",
+          "Type75_LowerArm_Left_HIGH",
+          "Type75_LowerArm_Right_HIGH",
+          "Type75_UpperArm_Left_HIGH",
+          "Type75_UpperArm_Right_HIGH",
+          "Type75_ElbowPin_HIGH",
+          "Type75_Shade_HIGH",
+          "Type75_BasePivotPin_HIGH",
+          "Type75_ShadePivotPlate_HIGH",
+          "Type75_ShadePivotPin_HIGH",
+          "Type75_ElbowWasher_Left_HIGH",
+          "Type75_ElbowWasher_Right_HIGH",
+          "Type75_LowerSpring_Left_HIGH",
+          "Type75_LowerSpring_Right_HIGH"
+        ],
+        "camera_location": [
+          -0.4668858051300049,
+          -54.89063262939453,
+          10.364277839660645
+        ],
+        "camera_ortho_scale": 30.73875459231748,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.033531,
+        "foreground_unique_colors_5bit": 3,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_anglepoise-type75-model\\type75_stage_02_linkage_and_subd.blend"
+  },
+  "pass": true
+}

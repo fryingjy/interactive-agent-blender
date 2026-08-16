@@ -69,8 +69,8 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
     objs = []
     for n in names:
         obj = bpy.data.objects.get(n)
-        if obj is None or obj.type != "MESH":
-            return {"error": f"'{n}' is not a mesh object"}
+        if obj is None or obj.type not in {"MESH", "CURVE"}:
+            return {"error": f"'{n}' is not renderable evaluated geometry"}
         objs.append(obj)
     if view not in _VIEW_VECTORS:
         return {"error": f"view must be one of {sorted(_VIEW_VECTORS)}"}
@@ -79,8 +79,8 @@ def render_silhouette(name, output_path, view="front", resolution=512, margin=1.
     frame_objs = []
     for frame_object_name in frame_names:
         frame_obj = bpy.data.objects.get(frame_object_name)
-        if frame_obj is None or frame_obj.type != "MESH":
-            return {"error": f"frame object '{frame_object_name}' is not a mesh object"}
+        if frame_obj is None or frame_obj.type not in {"MESH", "CURVE"}:
+            return {"error": f"frame object '{frame_object_name}' is not renderable evaluated geometry"}
         frame_objs.append(frame_obj)
 
     bmin = bmax = None
@@ -239,8 +239,8 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
     objs = []
     for object_name in names:
         obj = bpy.data.objects.get(object_name)
-        if obj is None or obj.type != "MESH":
-            return {"error": f"'{object_name}' is not a mesh object"}
+        if obj is None or obj.type not in {"MESH", "CURVE"}:
+            return {"error": f"'{object_name}' is not renderable evaluated geometry"}
         objs.append(obj)
     if view not in _VIEW_VECTORS:
         return {"error": f"view must be one of {sorted(_VIEW_VECTORS)}"}
@@ -248,8 +248,8 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
     frame_objs = []
     for object_name in frame_names:
         obj = bpy.data.objects.get(object_name)
-        if obj is None or obj.type != "MESH":
-            return {"error": f"frame object '{object_name}' is not a mesh object"}
+        if obj is None or obj.type not in {"MESH", "CURVE"}:
+            return {"error": f"frame object '{object_name}' is not renderable evaluated geometry"}
         frame_objs.append(obj)
     bmin = bmax = None
     all_frame_coords = []

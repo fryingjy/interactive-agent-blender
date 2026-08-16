@@ -108,6 +108,8 @@ def main() -> int:
                 params = transaction
             else:
                 result = server._dispatch(command, params)
+            if isinstance(result, dict) and result.get("error"):
+                raise RuntimeError(f"typed command returned an error: {result['error']}")
             results.append({"index": index, "label": label, "command": command, "params": params, "status": "ok", "result": result})
         except Exception as exc:
             success = False

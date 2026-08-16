@@ -1,0 +1,176 @@
+{
+  "target_id": "anglepoise_type75_desk_lamp",
+  "target_variant": "slate_grey_standard_desk_base",
+  "required_views": [
+    "full_side_oblique",
+    "compressed_linkage_oblique",
+    "front_linkage",
+    "shade_rear_detail",
+    "technical_specification"
+  ],
+  "critical_properties": [
+    "overall_envelope",
+    "base_and_shank_profile",
+    "paired_arm_linkage",
+    "pivot_and_spring_layout",
+    "shade_profile_and_mount",
+    "shade_vent_and_switch"
+  ],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 2,
+  "items": [
+    {
+      "reference_id": "type75_slate_full_side",
+      "source_id": "anglepoise_official_cutout_pack",
+      "target_id": "anglepoise_type75_desk_lamp",
+      "target_variant": "slate_grey_standard_desk_base",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "MATERIAL"],
+      "view": "full_side_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_envelope", "purpose": "PRIMARY_FORM", "observation": "The official full-product cut-out establishes the circular weighted base, short vertical shank, two-stage articulated arm, forward shade, and characteristic open triangular negative spaces.", "confidence": "HIGH"},
+        {"property_id": "paired_arm_linkage", "purpose": "CONSTRUCTION", "observation": "The mechanism uses paired flat rectangular bars rather than cylindrical tubes; lower and upper bar pairs meet at pinned yokes and an elbow pivot.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["perspective product cut-out", "one configured pose", "cable overlaps part of the right side"]
+    },
+    {
+      "reference_id": "type75_slate_compressed_linkage",
+      "source_id": "anglepoise_official_cutout_pack",
+      "target_id": "anglepoise_type75_desk_lamp",
+      "target_variant": "slate_grey_standard_desk_base",
+      "purposes": ["CONSTRUCTION", "DETAIL", "PRIMARY_FORM"],
+      "view": "compressed_linkage_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "pivot_and_spring_layout", "purpose": "CONSTRUCTION", "observation": "The compressed official pose exposes the lower yoke, transverse pins, two external lower springs, paired arm spacing, elbow fasteners, and upper cable/tension loop.", "confidence": "HIGH"},
+        {"property_id": "paired_arm_linkage", "purpose": "DETAIL", "observation": "Both arm stages remain parallel paired strips with consistent depth and narrow chamfered edge highlights through articulation.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["perspective view", "foreshortening prevents direct arm-length measurement"]
+    },
+    {
+      "reference_id": "type75_slate_front",
+      "source_id": "anglepoise_official_cutout_pack",
+      "target_id": "anglepoise_type75_desk_lamp",
+      "target_variant": "slate_grey_standard_desk_base",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "DETAIL"],
+      "view": "front_linkage",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "base_and_shank_profile", "purpose": "PRIMARY_FORM", "observation": "The frontal cut-out shows a broad low circular base cover that rises smoothly to a centered cylindrical shank without a stack of ornamental rings.", "confidence": "HIGH"},
+        {"property_id": "pivot_and_spring_layout", "purpose": "CONSTRUCTION", "observation": "Front spacing confirms the two outer springs, paired bars, central lower yoke, and transverse pin widths as a layered mechanical assembly.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["front cut-out still has mild perspective", "shade hides the uppermost fork"]
+    },
+    {
+      "reference_id": "type75_slate_shade_detail",
+      "source_id": "anglepoise_official_cutout_pack",
+      "target_id": "anglepoise_type75_desk_lamp",
+      "target_variant": "slate_grey_standard_desk_base",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "CONSTRUCTION"],
+      "view": "shade_rear_detail",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "shade_profile_and_mount", "purpose": "PRIMARY_FORM", "observation": "The shade is a continuous formed shell: straight narrow neck, smooth outward flare, broad lower bell, and a subtly rolled lower lip. A separate rear pivot plate and conical spacer connect the upper arm.", "confidence": "HIGH"},
+        {"property_id": "shade_vent_and_switch", "purpose": "DETAIL", "observation": "The neck terminates in a shallow recessed cap with two rings of circular ventilation holes and a centered brushed-metal switch button.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["detail crop omits full lamp", "vent holes are angled ellipses in perspective"]
+    },
+    {
+      "reference_id": "type75_official_technical_sheet",
+      "source_id": "anglepoise_type75_technical_datasheet_eu",
+      "target_id": "anglepoise_type75_desk_lamp",
+      "target_variant": "slate_grey_standard_desk_base",
+      "purposes": ["DIMENSION", "CONSTRUCTION"],
+      "view": "technical_specification",
+      "projection": "ORTHOGRAPHIC",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_envelope", "purpose": "DIMENSION", "observation": "The official specification gives a configured size of approximately H52 x W43 x D19.5 cm, maximum horizontal reach 71 cm, and maximum vertical reach 90 cm.", "confidence": "HIGH"},
+        {"property_id": "base_and_shank_profile", "purpose": "DIMENSION", "observation": "The official specification gives the base diameter as 19.5 cm.", "confidence": "HIGH"},
+        {"property_id": "shade_profile_and_mount", "purpose": "DIMENSION", "observation": "The official specification gives the shade diameter as 14.5 cm and shade height as 19.2 cm.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [
+        "configured H52 x W43 x D19.5 cm",
+        "shade diameter 14.5 cm and height 19.2 cm",
+        "base diameter 19.5 cm",
+        "maximum reach 71 cm and maximum vertical reach 90 cm"
+      ],
+      "limitations": ["technical diagram simplifies small fasteners", "pose dimensions do not define every joint center"]
+    }
+  ],
+  "research_questions": [
+    {
+      "question_id": "type75_exact_linkage_and_profile",
+      "property_id": "paired_arm_linkage",
+      "question": "How are the paired arms, springs, base yoke, elbow, and shade pivot layered, and what are the defining base and shade profiles?",
+      "trigger": "A generic desk-lamp blockout could match the category while missing the Type 75 mechanism and product silhouette.",
+      "impact": "HIGH",
+      "search_queries": [
+        "Anglepoise Type 75 official cut out photography",
+        "Anglepoise Type 75 technical data dimensions"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "anglepoise_official_support_and_cutouts",
+          "source_url": "https://support.anglepoise.com/hc/en-gb/articles/360014173717-Anglepoise-Type-75-Desk-Lamp",
+          "source_id": "anglepoise_official_cutout_pack",
+          "observed_identity": "Anglepoise Type 75 Desk Lamp",
+          "observed_variant": "Slate Grey standard desk-base and same-geometry Jet Black variants",
+          "purpose": "CONSTRUCTION",
+          "disposition": "ACCEPTED",
+          "reason": "The manufacturer package supplies complementary articulated poses, frontal spacing, and close mechanical/profile details of the exact geometry family.",
+          "accepted_reference_id": "type75_slate_full_side",
+          "limitations": ["photographic perspective", "not every underside/internal feature is shown"]
+        },
+        {
+          "candidate_id": "anglepoise_official_technical_sheet",
+          "source_url": "https://anglepoise.s3.eu-west-1.amazonaws.com/asset-bank/type-75/4-technical-datasheets/2-eu/type-75-desk-lamp-technical-data-eu.pdf",
+          "source_id": "anglepoise_type75_technical_datasheet_eu",
+          "observed_identity": "Anglepoise Type 75 Desk Lamp technical data",
+          "observed_variant": "standard desk-base geometry family",
+          "purpose": "DIMENSION",
+          "disposition": "ACCEPTED",
+          "reason": "The manufacturer technical sheet fixes the major envelope, base, shade, and reach dimensions.",
+          "accepted_reference_id": "type75_official_technical_sheet",
+          "limitations": ["small mechanisms are diagrammatic"]
+        }
+      ],
+      "status": "RESOLVED",
+      "resolution": "Use the official full and compressed poses to reconcile the linkage, the frontal cut-out to set paired spacing, the detail crop to form the shade, and official dimensions as scale anchors."
+    },
+    {
+      "question_id": "type75_hidden_internal_and_underside_detail",
+      "property_id": "hidden_internal_and_underside_detail",
+      "question": "What are the exact base underside, internal shade wall, concealed fasteners, and internal cable route?",
+      "trigger": "These regions are not visible in the chosen exact-variant evidence and are not needed for the primary-form benchmark.",
+      "impact": "MEDIUM",
+      "search_queries": [
+        "Anglepoise Type 75 underside internal repair view"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "official_type75_support_page_no_hidden_views",
+          "source_url": "https://support.anglepoise.com/hc/en-gb/articles/360014173717-Anglepoise-Type-75-Desk-Lamp",
+          "source_id": "anglepoise_type75_support_page",
+          "observed_identity": "Anglepoise Type 75 Desk Lamp support resources",
+          "observed_variant": "standard desk-base geometry family",
+          "purpose": "CONSTRUCTION",
+          "disposition": "REJECTED",
+          "reason": "The official visible resources do not establish these concealed regions, and downloading the available CAD would invalidate the benchmark exercise.",
+          "limitations": ["no exact underside or internal cross-section"]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "Hidden regions remain intentionally unknown because they do not block the visible primary-form and linkage benchmark.",
+      "modeling_constraint": "Do not invent base underside features, concealed fastener lengths, internal shade hardware, or hidden cable routing during primary-form work."
+    }
+  ]
+}

@@ -80,7 +80,7 @@ def set_curve_taper(name, taper_object_name):
     return {"name": name, "taper_object": taper_object_name}
 
 
-def convert_curve_to_mesh(name, new_mesh_name=None, merge_dist=0.0001):
+def convert_curve_to_mesh(name, new_mesh_name=None, merge_dist=0.0001, replace_source=False):
     """Bake the evaluated curve (bevel + taper applied) into a real,
     editable mesh object -- how a curve-based blockout re-enters the
     normal bmesh typed vocabulary for topology/surface work. The source
@@ -111,10 +111,23 @@ def convert_curve_to_mesh(name, new_mesh_name=None, merge_dist=0.0001):
     bm.free()
     mesh.update()
 
-    new_name = new_mesh_name or f"{name}_mesh"
-    if new_name in bpy.data.objects:
+    new_name = new_mesh_name or (name if replace_source else f"{name}_mesh")
+    if new_name in bpy.data.objects and not (replace_source and new_name == name):
         raise ValueError(f"object '{new_name}' already exists")
-    new_obj = bpy.data.objects.new(new_name, mesh)
-    new_obj.location = obj.location
+    temporary_name = f"{new_name}__converted" if replace_source and new_name == name else new_name
+    new_obj = bpy.data.objects.new(temporary_name, mesh)
+    new_obj.matrix_world = obj.matrix_world.copy()
     bpy.context.scene.collection.objects.link(new_obj)
-    return {"name": new_obj.name, "type": new_obj.type, "vertices": len(mesh.vertices), "faces": len(mesh.polygons)}
+    if replace_source:
+        source_data = obj.data
+        bpy.data.objects.remove(obj, do_unlink=True)
+        if source_data.users == 0:
+            bpy.data.curves.remove(source_data)
+        new_obj.name = new_name
+    return {
+        "name": new_obj.name,
+        "type": new_obj.type,
+        "vertices": len(mesh.vertices),
+        "faces": len(mesh.polygons),
+        "source_replaced": bool(replace_source),
+    }

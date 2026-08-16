@@ -1,0 +1,189 @@
+[
+  {
+    "label": "create_connected_base_profile",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "Type75_Base_HIGH",
+      "segments": 16,
+      "profile": [[3.82,0.05],[3.90,0.14],[3.85,0.28],[3.35,0.58],[2.20,0.82],[0.65,0.92],[0.22,0.92],[0.22,0.08]]
+    }
+  },
+  {
+    "label": "establish_base_identity",
+    "command": "check_external_edit",
+    "params": {"name": "Type75_Base_HIGH"}
+  },
+  {
+    "label": "advance_from_audited_reference_analysis",
+    "command": "set_modeling_stage",
+    "params": {
+      "name": "Type75_Base_HIGH",
+      "stage": "PRIMARY_BLOCKOUT",
+      "evidence": {
+        "component_graph_pass": true,
+        "measured_ratio_count": 6,
+        "uncertainty_recorded": true,
+        "reference_set_audit_pass": true,
+        "same_target_identity_pass": true,
+        "view_coverage_pass": true,
+        "critical_property_coverage_pass": true,
+        "conflicts_resolved_pass": true,
+        "question_driven_research_pass": true,
+        "reference_manifest": "runs/2026-08-16_reference-gathering-anglepoise-type75/reference_manifest.json",
+        "modeling_constraints": [
+          "No downloaded manufacturer CAD or copied source mesh",
+          "Do not invent base underside, concealed fasteners, internal shade hardware, or hidden cable route",
+          "Base and shade use connected 16-segment profile cages; arm bars use connected box-derived cages",
+          "Separate objects are limited to actual articulated/manufactured parts"
+        ]
+      }
+    }
+  },
+  {
+    "label": "create_connected_shank_profile",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "Type75_Shank_HIGH",
+      "segments": 16,
+      "profile": [[0.55,0.78],[0.58,0.90],[0.55,3.15],[0.48,3.28],[0.24,3.28],[0.24,0.78]]
+    }
+  },
+  {
+    "label": "create_lower_yoke_from_box",
+    "command": "create_primitive",
+    "params": {"name": "Type75_LowerYoke_HIGH", "primitive_type": "cube", "location": [0.0,0.0,3.65], "size": 2.0}
+  },
+  {
+    "label": "shape_lower_yoke",
+    "transaction": {"name": "Type75_LowerYoke_HIGH", "action_type": "shape_connected_lower_yoke", "operation": "scale_selection", "params": {"factor": [0.38,0.58,1.05], "center": [0.0,0.0,0.0]}}
+  },
+
+  {
+    "label": "create_lower_arm_left",
+    "command": "create_primitive",
+    "params": {"name": "Type75_LowerArm_Left_HIGH", "primitive_type": "cube", "location": [3.65,-0.43,9.30], "size": 2.0}
+  },
+  {
+    "label": "scale_lower_arm_left",
+    "transaction": {"name": "Type75_LowerArm_Left_HIGH", "action_type": "establish_lower_arm_span", "operation": "scale_selection", "params": {"factor": [6.19,0.12,0.16], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "rotate_lower_arm_left",
+    "transaction": {"name": "Type75_LowerArm_Left_HIGH", "action_type": "align_lower_arm_to_pivots", "operation": "rotate_selection", "params": {"angle": -0.940, "axis": [0.0,1.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "create_lower_arm_right",
+    "command": "create_primitive",
+    "params": {"name": "Type75_LowerArm_Right_HIGH", "primitive_type": "cube", "location": [3.65,0.43,9.30], "size": 2.0}
+  },
+  {
+    "label": "scale_lower_arm_right",
+    "transaction": {"name": "Type75_LowerArm_Right_HIGH", "action_type": "establish_lower_arm_span", "operation": "scale_selection", "params": {"factor": [6.19,0.12,0.16], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "rotate_lower_arm_right",
+    "transaction": {"name": "Type75_LowerArm_Right_HIGH", "action_type": "align_lower_arm_to_pivots", "operation": "rotate_selection", "params": {"angle": -0.940, "axis": [0.0,1.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+
+  {
+    "label": "create_upper_arm_left",
+    "command": "create_primitive",
+    "params": {"name": "Type75_UpperArm_Left_HIGH", "primitive_type": "cube", "location": [1.50,-0.43,15.65], "size": 2.0}
+  },
+  {
+    "label": "scale_upper_arm_left",
+    "transaction": {"name": "Type75_UpperArm_Left_HIGH", "action_type": "establish_upper_arm_span", "operation": "scale_selection", "params": {"factor": [5.955,0.12,0.16], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "rotate_upper_arm_left",
+    "transaction": {"name": "Type75_UpperArm_Left_HIGH", "action_type": "align_upper_arm_to_pivots", "operation": "rotate_selection", "params": {"angle": -2.913, "axis": [0.0,1.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "create_upper_arm_right",
+    "command": "create_primitive",
+    "params": {"name": "Type75_UpperArm_Right_HIGH", "primitive_type": "cube", "location": [1.50,0.43,15.65], "size": 2.0}
+  },
+  {
+    "label": "scale_upper_arm_right",
+    "transaction": {"name": "Type75_UpperArm_Right_HIGH", "action_type": "establish_upper_arm_span", "operation": "scale_selection", "params": {"factor": [5.955,0.12,0.16], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "rotate_upper_arm_right",
+    "transaction": {"name": "Type75_UpperArm_Right_HIGH", "action_type": "align_upper_arm_to_pivots", "operation": "rotate_selection", "params": {"angle": -2.913, "axis": [0.0,1.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+
+  {
+    "label": "create_elbow_pin",
+    "command": "create_primitive",
+    "params": {"name": "Type75_ElbowPin_HIGH", "primitive_type": "cylinder", "location": [7.30,0.0,14.30], "radius": 0.36, "depth": 1.35, "vertices": 12}
+  },
+  {
+    "label": "orient_elbow_pin_transverse",
+    "transaction": {"name": "Type75_ElbowPin_HIGH", "action_type": "orient_elbow_pin_across_arm_pair", "operation": "rotate_selection", "params": {"angle": 1.57079632679, "axis": [1.0,0.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+
+  {
+    "label": "create_connected_shade_profile",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "Type75_Shade_HIGH",
+      "segments": 16,
+      "profile": [[2.90,-3.70],[2.94,-3.50],[2.85,-3.20],[2.65,-2.60],[2.35,-1.70],[1.95,-0.80],[1.55,0.00],[1.15,0.60],[1.02,1.40],[1.02,3.60],[1.05,3.78],[0.90,3.78],[0.90,1.45],[1.02,0.65],[1.40,0.05],[1.80,-0.85],[2.20,-1.75],[2.50,-2.65],[2.68,-3.20],[2.74,-3.45],[2.72,-3.58]]
+    }
+  },
+  {
+    "label": "tilt_shade_profile",
+    "transaction": {"name": "Type75_Shade_HIGH", "action_type": "align_shade_axis_to_reference", "operation": "rotate_selection", "params": {"angle": 0.14, "axis": [0.0,1.0,0.0], "center": [0.0,0.0,0.0]}}
+  },
+  {
+    "label": "position_shade_profile",
+    "transaction": {"name": "Type75_Shade_HIGH", "action_type": "place_shade_against_upper_pivot", "operation": "move_selection", "params": {"delta": [-5.40,0.0,16.80]}}
+  },
+
+  {
+    "label": "inspect_base_cage",
+    "command": "get_full_state",
+    "params": {"name": "Type75_Base_HIGH"}
+  },
+  {
+    "label": "inspect_shade_cage",
+    "command": "get_full_state",
+    "params": {"name": "Type75_Shade_HIGH"}
+  },
+  {
+    "label": "render_primary_side",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["Type75_Base_HIGH","Type75_Shank_HIGH","Type75_LowerYoke_HIGH","Type75_LowerArm_Left_HIGH","Type75_LowerArm_Right_HIGH","Type75_UpperArm_Left_HIGH","Type75_UpperArm_Right_HIGH","Type75_ElbowPin_HIGH","Type75_Shade_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_01_side_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 800,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_primary_front",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["Type75_Base_HIGH","Type75_Shank_HIGH","Type75_LowerYoke_HIGH","Type75_LowerArm_Left_HIGH","Type75_LowerArm_Right_HIGH","Type75_UpperArm_Left_HIGH","Type75_UpperArm_Right_HIGH","Type75_ElbowPin_HIGH","Type75_Shade_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_01_front_solid.png",
+      "pass_type": "solid",
+      "view": "side",
+      "resolution": 800,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_primary_side_wire",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["Type75_Base_HIGH","Type75_Shank_HIGH","Type75_LowerYoke_HIGH","Type75_LowerArm_Left_HIGH","Type75_LowerArm_Right_HIGH","Type75_UpperArm_Left_HIGH","Type75_UpperArm_Right_HIGH","Type75_ElbowPin_HIGH","Type75_Shade_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_anglepoise-type75-model/stage_01_side_wire.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 800,
+      "margin": 1.12
+    }
+  }
+]

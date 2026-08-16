@@ -126,12 +126,13 @@
     }
   ],
   "active_state": {
-    "active_prop_id": 2,
-    "active_prop": "Simple Desk Tape Dispenser",
-    "phase": "proportion_silhouette",
+    "active_prop_id": 3,
+    "active_prop": "Classic Desk Lamp",
+    "active_target_variant": "Anglepoise Type 75 Slate Grey standard desk-base variant",
+    "phase": "reference_analysis",
     "authorization": "DIRECT_USER_AUTHORIZATION",
     "modeling_authorized": true,
-    "prior_prop_outcome": "Prop 1 was not approved at primary-blockout review by human reviewer capz. The unapproved target-specific builder, blend, renders, and decision artifacts were removed under the direct user instruction; retained prior reference research is not an accepted modeling result.",
-    "next_action": "use the retained C38 renders for post-model human judgment; classify any rejection before bounded repair or moving to the next prop"
+    "prior_prop_outcome": "Prop 2 Scotch C38 received a qualified human stage pass after its broad bevel treatment was replaced by live crease-controlled SubD. This is not final-asset or production approval; reference likeness was described as only somewhat acceptable, and UV/material/underside/export work remains unapproved.",
+    "next_action": "audit the official Anglepoise Type 75 multi-view evidence, then build the linked primary forms incrementally through the typed Blender path without copied CAD or primitive stacking"
   }
 }

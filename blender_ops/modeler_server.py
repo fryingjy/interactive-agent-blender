@@ -45,6 +45,7 @@ import mesh_ops
 import modeling_stage
 import object_ops
 import persistent_ids
+import profile_mesh
 import render_passes
 import semantic_regions
 import state_fingerprint
@@ -80,6 +81,7 @@ CAPABILITIES = [
     "scene_component_coverage",
     "axis_aligned_reference_images",
     "explicit_sharp_edge_intent",
+    "profile_revolution_geometry",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -436,6 +438,29 @@ class ModelerServer:
         loc = tuple(location) if location else (0.0, 0.0, 0.0)
         return object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
 
+    def cmd_create_revolved_profile(self, name, profile, segments=16):
+        """Create one connected all-quad radial cage from an authored closed profile.
+
+        This is the typed equivalent of spinning a profile in Edit Mode. It is a
+        general starting-form operation, not an object-specific asset builder.
+        Persistent IDs are assigned immediately so every later form decision can
+        select and mutate the cage through the normal transaction path.
+        """
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        clean_profile = [tuple(float(value) for value in point) for point in profile]
+        obj = profile_mesh.revolve_closed_profile(name, clean_profile, segments=int(segments))
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "segments": int(segments),
+            "profile_point_count": len(clean_profile),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+        }
+
     def cmd_create_reference_image(
         self,
         name,
@@ -487,8 +512,15 @@ class ModelerServer:
     def cmd_set_curve_taper(self, name, taper_object_name):
         return curve_ops.set_curve_taper(name, taper_object_name)
 
-    def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001):
-        return curve_ops.convert_curve_to_mesh(name, new_mesh_name=new_mesh_name, merge_dist=merge_dist)
+    def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001, replace_source=False):
+        result = curve_ops.convert_curve_to_mesh(
+            name,
+            new_mesh_name=new_mesh_name,
+            merge_dist=merge_dist,
+            replace_source=replace_source,
+        )
+        persistent_ids.ensure_persistent_ids(result["name"])
+        return result
 
     def cmd_get_modeling_stage(self, name):
         return {"name": name, "stage": modeling_stage.get_stage(name), "log": modeling_stage.get_stage_log(name)}

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-anglepoise-type75\\reference_manifest.json",
+      "audit": {
+        "target_id": "anglepoise_type75_desk_lamp",
+        "target_variant": "slate_grey_standard_desk_base",
+        "reference_count": 5,
+        "matching_reference_count": 5,
+        "independent_source_count": 2,
+        "view_count": 5,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
+        },
+        "covered_properties": {
+          "overall_envelope": [
+            "type75_slate_full_side",
+            "type75_official_technical_sheet"
+          ],
+          "paired_arm_linkage": [
+            "type75_slate_full_side",
+            "type75_slate_compressed_linkage"
+          ],
+          "pivot_and_spring_layout": [
+            "type75_slate_compressed_linkage",
+            "type75_slate_front"
+          ],
+          "base_and_shank_profile": [
+            "type75_slate_front",
+            "type75_official_technical_sheet"
+          ],
+          "shade_profile_and_mount": [
+            "type75_slate_shade_detail",
+            "type75_official_technical_sheet"
+          ],
+          "shade_vent_and_switch": [
+            "type75_slate_shade_detail"
+          ]
+        },
+        "dimensional_anchors": [
+          "configured H52 x W43 x D19.5 cm",
+          "shade diameter 14.5 cm and height 19.2 cm",
+          "base diameter 19.5 cm",
+          "maximum reach 71 cm and maximum vertical reach 90 cm"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 2,
+          "candidate_counts": {
+            "ACCEPTED": 2,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [
+            "type75_official_technical_sheet",
+            "type75_slate_full_side"
+          ],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "type75_hidden_internal_and_underside_detail"
+          ],
+          "modeling_constraints": [
+            "Do not invent base underside features, concealed fastener lengths, internal shade hardware, or hidden cable routing during primary-form work."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

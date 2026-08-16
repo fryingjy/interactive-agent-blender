@@ -706,9 +706,14 @@ def set_edge_crease_by_ids(name, edge_ids, value=1.0, clear_others=False):
         attribute.data[edge_index].value = crease_value
         assigned.append(int(agent_id))
     index_to_id = persistent_ids.get_id_maps(name)["edges"]["index_to_id"]
+    # A partial crease is still deliberate SubD edge intent. The previous
+    # >0.999 threshold silently discarded common production values such as
+    # 0.82 from the intent record even though Blender visibly used them.
+    # Record every non-zero crease and retain the requested value separately.
     obj["hard_surface_intended_crease_edge_ids"] = sorted(
-        int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 0.999
+        int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 1e-6
     )
+    obj["hard_surface_last_crease_value"] = crease_value
     obj.data.update()
     return {
         "attribute": "crease_edge",
@@ -823,7 +828,7 @@ def hard_surface_shading_audit(name):
     if attr is not None and attr.domain == "EDGE":
         weighted_ids = sorted(
             int(id_maps["index_to_id"][index]) for index, item in enumerate(attr.data)
-            if item.value > 0.999 and index in id_maps["index_to_id"]
+            if item.value > 1e-6 and index in id_maps["index_to_id"]
         )
     intended_ids = sorted(int(item) for item in obj.get("hard_surface_intended_bevel_edge_ids", []))
     intent_source = obj.get("hard_surface_bevel_intent_source", "LEGACY_UNSPECIFIED")

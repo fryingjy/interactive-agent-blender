@@ -18,7 +18,9 @@ def revolve_closed_profile(name, profile, *, segments=96, collection=None):
     All radii must be positive.  This is ideal for closed shells, rolled seams,
     and annular details.  The returned object has a seam-aware UV map.
     """
-    if len(profile) < 3 or any(radius <= 0 for radius, _z in profile):
+    if int(segments) < 3:
+        raise ValueError("closed revolution profile needs at least 3 radial segments")
+    if len(profile) < 3 or any(len(point) != 2 for point in profile) or any(radius <= 0 for radius, _z in profile):
         raise ValueError("closed revolution profile needs >=3 positive-radius points")
     vertices = []
     uvs = []

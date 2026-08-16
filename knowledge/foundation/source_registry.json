@@ -2965,10 +2965,69 @@
         "The user's saved feed.blend demonstrates a separate tiny weighted-Bevel-before-Subdivision strategy: it has no crease layer, and its sharpness comes from comprehensive bevel weights"
       ],
       "limitations": [
-        "The current form is approximate and has not passed post-model human visual review",
+        "The current form is approximate and received only a qualified human stage pass after crease refinement, not final visual or production approval",
         "The low variants are independent editable cages, not purpose-authored production retopology",
         "UVs, final materials, exact underside construction, and final production acceptance remain open",
         "The user's visible open Blender scene contained unsaved changes; only its viewport and saved file were inspected, and it was not modified"
+      ]
+    }
+  },
+  {
+    "id": "anglepoise-type75-official-reference-package-2026-08-16",
+    "url": "https://support.anglepoise.com/hc/en-gb/articles/360014173717-Anglepoise-Type-75-Desk-Lamp",
+    "local_path": "runs/2026-08-16_reference-gathering-anglepoise-type75/",
+    "title": "Anglepoise Type 75 Official Cut-Out and Technical Reference Package",
+    "creator": "Anglepoise",
+    "source_type": "manufacturer_reference_package",
+    "trust_tier": "A",
+    "version": "accessed 2026-08-16",
+    "topics": ["reference-modeling", "product-dimensions", "articulated-linkage", "multi-view", "construction"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["manufacturer_cutout_photography", "technical_datasheet", "support_page", "file_hash_inventory"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-anglepoise-type75/"],
+      "direct_observations": [
+        "Five selected manufacturer artifacts cover a full configured side pose, compressed linkage, frontal spacing, shade/rear-pivot detail, and technical dimensions",
+        "The configured envelope is approximately H52 x W43 x D19.5 cm; shade diameter/height are 14.5/19.2 cm and base diameter is 19.5 cm",
+        "The exact physical assembly uses paired flat arm bars, three lower springs, transverse pivots, a formed shade, and a circular formed base cover",
+        "Manufacturer CAD was explicitly excluded so the benchmark remained a genuine modeling exercise"
+      ],
+      "limitations": [
+        "Product cut-outs are perspective photographs rather than orthographic blueprints",
+        "Hidden underside, internal shade hardware, concealed fastener lengths, and internal cable routing remain unknown",
+        "The Jet Black images are same-geometry corroboration only; Slate Grey remains the exact surface target"
+      ]
+    }
+  },
+  {
+    "id": "experiment-anglepoise-type75-model-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_anglepoise-type75-model/",
+    "title": "Anglepoise Type 75 Connected-Profile and Crease-Controlled Modeling Run",
+    "creator": "interactive-agent-blender",
+    "source_type": "reference_driven_modeling_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["reference-modeling", "connected-profile-topology", "all-quads", "edge-crease", "Subdivision-Surface", "articulated-components", "high-low"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["reference_manifest", "typed_decision_reports", "blend_data", "MatCap_render", "wireframe_render", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_anglepoise-type75-model/"],
+      "direct_observations": [
+        "Base, shank, shade, and cap use connected 16-segment revolved quad cages rather than stacked radial primitives",
+        "The four arm bars are connected box-derived cages whose complete twelve-edge sets use 0.82 crease under live unapplied Subdivision",
+        "The saved scene contains 21 independent high/low editable pairs in separate collections; fresh Blender verification passes every declared structure/modifier check",
+        "A silent Curve-render error in the typed sequence runner was exposed, then corrected with evaluated Curve support and fail-closed error propagation"
+      ],
+      "limitations": [
+        "No human visual acceptance has been supplied for the Type 75 candidate",
+        "Low variants are editable level-0-SubD cages, not purpose-authored production retopology",
+        "Vented shade-cap holes, final cable path, UVs, materials, exact hidden construction, and production export remain outside this stage",
+        "Technical verification does not establish professional reference resemblance"
       ]
     }
   }
