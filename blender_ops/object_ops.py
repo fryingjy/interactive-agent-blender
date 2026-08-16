@@ -988,7 +988,7 @@ def hard_surface_shading_audit(name):
     angle_or_vgroup_path_ok = scoping_intent_recorded and scoping_intent_matches_actual
     effective_bevel_indices = weighted_bevel_indices or (scoping_bevel_indices if angle_or_vgroup_path_ok else [])
 
-    # Third, structurally different sanctioned path: full edge crease (see
+    # Third, structurally different sanctioned path: deliberate edge crease (see
     # set_edge_crease_by_ids). Found by studying a professional battle-axe
     # .blend (docs/BLEND_FILE_STUDY_PROTOCOL.md) -- every sharp edge across
     # all 5 of its objects uses crease, zero Bevel modifiers anywhere.
@@ -1002,7 +1002,10 @@ def hard_surface_shading_audit(name):
     if crease_attr is not None and crease_attr.domain == "EDGE":
         creased_ids = sorted(
             int(id_maps["index_to_id"][index]) for index, item in enumerate(crease_attr.data)
-            if item.value > 0.999 and index in id_maps["index_to_id"]
+            # Partial creases are a valid, recorded design choice.  Treating
+            # only 1.0 as a crease made the audit contradict
+            # set_edge_crease_by_ids(), which explicitly supports [0, 1].
+            if item.value > 1e-6 and index in id_maps["index_to_id"]
         )
     intended_crease_ids = sorted(int(item) for item in obj.get("hard_surface_intended_crease_edge_ids", []))
     crease_path_ok = bool(intended_crease_ids) and creased_ids == intended_crease_ids

@@ -13,4 +13,6 @@ The live `Housing_SubD` modifier remains unapplied. The solid diagnostics establ
 
 ## Next corrective priority
 
-Do not add cosmetic detail yet. First adjust the cage's corner-support/crease strategy and the relationship between the two front recesses and the outer surround against the front and oblique references. The current diagnostic has overly uniform rounded transitions and does not yet reproduce the product's sharper enclosure character.
+The first `0.65` outer-corner crease test was rejected: it squared off the silhouette too aggressively. A fresh run from the pre-crease file used `0.28` on the same observed cage-corner edges and was retained because it restores a controlled hard-surface break while preserving the rounded enclosure profile. The retained variant also records Smooth by Angle and passes the hard-surface shading audit.
+
+Do not add cosmetic detail yet. The next modeling correction remains the relationship between the two front recesses and the outer surround against the front and oblique references. The current diagnostic does not yet reproduce the product's handle, antenna, control layout, or specific production transitions.

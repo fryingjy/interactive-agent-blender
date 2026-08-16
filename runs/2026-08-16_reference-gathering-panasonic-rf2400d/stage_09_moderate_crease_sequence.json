@@ -1,0 +1,33 @@
+[
+  {
+    "label": "apply_moderate_outer_cage_crease",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "surface_continuity",
+      "operation": "set_edge_crease_by_ids",
+      "params": {
+        "edge_ids": [75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110],
+        "value": 0.28,
+        "clear_others": true
+      },
+      "command_id": "radio-housing-outer-corner-crease-v2"
+    }
+  },
+  {
+    "label": "render_moderate_crease_front_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "outer_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_09_moderate_crease_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 768,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "audit_moderate_crease_housing",
+    "command": "get_hard_surface_shading_audit",
+    "params": {"name": "outer_housing"}
+  }
+]
