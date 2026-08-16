@@ -1,0 +1,21 @@
+{
+  "quiz": "knowledge\\foundation\\quizzes\\quiz_004.md",
+  "question_count": 20,
+  "minimum_answer_words": 47,
+  "median_answer_words": 50,
+  "maximum_answer_words": 55,
+  "days_since_latest_prior_quiz": 5,
+  "maximum_sequence_similarity_to_any_prior_answer": 0.09841269841269841,
+  "closest_pair": {
+    "current_answer": 8,
+    "prior_answer_flat_index": 45
+  },
+  "checks": {
+    "expected_numbered_answers_present": true,
+    "every_answer_meets_minimum_words": true,
+    "below_prior_answer_similarity_limit": true,
+    "minimum_calendar_interval_met": true
+  },
+  "pass": true,
+  "claim_boundary": "This validates answer count, length, calendar separation, and textual novelty only. It does not validate factual correctness, closed-book conditions, independent authorship, cognitive retention, or professional proficiency."
+}

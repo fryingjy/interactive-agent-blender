@@ -118,9 +118,9 @@
       "id": "14",
       "title": "Controlled experiments and retrieval",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_003_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json"],
-      "current_boundary": "Controlled labs, retrieval cases, and short-gap quizzes exist; independent long-horizon retention and broader transfer remain open.",
-      "next_step": "Run a second delayed retrieval assessment and reuse validated knowledge on a fresh asset."
+      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json"],
+      "current_boundary": "Controlled labs, retrieval cases, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader transfer remain open.",
+      "next_step": "Obtain an independent delayed assessment and reuse validated knowledge on a fresh human-authorized asset."
     },
     {
       "id": "15",

@@ -42,7 +42,7 @@ evidence only; it does not promote professional readiness or bypass the Swinglin
 | Mandatory operator cards | all 25 curriculum topics carry purpose, preconditions/selection, parameters, topology effects, failures, good/bad uses, API/typed status, and evidence | inventory complete; exhaustive parameter sweeps remain open |
 | Structured retrieval | context-aware ranking and score breakdown | 5/5 declared retrieval cases |
 | Runtime skill telemetry | append-only revision-linked material skill use | validated once |
-| Retention | three quizzes across 2026-08-08, 2026-08-10, and 2026-08-11; latest has 20 fresh mechanism/context answers | cross-calendar-day self-retrieval demonstrated; independent/long-horizon retention remains open |
+| Retention | four quizzes across 2026-08-08, 2026-08-10, 2026-08-11, and 2026-08-16; latest has 20 fresh scenario answers and an executable structural/novelty validator | five-day self-retrieval demonstrated; factual independence and week-/month-scale retention remain open |
 | Uncertainty/rebuild | explicit confidence and repair-pressure policy | tested |
 | Strategy selection | representation/component/edit/repair choices with reasons/margins | 10/10 declared cases |
 | Multi-view comparison | fixed-frame front/side/top IoU, contour, bounds, centroid | synthetic controlled pass |

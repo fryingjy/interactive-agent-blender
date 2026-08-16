@@ -14,6 +14,11 @@ directive. It is deliberately not a declaration of professional-modeler completi
   Blender process.
 - `tools/audit_source_registry.py` — historical removed-artifact references are classified; source
   media is not represented as retained when it is intentionally unavailable.
+- `tools/validate_retrieval_quiz.py` — quiz 004 has 20 answers of at least 47 words, a five-day
+  interval from quiz 003, and a maximum 0.0985 sequence similarity to any earlier answer. This is
+  structural novelty evidence only, not factual or independent proficiency validation.
+- `tools/audit_directive_coverage.py` — all 20 durable directive headings resolve to current
+  evidence and retain an overall `PARTIAL` status while open requirements remain.
 
 ## Directive requirement status
 
@@ -23,6 +28,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, explicit reference-to-blockout contract, planner-to-live-coverage stage-gate loop, and the current Swingline 747 reference board | Machine-ready for the new board; visual/modeling transfer remains unproven until human approval and a blockout outcome |
 | Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, current official Swingline gallery/specification records, and exact-variant feature evidence | Implemented and bounded; the continuous rubber pad is evidenced while hidden underside detail remains explicitly deferred |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion remains evidence-gated |
+| Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
 | Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |
 | Human visual review as a separate authority | `knowledge_engine/human_review.py`, protocol, and current Swingline review board | Enforced; **pending external reference review** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |
