@@ -41,7 +41,7 @@
     {
       "run": "runs/2026-08-15_reference-interpretation-contract/reference_interpretation_verify.json",
       "scope": "fresh-process serialized-artifact verification",
-      "result": "pending generation at commit preparation"
+      "result": "PASS: all nine independent serialized-artifact checks confirm the two-family policy result, explicit conflict handling, and the stated no-Blender/no-held-out boundary"
     }
   ],
   "promotion_limit": "Not TRANSFER_VALIDATED or RUNTIME_VALIDATED until real image interpretation changes Blender construction and improves measured outcomes on unrelated assets."
