@@ -1,0 +1,24 @@
+{
+  "disposition": "REJECTED_PARTIAL_MEASUREMENT",
+  "reference_measurement": "C:\\Users\\odane\\Downloads\\blender\\ref\\matteo-swordconcept244_measurement.json",
+  "source_image_size_px": [
+    500,
+    1000
+  ],
+  "source_silhouette_aspect_ratio": 0.3824,
+  "collections": {
+    "high": "HIGH_POLY",
+    "low": "LOW_POLY"
+  },
+  "high_outline_points": 232,
+  "low_outline_points": 60,
+  "one_continuous_mesh_each": true,
+  "independent_meshes": true,
+  "all_modifiers_live": true,
+  "modifier_apply_called": false,
+  "visible_review": {
+    "accepted": false,
+    "reason": "The supplied measurement mask excludes the guard, grip, and pommel, so it is blade/tang-only evidence rather than the full reference silhouette."
+  },
+  "claim_boundary": "This verifies only that the measurement JSON can drive editable variants. It is rejected as a full-sword reference profile and does not establish hidden depth, blade ridge/fuller, material response, or production-ready retopology."
+}
