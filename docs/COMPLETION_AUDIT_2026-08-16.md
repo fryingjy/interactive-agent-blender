@@ -5,7 +5,10 @@ directive. It is deliberately not a declaration of professional-modeler completi
 
 ## Verification performed
 
-- `python -m unittest discover -s tests -q` — **152 tests passed** on 2026-08-16.
+- `python -m unittest discover -s tests -q` — **156 tests passed** on 2026-08-16.
+- `tools/run_stage_gate_lab.py` under Blender 5.2 — live runtime component coverage rejects a
+  collapsed/malformed record and allows the stage transition only after a one-to-one coverage
+  capture; the captured report carries its Blender session and scene revision.
 - `tools/verify_bialetti_reference_decomposition.py` — strict Bialetti board decomposition passes.
 - `tools/verify_question_driven_reference_research.py` — question-driven reference gate passes its
   positive and negative controls.
@@ -19,7 +22,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 
 | Requirement group | Evidence | Status |
 | --- | --- | --- |
-| Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite | Implemented and tested |
+| Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite; live `check_scene_component_coverage` capture | Implemented and tested; component presence is no longer a bare stage boolean |
 | Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, Bialetti strict board and verifier, question-driven research verifier | Implemented; model-free runtime policy validation only |
 | Reference uncertainty and source provenance | Bialetti manifest, research constraints, retention ledger, source audit | Implemented and honestly bounded |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion still evidence-gated |
