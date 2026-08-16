@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "target_id": "smeg_klf03nbus",
+  "target_variant": "navy_blue_us_klf03nbus",
+  "source_url": "https://www.smeg.com/us/products/KLF03NBUS",
+  "manufacturer": "Smeg",
+  "official_dimensions_mm": {"height": 248, "width": 226, "depth": 171},
+  "source_geometry_excluded": true,
+  "items": [
+    {"file":"media/KLF03NBUS_01.jpg","view":"front_left_perspective","role":["silhouette","body_profile","spout","handle","base"],"sha256":"6c4a77dc2bc6f5b7ca53865808f4b9e3564fdc92fbfec34df99bdcac3add02da"},
+    {"file":"media/KLF03NBUS_02.jpg","view":"front","role":["body_width","spout_symmetry","lid_seam","base_feet"],"sha256":"78e812188502cf0afa3743f3f7d36742a0bb2ca537a98a374d8e9a1c1b5da7f1"},
+    {"file":"media/KLF03NBUS_04.jpg","view":"top","role":["plan_depth","handle_width","spout_projection","lid_rings"],"sha256":"ca01b683d94183f4b5fb789aadbbc576393f28e8ff61fba9bca0afa1adf86f05"},
+    {"file":"media/KLF03NBUS_08.jpg","view":"rear","role":["handle_profile","switch","body_taper","base_feet"],"sha256":"ecd47b4a94d4f2e2695fc23ce6e385bf3d525560b9de9a1888bb201d71b00e62"}
+  ],
+  "known": [
+    "The body is a vertically tapered rounded shell with a visible lid seam and separate chrome base band.",
+    "The spout is a broad formed metal component, not a cylindrical nozzle.",
+    "The handle is one continuous rear loop with a flattened section and separate attachment collars.",
+    "The base has four broad foot cutouts visible in front/rear views."
+  ],
+  "unknown_or_deferred": ["interior wall thickness","hidden fasteners","exact lid hinge mechanism","underside cord routing"],
+  "readiness": "READY_FOR_PRIMARY_BLOCKOUT"
+}

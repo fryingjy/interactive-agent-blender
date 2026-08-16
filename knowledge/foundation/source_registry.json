@@ -2971,5 +2971,61 @@
         "The user's visible open Blender scene contained unsaved changes; only its viewport and saved file were inspected, and it was not modified"
       ]
     }
+  },
+  {
+    "id": "smeg-klf03nbus-official-reference-package-2026-08-16",
+    "url": "https://www.smeg.com/us/products/KLF03NBUS",
+    "local_path": "runs/2026-08-16_reference-gathering-smeg-klf03/",
+    "title": "Smeg KLF03NBUS Official Multi-View Reference Package",
+    "creator": "Smeg",
+    "source_type": "manufacturer_reference_package",
+    "trust_tier": "A",
+    "version": "accessed 2026-08-16",
+    "topics": ["reference-modeling", "electric-kettle", "product-dimensions", "multi-view", "curved-hard-surface"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["manufacturer_product_photography", "manufacturer_dimensions", "file_hash_inventory"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-smeg-klf03/"],
+      "direct_observations": [
+        "Four exact-variant manufacturer views cover front, rear, top, and perspective form evidence",
+        "The official envelope is approximately 248 x 226 x 171 mm",
+        "The product body, lid, chrome base, handle, and spout have visible manufactured boundaries"
+      ],
+      "limitations": [
+        "The imagery is perspective product photography rather than calibrated orthographic drawing",
+        "The manufacturer 3D download is deliberately excluded",
+        "Hidden interior and underside construction remain unknown"
+      ]
+    }
+  },
+  {
+    "id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_smeg-klf03-model/",
+    "title": "Smeg KLF03 Connected-Cage Primary Blockout",
+    "creator": "interactive-agent-blender",
+    "source_type": "reference_driven_modeling_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["reference-modeling", "electric-kettle", "connected-profile-topology", "all-quads", "Subdivision-Surface", "primary-blockout"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["official_reference_images", "typed_decision_reports", "blend_data", "MatCap_render", "wireframe_render", "fresh_process_inspection"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_smeg-klf03-model/"],
+      "direct_observations": [
+        "Body, lid, and base band are independent connected 16-segment revolved all-quad cages with live unapplied Subdivision",
+        "The handle is one continuous converted curve mesh and the spout is one box-derived connected cage; its centerline refinement produces 12 vertices and 10 quad faces with no n-gons or non-manifold edges",
+        "Fresh Blender inspection passes for all seven current components"
+      ],
+      "limitations": [
+        "The stage is not human accepted and explicitly remains a primary-form blockout",
+        "The spout valley/lip, handle section and collars, and base foot cutouts remain inaccurate or absent",
+        "No production low, UV, material, lettering, interior, or export claim is made"
+      ]
+    }
   }
 ]

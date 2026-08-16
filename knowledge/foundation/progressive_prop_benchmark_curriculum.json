@@ -128,12 +128,12 @@
   "active_state": {
     "active_prop_id": 4,
     "active_prop": "Electric Kettle",
-    "active_target_variant": null,
-    "phase": "target_selection_and_reference_research",
+    "active_target_variant": "Smeg KLF03NBUS navy-blue electric kettle",
+    "phase": "primary_form_refinement",
     "authorization": "DIRECT_USER_AUTHORIZATION",
     "modeling_authorized": true,
     "prior_prop_outcome": "Prop 2 Scotch C38 received a qualified human stage pass after its broad bevel treatment was replaced by live crease-controlled SubD. This is not final-asset or production approval; reference likeness was described as only somewhat acceptable, and UV/material/underside/export work remains unapproved.",
     "prior_prop_outcome_2": "Prop 3 failed direct human likeness review at 3/10. Its model, renders, reference package, helper, and derived benchmark records were purged on user instruction instead of overfitting further repairs.",
-    "next_action": "select one specific unfamiliar electric-kettle target, gather authoritative multi-view references, audit identity and dimensions, then model primary forms incrementally through the typed Blender path"
+    "next_action": "refine the KLF03 all-quad spout curvature/rolled lip and flattened handle attachments from their existing connected components, then construct the base foot cutouts before any logo, material, or tertiary detail"
   }
 }

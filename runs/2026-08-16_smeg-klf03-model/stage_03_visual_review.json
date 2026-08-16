@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_type": "AGENT_STAGE_VISUAL_REVIEW",
+  "target": "Smeg KLF03NBUS",
+  "stage": "SPOUT_TOPOLOGY_REFINEMENT",
+  "verdict": "PARTIAL_NOT_READY_FOR_HUMAN_ACCEPTANCE",
+  "verified_geometry": {
+    "spout_vertices": 12,
+    "spout_faces": 10,
+    "spout_ngons": 0,
+    "spout_non_manifold_edges": 0,
+    "spout_connected_components": 1
+  },
+  "observed_result": "The spout now has longitudinal centerlines and a formed V-valley while remaining one connected all-quad cage. Its side silhouette is still too rectilinear and the rolled metal lip remains absent.",
+  "remaining_primary_repairs": [
+    "Refine spout curvature and rolled lip without introducing disconnected filler geometry.",
+    "Build the chrome base foot cutouts into the base component.",
+    "Refine the flattened handle section and its upper/lower attachment collars."
+  ],
+  "promotion_allowed": false
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "record_type": "AGENT_STAGE_VISUAL_REVIEW",
+  "target": "Smeg KLF03NBUS",
+  "stage": "PRIMARY_FORM_REFINEMENT",
+  "verdict": "PARTIAL_NOT_READY_FOR_HUMAN_ACCEPTANCE",
+  "improved": [
+    "The body/lid/base envelope now follows the official height-width relationship and visible seam hierarchy.",
+    "The handle is one continuous editable component and has been flattened in depth.",
+    "The spout remains one connected tapered cage rather than stacked primitives."
+  ],
+  "open_repairs": [
+    "Spout is still too box-like and lacks the official front V-valley and rolled lip.",
+    "Handle cross-section and attachment collars are not yet faithful.",
+    "Chrome base foot cutouts are absent.",
+    "Rear water gauge, applied letters, exact switch housing, materials, UVs, and underside remain absent."
+  ],
+  "promotion_allowed": false,
+  "boundary": "This is a reversible connected-cage blockout, not a final likeness or production claim."
+}
