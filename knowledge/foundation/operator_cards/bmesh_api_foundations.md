@@ -1,6 +1,6 @@
 # Curriculum card: Modeler-relevant Blender Python and BMesh API
 
-**Status:** DOCS ✓ (current Blender Python API) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ pending | RUNTIME_USE ✓ | SECOND_SHAPE ✓
+**Status:** DOCS ✓ (current Blender Python API) | EXPERIMENT ✓ (Blender 5.2.0 LTS) | FAILURE_CASE ✓ | QUIZ ✓ | RUNTIME_USE ✓ | SECOND_SHAPE ✓
 
 Official sources:
 
@@ -30,6 +30,34 @@ Evidence: `runs/2026-08-10_bmesh-api/`
 ## Failure discipline
 
 Never assume an operator's return dictionary, target scope, or successful call proves the intended mutation. Measure element counts/data, validate normals and topology, then write back and independently inspect the saved mesh.
+
+## Live Edit Mode and current custom-data transfer (2026-08-16)
+
+Evidence: `runs/2026-08-16_bmesh-editmode-customdata/`
+
+The current official API distinguishes a Python-owned standalone `BMesh` from the live Edit Mode
+mesh returned by `bmesh.from_edit_mesh()`. A Blender 5.2.0 LTS fixture now exercises the previously
+open live path instead of inferring it from the standalone lab:
+
+- two calls to `from_edit_mesh(mesh)` returned the same live BMesh while the object stayed in Edit
+  Mode;
+- `bmesh.ops.subdivide_edges(..., cuts=1, use_grid_fill=True)` changed a closed cube from 8/12/6
+  vertices/edges/faces to 26/48/24, with every resulting face a quad;
+- after adding topology, `bmesh.update_edit_mesh(mesh, loop_triangles=True, destructive=True)`
+  persisted the mutation and produced 48 loop triangles, matching the API requirement to mark
+  destructive updates when geometry was added or removed;
+- `select_flush(True)` converted one selected face into the valid dependent selection of one face,
+  four edges, and four vertices;
+- generic current attributes persisted through BMesh layers: eight nonzero
+  `bevel_weight_edge` floats, twelve `crease_edge` floats, four face-domain
+  `semantic_region` integers, and a loop-domain `UVMap`;
+- a fresh Blender process opened the saved `.blend` without importing the builder and independently
+  verified exact counts, layer values, closure, nondegeneracy, and all-quad topology.
+
+This closes live Edit Mode access and representative custom-data persistence, not systematic
+coverage of every BMesh operator or arbitrary layer migration. The current API also documents that
+some custom-data management helpers and walkers remain TODO; do not invent support around those
+gaps.
 
 ## Runtime API lifecycle
 

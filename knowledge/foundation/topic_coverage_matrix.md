@@ -1,6 +1,6 @@
 # Topic coverage matrix
 
-Updated 2026-08-11. `✓` means substantial evidence, `~` partial evidence, and `—` no demonstrated evidence. A topic is not mature until runtime use and second-shape transfer are represented, even when documentation and a controlled experiment exist.
+Updated 2026-08-16. `✓` means substantial evidence, `~` partial evidence, and `—` no demonstrated evidence. A topic is not mature until runtime use and second-shape transfer are represented, even when documentation and a controlled experiment exist.
 
 | Topic | Docs | Video | Experiment | Failure case | Quiz | Runtime use | Second shape |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -82,6 +82,12 @@ absolute all-quad claim. Neither establishes production acting or autonomous fac
 Current active gaps are professional hard-surface/SubD judgment, multi-view reference modeling,
 unknown real-production surface diagnosis, production preparation, independent/long-horizon
 retrieval retention, and broader transfer validation. Advanced organic specialization is deferred.
+
+The current BMesh API row now includes a fresh Blender 5.2 Edit Mode fixture rather than only
+standalone ownership: destructive topology update, selection flushing, edge float attributes,
+face integer semantics, loop UV data, and an independent saved-file verifier all pass. This closes
+the prior live-edit/custom-layer gap while leaving exhaustive operator signatures and unsupported
+custom-data management helpers open.
 
 Seven supplied general reference-workflow videos were studied on 2026-08-15 with real audio/visual
 input and timestamped episodes. Their synthesis produced a machine-enforced reference-set audit and

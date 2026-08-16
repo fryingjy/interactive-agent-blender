@@ -19,6 +19,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
   structural novelty evidence only, not factual or independent proficiency validation.
 - `tools/audit_directive_coverage.py` — all 20 durable directive headings resolve to current
   evidence and retain an overall `PARTIAL` status while open requirements remain.
+- `runs/2026-08-16_bmesh-editmode-customdata/` — current Blender 5.2 live Edit Mode BMesh and
+  representative custom-data persistence pass 11/11 builder assertions and 8/8 independent
+  saved-file assertions.
 
 ## Directive requirement status
 

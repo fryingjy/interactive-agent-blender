@@ -356,12 +356,14 @@
         "grid_fill(bm, edges, mat_nr, use_smooth, use_interp_simple) has NO span/offset parameters (unlike the higher-level bpy.ops.mesh.fill_grid) -- confirmed via WebSearch cross-reference, not the truncated page alone",
         "Official chain-link example script demonstrates bridge_loops called on edges from two independently-generated spin operations, matching the corrected reproduction in this session",
         "Standalone BMesh ownership requires explicit write-back/free; indexed sequences require current lookup tables",
-        "Scripts are responsible for valid selection/connectivity state and explicit edit-mesh updates"
+        "Scripts are responsible for valid selection/connectivity state and explicit edit-mesh updates",
+        "subdivide_edges with grid filling was reproduced on all cube edges in a live Blender 5.2 Edit Mode BMesh and independently verified as a closed 24-quad result"
       ],
       "candidate_principles": [],
       "experiments": [
         "bridge_edge_loops, grid_fill -- see knowledge/foundation/operator_cards/bridge_fill_gridfill.md",
-        "runs/2026-08-10_bmesh-api/bmesh_api_report.json"
+        "runs/2026-08-10_bmesh-api/bmesh_api_report.json",
+        "runs/2026-08-16_bmesh-editmode-customdata/lab_report.json"
       ],
       "skills": []
     }
@@ -862,10 +864,12 @@
       "direct_observations": [
         "Standalone and Edit-mode BMesh access have different ownership/update responsibilities",
         "Custom data such as UVs is accessed through element layers",
-        "Selection and mesh-validity conventions are not automatically enforced for scripts"
+        "Selection and mesh-validity conventions are not automatically enforced for scripts",
+        "The current API requires update_edit_mesh with destructive true after geometry addition/removal; Blender 5.2 persistence was verified for edge float, face integer, and loop UV layers"
       ],
       "experiments": [
-        "runs/2026-08-10_bmesh-api/bmesh_api_report.json"
+        "runs/2026-08-10_bmesh-api/bmesh_api_report.json",
+        "runs/2026-08-16_bmesh-editmode-customdata/fresh_verification.json"
       ]
     }
   },

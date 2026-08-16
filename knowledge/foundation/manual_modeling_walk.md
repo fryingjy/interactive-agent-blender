@@ -1,7 +1,7 @@
 # Blender modeling documentation walk
 
-**Audit date:** 2026-08-10  
-**Target runtime:** Blender 5.2.0 LTS  
+**Audit date:** 2026-08-16
+**Target runtime:** Blender 5.2.0 LTS
 **Rule:** an index page is orientation, not proof that every child page was studied.
 
 This is the systematic map between official documentation and repository evidence. `TESTED` means
@@ -35,8 +35,8 @@ incomplete; `OPEN` means no adequate evidence exists.
 | Sculpting | Sculpting index | PARTIAL | Multires, voxel remesh, actual Draw stroke and retopo handoff | masks, Face Sets, filters, multi-stroke form development |
 | UV layout/editing | UV workflow/editing Manual | TESTED | UV/material/sculpt and PBR GLB labs | seams on complex asset and engine-specific conventions |
 | Materials | Materials introduction + Principled BSDF | USED | node/slot repair and packed normal-map GLB transfer | color management and named-engine transfer |
-| BMesh ownership/layers | BMesh module API | TESTED | BMesh API lab | edit-mode live BMesh and more custom-data layers |
-| BMesh operators | BMesh operators API | TESTED | nine-operation lab | systematic signatures beyond modeler-critical subset |
+| BMesh ownership/layers | current BMesh module/types API | TESTED | standalone API lab plus 2026-08-16 live Edit Mode/custom-data fixture and fresh verifier | arbitrary layer migration and API-documented TODO management helpers |
+| BMesh operators | current BMesh operators API | TESTED | nine-operation lab plus live `subdivide_edges` all-quad transfer | systematic signatures beyond modeler-critical subset |
 | Reference images | Empties Manual | USED | reference blockouts | perspective/camera calibration |
 
 ## Version discipline

@@ -191,6 +191,9 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
   curvature-aware loop redistribution on one connected 12-sided quad shell, 0.955 front IoU,
   published-dimension recovery, and a passing fresh-process Blender verifier. Human form approval
   remains pending and no skill was promoted.
+- `runs/2026-08-16_bmesh-editmode-customdata/` — current Blender 5.2 live Edit Mode BMesh evidence:
+  destructive all-quad subdivision, valid selection flushing, edge/face/loop custom data, saved
+  `.blend`, and a fresh-process verifier.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 
