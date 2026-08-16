@@ -1,0 +1,12 @@
+[
+  {
+    "label": "create_connected_housing_seed",
+    "command": "create_primitive",
+    "params": {"name": "MainHousing", "primitive_type": "cube", "size": 2.0}
+  },
+  {
+    "label": "observe_seed_cage_ids_before_shape_change",
+    "command": "get_mesh_geometry",
+    "params": {"name": "MainHousing"}
+  }
+]

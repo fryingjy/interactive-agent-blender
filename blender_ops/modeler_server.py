@@ -107,6 +107,7 @@ _OPS = {
     "recalc_normals": mesh_ops.recalc_normals,
     "triangulate_ngons": mesh_ops.triangulate_ngons,
     "extrude_selection": mesh_ops.extrude_selection,
+    "assign_selected_material": mesh_ops.assign_selected_material,
     "move_selection": mesh_ops.move_selection,
     "scale_selection": mesh_ops.scale_selection,
     "inset_selection": mesh_ops.inset_selection,

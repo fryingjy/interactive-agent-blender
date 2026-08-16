@@ -12,6 +12,9 @@ def main():
     argv = sys.argv[sys.argv.index("--") + 1:]
     blend_path, out_path = Path(argv[0]).resolve(), Path(argv[1]).resolve()
     view = argv[2] if len(argv) > 2 else "iso"
+    color_mode = argv[3].lower() if len(argv) > 3 else "single"
+    if color_mode not in {"single", "material"}:
+        raise SystemExit("color_mode must be 'single' or 'material'")
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     bpy.ops.wm.open_mainfile(filepath=str(blend_path))
@@ -68,8 +71,9 @@ def main():
     render_scene.render.engine = "BLENDER_WORKBENCH"
     shading.type = "SOLID"
     shading.light = "STUDIO"
-    shading.color_type = "SINGLE"
-    shading.single_color = (0.55, 0.55, 0.58)
+    shading.color_type = "MATERIAL" if color_mode == "material" else "SINGLE"
+    if color_mode == "single":
+        shading.single_color = (0.55, 0.55, 0.58)
     shading.show_shadows = True
     shading.show_cavity = True
     shading.cavity_type = "BOTH"

@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_08_top_control_surface_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_08_top_control_seed.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_08_primary_assembly.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "e677f904e056",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_top_control_for_metal_surface",
+      "command": "select_by_ids",
+      "params": {
+        "name": "TopControl",
+        "face_ids": [
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 0,
+        "faces": 18
+      }
+    },
+    {
+      "index": 1,
+      "label": "assign_silver_surface_to_observed_top_control",
+      "command": "transaction",
+      "params": {
+        "name": "TopControl",
+        "action_type": "surface_region",
+        "operation": "assign_selected_material",
+        "params": {
+          "material_name": "Seiko_Silver_Control",
+          "color": [
+            0.48,
+            0.49,
+            0.47,
+            1.0
+          ],
+          "metallic": 0.68,
+          "roughness": 0.22
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_16_1786921983766",
+          "observed_revision": 16
+        },
+        "perform": {
+          "decision_id": "dec_16_1786921983766",
+          "performed": true,
+          "result": {
+            "material_name": "Seiko_Silver_Control",
+            "created": true,
+            "material_index": 0,
+            "assigned_face_count": 18,
+            "color": [
+              0.48,
+              0.49,
+              0.47,
+              1.0
+            ],
+            "metallic": 0.68,
+            "roughness": 0.22
+          }
+        },
+        "verify": {
+          "action_type": "surface_region",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_16_1786921983766",
+          "result_revision": 17
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "inspect_top_control_evaluated_surface",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "TopControl"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18,
+          "non_manifold_edges": 0,
+          "ngons": 2,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 32
+        },
+        "surface_quality": {
+          "face_count": 18,
+          "min_area": 0.00998862,
+          "max_area": 0.313494,
+          "median_area": 0.009989,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.5708,
+          "angle_samples": 48
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 32,
+          "median_edge_length": 0.12485778,
+          "median_absolute_laplacian": 0.23923358,
+          "laplacian_mad": 8e-08,
+          "max_robust_outlier_z": 0.0,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 48,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 38.9861,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.64,
+            0.64,
+            0.08
+          ],
+          "evaluated_dimensions": [
+            0.64,
+            0.64,
+            0.08
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              -0.32,
+              -0.32,
+              -0.04
+            ],
+            "max": [
+              0.32,
+              0.32,
+              0.04
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.32,
+              -0.32,
+              -0.04
+            ],
+            "max": [
+              0.32,
+              0.32,
+              0.04
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_08_primary_assembly.blend"
+  },
+  "pass": true
+}

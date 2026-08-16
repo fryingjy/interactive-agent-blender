@@ -1,0 +1,12 @@
+[
+  {
+    "label": "observe_base_faces_before_fascia_construction",
+    "command": "get_mesh_geometry",
+    "params": {"name": "MainHousing"}
+  },
+  {
+    "label": "observe_base_object_state_before_fascia_construction",
+    "command": "get_full_state",
+    "params": {"name": "MainHousing"}
+  }
+]

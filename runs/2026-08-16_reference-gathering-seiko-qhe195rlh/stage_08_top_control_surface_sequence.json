@@ -1,0 +1,21 @@
+[
+  {
+    "label": "select_top_control_for_metal_surface",
+    "command": "select_by_ids",
+    "params": {"name": "TopControl", "face_ids": [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98]}
+  },
+  {
+    "label": "assign_silver_surface_to_observed_top_control",
+    "transaction": {
+      "name": "TopControl",
+      "action_type": "surface_region",
+      "operation": "assign_selected_material",
+      "params": {"material_name": "Seiko_Silver_Control", "color": [0.48, 0.49, 0.47, 1.0], "metallic": 0.68, "roughness": 0.22}
+    }
+  },
+  {
+    "label": "inspect_top_control_evaluated_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "TopControl"}
+  }
+]

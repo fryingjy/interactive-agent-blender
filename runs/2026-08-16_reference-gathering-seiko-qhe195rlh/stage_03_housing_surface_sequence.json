@@ -1,0 +1,36 @@
+[
+  {
+    "label": "add_live_physical_corner_radius",
+    "transaction": {"name": "MainHousing", "action_type": "introduce_observed_plastic_corner_radius", "operation": "add_modifier", "params": {"modifier_type": "BEVEL", "modifier_name": "Housing_Physical_Radius_Unapplied"}, "command_id": "seiko-housing-add-bevel"}
+  },
+  {
+    "label": "set_physical_corner_radius_width",
+    "transaction": {"name": "MainHousing", "action_type": "set_observed_corner_radius_width", "operation": "set_modifier_parameter", "params": {"modifier_name": "Housing_Physical_Radius_Unapplied", "parameter": "width", "value": 0.16}, "command_id": "seiko-housing-bevel-width"}
+  },
+  {
+    "label": "set_physical_corner_radius_segments",
+    "transaction": {"name": "MainHousing", "action_type": "set_observed_corner_radius_segments", "operation": "set_modifier_parameter", "params": {"modifier_name": "Housing_Physical_Radius_Unapplied", "parameter": "segments", "value": 3}, "command_id": "seiko-housing-bevel-segments"}
+  },
+  {
+    "label": "add_live_subdivision_for_continuous_housing",
+    "transaction": {"name": "MainHousing", "action_type": "add_continuous_housing_subdivision", "operation": "add_modifier", "params": {"modifier_type": "SUBSURF", "modifier_name": "Housing_SubD_Unapplied"}, "command_id": "seiko-housing-add-subd"}
+  },
+  {
+    "label": "set_subdivision_viewport_level",
+    "transaction": {"name": "MainHousing", "action_type": "set_primary_housing_subdivision_level", "operation": "set_modifier_parameter", "params": {"modifier_name": "Housing_SubD_Unapplied", "parameter": "levels", "value": 1}, "command_id": "seiko-housing-subd-level"}
+  },
+  {
+    "label": "apply_smooth_by_angle_to_housing",
+    "transaction": {"name": "MainHousing", "action_type": "set_housing_normal_policy", "operation": "set_smooth_by_angle", "params": {"angle": 0.5235987756, "keep_sharp_edges": true}, "command_id": "seiko-housing-smooth-angle"}
+  },
+  {
+    "label": "observe_housing_state_after_surface_setup",
+    "command": "get_full_state",
+    "params": {"name": "MainHousing"}
+  },
+  {
+    "label": "observe_housing_evaluated_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "MainHousing"}
+  }
+]

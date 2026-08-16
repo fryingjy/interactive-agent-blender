@@ -1,0 +1,565 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_04_connected_fascia_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_03_housing_surface.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_04_connected_fascia.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "15433f6ed9a3",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_entire_connected_housing_for_black_shell",
+      "command": "select_by_ids",
+      "params": {
+        "name": "MainHousing",
+        "face_ids": [
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 0,
+        "faces": 14
+      }
+    },
+    {
+      "index": 1,
+      "label": "assign_black_shell_surface_to_connected_housing",
+      "command": "transaction",
+      "params": {
+        "name": "MainHousing",
+        "action_type": "surface_region",
+        "operation": "assign_selected_material",
+        "params": {
+          "material_name": "Seiko_Black_Shell",
+          "color": [
+            0.012,
+            0.015,
+            0.018,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.28
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1786921614180",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1786921614180",
+          "performed": true,
+          "result": {
+            "material_name": "Seiko_Black_Shell",
+            "created": true,
+            "material_index": 0,
+            "assigned_face_count": 14,
+            "color": [
+              0.012,
+              0.015,
+              0.018,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.28
+          }
+        },
+        "verify": {
+          "action_type": "surface_region",
+          "op_delta": 0,
+          "before": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1786921614180",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "select_front_region_for_single_connected_fascia_extrusion",
+      "command": "select_by_ids",
+      "params": {
+        "name": "MainHousing",
+        "face_ids": [
+          24,
+          51,
+          52
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 0,
+        "faces": 3
+      }
+    },
+    {
+      "index": 3,
+      "label": "extrude_proud_red_fascia_from_connected_housing_cage",
+      "command": "transaction",
+      "params": {
+        "name": "MainHousing",
+        "action_type": "primary_form",
+        "operation": "extrude_selection",
+        "params": {
+          "offset": 0.12
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1786921614186",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1786921614186",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "primary_form",
+          "op_delta": 0,
+          "before": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 44,
+            "faces": 22,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84
+              ],
+              "removed": [
+                43,
+                44
+              ]
+            },
+            "faces": {
+              "added": [
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92
+              ],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1786921614186",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "assign_red_to_extruded_fascia_region",
+      "command": "transaction",
+      "params": {
+        "name": "MainHousing",
+        "action_type": "surface_region",
+        "operation": "assign_selected_material",
+        "params": {
+          "material_name": "Seiko_Red_Fascia",
+          "color": [
+            0.48,
+            0.006,
+            0.012,
+            1.0
+          ],
+          "metallic": 0.0,
+          "roughness": 0.19
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_10_1786921614191",
+          "observed_revision": 10
+        },
+        "perform": {
+          "decision_id": "dec_10_1786921614191",
+          "performed": true,
+          "result": {
+            "material_name": "Seiko_Red_Fascia",
+            "created": true,
+            "material_index": 1,
+            "assigned_face_count": 3,
+            "color": [
+              0.48,
+              0.006,
+              0.012,
+              1.0
+            ],
+            "metallic": 0.0,
+            "roughness": 0.19
+          }
+        },
+        "verify": {
+          "action_type": "surface_region",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 44,
+            "faces": 22,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 44,
+            "faces": 22,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_10_1786921614191",
+          "result_revision": 11
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "inspect_connected_shell_and_fascia_base_topology",
+      "command": "get_full_state",
+      "params": {
+        "name": "MainHousing"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 11,
+        "mesh_health": {
+          "vertices": 24,
+          "edges": 44,
+          "faces": 22,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 16,
+          "3": 8
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 16,
+              "agent_id": 59
+            },
+            {
+              "index": 17,
+              "agent_id": 60
+            },
+            {
+              "index": 18,
+              "agent_id": 61
+            },
+            {
+              "index": 19,
+              "agent_id": 62
+            },
+            {
+              "index": 20,
+              "agent_id": 63
+            },
+            {
+              "index": 21,
+              "agent_id": 64
+            },
+            {
+              "index": 22,
+              "agent_id": 65
+            },
+            {
+              "index": 23,
+              "agent_id": 66
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 26,
+              "agent_id": 67
+            },
+            {
+              "index": 27,
+              "agent_id": 68
+            },
+            {
+              "index": 28,
+              "agent_id": 69
+            },
+            {
+              "index": 29,
+              "agent_id": 70
+            },
+            {
+              "index": 30,
+              "agent_id": 71
+            },
+            {
+              "index": 31,
+              "agent_id": 72
+            },
+            {
+              "index": 32,
+              "agent_id": 73
+            },
+            {
+              "index": 33,
+              "agent_id": 74
+            },
+            {
+              "index": 34,
+              "agent_id": 75
+            },
+            {
+              "index": 35,
+              "agent_id": 76
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 11,
+              "agent_id": 85
+            },
+            {
+              "index": 12,
+              "agent_id": 86
+            },
+            {
+              "index": 13,
+              "agent_id": 87
+            }
+          ],
+          "selected_vertex_count": 8,
+          "selected_edge_count": 10,
+          "selected_face_count": 3
+        },
+        "persistent_id_coverage": {
+          "verts": 24,
+          "edges": 44,
+          "faces": 22
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "inspect_connected_shell_and_fascia_evaluated_surface",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "MainHousing"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 594,
+          "edges": 1184,
+          "faces": 592,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 586,
+          "3": 8
+        },
+        "surface_quality": {
+          "face_count": 592,
+          "min_area": 0.00035521,
+          "max_area": 0.9009,
+          "median_area": 0.018855,
+          "area_outlier_count": 40,
+          "area_outlier_ratio": 0.0676,
+          "max_adjacent_face_angle_radians": 0.5535,
+          "angle_samples": 1184
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 594,
+          "median_edge_length": 0.19249994,
+          "median_absolute_laplacian": 0.02916806,
+          "laplacian_mad": 0.01590499,
+          "max_robust_outlier_z": 1.9335,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 592,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 18.3018,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            4.5,
+            1.92,
+            3.9
+          ],
+          "evaluated_dimensions": [
+            4.5,
+            1.9187,
+            3.8987
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            0.9993,
+            0.9997
+          ],
+          "base_bounds": {
+            "min": [
+              -2.25,
+              -1.02,
+              -1.95
+            ],
+            "max": [
+              2.25,
+              0.9,
+              1.95
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -2.25,
+              -1.0193,
+              -1.9493
+            ],
+            "max": [
+              2.25,
+              0.8993,
+              1.9493
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_04_connected_fascia.blend"
+  },
+  "pass": true
+}

@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_02_housing_topology_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_01_seed.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_02_housing_topology.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "cce26bcd0d8d",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_entire_connected_seed_for_dimensioning",
+      "command": "select_by_ids",
+      "params": {
+        "name": "MainHousing",
+        "vertex_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 8,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 1,
+      "label": "set_observed_overall_housing_proportion",
+      "command": "transaction",
+      "params": {
+        "name": "MainHousing",
+        "action_type": "match_official_overall_dimensions",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            2.25,
+            0.9,
+            1.95
+          ]
+        },
+        "command_id": "seiko-housing-overall-proportion"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1786921150633",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1786921150633",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "match_official_overall_dimensions",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1786921150633",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "select_full_vertical_ring_for_horizontal_control_loops",
+      "command": "select_by_ids",
+      "params": {
+        "name": "MainHousing",
+        "edge_ids": [
+          10,
+          12,
+          15,
+          18
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 4,
+        "faces": 0
+      }
+    },
+    {
+      "index": 3,
+      "label": "add_two_horizontal_connected_control_loops",
+      "command": "transaction",
+      "params": {
+        "name": "MainHousing",
+        "action_type": "reserve_lower_side_profile_regions",
+        "operation": "loop_cut_selection",
+        "params": {
+          "cuts": 2
+        },
+        "command_id": "seiko-housing-horizontal-control-loops"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1786921150638",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1786921150638",
+          "performed": true,
+          "result": {
+            "cuts": 2,
+            "created_geometry": 32,
+            "new_verts": 8,
+            "new_edges": 16,
+            "new_faces": 8
+          }
+        },
+        "verify": {
+          "action_type": "reserve_lower_side_profile_regions",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58
+              ],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1786921150638",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "observe_connected_housing_cage_after_loop_cuts",
+      "command": "get_mesh_geometry",
+      "params": {
+        "name": "MainHousing"
+      },
+      "status": "ok",
+      "result": {
+        "name": "MainHousing",
+        "space": "LOCAL",
+        "vertices": [
+          {
+            "agent_id": 1,
+            "co": [
+              -2.25,
+              -0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 2,
+            "co": [
+              -2.25,
+              -0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 3,
+            "co": [
+              -2.25,
+              0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 4,
+            "co": [
+              -2.25,
+              0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 5,
+            "co": [
+              2.25,
+              -0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 6,
+            "co": [
+              2.25,
+              -0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 7,
+            "co": [
+              2.25,
+              0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 8,
+            "co": [
+              2.25,
+              0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 27,
+            "co": [
+              -2.25,
+              -0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 28,
+            "co": [
+              -2.25,
+              -0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 29,
+            "co": [
+              2.25,
+              -0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 30,
+            "co": [
+              2.25,
+              -0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 31,
+            "co": [
+              2.25,
+              0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 32,
+            "co": [
+              2.25,
+              0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 33,
+            "co": [
+              -2.25,
+              0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 34,
+            "co": [
+              -2.25,
+              0.9,
+              0.65
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "agent_id": 9,
+            "vertices": [
+              3,
+              1
+            ]
+          },
+          {
+            "agent_id": 10,
+            "vertices": [
+              1,
+              28
+            ]
+          },
+          {
+            "agent_id": 11,
+            "vertices": [
+              2,
+              4
+            ]
+          },
+          {
+            "agent_id": 12,
+            "vertices": [
+              4,
+              34
+            ]
+          },
+          {
+            "agent_id": 13,
+            "vertices": [
+              7,
+              3
+            ]
+          },
+          {
+            "agent_id": 14,
+            "vertices": [
+              4,
+              8
+            ]
+          },
+          {
+            "agent_id": 15,
+            "vertices": [
+              8,
+              32
+            ]
+          },
+          {
+            "agent_id": 16,
+            "vertices": [
+              5,
+              7
+            ]
+          },
+          {
+            "agent_id": 17,
+            "vertices": [
+              8,
+              6
+            ]
+          },
+          {
+            "agent_id": 18,
+            "vertices": [
+              6,
+              30
+            ]
+          },
+          {
+            "agent_id": 19,
+            "vertices": [
+              1,
+              5
+            ]
+          },
+          {
+            "agent_id": 20,
+            "vertices": [
+              6,
+              2
+            ]
+          },
+          {
+            "agent_id": 35,
+            "vertices": [
+              2,
+              27
+            ]
+          },
+          {
+            "agent_id": 36,
+            "vertices": [
+              27,
+              28
+            ]
+          },
+          {
+            "agent_id": 37,
+            "vertices": [
+              5,
+              29
+            ]
+          },
+          {
+            "agent_id": 38,
+            "vertices": [
+              29,
+              30
+            ]
+          },
+          {
+            "agent_id": 39,
+            "vertices": [
+              7,
+              31
+            ]
+          },
+          {
+            "agent_id": 40,
+            "vertices": [
+              31,
+              32
+            ]
+          },
+          {
+            "agent_id": 41,
+            "vertices": [
+              3,
+              33
+            ]
+          },
+          {
+            "agent_id": 42,
+            "vertices": [
+              33,
+              34
+            ]
+          },
+          {
+            "agent_id": 43,
+            "vertices": [
+              30,
+              27
+            ]
+          },
+          {
+            "agent_id": 44,
+            "vertices": [
+              29,
+              28
+            ]
+          },
+          {
+            "agent_id": 45,
+            "vertices": [
+              32,
+              30
+            ]
+          },
+          {
+            "agent_id": 46,
+            "vertices": [
+              31,
+              29
+            ]
+          },
+          {
+            "agent_id": 47,
+            "vertices": [
+              27,
+              34
+            ]
+          },
+          {
+            "agent_id": 48,
+            "vertices": [
+              28,
+              33
+            ]
+          },
+          {
+            "agent_id": 49,
+            "vertices": [
+              34,
+              32
+            ]
+          },
+          {
+            "agent_id": 50,
+            "vertices": [
+              33,
+              31
+            ]
+          }
+        ],
+        "faces": [
+          {
+            "agent_id": 21,
+            "vertices": [
+              34,
+              27,
+              2,
+              4
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              1.3
+            ],
+            "normal": [
+              -1.0,
+              0.0,
+              -0.0
+            ]
+          },
+          {
+            "agent_id": 22,
+            "vertices": [
+              32,
+              34,
+              4,
+              8
+            ],
+            "center": [
+              0.0,
+              0.9,
+              1.3
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 23,
+            "vertices": [
+              30,
+              32,
+              8,
+              6
+            ],
+            "center": [
+              2.25,
+              0.0,
+              1.3
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 24,
+            "vertices": [
+              27,
+              30,
+              6,
+              2
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              1.3
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ]
+          },
+          {
+            "agent_id": 25,
+            "vertices": [
+              3,
+              7,
+              5,
+              1
+            ],
+            "center": [
+              0.0,
+              0.0,
+              -1.95
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "agent_id": 26,
+            "vertices": [
+              8,
+              4,
+              2,
+              6
+            ],
+            "center": [
+              0.0,
+              0.0,
+              1.95
+            ],
+            "normal": [
+              0.0,
+              -0.0,
+              1.0
+            ]
+          },
+          {
+            "agent_id": 51,
+            "vertices": [
+              29,
+              30,
+              27,
+              28
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 52,
+            "vertices": [
+              5,
+              29,
+              28,
+              1
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              -1.3
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 53,
+            "vertices": [
+              31,
+              32,
+              30,
+              29
+            ],
+            "center": [
+              2.25,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 54,
+            "vertices": [
+              7,
+              31,
+              29,
+              5
+            ],
+            "center": [
+              2.25,
+              0.0,
+              -1.3
+            ],
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 55,
+            "vertices": [
+              28,
+              27,
+              34,
+              33
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 56,
+            "vertices": [
+              1,
+              28,
+              33,
+              3
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              -1.3
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 57,
+            "vertices": [
+              33,
+              34,
+              32,
+              31
+            ],
+            "center": [
+              0.0,
+              0.9,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 58,
+            "vertices": [
+              3,
+              33,
+              31,
+              7
+            ],
+            "center": [
+              0.0,
+              0.9,
+              -1.3
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_02_housing_topology.blend"
+  },
+  "pass": true
+}

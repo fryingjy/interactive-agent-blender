@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_TO_BLOCKOUT_CONTRACT",
+  "target": "seiko_qhe195rlh",
+  "reference_set_id": "seiko_qhe195rlh_official_multiview",
+  "known": [
+    {
+      "claim_id": "housing_primary_form",
+      "category": "primary_forms",
+      "statement": "The dominant body is a wide rounded-rectangle alarm-clock housing with broad front planes and a deliberately nonuniform lower side silhouette.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front and right-side views"
+      ],
+      "modeling_consequence": "Block out the overall housing box and side sweep before any dial, hand, numeral, or material detail.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product",
+        "right_side_product"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    },
+    {
+      "claim_id": "housing_continuity",
+      "category": "continuous_surfaces",
+      "statement": "The red front rim and dark rear shell are parts of one continuous primary housing surface with a controlled color/material boundary, not a stack of disconnected boxes.",
+      "evidence_status": "STRONGLY_INFERRED",
+      "confidence": 0.85,
+      "evidence": [
+        "continuous outer silhouette in front and side official views",
+        "no visible full-depth assembly seam around the front"
+      ],
+      "modeling_consequence": "Start from one connected cube-derived housing cage, reserve front dial and rim regions through loops/insets, and retain a live SubD/crease strategy until the primary silhouette is verified.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product",
+        "right_side_product"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    },
+    {
+      "claim_id": "dial_is_separate_recessed_assembly",
+      "category": "separate_parts",
+      "statement": "The circular bezel/dial is a distinct recessed front assembly from the housing.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "concentric bright bezel boundary and front depth separation"
+      ],
+      "modeling_consequence": "Keep dial/bezel independently editable; do not fake the circular recess with a flat texture.",
+      "impact": "high",
+      "component_refs": [
+        "dial_bezel",
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product"
+      ],
+      "modeling_signals": {
+        "independent_motion_or_material": true
+      }
+    },
+    {
+      "claim_id": "side_sweep",
+      "category": "landmarks",
+      "statement": "The lower side profile rises toward the rear/front transition rather than remaining a strict rectangular side silhouette.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official right-side view"
+      ],
+      "modeling_consequence": "Make the lower sweep an explicit connected-cage shape decision before dial detail; a uniformly scaled cube is insufficient.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "right_side_product"
+      ],
+      "modeling_signals": {}
+    },
+    {
+      "claim_id": "dimension_anchor",
+      "category": "known_dimensions",
+      "statement": "Overall published dimensions are 3.9 \u00d7 4.5 \u00d7 1.8 inches; front/side proportions determine the reversible axis mapping.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official Seiko product specification"
+      ],
+      "modeling_consequence": "Freeze the initial overall bounding box before secondary features and compare the model against both official views.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "specification"
+      ],
+      "modeling_signals": {}
+    },
+    {
+      "claim_id": "construction_strategy",
+      "category": "construction_hypotheses",
+      "statement": "Use a connected SubD-compatible housing cage for the main shell, a separate radial dial/bezel assembly, and a separate shallow top control.",
+      "evidence_status": "STRONGLY_INFERRED",
+      "confidence": 0.9,
+      "evidence": [
+        "observed housing continuity",
+        "observed concentric dial boundary",
+        "observed top control boundary"
+      ],
+      "modeling_consequence": "Reject assembled primitive body boxes and circular overlays that do not correspond to observed assembly boundaries.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing",
+        "dial_bezel",
+        "top_control"
+      ],
+      "source_views": [
+        "front_product",
+        "right_side_product"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true,
+        "independent_motion_or_material": true
+      }
+    }
+  ],
+  "unknown": [
+    {
+      "claim_id": "rear_unknown",
+      "category": "unknowns",
+      "statement": "Exact rear controls and underside seams are not established for the red QHE195RLH.",
+      "evidence_status": "UNKNOWN",
+      "confidence": 0.05,
+      "evidence": [],
+      "modeling_consequence": "Exclude rear detail from the primary model and retain a reversible back surface.",
+      "impact": "medium",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [],
+      "modeling_signals": {}
+    }
+  ],
+  "primary_forms": [
+    {
+      "claim_id": "housing_primary_form",
+      "category": "primary_forms",
+      "statement": "The dominant body is a wide rounded-rectangle alarm-clock housing with broad front planes and a deliberately nonuniform lower side silhouette.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front and right-side views"
+      ],
+      "modeling_consequence": "Block out the overall housing box and side sweep before any dial, hand, numeral, or material detail.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product",
+        "right_side_product"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    }
+  ],
+  "primary_components": [
+    {
+      "name": "main_housing",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "One connected rounded-rectangle housing cage with a thin red front rim and darker rear shell; its lower side silhouette is not a uniform box.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front and right-side views"
+      ],
+      "expected_region": {}
+    },
+    {
+      "name": "dial_bezel",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "A circular recessed dial and thin bezel assembly occupying the housing front.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front view"
+      ],
+      "expected_region": {}
+    }
+  ],
+  "secondary_components": [
+    {
+      "name": "top_control",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "One shallow circular top-center control.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official front and right-side views"
+      ],
+      "expected_region": {}
+    }
+  ],
+  "negative_spaces": [],
+  "silhouette_landmarks": [
+    {
+      "claim_id": "side_sweep",
+      "category": "landmarks",
+      "statement": "The lower side profile rises toward the rear/front transition rather than remaining a strict rectangular side silhouette.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official right-side view"
+      ],
+      "modeling_consequence": "Make the lower sweep an explicit connected-cage shape decision before dial detail; a uniformly scaled cube is insufficient.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "right_side_product"
+      ],
+      "modeling_signals": {}
+    }
+  ],
+  "depth_landmarks": [],
+  "symmetry": [],
+  "continuous_surface_hypotheses": [
+    {
+      "claim_id": "housing_continuity",
+      "category": "continuous_surfaces",
+      "statement": "The red front rim and dark rear shell are parts of one continuous primary housing surface with a controlled color/material boundary, not a stack of disconnected boxes.",
+      "evidence_status": "STRONGLY_INFERRED",
+      "confidence": 0.85,
+      "evidence": [
+        "continuous outer silhouette in front and side official views",
+        "no visible full-depth assembly seam around the front"
+      ],
+      "modeling_consequence": "Start from one connected cube-derived housing cage, reserve front dial and rim regions through loops/insets, and retain a live SubD/crease strategy until the primary silhouette is verified.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product",
+        "right_side_product"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    }
+  ],
+  "separate_component_hypotheses": [
+    {
+      "claim_id": "dial_is_separate_recessed_assembly",
+      "category": "separate_parts",
+      "statement": "The circular bezel/dial is a distinct recessed front assembly from the housing.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "concentric bright bezel boundary and front depth separation"
+      ],
+      "modeling_consequence": "Keep dial/bezel independently editable; do not fake the circular recess with a flat texture.",
+      "impact": "high",
+      "component_refs": [
+        "dial_bezel",
+        "main_housing"
+      ],
+      "source_views": [
+        "front_product"
+      ],
+      "modeling_signals": {
+        "independent_motion_or_material": true
+      }
+    }
+  ],
+  "dimensional_anchors": [
+    {
+      "claim_id": "dimension_anchor",
+      "category": "known_dimensions",
+      "statement": "Overall published dimensions are 3.9 \u00d7 4.5 \u00d7 1.8 inches; front/side proportions determine the reversible axis mapping.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official Seiko product specification"
+      ],
+      "modeling_consequence": "Freeze the initial overall bounding box before secondary features and compare the model against both official views.",
+      "impact": "high",
+      "component_refs": [
+        "main_housing"
+      ],
+      "source_views": [
+        "specification"
+      ],
+      "modeling_signals": {}
+    }
+  ],
+  "candidate_strategies": [
+    {
+      "name": "connected_subd_housing_separate_dial_control",
+      "representation": "connected cube-derived SubD cage + separate radial dial/bezel + separate top control",
+      "rationale_claim_ids": [
+        "housing_continuity",
+        "dial_is_separate_recessed_assembly",
+        "side_sweep",
+        "construction_strategy"
+      ],
+      "status": "candidate",
+      "rejection_reason": "",
+      "reversible": true
+    }
+  ],
+  "selected_strategy": {
+    "name": "connected_subd_housing_separate_dial_control",
+    "representation": "connected cube-derived SubD cage + separate radial dial/bezel + separate top control",
+    "rationale_claim_ids": [
+      "housing_continuity",
+      "dial_is_separate_recessed_assembly",
+      "side_sweep",
+      "construction_strategy"
+    ],
+    "status": "candidate",
+    "rejection_reason": "",
+    "reversible": true
+  },
+  "rejected_strategies": [
+    {
+      "name": "stacked_primitive_clock",
+      "representation": "scaled rounded box plus disconnected disk and generic knob",
+      "rationale_claim_ids": [
+        "housing_continuity",
+        "side_sweep"
+      ],
+      "status": "rejected",
+      "rejection_reason": "It misses the observed connected lower side sweep and treats the housing as an unedited rounded primitive.",
+      "reversible": true
+    }
+  ],
+  "confidence": {
+    "claims": {
+      "housing_primary_form": 0.95,
+      "housing_continuity": 0.85,
+      "dial_is_separate_recessed_assembly": 0.95,
+      "side_sweep": 0.9,
+      "dimension_anchor": 0.95,
+      "rear_unknown": 0.05,
+      "construction_strategy": 0.9
+    },
+    "components": {
+      "main_housing": 0.95,
+      "dial_bezel": 0.95,
+      "top_control": 0.9
+    }
+  },
+  "reference_readiness": {
+    "ready_for_blockout": true,
+    "missing_requirements": [],
+    "high_impact_unresolved_claims": [],
+    "research_questions": [],
+    "conflicting_modeling_signals": [],
+    "claim_counts_by_status": {
+      "OBSERVED": 4,
+      "STRONGLY_INFERRED": 2,
+      "UNKNOWN": 1,
+      "WEAKLY_INFERRED": 0
+    }
+  },
+  "limitation": "This contract makes reference interpretation and selected representation traceable. It does not authorize Blender construction until required external/human review gates pass."
+}

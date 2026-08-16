@@ -346,6 +346,63 @@ def extrude_selection(name, offset=0.1):
     return len(new_verts)
 
 
+def assign_selected_material(name, material_name, color, metallic=0.0, roughness=0.5):
+    """Assign one explicit material to the currently selected faces.
+
+    This deliberately does not mutate an existing material's appearance. A
+    caller either supplies a new name (created with the requested values) or
+    reuses a material already configured for this asset. The operation is
+    selection-scoped, so a connected cage can carry physically meaningful
+    surface regions without splitting into decorative primitive objects.
+    """
+    if not isinstance(material_name, str) or not material_name.strip():
+        raise ValueError("material_name must be a non-empty string")
+    if not isinstance(color, (list, tuple)) or len(color) not in {3, 4}:
+        raise ValueError("color must be an RGB or RGBA sequence")
+    rgba = tuple(float(channel) for channel in color)
+    if any(channel < 0.0 or channel > 1.0 for channel in rgba):
+        raise ValueError("color channels must be between 0 and 1")
+    if len(rgba) == 3:
+        rgba = (*rgba, 1.0)
+
+    obj, bm = _bm_from_object(name)
+    selected_faces = [face for face in bm.faces if face.select and not face.hide]
+    if not selected_faces:
+        _write_back(obj, bm)
+        raise ValueError(f"no faces selected on '{name}' to assign material")
+
+    material = bpy.data.materials.get(material_name)
+    created = material is None
+    if created:
+        material = bpy.data.materials.new(material_name)
+        material.use_nodes = True
+        material.diffuse_color = rgba
+        principled = material.node_tree.nodes.get("Principled BSDF") if material.node_tree else None
+        if principled is not None:
+            principled.inputs["Base Color"].default_value = rgba
+            principled.inputs["Metallic"].default_value = float(metallic)
+            principled.inputs["Roughness"].default_value = float(roughness)
+
+    slots = obj.data.materials
+    try:
+        material_index = list(slots).index(material)
+    except ValueError:
+        slots.append(material)
+        material_index = len(slots) - 1
+    for face in selected_faces:
+        face.material_index = material_index
+    _write_back(obj, bm)
+    return {
+        "material_name": material.name,
+        "created": created,
+        "material_index": material_index,
+        "assigned_face_count": len(selected_faces),
+        "color": list(rgba),
+        "metallic": float(metallic),
+        "roughness": float(roughness),
+    }
+
+
 def move_selection(name, delta):
     """Translate the currently selected vertices by delta=(dx, dy, dz)."""
     obj, bm = _bm_from_object(name)

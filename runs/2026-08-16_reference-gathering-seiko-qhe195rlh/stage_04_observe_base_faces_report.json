@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_04_observe_base_faces_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_03_housing_surface.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "e4d18034cd7e",
+  "results": [
+    {
+      "index": 0,
+      "label": "observe_base_faces_before_fascia_construction",
+      "command": "get_mesh_geometry",
+      "params": {
+        "name": "MainHousing"
+      },
+      "status": "ok",
+      "result": {
+        "name": "MainHousing",
+        "space": "LOCAL",
+        "vertices": [
+          {
+            "agent_id": 1,
+            "co": [
+              -2.25,
+              -0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 2,
+            "co": [
+              -2.25,
+              -0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 3,
+            "co": [
+              -2.25,
+              0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 4,
+            "co": [
+              -2.25,
+              0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 5,
+            "co": [
+              2.25,
+              -0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 6,
+            "co": [
+              2.25,
+              -0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 7,
+            "co": [
+              2.25,
+              0.9,
+              -1.95
+            ]
+          },
+          {
+            "agent_id": 8,
+            "co": [
+              2.25,
+              0.9,
+              1.95
+            ]
+          },
+          {
+            "agent_id": 27,
+            "co": [
+              -2.25,
+              -0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 28,
+            "co": [
+              -2.25,
+              -0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 29,
+            "co": [
+              2.25,
+              -0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 30,
+            "co": [
+              2.25,
+              -0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 31,
+            "co": [
+              2.25,
+              0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 32,
+            "co": [
+              2.25,
+              0.9,
+              0.65
+            ]
+          },
+          {
+            "agent_id": 33,
+            "co": [
+              -2.25,
+              0.9,
+              -0.65
+            ]
+          },
+          {
+            "agent_id": 34,
+            "co": [
+              -2.25,
+              0.9,
+              0.65
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "agent_id": 9,
+            "vertices": [
+              3,
+              1
+            ]
+          },
+          {
+            "agent_id": 10,
+            "vertices": [
+              1,
+              28
+            ]
+          },
+          {
+            "agent_id": 11,
+            "vertices": [
+              2,
+              4
+            ]
+          },
+          {
+            "agent_id": 12,
+            "vertices": [
+              4,
+              34
+            ]
+          },
+          {
+            "agent_id": 13,
+            "vertices": [
+              7,
+              3
+            ]
+          },
+          {
+            "agent_id": 14,
+            "vertices": [
+              4,
+              8
+            ]
+          },
+          {
+            "agent_id": 15,
+            "vertices": [
+              8,
+              32
+            ]
+          },
+          {
+            "agent_id": 16,
+            "vertices": [
+              5,
+              7
+            ]
+          },
+          {
+            "agent_id": 17,
+            "vertices": [
+              8,
+              6
+            ]
+          },
+          {
+            "agent_id": 18,
+            "vertices": [
+              6,
+              30
+            ]
+          },
+          {
+            "agent_id": 19,
+            "vertices": [
+              1,
+              5
+            ]
+          },
+          {
+            "agent_id": 20,
+            "vertices": [
+              6,
+              2
+            ]
+          },
+          {
+            "agent_id": 35,
+            "vertices": [
+              2,
+              27
+            ]
+          },
+          {
+            "agent_id": 36,
+            "vertices": [
+              27,
+              28
+            ]
+          },
+          {
+            "agent_id": 37,
+            "vertices": [
+              5,
+              29
+            ]
+          },
+          {
+            "agent_id": 38,
+            "vertices": [
+              29,
+              30
+            ]
+          },
+          {
+            "agent_id": 39,
+            "vertices": [
+              7,
+              31
+            ]
+          },
+          {
+            "agent_id": 40,
+            "vertices": [
+              31,
+              32
+            ]
+          },
+          {
+            "agent_id": 41,
+            "vertices": [
+              3,
+              33
+            ]
+          },
+          {
+            "agent_id": 42,
+            "vertices": [
+              33,
+              34
+            ]
+          },
+          {
+            "agent_id": 43,
+            "vertices": [
+              30,
+              27
+            ]
+          },
+          {
+            "agent_id": 44,
+            "vertices": [
+              29,
+              28
+            ]
+          },
+          {
+            "agent_id": 45,
+            "vertices": [
+              32,
+              30
+            ]
+          },
+          {
+            "agent_id": 46,
+            "vertices": [
+              31,
+              29
+            ]
+          },
+          {
+            "agent_id": 47,
+            "vertices": [
+              27,
+              34
+            ]
+          },
+          {
+            "agent_id": 48,
+            "vertices": [
+              28,
+              33
+            ]
+          },
+          {
+            "agent_id": 49,
+            "vertices": [
+              34,
+              32
+            ]
+          },
+          {
+            "agent_id": 50,
+            "vertices": [
+              33,
+              31
+            ]
+          }
+        ],
+        "faces": [
+          {
+            "agent_id": 21,
+            "vertices": [
+              34,
+              27,
+              2,
+              4
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              1.3
+            ],
+            "normal": [
+              -1.0,
+              0.0,
+              -0.0
+            ]
+          },
+          {
+            "agent_id": 22,
+            "vertices": [
+              32,
+              34,
+              4,
+              8
+            ],
+            "center": [
+              0.0,
+              0.9,
+              1.3
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 23,
+            "vertices": [
+              30,
+              32,
+              8,
+              6
+            ],
+            "center": [
+              2.25,
+              0.0,
+              1.3
+            ],
+            "normal": [
+              1.0,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 24,
+            "vertices": [
+              27,
+              30,
+              6,
+              2
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              1.3
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              -0.0
+            ]
+          },
+          {
+            "agent_id": 25,
+            "vertices": [
+              3,
+              7,
+              5,
+              1
+            ],
+            "center": [
+              0.0,
+              0.0,
+              -1.95
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "agent_id": 26,
+            "vertices": [
+              8,
+              4,
+              2,
+              6
+            ],
+            "center": [
+              0.0,
+              0.0,
+              1.95
+            ],
+            "normal": [
+              0.0,
+              -0.0,
+              1.0
+            ]
+          },
+          {
+            "agent_id": 51,
+            "vertices": [
+              29,
+              30,
+              27,
+              28
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 52,
+            "vertices": [
+              5,
+              29,
+              28,
+              1
+            ],
+            "center": [
+              0.0,
+              -0.9,
+              -1.3
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 53,
+            "vertices": [
+              31,
+              32,
+              30,
+              29
+            ],
+            "center": [
+              2.25,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 54,
+            "vertices": [
+              7,
+              31,
+              29,
+              5
+            ],
+            "center": [
+              2.25,
+              0.0,
+              -1.3
+            ],
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 55,
+            "vertices": [
+              28,
+              27,
+              34,
+              33
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 56,
+            "vertices": [
+              1,
+              28,
+              33,
+              3
+            ],
+            "center": [
+              -2.25,
+              0.0,
+              -1.3
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 57,
+            "vertices": [
+              33,
+              34,
+              32,
+              31
+            ],
+            "center": [
+              0.0,
+              0.9,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 58,
+            "vertices": [
+              3,
+              33,
+              31,
+              7
+            ],
+            "center": [
+              0.0,
+              0.9,
+              -1.3
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "observe_base_object_state_before_fascia_construction",
+      "command": "get_full_state",
+      "params": {
+        "name": "MainHousing"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 8,
+        "mesh_health": {
+          "vertices": 16,
+          "edges": 28,
+          "faces": 14,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 8
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 9
+            },
+            {
+              "index": 2,
+              "agent_id": 11
+            },
+            {
+              "index": 4,
+              "agent_id": 13
+            },
+            {
+              "index": 5,
+              "agent_id": 14
+            },
+            {
+              "index": 7,
+              "agent_id": 16
+            },
+            {
+              "index": 8,
+              "agent_id": 17
+            },
+            {
+              "index": 10,
+              "agent_id": 19
+            },
+            {
+              "index": 11,
+              "agent_id": 20
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 4,
+              "agent_id": 25
+            },
+            {
+              "index": 5,
+              "agent_id": 26
+            }
+          ],
+          "selected_vertex_count": 8,
+          "selected_edge_count": 8,
+          "selected_face_count": 2
+        },
+        "persistent_id_coverage": {
+          "verts": 16,
+          "edges": 28,
+          "faces": 14
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

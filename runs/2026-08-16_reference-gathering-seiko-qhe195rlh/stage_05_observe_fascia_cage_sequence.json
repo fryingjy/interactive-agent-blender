@@ -1,0 +1,7 @@
+[
+  {
+    "label": "observe_connected_fascia_cage_before_lower_side_sweep",
+    "command": "get_mesh_geometry",
+    "params": {"name": "MainHousing"}
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "label": "select_entire_separate_bezel_assembly_for_metal_surface",
+    "command": "select_by_ids",
+    "params": {"name": "DialBezel", "face_ids": [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98]}
+  },
+  {
+    "label": "assign_silver_surface_to_separate_bezel",
+    "transaction": {
+      "name": "DialBezel",
+      "action_type": "surface_region",
+      "operation": "assign_selected_material",
+      "params": {"material_name": "Seiko_Silver_Bezel", "color": [0.42, 0.43, 0.41, 1.0], "metallic": 0.72, "roughness": 0.24}
+    }
+  },
+  {
+    "label": "select_entire_separate_dial_face_for_ivory_surface",
+    "command": "select_by_ids",
+    "params": {"name": "DialFace", "face_ids": [81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98]}
+  },
+  {
+    "label": "assign_ivory_surface_to_separate_dial_face",
+    "transaction": {
+      "name": "DialFace",
+      "action_type": "surface_region",
+      "operation": "assign_selected_material",
+      "params": {"material_name": "Seiko_Ivory_Dial", "color": [0.82, 0.80, 0.71, 1.0], "metallic": 0.0, "roughness": 0.4}
+    }
+  },
+  {
+    "label": "inspect_separate_bezel_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "DialBezel"}
+  },
+  {
+    "label": "inspect_separate_dial_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "DialFace"}
+  }
+]

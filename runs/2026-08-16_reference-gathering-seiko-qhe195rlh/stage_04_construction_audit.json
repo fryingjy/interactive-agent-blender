@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "MainHousing",
+      "origin": null,
+      "topology_operations": [
+        "extrude_selection"
+      ],
+      "connected_profile_origin": false,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "failures": []
+}

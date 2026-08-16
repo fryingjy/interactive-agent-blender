@@ -69,8 +69,10 @@ class DecisionTransaction:
         self._before_transform = None
         self._before_object_names = None
         self._before_collection_names = None
+        self._before_material_names = None
         self._before_target_collection_names = None
         self._removed_created_collections = []
+        self._removed_created_materials = []
         self._before_object_snapshot = None
         self._before_selected = None
         self._before_active_object = None
@@ -161,6 +163,13 @@ class DecisionTransaction:
         # snapshot datablocks are never reported as objects created by fn().
         self._before_object_names = set(bpy.data.objects.keys())
         self._before_collection_names = set(bpy.data.collections.keys())
+        # Material-slot edits are a real part of a modeling decision: a reversible
+        # front fascia cannot safely be judged if rejecting it leaves a newly
+        # created material datablock behind. Typed material assignment only
+        # creates a uniquely named material (it never edits an existing shared
+        # material), so preserving the pre-operation name set is enough to
+        # remove transaction-created, now-unused datablocks on rollback.
+        self._before_material_names = set(bpy.data.materials.keys())
         if self.target_object:
             self._before_target_collection_names = [
                 collection.name for collection in bpy.data.objects[self.target_object].users_collection
@@ -275,6 +284,7 @@ class DecisionTransaction:
             "reason": reason,
             "removed_created_objects": created_objects,
             "removed_created_collections": self._removed_created_collections,
+            "removed_created_materials": self._removed_created_materials,
         }
 
     def _restore_target_snapshot(self):
@@ -332,6 +342,21 @@ class DecisionTransaction:
                 )
             bpy.data.collections.remove(collection)
         self._removed_created_collections = created_collections
+        self._removed_created_materials = []
+        created_materials = sorted(
+            set(bpy.data.materials.keys()) - (self._before_material_names or set())
+        )
+        for material_name in created_materials:
+            material = bpy.data.materials.get(material_name)
+            if material is None:
+                continue
+            if material.users != 0:
+                raise TransactionError(
+                    f"cannot remove transaction-created material '{material_name}' because it still has "
+                    f"{material.users} user(s) after target restoration"
+                )
+            bpy.data.materials.remove(material)
+            self._removed_created_materials.append(material_name)
         return created_objects
 
     def _restore_object_channels(self, obj):

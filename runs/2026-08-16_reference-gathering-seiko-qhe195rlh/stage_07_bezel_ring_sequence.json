@@ -1,0 +1,35 @@
+[
+  {
+    "label": "select_bezel_front_cap_for_edit_mode_ring_construction",
+    "command": "select_by_ids",
+    "params": {"name": "DialBezel", "face_ids": [95]}
+  },
+  {
+    "label": "inset_bezel_front_cap_to_match_observed_dial_opening",
+    "transaction": {
+      "name": "DialBezel",
+      "action_type": "assembly_topology",
+      "operation": "inset_selection",
+      "params": {"thickness": 0.16, "depth": 0.0}
+    }
+  },
+  {
+    "label": "delete_inset_bezel_cap_to_make_real_open_ring",
+    "transaction": {
+      "name": "DialBezel",
+      "action_type": "assembly_topology",
+      "operation": "delete_selection",
+      "params": {}
+    }
+  },
+  {
+    "label": "inspect_open_bezel_ring_geometry",
+    "command": "get_full_state",
+    "params": {"name": "DialBezel"}
+  },
+  {
+    "label": "inspect_open_bezel_ring_evaluated_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "DialBezel"}
+  }
+]

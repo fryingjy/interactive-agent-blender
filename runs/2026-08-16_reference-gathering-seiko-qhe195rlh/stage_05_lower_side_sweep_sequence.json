@@ -1,0 +1,26 @@
+[
+  {
+    "label": "select_rear_lower_cage_edge_for_observed_side_sweep",
+    "command": "select_by_ids",
+    "params": {"name": "MainHousing", "vertex_ids": [3, 7]}
+  },
+  {
+    "label": "raise_rear_lower_cage_edge_for_observed_side_sweep",
+    "transaction": {
+      "name": "MainHousing",
+      "action_type": "primary_silhouette",
+      "operation": "move_selection",
+      "params": {"delta": [0.0, 0.0, 0.28]}
+    }
+  },
+  {
+    "label": "inspect_lower_side_sweep_base_cage",
+    "command": "get_full_state",
+    "params": {"name": "MainHousing"}
+  },
+  {
+    "label": "inspect_lower_side_sweep_evaluated_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "MainHousing"}
+  }
+]
