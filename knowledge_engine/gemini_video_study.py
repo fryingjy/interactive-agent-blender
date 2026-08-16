@@ -317,7 +317,17 @@ def analyze_youtube_video(
             raise ValueError("discovery metadata video id does not match requested URL")
     request = build_request(requested_url, model, focus, expected_source)
     client = client_factory(api_key=api_key)
-    interaction = client.interactions.create(**request)
+    try:
+        interaction = client.interactions.create(**request)
+    except Exception as exc:  # SDK exception classes vary across google-genai releases.
+        message = str(exc).casefold()
+        if "permission" in message or "403" in message:
+            raise RuntimeError(
+                "Gemini rejected the configured credential. Configure a Gemini API key that is "
+                "authorized for the selected model and public-video interaction, then retry. "
+                "No source video was downloaded or retained."
+            ) from exc
+        raise
     raw_text = interaction.output_text
     data = json.loads(raw_text)
     reported_source_url = data.get("source", {}).get("url")

@@ -193,6 +193,21 @@ class GeminiVideoStudyTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "cross-video attribution"):
                 analyze_youtube_video(requested, client_factory=Client)
 
+    def test_reports_permission_denial_without_exposing_credential(self):
+        class Client:
+            def __init__(self, api_key):
+                self.interactions = self
+
+            def create(self, **request):
+                raise RuntimeError("403 The caller does not have permission")
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "private-test-key"}, clear=False):
+            with self.assertRaisesRegex(RuntimeError, "Gemini rejected the configured credential") as error:
+                analyze_youtube_video(
+                    "https://www.youtube.com/watch?v=abc123", client_factory=Client
+                )
+        self.assertNotIn("private-test-key", str(error.exception))
+
     def test_write_analysis_round_trips_utf8_json(self):
         with tempfile.TemporaryDirectory() as directory:
             target = write_analysis({"text": "topology → transfer"}, Path(directory) / "analysis.json")

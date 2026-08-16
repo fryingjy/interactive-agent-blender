@@ -1,0 +1,3 @@
+# Optional runtime for tools/analyze_video_with_gemini.py.
+# The source video is supplied to Gemini by public URL; this dependency does not download it.
+google-genai>=2.18,<3

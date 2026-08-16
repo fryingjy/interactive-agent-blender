@@ -56,7 +56,11 @@ The command loads `GEMINI_API_KEY` from the environment or the gitignored `.env`
 in a command, report, prompt, or committed file. Use `--dry-run` to validate a URL and inspect the
 secret-free request summary without consuming API quota.
 
-Install the official Python client with `pip install google-genai` if it is not already available.
+Install the reproducible optional runtime with
+`pip install -r requirements-video-learning.txt` if it is not already available. A key that merely
+exists is insufficient: it must be authorized for the selected Gemini model and public-video
+interaction. Credential-denied requests create no study evidence and must remain explicitly
+unprocessed rather than being retried as transcript-only claims.
 The implementation follows Google's current [video-understanding](https://ai.google.dev/gemini-api/docs/video-understanding)
 and [structured-output](https://ai.google.dev/gemini-api/docs/structured-output) guidance. The
 default model is explicit and can be overridden with `--model` when the supported model list changes.
