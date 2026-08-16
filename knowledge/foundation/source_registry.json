@@ -3085,5 +3085,33 @@
         "Replacement copies mesh data and common modifier properties; unsupported RNA property forms may require an explicit serializer extension"
       ]
     }
+  },
+  {
+    "id": "experiment-westclox-70010-construction-gate-2026-08-16",
+    "url": "https://westcloxsource.com/products/westclox-twin-bell-alarm-clock-70010",
+    "local_path": "runs/2026-08-16_westclox-70010-model/",
+    "title": "Westclox 70010 Rejected Reference-Driven Alarm-Clock Blockout",
+    "creator": "interactive-agent-blender",
+    "source_type": "reference_driven_modeling_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["reference-modeling", "component-diagnosis", "connected-cage", "primary-form", "alarm-clock"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "REJECTED",
+    "rejected_reason": "The rendered result remained a generic clock icon rather than the reference's circular pressed-metal shell, conical bells, angled struts, and specific handle profile. The declared continuous shell was only a primitive plus shading, with no topology-edit evidence.",
+    "modalities_inspected": ["product_front_angle_back_photography", "typed_decision_reports", "solid_render", "wireframe_render", "component_overlay", "negative_space_metric", "primary_form_construction_audit"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_westclox-70010-model/"],
+      "skills": ["knowledge/skills/reference.component-overlay-gate-before-polish.json"],
+      "direct_observations": [
+        "The top-assembly overlay isolated a materially wrong bell/handle relationship before detail work.",
+        "A global normalized front silhouette IoU of 0.7593 did not establish likeness; negative-space IoU was 0.4538 and solid-view review exposed the generic form mismatch.",
+        "The component replacement/archive path preserved rejected bell candidates recoverably, while the typed Bézier curve path succeeded after its control-point implementation was repaired."
+      ],
+      "limitations": [
+        "This is rejection and diagnostic-transfer evidence, not a successful unfamiliar-target reproduction or a human-accepted prop.",
+        "The model has no approved production topology, UV, material, underside, or export state."
+      ]
+    }
   }
 ]
