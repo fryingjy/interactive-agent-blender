@@ -22,6 +22,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
 - `runs/2026-08-16_bmesh-editmode-customdata/` — current Blender 5.2 live Edit Mode BMesh and
   representative custom-data persistence pass 11/11 builder assertions and 8/8 independent
   saved-file assertions.
+- `runs/2026-08-16_bevel-normal-policy/` — a matched Blender 5.2 solid/evaluated comparison holds
+  geometry constant and measures flat-panel normal error at 10.5605° for plain smooth Bevel versus
+  0° for Harden Normals and Face Strength followed by Weighted Normal; curved surfaces are unclaimed.
 
 ## Directive requirement status
 

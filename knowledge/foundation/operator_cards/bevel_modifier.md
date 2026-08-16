@@ -55,6 +55,20 @@ A closed cylinder stretched to world height 4 was beveled at width 0.1 with one 
 
 The scale warning therefore transferred beyond the original box-like cases: a manifold result can still have inconsistent world-space bevel width.
 
+## Normal-policy comparison
+
+Evidence: `runs/2026-08-16_bevel-normal-policy/`
+
+The Manual documents two distinct ways to keep surrounding flat faces visually flat after Bevel:
+enable Harden Normals directly, or set Bevel Face Strength and place a Weighted Normal modifier
+after Bevel with Face Influence enabled. On matched Blender 5.2 cubes, plain smooth Bevel produced
+a 10.5605° maximum corner-normal deviation across the six large panels; both documented policies
+reduced it to 0° while preserving identical evaluated topology. The solid Workbench comparison and
+fresh-process verifier are retained with the run.
+
+Use this as evidence for flat-panel normal interpolation only. Curved panels, actual silhouette,
+bevel radius, and topology still require separate diagnosis; custom normals cannot repair geometry.
+
 ## Weighted-edge production transfer
 
 Evidence: `runs/2026-08-11_connected-camera-corrective/`

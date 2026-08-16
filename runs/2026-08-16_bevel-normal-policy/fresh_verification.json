@@ -1,0 +1,58 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "blend": "runs\\2026-08-16_bevel-normal-policy\\bevel_normal_policy.blend",
+  "modifier_types": {
+    "PLAIN_SMOOTH": [
+      "BEVEL"
+    ],
+    "HARDEN_NORMALS": [
+      "BEVEL"
+    ],
+    "FACE_STRENGTH_WEIGHTED": [
+      "BEVEL",
+      "WEIGHTED_NORMAL"
+    ]
+  },
+  "metrics": {
+    "PLAIN_SMOOTH": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "max_error_deg": 10.560488515978992,
+      "custom_normal": false,
+      "non_manifold": 0,
+      "degenerate": 0
+    },
+    "HARDEN_NORMALS": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "max_error_deg": 0.0,
+      "custom_normal": true,
+      "non_manifold": 0,
+      "degenerate": 0
+    },
+    "FACE_STRENGTH_WEIGHTED": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "max_error_deg": 0.0,
+      "custom_normal": true,
+      "non_manifold": 0,
+      "degenerate": 0
+    }
+  },
+  "assertions": {
+    "all_expected_objects_exist": true,
+    "plain_stack_is_bevel": true,
+    "hardened_stack_is_bevel": true,
+    "weighted_stack_orders_bevel_then_weighted_normal": true,
+    "harden_flag_is_saved": true,
+    "face_influence_is_saved": true,
+    "normal_policies_improve_large_panels": true,
+    "corrected_panels_are_sub_degree": true,
+    "all_evaluated_meshes_are_clean": true
+  },
+  "pass": true,
+  "claim_boundary": "Independent saved-file and evaluated-normal verification. It does not import the builder or certify visual quality on an unfamiliar asset."
+}

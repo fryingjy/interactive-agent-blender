@@ -13,7 +13,7 @@ Smooths a corner or edge by replacing it with new geometry across a controllable
 - **Segments**: density of new geometry (higher = smoother). Directly exposed as `segments` in `mesh_ops.bevel_edges`.
 - **Clamp Overlap**: prevents a bevel from overshooting past a neighboring face's edge. Not yet tested against a deliberately-too-wide bevel in this project.
 - **Loop Slide**: whether new inner edges stay perpendicular to the beveled edge vs match existing inner-edge direction.
-- **Harden Normals**: custom split normals so beveled faces read as smoothly shaded without affecting the rest of the mesh — relevant for hard-surface production prep, not yet used in this project (every prop so far relies on flat/smooth shading toggles, not custom normals).
+- **Harden Normals**: custom split normals so beveled faces read as smoothly shaded without affecting the rest of the mesh. A current Blender 5.2 matched-cube lab now verifies this on flat manufactured panels; curved-surface repair remains outside that evidence boundary.
 - **Miter Outer/Inner**: controls whether extra geometry is added at a beveled corner to avoid pinching when 3+ edges meet at >180°/<180°. Directly relevant to this project's own bevel-corner-ID work below.
 
 ## Real findings from this project (empirical, pre-existing -- see blender_ops/persistent_ids.py and mesh_ops.py)
@@ -38,6 +38,30 @@ surface and minimum-area inspection.
 ## When to use / not use
 Use for: softening a hard edge for realistic light response, adding a manufactured/machined look, avoiding a razor-sharp silhouette edge that would alias badly under subdivision or in a render.
 Caution: on a subdivision control cage, an unbevelled hard edge reads as an unintended soft rounded corner under Catmull-Clark (see subdivision_surface.md) -- bevel vs support-loop choice is a real strategy decision, not interchangeable.
+
+## Harden Normals versus Weighted Normal (2026-08-16)
+
+Evidence: `runs/2026-08-16_bevel-normal-policy/`
+
+Three matched smooth-shaded cubes use the same ANGLE-limited Bevel (`width=0.18`, `segments=3`) and
+therefore evaluate to the same 96 vertices, 192 edges, and 98 faces:
+
+| Policy | Maximum large-panel corner-normal error |
+| --- | ---: |
+| Plain smooth Bevel | 10.5605° |
+| Bevel with Harden Normals | 0.0000° |
+| Bevel Face Strength `AFFECTED` → Weighted Normal with Face Influence | 0.0000° |
+
+Both documented policies create evaluated `custom_normal` data and preserve flat panel normals in
+this fixture. The Weighted Normal variant is explicitly ordered after Bevel because Face Influence
+consumes the strengths assigned by the Bevel. A fresh Blender process verifies the modifier flags,
+stack order, evaluated normals, and clean topology without importing the builder.
+
+This does not make the methods interchangeable everywhere. Harden Normals is a concise local Bevel
+option; Weighted Normal provides weighting mode, threshold, vertex-group, Keep Sharp, and Face
+Influence controls. Neither repairs bent/non-planar geometry, poor topology, wrong edge radius, or
+an inaccurate reference interpretation. The current result is deliberately limited to flat
+manufactured panels bordered by a bevel.
 
 ## Bevel before or after Subdivision Surface (controlled reconciliation, 2026-08-15)
 

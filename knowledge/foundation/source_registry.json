@@ -175,7 +175,8 @@
       "direct_observations": [
         "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
         "Limit methods include None, Angle, Weight attribute, and Vertex Group",
-        "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee"
+        "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee",
+        "Harden Normals preserves surrounding flat-face normals by creating custom normal data; Face Strength is designed for a following Weighted Normal modifier with Face Influence"
       ],
       "candidate_principles": [
         "Use Angle limiting when coplanar triangulation edges should not be beveled",
@@ -185,9 +186,55 @@
       ],
       "experiments": [
         "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
-        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json"
+        "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json",
+        "runs/2026-08-16_bevel-normal-policy/lab_report.json"
       ],
       "skills": []
+    }
+  },
+  {
+    "id": "blender-manual-weighted-normal-modifier",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/weighted_normal.html",
+    "local_path": null,
+    "title": "Weighted Normal Modifier",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "Blender 4.5-era latest Manual; reproduced in Blender 5.2.0 LTS",
+    "topics": [
+      "weighted-normal",
+      "custom-normals",
+      "hard-surface",
+      "face-strength"
+    ],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": [
+      "text"
+    ],
+    "metadata": {
+      "direct_observations": [
+        "Weighted Normal creates custom per-corner normals using face area, corner angle, or their product",
+        "Keep Sharp preserves sharp-edge boundaries and Face Influence consumes weak, medium, or strong face strengths",
+        "On a matched Blender 5.2 flat-panel fixture, Bevel Face Strength AFFECTED followed by Weighted Normal Face Influence reduced maximum large-panel corner-normal error from 10.5605 degrees to zero"
+      ],
+      "candidate_principles": [
+        "Place Weighted Normal after the modifier that authors the face strengths it consumes",
+        "Use custom normals to correct interpolation on suitable flat panels, never as a substitute for geometric or topological repair"
+      ],
+      "experiments": [
+        "runs/2026-08-16_bevel-normal-policy/fresh_verification.json"
+      ],
+      "skills": [
+        "knowledge/foundation/operator_cards/bevel.md",
+        "knowledge/foundation/operator_cards/bevel_modifier.md"
+      ]
     }
   },
   {

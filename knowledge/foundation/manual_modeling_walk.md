@@ -19,7 +19,7 @@ incomplete; `OPEN` means no adequate evidence exists.
 | Bridge / fill / grid fill | Blender 5.2 Bridge and Grid Fill pages | TESTED/USED | operator runs and failure records | more incompatible-loop shapes and explicit Grid Fill span controls |
 | Bisect / spin / symmetrize | Blender 5.2 child pages + BMesh API | TESTED | operator runs; six-case clear/fill lab | second-shape transfer is sparse |
 | Slides / rip | Blender 5.2 Vertex Slide and Rip pages | PARTIAL | operator run; documented headless rip limitation | interactive-context rip evidence |
-| Normals / shading | Mesh Editing + BMesh API | TESTED/USED | BMesh normals and production sessions | custom normals/weighted normals |
+| Normals / shading | current Bevel and Weighted Normal Manual pages + BMesh API | TESTED/USED | BMesh normals, hard-surface policy, and 2026-08-16 matched Harden/Weighted Normal comparison | curved/non-planar surface transfer and Data Transfer alternatives |
 | Subdivision Surface | Subdivision Surface Manual | TESTED/USED | soap dish and topology/SubD lab | broader crease and boundary modes |
 | Bevel modifier | Bevel modifier Manual | TESTED | modifier and curved-transfer labs | custom profile and weight/vgroup limits |
 | Mirror modifier | Mirror modifier Manual | TESTED | modifier and curved-transfer labs | clipping/bisect combinations across axes |

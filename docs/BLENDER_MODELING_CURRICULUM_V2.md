@@ -322,7 +322,10 @@ instruction to actually learn the documentation and forums, not just reference t
     surface two real, useful findings anyway: Harden Normals as a possible one-checkbox alternative
     to a separate Weighted Normal modifier pass for flat-surface bevel shading, and confirmation
     that Face Strength is explicitly meant to pair with a Weighted Normal modifier placed AFTER
-    Bevel (a different, already-settled ordering question from the open SubD one).
+    Bevel (a different, already-settled ordering question from the open SubD one). The hypothesis
+    was reproduced on 2026-08-16 in `runs/2026-08-16_bevel-normal-policy/`: plain smooth Bevel bent
+    large-panel corner normals by 10.5605°, while both documented policies measured 0° on identical
+    topology and passed a fresh-process verifier. Curved-surface transfer remains open.
 32. Remaining manual sections and forum topics: not yet scoped. Pick the next topic by relevance to
     active work (an unresolved bug, a standing policy, a curriculum gap) the same way items 30-31
     were chosen, rather than working through the manual's table of contents in order.

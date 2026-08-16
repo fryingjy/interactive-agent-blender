@@ -25,6 +25,7 @@ Updated 2026-08-16. `✓` means substantial evidence, `~` partial evidence, and 
 | Normals / orientation | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Smooth / Flat shading | — | — | ✓ | — | — | ✓ | ~ |
 | Smooth by Angle / semantic weighted bevel policy | ~ | — | ✓ | ✓ | — | ✓ | — |
+| Bevel Harden Normals / Weighted Normal | ✓ | — | ✓ | ✓ | — | — | — |
 | Edge Crease (SubD sharp-edge protection) | ✓ | — | ✓ | ✓ | — | ~ | ~ |
 | High-poly/low-poly production pipeline | ✓ | — | — | — | — | ~ | ✓ |
 | Topology fundamentals | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |

@@ -1,0 +1,81 @@
+{
+  "blender_version": "5.2.0 LTS",
+  "official_sources": [
+    "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+    "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/weighted_normal.html"
+  ],
+  "variant_order_left_to_right": [
+    "PLAIN_SMOOTH",
+    "HARDEN_NORMALS",
+    "FACE_STRENGTH_WEIGHTED"
+  ],
+  "metrics": {
+    "PLAIN_SMOOTH": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "panel_face_areas": [
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266
+      ],
+      "panel_corner_normal_error_mean_deg": 10.560476093386034,
+      "panel_corner_normal_error_max_deg": 10.560488515978992,
+      "custom_normal_attribute": false,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    },
+    "HARDEN_NORMALS": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "panel_face_areas": [
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266
+      ],
+      "panel_corner_normal_error_mean_deg": 0.0,
+      "panel_corner_normal_error_max_deg": 0.0,
+      "custom_normal_attribute": true,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    },
+    "FACE_STRENGTH_WEIGHTED": {
+      "vertices": 96,
+      "edges": 192,
+      "faces": 98,
+      "panel_face_areas": [
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266,
+        2.6895999908447266
+      ],
+      "panel_corner_normal_error_mean_deg": 0.0,
+      "panel_corner_normal_error_max_deg": 0.0,
+      "custom_normal_attribute": true,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0
+    }
+  },
+  "assertions": {
+    "all_variants_share_evaluated_topology": true,
+    "all_variants_closed_and_nondegenerate": true,
+    "plain_smooth_bends_panel_corner_normals": true,
+    "harden_normals_reduces_panel_error": true,
+    "weighted_face_influence_reduces_panel_error": true,
+    "hardened_panel_error_is_sub_degree": true,
+    "weighted_panel_error_is_sub_degree": true,
+    "hardened_evaluated_mesh_has_custom_normals": true,
+    "weighted_evaluated_mesh_has_custom_normals": true
+  },
+  "pass": true,
+  "claim_boundary": "A matched cube fixture measuring large-panel corner normals. It establishes the documented normal-policy effects in Blender 5.2, not a universal recommendation or a substitute for geometry, reference judgment, or semantic edge selection."
+}

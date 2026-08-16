@@ -194,6 +194,9 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-16_bmesh-editmode-customdata/` — current Blender 5.2 live Edit Mode BMesh evidence:
   destructive all-quad subdivision, valid selection flushing, edge/face/loop custom data, saved
   `.blend`, and a fresh-process verifier.
+- `runs/2026-08-16_bevel-normal-policy/` — matched Blender 5.2 solid/evaluated-normal comparison:
+  plain smooth Bevel versus Harden Normals versus Bevel Face Strength followed by Weighted Normal,
+  with a saved `.blend`, render, numeric report, and fresh verifier.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 
