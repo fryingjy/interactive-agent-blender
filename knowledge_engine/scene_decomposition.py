@@ -31,12 +31,19 @@ component/relationship vocabulary (role, manufacture, relationship type) and
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+import re
 from typing import Any
 
 from knowledge_engine.reasoning import validate_component_graph
 
 VALID_ROLES = {"primary", "secondary", "tertiary"}
 VALID_MANUFACTURE = {"structural", "cosmetic", "unknown"}
+_COVERAGE_GENERIC_TOKENS = {
+    "back", "bottom", "component", "detail", "element", "front", "geometry",
+    "geo", "left", "lower", "main", "mesh", "model", "object", "part",
+    "piece", "primary", "right", "secondary", "shell", "surface", "tertiary",
+    "top", "upper",
+}
 VALID_RELATIONSHIP_TYPES = {
     "attached_to",
     "aligned_with",
@@ -369,24 +376,69 @@ class SceneDecomposition:
         primary component with no plausible match is a genuine, mechanically
         checkable red flag a pure silhouette/topology pass cannot catch.
 
-        Matching is deliberately loose (substring, case-insensitive) since
-        built object names won't exactly equal component names -- this is a
-        coverage smell test, not an identity assertion.
+        This is a name-based smoke detector, not geometric proof.  It uses
+        meaningful name tokens and one-to-one maximum matching: a single
+        ``Collector_Upper_Shell`` cannot silently count as both a collector
+        and a ``Boiler_Lower_Shell`` just because both names contain "shell".
+        Passing still does not establish that either component has the right
+        proportions, construction, topology, or silhouette.
         """
         self.validate()
         primaries = self.primary_components()
-        built_lower = [b.lower() for b in built_object_names]
-        unmatched = []
-        for c in primaries:
-            key_words = [w for w in c.name.lower().replace("-", " ").split() if len(w) > 2]
-            matched = any(
-                any(w in b for w in key_words) for b in built_lower
-            )
-            if not matched:
-                unmatched.append(c.name)
+
+        def tokens(name: str) -> set[str]:
+            return set(filter(None, re.split(r"[^a-z0-9]+", name.lower())))
+
+        def normalized(name: str) -> str:
+            return "_".join(sorted(tokens(name)))
+
+        component_tokens = [tokens(component.name) for component in primaries]
+        built_tokens = [tokens(name) for name in built_object_names]
+        candidates: list[list[int]] = []
+        for component, component_words in zip(primaries, component_tokens):
+            meaningful_words = component_words - _COVERAGE_GENERIC_TOKENS
+            exact_name = normalized(component.name)
+            candidates.append([
+                index
+                for index, object_words in enumerate(built_tokens)
+                if normalized(built_object_names[index]) == exact_name
+                or bool(meaningful_words & (object_words - _COVERAGE_GENERIC_TOKENS))
+            ])
+
+        # Maximum bipartite matching rather than independent membership tests:
+        # one built object may satisfy at most one declared primary component.
+        object_to_component: dict[int, int] = {}
+
+        def assign(component_index: int, visited: set[int]) -> bool:
+            for object_index in candidates[component_index]:
+                if object_index in visited:
+                    continue
+                visited.add(object_index)
+                previous_component = object_to_component.get(object_index)
+                if previous_component is None or assign(previous_component, visited):
+                    object_to_component[object_index] = component_index
+                    return True
+            return False
+
+        for component_index in sorted(range(len(primaries)), key=lambda index: len(candidates[index])):
+            assign(component_index, set())
+
+        component_to_object = {
+            component_index: object_index
+            for object_index, component_index in object_to_component.items()
+        }
+        unmatched = [
+            component.name
+            for component_index, component in enumerate(primaries)
+            if component_index not in component_to_object
+        ]
         return {
             "declared_primary_components": [c.name for c in primaries],
             "built_object_names": built_object_names,
+            "component_matches": {
+                primaries[component_index].name: built_object_names[object_index]
+                for component_index, object_index in sorted(component_to_object.items())
+            },
             "unmatched_primary_components": unmatched,
             "coverage_ok": not unmatched,
         }

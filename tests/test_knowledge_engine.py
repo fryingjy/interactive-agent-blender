@@ -419,6 +419,37 @@ class SceneDecompositionTests(unittest.TestCase):
             {"handle", "fixed_jaw", "movable_jaw"},
         )
 
+    def test_coverage_check_does_not_reuse_one_shell_for_two_primary_components(self):
+        decomp = SceneDecomposition(
+            object_name="moka pot",
+            components=[
+                Component("boiler_lower_shell", "primary", "structural"),
+                Component("collector_upper_shell", "primary", "structural"),
+            ],
+        )
+        result = decomp.check_object_coverage(["Collector_Upper_Shell"])
+        self.assertFalse(result["coverage_ok"])
+        self.assertEqual(result["unmatched_primary_components"], ["boiler_lower_shell"])
+        self.assertEqual(result["component_matches"], {"collector_upper_shell": "Collector_Upper_Shell"})
+
+    def test_coverage_check_matches_distinct_explicit_components_one_to_one(self):
+        decomp = SceneDecomposition(
+            object_name="moka pot",
+            components=[
+                Component("boiler_lower_shell", "primary", "structural"),
+                Component("collector_upper_shell", "primary", "structural"),
+            ],
+        )
+        result = decomp.check_object_coverage(["Boiler_Lower_Shell", "Collector_Upper_Shell"])
+        self.assertTrue(result["coverage_ok"])
+        self.assertEqual(
+            result["component_matches"],
+            {
+                "boiler_lower_shell": "Boiler_Lower_Shell",
+                "collector_upper_shell": "Collector_Upper_Shell",
+            },
+        )
+
     def test_observed_claim_requires_concrete_evidence(self):
         decomp = self._strict_lantern_decomposition()
         decomp.claims[0].evidence = []
