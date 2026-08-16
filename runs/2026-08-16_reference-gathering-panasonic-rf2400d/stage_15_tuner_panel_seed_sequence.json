@@ -1,0 +1,17 @@
+[
+  {
+    "label": "create_tuner_faceplate_cage",
+    "command": "create_primitive",
+    "params": {
+      "name": "tuner_faceplate",
+      "primitive_type": "cube",
+      "location": [3.25, -1.9, 0.0],
+      "size": 2.0
+    }
+  },
+  {
+    "label": "inspect_tuner_faceplate_seed",
+    "command": "get_full_state",
+    "params": {"name": "tuner_faceplate"}
+  }
+]
