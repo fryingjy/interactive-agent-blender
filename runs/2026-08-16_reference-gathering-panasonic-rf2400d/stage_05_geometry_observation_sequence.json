@@ -1,0 +1,7 @@
+[
+  {
+    "label": "inspect_connected_cage_geometry",
+    "command": "get_mesh_geometry",
+    "params": {"name": "outer_housing"}
+  }
+]

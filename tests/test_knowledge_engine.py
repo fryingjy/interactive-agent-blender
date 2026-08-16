@@ -932,6 +932,11 @@ class StrategyTests(unittest.TestCase):
         self.assertEqual(patch["choice"], "PATCH_REGION")
         self.assertEqual(rebuild["choice"], "REBUILD_REGION")
 
+    def test_edit_policy_preserves_editability_without_bake_evidence(self):
+        result = choose_strategy(ModelingBrief())
+        self.assertEqual(result["editing"]["choice"], "NONDESTRUCTIVE_MODIFIERS")
+        self.assertIn("no destructive downstream constraint", result["editing"]["reasons"][0])
+
 
 class PlannerTests(unittest.TestCase):
     def context(self, **changes):

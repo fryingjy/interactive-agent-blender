@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "record_type": "EVIDENCE_BOUND_STRATEGY_SELECTION",
+  "target_id": "panasonic_rf2400d_portable_radio",
+  "blockout_readiness": {
+    "ready_for_blockout": true,
+    "missing_requirements": []
+  },
+  "selected_strategy": {
+    "primary_representation": "SUBD_CAGE",
+    "component_policy": "SEPARATE_COMPONENTS",
+    "edit_policy": "NONDESTRUCTIVE_MODIFIERS",
+    "construction": "one unrounded box-derived, connected housing cage; front regions are inset from the cage; handle, antenna, and knob remain separate functional assemblies"
+  },
+  "evidence_claim_ids": [
+    "housing-primary-form",
+    "front-depth-hierarchy",
+    "handle-separate",
+    "handle-negative-space",
+    "antenna-path",
+    "known-envelope",
+    "housing-construction"
+  ],
+  "rejected_strategy": {
+    "representation": "PRIMITIVE_ASSEMBLY",
+    "reason": "It would replace the observed continuous perimeter housing with unrelated rounded boxes and cylinders."
+  },
+  "scope_limit": "This record authorizes only the primary housing and its two observed front recesses. It does not claim final silhouette, grille, lettering, rear detail, materials, or professional acceptance."
+}

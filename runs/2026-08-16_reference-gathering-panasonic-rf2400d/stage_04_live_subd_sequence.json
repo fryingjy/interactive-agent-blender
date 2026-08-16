@@ -1,0 +1,51 @@
+[
+  {
+    "label": "add_live_subdivision_surface",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "surface_continuity",
+      "operation": "add_modifier",
+      "params": {"modifier_type": "SUBSURF", "modifier_name": "Housing_SubD"},
+      "command_id": "radio-housing-live-subd-v1"
+    }
+  },
+  {
+    "label": "set_subdivision_preview_level",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "surface_continuity",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Housing_SubD", "parameter": "levels", "value": 2},
+      "command_id": "radio-housing-subd-level-v1"
+    }
+  },
+  {
+    "label": "observe_evaluated_housing",
+    "command": "get_evaluated_state",
+    "params": {"name": "outer_housing"}
+  },
+  {
+    "label": "render_front_solid_diagnostic",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "outer_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_04_housing_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 768,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "render_oblique_solid_diagnostic",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "outer_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_04_housing_iso_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 768,
+      "margin": 1.12
+    }
+  }
+]

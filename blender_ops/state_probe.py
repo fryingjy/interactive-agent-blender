@@ -123,6 +123,56 @@ def list_persistent_ids(name):
     return result
 
 
+def get_mesh_geometry(name):
+    """Return a read-only, persistent-ID keyed control-cage snapshot.
+
+    ``get_full_state`` intentionally reports health and active selection, not
+    coordinates.  Selecting a particular front panel from a connected cage
+    therefore used to require an unsafe dependency on raw Blender indices or
+    an out-of-band Python inspection.  This snapshot preserves the remote
+    modeling contract: inspect positions/normals first, choose IDs, then make
+    the next typed selection and transaction.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        return {"error": f"'{name}' is not a mesh object"}
+    persistent_ids.ensure_persistent_ids(name)
+    bm = bmesh_io.read_bmesh(obj)
+    bm.verts.ensure_lookup_table()
+    bm.edges.ensure_lookup_table()
+    bm.faces.ensure_lookup_table()
+    maps = persistent_ids.get_id_maps(name)
+    vert_ids = maps["verts"]["index_to_id"]
+    edge_ids = maps["edges"]["index_to_id"]
+    face_ids = maps["faces"]["index_to_id"]
+    result = {
+        "name": name,
+        "space": "LOCAL",
+        "vertices": [
+            {"agent_id": vert_ids.get(vert.index), "co": [round(value, 6) for value in vert.co]}
+            for vert in bm.verts
+        ],
+        "edges": [
+            {
+                "agent_id": edge_ids.get(edge.index),
+                "vertices": [vert_ids.get(vert.index) for vert in edge.verts],
+            }
+            for edge in bm.edges
+        ],
+        "faces": [
+            {
+                "agent_id": face_ids.get(face.index),
+                "vertices": [vert_ids.get(vert.index) for vert in face.verts],
+                "center": [round(value, 6) for value in face.calc_center_median()],
+                "normal": [round(value, 6) for value in face.normal],
+            }
+            for face in bm.faces
+        ],
+    }
+    _free_if_object_mode(obj, bm)
+    return result
+
+
 def vertex_neighborhood(name, vertex_index):
     """Local topology around one vertex: valence, whether it sits on a boundary
     (non-manifold edge), its immediate neighbors, and the edge lengths / face areas

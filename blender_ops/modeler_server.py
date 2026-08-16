@@ -443,7 +443,13 @@ class ModelerServer:
         free to call outside a decision transaction (nothing exists yet
         for begin_decision's external-edit check to compare against)."""
         loc = tuple(location) if location else (0.0, 0.0, 0.0)
-        return object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
+        result = object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
+        # Creation is intentionally free of a decision transaction because no
+        # target exists yet.  It still has to enter the same persistent-ID
+        # selection vocabulary as every later mesh decision; without this,
+        # a seed cube can only be manipulated through raw Blender indices.
+        persistent_ids.ensure_persistent_ids(name)
+        return result
 
     def cmd_create_revolved_profile(self, name, profile, segments=16):
         """Create one connected all-quad radial cage from an authored closed profile.
@@ -547,6 +553,9 @@ class ModelerServer:
 
     def cmd_list_persistent_ids(self, name):
         return state_probe.list_persistent_ids(name)
+
+    def cmd_get_mesh_geometry(self, name):
+        return state_probe.get_mesh_geometry(name)
 
     def cmd_get_viewport_state(self):
         return state_probe.viewport_state()

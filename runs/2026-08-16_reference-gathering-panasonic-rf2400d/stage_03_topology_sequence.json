@@ -1,0 +1,22 @@
+[
+  {
+    "label": "select_all_housing_faces_for_planned_quad_grid",
+    "command": "select_by_ids",
+    "params": {"name": "outer_housing", "face_ids": [21, 22, 23, 24, 25, 26]}
+  },
+  {
+    "label": "establish_connected_quad_grid",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "primary_form_topology",
+      "operation": "subdivide_selection",
+      "params": {"cuts": 2},
+      "command_id": "radio-housing-quad-grid-v1"
+    }
+  },
+  {
+    "label": "observe_connected_quad_grid",
+    "command": "get_full_state",
+    "params": {"name": "outer_housing"}
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "label": "create_unrounded_housing_seed",
+    "command": "create_primitive",
+    "params": {
+      "name": "outer_housing",
+      "primitive_type": "cube",
+      "location": [0.0, 0.0, 0.0],
+      "size": 2.0
+    }
+  },
+  {
+    "label": "observe_seed_topology",
+    "command": "get_full_state",
+    "params": {"name": "outer_housing"}
+  }
+]

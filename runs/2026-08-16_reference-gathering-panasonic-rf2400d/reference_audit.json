@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\reference_manifest.json",
+      "audit": {
+        "target_id": "panasonic_rf2400d_portable_radio",
+        "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 2,
+        "view_count": 3,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
+        },
+        "covered_properties": {
+          "rounded_rectangular_housing": [
+            "rf2400d_front"
+          ],
+          "speaker_vs_tuner_panel_ratio": [
+            "rf2400d_front"
+          ],
+          "handle_negative_space": [
+            "rf2400d_front"
+          ],
+          "antenna_mount_and_angle": [
+            "rf2400d_angle",
+            "rf2400d_manual"
+          ],
+          "side_tuning_knob": [
+            "rf2400d_angle"
+          ],
+          "overall_envelope": [
+            "rf2400d_manual"
+          ]
+        },
+        "dimensional_anchors": [
+          "234 \u00d7 122 \u00d7 82 mm (W\u00d7H\u00d7D)"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 2,
+          "candidate_counts": {
+            "ACCEPTED": 1,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [
+            "rf2400d_angle"
+          ],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "rf2400d_hidden_rear"
+          ],
+          "modeling_constraints": [
+            "Limit first exercise to front, right-side, top handle, and antenna relationships."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

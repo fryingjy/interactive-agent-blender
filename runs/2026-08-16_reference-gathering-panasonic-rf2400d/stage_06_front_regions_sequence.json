@@ -1,0 +1,44 @@
+[
+  {
+    "label": "select_speaker_field_from_observed_front_grid",
+    "command": "select_by_ids",
+    "params": {"name": "outer_housing", "face_ids": [24, 199, 200, 202, 204, 206]}
+  },
+  {
+    "label": "inset_recessed_speaker_field",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "primary_form_feature_region",
+      "operation": "inset_selection",
+      "params": {"thickness": 0.23, "depth": -0.16},
+      "command_id": "radio-housing-speaker-recess-v1"
+    }
+  },
+  {
+    "label": "select_tuner_field_from_observed_front_grid",
+    "command": "select_by_ids",
+    "params": {"name": "outer_housing", "face_ids": [201, 203, 205]}
+  },
+  {
+    "label": "inset_recessed_tuner_field",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "primary_form_feature_region",
+      "operation": "inset_selection",
+      "params": {"thickness": 0.18, "depth": -0.12},
+      "command_id": "radio-housing-tuner-recess-v1"
+    }
+  },
+  {
+    "label": "render_front_regions_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "outer_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_06_front_regions_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 768,
+      "margin": 1.12
+    }
+  }
+]

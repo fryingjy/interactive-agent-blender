@@ -83,6 +83,14 @@ def choose_component_policy(brief: ModelingBrief) -> dict:
 def choose_edit_policy(brief: ModelingBrief) -> dict:
     scores = {"NONDESTRUCTIVE_MODIFIERS": 0.0, "DESTRUCTIVE_EDIT": 0.0}
     reasons = {key: [] for key in scores}
+    # Retaining an editable cage/modifier stack is the safe production default.
+    # Without an explicit downstream reason to bake geometry, a zero-evidence
+    # tie must not select destructive editing merely because of lexical sort
+    # order in _pick().
+    scores["NONDESTRUCTIVE_MODIFIERS"] += 0.1
+    reasons["NONDESTRUCTIVE_MODIFIERS"].append(
+        "no destructive downstream constraint is evidenced"
+    )
     if brief.symmetric:
         scores["NONDESTRUCTIVE_MODIFIERS"] += 3
         reasons["NONDESTRUCTIVE_MODIFIERS"].append("symmetry remains editable")

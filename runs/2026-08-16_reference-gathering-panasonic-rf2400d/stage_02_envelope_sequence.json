@@ -1,0 +1,22 @@
+[
+  {
+    "label": "select_housing_cage_vertices",
+    "command": "select_by_ids",
+    "params": {"name": "outer_housing", "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8]}
+  },
+  {
+    "label": "scale_to_manufacturer_envelope",
+    "transaction": {
+      "name": "outer_housing",
+      "action_type": "primary_form_proportion",
+      "operation": "scale_selection",
+      "params": {"factor": [5.85, 2.05, 3.05]},
+      "command_id": "radio-housing-envelope-v1"
+    }
+  },
+  {
+    "label": "observe_scaled_cage",
+    "command": "get_full_state",
+    "params": {"name": "outer_housing"}
+  }
+]
