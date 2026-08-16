@@ -11,6 +11,7 @@ from knowledge_engine.gemini_video_study import (
     build_request,
     build_generate_content_request,
     load_dotenv,
+    load_expected_source_metadata,
     validate_analysis,
     validate_expected_source,
     validate_youtube_url,
@@ -87,12 +88,42 @@ class GeminiVideoStudyTests(unittest.TestCase):
         self.assertEqual(request["response_format"]["mime_type"], "application/json")
         self.assertIn("observed_fact", request["response_format"]["schema"]["properties"]["episodes"]["items"]["required"])
 
-    def test_generate_content_fallback_keeps_url_prompt_and_schema(self):
-        request = build_generate_content_request("https://youtu.be/abc123", "gemini-test")
+    def test_generate_content_fallback_keeps_url_prompt_schema_and_identity(self):
+        expected = {
+            "url": "https://youtu.be/abc123",
+            "title": "Exact Lesson",
+            "creator": "Exact Artist",
+            "duration_seconds": 100,
+        }
+        request = build_generate_content_request(
+            "https://youtu.be/abc123", "gemini-test", expected_source=expected
+        )
         self.assertEqual(request["model"], "gemini-test")
         self.assertEqual(request["contents"].parts[0].file_data.file_uri, "https://youtu.be/abc123")
         self.assertEqual(request["config"].response_mime_type, "application/json")
         self.assertIn("episodes", request["config"].response_json_schema["properties"])
+        self.assertIn("Exact Lesson", request["contents"].parts[1].text)
+
+    def test_direct_source_metadata_requires_complete_matching_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "identity.json"
+            path.write_text(json.dumps({
+                "url": "https://youtu.be/abc123", "title": "Lesson", "creator": "Artist",
+                "duration_seconds": 120,
+            }), encoding="utf-8")
+            record = load_expected_source_metadata(path, "https://www.youtube.com/watch?v=abc123")
+            self.assertEqual(record["duration_seconds"], 120.0)
+            path.write_text(json.dumps({
+                "url": "https://youtu.be/other", "title": "", "creator": "Artist", "duration_seconds": 0
+            }), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "title"):
+                load_expected_source_metadata(path)
+            path.write_text(json.dumps({
+                "url": "https://youtu.be/other", "title": "Lesson", "creator": "Artist",
+                "duration_seconds": 120,
+            }), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "does not match"):
+                load_expected_source_metadata(path, "https://youtu.be/abc123")
 
     def test_request_binds_discovery_identity_into_prompt(self):
         expected = {
@@ -111,6 +142,12 @@ class GeminiVideoStudyTests(unittest.TestCase):
         data = _analysis()
         data["episodes"][0]["evidence_modalities"] = ["CAPTIONS"]
         with self.assertRaisesRegex(ValueError, "visible video"):
+            validate_analysis(data, data["source"]["url"])
+
+    def test_validation_rejects_episodes_without_video_access(self):
+        data = _analysis()
+        data["access"]["video_inspected"] = False
+        with self.assertRaisesRegex(ValueError, "video_inspected"):
             validate_analysis(data, data["source"]["url"])
 
     def test_validation_rejects_episode_beyond_reported_duration(self):

@@ -191,6 +191,27 @@ def _expected_identity_record(expected: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def load_expected_source_metadata(
+    path: str | Path, requested_url: str | None = None
+) -> dict[str, Any]:
+    """Load a minimal, independently recorded identity record for a direct study."""
+    source_path = Path(path)
+    try:
+        record = json.loads(source_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"source metadata is not readable JSON: {source_path}") from exc
+    if not isinstance(record, dict):
+        raise ValueError("source metadata must be a JSON object")
+    normalized = _expected_identity_record(record)
+    if not normalized["title"] or not normalized["creator"]:
+        raise ValueError("source metadata requires non-empty title and creator")
+    if normalized["duration_seconds"] <= 0:
+        raise ValueError("source metadata requires a positive duration_seconds")
+    if requested_url and youtube_video_id(normalized["url"]) != youtube_video_id(requested_url):
+        raise ValueError("source metadata video id does not match requested URL")
+    return normalized
+
+
 def build_prompt(
     focus: str = "", expected_source: dict[str, Any] | None = None, requested_url: str = ""
 ) -> str:
@@ -278,6 +299,8 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
         raise ValueError("analysis source URL does not match requested URL")
     if not isinstance(data["episodes"], list):
         raise ValueError("episodes must be a list")
+    if data["episodes"] and not data["access"].get("video_inspected"):
+        raise ValueError("episodes were returned although video_inspected is false")
     duration_seconds = float(data["source"].get("duration_seconds") or 0)
     if duration_seconds <= 0:
         raise ValueError("analysis source duration must be positive")
@@ -303,7 +326,12 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
             raise ValueError(f"episode {index} is not grounded in visible video evidence")
 
 
-def build_generate_content_request(url: str, model: str, focus: str = "") -> dict[str, Any]:
+def build_generate_content_request(
+    url: str,
+    model: str,
+    focus: str = "",
+    expected_source: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Build the standard Gemini endpoint fallback for a public YouTube video.
 
     The endpoint is used only when the primary Interactions API explicitly denies the
@@ -317,7 +345,7 @@ def build_generate_content_request(url: str, model: str, focus: str = "") -> dic
         "contents": types.Content(
             parts=[
                 types.Part(file_data=types.FileData(file_uri=url)),
-                types.Part(text=build_prompt(focus, requested_url=url)),
+                types.Part(text=build_prompt(focus, expected_source, url)),
             ]
         ),
         "config": types.GenerateContentConfig(
@@ -330,8 +358,6 @@ def build_generate_content_request(url: str, model: str, focus: str = "") -> dic
 def _permission_denied(exc: Exception) -> bool:
     message = str(exc).casefold()
     return "permission" in message or "403" in message
-    if data["episodes"] and not data["access"].get("video_inspected"):
-        raise ValueError("episodes were returned although video_inspected is false")
 
 
 def analyze_youtube_video(
@@ -378,7 +404,9 @@ def analyze_youtube_video(
                 ) from interaction_error
             raise
         try:
-            response = generate_content(**build_generate_content_request(requested_url, model, focus))
+            response = generate_content(
+                **build_generate_content_request(requested_url, model, focus, expected_source)
+            )
         except Exception as fallback_error:
             if _permission_denied(fallback_error):
                 raise RuntimeError(

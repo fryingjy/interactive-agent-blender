@@ -96,6 +96,21 @@ different tutorial. The earlier Gemini pipeline-validation artifact is retroacti
 the same URL mismatch. Request-owned URL rewriting is forbidden because it can hide cross-video
 attribution.
 
+For a direct user-supplied lesson that is not in a discovery queue, bind the same independent
+identity record explicitly rather than treating the URL alone as proof of identity. The JSON record
+must contain `url`, `title`, `creator`, and positive `duration_seconds`; its video ID must match the
+direct URL. For example:
+
+```powershell
+python tools/analyze_video_with_gemini.py `
+  "https://www.youtube.com/watch?v=VIDEO_ID" `
+  --source-metadata "runs/YYYY-MM-DD_video-study-name/source_metadata.json" `
+  --output "runs/YYYY-MM-DD_video-study-name/gemini_structured_analysis.json"
+```
+
+The metadata is untrusted prompt input, not proof of instructional correctness. It only makes
+source substitution and impossible timestamps detectable across both supported Gemini endpoints.
+
 The reported source duration is also a hard boundary: every extracted episode must end within that
 duration (with only a 0.5-second numeric tolerance). An extraction that exceeds its own reported
 duration is rejected before it becomes candidate evidence. The retained 2026-08-16 reference-image

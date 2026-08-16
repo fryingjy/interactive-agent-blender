@@ -15,6 +15,7 @@ from knowledge_engine.gemini_video_study import (
     DEFAULT_MODEL,
     analyze_youtube_video,
     build_request,
+    load_expected_source_metadata,
     write_analysis,
 )
 
@@ -26,6 +27,11 @@ def main() -> int:
     parser.add_argument("url", nargs="?", help="Public HTTPS YouTube watch URL")
     parser.add_argument("--discovery-queue", type=Path, help="Use a ranked candidate from a discovery queue")
     parser.add_argument("--rank", type=int, default=1, help="Queue rank used with --discovery-queue")
+    parser.add_argument(
+        "--source-metadata",
+        type=Path,
+        help="Independent JSON identity record (url, title, creator, duration_seconds) for a direct URL",
+    )
     parser.add_argument("--output", type=Path, help="JSON evidence output path")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--focus", default="")
@@ -39,8 +45,8 @@ def main() -> int:
     expected_source = None
     source_url = args.url
     if args.discovery_queue:
-        if args.url:
-            parser.error("provide either URL or --discovery-queue, not both")
+        if args.url or args.source_metadata:
+            parser.error("--discovery-queue cannot be combined with URL or --source-metadata")
         queue = json.loads(args.discovery_queue.read_text(encoding="utf-8"))
         expected_source = next(
             (item for item in queue.get("candidates", []) if item.get("queue_rank") == args.rank),
@@ -49,6 +55,13 @@ def main() -> int:
         if expected_source is None:
             parser.error(f"queue has no candidate at rank {args.rank}")
         source_url = expected_source["url"]
+    elif args.source_metadata:
+        if not args.url:
+            parser.error("--source-metadata requires a direct URL")
+        try:
+            expected_source = load_expected_source_metadata(args.source_metadata, args.url)
+        except ValueError as exc:
+            parser.error(str(exc))
     if not source_url:
         parser.error("URL or --discovery-queue is required")
 
@@ -61,6 +74,7 @@ def main() -> int:
             "structured_output": True,
             "video_archived": False,
             "discovery_identity_bound": expected_source is not None,
+            "identity_metadata_source": str(args.source_metadata) if args.source_metadata else None,
         }
         print(json.dumps(summary, indent=2))
         return 0
