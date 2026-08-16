@@ -1,8 +1,11 @@
 """Regression coverage for source-registry evidence classification."""
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
 
-from tools.audit_source_registry import classify_reference
+from tools.audit_source_registry import classify_reference, load_retention_ledger, retention_key
 
 
 class SourceRegistryAuditTests(unittest.TestCase):
@@ -29,6 +32,20 @@ class SourceRegistryAuditTests(unittest.TestCase):
             classify_reference("metadata.experiments", "see operator card for controlled notes"),
             "non_path_reference",
         )
+
+    def test_retention_ledger_is_keyed_and_rejects_duplicate_records(self):
+        record = {
+            "source_id": "source", "field": "metadata.experiments", "path": "runs/missing",
+            "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "ledger.json"
+            path.write_text(json.dumps({"records": [record]}), encoding="utf-8")
+            ledger = load_retention_ledger(path)
+            self.assertIn(retention_key("source", "metadata.experiments", "runs/missing"), ledger)
+            path.write_text(json.dumps({"records": [record, record]}), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "duplicate"):
+                load_retention_ledger(path)
 
 
 if __name__ == "__main__":
