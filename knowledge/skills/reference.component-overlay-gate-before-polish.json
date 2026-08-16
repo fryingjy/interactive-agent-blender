@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "reference-component-overlay-gate-before-polish",
+  "title": "Gate primary-form repair with isolated component overlays",
+  "status": "EXPERIMENTALLY_TESTED",
+  "scope": ["reference-modeling", "hard-surface", "manufactured-props", "silhouette-diagnosis"],
+  "preconditions": [
+    "A source reference has an identifiable component ROI or a separable material/value range.",
+    "The Blender candidate component can be rendered in isolation with alpha.",
+    "The view correspondence is documented; perspective uncertainty remains explicit."
+  ],
+  "procedure": [
+    "Declare reference and candidate ROIs for each identity-critical component before secondary-detail work.",
+    "Create an isolated component mask; use alpha for the candidate and a documented luminance/ROI mask or other explicit segmentation for the reference.",
+    "Compare a strict frame when placement is meaningful. Use uniform-bbox only to remove translation and overall scale while preserving aspect ratio.",
+    "Inspect the overlay and contour heatmap, then localize the failure to primary silhouette, proportion, negative space, or view mismatch.",
+    "If the primary silhouette is wrong, replace or rebuild the component cage through a recoverable operation instead of adding cosmetic detail around it."
+  ],
+  "prohibitions": [
+    "Do not use whole-object IoU as evidence that a small identity-critical component is accurate.",
+    "Do not use independently stretched bbox alignment to claim correct proportions.",
+    "Do not turn a single target's metrics into a universal promotion threshold."
+  ],
+  "evidence": {
+    "experiment": "runs/2026-08-16_smeg-klf03-model/",
+    "review": "runs/2026-08-16_smeg-klf03-model/stage_08_visual_review.json",
+    "tool": "tools/compare_reference_render.py",
+    "observed_failure": "Whole-object normalized scores near 0.77–0.88 concealed component overlap of 0.4001 for the spout, 0.5741 for the handle, and 0.5156 for the base."
+  },
+  "limitations": [
+    "ROI and luminance segmentation are currently explicit human/modeler inputs, not automatic semantic segmentation.",
+    "The comparison does not calibrate photographic perspective or hidden geometry.",
+    "One rejected asset proves the diagnostic need, not transfer success; reproduce on an unrelated target before broader promotion."
+  ]
+}

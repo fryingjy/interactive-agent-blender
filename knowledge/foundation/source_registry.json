@@ -3004,27 +3004,85 @@
     "id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
     "url": null,
     "local_path": "runs/2026-08-16_smeg-klf03-model/",
-    "title": "Smeg KLF03 Connected-Cage Primary Blockout",
+    "title": "Smeg KLF03 Rejected Primary-Form Attempt",
     "creator": "interactive-agent-blender",
     "source_type": "reference_driven_modeling_experiment",
     "trust_tier": "A",
     "version": "Blender 5.2.0 LTS",
     "topics": ["reference-modeling", "electric-kettle", "connected-profile-topology", "all-quads", "Subdivision-Surface", "primary-blockout"],
     "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
-    "status": "EXPERIMENTALLY_TESTED",
-    "rejected_reason": null,
-    "modalities_inspected": ["official_reference_images", "typed_decision_reports", "blend_data", "MatCap_render", "wireframe_render", "fresh_process_inspection"],
+    "status": "REJECTED",
+    "rejected_reason": "Direct user review found the model horribly inaccurate against the official references. Isolated component overlays confirm weak normalized silhouette overlap despite misleadingly high whole-object scores.",
+    "modalities_inspected": ["official_reference_images", "typed_decision_reports", "blend_data", "MatCap_render", "wireframe_render", "fresh_process_inspection", "isolated_component_silhouettes", "component_overlay_and_contour_error"],
     "metadata": {
       "experiments": ["runs/2026-08-16_smeg-klf03-model/"],
       "direct_observations": [
         "Body, lid, and base band are independent connected 16-segment revolved all-quad cages with live unapplied Subdivision",
         "The handle is one continuous converted curve mesh and the spout is one box-derived connected cage; its centerline refinement produces 12 vertices and 10 quad faces with no n-gons or non-manifold edges",
-        "Fresh Blender inspection passes for all seven current components"
+        "Fresh Blender inspection passes for all seven current components, but that technical result is not a visual-quality pass",
+        "Full-object normalization produced approximately 0.77–0.88 silhouette overlap while isolated component comparisons measured 0.4001 for spout, 0.5741 for handle, and 0.5156 for base"
       ],
       "limitations": [
-        "The stage is not human accepted and explicitly remains a primary-form blockout",
+        "The final stage is rejected and must not be promoted, polished further, or treated as a successful benchmark",
         "The spout valley/lip, handle section and collars, and base foot cutouts remain inaccurate or absent",
-        "No production low, UV, material, lettering, interior, or export claim is made"
+        "No production low, UV, material, lettering, interior, or export claim is made",
+        "This one failure validates a diagnostic workflow, not broad transfer or an automated acceptance threshold"
+      ]
+    }
+  },
+  {
+    "id": "experiment-reference-component-overlay-gate-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_smeg-klf03-model/",
+    "title": "Reference Component Overlay and Explicit Alignment Diagnostic",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_diagnostic_experiment",
+    "trust_tier": "A",
+    "version": "repository tooling 2026-08-16",
+    "topics": ["reference-modeling", "silhouette", "component-diagnosis", "masking", "alignment", "failure-localization"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["official_product_photography", "isolated_alpha_render", "ROI_mask", "luminance_mask", "overlay", "contour_heatmap", "unit_tests"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_smeg-klf03-model/"],
+      "skills": ["knowledge/skills/reference.component-overlay-gate-before-polish.json"],
+      "direct_observations": [
+        "Strict alignment, aspect-preserving uniform-bbox alignment, and deliberately limited independent bbox stretching are separately recorded rather than silently normalizing a candidate",
+        "On the rejected kettle, full-object silhouette overlap hid substantial local errors: spout 0.4001, handle 0.5741, and base 0.5156 after documented component isolation",
+        "The reusable CLI writes masks, overlay, contour heatmap, metrics, and repair tickets; six synthetic tests cover alignment, mask modes, ROI, and diagnostics"
+      ],
+      "limitations": [
+        "Reference ROIs and luminance thresholds remain explicit inputs",
+        "Photographic perspective and hidden geometry are not solved",
+        "No unrelated-target transfer result exists yet"
+      ]
+    }
+  },
+  {
+    "id": "experiment-recoverable-component-lifecycle-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_component-lifecycle-tools/",
+    "title": "Recoverable Component Replacement and Archive Lifecycle",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_runtime_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["component-replacement", "rollback", "archive", "decision-transaction", "state-fingerprint"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["typed_operation_sequence", "decision_transaction", "saved_blend", "fresh_blender_runtime_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_component-lifecycle-tools/"],
+      "direct_observations": [
+        "A rejected replacement restores the stable target mesh and preserves the candidate source; a committed replacement keeps the target object identity while copying candidate mesh data and modifier stack",
+        "A rejected archive restores collection membership and visibility; a committed archive moves the object to REJECTED_COMPONENTS and hides it from viewport and render",
+        "State fingerprints now include visibility and collection ownership, so recoverable lifecycle changes are externally detectable"
+      ],
+      "limitations": [
+        "The experiment uses basic mesh/modifier fixtures rather than a visual prop",
+        "Replacement copies mesh data and common modifier properties; unsupported RNA property forms may require an explicit serializer extension"
       ]
     }
   }

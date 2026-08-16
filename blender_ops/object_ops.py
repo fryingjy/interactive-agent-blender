@@ -272,6 +272,115 @@ def set_modifier_parameter(name, modifier_name, parameter, value):
     return {"modifier_name": modifier_name, "parameter": parameter, "value": result_value}
 
 
+def _copy_modifier_stack(source, target):
+    for modifier in list(target.modifiers):
+        target.modifiers.remove(modifier)
+    copied = []
+    for source_modifier in source.modifiers:
+        target_modifier = target.modifiers.new(name=source_modifier.name, type=source_modifier.type)
+        for prop in source_modifier.bl_rna.properties:
+            identifier = prop.identifier
+            if identifier in {"rna_type", "name", "type"} or prop.is_readonly:
+                continue
+            try:
+                setattr(target_modifier, identifier, getattr(source_modifier, identifier))
+            except (AttributeError, TypeError, ValueError):
+                continue
+        copied.append({"name": target_modifier.name, "type": target_modifier.type})
+    return copied
+
+
+def replace_mesh_from_object(name, source_name, copy_modifiers=True, copy_transform=False):
+    """Replace a failed component cage while preserving its stable object identity.
+
+    The source remains untouched as a reversible candidate. A decision transaction snapshots the
+    target, so rejection restores the previous target without relying on Blender Undo.
+    """
+    target = bpy.data.objects.get(name)
+    source = bpy.data.objects.get(source_name)
+    if target is None or target.type != "MESH":
+        raise ValueError(f"target '{name}' must be an existing mesh object")
+    if source is None or source.type != "MESH":
+        raise ValueError(f"source '{source_name}' must be an existing mesh object")
+    if target is source:
+        raise ValueError("source and target objects must differ")
+    if target.mode != "OBJECT" or source.mode != "OBJECT":
+        raise ValueError("mesh replacement requires both objects in Object Mode")
+    old_mesh = target.data
+    new_mesh = source.data.copy()
+    new_mesh.name = f"{target.name}_Mesh"
+    target.data = new_mesh
+    if old_mesh.users == 0:
+        bpy.data.meshes.remove(old_mesh)
+    copied_modifiers = _copy_modifier_stack(source, target) if bool(copy_modifiers) else []
+    if bool(copy_transform):
+        target.matrix_world = source.matrix_world.copy()
+    target["replacement_source"] = source.name
+    return {
+        "target": target.name,
+        "source": source.name,
+        "mesh": target.data.name,
+        "vertices": len(target.data.vertices),
+        "edges": len(target.data.edges),
+        "faces": len(target.data.polygons),
+        "copied_modifiers": copied_modifiers,
+        "transform_copied": bool(copy_transform),
+        "source_preserved": source.name in bpy.data.objects,
+    }
+
+
+def archive_object(name, collection_name="REJECTED_COMPONENTS"):
+    """Move a failed component into a hidden, recoverable collection instead of deleting it."""
+    obj = bpy.data.objects.get(name)
+    if obj is None:
+        raise ValueError(f"object '{name}' does not exist")
+    clean_collection_name = str(collection_name).strip()
+    if not clean_collection_name:
+        raise ValueError("archive collection name cannot be empty")
+    collection = bpy.data.collections.get(clean_collection_name)
+    created = collection is None
+    if collection is None:
+        collection = bpy.data.collections.new(clean_collection_name)
+        bpy.context.scene.collection.children.link(collection)
+    previous = [item.name for item in obj.users_collection]
+    for owner in list(obj.users_collection):
+        owner.objects.unlink(obj)
+    collection.objects.link(obj)
+    obj.hide_render = True
+    obj.hide_set(True)
+    obj["archived_component"] = True
+    return {
+        "name": obj.name,
+        "archive_collection": collection.name,
+        "archive_collection_created": created,
+        "previous_collections": previous,
+        "hidden_in_viewport": obj.hide_get(),
+        "hidden_in_render": obj.hide_render,
+        "recoverable": True,
+    }
+
+
+def object_lifecycle_state(name):
+    """Read the identity, ownership, visibility, geometry, and modifier state of one object."""
+    obj = bpy.data.objects.get(name)
+    if obj is None:
+        raise ValueError(f"object '{name}' does not exist")
+    return {
+        "name": obj.name,
+        "type": obj.type,
+        "data": obj.data.name if obj.data is not None else None,
+        "collections": sorted(collection.name for collection in obj.users_collection),
+        "hidden_in_viewport": bool(obj.hide_get()),
+        "hidden_in_render": bool(obj.hide_render),
+        "vertices": len(obj.data.vertices) if obj.type == "MESH" else None,
+        "edges": len(obj.data.edges) if obj.type == "MESH" else None,
+        "faces": len(obj.data.polygons) if obj.type == "MESH" else None,
+        "modifiers": [{"name": modifier.name, "type": modifier.type} for modifier in obj.modifiers],
+        "replacement_source": obj.get("replacement_source"),
+        "archived_component": bool(obj.get("archived_component", False)),
+    }
+
+
 def package_high_low_variants(
     name,
     low_object_name,

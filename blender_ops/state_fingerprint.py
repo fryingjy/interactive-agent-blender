@@ -4,7 +4,7 @@ modeler_server.py's original _check_external_edit only diffed persistent-ID
 SETS -- it proves topology was added/removed, but a human can move existing
 vertices, change the object's transform, or change a modifier's parameters
 while every persistent ID stays exactly the same, and the old check would
-report no edit at all. compute() returns four independent layers so a caller
+report no edit at all. compute() returns five independent layers so a caller
 can tell not just THAT something changed but WHICH kind of change happened:
 
     topology    -- persistent-ID sets per element type (the original check)
@@ -14,6 +14,8 @@ can tell not just THAT something changed but WHICH kind of change happened:
     modifiers   -- name/type/show_viewport/params per modifier, catching a
                    parameter tweak (e.g. dragging the Subsurf level in the
                    GUI) that touches no mesh data at all
+    object_state -- visibility and collection ownership, so hiding or
+                    archiving a component is also detected
 
 Each layer is compared independently in diff() so a caller can distinguish
 "someone moved a vertex" from "someone added geometry" from "someone changed
@@ -91,12 +93,17 @@ def compute(name):
             "scale": tuple(round(c, 6) for c in obj.scale),
         },
         "modifiers": _modifier_params(obj),
+        "object_state": {
+            "hide_viewport": bool(obj.hide_get()),
+            "hide_render": bool(obj.hide_render),
+            "collections": tuple(sorted(collection.name for collection in obj.users_collection)),
+        },
     }
 
 
 def diff(previous, current):
     """Compare two compute() results layer by layer. Returns
-    (detected: bool, diff: dict) -- diff always has all four keys so a
+    (detected: bool, diff: dict) -- diff always records every layer so a
     caller can see which layers were checked, not just whether SOMETHING
     changed."""
     detected = False
@@ -131,5 +138,13 @@ def diff(previous, current):
     if modifiers_changed:
         out["modifiers_before"] = previous["modifiers"]
         out["modifiers_after"] = current["modifiers"]
+
+    object_state_changed = current.get("object_state") != previous.get("object_state")
+    if object_state_changed:
+        detected = True
+    out["object_state_changed"] = object_state_changed
+    if object_state_changed:
+        out["object_state_before"] = previous.get("object_state")
+        out["object_state_after"] = current.get("object_state")
 
     return detected, out

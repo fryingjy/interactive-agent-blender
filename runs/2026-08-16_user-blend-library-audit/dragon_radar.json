@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "record_type": "BLEND_READ_ONLY_INVENTORY",
+  "source_blend": "C:\\Users\\odane\\Downloads\\blender\\blend\\dragon radar.blend",
+  "blender_version": "5.2.0 LTS",
+  "objects": [
+    {
+      "name": "radar",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 594,
+        "edges": 1184,
+        "polygons": 592,
+        "quads": 592,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Bevel",
+            "type": "BEVEL",
+            "show_viewport": false
+          },
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Smooth by Angle",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 592
+      }
+    },
+    {
+      "name": "wire",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 1099,
+        "edges": 2665,
+        "polygons": 1322,
+        "quads": 1278,
+        "triangles": 9,
+        "ngons": 35,
+        "modifiers": [
+          {
+            "name": "Bevel",
+            "type": "BEVEL",
+            "show_viewport": false
+          },
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Smooth by Angle",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 1322
+      }
+    }
+  ],
+  "summary": {
+    "object_count": 2,
+    "mesh_object_count": 2,
+    "collection_names": [
+      "Collection"
+    ]
+  },
+  "claim_boundary": "This is scene inventory only. It does not infer artistic quality, authorship, or construction history."
+}

@@ -82,6 +82,8 @@ CAPABILITIES = [
     "axis_aligned_reference_images",
     "explicit_sharp_edge_intent",
     "profile_revolution_geometry",
+    "recoverable_component_replacement",
+    "recoverable_component_archiving",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -125,6 +127,8 @@ _OPS = {
     "assign_vertex_group": mesh_ops.assign_vertex_group,
     "add_modifier": object_ops.add_modifier,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
+    "replace_mesh_from_object": object_ops.replace_mesh_from_object,
+    "archive_object": object_ops.archive_object,
     "package_high_low_variants": object_ops.package_high_low_variants,
     "set_shading": object_ops.set_shading,
     "set_smooth_by_angle": object_ops.set_smooth_by_angle,
@@ -430,6 +434,9 @@ class ModelerServer:
 
     def cmd_get_full_state(self, name):
         return state_probe.get_full_state(name)
+
+    def cmd_get_object_lifecycle_state(self, name):
+        return object_ops.object_lifecycle_state(name)
 
     def cmd_create_primitive(self, name, primitive_type, location=None, **kwargs):
         """The one-time starting block a modeling session begins from --

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "record_type": "VISUAL_REVIEW",
+  "target": "Smeg KLF03NBUS navy-blue electric kettle",
+  "checkpoint": "klf03_stage_08_assembly_refined.blend",
+  "decision": "REJECTED_REFERENCE_MISMATCH",
+  "review_basis": "Direct user feedback: the model is horribly inaccurate relative to the official reference images.",
+  "technical_status": {
+    "fresh_process_inspection": "pass",
+    "editable_source_cages": true,
+    "modifiers_live_and_unapplied": true,
+    "professional_likeness": "fail"
+  },
+  "component_comparisons": [
+    {
+      "component": "spout",
+      "reference": "KLF03NBUS_02.jpg",
+      "candidate": "rejected_spout_component.png",
+      "alignment": "uniform-bbox",
+      "normalized_iou": 0.40013121814174923,
+      "normalized_contour_error": 0.0531240024,
+      "evidence": "comparison_component_spout/comparison.json"
+    },
+    {
+      "component": "handle",
+      "reference": "KLF03NBUS_08.jpg",
+      "candidate": "rejected_handle_component.png",
+      "alignment": "uniform-bbox",
+      "normalized_iou": 0.574090918278657,
+      "normalized_contour_error": 0.0206221045,
+      "evidence": "comparison_component_handle/comparison.json"
+    },
+    {
+      "component": "base",
+      "reference": "KLF03NBUS_02.jpg",
+      "candidate": "rejected_base_component.png",
+      "alignment": "uniform-bbox",
+      "normalized_iou": 0.5156461627763803,
+      "normalized_contour_error": 0.03412045246,
+      "evidence": "comparison_component_base/comparison.json"
+    }
+  ],
+  "diagnosis": [
+    "The initial connected-cage choices are technically defensible but their primary silhouettes were generic rather than specific to the reference.",
+    "Whole-object silhouette scores were not sufficient: body area hid errors in the spout, handle, and base.",
+    "Target-specific additions after the first generic primary form did not resolve the component-level mismatch."
+  ],
+  "required_next_step": "Do not polish or promote this kettle. Transfer-test component-level comparison before primary-form repair on an unrelated benchmark target.",
+  "claim_boundary": "This record rejects the target model. It does not establish a universal numerical acceptance threshold or a generalized modeling capability."
+}

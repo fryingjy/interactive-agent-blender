@@ -1,0 +1,818 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_component-lifecycle-tools\\sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_component-lifecycle-tools\\component_lifecycle.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "19b327bab02f",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_stable_target",
+      "command": "create_primitive",
+      "params": {
+        "name": "Stable_Target",
+        "primitive_type": "cube",
+        "location": [
+          0,
+          0,
+          0
+        ],
+        "size": 2
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "create_candidate_source",
+      "command": "create_primitive",
+      "params": {
+        "name": "Candidate_Source",
+        "primitive_type": "cylinder",
+        "location": [
+          4,
+          0,
+          0
+        ],
+        "radius": 1,
+        "depth": 2,
+        "vertices": 12
+      },
+      "status": "ok",
+      "result": {
+        "name": "Candidate_Source",
+        "type": "MESH",
+        "location": [
+          4.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "label": "source_live_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "Candidate_Source",
+        "action_type": "prepare_candidate_modifier_stack",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Subdivision"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1786908331359",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1786908331359",
+          "performed": true,
+          "result": {
+            "modifier_name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "prepare_candidate_modifier_stack",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1786908331359",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "target_before",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Stable_Target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "data": "Stable_Target",
+        "collections": [
+          "Scene Collection"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "modifiers": [],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 4,
+      "label": "reject_candidate_replacement",
+      "command": "transaction",
+      "params": {
+        "name": "Stable_Target",
+        "action_type": "test_rejected_component_replacement",
+        "operation": "replace_mesh_from_object",
+        "params": {
+          "source_name": "Candidate_Source",
+          "copy_modifiers": true,
+          "copy_transform": false
+        },
+        "accept": false,
+        "reason": "controlled rollback test"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1786908331363",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1786908331363",
+          "performed": true,
+          "result": {
+            "target": "Stable_Target",
+            "source": "Candidate_Source",
+            "mesh": "Stable_Target_Mesh",
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "copied_modifiers": [
+              {
+                "name": "Subdivision",
+                "type": "SUBSURF"
+              }
+            ],
+            "transform_copied": false,
+            "source_preserved": true
+          }
+        },
+        "verify": {
+          "action_type": "test_rejected_component_replacement",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ],
+              "removed": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            },
+            "faces": {
+              "added": [
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74
+              ],
+              "removed": [
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            }
+          }
+        },
+        "judgment": "rejected",
+        "judge_result": {
+          "decision_id": "dec_1_1786908331363",
+          "rejected": true,
+          "restored_revision": 1,
+          "reason": "controlled rollback test",
+          "removed_created_objects": [],
+          "removed_created_collections": []
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "target_after_rejected_replacement",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Stable_Target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "data": "Stable_Target_Mesh",
+        "collections": [
+          "Scene Collection"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "modifiers": [],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 6,
+      "label": "source_after_rejected_replacement",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Candidate_Source"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Candidate_Source",
+        "type": "MESH",
+        "data": "Candidate_Source",
+        "collections": [
+          "Scene Collection"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF"
+          }
+        ],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 7,
+      "label": "commit_candidate_replacement",
+      "command": "transaction",
+      "params": {
+        "name": "Stable_Target",
+        "action_type": "test_committed_component_replacement",
+        "operation": "replace_mesh_from_object",
+        "params": {
+          "source_name": "Candidate_Source",
+          "copy_modifiers": true,
+          "copy_transform": false
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1786908331366",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1786908331366",
+          "performed": true,
+          "result": {
+            "target": "Stable_Target",
+            "source": "Candidate_Source",
+            "mesh": "Stable_Target_Mesh.002",
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "copied_modifiers": [
+              {
+                "name": "Subdivision",
+                "type": "SUBSURF"
+              }
+            ],
+            "transform_copied": false,
+            "source_preserved": true
+          }
+        },
+        "verify": {
+          "action_type": "test_committed_component_replacement",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60
+              ],
+              "removed": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20
+              ]
+            },
+            "faces": {
+              "added": [
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74
+              ],
+              "removed": [
+                21,
+                22,
+                23,
+                24,
+                25,
+                26
+              ]
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1786908331366",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "target_after_committed_replacement",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Stable_Target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "data": "Stable_Target_Mesh.002",
+        "collections": [
+          "Scene Collection"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF"
+          }
+        ],
+        "replacement_source": "Candidate_Source",
+        "archived_component": false
+      }
+    },
+    {
+      "index": 9,
+      "label": "reject_component_archive",
+      "command": "transaction",
+      "params": {
+        "name": "Stable_Target",
+        "action_type": "test_rejected_component_archive",
+        "operation": "archive_object",
+        "params": {
+          "collection_name": "REJECTED_COMPONENTS"
+        },
+        "accept": false,
+        "reason": "controlled archive rollback test"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1786908331369",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1786908331369",
+          "performed": true,
+          "result": {
+            "name": "Stable_Target",
+            "archive_collection": "REJECTED_COMPONENTS",
+            "archive_collection_created": true,
+            "previous_collections": [
+              "Scene Collection"
+            ],
+            "hidden_in_viewport": true,
+            "hidden_in_render": true,
+            "recoverable": true
+          }
+        },
+        "verify": {
+          "action_type": "test_rejected_component_archive",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "rejected",
+        "judge_result": {
+          "decision_id": "dec_2_1786908331369",
+          "rejected": true,
+          "restored_revision": 2,
+          "reason": "controlled archive rollback test",
+          "removed_created_objects": [],
+          "removed_created_collections": [
+            "REJECTED_COMPONENTS"
+          ]
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "target_after_rejected_archive",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Stable_Target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "data": "Stable_Target_Mesh.002",
+        "collections": [
+          "Scene Collection"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF"
+          }
+        ],
+        "replacement_source": "Candidate_Source",
+        "archived_component": false
+      }
+    },
+    {
+      "index": 11,
+      "label": "commit_component_archive",
+      "command": "transaction",
+      "params": {
+        "name": "Stable_Target",
+        "action_type": "test_committed_component_archive",
+        "operation": "archive_object",
+        "params": {
+          "collection_name": "REJECTED_COMPONENTS"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1786908331372",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1786908331372",
+          "performed": true,
+          "result": {
+            "name": "Stable_Target",
+            "archive_collection": "REJECTED_COMPONENTS",
+            "archive_collection_created": true,
+            "previous_collections": [
+              "Scene Collection"
+            ],
+            "hidden_in_viewport": true,
+            "hidden_in_render": true,
+            "recoverable": true
+          }
+        },
+        "verify": {
+          "action_type": "test_committed_component_archive",
+          "op_delta": 0,
+          "before": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 24,
+            "edges": 36,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1786908331372",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 12,
+      "label": "target_after_committed_archive",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "Stable_Target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Stable_Target",
+        "type": "MESH",
+        "data": "Stable_Target_Mesh.002",
+        "collections": [
+          "REJECTED_COMPONENTS"
+        ],
+        "hidden_in_viewport": true,
+        "hidden_in_render": true,
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF"
+          }
+        ],
+        "replacement_source": "Candidate_Source",
+        "archived_component": true
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_component-lifecycle-tools\\component_lifecycle.blend"
+  },
+  "pass": true
+}

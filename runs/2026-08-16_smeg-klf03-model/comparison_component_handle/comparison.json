@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_RENDER_COMPARISON",
+  "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-smeg-klf03\\media\\KLF03NBUS_08.jpg",
+  "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\rejected_handle_component.png",
+  "view": "handle_component",
+  "reference_roi_xyxy_exclusive": [
+    500,
+    220,
+    800,
+    990
+  ],
+  "candidate_roi_xyxy_exclusive": null,
+  "alignment": {
+    "mode": "uniform-bbox",
+    "normalization": "candidate foreground cropped, uniformly scaled to fit the reference foreground bounding box, and center-aligned",
+    "uniform_scale": 1.1067251461988303,
+    "reference_bbox": [
+      0,
+      13,
+      299,
+      769
+    ],
+    "candidate_bbox_before_alignment": [
+      298,
+      58,
+      501,
+      741
+    ],
+    "candidate_bbox_after_alignment": [
+      37,
+      13,
+      262,
+      769
+    ],
+    "claim_boundary": "Translation and overall scale were removed, but aspect ratio and contour differences remain measurable."
+  },
+  "metrics": {
+    "width": 300,
+    "height": 770,
+    "reference_pixels": 85706,
+    "candidate_pixels": 147919,
+    "silhouette_iou": 0.574090918278657,
+    "centroid_error_normalized": 0.005174640882442713,
+    "bounding_box_error_normalized": 0.022386859417829127,
+    "symmetric_contour_error_normalized": 0.020622104504527547,
+    "negative_space_iou": 0.0,
+    "reference_negative_space_pixels": 22422,
+    "candidate_negative_space_pixels": 0,
+    "reference_bbox": [
+      0,
+      13,
+      299,
+      769
+    ],
+    "candidate_bbox": [
+      37,
+      13,
+      262,
+      769
+    ]
+  },
+  "tickets": [
+    {
+      "type": "negative_space",
+      "target": "handle_component",
+      "severity": 1.0,
+      "evidence": 0.0,
+      "priority": 1
+    },
+    {
+      "type": "silhouette_contour",
+      "target": "handle_component",
+      "severity": 0.020622104504527547,
+      "evidence": 0.020622104504527547,
+      "priority": 2
+    }
+  ]
+}

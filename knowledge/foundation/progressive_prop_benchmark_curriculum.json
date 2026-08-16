@@ -126,14 +126,15 @@
     }
   ],
   "active_state": {
-    "active_prop_id": 4,
-    "active_prop": "Electric Kettle",
-    "active_target_variant": "Smeg KLF03NBUS navy-blue electric kettle",
-    "phase": "primary_form_refinement",
-    "authorization": "DIRECT_USER_AUTHORIZATION",
-    "modeling_authorized": true,
+    "active_prop_id": 5,
+    "active_prop": "Vintage Alarm Clock",
+    "active_target_variant": null,
+    "phase": "reference-tooling-transfer-and-exercise-reproduction",
+    "authorization": "REFERENCE_ANALYSIS_REQUIRED",
+    "modeling_authorized": false,
     "prior_prop_outcome": "Prop 2 Scotch C38 received a qualified human stage pass after its broad bevel treatment was replaced by live crease-controlled SubD. This is not final-asset or production approval; reference likeness was described as only somewhat acceptable, and UV/material/underside/export work remains unapproved.",
     "prior_prop_outcome_2": "Prop 3 failed direct human likeness review at 3/10. Its model, renders, reference package, helper, and derived benchmark records were purged on user instruction instead of overfitting further repairs.",
-    "next_action": "refine the KLF03 all-quad spout curvature/rolled lip and flattened handle attachments from their existing connected components, then construct the base foot cutouts before any logo, material, or tertiary detail"
+    "prior_prop_outcome_3": "Prop 4 Smeg KLF03 was rejected for obvious reference mismatch despite technically valid editable cages and live modifiers. Isolated component comparisons exposed weak normalized silhouette overlap for the spout (0.4001), handle (0.5741), and base (0.5156), while full-object normalization misleadingly reported approximately 0.77–0.88. The correct response is to retain the failure evidence, improve the component-comparison and recoverable-rebuild workflow, and stop target-specific polishing rather than claim progression.",
+    "next_action": "validate the component-level reference gate through a focused modeling-exercise reproduction, then source an unfamiliar multi-view vintage alarm-clock reference package and run the next prop from reference interpretation rather than generic-form iteration"
   }
 }

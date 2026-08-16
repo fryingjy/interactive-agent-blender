@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "record_type": "BLEND_READ_ONLY_INVENTORY",
+  "source_blend": "C:\\Users\\odane\\Downloads\\blender\\blend\\batarang.blend",
+  "blender_version": "5.2.0 LTS",
+  "objects": [
+    {
+      "name": "batarang_high",
+      "type": "MESH",
+      "collections": [
+        "highpoly"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 15970,
+        "edges": 31936,
+        "polygons": 15968,
+        "quads": 15968,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [],
+        "smooth_polygons": 15968
+      }
+    },
+    {
+      "name": "batarang_low",
+      "type": "MESH",
+      "collections": [
+        "lowpoly"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 193,
+        "edges": 421,
+        "polygons": 230,
+        "quads": 152,
+        "triangles": 78,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Auto Smooth",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 230
+      }
+    },
+    {
+      "name": "Empty",
+      "type": "EMPTY",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": true,
+      "hidden_render": false
+    },
+    {
+      "name": "Plane",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 123,
+        "edges": 224,
+        "polygons": 102,
+        "quads": 102,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Mirror",
+            "type": "MIRROR",
+            "show_viewport": true
+          },
+          {
+            "name": "Bevel",
+            "type": "BEVEL",
+            "show_viewport": true
+          },
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Smooth by Angle",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 102
+      }
+    }
+  ],
+  "summary": {
+    "object_count": 4,
+    "mesh_object_count": 3,
+    "collection_names": [
+      "Collection",
+      "highpoly",
+      "lowpoly"
+    ]
+  },
+  "claim_boundary": "This is scene inventory only. It does not infer artistic quality, authorship, or construction history."
+}

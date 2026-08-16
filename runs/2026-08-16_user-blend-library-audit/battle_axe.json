@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "record_type": "BLEND_READ_ONLY_INVENTORY",
+  "source_blend": "C:\\Users\\odane\\Downloads\\blender\\blend\\battle axe.blend",
+  "blender_version": "5.2.0 LTS",
+  "objects": [
+    {
+      "name": "blade",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 288,
+        "edges": 543,
+        "polygons": 255,
+        "quads": 254,
+        "triangles": 1,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Mirror",
+            "type": "MIRROR",
+            "show_viewport": true
+          },
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 255
+      }
+    },
+    {
+      "name": "guard",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 112,
+        "edges": 224,
+        "polygons": 112,
+        "quads": 112,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Auto Smooth",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 112
+      }
+    },
+    {
+      "name": "handle",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 130,
+        "edges": 256,
+        "polygons": 128,
+        "quads": 128,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Auto Smooth",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 128
+      }
+    },
+    {
+      "name": "pommel",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 146,
+        "edges": 288,
+        "polygons": 144,
+        "quads": 144,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Auto Smooth",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 144
+      }
+    },
+    {
+      "name": "wrap",
+      "type": "MESH",
+      "collections": [
+        "Collection"
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false,
+      "mesh": {
+        "vertices": 1092,
+        "edges": 1907,
+        "polygons": 816,
+        "quads": 816,
+        "triangles": 0,
+        "ngons": 0,
+        "modifiers": [
+          {
+            "name": "Solidify",
+            "type": "SOLIDIFY",
+            "show_viewport": true
+          },
+          {
+            "name": "Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          },
+          {
+            "name": "Auto Smooth",
+            "type": "NODES",
+            "show_viewport": true
+          }
+        ],
+        "smooth_polygons": 816
+      }
+    }
+  ],
+  "summary": {
+    "object_count": 5,
+    "mesh_object_count": 5,
+    "collection_names": [
+      "Collection"
+    ]
+  },
+  "claim_boundary": "This is scene inventory only. It does not infer artistic quality, authorship, or construction history."
+}

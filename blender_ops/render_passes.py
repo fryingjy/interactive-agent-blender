@@ -30,8 +30,11 @@ import mathutils
 
 _VIEW_VECTORS = {
     "front": mathutils.Vector((0.0, -1.0, 0.0)),
+    "back": mathutils.Vector((0.0, 1.0, 0.0)),
     "side": mathutils.Vector((1.0, 0.0, 0.0)),
+    "left": mathutils.Vector((-1.0, 0.0, 0.0)),
     "top": mathutils.Vector((0.0, 0.0, 1.0)),
+    "bottom": mathutils.Vector((0.0, 0.0, -1.0)),
     "isometric": mathutils.Vector((1.0, -1.0, 1.0)).normalized(),
 }
 

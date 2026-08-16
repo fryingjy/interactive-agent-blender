@@ -31,10 +31,13 @@ verification, human review/repair tickets, final editable `.blend`, and transfer
 
 ## Active state
 
-Prop 1, Swingline 747, was not approved at primary-blockout review. Its unapproved builder, blend,
-renders, and decision artifacts were removed under the direct user instruction; the retained earlier
-reference-research record is not an accepted model. The ladder now advances to Prop 2, Simple Desk
-Tape Dispenser, at `primary_blockout`. Its evidence-bound multi-view reference package passed the
-machine audit, and the user's direct instruction authorizes modeling without a pre-model HTML board
-or approval request. Human review remains decisive after renders exist; rejection still overrides
-technical checks.
+The KLF03 electric-kettle attempt is the current terminal failure record. Its final checkpoint is
+technically valid and editable, but the user rejected its resemblance. Component-level silhouette
+checks showed normalized overlap of 0.4001 for the spout, 0.5741 for the handle, and 0.5156 for the
+base; whole-object normalization had obscured those errors. The model is therefore not promoted and
+will not receive more target-specific cosmetic repair.
+
+The ladder advances to Prop 5, Vintage Alarm Clock, only after the reusable component-level reference
+comparison and recoverable component-rebuild workflow has been exercised on a focused reproduction.
+Direct user instruction removes any pre-model approval-board requirement; it does not remove the
+requirement for reference fidelity or the authority of a later human rejection.

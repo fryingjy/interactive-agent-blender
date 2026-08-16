@@ -326,6 +326,8 @@ class DecisionTransaction:
                     # Runtime-only and collection properties are not universally assignable.
                     continue
         obj.select_set(bool(self._before_selected))
+        obj.hide_render = bool(snapshot.hide_render)
+        obj.hide_set(bool(snapshot.hide_get()))
         if self._before_active_object:
             active = bpy.data.objects.get(self._before_active_object)
             if active is not None:

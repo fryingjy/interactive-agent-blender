@@ -1,0 +1,15 @@
+[
+  {"label": "create_stable_target", "command": "create_primitive", "params": {"name": "Stable_Target", "primitive_type": "cube", "location": [0, 0, 0], "size": 2}},
+  {"label": "create_candidate_source", "command": "create_primitive", "params": {"name": "Candidate_Source", "primitive_type": "cylinder", "location": [4, 0, 0], "radius": 1, "depth": 2, "vertices": 12}},
+  {"label": "source_live_subdivision", "transaction": {"name": "Candidate_Source", "action_type": "prepare_candidate_modifier_stack", "operation": "add_modifier", "params": {"modifier_type": "SUBSURF", "modifier_name": "Subdivision"}}},
+  {"label": "target_before", "command": "get_object_lifecycle_state", "params": {"name": "Stable_Target"}},
+  {"label": "reject_candidate_replacement", "transaction": {"name": "Stable_Target", "action_type": "test_rejected_component_replacement", "operation": "replace_mesh_from_object", "params": {"source_name": "Candidate_Source", "copy_modifiers": true, "copy_transform": false}, "accept": false, "reason": "controlled rollback test"}},
+  {"label": "target_after_rejected_replacement", "command": "get_object_lifecycle_state", "params": {"name": "Stable_Target"}},
+  {"label": "source_after_rejected_replacement", "command": "get_object_lifecycle_state", "params": {"name": "Candidate_Source"}},
+  {"label": "commit_candidate_replacement", "transaction": {"name": "Stable_Target", "action_type": "test_committed_component_replacement", "operation": "replace_mesh_from_object", "params": {"source_name": "Candidate_Source", "copy_modifiers": true, "copy_transform": false}}},
+  {"label": "target_after_committed_replacement", "command": "get_object_lifecycle_state", "params": {"name": "Stable_Target"}},
+  {"label": "reject_component_archive", "transaction": {"name": "Stable_Target", "action_type": "test_rejected_component_archive", "operation": "archive_object", "params": {"collection_name": "REJECTED_COMPONENTS"}, "accept": false, "reason": "controlled archive rollback test"}},
+  {"label": "target_after_rejected_archive", "command": "get_object_lifecycle_state", "params": {"name": "Stable_Target"}},
+  {"label": "commit_component_archive", "transaction": {"name": "Stable_Target", "action_type": "test_committed_component_archive", "operation": "archive_object", "params": {"collection_name": "REJECTED_COMPONENTS"}}},
+  {"label": "target_after_committed_archive", "command": "get_object_lifecycle_state", "params": {"name": "Stable_Target"}}
+]

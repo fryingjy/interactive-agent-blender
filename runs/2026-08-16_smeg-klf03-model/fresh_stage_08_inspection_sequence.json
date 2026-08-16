@@ -1,0 +1,28 @@
+[
+  {"label": "body_base", "command": "get_full_state", "params": {"name": "KLF03_Body_HIGH"}},
+  {"label": "body_evaluated", "command": "get_evaluated_state", "params": {"name": "KLF03_Body_HIGH"}},
+  {"label": "lid_base", "command": "get_full_state", "params": {"name": "KLF03_Lid_HIGH"}},
+  {"label": "base_band_base", "command": "get_full_state", "params": {"name": "KLF03_BaseBand_HIGH"}},
+  {"label": "base_band_evaluated", "command": "get_evaluated_state", "params": {"name": "KLF03_BaseBand_HIGH"}},
+  {"label": "handle_base", "command": "get_full_state", "params": {"name": "KLF03_Handle_HIGH"}},
+  {"label": "upper_mount_base", "command": "get_full_state", "params": {"name": "KLF03_HandleMountUpper_HIGH"}},
+  {"label": "lower_mount_base", "command": "get_full_state", "params": {"name": "KLF03_HandleMountLower_HIGH"}},
+  {"label": "spout_base", "command": "get_full_state", "params": {"name": "KLF03_Spout_HIGH"}},
+  {"label": "spout_evaluated", "command": "get_evaluated_state", "params": {"name": "KLF03_Spout_HIGH"}},
+  {"label": "lid_button_base", "command": "get_full_state", "params": {"name": "KLF03_LidButton_HIGH"}},
+  {"label": "switch_bezel_base", "command": "get_full_state", "params": {"name": "KLF03_SwitchBezel_HIGH"}},
+  {"label": "switch_stem_base", "command": "get_full_state", "params": {"name": "KLF03_SwitchStem_HIGH"}},
+  {"label": "switch_knob_base", "command": "get_full_state", "params": {"name": "KLF03_Switch_HIGH"}},
+  {
+    "label": "fresh_stage08_wire",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_SwitchBezel_HIGH", "KLF03_SwitchStem_HIGH", "KLF03_Switch_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage08_wire.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 1000,
+      "margin": 1.12
+    }
+  }
+]
