@@ -1,0 +1,30 @@
+[
+  {
+    "label": "accept_measured_shackle_arch_path",
+    "command": "set_curve_points",
+    "params": {
+      "name": "steel_shackle",
+      "points": [[-13.5, 0.0, 16.0], [-13.5, 0.0, 33.0], [-4.0, 0.0, 41.0], [4.0, 0.0, 41.0], [13.5, 0.0, 33.0], [13.5, 0.0, 16.0]]
+    }
+  },
+  {
+    "label": "verify_accepted_shackle_curve_state",
+    "command": "get_curve_state",
+    "params": {"name": "steel_shackle"}
+  },
+  {
+    "label": "verify_accepted_body_evaluated_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "brass_body"}
+  },
+  {
+    "label": "render_accepted_shackle_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_08_primary_front_solid.png", "pass_type": "solid", "view": "front", "resolution": 768, "margin": 1.18}
+  },
+  {
+    "label": "render_accepted_shackle_isometric",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_08_primary_iso_solid.png", "pass_type": "solid", "view": "isometric", "resolution": 768, "margin": 1.18}
+  }
+]

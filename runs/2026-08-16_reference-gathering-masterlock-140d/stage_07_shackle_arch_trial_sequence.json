@@ -1,0 +1,20 @@
+[
+  {
+    "label": "narrow_flat_top_on_existing_single_shackle_path",
+    "command": "set_curve_points",
+    "params": {
+      "name": "steel_shackle",
+      "points": [[-13.5, 0.0, 16.0], [-13.5, 0.0, 33.0], [-4.0, 0.0, 41.0], [4.0, 0.0, 41.0], [13.5, 0.0, 33.0], [13.5, 0.0, 16.0]]
+    }
+  },
+  {
+    "label": "observe_trial_shackle_path",
+    "command": "get_curve_state",
+    "params": {"name": "steel_shackle"}
+  },
+  {
+    "label": "render_trial_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_07_shackle_arch_trial_front.png", "pass_type": "solid", "view": "front", "resolution": 768, "margin": 1.18}
+  }
+]
