@@ -33,6 +33,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion still evidence-gated |
 | Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |
 | Human visual review as a separate authority | Bialetti review page and `human_review_gate.json` | Enforced; **pending external review** |
+| Human rejection → repair handoff | `knowledge_engine/human_review.py`, planner stale-review guard, and unit controls | Implemented as a revision-bound, inspect-first path; no new human review has been fabricated |
 | New reference-driven model through all stages | no approved Bialetti blockout or later stage artifact | **Not authorized / not complete** |
 | Broad professional generalization | current gap matrix and prior rejected assets | **Not established**; cannot be inferred from automated audits |
 

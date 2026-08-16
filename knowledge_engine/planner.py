@@ -496,6 +496,22 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
     if ticket is not None:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
         region = ticket.get("target")
+        ticket_revision = ticket.get("scene_revision")
+        if ticket.get("source") == "EXTERNAL_HUMAN_REVIEW" and ticket_revision != context.scene_revision:
+            return _contract(
+                context,
+                disposition="INSPECT",
+                action="RECAPTURE_STALE_HUMAN_REVIEW",
+                target_object=target,
+                target_region=str(region) if region else None,
+                rationale=(
+                    f"human review targets scene revision {ticket_revision}, not observed revision {context.scene_revision}",
+                    "a later edit may have repaired or moved the reviewed region",
+                ),
+                expected_effect="Obtain a current human judgment before using it to drive a repair.",
+                verification=("review scene revision equals the current observation",),
+                confidence="HIGH",
+            )
         suggested = ticket.get("suggested_operation")
         skill_guided = _skill_guided_ticket_decision(context, ticket)
         if skill_guided is not None:

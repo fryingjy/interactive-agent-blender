@@ -25,6 +25,7 @@ from knowledge_engine.scene_decomposition import (
 )
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
+from knowledge_engine.human_review import review_to_repair_tickets, validate_external_visual_review
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 from knowledge_engine.planner import PlannerContext, plan_next_decision
@@ -727,6 +728,27 @@ class QualityReviewTests(unittest.TestCase):
         self.assertFalse(result["pass"])
         self.assertEqual(result["hard_failures"], ["surface"])
 
+    def test_human_rejection_becomes_revision_bound_localized_repair_tickets(self):
+        review = {
+            "review_result": "reject", "reviewer_type": "human", "reviewer_id": "reviewer-01",
+            "asset_id": "unfamiliar-prop", "scene_revision": 7,
+            "failure_types": ["proportion", "negative_space"],
+            "regions": [
+                {"target": "body", "failure_type": "proportion", "view": "front", "severity": 0.9},
+                {"target": "handle_gap", "failure_type": "negative_space", "view": "side", "severity": 0.8},
+            ],
+            "severity": {"proportion": 0.9, "negative_space": 0.8},
+            "notes": "The body is too tall and the handle clearance is too narrow.",
+        }
+        tickets = review_to_repair_tickets(review, current_scene_revision=7)
+        self.assertEqual([ticket["target"] for ticket in tickets], ["body", "handle_gap"])
+        self.assertTrue(all(ticket["source"] == "EXTERNAL_HUMAN_REVIEW" for ticket in tickets))
+        with self.assertRaisesRegex(ValueError, "not current revision"):
+            review_to_repair_tickets(review, current_scene_revision=8)
+        agent_review = {**review, "reviewer_type": "agent"}
+        with self.assertRaisesRegex(ValueError, "only a human"):
+            validate_external_visual_review(agent_review)
+
 
 class SessionLearningTests(unittest.TestCase):
     def test_candidates_require_separate_replay(self):
@@ -770,6 +792,14 @@ class PlannerTests(unittest.TestCase):
         )
         values.update(changes)
         return PlannerContext(**values)
+
+    def test_planner_does_not_apply_a_stale_human_review_ticket(self):
+        decision = plan_next_decision(self.context(visual_tickets=[{
+            "type": "human_review_proportion", "target": "body", "severity": 1.0,
+            "source": "EXTERNAL_HUMAN_REVIEW", "scene_revision": 3,
+        }]))
+        self.assertEqual(decision.action, "RECAPTURE_STALE_HUMAN_REVIEW")
+        self.assertEqual(decision.disposition, "INSPECT")
 
     def test_authority_and_external_edit_preempt_mutation(self):
         wait = plan_next_decision(self.context(control_mode="USER_CONTROL"))
