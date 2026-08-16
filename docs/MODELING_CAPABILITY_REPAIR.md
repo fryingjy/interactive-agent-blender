@@ -75,3 +75,21 @@ the published full depth. A connected rear-cage move reduced the depth and
 raised the same normalized side comparison to 0.916 IoU; the before/after
 reports and overlays live beside stages 11 and 12. This is a measured localized
 improvement, not a substitute for direct visual review or an acceptance claim.
+
+## Component-bound comparison correction
+
+Global silhouette agreement can hide an oversized or undersized secondary
+assembly. `knowledge_engine/component_layout.py` compares named normalized
+component bounds from a controlled Blender component-mask pass with an explicit
+source-layout interpretation and returns prioritized local tickets. It reports
+disagreement; it intentionally has no visual-pass threshold.
+
+The Seiko exercise also demonstrates the required reconciliation step. A first
+manual bezel bound suggested an oversized correction, but constrained circle
+observations showed the candidate bezel/dial widths already matched closely.
+That edit was rejected before mutation. The top-control width/height reading
+was then tested: an over-tall trial was rejected by the material render, and a
+moderated rebuild with a live physical-radius bevel was retained. See stages
+12–16 and `component_measurement_reconciliation.json`. This is evidence of a
+repair discipline, not proof that automatic source component segmentation is
+solved or that the asset is reviewer-accepted.

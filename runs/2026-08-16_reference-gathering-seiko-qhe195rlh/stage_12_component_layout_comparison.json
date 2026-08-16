@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "record_type": "NORMALIZED_COMPONENT_LAYOUT_COMPARISON",
+  "components": {
+    "DialBezel": {
+      "reference": {
+        "left": 0.104,
+        "top": 0.116,
+        "right": 0.901,
+        "bottom": 0.924
+      },
+      "candidate": {
+        "left": 0.1488,
+        "top": 0.113924,
+        "right": 0.8496,
+        "bottom": 0.905967
+      },
+      "coordinate_errors": {
+        "left": 0.04479999999999999,
+        "top": 0.0020760000000000084,
+        "right": 0.0514,
+        "bottom": 0.018033000000000077
+      },
+      "reference_size": {
+        "width": 0.797,
+        "height": 0.808
+      },
+      "candidate_size": {
+        "width": 0.7008000000000001,
+        "height": 0.7920429999999999
+      },
+      "size_errors": {
+        "width": 0.09619999999999995,
+        "height": 0.01595700000000011
+      },
+      "mean_coordinate_error": 0.02907725000000002,
+      "severity": 0.09619999999999995
+    },
+    "DialFace": {
+      "reference": {
+        "left": 0.151,
+        "top": 0.164,
+        "right": 0.849,
+        "bottom": 0.876
+      },
+      "candidate": {
+        "left": 0.1856,
+        "top": 0.155515,
+        "right": 0.8144,
+        "bottom": 0.864376
+      },
+      "coordinate_errors": {
+        "left": 0.03459999999999999,
+        "top": 0.00848500000000002,
+        "right": 0.034599999999999964,
+        "bottom": 0.011623999999999968
+      },
+      "reference_size": {
+        "width": 0.698,
+        "height": 0.712
+      },
+      "candidate_size": {
+        "width": 0.6288,
+        "height": 0.7088610000000001
+      },
+      "size_errors": {
+        "width": 0.06919999999999993,
+        "height": 0.003138999999999892
+      },
+      "mean_coordinate_error": 0.022327249999999986,
+      "severity": 0.06919999999999993
+    },
+    "MainHousing": {
+      "reference": {
+        "left": 0.0,
+        "top": 0.046,
+        "right": 1.0,
+        "bottom": 1.0
+      },
+      "candidate": {
+        "left": 0.0,
+        "top": 0.019892,
+        "right": 1.0,
+        "bottom": 1.0
+      },
+      "coordinate_errors": {
+        "left": 0.0,
+        "top": 0.026108,
+        "right": 0.0,
+        "bottom": 0.0
+      },
+      "reference_size": {
+        "width": 1.0,
+        "height": 0.954
+      },
+      "candidate_size": {
+        "width": 1.0,
+        "height": 0.980108
+      },
+      "size_errors": {
+        "width": 0.0,
+        "height": 0.02610800000000002
+      },
+      "mean_coordinate_error": 0.006527,
+      "severity": 0.02610800000000002
+    },
+    "TopControl": {
+      "reference": {
+        "left": 0.409,
+        "top": 0.0,
+        "right": 0.591,
+        "bottom": 0.087
+      },
+      "candidate": {
+        "left": 0.4288,
+        "top": 0.0,
+        "right": 0.5712,
+        "bottom": 0.018083
+      },
+      "coordinate_errors": {
+        "left": 0.01980000000000004,
+        "top": 0.0,
+        "right": 0.01979999999999993,
+        "bottom": 0.06891699999999999
+      },
+      "reference_size": {
+        "width": 0.182,
+        "height": 0.087
+      },
+      "candidate_size": {
+        "width": 0.14240000000000003,
+        "height": 0.018083
+      },
+      "size_errors": {
+        "width": 0.03959999999999997,
+        "height": 0.06891699999999999
+      },
+      "mean_coordinate_error": 0.02712924999999999,
+      "severity": 0.06891699999999999
+    }
+  },
+  "mean_component_severity": 0.06510624999999998,
+  "worst_component_severity": 0.09619999999999995,
+  "missing_components": [],
+  "extra_components": [],
+  "tickets": [
+    {
+      "type": "component_layout",
+      "target": "DialBezel",
+      "severity": 0.09619999999999995,
+      "evidence": {
+        "reference": {
+          "left": 0.104,
+          "top": 0.116,
+          "right": 0.901,
+          "bottom": 0.924
+        },
+        "candidate": {
+          "left": 0.1488,
+          "top": 0.113924,
+          "right": 0.8496,
+          "bottom": 0.905967
+        },
+        "coordinate_errors": {
+          "left": 0.04479999999999999,
+          "top": 0.0020760000000000084,
+          "right": 0.0514,
+          "bottom": 0.018033000000000077
+        },
+        "reference_size": {
+          "width": 0.797,
+          "height": 0.808
+        },
+        "candidate_size": {
+          "width": 0.7008000000000001,
+          "height": 0.7920429999999999
+        },
+        "size_errors": {
+          "width": 0.09619999999999995,
+          "height": 0.01595700000000011
+        },
+        "mean_coordinate_error": 0.02907725000000002,
+        "severity": 0.09619999999999995
+      },
+      "priority": 1
+    },
+    {
+      "type": "component_layout",
+      "target": "DialFace",
+      "severity": 0.06919999999999993,
+      "evidence": {
+        "reference": {
+          "left": 0.151,
+          "top": 0.164,
+          "right": 0.849,
+          "bottom": 0.876
+        },
+        "candidate": {
+          "left": 0.1856,
+          "top": 0.155515,
+          "right": 0.8144,
+          "bottom": 0.864376
+        },
+        "coordinate_errors": {
+          "left": 0.03459999999999999,
+          "top": 0.00848500000000002,
+          "right": 0.034599999999999964,
+          "bottom": 0.011623999999999968
+        },
+        "reference_size": {
+          "width": 0.698,
+          "height": 0.712
+        },
+        "candidate_size": {
+          "width": 0.6288,
+          "height": 0.7088610000000001
+        },
+        "size_errors": {
+          "width": 0.06919999999999993,
+          "height": 0.003138999999999892
+        },
+        "mean_coordinate_error": 0.022327249999999986,
+        "severity": 0.06919999999999993
+      },
+      "priority": 2
+    },
+    {
+      "type": "component_layout",
+      "target": "TopControl",
+      "severity": 0.06891699999999999,
+      "evidence": {
+        "reference": {
+          "left": 0.409,
+          "top": 0.0,
+          "right": 0.591,
+          "bottom": 0.087
+        },
+        "candidate": {
+          "left": 0.4288,
+          "top": 0.0,
+          "right": 0.5712,
+          "bottom": 0.018083
+        },
+        "coordinate_errors": {
+          "left": 0.01980000000000004,
+          "top": 0.0,
+          "right": 0.01979999999999993,
+          "bottom": 0.06891699999999999
+        },
+        "reference_size": {
+          "width": 0.182,
+          "height": 0.087
+        },
+        "candidate_size": {
+          "width": 0.14240000000000003,
+          "height": 0.018083
+        },
+        "size_errors": {
+          "width": 0.03959999999999997,
+          "height": 0.06891699999999999
+        },
+        "mean_coordinate_error": 0.02712924999999999,
+        "severity": 0.06891699999999999
+      },
+      "priority": 3
+    },
+    {
+      "type": "component_layout",
+      "target": "MainHousing",
+      "severity": 0.02610800000000002,
+      "evidence": {
+        "reference": {
+          "left": 0.0,
+          "top": 0.046,
+          "right": 1.0,
+          "bottom": 1.0
+        },
+        "candidate": {
+          "left": 0.0,
+          "top": 0.019892,
+          "right": 1.0,
+          "bottom": 1.0
+        },
+        "coordinate_errors": {
+          "left": 0.0,
+          "top": 0.026108,
+          "right": 0.0,
+          "bottom": 0.0
+        },
+        "reference_size": {
+          "width": 1.0,
+          "height": 0.954
+        },
+        "candidate_size": {
+          "width": 1.0,
+          "height": 0.980108
+        },
+        "size_errors": {
+          "width": 0.0,
+          "height": 0.02610800000000002
+        },
+        "mean_coordinate_error": 0.006527,
+        "severity": 0.02610800000000002
+      },
+      "priority": 4
+    }
+  ],
+  "claim_boundary": "Normalized bounds localize component placement and proportion disagreement. They do not calibrate a perspective source image, prove 3D depth, or establish visual acceptance.",
+  "reference_layout": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\reference_front_component_layout.json",
+  "candidate_observations": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_12_component_mask_observations.json",
+  "reference_uncertainty": [
+    "Bounds are manually read from the same-variant official product image after normalizing its visible alpha silhouette.",
+    "The image is a perspective product render rather than a calibrated orthographic drawing; component bounds are diagnostic constraints, not absolute camera-space measurements.",
+    "The top control partly overlaps the housing silhouette, so its lower boundary is lower confidence than its width and center alignment."
+  ]
+}

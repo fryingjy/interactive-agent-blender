@@ -1,0 +1,4 @@
+[
+  {"label": "observe_open_bezel_cage_before_component_scale_correction", "command": "get_mesh_geometry", "params": {"name": "DialBezel"}},
+  {"label": "observe_dial_face_cage_before_component_scale_correction", "command": "get_mesh_geometry", "params": {"name": "DialFace"}}
+]

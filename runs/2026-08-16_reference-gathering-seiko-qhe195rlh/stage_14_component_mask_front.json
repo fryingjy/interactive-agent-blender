@@ -1,0 +1,36 @@
+{
+  "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_14_component_mask_front.png",
+  "pass_type": "component_mask",
+  "view": "front",
+  "projection": "ORTHO",
+  "resolution": [
+    1000,
+    1000
+  ],
+  "target_objects": [
+    "MainHousing",
+    "DialBezel",
+    "DialFace",
+    "TopControl"
+  ],
+  "frame_objects": [
+    "MainHousing",
+    "DialBezel",
+    "DialFace",
+    "TopControl"
+  ],
+  "camera_location": [
+    0.0,
+    -12.943808555603027,
+    0.1177474856376648
+  ],
+  "camera_ortho_scale": 7.29443515331472,
+  "scene_revision": null,
+  "foreground_fill_ratio": 0.332024,
+  "foreground_unique_colors_5bit": 46,
+  "dominant_channel_pixel_counts": {
+    "red": 184595,
+    "green": 27564,
+    "blue": 115247
+  }
+}

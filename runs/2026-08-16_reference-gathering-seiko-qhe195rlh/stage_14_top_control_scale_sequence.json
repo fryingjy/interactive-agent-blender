@@ -1,0 +1,21 @@
+[
+  {
+    "label": "select_top_control_cage_for_observed_width_and_height_correction",
+    "command": "select_by_ids",
+    "params": {"name": "TopControl", "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]}
+  },
+  {
+    "label": "scale_top_control_cage_to_supported_front_component_bounds",
+    "transaction": {
+      "name": "TopControl",
+      "action_type": "secondary_component_proportion",
+      "operation": "scale_selection",
+      "params": {"factor": [1.278, 1.278, 4.8]}
+    }
+  },
+  {
+    "label": "inspect_top_control_after_component_bound_correction",
+    "command": "get_evaluated_state",
+    "params": {"name": "TopControl"}
+  }
+]

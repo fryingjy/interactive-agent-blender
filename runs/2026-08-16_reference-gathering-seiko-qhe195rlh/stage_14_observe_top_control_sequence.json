@@ -1,0 +1,3 @@
+[
+  {"label": "observe_top_control_cage_before_supported_component_correction", "command": "get_mesh_geometry", "params": {"name": "TopControl"}}
+]

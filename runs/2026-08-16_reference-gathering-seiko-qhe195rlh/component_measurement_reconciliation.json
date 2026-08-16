@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "COMPONENT_MEASUREMENT_RECONCILIATION",
+  "source": "official_front.png",
+  "candidate_observations": "stage_12_component_mask_observations.json",
+  "finding": "The first manually read dial-bezel layout bounds conflicted with direct circle detection and would have triggered an unjustified scale change.",
+  "rejected_change": {
+    "component": "DialBezel",
+    "proposed_action": "increase radial cage scale from manual component-layout severity",
+    "reason": "A constrained Hough-circle observation found a source circle diameter of approximately 266.6 px / 386 px = 0.691, while the controlled candidate bezel mask width is 0.701. The difference is within the interpretation uncertainty of the perspective product image."
+  },
+  "retained_observations": [
+    "The candidate DialFace normalized width is 0.629; a source inner-circle candidate from the same constrained observation is approximately 242.4 px / 386 px = 0.628.",
+    "The top control is visibly narrower and substantially shorter above the housing than the source reading; its source boundary is higher confidence because its silver silhouette is distinct from the black/red body."
+  ],
+  "next_action": "Scale the independently manufactured TopControl cage, then re-render the controlled component mask and compare only the supported top-control change.",
+  "claim_boundary": "Circle detection is an observed image cue, not calibrated geometry or proof of a final reference match. The rejected dial edit demonstrates that component-layout evidence must be reconciled before mutation."
+}

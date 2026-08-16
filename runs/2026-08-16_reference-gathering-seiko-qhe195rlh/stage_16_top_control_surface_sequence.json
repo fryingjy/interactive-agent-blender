@@ -1,0 +1,23 @@
+[
+  {
+    "label": "add_live_physical_edge_radius_to_top_control",
+    "transaction": {"name": "TopControl", "action_type": "secondary_component_surface", "operation": "add_modifier", "params": {"modifier_type": "BEVEL", "modifier_name": "TopControl_Edge_Radius_Unapplied"}}
+  },
+  {
+    "label": "set_top_control_physical_edge_radius_width",
+    "transaction": {"name": "TopControl", "action_type": "secondary_component_surface", "operation": "set_modifier_parameter", "params": {"modifier_name": "TopControl_Edge_Radius_Unapplied", "parameter": "width", "value": 0.025}}
+  },
+  {
+    "label": "set_top_control_physical_edge_radius_segments",
+    "transaction": {"name": "TopControl", "action_type": "secondary_component_surface", "operation": "set_modifier_parameter", "params": {"modifier_name": "TopControl_Edge_Radius_Unapplied", "parameter": "segments", "value": 2}}
+  },
+  {
+    "label": "smooth_top_control_by_angle",
+    "transaction": {"name": "TopControl", "action_type": "shading", "operation": "set_smooth_by_angle", "params": {"angle": 0.5235987756, "keep_sharp_edges": true}}
+  },
+  {
+    "label": "inspect_evaluated_top_control_after_surface_refinement",
+    "command": "get_evaluated_state",
+    "params": {"name": "TopControl"}
+  }
+]

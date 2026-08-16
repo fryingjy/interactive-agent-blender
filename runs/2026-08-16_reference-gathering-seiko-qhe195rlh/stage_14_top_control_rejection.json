@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "record_type": "MODEL_DECISION_REJECTION",
+  "rejected_checkpoint": "seiko_qhe195rlh_stage_14_top_control_corrected.blend",
+  "baseline_checkpoint": "seiko_qhe195rlh_stage_12_depth_corrected.blend",
+  "target": "TopControl",
+  "rejected_operation": "scale_selection factor [1.278, 1.278, 4.8]",
+  "reason": "The front material review shows a tall rectangular control that does not resemble the source's shallow rounded control. The apparent metric improvement depended on a low-confidence manually read lower boundary.",
+  "preserved_evidence": ["stage_14_component_layout_comparison.json", "stage_14_front_material.png"],
+  "next_action": "Restart from stage 12 and retain the supported width correction while applying only a moderated vertical scale; judge the result visually before treating the component metric as corroboration.",
+  "claim_boundary": "This rejection preserves a failed corrective attempt. It does not imply the source control dimensions are known precisely."
+}

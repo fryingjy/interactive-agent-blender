@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "record_type": "COMPONENT_MASK_NORMALIZED_OBSERVATIONS",
+  "image_path": "runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_14_component_mask_front.png",
+  "normalization_frame_bbox_px": {
+    "left": 192,
+    "top": 217,
+    "right": 807,
+    "bottom": 782
+  },
+  "component_ids": [
+    "MainHousing",
+    "DialBezel",
+    "DialFace",
+    "TopControl"
+  ],
+  "observations": {
+    "MainHousing": {
+      "left": 0.0,
+      "top": 0.056637,
+      "right": 1.0,
+      "bottom": 1.0
+    },
+    "DialBezel": {
+      "left": 0.149593,
+      "top": 0.146903,
+      "right": 0.850407,
+      "bottom": 0.909735
+    },
+    "DialFace": {
+      "left": 0.185366,
+      "top": 0.187611,
+      "right": 0.814634,
+      "bottom": 0.870796
+    },
+    "TopControl": {
+      "left": 0.409756,
+      "top": 0.0,
+      "right": 0.590244,
+      "bottom": 0.054867
+    }
+  },
+  "missing_component_ids": [],
+  "claim_boundary": "Bounds derive from the controlled component-mask palette and its combined foreground frame. They localize layout correction; camera/reference registration and visual review remain separate requirements."
+}
