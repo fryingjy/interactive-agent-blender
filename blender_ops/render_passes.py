@@ -230,7 +230,9 @@ def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
 def render_diagnostic_pass(name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
     """Render a controlled Blender-native diagnostic pass.
 
-    Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, and `component_mask`. Normal and
+    Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, and `component_mask`. Component masks
+    use a stable red/green/blue/yellow palette in the supplied object order (up to four objects), enabling local
+    bound extraction without treating the result as a visual-acceptance verdict. Normal and
     depth colors are generated on temporary copies of the modifier-evaluated meshes; source objects
     and scene settings are restored. Camera/projection metadata and scene revision are returned so
     an image cannot become detached from the state that produced it.

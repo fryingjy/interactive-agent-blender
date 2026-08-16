@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\stage_22_component_mask_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_21_handle_corrected.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "82fdeafd5289",
+  "results": [
+    {
+      "index": 0,
+      "label": "render_named_primary_component_mask_for_local_constraints",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_22_component_mask.png",
+        "pass_type": "component_mask",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_22_component_mask.png",
+        "pass_type": "component_mask",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate"
+        ],
+        "frame_objects": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate"
+        ],
+        "camera_location": [
+          0.27499938011169434,
+          -30.501811981201172,
+          1.025149941444397
+        ],
+        "camera_ortho_scale": 17.09360706064551,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.267971,
+        "foreground_unique_colors_5bit": 36,
+        "dominant_channel_pixel_counts": {
+          "red": 89538,
+          "green": 15302,
+          "blue": 1250
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

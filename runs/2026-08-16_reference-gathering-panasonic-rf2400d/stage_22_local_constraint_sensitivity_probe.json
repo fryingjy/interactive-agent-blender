@@ -1,0 +1,20 @@
+{
+  "target_id": "panasonic_rf2400d_stage22_pipeline_probe",
+  "purpose": "Pipeline sensitivity test only. Target values are deliberately perturbed from the extracted candidate observations to verify that a local high-salience mismatch blocks advance; they are not registered measurements from the product photograph.",
+  "constraints": [
+    {
+      "id": "handle",
+      "kind": "box",
+      "target": {"left": 0.087432, "top": 0.0, "right": 0.867031, "bottom": 0.202055},
+      "tolerance": 0.02,
+      "importance": "high"
+    },
+    {
+      "id": "speaker",
+      "kind": "box",
+      "target": {"left": 0.061931, "top": 0.361644, "right": 0.550091, "bottom": 0.890411},
+      "tolerance": 0.02,
+      "importance": "medium"
+    }
+  ]
+}

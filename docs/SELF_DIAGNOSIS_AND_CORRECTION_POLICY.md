@@ -70,8 +70,9 @@ Before any new prop passes a blockout stage:
 
 ## Next engineering gap
 
-The highest-value remaining step is integrating the local constraint evaluator
-with Blender-native semantic-region observations, so a declared speaker,
-handle, panel, or knob constraint can be measured directly from a controlled
-render rather than entered as a reviewed observation.  It must remain a
-correction aid, never presented as a substitute for human visual judgment.
+The first scene bridge is now implemented for up to four named renderable
+components: Blender's controlled component-mask pass feeds normalized local
+bounds into the evaluator.  The remaining high-value step is explicit camera
+registration to a same-view reference, so candidate and reference bounds use
+the same declared coordinate frame.  This must remain a correction aid, never
+presented as a substitute for human visual judgment.
