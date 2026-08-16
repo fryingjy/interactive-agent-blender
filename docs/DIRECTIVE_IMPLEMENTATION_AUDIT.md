@@ -395,7 +395,8 @@ without manifold regression. This validates one narrow lesson end-to-end; founda
 `tools/audit_source_registry.py` now verifies every registry local path plus the path-like entries
 under `metadata.experiments` and `metadata.skills`. It distinguishes actual path-like artifacts
 from 39 non-path skill/prose references and one explicitly non-retained source. The refined run
-still finds **76 missing artifacts**. Those findings do not disprove the external sources, but they
-do prove the associated historical local-evidence claims are not currently reproducible. The audit
-is intentionally fail-closed and the registry must not be used as evidence of local reproduction
-until each entry is repaired, explicitly classified as intentionally non-retained, or downgraded.
+now finds **62 missing artifacts**, all explicitly classified in the retention ledger, with zero
+unclassified missing pointers. Those classifications do not make the associated historical evidence
+locally reproducible; they preserve the honest boundary between source provenance and retained local
+evidence. The audit remains fail-closed for any future unclassified pointer, and the registry must
+not be used as evidence of local reproduction merely because an absent artifact has a retention note.
