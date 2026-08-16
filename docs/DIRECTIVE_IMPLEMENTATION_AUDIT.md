@@ -290,6 +290,20 @@ Disposition remains **PARTIAL**. This is deterministic controlled transfer, not 
 asset, and the skill has no real runtime-use success yet. It improves evidence for the knowledge
 lifecycle and planner contract without changing the professional-readiness claim.
 
+## 2026-08-16 addendum: connected vertex-path topology and progressive benchmark control
+
+Protocol 0.3 now exposes a bounded `connect_vertex_path` operation for exactly two visible selected
+vertices. Blender 5.2 tests split one six-sided face into two quads and carry a diagonal path across
+three existing quads by splitting both crossed shared edges. Adjacent and disconnected controls
+fail closed with exact transaction-owned restoration; a separate process verifies topology and
+persistent IDs after save/reload. This closes the specific typed T-junction-prevention candidate,
+not ordered multi-point, curved-surface, SubD-ready, or all-quad generality.
+
+The user-supplied progressive benchmark document is also operationalized as a validated six-tier,
+30-prop ladder with A-G gates, evidence requirements, and an explicit human-review override. It is
+labeled project guidance rather than capability evidence. Swingline 747 remains at
+`EXTERNAL_REVIEW_REQUIRED`; no modeling or tier promotion is self-authorized.
+
 ## 2026-08-15 addendum: bridge correspondence control and failed-operation rollback
 
 `runs/2026-08-15_bridge-correspondence-control/` closes the previously documented typed-runtime gap

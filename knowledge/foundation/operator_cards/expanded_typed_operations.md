@@ -4,7 +4,7 @@
 
 `rotate_selection`, `bevel_selection`, `delete_selection`, `dissolve_selection`,
 `merge_selection`, `fill_selection`, `bridge_selection`, `spin_selection`,
-`loop_cut_selection`, `bisect_selection`, `symmetrize_selection`, `split_selection`, and
+`loop_cut_selection`, `connect_vertex_path`, `bisect_selection`, `symmetrize_selection`, `split_selection`, and
 `separate_selection`.
 
 Each operation acts on current selection or explicit plane/axis parameters. The agent must inspect
@@ -18,3 +18,8 @@ rejection removes created objects as well as restoring target geometry.
 
 `runs/2026-08-10_expanded-typed-ops/` has 15/15 cases, a revision/identity transaction, registry
 discovery, rollback coverage, independent reports, and preserved symmetrize failures.
+
+`runs/2026-08-16_connect-vertex-path/` adds the bounded two-endpoint Connect Vertex Path surface:
+two successful face-spanning cuts, adjacent/disconnected fail-closed controls, transaction identity,
+solid topology evidence, and a separate-process saved-file verifier. It does not claim interactive
+selection-history support for three or more endpoints.

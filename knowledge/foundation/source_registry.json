@@ -2609,5 +2609,105 @@
         "Retailer feature text supplements but does not replace manufacturer geometry evidence"
       ]
     }
+  },
+  {
+    "id": "blender-manual-connect-vertex-path-2026-08-16",
+    "url": "https://docs.blender.org/manual/en/latest/modeling/meshes/editing/vertex/connect_vertex_path.html",
+    "local_path": null,
+    "title": "Connect Vertex Path",
+    "creator": "Blender Foundation",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "current Manual accessed 2026-08-16; reproduced in Blender 5.2 LTS",
+    "topics": ["mesh-editing", "connect-vertex-path", "topology", "T-junction"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["official_manual_text", "Blender_5_2_reproduction"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_connect-vertex-path/"],
+      "direct_observations": [
+        "The documented command connects selected vertices by splitting the faces between them",
+        "The typed runtime deliberately limits the command to two endpoints because unordered remote selection does not preserve interactive multi-point selection history"
+      ],
+      "limitations": [
+        "The current typed operation does not implement ordered three-plus endpoint paths",
+        "Connected output is not necessarily all-quad or suitable for SubD without further review"
+      ]
+    }
+  },
+  {
+    "id": "blender-api-bmesh-connect-vert-pair-2026-08-16",
+    "url": "https://docs.blender.org/api/current/bmesh.ops.html",
+    "local_path": null,
+    "title": "BMesh Operators — connect_vert_pair",
+    "creator": "Blender Foundation",
+    "source_type": "official_api_docs",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 runtime introspection and current API",
+    "topics": ["BMesh", "connect_vert_pair", "typed-operations", "persistent-identity"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["official_api_text", "runtime_docstring", "blend_data", "json_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_connect-vertex-path/"],
+      "direct_observations": [
+        "Blender 5.2 exposes connect_vert_pair with verts, verts_exclude, and faces_exclude inputs and an edges result",
+        "A diagonal route across three quads inserted two crossed-boundary vertices and five total new edges while preserving one connected surface"
+      ],
+      "limitations": ["Controlled planar fixtures only", "No exhaustive operator parameter coverage"]
+    }
+  },
+  {
+    "id": "experiment-connect-vertex-path-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_connect-vertex-path/",
+    "title": "Typed Two-Endpoint Connect Vertex Path Lab",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["connected-topology", "T-junction", "transaction-rollback", "persistent-identity", "fresh-process-verification"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "solid_render", "json_report", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_connect-vertex-path/"],
+      "direct_observations": [
+        "Six of six live cases, including live Edit Mode, and five of five fresh-process fixture checks pass",
+        "The single-face case produces two quads; the three-face case produces four quads and two endpoint triangles with no n-gons, degenerates, or loose geometry",
+        "Adjacent and disconnected controls preserve topology IDs, vertex positions, transforms, modifiers, and revision"
+      ],
+      "limitations": ["No real-prop or curved-surface transfer", "No human visual-quality claim"]
+    }
+  },
+  {
+    "id": "user-guidance-progressive-prop-curriculum-2026-08-16",
+    "url": null,
+    "local_path": "knowledge/foundation/progressive_prop_benchmark_curriculum.json",
+    "title": "Progressive Prop Benchmark Curriculum for the Autonomous Blender Modeler",
+    "creator": "user-supplied project guidance",
+    "source_type": "user_supplied_curriculum",
+    "trust_tier": "A",
+    "version": "received and operationalized 2026-08-16",
+    "topics": ["benchmark-sequencing", "human-review", "stage-gates", "reference-modeling", "production-evidence"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["complete_user_supplied_text", "machine_readable_curriculum", "validator_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_progressive-prop-curriculum/"],
+      "direct_observations": [
+        "The ladder contains 30 progressively harder props in six tiers",
+        "Promotion requires A-G gates and human visual review; human rejection overrides automated metrics",
+        "Swingline 747 is first and remains locked pending reference-board approval"
+      ],
+      "limitations": [
+        "The curriculum is sequencing and acceptance guidance, not evidence that any listed capability is mastered",
+        "It does not override direct user instructions or independently authorize modeling"
+      ]
+    }
   }
 ]

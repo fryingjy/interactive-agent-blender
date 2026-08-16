@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "title": "Progressive Prop Benchmark Curriculum",
+  "updated": "2026-08-16",
+  "provenance": {
+    "role": "user_supplied_project_guidance",
+    "source_name": "PROGRESSIVE_PROP_BENCHMARK_CURRICULUM_CODEX.md",
+    "interpretation": "Operational sequencing and acceptance policy, not independent evidence that any capability is mastered.",
+    "does_not_override_direct_user_instructions": true
+  },
+  "governing_principle": "Every prop is harder for a named reason; advance only after human acceptance of major form, proportion, components, negative space, depth, and surface quality.",
+  "global_rules": [
+    "use_unfamiliar_references",
+    "no_object_specific_builder",
+    "no_copied_source_mesh",
+    "no_hand_authored_answer_geometry",
+    "no_post_hoc_threshold_tuning",
+    "use_typed_live_blender_path",
+    "use_structured_reference_interpretation_before_modeling",
+    "record_uncertainty",
+    "research_only_to_resolve_a_concrete_question",
+    "model_incrementally_and_verify_meaningful_changes",
+    "keep_human_visual_review_separate_from_automated_metrics",
+    "preserve_failures_and_transferable_lessons"
+  ],
+  "gates": [
+    {"id": "A", "name": "reference_interpretation", "criteria": ["primary_forms", "primary_components", "secondary_components", "negative_spaces", "silhouette_landmarks", "depth_landmarks", "symmetry", "known_dimensions", "unknowns", "construction_hypotheses", "candidate_strategies", "selected_strategy"]},
+    {"id": "B", "name": "blockout", "criteria": ["width_height_depth", "primary_silhouette", "major_component_placement", "major_negative_spaces", "depth_ordering", "applicable_symmetry"]},
+    {"id": "C", "name": "primary_form", "criteria": ["major_surfaces", "major_transitions", "curved_planar_relationships", "overall_proportion", "reference_critical_landmarks"]},
+    {"id": "D", "name": "secondary_form", "criteria": ["major_components", "openings", "recesses", "panels", "supports", "negative_spaces", "component_relationships"]},
+    {"id": "E", "name": "surface_topology", "criteria": ["purpose_appropriate_topology", "clean_shading", "no_obvious_pinching_or_waviness", "reasonable_modifier_strategy", "editability", "required_surface_continuity"]},
+    {"id": "F", "name": "production", "criteria": ["scene_organization", "naming", "transforms", "uvs_when_required", "materials_when_required", "normal_shading_state", "exportability", "fresh_process_verification"]},
+    {"id": "G", "name": "human_review", "criteria": ["reference_resemblance", "major_components", "proportions", "negative_spaces", "depth", "surface_read"]}
+  ],
+  "evidence_required": [
+    "reference_manifest", "reference_board", "modeling_brief", "uncertainty_log",
+    "planner_strategy_record", "decision_log", "stage_gate_records", "live_component_coverage",
+    "controlled_renders", "silhouette_views", "wireframe", "diagnostic_passes_when_useful",
+    "fresh_process_verifier", "human_review", "repair_tickets", "final_blend",
+    "lesson_summary", "knowledge_promotion_and_rejection_record"
+  ],
+  "human_review_schema": {
+    "fields": ["identity", "silhouette", "proportion", "component_structure", "negative_space", "depth", "surface_quality", "topology_editability", "production"],
+    "allowed_values": ["pass", "fail"],
+    "notes_required": true,
+    "human_rejection_overrides_automated_pass": true
+  },
+  "promotion_policy": {
+    "requires_all_applicable_gates": true,
+    "automated_metrics_alone_are_insufficient": true,
+    "human_review_required": true,
+    "on_failure": ["classify_failure", "fix_general_cause_if_possible", "retry", "freeze_if_repair_overfits", "transfer_to_unrelated_target"]
+  },
+  "tiers": [
+    {
+      "tier": 1,
+      "name": "basic_manufactured_props",
+      "entry_learning": [],
+      "props": [
+        {"id": 1, "title": "Swingline 747 Stapler", "difficulty_reason": "layered manufactured form and component/depth reasoning"},
+        {"id": 2, "title": "Simple Desk Tape Dispenser", "difficulty_reason": "curved shell, cavity, roller, and asymmetric profile"},
+        {"id": 3, "title": "Classic Desk Lamp", "difficulty_reason": "linked components and cylindrical/planar alignment"},
+        {"id": 4, "title": "Electric Kettle", "difficulty_reason": "continuous curved shell, handle, lid, spout, and highlight flow"}
+      ]
+    },
+    {
+      "tier": 2,
+      "name": "mixed_hard_surface_forms",
+      "entry_learning": ["reliable_blockout", "component_presence", "basic_proportion_checking", "simple_negative_space_reasoning"],
+      "props": [
+        {"id": 5, "title": "Vintage Alarm Clock", "difficulty_reason": "nested circular forms and front/side depth"},
+        {"id": 6, "title": "Portable Radio", "difficulty_reason": "semantic hierarchy, repeated geometry, and recessed panels"},
+        {"id": 7, "title": "Retro Camera", "difficulty_reason": "nested lens/body forms, bevel hierarchy, and multi-view fidelity"},
+        {"id": 8, "title": "Vintage Toaster", "difficulty_reason": "rounded shell, thin slots, and surface sensitivity"},
+        {"id": 9, "title": "Thermos or Insulated Bottle", "difficulty_reason": "profile/revolve judgment, taper, seams, and product shading"}
+      ]
+    },
+    {
+      "tier": 3,
+      "name": "complex_product_props",
+      "entry_learning": ["curved_hard_surface_construction", "multi_view_checking", "modifier_selection", "surface_diagnosis"],
+      "props": [
+        {"id": 10, "title": "Desktop Speaker", "difficulty_reason": "rounded enclosure, inset drivers, grille, and depth separation"},
+        {"id": 11, "title": "Handheld Game Controller", "difficulty_reason": "ergonomic curved SubD form and high silhouette sensitivity"},
+        {"id": 12, "title": "Small Handheld Vacuum or Appliance", "difficulty_reason": "housing transitions, ducts, handle, and mixed materials"},
+        {"id": 13, "title": "Espresso Machine", "difficulty_reason": "many depth layers, controls, tray, and reflective surfaces"},
+        {"id": 14, "title": "Desktop Printer", "difficulty_reason": "nested housings and deep negative spaces without generic box stacking"}
+      ]
+    },
+    {
+      "tier": 4,
+      "name": "dense_component_graphs",
+      "entry_learning": ["dense_component_graph_reasoning", "repeated_elements", "complex_negative_spaces", "strong_organization"],
+      "props": [
+        {"id": 15, "title": "Vintage Typewriter", "difficulty_reason": "large component graph and repeated keys under proportion gating"},
+        {"id": 16, "title": "Retro Television", "difficulty_reason": "continuous shell, screen recess, controls, vents, and back housing"},
+        {"id": 17, "title": "Vintage Sewing Machine", "difficulty_reason": "cast-like flowing body and large negative space"},
+        {"id": 18, "title": "Mechanical Desk Fan", "difficulty_reason": "efficient repeated cage geometry, blades, and circular symmetry"},
+        {"id": 19, "title": "Coffee Grinder", "difficulty_reason": "nested cylindrical/planar components and transparent material regions"}
+      ]
+    },
+    {
+      "tier": 5,
+      "name": "stylized_generalization_props",
+      "entry_learning": ["stylized_proportion_reasoning", "geometry_vs_material_detail_judgment", "generalization_beyond_literal_products"],
+      "props": [
+        {"id": 20, "title": "Complex Stylized Fantasy Chest", "difficulty_reason": "exaggerated structure, trim, and repeated motifs"},
+        {"id": 21, "title": "Ornate Fantasy Lantern", "difficulty_reason": "curved frame, repeated ornament, panels, and strong negative spaces"},
+        {"id": 22, "title": "Ornate Book With Clasp", "difficulty_reason": "layered surfaces and geometry-versus-map detail decisions"},
+        {"id": 23, "title": "Fantasy Mechanical Relic or Puzzle Box", "difficulty_reason": "fictional mechanism inference and hidden-form uncertainty"},
+        {"id": 24, "title": "Sci-Fi Control Console", "difficulty_reason": "large hierarchy, layered recesses, repeated details, and production prep"}
+      ]
+    },
+    {
+      "tier": 6,
+      "name": "advanced_near_professional",
+      "entry_learning": ["adaptive_strategy", "ambiguity_handling", "research_triggered_modeling", "repair_rebuild_judgment", "production_readiness"],
+      "props": [
+        {"id": 25, "title": "Stylized Gramophone or Phonograph", "difficulty_reason": "horn-like curvature and complex mixed-material silhouette"},
+        {"id": 26, "title": "Professional Coffee Grinder or Complex Appliance", "difficulty_reason": "nested subsystems and curved/planar production complexity"},
+        {"id": 27, "title": "Complex Decorative Mechanical Object", "difficulty_reason": "unfamiliar structure and strong negative spaces"},
+        {"id": 28, "title": "Complex Single-Image Stylized Prop", "difficulty_reason": "observed/inferred/unknown separation from one perspective"},
+        {"id": 29, "title": "Multi-View Unfamiliar Hero Prop", "difficulty_reason": "full multi-view reconciliation and human-reviewed production"},
+        {"id": 30, "title": "Final Unfamiliar Concept-Art Hero Prop", "difficulty_reason": "complete adaptive reference-to-production workflow"}
+      ]
+    }
+  ],
+  "active_state": {
+    "active_prop_id": 1,
+    "active_prop": "Swingline 747 Stapler",
+    "phase": "reference_board_human_review",
+    "authorization": "EXTERNAL_REVIEW_REQUIRED",
+    "modeling_authorized": false,
+    "review_board": "docs/field-report/swingline-747-review.html",
+    "machine_audit": "runs/2026-08-16_reference-gathering-swingline-747/audit_report.json",
+    "next_action": "record an explicit human board decision; only APPROVE_REVERSIBLE_BLOCKOUT authorizes geometry"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "verification": "fresh_process_connect_vertex_path",
+  "blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_connect-vertex-path\\connect_vertex_path_lab.blend",
+  "blender_version": "5.2.0 LTS",
+  "checks": [
+    {
+      "object": "Connect_Hex_AllQuad",
+      "topology": {
+        "verts": 6,
+        "edges": 7,
+        "faces": 2,
+        "face_sizes": [
+          4,
+          4
+        ],
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "components": 1
+      },
+      "persistent_ids": {
+        "verts": {
+          "count": 6,
+          "positive": true,
+          "unique": true
+        },
+        "edges": {
+          "count": 7,
+          "positive": true,
+          "unique": true
+        },
+        "faces": {
+          "count": 2,
+          "positive": true,
+          "unique": true
+        }
+      }
+    },
+    {
+      "object": "Connect_ThreeFace_Strip",
+      "topology": {
+        "verts": 10,
+        "edges": 15,
+        "faces": 6,
+        "face_sizes": [
+          3,
+          3,
+          4,
+          4,
+          4,
+          4
+        ],
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "components": 1
+      },
+      "persistent_ids": {
+        "verts": {
+          "count": 10,
+          "positive": true,
+          "unique": true
+        },
+        "edges": {
+          "count": 15,
+          "positive": true,
+          "unique": true
+        },
+        "faces": {
+          "count": 6,
+          "positive": true,
+          "unique": true
+        }
+      }
+    },
+    {
+      "object": "Connect_Live_EditMode",
+      "topology": {
+        "verts": 6,
+        "edges": 7,
+        "faces": 2,
+        "face_sizes": [
+          4,
+          4
+        ],
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "components": 1
+      },
+      "persistent_ids": {
+        "verts": {
+          "count": 6,
+          "positive": true,
+          "unique": true
+        },
+        "edges": {
+          "count": 7,
+          "positive": true,
+          "unique": true
+        },
+        "faces": {
+          "count": 2,
+          "positive": true,
+          "unique": true
+        }
+      }
+    },
+    {
+      "object": "Reject_AlreadyConnected",
+      "topology": {
+        "verts": 4,
+        "edges": 4,
+        "faces": 1,
+        "face_sizes": [
+          4
+        ],
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "components": 1
+      },
+      "persistent_ids": {
+        "verts": {
+          "count": 4,
+          "positive": true,
+          "unique": true
+        },
+        "edges": {
+          "count": 4,
+          "positive": true,
+          "unique": true
+        },
+        "faces": {
+          "count": 1,
+          "positive": true,
+          "unique": true
+        }
+      }
+    },
+    {
+      "object": "Reject_Disconnected",
+      "topology": {
+        "verts": 8,
+        "edges": 8,
+        "faces": 2,
+        "face_sizes": [
+          4,
+          4
+        ],
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "loose_vertices": 0,
+        "loose_edges": 0,
+        "components": 2
+      },
+      "persistent_ids": {
+        "verts": {
+          "count": 8,
+          "positive": true,
+          "unique": true
+        },
+        "edges": {
+          "count": 8,
+          "positive": true,
+          "unique": true
+        },
+        "faces": {
+          "count": 2,
+          "positive": true,
+          "unique": true
+        }
+      }
+    }
+  ],
+  "passed": 5,
+  "total": 5,
+  "pass": true
+}

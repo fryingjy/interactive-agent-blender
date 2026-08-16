@@ -25,6 +25,11 @@ directive. It is deliberately not a declaration of professional-modeler completi
 - `runs/2026-08-16_bevel-normal-policy/` — a matched Blender 5.2 solid/evaluated comparison holds
   geometry constant and measures flat-panel normal error at 10.5605° for plain smooth Bevel versus
   0° for Harden Normals and Face Strength followed by Weighted Normal; curved surfaces are unclaimed.
+- `runs/2026-08-16_connect-vertex-path/` — Object/Edit Mode continuous face-spanning cuts pass 6/6
+  live transaction checks and 5/5 fresh saved-file checks; invalid paths preserve all fingerprint
+  layers and revision.
+- `tools/validate_progressive_prop_curriculum.py` — the user-supplied 30-prop ladder resolves to six
+  ordered tiers and A-G gates while Swingline remains externally locked at human reference review.
 
 ## Directive requirement status
 
@@ -36,6 +41,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion remains evidence-gated |
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
 | Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |
+| Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
 | Human visual review as a separate authority | `knowledge_engine/human_review.py`, protocol, and current Swingline review board | Enforced; **pending external reference review** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |
 | New reference-driven model through all stages | no active human-authorized target | **Not authorized / not complete** |

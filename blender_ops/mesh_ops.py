@@ -755,6 +755,105 @@ def loop_cut_selection(name, cuts=1):
     return {"cuts": cuts, "created_geometry": sum(created.values()), **created}
 
 
+def connect_vertex_path(name, check_degenerate=True):
+    """Connect exactly two selected vertices through intervening faces.
+
+    This is the deterministic, remotely callable subset of Blender's Connect
+    Vertex Path command.  The interactive command can use selection history
+    for three or more vertices, but ordinary mesh selection state does not
+    preserve a trustworthy ordering for a remote typed request.  Requiring two
+    endpoints keeps the operation unambiguous and makes invalid input fail
+    before the live bmesh is changed.
+
+    Unlike creating an isolated edge, ``connect_vert_pair`` splits every face
+    and crossed edge along the route.  That makes it suitable for repairing the
+    repeated T-junction failure where only one side of a shared boundary was
+    subdivided.  It does not promise all-quad output; diagonal endpoints can
+    legitimately create triangles and must still be judged for the target
+    deformation/subdivision context.
+    """
+    obj, bm = _bm_from_object(name)
+    bm.verts.ensure_lookup_table()
+    endpoints = [vert for vert in bm.verts if vert.select and not vert.hide]
+    if len(endpoints) != 2:
+        _write_back(obj, bm)
+        raise ValueError(
+            f"Connect Vertex Path on '{name}' requires exactly two visible selected "
+            f"vertices; found {len(endpoints)}"
+        )
+    endpoint_pair = set(endpoints)
+    if any(set(edge.verts) == endpoint_pair for edge in endpoints[0].link_edges):
+        _write_back(obj, bm)
+        raise ValueError(
+            f"selected vertices on '{name}' already share an edge; no face-spanning path is needed"
+        )
+
+    endpoint_indices = [vert.index for vert in endpoints]
+    id_layer = bm.verts.layers.int.get("agent_vertex_id")
+    endpoint_ids = [int(vert[id_layer]) if id_layer is not None else 0 for vert in endpoints]
+
+    # Probe an independent copy first.  connect_vert_pair can otherwise make a
+    # partial cut before discovering that the endpoints are disconnected.  The
+    # surrounding DecisionTransaction would restore that mutation, but this
+    # preflight also keeps direct mechanical calls fail-closed.
+    probe = bm.copy()
+    try:
+        probe.verts.ensure_lookup_table()
+        probe_result = bmesh.ops.connect_vert_pair(
+            probe,
+            verts=[probe.verts[index] for index in endpoint_indices],
+            verts_exclude=[],
+            faces_exclude=[],
+        )
+        probe_edges = list(probe_result.get("edges", []))
+        if not probe_edges:
+            _write_back(obj, bm)
+            raise ValueError(
+                f"selected vertices on '{name}' do not define a connectable path through shared faces"
+            )
+        if check_degenerate:
+            invalid_faces = [
+                face for face in probe.faces
+                if len(face.verts) < 3 or face.calc_area() <= 1e-12
+            ]
+            if invalid_faces:
+                _write_back(obj, bm)
+                raise ValueError(
+                    f"Connect Vertex Path preflight on '{name}' would create "
+                    f"{len(invalid_faces)} degenerate faces"
+                )
+    finally:
+        probe.free()
+
+    before = _element_snapshot(bm)
+    result = bmesh.ops.connect_vert_pair(
+        bm,
+        verts=endpoints,
+        verts_exclude=[],
+        faces_exclude=[],
+    )
+    path_edges = list(result.get("edges", []))
+    if not path_edges:
+        _write_back(obj, bm)
+        raise RuntimeError(f"Connect Vertex Path on '{name}' produced no path edges after a valid preflight")
+    created = _clear_new_element_ids(bm, before)
+    for seq in (bm.verts, bm.edges, bm.faces):
+        for element in seq:
+            element.select = False
+    for edge in path_edges:
+        if edge.is_valid:
+            edge.select = True
+            for vert in edge.verts:
+                vert.select = True
+    _write_back(obj, bm)
+    return {
+        "endpoint_vertex_ids": endpoint_ids,
+        "path_edges": len(path_edges),
+        "check_degenerate": bool(check_degenerate),
+        **created,
+    }
+
+
 def bisect_selection(name, plane_co, plane_no, clear_inner=False, clear_outer=False, fill=False):
     """Knife/bisect selected geometry by a plane; optionally clear and cap one side."""
     obj, bm = _bm_from_object(name)

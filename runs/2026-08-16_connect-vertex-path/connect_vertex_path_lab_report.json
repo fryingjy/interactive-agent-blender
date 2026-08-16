@@ -1,0 +1,357 @@
+{
+  "lab": "typed_connect_vertex_path",
+  "blender_version": "5.2.0 LTS",
+  "scope": "exactly two visible selected endpoint vertices",
+  "records": [
+    {
+      "case": "single_face_all_quad_split",
+      "pass": true,
+      "detail": {
+        "operation": {
+          "endpoint_vertex_ids": [
+            1,
+            4
+          ],
+          "path_edges": 1,
+          "check_degenerate": true,
+          "new_verts": 0,
+          "new_edges": 1,
+          "new_faces": 1
+        },
+        "verification": {
+          "action_type": "connect_vertex_path",
+          "op_delta": 0,
+          "before": {
+            "vertices": 6,
+            "edges": 6,
+            "faces": 1,
+            "non_manifold_edges": 6,
+            "ngons": 1,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 6,
+            "edges": 7,
+            "faces": 2,
+            "non_manifold_edges": 6,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                14
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                15
+              ],
+              "removed": []
+            }
+          }
+        },
+        "revision": [
+          0,
+          1
+        ],
+        "topology": {
+          "verts": 6,
+          "edges": 7,
+          "faces": 2,
+          "face_sizes": [
+            4,
+            4
+          ],
+          "triangles": 0,
+          "quads": 2,
+          "ngons": 0,
+          "degenerate_faces": 0,
+          "loose_vertices": 0,
+          "loose_edges": 0,
+          "boundary_edges": 6,
+          "components": 1
+        }
+      }
+    },
+    {
+      "case": "three_face_connected_cut",
+      "pass": true,
+      "detail": {
+        "operation": {
+          "endpoint_vertex_ids": [
+            1,
+            8
+          ],
+          "path_edges": 3,
+          "check_degenerate": true,
+          "new_verts": 2,
+          "new_edges": 5,
+          "new_faces": 3
+        },
+        "verification": {
+          "action_type": "connect_vertex_path",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 10,
+            "faces": 3,
+            "non_manifold_edges": 8,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 10,
+            "edges": 15,
+            "faces": 6,
+            "non_manifold_edges": 8,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                22,
+                23
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                24,
+                25,
+                26,
+                27,
+                28
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                29,
+                30,
+                31
+              ],
+              "removed": []
+            }
+          }
+        },
+        "revision": [
+          1,
+          2
+        ],
+        "topology": {
+          "verts": 10,
+          "edges": 15,
+          "faces": 6,
+          "face_sizes": [
+            3,
+            3,
+            4,
+            4,
+            4,
+            4
+          ],
+          "triangles": 2,
+          "quads": 4,
+          "ngons": 0,
+          "degenerate_faces": 0,
+          "loose_vertices": 0,
+          "loose_edges": 0,
+          "boundary_edges": 8,
+          "components": 1
+        }
+      }
+    },
+    {
+      "case": "live_edit_mode_transaction",
+      "pass": true,
+      "detail": {
+        "operation": {
+          "endpoint_vertex_ids": [
+            1,
+            4
+          ],
+          "path_edges": 1,
+          "check_degenerate": true,
+          "new_verts": 0,
+          "new_edges": 1,
+          "new_faces": 1
+        },
+        "verification": {
+          "action_type": "connect_vertex_path",
+          "op_delta": 0,
+          "before": {
+            "vertices": 6,
+            "edges": 6,
+            "faces": 1,
+            "non_manifold_edges": 6,
+            "ngons": 1,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 6,
+            "edges": 7,
+            "faces": 2,
+            "non_manifold_edges": 6,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                14
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                15
+              ],
+              "removed": []
+            }
+          }
+        },
+        "revision": [
+          2,
+          3
+        ],
+        "topology": {
+          "verts": 6,
+          "edges": 7,
+          "faces": 2,
+          "face_sizes": [
+            4,
+            4
+          ],
+          "triangles": 0,
+          "quads": 2,
+          "ngons": 0,
+          "degenerate_faces": 0,
+          "loose_vertices": 0,
+          "loose_edges": 0,
+          "boundary_edges": 6,
+          "components": 1
+        }
+      }
+    },
+    {
+      "case": "already_connected_rejection",
+      "pass": true,
+      "detail": {
+        "error": "selected vertices on 'Reject_AlreadyConnected' already share an edge; no face-spanning path is needed",
+        "automatic_rollback": true,
+        "fingerprint_changed": false,
+        "fingerprint_diff": {
+          "topology": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_moved": false,
+          "transform_changed": false,
+          "modifiers_changed": false
+        },
+        "revision": 3,
+        "topology": {
+          "verts": 4,
+          "edges": 4,
+          "faces": 1,
+          "face_sizes": [
+            4
+          ],
+          "triangles": 0,
+          "quads": 1,
+          "ngons": 0,
+          "degenerate_faces": 0,
+          "loose_vertices": 0,
+          "loose_edges": 0,
+          "boundary_edges": 4,
+          "components": 1
+        }
+      }
+    },
+    {
+      "case": "disconnected_rejection",
+      "pass": true,
+      "detail": {
+        "error": "selected vertices on 'Reject_Disconnected' do not define a connectable path through shared faces",
+        "automatic_rollback": true,
+        "fingerprint_changed": false,
+        "fingerprint_diff": {
+          "topology": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_moved": false,
+          "transform_changed": false,
+          "modifiers_changed": false
+        },
+        "revision": 3,
+        "topology": {
+          "verts": 8,
+          "edges": 8,
+          "faces": 2,
+          "face_sizes": [
+            4,
+            4
+          ],
+          "triangles": 0,
+          "quads": 2,
+          "ngons": 0,
+          "degenerate_faces": 0,
+          "loose_vertices": 0,
+          "loose_edges": 0,
+          "boundary_edges": 8,
+          "components": 2
+        }
+      }
+    },
+    {
+      "case": "typed_protocol_registration",
+      "pass": true,
+      "detail": {
+        "registered": true,
+        "capability": true,
+        "protocol": "0.3"
+      }
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "pass": true
+}

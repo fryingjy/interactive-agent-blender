@@ -1034,7 +1034,7 @@ class CurriculumInventoryTests(unittest.TestCase):
             / "knowledge" / "foundation" / "operator_cards" / "mandatory_mesh_editing_inventory.md"
         ).read_text(encoding="utf-8")
         required = {
-            "Selection", "Extrude", "Inset", "Bevel", "Loop Cut", "Subdivide", "Knife",
+            "Selection", "Extrude", "Inset", "Bevel", "Loop Cut", "Connect Vertex Path", "Subdivide", "Knife",
             "Bisect", "Bridge Edge Loops", "Spin", "Merge", "Merge by Distance", "Dissolve",
             "Delete", "Fill", "Grid Fill", "Edge Slide", "Vertex Slide", "Rip", "Split",
             "Separate", "Symmetrize", "Normals", "Shade Smooth", "Shade Flat",

@@ -31,6 +31,10 @@ Current evidence includes:
   reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates;
 - secondary-view component-strategy evidence that makes front-only ambiguity trigger research and
   uses measured top-view depth to choose continuous versus separate construction across two shapes.
+- a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve human review;
+  Swingline 747 remains locked at reference-board review rather than being self-authorized.
+- a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
+  rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
@@ -46,6 +50,7 @@ The authoritative readiness decision is in
 | Reference sourcing and analysis | [`docs/REFERENCE_COLLECTION_PROTOCOL.md`](docs/REFERENCE_COLLECTION_PROTOCOL.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Current capability gap matrix | [`docs/CURRENT_STATE_GAP_MATRIX.md`](docs/CURRENT_STATE_GAP_MATRIX.md) |
+| Progressive prop benchmark ladder | [`docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md`](docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md) |
 | Reference-interpretation contract | [`docs/REFERENCE_INTERPRETATION.md`](docs/REFERENCE_INTERPRETATION.md) |
 | External visual feedback and repair | [`docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md`](docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md) |
 | Architecture | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |

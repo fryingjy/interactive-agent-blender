@@ -732,8 +732,11 @@ full video is nearly two hours. Started with the Mesh Modeling chapter specifica
 video's first chapter) because it connects directly to live project problems. This paid off
 immediately: the video documents Connect Vertex Path (`J`) as splitting an existing face along a
 vertex path rather than inserting a vertex into a shared boundary edge -- a genuine, sourced fix
-candidate for the T-junction ngon bug hit three times this session, not yet tested against this
-project's typed `mesh_ops.py` (no equivalent operation exists there yet). Two independent
+candidate for the T-junction ngon bug hit three times this session. This is now tested and exposed
+as a bounded typed two-endpoint operation in `runs/2026-08-16_connect-vertex-path/`: a copy-first
+preflight, continuous shared-boundary splitting, transaction rollback, persistent identity, solid
+topology evidence, and fresh-process verification pass. Ordered three-plus point paths and
+curved/SubD transfer remain open. Two independent
 alternative hole-cutting techniques also surfaced (Bridge Edge Loops between matching opposing
 faces; Loop Tools Circle). Eight items captured; curriculum doc and this roadmap updated.
 

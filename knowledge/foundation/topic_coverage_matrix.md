@@ -10,6 +10,7 @@ Updated 2026-08-16. `✓` means substantial evidence, `~` partial evidence, and 
 | Bevel operation | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ~ |
 | Bevel modifier | ✓ | ~ | ✓ | ✓ | — | ~ | ✓ |
 | Loop cut / Subdivide | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| Connect Vertex Path | ✓ | ✓ | ✓ | ✓ | — | ✓ | ~ |
 | Knife / Bisect | ✓ | ✓ | ✓ | ✓ | ~ | ✓ | ✓ |
 | Merge / Merge by Distance | ~ | — | ✓ | ✓ | ~ | ✓ | ~ |
 | Dissolve / Delete | ✓ | — | ✓ | ~ | ✓ | ~ | — |

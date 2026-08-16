@@ -46,7 +46,10 @@ videos without that loop is the failure mode this curriculum exists to avoid.
    - **Mesh Modeling** (29:22-58:16, tips #30-62, `runs/2026-08-15_video-study-cgboost-100-tips-meshmodeling/`,
      8 items) -- a genuine, sourced fix candidate for the project's repeatedly-confirmed T-junction
      ngon bug (Connect Vertex Path, `J`, splits an existing face along a vertex path instead of
-     inserting a mid-edge vertex into a shared boundary edge), plus two independent alternative
+     inserting a mid-edge vertex into a shared boundary edge). **Tested 2026-08-16:** the typed
+     two-endpoint subset splits crossed boundaries continuously, rejects disconnected/adjacent
+     endpoints, and passes saved-file verification; it prevents T-junctions but can create endpoint
+     triangles and is not an all-quad guarantee. Two independent alternative
      hole-cutting techniques (Bridge Edge Loops between matching opposing faces; Loop Tools Circle)
      and Grid Fill / batch non-manifold repair / Offset Edge Slide.
    - **Modifiers** (1:07:24-1:42:01, tips #74-93, `runs/2026-08-15_video-study-cgboost-100-tips-modifiers/`,
