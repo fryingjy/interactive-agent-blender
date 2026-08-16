@@ -435,6 +435,9 @@ class ModelerServer:
     def cmd_get_full_state(self, name):
         return state_probe.get_full_state(name)
 
+    def cmd_get_curve_state(self, name):
+        return state_probe.get_curve_state(name)
+
     def cmd_get_object_lifecycle_state(self, name):
         return object_ops.object_lifecycle_state(name)
 

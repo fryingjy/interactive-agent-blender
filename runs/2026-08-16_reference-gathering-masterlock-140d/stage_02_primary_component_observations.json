@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "record_type": "COMPONENT_MASK_NORMALIZED_OBSERVATIONS",
+  "image_path": "runs\\2026-08-16_reference-gathering-masterlock-140d\\stage_02_primary_component_mask.png",
+  "normalization_frame_bbox_px": {
+    "left": 211,
+    "top": 111,
+    "right": 556,
+    "bottom": 656
+  },
+  "component_ids": [
+    "brass_body",
+    "steel_shackle"
+  ],
+  "observations": {
+    "brass_body": {
+      "left": 0.0,
+      "top": 0.493578,
+      "right": 1.0,
+      "bottom": 1.0
+    },
+    "steel_shackle": {
+      "left": 0.072464,
+      "top": 0.0,
+      "right": 0.927536,
+      "bottom": 0.491743
+    }
+  },
+  "missing_component_ids": [],
+  "claim_boundary": "Bounds derive from the controlled component-mask palette and its combined foreground frame. They localize layout correction; camera/reference registration and visual review remain separate requirements."
+}

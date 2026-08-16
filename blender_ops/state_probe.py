@@ -460,6 +460,65 @@ def active_state():
     }
 
 
+def get_curve_state(name):
+    """Read an editable Curve assembly without coercing it through BMesh.
+
+    Curves deliberately do not carry mesh persistent IDs.  This observer
+    exposes their authored spline/control data and the native profile/taper
+    settings needed to diagnose a handle, shackle, cable, or trim path while
+    keeping that representation distinct from an editable mesh cage.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "CURVE":
+        return {"error": f"'{name}' is not a curve object"}
+    splines = []
+    for spline in obj.data.splines:
+        if spline.type == "BEZIER":
+            points = [list(point.co) for point in spline.bezier_points]
+            handles = [
+                {
+                    "left": list(point.handle_left),
+                    "right": list(point.handle_right),
+                    "left_type": point.handle_left_type,
+                    "right_type": point.handle_right_type,
+                }
+                for point in spline.bezier_points
+            ]
+        else:
+            points = [list(point.co[:3]) for point in spline.points]
+            handles = []
+        splines.append({
+            "type": spline.type,
+            "cyclic": bool(spline.use_cyclic_u),
+            "point_count": len(points),
+            "points": points,
+            "bezier_handles": handles,
+        })
+    data = obj.data
+    return {
+        "revision": decision_state.current_revision(),
+        "name": obj.name,
+        "type": obj.type,
+        "location": list(obj.location),
+        "rotation_euler": list(obj.rotation_euler),
+        "scale": list(obj.scale),
+        "dimensions": list(obj.dimensions),
+        "curve": {
+            "dimensions_mode": data.dimensions,
+            "resolution_u": data.resolution_u,
+            "render_resolution_u": data.render_resolution_u,
+            "bevel_mode": data.bevel_mode,
+            "bevel_depth": data.bevel_depth,
+            "bevel_resolution": data.bevel_resolution,
+            "bevel_object": data.bevel_object.name if data.bevel_object else None,
+            "taper_object": data.taper_object.name if data.taper_object else None,
+            "use_fill_caps": bool(data.use_fill_caps),
+            "splines": splines,
+        },
+        "claim_boundary": "Curve path/control/profile state is reported directly. It is not mesh persistent-ID, manifoldness, or evaluated-surface validation.",
+    }
+
+
 def get_full_state(name):
     """One consolidated read -- revision, mesh health, valence
     distribution, selection, and persistent-ID coverage -- covering what a

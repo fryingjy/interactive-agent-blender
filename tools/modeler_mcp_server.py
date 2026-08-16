@@ -76,6 +76,13 @@ def get_full_state(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_curve_state(object_name: str) -> dict:
+    """Read an editable curve's spline control points, handles, bevel/profile,
+    taper, transforms, and dimensions without converting it to mesh geometry."""
+    return _call("get_curve_state", name=object_name)
+
+
+@mcp.tool()
 def create_primitive(name: str, primitive_type: str, location: list[float] | None = None, dimensions: dict | None = None) -> dict:
     """Create a new mesh object from a basic primitive (cube, cylinder, sphere, cone, torus, plane) as the one-time starting block for a modeling session. dimensions is passed straight through to the underlying Blender operator as keyword arguments, since each primitive has different dimension parameters -- cube/plane: {"size": ...}; cylinder/sphere: {"radius": ...}; cone: {"radius1": ..., "radius2": ..., "depth": ...}; torus: {"major_radius": ..., "minor_radius": ...}. Free to call outside a decision transaction."""
     return _call("create_primitive", name=name, primitive_type=primitive_type, location=location, **(dimensions or {}))

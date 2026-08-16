@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\stage_01_primary_blockout_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_01_primary_blockout.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "e90f0c375bc7",
+  "results": [
+    {
+      "index": 0,
+      "label": "seed_connected_brass_body_cage",
+      "command": "create_primitive",
+      "params": {
+        "name": "brass_body",
+        "primitive_type": "cube",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "brass_body",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "select_connected_body_cage",
+      "command": "select_by_ids",
+      "params": {
+        "name": "brass_body",
+        "vertex_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 8,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 2,
+      "label": "scale_body_to_40_by_32_mm_front_constraint",
+      "command": "transaction",
+      "params": {
+        "name": "brass_body",
+        "action_type": "primary_form_proportion",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            20.0,
+            4.0,
+            16.0
+          ]
+        },
+        "command_id": "masterlock-body-envelope-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1786916032362",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1786916032362",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "primary_form_proportion",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1786916032362",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "create_single_continuous_u_shackle_path",
+      "command": "create_curve",
+      "params": {
+        "name": "steel_shackle",
+        "points": [
+          [
+            -13.5,
+            0.0,
+            16.0
+          ],
+          [
+            -13.5,
+            0.0,
+            33.0
+          ],
+          [
+            -10.0,
+            0.0,
+            41.0
+          ],
+          [
+            10.0,
+            0.0,
+            41.0
+          ],
+          [
+            13.5,
+            0.0,
+            33.0
+          ],
+          [
+            13.5,
+            0.0,
+            16.0
+          ]
+        ],
+        "bevel_depth": 3.0,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "steel_shackle",
+        "type": "CURVE",
+        "point_count": 6,
+        "bevel_depth": 3.0
+      }
+    },
+    {
+      "index": 4,
+      "label": "render_primary_blockout_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_01_primary_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.18
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_01_primary_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "frame_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "camera_location": [
+          0.0,
+          -150.45156860351562,
+          15.602685928344727
+        ],
+        "camera_ortho_scale": 88.7664279976001,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.217923,
+        "foreground_unique_colors_5bit": 61,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "render_primary_blockout_isometric",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_01_primary_iso_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "resolution": 768,
+        "margin": 1.18
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_01_primary_iso_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "frame_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "camera_location": [
+          86.86325073242188,
+          -86.86325073242188,
+          102.46593475341797
+        ],
+        "camera_ortho_scale": 88.7664279976001,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.175868,
+        "foreground_unique_colors_5bit": 72,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_01_primary_blockout.blend"
+  },
+  "pass": true
+}
