@@ -9,6 +9,7 @@ This records direct, read-only scene facts from the user's local `.blend` exampl
 - Low-poly counterparts use a separate collection and triangulate only as an explicit downstream/export step, not as the editable high-poly construction surface.
 - Edge-crease attributes are present on the editable blade, hilt, and handle cages. This supports crease/SubD as the primary sharpness tool when it matches the form, with bevel reserved for a required physical radius.
 - `wrap test.blend` uses a 102-vertex all-quad strip with live `Array` (count 18), `Solidify`, and `Subdivision`; its denser wrap variant remains a separate editable quad mesh with live Solidify/SubD. This supports repeated-strip construction only when the observed form is actually a wrap.
+- `butcher knife.blend` separates `model`, `highpoly`, `lowpoly`, `lowpoly_copy`, and `textured` stages. Its editable blade uses Mirror, a **weight-limited** live Bevel, SubD, and Displace; its exported low blade is a genuinely different UV-bearing mesh with Auto Smooth. This reinforces that a real low-poly is authored separately, while a modifier-preserving duplicate is only an editable handoff.
 
 ## Operational rule added after the Westclox failure
 
@@ -25,3 +26,4 @@ A primitive is only a starting cage. A continuous primary form may not advance b
 - [battle axe inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/battle%20axe.json)
 - [dragon radar inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/dragon%20radar.json)
 - [wrap test inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/wrap-test.json)
+- [butcher knife inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/butcher-knife.json)
