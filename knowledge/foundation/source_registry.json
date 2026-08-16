@@ -2815,7 +2815,7 @@
         "A valid approval is scoped to REVERSIBLE_PRIMARY_BLOCKOUT_ONLY while a correction keeps modeling unauthorized"
       ],
       "limitations": [
-        "No human decision has been supplied or retained",
+        "A human decision was supplied and the subsequent reversible blockout was rejected, but the target-specific decision artifact was removed on direct user instruction; this retained record does not establish a current authorization",
         "Reviewer identity is an explicit claim rather than cryptographic proof",
         "This validates authorization integrity, not reference quality or modeling ability"
       ]

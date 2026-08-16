@@ -3,6 +3,12 @@
 This is a current-state audit against `docs/MASTER_DIRECTIVE.md` and the supplied continuation
 directive. It is deliberately not a declaration of professional-modeler completion.
 
+> Status correction, later on 2026-08-16: the Swingline board was approved only for a reversible
+> blockout, then that blockout was rejected by the human reviewer. The unapproved target-specific
+> builder, `.blend`, renders, and decision artifacts were removed on direct instruction. Prop 2,
+> the Scotch C38, is now the pending human-review board. The historical Swingline research remains
+> a reference-gathering record, not an accepted model or current authorization.
+
 ## Verification performed
 
 - `python -m unittest discover -s tests -q` — repository unit coverage is run before each publication.
@@ -32,8 +38,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
   independent verifier separate plain-Bevel distortion from cage-distribution error. Harden Normals
   restores each side baseline; Weighted Normal worsens the uneven 12-sided side to `9.9988°`.
 - `tools/validate_progressive_prop_curriculum.py` — the user-supplied 30-prop ladder resolves to six
-  ordered tiers and A-G gates while Swingline remains externally locked at human reference review.
-- `tools/verify_reference_board_gate.py` — the pending Swingline human gate matches the exact
+  ordered tiers and A-G gates; prop 1 is rejected and prop 2 remains externally locked at human
+  reference review.
+- `tools/verify_reference_board_gate.py` — the pending C38 human gate matches the exact
   machine audit and construction plan. The separate recorder rejects agent authority, stale
   evidence, contradictory authorization, malformed timestamps, and unlocalized corrections.
 - `runs/2026-08-16_uv-seam-production-transfer/` — a verified official UV episode is reproduced on
@@ -56,20 +63,20 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Requirement group | Evidence | Status |
 | --- | --- | --- |
 | Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite, and live `check_scene_component_coverage` capture | Implemented and tested |
-| Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, explicit reference-to-blockout contract, planner-to-live-coverage stage-gate loop, and the current Swingline 747 reference board | Machine-ready for the new board; visual/modeling transfer remains unproven until human approval and a blockout outcome |
-| Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, current official Swingline gallery/specification records, and exact-variant feature evidence | Implemented and bounded; the continuous rubber pad is evidenced while hidden underside detail remains explicitly deferred |
+| Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, explicit reference-to-blockout contract, planner-to-live-coverage stage-gate loop, the rejected Swingline outcome, and the current C38 reference board | Machine-ready for the new C38 board; accepted visual/modeling transfer remains unproven until human approval and a blockout outcome |
+| Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, official C38 dimensions and multi-source product evidence | Implemented and bounded; hidden C38 underside detail remains explicitly deferred |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, native `video_metadata` range scoping, review gate, retained rejected outputs | Implemented; one public reference-setup range now has independent review and Blender transfer, while TubeAlfred remains an optional unavailable transcript/metadata provider in this environment |
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
 | Core topology/modifier/UV/reference/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, typed axis-aligned Image Empty transfer, explicit bevel-intent/assignment separation across crown and saddle SubD panels, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
-| Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
-| Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder and current Swingline board | Enforced with a complete return path; **pending an actual external decision** |
+| Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; prop 1 was rejected and prop 2 is active but externally locked |
+| Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder, a rejected first blockout, and the current C38 board | Enforced with a complete return path; **pending C38 external decision** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |
-| New reference-driven model through all stages | no active human-authorized target | **Not authorized / not complete** |
+| New reference-driven model through all stages | no active human-authorized target; one rejected reversible blockout | **Not authorized / not complete** |
 | Broad professional generalization | current gap matrix and prior rejected assets | **Not established** |
 
 ## Remaining gates that cannot be self-certified
 
-1. A human must approve or correct the active Swingline 747 reference board before it authorizes a
+1. A human must approve or correct the active Scotch C38 reference board before it authorizes a
    reversible blockout.
 2. A public or user-authorized multi-view reference-interpretation lesson must be independently
    reviewed before a candidate extraction becomes promoted knowledge.

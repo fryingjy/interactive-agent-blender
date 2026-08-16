@@ -1,7 +1,12 @@
 # Swingline 747 reference-board gate
 
-This run retains the machine-audited reference set and the still-pending human authorization gate
-for the first progressive prop. Machine readiness does not authorize Blender modeling.
+This run retains the machine-audited historical reference set and its original pending human
+authorization gate for the first progressive prop. Machine readiness did not itself authorize
+Blender modeling.
+
+Later on 2026-08-16, a human narrowly approved a reversible blockout, then rejected that blockout.
+The target-specific builder, `.blend`, renders, and decision files were removed on direct user
+instruction. This retained research run is not a current authorization or accepted model.
 
 ## Current artifacts
 
@@ -14,8 +19,9 @@ for the first progressive prop. Machine readiness does not authorize Blender mod
 - `docs/field-report/swingline-747-review.html` is the visual board. It emits a decision compatible
   with `tools/record_reference_board_review.py` and can copy or download the JSON.
 
-An approval authorizes only a reversible primary blockout. No `human_reference_board_decision.json`
-is retained yet because no human decision has been submitted through this contract.
+An approval would authorize only a reversible primary blockout. No
+`human_reference_board_decision.json` is retained: the human decision was deliberately removed with
+the rejected target-specific attempt, so this historical gate must not be used to resume modeling.
 
 ## Reproduce the pending-gate check
 

@@ -302,14 +302,18 @@ not ordered multi-point, curved-surface, SubD-ready, or all-quad generality.
 
 The user-supplied progressive benchmark document is also operationalized as a validated six-tier,
 30-prop ladder with A-G gates, evidence requirements, and an explicit human-review override. It is
-labeled project guidance rather than capability evidence. Swingline 747 remains at
-`EXTERNAL_REVIEW_REQUIRED`; no modeling or tier promotion is self-authorized.
+labeled project guidance rather than capability evidence. Swingline received a narrowly authorized
+reversible blockout but the human reviewer rejected it; its target-specific build artifacts were
+removed on direct instruction. The active C38 board remains `EXTERNAL_REVIEW_REQUIRED`; no modeling
+or tier promotion is self-authorized.
 
 The reference-board review now also has a complete fail-closed return path. Its dedicated schema is
 separate from post-model rejection/repair records, binds each decision to the current audit and
 construction-plan SHA-256 digests, requires a reviewer-identified human claim and timezone-aware
 timestamp, and rejects contradictory or stale authorization. A valid approval can authorize only
-`REVERSIBLE_PRIMARY_BLOCKOUT_ONLY`; no human decision is currently retained.
+`REVERSIBLE_PRIMARY_BLOCKOUT_ONLY`. A human Swingline decision was supplied and acted upon as a
+rejection of the resulting blockout, but its target-specific decision artifact was removed on direct
+instruction; no retained record claims a current Swingline authorization.
 
 ## 2026-08-15 addendum: bridge correspondence control and failed-operation rollback
 
