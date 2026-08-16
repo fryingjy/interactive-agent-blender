@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\stage_19_combined_silhouette_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_18_flat_handle.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_19_silhouette.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "f4005459d7f0",
+  "results": [
+    {
+      "index": 0,
+      "label": "render_combined_front_silhouette",
+      "command": "render_silhouette",
+      "params": {
+        "name": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate",
+          "tuner_faceplate"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_19_combined_front_silhouette.png",
+        "view": "front",
+        "resolution": 1024,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_19_combined_front_silhouette.png",
+        "view": "front",
+        "resolution": 1024,
+        "frame_objects": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate",
+          "tuner_faceplate"
+        ],
+        "silhouette_fill_ratio": 0.2587
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_19_silhouette.blend"
+  },
+  "pass": true
+}
