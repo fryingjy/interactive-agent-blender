@@ -174,6 +174,11 @@ class Component:
     evidence_status: str = "UNKNOWN"
     confidence: float = 0.0
     evidence: list[str] = field(default_factory=list)
+    # Optional bounds measured from an aligned reference board.  Both entries use
+    # scene-normalized coordinates in [0, 1] and an inclusive [minimum, maximum]
+    # interval for x/y/z.  It stays optional: a single perspective photo must not
+    # be laundered into fictional placement precision.
+    expected_region: dict[str, dict[str, list[float]]] = field(default_factory=dict)
 
     def validate(self) -> None:
         if not self.name.strip():
@@ -183,6 +188,26 @@ class Component:
         if self.manufacture not in VALID_MANUFACTURE:
             raise ValueError(f"invalid manufacture '{self.manufacture}' for component '{self.name}'")
         _validate_evidence_binding(self.name, self.evidence_status, self.confidence, self.evidence)
+        if not self.expected_region:
+            return
+        allowed = {"normalized_centroid", "normalized_size"}
+        unknown = set(self.expected_region) - allowed
+        if set(self.expected_region) != allowed:
+            raise ValueError(f"invalid expected region keys for component '{self.name}': {sorted(unknown)}")
+        for quantity, axes in self.expected_region.items():
+            if not isinstance(axes, dict) or set(axes) != {"x", "y", "z"}:
+                raise ValueError(
+                    f"expected region '{quantity}' for component '{self.name}' must define x/y/z intervals"
+                )
+            for axis, interval in axes.items():
+                if (
+                    not isinstance(interval, list) or len(interval) != 2
+                    or any(not isinstance(value, (int, float)) or isinstance(value, bool) for value in interval)
+                    or not 0.0 <= interval[0] <= interval[1] <= 1.0
+                ):
+                    raise ValueError(
+                        f"expected region '{quantity}.{axis}' for component '{self.name}' must be a [0, 1] interval"
+                    )
 
 
 @dataclass
@@ -367,6 +392,9 @@ class SceneDecomposition:
     def primary_components(self) -> list[Component]:
         return [c for c in self.components if c.role == "primary"]
 
+    def has_primary_layout_expectations(self) -> bool:
+        return any(component.expected_region for component in self.primary_components())
+
     def check_object_coverage(self, built_object_names: list[str]) -> dict[str, Any]:
         """The actual anti-wrench check: does the built scene have a plausible
         object for each PRIMARY component, or did construction collapse
@@ -445,6 +473,101 @@ class SceneDecomposition:
             },
             "unmatched_primary_components": unmatched,
             "coverage_ok": not unmatched,
+        }
+
+    def check_component_layout(self, object_bounds: dict[str, dict[str, list[float]]]) -> dict[str, Any]:
+        """Compare measured component bounds with optional reference-board regions.
+
+        Names prove only presence.  This check adds coarse placement and proportion
+        evidence in a target-independent coordinate frame: the union of the matched
+        primary-component bounds.  It deliberately makes no shape or visual-fidelity
+        claim, and returns ``not_applicable`` when the board did not provide an
+        aligned expected region.
+        """
+        if not isinstance(object_bounds, dict):
+            raise ValueError("object_bounds must map object names to min/max bounds")
+        coverage = self.check_object_coverage(sorted(object_bounds))
+        expected = {
+            component.name: component.expected_region
+            for component in self.primary_components()
+            if component.expected_region
+        }
+        if not expected:
+            return {
+                "layout_expectations_present": False,
+                "layout_ok": None,
+                "status": "not_applicable",
+                "component_reports": {},
+                "limitation": "No aligned component regions were supplied by the reference board.",
+            }
+
+        matched_bounds: dict[str, tuple[list[float], list[float]]] = {}
+        for component_name, object_name in coverage["component_matches"].items():
+            raw = object_bounds.get(object_name)
+            if not isinstance(raw, dict) or set(raw) != {"min", "max"}:
+                raise ValueError(f"bounds for '{object_name}' must provide min/max vectors")
+            lower, upper = raw["min"], raw["max"]
+            if (
+                not isinstance(lower, list) or not isinstance(upper, list)
+                or len(lower) != 3 or len(upper) != 3
+                or any(not isinstance(value, (int, float)) or isinstance(value, bool) for value in lower + upper)
+                or any(lower[index] > upper[index] for index in range(3))
+            ):
+                raise ValueError(f"invalid bounds for '{object_name}'")
+            matched_bounds[component_name] = (lower, upper)
+
+        all_lowers = [lower for lower, _ in matched_bounds.values()]
+        all_uppers = [upper for _, upper in matched_bounds.values()]
+        scene_min = [min(values[index] for values in all_lowers) for index in range(3)] if all_lowers else [0.0] * 3
+        scene_max = [max(values[index] for values in all_uppers) for index in range(3)] if all_uppers else [0.0] * 3
+        scene_span = [scene_max[index] - scene_min[index] for index in range(3)]
+        axis_names = ("x", "y", "z")
+        reports: dict[str, Any] = {}
+        for component_name, region in expected.items():
+            object_name = coverage["component_matches"].get(component_name)
+            if object_name is None:
+                reports[component_name] = {"object_name": None, "presence_ok": False, "placement_ok": False, "proportion_ok": False}
+                continue
+            lower, upper = matched_bounds[component_name]
+            centroid = [(lower[index] + upper[index]) / 2.0 for index in range(3)]
+            size = [upper[index] - lower[index] for index in range(3)]
+            normalized_centroid = [
+                (centroid[index] - scene_min[index]) / scene_span[index] if scene_span[index] else 0.5
+                for index in range(3)
+            ]
+            normalized_size = [size[index] / scene_span[index] if scene_span[index] else 1.0 for index in range(3)]
+            placement_ok = all(
+                region.get("normalized_centroid", {}).get(axis, [value, value])[0] <= value <=
+                region.get("normalized_centroid", {}).get(axis, [value, value])[1]
+                for axis, value in zip(axis_names, normalized_centroid)
+            )
+            proportion_ok = all(
+                region.get("normalized_size", {}).get(axis, [value, value])[0] <= value <=
+                region.get("normalized_size", {}).get(axis, [value, value])[1]
+                for axis, value in zip(axis_names, normalized_size)
+            )
+            reports[component_name] = {
+                "object_name": object_name,
+                "bbox_world": {"min": lower, "max": upper},
+                "centroid_world": centroid,
+                "relative_size": {"normalized_scene_span": normalized_size},
+                "normalized_centroid": normalized_centroid,
+                "expected_region": region,
+                "presence_ok": True,
+                "placement_ok": placement_ok,
+                "proportion_ok": proportion_ok,
+            }
+        layout_ok = coverage["coverage_ok"] and all(
+            report["presence_ok"] and report["placement_ok"] and report["proportion_ok"]
+            for report in reports.values()
+        )
+        return {
+            "layout_expectations_present": True,
+            "layout_ok": layout_ok,
+            "status": "pass" if layout_ok else "fail",
+            "scene_bounds_world": {"min": scene_min, "max": scene_max},
+            "component_reports": reports,
+            "limitation": "Bounds/centroids verify coarse placement and proportion only; silhouette, depth, and shape still need separate review.",
         }
 
 

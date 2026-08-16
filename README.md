@@ -83,6 +83,8 @@ problem -> retrieve -> research -> hypothesize -> reproduce -> measure
 - `tools/` — MCP entry points, reproducible Blender labs, audits, comparators, and independent
   verifiers.
 - `tests/` — fast policy/unit regression tests.
+- `requirements/` — optional, capability-scoped Python dependency sets (for example, public-video
+  Gemini analysis); these do not download or archive third-party media.
 - `runs/` — immutable dated evidence: reports, renders, saved `.blend` files, verification, and
   retained failures.
 - `reference/` — project-owned benchmark/reference inputs and notes.

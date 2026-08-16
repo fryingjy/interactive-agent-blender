@@ -31,6 +31,7 @@ import uuid
 from collections import deque
 
 import bpy
+from mathutils import Vector
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 _REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -485,7 +486,7 @@ class ModelerServer:
         )
 
     def cmd_check_scene_component_coverage(self, decomposition, collection_name=None):
-        """Read actual mesh names and evaluate one-to-one reference component coverage.
+        """Read actual mesh names and coarse bounds against a reference component board.
 
         This is intentionally read-only and records the live revision/session alongside
         the result.  It is a component-presence signal, never a claim of visual fidelity.
@@ -504,8 +505,22 @@ class ModelerServer:
             objects = collection.all_objects
         else:
             objects = bpy.data.objects
-        names = sorted(obj.name for obj in objects if obj.type == "MESH")
+        meshes = sorted((obj for obj in objects if obj.type == "MESH"), key=lambda obj: obj.name)
+        names = [obj.name for obj in meshes]
         coverage = parsed.check_object_coverage(names)
+        depsgraph = bpy.context.evaluated_depsgraph_get()
+        bounds = {}
+        for obj in meshes:
+            evaluated = obj.evaluated_get(depsgraph)
+            corners = [evaluated.matrix_world @ Vector(corner) for corner in evaluated.bound_box]
+            bounds[obj.name] = {
+                "min": [min(corner[index] for corner in corners) for index in range(3)],
+                "max": [max(corner[index] for corner in corners) for index in range(3)],
+            }
+        component_layout = parsed.check_component_layout(bounds)
+        passed = coverage["coverage_ok"] and (
+            not component_layout["layout_expectations_present"] or component_layout["layout_ok"]
+        )
         return {
             "capture_type": "LIVE_MODELER_RUNTIME",
             "session_id": self.session_id,
@@ -513,10 +528,11 @@ class ModelerServer:
             "collection": collection_name or "ALL",
             "mesh_object_names": names,
             "coverage": coverage,
-            "pass": coverage["coverage_ok"],
+            "component_layout": component_layout,
+            "pass": passed,
             "limitation": (
-                "Names establish only primary-component presence. Use a fresh-process asset report "
-                "for independent verification and controlled visual comparison for likeness."
+                "Names and optional coarse bounds establish only component presence/placement/proportion. "
+                "Use a fresh-process asset report and controlled visual comparison for shape and likeness."
             ),
         }
 

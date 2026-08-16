@@ -34,6 +34,10 @@ def main():
             "stage_gate_asset", "primary", "structural", False,
             evidence_status="OBSERVED", confidence=0.9,
             evidence=["fixture observation: one visible blockout component"],
+            expected_region={
+                "normalized_centroid": {axis: [0.5, 0.5] for axis in ("x", "y", "z")},
+                "normalized_size": {axis: [1.0, 1.0] for axis in ("x", "y", "z")},
+            },
         )],
         claims=[
             ReferenceClaim(
@@ -113,6 +117,11 @@ def main():
             and live_coverage["pass"]
             and live_coverage["mesh_object_names"] == [obj.name]
         ),
+        "layout_captured_from_evaluated_live_geometry": bool(
+            live_coverage["component_layout"]["layout_expectations_present"]
+            and live_coverage["component_layout"]["layout_ok"]
+            and live_coverage["component_layout"]["component_reports"]["stage_gate_asset"]["bbox_world"]
+        ),
         "only_accepted_transitions_logged": len(final_log) == 2,
     }
     report = {
@@ -125,6 +134,9 @@ def main():
         "assertions": assertions,
         "pass": all(assertions.values()),
     }
+    (out / "scene_decomposition.json").write_text(
+        json.dumps(decomposition.to_dict(), indent=2) + "\n", encoding="utf-8"
+    )
     (out / "stage_gate_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     bpy.ops.wm.save_as_mainfile(filepath=str(out / "stage_gate_lab.blend"))
     print("STAGE_GATE_RESULT:" + json.dumps(report))

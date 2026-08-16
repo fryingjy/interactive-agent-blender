@@ -143,7 +143,37 @@
             "confidence": 0.9,
             "evidence": [
               "fixture observation: one visible blockout component"
-            ]
+            ],
+            "expected_region": {
+              "normalized_centroid": {
+                "x": [
+                  0.5,
+                  0.5
+                ],
+                "y": [
+                  0.5,
+                  0.5
+                ],
+                "z": [
+                  0.5,
+                  0.5
+                ]
+              },
+              "normalized_size": {
+                "x": [
+                  1.0,
+                  1.0
+                ],
+                "y": [
+                  1.0,
+                  1.0
+                ],
+                "z": [
+                  1.0,
+                  1.0
+                ]
+              }
+            }
           }
         ],
         "relationships": [],
@@ -242,7 +272,7 @@
   },
   "live_component_coverage": {
     "capture_type": "LIVE_MODELER_RUNTIME",
-    "session_id": "d7bec66e1f1e",
+    "session_id": "ffa819f2634f",
     "scene_revision": 1,
     "collection": "ALL",
     "mesh_object_names": [
@@ -261,8 +291,93 @@
       "unmatched_primary_components": [],
       "coverage_ok": true
     },
+    "component_layout": {
+      "layout_expectations_present": true,
+      "layout_ok": true,
+      "status": "pass",
+      "scene_bounds_world": {
+        "min": [
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "max": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "component_reports": {
+        "stage_gate_asset": {
+          "object_name": "StageGateAsset",
+          "bbox_world": {
+            "min": [
+              -1.0,
+              -1.0,
+              -1.0
+            ],
+            "max": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "centroid_world": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "relative_size": {
+            "normalized_scene_span": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "normalized_centroid": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "expected_region": {
+            "normalized_centroid": {
+              "x": [
+                0.5,
+                0.5
+              ],
+              "y": [
+                0.5,
+                0.5
+              ],
+              "z": [
+                0.5,
+                0.5
+              ]
+            },
+            "normalized_size": {
+              "x": [
+                1.0,
+                1.0
+              ],
+              "y": [
+                1.0,
+                1.0
+              ],
+              "z": [
+                1.0,
+                1.0
+              ]
+            }
+          },
+          "presence_ok": true,
+          "placement_ok": true,
+          "proportion_ok": true
+        }
+      },
+      "limitation": "Bounds/centroids verify coarse placement and proportion only; silhouette, depth, and shape still need separate review."
+    },
     "pass": true,
-    "limitation": "Names establish only primary-component presence. Use a fresh-process asset report for independent verification and controlled visual comparison for likeness."
+    "limitation": "Names and optional coarse bounds establish only component presence/placement/proportion. Use a fresh-process asset report and controlled visual comparison for shape and likeness."
   },
   "final_stage": "PROPORTION_SILHOUETTE",
   "stage_log": [
@@ -311,7 +426,7 @@
           "primary_components_present": true,
           "component_coverage": {
             "capture_type": "LIVE_MODELER_RUNTIME",
-            "session_id": "d7bec66e1f1e",
+            "session_id": "ffa819f2634f",
             "scene_revision": 1,
             "collection": "ALL",
             "mesh_object_names": [
@@ -330,8 +445,93 @@
               "unmatched_primary_components": [],
               "coverage_ok": true
             },
+            "component_layout": {
+              "layout_expectations_present": true,
+              "layout_ok": true,
+              "status": "pass",
+              "scene_bounds_world": {
+                "min": [
+                  -1.0,
+                  -1.0,
+                  -1.0
+                ],
+                "max": [
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              },
+              "component_reports": {
+                "stage_gate_asset": {
+                  "object_name": "StageGateAsset",
+                  "bbox_world": {
+                    "min": [
+                      -1.0,
+                      -1.0,
+                      -1.0
+                    ],
+                    "max": [
+                      1.0,
+                      1.0,
+                      1.0
+                    ]
+                  },
+                  "centroid_world": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "relative_size": {
+                    "normalized_scene_span": [
+                      1.0,
+                      1.0,
+                      1.0
+                    ]
+                  },
+                  "normalized_centroid": [
+                    0.5,
+                    0.5,
+                    0.5
+                  ],
+                  "expected_region": {
+                    "normalized_centroid": {
+                      "x": [
+                        0.5,
+                        0.5
+                      ],
+                      "y": [
+                        0.5,
+                        0.5
+                      ],
+                      "z": [
+                        0.5,
+                        0.5
+                      ]
+                    },
+                    "normalized_size": {
+                      "x": [
+                        1.0,
+                        1.0
+                      ],
+                      "y": [
+                        1.0,
+                        1.0
+                      ],
+                      "z": [
+                        1.0,
+                        1.0
+                      ]
+                    }
+                  },
+                  "presence_ok": true,
+                  "placement_ok": true,
+                  "proportion_ok": true
+                }
+              },
+              "limitation": "Bounds/centroids verify coarse placement and proportion only; silhouette, depth, and shape still need separate review."
+            },
             "pass": true,
-            "limitation": "Names establish only primary-component presence. Use a fresh-process asset report for independent verification and controlled visual comparison for likeness."
+            "limitation": "Names and optional coarse bounds establish only component presence/placement/proportion. Use a fresh-process asset report and controlled visual comparison for shape and likeness."
           }
         },
         "gate": {
@@ -361,6 +561,7 @@
     "stale_rejection_did_not_mutate": true,
     "complete_primary_blockout_advanced": true,
     "coverage_captured_from_live_modeler": true,
+    "layout_captured_from_evaluated_live_geometry": true,
     "only_accepted_transitions_logged": true
   },
   "pass": true

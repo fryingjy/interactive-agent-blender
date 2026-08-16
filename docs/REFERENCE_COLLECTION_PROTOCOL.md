@@ -126,6 +126,13 @@ can, by comparing the declared primary components against the actual built objec
 any with no plausible match. Matching is one-to-one and ignores generic tokens: one mesh named
 `Collector_Upper_Shell` cannot claim to satisfy a separate `Boiler_Lower_Shell` merely because both
 contain "shell". It remains a component-presence smoke test, not a geometry or likeness judgment.
+When an aligned reference board provides component regions, a primary component may additionally
+record optional normalized-centroid and normalized-size intervals. The same live capture then records
+each matched mesh's evaluated world bounds, centroid, and size relative to the primary-component
+union; out-of-range placement or proportion rejects the capture. This is deliberately optional:
+missing views or perspective photos must not be converted into fictitious spatial precision. It is
+still only a coarse placement/proportion gate, not proof of component shape, depth, topology, or
+visual fidelity.
 Run `tools/verify_scene_component_coverage.py` in a fresh Blender process against the saved asset,
 the decomposition JSON, and its intended collection to record this check beside an asset review.
 Advancing from `PRIMARY_BLOCKOUT` to silhouette/proportion review requires a structured one-to-one

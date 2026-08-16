@@ -459,6 +459,52 @@ class SceneDecompositionTests(unittest.TestCase):
         self.assertTrue(result["coverage_ok"])
         self.assertEqual(result["component_matches"], {"stage_gate_asset": "StageGateAsset"})
 
+    def test_component_layout_requires_measured_primary_placement_and_proportion(self):
+        decomp = SceneDecomposition(
+            object_name="two-part housing",
+            components=[
+                Component("body", "primary", "structural", expected_region={
+                    "normalized_centroid": {"x": [0.2, 0.3], "y": [0.5, 0.5], "z": [0.5, 0.5]},
+                    "normalized_size": {"x": [0.45, 0.55], "y": [1.0, 1.0], "z": [1.0, 1.0]},
+                }),
+                Component("handle", "primary", "structural", expected_region={
+                    "normalized_centroid": {"x": [0.7, 0.8], "y": [0.5, 0.5], "z": [0.5, 0.5]},
+                    "normalized_size": {"x": [0.45, 0.55], "y": [1.0, 1.0], "z": [1.0, 1.0]},
+                }),
+            ],
+        )
+        result = decomp.check_component_layout({
+            "Body": {"min": [0.0, 0.0, 0.0], "max": [1.0, 2.0, 2.0]},
+            "Handle": {"min": [1.0, 0.0, 0.0], "max": [2.0, 2.0, 2.0]},
+        })
+        self.assertTrue(result["layout_expectations_present"])
+        self.assertTrue(result["layout_ok"])
+        self.assertEqual(result["component_reports"]["body"]["object_name"], "Body")
+
+        displaced = decomp.check_component_layout({
+            "Body": {"min": [0.0, 0.0, 0.0], "max": [1.6, 2.0, 2.0]},
+            "Handle": {"min": [1.6, 0.0, 0.0], "max": [2.0, 2.0, 2.0]},
+        })
+        self.assertFalse(displaced["layout_ok"])
+        self.assertFalse(displaced["component_reports"]["body"]["proportion_ok"])
+
+    def test_component_layout_stays_not_applicable_without_aligned_reference_regions(self):
+        result = self._wrench_decomposition().check_component_layout({
+            "Handle": {"min": [0, 0, 0], "max": [1, 1, 1]},
+            "Fixed_Jaw": {"min": [1, 0, 0], "max": [2, 1, 1]},
+            "Movable_Jaw": {"min": [2, 0, 0], "max": [3, 1, 1]},
+        })
+        self.assertFalse(result["layout_expectations_present"])
+        self.assertIsNone(result["layout_ok"])
+
+    def test_invalid_component_expected_region_is_rejected(self):
+        decomp = SceneDecomposition(
+            object_name="invalid board",
+            components=[Component("body", "primary", expected_region={"normalized_centroid": {"x": [0, 1]}})],
+        )
+        with self.assertRaisesRegex(ValueError, "invalid expected region keys"):
+            decomp.validate()
+
     def test_observed_claim_requires_concrete_evidence(self):
         decomp = self._strict_lantern_decomposition()
         decomp.claims[0].evidence = []
@@ -640,6 +686,24 @@ class QualityReviewTests(unittest.TestCase):
             },
         })
         self.assertTrue(accepted["pass"])
+
+    def test_primary_blockout_rejects_failed_required_component_layout(self):
+        result = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
+            "dimensions_checked": True,
+            "primary_components_present": True,
+            "component_coverage": {
+                "capture_type": "LIVE_MODELER_RUNTIME", "session_id": "test", "scene_revision": 0,
+                "mesh_object_names": ["Body"], "pass": False,
+                "coverage": {"declared_primary_components": ["body"], "built_object_names": ["Body"],
+                    "component_matches": {"body": "Body"}, "unmatched_primary_components": [], "coverage_ok": True},
+                "component_layout": {
+                    "layout_expectations_present": True, "layout_ok": False, "status": "fail",
+                    "component_reports": {"body": {"object_name": "Body", "presence_ok": True, "placement_ok": False, "proportion_ok": True}},
+                },
+            },
+        })
+        self.assertFalse(result["pass"])
+        self.assertIn("structured one-to-one component coverage is missing or invalid", result["failures"])
 
     def test_stage_gate_rejects_global_only_visual_evidence(self):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True})

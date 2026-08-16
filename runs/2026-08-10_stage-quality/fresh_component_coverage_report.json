@@ -1,0 +1,109 @@
+{
+  "schema_version": 2,
+  "scope": "Fresh-process component-presence plus optional coarse placement/proportion smoke test. Passing does not prove reference likeness, silhouette, topology, modifier quality, or human approval.",
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_stage-quality\\stage_gate_lab.blend",
+  "decomposition_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-10_stage-quality\\scene_decomposition.json",
+  "collection": "ALL",
+  "mesh_object_names": [
+    "StageGateAsset"
+  ],
+  "coverage": {
+    "declared_primary_components": [
+      "stage_gate_asset"
+    ],
+    "built_object_names": [
+      "StageGateAsset"
+    ],
+    "component_matches": {
+      "stage_gate_asset": "StageGateAsset"
+    },
+    "unmatched_primary_components": [],
+    "coverage_ok": true
+  },
+  "component_layout": {
+    "layout_expectations_present": true,
+    "layout_ok": true,
+    "status": "pass",
+    "scene_bounds_world": {
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "component_reports": {
+      "stage_gate_asset": {
+        "object_name": "StageGateAsset",
+        "bbox_world": {
+          "min": [
+            -1.0,
+            -1.0,
+            -1.0
+          ],
+          "max": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "centroid_world": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "relative_size": {
+          "normalized_scene_span": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "normalized_centroid": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "expected_region": {
+          "normalized_centroid": {
+            "x": [
+              0.5,
+              0.5
+            ],
+            "y": [
+              0.5,
+              0.5
+            ],
+            "z": [
+              0.5,
+              0.5
+            ]
+          },
+          "normalized_size": {
+            "x": [
+              1.0,
+              1.0
+            ],
+            "y": [
+              1.0,
+              1.0
+            ],
+            "z": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "presence_ok": true,
+        "placement_ok": true,
+        "proportion_ok": true
+      }
+    },
+    "limitation": "Bounds/centroids verify coarse placement and proportion only; silhouette, depth, and shape still need separate review."
+  },
+  "pass": true
+}

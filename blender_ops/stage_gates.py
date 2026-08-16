@@ -61,7 +61,26 @@ def _component_coverage_is_valid(value: Any) -> bool:
         return False
     if set(matches) != set(declared) or len(set(matches.values())) != len(matches):
         return False
-    return all(name in built for name in matches.values())
+    if not all(name in built for name in matches.values()):
+        return False
+    layout = value.get("component_layout")
+    if layout is None:
+        return True  # compatibility for existing boards without measured regions
+    if not isinstance(layout, dict) or not isinstance(layout.get("layout_expectations_present"), bool):
+        return False
+    if not layout["layout_expectations_present"]:
+        return layout.get("layout_ok") is None and layout.get("status") == "not_applicable"
+    reports = layout.get("component_reports")
+    if layout.get("layout_ok") is not True or layout.get("status") != "pass" or not isinstance(reports, dict):
+        return False
+    return all(
+        component in reports
+        and reports[component].get("object_name") == matches[component]
+        and reports[component].get("presence_ok") is True
+        and reports[component].get("placement_ok") is True
+        and reports[component].get("proportion_ok") is True
+        for component in declared
+    )
 
 
 def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float = 0.9) -> dict:

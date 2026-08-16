@@ -149,7 +149,7 @@ def set_modeling_stage(object_name: str, stage: str, evidence: dict) -> dict:
 
 @mcp.tool()
 def check_scene_component_coverage(decomposition: dict, collection_name: str | None = None) -> dict:
-    """Read the live Blender mesh-object names and compare them one-to-one against a structured reference decomposition. This is read-only, revision/session-bound component-presence evidence; it does not judge shape, topology, or visual likeness."""
+    """Read live mesh names and evaluated world bounds against a reference decomposition. This read-only, revision/session-bound record checks one-to-one presence plus optional board-supplied placement/proportion ranges; it does not judge shape, topology, or visual likeness."""
     return _call(
         "check_scene_component_coverage",
         decomposition=decomposition,

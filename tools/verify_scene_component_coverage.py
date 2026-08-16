@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 
 import bpy
+from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,7 +38,7 @@ def parse_args() -> tuple[Path, Path, str, Path]:
     return Path(blend).resolve(), Path(decomposition).resolve(), collection, Path(report).resolve()
 
 
-def mesh_names(collection_name: str) -> list[str]:
+def mesh_objects(collection_name: str):
     if collection_name == "ALL":
         objects = bpy.data.objects
     else:
@@ -45,7 +46,20 @@ def mesh_names(collection_name: str) -> list[str]:
         if collection is None:
             raise SystemExit(f"missing collection: {collection_name}")
         objects = collection.all_objects
-    return sorted(object.name for object in objects if object.type == "MESH")
+    return sorted((object for object in objects if object.type == "MESH"), key=lambda object: object.name)
+
+
+def evaluated_bounds(objects) -> dict[str, dict[str, list[float]]]:
+    depsgraph = bpy.context.evaluated_depsgraph_get()
+    result = {}
+    for object in objects:
+        evaluated = object.evaluated_get(depsgraph)
+        corners = [evaluated.matrix_world @ Vector(corner) for corner in evaluated.bound_box]
+        result[object.name] = {
+            "min": [min(corner[axis] for corner in corners) for axis in range(3)],
+            "max": [max(corner[axis] for corner in corners) for axis in range(3)],
+        }
+    return result
 
 
 def main() -> int:
@@ -54,20 +68,26 @@ def main() -> int:
     decomposition = scene_decomposition_from_dict(
         json.loads(decomposition_path.read_text(encoding="utf-8"))
     )
-    object_names = mesh_names(collection_name)
+    objects = mesh_objects(collection_name)
+    object_names = [object.name for object in objects]
     coverage = decomposition.check_object_coverage(object_names)
+    component_layout = decomposition.check_component_layout(evaluated_bounds(objects))
+    passed = coverage["coverage_ok"] and (
+        not component_layout["layout_expectations_present"] or component_layout["layout_ok"]
+    )
     report = {
-        "schema_version": 1,
+        "schema_version": 2,
         "scope": (
-            "Fresh-process component-presence smoke test. Passing does not prove reference likeness, "
-            "silhouette, topology, modifier quality, or human approval."
+            "Fresh-process component-presence plus optional coarse placement/proportion smoke test. "
+            "Passing does not prove reference likeness, silhouette, topology, modifier quality, or human approval."
         ),
         "blend_path": str(blend_path),
         "decomposition_path": str(decomposition_path),
         "collection": collection_name,
         "mesh_object_names": object_names,
         "coverage": coverage,
-        "pass": coverage["coverage_ok"],
+        "component_layout": component_layout,
+        "pass": passed,
     }
     report_path.parent.mkdir(parents=True, exist_ok=True)
     report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

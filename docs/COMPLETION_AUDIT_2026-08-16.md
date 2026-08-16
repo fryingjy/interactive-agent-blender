@@ -5,12 +5,15 @@ directive. It is deliberately not a declaration of professional-modeler completi
 
 ## Verification performed
 
-- `python -m unittest discover -s tests -q` — **156 tests passed** on 2026-08-16.
+- `python -m unittest discover -s tests -q` — **162 tests passed** on 2026-08-16.
 - `tools/run_stage_gate_lab.py` under Blender 5.2 — live runtime component coverage rejects a
   collapsed/malformed record and allows the stage transition only after a one-to-one coverage
   capture; the captured report carries its Blender session and scene revision, and becomes invalid
-  after a later revision until recaptured. An evidence-ready reference board makes the planner
-  request that capture before it returns a further blockout action.
+  after a later revision until recaptured. Where an aligned board supplies expected component
+  regions, the same capture reads evaluated bounds and rejects out-of-range coarse placement or
+  proportion. `tools/verify_scene_component_coverage.py` separately reproduces that check in a
+  fresh Blender process. An evidence-ready reference board makes the planner request that capture
+  before it returns a further blockout action.
 - `tools/verify_bialetti_reference_decomposition.py` — strict Bialetti board decomposition passes.
 - `tools/verify_question_driven_reference_research.py` — question-driven reference gate passes its
   positive and negative controls.
@@ -24,7 +27,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 
 | Requirement group | Evidence | Status |
 | --- | --- | --- |
-| Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite; live `check_scene_component_coverage` capture | Implemented and tested; component presence is no longer a bare stage boolean |
+| Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite; live `check_scene_component_coverage` capture | Implemented and tested; component presence is no longer a bare stage boolean, and boards with measured component regions also require fresh coarse placement/proportion evidence |
 | Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, Bialetti strict board and verifier, question-driven research verifier; planner-to-live-coverage stage-gate loop | Implemented; model-free runtime policy validation only |
 | Reference uncertainty and source provenance | Bialetti manifest, research constraints, retention ledger, source audit | Implemented and honestly bounded |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion still evidence-gated |
