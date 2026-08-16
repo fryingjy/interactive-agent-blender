@@ -22,7 +22,8 @@
           "listing-picture-03-front",
           "listing-picture-04-right-profile",
           "listing-picture-06-left-profile"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "collector_upper_shell",
@@ -36,7 +37,8 @@
           "listing-picture-03-front",
           "listing-picture-04-right-profile",
           "listing-pictures-07-08-top-open"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "lid",
@@ -49,7 +51,8 @@
         "evidence": [
           "listing-picture-05-rear",
           "listing-picture-09-lid-underside"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "handle",
@@ -63,7 +66,8 @@
           "listing-picture-04-right-profile",
           "listing-picture-05-rear",
           "listing-picture-06-left-profile"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "lid_knob",
@@ -76,7 +80,8 @@
         "evidence": [
           "listing-picture-03-front",
           "listing-picture-05-rear"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "safety_valve",
@@ -89,7 +94,8 @@
         "evidence": [
           "listing-picture-03-front",
           "listing-picture-06-left-profile"
-        ]
+        ],
+        "expected_region": {}
       },
       {
         "name": "central_delivery_column",
@@ -101,7 +107,8 @@
         "confidence": 0.78,
         "evidence": [
           "listing-pictures-07-08-top-open"
-        ]
+        ],
+        "expected_region": {}
       }
     ],
     "relationships": [
