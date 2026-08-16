@@ -187,7 +187,9 @@ def set_curve_bevel_depth(object_name: str, depth: float) -> dict:
 @mcp.tool()
 def set_curve_points(object_name: str, points: list[list[float]]) -> dict:
     """Revise an existing curve's control-point coordinates without converting
-    its spline, bevel profile, taper, or other editable curve settings."""
+    its spline, bevel profile, taper, or other editable curve settings. For a
+    recoverable artistic decision, use begin_decision -> perform_decision with
+    operation='set_curve_points' -> verify_decision -> commit/reject instead."""
     return _call("set_curve_points", name=object_name, points=points)
 
 
@@ -410,7 +412,9 @@ def check_external_edit(object_name: str) -> dict:
 
 @mcp.tool()
 def verify_decision(decision_id: str) -> dict:
-    """Verify a performed decision: before/after mesh health, and the added/removed persistent vertex/edge/face IDs (id_delta) -- the real, provable change caused by exactly this one decision."""
+    """Verify a performed decision. Mesh targets report health and persistent
+    ID deltas; curve targets report editable spline/path state and null
+    id_delta because curve controls are not mesh elements."""
     return _call("verify_decision", decision_id=decision_id)
 
 

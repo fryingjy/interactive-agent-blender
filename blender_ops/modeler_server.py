@@ -70,6 +70,7 @@ CAPABILITIES = [
     "layered_state_fingerprint",
     "native_silhouette_render",
     "curve_bevel_taper_geometry",
+    "curve_decision_transactions",
     "modeling_stage_tracking",
     "expanded_typed_modeling_surface",
     "connect_vertex_path_topology",
@@ -137,6 +138,10 @@ _OPS = {
     "set_bevel_scoping": object_ops.set_bevel_scoping,
     "set_edge_crease_by_ids": object_ops.set_edge_crease_by_ids,
     "mark_no_sharp_edges_needed": object_ops.mark_no_sharp_edges_needed,
+    "set_curve_points": curve_ops.set_curve_points,
+    "set_curve_bevel_depth": curve_ops.set_curve_bevel_depth,
+    "set_curve_taper": curve_ops.set_curve_taper,
+    "set_curve_bevel_object": curve_ops.set_curve_bevel_object,
 }
 
 
@@ -388,7 +393,11 @@ class ModelerServer:
         snapshot to the just-observed state, so a second call right after
         immediately sees no further difference (the edit has now been
         "seen")."""
-        persistent_ids.ensure_persistent_ids(name)
+        obj = bpy.data.objects.get(name)
+        if obj is None or obj.type not in {"MESH", "CURVE"}:
+            raise ValueError(f"external-edit detection requires a MESH or CURVE object, got {name!r}")
+        if obj.type == "MESH":
+            persistent_ids.ensure_persistent_ids(name)
         current = state_fingerprint.compute(name)
         previous = self._last_known_fingerprint.get(name)
         detected = False

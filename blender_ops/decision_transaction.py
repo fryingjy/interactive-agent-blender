@@ -62,7 +62,10 @@ class DecisionTransaction:
         self._before_ids = None
         self._after_ids = None
         self._op_delta = None
-        self._before_mesh_snapshot = None
+        # A transaction may own an editable mesh *or* curve.  The old name
+        # reflected the original mesh-only implementation and encouraged
+        # curve edits to bypass transaction rollback entirely.
+        self._before_data_snapshot = None
         self._before_transform = None
         self._before_object_names = None
         self._before_collection_names = None
@@ -75,6 +78,20 @@ class DecisionTransaction:
         self.reject_reason = None
         self._failure_rolled_back = False
 
+    @staticmethod
+    def _supported_target(obj):
+        return obj is not None and obj.type in {"MESH", "CURVE"}
+
+    @staticmethod
+    def _remove_data_if_unused(data):
+        """Free only the datablock types this transaction snapshots."""
+        if data is None or data.users != 0:
+            return
+        if isinstance(data, bpy.types.Mesh):
+            bpy.data.meshes.remove(data)
+        elif isinstance(data, bpy.types.Curve):
+            bpy.data.curves.remove(data)
+
     def __enter__(self):
         actual = decision_state.current_revision()
         if actual != self.observed_revision:
@@ -85,12 +102,20 @@ class DecisionTransaction:
             )
         self._before_op_count = len(bpy.context.window_manager.operators)
         if self.target_object:
-            self._before_state = state_probe.mesh_health(self.target_object)
-            # Backfill IDs for any pre-existing element that doesn't have one yet
-            # (e.g. the first transaction ever run against an object), so the
-            # before/after ID sets captured around this transaction are complete.
-            persistent_ids.ensure_persistent_ids(self.target_object)
-            self._before_ids = persistent_ids.get_id_maps(self.target_object)
+            target = bpy.data.objects.get(self.target_object)
+            if not self._supported_target(target):
+                raise TransactionError(
+                    f"target '{self.target_object}' must be a MESH or CURVE object"
+                )
+            if target.type == "MESH":
+                self._before_state = state_probe.mesh_health(self.target_object)
+                # Backfill IDs for any pre-existing element that doesn't have one yet
+                # (e.g. the first transaction ever run against an object), so the
+                # before/after ID sets captured around this transaction are complete.
+                persistent_ids.ensure_persistent_ids(self.target_object)
+                self._before_ids = persistent_ids.get_id_maps(self.target_object)
+            else:
+                self._before_state = state_probe.get_curve_state(self.target_object)
         return self
 
     def perform(self, fn, *args, **kwargs):
@@ -113,13 +138,18 @@ class DecisionTransaction:
             )
         if self.target_object:
             obj = bpy.data.objects[self.target_object]
-            self._before_mesh_snapshot = obj.data.copy()
+            if obj.type == "CURVE" and obj.mode == "EDIT":
+                raise TransactionError(
+                    "curve transaction requires Object Mode; Curve Edit Mode rollback is not yet "
+                    "safe in the background runtime"
+                )
+            self._before_data_snapshot = obj.data.copy()
             self._before_object_snapshot = obj.copy()
             # Object.copy() keeps a user on the live mesh by default. Point the detached
             # object snapshot at the transaction-owned mesh copy instead; otherwise a
             # failed operation leaves the replaced live mesh orphaned but still retained
             # until the object snapshot is freed.
-            self._before_object_snapshot.data = self._before_mesh_snapshot
+            self._before_object_snapshot.data = self._before_data_snapshot
             self._before_selected = obj.select_get()
             self._before_active_object = bpy.context.view_layer.objects.active.name if bpy.context.view_layer.objects.active else None
             self._before_transform = {
@@ -176,21 +206,25 @@ class DecisionTransaction:
         self._op_delta = after_op_count - self._before_op_count
         id_delta = None
         if self.target_object:
-            self._after_state = state_probe.mesh_health(self.target_object)
-            # Assign IDs to anything perform() created, then diff against the
-            # before-set captured in __enter__ -- this is the real, provable
-            # delta for exactly this one decision, not an arbitrary revision
-            # range: added/removed persistent element IDs.
-            persistent_ids.ensure_persistent_ids(self.target_object)
-            self._after_ids = persistent_ids.get_id_maps(self.target_object)
-            id_delta = {}
-            for kind in ("verts", "edges", "faces"):
-                before_ids = set(self._before_ids[kind]["id_to_index"])
-                after_ids = set(self._after_ids[kind]["id_to_index"])
-                id_delta[kind] = {
-                    "added": sorted(after_ids - before_ids),
-                    "removed": sorted(before_ids - after_ids),
-                }
+            target = bpy.data.objects[self.target_object]
+            if target.type == "MESH":
+                self._after_state = state_probe.mesh_health(self.target_object)
+                # Assign IDs to anything perform() created, then diff against the
+                # before-set captured in __enter__ -- this is the real, provable
+                # delta for exactly this one decision, not an arbitrary revision
+                # range: added/removed persistent element IDs.
+                persistent_ids.ensure_persistent_ids(self.target_object)
+                self._after_ids = persistent_ids.get_id_maps(self.target_object)
+                id_delta = {}
+                for kind in ("verts", "edges", "faces"):
+                    before_ids = set(self._before_ids[kind]["id_to_index"])
+                    after_ids = set(self._after_ids[kind]["id_to_index"])
+                    id_delta[kind] = {
+                        "added": sorted(after_ids - before_ids),
+                        "removed": sorted(before_ids - after_ids),
+                    }
+            else:
+                self._after_state = state_probe.get_curve_state(self.target_object)
         return {
             "action_type": self.action_type,
             "op_delta": self._op_delta,
@@ -246,18 +280,17 @@ class DecisionTransaction:
     def _restore_target_snapshot(self):
         """Restore every transaction-owned target channel without changing decision state."""
         obj = bpy.data.objects[self.target_object]
-        if obj.mode == "EDIT":
+        if obj.type == "MESH" and obj.mode == "EDIT":
             bm = bmesh.from_edit_mesh(obj.data)
             bm.clear()
-            bm.from_mesh(self._before_mesh_snapshot)
+            bm.from_mesh(self._before_data_snapshot)
             bmesh.update_edit_mesh(obj.data, loop_triangles=True, destructive=True)
         else:
             replaced_data = obj.data
             replaced_name = replaced_data.name
-            restored_data = self._before_mesh_snapshot.copy()
+            restored_data = self._before_data_snapshot.copy()
             obj.data = restored_data
-            if replaced_data.users == 0:
-                bpy.data.meshes.remove(replaced_data)
+            self._remove_data_if_unused(replaced_data)
             # Rename only after the replaced datablock is gone so Blender does not append
             # a numeric suffix and make a successful rollback observably change identity.
             restored_data.name = replaced_name
@@ -283,10 +316,9 @@ class DecisionTransaction:
         for object_name in created_objects:
             created = bpy.data.objects.get(object_name)
             if created is not None:
-                mesh = created.data if created.type == "MESH" else None
+                data = created.data if created.type in {"MESH", "CURVE"} else None
                 bpy.data.objects.remove(created, do_unlink=True)
-                if mesh is not None and mesh.users == 0:
-                    bpy.data.meshes.remove(mesh)
+                self._remove_data_if_unused(data)
         created_collections = sorted(
             set(bpy.data.collections.keys()) - (self._before_collection_names or set())
         )
@@ -346,13 +378,12 @@ class DecisionTransaction:
                 # a side effect of datablock cleanup. It is then already free.
                 pass
             self._before_object_snapshot = None
-        if self._before_mesh_snapshot is not None:
+        if self._before_data_snapshot is not None:
             try:
-                if self._before_mesh_snapshot.name in bpy.data.meshes:
-                    bpy.data.meshes.remove(self._before_mesh_snapshot)
+                self._remove_data_if_unused(self._before_data_snapshot)
             except ReferenceError:
                 pass
-            self._before_mesh_snapshot = None
+            self._before_data_snapshot = None
 
     def __exit__(self, exc_type, exc, tb):
         return False

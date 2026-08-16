@@ -51,6 +51,25 @@ def _geometry_hash(obj):
     return hashlib.sha256(payload).hexdigest()
 
 
+def _curve_geometry_hash(obj):
+    """Hash authored curve controls/handles without coercing a curve to mesh."""
+    payload = []
+    for spline in obj.data.splines:
+        if spline.type == "BEZIER":
+            payload.append((spline.type, bool(spline.use_cyclic_u), [
+                (tuple(round(c, 6) for c in point.co),
+                 tuple(round(c, 6) for c in point.handle_left),
+                 tuple(round(c, 6) for c in point.handle_right),
+                 point.handle_left_type, point.handle_right_type)
+                for point in spline.bezier_points
+            ]))
+        else:
+            payload.append((spline.type, bool(spline.use_cyclic_u), [
+                tuple(round(c, 6) for c in point.co) for point in spline.points
+            ]))
+    return hashlib.sha256(repr(payload).encode("utf-8")).hexdigest()
+
+
 def _modifier_params(obj):
     """Serialize every modifier's simple (int/float/str/bool) properties.
     Skips complex properties (object refs, arrays) deliberately -- this is
@@ -82,11 +101,22 @@ def compute(name):
     called persistent_ids.ensure_persistent_ids(name) if completeness of the
     topology layer matters (mirrors the existing _snapshot_ids contract)."""
     obj = bpy.data.objects[name]
-    id_maps = persistent_ids.get_id_maps(name)
-    topology = {kind: frozenset(m["id_to_index"]) for kind, m in id_maps.items()}
+    if obj.type == "MESH":
+        id_maps = persistent_ids.get_id_maps(name)
+        topology = {kind: frozenset(m["id_to_index"]) for kind, m in id_maps.items()}
+        geometry_hash = _geometry_hash(obj)
+    elif obj.type == "CURVE":
+        topology = {"splines": tuple(
+            (spline.type, len(spline.bezier_points if spline.type == "BEZIER" else spline.points), bool(spline.use_cyclic_u))
+            for spline in obj.data.splines
+        )}
+        geometry_hash = _curve_geometry_hash(obj)
+    else:
+        raise ValueError(f"state fingerprint supports MESH or CURVE, got {obj.type!r}")
     return {
+        "object_type": obj.type,
         "topology": topology,
-        "geometry_hash": _geometry_hash(obj),
+        "geometry_hash": geometry_hash,
         "transform": {
             "location": tuple(round(c, 6) for c in obj.location),
             "rotation_euler": tuple(round(c, 6) for c in obj.rotation_euler),
@@ -110,12 +140,18 @@ def diff(previous, current):
     out = {}
 
     topo_diff = {}
-    for kind in ("verts", "edges", "faces"):
-        added = sorted(current["topology"][kind] - previous["topology"][kind])
-        removed = sorted(previous["topology"][kind] - current["topology"][kind])
-        if added or removed:
+    if previous.get("object_type") == current.get("object_type") == "MESH":
+        for kind in ("verts", "edges", "faces"):
+            added = sorted(current["topology"][kind] - previous["topology"][kind])
+            removed = sorted(previous["topology"][kind] - current["topology"][kind])
+            if added or removed:
+                detected = True
+            topo_diff[kind] = {"added": added, "removed": removed}
+    else:
+        topology_changed = previous.get("topology") != current.get("topology")
+        if topology_changed:
             detected = True
-        topo_diff[kind] = {"added": added, "removed": removed}
+        topo_diff = {"object_type_before": previous.get("object_type"), "object_type_after": current.get("object_type"), "changed": topology_changed}
     out["topology"] = topo_diff
 
     geometry_moved = current["geometry_hash"] != previous["geometry_hash"]

@@ -1,0 +1,16 @@
+{
+  "record_type": "CURVE_DECISION_TRANSACTION_LAB",
+  "checks": {
+    "rejected_change_observed": true,
+    "curve_verification_has_no_mesh_ids": true,
+    "reject_restored_control_points": true,
+    "exception_after_mutation_restored_control_points": true,
+    "commit_persists_control_points": true,
+    "commit_advanced_revision_once": true,
+    "curve_state_is_directly_reported": true,
+    "typed_server_accepts_curve_decision": true,
+    "typed_server_reject_restores_controls": true
+  },
+  "pass": true,
+  "claim_boundary": "This proves transaction-owned curve-control rollback and verification. It does not prove a curve matches a reference or that its evaluated surface is artistically correct."
+}
