@@ -1,13 +1,13 @@
 {
   "target_id": "swingline_747_classic",
-  "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
-  "required_views": ["front_left", "right", "top", "rear", "bottom"],
+  "target_variant": "current_747_classic_geometry_family",
+  "required_views": ["front_left", "side", "top_oblique", "open_mechanism"],
   "critical_properties": [
     "outer_lever_profile",
     "base_profile",
     "hinge_and_magazine_relationship",
     "anvil_and_nose_geometry",
-    "underside_feet_and_plate_layout"
+    "top_lever_and_base_cross_sections"
   ],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 2,
@@ -16,7 +16,7 @@
       "reference_id": "zoro_74718_front_left",
       "source_id": "zoro_74718_product_listing",
       "target_id": "swingline_747_classic",
-      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "target_variant": "current_747_classic_geometry_family",
       "purposes": ["PRIMARY_FORM", "DETAIL", "MATERIAL"],
       "view": "front_left",
       "projection": "PERSPECTIVE",
@@ -36,13 +36,13 @@
         }
       ],
       "dimensional_anchors": [],
-      "limitations": ["single perspective elevation", "no direct rear, top, or underside evidence"]
+      "limitations": ["single perspective elevation", "not an orthographic dimensional source"]
     },
     {
       "reference_id": "swingline_747_classic_official",
       "source_id": "swingline_official_747_classic_product_page",
       "target_id": "swingline_747_classic",
-      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "target_variant": "current_747_classic_geometry_family",
       "purposes": ["FUNCTIONAL", "CONSTRUCTION", "MATERIAL"],
       "view": "specification",
       "projection": "UNKNOWN",
@@ -56,43 +56,109 @@
         }
       ],
       "dimensional_anchors": [],
-      "limitations": ["official catalog page is a color/finish sibling and does not provide the complete exact-red multi-view board"]
+      "limitations": ["this source is a current color sibling; it authorizes common construction, not lipstick paint appearance"]
     },
     {
-      "reference_id": "staples_canada_747_envelope",
-      "source_id": "staples_canada_747_product_listing",
+      "reference_id": "acco_74718_official_specification",
+      "source_id": "acco_74718_official_specification_sheet",
       "target_id": "swingline_747_classic",
-      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "target_variant": "current_747_classic_geometry_family",
       "purposes": ["DIMENSION"],
       "view": "specification",
       "projection": "UNKNOWN",
-      "source_tier": "USEFUL_VERIFY",
+      "source_tier": "VERY_HIGH",
       "claims": [
         {
           "property_id": "base_profile",
           "purpose": "DIMENSION",
-          "observation": "The current 747 Classic listing reports a 7.3 x 2.5 x 1.7 inch envelope for the 747 body family.",
-          "confidence": "MEDIUM"
+          "observation": "The official 74718 lipstick specification sheet gives a 7.5 x 2.5 x 1.7 inch envelope.",
+          "confidence": "HIGH"
         }
       ],
-      "dimensional_anchors": ["overall envelope 7.3 x 2.5 x 1.7 in; color is cosmetic, not a geometry authority"],
-      "limitations": ["retailer specification requires corroboration before final precision"]
+      "dimensional_anchors": ["official 74718 overall envelope 7.5 x 2.5 x 1.7 in"],
+      "limitations": ["the sheet does not provide orthographic drawings"]
+    },
+    {
+      "reference_id": "swingline_official_gallery_multiview",
+      "source_id": "swingline_official_747_classic_product_page",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_geometry_family",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "CONSTRUCTION"],
+      "view": "side",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {
+          "property_id": "top_lever_and_base_cross_sections",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The official current 747 gallery includes a clean side elevation plus front/top obliques. It shows the shallow long lever, straight lower base, rear raised housing, front/rear end caps, and continuous closed-state throat.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "anvil_and_nose_geometry",
+          "purpose": "DETAIL",
+          "observation": "Official open and anvil-close views show the rectangular anvil recess, front magazine nose, and exposed rail as separate metal components.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["gallery views are product photographs rather than orthographic drawings", "black and blue color siblings support geometry, not exact lipstick paint"]
+    },
+    {
+      "reference_id": "swingline_official_gallery_top_oblique",
+      "source_id": "swingline_official_747_classic_product_page",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_geometry_family",
+      "purposes": ["PRIMARY_FORM"],
+      "view": "top_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [],
+      "dimensional_anchors": [],
+      "limitations": ["The top is visible obliquely rather than orthographically; it supports crown and seam placement, not projected measurements."]
+    },
+    {
+      "reference_id": "swingline_official_gallery_open_mechanism",
+      "source_id": "swingline_official_747_classic_product_page",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_geometry_family",
+      "purposes": ["CONSTRUCTION", "FUNCTIONAL"],
+      "view": "open_mechanism",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [],
+      "dimensional_anchors": [],
+      "limitations": ["Open-state photos establish assembly boundaries and motion, not the exact closed-state spring tension or hidden fastener geometry."]
     }
   ],
   "research_questions": [
     {
       "question_id": "current_747_cross_sections",
       "property_id": "outer_lever_profile",
-      "question": "What are the current 747 Classic's top, right-side, rear, and base cross-sections, including the cover-to-base gap and rear hinge housing?",
-      "trigger": "The available exact-color elevation is perspective-only and cannot safely establish depth, rear curvature, or hinge thickness.",
+      "question": "What are the current 747 Classic's top, side, rear, and base cross-sections, including the cover-to-base gap and rear hinge housing?",
+      "trigger": "The initial exact-color elevation was perspective-only and could not safely establish depth or rear curvature.",
       "impact": "HIGH",
       "search_queries": [
         "Swingline 747 Classic 74718 top view right side rear",
         "Swingline 747 Classic 74718 360 product images",
         "Swingline 747 Classic 74718 dimensions technical drawing"
       ],
-      "candidates": [],
-      "status": "OPEN"
+      "candidates": [
+        {
+          "candidate_id": "swingline_official_current_gallery",
+          "source_url": "https://www.swingline.com/p/staplers/desktop-staplers/full-size-staplers/747-classic-staplers/",
+          "source_id": "swingline_official_747_classic_product_page",
+          "observed_identity": "Swingline 747 Classic",
+          "observed_variant": "current geometry family; black/blue finish siblings",
+          "purpose": "PRIMARY_FORM",
+          "disposition": "ACCEPTED",
+          "reason": "Official gallery adds clean side elevation, front/top obliques, and open mechanism views that agree with the exact-red silhouette and current family construction.",
+          "accepted_reference_id": "swingline_official_gallery_multiview",
+          "limitations": ["not an orthographic drawing", "finish differs from the lipstick reference"]
+        }
+      ],
+      "status": "RESOLVED",
+      "resolution": "Use the official gallery for closed-form proportions, end-cap transitions, throat depth, and separate mechanism boundaries; use the exact-red 74718 specification for absolute envelope and color."
     },
     {
       "question_id": "current_747_underside",
@@ -117,7 +183,9 @@
           "limitations": ["different production revision", "perspective underside photograph"]
         }
       ],
-      "status": "OPEN"
+      "status": "DEFERRED",
+      "resolution": "The underside is not visible in the approved closed/open hero views. Current-model underside geometry is intentionally excluded until same-revision evidence is found.",
+      "modeling_constraint": "During blockout and review, keep the underside as an unfeatured, reversible base plane; do not add feet, stamps, underside ribs, or an underside latch from the vintage image."
     }
   ]
 }

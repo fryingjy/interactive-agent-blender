@@ -2,10 +2,10 @@
 
 ## Target boundary
 
-Target: current Swingline 747 Classic 74718 lipstick-red geometry family. The color is a surface
-variant; the primary target is the current 747 Classic construction and envelope. This is a
-reference-only phase. The manifest intentionally remains `TARGETED_RESEARCH`; no Blender blockout
-is authorized yet.
+Target: current Swingline 747 Classic geometry family, surfaced as lipstick-red 74718. Current
+official gallery views establish the shared geometry while the exact 74718 official specification
+sets the absolute 7.5 × 2.5 × 1.7 inch envelope and the red surface variant. The board is machine
+ready for a reversible blockout, but not human-authorized for modeling.
 
 ## Local source board
 
@@ -18,6 +18,9 @@ Ignored third-party media is organized by use, with URLs and limitations preserv
   separate magazine, hinge, and spring reasoning, not closed-state dimensions.
 - `media/uncertain/747_vintage_underside.jpg` — rejected vintage underside lead; never use it as
   current-product geometry until the revision is independently established.
+- `media/geometry_sibling/official_555032.jpg`, `official_555034.jpg`, and the accompanying open
+  mechanism/anvil views are downloaded from Swingline's current official 747 gallery. They establish
+  shared geometry only; their black/blue finishes never override the 74718 lipstick reference.
 
 ## What is already observable
 
@@ -58,6 +61,7 @@ Ignored third-party media is organized by use, with URLs and limitations preserv
 
 ## Blocking unknowns
 
-Top/right/rear and current underside evidence are still missing. Until those high-impact questions
-are resolved, no dimensions beyond the provisional overall envelope, no exact rear curvature, and no
-underside feature should be modeled as fact.
+The current underside remains unverified. It is deliberately deferred: no feet, stamps, underside
+ribs, or latch geometry may be inferred from the vintage photo. That geometry stays a reversible,
+unfeatured base plane until same-revision evidence is found. Human visual review of the multi-view
+board is still required before a Blender blockout is authorized.

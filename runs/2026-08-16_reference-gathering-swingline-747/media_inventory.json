@@ -25,6 +25,14 @@
       "download_url": "https://i.etsystatic.com/30511866/r/il/5e62ad/6043052602/il_794xN.6043052602_32n6.jpg",
       "variant": "vintage 94-02",
       "authority_limit": "Rejected for current underside geometry because revision identity differs"
+    },
+    {
+      "path": "media/geometry_sibling/official_555032.jpg, official_555034.jpg, official_555040.jpg, official_555044.jpg",
+      "purpose": ["PRIMARY_FORM", "DETAIL", "CONSTRUCTION"],
+      "source_url": "https://www.swingline.com/p/staplers/desktop-staplers/full-size-staplers/747-classic-staplers/",
+      "download_url": "https://media.accobrands.com/media/560-560/555032.jpg?width=1000px&height=1000px",
+      "variant": "current 747 Classic black/blue geometry siblings",
+      "authority_limit": "Official multi-view geometry and mechanism evidence; color/finish does not authorize lipstick material values"
     }
   ]
 }

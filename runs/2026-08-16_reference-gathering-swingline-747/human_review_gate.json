@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_BOARD_HUMAN_REVIEW_GATE",
+  "target": "Swingline 747 Classic current geometry family / lipstick-red 74718 surface",
+  "machine_reference_audit": "audit_report.json",
+  "machine_disposition": "READY_TO_MODEL",
+  "human_review_status": "PENDING_USER_REVIEW",
+  "modeling_authorized": false,
+  "review_scope": "Authorize only a reversible primary blockout using the stated connected-cage/separate-assembly strategy. It does not approve material, underside detail, or final quality.",
+  "review_questions": [
+    "Does the selected target and reference set show the intended current 747 shape family clearly enough for a reversible blockout?",
+    "Does the plan correctly keep the top cover and base as separate connected cages while keeping rail, anvil, hinge/latch, spring, and feet separate only where physically warranted?",
+    "Are the deferred underside constraints acceptable?"
+  ],
+  "limitation": "Machine readiness and agent inspection do not substitute for this human visual authorization."
+}
