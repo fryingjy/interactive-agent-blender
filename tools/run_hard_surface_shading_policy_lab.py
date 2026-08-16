@@ -96,6 +96,15 @@ def main():
     server.cmd_verify_decision(shade_intent_decision["decision_id"])
     server.cmd_commit_decision(shade_intent_decision["decision_id"])
     angle_intent_audit = hard_surface_shading_audit(angle_intent.name)
+    # Current UI path: Shade Auto Smooth must create a live Smooth by Angle node
+    # modifier, not merely set blanket polygon smoothing. Keep this fixture separate
+    # from the typed `shade_smooth_by_angle` path above because both are legitimate
+    # Blender 5.2 entry points with different sharp-edge preservation controls.
+    bpy.ops.mesh.primitive_cube_add(location=(12.0, 0.0, 0.0))
+    auto_smooth = bpy.context.object
+    auto_smooth.name = "Shade_Auto_Smooth_Current_UI_Box"
+    bpy.ops.object.shade_auto_smooth(use_auto_smooth=True, angle=0.5235987756)
+    auto_smooth_modifiers = list(auto_smooth.modifiers)
     types = [modifier.type for modifier in obj.modifiers]
     assertions = {
         "smooth_by_angle_operator_finished": shading["shading"] == "SMOOTH_BY_ANGLE",
@@ -128,9 +137,17 @@ def main():
         "recorded_angle_intent_matches_actual_modifier": angle_intent_audit["checks"]["angle_or_vgroup_intent_matches_actual"],
         "angle_intent_decision_committed": angle_intent_commit["result_revision"] == angle_intent_decision["observed_revision"] + 1,
         "angle_intent_transaction_verified": angle_intent_verify["after"] is not None,
+        "shade_auto_smooth_creates_live_smooth_by_angle_modifier": (
+            bool(auto_smooth_modifiers)
+            and auto_smooth_modifiers[-1].type == "NODES"
+            and auto_smooth_modifiers[-1].show_viewport
+            and auto_smooth_modifiers[-1].show_render
+            and "smooth by angle" in auto_smooth_modifiers[-1].name.casefold()
+        ),
+        "shade_auto_smooth_marks_faces_smooth": all(poly.use_smooth for poly in auto_smooth.data.polygons),
     }
     OUT.mkdir(parents=True, exist_ok=True)
-    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "angle_scoped_fixture_audit": angle_scoped_audit, "angle_intent_fixture_audit": angle_intent_audit, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}, "angle_scoping": {"begin": angle_intent_decision, "verify": angle_intent_verify, "commit": angle_intent_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
+    report = {"blender_version": bpy.app.version_string, "shading": shading, "weights": weights, "hard_surface_audit": audit, "rejected_fixture_audit": rejected_audit, "angle_scoped_fixture_audit": angle_scoped_audit, "angle_intent_fixture_audit": angle_intent_audit, "auto_smooth_ui_fixture": {"object": auto_smooth.name, "modifiers": [{"name": modifier.name, "type": modifier.type, "show_viewport": modifier.show_viewport, "show_render": modifier.show_render} for modifier in auto_smooth_modifiers], "all_faces_smooth": all(poly.use_smooth for poly in auto_smooth.data.polygons)}, "transactions": {"weight": {"begin": weight_decision, "verify": weight_verify, "commit": weight_commit}, "shading": {"begin": shade_decision, "verify": shade_verify, "commit": shade_commit}, "angle_scoping": {"begin": angle_intent_decision, "verify": angle_intent_verify, "commit": angle_intent_commit}}, "modifier_types": types, "weighted_edges": weighted, "assertions": assertions, "pass": all(assertions.values())}
     (OUT / "hard_surface_shading_policy_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     bpy.ops.wm.save_as_mainfile(filepath=str(OUT / "hard_surface_shading_policy.blend"))
     print(json.dumps(report))

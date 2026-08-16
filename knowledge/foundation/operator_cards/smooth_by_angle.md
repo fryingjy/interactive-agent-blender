@@ -168,7 +168,7 @@ requires looking at the actual shape, not a rule that applies uniformly to every
 
 ## Evidence
 
-`runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report, 18/18
+`runs/2026-08-12_hard-surface-shading-policy/` saves a Blender 5.2 lab scene and JSON report, 20/20
 assertions passing. It verifies four deliberate vertical rails, persistent-ID weight assignment,
 `BEVEL -> SUBSURF` order, and Smooth by Angle without treating blanket smooth shading as the policy.
 A second fixture is unannotated, blanket smooth, and non-uniformly scaled; the audit correctly
