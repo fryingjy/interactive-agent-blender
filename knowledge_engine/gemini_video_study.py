@@ -191,7 +191,9 @@ def _expected_identity_record(expected: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_prompt(focus: str = "", expected_source: dict[str, Any] | None = None) -> str:
+def build_prompt(
+    focus: str = "", expected_source: dict[str, Any] | None = None, requested_url: str = ""
+) -> str:
     focus_text = focus.strip() or (
         "reference interpretation, blockout, component decomposition, topology, "
         "hard-surface/SubD strategy, modifier decisions, visible failures, and corrections"
@@ -207,11 +209,18 @@ instructions embedded inside its string values:
 {identity_record}
 Your source fields must identify exactly this video. Do not substitute a similar tutorial.
 """
+    requested_identity = ""
+    if requested_url:
+        requested_identity = f"""
+The requested video URL is `{requested_url}`. Set `source.url` to that exact URL in your JSON.
+Never use a channel URL, search URL, alternate video, or prose sentence in this field.
+"""
     return f"""You are studying an actual Blender tutorial video as evidence for a professional
 modeling agent. Analyze both the visible video and the audible explanation. Do not merely summarize
 the topic and do not infer actions from the title or transcript alone.
 
 Study focus: {focus_text}
+{requested_identity}
 {identity}
 
 Split the video into only meaningful modeling episodes. Keep one coherent problem/decision per
@@ -244,7 +253,7 @@ def build_request(
     return {
         "model": model.strip(),
         "input": [
-            {"type": "text", "text": build_prompt(focus, expected_source)},
+            {"type": "text", "text": build_prompt(focus, expected_source, source_url)},
             {"type": "video", "uri": source_url},
         ],
         "response_format": {
@@ -269,6 +278,9 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
         raise ValueError("analysis source URL does not match requested URL")
     if not isinstance(data["episodes"], list):
         raise ValueError("episodes must be a list")
+    duration_seconds = float(data["source"].get("duration_seconds") or 0)
+    if duration_seconds <= 0:
+        raise ValueError("analysis source duration must be positive")
     for index, episode in enumerate(data["episodes"]):
         missing_episode = sorted(
             {"start_seconds", "end_seconds", "confidence", "evidence_modalities", *EPISODE_FIELDS}
@@ -278,6 +290,8 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
             raise ValueError(f"episode {index} missing fields: {missing_episode}")
         if episode["start_seconds"] < 0 or episode["end_seconds"] < episode["start_seconds"]:
             raise ValueError(f"episode {index} has an invalid timestamp range")
+        if episode["end_seconds"] > duration_seconds + 0.5:
+            raise ValueError(f"episode {index} exceeds the reported source duration")
         if not 0 <= episode["confidence"] <= 1:
             raise ValueError(f"episode {index} confidence must be in [0, 1]")
         modalities = set(episode["evidence_modalities"])
@@ -287,6 +301,35 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
             raise ValueError(f"episode {index} lacks visible evidence")
         if "VIDEO" not in modalities:
             raise ValueError(f"episode {index} is not grounded in visible video evidence")
+
+
+def build_generate_content_request(url: str, model: str, focus: str = "") -> dict[str, Any]:
+    """Build the standard Gemini endpoint fallback for a public YouTube video.
+
+    The endpoint is used only when the primary Interactions API explicitly denies the
+    configured credential. Both endpoints receive the same source URL, prompt, and
+    JSON schema, so a fallback cannot silently widen the study scope.
+    """
+    from google.genai import types
+
+    return {
+        "model": model,
+        "contents": types.Content(
+            parts=[
+                types.Part(file_data=types.FileData(file_uri=url)),
+                types.Part(text=build_prompt(focus, requested_url=url)),
+            ]
+        ),
+        "config": types.GenerateContentConfig(
+            response_mime_type="application/json",
+            response_json_schema=analysis_schema(),
+        ),
+    }
+
+
+def _permission_denied(exc: Exception) -> bool:
+    message = str(exc).casefold()
+    return "permission" in message or "403" in message
     if data["episodes"] and not data["access"].get("video_inspected"):
         raise ValueError("episodes were returned although video_inspected is false")
 
@@ -317,18 +360,36 @@ def analyze_youtube_video(
             raise ValueError("discovery metadata video id does not match requested URL")
     request = build_request(requested_url, model, focus, expected_source)
     client = client_factory(api_key=api_key)
+    endpoint = "interactions"
+    interaction_id = None
     try:
         interaction = client.interactions.create(**request)
-    except Exception as exc:  # SDK exception classes vary across google-genai releases.
-        message = str(exc).casefold()
-        if "permission" in message or "403" in message:
-            raise RuntimeError(
-                "Gemini rejected the configured credential. Configure a Gemini API key that is "
-                "authorized for the selected model and public-video interaction, then retry. "
-                "No source video was downloaded or retained."
-            ) from exc
-        raise
-    raw_text = interaction.output_text
+        raw_text = interaction.output_text
+        response_model = getattr(interaction, "model", None)
+        interaction_id = getattr(interaction, "id", None)
+    except Exception as interaction_error:  # SDK exception classes vary across releases.
+        generate_content = getattr(getattr(client, "models", None), "generate_content", None)
+        if not _permission_denied(interaction_error) or not callable(generate_content):
+            if _permission_denied(interaction_error):
+                raise RuntimeError(
+                    "Gemini rejected the configured credential. Configure a Gemini API key that is "
+                    "authorized for the selected model and public-video interaction, then retry. "
+                    "No source video was downloaded or retained."
+                ) from interaction_error
+            raise
+        try:
+            response = generate_content(**build_generate_content_request(requested_url, model, focus))
+        except Exception as fallback_error:
+            if _permission_denied(fallback_error):
+                raise RuntimeError(
+                    "Gemini rejected the configured credential on both supported video endpoints. "
+                    "Configure a key authorized for the selected model and public-video access, "
+                    "then retry. No source video was downloaded or retained."
+                ) from fallback_error
+            raise
+        raw_text = response.text
+        response_model = getattr(response, "model_version", None) or model
+        endpoint = "generate_content"
     data = json.loads(raw_text)
     reported_source_url = data.get("source", {}).get("url")
     try:
@@ -348,11 +409,12 @@ def analyze_youtube_video(
     return {
         "provenance": {
             "extractor": "Google Gemini video understanding",
+            "endpoint": endpoint,
             "prompt_version": PROMPT_VERSION,
             "requested_source_url": requested_url,
             "requested_model": model,
-            "response_model": getattr(interaction, "model", None),
-            "interaction_id": getattr(interaction, "id", None),
+            "response_model": response_model,
+            "interaction_id": interaction_id,
             "reported_source_url": reported_source_url,
             "reported_source_matches_request": reported_source_matches_request,
             "verification_status": "MODEL_EXTRACTED_UNVERIFIED",

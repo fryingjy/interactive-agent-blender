@@ -9,6 +9,7 @@ from knowledge_engine.gemini_video_study import (
     apply_independent_episode_reviews,
     analyze_youtube_video,
     build_request,
+    build_generate_content_request,
     load_dotenv,
     validate_analysis,
     validate_expected_source,
@@ -82,8 +83,16 @@ class GeminiVideoStudyTests(unittest.TestCase):
         request = build_request("https://youtu.be/abc123")
         self.assertEqual(request["input"][1]["type"], "video")
         self.assertEqual(request["input"][1]["uri"], "https://youtu.be/abc123")
+        self.assertIn("https://youtu.be/abc123", request["input"][0]["text"])
         self.assertEqual(request["response_format"]["mime_type"], "application/json")
         self.assertIn("observed_fact", request["response_format"]["schema"]["properties"]["episodes"]["items"]["required"])
+
+    def test_generate_content_fallback_keeps_url_prompt_and_schema(self):
+        request = build_generate_content_request("https://youtu.be/abc123", "gemini-test")
+        self.assertEqual(request["model"], "gemini-test")
+        self.assertEqual(request["contents"].parts[0].file_data.file_uri, "https://youtu.be/abc123")
+        self.assertEqual(request["config"].response_mime_type, "application/json")
+        self.assertIn("episodes", request["config"].response_json_schema["properties"])
 
     def test_request_binds_discovery_identity_into_prompt(self):
         expected = {
@@ -102,6 +111,12 @@ class GeminiVideoStudyTests(unittest.TestCase):
         data = _analysis()
         data["episodes"][0]["evidence_modalities"] = ["CAPTIONS"]
         with self.assertRaisesRegex(ValueError, "visible video"):
+            validate_analysis(data, data["source"]["url"])
+
+    def test_validation_rejects_episode_beyond_reported_duration(self):
+        data = _analysis()
+        data["episodes"][0]["end_seconds"] = 101
+        with self.assertRaisesRegex(ValueError, "exceeds the reported source duration"):
             validate_analysis(data, data["source"]["url"])
 
     def test_validation_rejects_url_substitution(self):
@@ -207,6 +222,32 @@ class GeminiVideoStudyTests(unittest.TestCase):
                     "https://www.youtube.com/watch?v=abc123", client_factory=Client
                 )
         self.assertNotIn("private-test-key", str(error.exception))
+
+    def test_permission_denial_falls_back_to_generate_content(self):
+        url = "https://www.youtube.com/watch?v=abc123"
+
+        class InteractionClient:
+            def create(self, **request):
+                raise RuntimeError("403 The caller does not have permission")
+
+        class Response:
+            text = json.dumps(_analysis(url))
+            model_version = "gemini-generate-test"
+
+        class Models:
+            def generate_content(self, **request):
+                self.request = request
+                return Response()
+
+        class Client:
+            def __init__(self, api_key):
+                self.interactions = InteractionClient()
+                self.models = Models()
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "secret"}, clear=False):
+            result = analyze_youtube_video(url, client_factory=Client)
+        self.assertEqual(result["provenance"]["endpoint"], "generate_content")
+        self.assertEqual(result["provenance"]["response_model"], "gemini-generate-test")
 
     def test_write_analysis_round_trips_utf8_json(self):
         with tempfile.TemporaryDirectory() as directory:

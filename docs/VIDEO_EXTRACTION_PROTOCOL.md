@@ -44,7 +44,9 @@ diagnose the failure, and what alternative strategies exist."
 
 The previously used Gemini method is now executable through
 `tools/analyze_video_with_gemini.py`. It uses Google's official `google-genai` SDK and passes a
-public YouTube URL directly as video input; it does not download or archive the video.
+public YouTube URL directly as video input; it does not download or archive the video. The
+Interactions endpoint is primary. Only an explicit authorization denial may trigger an equivalent
+`generateContent` request, and retained provenance identifies the endpoint that actually responded.
 
 ```powershell
 python tools/analyze_video_with_gemini.py `
@@ -93,6 +95,11 @@ proved why this is mandatory: an unconstrained call returned a coherent analysis
 different tutorial. The earlier Gemini pipeline-validation artifact is retroactively rejected for
 the same URL mismatch. Request-owned URL rewriting is forbidden because it can hide cross-video
 attribution.
+
+The reported source duration is also a hard boundary: every extracted episode must end within that
+duration (with only a 0.5-second numeric tolerance). An extraction that exceeds its own reported
+duration is rejected before it becomes candidate evidence. The retained 2026-08-16 reference-image
+access check is a rejected example and produced no promoted knowledge.
 
 Use `tools/discover_video_lessons.py` to create metadata-only queues. Discovery uses no media
 download and promotes no knowledge; popularity and title fit are only triage signals. Bind a queued
