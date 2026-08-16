@@ -31,7 +31,17 @@ layout has zero degenerate UV faces and `0.12050` world texel-ratio CV. A real C
 Selected-to-Active tangent bake from a 1,602-vertex detailed source to a 50-vertex low mesh produced
 27,552 non-neutral pixels. The missing-high-source failure was reproduced, and both meshes passed
 fresh-process verification. This replaces the earlier synthetic-normal-map-only evidence with an
-actual high/low bake, but production transfer remains pending.
+actual high/low bake. That historical run is no longer retained and cannot serve as current
+reproduction evidence by itself.
+
+`runs/2026-08-16_uv-seam-production-transfer/` restores current Blender 5.2 evidence and transfers
+the seam mechanism across a radial tube and a bent rounded-rectangular tube. Each high/low source is
+one connected all-quad cage with live unapplied Solidify→Bevel modifiers. One longitudinal seam
+opens each periodic low cage into one measured UV island. Against matched no-seam controls, mean
+corner-angle error falls from `15.00°` to `1.87°` and from `14.82°` to `0.66°`. Both UV layouts are
+nondegenerate and packed in the unit tile; both tangent bakes, three-view production audits,
+low-only GLB imports, and fresh source checks pass. This is controlled tube-family transfer, not a
+universal seam layout or real-asset runtime use.
 
 ## Verification
 

@@ -1,12 +1,12 @@
 {
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
-  "record_count": 78,
+  "record_count": 79,
   "missing_artifact_count": 62,
   "unclassified_missing_artifact_count": 0,
   "classified_missing_artifact_count": 62,
   "explicitly_non_retained_count": 13,
-  "non_path_reference_count": 43,
+  "non_path_reference_count": 45,
   "locally_reproducible": false,
   "missing_artifacts": [],
   "classified_missing_artifacts": [
@@ -1314,6 +1314,11 @@
       "path": "knowledge/foundation/operator_cards/uv_foundations.md"
     },
     {
+      "source_id": "blender-fundamentals-uv-unwrapping-video",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/uv-seam-graph-connected-tube.json"
+    },
+    {
       "source_id": "blender-fundamentals-intro-sculpting-video",
       "field": "metadata.skills",
       "path": "knowledge/foundation/operator_cards/sculpt_foundations.md"
@@ -1467,6 +1472,11 @@
       "source_id": "professional-blend-ak47",
       "field": "local_path",
       "path": "C:\\Users\\odane\\Downloads\\blender\\blend\\ak47.blend"
+    },
+    {
+      "source_id": "experiment-uv-seam-production-transfer-2026-08-16",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/uv-seam-graph-connected-tube.json"
     }
   ],
   "claim_boundary": "Classified non-retained evidence remains unavailable for local reproduction. The ledger explains its retention state but does not turn it into a passing artifact or prove the external source claim."

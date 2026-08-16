@@ -110,24 +110,24 @@
       "id": "13",
       "title": "Research and knowledge lifecycle",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json"],
-      "current_boundary": "Source observation, bounded episode review, and experimental promotion exist; long-horizon skill reuse remains incomplete.",
+      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge/skills/uv-seam-graph-connected-tube.json"],
+      "current_boundary": "Source observation, bounded episode review, and two-family UV reproduction/transfer exist; real-asset runtime use and long-horizon skill reuse remain incomplete.",
       "next_step": "Promote only techniques that are reproduced, transferred, and then used on an authorized asset."
     },
     {
       "id": "14",
       "title": "Controlled experiments and retrieval",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json"],
-      "current_boundary": "Controlled labs, retrieval cases, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader transfer remain open.",
+      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json", "runs/2026-08-16_uv-seam-production-transfer/"],
+      "current_boundary": "Controlled labs, 20 retrieval positive/abstention cases, a two-family UV transfer, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader real-asset transfer remain open.",
       "next_step": "Obtain an independent delayed assessment and reuse validated knowledge on a fresh human-authorized asset."
     },
     {
       "id": "15",
       "title": "Quality and completion",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/high_low_audit.py", "tools/run_production_high_low_audit_lab.py", "runs/2026-08-15_production-high-low-audit/fresh_source_audit.json", "knowledge_engine/quality_review.py"],
-      "current_boundary": "Production high/low packaging and quality checks are demonstrated in controlled cases, not on a reviewer-accepted unfamiliar asset.",
+      "evidence": ["knowledge_engine/high_low_audit.py", "tools/run_production_high_low_audit_lab.py", "runs/2026-08-15_production-high-low-audit/fresh_source_audit.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge_engine/quality_review.py"],
+      "current_boundary": "Production high/low packaging, seam-directed UV transfer, bakes, exports, and quality checks are demonstrated across controlled cases, not on a reviewer-accepted unfamiliar asset.",
       "next_step": "Apply the complete quality checklist to an approved prop and preserve live, unapplied modifier stacks."
     },
     {

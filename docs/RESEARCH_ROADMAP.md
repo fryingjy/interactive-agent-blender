@@ -1045,3 +1045,18 @@ use flat-panel Weighted Normal success as a blanket curved-skin policy; and repa
 when the restored baseline remains wrong. This is controlled radial/taper transfer, not arbitrary
 double curvature, SubD transfer, a human-reviewed prop, or runtime validation. Swingline remains
 externally gated.
+
+## Update -- 2026-08-16 (official seam lesson returned to current production evidence)
+
+`runs/2026-08-16_uv-seam-production-transfer/` closes a real provenance gap: the official UV
+episode had independent frame/speech review, but its older Blender reproduction was no longer
+retained and the current high/low fixture used Smart Project. Blender 5.2 now reproduces one
+longitudinal cut on a connected 12-sided radial tube and transfers it to a bent rounded-rectangle.
+
+Matched no-seam controls measure `15.00°` and `14.82°` mean corner-angle error; authored layouts
+measure `1.87°` and `0.66°`. Both high/low pairs are separate, independent, one-component all-quad
+cages with live Solidify→Bevel stacks. Evaluated shells are closed, three-view production audits
+pass, tangent bakes are packed Non-Color data connected through Tangent Normal nodes, and fresh GLB
+imports contain one low mesh with UVs and material. The retrieval benchmark also exposed and fixed
+an over-broad first draft: generic UV overlap-after-pack still abstains. The promoted skill remains
+controlled `TRANSFER_VALIDATED`; Swingline production use still requires human authorization.

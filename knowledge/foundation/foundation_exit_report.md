@@ -381,6 +381,14 @@ dedicated recorder; audit and construction-plan digests prevent an approval from
 across changed evidence, and approval is limited to a reversible primary blockout. This completes
 the handoff mechanism but does not supply the still-missing human decision.
 
+While that external gate remains pending, current production evidence was strengthened without
+touching the target. The verified official seam-directed UV episode now has a current Blender 5.2
+radial reproduction and bent rounded-rectangle transfer with matched no-seam controls, measured
+angle distortion, connected all-quad source cages, live modifiers, tangent bakes, low-only exports,
+and fresh verification. This promotes one narrow seam policy to `TRANSFER_VALIDATED`; it does not
+change the overall **PARTIAL** decision because real-asset runtime use and human acceptance remain
+missing.
+
 ### 2026-08-15 secondary-view strategy update
 
 A controlled Blender 5.2 experiment now proves one narrow depth-reasoning mechanism across

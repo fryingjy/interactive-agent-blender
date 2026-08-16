@@ -37,6 +37,9 @@ Current evidence includes:
   plan, with a fail-closed recorder for approval or correction.
 - a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
   rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs.
+- a current two-family seam-directed UV production transfer whose connected all-quad high/low
+  sources keep live modifiers, outperform matched no-seam controls, bake tangent normals, and
+  round-trip as low-only GLBs under an independent Blender verifier.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

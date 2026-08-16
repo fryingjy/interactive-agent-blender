@@ -1,0 +1,88 @@
+{
+  "skill_id": "uv.seam_graph.connected_tube_unwrap",
+  "title": "Open a connected tube cage with one purposeful longitudinal UV seam",
+  "topic_tags": [
+    "UV",
+    "seam graph",
+    "connected tube",
+    "angle distortion",
+    "tangent normal bake",
+    "production prep"
+  ],
+  "applicability": {
+    "modeling_stage": ["PRODUCTION_PREP"],
+    "workflow": ["seam-directed texture-coordinate unwrap", "high-poly low-poly production"],
+    "surface_type": ["open-ended tube", "radial housing", "bent rounded-rectangular housing"],
+    "defect": ["closed-loop unwrap angle distortion", "missing purposeful seam", "UV layer exists but layout is poor"],
+    "local_topology": ["one connected periodic quad strip", "two open boundary loops"],
+    "modifiers_involved": ["SOLIDIFY", "BEVEL"]
+  },
+  "preconditions": [
+    "the base cage is one connected periodic strip with open boundary loops",
+    "the intended cut can run continuously between the two open boundaries",
+    "the seam location is acceptable for the material, camera coverage, and bake workflow"
+  ],
+  "required_observations": [
+    "base-cage connectivity and face types",
+    "intended hidden or least-visible longitudinal cut path",
+    "UV degeneracy, tile bounds, island connectivity, corner-angle error, and area-ratio variation",
+    "tangent-bake signal and material node connection",
+    "live source modifiers and low-only export contents"
+  ],
+  "action_policy": [
+    "Mark one continuous longitudinal path from one open boundary to the other before unwrapping the periodic strip.",
+    "Treat the open boundary loops as existing cut boundaries; do not add arbitrary circumferential seams unless a second island is intentionally required.",
+    "Run Unwrap, normalize island scale, place the result in the declared tile, and then measure layout quality rather than accepting the presence of a UV layer.",
+    "Keep high and low source objects in separate collections with independent cages and live unapplied modifiers.",
+    "Validate the tangent bake as Non-Color data connected through a Tangent Normal Map and inspect the exported low payload independently."
+  ],
+  "expected_effects": [
+    "a single continuous UV island for the tested open tube families",
+    "lower corner-angle distortion than the matched no-seam periodic cage",
+    "a retainable low source suitable for tangent baking and export"
+  ],
+  "failure_predicates": [
+    "the seam path branches, stops before a boundary, or crosses a required visible feature",
+    "the unwrap contains degenerate faces, leaves the declared tile, overlaps, or has unacceptable distortion",
+    "the chosen one-island layout produces an extreme aspect ratio or packing waste that a deliberate split would improve",
+    "the evaluated shell is non-manifold or the bake lacks meaningful surface signal"
+  ],
+  "recovery": [
+    "move the longitudinal seam to a less visible path and remeasure",
+    "split an extreme-aspect strip deliberately when packing or texel use justifies the extra seam",
+    "repair cage density or shape before attempting to hide geometric distortion with UV operations",
+    "reject the bake and inspect cage distance, ray settings, normals, and the selected-to-active source set"
+  ],
+  "sources": [
+    {
+      "type": "verified_official_training_video_episode",
+      "source_id": "blender-fundamentals-uv-unwrapping-video",
+      "evidence_path": "runs/2026-08-16_real-video-uv-review/episode_review.json",
+      "description": "Independent frame-and-speech review verifies that seams are authored as deliberate cut boundaries before Unwrap and the resulting islands are inspected."
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled reproduction and different-shape transfer",
+      "evidence_path": "runs/2026-08-16_uv-seam-production-transfer/",
+      "source_family": "12-sided radial housing",
+      "transfer_family": "bent rounded-rectangular housing",
+      "result": "PASS",
+      "measurements": {
+        "radial_authored_mean_corner_error_degrees": 1.87,
+        "radial_no_seam_mean_corner_error_degrees": 15.0,
+        "bent_rect_authored_mean_corner_error_degrees": 0.66,
+        "bent_rect_no_seam_mean_corner_error_degrees": 14.82,
+        "source_cages_all_quad": true,
+        "evaluated_shells_closed": true,
+        "production_audits_passed": 2,
+        "fresh_verification_pass": true
+      },
+      "limitations": "Controlled open-ended tube-like cages only; the rule does not choose seams for arbitrary real assets, branching surfaces, characters, or extreme-aspect packing cases."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Source concepts from Blender 2.80 official training; reproduced and transferred in Blender 5.2.0 LTS",
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "The source episode is independently verified and the policy passes a fresh-process two-family Blender transfer with a matched no-seam failure control. Real-asset runtime use and human production review remain open."
+}

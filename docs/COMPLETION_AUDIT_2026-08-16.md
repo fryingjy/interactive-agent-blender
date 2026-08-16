@@ -36,6 +36,10 @@ directive. It is deliberately not a declaration of professional-modeler completi
 - `tools/verify_reference_board_gate.py` — the pending Swingline human gate matches the exact
   machine audit and construction plan. The separate recorder rejects agent authority, stale
   evidence, contradictory authorization, malformed timestamps, and unlocalized corrections.
+- `runs/2026-08-16_uv-seam-production-transfer/` — a verified official UV episode is reproduced on
+  a radial tube and transferred to a bent rounded-rectangle. Authored seams reduce mean angle error
+  from `15.00°→1.87°` and `14.82°→0.66°`; fresh checks preserve connected all-quad source cages,
+  live modifiers, tangent bakes, and low-only exports.
 
 ## Directive requirement status
 
@@ -46,7 +50,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, current official Swingline gallery/specification records, and exact-variant feature evidence | Implemented and bounded; the continuous rubber pad is evidenced while hidden underside detail remains explicitly deferred |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion remains evidence-gated |
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
-| Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |
+| Core topology/modifier/UV/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
 | Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
 | Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder and current Swingline board | Enforced with a complete return path; **pending an actual external decision** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |

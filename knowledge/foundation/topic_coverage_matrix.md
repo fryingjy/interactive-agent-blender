@@ -114,3 +114,10 @@ and a fresh engine import verify UVs, explicit package tangents, normal-texture 
 unit scale, and axis-converted dimensions. A Base-Color miswiring control proves that successful
 import alone does not preserve tangent-normal semantics. This strengthens export/runtime evidence,
 but does not establish production texture quality across compression, mip levels, or engines.
+
+Current Blender reproducibility is restored in
+`runs/2026-08-16_uv-seam-production-transfer/`. A verified official seam episode is reproduced on
+a radial connected tube and transferred to a bent rounded-rectangle. Matched no-seam controls are
+substantially more angle-distorted, while both authored high/low pairs retain connected all-quad
+source cages, live Solidify→Bevel stacks, tangent bakes, three-view shape audits, and low-only GLB
+round trips. This is controlled transfer, not real-prop production approval.

@@ -1188,7 +1188,7 @@
     "creator": "Blender",
     "source_type": "official_training_video_cc_mirror",
     "trust_tier": "A",
-    "version": "Blender 2.80 concepts; verified against Blender 5.2 evidence on 2026-08-10",
+    "version": "Blender 2.80 concepts; independently reviewed and transferred in Blender 5.2 on 2026-08-16",
     "topics": [
       "uv",
       "seams",
@@ -1218,15 +1218,18 @@
       "direct_observations": [
         "Standard Unwrap uses authored seams; projection and automatic algorithms are alternative strategies rather than universal replacements",
         "Project from View can pass one view while stretching perpendicular faces",
-        "The seam explanation reasons from desired island connectivity and cut-open behavior"
+        "The seam explanation reasons from desired island connectivity and cut-open behavior",
+        "A current two-family Blender transfer measures large corner-angle improvement against matched no-seam controls while preserving live source modifiers, tangent bakes, and low-only exports"
       ],
       "experiments": [
         "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-uv-unwrapping/video_ingest_report.json",
         "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json",
-        "runs/2026-08-16_real-video-uv-review/episode_review.json"
+        "runs/2026-08-16_real-video-uv-review/episode_review.json",
+        "runs/2026-08-16_uv-seam-production-transfer/"
       ],
       "skills": [
-        "knowledge/foundation/operator_cards/uv_foundations.md"
+        "knowledge/foundation/operator_cards/uv_foundations.md",
+        "knowledge/skills/uv-seam-graph-connected-tube.json"
       ]
     }
   },
@@ -2768,6 +2771,36 @@
         "No human decision has been supplied or retained",
         "Reviewer identity is an explicit claim rather than cryptographic proof",
         "This validates authorization integrity, not reference quality or modeling ability"
+      ]
+    }
+  },
+  {
+    "id": "experiment-uv-seam-production-transfer-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_uv-seam-production-transfer/",
+    "title": "Seam-Directed UV Production Reproduction and Transfer",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["UV", "seams", "angle-distortion", "high-low", "normal-bake", "export", "connected-topology"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "MatCap_render", "wireframe_render", "UV_metrics", "tangent_bake", "GLB_roundtrip", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_uv-seam-production-transfer/"],
+      "skills": ["knowledge/skills/uv-seam-graph-connected-tube.json"],
+      "direct_observations": [
+        "One longitudinal seam reduces mean corner-angle error from 15.00 to 1.87 degrees on a radial tube and from 14.82 to 0.66 degrees on a bent rounded-rectangle",
+        "Both purpose-authored low cages contain at most 30 percent of their high cage face count while preserving three-view silhouette gates",
+        "Fresh Blender verification confirms separate collections, independent connected all-quad cages, live Solidify and Bevel stacks, closed evaluated shells, packed Non-Color tangent bakes, and low-only GLB payloads",
+        "The first retrieval wording incorrectly captured a generic UV-pack ticket; narrowing the workflow restores all positive and abstention controls"
+      ],
+      "limitations": [
+        "Controlled open-ended tube-like cages only",
+        "No runtime use on a human-authorized real prop",
+        "No universal seam placement, texture-quality, or cross-engine compression claim"
       ]
     }
   }

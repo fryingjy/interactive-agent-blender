@@ -1,7 +1,7 @@
 {
-  "version": 4,
+  "version": 5,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 add paired positive/nearby-abstention cases after new reference skills were introduced. These are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 adds one seam-directed UV positive while preserving the generic UV-pack abstention that caught and narrowed an over-broad first draft. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -99,6 +99,13 @@
       "kind": "positive",
       "context": {"query": "low poly is only an equal base cage duplicate and modifiers must stay unapplied for user", "modeling_stage": "PRODUCTION_PREP", "workflow": "high-poly low-poly production audit", "defect": "equal base cage mislabeled as retopology"},
       "expected_top_skill": "production.high_low.readiness_audit",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "uv_connected_tube_missing_seam",
+      "kind": "positive",
+      "context": {"query": "periodic tube unwrap has severe angle distortion because no longitudinal cut opens the strip", "modeling_stage": "PRODUCTION_PREP", "workflow": "seam-directed texture-coordinate unwrap", "surface_type": "open-ended tube", "defect": "missing purposeful seam", "local_topology": ["one connected periodic quad strip"], "modifiers": ["SOLIDIFY", "BEVEL"]},
+      "expected_top_skill": "uv.seam_graph.connected_tube_unwrap",
       "minimum_top_margin": 1.0
     },
     {

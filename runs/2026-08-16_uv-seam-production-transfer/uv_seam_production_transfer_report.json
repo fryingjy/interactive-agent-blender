@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "experiment": "official_video_seam_directed_uv_production_transfer",
+  "blender_version": "5.2.0 LTS",
+  "source_episode": "runs/2026-08-16_real-video-uv-review/episode_review.json",
+  "hypothesis": "An authored longitudinal cut on a connected tube cage lowers unwrap angle distortion versus an otherwise identical no-seam cage, while preserving a production-ready editable source.",
+  "frozen_thresholds": {
+    "minimum_silhouette_iou": 0.9,
+    "minimum_bake_non_neutral_pixels": 500,
+    "minimum_mean_angle_error_improvement_degrees": 0.25
+  },
+  "families": {
+    "radial": {
+      "settings": {
+        "low_segments": 12,
+        "high_segments": 16,
+        "low_rings": 5,
+        "high_rings": 13
+      },
+      "objects": {
+        "high": "radial_HIGH",
+        "low": "radial_LOW",
+        "no_seam_control": "radial_NO_SEAM_CONTROL"
+      },
+      "base_topology": {
+        "high": {
+          "vertices": 208,
+          "edges": 400,
+          "faces": 192
+        },
+        "low": {
+          "vertices": 60,
+          "edges": 108,
+          "faces": 48
+        },
+        "all_base_faces_are_quads": true
+      },
+      "live_modifiers": {
+        "high": [
+          "SOLIDIFY",
+          "BEVEL"
+        ],
+        "low": [
+          "SOLIDIFY",
+          "BEVEL"
+        ]
+      },
+      "authored_seam_edges": 4,
+      "authored_uv": {
+        "layer": "UVMap",
+        "seam_edges": 4,
+        "island_count": 1,
+        "loop_count": 192,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.008015164265608554,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 0.10566952659219442,
+        "mean_corner_angle_error_degrees": 1.8711753993425688,
+        "max_corner_angle_error_degrees": 5.037600774303584
+      },
+      "no_seam_control_uv": {
+        "layer": "UVMap",
+        "seam_edges": 0,
+        "island_count": 1,
+        "loop_count": 192,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.00042332734855055065,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 1.4013436836060518,
+        "mean_corner_angle_error_degrees": 14.999999987069913,
+        "max_corner_angle_error_degrees": 29.327499008765223
+      },
+      "evaluated_health": {
+        "high": {
+          "vertices": 544,
+          "edges": 1088,
+          "faces": 544,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        },
+        "low": {
+          "vertices": 216,
+          "edges": 432,
+          "faces": 216,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        }
+      },
+      "silhouette_iou_by_view": {
+        "front": 0.993604,
+        "side": 0.993604,
+        "top": 0.90236
+      },
+      "production_audit": {
+        "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+        "checks": {
+          "separate_collections": true,
+          "independent_mesh_datablocks": true,
+          "purpose_authored_lower_topology": true,
+          "single_connected_component_each": true,
+          "low_uv_ready": true,
+          "multiview_shape_preserved": true,
+          "current_modifier_stacks_live": true
+        },
+        "pass": true,
+        "editable_variant_only": false,
+        "face_ratio": 0.25,
+        "thresholds": {
+          "max_low_to_high_face_ratio": 0.65,
+          "minimum_silhouette_iou": 0.9,
+          "minimum_view_count": 2,
+          "require_live_modifiers": true
+        },
+        "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+        "failures": []
+      },
+      "bake": {
+        "operator_result": [
+          "FINISHED"
+        ],
+        "path": "runs\\2026-08-16_uv-seam-production-transfer\\radial_tangent_normal.png",
+        "colorspace": "Non-Color",
+        "metrics": {
+          "width": 256,
+          "height": 256,
+          "non_neutral_pixels": 3980,
+          "channel_standard_deviation": [
+            0.03789489286827338,
+            0.007453694635516508,
+            0.012185932287796334
+          ]
+        }
+      },
+      "export": "runs\\2026-08-16_uv-seam-production-transfer\\radial_low.glb"
+    },
+    "bent_rect": {
+      "settings": {
+        "low_segments": 12,
+        "high_segments": 16,
+        "low_rings": 6,
+        "high_rings": 15
+      },
+      "objects": {
+        "high": "bent_rect_HIGH",
+        "low": "bent_rect_LOW",
+        "no_seam_control": "bent_rect_NO_SEAM_CONTROL"
+      },
+      "base_topology": {
+        "high": {
+          "vertices": 240,
+          "edges": 464,
+          "faces": 224
+        },
+        "low": {
+          "vertices": 72,
+          "edges": 132,
+          "faces": 60
+        },
+        "all_base_faces_are_quads": true
+      },
+      "live_modifiers": {
+        "high": [
+          "SOLIDIFY",
+          "BEVEL"
+        ],
+        "low": [
+          "SOLIDIFY",
+          "BEVEL"
+        ]
+      },
+      "authored_seam_edges": 5,
+      "authored_uv": {
+        "layer": "UVMap",
+        "seam_edges": 5,
+        "island_count": 1,
+        "loop_count": 240,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.004143795568878561,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 0.03616312558564877,
+        "mean_corner_angle_error_degrees": 0.6608183144456127,
+        "max_corner_angle_error_degrees": 2.738606387468323
+      },
+      "no_seam_control_uv": {
+        "layer": "UVMap",
+        "seam_edges": 0,
+        "island_count": 1,
+        "loop_count": 240,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.00011160325785386505,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 1.408641710575166,
+        "mean_corner_angle_error_degrees": 14.821681415034258,
+        "max_corner_angle_error_degrees": 29.448626189688255
+      },
+      "evaluated_health": {
+        "high": {
+          "vertices": 1152,
+          "edges": 2304,
+          "faces": 1152,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        },
+        "low": {
+          "vertices": 440,
+          "edges": 880,
+          "faces": 440,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        }
+      },
+      "silhouette_iou_by_view": {
+        "front": 0.994931,
+        "side": 0.980982,
+        "top": 0.936226
+      },
+      "production_audit": {
+        "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+        "checks": {
+          "separate_collections": true,
+          "independent_mesh_datablocks": true,
+          "purpose_authored_lower_topology": true,
+          "single_connected_component_each": true,
+          "low_uv_ready": true,
+          "multiview_shape_preserved": true,
+          "current_modifier_stacks_live": true
+        },
+        "pass": true,
+        "editable_variant_only": false,
+        "face_ratio": 0.26785714285714285,
+        "thresholds": {
+          "max_low_to_high_face_ratio": 0.65,
+          "minimum_silhouette_iou": 0.9,
+          "minimum_view_count": 2,
+          "require_live_modifiers": true
+        },
+        "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+        "failures": []
+      },
+      "bake": {
+        "operator_result": [
+          "FINISHED"
+        ],
+        "path": "runs\\2026-08-16_uv-seam-production-transfer\\bent_rect_tangent_normal.png",
+        "colorspace": "Non-Color",
+        "metrics": {
+          "width": 256,
+          "height": 256,
+          "non_neutral_pixels": 18639,
+          "channel_standard_deviation": [
+            0.025890175188045404,
+            0.04875956897424243,
+            0.009209895483937438
+          ]
+        }
+      },
+      "export": "runs\\2026-08-16_uv-seam-production-transfer\\bent_rect_low.glb"
+    }
+  },
+  "checks": {
+    "two_shape_families": true,
+    "all_source_cages_connected_and_all_quad": true,
+    "all_source_modifiers_live_and_unapplied": true,
+    "authored_cut_graph_is_one_longitudinal_path": true,
+    "authored_uvs_are_valid_and_packed": true,
+    "no_seam_control_has_worse_mean_angle_error": true,
+    "evaluated_shells_closed_and_clean": true,
+    "both_production_audits_pass": true,
+    "both_tangent_bakes_have_signal": true,
+    "both_low_only_exports_exist": true
+  },
+  "pass": true,
+  "render_records": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_high_front.png",
+      "view": "front",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2438
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_low_front.png",
+      "view": "front",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2432
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_high_side.png",
+      "view": "side",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2438
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_low_side.png",
+      "view": "side",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2432
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_high_top.png",
+      "view": "top",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.0693
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\radial_low_top.png",
+      "view": "top",
+      "resolution": 320,
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.0677
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\radial_high_matcap.png",
+      "pass_type": "matcap",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        480,
+        480
+      ],
+      "target_objects": [
+        "radial_HIGH"
+      ],
+      "frame_objects": [
+        "radial_HIGH"
+      ],
+      "camera_location": [
+        5.40378475189209,
+        -5.40378475189209,
+        5.40378475189209
+      ],
+      "camera_ortho_scale": 5.3817868628399,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.26049,
+      "foreground_unique_colors_5bit": 95,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\radial_low_wireframe.png",
+      "pass_type": "wireframe",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        480,
+        480
+      ],
+      "target_objects": [
+        "radial_LOW"
+      ],
+      "frame_objects": [
+        "radial_LOW"
+      ],
+      "camera_location": [
+        5.406290054321289,
+        -5.406290054321289,
+        5.406290054321289
+      ],
+      "camera_ortho_scale": 5.384282253792778,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.072144,
+      "foreground_unique_colors_5bit": 4,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_high_front.png",
+      "view": "front",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2769
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_low_front.png",
+      "view": "front",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.2766
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_high_side.png",
+      "view": "side",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.1818
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_low_side.png",
+      "view": "side",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.1854
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_high_top.png",
+      "view": "top",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.0769
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\silhouettes\\bent_rect_low_top.png",
+      "view": "top",
+      "resolution": 320,
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "silhouette_fill_ratio": 0.0752
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\bent_rect_high_matcap.png",
+      "pass_type": "matcap",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        480,
+        480
+      ],
+      "target_objects": [
+        "bent_rect_HIGH"
+      ],
+      "frame_objects": [
+        "bent_rect_HIGH"
+      ],
+      "camera_location": [
+        5.0608673095703125,
+        -5.06084680557251,
+        5.060849189758301
+      ],
+      "camera_ortho_scale": 5.040245604205075,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.277943,
+      "foreground_unique_colors_5bit": 92,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_uv-seam-production-transfer\\bent_rect_low_wireframe.png",
+      "pass_type": "wireframe",
+      "view": "isometric",
+      "projection": "ORTHO",
+      "resolution": [
+        480,
+        480
+      ],
+      "target_objects": [
+        "bent_rect_LOW"
+      ],
+      "frame_objects": [
+        "bent_rect_LOW"
+      ],
+      "camera_location": [
+        5.051028728485107,
+        -5.050985336303711,
+        5.050989627838135
+      ],
+      "camera_ortho_scale": 5.030424003917485,
+      "scene_revision": null,
+      "foreground_fill_ratio": 0.092578,
+      "foreground_unique_colors_5bit": 3,
+      "dominant_channel_pixel_counts": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      }
+    }
+  ],
+  "claim_boundary": "Controlled connected radial and bent rounded-rectangular tube families only. This proves that seam placement changes these unwraps and that the retained source remains production-inspectable; it does not author UVs for an unreviewed real prop or prove universal seam placement."
+}

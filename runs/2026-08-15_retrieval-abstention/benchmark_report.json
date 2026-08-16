@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 19,
+  "case_count": 20,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -508,7 +508,7 @@
       "expected_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
       "actual_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 13.8469,
+      "actual_top_margin": 8.868,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -522,6 +522,38 @@
             "workflow": 2.8284,
             "surface_type": 0.0,
             "defect": 2.8868,
+            "local_topology": 0.0,
+            "modifiers": 2.8284,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "hard-surface.curved-bevel-normal-policy",
+          "score": 4.9789,
+          "score_breakdown": {
+            "query": 2.1213,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 1.4434,
+            "local_topology": 0.0,
+            "modifiers": 1.4142,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "uv.seam_graph.connected_tube_unwrap",
+          "score": 4.9497,
+          "score_breakdown": {
+            "query": 2.1213,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
             "local_topology": 0.0,
             "modifiers": 2.8284,
             "reference_issue": 0.0,
@@ -592,14 +624,14 @@
       "expected_top_skill": "reference.question-driven-targeted-research",
       "actual_top_skill": "reference.question-driven-targeted-research",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 11.6551,
+      "actual_top_margin": 9.6551,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
       "top_results": [
         {
           "skill_id": "reference.question-driven-targeted-research",
-          "score": 16.4498,
+          "score": 14.4498,
           "score_breakdown": {
             "query": 6.6408,
             "modeling_stage": 1.7678,
@@ -609,7 +641,7 @@
             "local_topology": 0.0,
             "modifiers": 0.0,
             "reference_issue": 2.0412,
-            "runtime_success": 2.0,
+            "runtime_success": 0.0,
             "version_relevance": 0.0
           }
         },
@@ -664,7 +696,7 @@
       "expected_top_skill": "reference.secondary_view_component_strategy",
       "actual_top_skill": "reference.secondary_view_component_strategy",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 7.0754,
+      "actual_top_margin": 9.0754,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -687,7 +719,7 @@
         },
         {
           "skill_id": "reference.question-driven-targeted-research",
-          "score": 7.0015,
+          "score": 5.0015,
           "score_breakdown": {
             "query": 1.8974,
             "modeling_stage": 1.7678,
@@ -697,7 +729,7 @@
             "local_topology": 0.0,
             "modifiers": 0.0,
             "reference_issue": 0.4419,
-            "runtime_success": 2.0,
+            "runtime_success": 0.0,
             "version_relevance": 0.0
           }
         }
@@ -720,7 +752,7 @@
       "expected_top_skill": "production.high_low.readiness_audit",
       "actual_top_skill": "production.high_low.readiness_audit",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 15.9486,
+      "actual_top_margin": 11.5181,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -742,16 +774,93 @@
           }
         },
         {
-          "skill_id": "reference.question-driven-targeted-research",
-          "score": 6.165,
+          "skill_id": "uv.seam_graph.connected_tube_unwrap",
+          "score": 10.5955,
           "score_breakdown": {
-            "query": 2.25,
-            "modeling_stage": 0.0,
-            "workflow": 0.8944,
+            "query": 5.25,
+            "modeling_stage": 1.7678,
+            "workflow": 3.5777,
             "surface_type": 0.0,
-            "defect": 1.0206,
+            "defect": 0.0,
             "local_topology": 0.0,
             "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "topology.loop_cuts.reserve_functional_regions",
+          "score": 6.5,
+          "score_breakdown": {
+            "query": 4.5,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.0,
+            "runtime_success": 2.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "uv_connected_tube_missing_seam",
+      "kind": "positive",
+      "context": {
+        "query": "periodic tube unwrap has severe angle distortion because no longitudinal cut opens the strip",
+        "modeling_stage": "PRODUCTION_PREP",
+        "workflow": "seam-directed texture-coordinate unwrap",
+        "surface_type": "open-ended tube",
+        "defect": "missing purposeful seam",
+        "local_topology": [
+          "one connected periodic quad strip"
+        ],
+        "modifiers": [
+          "SOLIDIFY",
+          "BEVEL"
+        ],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "uv.seam_graph.connected_tube_unwrap",
+      "actual_top_skill": "uv.seam_graph.connected_tube_unwrap",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 19.4347,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "uv.seam_graph.connected_tube_unwrap",
+          "score": 26.5667,
+          "score_breakdown": {
+            "query": 7.2161,
+            "modeling_stage": 1.7678,
+            "workflow": 4.4721,
+            "surface_type": 2.5981,
+            "defect": 4.3301,
+            "local_topology": 3.3541,
+            "modifiers": 2.8284,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "topology.loop_cuts.reserve_functional_regions",
+          "score": 7.132,
+          "score_breakdown": {
+            "query": 1.6036,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 1.4434,
+            "local_topology": 0.6708,
+            "modifiers": 1.4142,
             "reference_issue": 0.0,
             "runtime_success": 2.0,
             "version_relevance": 0.0
@@ -759,15 +868,15 @@
         },
         {
           "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
-          "score": 6.0,
+          "score": 6.8373,
           "score_breakdown": {
-            "query": 6.0,
+            "query": 4.0089,
             "modeling_stage": 0.0,
             "workflow": 0.0,
             "surface_type": 0.0,
             "defect": 0.0,
             "local_topology": 0.0,
-            "modifiers": 0.0,
+            "modifiers": 2.8284,
             "reference_issue": 0.0,
             "runtime_success": 0.0,
             "version_relevance": 0.0
