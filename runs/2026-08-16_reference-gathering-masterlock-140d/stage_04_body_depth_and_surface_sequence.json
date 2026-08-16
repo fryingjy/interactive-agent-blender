@@ -1,0 +1,87 @@
+[
+  {
+    "label": "select_entire_connected_body_cage_for_depth_correction",
+    "command": "select_by_ids",
+    "params": {"name": "brass_body", "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8]}
+  },
+  {
+    "label": "increase_body_depth_from_visual_placeholder",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "primary_form_proportion",
+      "operation": "scale_selection",
+      "params": {"factor": [1.0, 2.0, 1.0]},
+      "command_id": "masterlock-body-depth-provisional-v1"
+    }
+  },
+  {
+    "label": "add_unapplied_physical_body_edge_radius",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "surface_control",
+      "operation": "add_modifier",
+      "params": {"modifier_type": "BEVEL", "modifier_name": "Body_Edge_Radius_Unapplied"},
+      "command_id": "masterlock-body-bevel-create-v1"
+    }
+  },
+  {
+    "label": "set_body_edge_radius_width",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "surface_control",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Body_Edge_Radius_Unapplied", "parameter": "width", "value": 1.0},
+      "command_id": "masterlock-body-bevel-width-v1"
+    }
+  },
+  {
+    "label": "set_body_edge_radius_segments",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "surface_control",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Body_Edge_Radius_Unapplied", "parameter": "segments", "value": 3},
+      "command_id": "masterlock-body-bevel-segments-v1"
+    }
+  },
+  {
+    "label": "scope_radius_to_natural_hard_edges",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "surface_control",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Body_Edge_Radius_Unapplied", "parameter": "limit_method", "value": "ANGLE"},
+      "command_id": "masterlock-body-bevel-scope-v1"
+    }
+  },
+  {
+    "label": "set_body_smooth_by_angle",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "surface_control",
+      "operation": "set_smooth_by_angle",
+      "params": {"angle": 0.5235987756, "keep_sharp_edges": true},
+      "command_id": "masterlock-body-smooth-by-angle-v1"
+    }
+  },
+  {
+    "label": "observe_edited_body_cage_and_live_modifiers",
+    "command": "get_full_state",
+    "params": {"name": "brass_body"}
+  },
+  {
+    "label": "observe_evaluated_body_surface",
+    "command": "get_evaluated_state",
+    "params": {"name": "brass_body"}
+  },
+  {
+    "label": "render_corrected_primary_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_04_primary_front_solid.png", "pass_type": "solid", "view": "front", "resolution": 768, "margin": 1.18}
+  },
+  {
+    "label": "render_corrected_primary_isometric",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_04_primary_iso_solid.png", "pass_type": "solid", "view": "isometric", "resolution": 768, "margin": 1.18}
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "label": "observe_editable_brass_body_vertices",
+    "command": "get_mesh_geometry",
+    "params": {"name": "brass_body"}
+  },
+  {
+    "label": "observe_live_shackle_curve",
+    "command": "get_curve_state",
+    "params": {"name": "steel_shackle"}
+  }
+]
