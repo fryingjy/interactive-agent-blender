@@ -61,12 +61,17 @@ Before any new prop passes a blockout stage:
   than replacing it with a new curve or a mesh conversion.
 - The RF-2400D handle correction is a reproducible, saved test of that path;
   its review explicitly records that the model remains visually unacceptable.
+- `knowledge_engine.reference_constraints` now evaluates declared normalized
+  point, box, and scalar relationships independently.  A missing or failed
+  high-salience constraint blocks blockout advance and produces prioritized
+  repair tickets; it remains a correction aid rather than a visual-acceptance
+  substitute.
 - The retrieval benchmark test now tracks the actual 24-case corpus.
 
 ## Next engineering gap
 
-The highest-value missing capability is a **local reference constraint
-evaluator**: it should store measured normalized boundaries per named region
-and report deviations for handle, panels, and housing separately.  It must
-be used as a correction aid, never presented as a substitute for human visual
-judgment.
+The highest-value remaining step is integrating the local constraint evaluator
+with Blender-native semantic-region observations, so a declared speaker,
+handle, panel, or knob constraint can be measured directly from a controlled
+render rather than entered as a reviewed observation.  It must remain a
+correction aid, never presented as a substitute for human visual judgment.
