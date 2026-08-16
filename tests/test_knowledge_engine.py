@@ -506,6 +506,27 @@ class SceneDecompositionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "invalid expected region keys"):
             decomp.validate()
 
+    def test_reference_to_blockout_contract_preserves_unknowns_and_selected_strategy(self):
+        decomp = self._strict_lantern_decomposition(extra_claims=[
+            ReferenceClaim(
+                "unseen-base", "unknowns", "The underside is not visible.", "UNKNOWN", 0.1,
+                impact="low", component_refs=["body"],
+            ),
+        ])
+        contract = decomp.to_reference_to_blockout_contract(reference_set_id="lantern-board-v1")
+        self.assertEqual(contract["record_type"], "REFERENCE_TO_BLOCKOUT_CONTRACT")
+        self.assertEqual(contract["selected_strategy"]["name"], "shell-plus-curve-handle")
+        self.assertEqual([claim["claim_id"] for claim in contract["unknown"]], ["unseen-base"])
+        self.assertEqual([item["name"] for item in contract["primary_components"]], ["body", "handle"])
+
+    def test_reference_to_blockout_contract_requires_explicit_choice_for_multiple_candidates(self):
+        decomp = self._strict_lantern_decomposition()
+        decomp.strategies.append(StrategyCandidate(
+            "alternate-shell", "BOX_MESH", ["body-form"],
+        ))
+        with self.assertRaisesRegex(ValueError, "selected_strategy_name"):
+            decomp.to_reference_to_blockout_contract(reference_set_id="lantern-board-v1")
+
     def test_observed_claim_requires_concrete_evidence(self):
         decomp = self._strict_lantern_decomposition()
         decomp.claims[0].evidence = []

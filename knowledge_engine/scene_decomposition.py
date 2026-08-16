@@ -389,6 +389,76 @@ class SceneDecomposition:
         values["notes"] = tuple(dict.fromkeys(notes))
         return ModelingBrief(**values)
 
+    def to_reference_to_blockout_contract(
+        self,
+        *,
+        reference_set_id: str,
+        selected_strategy_name: str | None = None,
+    ) -> dict[str, Any]:
+        """Emit the directive-required bridge from reference evidence to blockout.
+
+        This is deliberately an interpretation artifact, not a blockout pass.  It
+        preserves unknowns and rejected alternatives so a later Blender decision
+        cannot quietly relabel a weak claim as construction truth.
+        """
+        self.validate()
+        if not isinstance(reference_set_id, str) or not reference_set_id.strip():
+            raise ValueError("reference_set_id is required for a reference-to-blockout contract")
+        candidates = [strategy for strategy in self.strategies if strategy.status == "candidate"]
+        if selected_strategy_name is None:
+            if len(candidates) != 1:
+                raise ValueError(
+                    "selected_strategy_name is required when the decomposition has zero or multiple candidate strategies"
+                )
+            selected = candidates[0]
+        else:
+            selected = next((strategy for strategy in candidates if strategy.name == selected_strategy_name), None)
+            if selected is None:
+                raise ValueError("selected_strategy_name must name a candidate strategy")
+
+        def claims(category: str) -> list[dict[str, Any]]:
+            return [asdict(claim) for claim in self.claims if claim.category == category]
+
+        supported = [
+            asdict(claim) for claim in self.claims
+            if claim.evidence_status in {"OBSERVED", "STRONGLY_INFERRED"}
+        ]
+        unresolved = [
+            asdict(claim) for claim in self.claims
+            if claim.evidence_status in {"WEAKLY_INFERRED", "UNKNOWN"}
+        ]
+        components = {component.name: asdict(component) for component in self.components}
+        return {
+            "schema_version": 1,
+            "record_type": "REFERENCE_TO_BLOCKOUT_CONTRACT",
+            "target": self.object_name,
+            "reference_set_id": reference_set_id,
+            "known": supported,
+            "unknown": unresolved,
+            "primary_forms": claims("primary_forms"),
+            "primary_components": [components[component.name] for component in self.primary_components()],
+            "secondary_components": [asdict(component) for component in self.components if component.role == "secondary"],
+            "negative_spaces": claims("negative_spaces"),
+            "silhouette_landmarks": claims("landmarks"),
+            "depth_landmarks": claims("depth_order") + claims("overlap"),
+            "symmetry": claims("symmetry"),
+            "continuous_surface_hypotheses": claims("continuous_surfaces"),
+            "separate_component_hypotheses": claims("separate_parts"),
+            "dimensional_anchors": claims("known_dimensions") + claims("estimated_dimensions"),
+            "candidate_strategies": [asdict(strategy) for strategy in candidates],
+            "selected_strategy": asdict(selected),
+            "rejected_strategies": [asdict(strategy) for strategy in self.strategies if strategy.status == "rejected"],
+            "confidence": {
+                "claims": {claim.claim_id: claim.confidence for claim in self.claims},
+                "components": {component.name: component.confidence for component in self.components},
+            },
+            "reference_readiness": self.blockout_readiness(),
+            "limitation": (
+                "This contract makes reference interpretation and selected representation traceable. "
+                "It does not authorize Blender construction until required external/human review gates pass."
+            ),
+        }
+
     def primary_components(self) -> list[Component]:
         return [c for c in self.components if c.role == "primary"]
 

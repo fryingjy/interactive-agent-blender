@@ -28,7 +28,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Requirement group | Evidence | Status |
 | --- | --- | --- |
 | Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite; live `check_scene_component_coverage` capture | Implemented and tested; component presence is no longer a bare stage boolean, and boards with measured component regions also require fresh coarse placement/proportion evidence |
-| Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, Bialetti strict board and verifier, question-driven research verifier; planner-to-live-coverage stage-gate loop | Implemented; model-free runtime policy validation only |
+| Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, Bialetti strict board/verifier, explicit reference-to-blockout contract, question-driven research verifier; planner-to-live-coverage stage-gate loop | Implemented; model-free runtime policy validation only |
 | Reference uncertainty and source provenance | Bialetti manifest, research constraints, retention ledger, source audit | Implemented and honestly bounded |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion still evidence-gated |
 | Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |

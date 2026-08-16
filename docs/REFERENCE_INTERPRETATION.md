@@ -58,6 +58,17 @@ The policy contract is reproduced by
 declared object families. It does not prove image understanding, Blender execution, held-out transfer,
 or reference fidelity.
 
+## Reference-to-blockout contract
+
+Before geometry work, emit the machine-readable bridge with
+`SceneDecomposition.to_reference_to_blockout_contract()` or
+`tools/build_reference_to_blockout_contract.py`. It preserves the target, source-board identity,
+supported and unresolved claims, component hierarchy, negative/depth/symmetry evidence,
+dimensional anchors, candidate/rejected strategies, confidence, and one explicit selected strategy.
+If several candidates remain, an author must select one explicitly; the exporter never chooses based
+on an incidental list order. This is a planning/traceability record only: it cannot waive a separate
+human authorization or certify a later blockout's visual fidelity.
+
 ## Secondary-view strategy resolution
 
 `knowledge_engine.component_strategy.resolve_component_strategy()` handles a narrower but
