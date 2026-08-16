@@ -1,0 +1,886 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\seiko_qhe195rlh_stage_17_editable_high_low.blend",
+  "inspected_at": "2026-08-16T23:39:49Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 0,
+      "child_collections": [
+        "SEIKO_QHE195RLH_HIGH",
+        "SEIKO_QHE195RLH_LOW"
+      ]
+    },
+    {
+      "name": "SEIKO_QHE195RLH_HIGH",
+      "depth": 1,
+      "object_count": 7,
+      "child_collections": []
+    },
+    {
+      "name": "SEIKO_QHE195RLH_LOW",
+      "depth": 1,
+      "object_count": 7,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "DialBezel",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.0750000476837158,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 162,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 48,
+        "edges": 80,
+        "polygons": 33,
+        "ngons": 1,
+        "triangles": 0,
+        "quads": 32,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Bezel"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Bezel_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.02500000037252903,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    },
+    {
+      "name": "DialBezel_LOW",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.0750000476837158,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 162,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 48,
+        "edges": 80,
+        "polygons": 33,
+        "ngons": 1,
+        "triangles": 0,
+        "quads": 32,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Bezel"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Bezel_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.02500000037252903,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    },
+    {
+      "name": "DialFace",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.0829999446868896,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Ivory_Dial"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Dial_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.017999999225139618,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    },
+    {
+      "name": "DialFace_LOW",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.0829999446868896,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Ivory_Dial"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Dial_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.017999999225139618,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    },
+    {
+      "name": "HandPivot",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.159999966621399,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Pivot"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "HandPivot_LOW",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -1.159999966621399,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Pivot"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "HourHand",
+      "type": "MESH",
+      "location": [
+        0.2750000059604645,
+        -1.1349999904632568,
+        0.17499999701976776
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 26,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Hand_Dark"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "HourHand_LOW",
+      "type": "MESH",
+      "location": [
+        0.2750000059604645,
+        -1.1349999904632568,
+        0.17499999701976776
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 26,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Hand_Dark"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "MainHousing",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 92,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 24,
+        "edges": 44,
+        "polygons": 22,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 22,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Black_Shell",
+          "Seiko_Red_Fascia"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Housing_Physical_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.1599999964237213,
+          "segments": 3,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        },
+        {
+          "name": "Housing_SubD_Unapplied",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 1,
+          "render_levels": 2,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        }
+      ]
+    },
+    {
+      "name": "MainHousing_LOW",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 92,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 24,
+        "edges": 44,
+        "polygons": 22,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 22,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Black_Shell",
+          "Seiko_Red_Fascia"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "Housing_Physical_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.1599999964237213,
+          "segments": 3,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        },
+        {
+          "name": "Housing_SubD_Unapplied",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 0,
+          "render_levels": 0,
+          "subdivision_type": "CATMULL_CLARK",
+          "use_limit_surface": true
+        }
+      ]
+    },
+    {
+      "name": "MinuteHand",
+      "type": "MESH",
+      "location": [
+        -0.41999998688697815,
+        -1.1449999809265137,
+        0.3100000023841858
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 26,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Hand_Dark"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "MinuteHand_LOW",
+      "type": "MESH",
+      "location": [
+        -0.41999998688697815,
+        -1.1449999809265137,
+        0.3100000023841858
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 26,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 8,
+        "edges": 12,
+        "polygons": 6,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 6,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Hand_Dark"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "TopControl",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        1.9900000095367432
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_HIGH"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "HIGH_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Control"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "TopControl_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.02500000037252903,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    },
+    {
+      "name": "TopControl_LOW",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        1.9900000095367432
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "SEIKO_QHE195RLH_LOW"
+      ],
+      "hide_viewport": true,
+      "hide_render": true,
+      "custom_properties": {
+        "agent_id_counter": 98,
+        "shading_policy": "SMOOTH_BY_ANGLE",
+        "smooth_by_angle_radians": 0.5235987756,
+        "smooth_by_angle_keep_sharp_edges": true,
+        "production_variant": "LOW_POLY"
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [
+          "Seiko_Silver_Control"
+        ],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": [
+        {
+          "name": "TopControl_Edge_Radius_Unapplied",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "width": 0.02500000037252903,
+          "segments": 2,
+          "limit_method": "ANGLE",
+          "angle_limit_deg": 30.0,
+          "harden_normals": false
+        }
+      ]
+    }
+  ],
+  "materials_total": 7,
+  "material_names": [
+    "Seiko_Black_Shell",
+    "Seiko_Hand_Dark",
+    "Seiko_Ivory_Dial",
+    "Seiko_Red_Fascia",
+    "Seiko_Silver_Bezel",
+    "Seiko_Silver_Control",
+    "Seiko_Silver_Pivot"
+  ],
+  "images_total": 0,
+  "image_names": []
+}

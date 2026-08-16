@@ -4,9 +4,9 @@
   "capabilities": {
     "protocol_version": "0.3",
     "blender_version": "5.2.0",
-    "pid": 10144,
-    "session_id": "891adf449c23",
-    "started_at": 1786904186.101187,
+    "pid": 7364,
+    "session_id": "3fe9cff6ac58",
+    "started_at": 1786923639.8445768,
     "blend_filepath": null,
     "capabilities": [
       "selection_ids",
@@ -26,6 +26,7 @@
       "layered_state_fingerprint",
       "native_silhouette_render",
       "curve_bevel_taper_geometry",
+      "curve_decision_transactions",
       "modeling_stage_tracking",
       "expanded_typed_modeling_surface",
       "connect_vertex_path_topology",
@@ -36,11 +37,16 @@
       "production_high_low_audit",
       "scene_component_coverage",
       "axis_aligned_reference_images",
-      "explicit_sharp_edge_intent"
+      "explicit_sharp_edge_intent",
+      "profile_revolution_geometry",
+      "recoverable_component_replacement",
+      "recoverable_component_archiving"
     ],
     "available_operations": [
       "add_modifier",
       "add_ring_detail",
+      "archive_object",
+      "assign_selected_material",
       "assign_vertex_group",
       "bevel_edges",
       "bevel_selection",
@@ -60,11 +66,16 @@
       "move_selection",
       "package_high_low_variants",
       "recalc_normals",
+      "replace_mesh_from_object",
       "rotate_selection",
       "scale_selection",
       "separate_selection",
       "set_bevel_scoping",
       "set_bevel_weight_by_ids",
+      "set_curve_bevel_depth",
+      "set_curve_bevel_object",
+      "set_curve_points",
+      "set_curve_taper",
       "set_edge_crease_by_ids",
       "set_modifier_parameter",
       "set_shading",
@@ -73,16 +84,17 @@
       "split_selection",
       "subdivide_selection",
       "symmetrize_selection",
+      "translate_object",
       "triangulate_ngons"
     ]
   },
   "committed_transaction": {
     "begin": {
-      "decision_id": "dec_0_1786904186103",
+      "decision_id": "dec_0_1786923639850",
       "observed_revision": 0
     },
     "perform": {
-      "decision_id": "dec_0_1786904186103",
+      "decision_id": "dec_0_1786923639850",
       "performed": true,
       "result": {
         "high": {
@@ -110,6 +122,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": false,
+          "hidden_in_active_view_layer": false,
           "hidden_in_render": false
         },
         "low": {
@@ -137,6 +150,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": true,
+          "hidden_in_active_view_layer": true,
           "hidden_in_render": true
         },
         "separate_collections": true,
@@ -183,7 +197,7 @@
       }
     },
     "close": {
-      "decision_id": "dec_0_1786904186103",
+      "decision_id": "dec_0_1786923639850",
       "result_revision": 1
     }
   },
@@ -239,11 +253,11 @@
   },
   "shared_collection_transaction": {
     "begin": {
-      "decision_id": "dec_1_1786904186108",
+      "decision_id": "dec_1_1786923639855",
       "observed_revision": 1
     },
     "perform": {
-      "decision_id": "dec_1_1786904186108",
+      "decision_id": "dec_1_1786923639855",
       "performed": true,
       "result": {
         "high": {
@@ -271,6 +285,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": false,
+          "hidden_in_active_view_layer": false,
           "hidden_in_render": false
         },
         "low": {
@@ -298,6 +313,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": true,
+          "hidden_in_active_view_layer": true,
           "hidden_in_render": true
         },
         "separate_collections": true,
@@ -344,7 +360,7 @@
       }
     },
     "close": {
-      "decision_id": "dec_1_1786904186108",
+      "decision_id": "dec_1_1786923639855",
       "result_revision": 2
     }
   },
@@ -400,11 +416,11 @@
   },
   "shared_rejected_transaction": {
     "begin": {
-      "decision_id": "dec_2_1786904186112",
+      "decision_id": "dec_2_1786923639861",
       "observed_revision": 2
     },
     "perform": {
-      "decision_id": "dec_2_1786904186112",
+      "decision_id": "dec_2_1786923639861",
       "performed": true,
       "result": {
         "high": {
@@ -432,6 +448,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": false,
+          "hidden_in_active_view_layer": false,
           "hidden_in_render": false
         },
         "low": {
@@ -459,6 +476,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": true,
+          "hidden_in_active_view_layer": true,
           "hidden_in_render": true
         },
         "separate_collections": true,
@@ -505,14 +523,15 @@
       }
     },
     "close": {
-      "decision_id": "dec_2_1786904186112",
+      "decision_id": "dec_2_1786923639861",
       "rejected": true,
       "restored_revision": 2,
       "reason": "rollback control",
       "removed_created_objects": [
         "Shared_Rollback_LOW"
       ],
-      "removed_created_collections": []
+      "removed_created_collections": [],
+      "removed_created_materials": []
     }
   },
   "shared_rollback_original": {
@@ -601,11 +620,11 @@
   ],
   "rejected_transaction": {
     "begin": {
-      "decision_id": "dec_2_1786904186118",
+      "decision_id": "dec_2_1786923639867",
       "observed_revision": 2
     },
     "perform": {
-      "decision_id": "dec_2_1786904186118",
+      "decision_id": "dec_2_1786923639867",
       "performed": true,
       "result": {
         "high": {
@@ -633,6 +652,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": false,
+          "hidden_in_active_view_layer": false,
           "hidden_in_render": false
         },
         "low": {
@@ -660,6 +680,7 @@
           ],
           "modifiers_applied": false,
           "hidden_in_viewport": false,
+          "hidden_in_active_view_layer": false,
           "hidden_in_render": false
         },
         "separate_collections": true,
@@ -706,7 +727,7 @@
       }
     },
     "close": {
-      "decision_id": "dec_2_1786904186118",
+      "decision_id": "dec_2_1786923639867",
       "rejected": true,
       "restored_revision": 2,
       "reason": "rollback control",
@@ -716,7 +737,8 @@
       "removed_created_collections": [
         "ROLLBACK_HIGH_POLY",
         "ROLLBACK_LOW_POLY"
-      ]
+      ],
+      "removed_created_materials": []
     }
   },
   "rollback_after": {
@@ -746,7 +768,7 @@
   },
   "collision_error": "incomplete variant collection pair: 'HIGH_POLY' exists but 'COLLISION_LOW_POLY' does not",
   "collision_abandon": {
-    "decision_id": "dec_2_1786904186120",
+    "decision_id": "dec_2_1786923639869",
     "abandoned": true,
     "reason": "expected collision",
     "failed_operation_rolled_back": true

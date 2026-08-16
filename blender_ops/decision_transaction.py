@@ -383,6 +383,7 @@ class DecisionTransaction:
                     # Runtime-only and collection properties are not universally assignable.
                     continue
         obj.select_set(bool(self._before_selected))
+        obj.hide_viewport = bool(snapshot.hide_viewport)
         obj.hide_render = bool(snapshot.hide_render)
         obj.hide_set(bool(snapshot.hide_get()))
         if self._before_active_object:

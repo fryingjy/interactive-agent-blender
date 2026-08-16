@@ -463,6 +463,10 @@ def package_high_low_variants(
         if modifier.type == "SUBSURF":
             modifier.levels = low_subd_levels
             modifier.render_levels = low_subd_levels
+    # ``hide_set`` is view-layer state and does not reliably survive a fresh
+    # file open.  The asset packaging contract needs a durable saved-file
+    # setting, so record both the global object flag and current-view state.
+    low.hide_viewport = bool(hide_low)
     low.hide_render = bool(hide_low)
     low.hide_set(bool(hide_low))
 
@@ -488,7 +492,8 @@ def package_high_low_variants(
             "base_faces": len(target.data.polygons),
             "modifiers": modifier_record(target),
             "modifiers_applied": False,
-            "hidden_in_viewport": target.hide_get(),
+            "hidden_in_viewport": bool(target.hide_viewport),
+            "hidden_in_active_view_layer": target.hide_get(),
             "hidden_in_render": target.hide_render,
         }
 
