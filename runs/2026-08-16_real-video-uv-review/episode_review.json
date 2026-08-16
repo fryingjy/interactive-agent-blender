@@ -1,0 +1,24 @@
+{
+  "source_id": "blender-fundamentals-uv-unwrapping-video",
+  "episode": [
+    304.0,
+    378.0
+  ],
+  "disposition": "VERIFIED",
+  "pass": true,
+  "checks": {
+    "source_identity_verified": true,
+    "independent_reviewer": true,
+    "minimum_frame_observations": true,
+    "before_during_after_positions": true,
+    "temporal_positions_bracket_episode": true,
+    "frame_paths_exist": true,
+    "visible_action_observed": true,
+    "speech_overlaps_episode": true,
+    "speech_action_alignment": true
+  },
+  "failures": [],
+  "contradictions": [],
+  "frame_observation_count": 3,
+  "claim_boundary": "This gate verifies evidence alignment only. It does not validate the transferable modeling principle or promote knowledge without reproduction and transfer."
+}

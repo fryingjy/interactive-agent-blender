@@ -1064,7 +1064,8 @@
     "modalities_inspected": [
       "video-frames",
       "audio",
-      "machine-transcript"
+      "machine-transcript",
+      "independent-frame-speech-episode-review-2026-08-16"
     ],
     "metadata": {
       "license": "CC BY 3.0",
@@ -1165,7 +1166,8 @@
       ],
       "experiments": [
         "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-uv-unwrapping/video_ingest_report.json",
-        "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json"
+        "runs/2026-08-10_uv-bake-learning/uv_bake_learning_report.json",
+        "runs/2026-08-16_real-video-uv-review/episode_review.json"
       ],
       "skills": [
         "knowledge/foundation/operator_cards/uv_foundations.md"
