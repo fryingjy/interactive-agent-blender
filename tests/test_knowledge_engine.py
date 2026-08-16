@@ -21,6 +21,7 @@ from knowledge_engine.scene_decomposition import (
     Relationship,
     SceneDecomposition,
     StrategyCandidate,
+    scene_decomposition_from_dict,
 )
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
@@ -462,6 +463,32 @@ class SceneDecompositionTests(unittest.TestCase):
         }
         self.assertTrue(required.issubset(artifact))
         self.assertEqual(tuple(CLAIM_CATEGORIES), tuple(dict.fromkeys(CLAIM_CATEGORIES)))
+
+    def test_canonical_artifact_round_trips_through_strict_loader(self):
+        source = self._strict_lantern_decomposition()
+        loaded = scene_decomposition_from_dict({
+            **source.to_dict(),
+            "require_evidence_bindings": True,
+        })
+        self.assertEqual(loaded.object_name, source.object_name)
+        self.assertTrue(loaded.blockout_readiness()["ready_for_blockout"])
+
+    def test_loader_rejects_legacy_unbound_primary_when_strict(self):
+        with self.assertRaisesRegex(ValueError, "evidence-bound primary components"):
+            scene_decomposition_from_dict({
+                "target": "legacy prop",
+                "require_evidence_bindings": True,
+                "components": [{"name": "body", "role": "primary"}],
+                "relationships": [],
+                "claims": [{
+                    "claim_id": "form", "category": "primary_forms", "statement": "body visible",
+                    "evidence_status": "OBSERVED", "confidence": 0.9, "evidence": ["front"],
+                    "modeling_consequence": "block out body",
+                }],
+                "strategies": [{
+                    "name": "box", "representation": "BOX_MESH", "rationale_claim_ids": ["form"],
+                }],
+            })
 
     def test_only_supported_claims_change_modeling_strategy(self):
         decomp = self._strict_lantern_decomposition(extra_claims=[

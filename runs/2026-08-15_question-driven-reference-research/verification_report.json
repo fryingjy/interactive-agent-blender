@@ -574,6 +574,87 @@
         ],
         "promotion_limit": "Not TRANSFER_VALIDATED or RUNTIME_VALIDATED until real image interpretation changes Blender construction and improves measured outcomes on unrelated assets."
       }
+    },
+    {
+      "skill_id": "reference.secondary_view_component_strategy",
+      "score": 5.3302,
+      "score_breakdown": {
+        "query": 1.8974,
+        "modeling_stage": 1.7678,
+        "workflow": 1.1547,
+        "surface_type": 0.0,
+        "defect": 0.0,
+        "local_topology": 0.0,
+        "modifiers": 0.0,
+        "reference_issue": 0.5103,
+        "runtime_success": 0.0,
+        "version_relevance": 0.0
+      },
+      "status": "TRANSFER_VALIDATED",
+      "path": "C:\\Users\\odane\\Downloads\\3d\\knowledge\\skills\\secondary-view-component-strategy.json",
+      "skill": {
+        "skill_id": "reference.secondary_view_component_strategy",
+        "title": "Resolve component depth and continuity with a discriminating secondary view",
+        "topic_tags": [
+          "reference-interpretation",
+          "multi-view-reconstruction",
+          "component-depth",
+          "continuous-mesh",
+          "separate-components"
+        ],
+        "problem": "A front view can make a continuous full-depth body and a narrow body with a separate full-front faceplate appear identical, causing an unsupported component boundary to harden into geometry.",
+        "status": "TRANSFER_VALIDATED",
+        "applicability": {
+          "modeling_stage": "REFERENCE_ANALYSIS before PRIMARY_BLOCKOUT",
+          "workflow": "secondary-view component depth reconstruction",
+          "reference_issue": "primary-view ambiguity about component depth, continuity, or a separate faceplate",
+          "required_inputs": [
+            "at least two explicit construction candidates",
+            "fixed-frame primary-view measurements",
+            "same-variant secondary-view measurements",
+            "object and connected-component counts for built candidates"
+          ],
+          "exclusions": [
+            "material color boundaries without geometric depth evidence",
+            "automatic inference from one photograph",
+            "articulated or separately manufactured parts whose boundary is independently observed"
+          ]
+        },
+        "action_policy": [
+          "Represent continuous and separate construction as explicit competing candidates.",
+          "If the primary-view scores are tied within the declared ambiguity tolerance, do not choose from that view.",
+          "Acquire a same-variant side, top, or oblique view that exposes depth or boundary continuation.",
+          "Require the selected strategy to clear both an absolute secondary-view fit gate and a predeclared margin over the alternative.",
+          "Verify CONTINUOUS_MESH as one object and one connected component; joining disconnected shells does not qualify.",
+          "Retain the rejected construction and its per-view measurements."
+        ],
+        "failure_predicates": [
+          "only a primary/front view is available and candidates remain tied",
+          "a candidate lacks the required secondary view",
+          "secondary-view fit or margin is below the frozen threshold",
+          "the claimed continuous candidate contains multiple connected components",
+          "the reference variant differs across views"
+        ],
+        "recovery": [
+          "return TARGETED_REFERENCE_RESEARCH without a Blender mutation",
+          "search specifically for the missing same-variant depth-revealing view",
+          "keep the disputed region reversible until the evidence discriminates"
+        ],
+        "evidence": [
+          {
+            "run": "runs/2026-08-15_secondary-view-component-strategy/analysis_report.json",
+            "scope": "rectangular and 16-sided radial manufactured housings",
+            "result": "both strategies score front IoU 1.0; top IoU rejects separate faceplates at 0.711577 and 0.695574 while continuous candidates remain 1.0"
+          },
+          {
+            "run": "runs/2026-08-15_secondary-view-component-strategy/fresh_process_report.json",
+            "scope": "fresh Blender 5.2 saved-scene verification",
+            "result": "one-object/one-component continuous candidates and two-object/two-component controls reproduce all masks"
+          }
+        ],
+        "runtime_usage": [],
+        "promotion_limit": "Controlled synthetic two-family transfer only. Real photographic interpretation, a real prop decision through the typed transaction path, and measured fidelity improvement remain unproven."
+      }
     }
   ],
   "planner_contract": {
@@ -608,7 +689,8 @@
     },
     "retrieved_skill_ids": [
       "reference.question-driven-targeted-research",
-      "evidence-bound-reference-interpretation"
+      "evidence-bound-reference-interpretation",
+      "reference.secondary_view_component_strategy"
     ],
     "next_stage": null
   },

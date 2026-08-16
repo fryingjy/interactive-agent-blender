@@ -390,3 +390,60 @@ class SceneDecomposition:
             "unmatched_primary_components": unmatched,
             "coverage_ok": not unmatched,
         }
+
+
+def scene_decomposition_from_dict(payload: dict[str, Any]) -> SceneDecomposition:
+    """Load either the canonical evidence-bound record or the legacy compact shape.
+
+    The loader deliberately validates after construction.  A reference board cannot
+    gain blockout authority merely because its JSON parses: strict records must still
+    bind primary components, claims, and strategies to concrete evidence.
+    """
+    if not isinstance(payload, dict):
+        raise ValueError("scene decomposition must be a JSON object")
+
+    def records_for(category: str) -> list[dict[str, Any]]:
+        value = payload.get(category, [])
+        if category == "camera_assumptions" and isinstance(value, dict):
+            return list(value.values())
+        if category == "symmetry" and isinstance(value, dict):
+            return list(value.get("claims", []))
+        return value if isinstance(value, list) else []
+
+    raw_claims = payload.get("claims")
+    if raw_claims is None:
+        raw_claims = [
+            record
+            for category in CLAIM_CATEGORIES
+            for record in records_for(category)
+        ]
+    if not isinstance(raw_claims, list):
+        raise ValueError("scene decomposition claims must be a list")
+
+    try:
+        components = [Component(**record) for record in payload.get("components", [])]
+        relationships = [Relationship(**record) for record in payload.get("relationships", [])]
+        claims = [ReferenceClaim(**record) for record in raw_claims]
+        strategies = [
+            StrategyCandidate(**record)
+            for record in (
+                list(payload.get("candidate_modeling_strategies", []))
+                + list(payload.get("rejected_strategies", []))
+                if "strategies" not in payload
+                else list(payload["strategies"])
+            )
+        ]
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"invalid scene decomposition record: {exc}") from exc
+    result = SceneDecomposition(
+        object_name=str(payload.get("object_name") or payload.get("target") or ""),
+        object_class=str(payload.get("object_class") or "unknown"),
+        reference_style=str(payload.get("reference_style") or "mixed"),
+        components=components,
+        relationships=relationships,
+        claims=claims,
+        strategies=strategies,
+        require_evidence_bindings=bool(payload.get("require_evidence_bindings", False)),
+    )
+    result.validate()
+    return result

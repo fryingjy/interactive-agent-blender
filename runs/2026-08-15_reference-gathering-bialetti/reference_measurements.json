@@ -2,7 +2,9 @@
   "measurement_policy": "Official dimensions set absolute scale; perspective photographs provide approximate normalized ratios only.",
   "absolute_anchors_mm": {
     "overall_height": {"value": 155.0, "source": "bialetti-official-spec-3cup", "confidence": "HIGH"},
-    "boiler_base_diameter": {"value": 72.0, "source": "bialetti-official-spec-3cup", "confidence": "HIGH"}
+    "boiler_base_diameter": {"value": 72.0, "source": "bialetti-official-spec-3cup", "confidence": "HIGH"},
+    "overall_width_including_handle_spout": {"value": 150.0, "source": "bialetti-official-3cup-envelope", "confidence": "HIGH"},
+    "overall_depth": {"value": 85.0, "source": "bialetti-official-3cup-envelope", "confidence": "HIGH"}
   },
   "normalized_observations": [
     {
@@ -28,7 +30,6 @@
     }
   ],
   "unmeasured_or_uncertain": [
-    "overall width including handle and spout has no authoritative dimension",
     "boiler underside recess and stamping are unseen",
     "wall thickness and casting draft vary and are not dimensioned",
     "same-object listing may be an older production revision than the current official specification"
