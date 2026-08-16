@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "record_type": "AGENT_PRELIMINARY_VISUAL_DIAGNOSIS",
+  "target_id": "panasonic_rf2400d_portable_radio",
+  "evidence": {
+    "reference_images": ["rf2400d_official_front.jpg", "rf2400d_official_angle.jpg"],
+    "diagnostic_image": "stage_12_housing_handle_knob_iso_solid.png",
+    "scope": "Agent inspection of solid diagnostic against retained official product photographs; not human acceptance evidence."
+  },
+  "disposition": "CONTINUE_PRIMARY_AND_SECONDARY_FORMS",
+  "mismatches": [
+    {
+      "region": "outer_housing",
+      "severity": "high",
+      "observation": "The candidate's uninterrupted rounded body and center ridge read as a generic SubD enclosure; the reference has a clearer silver surround/front-back hierarchy and more specific side transitions.",
+      "next_action": "Rework the housing cage's front surround and side support placement before adding micro detail."
+    },
+    {
+      "region": "carry_handle",
+      "severity": "high",
+      "observation": "The curve preserves the handle opening but is too thin, circular, and high compared with the flattened, lower product handle.",
+      "next_action": "Replace or revise the handle as an editable flattened cross-section assembly after measuring its outer and inner contour against the front reference."
+    },
+    {
+      "region": "speaker_and_tuner_fields",
+      "severity": "high",
+      "observation": "The current inset regions preserve the gross width hierarchy but are not yet distinct faceplate/grille/control assemblies.",
+      "next_action": "Create separate, evidence-bound panel assemblies; do not represent perforations, dial marks, or logos until their panel proportions and depth are correct."
+    },
+    {
+      "region": "tuning_knob",
+      "severity": "medium",
+      "observation": "The 12-sided separate knob establishes the observed right-side projection but lacks the reference's mounting relationship and surface treatment.",
+      "next_action": "Keep the 12-sided rotational base, then adjust mounting depth and add only evidence-supported rim/detail after the housing side transition is corrected."
+    }
+  ],
+  "non_claims": [
+    "No visual acceptance or professional-quality claim.",
+    "No claim about rear layout, materials, grille perforation count, lettering, or production readiness.",
+    "No human review was performed."
+  ]
+}
