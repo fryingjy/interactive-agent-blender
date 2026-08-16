@@ -376,7 +376,10 @@ and reversible constraints. The active Swingline 747 board has machine-ready cur
 official-dimension evidence. Exact-variant feature text and the official gallery also support one
 continuous rubberized base pad, while hidden underside detail is explicitly deferred. It remains
 behind independent human reference review and therefore cannot yet authorize a blockout or support
-a held-out modeling claim.
+a held-out modeling claim. The review board now emits the exact decision schema consumed by a
+dedicated recorder; audit and construction-plan digests prevent an approval from silently carrying
+across changed evidence, and approval is limited to a reversible primary blockout. This completes
+the handoff mechanism but does not supply the still-missing human decision.
 
 ### 2026-08-15 secondary-view strategy update
 

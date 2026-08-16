@@ -2742,5 +2742,33 @@
         "No Subdivision Surface, arbitrary double curvature, runtime telemetry, or human visual acceptance"
       ]
     }
+  },
+  {
+    "id": "experiment-reference-board-human-handoff-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_reference-gathering-swingline-747/",
+    "title": "Swingline 747 Evidence-Bound Human Reference-Board Handoff",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "repository contract 2026-08-16",
+    "topics": ["human-review", "reference-board", "evidence-binding", "stage-authorization", "stale-review-rejection"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["json_contract", "local_visual_board", "unit_tests", "gate_validation_report"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-swingline-747/"],
+      "direct_observations": [
+        "The pending gate validates against the exact machine audit and construction plan SHA-256 digests",
+        "The decision recorder rejects non-human authority, stale evidence, contradictory authorization flags, missing correction notes, malformed timestamps, and wrong gate identity",
+        "A valid approval is scoped to REVERSIBLE_PRIMARY_BLOCKOUT_ONLY while a correction keeps modeling unauthorized"
+      ],
+      "limitations": [
+        "No human decision has been supplied or retained",
+        "Reviewer identity is an explicit claim rather than cryptographic proof",
+        "This validates authorization integrity, not reference quality or modeling ability"
+      ]
+    }
   }
 ]

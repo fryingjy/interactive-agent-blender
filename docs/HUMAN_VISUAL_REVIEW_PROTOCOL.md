@@ -66,3 +66,29 @@ python tools/record_external_visual_review.py REVIEW.json runs/YYYY-MM-DD_asset/
 The command fails on an agent review, malformed review, or a stale scene revision. The resulting
 artifact records an `INSPECT_BEFORE_REPAIR` disposition for a rejection; it does not assert that
 any subsequent Blender edit was correct.
+
+## Reference-board authorization is a separate gate
+
+A reference board is reviewed before geometry exists, so it cannot use the post-model repair
+schema above. `knowledge_engine.reference_board_review` keeps this authority separate and binds a
+human decision to the exact machine audit and construction plan by SHA-256. It requires a human
+reviewer identifier, a timezone-aware timestamp, one of the two declared decisions, and an
+authorization boolean consistent with that decision. A changed audit or plan makes the gate stale.
+
+Validate the pending contract without authorizing anything:
+
+```powershell
+python tools/verify_reference_board_gate.py runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json --audit runs/2026-08-16_reference-gathering-swingline-747/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md
+```
+
+After a human downloads or copies a decision from `docs/field-report/swingline-747-review.html`,
+record it with:
+
+```powershell
+python tools/record_reference_board_review.py REVIEW.json runs/2026-08-16_reference-gathering-swingline-747/human_reference_board_decision.json --gate runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json --audit runs/2026-08-16_reference-gathering-swingline-747/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md
+```
+
+An approval authorizes only `REVERSIBLE_PRIMARY_BLOCKOUT_ONLY`. A correction keeps modeling locked
+and routes back to reference research or construction planning. The immutable gate remains pending;
+the separate decision artifact records the outcome without rewriting history. Reviewer identity is
+an explicit human claim, not cryptographic identity proof.

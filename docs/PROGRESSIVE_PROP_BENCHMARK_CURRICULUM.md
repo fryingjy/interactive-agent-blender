@@ -34,4 +34,7 @@ verification, human review/repair tickets, final editable `.blend`, and transfer
 Prop 1, Swingline 747, is at `reference_board_human_review`. The machine audit is ready, but
 modeling remains `EXTERNAL_REVIEW_REQUIRED`. Only a human-recorded
 `APPROVE_REVERSIBLE_BLOCKOUT` decision authorizes geometry. The next prop is not selected until the
-current one is accepted or frozen under the curriculum's failure/overfitting policy.
+current one is accepted or frozen under the curriculum's failure/overfitting policy. The local
+review board now emits the exact schema consumed by `tools/record_reference_board_review.py`; the
+recorder binds the decision to the current audit and plan and authorizes no stage beyond the
+reversible primary blockout.

@@ -1,7 +1,7 @@
 {
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
-  "record_count": 77,
+  "record_count": 78,
   "missing_artifact_count": 62,
   "unclassified_missing_artifact_count": 0,
   "classified_missing_artifact_count": 62,

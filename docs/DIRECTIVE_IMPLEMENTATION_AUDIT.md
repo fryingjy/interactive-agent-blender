@@ -304,6 +304,12 @@ The user-supplied progressive benchmark document is also operationalized as a va
 labeled project guidance rather than capability evidence. Swingline 747 remains at
 `EXTERNAL_REVIEW_REQUIRED`; no modeling or tier promotion is self-authorized.
 
+The reference-board review now also has a complete fail-closed return path. Its dedicated schema is
+separate from post-model rejection/repair records, binds each decision to the current audit and
+construction-plan SHA-256 digests, requires a reviewer-identified human claim and timezone-aware
+timestamp, and rejects contradictory or stale authorization. A valid approval can authorize only
+`REVERSIBLE_PRIMARY_BLOCKOUT_ONLY`; no human decision is currently retained.
+
 ## 2026-08-15 addendum: bridge correspondence control and failed-operation rollback
 
 `runs/2026-08-15_bridge-correspondence-control/` closes the previously documented typed-runtime gap

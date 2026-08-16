@@ -33,6 +33,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
   restores each side baseline; Weighted Normal worsens the uneven 12-sided side to `9.9988°`.
 - `tools/validate_progressive_prop_curriculum.py` — the user-supplied 30-prop ladder resolves to six
   ordered tiers and A-G gates while Swingline remains externally locked at human reference review.
+- `tools/verify_reference_board_gate.py` — the pending Swingline human gate matches the exact
+  machine audit and construction plan. The separate recorder rejects agent authority, stale
+  evidence, contradictory authorization, malformed timestamps, and unlocalized corrections.
 
 ## Directive requirement status
 
@@ -45,7 +48,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
 | Core topology/modifier/UV/production foundations | operator cards, controlled labs, implementation audit | Broad foundation evidence exists; not a general professional-quality proof |
 | Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
-| Human visual review as a separate authority | `knowledge_engine/human_review.py`, protocol, and current Swingline review board | Enforced; **pending external reference review** |
+| Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder and current Swingline board | Enforced with a complete return path; **pending an actual external decision** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |
 | New reference-driven model through all stages | no active human-authorized target | **Not authorized / not complete** |
 | Broad professional generalization | current gap matrix and prior rejected assets | **Not established** |

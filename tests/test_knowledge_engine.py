@@ -26,6 +26,12 @@ from knowledge_engine.scene_decomposition import (
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
 from knowledge_engine.human_review import build_repair_record, review_to_repair_tickets, validate_external_visual_review
+from knowledge_engine.reference_board_review import (
+    build_reference_board_handoff,
+    file_sha256,
+    validate_reference_board_gate,
+    validate_reference_board_review,
+)
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 from knowledge_engine.planner import PlannerContext, plan_next_decision
@@ -787,6 +793,92 @@ class QualityReviewTests(unittest.TestCase):
         handoff = build_repair_record(review, current_scene_revision=7)
         self.assertEqual(handoff["disposition"], "INSPECT_BEFORE_REPAIR")
         self.assertEqual(handoff["repair_tickets"], tickets)
+
+    def test_reference_board_decision_is_human_and_evidence_bound(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            audit_path = root / "audit.json"
+            plan_path = root / "plan.md"
+            audit_path.write_text(
+                '{"target_id":"prop","pass":true,"disposition":"READY_TO_MODEL"}\n',
+                encoding="utf-8",
+            )
+            plan_path.write_text("# connected-cage plan\n", encoding="utf-8")
+            gate = {
+                "schema_version": 1,
+                "record_type": "REFERENCE_BOARD_HUMAN_REVIEW_GATE",
+                "gate_id": "board-v1",
+                "target_id": "prop",
+                "target": "Exact prop variant",
+                "machine_disposition": "READY_TO_MODEL",
+                "audit_sha256": file_sha256(audit_path),
+                "reference_plan_sha256": file_sha256(plan_path),
+                "human_review_status": "PENDING_USER_REVIEW",
+                "modeling_authorized": False,
+                "review_scope": "Reversible primary blockout only.",
+                "allowed_decisions": ["APPROVE_REVERSIBLE_BLOCKOUT", "RESEARCH_OR_PLAN_CORRECTION"],
+            }
+            review = {
+                "schema_version": 1,
+                "record_type": "REFERENCE_BOARD_HUMAN_DECISION",
+                "gate_id": gate["gate_id"],
+                "target_id": gate["target_id"],
+                "target": gate["target"],
+                "audit_sha256": gate["audit_sha256"],
+                "reference_plan_sha256": gate["reference_plan_sha256"],
+                "review_scope": gate["review_scope"],
+                "decision": "APPROVE_REVERSIBLE_BLOCKOUT",
+                "notes": "The board is sufficient for the scoped blockout.",
+                "modeling_authorized": True,
+                "reviewer_type": "human",
+                "reviewer_id": "reviewer-01",
+                "reviewed_at": "2026-08-16T14:00:00-05:00",
+            }
+            validate_reference_board_gate(gate, audit_path=audit_path, reference_plan_path=plan_path)
+            handoff = build_reference_board_handoff(
+                review, gate, audit_path=audit_path, reference_plan_path=plan_path
+            )
+            self.assertEqual(handoff["disposition"], "REFERENCE_BOARD_APPROVED")
+            self.assertEqual(handoff["authorized_stage"], "REVERSIBLE_PRIMARY_BLOCKOUT_ONLY")
+
+            correction = {
+                **review,
+                "decision": "RESEARCH_OR_PLAN_CORRECTION",
+                "modeling_authorized": False,
+                "notes": "The rear hinge profile needs a true side view.",
+            }
+            correction_handoff = build_reference_board_handoff(
+                correction, gate, audit_path=audit_path, reference_plan_path=plan_path
+            )
+            self.assertEqual(correction_handoff["disposition"], "REFERENCE_BOARD_CORRECTION_REQUIRED")
+            self.assertIsNone(correction_handoff["authorized_stage"])
+
+            invalid_cases = [
+                ({**review, "reviewer_type": "agent"}, "only a human"),
+                ({**review, "modeling_authorized": False}, "contradicts"),
+                ({**correction, "notes": ""}, "requires concrete notes"),
+                ({**review, "gate_id": "older-board"}, "gate_id does not match"),
+                ({**review, "reviewed_at": "2026-08-16T14:00:00"}, "include a timezone"),
+            ]
+            for invalid, message in invalid_cases:
+                with self.subTest(message=message), self.assertRaisesRegex(ValueError, message):
+                    validate_reference_board_review(
+                        invalid, gate, audit_path=audit_path, reference_plan_path=plan_path
+                    )
+
+            plan_path.write_text("# changed plan\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "gate is stale.*plan"):
+                validate_reference_board_gate(gate, audit_path=audit_path, reference_plan_path=plan_path)
+
+            plan_path.write_text("# connected-cage plan\n", encoding="utf-8")
+            gate["reference_plan_sha256"] = file_sha256(plan_path)
+            audit_path.write_text(
+                '{"target_id":"prop","pass":false,"disposition":"RESEARCH_REQUIRED"}\n',
+                encoding="utf-8",
+            )
+            gate["audit_sha256"] = file_sha256(audit_path)
+            with self.assertRaisesRegex(ValueError, "not READY_TO_MODEL"):
+                validate_reference_board_gate(gate, audit_path=audit_path, reference_plan_path=plan_path)
 
 
 class SessionLearningTests(unittest.TestCase):
