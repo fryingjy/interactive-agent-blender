@@ -8,7 +8,8 @@ directive. It is deliberately not a declaration of professional-modeler completi
 - `python -m unittest discover -s tests -q` — **156 tests passed** on 2026-08-16.
 - `tools/run_stage_gate_lab.py` under Blender 5.2 — live runtime component coverage rejects a
   collapsed/malformed record and allows the stage transition only after a one-to-one coverage
-  capture; the captured report carries its Blender session and scene revision.
+  capture; the captured report carries its Blender session and scene revision, and becomes invalid
+  after a later revision until recaptured.
 - `tools/verify_bialetti_reference_decomposition.py` — strict Bialetti board decomposition passes.
 - `tools/verify_question_driven_reference_research.py` — question-driven reference gate passes its
   positive and negative controls.

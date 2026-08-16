@@ -617,11 +617,12 @@ class QualityReviewTests(unittest.TestCase):
         stale_or_collapsed = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
             **base,
             "component_coverage": {
-                "declared_primary_components": ["boiler_lower_shell", "collector_upper_shell"],
-                "built_object_names": ["Collector_Upper_Shell"],
-                "component_matches": {"collector_upper_shell": "Collector_Upper_Shell"},
-                "unmatched_primary_components": ["boiler_lower_shell"],
-                "coverage_ok": False,
+                "capture_type": "LIVE_MODELER_RUNTIME", "session_id": "test", "scene_revision": 0,
+                "mesh_object_names": ["Collector_Upper_Shell"], "pass": False,
+                "coverage": {"declared_primary_components": ["boiler_lower_shell", "collector_upper_shell"],
+                    "built_object_names": ["Collector_Upper_Shell"],
+                    "component_matches": {"collector_upper_shell": "Collector_Upper_Shell"},
+                    "unmatched_primary_components": ["boiler_lower_shell"], "coverage_ok": False},
             },
         })
         self.assertFalse(stale_or_collapsed["pass"])
@@ -630,11 +631,12 @@ class QualityReviewTests(unittest.TestCase):
         accepted = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
             **base,
             "component_coverage": {
-                "declared_primary_components": ["body", "handle"],
-                "built_object_names": ["Body", "Handle"],
-                "component_matches": {"body": "Body", "handle": "Handle"},
-                "unmatched_primary_components": [],
-                "coverage_ok": True,
+                "capture_type": "LIVE_MODELER_RUNTIME", "session_id": "test", "scene_revision": 0,
+                "mesh_object_names": ["Body", "Handle"], "pass": True,
+                "coverage": {"declared_primary_components": ["body", "handle"],
+                    "built_object_names": ["Body", "Handle"],
+                    "component_matches": {"body": "Body", "handle": "Handle"},
+                    "unmatched_primary_components": [], "coverage_ok": True},
             },
         })
         self.assertTrue(accepted["pass"])

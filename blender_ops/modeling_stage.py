@@ -25,6 +25,11 @@ import json
 import bpy
 
 try:
+    from . import decision_state
+except ImportError:
+    import decision_state
+
+try:
     from .stage_gates import evaluate_stage_gate
 except ImportError:
     from stage_gates import evaluate_stage_gate
@@ -120,6 +125,16 @@ def advance_stage(name, stage, evidence, *, min_iou=0.9):
     if stage != expected:
         raise ValueError(f"forward transition must be exactly {previous} -> {expected}; requested {stage}")
     gate = evaluate_stage_gate(previous, evidence, min_iou=min_iou)
+    if previous == "PRIMARY_BLOCKOUT" and gate["pass"]:
+        coverage = evidence["component_coverage"]
+        captured_revision = int(coverage["scene_revision"])
+        live_revision = decision_state.current_revision()
+        if captured_revision != live_revision:
+            gate["failures"].append(
+                f"component coverage was captured at scene revision {captured_revision}, "
+                f"but live revision is {live_revision}; recapture after the edit"
+            )
+            gate["pass"] = False
     if not gate["pass"]:
         return {"name": name, "stage": previous, "requested_stage": stage, "advanced": False, "gate": gate}
     result = set_stage(name, stage, {"structured_evidence": evidence, "gate": gate})

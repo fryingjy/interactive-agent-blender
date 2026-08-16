@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 
 from blender_ops.modeling_stage import advance_stage, get_stage, get_stage_log
 from blender_ops.modeler_server import ModelerServer
+from blender_ops import decision_state
 
 
 def main():
@@ -42,12 +43,23 @@ def main():
         "object_name": "stage gate asset",
         "components": [{"name": "stage_gate_asset", "role": "primary", "manufacture": "structural"}],
     })
-    coverage = live_coverage["coverage"]
+    coverage = live_coverage
     weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
         "dimensions_checked": True, "primary_components_present": True,
-        "component_coverage": {**coverage, "coverage_ok": False},
+        "component_coverage": {**coverage, "pass": False},
     })
     state_after_weak_visual = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
+    decision_state.advance_revision(live_coverage["scene_revision"])
+    stale_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
+        "dimensions_checked": True, "primary_components_present": True,
+        "component_coverage": coverage,
+    })
+    state_after_stale = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
+    live_coverage = server.cmd_check_scene_component_coverage({
+        "object_name": "stage gate asset",
+        "components": [{"name": "stage_gate_asset", "role": "primary", "manufacture": "structural"}],
+    })
+    coverage = live_coverage
     strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
         "dimensions_checked": True, "primary_components_present": True,
         "component_coverage": coverage,
@@ -59,6 +71,11 @@ def main():
         "primary_advanced": strong_primary["advanced"],
         "incomplete_primary_blockout_rejected": not weak_visual["advanced"],
         "visual_rejection_did_not_mutate": state_after_weak_visual == {"stage": "PRIMARY_BLOCKOUT", "log_count": 1},
+        "stale_coverage_rejected": (
+            not stale_visual["advanced"]
+            and any("recapture after the edit" in failure for failure in stale_visual["gate"]["failures"])
+        ),
+        "stale_rejection_did_not_mutate": state_after_stale == {"stage": "PRIMARY_BLOCKOUT", "log_count": 1},
         "complete_primary_blockout_advanced": strong_visual["advanced"],
         "coverage_captured_from_live_modeler": (
             live_coverage["capture_type"] == "LIVE_MODELER_RUNTIME"
@@ -69,7 +86,7 @@ def main():
     }
     report = {
         "lab": "machine_enforced_modeling_stage_gates",
-        "attempts": [weak_primary, strong_primary, weak_visual, strong_visual],
+        "attempts": [weak_primary, strong_primary, weak_visual, stale_visual, strong_visual],
         "live_component_coverage": live_coverage,
         "final_stage": get_stage(obj.name),
         "stage_log": final_log,

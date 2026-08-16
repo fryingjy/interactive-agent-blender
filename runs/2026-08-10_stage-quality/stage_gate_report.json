@@ -71,6 +71,25 @@
     },
     {
       "name": "StageGateAsset",
+      "stage": "PRIMARY_BLOCKOUT",
+      "requested_stage": "PROPORTION_SILHOUETTE",
+      "advanced": false,
+      "gate": {
+        "stage": "PRIMARY_BLOCKOUT",
+        "required": [
+          "dimensions_checked",
+          "primary_components_present",
+          "component_coverage"
+        ],
+        "missing": [],
+        "failures": [
+          "component coverage was captured at scene revision 0, but live revision is 1; recapture after the edit"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "name": "StageGateAsset",
       "stage": "PROPORTION_SILHOUETTE",
       "previous_stage": "PRIMARY_BLOCKOUT",
       "is_regression": false,
@@ -90,8 +109,8 @@
   ],
   "live_component_coverage": {
     "capture_type": "LIVE_MODELER_RUNTIME",
-    "session_id": "83a3b45eb20f",
-    "scene_revision": 0,
+    "session_id": "f5fb94803760",
+    "scene_revision": 1,
     "collection": "ALL",
     "mesh_object_names": [
       "StageGateAsset"
@@ -158,17 +177,28 @@
           "dimensions_checked": true,
           "primary_components_present": true,
           "component_coverage": {
-            "declared_primary_components": [
-              "stage_gate_asset"
-            ],
-            "built_object_names": [
+            "capture_type": "LIVE_MODELER_RUNTIME",
+            "session_id": "f5fb94803760",
+            "scene_revision": 1,
+            "collection": "ALL",
+            "mesh_object_names": [
               "StageGateAsset"
             ],
-            "component_matches": {
-              "stage_gate_asset": "StageGateAsset"
+            "coverage": {
+              "declared_primary_components": [
+                "stage_gate_asset"
+              ],
+              "built_object_names": [
+                "StageGateAsset"
+              ],
+              "component_matches": {
+                "stage_gate_asset": "StageGateAsset"
+              },
+              "unmatched_primary_components": [],
+              "coverage_ok": true
             },
-            "unmatched_primary_components": [],
-            "coverage_ok": true
+            "pass": true,
+            "limitation": "Names establish only primary-component presence. Use a fresh-process asset report for independent verification and controlled visual comparison for likeness."
           }
         },
         "gate": {
@@ -193,6 +223,8 @@
     "primary_advanced": true,
     "incomplete_primary_blockout_rejected": true,
     "visual_rejection_did_not_mutate": true,
+    "stale_coverage_rejected": true,
+    "stale_rejection_did_not_mutate": true,
     "complete_primary_blockout_advanced": true,
     "coverage_captured_from_live_modeler": true,
     "only_accepted_transitions_logged": true

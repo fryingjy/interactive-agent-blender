@@ -133,7 +133,8 @@ coverage object as `component_coverage` stage evidence; a hand-authored boolean 
 insufficient. A saved-asset evaluation should use the fresh-process report above rather than claim
 that a live-stage record is independent verification. During active modeling, use the typed
 `check_scene_component_coverage` runtime command to capture the actual live mesh names, session,
-and revision before recording the stage evidence.
+and revision before recording the stage evidence. The blockout gate rejects a capture once the
+live scene revision differs, so coverage must be recaptured after any intervening edit.
 Graph-shape validity
 (duplicate/missing ids, dangling relationships) delegates to the existing
 `knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from

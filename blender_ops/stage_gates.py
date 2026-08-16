@@ -36,17 +36,28 @@ def _component_coverage_is_valid(value: Any) -> bool:
     one-to-one matches, and the absence of unmatched primary components.  This
     remains a presence gate rather than a reference-likeness gate.
     """
-    if not isinstance(value, dict) or value.get("coverage_ok") is not True:
+    if not isinstance(value, dict) or value.get("capture_type") != "LIVE_MODELER_RUNTIME":
         return False
-    declared = value.get("declared_primary_components")
-    built = value.get("built_object_names")
-    matches = value.get("component_matches")
-    unmatched = value.get("unmatched_primary_components")
+    if not isinstance(value.get("session_id"), str) or not value["session_id"]:
+        return False
+    if not _is_number(value.get("scene_revision")):
+        return False
+    if value.get("pass") is not True:
+        return False
+    coverage = value.get("coverage")
+    if not isinstance(coverage, dict):
+        return False
+    declared = coverage.get("declared_primary_components")
+    built = coverage.get("built_object_names")
+    matches = coverage.get("component_matches")
+    unmatched = coverage.get("unmatched_primary_components")
     if (
         not isinstance(declared, list) or not declared
         or not isinstance(built, list) or not isinstance(matches, dict)
-        or unmatched != []
+        or unmatched != [] or coverage.get("coverage_ok") is not True
     ):
+        return False
+    if value.get("mesh_object_names") != built:
         return False
     if set(matches) != set(declared) or len(set(matches.values())) != len(matches):
         return False

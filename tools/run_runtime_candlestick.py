@@ -258,13 +258,12 @@ def main() -> int:
         {
             "dimensions_checked": True,
             "primary_components_present": True,
-            "component_coverage": {
-                "declared_primary_components": ["candlestick_body"],
-                "built_object_names": [OBJECT_NAME],
-                "component_matches": {"candlestick_body": OBJECT_NAME},
-                "unmatched_primary_components": [],
-                "coverage_ok": True,
-            },
+            "component_coverage": server.cmd_check_scene_component_coverage({
+                "object_name": "runtime candlestick",
+                "components": [{
+                    "name": "candlestick_body", "role": "primary", "manufacture": "structural",
+                }],
+            }),
             "representation": "one connected rotational quad shell",
         },
     )
