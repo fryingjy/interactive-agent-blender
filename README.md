@@ -165,10 +165,6 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-15_bridge-correspondence-control/` — protocol 0.3 bridge-twist analysis and typed
   control, two-shape crossed-to-clean quad transfer, unequal-density rejection, and exact rollback
   after a post-mutation failure; independently verified without orphan mesh datablocks.
-- `runs/2026-08-15_reference-gathering-bialetti/` — a model-free reference exercise for a new
-  hard-surface target: same-object multi-angle evidence, official dimensions, explicit conflicts,
-  structured decomposition, and a passing machine gate held behind pending human review.
-
 - `runs/2026-08-15_addon-resource-safety/` - Blender 5.2-validated connector cleanup: bounded HTTP
   timeouts, shared streamed downloads, exact temporary-resource ownership, and a measured decision
   not to delete unique retained evidence.

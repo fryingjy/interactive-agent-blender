@@ -11,7 +11,7 @@
     "reversible modeling constraint"
   ],
   "problem": "An occluded view, missing dimension, or conflicting variant can silently become invented geometry when the agent gathers images broadly or treats every search result as equally authoritative.",
-  "status": "RUNTIME_VALIDATED",
+  "status": "EXPERIMENTALLY_TESTED",
   "applicability": {
     "modeling_stage": ["REFERENCE_ANALYSIS", "PRIMARY_BLOCKOUT"],
     "workflow": [
@@ -103,14 +103,6 @@
       ]
     }
   ],
-  "runtime_usage": [
-    {
-      "target": "Bialetti Moka Express 3-cup reference-only exercise",
-      "evidence_path": "runs/2026-08-15_reference-gathering-bialetti/",
-      "success": true,
-      "result": "Resolved the official overall envelope, retained five rejected candidates, and bounded underside/revision uncertainty without authorizing modeling."
-    }
-  ],
   "version_scope": "Reference policy is Blender-version independent; strict stage-gate behavior verified with Blender 5.2 LTS.",
-  "status_note": "Runtime validated for question-driven reference gating on one real product board. It is not transfer validated and has not yet demonstrated improved model fidelity in the pending equal-budget comparison."
+  "status_note": "Controlled policy and stage-gate behavior are verified. A fresh target-specific reference exercise, human review, and modeling-fidelity comparison are required before runtime or transfer promotion."
 }

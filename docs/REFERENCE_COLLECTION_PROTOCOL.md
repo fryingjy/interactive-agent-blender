@@ -258,9 +258,8 @@ visible rather than disappearing from the evidence trail.
 
 An open high-impact question now fails both the reference audit and the strict
 `REFERENCE_ANALYSIS` stage gate. A lower-impact question may be `DEFERRED` only after attempted
-research and only with an explicit modeling constraint. Controlled and real-board evidence is in
-`runs/2026-08-15_question-driven-reference-research/` and
-`runs/2026-08-15_reference-gathering-bialetti/`.
+research and only with an explicit modeling constraint. The policy is covered by controlled stage
+and reference-set tests; it must be re-exercised and independently reviewed for each new board.
 
 ## Success criteria
 

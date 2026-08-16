@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-swingline-747\\reference_manifest.json",
+      "audit": {
+        "target_id": "swingline_747_classic",
+        "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 3,
+        "view_count": 2,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": false,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": false,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": false
+        },
+        "covered_properties": {
+          "outer_lever_profile": [
+            "zoro_74718_front_left"
+          ],
+          "anvil_and_nose_geometry": [
+            "zoro_74718_front_left"
+          ],
+          "hinge_and_magazine_relationship": [
+            "swingline_747_classic_official"
+          ],
+          "base_profile": [
+            "staples_canada_747_envelope"
+          ]
+        },
+        "dimensional_anchors": [
+          "overall envelope 7.3 x 2.5 x 1.7 in; color is cosmetic, not a geometry authority"
+        ],
+        "issues": [
+          "missing required view: bottom",
+          "missing required view: rear",
+          "missing required view: right",
+          "missing required view: top",
+          "critical property has no authoritative claim: underside_feet_and_plate_layout",
+          "high-impact research question remains open: current_747_cross_sections"
+        ],
+        "targeted_research_queries": [
+          "swingline_747_classic current_747_classic_74718_lipstick_red_geometry_family bottom view",
+          "swingline_747_classic current_747_classic_74718_lipstick_red_geometry_family rear view",
+          "swingline_747_classic current_747_classic_74718_lipstick_red_geometry_family right view",
+          "swingline_747_classic current_747_classic_74718_lipstick_red_geometry_family top view",
+          "swingline_747_classic current_747_classic_74718_lipstick_red_geometry_family underside feet and plate layout",
+          "Swingline 747 Classic 74718 top view right side rear",
+          "Swingline 747 Classic 74718 360 product images",
+          "Swingline 747 Classic 74718 dimensions technical drawing",
+          "Swingline 74718 underside bottom view",
+          "Swingline 747 Classic current bottom rubber feet anvil base"
+        ],
+        "research_audit": {
+          "question_count": 2,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [
+            "current_747_cross_sections",
+            "current_747_underside"
+          ],
+          "blocking_questions": [
+            "current_747_cross_sections"
+          ],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [
+            "Swingline 747 Classic 74718 top view right side rear",
+            "Swingline 747 Classic 74718 360 product images",
+            "Swingline 747 Classic 74718 dimensions technical drawing",
+            "Swingline 74718 underside bottom view",
+            "Swingline 747 Classic current bottom rubber feet anvil base"
+          ],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": false
+          },
+          "pass": false
+        },
+        "pass": false,
+        "disposition": "TARGETED_RESEARCH"
+      }
+    }
+  ]
+}

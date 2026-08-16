@@ -50,7 +50,7 @@ dimensions are `8.981 x 8.981 x 30.500 cm`, consistent with the documented `9 x 
 
 `CORRECTED_PENDING_HUMAN_FORM_REVIEW`. This is strong relative and technical evidence, not proof of
 professional multi-view accuracy. The old rejection remains unchanged, no skill is promoted, and
-the Bialetti reference gate remains model-free and pending.
+any future reference-driven target remains gated behind independent human review.
 
 ## Reproduction
 

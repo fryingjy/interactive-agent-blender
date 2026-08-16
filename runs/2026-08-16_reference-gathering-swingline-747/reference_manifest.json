@@ -1,0 +1,123 @@
+{
+  "target_id": "swingline_747_classic",
+  "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+  "required_views": ["front_left", "right", "top", "rear", "bottom"],
+  "critical_properties": [
+    "outer_lever_profile",
+    "base_profile",
+    "hinge_and_magazine_relationship",
+    "anvil_and_nose_geometry",
+    "underside_feet_and_plate_layout"
+  ],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 2,
+  "items": [
+    {
+      "reference_id": "zoro_74718_front_left",
+      "source_id": "zoro_74718_product_listing",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "MATERIAL"],
+      "view": "front_left",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {
+          "property_id": "outer_lever_profile",
+          "purpose": "PRIMARY_FORM",
+          "observation": "Exact 74718 lipstick-red product elevation shows a long shallow top lever, a raised rear hinge housing, a low base, and an open front staple throat.",
+          "confidence": "MEDIUM"
+        },
+        {
+          "property_id": "anvil_and_nose_geometry",
+          "purpose": "DETAIL",
+          "observation": "The near front of the base contains a rectangular metal anvil insert and the metal magazine terminates above it.",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["single perspective elevation", "no direct rear, top, or underside evidence"]
+    },
+    {
+      "reference_id": "swingline_747_classic_official",
+      "source_id": "swingline_official_747_classic_product_page",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "purposes": ["FUNCTIONAL", "CONSTRUCTION", "MATERIAL"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {
+          "property_id": "hinge_and_magazine_relationship",
+          "purpose": "CONSTRUCTION",
+          "observation": "The 747 Classic is a metal, full-strip, top-opening desk stapler with tacking and pinning functions; its mechanism must remain a distinct movable assembly rather than decorative geometry fused to the cover.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["official catalog page is a color/finish sibling and does not provide the complete exact-red multi-view board"]
+    },
+    {
+      "reference_id": "staples_canada_747_envelope",
+      "source_id": "staples_canada_747_product_listing",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_74718_lipstick_red_geometry_family",
+      "purposes": ["DIMENSION"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {
+          "property_id": "base_profile",
+          "purpose": "DIMENSION",
+          "observation": "The current 747 Classic listing reports a 7.3 x 2.5 x 1.7 inch envelope for the 747 body family.",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "dimensional_anchors": ["overall envelope 7.3 x 2.5 x 1.7 in; color is cosmetic, not a geometry authority"],
+      "limitations": ["retailer specification requires corroboration before final precision"]
+    }
+  ],
+  "research_questions": [
+    {
+      "question_id": "current_747_cross_sections",
+      "property_id": "outer_lever_profile",
+      "question": "What are the current 747 Classic's top, right-side, rear, and base cross-sections, including the cover-to-base gap and rear hinge housing?",
+      "trigger": "The available exact-color elevation is perspective-only and cannot safely establish depth, rear curvature, or hinge thickness.",
+      "impact": "HIGH",
+      "search_queries": [
+        "Swingline 747 Classic 74718 top view right side rear",
+        "Swingline 747 Classic 74718 360 product images",
+        "Swingline 747 Classic 74718 dimensions technical drawing"
+      ],
+      "candidates": [],
+      "status": "OPEN"
+    },
+    {
+      "question_id": "current_747_underside",
+      "property_id": "underside_feet_and_plate_layout",
+      "question": "What is the underside plate and rubber-foot layout for the current 74718 geometry family?",
+      "trigger": "A vintage underside photo is visible, but revision identity is not established.",
+      "impact": "MEDIUM",
+      "search_queries": [
+        "Swingline 74718 underside bottom view",
+        "Swingline 747 Classic current bottom rubber feet anvil base"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "etsy_vintage_747_underside",
+          "source_url": "https://www.etsy.com/listing/1743614743/swingline-stapler-no-747-94-02",
+          "source_id": "etsy_vintage_747_94_02",
+          "observed_identity": "Swingline 747",
+          "observed_variant": "vintage_94_02",
+          "purpose": "CONSTRUCTION",
+          "disposition": "REJECTED",
+          "reason": "Useful mechanism lead, but the listing identifies an older revision and cannot authorize the current 74718 underside geometry.",
+          "limitations": ["different production revision", "perspective underside photograph"]
+        }
+      ],
+      "status": "OPEN"
+    }
+  ]
+}

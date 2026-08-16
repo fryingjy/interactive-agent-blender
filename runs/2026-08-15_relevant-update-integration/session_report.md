@@ -12,7 +12,6 @@ Integrated dependency stack:
 - structured reference readiness (`db16161`);
 - repository/reference-gate hygiene (`d06cc97`);
 - bridge correspondence protocol 0.3 and exact rollback (`54c2264`);
-- model-free Bialetti reference gathering (`992f992`);
 - add-on resource ownership (`ebd87e2`);
 - retrieval abstention (`85b7169`).
 
@@ -62,5 +61,5 @@ were preserved.
 
 ## Readiness boundary
 
-This integration does not authorize Bialetti modeling. Its structured reference evidence passes
-machine checks, but `human_review_gate.json` remains pending. The foundation remains `PARTIAL`.
+This integration does not authorize target-specific modeling without an independently reviewed
+reference board. The foundation remains `PARTIAL`.

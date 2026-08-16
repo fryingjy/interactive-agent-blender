@@ -81,14 +81,12 @@ quality certificate.
 
 ## Runtime validation update
 
-The model-free Bialetti exercise now applies the question-first principle through typed research
-records. Three unknowns generated exact searches, two official evidence links were accepted, five
-candidates were explicitly rejected, and two lower-impact uncertainties were deferred with
-reversible constraints. Retrieval and the strict Blender stage gate preserve the skill provenance
-and block an open high-impact question. Evidence:
-`runs/2026-08-15_question-driven-reference-research/`.
+The synthesis defines a question-first reference policy: important unknowns must produce exact
+searches, inspected candidates, an acceptance or rejection reason, and a reversible constraint when
+they remain deferred. Retrieval and the strict Blender stage gate preserve that provenance and block
+an open high-impact question.
 
-This is bounded runtime validation of reference policy, not visual-modeling transfer. Human review
-of the board remains pending. The next required validation is still the equal-budget target-only
-versus structured-reference build, followed by an unrelated-target transfer. Promotion to general
-reference-driven modeling requires fewer structural mistakes and better multi-view fidelity.
+This is policy evidence, not visual-modeling transfer. The next required validation is a fresh,
+human-reviewed target-specific reference exercise followed by an equal-budget target-only versus
+structured-reference build. Promotion to general reference-driven modeling requires fewer
+structural mistakes and better multi-view fidelity.

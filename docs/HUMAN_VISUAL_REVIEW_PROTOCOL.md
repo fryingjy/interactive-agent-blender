@@ -51,8 +51,8 @@ human rejection
 ```
 
 This protocol validates the *shape and freshness* of external feedback. It does not manufacture a
-human review, certify a model, or authorize work currently held behind a separate review gate such
-as the Bialetti reference board.
+human review, certify a model, or authorize work currently held behind a separate reference-review
+gate.
 
 ## Retaining a review handoff
 

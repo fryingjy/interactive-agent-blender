@@ -2395,62 +2395,6 @@
     }
   },
   {
-    "id": "bialetti-official-3cup-envelope-2026",
-    "url": "https://www.bialetti.com/it_en/leopardo-moka-express-3-cup-dolce-gabbana.html",
-    "local_path": null,
-    "title": "Leopardo Moka Express 3-Cup Bialetti Dolce&Gabbana",
-    "creator": "Bialetti",
-    "source_type": "manufacturer_specification",
-    "trust_tier": "A",
-    "version": "accessed 2026-08-15",
-    "topics": ["reference-gathering", "dimensions", "Bialetti-Moka-Express", "3-cup-envelope"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false},
-    "status": "STUDIED",
-    "rejected_reason": null,
-    "modalities_inspected": ["web_text", "product_metadata"],
-    "metadata": {
-      "experiments": ["runs/2026-08-15_reference-gathering-bialetti/"],
-      "direct_observations": [
-        "The manufacturer specifies 15 x 8.5 x 15.5 cm for the 3-cup 130 ml Moka Express"
-      ],
-      "limitations": [
-        "Decorative finish differs from the classic same-object listing",
-        "The source authorizes the official envelope and material family, not graphics, wear, underside, or revision-specific details"
-      ]
-    }
-  },
-  {
-    "id": "experiment-question-driven-reference-research-2026-08-15",
-    "url": null,
-    "local_path": "runs/2026-08-15_question-driven-reference-research/",
-    "title": "Question-Driven Reference Research Contract",
-    "creator": "interactive-agent-blender",
-    "source_type": "controlled_experiment",
-    "trust_tier": "A",
-    "version": "Blender 5.2 LTS stage-gate verification",
-    "topics": ["reference-gathering", "targeted-search", "candidate-rejection", "stage-gates", "uncertainty"],
-    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
-    "status": "RUNTIME_VALIDATED",
-    "rejected_reason": null,
-    "modalities_inspected": ["web_evidence", "json_report", "blend_data"],
-    "metadata": {
-      "experiments": [
-        "runs/2026-08-15_question-driven-reference-research/",
-        "runs/2026-08-15_reference-gathering-bialetti/",
-        "runs/2026-08-10_stage-quality/"
-      ],
-      "direct_observations": [
-        "Three Bialetti questions retained two accepted links, five explicit rejections, and two bounded deferrals",
-        "An open high-impact question changed disposition to TARGETED_RESEARCH",
-        "Blender's strict stage gate rejected unaudited question-driven evidence without mutating stage state"
-      ],
-      "limitations": [
-        "The human reference-board gate remains pending",
-        "The equal-budget modeling comparison and cross-target transfer remain unrun"
-      ]
-    }
-  },
-  {
     "id": "experiment-secondary-view-component-strategy-2026-08-15",
     "url": null,
     "local_path": "runs/2026-08-15_secondary-view-component-strategy/",

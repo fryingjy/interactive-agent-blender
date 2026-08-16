@@ -1,0 +1,30 @@
+{
+  "target": "Swingline 747 Classic 74718 lipstick-red geometry family",
+  "retention": "Third-party images are local, ignored source media for reference inspection only.",
+  "items": [
+    {
+      "path": "media/primary/74718_product_elevation.jpeg",
+      "purpose": ["PRIMARY_FORM", "DETAIL"],
+      "source_url": "https://www.zoro.com/swingline-stapler-desk-747-classic-red-74718/i/G6897453/",
+      "download_url": "https://www.zoro.com/static/cms/product/large/Grainger_1010066446xx3e3e29.jpeg",
+      "variant": "74718 lipstick red",
+      "authority_limit": "Perspective front-left elevation only"
+    },
+    {
+      "path": "media/construction/747_open_mechanism.jpg",
+      "purpose": ["CONSTRUCTION", "FUNCTIONAL"],
+      "source_url": "https://www.dickblick.com/products/swingline-747-business-stapler/",
+      "download_url": "https://images.ctfassets.net/f1fikihmjtrp/P0Hiw0UgrwOrqqnTrnSHL/2f9b5e24bf53bf92ace2d71b2f1a8b82/58164-3010-2-4ww.jpg",
+      "variant": "747-family red open mechanism",
+      "authority_limit": "Family-level construction evidence; not a closed-state dimensional source"
+    },
+    {
+      "path": "media/uncertain/747_vintage_underside.jpg",
+      "purpose": ["CONSTRUCTION"],
+      "source_url": "https://www.etsy.com/listing/1743614743/swingline-stapler-no-747-94-02",
+      "download_url": "https://i.etsystatic.com/30511866/r/il/5e62ad/6043052602/il_794xN.6043052602_32n6.jpg",
+      "variant": "vintage 94-02",
+      "authority_limit": "Rejected for current underside geometry because revision identity differs"
+    }
+  ]
+}

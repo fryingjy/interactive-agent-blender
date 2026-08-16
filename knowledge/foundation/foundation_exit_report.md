@@ -369,14 +369,12 @@ visual review, exercise the runtime planner throughout, continue
 longer-interval retention checks, and seek experienced review when available. Sculpt-heavy and
 character benchmarks remain deferred.
 
-### 2026-08-15 reference-gate update
+### 2026-08-16 reference-gate status
 
-The Bialetti board now has question-driven search provenance rather than only coverage counts. Its
-official 3-cup envelope is resolved to 15 x 8.5 x 15.5 cm; five weak, conflicting, or wrong-revision
-candidates remain explicitly rejected; and underside/revision uncertainty has reversible modeling
-constraints. Retrieval and Blender's strict stage gate enforce the corresponding runtime skill.
-This does not change the exit decision: human board review and the equal-budget target-only versus
-structured-reference comparison remain required before the next held-out modeling claim.
+The reusable question-driven policy retains typed unknowns, exact searches, candidate decisions,
+and reversible constraints. The prior target-specific evidence exercise has been retired. A new
+reference board must establish its own provenance and pass independent human review before it can
+authorize a blockout or support a held-out modeling claim.
 
 ### 2026-08-15 secondary-view strategy update
 

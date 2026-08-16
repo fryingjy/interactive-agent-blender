@@ -880,21 +880,6 @@ roadmap priority therefore remains unchanged: complete the human-reviewed refere
 exercise, then compare target-only and structured-reference-set modeling at equal effort on a new
 prop before another difficult held-out build is accepted.
 
-## Update -- 2026-08-15 (reference-gathering-only exercise awaiting human review)
-
-`runs/2026-08-15_reference-gathering-bialetti/` applies the new readiness gate to a genuinely new
-non-weapon hard-surface target without opening Blender. It records eight purpose-scoped reference
-items from three provenance sources, twelve same-object views kept under ignored media, official
-155 mm / 72 mm dimensional anchors, ten critical properties, two explicit conflict resolutions,
-three bounded ratios, and an 11-component/10-relationship decomposition. The machine audit passes
-all seven checks and authorizes only a reversible blockout.
-
-The roadmap's human-review requirement remains deliberately separate. The local contact sheet has
-been visually inspected by the agent, but `human_review_gate.json` remains `PENDING_USER_REVIEW` and
-`modeling_authorized` remains false. The missing boiler underside and possible old/current production
-revision difference are visible uncertainties. The equal-effort comparison must not begin until the
-user accepts this board or directs a different target/reference search.
-
 ## Update -- 2026-08-15 (retrieval now abstains from weak unrelated matches)
 
 An expanded retrieval probe exposed three concrete false positives: camera-perspective, UV-packing,
@@ -907,7 +892,7 @@ all pass, and every positive top result clears a predeclared 1.0 margin.
 This improves executable memory safety and closes one wrong-retrieval mode. The set was authored
 after inspecting the store and calibrating the threshold, so it is regression evidence rather than
 held-out or independent retention. Longer-interval retrieval, broader real-session use, and the
-pending Bialetti human reference gate remain open.
+future human reference-review gate remain open.
 
 ## Update -- 2026-08-15 (Bevel/SubD source conflict experimentally reconciled)
 
@@ -1008,7 +993,7 @@ fresh saved-scene verifier with `HIGH_POLY`/`LOW_POLY` isolation and both stacks
 This closes editable internal variant packaging, not true production retopology. Purpose-authored
 low topology, UVs, bake transfer, and export remain separate open work.
 
-## Update -- 2026-08-15 (question-driven reference research reaches runtime gating)
+## Update -- 2026-08-15 (question-driven reference research policy)
 
 Applied the already completed seven-video reference-workflow synthesis instead of replaying the
 videos or collecting more notes. `ReferenceResearchQuestion` and `ResearchCandidate` now retain the
@@ -1016,24 +1001,15 @@ unknown property, trigger, impact, exact queries, every inspected candidate, acc
 linked factual reference, resolution, and reversible modeling constraint. An open high-impact
 question blocks both the reference audit and Blender's strict `REFERENCE_ANALYSIS` transition.
 
-The Bialetti reference-only board generated three questions and six exact searches. Bialetti's
-official 3-cup 15 x 8.5 x 15.5 cm envelope was accepted; conflicting retailer dimensions,
-non-underside galleries, and vintage/revision-mismatched candidates were retained as five explicit
-rejections. The unresolved underside and revision compatibility are bounded by two reversible
-constraints rather than invented. Retrieval ranks the new skill first for a matching unknown and
-the planner contract retains that provenance.
-
-All positive and four negative controls pass, including a real Blender 5.2 stage transition that
-refuses unaudited question evidence without mutating stage state. This is runtime validation of one
-reference-policy skill, not proof that the resulting model will be more accurate. Human board review
-and the equal-budget target-only versus structured-reference build remain open. Evidence:
-`runs/2026-08-15_question-driven-reference-research/` and
-`runs/2026-08-15_reference-gathering-bialetti/`.
+Controlled positive and negative cases, including a real Blender 5.2 stage transition, confirm that
+unaudited question evidence is refused without mutating stage state. This is experimental evidence
+for one reference-policy skill, not proof that a resulting model will be more accurate. A fresh
+board, human review, and equal-budget target-only versus structured-reference build remain open.
 
 ## Update -- 2026-08-15 (secondary-view depth changes construction strategy)
 
 Closed the gap matrix's controlled component/depth reconstruction experiment without bypassing the
-pending Bialetti human gate. Rectangular and 16-sided radial fixtures each pit one continuous
+required human reference gate. Rectangular and 16-sided radial fixtures each pit one continuous
 full-depth body against a narrow body plus separate full-front faceplate. Their front silhouettes
 are exactly identical (`1.0` IoU), so the executable policy refuses to choose and the planner emits
 `RESOLVE_SECONDARY_VIEW_STRATEGY` with no Blender mutation.
@@ -1044,6 +1020,6 @@ evidence overrides a deliberately conflicting generic separate-material prior, a
 process confirms one-object/one-component continuity rather than joined disconnected shells.
 
 This promotes the narrow secondary-view strategy skill to `TRANSFER_VALIDATED` across controlled
-shape families. It does not infer depth from photographs, authorize the Bialetti model, or prove
+shape families. It does not infer depth from photographs, authorize an unreviewed model, or prove
 professional fidelity. The next promotion gate is a real unrelated multi-view prop decision with
 typed runtime telemetry and human visual comparison.

@@ -27,7 +27,7 @@ def main() -> int:
     top = candidates[0]
     strict_source = strict["analysis"]["source"]
     known_at_discovery = set(queue["excluded_video_ids"])
-    blocked = ("bialetti", "moka", "camera", "telephone", "watering", "lamp", "boombox", "wrench")
+    blocked = ("camera", "telephone", "watering", "lamp", "boombox", "wrench")
     candidate_text = " ".join(f"{item['title']} {item['description']}" for item in candidates).casefold()
     checks = {
         "queue_has_three_gap_queries": len(queue["queries"]) == 3,

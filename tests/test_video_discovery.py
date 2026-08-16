@@ -61,10 +61,10 @@ class VideoDiscoveryTests(unittest.TestCase):
             "subdivision topology",
             limit=3,
             excluded_video_ids=["seen"],
-            heldout_target_terms=["bialetti moka pot"],
+            heldout_target_terms=["brass desk lamp"],
             runner=lambda *_: _payload(
                 {"id": "seen", "title": "Subdivision topology", "duration": 500},
-                {"id": "target", "title": "Model a Bialetti moka pot", "duration": 500},
+                {"id": "target", "title": "Model a brass desk lamp", "duration": 500},
                 {"id": "safe", "title": "Subdivision topology on curved products", "duration": 500},
             ),
         )
