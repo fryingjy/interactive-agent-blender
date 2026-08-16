@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\stage_06_handle_front_placement_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_05_handle_path.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_06_handle_front_placement.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "db33379c485a",
+  "results": [
+    {
+      "index": 0,
+      "label": "move_existing_handle_path_to_front_visible_plane",
+      "command": "transaction",
+      "params": {
+        "name": "DekadHandle",
+        "action_type": "correct_handle_front_placement",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.0,
+            -2.25,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1786924362787",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1786924362787",
+          "performed": true,
+          "result": {
+            "name": "DekadHandle",
+            "location": [
+              0.0,
+              -2.25,
+              0.0
+            ],
+            "delta": [
+              0.0,
+              -2.25,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "correct_handle_front_placement",
+          "op_delta": 0,
+          "before": {
+            "revision": 3,
+            "name": "DekadHandle",
+            "type": "CURVE",
+            "location": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "dimensions": [
+              6.7862677574157715,
+              0.4338429868221283,
+              2.277010917663574
+            ],
+            "curve": {
+              "dimensions_mode": "3D",
+              "resolution_u": 12,
+              "render_resolution_u": 0,
+              "bevel_mode": "ROUND",
+              "bevel_depth": 0.1599999964237213,
+              "bevel_resolution": 4,
+              "bevel_object": null,
+              "taper_object": null,
+              "use_fill_caps": true,
+              "splines": [
+                {
+                  "type": "BEZIER",
+                  "cyclic": false,
+                  "point_count": 5,
+                  "points": [
+                    [
+                      -3.25,
+                      -0.15000000596046448,
+                      4.25
+                    ],
+                    [
+                      -2.5999999046325684,
+                      -0.05000000074505806,
+                      5.650000095367432
+                    ],
+                    [
+                      0.0,
+                      -0.05000000074505806,
+                      6.300000190734863
+                    ],
+                    [
+                      2.5999999046325684,
+                      -0.05000000074505806,
+                      5.650000095367432
+                    ],
+                    [
+                      3.25,
+                      -0.15000000596046448,
+                      4.25
+                    ]
+                  ],
+                  "bezier_handles": [
+                    {
+                      "left": [
+                        -3.503767490386963,
+                        -0.1890411674976349,
+                        3.7034239768981934
+                      ],
+                      "right": [
+                        -2.996232509613037,
+                        -0.11095885187387466,
+                        4.796576023101807
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        -3.0654184818267822,
+                        -0.0716414600610733,
+                        5.265832424163818
+                      ],
+                      "right": [
+                        -1.7935905456542969,
+                        -0.012502845376729965,
+                        6.315629959106445
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        -1.0463101863861084,
+                        -0.05000000074505806,
+                        6.300000190734863
+                      ],
+                      "right": [
+                        1.0463101863861084,
+                        -0.05000000074505806,
+                        6.300000190734863
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        1.7935905456542969,
+                        -0.012502845376729965,
+                        6.315629959106445
+                      ],
+                      "right": [
+                        3.0654184818267822,
+                        -0.0716414600610733,
+                        5.265832424163818
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        2.996232509613037,
+                        -0.11095885187387466,
+                        4.796576023101807
+                      ],
+                      "right": [
+                        3.503767490386963,
+                        -0.1890411674976349,
+                        3.7034239768981934
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    }
+                  ]
+                }
+              ]
+            },
+            "claim_boundary": "Curve path/control/profile state is reported directly. It is not mesh persistent-ID, manifoldness, or evaluated-surface validation."
+          },
+          "after": {
+            "revision": 3,
+            "name": "DekadHandle",
+            "type": "CURVE",
+            "location": [
+              0.0,
+              -2.25,
+              0.0
+            ],
+            "rotation_euler": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "dimensions": [
+              6.7862677574157715,
+              0.4338429868221283,
+              2.277010917663574
+            ],
+            "curve": {
+              "dimensions_mode": "3D",
+              "resolution_u": 12,
+              "render_resolution_u": 0,
+              "bevel_mode": "ROUND",
+              "bevel_depth": 0.1599999964237213,
+              "bevel_resolution": 4,
+              "bevel_object": null,
+              "taper_object": null,
+              "use_fill_caps": true,
+              "splines": [
+                {
+                  "type": "BEZIER",
+                  "cyclic": false,
+                  "point_count": 5,
+                  "points": [
+                    [
+                      -3.25,
+                      -0.15000000596046448,
+                      4.25
+                    ],
+                    [
+                      -2.5999999046325684,
+                      -0.05000000074505806,
+                      5.650000095367432
+                    ],
+                    [
+                      0.0,
+                      -0.05000000074505806,
+                      6.300000190734863
+                    ],
+                    [
+                      2.5999999046325684,
+                      -0.05000000074505806,
+                      5.650000095367432
+                    ],
+                    [
+                      3.25,
+                      -0.15000000596046448,
+                      4.25
+                    ]
+                  ],
+                  "bezier_handles": [
+                    {
+                      "left": [
+                        -3.503767490386963,
+                        -0.1890411674976349,
+                        3.7034239768981934
+                      ],
+                      "right": [
+                        -2.996232509613037,
+                        -0.11095885187387466,
+                        4.796576023101807
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        -3.0654184818267822,
+                        -0.0716414600610733,
+                        5.265832424163818
+                      ],
+                      "right": [
+                        -1.7935905456542969,
+                        -0.012502845376729965,
+                        6.315629959106445
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        -1.0463101863861084,
+                        -0.05000000074505806,
+                        6.300000190734863
+                      ],
+                      "right": [
+                        1.0463101863861084,
+                        -0.05000000074505806,
+                        6.300000190734863
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        1.7935905456542969,
+                        -0.012502845376729965,
+                        6.315629959106445
+                      ],
+                      "right": [
+                        3.0654184818267822,
+                        -0.0716414600610733,
+                        5.265832424163818
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    },
+                    {
+                      "left": [
+                        2.996232509613037,
+                        -0.11095885187387466,
+                        4.796576023101807
+                      ],
+                      "right": [
+                        3.503767490386963,
+                        -0.1890411674976349,
+                        3.7034239768981934
+                      ],
+                      "left_type": "AUTO",
+                      "right_type": "AUTO"
+                    }
+                  ]
+                }
+              ]
+            },
+            "claim_boundary": "Curve path/control/profile state is reported directly. It is not mesh persistent-ID, manifoldness, or evaluated-surface validation."
+          },
+          "id_delta": null
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1786924362787",
+          "result_revision": 4
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_06_handle_front_placement.blend"
+  },
+  "pass": true
+}

@@ -1,0 +1,189 @@
+{
+  "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_06_handle_front_placement.blend",
+  "inspected_at": "2026-08-16T23:53:10Z",
+  "blender_version_used": "5.2.0 LTS",
+  "file_saved_with_version": "5.2.44",
+  "scene_name": "Scene",
+  "collections": [
+    {
+      "name": "Scene Collection",
+      "depth": 0,
+      "object_count": 4,
+      "child_collections": []
+    }
+  ],
+  "objects": [
+    {
+      "name": "DekadClockShell",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 704
+      },
+      "mesh": {
+        "vertices": 176,
+        "edges": 352,
+        "polygons": 176,
+        "ngons": 0,
+        "triangles": 0,
+        "quads": 176,
+        "uv_layers": [
+          "ProfileUV"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "DekadDial",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -2.2200000286102295,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 98
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "DekadGlassBezel",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -2.119999885559082,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {
+        "agent_id_counter": 98
+      },
+      "mesh": {
+        "vertices": 32,
+        "edges": 48,
+        "polygons": 18,
+        "ngons": 2,
+        "triangles": 0,
+        "quads": 16,
+        "uv_layers": [
+          "UVMap"
+        ],
+        "vertex_groups": [],
+        "shape_keys": [],
+        "has_custom_split_normals": false,
+        "material_slots": [],
+        "bevel_weight_attribute_present": false,
+        "crease_attribute_present": false,
+        "auto_smooth_angle_deg": null
+      },
+      "modifiers": []
+    },
+    {
+      "name": "DekadHandle",
+      "type": "CURVE",
+      "location": [
+        0.0,
+        -2.25,
+        0.0
+      ],
+      "rotation_euler_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "parent": null,
+      "collections": [
+        "Scene Collection"
+      ],
+      "hide_viewport": false,
+      "hide_render": false,
+      "custom_properties": {},
+      "modifiers": []
+    }
+  ],
+  "materials_total": 0,
+  "material_names": [],
+  "images_total": 0,
+  "image_names": []
+}

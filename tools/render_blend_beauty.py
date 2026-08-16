@@ -1,4 +1,4 @@
-"""Generic read-only beauty render of a .blend file's visible mesh objects,
+"""Generic read-only beauty render of a .blend file's visible mesh/curve objects,
 for studying professional reference files per docs/BLEND_FILE_STUDY_PROTOCOL.md.
 Never saves the source file."""
 import sys
@@ -19,7 +19,14 @@ def main():
 
     bpy.ops.wm.open_mainfile(filepath=str(blend_path))
 
-    objs = [o for o in bpy.data.objects if o.type == "MESH" and not o.hide_render and not o.hide_get()]
+    # Curves are legitimate editable construction geometry (wire handles,
+    # straps, trims). Their evaluated meshes can be framed and rendered just
+    # like meshes; excluding them made valid curve assemblies disappear from
+    # diagnostic renders and encouraged incorrect placement repairs.
+    objs = [
+        o for o in bpy.data.objects
+        if o.type in {"MESH", "CURVE"} and not o.hide_render and not o.hide_get()
+    ]
     if not objs:
         raise SystemExit("no visible mesh objects")
 

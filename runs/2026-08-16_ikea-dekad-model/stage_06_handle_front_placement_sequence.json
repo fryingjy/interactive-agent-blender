@@ -1,0 +1,11 @@
+[
+  {
+    "label": "move_existing_handle_path_to_front_visible_plane",
+    "transaction": {
+      "name": "DekadHandle",
+      "action_type": "correct_handle_front_placement",
+      "operation": "translate_object",
+      "params": {"delta": [0.0, -2.25, 0.0]}
+    }
+  }
+]
