@@ -184,6 +184,13 @@ def set_curve_taper(object_name: str, taper_object_name: str) -> dict:
 
 
 @mcp.tool()
+def set_curve_bevel_object(object_name: str, bevel_object_name: str, hide_profile: bool = True) -> dict:
+    """Assign an editable CURVE cross-section to a curve path, allowing flattened
+    or shaped profiles instead of a circular bevel-depth tube."""
+    return _call("set_curve_bevel_object", name=object_name, bevel_object_name=bevel_object_name, hide_profile=hide_profile)
+
+
+@mcp.tool()
 def convert_curve_to_mesh(object_name: str, new_mesh_name: str | None = None, merge_dist: float = 0.0001) -> dict:
     """Bake a curve's evaluated (bevel + taper applied) shape into a new, separate editable mesh object -- the bridge back into the normal bmesh-based typed vocabulary (bevel_edges, subdivide_selection, etc.) once a curve-based blockout reads correctly. Leaves the source curve object untouched. Automatically welds the beveled tube's end-cap seams (a real, confirmed gap in Blender's own curve-to-mesh conversion -- the caps are not merged to the tube wall by default), so the result is already 0-non-manifold, not something the caller needs to clean up separately."""
     return _call("convert_curve_to_mesh", name=object_name, new_mesh_name=new_mesh_name, merge_dist=merge_dist)

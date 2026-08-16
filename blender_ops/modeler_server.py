@@ -525,6 +525,9 @@ class ModelerServer:
     def cmd_set_curve_taper(self, name, taper_object_name):
         return curve_ops.set_curve_taper(name, taper_object_name)
 
+    def cmd_set_curve_bevel_object(self, name, bevel_object_name, hide_profile=True):
+        return curve_ops.set_curve_bevel_object(name, bevel_object_name, hide_profile=hide_profile)
+
     def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001, replace_source=False):
         result = curve_ops.convert_curve_to_mesh(
             name,

@@ -91,6 +91,33 @@ def set_curve_taper(name, taper_object_name):
     return {"name": name, "taper_object": taper_object_name}
 
 
+def set_curve_bevel_object(name, bevel_object_name, hide_profile=True):
+    """Use a separate curve as the cross-section of an editable path.
+
+    ``bevel_depth`` can only produce a circular tube.  A flattened handle,
+    trim, or molded strap needs an authored profile while retaining the path
+    editable, so this exposes Blender's native ``bevel_mode='OBJECT'`` rather
+    than converting the path to an irreversible mesh approximation.
+    """
+    obj = bpy.data.objects[name]
+    profile = bpy.data.objects[bevel_object_name]
+    if obj.type != "CURVE" or profile.type != "CURVE":
+        raise ValueError("curve bevel object requires two CURVE objects")
+    if obj.name == profile.name:
+        raise ValueError("a curve cannot use itself as its bevel object")
+    obj.data.bevel_mode = "OBJECT"
+    obj.data.bevel_object = profile
+    if hide_profile:
+        profile.hide_render = True
+        profile.hide_viewport = True
+    return {
+        "name": name,
+        "bevel_object": profile.name,
+        "bevel_mode": obj.data.bevel_mode,
+        "profile_hidden": bool(hide_profile),
+    }
+
+
 def convert_curve_to_mesh(name, new_mesh_name=None, merge_dist=0.0001, replace_source=False):
     """Bake the evaluated curve (bevel + taper applied) into a real,
     editable mesh object -- how a curve-based blockout re-enters the

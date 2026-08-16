@@ -1,0 +1,30 @@
+[
+  {
+    "label": "create_flat_handle_cross_section",
+    "command": "create_curve",
+    "params": {
+      "name": "carry_handle_profile",
+      "points": [[-0.34, -0.13, 0.0], [0.34, -0.13, 0.0], [0.34, 0.13, 0.0], [-0.34, 0.13, 0.0]],
+      "bevel_depth": 0.0,
+      "closed": true,
+      "curve_type": "POLY"
+    }
+  },
+  {
+    "label": "assign_flat_handle_cross_section",
+    "command": "set_curve_bevel_object",
+    "params": {"name": "carry_handle", "bevel_object_name": "carry_handle_profile", "hide_profile": true}
+  },
+  {
+    "label": "render_flattened_handle_front_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["outer_housing", "carry_handle", "tuning_knob", "speaker_faceplate", "tuner_faceplate"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_18_flat_handle_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 768,
+      "margin": 1.12
+    }
+  }
+]

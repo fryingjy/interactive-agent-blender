@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\stage_18_flat_handle_profile_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_17_combined.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_18_flat_handle.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "aede1b938202",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_flat_handle_cross_section",
+      "command": "create_curve",
+      "params": {
+        "name": "carry_handle_profile",
+        "points": [
+          [
+            -0.34,
+            -0.13,
+            0.0
+          ],
+          [
+            0.34,
+            -0.13,
+            0.0
+          ],
+          [
+            0.34,
+            0.13,
+            0.0
+          ],
+          [
+            -0.34,
+            0.13,
+            0.0
+          ]
+        ],
+        "bevel_depth": 0.0,
+        "closed": true,
+        "curve_type": "POLY"
+      },
+      "status": "ok",
+      "result": {
+        "name": "carry_handle_profile",
+        "type": "CURVE",
+        "point_count": 4,
+        "bevel_depth": 0.0
+      }
+    },
+    {
+      "index": 1,
+      "label": "assign_flat_handle_cross_section",
+      "command": "set_curve_bevel_object",
+      "params": {
+        "name": "carry_handle",
+        "bevel_object_name": "carry_handle_profile",
+        "hide_profile": true
+      },
+      "status": "ok",
+      "result": {
+        "name": "carry_handle",
+        "bevel_object": "carry_handle_profile",
+        "bevel_mode": "OBJECT",
+        "profile_hidden": true
+      }
+    },
+    {
+      "index": 2,
+      "label": "render_flattened_handle_front_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate",
+          "tuner_faceplate"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_18_flat_handle_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_18_flat_handle_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate",
+          "tuner_faceplate"
+        ],
+        "frame_objects": [
+          "outer_housing",
+          "carry_handle",
+          "tuning_knob",
+          "speaker_faceplate",
+          "tuner_faceplate"
+        ],
+        "camera_location": [
+          0.27499938011169434,
+          -31.239852905273438,
+          1.3609992265701294
+        ],
+        "camera_ortho_scale": 17.506910042001987,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.258806,
+        "foreground_unique_colors_5bit": 64,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\panasonic_rf2400d_stage_18_flat_handle.blend"
+  },
+  "pass": true
+}
