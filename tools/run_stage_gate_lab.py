@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from blender_ops.modeling_stage import advance_stage, get_stage, get_stage_log
+from blender_ops.modeler_server import ModelerServer
 
 
 def main():
@@ -23,6 +24,7 @@ def main():
     bpy.ops.mesh.primitive_cube_add()
     obj = bpy.context.object
     obj.name = "StageGateAsset"
+    server = ModelerServer()
 
     reference_evidence = {
         "component_graph_pass": True, "measured_ratio_count": 3, "uncertainty_recorded": True,
@@ -36,13 +38,11 @@ def main():
     )
     state_after_weak = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
     strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", reference_evidence)
-    coverage = {
-        "declared_primary_components": ["stage_gate_asset"],
-        "built_object_names": [obj.name],
-        "component_matches": {"stage_gate_asset": obj.name},
-        "unmatched_primary_components": [],
-        "coverage_ok": True,
-    }
+    live_coverage = server.cmd_check_scene_component_coverage({
+        "object_name": "stage gate asset",
+        "components": [{"name": "stage_gate_asset", "role": "primary", "manufacture": "structural"}],
+    })
+    coverage = live_coverage["coverage"]
     weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
         "dimensions_checked": True, "primary_components_present": True,
         "component_coverage": {**coverage, "coverage_ok": False},
@@ -60,11 +60,17 @@ def main():
         "incomplete_primary_blockout_rejected": not weak_visual["advanced"],
         "visual_rejection_did_not_mutate": state_after_weak_visual == {"stage": "PRIMARY_BLOCKOUT", "log_count": 1},
         "complete_primary_blockout_advanced": strong_visual["advanced"],
+        "coverage_captured_from_live_modeler": (
+            live_coverage["capture_type"] == "LIVE_MODELER_RUNTIME"
+            and live_coverage["pass"]
+            and live_coverage["mesh_object_names"] == [obj.name]
+        ),
         "only_accepted_transitions_logged": len(final_log) == 2,
     }
     report = {
         "lab": "machine_enforced_modeling_stage_gates",
         "attempts": [weak_primary, strong_primary, weak_visual, strong_visual],
+        "live_component_coverage": live_coverage,
         "final_stage": get_stage(obj.name),
         "stage_log": final_log,
         "assertions": assertions,

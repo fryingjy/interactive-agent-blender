@@ -450,6 +450,15 @@ class SceneDecompositionTests(unittest.TestCase):
             },
         )
 
+    def test_coverage_check_matches_pascal_case_blender_object_names(self):
+        decomp = SceneDecomposition(
+            object_name="stage gate fixture",
+            components=[Component("stage_gate_asset", "primary", "structural")],
+        )
+        result = decomp.check_object_coverage(["StageGateAsset"])
+        self.assertTrue(result["coverage_ok"])
+        self.assertEqual(result["component_matches"], {"stage_gate_asset": "StageGateAsset"})
+
     def test_observed_claim_requires_concrete_evidence(self):
         decomp = self._strict_lantern_decomposition()
         decomp.claims[0].evidence = []

@@ -387,7 +387,11 @@ class SceneDecomposition:
         primaries = self.primary_components()
 
         def tokens(name: str) -> set[str]:
-            return set(filter(None, re.split(r"[^a-z0-9]+", name.lower())))
+            # Blender object names frequently use PascalCase while reference
+            # boards use snake_case.  Split the former before case-folding so
+            # `StageGateAsset` and `stage_gate_asset` express the same parts.
+            spaced = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", " ", name)
+            return set(filter(None, re.split(r"[^a-z0-9]+", spaced.lower())))
 
         def normalized(name: str) -> str:
             return "_".join(sorted(tokens(name)))

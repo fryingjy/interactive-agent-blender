@@ -131,7 +131,9 @@ the decomposition JSON, and its intended collection to record this check beside 
 Advancing from `PRIMARY_BLOCKOUT` to silhouette/proportion review requires a structured one-to-one
 coverage object as `component_coverage` stage evidence; a hand-authored boolean is deliberately
 insufficient. A saved-asset evaluation should use the fresh-process report above rather than claim
-that a live-stage record is independent verification.
+that a live-stage record is independent verification. During active modeling, use the typed
+`check_scene_component_coverage` runtime command to capture the actual live mesh names, session,
+and revision before recording the stage evidence.
 Graph-shape validity
 (duplicate/missing ids, dangling relationships) delegates to the existing
 `knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from

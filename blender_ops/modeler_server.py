@@ -33,6 +33,9 @@ from collections import deque
 import bpy
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 import curve_ops
 import decision_state
 import decision_transaction
@@ -72,6 +75,7 @@ CAPABILITIES = [
     "bridge_correspondence_analysis",
     "editable_high_low_variant_packaging",
     "production_high_low_audit",
+    "scene_component_coverage",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -479,6 +483,42 @@ class ModelerServer:
             twist_offsets=twist_offsets,
             allow_unequal=allow_unequal,
         )
+
+    def cmd_check_scene_component_coverage(self, decomposition, collection_name=None):
+        """Read actual mesh names and evaluate one-to-one reference component coverage.
+
+        This is intentionally read-only and records the live revision/session alongside
+        the result.  It is a component-presence signal, never a claim of visual fidelity.
+        """
+        if not isinstance(decomposition, dict):
+            raise ValueError("decomposition must be a JSON-compatible object")
+        if collection_name is not None and not isinstance(collection_name, str):
+            raise ValueError("collection_name must be a string or null")
+        from knowledge_engine.scene_decomposition import scene_decomposition_from_dict
+
+        parsed = scene_decomposition_from_dict(decomposition)
+        if collection_name:
+            collection = bpy.data.collections.get(collection_name)
+            if collection is None:
+                raise ValueError(f"missing collection: {collection_name}")
+            objects = collection.all_objects
+        else:
+            objects = bpy.data.objects
+        names = sorted(obj.name for obj in objects if obj.type == "MESH")
+        coverage = parsed.check_object_coverage(names)
+        return {
+            "capture_type": "LIVE_MODELER_RUNTIME",
+            "session_id": self.session_id,
+            "scene_revision": decision_state.current_revision(),
+            "collection": collection_name or "ALL",
+            "mesh_object_names": names,
+            "coverage": coverage,
+            "pass": coverage["coverage_ok"],
+            "limitation": (
+                "Names establish only primary-component presence. Use a fresh-process asset report "
+                "for independent verification and controlled visual comparison for likeness."
+            ),
+        }
 
     def cmd_get_hard_surface_shading_audit(self, name):
         return object_ops.hard_surface_shading_audit(name)

@@ -148,6 +148,16 @@ def set_modeling_stage(object_name: str, stage: str, evidence: dict) -> dict:
 
 
 @mcp.tool()
+def check_scene_component_coverage(decomposition: dict, collection_name: str | None = None) -> dict:
+    """Read the live Blender mesh-object names and compare them one-to-one against a structured reference decomposition. This is read-only, revision/session-bound component-presence evidence; it does not judge shape, topology, or visual likeness."""
+    return _call(
+        "check_scene_component_coverage",
+        decomposition=decomposition,
+        collection_name=collection_name,
+    )
+
+
+@mcp.tool()
 def create_curve(name: str, points: list[list[float]], bevel_depth: float = 0.05, closed: bool = False, curve_type: str = "POLY") -> dict:
     """Create a curve object from a list of [x, y, z] control points -- for geometry a mesh primitive can't represent (a path that wraps, overlaps, or tapers along its length; a torus is a symmetric ring and cannot do this). bevel_depth gives the path a round 3D cross-section of that radius. curve_type 'POLY' (straight segments, easiest to verify against measured reference coordinates) or 'BEZIER'. closed=True connects the last point back to the first. Free to call outside a decision transaction, same as create_primitive."""
     return _call("create_curve", name=name, points=points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
