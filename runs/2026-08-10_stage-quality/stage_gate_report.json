@@ -107,9 +107,142 @@
       }
     }
   ],
+  "planned_capture": {
+    "disposition": "INSPECT",
+    "action": "CAPTURE_LIVE_COMPONENT_COVERAGE",
+    "target_object": "StageGateAsset",
+    "target_region": null,
+    "rationale": [
+      "primary blockout cannot advance on a caller-authored component-presence assertion",
+      "capture actual live mesh names against the evidence-bound component board"
+    ],
+    "expected_effect": "Produce a session/revision-bound one-to-one primary-component coverage record before further blockout decisions.",
+    "verification": [
+      "coverage has no unmatched primary components",
+      "captured scene revision matches the current observation",
+      "rerun the primary-blockout stage gate"
+    ],
+    "observed_revision": 0,
+    "confidence": "HIGH",
+    "operation": "check_scene_component_coverage",
+    "operation_params": {
+      "decomposition": {
+        "target": "stage gate asset",
+        "object_name": "stage gate asset",
+        "object_class": "unknown",
+        "reference_style": "mixed",
+        "camera_assumptions": {},
+        "components": [
+          {
+            "name": "stage_gate_asset",
+            "role": "primary",
+            "manufacture": "structural",
+            "separately_manufactured": false,
+            "notes": "",
+            "evidence_status": "OBSERVED",
+            "confidence": 0.9,
+            "evidence": [
+              "fixture observation: one visible blockout component"
+            ]
+          }
+        ],
+        "relationships": [],
+        "confidence_by_claim": {
+          "fixture-primary": 0.9,
+          "fixture-construction": 0.8
+        },
+        "candidate_modeling_strategies": [
+          {
+            "name": "single-editable-box",
+            "representation": "BOX_MESH",
+            "rationale_claim_ids": [
+              "fixture-primary",
+              "fixture-construction"
+            ],
+            "status": "candidate",
+            "rejection_reason": "",
+            "reversible": true
+          }
+        ],
+        "rejected_strategies": [],
+        "reference_readiness": {
+          "ready_for_blockout": true,
+          "missing_requirements": [],
+          "high_impact_unresolved_claims": [],
+          "research_questions": [],
+          "conflicting_modeling_signals": [],
+          "claim_counts_by_status": {
+            "OBSERVED": 1,
+            "STRONGLY_INFERRED": 1,
+            "UNKNOWN": 0,
+            "WEAKLY_INFERRED": 0
+          }
+        },
+        "primary_forms": [
+          {
+            "claim_id": "fixture-primary",
+            "category": "primary_forms",
+            "statement": "One box-like primary form is visible.",
+            "evidence_status": "OBSERVED",
+            "confidence": 0.9,
+            "evidence": [
+              "fixture observation"
+            ],
+            "modeling_consequence": "Start from the observed primary component.",
+            "impact": "high",
+            "component_refs": [
+              "stage_gate_asset"
+            ],
+            "source_views": [],
+            "modeling_signals": {}
+          }
+        ],
+        "secondary_forms": [],
+        "tertiary_forms": [],
+        "continuous_surfaces": [],
+        "separate_parts": [],
+        "negative_spaces": [],
+        "landmarks": [],
+        "symmetry": {
+          "claims": []
+        },
+        "repetition": [],
+        "thickness_hypotheses": [],
+        "depth_order": [],
+        "overlap": [],
+        "material_boundaries": [],
+        "construction_hypotheses": [
+          {
+            "claim_id": "fixture-construction",
+            "category": "construction_hypotheses",
+            "statement": "A single mesh is sufficient for this fixture.",
+            "evidence_status": "STRONGLY_INFERRED",
+            "confidence": 0.8,
+            "evidence": [
+              "one visible component"
+            ],
+            "modeling_consequence": "Keep the test asset as one editable mesh.",
+            "impact": "high",
+            "component_refs": [
+              "stage_gate_asset"
+            ],
+            "source_views": [],
+            "modeling_signals": {}
+          }
+        ],
+        "known_dimensions": [],
+        "estimated_dimensions": [],
+        "unknowns": [],
+        "ambiguities": []
+      },
+      "collection_name": null
+    },
+    "retrieved_skill_ids": [],
+    "next_stage": null
+  },
   "live_component_coverage": {
     "capture_type": "LIVE_MODELER_RUNTIME",
-    "session_id": "f5fb94803760",
+    "session_id": "d7bec66e1f1e",
     "scene_revision": 1,
     "collection": "ALL",
     "mesh_object_names": [
@@ -178,7 +311,7 @@
           "primary_components_present": true,
           "component_coverage": {
             "capture_type": "LIVE_MODELER_RUNTIME",
-            "session_id": "f5fb94803760",
+            "session_id": "d7bec66e1f1e",
             "scene_revision": 1,
             "collection": "ALL",
             "mesh_object_names": [
@@ -221,6 +354,7 @@
     "open_reference_question_rejected": true,
     "rejection_did_not_mutate": true,
     "primary_advanced": true,
+    "planner_requested_live_coverage": true,
     "incomplete_primary_blockout_rejected": true,
     "visual_rejection_did_not_mutate": true,
     "stale_coverage_rejected": true,

@@ -761,6 +761,44 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(advance.next_stage, "SECONDARY_FORMS")
         self.assertEqual(advance.observed_revision, 4)
 
+    def test_primary_blockout_plans_live_component_capture_before_geometry(self):
+        decomp = SceneDecompositionTests()._strict_lantern_decomposition()
+        decision = plan_next_decision(self.context(
+            stage="PRIMARY_BLOCKOUT",
+            reference_decomposition=decomp,
+            visual_tickets=[{
+                "type": "missing_component", "target": "handle", "priority": 1, "severity": 1.0,
+            }],
+        ))
+        self.assertEqual(decision.disposition, "INSPECT")
+        self.assertEqual(decision.action, "CAPTURE_LIVE_COMPONENT_COVERAGE")
+        self.assertEqual(decision.operation, "check_scene_component_coverage")
+        self.assertEqual(
+            decision.operation_params["decomposition"]["object_name"], "stylized lantern"
+        )
+
+    def test_primary_blockout_recaptures_stale_component_coverage(self):
+        decomp = SceneDecompositionTests()._strict_lantern_decomposition()
+        decision = plan_next_decision(self.context(
+            stage="PRIMARY_BLOCKOUT",
+            scene_revision=4,
+            reference_decomposition=decomp,
+            stage_evidence={
+                "component_coverage": {
+                    "capture_type": "LIVE_MODELER_RUNTIME", "session_id": "prior", "scene_revision": 3,
+                    "mesh_object_names": ["Body", "Handle"], "pass": True,
+                    "coverage": {
+                        "declared_primary_components": ["body", "handle"],
+                        "built_object_names": ["Body", "Handle"],
+                        "component_matches": {"body": "Body", "handle": "Handle"},
+                        "unmatched_primary_components": [], "coverage_ok": True,
+                    },
+                },
+            },
+        ))
+        self.assertEqual(decision.action, "CAPTURE_LIVE_COMPONENT_COVERAGE")
+        self.assertTrue(any("differs from observed revision 4" in item for item in decision.rationale))
+
     def test_passing_final_review_completes_instead_of_requesting_more_evidence(self):
         complete = plan_next_decision(self.context(
             stage="FINAL_REVIEW",

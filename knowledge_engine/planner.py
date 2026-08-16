@@ -431,6 +431,50 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         decomposition_gate = _reference_decomposition_contract(context, target)
         if decomposition_gate is not None:
             return decomposition_gate
+        coverage_gate = evaluate_stage_gate(
+            context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou
+        )
+        coverage = context.stage_evidence.get("component_coverage")
+        captured_revision = (
+            coverage.get("scene_revision") if isinstance(coverage, dict) else None
+        )
+        coverage_is_current = captured_revision == context.scene_revision
+        if context.reference_decomposition is not None and (
+            "component_coverage" in coverage_gate["missing"]
+            or "structured one-to-one component coverage is missing or invalid" in coverage_gate["failures"]
+            or not coverage_is_current
+        ):
+            return _contract(
+                context,
+                disposition="INSPECT",
+                action="CAPTURE_LIVE_COMPONENT_COVERAGE",
+                operation="check_scene_component_coverage",
+                operation_params={
+                    "decomposition": context.reference_decomposition.to_dict()
+                    if context.reference_decomposition else {},
+                    "collection_name": context.stage_evidence.get("component_coverage_collection"),
+                },
+                target_object=target,
+                target_region=None,
+                rationale=(
+                    "primary blockout cannot advance on a caller-authored component-presence assertion",
+                    "capture actual live mesh names against the evidence-bound component board",
+                    *(
+                        (f"coverage revision {captured_revision} differs from observed revision {context.scene_revision}",)
+                        if captured_revision is not None and not coverage_is_current else ()
+                    ),
+                ),
+                expected_effect=(
+                    "Produce a session/revision-bound one-to-one primary-component coverage record "
+                    "before further blockout decisions."
+                ),
+                verification=(
+                    "coverage has no unmatched primary components",
+                    "captured scene revision matches the current observation",
+                    "rerun the primary-blockout stage gate",
+                ),
+                confidence="HIGH",
+            )
 
     if context.diagnosis and context.diagnosis.next_action() == "INSPECT_OR_RESEARCH":
         return _contract(

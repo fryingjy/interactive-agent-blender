@@ -15,6 +15,8 @@ if str(ROOT) not in sys.path:
 from blender_ops.modeling_stage import advance_stage, get_stage, get_stage_log
 from blender_ops.modeler_server import ModelerServer
 from blender_ops import decision_state
+from knowledge_engine.planner import PlannerContext, plan_next_decision
+from knowledge_engine.scene_decomposition import Component, ReferenceClaim, SceneDecomposition, StrategyCandidate
 
 
 def main():
@@ -26,6 +28,32 @@ def main():
     obj = bpy.context.object
     obj.name = "StageGateAsset"
     server = ModelerServer()
+    decomposition = SceneDecomposition(
+        object_name="stage gate asset",
+        components=[Component(
+            "stage_gate_asset", "primary", "structural", False,
+            evidence_status="OBSERVED", confidence=0.9,
+            evidence=["fixture observation: one visible blockout component"],
+        )],
+        claims=[
+            ReferenceClaim(
+                "fixture-primary", "primary_forms", "One box-like primary form is visible.",
+                "OBSERVED", 0.9, evidence=["fixture observation"], impact="high",
+                component_refs=["stage_gate_asset"],
+                modeling_consequence="Start from the observed primary component.",
+            ),
+            ReferenceClaim(
+                "fixture-construction", "construction_hypotheses", "A single mesh is sufficient for this fixture.",
+                "STRONGLY_INFERRED", 0.8, evidence=["one visible component"], impact="high",
+                component_refs=["stage_gate_asset"],
+                modeling_consequence="Keep the test asset as one editable mesh.",
+            ),
+        ],
+        strategies=[StrategyCandidate(
+            "single-editable-box", "BOX_MESH", ["fixture-primary", "fixture-construction"],
+        )],
+        require_evidence_bindings=True,
+    )
 
     reference_evidence = {
         "component_graph_pass": True, "measured_ratio_count": 3, "uncertainty_recorded": True,
@@ -39,10 +67,12 @@ def main():
     )
     state_after_weak = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
     strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", reference_evidence)
-    live_coverage = server.cmd_check_scene_component_coverage({
-        "object_name": "stage gate asset",
-        "components": [{"name": "stage_gate_asset", "role": "primary", "manufacture": "structural"}],
-    })
+    planned_capture = plan_next_decision(PlannerContext(
+        task_id="stage-gate-lab", asset_id="stage-gate-asset", stage="PRIMARY_BLOCKOUT",
+        session_id=server.session_id, scene_revision=decision_state.current_revision(),
+        active_object=obj.name, reference_decomposition=decomposition,
+    )).to_dict()
+    live_coverage = server.cmd_check_scene_component_coverage(decomposition.to_dict())
     coverage = live_coverage
     weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
         "dimensions_checked": True, "primary_components_present": True,
@@ -55,10 +85,7 @@ def main():
         "component_coverage": coverage,
     })
     state_after_stale = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
-    live_coverage = server.cmd_check_scene_component_coverage({
-        "object_name": "stage gate asset",
-        "components": [{"name": "stage_gate_asset", "role": "primary", "manufacture": "structural"}],
-    })
+    live_coverage = server.cmd_check_scene_component_coverage(decomposition.to_dict())
     coverage = live_coverage
     strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
         "dimensions_checked": True, "primary_components_present": True,
@@ -69,6 +96,10 @@ def main():
         "open_reference_question_rejected": not weak_primary["advanced"],
         "rejection_did_not_mutate": state_after_weak == {"stage": "REFERENCE_ANALYSIS", "log_count": 0},
         "primary_advanced": strong_primary["advanced"],
+        "planner_requested_live_coverage": (
+            planned_capture["action"] == "CAPTURE_LIVE_COMPONENT_COVERAGE"
+            and planned_capture["operation"] == "check_scene_component_coverage"
+        ),
         "incomplete_primary_blockout_rejected": not weak_visual["advanced"],
         "visual_rejection_did_not_mutate": state_after_weak_visual == {"stage": "PRIMARY_BLOCKOUT", "log_count": 1},
         "stale_coverage_rejected": (
@@ -87,6 +118,7 @@ def main():
     report = {
         "lab": "machine_enforced_modeling_stage_gates",
         "attempts": [weak_primary, strong_primary, weak_visual, stale_visual, strong_visual],
+        "planned_capture": planned_capture,
         "live_component_coverage": live_coverage,
         "final_stage": get_stage(obj.name),
         "stage_log": final_log,
