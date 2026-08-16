@@ -25,3 +25,7 @@ distinguishes demonstrated evidence from capability still lacking proof.
 The current bottleneck is not operator count. It is converting uncertain visual evidence into the
 right editable construction, measuring whether that decision improved resemblance, and recovering
 when it did not.
+
+The current requirement-by-requirement boundary is recorded in
+[`COMPLETION_AUDIT_2026-08-16.md`](COMPLETION_AUDIT_2026-08-16.md). It does not convert a passing
+test suite or a ready reference board into professional-modeling completion.
