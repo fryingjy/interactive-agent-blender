@@ -176,7 +176,8 @@
         "The modifier is a non-destructive alternative to the Edit Mode Bevel operation",
         "Limit methods include None, Angle, Weight attribute, and Vertex Group",
         "Clamp Overlap restricts bevel width but is not documented as a complete topology-quality guarantee",
-        "Harden Normals preserves surrounding flat-face normals by creating custom normal data; Face Strength is designed for a following Weighted Normal modifier with Face Influence"
+        "Harden Normals preserves surrounding flat-face normals by creating custom normal data; Face Strength is designed for a following Weighted Normal modifier with Face Influence",
+        "On uniform cylinder and taper fixtures, Harden Normals restored curved-side analytic error to the unbeveled baseline; on an uneven equal-count circle it preserved the baseline's existing 5-degree topology error rather than concealing it"
       ],
       "candidate_principles": [
         "Use Angle limiting when coplanar triangulation edges should not be beveled",
@@ -187,7 +188,8 @@
       "experiments": [
         "runs/2026-08-10_modifier-foundation/modifier_foundation_report.json",
         "runs/2026-08-10_bevel-mirror-transfer/bevel_mirror_transfer_report.json",
-        "runs/2026-08-16_bevel-normal-policy/lab_report.json"
+        "runs/2026-08-16_bevel-normal-policy/lab_report.json",
+        "runs/2026-08-16_curved-bevel-normal-policy/curved_bevel_normal_policy_report.json"
       ],
       "skills": []
     }
@@ -222,14 +224,17 @@
       "direct_observations": [
         "Weighted Normal creates custom per-corner normals using face area, corner angle, or their product",
         "Keep Sharp preserves sharp-edge boundaries and Face Influence consumes weak, medium, or strong face strengths",
-        "On a matched Blender 5.2 flat-panel fixture, Bevel Face Strength AFFECTED followed by Weighted Normal Face Influence reduced maximum large-panel corner-normal error from 10.5605 degrees to zero"
+        "On a matched Blender 5.2 flat-panel fixture, Bevel Face Strength AFFECTED followed by Weighted Normal Face Influence reduced maximum large-panel corner-normal error from 10.5605 degrees to zero",
+        "On uniform radial/taper fixtures the same stack kept curved-side analytic error below 0.024 degrees, but on an uneven equal-count 12-sided circle it increased side error from a 5.0-degree unbeveled baseline to 9.9988 degrees"
       ],
       "candidate_principles": [
         "Place Weighted Normal after the modifier that authors the face strengths it consumes",
-        "Use custom normals to correct interpolation on suitable flat panels, never as a substitute for geometric or topological repair"
+        "Use custom normals to correct interpolation on suitable flat panels, never as a substitute for geometric or topological repair",
+        "Inspect curved regions independently and reject face-area weighting when uneven panel distribution increases analytic or visual error"
       ],
       "experiments": [
-        "runs/2026-08-16_bevel-normal-policy/fresh_verification.json"
+        "runs/2026-08-16_bevel-normal-policy/fresh_verification.json",
+        "runs/2026-08-16_curved-bevel-normal-policy/curved_bevel_normal_policy_fresh_verification.json"
       ],
       "skills": [
         "knowledge/foundation/operator_cards/bevel.md",
@@ -2707,6 +2712,34 @@
       "limitations": [
         "The curriculum is sequencing and acceptance guidance, not evidence that any listed capability is mastered",
         "It does not override direct user instructions or independently authorize modeling"
+      ]
+    }
+  },
+  {
+    "id": "experiment-curved-bevel-normal-policy-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_curved-bevel-normal-policy/",
+    "title": "Curved Bevel Normal-Policy and Uneven-Cage Control",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2 LTS",
+    "topics": ["hard-surface", "bevel", "harden-normals", "weighted-normal", "curved-surface", "radial-topology", "highlight-flow"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "MatCap_render", "evaluated_corner_normals", "analytic_normal_target", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_curved-bevel-normal-policy/"],
+      "direct_observations": [
+        "Twelve live, unapplied variants compare four policies across uniform and uneven cylinders plus a taper",
+        "Plain smooth Bevel bends cap normals by 8.4464 to 8.4823 degrees; Harden Normals restores all cap and side measurements to the unbeveled baseline",
+        "The uneven equal-count 12-sided circle has a 5.0-degree baseline side error; Face Strength plus Weighted Normal increases it to 9.9988 degrees",
+        "A fresh Blender process verifies all modifier stacks, flags, topology, sampling contracts, and numeric boundaries"
+      ],
+      "limitations": [
+        "Controlled low-sided radial/taper fixtures rather than an unfamiliar reference asset",
+        "No Subdivision Surface, arbitrary double curvature, runtime telemetry, or human visual acceptance"
       ]
     }
   }

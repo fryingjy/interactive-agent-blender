@@ -66,8 +66,28 @@ a 10.5605° maximum corner-normal deviation across the six large panels; both do
 reduced it to 0° while preserving identical evaluated topology. The solid Workbench comparison and
 fresh-process verifier are retained with the run.
 
-Use this as evidence for flat-panel normal interpolation only. Curved panels, actual silhouette,
-bevel radius, and topology still require separate diagnosis; custom normals cannot repair geometry.
+### Curved manufactured transfer
+
+Evidence: `runs/2026-08-16_curved-bevel-normal-policy/`
+
+Twelve live, unapplied variants add an unbeveled semantic baseline and transfer the comparison to a
+uniform 12-sided cylinder, an equal-count uneven 12-sided cylinder, and a uniform 16-sided taper.
+Plain smooth Bevel bends cap normals by `8.4464°–8.4823°`. Harden Normals restores every side to
+its unbeveled baseline and makes cap error `0°`. Face Strength followed by Weighted Normal also
+flattens caps and stays below `0.024°` side error on the uniform cylinder/taper.
+
+The equal-count uneven cylinder is the important rejection: its baseline is already `5.0°` away
+from the intended radial normal. Harden Normals preserves that error; it cannot repair the cage.
+Weighted Normal increases the side error to `9.9988°`, worse than plain smooth Bevel at `9.0773°`,
+because face-area weighting responds to the uneven panel distribution.
+
+Decision rule: compare against an unbeveled semantic baseline; use Harden Normals when preserving
+the surrounding curved faces is the goal; use Weighted Normal only after checking its weighting on
+the actual curved region. If the restored baseline is wrong, redistribute topology before adding
+segments or normal tricks. Equal vertex count does not imply equal curvature quality.
+
+Actual silhouette, arbitrary double curvature, SubD, and reference fidelity still require separate
+diagnosis; custom normals cannot repair geometry.
 
 ## Weighted-edge production transfer
 

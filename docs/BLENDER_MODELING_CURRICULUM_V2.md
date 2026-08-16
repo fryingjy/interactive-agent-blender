@@ -134,9 +134,12 @@ videos without that loop is the failure mode this curriculum exists to avoid.
     - **"How to fix SHADING ERRORS in Blender"** (`EdEIUkWzYY0`, 13:07,
       `runs/2026-08-15_video-study-blenderbros-shading-errors/`, 4 items) -- most valuable of the
       three: draws a real, previously-undocumented boundary on this project's own bevel-weight
-      policy (Weighted Normal fixes flat-surface bevel shading distortion but NOT curved-surface
-      distortion, which is a different problem requiring clean topology / denser geometry / Data
-      Transfer instead), plus a Mark-Sharp-splits-into-two-holding-edges-on-bevel failure mode.
+      policy (Weighted Normal fixes suitable flat-surface bevel shading but is not a general curved-
+      surface repair). The 2026-08-16 radial/taper experiment now reproduces this boundary: an
+      uneven equal-count circle worsens from a `5.0°` unbeveled baseline to `9.9988°` under
+      Face-Strength Weighted Normal, while Harden Normals restores the baseline. Clean distribution,
+      deliberate density, or a separately tested transfer strategy is required. The lesson also
+      records a Mark-Sharp-splits-into-two-holding-edges-on-bevel failure mode.
     - **"PERFECT curves with holes in Blender"** (`FjWrEccXREY`, 9:24,
       `runs/2026-08-15_video-study-blenderbros-perfect-curves-holes/`, 4 items) -- a curve-to-mesh
       construction method for tubular parts with holes (genuinely different from this project's

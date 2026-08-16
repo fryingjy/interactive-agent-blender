@@ -388,3 +388,17 @@ the separate controls by margins of `0.288423` and `0.304426`, after which the p
 selected candidates are one object and one connected component. This upgrades the synthetic
 component/depth policy to controlled transfer, not real-image interpretation or held-out modeling;
 the exit decision remains **PARTIAL**.
+
+### 2026-08-16 curved Bevel normal-policy update
+
+The flat-panel Harden Normals versus Face Strength/Weighted Normal comparison now has controlled
+curved transfer in `runs/2026-08-16_curved-bevel-normal-policy/`. Twelve live, unapplied fixtures
+cover a uniform 12-sided cylinder, an equal-count uneven 12-sided cylinder, and a uniform 16-sided
+taper, each with an unbeveled semantic baseline. Harden Normals restores every curved side to that
+baseline and flattens the caps. Weighted Normal is near-analytic on the uniform cages but increases
+the uneven circle's side error from a `5.0°` baseline to `9.9988°`.
+
+This closes the narrow radial normal-policy transfer question and promotes a retrievable
+`EXPERIMENTALLY_TESTED` skill. It does not upgrade the overall exit decision: uneven spacing remains
+a topology error, arbitrary double curvature and SubD interaction are untested, and no
+human-authorized reference asset has used the rule.

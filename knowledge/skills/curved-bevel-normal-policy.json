@@ -1,0 +1,90 @@
+{
+  "skill_id": "hard-surface.curved-bevel-normal-policy",
+  "title": "Choose Bevel normal correction from surface type and cage distribution",
+  "topic_tags": [
+    "hard surface", "bevel", "harden normals", "weighted normal", "curved surface",
+    "radial topology", "uneven density", "highlight flow", "custom normals"
+  ],
+  "problem": "A rim Bevel bends planar-cap and curved-side normals, but a flat-panel Weighted Normal rule can worsen an uneven curved skin instead of repairing it.",
+  "status": "EXPERIMENTALLY_TESTED",
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE", "FINAL_REVIEW"],
+    "workflow": ["hard-surface shading", "curved manufactured form", "bevel normal correction"],
+    "surface_type": ["cylinder", "taper", "radial curved skin", "planar cap with physical rim"],
+    "defect": ["bent cap normals", "curved side highlight wobble", "uneven radial shading", "weighted normal distortion"],
+    "local_topology": ["uniform angular spacing", "uneven angular spacing", "low-sided radial cage"],
+    "modifiers_involved": ["BEVEL", "WEIGHTED_NORMAL"]
+  },
+  "preconditions": [
+    "the bevel represents a real physical rim or manufactured edge radius",
+    "the intended curved surface and planar regions are identified separately",
+    "the base cage's angular spacing and analytic or reference-defined curvature can be inspected",
+    "modifier evaluation remains live so alternate policies can be compared without destroying the cage"
+  ],
+  "required_observations": [
+    "unbeveled smooth curved-side baseline under the same cage distribution",
+    "planar-region corner-normal error after Bevel",
+    "curved-region normal or highlight error after Bevel",
+    "angular spacing or face-area distribution around the curved skin",
+    "modifier order, Harden Normals flag, Face Strength mode, and Weighted Normal Face Influence"
+  ],
+  "action_policy": [
+    "Do not transfer a flat-panel Weighted Normal success to a curved skin without a separate curved-region check.",
+    "Compare the beveled result with an unbeveled semantic baseline so Bevel-induced error is separated from error already encoded by the cage.",
+    "Use Bevel Harden Normals when the goal is to preserve surrounding face normals through a local physical rim; verify that it restores rather than invents the curved-side baseline.",
+    "Use Bevel Face Strength followed by Weighted Normal only when its weighting modes suit the actual face-area and angle distribution; inspect curved regions independently from planar panels.",
+    "If the restored baseline is still wrong, repair radial spacing, density, or surface topology. Do not add another normal modifier to conceal geometric distribution error.",
+    "Treat equal segment count as insufficient evidence: angular distribution controls radial normal quality and highlight rhythm."
+  ],
+  "expected_effects": [
+    "planar cap normals stay flat while the physical bevel carries the highlight transition",
+    "Harden Normals returns curved-side shading to the cage's unbeveled baseline",
+    "uniform 12-16 sided radial cages at the tested scale remain near their analytic side-normal target",
+    "uneven spacing remains visible as a topology problem rather than being mislabeled a Bevel failure"
+  ],
+  "failure_predicates": [
+    "Weighted Normal reduces planar error but increases curved-side analytic or visual error",
+    "the unbeveled baseline already shows radial wobble or systematic normal error",
+    "technical manifoldness passes while MatCap or grazing highlights reveal uneven bands",
+    "normal-policy tuning is used to avoid correcting reference-critical silhouette or topology"
+  ],
+  "recovery": [
+    "disable the Weighted Normal candidate and restore the previous modifier checkpoint",
+    "enable Harden Normals on the scoped Bevel and compare against the unbeveled baseline",
+    "redistribute the existing radial vertices to appropriate angular spacing before increasing segment count",
+    "add density only where silhouette or highlight evidence still requires it, then repeat the matched comparison"
+  ],
+  "sources": [
+    {
+      "type": "official_documentation",
+      "source_id": "blender-manual-bevel-modifier",
+      "description": "Harden Normals preserves surrounding faces; Bevel Face Strength is designed to feed a following Weighted Normal modifier."
+    },
+    {
+      "type": "official_documentation",
+      "source_id": "blender-manual-weighted-normal-modifier",
+      "description": "Weighted Normal combines face normals using area, corner angle, or both, and can consume Face Strength."
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled matched-policy curved transfer",
+      "evidence_path": "runs/2026-08-16_curved-bevel-normal-policy/",
+      "result": "PASS",
+      "description": "Twelve saved fixtures compare unbeveled semantic baselines, plain smooth Bevel, Harden Normals, and Face Strength plus Weighted Normal across a uniform 12-sided cylinder, an equal-count uneven 12-sided cylinder, and a uniform 16-sided taper. A fresh process repeats all metrics and stack checks.",
+      "key_measurements": {
+        "plain_cap_error_range_deg": [8.4464, 8.4823],
+        "corrected_cap_error_max_deg": 0.0000842,
+        "uniform_12_hardened_side_error_deg": 0.0,
+        "uniform_16_taper_hardened_side_error_deg": 0.0201,
+        "uneven_12_unbeveled_and_hardened_side_error_deg": 5.0,
+        "uneven_12_plain_side_error_deg": 9.0773,
+        "uneven_12_weighted_side_error_deg": 9.9988
+      },
+      "limitation": "Low-sided controlled radial manufactured fixtures only; no SubD, arbitrary double curvature, unfamiliar prop, or human acceptance."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Official current Manual behavior reproduced in Blender 5.2.0 LTS.",
+  "status_note": "Experimentally tested across uniform cylinder, uneven equal-count cylinder, and taper. The result rejects blanket Weighted Normal use on curved skins and promotes topology-first diagnosis, but remains below runtime validation until used on a human-authorized reference asset."
+}

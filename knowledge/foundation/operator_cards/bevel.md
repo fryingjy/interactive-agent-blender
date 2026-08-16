@@ -60,8 +60,15 @@ stack order, evaluated normals, and clean topology without importing the builder
 This does not make the methods interchangeable everywhere. Harden Normals is a concise local Bevel
 option; Weighted Normal provides weighting mode, threshold, vertex-group, Keep Sharp, and Face
 Influence controls. Neither repairs bent/non-planar geometry, poor topology, wrong edge radius, or
-an inaccurate reference interpretation. The current result is deliberately limited to flat
-manufactured panels bordered by a bevel.
+an inaccurate reference interpretation.
+
+The curved transfer in `runs/2026-08-16_curved-bevel-normal-policy/` narrows the rule. On uniform
+12-sided cylinder and 16-sided taper cages, both corrected policies keep side error below `0.024°`;
+Harden Normals exactly restores the unbeveled side baseline. On an equal-count but unevenly spaced
+12-sided circle, the baseline itself is `5.0°` wrong. Harden Normals preserves that topology-caused
+error, while Face Strength plus Weighted Normal worsens it to `9.9988°`. Do not transfer the cube
+result into a blanket curved-surface rule: inspect topology distribution and curved-region normals
+separately from flat panels.
 
 ## Bevel before or after Subdivision Surface (controlled reconciliation, 2026-08-15)
 

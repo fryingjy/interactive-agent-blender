@@ -96,6 +96,9 @@ runtime observation; real modifier changes must be their own typed decisions.
   can conceal missing bevels or an already over-rounded cage.
 - Smooth by Angle cannot make a low-sided circular control circular, repair poor topology, or make
   an unjustified SubD modifier appropriate.
+- Equal segment count does not guarantee circular highlight quality. A controlled 12-sided circle
+  with alternating 20°/40° spacing retained `5.0°` analytic side-normal error even when Harden
+  Normals perfectly removed Bevel-induced error; Weighted Normal increased it to `9.9988°`.
 - Weighting every edge creates uncontrolled highlight breakup and does not mean every edge is a
   physical design edge.
 - A Bevel cannot undo a capsule-like base shape. Rebuild the primary cage when the silhouette is

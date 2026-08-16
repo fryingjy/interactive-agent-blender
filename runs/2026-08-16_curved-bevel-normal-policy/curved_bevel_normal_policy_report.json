@@ -1,0 +1,327 @@
+{
+  "lab": "curved_bevel_normal_policy",
+  "blender_version": "5.2.0 LTS",
+  "hypotheses": {
+    "H1": "A plain smooth rim Bevel bends cap and side normals away from the unbeveled smooth baseline; both correction policies reduce planar cap distortion.",
+    "H2": "Harden Normals restores the unbeveled side-normal baseline, exposing residual error caused by uneven angular spacing rather than by the bevel.",
+    "H3": "Face-area weighting may alter analytic curved-side error when adjacent panel areas differ, so it is not a blanket curved-surface policy."
+  },
+  "official_sources": [
+    "https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html",
+    "https://docs.blender.org/manual/en/latest/modeling/modifiers/normals/weighted_normal.html"
+  ],
+  "families": {
+    "UNIFORM_CYLINDER_12": {
+      "angles_deg": [
+        0.0,
+        30.0,
+        60.0,
+        90.0,
+        120.0,
+        150.0,
+        180.0,
+        210.0,
+        240.0,
+        270.0,
+        300.0,
+        330.0
+      ],
+      "bottom_radius": 1.0,
+      "top_radius": 1.0,
+      "half_height": 1.25
+    },
+    "UNEVEN_CYLINDER_12": {
+      "angles_deg": [
+        0.0,
+        20.0,
+        60.0,
+        80.0,
+        120.0,
+        140.0,
+        180.0,
+        200.0,
+        240.0,
+        260.0,
+        300.0,
+        320.0
+      ],
+      "bottom_radius": 1.0,
+      "top_radius": 1.0,
+      "half_height": 1.25
+    },
+    "UNIFORM_TAPER_16": {
+      "angles_deg": [
+        0.0,
+        22.5,
+        45.0,
+        67.5,
+        90.0,
+        112.5,
+        135.0,
+        157.5,
+        180.0,
+        202.5,
+        225.0,
+        247.5,
+        270.0,
+        292.5,
+        315.0,
+        337.5
+      ],
+      "bottom_radius": 1.15,
+      "top_radius": 0.82,
+      "half_height": 1.25
+    }
+  },
+  "policies": [
+    "NO_BEVEL_BASELINE",
+    "PLAIN_SMOOTH",
+    "HARDEN_NORMALS",
+    "FACE_STRENGTH_WEIGHTED"
+  ],
+  "metrics": {
+    "UNIFORM_CYLINDER_12": {
+      "NO_BEVEL_BASELINE": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 0.0,
+        "side_analytic_error_max_deg": 0.0,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "PLAIN_SMOOTH": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 8.44639330357923,
+        "cap_normal_error_max_deg": 8.446432425037443,
+        "side_analytic_error_mean_deg": 7.585725051267436,
+        "side_analytic_error_max_deg": 7.585751729753086,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "HARDEN_NORMALS": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 0.0,
+        "side_analytic_error_max_deg": 0.0,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "FACE_STRENGTH_WEIGHTED": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 1.2161279506568587e-05,
+        "cap_normal_error_max_deg": 6.415244042735192e-05,
+        "side_analytic_error_mean_deg": 0.0016485284160499068,
+        "side_analytic_error_max_deg": 0.019782341029446364,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    "UNEVEN_CYLINDER_12": {
+      "NO_BEVEL_BASELINE": {
+        "vertices": 24,
+        "edges": 36,
+        "faces": 14,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 4.999976339487532,
+        "side_analytic_error_max_deg": 4.999999502953372,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "PLAIN_SMOOTH": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 8.446387491019676,
+        "cap_normal_error_max_deg": 8.446430924045321,
+        "side_analytic_error_mean_deg": 9.077294081871926,
+        "side_analytic_error_max_deg": 9.077336190965918,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "HARDEN_NORMALS": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 4.9999711353519025,
+        "side_analytic_error_max_deg": 4.99999766621148,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "FACE_STRENGTH_WEIGHTED": {
+        "vertices": 96,
+        "edges": 180,
+        "faces": 86,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 24,
+        "side_faces_sampled": 12,
+        "side_corners_sampled": 48,
+        "cap_normal_error_mean_deg": 1.523257296030051e-05,
+        "cap_normal_error_max_deg": 7.994531456845288e-05,
+        "side_analytic_error_mean_deg": 9.998383268638925,
+        "side_analytic_error_max_deg": 9.998788274074274,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    },
+    "UNIFORM_TAPER_16": {
+      "NO_BEVEL_BASELINE": {
+        "vertices": 32,
+        "edges": 48,
+        "faces": 18,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 32,
+        "side_faces_sampled": 16,
+        "side_corners_sampled": 64,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 0.0074737114867661335,
+        "side_analytic_error_max_deg": 0.020391170402929596,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "PLAIN_SMOOTH": {
+        "vertices": 128,
+        "edges": 240,
+        "faces": 114,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 32,
+        "side_faces_sampled": 16,
+        "side_corners_sampled": 64,
+        "cap_normal_error_mean_deg": 8.212650188128876,
+        "cap_normal_error_max_deg": 8.482255888809124,
+        "side_analytic_error_mean_deg": 7.4673954050916524,
+        "side_analytic_error_max_deg": 7.83696597196286,
+        "custom_normal_attribute": false,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "HARDEN_NORMALS": {
+        "vertices": 128,
+        "edges": 240,
+        "faces": 114,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 32,
+        "side_faces_sampled": 16,
+        "side_corners_sampled": 64,
+        "cap_normal_error_mean_deg": 0.0,
+        "cap_normal_error_max_deg": 0.0,
+        "side_analytic_error_mean_deg": 0.0032171292967380022,
+        "side_analytic_error_max_deg": 0.020089062285221726,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "FACE_STRENGTH_WEIGHTED": {
+        "vertices": 128,
+        "edges": 240,
+        "faces": 114,
+        "cap_faces_sampled": 2,
+        "cap_corners_sampled": 32,
+        "side_faces_sampled": 16,
+        "side_corners_sampled": 64,
+        "cap_normal_error_mean_deg": 2.788212936472166e-05,
+        "cap_normal_error_max_deg": 8.418225469947518e-05,
+        "side_analytic_error_mean_deg": 0.004904895035901014,
+        "side_analytic_error_max_deg": 0.02345897071105602,
+        "custom_normal_attribute": true,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      }
+    }
+  },
+  "outcomes": {
+    "UNIFORM_CYLINDER_12": {
+      "harden_cap_improvement_deg": 8.446432425037443,
+      "weighted_cap_improvement_deg": 8.446368272597017,
+      "plain_side_delta_vs_unbeveled_deg": 7.585751729753086,
+      "harden_side_delta_vs_unbeveled_deg": 0.0,
+      "weighted_side_delta_vs_unbeveled_deg": 0.019782341029446364,
+      "harden_side_delta_vs_plain_deg": -7.585751729753086,
+      "weighted_side_delta_vs_plain_deg": -7.565969388723639,
+      "lower_side_error_policy": "NO_BEVEL_BASELINE"
+    },
+    "UNEVEN_CYLINDER_12": {
+      "harden_cap_improvement_deg": 8.446430924045321,
+      "weighted_cap_improvement_deg": 8.446350978730752,
+      "plain_side_delta_vs_unbeveled_deg": 4.0773366880125455,
+      "harden_side_delta_vs_unbeveled_deg": -1.8367418919140732e-06,
+      "weighted_side_delta_vs_unbeveled_deg": 4.998788771120902,
+      "harden_side_delta_vs_plain_deg": -4.077338524754437,
+      "weighted_side_delta_vs_plain_deg": 0.9214520831083561,
+      "lower_side_error_policy": "HARDEN_NORMALS"
+    },
+    "UNIFORM_TAPER_16": {
+      "harden_cap_improvement_deg": 8.482255888809124,
+      "weighted_cap_improvement_deg": 8.482171706554425,
+      "plain_side_delta_vs_unbeveled_deg": 7.81657480155993,
+      "harden_side_delta_vs_unbeveled_deg": -0.0003021081177078701,
+      "weighted_side_delta_vs_unbeveled_deg": 0.0030678003081264227,
+      "harden_side_delta_vs_plain_deg": -7.816876909677638,
+      "weighted_side_delta_vs_plain_deg": -7.8135070012518035,
+      "lower_side_error_policy": "HARDEN_NORMALS"
+    }
+  },
+  "assertions": {
+    "all_twelve_variants_measured": true,
+    "matched_bevel_topology_within_each_family": true,
+    "all_evaluated_meshes_closed_and_nondegenerate": true,
+    "all_expected_caps_and_side_panels_sampled": true,
+    "plain_smooth_bends_cap_normals_in_every_family": true,
+    "harden_normals_flattens_caps_in_every_family": true,
+    "weighted_face_influence_flattens_caps_in_every_family": true,
+    "corrected_variants_store_custom_normals": true,
+    "harden_normals_restores_unbeveled_side_baseline": true
+  },
+  "pass": true,
+  "claim_boundary": "Controlled low-sided manufactured radial fixtures with rim Bevels. Analytic side-normal error and planar-cap error are measured separately. This does not certify unfamiliar-asset fidelity, arbitrary curvature, SubD behavior, or a universal modifier prescription."
+}

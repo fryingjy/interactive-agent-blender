@@ -202,6 +202,9 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-16_bevel-normal-policy/` — matched Blender 5.2 solid/evaluated-normal comparison:
   plain smooth Bevel versus Harden Normals versus Bevel Face Strength followed by Weighted Normal,
   with a saved `.blend`, render, numeric report, and fresh verifier.
+- `runs/2026-08-16_curved-bevel-normal-policy/` — twelve live radial/taper variants separate
+  Bevel-induced normal damage from uneven-cage error; Harden Normals restores the baseline while
+  Weighted Normal is explicitly rejected on the uneven curved fixture.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 

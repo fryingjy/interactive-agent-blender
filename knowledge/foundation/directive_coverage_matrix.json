@@ -38,8 +38,8 @@
       "id": "4",
       "title": "Professional modeling judgment",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "docs/CURRENT_STATE_GAP_MATRIX.md"],
-      "current_boundary": "Foundational strategy/topology/surface knowledge is recorded, while credible broad professional visual judgment remains open.",
+      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "knowledge/skills/curved-bevel-normal-policy.json", "runs/2026-08-16_curved-bevel-normal-policy/", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "Foundational strategy/topology/surface knowledge includes a measured uniform-versus-uneven curved normal-policy rejection, while arbitrary double curvature and credible broad professional visual judgment remain open.",
       "next_step": "Use the knowledge on several independent simple reference props and preserve rejection evidence."
     },
     {

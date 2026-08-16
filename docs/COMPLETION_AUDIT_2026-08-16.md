@@ -28,6 +28,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
 - `runs/2026-08-16_connect-vertex-path/` — Object/Edit Mode continuous face-spanning cuts pass 6/6
   live transaction checks and 5/5 fresh saved-file checks; invalid paths preserve all fingerprint
   layers and revision.
+- `runs/2026-08-16_curved-bevel-normal-policy/` — twelve editable radial/taper variants and an
+  independent verifier separate plain-Bevel distortion from cage-distribution error. Harden Normals
+  restores each side baseline; Weighted Normal worsens the uneven 12-sided side to `9.9988°`.
 - `tools/validate_progressive_prop_curriculum.py` — the user-supplied 30-prop ladder resolves to six
   ordered tiers and A-G gates while Swingline remains externally locked at human reference review.
 

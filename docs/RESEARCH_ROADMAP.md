@@ -1026,3 +1026,22 @@ This promotes the narrow secondary-view strategy skill to `TRANSFER_VALIDATED` a
 shape families. It does not infer depth from photographs, authorize an unreviewed model, or prove
 professional fidelity. The next promotion gate is a real unrelated multi-view prop decision with
 typed runtime telemetry and human visual comparison.
+
+## Update -- 2026-08-16 (curved Bevel normal-policy boundary reproduced)
+
+`runs/2026-08-16_curved-bevel-normal-policy/` returns the earlier hard-surface video claim to a
+direct Blender test. Twelve editable, unapplied variants compare an unbeveled semantic baseline,
+plain smooth Bevel, Harden Normals, and Face Strength followed by Weighted Normal across a uniform
+12-sided cylinder, an equal-count uneven 12-sided cylinder, and a uniform 16-sided taper.
+
+Plain smooth Bevel bends cap normals by `8.4464°–8.4823°`. Harden Normals restores every curved
+side to its unbeveled baseline and makes cap error `0°`; Weighted Normal also flattens caps and is
+near-analytic on the uniform cages. The uneven circle is the decisive failure control: its baseline
+is already `5.0°` wrong from alternating 20°/40° spacing, Harden Normals preserves that error, and
+Weighted Normal increases it to `9.9988°`—worse than plain smooth Bevel at `9.0773°`.
+
+The promoted experimental rule is topology-first: compare against an unbeveled baseline; do not
+use flat-panel Weighted Normal success as a blanket curved-skin policy; and repair distribution
+when the restored baseline remains wrong. This is controlled radial/taper transfer, not arbitrary
+double curvature, SubD transfer, a human-reviewed prop, or runtime validation. Swingline remains
+externally gated.

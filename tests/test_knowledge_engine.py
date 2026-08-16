@@ -133,6 +133,21 @@ class TranscriptTests(unittest.TestCase):
 
 
 class RetrievalTests(unittest.TestCase):
+    def test_curved_weighted_normal_defect_retrieves_specific_skill(self):
+        store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
+        results = store.search(RetrievalContext(
+            query="weighted normal makes an uneven curved cylinder highlight wobble after bevel",
+            modeling_stage="TOPOLOGY_SURFACE",
+            workflow="hard-surface shading",
+            surface_type="radial curved skin",
+            defect="weighted normal distortion",
+            local_topology=["uneven angular spacing"],
+            modifiers=["BEVEL", "WEIGHTED_NORMAL"],
+            blender_version="5.2.0",
+        ))
+        self.assertTrue(results)
+        self.assertEqual(results[0]["skill_id"], "hard-surface.curved-bevel-normal-policy")
+
     def test_question_driven_reference_unknown_retrieves_specific_skill(self):
         store = StructuredSkillStore(Path(__file__).resolve().parents[1] / "knowledge" / "skills")
         results = store.search(RetrievalContext(
