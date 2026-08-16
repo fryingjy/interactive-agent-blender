@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 20,
+  "case_count": 21,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -662,8 +662,8 @@
           }
         },
         {
-          "skill_id": "reference.secondary_view_component_strategy",
-          "score": 4.1755,
+          "skill_id": "reference.axis_aligned_image_empty_setup",
+          "score": 4.6858,
           "score_breakdown": {
             "query": 1.8974,
             "modeling_stage": 1.7678,
@@ -672,7 +672,7 @@
             "defect": 0.0,
             "local_topology": 0.0,
             "modifiers": 0.0,
-            "reference_issue": 0.5103,
+            "reference_issue": 1.0206,
             "runtime_success": 0.0,
             "version_relevance": 0.0
           }
@@ -696,7 +696,7 @@
       "expected_top_skill": "reference.secondary_view_component_strategy",
       "actual_top_skill": "reference.secondary_view_component_strategy",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 9.0754,
+      "actual_top_margin": 7.6305,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -713,6 +713,22 @@
             "local_topology": 0.0,
             "modifiers": 0.0,
             "reference_issue": 3.0936,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "reference.axis_aligned_image_empty_setup",
+          "score": 6.4464,
+          "score_breakdown": {
+            "query": 3.7947,
+            "modeling_stage": 1.7678,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.8839,
             "runtime_success": 0.0,
             "version_relevance": 0.0
           }
@@ -878,6 +894,78 @@
             "local_topology": 0.0,
             "modifiers": 2.8284,
             "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "reference_image_empty_free_view_alignment",
+      "kind": "positive",
+      "context": {
+        "query": "construction Image Empty was imported from a free view and is tilted instead of aligned to the declared front axis",
+        "modeling_stage": "REFERENCE_ANALYSIS",
+        "workflow": "axis-aligned construction reference setup",
+        "surface_type": null,
+        "defect": null,
+        "local_topology": [],
+        "modifiers": [],
+        "reference_issue": "construction card imported from free perspective view",
+        "blender_version": null
+      },
+      "expected_top_skill": "reference.axis_aligned_image_empty_setup",
+      "actual_top_skill": "reference.axis_aligned_image_empty_setup",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 7.9777,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "reference.axis_aligned_image_empty_setup",
+          "score": 16.9262,
+          "score_breakdown": {
+            "query": 10.0623,
+            "modeling_stage": 1.7678,
+            "workflow": 1.7889,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 3.3072,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "reference.secondary_view_component_strategy",
+          "score": 8.9485,
+          "score_breakdown": {
+            "query": 6.7082,
+            "modeling_stage": 1.7678,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.4725,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "reference.question-driven-targeted-research",
+          "score": 8.7501,
+          "score_breakdown": {
+            "query": 6.0374,
+            "modeling_stage": 1.7678,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 0.0,
+            "reference_issue": 0.9449,
             "runtime_success": 0.0,
             "version_relevance": 0.0
           }

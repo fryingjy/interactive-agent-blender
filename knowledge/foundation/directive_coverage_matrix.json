@@ -102,24 +102,24 @@
       "id": "12",
       "title": "Reference modeling and perception",
       "status": "EXTERNAL_REVIEW_REQUIRED",
-      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json", "docs/field-report/swingline-747-review.html"],
-      "current_boundary": "The active board and machine gate pass, but interpretation is deliberately not self-authorized before human review.",
+      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json", "docs/field-report/swingline-747-review.html", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "current_boundary": "Typed principal-axis construction-card setup and duplicate-source rejection are transfer-validated, and the active board/machine gate pass; actual reference interpretation is still deliberately not self-authorized before human review.",
       "next_step": "Obtain the explicit Swingline board decision, then compare all relevant modeled views and turn mismatches into tickets."
     },
     {
       "id": "13",
       "title": "Research and knowledge lifecycle",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge/skills/uv-seam-graph-connected-tube.json"],
-      "current_boundary": "Source observation, bounded episode review, and two-family UV reproduction/transfer exist; real-asset runtime use and long-horizon skill reuse remain incomplete.",
+      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge/skills/uv-seam-graph-connected-tube.json", "runs/2026-08-16_real-video-reference-setup-review/episode_review.json", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "current_boundary": "Source observation, bounded episode review, two-family UV transfer, and principal-axis Image Empty transfer exist; later timestamp drift is retained as rejected evidence, while real-asset runtime use and long-horizon skill reuse remain incomplete.",
       "next_step": "Promote only techniques that are reproduced, transferred, and then used on an authorized asset."
     },
     {
       "id": "14",
       "title": "Controlled experiments and retrieval",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json", "runs/2026-08-16_uv-seam-production-transfer/"],
-      "current_boundary": "Controlled labs, 20 retrieval positive/abstention cases, a two-family UV transfer, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader real-asset transfer remain open.",
+      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json", "runs/2026-08-16_uv-seam-production-transfer/", "runs/2026-08-16_reference-image-alignment-transfer/"],
+      "current_boundary": "Controlled labs, 21 retrieval positive/abstention cases, two bounded lesson transfers, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader real-asset transfer remain open.",
       "next_step": "Obtain an independent delayed assessment and reuse validated knowledge on a fresh human-authorized asset."
     },
     {
@@ -150,8 +150,8 @@
       "id": "18",
       "title": "Tool architecture: Cloudglue and the Blender Connector (2026-08-13)",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/ingest/video_ingest.py", "tools/ingest_local_video.py", "tools/analyze_video_with_gemini.py", "docs/MASTER_DIRECTIVE.md"],
-      "current_boundary": "Portable local ingestion is implemented and Gemini analysis is bounded by provenance controls; optional connectors are not assumed available or authoritative.",
+      "evidence": ["knowledge_engine/ingest/video_ingest.py", "knowledge_engine/gemini_video_study.py", "tools/ingest_local_video.py", "tools/analyze_video_with_gemini.py", "runs/2026-08-16_real-video-reference-setup-review/gemini_range_0024_0124.json", "docs/MASTER_DIRECTIVE.md"],
+      "current_boundary": "Portable local ingestion and native range-scoped Gemini analysis are implemented with identity, absolute-time, and independent-review controls; TubeAlfred and other optional connectors are not available or assumed authoritative in this environment.",
       "next_step": "Use connector output only as source observation and formalize any mutation needed for evidence through the typed runtime."
     },
     {

@@ -7,6 +7,12 @@ camera reframing conceal proportion changes.
 
 ## Procedure
 
+Before silhouette comparison or blockout, create construction cards only from a declared principal
+view. `create_reference_image` records a FRONT, RIGHT, or TOP Image Empty and
+`audit_reference_images` measures its saved world normal. A CUSTOM/free-view card is contextual,
+not calibrated construction evidence. Distinct axes also require distinct same-target sources when
+the board claims actual multi-view coverage; rotating one duplicated image supplies no new view.
+
 0. **Before any real construction on an asymmetric or articulated reference**, confirm which world
    plane the reference's "full profile" view actually corresponds to. Run
    `tools/verify_reference_view_orientation.py <reference_dir> --in-plane-axis {X,Y,Z} --wide-view
@@ -67,6 +73,13 @@ camera reframing conceal proportion changes.
   proportion decision, especially direction (wider-here-vs-there), not just magnitude.
 
 ## Evidence
+
+`runs/2026-08-16_real-video-reference-setup-review/` independently verifies the public lesson's
+perspective-import failure and orthographic re-import correction. The native 24–124 s Gemini range
+pass keeps absolute source timestamps and avoids the later drift caught in the whole-video pass.
+`runs/2026-08-16_reference-image-alignment-transfer/` reproduces FRONT alignment at 0° and transfers
+it to distinct FRONT/RIGHT cards at 0°/0°; a CUSTOM card and a duplicated-source two-axis control
+both remain rejected. This proves Blender setup state only, not source calibration or likeness.
 
 `tools/verify_reference_view_orientation.py`, run against
 `runs/2026-08-12_heldout-desk-lamp/reference/` in

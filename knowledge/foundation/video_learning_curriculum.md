@@ -33,7 +33,7 @@ matches the binding order without changing any underlying evidence.
 | --- | --- | --- | --- | --- |
 | P0 | Mesh, topology, and SubD | contextual edge flow; poles; loop termination; density; quad/triangle/n-gon judgment; pinching repair | curved multi-feature surface with bad/good routing | advanced video + controlled pole-placement bend test complete; broader routing pending |
 | P0 | Hard surface and modifier strategy | box/poly/SubD/boolean/hybrid choice; modifier order; bevel hierarchy; cleanup | production prop with localized diagnostic passes | foundation labs exist; production lesson pending |
-| P0 | Reference, silhouette, and professional strategy | perspective uncertainty; landmarks; component decomposition; negative space; multi-view correction and recovery | multi-view reference asset with measured checkpoints | single-view sword-to-axe profile transfer passes; gray-background mask and chair failures retained; multi-view remains partial |
+| P0 | Reference, silhouette, and professional strategy | perspective uncertainty; landmarks; component decomposition; negative space; multi-view correction and recovery | multi-view reference asset with measured checkpoints | typed principal-axis Image Empty setup now has verified video reproduction, distinct-view transfer, and free-view/duplicate-source controls; real-image modeling and human review remain partial |
 | P0 | Surface/highlight and shading diagnosis | distinguish topology, normals, bevel, material, and lighting causes | controlled highlight defect classification and repair | five-cause intervention classifier tested; mixed production transfer pending |
 | P1 | Retopology fundamentals | cage planning; poles/loops; density transitions; projection error; deformation intent | articulated source, purposeful quad cage, deformation test | planning + advanced live lesson; analytic, real-armature, and driven multi-axis corrective transfers tested; facial pose transfer remains deferred specialization |
 | P1 | UV, high/low baking, materials, and export | seam cut graph; distortion/packing/texel density; tangent convention; cage/ray margin; inspection light; engine handoff | authored seams and Selected-to-Active bake on a different shape | TRANSFER_VALIDATED on two controlled tube families; real-asset runtime use pending |
@@ -56,6 +56,13 @@ matches the binding order without changing any underlying evidence.
 | Blender Fundamentals: Intro to Shading | 11 frames + 47 machine-transcript segments | five single-cause interventions on an authored chamfered enclosure | OpenGL exit crash, empty collection audit, inward winding | surface diagnostics card + typed classifier |
 | Blender Fundamentals: Knife Tool | 12 frames + 23 machine-transcript segments | exact Bisect on a rounded equipment housing | invalid Fill-without-clear, import/render assumptions | mandatory mesh operation card |
 | Blender Fundamentals: Loop Cut | 17 frames + 27 machine-transcript segments | three complete rings on a rounded equipment housing | typed helper falsely subdivided a triangulated interruption, then rejected after contract fix | mandatory mesh operation card |
+| 3DTudor: Blender References Not Working | identity-bound Gemini whole-video and native 24–124 s range pass plus independent browser frames/visible captions | typed FRONT reproduction and distinct FRONT/RIGHT Image Empty transfer | later whole-video timestamp drift, CUSTOM free-view card, and duplicated-single-source multi-view control | `reference.axis_aligned_image_empty_setup` + visual reference card |
+
+The current Codex environment has no callable TubeAlfred connector. Its transcript, metadata, and
+search roles remain valid optional inputs, but they receive no execution credit here. Gemini range
+scoping now uses native `video_metadata` offsets and absolute-source timestamp validation; it is
+reserved for visually consequential episodes rather than used as a substitute for independent
+review.
 
 ## Breadth map from the supplied links
 

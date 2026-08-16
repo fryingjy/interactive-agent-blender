@@ -40,6 +40,11 @@ directive. It is deliberately not a declaration of professional-modeler completi
   a radial tube and transferred to a bent rounded-rectangle. Authored seams reduce mean angle error
   from `15.00°→1.87°` and `14.82°→0.66°`; fresh checks preserve connected all-quad source cages,
   live modifiers, tangent bakes, and low-only exports.
+- `runs/2026-08-16_real-video-reference-setup-review/` plus
+  `runs/2026-08-16_reference-image-alignment-transfer/` — Gemini's native 24–124 s video range is
+  identity-bound and independently frame/caption checked; Blender 5.2 then rejects a free-view card,
+  verifies 0° FRONT/RIGHT Image Empty alignment, and refuses a duplicated image as distinct
+  multi-view evidence. Later whole-video timestamp drift remains explicitly rejected.
 
 ## Directive requirement status
 
@@ -48,9 +53,9 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Typed decisions, rollback, state/identity, stage gates, and independent verification | `blender_ops/`, `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`, current test suite, and live `check_scene_component_coverage` capture | Implemented and tested |
 | Evidence-bound reference interpretation | `knowledge_engine/scene_decomposition.py`, explicit reference-to-blockout contract, planner-to-live-coverage stage-gate loop, and the current Swingline 747 reference board | Machine-ready for the new board; visual/modeling transfer remains unproven until human approval and a blockout outcome |
 | Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, current official Swingline gallery/specification records, and exact-variant feature evidence | Implemented and bounded; the continuous rubber pad is evidenced while hidden underside detail remains explicitly deferred |
-| Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, review gate, retained rejected outputs | Implemented; individual lesson promotion remains evidence-gated |
+| Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, native `video_metadata` range scoping, review gate, retained rejected outputs | Implemented; one public reference-setup range now has independent review and Blender transfer, while TubeAlfred remains an optional unavailable transcript/metadata provider in this environment |
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
-| Core topology/modifier/UV/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
+| Core topology/modifier/UV/reference/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, typed axis-aligned Image Empty transfer, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
 | Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
 | Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder and current Swingline board | Enforced with a complete return path; **pending an actual external decision** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |

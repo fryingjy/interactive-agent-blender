@@ -16,6 +16,7 @@ from knowledge_engine.gemini_video_study import (
     analyze_youtube_video,
     build_request,
     load_expected_source_metadata,
+    validate_time_range,
     write_analysis,
 )
 
@@ -35,6 +36,8 @@ def main() -> int:
     parser.add_argument("--output", type=Path, help="JSON evidence output path")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--focus", default="")
+    parser.add_argument("--start-seconds", type=float)
+    parser.add_argument("--end-seconds", type=float)
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -64,6 +67,14 @@ def main() -> int:
             parser.error(str(exc))
     if not source_url:
         parser.error("URL or --discovery-queue is required")
+    try:
+        study_range = validate_time_range(
+            args.start_seconds,
+            args.end_seconds,
+            duration_seconds=(expected_source or {}).get("duration_seconds"),
+        )
+    except ValueError as exc:
+        parser.error(str(exc))
 
     if args.dry_run:
         request = build_request(source_url, args.model, args.focus, expected_source)
@@ -75,6 +86,9 @@ def main() -> int:
             "video_archived": False,
             "discovery_identity_bound": expected_source is not None,
             "identity_metadata_source": str(args.source_metadata) if args.source_metadata else None,
+            "requested_time_range": (
+                list(study_range) if study_range else None
+            ),
         }
         print(json.dumps(summary, indent=2))
         return 0
@@ -86,6 +100,8 @@ def main() -> int:
         model=args.model,
         focus=args.focus,
         expected_source=expected_source,
+        start_seconds=args.start_seconds,
+        end_seconds=args.end_seconds,
     )
     target = write_analysis(result, args.output)
     print(f"wrote unverified Gemini extraction: {target}")

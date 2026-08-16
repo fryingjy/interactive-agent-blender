@@ -49,6 +49,7 @@ Updated 2026-08-16. `✓` means substantial evidence, `~` partial evidence, and 
 | Corrective shape keys / drivers | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Reference blockout | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Reference sourcing / purpose classification | ✓ | ✓ | ✓ | ✓ | — | — | — |
+| Principal-axis Image Empty setup | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |
 | Structured reference-set readiness | ✓ | ✓ | ✓ | ✓ | — | — | — |
 | Multi-view visual comparison | ~ | — | ✓ | ✓ | — | ~ | — |
 | Diagnostic visual passes | ~ | — | ✓ | ✓ | — | ~ | — |
@@ -121,3 +122,10 @@ a radial connected tube and transferred to a bent rounded-rectangle. Matched no-
 substantially more angle-distorted, while both authored high/low pairs retain connected all-quad
 source cages, live Solidify→Bevel stacks, tangent bakes, three-view shape audits, and low-only GLB
 round trips. This is controlled transfer, not real-prop production approval.
+
+Reference-card scene setup now also has current reproducibility. The verified 24–124 s public-video
+episode is range-scoped through Gemini and independently checked against browser frames and visible
+captions. `create_reference_image` and `audit_reference_images` reproduce a 0° FRONT card and
+transfer to distinct 0° FRONT/RIGHT cards in Blender 5.2. CUSTOM free-view alignment and a
+duplicated-single-source two-axis control remain rejected. These cells cover typed setup mechanics,
+not photographic orthography, same-target identity, calibration, or modeled likeness.

@@ -82,6 +82,26 @@ def youtube_video_id(url: str) -> str:
     return parse_qs(parsed.query)["v"][0]
 
 
+def validate_time_range(
+    start_seconds: float | None,
+    end_seconds: float | None,
+    *,
+    duration_seconds: float | None = None,
+) -> tuple[float, float] | None:
+    """Validate an optional absolute source-time range for a scoped video study."""
+    if start_seconds is None and end_seconds is None:
+        return None
+    if start_seconds is None or end_seconds is None:
+        raise ValueError("both start_seconds and end_seconds are required for a scoped study")
+    start = float(start_seconds)
+    end = float(end_seconds)
+    if start < 0 or end <= start:
+        raise ValueError("video study range must satisfy 0 <= start_seconds < end_seconds")
+    if duration_seconds is not None and end > float(duration_seconds) + 0.5:
+        raise ValueError("video study range exceeds independently recorded source duration")
+    return start, end
+
+
 def analysis_schema() -> dict[str, Any]:
     string = {"type": "string"}
     episode_properties = {field: string for field in EPISODE_FIELDS}
@@ -213,7 +233,11 @@ def load_expected_source_metadata(
 
 
 def build_prompt(
-    focus: str = "", expected_source: dict[str, Any] | None = None, requested_url: str = ""
+    focus: str = "",
+    expected_source: dict[str, Any] | None = None,
+    requested_url: str = "",
+    start_seconds: float | None = None,
+    end_seconds: float | None = None,
 ) -> str:
     focus_text = focus.strip() or (
         "reference interpretation, blockout, component decomposition, topology, "
@@ -236,6 +260,19 @@ Your source fields must identify exactly this video. Do not substitute a similar
 The requested video URL is `{requested_url}`. Set `source.url` to that exact URL in your JSON.
 Never use a channel URL, search URL, alternate video, or prose sentence in this field.
 """
+    study_range = validate_time_range(
+        start_seconds,
+        end_seconds,
+        duration_seconds=(expected_source or {}).get("duration_seconds"),
+    )
+    range_instruction = ""
+    if study_range:
+        start, end = study_range
+        range_instruction = f"""
+Inspect only the source interval from {start:g} to {end:g} seconds. Report every episode timestamp
+as an absolute timestamp in the original full video, never as time relative to the clipped range.
+Do not claim access to content before or after this interval.
+"""
     return f"""You are studying an actual Blender tutorial video as evidence for a professional
 modeling agent. Analyze both the visible video and the audible explanation. Do not merely summarize
 the topic and do not infer actions from the title or transcript alone.
@@ -243,6 +280,7 @@ the topic and do not infer actions from the title or transcript alone.
 Study focus: {focus_text}
 {requested_identity}
 {identity}
+{range_instruction}
 
 Split the video into only meaningful modeling episodes. Keep one coherent problem/decision per
 episode and prefer tight evidence ranges under 90 seconds; never merge several independent lessons
@@ -331,6 +369,8 @@ def build_generate_content_request(
     model: str,
     focus: str = "",
     expected_source: dict[str, Any] | None = None,
+    start_seconds: float | None = None,
+    end_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Build the standard Gemini endpoint fallback for a public YouTube video.
 
@@ -340,12 +380,34 @@ def build_generate_content_request(
     """
     from google.genai import types
 
+    study_range = validate_time_range(
+        start_seconds,
+        end_seconds,
+        duration_seconds=(expected_source or {}).get("duration_seconds"),
+    )
+    file_part_arguments: dict[str, Any] = {
+        "file_data": types.FileData(file_uri=url),
+    }
+    if study_range:
+        start, end = study_range
+        file_part_arguments["video_metadata"] = types.VideoMetadata(
+            start_offset=f"{start:g}s",
+            end_offset=f"{end:g}s",
+        )
     return {
         "model": model,
         "contents": types.Content(
             parts=[
-                types.Part(file_data=types.FileData(file_uri=url)),
-                types.Part(text=build_prompt(focus, expected_source, url)),
+                types.Part(**file_part_arguments),
+                types.Part(
+                    text=build_prompt(
+                        focus,
+                        expected_source,
+                        url,
+                        start_seconds=start_seconds,
+                        end_seconds=end_seconds,
+                    )
+                ),
             ]
         ),
         "config": types.GenerateContentConfig(
@@ -366,6 +428,8 @@ def analyze_youtube_video(
     model: str = DEFAULT_MODEL,
     focus: str = "",
     expected_source: dict[str, Any] | None = None,
+    start_seconds: float | None = None,
+    end_seconds: float | None = None,
     client_factory: Callable[..., Any] | None = None,
 ) -> dict[str, Any]:
     load_dotenv()
@@ -384,40 +448,70 @@ def analyze_youtube_video(
         expected_url = expected_source.get("url", "")
         if youtube_video_id(expected_url) != youtube_video_id(requested_url):
             raise ValueError("discovery metadata video id does not match requested URL")
+    study_range = validate_time_range(
+        start_seconds,
+        end_seconds,
+        duration_seconds=(expected_source or {}).get("duration_seconds"),
+    )
     request = build_request(requested_url, model, focus, expected_source)
     client = client_factory(api_key=api_key)
-    endpoint = "interactions"
+    endpoint = "generate_content_range" if study_range else "interactions"
     interaction_id = None
-    try:
-        interaction = client.interactions.create(**request)
-        raw_text = interaction.output_text
-        response_model = getattr(interaction, "model", None)
-        interaction_id = getattr(interaction, "id", None)
-    except Exception as interaction_error:  # SDK exception classes vary across releases.
+    if study_range:
         generate_content = getattr(getattr(client, "models", None), "generate_content", None)
-        if not _permission_denied(interaction_error) or not callable(generate_content):
-            if _permission_denied(interaction_error):
-                raise RuntimeError(
-                    "Gemini rejected the configured credential. Configure a Gemini API key that is "
-                    "authorized for the selected model and public-video interaction, then retry. "
-                    "No source video was downloaded or retained."
-                ) from interaction_error
-            raise
+        if not callable(generate_content):
+            raise RuntimeError("configured Gemini client does not support range-scoped video study")
         try:
             response = generate_content(
-                **build_generate_content_request(requested_url, model, focus, expected_source)
+                **build_generate_content_request(
+                    requested_url,
+                    model,
+                    focus,
+                    expected_source,
+                    start_seconds=start_seconds,
+                    end_seconds=end_seconds,
+                )
             )
-        except Exception as fallback_error:
-            if _permission_denied(fallback_error):
+        except Exception as range_error:
+            if _permission_denied(range_error):
                 raise RuntimeError(
-                    "Gemini rejected the configured credential on both supported video endpoints. "
-                    "Configure a key authorized for the selected model and public-video access, "
-                    "then retry. No source video was downloaded or retained."
-                ) from fallback_error
+                    "Gemini rejected the configured credential for range-scoped video access. "
+                    "Configure an authorized key and retry; no source video was downloaded or retained."
+                ) from range_error
             raise
         raw_text = response.text
         response_model = getattr(response, "model_version", None) or model
-        endpoint = "generate_content"
+    else:
+        try:
+            interaction = client.interactions.create(**request)
+            raw_text = interaction.output_text
+            response_model = getattr(interaction, "model", None)
+            interaction_id = getattr(interaction, "id", None)
+        except Exception as interaction_error:  # SDK exception classes vary across releases.
+            generate_content = getattr(getattr(client, "models", None), "generate_content", None)
+            if not _permission_denied(interaction_error) or not callable(generate_content):
+                if _permission_denied(interaction_error):
+                    raise RuntimeError(
+                        "Gemini rejected the configured credential. Configure a Gemini API key that is "
+                        "authorized for the selected model and public-video interaction, then retry. "
+                        "No source video was downloaded or retained."
+                    ) from interaction_error
+                raise
+            try:
+                response = generate_content(
+                    **build_generate_content_request(requested_url, model, focus, expected_source)
+                )
+            except Exception as fallback_error:
+                if _permission_denied(fallback_error):
+                    raise RuntimeError(
+                        "Gemini rejected the configured credential on both supported video endpoints. "
+                        "Configure a key authorized for the selected model and public-video access, "
+                        "then retry. No source video was downloaded or retained."
+                    ) from fallback_error
+                raise
+            raw_text = response.text
+            response_model = getattr(response, "model_version", None) or model
+            endpoint = "generate_content"
     data = json.loads(raw_text)
     reported_source_url = data.get("source", {}).get("url")
     try:
@@ -434,6 +528,13 @@ def analyze_youtube_video(
     validate_analysis(data, requested_url)
     if expected_source:
         validate_expected_source(data, expected_source)
+    if study_range:
+        start, end = study_range
+        for index, episode in enumerate(data.get("episodes", [])):
+            if episode["start_seconds"] < start - 0.5 or episode["end_seconds"] > end + 0.5:
+                raise ValueError(
+                    f"episode {index} lies outside the requested absolute source-time range"
+                )
     return {
         "provenance": {
             "extractor": "Google Gemini video understanding",
@@ -447,6 +548,7 @@ def analyze_youtube_video(
             "reported_source_matches_request": reported_source_matches_request,
             "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
             "video_archived": False,
+            "requested_time_range": list(study_range) if study_range else None,
         },
         "analysis": data,
     }

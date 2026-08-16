@@ -78,6 +78,7 @@ CAPABILITIES = [
     "editable_high_low_variant_packaging",
     "production_high_low_audit",
     "scene_component_coverage",
+    "axis_aligned_reference_images",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -432,6 +433,45 @@ class ModelerServer:
         for begin_decision's external-edit check to compare against)."""
         loc = tuple(location) if location else (0.0, 0.0, 0.0)
         return object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
+
+    def cmd_create_reference_image(
+        self,
+        name,
+        image_path,
+        view_axis,
+        location=None,
+        display_size=1.0,
+        opacity=0.7,
+        collection_name="CONSTRUCTION_REFERENCES",
+        source_role="CONSTRUCTION",
+        calibrated=True,
+        custom_rotation=None,
+    ):
+        """Create an explicit principal-axis construction card outside a mesh decision."""
+        return object_ops.create_reference_image(
+            name,
+            image_path,
+            view_axis,
+            location=tuple(location) if location else (0.0, 0.0, 0.0),
+            display_size=display_size,
+            opacity=opacity,
+            collection_name=collection_name,
+            source_role=source_role,
+            calibrated=calibrated,
+            custom_rotation=custom_rotation,
+        )
+
+    def cmd_audit_reference_images(
+        self,
+        collection_name="CONSTRUCTION_REFERENCES",
+        angular_tolerance_degrees=0.1,
+        require_distinct_sources=False,
+    ):
+        return object_ops.audit_reference_images(
+            collection_name=collection_name,
+            angular_tolerance_degrees=angular_tolerance_degrees,
+            require_distinct_sources=require_distinct_sources,
+        )
 
     def cmd_create_curve(self, name, points, bevel_depth=0.05, closed=False, curve_type="POLY"):
         """Free to call outside a decision transaction, same reasoning as

@@ -1,0 +1,94 @@
+{
+  "skill_id": "reference.axis_aligned_image_empty_setup",
+  "title": "Create construction reference cards as declared principal-axis Image Empties",
+  "topic_tags": [
+    "orthographic construction reference",
+    "Image Empty",
+    "principal-axis alignment",
+    "front right top views",
+    "reference setup"
+  ],
+  "applicability": {
+    "modeling_stage": [
+      "REFERENCE_ANALYSIS",
+      "PRIMARY_BLOCKOUT"
+    ],
+    "workflow": [
+      "principal-axis Image Empty placement",
+      "orthographic construction-card alignment"
+    ],
+    "reference_issue": [
+      "construction card imported from free perspective view",
+      "image empty tilted away from principal axis",
+      "single image duplicated and mislabeled as distinct multi-view evidence"
+    ],
+    "object_type": [
+      "EMPTY:IMAGE"
+    ]
+  },
+  "preconditions": [
+    "the selected image is authorized for a named construction property or view",
+    "the intended view is FRONT, RIGHT, or TOP rather than an arbitrary free-view trace",
+    "same-target and same-variant evidence has been established separately when multiple views are used"
+  ],
+  "required_observations": [
+    "Image Empty type and loaded source path",
+    "declared view axis and world-space card normal",
+    "whether each construction axis has a genuinely distinct source image",
+    "photographic perspective, crop, scale, and same-variant uncertainty outside Blender scene state"
+  ],
+  "action_policy": [
+    "Create the construction card only after declaring FRONT, RIGHT, or TOP authority, and align its Image Empty normal to that principal axis.",
+    "Keep construction cards in a dedicated collection with source path, view role, and calibration intent recorded.",
+    "Use distinct same-target images for distinct construction views; rotating a duplicate can aid spatial orientation but does not create new visual evidence.",
+    "Keep broad inspiration, material, and contextual references outside the calibrated construction-card claim.",
+    "Audit the saved card normals and source-role records before using them to constrain a blockout."
+  ],
+  "expected_effects": [
+    "zero principal-axis angular error for declared FRONT, RIGHT, or TOP cards",
+    "an editable reference setup that survives saving and fresh-process inspection",
+    "clear separation between construction evidence and broader reference-board material"
+  ],
+  "failure_predicates": [
+    "a construction Image Empty has CUSTOM or undeclared alignment",
+    "the measured card normal differs from its declared principal axis beyond tolerance",
+    "the same image path is presented as distinct front and side evidence",
+    "the underlying photograph's projection or variant identity is unknown but treated as calibrated"
+  ],
+  "recovery": [
+    "return to the intended orthographic view and recreate or realign the construction card",
+    "replace a duplicated single-image view with genuine same-target evidence",
+    "downgrade an uncertain photograph to contextual reference instead of construction authority",
+    "record unresolved projection or scale uncertainty before blockout"
+  ],
+  "sources": [
+    {
+      "type": "verified_public_video_episode",
+      "source_id": "youtube-reference-3dtudor",
+      "evidence_path": "runs/2026-08-16_real-video-reference-setup-review/episode_review.json",
+      "description": "Independent browser frames and sampled visible captions verify the perspective-import failure and orthographic re-import correction within 24–124 seconds."
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled reproduction and different-view transfer",
+      "evidence_path": "runs/2026-08-16_reference-image-alignment-transfer/",
+      "result": "PASS",
+      "measurements": {
+        "perspective_custom_control_rejected": true,
+        "front_reproduction_angular_error_degrees": 0.0,
+        "front_right_transfer_angular_errors_degrees": [
+          0.0,
+          0.0
+        ],
+        "duplicated_single_source_multiview_control_rejected": true,
+        "fresh_verification_pass": true
+      },
+      "limitations": "Project-owned diagram cards test Blender scene setup only. They do not prove photographic orthography, same-target identity, calibration, or improved model likeness."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Public lesson demonstrates an older Blender UI; typed reproduction and transfer verified in Blender 5.2.0 LTS",
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "The source episode is independently verified and the principal-axis setup passes a fresh-process failure-control and two-view transfer. Runtime use on a human-authorized real prop remains open."
+}

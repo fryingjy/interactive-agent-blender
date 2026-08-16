@@ -1,0 +1,197 @@
+{
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\reference_image_alignment_transfer.blend",
+  "blender_version": "5.2.0 LTS",
+  "checks": {
+    "saved_report_passed": true,
+    "six_reference_empties_present": true,
+    "all_images_loaded_from_existing_paths": true,
+    "perspective_control_still_rejected": true,
+    "orthographic_reproduction_still_passes": true,
+    "multiview_transfer_still_passes": true,
+    "duplicate_source_control_still_rejected": true,
+    "front_and_right_transfer_sources_are_distinct": true,
+    "all_principal_transfer_errors_zero": true
+  },
+  "audits": {
+    "perspective_failure": {
+      "collection": "PERSPECTIVE_FAILURE_CONTROL",
+      "reference_count": 1,
+      "records": [
+        {
+          "name": "Perspective_Control",
+          "view_axis": "CUSTOM",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            0.404508501291275,
+            -0.7938926219940186,
+            0.45399051904678345
+          ],
+          "angular_error_degrees": null,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": false,
+            "axis_alignment_within_tolerance": false,
+            "calibration_intent_recorded": false
+          },
+          "pass": false
+        }
+      ],
+      "duplicated_cross_axis_sources": [],
+      "checks": {
+        "references_present": true,
+        "all_principal_axis_references_valid": false,
+        "distinct_sources_when_required": true
+      },
+      "pass": false,
+      "claim_boundary": "This audit verifies Blender image-Empty type, declared role, and principal-axis alignment. It does not prove that source photographs are orthographic, same-variant, dimensionally calibrated, or visually sufficient."
+    },
+    "orthographic_reproduction": {
+      "collection": "ORTHOGRAPHIC_REPRODUCTION",
+      "reference_count": 1,
+      "records": [
+        {
+          "name": "Front_Orthographic_Reproduction",
+          "view_axis": "FRONT",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ],
+          "angular_error_degrees": 0.0,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": true,
+            "axis_alignment_within_tolerance": true,
+            "calibration_intent_recorded": true
+          },
+          "pass": true
+        }
+      ],
+      "duplicated_cross_axis_sources": [],
+      "checks": {
+        "references_present": true,
+        "all_principal_axis_references_valid": true,
+        "distinct_sources_when_required": true
+      },
+      "pass": true,
+      "claim_boundary": "This audit verifies Blender image-Empty type, declared role, and principal-axis alignment. It does not prove that source photographs are orthographic, same-variant, dimensionally calibrated, or visually sufficient."
+    },
+    "multiview_transfer": {
+      "collection": "MULTIVIEW_TRANSFER",
+      "reference_count": 2,
+      "records": [
+        {
+          "name": "Transfer_Front",
+          "view_axis": "FRONT",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ],
+          "angular_error_degrees": 0.0,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": true,
+            "axis_alignment_within_tolerance": true,
+            "calibration_intent_recorded": true
+          },
+          "pass": true
+        },
+        {
+          "name": "Transfer_Right",
+          "view_axis": "RIGHT",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_right_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            1.0,
+            0.0,
+            -4.371138828673793e-08
+          ],
+          "angular_error_degrees": 0.0,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": true,
+            "axis_alignment_within_tolerance": true,
+            "calibration_intent_recorded": true
+          },
+          "pass": true
+        }
+      ],
+      "duplicated_cross_axis_sources": [],
+      "checks": {
+        "references_present": true,
+        "all_principal_axis_references_valid": true,
+        "distinct_sources_when_required": true
+      },
+      "pass": true,
+      "claim_boundary": "This audit verifies Blender image-Empty type, declared role, and principal-axis alignment. It does not prove that source photographs are orthographic, same-variant, dimensionally calibrated, or visually sufficient."
+    },
+    "duplicated_single_image_control": {
+      "collection": "DUPLICATED_SINGLE_IMAGE_CONTROL",
+      "reference_count": 2,
+      "records": [
+        {
+          "name": "Duplicate_Control_Front",
+          "view_axis": "FRONT",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            0.0,
+            -1.0,
+            -4.371138828673793e-08
+          ],
+          "angular_error_degrees": 0.0,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": true,
+            "axis_alignment_within_tolerance": true,
+            "calibration_intent_recorded": true
+          },
+          "pass": true
+        },
+        {
+          "name": "Duplicate_Control_Right",
+          "view_axis": "RIGHT",
+          "source_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png",
+          "source_role": "CONSTRUCTION",
+          "actual_normal": [
+            1.0,
+            0.0,
+            -4.371138828673793e-08
+          ],
+          "angular_error_degrees": 0.0,
+          "checks": {
+            "is_image_empty": true,
+            "image_loaded": true,
+            "principal_axis_declared": true,
+            "axis_alignment_within_tolerance": true,
+            "calibration_intent_recorded": true
+          },
+          "pass": true
+        }
+      ],
+      "duplicated_cross_axis_sources": [
+        "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-image-alignment-transfer\\project_owned_front_card.png"
+      ],
+      "checks": {
+        "references_present": true,
+        "all_principal_axis_references_valid": true,
+        "distinct_sources_when_required": false
+      },
+      "pass": false,
+      "claim_boundary": "This audit verifies Blender image-Empty type, declared role, and principal-axis alignment. It does not prove that source photographs are orthographic, same-variant, dimensionally calibrated, or visually sufficient."
+    }
+  },
+  "pass": true,
+  "claim_boundary": "The run validates editable Image Empty creation, principal-axis alignment, and rejection of a duplicated single image as distinct multi-view evidence. It does not establish that arbitrary photographs are orthographic or prove reference-to-model fidelity."
+}

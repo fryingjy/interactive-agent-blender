@@ -1,12 +1,12 @@
 {
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
-  "record_count": 79,
+  "record_count": 80,
   "missing_artifact_count": 62,
   "unclassified_missing_artifact_count": 0,
   "classified_missing_artifact_count": 62,
   "explicitly_non_retained_count": 13,
-  "non_path_reference_count": 45,
+  "non_path_reference_count": 47,
   "locally_reproducible": false,
   "missing_artifacts": [],
   "classified_missing_artifacts": [
@@ -1474,9 +1474,19 @@
       "path": "C:\\Users\\odane\\Downloads\\blender\\blend\\ak47.blend"
     },
     {
+      "source_id": "youtube-reference-3dtudor",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
+    },
+    {
       "source_id": "experiment-uv-seam-production-transfer-2026-08-16",
       "field": "metadata.skills",
       "path": "knowledge/skills/uv-seam-graph-connected-tube.json"
+    },
+    {
+      "source_id": "experiment-reference-image-alignment-transfer-2026-08-16",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
     }
   ],
   "claim_boundary": "Classified non-retained evidence remains unavailable for local reproduction. The ledger explains its retention state but does not turn it into a passing artifact or prove the external source claim."

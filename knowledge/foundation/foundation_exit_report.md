@@ -389,6 +389,16 @@ and fresh verification. This promotes one narrow seam policy to `TRANSFER_VALIDA
 change the overall **PARTIAL** decision because real-asset runtime use and human acceptance remain
 missing.
 
+The reference-video path was also tightened without touching the gated prop. A fresh identity-bound
+Gemini pass on the 3DTudor setup lesson was followed by a native 24–124 s `video_metadata` pass.
+Independent browser frames and sampled visible captions verify the perspective-import failure and
+orthographic correction, while later whole-video timestamp drift is explicitly rejected. Blender
+5.2 now exposes typed FRONT/RIGHT/TOP Image Empty creation and a saved-state axis audit. A CUSTOM
+free-view card fails, distinct FRONT/RIGHT cards measure 0°/0°, and a rotated duplicate of one image
+is rejected as distinct multi-view evidence. This improves setup integrity but does not supply the
+missing Swingline human decision or prove real-image fidelity, so the exit decision stays
+**PARTIAL**.
+
 ### 2026-08-15 secondary-view strategy update
 
 A controlled Blender 5.2 experiment now proves one narrow depth-reasoning mechanism across

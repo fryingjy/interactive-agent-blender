@@ -118,6 +118,20 @@ The directive audit must pass structurally while still reporting `directive_stat
 any section remains partial, externally review-gated, or deliberately deferred. Its passing result
 proves evidence traceability, not professional modeling autonomy.
 
+For a long public YouTube lesson, scope Gemini's actual video/audio inspection to the relevant
+source interval instead of reprocessing the whole video:
+
+```powershell
+python tools/analyze_video_with_gemini.py "https://www.youtube.com/watch?v=VIDEO_ID" `
+  --source-metadata path/to/source_identity.json `
+  --start-seconds 24 --end-seconds 124 `
+  --output path/to/gemini_range_0024_0124.json
+```
+
+Both range arguments are required together. Output episode times remain absolute full-video
+timestamps, and model extraction remains unverified until an independent frame/audio/caption review
+confirms it. The pipeline does not download or archive the source video.
+
 Blender evidence scripts target Blender 5.2 LTS and are normally run in factory-startup background
 mode. Each run's report or session note records its exact command and evidence boundary. Independent
 verifiers deliberately avoid importing the modeling code they are checking.
@@ -211,6 +225,13 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-16_curved-bevel-normal-policy/` — twelve live radial/taper variants separate
   Bevel-induced normal damage from uneven-cage error; Harden Normals restores the baseline while
   Weighted Normal is explicitly rejected on the uneven curved fixture.
+- `runs/2026-08-16_real-video-reference-setup-review/` — identity-bound whole-video plus native
+  range-scoped Gemini analysis, five independently inspected browser frames, sampled visible
+  captions, one verified 24–124 s orthographic-correction episode, and explicit rejection of later
+  timestamp drift.
+- `runs/2026-08-16_reference-image-alignment-transfer/` — typed editable Image Empty creation,
+  CUSTOM free-view failure control, 0° FRONT/RIGHT transfer, duplicated-single-source multi-view
+  rejection, saved `.blend`, controlled renders, and fresh-process verification.
 - `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
   judgment synthesis claims.
 

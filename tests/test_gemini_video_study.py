@@ -14,6 +14,7 @@ from knowledge_engine.gemini_video_study import (
     load_expected_source_metadata,
     validate_analysis,
     validate_expected_source,
+    validate_time_range,
     validate_youtube_url,
     youtube_video_id,
     write_analysis,
@@ -103,6 +104,33 @@ class GeminiVideoStudyTests(unittest.TestCase):
         self.assertEqual(request["config"].response_mime_type, "application/json")
         self.assertIn("episodes", request["config"].response_json_schema["properties"])
         self.assertIn("Exact Lesson", request["contents"].parts[1].text)
+
+    def test_range_scoped_generate_content_uses_video_metadata_and_absolute_time_prompt(self):
+        expected = {
+            "url": "https://youtu.be/abc123",
+            "title": "Exact Lesson",
+            "creator": "Exact Artist",
+            "duration_seconds": 200,
+        }
+        request = build_generate_content_request(
+            expected["url"],
+            "gemini-test",
+            expected_source=expected,
+            start_seconds=24,
+            end_seconds=124,
+        )
+        media = request["contents"].parts[0]
+        self.assertEqual(media.video_metadata.start_offset, "24s")
+        self.assertEqual(media.video_metadata.end_offset, "124s")
+        prompt = request["contents"].parts[1].text
+        self.assertIn("24 to 124 seconds", prompt)
+        self.assertIn("absolute timestamp", prompt)
+
+    def test_range_validation_requires_complete_bounded_pair(self):
+        self.assertEqual(validate_time_range(24, 124, duration_seconds=200), (24.0, 124.0))
+        for start, end in ((24, None), (None, 124), (-1, 20), (20, 20), (20, 201)):
+            with self.subTest(start=start, end=end), self.assertRaises(ValueError):
+                validate_time_range(start, end, duration_seconds=200)
 
     def test_direct_source_metadata_requires_complete_matching_identity(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -285,6 +313,57 @@ class GeminiVideoStudyTests(unittest.TestCase):
             result = analyze_youtube_video(url, client_factory=Client)
         self.assertEqual(result["provenance"]["endpoint"], "generate_content")
         self.assertEqual(result["provenance"]["response_model"], "gemini-generate-test")
+
+    def test_range_scoped_analysis_bypasses_whole_video_interaction(self):
+        url = "https://www.youtube.com/watch?v=abc123"
+        payload = _analysis(url)
+        payload["episodes"][0]["start_seconds"] = 24.0
+        payload["episodes"][0]["end_seconds"] = 40.0
+
+        class Models:
+            def generate_content(self, **request):
+                self.request = request
+                return type("Response", (), {"text": json.dumps(payload), "model_version": "range-test"})()
+
+        class Interactions:
+            def create(self, **request):
+                raise AssertionError("whole-video interaction must not run for a scoped study")
+
+        class Client:
+            def __init__(self, api_key):
+                self.models = Models()
+                self.interactions = Interactions()
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "secret"}, clear=False):
+            result = analyze_youtube_video(
+                url,
+                start_seconds=24,
+                end_seconds=124,
+                client_factory=Client,
+            )
+        self.assertEqual(result["provenance"]["endpoint"], "generate_content_range")
+        self.assertEqual(result["provenance"]["requested_time_range"], [24.0, 124.0])
+
+    def test_range_scoped_analysis_rejects_out_of_range_episode(self):
+        url = "https://www.youtube.com/watch?v=abc123"
+        payload = _analysis(url)
+
+        class Models:
+            def generate_content(self, **request):
+                return type("Response", (), {"text": json.dumps(payload), "model_version": "range-test"})()
+
+        class Client:
+            def __init__(self, api_key):
+                self.models = Models()
+
+        with patch.dict(os.environ, {"GEMINI_API_KEY": "secret"}, clear=False):
+            with self.assertRaisesRegex(ValueError, "outside the requested"):
+                analyze_youtube_video(
+                    url,
+                    start_seconds=24,
+                    end_seconds=80,
+                    client_factory=Client,
+                )
 
     def test_write_analysis_round_trips_utf8_json(self):
         with tempfile.TemporaryDirectory() as directory:

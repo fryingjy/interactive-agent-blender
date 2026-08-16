@@ -1060,3 +1060,31 @@ pass, tangent bakes are packed Non-Color data connected through Tangent Normal n
 imports contain one low mesh with UVs and material. The retrieval benchmark also exposed and fixed
 an over-broad first draft: generic UV overlap-after-pack still abstains. The promoted skill remains
 controlled `TRANSFER_VALIDATED`; Swingline production use still requires human authorization.
+
+## Update -- 2026-08-16 (native range-scoped Gemini and reference-card transfer)
+
+The user-supplied TubeAlfred/Gemini account exposed one concrete missing capability: long or
+chaptered videos should be narrowed with Gemini's native `video_metadata` offsets instead of always
+spending a whole-video request. `knowledge_engine/gemini_video_study.py` and
+`tools/analyze_video_with_gemini.py` now accept a complete start/end pair, send those offsets through
+`types.VideoMetadata`, require absolute full-source timestamps, reject episodes outside the requested
+interval, preserve the range in provenance, and keep the whole-video Interactions path unchanged.
+Focused tests cover incomplete/invalid ranges, SDK request shape, endpoint routing, and out-of-range
+model output. TubeAlfred itself is not callable in the current Codex environment, so no transcript,
+metadata, search, or chapter evidence is falsely attributed to it.
+
+The public 3DTudor reference-setup lesson was then reprocessed. Its whole-video pass produced a
+useful first candidate but direct browser playback found later timestamp drift: by roughly 142 s the
+video had entered external reference-board discussion. Those later ranges are rejected. A native
+24–124 s pass stayed inside scope and returned three absolute-timestamp episodes for the free-view
+failure, orthographic re-import, and crossed-card/wireframe setup. Five retained browser frames plus
+sampled visible machine captions independently verify the combined correction episode.
+
+`create_reference_image` and `audit_reference_images` return the lesson to Blender 5.2. A CUSTOM
+free-view Image Empty fails construction calibration; a FRONT reproduction and distinct FRONT/RIGHT
+transfer measure 0° error; and a front/right pair sourced from the same duplicated image is rejected
+when distinct multi-view evidence is required. The first audit run failed because newly assigned
+rotations had stale `matrix_world` values; a view-layer update repaired the measurement without
+changing thresholds. The resulting skill is `TRANSFER_VALIDATED` for scene setup only. It does not
+prove photographic orthography, source identity, calibration, model likeness, or authorization to
+bypass Swingline's human gate.

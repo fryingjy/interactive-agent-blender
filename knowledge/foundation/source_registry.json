@@ -2304,11 +2304,31 @@
     "creator": "3DTudor",
     "source_type": "professional_video",
     "trust_tier": "B",
-    "version": "Blender 2.8-era; accessed 2026-08-15",
-    "topics": ["reference-modeling", "reference-board"],
-    "access": {"text": false, "video": true, "audio": true, "captions": false},
-    "status": "STUDIED", "rejected_reason": null, "modalities_inspected": ["video", "audio"],
-    "metadata": {"experiments": ["runs/2026-08-15_video-study-reference-workflow/"], "limitations": ["UI version-limited; setup does not establish source quality"]}
+    "version": "Blender 2.8-era; independently revisited 2026-08-16",
+    "topics": ["reference-modeling", "reference-board", "orthographic-image-empty", "principal-axis-alignment"],
+    "access": {"text": false, "video": true, "audio": true, "captions": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["Gemini_video", "Gemini_audio", "visible_machine_captions", "independent_browser_frames", "blend_data", "fresh_process_verification"],
+    "metadata": {
+      "experiments": [
+        "runs/2026-08-15_video-study-reference-workflow/",
+        "runs/2026-08-16_real-video-reference-setup-review/",
+        "runs/2026-08-16_reference-image-alignment-transfer/"
+      ],
+      "skills": ["knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "direct_observations": [
+        "The 24-124 second perspective-import failure and orthographic re-import correction passes independent frame, caption, speech, and identity checks",
+        "A native Gemini video-metadata range pass returns three absolute-timestamp episodes inside the requested interval",
+        "The initial whole-video pass's later timestamps are not trusted because direct playback had entered external reference-board discussion near 142 seconds",
+        "Typed Blender 5.2 reproduction and distinct FRONT/RIGHT transfer measure zero principal-axis angular error"
+      ],
+      "limitations": [
+        "UI version-limited",
+        "Axis-aligned Image Empties do not establish photographic orthography, scale, same-variant identity, or source quality",
+        "Rotating a duplicated single image is rejected as distinct multi-view evidence"
+      ]
+    }
   },
   {
     "id": "youtube-reference-peinador",
@@ -2801,6 +2821,36 @@
         "Controlled open-ended tube-like cages only",
         "No runtime use on a human-authorized real prop",
         "No universal seam placement, texture-quality, or cross-engine compression claim"
+      ]
+    }
+  },
+  {
+    "id": "experiment-reference-image-alignment-transfer-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_reference-image-alignment-transfer/",
+    "title": "Principal-Axis Reference Image Empty Reproduction and Transfer",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["reference-setup", "Image-Empty", "orthographic-view", "principal-axis", "multi-view-evidence"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "Workbench_render", "world_normal_measurement", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-image-alignment-transfer/"],
+      "skills": ["knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "direct_observations": [
+        "A CUSTOM free-view card fails construction calibration while the reproduced FRONT card measures zero angular error",
+        "Distinct project-owned FRONT and RIGHT cards both measure zero angular error and pass the saved-file verifier",
+        "An axis-aligned front/right pair sourced from one duplicated image is rejected when distinct view evidence is required",
+        "The first audit failed on stale matrix_world state; forcing a view-layer update repaired measurement without changing thresholds"
+      ],
+      "limitations": [
+        "Synthetic diagram cards isolate Blender setup behavior",
+        "No claim of photographic calibration, same-target identity, model resemblance, or human acceptance",
+        "No runtime use on a human-authorized benchmark prop"
       ]
     }
   }

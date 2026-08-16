@@ -25,6 +25,18 @@ _PRIMITIVES = {
     "plane": bpy.ops.mesh.primitive_plane_add,
 }
 
+_REFERENCE_AXIS_ROTATIONS = {
+    "FRONT": (math.pi / 2.0, 0.0, 0.0),
+    "RIGHT": (0.0, math.pi / 2.0, 0.0),
+    "TOP": (0.0, 0.0, 0.0),
+}
+
+_REFERENCE_AXIS_NORMALS = {
+    "FRONT": (0.0, -1.0, 0.0),
+    "RIGHT": (1.0, 0.0, 0.0),
+    "TOP": (0.0, 0.0, 1.0),
+}
+
 
 def create_primitive(name, primitive_type, location=(0.0, 0.0, 0.0), **kwargs):
     """Create a new mesh object from a basic primitive and give it `name`.
@@ -48,6 +60,161 @@ def create_primitive(name, primitive_type, location=(0.0, 0.0, 0.0), **kwargs):
     if obj.data is not None:
         obj.data.name = name
     return {"name": obj.name, "type": obj.type, "location": list(obj.location)}
+
+
+def create_reference_image(
+    name,
+    image_path,
+    view_axis,
+    location=(0.0, 0.0, 0.0),
+    display_size=1.0,
+    opacity=0.7,
+    collection_name="CONSTRUCTION_REFERENCES",
+    source_role="CONSTRUCTION",
+    calibrated=True,
+    custom_rotation=None,
+):
+    """Create one typed image Empty with explicit construction-view authority.
+
+    FRONT/RIGHT/TOP are principal-axis construction references. CUSTOM is retained only for
+    observed perspective cards or controlled failure fixtures and can never be marked calibrated.
+    The operation does not infer that two cards depict the same object or that a photograph is
+    orthographic; those are reference-evidence questions outside Blender's scene state.
+    """
+    clean_name = str(name).strip()
+    if not clean_name:
+        raise ValueError("reference object name cannot be empty")
+    if clean_name in bpy.data.objects:
+        raise ValueError(f"object '{clean_name}' already exists")
+    source_path = os.path.abspath(os.path.expanduser(str(image_path)))
+    if not os.path.isfile(source_path):
+        raise ValueError(f"reference image does not exist: {source_path}")
+    axis = str(view_axis).strip().upper()
+    if axis not in {*_REFERENCE_AXIS_ROTATIONS, "CUSTOM"}:
+        raise ValueError("view_axis must be FRONT, RIGHT, TOP, or CUSTOM")
+    if axis == "CUSTOM":
+        if custom_rotation is None or len(custom_rotation) != 3:
+            raise ValueError("CUSTOM reference alignment requires a three-value custom_rotation")
+        if calibrated:
+            raise ValueError("CUSTOM reference alignment cannot be marked calibrated")
+        rotation = tuple(float(value) for value in custom_rotation)
+    else:
+        if custom_rotation is not None:
+            raise ValueError("custom_rotation is valid only for CUSTOM alignment")
+        rotation = _REFERENCE_AXIS_ROTATIONS[axis]
+    size = float(display_size)
+    alpha = float(opacity)
+    if size <= 0:
+        raise ValueError("display_size must be positive")
+    if not 0.0 <= alpha <= 1.0:
+        raise ValueError("opacity must be in [0, 1]")
+
+    collection = bpy.data.collections.get(collection_name)
+    if collection is None:
+        collection = bpy.data.collections.new(str(collection_name))
+        bpy.context.scene.collection.children.link(collection)
+    image = bpy.data.images.load(source_path, check_existing=True)
+    obj = bpy.data.objects.new(clean_name, None)
+    collection.objects.link(obj)
+    obj.empty_display_type = "IMAGE"
+    obj.data = image
+    obj.empty_display_size = size
+    obj.empty_image_depth = "FRONT"
+    obj.color[3] = alpha
+    obj.show_in_front = True
+    obj.location = tuple(float(value) for value in location)
+    obj.rotation_mode = "XYZ"
+    obj.rotation_euler = rotation
+    obj["reference_view_axis"] = axis
+    obj["reference_source_role"] = str(source_role).strip().upper() or "CONSTRUCTION"
+    obj["reference_calibrated"] = bool(calibrated) and axis != "CUSTOM"
+    obj["reference_source_path"] = source_path
+    return {
+        "name": obj.name,
+        "type": obj.type,
+        "display_type": obj.empty_display_type,
+        "image": image.name,
+        "view_axis": axis,
+        "calibrated": bool(obj["reference_calibrated"]),
+        "rotation_euler": [float(value) for value in obj.rotation_euler],
+        "location": [float(value) for value in obj.location],
+        "collection": collection.name,
+    }
+
+
+def audit_reference_images(
+    collection_name="CONSTRUCTION_REFERENCES",
+    angular_tolerance_degrees=0.1,
+    require_distinct_sources=False,
+):
+    """Audit typed image references without claiming photographic calibration or fidelity."""
+    from mathutils import Vector
+
+    collection = bpy.data.collections.get(str(collection_name))
+    if collection is None:
+        raise ValueError(f"missing reference collection: {collection_name}")
+    # Direct object-property writes do not guarantee an immediately refreshed matrix_world.
+    # Force the same dependency update a viewport redraw would provide before measuring axes.
+    bpy.context.view_layer.update()
+    tolerance = float(angular_tolerance_degrees)
+    if tolerance < 0:
+        raise ValueError("angular_tolerance_degrees must be non-negative")
+    records = []
+    source_axes = {}
+    for obj in sorted(collection.all_objects, key=lambda item: item.name):
+        axis = str(obj.get("reference_view_axis", "")).upper()
+        source_path = str(obj.get("reference_source_path", ""))
+        expected = _REFERENCE_AXIS_NORMALS.get(axis)
+        actual = obj.matrix_world.to_3x3() @ Vector((0.0, 0.0, 1.0))
+        actual.normalize()
+        if expected:
+            dot = min(1.0, max(-1.0, abs(actual.dot(Vector(expected)))))
+            angular_error = math.degrees(math.acos(dot))
+        else:
+            angular_error = None
+        source_axes.setdefault(source_path, set()).add(axis)
+        checks = {
+            "is_image_empty": obj.type == "EMPTY" and obj.empty_display_type == "IMAGE",
+            "image_loaded": obj.data is not None,
+            "principal_axis_declared": expected is not None,
+            "axis_alignment_within_tolerance": (
+                angular_error is not None and angular_error <= tolerance
+            ),
+            "calibration_intent_recorded": bool(obj.get("reference_calibrated", False)),
+        }
+        records.append(
+            {
+                "name": obj.name,
+                "view_axis": axis,
+                "source_path": source_path,
+                "source_role": obj.get("reference_source_role"),
+                "actual_normal": [float(value) for value in actual],
+                "angular_error_degrees": angular_error,
+                "checks": checks,
+                "pass": all(checks.values()),
+            }
+        )
+    duplicated_cross_axis_sources = sorted(
+        path for path, axes in source_axes.items() if path and len(axes & set(_REFERENCE_AXIS_NORMALS)) > 1
+    )
+    distinct_sources_ok = not require_distinct_sources or not duplicated_cross_axis_sources
+    return {
+        "collection": collection.name,
+        "reference_count": len(records),
+        "records": records,
+        "duplicated_cross_axis_sources": duplicated_cross_axis_sources,
+        "checks": {
+            "references_present": bool(records),
+            "all_principal_axis_references_valid": bool(records) and all(item["pass"] for item in records),
+            "distinct_sources_when_required": distinct_sources_ok,
+        },
+        "pass": bool(records) and all(item["pass"] for item in records) and distinct_sources_ok,
+        "claim_boundary": (
+            "This audit verifies Blender image-Empty type, declared role, and principal-axis "
+            "alignment. It does not prove that source photographs are orthographic, same-variant, "
+            "dimensionally calibrated, or visually sufficient."
+        ),
+    }
 
 
 def add_modifier(name, modifier_type, modifier_name=None):
