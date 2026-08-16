@@ -28,9 +28,9 @@ Ignored third-party media is organized by use, with URLs and limitations preserv
   where the silhouette changes, and extrude/shape the integrated rear transition. Do not assemble it
   from cylinders or unrelated bevelled blocks.
 - The low base is a separate structural casting/shell, not a continuation of the top cover.
-- The staple magazine/rail, anvil plate, hinge/latch, spring, and rubber feet are distinct physical
-  assemblies. Keep them separate only because the reference shows a material, motion, or assembly
-  boundary.
+- The staple magazine/rail, anvil plate, hinge/latch, spring, and continuous rubberized base pad
+  are distinct physical assemblies. Keep them separate only because the reference shows a material,
+  motion, or assembly boundary; do not invent individual feet.
 - The visible cover/base throat is a critical negative space. It must survive every blockout and
   SubD test.
 
@@ -42,7 +42,7 @@ Ignored third-party media is organized by use, with URLs and limitations preserv
 2. `BaseShell_HIGH`: a separate connected box-derived cage for the cast base, its front anvil recess,
    and rear hinge housing. The anvil recess should be cut/recessed in edit mode, not simulated with
    a loose block.
-3. `MagazineRail`, `AnvilPlate`, `HingePin`, `Latch`, `Spring`, and `Feet`: separate only where
+3. `MagazineRail`, `AnvilPlate`, `HingePin`, `Latch`, `Spring`, and `RubberBasePad`: separate only where
    the real mechanism confirms a separate manufactured or moving piece.
 4. Create `HIGH_POLY` and `LOW_POLY` collections only after the primary construction is approved.
    Both keep live, unapplied modifier stacks and independent editable cages.
@@ -61,7 +61,8 @@ Ignored third-party media is organized by use, with URLs and limitations preserv
 
 ## Blocking unknowns
 
-The current underside remains unverified. It is deliberately deferred: no feet, stamps, underside
-ribs, or latch geometry may be inferred from the vintage photo. That geometry stays a reversible,
-unfeatured base plane until same-revision evidence is found. Human visual review of the multi-view
-board is still required before a Blender blockout is authorized.
+The exact 74718 feature page plus the official gallery now establish a thin, continuous rubberized
+pad beneath the painted base shell. The hidden underside is still deliberately bounded: no stamps,
+underside ribs, or positioned latch geometry may be inferred from the vintage photo. Those details
+stay absent until an exact underside view exists. Human visual review of the multi-view board is
+still required before a Blender blockout is authorized.

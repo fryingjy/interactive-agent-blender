@@ -129,6 +129,26 @@
       "claims": [],
       "dimensional_anchors": [],
       "limitations": ["Open-state photos establish assembly boundaries and motion, not the exact closed-state spring tension or hidden fastener geometry."]
+    },
+    {
+      "reference_id": "staples_74718_base_feature",
+      "source_id": "staples-74718-feature-page-2026-08-16",
+      "target_id": "swingline_747_classic",
+      "target_variant": "current_747_classic_geometry_family",
+      "purposes": ["CONSTRUCTION", "FUNCTIONAL"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {
+          "property_id": "rubber_base_pad_and_hidden_underside",
+          "purpose": "CONSTRUCTION",
+          "observation": "The exact lipstick-red 74718 feature page describes a full rubber pad and a bottom release used to open the stapler for tacking. Combined with the continuous dark lower layer visible in the official current gallery, this authorizes one continuous rubberized base pad rather than separately inferred feet.",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["The feature text does not locate the release or show the hidden underside stamping, rib, or fastener layout."]
     }
   ],
   "research_questions": [
@@ -162,8 +182,8 @@
     },
     {
       "question_id": "current_747_underside",
-      "property_id": "underside_feet_and_plate_layout",
-      "question": "What is the underside plate and rubber-foot layout for the current 74718 geometry family?",
+      "property_id": "rubber_base_pad_and_hidden_underside",
+      "question": "Does the current 74718 geometry family use a continuous lower rubber pad or separate feet, and which hidden underside details remain unsupported?",
       "trigger": "A vintage underside photo is visible, but revision identity is not established.",
       "impact": "MEDIUM",
       "search_queries": [
@@ -171,6 +191,18 @@
         "Swingline 747 Classic current bottom rubber feet anvil base"
       ],
       "candidates": [
+        {
+          "candidate_id": "staples_exact_74718_base_feature",
+          "source_url": "https://www.staples.com/swingline-747-classic-metal-stapler-20-sheet-capacity-lipstick-74718/product_SWI74718",
+          "source_id": "staples-74718-feature-page-2026-08-16",
+          "observed_identity": "Swingline 747 Classic 74718",
+          "observed_variant": "current lipstick-red target variant",
+          "purpose": "CONSTRUCTION",
+          "disposition": "ACCEPTED",
+          "reason": "The exact-model feature text confirms a full rubber pad and bottom release. The official current gallery independently shows the continuous dark lower pad layer, resolving the discrete-foot versus continuous-pad decision without inventing hidden layout.",
+          "accepted_reference_id": "staples_74718_base_feature",
+          "limitations": ["No underside image locates the release or establishes hidden details."]
+        },
         {
           "candidate_id": "etsy_vintage_747_underside",
           "source_url": "https://www.etsy.com/listing/1743614743/swingline-stapler-no-747-94-02",
@@ -183,9 +215,9 @@
           "limitations": ["different production revision", "perspective underside photograph"]
         }
       ],
-      "status": "DEFERRED",
-      "resolution": "The underside is not visible in the approved closed/open hero views. Current-model underside geometry is intentionally excluded until same-revision evidence is found.",
-      "modeling_constraint": "During blockout and review, keep the underside as an unfeatured, reversible base plane; do not add feet, stamps, underside ribs, or an underside latch from the vintage image."
+      "status": "RESOLVED",
+      "resolution": "Use one thin continuous rubberized base pad, visibly wrapping the lower perimeter beneath the painted base shell. The exact 74718 feature text and official current gallery resolve that high-level construction decision. Hidden release position, stamping, ribs, and fasteners remain deliberately absent until an exact underside view exists.",
+      "modeling_constraint": "During blockout and review, model only the continuous rubberized lower pad as a separate material boundary. Do not add discrete feet, stamps, underside ribs, or a positioned underside latch from the vintage image."
     }
   ]
 }

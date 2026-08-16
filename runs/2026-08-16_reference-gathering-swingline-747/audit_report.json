@@ -6,9 +6,9 @@
       "audit": {
         "target_id": "swingline_747_classic",
         "target_variant": "current_747_classic_geometry_family",
-        "reference_count": 6,
-        "matching_reference_count": 6,
-        "independent_source_count": 3,
+        "reference_count": 7,
+        "matching_reference_count": 7,
+        "independent_source_count": 4,
         "view_count": 5,
         "checks": {
           "same_target_identity_pass": true,
@@ -36,6 +36,9 @@
           ],
           "top_lever_and_base_cross_sections": [
             "swingline_official_gallery_multiview"
+          ],
+          "rubber_base_pad_and_hidden_underside": [
+            "staples_74718_base_feature"
           ]
         },
         "dimensional_anchors": [
@@ -46,22 +49,19 @@
         "research_audit": {
           "question_count": 2,
           "candidate_counts": {
-            "ACCEPTED": 1,
+            "ACCEPTED": 2,
             "REJECTED": 1,
             "PENDING": 0
           },
           "accepted_reference_links": [
+            "staples_74718_base_feature",
             "swingline_official_gallery_multiview"
           ],
           "missing_reference_links": [],
           "open_questions": [],
           "blocking_questions": [],
-          "deferred_questions": [
-            "current_747_underside"
-          ],
-          "modeling_constraints": [
-            "During blockout and review, keep the underside as an unfeatured, reversible base plane; do not add feet, stamps, underside ribs, or an underside latch from the vintage image."
-          ],
+          "deferred_questions": [],
+          "modeling_constraints": [],
           "targeted_research_queries": [],
           "checks": {
             "question_records_valid": true,

@@ -373,7 +373,8 @@ character benchmarks remain deferred.
 
 The reusable question-driven policy retains typed unknowns, exact searches, candidate decisions,
 and reversible constraints. The active Swingline 747 board has machine-ready current-gallery and
-official-dimension evidence, while current underside detail is explicitly deferred. It remains
+official-dimension evidence. Exact-variant feature text and the official gallery also support one
+continuous rubberized base pad, while hidden underside detail is explicitly deferred. It remains
 behind independent human reference review and therefore cannot yet authorize a blockout or support
 a held-out modeling claim.
 

@@ -2528,5 +2528,31 @@
         "Its date limits it to the documented current product family rather than proving every historic revision"
       ]
     }
+  },
+  {
+    "id": "staples-74718-feature-page-2026-08-16",
+    "url": "https://www.staples.com/swingline-747-classic-metal-stapler-20-sheet-capacity-lipstick-74718/product_SWI74718",
+    "local_path": "runs/2026-08-16_reference-gathering-swingline-747/",
+    "title": "Swingline 747 Classic 74718 Lipstick Red — feature page",
+    "creator": "Staples",
+    "source_type": "retailer_product_page",
+    "trust_tier": "B",
+    "version": "accessed 2026-08-16",
+    "topics": ["reference-gathering", "construction", "hard-surface", "stapler"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["web_text", "product_metadata"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-swingline-747/"],
+      "direct_observations": [
+        "The exact 74718 feature text identifies a full rubber pad and a bottom release for tacking",
+        "Together with the official current gallery's continuous dark lower band, this authorizes a continuous rubberized base pad rather than inferred individual feet"
+      ],
+      "limitations": [
+        "The page does not provide a bottom photograph, exact latch location, stamp layout, ribs, or fastener geometry",
+        "Retailer feature text supplements but does not replace manufacturer geometry evidence"
+      ]
+    }
   }
 ]

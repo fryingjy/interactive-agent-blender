@@ -33,6 +33,14 @@
       "download_url": "https://media.accobrands.com/media/560-560/555032.jpg?width=1000px&height=1000px",
       "variant": "current 747 Classic black/blue geometry siblings",
       "authority_limit": "Official multi-view geometry and mechanism evidence; color/finish does not authorize lipstick material values"
+    },
+    {
+      "path": "No new local media retained; text and existing official gallery evidence only",
+      "purpose": ["CONSTRUCTION", "FUNCTIONAL"],
+      "source_url": "https://www.staples.com/swingline-747-classic-metal-stapler-20-sheet-capacity-lipstick-74718/product_SWI74718",
+      "download_url": null,
+      "variant": "74718 lipstick red",
+      "authority_limit": "Exact-model feature text confirms a full rubber pad and bottom release but does not locate or depict the hidden underside details."
     }
   ]
 }

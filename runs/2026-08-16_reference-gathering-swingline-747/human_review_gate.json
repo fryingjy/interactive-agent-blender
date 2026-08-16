@@ -9,8 +9,8 @@
   "review_scope": "Authorize only a reversible primary blockout using the stated connected-cage/separate-assembly strategy. It does not approve material, underside detail, or final quality.",
   "review_questions": [
     "Does the selected target and reference set show the intended current 747 shape family clearly enough for a reversible blockout?",
-    "Does the plan correctly keep the top cover and base as separate connected cages while keeping rail, anvil, hinge/latch, spring, and feet separate only where physically warranted?",
-    "Are the deferred underside constraints acceptable?"
+    "Does the plan correctly keep the top cover and base as separate connected cages while keeping the rail, anvil, hinge/latch, spring, and continuous rubberized base pad separate only where physically warranted?",
+    "Are the remaining hidden-underside constraints acceptable?"
   ],
   "limitation": "Machine readiness and agent inspection do not substitute for this human visual authorization."
 }
