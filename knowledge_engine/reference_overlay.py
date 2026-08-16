@@ -52,11 +52,49 @@ def _bbox(mask: np.ndarray) -> tuple[int, int, int, int]:
     return int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())
 
 
-def align_candidate(reference: np.ndarray, candidate: np.ndarray, mode: str) -> tuple[np.ndarray, dict]:
+def _similarity_from_anchor_pairs(anchor_pairs: dict[str, dict]) -> tuple[np.ndarray, dict]:
+    """Build a candidate-to-reference similarity transform from two declared anchors."""
+    if not isinstance(anchor_pairs, dict) or len(anchor_pairs) != 2:
+        raise ValueError("landmark alignment requires exactly two named anchor pairs")
+    names = sorted(anchor_pairs)
+    points = []
+    for name in names:
+        pair = anchor_pairs[name]
+        if not isinstance(pair, dict):
+            raise ValueError(f"anchor '{name}' must define reference and candidate points")
+        ref = pair.get("reference")
+        cand = pair.get("candidate")
+        if not isinstance(ref, (list, tuple)) or not isinstance(cand, (list, tuple)) or len(ref) != 2 or len(cand) != 2:
+            raise ValueError(f"anchor '{name}' points must each contain x and y")
+        points.append((name, np.asarray(ref, dtype=np.float64), np.asarray(cand, dtype=np.float64)))
+    _, ref_a, cand_a = points[0]
+    _, ref_b, cand_b = points[1]
+    ref_vector = ref_b - ref_a
+    candidate_vector = cand_b - cand_a
+    ref_length = float(np.linalg.norm(ref_vector))
+    candidate_length = float(np.linalg.norm(candidate_vector))
+    if ref_length <= 1e-8 or candidate_length <= 1e-8:
+        raise ValueError("landmark alignment anchors must not be coincident")
+    scale = ref_length / candidate_length
+    cosine = float(np.dot(candidate_vector, ref_vector) / (candidate_length * ref_length))
+    sine = float((candidate_vector[0] * ref_vector[1] - candidate_vector[1] * ref_vector[0]) / (candidate_length * ref_length))
+    rotation = np.asarray(((cosine, -sine), (sine, cosine)), dtype=np.float64) * scale
+    translation = ref_a - rotation @ cand_a
+    matrix = np.asarray(((rotation[0, 0], rotation[0, 1], translation[0]), (rotation[1, 0], rotation[1, 1], translation[1])), dtype=np.float32)
+    return matrix, {
+        "anchor_pair_ids": names,
+        "anchor_pairs": {name: {"reference": ref.tolist(), "candidate": cand.tolist()} for name, ref, cand in points},
+        "uniform_scale": scale,
+        "rotation_degrees": float(np.degrees(np.arctan2(sine, cosine))),
+        "translation_xy": translation.tolist(),
+    }
+
+
+def align_candidate(reference: np.ndarray, candidate: np.ndarray, mode: str, *, landmark_pairs: dict[str, dict] | None = None) -> tuple[np.ndarray, dict]:
     """Return a candidate mask in the reference frame plus explicit alignment provenance."""
     clean_mode = str(mode).strip().lower()
-    if clean_mode not in {"strict", "uniform-bbox", "bbox"}:
-        raise ValueError("alignment mode must be strict, uniform-bbox, or bbox")
+    if clean_mode not in {"strict", "uniform-bbox", "bbox", "landmarks"}:
+        raise ValueError("alignment mode must be strict, uniform-bbox, bbox, or landmarks")
     if clean_mode == "strict":
         if reference.shape != candidate.shape:
             raise ValueError(
@@ -66,6 +104,18 @@ def align_candidate(reference: np.ndarray, candidate: np.ndarray, mode: str) -> 
             "mode": "strict",
             "normalization": "none",
             "claim_boundary": "Placement, scale, silhouette, contour, and negative space remain measurable in the supplied frame.",
+        }
+    if clean_mode == "landmarks":
+        matrix, provenance = _similarity_from_anchor_pairs(landmark_pairs or {})
+        aligned = cv2.warpAffine(
+            candidate.astype(np.uint8), matrix, (reference.shape[1], reference.shape[0]),
+            flags=cv2.INTER_NEAREST, borderMode=cv2.BORDER_CONSTANT, borderValue=0,
+        ).astype(bool)
+        return aligned, {
+            "mode": "landmarks",
+            "normalization": "candidate mapped into the reference frame by a two-anchor similarity transform",
+            **provenance,
+            "claim_boundary": "Declared anchor placement, uniform scale, and in-plane rotation were normalized. Other local shape, proportion, contour, and negative-space differences remain measurable; this is not camera-calibration proof.",
         }
 
     rx0, ry0, rx1, ry1 = _bbox(reference)
@@ -161,6 +211,7 @@ def compare_reference_render(
     candidate_luminance_max: int = 255,
     reference_roi: tuple[int, int, int, int] | None = None,
     candidate_roi: tuple[int, int, int, int] | None = None,
+    landmark_pairs: dict[str, dict] | None = None,
     view: str = "unknown",
 ) -> tuple[dict, dict[str, np.ndarray]]:
     reference = foreground_mask(
@@ -185,7 +236,7 @@ def compare_reference_render(
         candidate = candidate[y0:y1, x0:x1]
     if not np.any(reference) or not np.any(candidate):
         raise ValueError("ROI produced an empty reference or candidate mask")
-    aligned, alignment_record = align_candidate(reference, candidate, alignment)
+    aligned, alignment_record = align_candidate(reference, candidate, alignment, landmark_pairs=landmark_pairs)
     metrics = compare_masks(reference, aligned)
     report = {
         "schema_version": 1,

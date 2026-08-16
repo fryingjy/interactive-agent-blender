@@ -34,6 +34,10 @@ def main() -> int:
         help="Choose how left/right detected half-widths are combined; min rejects an obstruction, max recovers a faint transparent edge",
     )
     parser.add_argument("--iterations", type=int, default=8)
+    parser.add_argument(
+        "--preserve-holes", action="store_true",
+        help="Keep enclosed negative spaces (for example a carry-handle opening) instead of filling them.",
+    )
     args = parser.parse_args()
 
     image = cv2.imread(str(args.image), cv2.IMREAD_COLOR)
@@ -75,7 +79,8 @@ def main() -> int:
     chosen = max(anchored or candidates, key=lambda item: item["area"])
     mask = np.where(component_labels == chosen["label"], 255, 0).astype(np.uint8)
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((5, 5), np.uint8), iterations=1)
-    mask = fill_holes(mask)
+    if not args.preserve_holes:
+        mask = fill_holes(mask)
     if args.symmetric_center is not None:
         center = args.symmetric_center
         symmetric = np.zeros_like(mask)
@@ -125,13 +130,17 @@ def main() -> int:
     cv2.imwrite(str(preview_path), preview)
     report = {
         "source_image": str(args.image.resolve()),
-        "algorithm": "OpenCV GrabCut rectangle initialization + anchored/largest connected component + 5x5 close + hole fill",
+        "algorithm": (
+            "OpenCV GrabCut rectangle initialization + anchored/largest connected component + 5x5 close"
+            + ("; enclosed negative spaces preserved" if args.preserve_holes else "; hole fill")
+        ),
         "parameters": {
             "rect": list(args.rect),
             "anchor": list(args.anchor) if args.anchor else None,
             "iterations": args.iterations,
             "symmetric_center": args.symmetric_center,
             "symmetric_mode": args.symmetric_mode,
+            "preserve_holes": args.preserve_holes,
         },
         "image_size": [width, height],
         "selected_component": chosen,

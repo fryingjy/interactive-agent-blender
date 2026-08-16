@@ -21,7 +21,8 @@ def main() -> int:
     parser.add_argument("reference", type=Path)
     parser.add_argument("candidate", type=Path)
     parser.add_argument("output_dir", type=Path)
-    parser.add_argument("--alignment", choices=("strict", "uniform-bbox", "bbox"), default="strict")
+    parser.add_argument("--alignment", choices=("strict", "uniform-bbox", "bbox", "landmarks"), default="strict")
+    parser.add_argument("--landmark-pairs", type=Path, help="JSON object containing exactly two named {reference:[x,y], candidate:[x,y]} pairs in the post-ROI image frames")
     parser.add_argument("--reference-mask-mode", choices=("auto", "alpha", "light-background", "luminance-range"), default="auto")
     parser.add_argument("--candidate-mask-mode", choices=("auto", "alpha", "light-background", "luminance-range"), default="auto")
     parser.add_argument("--background-threshold", type=int, default=240)
@@ -33,6 +34,10 @@ def main() -> int:
     parser.add_argument("--candidate-roi", nargs=4, type=int, metavar=("X0", "Y0", "X1", "Y1"))
     parser.add_argument("--view", default="unknown")
     args = parser.parse_args()
+    landmark_pairs = None
+    if args.landmark_pairs:
+        payload = json.loads(args.landmark_pairs.read_text(encoding="utf-8"))
+        landmark_pairs = payload.get("pairs", payload)
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=True)
     report, images = compare_reference_render(
@@ -48,6 +53,7 @@ def main() -> int:
         candidate_luminance_max=args.candidate_luminance_max,
         reference_roi=tuple(args.reference_roi) if args.reference_roi else None,
         candidate_roi=tuple(args.candidate_roi) if args.candidate_roi else None,
+        landmark_pairs=landmark_pairs,
         view=args.view,
     )
     save_mask(images["reference_mask"], output / "reference_mask.png")

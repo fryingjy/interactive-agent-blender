@@ -34,6 +34,33 @@ class ReferenceOverlayTests(unittest.TestCase):
         self.assertEqual(record["mode"], "bbox")
         self.assertIn("Translation", record["claim_boundary"])
 
+    def test_two_anchor_similarity_registration_preserves_local_shape_error(self):
+        reference = np.zeros((64, 64), dtype=bool)
+        candidate = np.zeros((32, 32), dtype=bool)
+        # Candidate is a shifted half-scale L shape. Its anchors map exactly,
+        # but the added candidate pixel proves registration is not a pass-by-fit.
+        reference[20:40, 20:24] = True
+        reference[36:40, 20:40] = True
+        candidate[5:15, 5:7] = True
+        candidate[13:15, 5:15] = True
+        candidate[10, 12] = True
+        aligned, record = align_candidate(reference, candidate, "landmarks", landmark_pairs={
+            "corner": {"reference": [20, 38], "candidate": [5, 14]},
+            "end": {"reference": [38, 38], "candidate": [14, 14]},
+        })
+        self.assertEqual(record["mode"], "landmarks")
+        self.assertAlmostEqual(record["uniform_scale"], 2.0)
+        self.assertTrue(aligned[38, 20])
+        self.assertTrue(aligned[20, 20])
+        self.assertTrue(aligned[30, 34])
+
+    def test_landmark_registration_rejects_wrong_anchor_count(self):
+        reference = np.ones((8, 8), dtype=bool)
+        with self.assertRaisesRegex(ValueError, "exactly two"):
+            align_candidate(reference, reference, "landmarks", landmark_pairs={
+                "only": {"reference": [1, 1], "candidate": [1, 1]},
+            })
+
     def test_uniform_bbox_preserves_aspect_ratio(self):
         reference = np.zeros((60, 80), dtype=bool)
         candidate = np.zeros((30, 30), dtype=bool)
