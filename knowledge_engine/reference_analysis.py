@@ -49,6 +49,11 @@ class ReferenceItem:
     view: str
     projection: str
     source_tier: str
+    # Optional provenance is retained with the evidence record rather than
+    # forcing callers to strip it before validation.  It does not change the
+    # factual-readiness criteria, but makes a validated manifest reproducible.
+    source_url: str = ""
+    local_file: str = ""
     claims: tuple[PropertyClaim, ...] = ()
     dimensional_anchors: tuple[str, ...] = ()
     limitations: tuple[str, ...] = ()

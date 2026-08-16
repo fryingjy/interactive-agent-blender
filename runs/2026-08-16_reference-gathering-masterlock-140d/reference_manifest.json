@@ -1,0 +1,69 @@
+{
+  "target_id": "master_lock_140d",
+  "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
+  "required_views": ["front_right_oblique", "front_product", "specification"],
+  "critical_properties": ["body_width", "body_height", "shackle_diameter", "shackle_clearance_height", "shackle_clearance_width", "body_to_shackle_separation", "keyway_location"],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 1,
+  "items": [
+    {
+      "reference_id": "front_right_oblique",
+      "source_id": "db_supply_masterlock_140d",
+      "source_url": "https://www.dbsupply.com/master-lock-140d-padlock-keyed-different-key-1-4-in-dia-shackle-steel-shackle-brass-body-1-9-16-in-w-body.html",
+      "local_file": "masterlock_140d_front.jpg",
+      "target_id": "master_lock_140d",
+      "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "MATERIAL"],
+      "view": "front_right_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {"property_id": "body_to_shackle_separation", "purpose": "CONSTRUCTION", "observation": "The brass body and steel U-shackle meet at two visibly distinct sockets; the shackle is an articulated/separate assembly.", "confidence": "HIGH"},
+        {"property_id": "body_primary_form", "purpose": "PRIMARY_FORM", "observation": "The body is a shallow rectangular brass solid with small manufactured edge radii, not a fully rounded capsule.", "confidence": "HIGH"},
+        {"property_id": "keyway_location", "purpose": "CONSTRUCTION", "observation": "The front keyway is a separate circular insert near the lower front face.", "confidence": "MEDIUM"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Perspective product image; exact rear and underside profile are not observed."]
+    },
+    {
+      "reference_id": "masterlock_specification",
+      "source_id": "master_lock_official_140d",
+      "source_url": "https://www.masterlock.com/products/product/140D",
+      "target_id": "master_lock_140d",
+      "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
+      "purposes": ["DIMENSION", "CONSTRUCTION"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "body_width", "purpose": "DIMENSION", "observation": "Body width is 40 mm.", "confidence": "HIGH"},
+        {"property_id": "shackle_clearance_height", "purpose": "DIMENSION", "observation": "Shackle clearance/length is 22 mm.", "confidence": "HIGH"},
+        {"property_id": "shackle_clearance_width", "purpose": "DIMENSION", "observation": "Shackle clearance width is 21 mm.", "confidence": "HIGH"},
+        {"property_id": "shackle_diameter", "purpose": "DIMENSION", "observation": "Shackle diameter is 6 mm.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["body width 40 mm", "shackle clearance height 22 mm", "shackle clearance width 21 mm", "shackle diameter 6 mm"],
+      "limitations": ["The page does not provide a production drawing for exact front keyway depth or body thickness."]
+    },
+    {
+      "reference_id": "front_product",
+      "source_id": "master_lock_official_140d",
+      "source_url": "https://cdn.masterlock.com/product/orig/MLCOM_PRODUCT_140D.jpg",
+      "local_file": "masterlock_140d_official.jpg",
+      "target_id": "master_lock_140d",
+      "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
+      "purposes": ["PRIMARY_FORM", "DIMENSION", "CONSTRUCTION"],
+      "view": "front_product",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "body_height", "purpose": "DIMENSION", "observation": "The official product image confirms the body is visibly about four-fifths of its 40 mm width; use a 32 mm initial height hypothesis, subject to front correction rather than engineering claim.", "confidence": "MEDIUM"},
+        {"property_id": "body_to_shackle_separation", "purpose": "CONSTRUCTION", "observation": "Two dark circular seams mark distinct shackle sockets in the brass top face.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["initial body height hypothesis 32 mm from official front-image proportion, not a manufacturing drawing"],
+      "limitations": ["Keys appear beside the product and are excluded from model scope; this is not a dimensioned drawing."]
+    }
+  ],
+  "research_questions": [
+    {"question_id": "body_depth", "property_id": "body_depth", "question": "What is the exact front-to-back body depth?", "trigger": "Depth affects the brass body construction but is not needed to establish the front profile.", "impact": "MEDIUM", "search_queries": ["Master Lock 140D body depth"], "candidates": [{"candidate_id": "official_product_page_depth_check", "source_url": "https://www.masterlock.com/products/product/140D", "source_id": "master_lock_official_140d", "observed_identity": "Master Lock 140D", "observed_variant": "standard shackle", "purpose": "DIMENSION", "disposition": "REJECTED", "reason": "The official page provides body width and shackle dimensions but no body-depth value or engineering drawing.", "accepted_reference_id": "", "limitations": ["No usable rear/side dimensional evidence."]}], "status": "DEFERRED", "resolution": "Use the oblique image only to set a reversible low-confidence depth hypothesis; do not claim engineering accuracy.", "modeling_constraint": "Keep body depth editable and do not add underside/rear detail."}
+  ]
+}
