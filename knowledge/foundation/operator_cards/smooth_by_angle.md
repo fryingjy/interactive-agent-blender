@@ -10,10 +10,25 @@ It does **not** add an edge radius, support loop, or any other geometry. A hard-
 that is merely smooth-shaded can still look melted because the control cage never encoded its
 intended edges.
 
+### Current Blender UI/API terminology
+
+On the installed Blender 5.2.0 LTS runtime, the related Object Mode operators are distinct:
+
+- **Shade Auto Smooth** — `bpy.ops.object.shade_auto_smooth(use_auto_smooth=True, angle=...)`.
+  It adds a live `Smooth by Angle` Geometry Nodes modifier, pinned last in the stack.
+- **Shade Smooth by Angle** — `bpy.ops.object.shade_smooth_by_angle(angle=...,
+  keep_sharp_edges=True)`. This is the typed modeler path because it preserves explicitly marked
+  sharp edges while establishing the same normal-policy outcome.
+
+Both control normal interpolation; neither authors physical sharpness. `Shade Smooth` alone is not
+an equivalent hard-surface policy. This distinction was checked directly in Blender 5.2.0 LTS on
+2026-08-16 and matches the current Manual's [object shading](https://docs.blender.org/manual/en/latest/scene_layout/object/editing/shading.html), [edge data](https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/edge_data.html), and [Bevel modifier](https://docs.blender.org/manual/en/latest/modeling/modifiers/generate/bevel.html) documentation.
+
 The installed Blender 5.2.0 LTS runtime was exercised with `angle=0.5235987756` (30 degrees) and
 `keep_sharp_edges=True`; both the operator result and the selected policy are recorded in the saved
 lab artifact below. The relevant manual/API entry points to cross-check for a later Blender version
-are [Normals](https://docs.blender.org/manual/en/latest/modeling/meshes/editing/mesh/normals.html)
+are [object shading](https://docs.blender.org/manual/en/latest/scene_layout/object/editing/shading.html),
+[edge data](https://docs.blender.org/manual/en/latest/modeling/meshes/editing/edge/edge_data.html),
 and [`bpy.ops.object`](https://docs.blender.org/api/current/bpy.ops.object.html).
 
 ## Hard-surface decision sequence
