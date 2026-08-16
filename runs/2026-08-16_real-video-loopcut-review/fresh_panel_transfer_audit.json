@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "checks": {
+    "named_collection_exists": true,
+    "one_mesh_in_collection": true,
+    "one_continuous_mesh": true,
+    "all_base_faces_quads": true,
+    "base_mesh_is_manifold": true,
+    "live_unapplied_bevel": true,
+    "builder_never_applies_modifier": true
+  }
+}

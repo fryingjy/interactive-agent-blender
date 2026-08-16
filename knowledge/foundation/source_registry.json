@@ -1479,7 +1479,7 @@
   {
     "id": "blender-fundamentals-loop-cut-video",
     "url": "https://commons.wikimedia.org/wiki/File:Loop_Cut_-_Blender_2.80_Fundamentals.webm",
-    "local_path": "runs/2026-08-10_online-lessons/media/loop-cut.webm",
+    "local_path": null,
     "title": "Loop Cut - Blender 2.80 Fundamentals",
     "creator": "Blender / Dillon Gu",
     "source_type": "official_training_video",
@@ -1506,18 +1506,22 @@
     ],
     "metadata": {
       "duration_seconds": 190.321,
-      "sha256": "bd939693fc5af7c1c41b2dd9bbeffbdcea680043965c4d2ada87acbbc55a5922",
+      "license": "CC BY 3.0 (Wikimedia Commons file page)",
+      "source_media_retained": false,
       "machine_transcript_segments": 27,
-      "decoded_frame_checkpoints": 17,
+      "independently_reviewed_frame_checkpoints": 3,
       "direct_observations": [
-        "The preview traces compatible face flow before a loop is inserted",
-        "Number of cuts and slide position are modeling decisions, not a generic request for more polygons",
-        "Inserted regions support later component-form edits such as localized extrusions"
+        "A single flattened cube receives loop cuts only where later chair parts require selectable face regions",
+        "The visible layout supplies four leg regions and a row for the chair back before extruding",
+        "The instructor's stated reason and the directly reviewed before/during/after frames agree"
       ],
       "experiments": [
-        "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-loop-cut/video_ingest_report.json",
-        "runs/2026-08-10_knife-loop-transfer/knife_loop_transfer_report.json",
-        "runs/2026-08-10_knife-loop-transfer/failed_attempts.json"
+        "runs/2026-08-16_real-video-loopcut-review/episode_evidence.json",
+        "runs/2026-08-16_real-video-loopcut-review/episode_review.json",
+        "runs/2026-08-16_real-video-loopcut-review/loopcut_chair_transfer_report.json",
+        "runs/2026-08-16_real-video-loopcut-review/fresh_transfer_audit.json",
+        "runs/2026-08-16_real-video-loopcut-review/loopcut_control_panel_transfer_report.json",
+        "runs/2026-08-16_real-video-loopcut-review/fresh_panel_transfer_audit.json"
       ],
       "skills": [
         "knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md"

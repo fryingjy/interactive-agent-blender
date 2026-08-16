@@ -76,8 +76,11 @@ review does not promote the extracted modeling principle without reproduction an
 
 `runs/2026-08-15_video-episode-review-gate/` validates this mechanism on a project-owned fixture.
 The real YouTube player check is retained as pending because page identity loaded but no media frame
-decoded; an embed fallback returned error 153. This is a controlled review-gate proof, not a claim
-that the public Blender tutorial was independently watched through the browser.
+decoded; an embed fallback returned error 153. In contrast,
+`runs/2026-08-16_real-video-loopcut-review/` is a verified real Blender Fundamentals episode: Blender's
+Video Sequence Editor decoded local checkpoints from a temporarily acquired CC BY source, and the
+source itself was not retained. `tools/extract_video_frames_with_blender.py` is the decoder fallback
+when the host Python environment lacks an FFmpeg/PyAV installation.
 
 Source identity is now fail-closed. For discovery-bound study, the request carries the queue's
 video ID, exact title, creator, and duration. The model-reported URL must identify the same video,

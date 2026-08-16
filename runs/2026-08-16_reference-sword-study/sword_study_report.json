@@ -1,0 +1,38 @@
+{
+  "disposition": "IMPROVED_REJECTED",
+  "reference_direction": "supplied straight medieval/fantasy sword sheets; no claim of exact reproduction",
+  "collections": {
+    "high": "HIGH_POLY",
+    "low": "LOW_POLY"
+  },
+  "high_objects": [
+    "High_Blade",
+    "High_Guard",
+    "High_Grip",
+    "High_Pommel"
+  ],
+  "low_objects": [
+    "Low_Blade",
+    "Low_Guard",
+    "Low_Grip",
+    "Low_Pommel"
+  ],
+  "independent_meshes": true,
+  "all_modifiers_live": true,
+  "modifier_apply_called": false,
+  "topology_note": "Blade is a continuous diamond-section ridged mesh; guard, ringed grip, and pommel are intentionally distinct physical components, not touching detail primitives.",
+  "visual_review": {
+    "accepted": false,
+    "improvements": [
+      "real diamond cross-section ridge geometry replaces the flat blade",
+      "one continuous ringed grip replaces the plain cylinder",
+      "guard and pommel silhouettes now carry secondary tapered geometry"
+    ],
+    "remaining_defects": [
+      "the design remains a generic interpretation, not a measured reconstruction of one reference",
+      "guard/pommel ornament and material breakup are below the supplied concept sheets",
+      "high/low remain editable variant cages rather than purpose-authored baking topology"
+    ]
+  },
+  "claim_boundary": "Editable reference-informed improved but rejected blockout, not a finished production sword or purpose-authored retopology pair."
+}

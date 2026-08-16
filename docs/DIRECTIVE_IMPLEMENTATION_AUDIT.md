@@ -377,8 +377,25 @@ contradictions are rejected. Gemini provenance can advance only through a matchi
 episode range, and this review still does not promote a modeling skill by itself.
 
 `runs/2026-08-15_video-episode-review-gate/` passes the mechanism on a project-owned six-second
-fixture and six controls. The attempted real review of `yi87Dap_WOc` remains honestly pending: the
-YouTube page identity loaded, but its media element decoded no frames and the embed fallback returned
-error 153. No public video was archived. The mechanism gap narrows, but real visible Blender-action
-verification, reproduction, transfer, and runtime use remain open; foundation status stays
+fixture and six controls. The attempted YouTube review of `yi87Dap_WOc` remains pending: page identity
+loaded, but no media frame decoded and the embed fallback returned error 153. Separately,
+`runs/2026-08-16_real-video-loopcut-review/` verifies a real Blender Fundamentals episode from three
+locally decoded before/during/after frames and aligned timestamped speech. The CC BY source video was
+temporary only; the repository retains the narrow frame evidence, not the source media.
+`loopcut_chair_transfer.blend` reproduces the observed planning sequence from one cube and its fresh
+audit confirms one manifold all-quad connected mesh plus a live unapplied Bevel. Different-geometry
+transfer is now also verified on a recessed control panel built from one box with planned loop cuts,
+inset, and recess extrusion. The resulting skill now ranked first for a matching runtime ticket,
+caused the planner to select `loop_cut_selection`, and committed through the typed decision path
+without manifold regression. This validates one narrow lesson end-to-end; foundation status stays
 **PARTIAL**.
+
+## Provenance integrity correction (2026-08-16)
+
+`tools/audit_source_registry.py` now verifies every registry local path plus the path-like entries
+under `metadata.experiments` and `metadata.skills`. It distinguishes actual path-like artifacts
+from 39 non-path skill/prose references and one explicitly non-retained source. The refined run
+still finds **76 missing artifacts**. Those findings do not disprove the external sources, but they
+do prove the associated historical local-evidence claims are not currently reproducible. The audit
+is intentionally fail-closed and the registry must not be used as evidence of local reproduction
+until each entry is repaired, explicitly classified as intentionally non-retained, or downgraded.
