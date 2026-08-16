@@ -123,8 +123,12 @@ added 2026-08-13 directly in response to the adjustable wrench's actual failure 
 silhouette" vs. "you didn't actually model the wrench." A clean silhouette/topology pass cannot by
 itself prove the object was decomposed into its real parts; `SceneDecomposition.check_object_coverage()`
 can, by comparing the declared primary components against the actual built object names and flagging
-any with no plausible match -- not sufficient on its own (a name match isn't a geometry match), but a
-real, mechanically-checkable red flag a silhouette pass cannot produce. Graph-shape validity
+any with no plausible match. Matching is one-to-one and ignores generic tokens: one mesh named
+`Collector_Upper_Shell` cannot claim to satisfy a separate `Boiler_Lower_Shell` merely because both
+contain "shell". It remains a component-presence smoke test, not a geometry or likeness judgment.
+Run `tools/verify_scene_component_coverage.py` in a fresh Blender process against the saved asset,
+the decomposition JSON, and its intended collection to record this check beside an asset review.
+Graph-shape validity
 (duplicate/missing ids, dangling relationships) delegates to the existing
 `knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from
 nowhere outside its own test -- this is now its first real caller, not a second parallel validator.
