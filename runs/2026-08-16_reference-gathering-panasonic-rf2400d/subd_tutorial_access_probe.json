@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "record_type": "VIDEO_ACCESS_PROBE",
+  "source_url": "https://www.youtube.com/watch?v=iiZbeJ_ep2k",
+  "observed_at": "2026-08-16",
+  "page_title": "Using the SUBDIVISION SURFACE Modifier in Blender - Beginner Tutorial - YouTube",
+  "visible_player_state": {
+    "duration_display": "0:00 / 0:46",
+    "captions": "unavailable",
+    "seek_controls": "disabled"
+  },
+  "disposition": "REJECTED_FOR_LEARNING_PROMOTION",
+  "reason": "The accessible player state did not expose the advertised lesson duration, usable seeking, captions, or enough visible before/during/after evidence for a timestamped modeling episode.",
+  "claim_boundary": "Search metadata and a page title are not evidence that the tutorial was watched, understood, or transferred."
+}
