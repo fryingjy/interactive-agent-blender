@@ -133,7 +133,15 @@ def main():
     manifest = {
         "source": str(source),
         "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
-        "license": "CC0 via Poly Haven",
+        # This utility is used for both openly licensed assets and product
+        # references. Do not mislabel a commercial product's reference model
+        # as CC0 merely because an earlier study happened to use Poly Haven.
+        "source_rights_context": (
+            "Copyrighted product reference; rendered views are retained solely for "
+            "analysis and no source geometry is copied into a candidate."
+            if asset_page and "ikea.com" in asset_page.lower()
+            else "Confirm source rights and usage terms in the calling run's manifest."
+        ),
         "asset_page": asset_page,
         "neutral_material_override": True,
         "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
