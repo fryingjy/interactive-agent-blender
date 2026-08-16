@@ -36,10 +36,11 @@ def validate(data):
     if policy.get("human_review_required") is not True:
         errors.append("promotion must require human review")
     active = data.get("active_state", {})
-    if active.get("active_prop_id") != 1 or active.get("active_prop") != titles[0]:
-        errors.append("active state must point to prop 1")
-    if active.get("authorization") != "EXTERNAL_REVIEW_REQUIRED" or active.get("modeling_authorized") is not False:
-        errors.append("Swingline must remain locked pending external review")
+    active_id = active.get("active_prop_id")
+    if not isinstance(active_id, int) or active_id not in ids or active.get("active_prop") != titles[active_id - 1]:
+        errors.append("active state must point to one declared prop ID and matching title")
+    if active.get("authorization") not in {"REFERENCE_ANALYSIS_REQUIRED", "EXTERNAL_REVIEW_REQUIRED"} or active.get("modeling_authorized") is not False:
+        errors.append("an active prop must remain locked until the applicable human/reference gate authorizes modeling")
     if len(data.get("evidence_required", [])) < 15:
         errors.append("evidence contract is incomplete")
     return errors

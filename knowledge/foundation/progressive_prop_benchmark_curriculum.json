@@ -126,13 +126,12 @@
     }
   ],
   "active_state": {
-    "active_prop_id": 1,
-    "active_prop": "Swingline 747 Stapler",
-    "phase": "reference_board_human_review",
-    "authorization": "EXTERNAL_REVIEW_REQUIRED",
+    "active_prop_id": 2,
+    "active_prop": "Simple Desk Tape Dispenser",
+    "phase": "reference_analysis",
+    "authorization": "REFERENCE_ANALYSIS_REQUIRED",
     "modeling_authorized": false,
-    "review_board": "docs/field-report/swingline-747-review.html",
-    "machine_audit": "runs/2026-08-16_reference-gathering-swingline-747/audit_report.json",
-    "next_action": "record an explicit human board decision; only APPROVE_REVERSIBLE_BLOCKOUT authorizes geometry"
+    "prior_prop_outcome": "Prop 1 was not approved at primary-blockout review by human reviewer capz. The unapproved target-specific builder, blend, renders, and decision artifacts were removed under the direct user instruction; retained prior reference research is not an accepted modeling result.",
+    "next_action": "collect an evidence-bound multi-view tape-dispenser reference board and request human review before any geometry"
   }
 }

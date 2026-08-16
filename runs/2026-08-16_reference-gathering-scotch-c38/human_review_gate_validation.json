@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_BOARD_GATE_VALIDATION",
+  "gate_id": "scotch-c38-reference-board-v1",
+  "pass": true,
+  "human_review_status": "PENDING_USER_REVIEW",
+  "modeling_authorized": false,
+  "evidence_binding": {
+    "audit_sha256": "bf8752aa3033b664bd865e1ecf7a465a449bf0d551bfb3ca166ccfcad5eacba2",
+    "reference_plan_sha256": "9b9197e1e70e16a2a999219a792919f2d4b8e51ad89fbc07d9da18efef5d431c"
+  },
+  "limitation": "This validates the pending handoff contract; it is not a human decision."
+}

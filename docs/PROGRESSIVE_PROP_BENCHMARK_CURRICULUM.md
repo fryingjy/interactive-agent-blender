@@ -31,10 +31,9 @@ verification, human review/repair tickets, final editable `.blend`, and transfer
 
 ## Active state
 
-Prop 1, Swingline 747, is at `reference_board_human_review`. The machine audit is ready, but
-modeling remains `EXTERNAL_REVIEW_REQUIRED`. Only a human-recorded
-`APPROVE_REVERSIBLE_BLOCKOUT` decision authorizes geometry. The next prop is not selected until the
-current one is accepted or frozen under the curriculum's failure/overfitting policy. The local
-review board now emits the exact schema consumed by `tools/record_reference_board_review.py`; the
-recorder binds the decision to the current audit and plan and authorizes no stage beyond the
-reversible primary blockout.
+Prop 1, Swingline 747, was not approved at primary-blockout review. Its unapproved builder, blend,
+renders, and decision artifacts were removed under the direct user instruction; the retained earlier
+reference-research record is not an accepted model. The ladder now advances to Prop 2, Simple Desk
+Tape Dispenser, at `reference_analysis`. No geometry is authorized until an evidence-bound multi-view
+board is reviewed by a human. The reference-board recorder remains available for later props and
+binds an approval only to the exact audit and plan it reviewed.

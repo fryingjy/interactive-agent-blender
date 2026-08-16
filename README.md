@@ -31,10 +31,9 @@ Current evidence includes:
   reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates;
 - secondary-view component-strategy evidence that makes front-only ambiguity trigger research and
   uses measured top-view depth to choose continuous versus separate construction across two shapes.
-- a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve human review;
-  Swingline 747 remains locked at reference-board review rather than being self-authorized. Its
-  review page now emits a reviewer-identified decision bound to the exact audit and construction
-  plan, with a fail-closed recorder for approval or correction.
+- a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve human review.
+  The first Swingline blockout was rejected by human review and its target-specific build artifacts
+  were removed; the active C38 tape-dispenser board is pending human review and cannot self-authorize.
 - a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
   rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs;
   controlled nonplanar/SubD transfer now adds an opt-in all-quad preflight that rejects a curved
@@ -116,7 +115,7 @@ Run the fast regression suite from the repository root:
 python -m pytest -q
 python tools/audit_repository.py
 python tools/audit_directive_coverage.py --output runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json
-python tools/verify_reference_board_gate.py runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json --audit runs/2026-08-16_reference-gathering-swingline-747/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md
+python tools/verify_reference_board_gate.py runs/2026-08-16_reference-gathering-scotch-c38/human_review_gate.json --audit runs/2026-08-16_reference-gathering-scotch-c38/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md
 ```
 
 The directive audit must pass structurally while still reporting `directive_status: PARTIAL` whenever

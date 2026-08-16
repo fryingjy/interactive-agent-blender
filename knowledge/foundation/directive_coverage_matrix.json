@@ -54,9 +54,9 @@
       "id": "6",
       "title": "Component and strategy planning",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/component_strategy.py", "tools/run_secondary_view_component_strategy_lab.py", "runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md"],
-      "current_boundary": "Secondary-view component decisions are tested, but production reference interpretation remains constrained by the pending Swingline review.",
-      "next_step": "Use the approved component plan to build only after a reviewer authorizes its interpretation."
+      "evidence": ["knowledge_engine/component_strategy.py", "tools/run_secondary_view_component_strategy_lab.py", "runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md"],
+      "current_boundary": "Secondary-view component decisions are tested. The first real-prop blockout was rejected; the C38 construction plan remains pending human review.",
+      "next_step": "Use the C38 plan only after a reviewer authorizes its interpretation."
     },
     {
       "id": "7",
@@ -102,9 +102,9 @@
       "id": "12",
       "title": "Reference modeling and perception",
       "status": "EXTERNAL_REVIEW_REQUIRED",
-      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json", "docs/field-report/swingline-747-review.html", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
-      "current_boundary": "Typed principal-axis construction-card setup and duplicate-source rejection are transfer-validated, and the active board/machine gate pass; actual reference interpretation is still deliberately not self-authorized before human review.",
-      "next_step": "Obtain the explicit Swingline board decision, then compare all relevant modeled views and turn mismatches into tickets."
+      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-scotch-c38/human_review_gate.json", "docs/field-report/scotch-c38-reference-review.html", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "current_boundary": "Typed principal-axis construction-card setup and duplicate-source rejection are transfer-validated. The first real-prop blockout was rejected, and the active C38 machine-ready board is deliberately not self-authorized before human review.",
+      "next_step": "Obtain the explicit C38 board decision, then compare all relevant modeled views and turn mismatches or human rejection into tickets."
     },
     {
       "id": "13",

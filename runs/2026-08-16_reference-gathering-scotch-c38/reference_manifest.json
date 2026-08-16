@@ -1,0 +1,209 @@
+{
+  "target_id": "scotch_c38_classic",
+  "target_variant": "current_black_c38_70005291441",
+  "required_views": [
+    "front_left_oblique",
+    "top_right_oblique",
+    "left_side_oblique",
+    "hub_detail"
+  ],
+  "critical_properties": [
+    "overall_envelope",
+    "outer_shell_profile",
+    "top_cavity_and_tape_path",
+    "front_cutter_assembly",
+    "hub_construction"
+  ],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 3,
+  "items": [
+    {
+      "reference_id": "scotch_official_c38_primary",
+      "source_id": "scotch_3m_c38_product_page",
+      "target_id": "scotch_c38_classic",
+      "target_variant": "current_black_c38_70005291441",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "MATERIAL"],
+      "view": "front_left_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {
+          "property_id": "outer_shell_profile",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The official product photo shows a low rectangular weighted base, a taller rear shell, sloped side cheeks, a rectangular open top cavity, and a raised front cutter housing.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "top_cavity_and_tape_path",
+          "purpose": "DETAIL",
+          "observation": "The tape exits from the central cavity over a short front bridge into the cutter assembly; the open cavity is a deliberate negative space, not a surface decal.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["single product-oblique image", "not orthographic", "loaded tape partially occludes the hub"]
+    },
+    {
+      "reference_id": "scotch_official_c38_specification",
+      "source_id": "scotch_3m_c38_product_page",
+      "target_id": "scotch_c38_classic",
+      "target_variant": "current_black_c38_70005291441",
+      "purposes": ["DIMENSION", "FUNCTIONAL", "CONSTRUCTION"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {
+          "property_id": "overall_envelope",
+          "purpose": "DIMENSION",
+          "observation": "The official C38 listing states 6.4 by 2.7 by 2.7 inches.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "hub_construction",
+          "purpose": "CONSTRUCTION",
+          "observation": "The official listing specifies a replaceable 1-inch hub and tape compatibility up to 3/4 inch wide and 1500 inches long.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": ["official overall envelope 6.4 x 2.7 x 2.7 in"],
+      "limitations": ["product page has no orthographic technical drawing"]
+    },
+    {
+      "reference_id": "texas_art_c38_top_right",
+      "source_id": "texas_art_c38_product_listing",
+      "target_id": "scotch_c38_classic",
+      "target_variant": "current_black_c38_70005291441",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "CONSTRUCTION"],
+      "view": "top_right_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "claims": [
+        {
+          "property_id": "front_cutter_assembly",
+          "purpose": "DETAIL",
+          "observation": "The clean unloaded product photo exposes the wide front cutter face, metal serrated blade at its upper lip, the shallow front bridge, and the lower base-to-shell seam.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "top_cavity_and_tape_path",
+          "purpose": "CONSTRUCTION",
+          "observation": "The top opening runs longitudinally and contains a separately molded hub; the top shell and lower weighted base are visibly separate manufacture/material regions.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["perspective product photograph", "unloaded state exposes construction but not tape roll clearance"]
+    },
+    {
+      "reference_id": "ofix_c38_left_side",
+      "source_id": "ofix_c38_70005291441_product_listing",
+      "target_id": "scotch_c38_classic",
+      "target_variant": "current_black_c38_70005291441",
+      "purposes": ["PRIMARY_FORM", "DETAIL"],
+      "view": "left_side_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "claims": [
+        {
+          "property_id": "outer_shell_profile",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The alternate loaded view corroborates the long low wedge silhouette, elevated rear shoulder, broad lower plinth, and abrupt raised front cutter face.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["small perspective image", "tape roll occludes the central hub"]
+    },
+    {
+      "reference_id": "office_depot_c38_hub_detail",
+      "source_id": "office_depot_3m_c38_compatible_replacement_hub",
+      "target_id": "scotch_c38_classic",
+      "target_variant": "current_black_c38_70005291441",
+      "purposes": ["CONSTRUCTION", "DIMENSION"],
+      "view": "hub_detail",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "claims": [
+        {
+          "property_id": "hub_construction",
+          "purpose": "CONSTRUCTION",
+          "observation": "The compatible replacement part shows the C38 hub as a separate removable transparent double-ended spool rather than a fixed axle integrated into the shell.",
+          "confidence": "MEDIUM"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["replacement component listing, not an assembled-dispenser view", "does not establish hidden cavity fasteners"]
+    }
+  ],
+  "research_questions": [
+    {
+      "question_id": "c38_main_form_and_part_boundaries",
+      "property_id": "outer_shell_profile",
+      "question": "Is the C38 body one continuous wedge or a separate top shell over a weighted lower base, and where do the cavity, front cutter face, and tape bridge meet it?",
+      "trigger": "A generic tape-dispenser silhouette would hide the actual C38's part boundaries and negative space.",
+      "impact": "HIGH",
+      "search_queries": [
+        "Scotch C38 black desktop tape dispenser official product image",
+        "Scotch C38 unloaded product photo top view",
+        "Scotch C38 70005291441 tape dispenser profile"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "scotch_official_c38_product_photo",
+          "source_url": "https://www.scotchbrand.com/3M/en_US/p/d/v000451417/",
+          "source_id": "scotch_3m_c38_product_page",
+          "observed_identity": "Scotch C38 Classic Desktop Tape Dispenser",
+          "observed_variant": "current black C38",
+          "purpose": "PRIMARY_FORM",
+          "disposition": "ACCEPTED",
+          "reason": "Official image establishes the loaded body/cavity/cutter relationship and is consistent with the official dimensions and functional description.",
+          "accepted_reference_id": "scotch_official_c38_primary",
+          "limitations": ["perspective", "hub partly occluded by tape"]
+        },
+        {
+          "candidate_id": "texas_art_unloaded_c38_photo",
+          "source_url": "https://www.texasart.com/products/3m-scotch-desk-tape-dispenser-c-38",
+          "source_id": "texas_art_c38_product_listing",
+          "observed_identity": "Scotch C-38 desk tape dispenser",
+          "observed_variant": "black C38",
+          "purpose": "CONSTRUCTION",
+          "disposition": "ACCEPTED",
+          "reason": "The unloaded image reveals the cavity, hub placement, bridge, cutter, and lower seam that are obscured by tape in the official photo.",
+          "accepted_reference_id": "texas_art_c38_top_right",
+          "limitations": ["retailer photograph", "not orthographic"]
+        }
+      ],
+      "status": "RESOLVED",
+      "resolution": "Treat the outer body as a main box-derived upper shell plus a visibly separate weighted lower base. Preserve the open longitudinal cavity and model the removable hub and metal cutting blade as distinct assemblies."
+    },
+    {
+      "question_id": "c38_hidden_underside_and_cavity_fasteners",
+      "property_id": "underside_fasteners_and_internal_retention",
+      "question": "What exact underside feet, ballast fasteners, and hidden hub-retention details does this current C38 use?",
+      "trigger": "The available exact C38 views do not expose the underside or inside wall retention details.",
+      "impact": "MEDIUM",
+      "search_queries": [
+        "Scotch C38 bottom underside view",
+        "Scotch C38 empty cavity hub removal"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "office_depot_replacement_hub_listing",
+          "source_url": "https://www.officedepot.com/a/products/946343/3M-Plastic-Replacement-Core-1/",
+          "source_id": "office_depot_3m_c38_compatible_replacement_hub",
+          "observed_identity": "3M 1 inch replacement core compatible with Scotch C38",
+          "observed_variant": "replacement hub only",
+          "purpose": "CONSTRUCTION",
+          "disposition": "ACCEPTED",
+          "reason": "It confirms the hub is removable but does not expose the exact dispenser underside or retention interface.",
+          "accepted_reference_id": "office_depot_c38_hub_detail",
+          "limitations": ["component-only image", "no underside of assembled product"]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "No exact underside source was found in this pass; the visible upper form and separate base seam remain supported, but hidden retention is not.",
+      "modeling_constraint": "A future reversible blockout may include only a plain lower base volume and no invented feet, screw pattern, ballast cavity, or concealed hub latch."
+    }
+  ]
+}

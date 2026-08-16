@@ -2730,11 +2730,38 @@
       "direct_observations": [
         "The ladder contains 30 progressively harder props in six tiers",
         "Promotion requires A-G gates and human visual review; human rejection overrides automated metrics",
-        "Swingline 747 is first and remains locked pending reference-board approval"
+        "The curriculum is sequenced; the first Swingline blockout was later rejected by human review and the active state advanced to prop 2 under its explicit failure policy"
       ],
       "limitations": [
         "The curriculum is sequencing and acceptance guidance, not evidence that any listed capability is mastered",
         "It does not override direct user instructions or independently authorize modeling"
+      ]
+    }
+  },
+  {
+    "id": "scotch-c38-official-product-2026-08-16",
+    "url": "https://www.scotchbrand.com/3M/en_US/p/d/v000451417/",
+    "local_path": "runs/2026-08-16_reference-gathering-scotch-c38/",
+    "title": "Scotch C38 Classic Desktop Tape Dispenser — official product page",
+    "creator": "3M / Scotch Brand",
+    "source_type": "manufacturer_product_page",
+    "trust_tier": "A",
+    "version": "accessed 2026-08-16",
+    "topics": ["reference-gathering", "dimensions", "hard-surface", "tape-dispenser", "construction"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["product_text", "product_image", "machine_reference_audit"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-scotch-c38/"],
+      "direct_observations": [
+        "The official page specifies a 6.4 by 2.7 by 2.7 inch envelope, weighted non-skid base, replaceable 1-inch hub, and tape up to 3/4 inch wide",
+        "Its loaded product image establishes the current black C38 exterior, central cavity, tape path, and raised cutter housing"
+      ],
+      "limitations": [
+        "The page is a product listing, not an orthographic engineering drawing",
+        "It does not show the exact underside fasteners, ballast, or hub-retention interface",
+        "Machine readiness does not authorize Blender modeling without a current human board decision"
       ]
     }
   },
