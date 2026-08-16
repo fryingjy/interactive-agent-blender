@@ -1,0 +1,27 @@
+{
+  "disposition": "REFERENCE_INTERPRETATION_CANDIDATE",
+  "source": "supplied matteo-swordconcept244.jpg front view",
+  "high_collection": "HIGH_POLY",
+  "low_collection": "LOW_POLY",
+  "high_objects": [
+    "High_Blade",
+    "High_FanGuard",
+    "High_LeftWing",
+    "High_RightWing",
+    "High_WrappedGrip",
+    "High_Pommel"
+  ],
+  "low_objects": [
+    "Low_Blade",
+    "Low_FanGuard",
+    "Low_LeftWing",
+    "Low_RightWing",
+    "Low_WrappedGrip",
+    "Low_Pommel"
+  ],
+  "independent_meshes": true,
+  "live_unapplied_modifiers": true,
+  "modifier_apply_called": false,
+  "topology_policy": "Blade, guard fan, wings, grip, and pommel are deliberately distinct physical/design components; each component is an editable contiguous mesh rather than accumulated detail primitives.",
+  "claim_boundary": "Front-view reference interpretation only. Requires human review and side/depth reference before production acceptance."
+}
