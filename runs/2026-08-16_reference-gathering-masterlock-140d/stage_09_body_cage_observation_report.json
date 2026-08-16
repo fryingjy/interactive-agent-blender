@@ -1,0 +1,294 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\stage_09_body_cage_observation_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_08_primary_refined.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "3ca800877afb",
+  "results": [
+    {
+      "index": 0,
+      "label": "observe_loaded_connected_body_cage",
+      "command": "get_mesh_geometry",
+      "params": {
+        "name": "brass_body"
+      },
+      "status": "ok",
+      "result": {
+        "name": "brass_body",
+        "space": "LOCAL",
+        "vertices": [
+          {
+            "agent_id": 1,
+            "co": [
+              -20.0,
+              -8.0,
+              -16.0
+            ]
+          },
+          {
+            "agent_id": 2,
+            "co": [
+              -20.0,
+              -8.0,
+              16.0
+            ]
+          },
+          {
+            "agent_id": 3,
+            "co": [
+              -20.0,
+              8.0,
+              -16.0
+            ]
+          },
+          {
+            "agent_id": 4,
+            "co": [
+              -20.0,
+              8.0,
+              16.0
+            ]
+          },
+          {
+            "agent_id": 5,
+            "co": [
+              20.0,
+              -8.0,
+              -16.0
+            ]
+          },
+          {
+            "agent_id": 6,
+            "co": [
+              20.0,
+              -8.0,
+              16.0
+            ]
+          },
+          {
+            "agent_id": 7,
+            "co": [
+              20.0,
+              8.0,
+              -16.0
+            ]
+          },
+          {
+            "agent_id": 8,
+            "co": [
+              20.0,
+              8.0,
+              16.0
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "agent_id": 9,
+            "vertices": [
+              3,
+              1
+            ]
+          },
+          {
+            "agent_id": 10,
+            "vertices": [
+              1,
+              2
+            ]
+          },
+          {
+            "agent_id": 11,
+            "vertices": [
+              2,
+              4
+            ]
+          },
+          {
+            "agent_id": 12,
+            "vertices": [
+              4,
+              3
+            ]
+          },
+          {
+            "agent_id": 13,
+            "vertices": [
+              7,
+              3
+            ]
+          },
+          {
+            "agent_id": 14,
+            "vertices": [
+              4,
+              8
+            ]
+          },
+          {
+            "agent_id": 15,
+            "vertices": [
+              8,
+              7
+            ]
+          },
+          {
+            "agent_id": 16,
+            "vertices": [
+              5,
+              7
+            ]
+          },
+          {
+            "agent_id": 17,
+            "vertices": [
+              8,
+              6
+            ]
+          },
+          {
+            "agent_id": 18,
+            "vertices": [
+              6,
+              5
+            ]
+          },
+          {
+            "agent_id": 19,
+            "vertices": [
+              1,
+              5
+            ]
+          },
+          {
+            "agent_id": 20,
+            "vertices": [
+              6,
+              2
+            ]
+          }
+        ],
+        "faces": [
+          {
+            "agent_id": 21,
+            "vertices": [
+              1,
+              2,
+              4,
+              3
+            ],
+            "center": [
+              -20.0,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 22,
+            "vertices": [
+              3,
+              4,
+              8,
+              7
+            ],
+            "center": [
+              0.0,
+              8.0,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 23,
+            "vertices": [
+              7,
+              8,
+              6,
+              5
+            ],
+            "center": [
+              20.0,
+              0.0,
+              0.0
+            ],
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 24,
+            "vertices": [
+              5,
+              6,
+              2,
+              1
+            ],
+            "center": [
+              0.0,
+              -8.0,
+              0.0
+            ],
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 25,
+            "vertices": [
+              3,
+              7,
+              5,
+              1
+            ],
+            "center": [
+              0.0,
+              0.0,
+              -16.0
+            ],
+            "normal": [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "agent_id": 26,
+            "vertices": [
+              8,
+              4,
+              2,
+              6
+            ],
+            "center": [
+              0.0,
+              0.0,
+              16.0
+            ],
+            "normal": [
+              0.0,
+              -0.0,
+              1.0
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "label": "observe_loaded_connected_body_cage",
+    "command": "get_mesh_geometry",
+    "params": {"name": "brass_body"}
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "label": "select_vertical_body_edge_ring",
+    "command": "select_by_ids",
+    "params": {"name": "brass_body", "edge_ids": [10, 12, 15, 18]}
+  },
+  {
+    "label": "establish_editable_body_height_regions",
+    "transaction": {
+      "name": "brass_body",
+      "action_type": "topology_surface_preparation",
+      "operation": "loop_cut_selection",
+      "params": {"cuts": 7},
+      "command_id": "masterlock-connected-body-height-loops-trial-v1",
+      "accept": true
+    }
+  },
+  {
+    "label": "inspect_trial_connected_body_geometry",
+    "command": "get_mesh_geometry",
+    "params": {"name": "brass_body"}
+  }
+]

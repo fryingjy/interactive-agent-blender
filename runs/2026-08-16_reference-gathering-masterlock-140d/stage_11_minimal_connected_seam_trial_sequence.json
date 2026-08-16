@@ -1,0 +1,14 @@
+[
+  {"label": "select_vertical_body_edge_ring", "command": "select_by_ids", "params": {"name": "brass_body", "edge_ids": [10, 12, 15, 18]}},
+  {"label": "create_minimal_connected_seam_support_loops", "transaction": {"name": "brass_body", "action_type": "topology_surface_preparation", "operation": "loop_cut_selection", "params": {"cuts": 2}, "command_id": "masterlock-minimal-body-seam-loops-v1"}},
+  {"label": "select_lower_seam_boundary_loop", "command": "select_by_ids", "params": {"name": "brass_body", "edge_ids": [44, 46, 48, 50]}},
+  {"label": "position_lower_seam_boundary", "transaction": {"name": "brass_body", "action_type": "secondary_form_proportion", "operation": "move_selection", "params": {"delta": [0.0, 0.0, -1.866667]}, "command_id": "masterlock-minimal-seam-lower-boundary-v1"}},
+  {"label": "select_upper_seam_boundary_loop", "command": "select_by_ids", "params": {"name": "brass_body", "edge_ids": [43, 45, 47, 49]}},
+  {"label": "position_upper_seam_boundary", "transaction": {"name": "brass_body", "action_type": "secondary_form_proportion", "operation": "move_selection", "params": {"delta": [0.0, 0.0, -12.133333]}, "command_id": "masterlock-minimal-seam-upper-boundary-v1"}},
+  {"label": "select_front_seam_band", "command": "select_by_ids", "params": {"name": "brass_body", "face_ids": [51]}},
+  {"label": "recess_connected_front_seam_band", "transaction": {"name": "brass_body", "action_type": "secondary_form_detail", "operation": "extrude_selection", "params": {"offset": -0.15}, "command_id": "masterlock-minimal-connected-front-seam-recess-v1"}},
+  {"label": "inspect_minimal_connected_seam_cage", "command": "get_full_state", "params": {"name": "brass_body"}},
+  {"label": "inspect_minimal_connected_seam_evaluated_surface", "command": "get_evaluated_state", "params": {"name": "brass_body"}},
+  {"label": "render_minimal_connected_seam_front_trial", "command": "render_diagnostic_pass", "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_11_minimal_connected_seam_trial_front.png", "pass_type": "solid", "view": "front", "resolution": 768, "margin": 1.18}},
+  {"label": "render_minimal_connected_seam_wire_trial", "command": "render_diagnostic_pass", "params": {"name": ["brass_body", "steel_shackle"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_11_minimal_connected_seam_trial_wire.png", "pass_type": "wireframe", "view": "front", "resolution": 768, "margin": 1.18}}
+]

@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\stage_12_accept_minimal_connected_seam_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_08_primary_refined.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_12_connected_body.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "17f2f522e8f6",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_vertical_body_edge_ring",
+      "command": "select_by_ids",
+      "params": {
+        "name": "brass_body",
+        "edge_ids": [
+          10,
+          12,
+          15,
+          18
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 4,
+        "faces": 0
+      }
+    },
+    {
+      "index": 1,
+      "label": "create_minimal_connected_seam_support_loops",
+      "command": "transaction",
+      "params": {
+        "name": "brass_body",
+        "action_type": "topology_surface_preparation",
+        "operation": "loop_cut_selection",
+        "params": {
+          "cuts": 2
+        },
+        "command_id": "masterlock-minimal-body-seam-loops-accepted-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1786917549409",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1786917549409",
+          "performed": true,
+          "result": {
+            "cuts": 2,
+            "created_geometry": 32,
+            "new_verts": 8,
+            "new_edges": 16,
+            "new_faces": 8
+          }
+        },
+        "verify": {
+          "action_type": "topology_surface_preparation",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58
+              ],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1786917549409",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "select_lower_seam_boundary_loop",
+      "command": "select_by_ids",
+      "params": {
+        "name": "brass_body",
+        "edge_ids": [
+          44,
+          46,
+          48,
+          50
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 4,
+        "faces": 0
+      }
+    },
+    {
+      "index": 3,
+      "label": "position_lower_seam_boundary",
+      "command": "transaction",
+      "params": {
+        "name": "brass_body",
+        "action_type": "secondary_form_proportion",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0.0,
+            0.0,
+            -1.866667
+          ]
+        },
+        "command_id": "masterlock-minimal-seam-lower-boundary-accepted-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1786917549412",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1786917549412",
+          "performed": true,
+          "result": 4
+        },
+        "verify": {
+          "action_type": "secondary_form_proportion",
+          "op_delta": 0,
+          "before": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1786917549412",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "select_upper_seam_boundary_loop",
+      "command": "select_by_ids",
+      "params": {
+        "name": "brass_body",
+        "edge_ids": [
+          43,
+          45,
+          47,
+          49
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 4,
+        "faces": 0
+      }
+    },
+    {
+      "index": 5,
+      "label": "position_upper_seam_boundary",
+      "command": "transaction",
+      "params": {
+        "name": "brass_body",
+        "action_type": "secondary_form_proportion",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0.0,
+            0.0,
+            -12.133333
+          ]
+        },
+        "command_id": "masterlock-minimal-seam-upper-boundary-accepted-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1786917549414",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1786917549414",
+          "performed": true,
+          "result": 4
+        },
+        "verify": {
+          "action_type": "secondary_form_proportion",
+          "op_delta": 0,
+          "before": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1786917549414",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "select_front_seam_band",
+      "command": "select_by_ids",
+      "params": {
+        "name": "brass_body",
+        "face_ids": [
+          51
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 0,
+        "edges": 0,
+        "faces": 1
+      }
+    },
+    {
+      "index": 7,
+      "label": "recess_connected_front_seam_band",
+      "command": "transaction",
+      "params": {
+        "name": "brass_body",
+        "action_type": "secondary_form_detail",
+        "operation": "extrude_selection",
+        "params": {
+          "offset": -0.15
+        },
+        "command_id": "masterlock-minimal-connected-front-seam-recess-accepted-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_10_1786917549415",
+          "observed_revision": 10
+        },
+        "perform": {
+          "decision_id": "dec_10_1786917549415",
+          "performed": true,
+          "result": 4
+        },
+        "verify": {
+          "action_type": "secondary_form_detail",
+          "op_delta": 0,
+          "before": {
+            "vertices": 16,
+            "edges": 28,
+            "faces": 14,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 20,
+            "edges": 36,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [
+                59,
+                60,
+                61,
+                62
+              ],
+              "removed": []
+            },
+            "edges": {
+              "added": [
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70
+              ],
+              "removed": []
+            },
+            "faces": {
+              "added": [
+                71,
+                72,
+                73,
+                74
+              ],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_10_1786917549415",
+          "result_revision": 11
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "inspect_accepted_connected_seam_cage",
+      "command": "get_full_state",
+      "params": {
+        "name": "brass_body"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 11,
+        "mesh_health": {
+          "vertices": 20,
+          "edges": 36,
+          "faces": 18,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 12,
+          "5": 4,
+          "4": 4
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 16,
+              "agent_id": 59
+            },
+            {
+              "index": 17,
+              "agent_id": 60
+            },
+            {
+              "index": 18,
+              "agent_id": 61
+            },
+            {
+              "index": 19,
+              "agent_id": 62
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 28,
+              "agent_id": 63
+            },
+            {
+              "index": 29,
+              "agent_id": 64
+            },
+            {
+              "index": 30,
+              "agent_id": 65
+            },
+            {
+              "index": 31,
+              "agent_id": 66
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 13,
+              "agent_id": 71
+            }
+          ],
+          "selected_vertex_count": 4,
+          "selected_edge_count": 4,
+          "selected_face_count": 1
+        },
+        "persistent_id_coverage": {
+          "verts": 20,
+          "edges": 36,
+          "faces": 18
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "inspect_accepted_connected_seam_evaluated_surface",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "brass_body"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 224,
+          "edges": 450,
+          "faces": 228,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 220,
+          "5": 4
+        },
+        "surface_quality": {
+          "face_count": 228,
+          "min_area": 1.2e-07,
+          "max_area": 905.591248,
+          "median_area": 0.001441,
+          "area_outlier_count": 16,
+          "area_outlier_ratio": 0.0702,
+          "max_adjacent_face_angle_radians": 3.1416,
+          "angle_samples": 450
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 224,
+          "median_edge_length": 0.03876812,
+          "median_absolute_laplacian": 6.95809757,
+          "laplacian_mad": 6.82850192,
+          "max_robust_outlier_z": 4.5791,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 175,
+          "laplacian_sign_change_ratio": 0.011429,
+          "mean_neighbor_normal_angle_p95_degrees": 45.2118,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            40.0,
+            16.0,
+            32.0
+          ],
+          "evaluated_dimensions": [
+            40.0,
+            16.0,
+            32.0
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              -20.0,
+              -8.0,
+              -16.0
+            ],
+            "max": [
+              20.0,
+              8.0,
+              16.0
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -20.0,
+              -8.0,
+              -16.0
+            ],
+            "max": [
+              20.0,
+              8.0,
+              16.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "render_accepted_connected_seam_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_12_primary_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.18
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_12_primary_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "frame_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "camera_location": [
+          0.0,
+          -149.0371551513672,
+          14.401554107666016
+        ],
+        "camera_ortho_scale": 87.9319188671785,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.219152,
+        "foreground_unique_colors_5bit": 60,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "render_accepted_connected_seam_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_12_primary_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.18
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_reference-gathering-masterlock-140d/stage_12_primary_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "frame_objects": [
+          "brass_body",
+          "steel_shackle"
+        ],
+        "camera_location": [
+          0.0,
+          -149.0371551513672,
+          14.401554107666016
+        ],
+        "camera_ortho_scale": 87.9319188671785,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.026978,
+        "foreground_unique_colors_5bit": 3,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-masterlock-140d\\masterlock_140d_stage_12_connected_body.blend"
+  },
+  "pass": true
+}
