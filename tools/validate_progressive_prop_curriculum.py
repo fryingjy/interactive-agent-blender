@@ -39,8 +39,12 @@ def validate(data):
     active_id = active.get("active_prop_id")
     if not isinstance(active_id, int) or active_id not in ids or active.get("active_prop") != titles[active_id - 1]:
         errors.append("active state must point to one declared prop ID and matching title")
-    if active.get("authorization") not in {"REFERENCE_ANALYSIS_REQUIRED", "EXTERNAL_REVIEW_REQUIRED"} or active.get("modeling_authorized") is not False:
-        errors.append("an active prop must remain locked until the applicable human/reference gate authorizes modeling")
+    authorization = active.get("authorization")
+    modeling_authorized = active.get("modeling_authorized")
+    valid_locked = authorization in {"REFERENCE_ANALYSIS_REQUIRED", "EXTERNAL_REVIEW_REQUIRED"} and modeling_authorized is False
+    valid_direct = authorization == "DIRECT_USER_AUTHORIZATION" and modeling_authorized is True
+    if not (valid_locked or valid_direct):
+        errors.append("active authorization and modeling_authorized must form a supported locked or direct-user pair")
     if len(data.get("evidence_required", [])) < 15:
         errors.append("evidence contract is incomplete")
     return errors

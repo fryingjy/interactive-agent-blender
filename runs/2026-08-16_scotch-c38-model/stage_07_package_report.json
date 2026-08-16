@@ -1,0 +1,1294 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\stage_07_package_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_06b_creased.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\scotch_c38_editable_candidate.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "11fb7befbd75",
+  "results": [
+    {
+      "index": 0,
+      "label": "capture_live_component_coverage_and_advance",
+      "command": "advance_with_component_coverage",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "stage": "PROPORTION_SILHOUETTE",
+        "dimensions_checked": true,
+        "primary_components_present": true,
+        "decomposition": {
+          "object_name": "Scotch C38 Classic Desktop Tape Dispenser",
+          "components": [
+            {
+              "name": "C38_UpperShell_HIGH",
+              "role": "primary",
+              "manufacture": "structural",
+              "separately_manufactured": false
+            },
+            {
+              "name": "C38_WeightedBase_HIGH",
+              "role": "primary",
+              "manufacture": "structural",
+              "separately_manufactured": true
+            },
+            {
+              "name": "C38_TapeRoll_HIGH",
+              "role": "primary",
+              "manufacture": "unknown",
+              "separately_manufactured": true
+            },
+            {
+              "name": "C38_RemovableHub_HIGH",
+              "role": "primary",
+              "manufacture": "structural",
+              "separately_manufactured": true
+            },
+            {
+              "name": "C38_CutterBlade_HIGH",
+              "role": "primary",
+              "manufacture": "structural",
+              "separately_manufactured": true
+            }
+          ],
+          "relationships": []
+        }
+      },
+      "status": "ok",
+      "result": {
+        "component_coverage": {
+          "capture_type": "LIVE_MODELER_RUNTIME",
+          "session_id": "11fb7befbd75",
+          "scene_revision": 51,
+          "collection": "ALL",
+          "mesh_object_names": [
+            "C38_CutterBlade_HIGH",
+            "C38_RemovableHub_HIGH",
+            "C38_TapeRoll_HIGH",
+            "C38_UpperShell_HIGH",
+            "C38_WeightedBase_HIGH"
+          ],
+          "coverage": {
+            "declared_primary_components": [
+              "C38_UpperShell_HIGH",
+              "C38_WeightedBase_HIGH",
+              "C38_TapeRoll_HIGH",
+              "C38_RemovableHub_HIGH",
+              "C38_CutterBlade_HIGH"
+            ],
+            "built_object_names": [
+              "C38_CutterBlade_HIGH",
+              "C38_RemovableHub_HIGH",
+              "C38_TapeRoll_HIGH",
+              "C38_UpperShell_HIGH",
+              "C38_WeightedBase_HIGH"
+            ],
+            "component_matches": {
+              "C38_UpperShell_HIGH": "C38_WeightedBase_HIGH",
+              "C38_WeightedBase_HIGH": "C38_UpperShell_HIGH",
+              "C38_TapeRoll_HIGH": "C38_TapeRoll_HIGH",
+              "C38_RemovableHub_HIGH": "C38_RemovableHub_HIGH",
+              "C38_CutterBlade_HIGH": "C38_CutterBlade_HIGH"
+            },
+            "unmatched_primary_components": [],
+            "coverage_ok": true
+          },
+          "component_layout": {
+            "layout_expectations_present": false,
+            "layout_ok": null,
+            "status": "not_applicable",
+            "component_reports": {},
+            "limitation": "No aligned component regions were supplied by the reference board."
+          },
+          "pass": true,
+          "limitation": "Names and optional coarse bounds establish only component presence/placement/proportion. Use a fresh-process asset report and controlled visual comparison for shape and likeness."
+        },
+        "stage_advance": {
+          "name": "C38_UpperShell_HIGH",
+          "stage": "PROPORTION_SILHOUETTE",
+          "previous_stage": "PRIMARY_BLOCKOUT",
+          "is_regression": false,
+          "advanced": true,
+          "gate": {
+            "stage": "PRIMARY_BLOCKOUT",
+            "required": [
+              "dimensions_checked",
+              "primary_components_present",
+              "component_coverage"
+            ],
+            "missing": [],
+            "failures": [],
+            "pass": true
+          }
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "package_upper_variants",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "package_upper_editable_high_low",
+        "operation": "package_high_low_variants",
+        "params": {
+          "low_object_name": "C38_UpperShell_LOW",
+          "high_collection_name": "HIGH_POLY",
+          "low_collection_name": "LOW_POLY",
+          "low_subd_levels": 0,
+          "hide_low": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_51_1786903262215",
+          "observed_revision": 51
+        },
+        "perform": {
+          "decision_id": "dec_51_1786903262215",
+          "performed": true,
+          "result": {
+            "high": {
+              "object": "C38_UpperShell_HIGH",
+              "mesh": "C38_UpperShell_HIGH",
+              "collection": "HIGH_POLY",
+              "base_vertices": 60,
+              "base_edges": 116,
+              "base_faces": 58,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                },
+                {
+                  "name": "Subdivision",
+                  "type": "SUBSURF",
+                  "levels": 1,
+                  "viewport_levels": 1,
+                  "render_levels": 1
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": false,
+              "hidden_in_render": false
+            },
+            "low": {
+              "object": "C38_UpperShell_LOW",
+              "mesh": "C38_UpperShell_LOW_Mesh",
+              "collection": "LOW_POLY",
+              "base_vertices": 60,
+              "base_edges": 116,
+              "base_faces": 58,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                },
+                {
+                  "name": "Subdivision",
+                  "type": "SUBSURF",
+                  "levels": 0,
+                  "viewport_levels": 0,
+                  "render_levels": 0
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": true,
+              "hidden_in_render": true
+            },
+            "separate_collections": true,
+            "collections_reused": false,
+            "independent_mesh_datablocks": true,
+            "all_modifiers_unapplied": true,
+            "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+          }
+        },
+        "verify": {
+          "action_type": "package_upper_editable_high_low",
+          "op_delta": 0,
+          "before": {
+            "vertices": 60,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 60,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_51_1786903262215",
+          "result_revision": 52
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "package_base_variants",
+      "command": "transaction",
+      "params": {
+        "name": "C38_WeightedBase_HIGH",
+        "action_type": "package_base_editable_high_low",
+        "operation": "package_high_low_variants",
+        "params": {
+          "low_object_name": "C38_WeightedBase_LOW",
+          "high_collection_name": "HIGH_POLY",
+          "low_collection_name": "LOW_POLY",
+          "low_subd_levels": 0,
+          "hide_low": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_52_1786903262219",
+          "observed_revision": 52
+        },
+        "perform": {
+          "decision_id": "dec_52_1786903262219",
+          "performed": true,
+          "result": {
+            "high": {
+              "object": "C38_WeightedBase_HIGH",
+              "mesh": "C38_WeightedBase_HIGH",
+              "collection": "HIGH_POLY",
+              "base_vertices": 8,
+              "base_edges": 12,
+              "base_faces": 6,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                },
+                {
+                  "name": "Subdivision",
+                  "type": "SUBSURF",
+                  "levels": 1,
+                  "viewport_levels": 1,
+                  "render_levels": 2
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": false,
+              "hidden_in_render": false
+            },
+            "low": {
+              "object": "C38_WeightedBase_LOW",
+              "mesh": "C38_WeightedBase_LOW_Mesh",
+              "collection": "LOW_POLY",
+              "base_vertices": 8,
+              "base_edges": 12,
+              "base_faces": 6,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                },
+                {
+                  "name": "Subdivision",
+                  "type": "SUBSURF",
+                  "levels": 0,
+                  "viewport_levels": 0,
+                  "render_levels": 0
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": true,
+              "hidden_in_render": true
+            },
+            "separate_collections": true,
+            "collections_reused": true,
+            "independent_mesh_datablocks": true,
+            "all_modifiers_unapplied": true,
+            "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+          }
+        },
+        "verify": {
+          "action_type": "package_base_editable_high_low",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_52_1786903262219",
+          "result_revision": 53
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "package_roll_variants",
+      "command": "transaction",
+      "params": {
+        "name": "C38_TapeRoll_HIGH",
+        "action_type": "package_roll_editable_high_low",
+        "operation": "package_high_low_variants",
+        "params": {
+          "low_object_name": "C38_TapeRoll_LOW",
+          "high_collection_name": "HIGH_POLY",
+          "low_collection_name": "LOW_POLY",
+          "low_subd_levels": 0,
+          "hide_low": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_53_1786903262222",
+          "observed_revision": 53
+        },
+        "perform": {
+          "decision_id": "dec_53_1786903262222",
+          "performed": true,
+          "result": {
+            "high": {
+              "object": "C38_TapeRoll_HIGH",
+              "mesh": "C38_TapeRoll_HIGH",
+              "collection": "HIGH_POLY",
+              "base_vertices": 32,
+              "base_edges": 48,
+              "base_faces": 18,
+              "modifiers": [],
+              "modifiers_applied": false,
+              "hidden_in_viewport": false,
+              "hidden_in_render": false
+            },
+            "low": {
+              "object": "C38_TapeRoll_LOW",
+              "mesh": "C38_TapeRoll_LOW_Mesh",
+              "collection": "LOW_POLY",
+              "base_vertices": 32,
+              "base_edges": 48,
+              "base_faces": 18,
+              "modifiers": [],
+              "modifiers_applied": false,
+              "hidden_in_viewport": true,
+              "hidden_in_render": true
+            },
+            "separate_collections": true,
+            "collections_reused": true,
+            "independent_mesh_datablocks": true,
+            "all_modifiers_unapplied": true,
+            "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+          }
+        },
+        "verify": {
+          "action_type": "package_roll_editable_high_low",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_53_1786903262222",
+          "result_revision": 54
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "package_hub_variants",
+      "command": "transaction",
+      "params": {
+        "name": "C38_RemovableHub_HIGH",
+        "action_type": "package_hub_editable_high_low",
+        "operation": "package_high_low_variants",
+        "params": {
+          "low_object_name": "C38_RemovableHub_LOW",
+          "high_collection_name": "HIGH_POLY",
+          "low_collection_name": "LOW_POLY",
+          "low_subd_levels": 0,
+          "hide_low": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_54_1786903262225",
+          "observed_revision": 54
+        },
+        "perform": {
+          "decision_id": "dec_54_1786903262225",
+          "performed": true,
+          "result": {
+            "high": {
+              "object": "C38_RemovableHub_HIGH",
+              "mesh": "C38_RemovableHub_HIGH",
+              "collection": "HIGH_POLY",
+              "base_vertices": 32,
+              "base_edges": 48,
+              "base_faces": 18,
+              "modifiers": [],
+              "modifiers_applied": false,
+              "hidden_in_viewport": false,
+              "hidden_in_render": false
+            },
+            "low": {
+              "object": "C38_RemovableHub_LOW",
+              "mesh": "C38_RemovableHub_LOW_Mesh",
+              "collection": "LOW_POLY",
+              "base_vertices": 32,
+              "base_edges": 48,
+              "base_faces": 18,
+              "modifiers": [],
+              "modifiers_applied": false,
+              "hidden_in_viewport": true,
+              "hidden_in_render": true
+            },
+            "separate_collections": true,
+            "collections_reused": true,
+            "independent_mesh_datablocks": true,
+            "all_modifiers_unapplied": true,
+            "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+          }
+        },
+        "verify": {
+          "action_type": "package_hub_editable_high_low",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_54_1786903262225",
+          "result_revision": 55
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "package_blade_variants",
+      "command": "transaction",
+      "params": {
+        "name": "C38_CutterBlade_HIGH",
+        "action_type": "package_blade_editable_high_low",
+        "operation": "package_high_low_variants",
+        "params": {
+          "low_object_name": "C38_CutterBlade_LOW",
+          "high_collection_name": "HIGH_POLY",
+          "low_collection_name": "LOW_POLY",
+          "low_subd_levels": 0,
+          "hide_low": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_55_1786903262230",
+          "observed_revision": 55
+        },
+        "perform": {
+          "decision_id": "dec_55_1786903262230",
+          "performed": true,
+          "result": {
+            "high": {
+              "object": "C38_CutterBlade_HIGH",
+              "mesh": "C38_CutterBlade_HIGH",
+              "collection": "HIGH_POLY",
+              "base_vertices": 8,
+              "base_edges": 12,
+              "base_faces": 6,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": false,
+              "hidden_in_render": false
+            },
+            "low": {
+              "object": "C38_CutterBlade_LOW",
+              "mesh": "C38_CutterBlade_LOW_Mesh",
+              "collection": "LOW_POLY",
+              "base_vertices": 8,
+              "base_edges": 12,
+              "base_faces": 6,
+              "modifiers": [
+                {
+                  "name": "Semantic_Bevel",
+                  "type": "BEVEL",
+                  "levels": null,
+                  "viewport_levels": null,
+                  "render_levels": null
+                }
+              ],
+              "modifiers_applied": false,
+              "hidden_in_viewport": true,
+              "hidden_in_render": true
+            },
+            "separate_collections": true,
+            "collections_reused": true,
+            "independent_mesh_datablocks": true,
+            "all_modifiers_unapplied": true,
+            "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed"
+          }
+        },
+        "verify": {
+          "action_type": "package_blade_editable_high_low",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_55_1786903262230",
+          "result_revision": 56
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "inspect_packaged_upper_high",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_UpperShell_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 56,
+        "mesh_health": {
+          "vertices": 60,
+          "edges": 116,
+          "faces": 58,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 12,
+          "4": 44,
+          "5": 4
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 48,
+              "agent_id": 187
+            },
+            {
+              "index": 49,
+              "agent_id": 188
+            },
+            {
+              "index": 50,
+              "agent_id": 189
+            },
+            {
+              "index": 51,
+              "agent_id": 190
+            },
+            {
+              "index": 52,
+              "agent_id": 191
+            },
+            {
+              "index": 53,
+              "agent_id": 192
+            },
+            {
+              "index": 54,
+              "agent_id": 193
+            },
+            {
+              "index": 55,
+              "agent_id": 194
+            },
+            {
+              "index": 56,
+              "agent_id": 195
+            },
+            {
+              "index": 57,
+              "agent_id": 196
+            },
+            {
+              "index": 58,
+              "agent_id": 197
+            },
+            {
+              "index": 59,
+              "agent_id": 198
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 88,
+              "agent_id": 199
+            },
+            {
+              "index": 89,
+              "agent_id": 200
+            },
+            {
+              "index": 90,
+              "agent_id": 201
+            },
+            {
+              "index": 91,
+              "agent_id": 202
+            },
+            {
+              "index": 92,
+              "agent_id": 203
+            },
+            {
+              "index": 93,
+              "agent_id": 204
+            },
+            {
+              "index": 94,
+              "agent_id": 205
+            },
+            {
+              "index": 95,
+              "agent_id": 206
+            },
+            {
+              "index": 96,
+              "agent_id": 207
+            },
+            {
+              "index": 97,
+              "agent_id": 208
+            },
+            {
+              "index": 98,
+              "agent_id": 209
+            },
+            {
+              "index": 99,
+              "agent_id": 210
+            },
+            {
+              "index": 100,
+              "agent_id": 211
+            },
+            {
+              "index": 101,
+              "agent_id": 212
+            },
+            {
+              "index": 102,
+              "agent_id": 213
+            },
+            {
+              "index": 103,
+              "agent_id": 214
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 41,
+              "agent_id": 227
+            },
+            {
+              "index": 42,
+              "agent_id": 228
+            },
+            {
+              "index": 43,
+              "agent_id": 229
+            },
+            {
+              "index": 44,
+              "agent_id": 230
+            },
+            {
+              "index": 45,
+              "agent_id": 231
+            }
+          ],
+          "selected_vertex_count": 12,
+          "selected_edge_count": 16,
+          "selected_face_count": 5
+        },
+        "persistent_id_coverage": {
+          "verts": 60,
+          "edges": 116,
+          "faces": 58
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "inspect_packaged_upper_low",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_UpperShell_LOW"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 56,
+        "mesh_health": {
+          "vertices": 60,
+          "edges": 116,
+          "faces": 58,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 12,
+          "4": 44,
+          "5": 4
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 48,
+              "agent_id": 187
+            },
+            {
+              "index": 49,
+              "agent_id": 188
+            },
+            {
+              "index": 50,
+              "agent_id": 189
+            },
+            {
+              "index": 51,
+              "agent_id": 190
+            },
+            {
+              "index": 52,
+              "agent_id": 191
+            },
+            {
+              "index": 53,
+              "agent_id": 192
+            },
+            {
+              "index": 54,
+              "agent_id": 193
+            },
+            {
+              "index": 55,
+              "agent_id": 194
+            },
+            {
+              "index": 56,
+              "agent_id": 195
+            },
+            {
+              "index": 57,
+              "agent_id": 196
+            },
+            {
+              "index": 58,
+              "agent_id": 197
+            },
+            {
+              "index": 59,
+              "agent_id": 198
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 88,
+              "agent_id": 199
+            },
+            {
+              "index": 89,
+              "agent_id": 200
+            },
+            {
+              "index": 90,
+              "agent_id": 201
+            },
+            {
+              "index": 91,
+              "agent_id": 202
+            },
+            {
+              "index": 92,
+              "agent_id": 203
+            },
+            {
+              "index": 93,
+              "agent_id": 204
+            },
+            {
+              "index": 94,
+              "agent_id": 205
+            },
+            {
+              "index": 95,
+              "agent_id": 206
+            },
+            {
+              "index": 96,
+              "agent_id": 207
+            },
+            {
+              "index": 97,
+              "agent_id": 208
+            },
+            {
+              "index": 98,
+              "agent_id": 209
+            },
+            {
+              "index": 99,
+              "agent_id": 210
+            },
+            {
+              "index": 100,
+              "agent_id": 211
+            },
+            {
+              "index": 101,
+              "agent_id": 212
+            },
+            {
+              "index": 102,
+              "agent_id": 213
+            },
+            {
+              "index": 103,
+              "agent_id": 214
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 41,
+              "agent_id": 227
+            },
+            {
+              "index": 42,
+              "agent_id": 228
+            },
+            {
+              "index": 43,
+              "agent_id": 229
+            },
+            {
+              "index": 44,
+              "agent_id": 230
+            },
+            {
+              "index": 45,
+              "agent_id": 231
+            }
+          ],
+          "selected_vertex_count": 12,
+          "selected_edge_count": 16,
+          "selected_face_count": 5
+        },
+        "persistent_id_coverage": {
+          "verts": 60,
+          "edges": 116,
+          "faces": 58
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "render_packaged_front_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "resolution": 800,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          800,
+          800
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -15.117377281188965,
+          1.347792148590088
+        ],
+        "camera_ortho_scale": 8.692491996927117,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.177545,
+        "foreground_unique_colors_5bit": 70,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "render_packaged_top_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_top_matcap.png",
+        "pass_type": "matcap",
+        "view": "top",
+        "resolution": 800,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_top_matcap.png",
+        "pass_type": "matcap",
+        "view": "top",
+        "projection": "ORTHO",
+        "resolution": [
+          800,
+          800
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          0.0,
+          16.46516990661621
+        ],
+        "camera_ortho_scale": 8.692491996927117,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.233114,
+        "foreground_unique_colors_5bit": 93,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "render_packaged_side_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_side_matcap.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "resolution": 800,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_side_matcap.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          800,
+          800
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          15.117377281188965,
+          0.0,
+          1.347792148590088
+        ],
+        "camera_ortho_scale": 8.692491996927117,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.095222,
+        "foreground_unique_colors_5bit": 74,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "render_packaged_front_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 800,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          800,
+          800
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -15.117377281188965,
+          1.347792148590088
+        ],
+        "camera_ortho_scale": 8.692491996927117,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.035778,
+        "foreground_unique_colors_5bit": 4,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\scotch_c38_editable_candidate.blend"
+  },
+  "pass": true
+}

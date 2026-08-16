@@ -1,0 +1,45 @@
+[
+  {
+    "label": "select_four_longitudinal_edges",
+    "command": "select_by_ids",
+    "params": {
+      "name": "C38_UpperShell_HIGH",
+      "edge_ids": [13, 14, 19, 20]
+    }
+  },
+  {
+    "label": "add_sparse_profile_stations",
+    "transaction": {
+      "name": "C38_UpperShell_HIGH",
+      "action_type": "add_profile_control_loops",
+      "operation": "loop_cut_selection",
+      "params": {"cuts": 7}
+    }
+  },
+  {
+    "label": "inspect_looped_cage",
+    "command": "get_full_state",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "inspect_looped_region",
+    "command": "inspect_region",
+    "params": {
+      "name": "C38_UpperShell_HIGH",
+      "center_ids": [1, 2, 3, 4, 5, 6, 7, 8],
+      "rings": 8
+    }
+  },
+  {
+    "label": "render_looped_wireframe",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["C38_UpperShell_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_02_wireframe.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 640,
+      "margin": 1.15
+    }
+  }
+]

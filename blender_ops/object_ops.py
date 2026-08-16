@@ -306,18 +306,20 @@ def package_high_low_variants(
         raise ValueError("low_subd_levels must be an integer between 0 and 6")
     if low_object_name in bpy.data.objects:
         raise ValueError(f"object '{low_object_name}' already exists")
-    collisions = [
-        collection_name
-        for collection_name in (high_collection_name, low_collection_name)
-        if collection_name in bpy.data.collections
-    ]
-    if collisions:
-        raise ValueError(f"variant collections already exist: {collisions}")
-
-    high_collection = bpy.data.collections.new(high_collection_name)
-    low_collection = bpy.data.collections.new(low_collection_name)
-    bpy.context.scene.collection.children.link(high_collection)
-    bpy.context.scene.collection.children.link(low_collection)
+    high_collection = bpy.data.collections.get(high_collection_name)
+    low_collection = bpy.data.collections.get(low_collection_name)
+    if (high_collection is None) != (low_collection is None):
+        existing = high_collection_name if high_collection is not None else low_collection_name
+        missing = low_collection_name if low_collection is None else high_collection_name
+        raise ValueError(
+            f"incomplete variant collection pair: '{existing}' exists but '{missing}' does not"
+        )
+    collections_reused = high_collection is not None
+    if high_collection is None:
+        high_collection = bpy.data.collections.new(high_collection_name)
+        low_collection = bpy.data.collections.new(low_collection_name)
+        bpy.context.scene.collection.children.link(high_collection)
+        bpy.context.scene.collection.children.link(low_collection)
     for collection in list(obj.users_collection):
         collection.objects.unlink(obj)
     high_collection.objects.link(obj)
@@ -366,6 +368,7 @@ def package_high_low_variants(
         "high": variant_record(obj, high_collection),
         "low": variant_record(low, low_collection),
         "separate_collections": True,
+        "collections_reused": collections_reused,
         "independent_mesh_datablocks": obj.data is not low.data,
         "all_modifiers_unapplied": True,
         "workflow_boundary": "editable duplicate packaging; low-poly retopology is not performed",

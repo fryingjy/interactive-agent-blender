@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "record_type": "OPEN_SCENE_CREASE_INSPECTION",
+  "read_only": true,
+  "blend_file": "C:\\Users\\odane\\Downloads\\feed.blend",
+  "is_dirty": true,
+  "active_object": "Cube",
+  "objects": [
+    {
+      "name": "Cube",
+      "selected": false,
+      "active": true,
+      "mode": "OBJECT",
+      "dimensions": [
+        0.877058207988739,
+        0.2776896357536316,
+        0.4721450209617615
+      ],
+      "topology": {
+        "vertices": 310,
+        "edges": 608,
+        "faces": 299,
+        "triangles": 0,
+        "quads": 299,
+        "ngons": 0
+      },
+      "crease_attributes": [],
+      "bevel_weight_attributes": [
+        {
+          "name": "bevel_weight_edge",
+          "domain": "EDGE",
+          "data_type": "FLOAT",
+          "nonzero": 153,
+          "at_or_above_0_5": 153,
+          "at_or_above_0_8": 153,
+          "maximum": 1.0,
+          "distinct_rounded_values": [
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": 0.0020000000949949026,
+          "segments": 2,
+          "limit_method": "WEIGHT"
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        },
+        {
+          "name": "Smooth by Angle",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        }
+      ],
+      "smooth_faces": 299
+    },
+    {
+      "name": "Cube.001",
+      "selected": false,
+      "active": false,
+      "mode": "OBJECT",
+      "dimensions": [
+        2.63374924659729,
+        2.63374924659729,
+        2.63374924659729
+      ],
+      "topology": {
+        "vertices": 98,
+        "edges": 192,
+        "faces": 96,
+        "triangles": 0,
+        "quads": 96,
+        "ngons": 0
+      },
+      "crease_attributes": [],
+      "bevel_weight_attributes": [],
+      "modifiers": [],
+      "smooth_faces": 0
+    },
+    {
+      "name": "Cube.002",
+      "selected": false,
+      "active": false,
+      "mode": "OBJECT",
+      "dimensions": [
+        0.9863126277923584,
+        0.28524503111839294,
+        3.137380599975586
+      ],
+      "topology": {
+        "vertices": 125,
+        "edges": 233,
+        "faces": 109,
+        "triangles": 1,
+        "quads": 108,
+        "ngons": 0
+      },
+      "crease_attributes": [],
+      "bevel_weight_attributes": [
+        {
+          "name": "bevel_weight_edge",
+          "domain": "EDGE",
+          "data_type": "FLOAT",
+          "nonzero": 43,
+          "at_or_above_0_5": 43,
+          "at_or_above_0_8": 43,
+          "maximum": 1.0,
+          "distinct_rounded_values": [
+            0.0,
+            1.0
+          ]
+        }
+      ],
+      "modifiers": [
+        {
+          "name": "Mirror",
+          "type": "MIRROR",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        },
+        {
+          "name": "Bevel",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": 0.004999999888241291,
+          "segments": 2,
+          "limit_method": "WEIGHT"
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 2,
+          "render_levels": 2,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        },
+        {
+          "name": "Smooth by Angle",
+          "type": "NODES",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null,
+          "width": null,
+          "segments": null,
+          "limit_method": null
+        }
+      ],
+      "smooth_faces": 109
+    }
+  ]
+}

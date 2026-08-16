@@ -1,6 +1,6 @@
 # Operator card: Edge Crease (Subdivision Surface sharp-edge protection)
 
-**Status:** RUNTIME EXPERIMENT ✓ (Blender 5.2.0 LTS) | TYPED SUPPORT ✓ | TRANSFER ✓ (within-lab) | SOURCE ✓ (professional `.blend`) | RUNTIME TRANSFER pending
+**Status:** RUNTIME EXPERIMENT ✓ (Blender 5.2.0 LTS) | TYPED SUPPORT ✓ | CROSS-SHAPE TRANSFER ✓ | REFERENCE-PROP RUNTIME ✓ (technical, not visually accepted) | SOURCE ✓ (professional `.blend`)
 
 ## What it does
 
@@ -85,8 +85,26 @@ object with zero Bevel modifiers reaches `status: "PASS"`.
 - Crease has no independent width/segment control the way Bevel does; if the reference needs a
   specific visible chamfer size, crease cannot provide it regardless of cage density.
 - A crease value between 0 and 1 (not just full 0 or full 1) partially resists smoothing rather than
-  fully protecting the edge -- this card only tested and validated the full-crease (1.0) case, matching
-  what the studied professional file actually used. Partial crease remains untested here.
+  fully protecting the edge. The C38 runtime below verifies that 0.82 persists and sharpens its
+  supported cage, but it does not establish the video's stronger claim that every value from roughly
+  0.7 through 1.0 is visually identical.
+
+## 2026-08-16 C38 runtime and user-scene comparison
+
+`runs/2026-08-16_scotch-c38-model/` applies the typed operation on a directly authorized reference
+prop rather than another fixture. The box-derived upper shell remains one connected 60-vertex,
+116-edge, 58-quad cage; 71 semantic shell edges receive crease 0.82. The separate weighted base has
+all 12 edges creased at 0.82. Their broad Bevel modifiers are retained but disabled, while
+Subdivision stays live and unapplied. Fresh saved-file inspection confirms the crease values,
+connected all-quad upper topology, separate editable high/low collections, and modifier state.
+
+This run also inspected the user's saved `feed.blend` read-only. Contrary to the initial verbal
+label, that file has no `crease_edge` layer: its two hard-surface objects use 153 and 43 full bevel
+weights respectively, a tiny two-segment WEIGHT Bevel, level-2 Subdivision, then Smooth by Angle.
+The useful lesson is not that one strategy invalidates the other. It is that both require a complete
+semantic edge set, and the mechanism must match the desired edge read: crease for sharp protection
+without added radius; tiny Bevel for an actual highlight-catching manufactured radius. The visible
+open scene had unsaved changes and was not modified or saved by the inspection.
 
 ## Cross-file confirmation (9 more professional files studied, 2026-08-13)
 
@@ -150,14 +168,12 @@ card did not previously have a mechanistic reason for.
 
 ## What this does not establish
 
-- Only tested on a rectangular box fixture within this same lab (a within-lab transfer, box-with-
-  support vs. box-without). Transfer to a genuinely different shape family, and application within a
-  real held-out modeling task, remain open -- this is `TRANSFER` and `RUNTIME_VALIDATED` work, not yet
-  done, per `docs/KNOWLEDGE_SYSTEM.md`'s promotion lifecycle. Status here is `EXPERIMENTALLY_TESTED`
-  with one internal transfer, not `PROMOTED`.
-- Does not establish when a professional would choose crease over Bevel for a NEW asset (the axe file
-  only shows a completed choice, not the design reasoning behind it) -- this is inference, not
-  observation, and is flagged as such rather than presented as a firm rule.
+- Cross-shape transfer now includes a negative circular-loft case and a technically verified C38
+  runtime case. It still lacks accepted final likeness and repeated unfamiliar-prop use, so it is not
+  proof of broad professional judgment.
+- The C38 feedback supplies a real preference for crease on that shell, while `feed.blend` supplies a
+  real weighted-Bevel construction. This still does not create a universal material/style rule; the
+  reference edge radius and desired highlight remain the deciding evidence.
 
 ## CRITICAL failure mode found on real transfer: crease breaks roundness on a revolved ring's own loop
 

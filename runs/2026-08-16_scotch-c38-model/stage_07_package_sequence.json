@@ -1,0 +1,33 @@
+[
+  {
+    "label": "capture_live_component_coverage_and_advance",
+    "advance_with_component_coverage": {
+      "name": "C38_UpperShell_HIGH",
+      "stage": "PROPORTION_SILHOUETTE",
+      "dimensions_checked": true,
+      "primary_components_present": true,
+      "decomposition": {
+        "object_name": "Scotch C38 Classic Desktop Tape Dispenser",
+        "components": [
+          {"name":"C38_UpperShell_HIGH","role":"primary","manufacture":"structural","separately_manufactured":false},
+          {"name":"C38_WeightedBase_HIGH","role":"primary","manufacture":"structural","separately_manufactured":true},
+          {"name":"C38_TapeRoll_HIGH","role":"primary","manufacture":"unknown","separately_manufactured":true},
+          {"name":"C38_RemovableHub_HIGH","role":"primary","manufacture":"structural","separately_manufactured":true},
+          {"name":"C38_CutterBlade_HIGH","role":"primary","manufacture":"structural","separately_manufactured":true}
+        ],
+        "relationships": []
+      }
+    }
+  },
+  {"label":"package_upper_variants","transaction":{"name":"C38_UpperShell_HIGH","action_type":"package_upper_editable_high_low","operation":"package_high_low_variants","params":{"low_object_name":"C38_UpperShell_LOW","high_collection_name":"HIGH_POLY","low_collection_name":"LOW_POLY","low_subd_levels":0,"hide_low":true}}},
+  {"label":"package_base_variants","transaction":{"name":"C38_WeightedBase_HIGH","action_type":"package_base_editable_high_low","operation":"package_high_low_variants","params":{"low_object_name":"C38_WeightedBase_LOW","high_collection_name":"HIGH_POLY","low_collection_name":"LOW_POLY","low_subd_levels":0,"hide_low":true}}},
+  {"label":"package_roll_variants","transaction":{"name":"C38_TapeRoll_HIGH","action_type":"package_roll_editable_high_low","operation":"package_high_low_variants","params":{"low_object_name":"C38_TapeRoll_LOW","high_collection_name":"HIGH_POLY","low_collection_name":"LOW_POLY","low_subd_levels":0,"hide_low":true}}},
+  {"label":"package_hub_variants","transaction":{"name":"C38_RemovableHub_HIGH","action_type":"package_hub_editable_high_low","operation":"package_high_low_variants","params":{"low_object_name":"C38_RemovableHub_LOW","high_collection_name":"HIGH_POLY","low_collection_name":"LOW_POLY","low_subd_levels":0,"hide_low":true}}},
+  {"label":"package_blade_variants","transaction":{"name":"C38_CutterBlade_HIGH","action_type":"package_blade_editable_high_low","operation":"package_high_low_variants","params":{"low_object_name":"C38_CutterBlade_LOW","high_collection_name":"HIGH_POLY","low_collection_name":"LOW_POLY","low_subd_levels":0,"hide_low":true}}},
+  {"label":"inspect_packaged_upper_high","command":"get_full_state","params":{"name":"C38_UpperShell_HIGH"}},
+  {"label":"inspect_packaged_upper_low","command":"get_full_state","params":{"name":"C38_UpperShell_LOW"}},
+  {"label":"render_packaged_front_matcap","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH","C38_WeightedBase_HIGH","C38_TapeRoll_HIGH","C38_RemovableHub_HIGH","C38_CutterBlade_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_matcap.png","pass_type":"matcap","view":"front","resolution":800,"margin":1.15}},
+  {"label":"render_packaged_top_matcap","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH","C38_WeightedBase_HIGH","C38_TapeRoll_HIGH","C38_RemovableHub_HIGH","C38_CutterBlade_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_top_matcap.png","pass_type":"matcap","view":"top","resolution":800,"margin":1.15}},
+  {"label":"render_packaged_side_matcap","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH","C38_WeightedBase_HIGH","C38_TapeRoll_HIGH","C38_RemovableHub_HIGH","C38_CutterBlade_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_side_matcap.png","pass_type":"matcap","view":"side","resolution":800,"margin":1.15}},
+  {"label":"render_packaged_front_wire","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH","C38_WeightedBase_HIGH","C38_TapeRoll_HIGH","C38_RemovableHub_HIGH","C38_CutterBlade_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/final_front_wire.png","pass_type":"wireframe","view":"front","resolution":800,"margin":1.15}}
+]

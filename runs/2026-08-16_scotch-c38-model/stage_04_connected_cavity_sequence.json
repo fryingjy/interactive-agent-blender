@@ -1,0 +1,53 @@
+[
+  {
+    "label": "select_supported_cavity_faces",
+    "command": "select_by_ids",
+    "params": {
+      "name": "C38_UpperShell_HIGH",
+      "face_ids": [118, 119, 120, 121, 122]
+    }
+  },
+  {
+    "label": "inset_connected_cavity_rim",
+    "transaction": {
+      "name": "C38_UpperShell_HIGH",
+      "action_type": "form_connected_cavity_rim",
+      "operation": "inset_selection",
+      "params": {"thickness": 0.28, "depth": 0.0}
+    }
+  },
+  {
+    "label": "extrude_recess_floor",
+    "transaction": {
+      "name": "C38_UpperShell_HIGH",
+      "action_type": "recess_tape_roll_cavity",
+      "operation": "extrude_selection",
+      "params": {"offset": -0.72}
+    }
+  },
+  {
+    "label": "inspect_connected_cavity_cage",
+    "command": "get_full_state",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "inspect_connected_cavity_evaluated",
+    "command": "get_evaluated_state",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "render_cavity_front_solid",
+    "command": "render_diagnostic_pass",
+    "params": {"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_04_front_solid.png","pass_type":"solid","view":"front","resolution":640,"margin":1.15}
+  },
+  {
+    "label": "render_cavity_top_solid",
+    "command": "render_diagnostic_pass",
+    "params": {"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_04_top_solid.png","pass_type":"solid","view":"top","resolution":640,"margin":1.15}
+  },
+  {
+    "label": "render_cavity_top_wire",
+    "command": "render_diagnostic_pass",
+    "params": {"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_04_top_wire.png","pass_type":"wireframe","view":"top","resolution":640,"margin":1.15}
+  }
+]

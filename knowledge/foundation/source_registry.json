@@ -2761,7 +2761,7 @@
       "limitations": [
         "The page is a product listing, not an orthographic engineering drawing",
         "It does not show the exact underside fasteners, ballast, or hub-retention interface",
-        "Machine readiness does not authorize Blender modeling without a current human board decision"
+        "The source package does not prove likeness; direct user instruction separately authorized modeling without a pre-model approval board"
       ]
     }
   },
@@ -2938,6 +2938,37 @@
         "Authored controlled edge intent rather than automatic inference from an unfamiliar reference",
         "No human-authorized prop runtime use or professional visual acceptance",
         "The retained Intel driver teardown crash is not counted as successful execution evidence"
+      ]
+    }
+  },
+  {
+    "id": "experiment-scotch-c38-crease-model-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_scotch-c38-model/",
+    "title": "Scotch C38 Connected-Cage Crease-Controlled Modeling Run",
+    "creator": "interactive-agent-blender",
+    "source_type": "reference_driven_modeling_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["reference-modeling", "connected-topology", "all-quads", "edge-crease", "Subdivision-Surface", "high-low", "editable-modifiers"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["reference_manifest", "typed_decision_reports", "blend_data", "MatCap_render", "wireframe_render", "fresh_process_verification", "user_scene_read_only_comparison"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_scotch-c38-model/"],
+      "direct_observations": [
+        "The upper shell is one box-derived connected cage shaped by seven longitudinal cuts, sparse profile edits, inset, and inward extrusion rather than a stack of body primitives",
+        "The saved upper source contains 60 vertices, 116 edges, and 58 quad faces with one connected component and no loose or non-manifold edges",
+        "Direct feedback replaced the upper/base broad Bevel result with 0.82 creases on 71 shell edges and 12 base edges while retaining live unapplied Subdivision",
+        "A fresh Blender 5.2 process verifies separate HIGH_POLY and LOW_POLY collections, independent cages, live modifiers, semantic creases, and the connected all-quad shell",
+        "The user's saved feed.blend demonstrates a separate tiny weighted-Bevel-before-Subdivision strategy: it has no crease layer, and its sharpness comes from comprehensive bevel weights"
+      ],
+      "limitations": [
+        "The current form is approximate and has not passed post-model human visual review",
+        "The low variants are independent editable cages, not purpose-authored production retopology",
+        "UVs, final materials, exact underside construction, and final production acceptance remain open",
+        "The user's visible open Blender scene contained unsaved changes; only its viewport and saved file were inspected, and it was not modified"
       ]
     }
   }

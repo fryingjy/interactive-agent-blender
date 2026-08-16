@@ -337,6 +337,8 @@ def inspect_region(name, center_ids, rings=2):
         faces_out.append({
             "index": f.index,
             "agent_id": face_index_to_id.get(f.index),
+            "vertex_indices": [v.index for v in f.verts],
+            "vertex_agent_ids": [vert_index_to_id.get(v.index) for v in f.verts],
             "vertex_count": n,
             "area": round(area, 6),
             "normal": [round(c, 5) for c in f.normal],

@@ -33,7 +33,7 @@
     {"id": "G", "name": "human_review", "criteria": ["reference_resemblance", "major_components", "proportions", "negative_spaces", "depth", "surface_read"]}
   ],
   "evidence_required": [
-    "reference_manifest", "reference_board", "modeling_brief", "uncertainty_log",
+    "reference_manifest", "reference_evidence_package", "modeling_brief", "uncertainty_log",
     "planner_strategy_record", "decision_log", "stage_gate_records", "live_component_coverage",
     "controlled_renders", "silhouette_views", "wireframe", "diagnostic_passes_when_useful",
     "fresh_process_verifier", "human_review", "repair_tickets", "final_blend",
@@ -128,10 +128,10 @@
   "active_state": {
     "active_prop_id": 2,
     "active_prop": "Simple Desk Tape Dispenser",
-    "phase": "reference_analysis",
-    "authorization": "REFERENCE_ANALYSIS_REQUIRED",
-    "modeling_authorized": false,
+    "phase": "proportion_silhouette",
+    "authorization": "DIRECT_USER_AUTHORIZATION",
+    "modeling_authorized": true,
     "prior_prop_outcome": "Prop 1 was not approved at primary-blockout review by human reviewer capz. The unapproved target-specific builder, blend, renders, and decision artifacts were removed under the direct user instruction; retained prior reference research is not an accepted modeling result.",
-    "next_action": "collect an evidence-bound multi-view tape-dispenser reference board and request human review before any geometry"
+    "next_action": "use the retained C38 renders for post-model human judgment; classify any rejection before bounded repair or moving to the next prop"
   }
 }

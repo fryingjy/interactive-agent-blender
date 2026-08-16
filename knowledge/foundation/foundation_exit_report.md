@@ -443,6 +443,7 @@ sharp edges. Crown and saddle connected all-quad panels retain live Bevel→SubD
 fail the exact persistent-ID audit. A clean builder run and 11/11 fresh-process checks are retained.
 
 This promotes a narrow `TRANSFER_VALIDATED` completeness skill and supplies controlled arbitrary-
-sign double-curvature SubD interaction. It does not infer sharp intent from references, repair an
-unfamiliar prop, or supply the pending human decision. The foundation therefore remains
-**PARTIAL**.
+sign double-curvature SubD interaction. A later directly authorized C38 run applies explicit sharp
+intent on a real prop, then replaces broad shell/base Bevel with semantic edge creases after human
+feedback. The saved candidate is structurally verified but still approximate and not visually
+accepted. The foundation therefore remains **PARTIAL**.

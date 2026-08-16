@@ -1,0 +1,88 @@
+[
+  {
+    "label": "create_connected_upper_shell_start",
+    "command": "create_primitive",
+    "params": {
+      "name": "C38_UpperShell_HIGH",
+      "primitive_type": "cube",
+      "location": [0.0, 0.0, 1.55],
+      "size": 2.0
+    }
+  },
+  {
+    "label": "establish_persistent_identity",
+    "command": "check_external_edit",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "advance_from_audited_reference_analysis",
+    "command": "set_modeling_stage",
+    "params": {
+      "name": "C38_UpperShell_HIGH",
+      "stage": "PRIMARY_BLOCKOUT",
+      "evidence": {
+        "component_graph_pass": true,
+        "measured_ratio_count": 4,
+        "uncertainty_recorded": true,
+        "reference_set_audit_pass": true,
+        "same_target_identity_pass": true,
+        "view_coverage_pass": true,
+        "critical_property_coverage_pass": true,
+        "conflicts_resolved_pass": true,
+        "question_driven_research_pass": true,
+        "reference_manifest": "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json",
+        "modeling_constraints": [
+          "No invented underside feet, screw pattern, ballast cavity, or concealed hub latch",
+          "Main upper shell begins as one connected box-derived cage",
+          "Hub, tape roll, blade, and weighted base may remain separate only at evidenced assembly boundaries"
+        ]
+      }
+    }
+  },
+  {
+    "label": "scale_to_official_primary_envelope",
+    "transaction": {
+      "name": "C38_UpperShell_HIGH",
+      "action_type": "establish_official_upper_envelope",
+      "operation": "scale_selection",
+      "params": {
+        "factor": [3.2, 1.35, 1.1],
+        "center": [0.0, 0.0, 0.0]
+      }
+    }
+  },
+  {
+    "label": "inspect_envelope_cage",
+    "command": "get_full_state",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "inspect_envelope_evaluated",
+    "command": "get_evaluated_state",
+    "params": {"name": "C38_UpperShell_HIGH"}
+  },
+  {
+    "label": "render_envelope_front",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["C38_UpperShell_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 640,
+      "margin": 1.15
+    }
+  },
+  {
+    "label": "render_envelope_side",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["C38_UpperShell_HIGH"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_side_solid.png",
+      "pass_type": "solid",
+      "view": "side",
+      "resolution": 640,
+      "margin": 1.15
+    }
+  }
+]

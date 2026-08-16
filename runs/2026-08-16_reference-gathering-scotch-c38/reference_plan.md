@@ -4,8 +4,8 @@
 
 Target: current black Scotch C38 Classic Desktop Tape Dispenser, product family 70005291441.
 The exact official listing sets the 6.4 × 2.7 × 2.7 inch overall envelope, replaceable 1-inch hub,
-3/4-inch maximum tape width, weighted non-skid base, and one-handed cutter function. The board is
-machine ready only for a reversible primary blockout; it is not human-authorized for any Blender geometry.
+3/4-inch maximum tape width, weighted non-skid base, and one-handed cutter function. The evidence is
+machine-ready and direct user instruction authorizes modeling without a pre-model approval board.
 
 ## Local source board
 
@@ -33,7 +33,7 @@ are in `media_inventory.json`; its evidence roles and limits are in `reference_m
   of the main outer shell until an exact seam says otherwise.
 - Hidden underside feet, ballast fastening, and hub-retention details are unknown. Do not invent them.
 
-## Planned reversible topology (only after human approval)
+## Planned reversible topology
 
 1. `UpperShell_HIGH`: one box-derived connected cage. Add sparse longitudinal and transverse loops for
    the rear shoulder, rectangular cavity, sloped cheek profiles, front bridge, and front cutter face.

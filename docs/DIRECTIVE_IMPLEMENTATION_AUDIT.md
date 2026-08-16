@@ -14,11 +14,10 @@ complete, section titles still match the directive, evidence paths remain inside
 exist, statuses are recognized, and the overall status cannot say `IMPLEMENTED_VERIFIED` while any
 section remains partial, review-gated, or deferred.
 
-The current machine result is structurally `PASS` with the directive still honestly `PARTIAL`: 6
-sections are `IMPLEMENTED_VERIFIED`, 12 are `PARTIAL`, 1 is `EXTERNAL_REVIEW_REQUIRED`, and 1 is
-`DEFERRED_BY_PRIORITY`. The report is retained at
+The current machine result remains structurally `PASS` with the directive honestly `PARTIAL`. The
+status counts are regenerated from the coverage matrix at publication time. The report is retained at
 `runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json`. This is traceability
-evidence only; it does not promote professional readiness or bypass the Swingline human-review gate.
+evidence only; it does not promote professional readiness or bypass post-model human judgment.
 
 ## Implemented and evidenced
 
@@ -304,8 +303,9 @@ The user-supplied progressive benchmark document is also operationalized as a va
 30-prop ladder with A-G gates, evidence requirements, and an explicit human-review override. It is
 labeled project guidance rather than capability evidence. Swingline received a narrowly authorized
 reversible blockout but the human reviewer rejected it; its target-specific build artifacts were
-removed on direct instruction. The active C38 board remains `EXTERNAL_REVIEW_REQUIRED`; no modeling
-or tier promotion is self-authorized.
+removed on direct instruction. A later direct instruction removed the pre-model approval workflow
+and authorized C38 modeling. The resulting candidate advances technical evidence but does not
+self-authorize tier promotion or claim visual acceptance.
 
 The reference-board review now also has a complete fail-closed return path. Its dedicated schema is
 separate from post-model rejection/repair records, binds each decision to the current audit and
@@ -346,7 +346,7 @@ The accompanying purge audit deleted nothing: 488 pre-change tracked files conta
 duplicate groups, forbidden artifacts, or unclassified root files. Unique dated `.blend`, render,
 transcript, and video fixtures remain retained evidence under the master directive's stability and
 anti-fake-progress rules. This improves runtime hygiene; it does not change `FOUNDATION STATUS:
-PARTIAL` or substitute for the pending human reference-board review.
+PARTIAL` or substitute for post-model visual judgment.
 
 ## 2026-08-15 addendum: retrieval abstention and negative controls
 

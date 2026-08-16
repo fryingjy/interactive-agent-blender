@@ -35,6 +35,19 @@ class TransactionError(Exception):
     pass
 
 
+def _copy_custom_property_value(value):
+    """Convert Blender ID-property containers into assignable Python values."""
+    if hasattr(value, "to_list"):
+        return [_copy_custom_property_value(item) for item in value.to_list()]
+    if hasattr(value, "to_dict"):
+        return {key: _copy_custom_property_value(item) for key, item in value.to_dict().items()}
+    if isinstance(value, dict):
+        return {key: _copy_custom_property_value(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_copy_custom_property_value(item) for item in value]
+    return copy.deepcopy(value)
+
+
 class DecisionTransaction:
     def __init__(self, observed_revision, action_type, target_object=None):
         self.observed_revision = observed_revision
@@ -297,7 +310,7 @@ class DecisionTransaction:
         for key in list(obj.keys()):
             del obj[key]
         for key in snapshot.keys():
-            obj[key] = copy.deepcopy(snapshot[key])
+            obj[key] = _copy_custom_property_value(snapshot[key])
 
         for modifier in list(obj.modifiers):
             obj.modifiers.remove(modifier)

@@ -1,0 +1,510 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\stage_01_envelope_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_01_envelope.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "8e2412074cd8",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_connected_upper_shell_start",
+      "command": "create_primitive",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "primitive_type": "cube",
+        "location": [
+          0.0,
+          0.0,
+          1.55
+        ],
+        "size": 2.0
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_UpperShell_HIGH",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          1.5499999523162842
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "establish_persistent_identity",
+      "command": "check_external_edit",
+      "params": {
+        "name": "C38_UpperShell_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "external_edit_detected": false,
+        "diff": {}
+      }
+    },
+    {
+      "index": 2,
+      "label": "advance_from_audited_reference_analysis",
+      "command": "set_modeling_stage",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "stage": "PRIMARY_BLOCKOUT",
+        "evidence": {
+          "component_graph_pass": true,
+          "measured_ratio_count": 4,
+          "uncertainty_recorded": true,
+          "reference_set_audit_pass": true,
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "reference_manifest": "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json",
+          "modeling_constraints": [
+            "No invented underside feet, screw pattern, ballast cavity, or concealed hub latch",
+            "Main upper shell begins as one connected box-derived cage",
+            "Hub, tape roll, blade, and weighted base may remain separate only at evidenced assembly boundaries"
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_UpperShell_HIGH",
+        "stage": "PRIMARY_BLOCKOUT",
+        "previous_stage": "REFERENCE_ANALYSIS",
+        "is_regression": false,
+        "advanced": true,
+        "gate": {
+          "stage": "REFERENCE_ANALYSIS",
+          "required": [
+            "component_graph_pass",
+            "measured_ratio_count",
+            "uncertainty_recorded",
+            "reference_set_audit_pass",
+            "same_target_identity_pass",
+            "view_coverage_pass",
+            "critical_property_coverage_pass",
+            "conflicts_resolved_pass",
+            "question_driven_research_pass"
+          ],
+          "missing": [],
+          "failures": [],
+          "pass": true
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "scale_to_official_primary_envelope",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "establish_official_upper_envelope",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            3.2,
+            1.35,
+            1.1
+          ],
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1786902587985",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1786902587985",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "establish_official_upper_envelope",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1786902587985",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "inspect_envelope_cage",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_UpperShell_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 1,
+        "mesh_health": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 9
+            },
+            {
+              "index": 1,
+              "agent_id": 10
+            },
+            {
+              "index": 2,
+              "agent_id": 11
+            },
+            {
+              "index": 3,
+              "agent_id": 12
+            },
+            {
+              "index": 4,
+              "agent_id": 13
+            },
+            {
+              "index": 5,
+              "agent_id": 14
+            },
+            {
+              "index": 6,
+              "agent_id": 15
+            },
+            {
+              "index": 7,
+              "agent_id": 16
+            },
+            {
+              "index": 8,
+              "agent_id": 17
+            },
+            {
+              "index": 9,
+              "agent_id": 18
+            },
+            {
+              "index": 10,
+              "agent_id": 19
+            },
+            {
+              "index": 11,
+              "agent_id": 20
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 21
+            },
+            {
+              "index": 1,
+              "agent_id": 22
+            },
+            {
+              "index": 2,
+              "agent_id": 23
+            },
+            {
+              "index": 3,
+              "agent_id": 24
+            },
+            {
+              "index": 4,
+              "agent_id": 25
+            },
+            {
+              "index": 5,
+              "agent_id": 26
+            }
+          ],
+          "selected_vertex_count": 8,
+          "selected_edge_count": 12,
+          "selected_face_count": 6
+        },
+        "persistent_id_coverage": {
+          "verts": 8,
+          "edges": 12,
+          "faces": 6
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "inspect_envelope_evaluated",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "C38_UpperShell_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8
+        },
+        "surface_quality": {
+          "face_count": 6,
+          "min_area": 5.94000006,
+          "max_area": 17.280001,
+          "median_area": 14.080001,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.5708,
+          "angle_samples": 12
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 8,
+          "median_edge_length": 2.70000005,
+          "median_absolute_laplacian": 0.80543933,
+          "laplacian_mad": 0.0,
+          "max_robust_outlier_z": 0.0,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 12,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 70.5288,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            6.4,
+            2.7,
+            2.2
+          ],
+          "evaluated_dimensions": [
+            6.4,
+            2.7,
+            2.2
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              -3.2,
+              -1.35,
+              -1.1
+            ],
+            "max": [
+              3.2,
+              1.35,
+              1.1
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -3.2,
+              -1.35,
+              -1.1
+            ],
+            "max": [
+              3.2,
+              1.35,
+              1.1
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "render_envelope_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -14.572577476501465,
+          1.5499999523162842
+        ],
+        "camera_ortho_scale": 8.379232117405016,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.200156,
+        "foreground_unique_colors_5bit": 10,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "render_envelope_side",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_01_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "camera_location": [
+          14.572577476501465,
+          0.0,
+          1.5499999523162842
+        ],
+        "camera_ortho_scale": 8.379232117405016,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.084492,
+        "foreground_unique_colors_5bit": 10,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_01_envelope.blend"
+  },
+  "pass": true
+}

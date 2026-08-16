@@ -5,9 +5,9 @@
   "matrix_sections": 20,
   "status_counts": {
     "DEFERRED_BY_PRIORITY": 1,
-    "EXTERNAL_REVIEW_REQUIRED": 1,
+    "EXTERNAL_REVIEW_REQUIRED": 0,
     "IMPLEMENTED_VERIFIED": 6,
-    "PARTIAL": 12
+    "PARTIAL": 13
   },
   "errors": [],
   "claim_boundary": "A structurally valid coverage matrix only proves evidence traceability. It does not prove professional modeling autonomy or replace external visual review.",

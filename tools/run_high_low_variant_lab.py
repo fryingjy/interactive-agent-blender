@@ -91,12 +91,56 @@ def main():
     committed_high = object_record("Fixture_HIGH")
     committed_low = object_record("Fixture_LOW")
 
+    setup_source(server, "Fixture_Part_HIGH", "cube", {"size": 0.75})
+    shared_collections = transact(
+        server,
+        "Fixture_Part_HIGH",
+        "package_second_component_into_shared_variant_collections",
+        {
+            "low_object_name": "Fixture_Part_LOW",
+            "high_collection_name": "HIGH_POLY",
+            "low_collection_name": "LOW_POLY",
+            "low_subd_levels": 0,
+            "hide_low": True,
+        },
+    )
+    shared_high = object_record("Fixture_Part_HIGH")
+    shared_low = object_record("Fixture_Part_LOW")
+
+    setup_source(server, "Shared_Rollback_HIGH", "cube", {"size": 0.5})
+    shared_rollback_original = object_record("Shared_Rollback_HIGH")
+    shared_collection_members_before = {
+        "high": sorted(obj.name for obj in bpy.data.collections["HIGH_POLY"].objects),
+        "low": sorted(obj.name for obj in bpy.data.collections["LOW_POLY"].objects),
+    }
+    shared_rollback_meshes_before = set(bpy.data.meshes.keys())
+    shared_rejected = transact(
+        server,
+        "Shared_Rollback_HIGH",
+        "package_into_shared_collections_then_reject",
+        {
+            "low_object_name": "Shared_Rollback_LOW",
+            "high_collection_name": "HIGH_POLY",
+            "low_collection_name": "LOW_POLY",
+            "low_subd_levels": 0,
+            "hide_low": True,
+        },
+        commit=False,
+    )
+    shared_rollback_after = object_record("Shared_Rollback_HIGH")
+    shared_rollback_meshes_after = set(bpy.data.meshes.keys())
+    shared_collection_members_after = {
+        "high": sorted(obj.name for obj in bpy.data.collections["HIGH_POLY"].objects),
+        "low": sorted(obj.name for obj in bpy.data.collections["LOW_POLY"].objects),
+    }
+
     setup_source(
         server,
         "Rollback_HIGH",
         "cylinder",
         {"vertices": 12, "radius": 1.0, "depth": 2.0, "end_fill_type": "NGON"},
     )
+    bpy.data.objects["Rollback_HIGH"]["array_property_control"] = [1, 2, 3]
     rollback_original_collections = sorted(
         collection.name for collection in bpy.data.objects["Rollback_HIGH"].users_collection
     )
@@ -151,6 +195,15 @@ def main():
             and committed_low["collections"] == ["LOW_POLY"]
         ),
         "committed_independent_meshes": committed_high["mesh"] != committed_low["mesh"],
+        "shared_collections_accept_second_component": (
+            shared_high["collections"] == ["HIGH_POLY"]
+            and shared_low["collections"] == ["LOW_POLY"]
+            and shared_collections["perform"]["result"]["collections_reused"] is True
+        ),
+        "shared_rejection_preserves_existing_members": shared_collection_members_after == shared_collection_members_before,
+        "shared_rejection_removes_low_object": "Shared_Rollback_LOW" not in bpy.data.objects,
+        "shared_rejection_restores_source": shared_rollback_after == shared_rollback_original,
+        "shared_rejection_removes_mesh_snapshots": shared_rollback_meshes_after == shared_rollback_meshes_before,
         "committed_equal_base_counts": (
             committed_high["vertices"] == committed_low["vertices"]
             and committed_high["faces"] == committed_low["faces"]
@@ -171,6 +224,7 @@ def main():
         ),
         "rollback_restored_membership": rollback_after["collections"] == rollback_original_collections,
         "rollback_restored_modifiers": [item["type"] for item in rollback_after["modifiers"]] == ["SUBSURF", "SOLIDIFY"],
+        "rollback_restored_array_custom_property": list(bpy.data.objects["Rollback_HIGH"]["array_property_control"]) == [1, 2, 3],
         "rollback_removed_snapshot_meshes": set(bpy.data.meshes.keys()) == meshes_before_rollback,
         "rollback_kept_revision": server.cmd_get_full_state("Rollback_HIGH")["revision"] == revision_before_rollback,
         "collision_failed_before_persistent_change": collision_error is not None and invalid_after == invalid_before,
@@ -183,6 +237,16 @@ def main():
         "committed_transaction": committed,
         "committed_high": committed_high,
         "committed_low": committed_low,
+        "shared_collection_transaction": shared_collections,
+        "shared_high": shared_high,
+        "shared_low": shared_low,
+        "shared_rejected_transaction": shared_rejected,
+        "shared_rollback_original": shared_rollback_original,
+        "shared_rollback_after": shared_rollback_after,
+        "shared_collection_members_before": shared_collection_members_before,
+        "shared_collection_members_after": shared_collection_members_after,
+        "shared_meshes_before": sorted(shared_rollback_meshes_before),
+        "shared_meshes_after": sorted(shared_rollback_meshes_after),
         "rejected_transaction": rejected,
         "rollback_after": rollback_after,
         "collision_error": collision_error,

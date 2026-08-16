@@ -1,0 +1,3484 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\stage_03_profile_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_02_loops.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_03_profile.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "75a850b02f03",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_rear_top",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          2,
+          4
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 1,
+      "label": "lower_rear_top",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_rear_end_profile",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.1
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1786902723743",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1786902723743",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_rear_end_profile",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1786902723743",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "select_rear_shoulders",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          34,
+          47
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 3,
+      "label": "raise_rear_shoulders",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_high_rear_shoulder",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            0.05
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1786902723747",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1786902723747",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_high_rear_shoulder",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1786902723747",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "select_station_minus_1_6",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          35,
+          46
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 5,
+      "label": "begin_forward_slope",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_first_forward_slope",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.1
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1786902723757",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1786902723757",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_first_forward_slope",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1786902723757",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "select_station_minus_0_8",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          36,
+          45
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 7,
+      "label": "continue_forward_slope",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_second_forward_slope",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.4
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1786902723759",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1786902723759",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_second_forward_slope",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1786902723759",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "select_center_top",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          37,
+          44
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 9,
+      "label": "lower_center_top",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_center_tape_path",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.7
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1786902723763",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1786902723763",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_center_tape_path",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1786902723763",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "select_station_plus_0_8",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          38,
+          43
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 11,
+      "label": "lower_front_tape_path",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_front_tape_path",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -1.05
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1786902723765",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1786902723765",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_front_tape_path",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1786902723765",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 12,
+      "label": "select_station_plus_1_6",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          39,
+          42
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 13,
+      "label": "form_low_bridge_station",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_low_tape_bridge",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -1.35
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1786902723770",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1786902723770",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_low_tape_bridge",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1786902723770",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "select_station_plus_2_4",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          40,
+          41
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 15,
+      "label": "raise_front_cutter_support",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_front_cutter_support",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.65
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1786902723775",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1786902723775",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_front_cutter_support",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1786902723775",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "select_front_top",
+      "command": "select_by_ids",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "vertex_ids": [
+          6,
+          8
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "verts": 2,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 17,
+      "label": "shape_front_cutter_face",
+      "command": "transaction",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "action_type": "shape_front_cutter_face",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0,
+            0,
+            -0.55
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_10_1786902723779",
+          "observed_revision": 10
+        },
+        "perform": {
+          "decision_id": "dec_10_1786902723779",
+          "performed": true,
+          "result": 2
+        },
+        "verify": {
+          "action_type": "shape_front_cutter_face",
+          "op_delta": 0,
+          "before": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 36,
+            "edges": 68,
+            "faces": 34,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_10_1786902723779",
+          "result_revision": 11
+        }
+      }
+    },
+    {
+      "index": 18,
+      "label": "inspect_shaped_cage",
+      "command": "inspect_region",
+      "params": {
+        "name": "C38_UpperShell_HIGH",
+        "center_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "rings": 8
+      },
+      "status": "ok",
+      "result": {
+        "center_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "missing_center_ids": [],
+        "rings": 8,
+        "vertex_count": 36,
+        "edge_count": 68,
+        "face_count": 34,
+        "vertices": {
+          "1": {
+            "index": 0,
+            "agent_id": 1,
+            "position": [
+              -3.2,
+              -1.35,
+              -1.1
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              3,
+              2,
+              33
+            ]
+          },
+          "2": {
+            "index": 1,
+            "agent_id": 2,
+            "position": [
+              -3.2,
+              -1.35,
+              1.0
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              4,
+              34
+            ]
+          },
+          "3": {
+            "index": 2,
+            "agent_id": 3,
+            "position": [
+              -3.2,
+              1.35,
+              -1.1
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              4,
+              48
+            ]
+          },
+          "4": {
+            "index": 3,
+            "agent_id": 4,
+            "position": [
+              -3.2,
+              1.35,
+              1.0
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              2,
+              3,
+              47
+            ]
+          },
+          "5": {
+            "index": 4,
+            "agent_id": 5,
+            "position": [
+              3.2,
+              -1.35,
+              -1.1
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              7,
+              6,
+              27
+            ]
+          },
+          "6": {
+            "index": 5,
+            "agent_id": 6,
+            "position": [
+              3.2,
+              -1.35,
+              0.55
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              8,
+              5,
+              40
+            ]
+          },
+          "7": {
+            "index": 6,
+            "agent_id": 7,
+            "position": [
+              3.2,
+              1.35,
+              -1.1
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              54,
+              8,
+              5
+            ]
+          },
+          "8": {
+            "index": 7,
+            "agent_id": 8,
+            "position": [
+              3.2,
+              1.35,
+              0.55
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              7,
+              6,
+              41
+            ]
+          },
+          "27": {
+            "index": 8,
+            "agent_id": 27,
+            "position": [
+              2.4,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              5,
+              28,
+              40,
+              54
+            ]
+          },
+          "28": {
+            "index": 9,
+            "agent_id": 28,
+            "position": [
+              1.6,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              27,
+              29,
+              39,
+              53
+            ]
+          },
+          "29": {
+            "index": 10,
+            "agent_id": 29,
+            "position": [
+              0.8,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              28,
+              30,
+              38,
+              52
+            ]
+          },
+          "30": {
+            "index": 11,
+            "agent_id": 30,
+            "position": [
+              -0.0,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              29,
+              31,
+              37,
+              51
+            ]
+          },
+          "31": {
+            "index": 12,
+            "agent_id": 31,
+            "position": [
+              -0.8,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              30,
+              32,
+              36,
+              50
+            ]
+          },
+          "32": {
+            "index": 13,
+            "agent_id": 32,
+            "position": [
+              -1.6,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              31,
+              33,
+              35,
+              49
+            ]
+          },
+          "33": {
+            "index": 14,
+            "agent_id": 33,
+            "position": [
+              -2.4,
+              -1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              32,
+              34,
+              48
+            ]
+          },
+          "34": {
+            "index": 15,
+            "agent_id": 34,
+            "position": [
+              -2.4,
+              -1.35,
+              1.15
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              2,
+              35,
+              33,
+              47
+            ]
+          },
+          "35": {
+            "index": 16,
+            "agent_id": 35,
+            "position": [
+              -1.6,
+              -1.35,
+              1.0
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              34,
+              36,
+              32,
+              46
+            ]
+          },
+          "36": {
+            "index": 17,
+            "agent_id": 36,
+            "position": [
+              -0.8,
+              -1.35,
+              0.7
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              35,
+              37,
+              31,
+              45
+            ]
+          },
+          "37": {
+            "index": 18,
+            "agent_id": 37,
+            "position": [
+              0.0,
+              -1.35,
+              0.4
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              36,
+              38,
+              30,
+              44
+            ]
+          },
+          "38": {
+            "index": 19,
+            "agent_id": 38,
+            "position": [
+              0.8,
+              -1.35,
+              0.05
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              37,
+              39,
+              29,
+              43
+            ]
+          },
+          "39": {
+            "index": 20,
+            "agent_id": 39,
+            "position": [
+              1.6,
+              -1.35,
+              -0.25
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              38,
+              40,
+              28,
+              42
+            ]
+          },
+          "40": {
+            "index": 21,
+            "agent_id": 40,
+            "position": [
+              2.4,
+              -1.35,
+              0.45
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              6,
+              39,
+              27,
+              41
+            ]
+          },
+          "41": {
+            "index": 22,
+            "agent_id": 41,
+            "position": [
+              2.4,
+              1.35,
+              0.45
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              8,
+              42,
+              40,
+              54
+            ]
+          },
+          "42": {
+            "index": 23,
+            "agent_id": 42,
+            "position": [
+              1.6,
+              1.35,
+              -0.25
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              41,
+              43,
+              39,
+              53
+            ]
+          },
+          "43": {
+            "index": 24,
+            "agent_id": 43,
+            "position": [
+              0.8,
+              1.35,
+              0.05
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              42,
+              44,
+              38,
+              52
+            ]
+          },
+          "44": {
+            "index": 25,
+            "agent_id": 44,
+            "position": [
+              -0.0,
+              1.35,
+              0.4
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              43,
+              45,
+              37,
+              51
+            ]
+          },
+          "45": {
+            "index": 26,
+            "agent_id": 45,
+            "position": [
+              -0.8,
+              1.35,
+              0.7
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              44,
+              46,
+              36,
+              50
+            ]
+          },
+          "46": {
+            "index": 27,
+            "agent_id": 46,
+            "position": [
+              -1.6,
+              1.35,
+              1.0
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              45,
+              47,
+              35,
+              49
+            ]
+          },
+          "47": {
+            "index": 28,
+            "agent_id": 47,
+            "position": [
+              -2.4,
+              1.35,
+              1.15
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              4,
+              46,
+              34,
+              48
+            ]
+          },
+          "48": {
+            "index": 29,
+            "agent_id": 48,
+            "position": [
+              -2.4,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              3,
+              49,
+              47,
+              33
+            ]
+          },
+          "49": {
+            "index": 30,
+            "agent_id": 49,
+            "position": [
+              -1.6,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              48,
+              50,
+              46,
+              32
+            ]
+          },
+          "50": {
+            "index": 31,
+            "agent_id": 50,
+            "position": [
+              -0.8,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              49,
+              51,
+              45,
+              31
+            ]
+          },
+          "51": {
+            "index": 32,
+            "agent_id": 51,
+            "position": [
+              0.0,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              50,
+              52,
+              44,
+              30
+            ]
+          },
+          "52": {
+            "index": 33,
+            "agent_id": 52,
+            "position": [
+              0.8,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              51,
+              53,
+              43,
+              29
+            ]
+          },
+          "53": {
+            "index": 34,
+            "agent_id": 53,
+            "position": [
+              1.6,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              52,
+              54,
+              42,
+              28
+            ]
+          },
+          "54": {
+            "index": 35,
+            "agent_id": 54,
+            "position": [
+              2.4,
+              1.35,
+              -1.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              7,
+              53,
+              41,
+              27
+            ]
+          }
+        },
+        "edges": [
+          {
+            "index": 55,
+            "agent_id": 98,
+            "vertex_indices": [
+              30,
+              27
+            ],
+            "vertex_agent_ids": [
+              49,
+              46
+            ],
+            "length": 2.1,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 4,
+            "agent_id": 13,
+            "vertex_indices": [
+              6,
+              35
+            ],
+            "vertex_agent_ids": [
+              7,
+              54
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 30,
+            "agent_id": 73,
+            "vertex_indices": [
+              25,
+              26
+            ],
+            "vertex_agent_ids": [
+              44,
+              45
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 56,
+            "agent_id": 99,
+            "vertex_indices": [
+              31,
+              26
+            ],
+            "vertex_agent_ids": [
+              50,
+              45
+            ],
+            "length": 1.8,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 5,
+            "agent_id": 14,
+            "vertex_indices": [
+              3,
+              28
+            ],
+            "vertex_agent_ids": [
+              4,
+              47
+            ],
+            "length": 0.81394,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 31,
+            "agent_id": 74,
+            "vertex_indices": [
+              26,
+              27
+            ],
+            "vertex_agent_ids": [
+              45,
+              46
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 57,
+            "agent_id": 100,
+            "vertex_indices": [
+              32,
+              25
+            ],
+            "vertex_agent_ids": [
+              51,
+              44
+            ],
+            "length": 1.5,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 6,
+            "agent_id": 15,
+            "vertex_indices": [
+              7,
+              6
+            ],
+            "vertex_agent_ids": [
+              8,
+              7
+            ],
+            "length": 1.65,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 32,
+            "agent_id": 75,
+            "vertex_indices": [
+              27,
+              28
+            ],
+            "vertex_agent_ids": [
+              46,
+              47
+            ],
+            "length": 0.81394,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 58,
+            "agent_id": 101,
+            "vertex_indices": [
+              33,
+              24
+            ],
+            "vertex_agent_ids": [
+              52,
+              43
+            ],
+            "length": 1.15,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 7,
+            "agent_id": 16,
+            "vertex_indices": [
+              4,
+              6
+            ],
+            "vertex_agent_ids": [
+              5,
+              7
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 33,
+            "agent_id": 76,
+            "vertex_indices": [
+              2,
+              29
+            ],
+            "vertex_agent_ids": [
+              3,
+              48
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 59,
+            "agent_id": 102,
+            "vertex_indices": [
+              34,
+              23
+            ],
+            "vertex_agent_ids": [
+              53,
+              42
+            ],
+            "length": 0.85,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 8,
+            "agent_id": 17,
+            "vertex_indices": [
+              7,
+              5
+            ],
+            "vertex_agent_ids": [
+              8,
+              6
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 1.69515
+          },
+          {
+            "index": 34,
+            "agent_id": 77,
+            "vertex_indices": [
+              29,
+              30
+            ],
+            "vertex_agent_ids": [
+              48,
+              49
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 60,
+            "agent_id": 103,
+            "vertex_indices": [
+              35,
+              22
+            ],
+            "vertex_agent_ids": [
+              54,
+              41
+            ],
+            "length": 1.55,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 9,
+            "agent_id": 18,
+            "vertex_indices": [
+              5,
+              4
+            ],
+            "vertex_agent_ids": [
+              6,
+              5
+            ],
+            "length": 1.65,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 35,
+            "agent_id": 78,
+            "vertex_indices": [
+              30,
+              31
+            ],
+            "vertex_agent_ids": [
+              49,
+              50
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 61,
+            "agent_id": 104,
+            "vertex_indices": [
+              35,
+              8
+            ],
+            "vertex_agent_ids": [
+              54,
+              27
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 10,
+            "agent_id": 19,
+            "vertex_indices": [
+              0,
+              14
+            ],
+            "vertex_agent_ids": [
+              1,
+              33
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 36,
+            "agent_id": 79,
+            "vertex_indices": [
+              31,
+              32
+            ],
+            "vertex_agent_ids": [
+              50,
+              51
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 62,
+            "agent_id": 105,
+            "vertex_indices": [
+              34,
+              9
+            ],
+            "vertex_agent_ids": [
+              53,
+              28
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 11,
+            "agent_id": 20,
+            "vertex_indices": [
+              5,
+              21
+            ],
+            "vertex_agent_ids": [
+              6,
+              40
+            ],
+            "length": 0.80623,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 37,
+            "agent_id": 80,
+            "vertex_indices": [
+              32,
+              33
+            ],
+            "vertex_agent_ids": [
+              51,
+              52
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 63,
+            "agent_id": 106,
+            "vertex_indices": [
+              33,
+              10
+            ],
+            "vertex_agent_ids": [
+              52,
+              29
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 12,
+            "agent_id": 55,
+            "vertex_indices": [
+              4,
+              8
+            ],
+            "vertex_agent_ids": [
+              5,
+              27
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 38,
+            "agent_id": 81,
+            "vertex_indices": [
+              33,
+              34
+            ],
+            "vertex_agent_ids": [
+              52,
+              53
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 64,
+            "agent_id": 107,
+            "vertex_indices": [
+              32,
+              11
+            ],
+            "vertex_agent_ids": [
+              51,
+              30
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 13,
+            "agent_id": 56,
+            "vertex_indices": [
+              8,
+              9
+            ],
+            "vertex_agent_ids": [
+              27,
+              28
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 39,
+            "agent_id": 82,
+            "vertex_indices": [
+              34,
+              35
+            ],
+            "vertex_agent_ids": [
+              53,
+              54
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 65,
+            "agent_id": 108,
+            "vertex_indices": [
+              31,
+              12
+            ],
+            "vertex_agent_ids": [
+              50,
+              31
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 14,
+            "agent_id": 57,
+            "vertex_indices": [
+              9,
+              10
+            ],
+            "vertex_agent_ids": [
+              28,
+              29
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 40,
+            "agent_id": 83,
+            "vertex_indices": [
+              8,
+              21
+            ],
+            "vertex_agent_ids": [
+              27,
+              40
+            ],
+            "length": 1.55,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 66,
+            "agent_id": 109,
+            "vertex_indices": [
+              30,
+              13
+            ],
+            "vertex_agent_ids": [
+              49,
+              32
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 15,
+            "agent_id": 58,
+            "vertex_indices": [
+              10,
+              11
+            ],
+            "vertex_agent_ids": [
+              29,
+              30
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 41,
+            "agent_id": 84,
+            "vertex_indices": [
+              9,
+              20
+            ],
+            "vertex_agent_ids": [
+              28,
+              39
+            ],
+            "length": 0.85,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 67,
+            "agent_id": 110,
+            "vertex_indices": [
+              29,
+              14
+            ],
+            "vertex_agent_ids": [
+              48,
+              33
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 16,
+            "agent_id": 59,
+            "vertex_indices": [
+              11,
+              12
+            ],
+            "vertex_agent_ids": [
+              30,
+              31
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 42,
+            "agent_id": 85,
+            "vertex_indices": [
+              10,
+              19
+            ],
+            "vertex_agent_ids": [
+              29,
+              38
+            ],
+            "length": 1.15,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 17,
+            "agent_id": 60,
+            "vertex_indices": [
+              12,
+              13
+            ],
+            "vertex_agent_ids": [
+              31,
+              32
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 43,
+            "agent_id": 86,
+            "vertex_indices": [
+              11,
+              18
+            ],
+            "vertex_agent_ids": [
+              30,
+              37
+            ],
+            "length": 1.5,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 18,
+            "agent_id": 61,
+            "vertex_indices": [
+              13,
+              14
+            ],
+            "vertex_agent_ids": [
+              32,
+              33
+            ],
+            "length": 0.8,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 44,
+            "agent_id": 87,
+            "vertex_indices": [
+              12,
+              17
+            ],
+            "vertex_agent_ids": [
+              31,
+              36
+            ],
+            "length": 1.8,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 19,
+            "agent_id": 62,
+            "vertex_indices": [
+              1,
+              15
+            ],
+            "vertex_agent_ids": [
+              2,
+              34
+            ],
+            "length": 0.81394,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 45,
+            "agent_id": 88,
+            "vertex_indices": [
+              13,
+              16
+            ],
+            "vertex_agent_ids": [
+              32,
+              35
+            ],
+            "length": 2.1,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 20,
+            "agent_id": 63,
+            "vertex_indices": [
+              15,
+              16
+            ],
+            "vertex_agent_ids": [
+              34,
+              35
+            ],
+            "length": 0.81394,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 46,
+            "agent_id": 89,
+            "vertex_indices": [
+              14,
+              15
+            ],
+            "vertex_agent_ids": [
+              33,
+              34
+            ],
+            "length": 2.25,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 21,
+            "agent_id": 64,
+            "vertex_indices": [
+              16,
+              17
+            ],
+            "vertex_agent_ids": [
+              35,
+              36
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 47,
+            "agent_id": 90,
+            "vertex_indices": [
+              28,
+              15
+            ],
+            "vertex_agent_ids": [
+              47,
+              34
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.3707
+          },
+          {
+            "index": 22,
+            "agent_id": 65,
+            "vertex_indices": [
+              17,
+              18
+            ],
+            "vertex_agent_ids": [
+              36,
+              37
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 48,
+            "agent_id": 91,
+            "vertex_indices": [
+              27,
+              16
+            ],
+            "vertex_agent_ids": [
+              46,
+              35
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.17342
+          },
+          {
+            "index": 23,
+            "agent_id": 66,
+            "vertex_indices": [
+              18,
+              19
+            ],
+            "vertex_agent_ids": [
+              37,
+              38
+            ],
+            "length": 0.87321,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 49,
+            "agent_id": 92,
+            "vertex_indices": [
+              26,
+              17
+            ],
+            "vertex_agent_ids": [
+              45,
+              36
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 24,
+            "agent_id": 67,
+            "vertex_indices": [
+              19,
+              20
+            ],
+            "vertex_agent_ids": [
+              38,
+              39
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 50,
+            "agent_id": 93,
+            "vertex_indices": [
+              25,
+              18
+            ],
+            "vertex_agent_ids": [
+              44,
+              37
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.05364
+          },
+          {
+            "index": 25,
+            "agent_id": 68,
+            "vertex_indices": [
+              20,
+              21
+            ],
+            "vertex_agent_ids": [
+              39,
+              40
+            ],
+            "length": 1.06301,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 51,
+            "agent_id": 94,
+            "vertex_indices": [
+              24,
+              19
+            ],
+            "vertex_agent_ids": [
+              43,
+              38
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.05364
+          },
+          {
+            "index": 0,
+            "agent_id": 9,
+            "vertex_indices": [
+              2,
+              0
+            ],
+            "vertex_agent_ids": [
+              3,
+              1
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 26,
+            "agent_id": 69,
+            "vertex_indices": [
+              7,
+              22
+            ],
+            "vertex_agent_ids": [
+              8,
+              41
+            ],
+            "length": 0.80623,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 52,
+            "agent_id": 95,
+            "vertex_indices": [
+              23,
+              20
+            ],
+            "vertex_agent_ids": [
+              42,
+              39
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 1.0776
+          },
+          {
+            "index": 1,
+            "agent_id": 10,
+            "vertex_indices": [
+              0,
+              1
+            ],
+            "vertex_agent_ids": [
+              1,
+              2
+            ],
+            "length": 2.1,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 27,
+            "agent_id": 70,
+            "vertex_indices": [
+              22,
+              23
+            ],
+            "vertex_agent_ids": [
+              41,
+              42
+            ],
+            "length": 1.06301,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 53,
+            "agent_id": 96,
+            "vertex_indices": [
+              22,
+              21
+            ],
+            "vertex_agent_ids": [
+              41,
+              40
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 0.59448
+          },
+          {
+            "index": 2,
+            "agent_id": 11,
+            "vertex_indices": [
+              1,
+              3
+            ],
+            "vertex_agent_ids": [
+              2,
+              4
+            ],
+            "length": 2.7,
+            "is_boundary": false,
+            "face_angle_radians": 1.38545
+          },
+          {
+            "index": 28,
+            "agent_id": 71,
+            "vertex_indices": [
+              23,
+              24
+            ],
+            "vertex_agent_ids": [
+              42,
+              43
+            ],
+            "length": 0.8544,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 54,
+            "agent_id": 97,
+            "vertex_indices": [
+              29,
+              28
+            ],
+            "vertex_agent_ids": [
+              48,
+              47
+            ],
+            "length": 2.25,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 3,
+            "agent_id": 12,
+            "vertex_indices": [
+              3,
+              2
+            ],
+            "vertex_agent_ids": [
+              4,
+              3
+            ],
+            "length": 2.1,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          },
+          {
+            "index": 29,
+            "agent_id": 72,
+            "vertex_indices": [
+              24,
+              25
+            ],
+            "vertex_agent_ids": [
+              43,
+              44
+            ],
+            "length": 0.87321,
+            "is_boundary": false,
+            "face_angle_radians": 1.5708
+          }
+        ],
+        "faces": [
+          {
+            "index": 4,
+            "agent_id": 25,
+            "vertex_indices": [
+              8,
+              35,
+              6,
+              4
+            ],
+            "vertex_agent_ids": [
+              27,
+              54,
+              7,
+              5
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 5,
+            "agent_id": 26,
+            "vertex_indices": [
+              15,
+              28,
+              3,
+              1
+            ],
+            "vertex_agent_ids": [
+              34,
+              47,
+              4,
+              2
+            ],
+            "vertex_count": 4,
+            "area": 2.197641,
+            "normal": [
+              -0.18429,
+              0.0,
+              0.98287
+            ]
+          },
+          {
+            "index": 6,
+            "agent_id": 111,
+            "vertex_indices": [
+              8,
+              21,
+              20,
+              9
+            ],
+            "vertex_agent_ids": [
+              27,
+              40,
+              39,
+              28
+            ],
+            "vertex_count": 4,
+            "area": 0.96,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 7,
+            "agent_id": 112,
+            "vertex_indices": [
+              9,
+              20,
+              19,
+              10
+            ],
+            "vertex_agent_ids": [
+              28,
+              39,
+              38,
+              29
+            ],
+            "vertex_count": 4,
+            "area": 0.8,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 8,
+            "agent_id": 113,
+            "vertex_indices": [
+              10,
+              19,
+              18,
+              11
+            ],
+            "vertex_agent_ids": [
+              29,
+              38,
+              37,
+              30
+            ],
+            "vertex_count": 4,
+            "area": 1.06,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 9,
+            "agent_id": 114,
+            "vertex_indices": [
+              11,
+              18,
+              17,
+              12
+            ],
+            "vertex_agent_ids": [
+              30,
+              37,
+              36,
+              31
+            ],
+            "vertex_count": 4,
+            "area": 1.32,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 10,
+            "agent_id": 115,
+            "vertex_indices": [
+              12,
+              17,
+              16,
+              13
+            ],
+            "vertex_agent_ids": [
+              31,
+              36,
+              35,
+              32
+            ],
+            "vertex_count": 4,
+            "area": 1.56,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 11,
+            "agent_id": 116,
+            "vertex_indices": [
+              13,
+              16,
+              15,
+              14
+            ],
+            "vertex_agent_ids": [
+              32,
+              35,
+              34,
+              33
+            ],
+            "vertex_count": 4,
+            "area": 1.74,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 12,
+            "agent_id": 117,
+            "vertex_indices": [
+              14,
+              15,
+              1,
+              0
+            ],
+            "vertex_agent_ids": [
+              33,
+              34,
+              2,
+              1
+            ],
+            "vertex_count": 4,
+            "area": 1.74,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 13,
+            "agent_id": 118,
+            "vertex_indices": [
+              16,
+              27,
+              28,
+              15
+            ],
+            "vertex_agent_ids": [
+              35,
+              46,
+              47,
+              34
+            ],
+            "vertex_count": 4,
+            "area": 2.197641,
+            "normal": [
+              0.18429,
+              0.0,
+              0.98287
+            ]
+          },
+          {
+            "index": 14,
+            "agent_id": 119,
+            "vertex_indices": [
+              17,
+              26,
+              27,
+              16
+            ],
+            "vertex_agent_ids": [
+              36,
+              45,
+              46,
+              35
+            ],
+            "vertex_count": 4,
+            "area": 2.306881,
+            "normal": [
+              0.35112,
+              0.0,
+              0.93633
+            ]
+          },
+          {
+            "index": 15,
+            "agent_id": 120,
+            "vertex_indices": [
+              18,
+              25,
+              26,
+              17
+            ],
+            "vertex_agent_ids": [
+              37,
+              44,
+              45,
+              36
+            ],
+            "vertex_count": 4,
+            "area": 2.306881,
+            "normal": [
+              0.35112,
+              0.0,
+              0.93633
+            ]
+          },
+          {
+            "index": 16,
+            "agent_id": 121,
+            "vertex_indices": [
+              19,
+              24,
+              25,
+              18
+            ],
+            "vertex_agent_ids": [
+              38,
+              43,
+              44,
+              37
+            ],
+            "vertex_count": 4,
+            "area": 2.357674,
+            "normal": [
+              0.40082,
+              0.0,
+              0.91616
+            ]
+          },
+          {
+            "index": 17,
+            "agent_id": 122,
+            "vertex_indices": [
+              20,
+              23,
+              24,
+              19
+            ],
+            "vertex_agent_ids": [
+              39,
+              42,
+              43,
+              38
+            ],
+            "vertex_count": 4,
+            "area": 2.306881,
+            "normal": [
+              0.35112,
+              0.0,
+              0.93633
+            ]
+          },
+          {
+            "index": 18,
+            "agent_id": 123,
+            "vertex_indices": [
+              22,
+              23,
+              20,
+              21
+            ],
+            "vertex_agent_ids": [
+              41,
+              42,
+              39,
+              40
+            ],
+            "vertex_count": 4,
+            "area": 2.870139,
+            "normal": [
+              -0.6585,
+              -0.0,
+              0.75258
+            ]
+          },
+          {
+            "index": 19,
+            "agent_id": 124,
+            "vertex_indices": [
+              7,
+              22,
+              21,
+              5
+            ],
+            "vertex_agent_ids": [
+              8,
+              41,
+              40,
+              6
+            ],
+            "vertex_count": 4,
+            "area": 2.176809,
+            "normal": [
+              -0.12403,
+              0.0,
+              0.99228
+            ]
+          },
+          {
+            "index": 20,
+            "agent_id": 125,
+            "vertex_indices": [
+              29,
+              28,
+              27,
+              30
+            ],
+            "vertex_agent_ids": [
+              48,
+              47,
+              46,
+              49
+            ],
+            "vertex_count": 4,
+            "area": 1.74,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 21,
+            "agent_id": 126,
+            "vertex_indices": [
+              30,
+              27,
+              26,
+              31
+            ],
+            "vertex_agent_ids": [
+              49,
+              46,
+              45,
+              50
+            ],
+            "vertex_count": 4,
+            "area": 1.56,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 22,
+            "agent_id": 127,
+            "vertex_indices": [
+              31,
+              26,
+              25,
+              32
+            ],
+            "vertex_agent_ids": [
+              50,
+              45,
+              44,
+              51
+            ],
+            "vertex_count": 4,
+            "area": 1.32,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 23,
+            "agent_id": 128,
+            "vertex_indices": [
+              32,
+              25,
+              24,
+              33
+            ],
+            "vertex_agent_ids": [
+              51,
+              44,
+              43,
+              52
+            ],
+            "vertex_count": 4,
+            "area": 1.06,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 24,
+            "agent_id": 129,
+            "vertex_indices": [
+              33,
+              24,
+              23,
+              34
+            ],
+            "vertex_agent_ids": [
+              52,
+              43,
+              42,
+              53
+            ],
+            "vertex_count": 4,
+            "area": 0.8,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 25,
+            "agent_id": 130,
+            "vertex_indices": [
+              34,
+              23,
+              22,
+              35
+            ],
+            "vertex_agent_ids": [
+              53,
+              42,
+              41,
+              54
+            ],
+            "vertex_count": 4,
+            "area": 0.96,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 26,
+            "agent_id": 131,
+            "vertex_indices": [
+              35,
+              22,
+              7,
+              6
+            ],
+            "vertex_agent_ids": [
+              54,
+              41,
+              8,
+              7
+            ],
+            "vertex_count": 4,
+            "area": 1.28,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 27,
+            "agent_id": 132,
+            "vertex_indices": [
+              9,
+              34,
+              35,
+              8
+            ],
+            "vertex_agent_ids": [
+              28,
+              53,
+              54,
+              27
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 28,
+            "agent_id": 133,
+            "vertex_indices": [
+              10,
+              33,
+              34,
+              9
+            ],
+            "vertex_agent_ids": [
+              29,
+              52,
+              53,
+              28
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 29,
+            "agent_id": 134,
+            "vertex_indices": [
+              11,
+              32,
+              33,
+              10
+            ],
+            "vertex_agent_ids": [
+              30,
+              51,
+              52,
+              29
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 30,
+            "agent_id": 135,
+            "vertex_indices": [
+              12,
+              31,
+              32,
+              11
+            ],
+            "vertex_agent_ids": [
+              31,
+              50,
+              51,
+              30
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 31,
+            "agent_id": 136,
+            "vertex_indices": [
+              13,
+              30,
+              31,
+              12
+            ],
+            "vertex_agent_ids": [
+              32,
+              49,
+              50,
+              31
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              -0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 32,
+            "agent_id": 137,
+            "vertex_indices": [
+              29,
+              30,
+              13,
+              14
+            ],
+            "vertex_agent_ids": [
+              48,
+              49,
+              32,
+              33
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 33,
+            "agent_id": 138,
+            "vertex_indices": [
+              2,
+              29,
+              14,
+              0
+            ],
+            "vertex_agent_ids": [
+              3,
+              48,
+              33,
+              1
+            ],
+            "vertex_count": 4,
+            "area": 2.16,
+            "normal": [
+              0.0,
+              0.0,
+              -1.0
+            ]
+          },
+          {
+            "index": 0,
+            "agent_id": 21,
+            "vertex_indices": [
+              0,
+              1,
+              3,
+              2
+            ],
+            "vertex_agent_ids": [
+              1,
+              2,
+              4,
+              3
+            ],
+            "vertex_count": 4,
+            "area": 5.67,
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "index": 1,
+            "agent_id": 22,
+            "vertex_indices": [
+              2,
+              3,
+              28,
+              29
+            ],
+            "vertex_agent_ids": [
+              3,
+              4,
+              47,
+              48
+            ],
+            "vertex_count": 4,
+            "area": 1.74,
+            "normal": [
+              0.0,
+              1.0,
+              0.0
+            ]
+          },
+          {
+            "index": 2,
+            "agent_id": 23,
+            "vertex_indices": [
+              6,
+              7,
+              5,
+              4
+            ],
+            "vertex_agent_ids": [
+              7,
+              8,
+              6,
+              5
+            ],
+            "vertex_count": 4,
+            "area": 4.455,
+            "normal": [
+              1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "index": 3,
+            "agent_id": 24,
+            "vertex_indices": [
+              4,
+              5,
+              21,
+              8
+            ],
+            "vertex_agent_ids": [
+              5,
+              6,
+              40,
+              27
+            ],
+            "vertex_count": 4,
+            "area": 1.28,
+            "normal": [
+              0.0,
+              -1.0,
+              0.0
+            ]
+          }
+        ],
+        "poles": [
+          {
+            "agent_id": 1,
+            "index": 0,
+            "valence": 3,
+            "position": [
+              -3.2,
+              -1.35,
+              -1.1
+            ]
+          },
+          {
+            "agent_id": 2,
+            "index": 1,
+            "valence": 3,
+            "position": [
+              -3.2,
+              -1.35,
+              1.0
+            ]
+          },
+          {
+            "agent_id": 3,
+            "index": 2,
+            "valence": 3,
+            "position": [
+              -3.2,
+              1.35,
+              -1.1
+            ]
+          },
+          {
+            "agent_id": 4,
+            "index": 3,
+            "valence": 3,
+            "position": [
+              -3.2,
+              1.35,
+              1.0
+            ]
+          },
+          {
+            "agent_id": 5,
+            "index": 4,
+            "valence": 3,
+            "position": [
+              3.2,
+              -1.35,
+              -1.1
+            ]
+          },
+          {
+            "agent_id": 6,
+            "index": 5,
+            "valence": 3,
+            "position": [
+              3.2,
+              -1.35,
+              0.55
+            ]
+          },
+          {
+            "agent_id": 7,
+            "index": 6,
+            "valence": 3,
+            "position": [
+              3.2,
+              1.35,
+              -1.1
+            ]
+          },
+          {
+            "agent_id": 8,
+            "index": 7,
+            "valence": 3,
+            "position": [
+              3.2,
+              1.35,
+              0.55
+            ]
+          }
+        ],
+        "local_face_composition": {
+          "tri": 0,
+          "quad": 34,
+          "ngon": 0
+        },
+        "edge_length_ratio": 3.375,
+        "face_area_ratio": 7.087,
+        "connected_components": 1
+      }
+    },
+    {
+      "index": 19,
+      "label": "render_shaped_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -14.603082656860352,
+          1.5749998092651367
+        ],
+        "camera_ortho_scale": 8.396772336101533,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.14873,
+        "foreground_unique_colors_5bit": 10,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 20,
+      "label": "render_shaped_front_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -14.603082656860352,
+          1.5749998092651367
+        ],
+        "camera_ortho_scale": 8.396772336101533,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.010054,
+        "foreground_unique_colors_5bit": 2,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 21,
+      "label": "render_shaped_side",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH"
+        ],
+        "camera_location": [
+          14.603082656860352,
+          0.0,
+          1.5749998092651367
+        ],
+        "camera_ortho_scale": 8.396772336101533,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.086497,
+        "foreground_unique_colors_5bit": 22,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_03_profile.blend"
+  },
+  "pass": true
+}

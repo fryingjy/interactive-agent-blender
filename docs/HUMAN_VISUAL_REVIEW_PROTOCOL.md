@@ -51,8 +51,7 @@ human rejection
 ```
 
 This protocol validates the *shape and freshness* of external feedback. It does not manufacture a
-human review, certify a model, or authorize work currently held behind a separate reference-review
-gate.
+human review or certify a model.
 
 ## Retaining a review handoff
 
@@ -67,28 +66,11 @@ The command fails on an agent review, malformed review, or a stale scene revisio
 artifact records an `INSPECT_BEFORE_REPAIR` disposition for a rejection; it does not assert that
 any subsequent Blender edit was correct.
 
-## Reference-board authorization is a separate gate
+## Pre-model review is optional
 
-A reference board is reviewed before geometry exists, so it cannot use the post-model repair
-schema above. `knowledge_engine.reference_board_review` keeps this authority separate and binds a
-human decision to the exact machine audit and construction plan by SHA-256. It requires a human
-reviewer identifier, a timezone-aware timestamp, one of the two declared decisions, and an
-authorization boolean consistent with that decision. A changed audit or plan makes the gate stale.
-
-Validate the pending contract without authorizing anything:
-
-```powershell
-python tools/verify_reference_board_gate.py runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json --audit runs/2026-08-16_reference-gathering-swingline-747/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md
-```
-
-After a human downloads or copies a decision from `docs/field-report/swingline-747-review.html`,
-record it with:
-
-```powershell
-python tools/record_reference_board_review.py REVIEW.json runs/2026-08-16_reference-gathering-swingline-747/human_reference_board_decision.json --gate runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json --audit runs/2026-08-16_reference-gathering-swingline-747/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md
-```
-
-An approval authorizes only `REVERSIBLE_PRIMARY_BLOCKOUT_ONLY`. A correction keeps modeling locked
-and routes back to reference research or construction planning. The immutable gate remains pending;
-the separate decision artifact records the outcome without rewriting history. Reviewer identity is
-an explicit human claim, not cryptographic identity proof.
+Reference manifests and construction plans remain useful evidence, but the active workflow does
+not require an HTML board or approval request before modeling. Direct user instruction may
+authorize reversible modeling immediately. Human authority is then applied to concrete model
+renders through the rejection/repair protocol above. The historical SHA-bound reference-gate tools
+remain as tested utilities; they are not the default benchmark workflow and must not block work
+unless the user explicitly requests that gate.

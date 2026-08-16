@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "record_type": "EDITABLE_PROP_VARIANT_VERIFICATION",
+  "verification": "fresh_process_saved_blend_inspection",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\scotch_c38_editable_candidate.blend",
+  "contract": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\verification_contract.json",
+  "objects": {
+    "upper_shell": {
+      "high": "C38_UpperShell_HIGH",
+      "low": "C38_UpperShell_LOW",
+      "high_collections": [
+        "HIGH_POLY"
+      ],
+      "low_collections": [
+        "LOW_POLY"
+      ],
+      "low_visibility": {
+        "hide_render": true,
+        "hide_viewport": false,
+        "hidden_in_view_layer": true
+      },
+      "topology": {
+        "vertices": 60,
+        "edges": 116,
+        "faces": 58,
+        "triangles": 0,
+        "quads": 58,
+        "ngons": 0,
+        "loose_edges": 0,
+        "non_manifold_edges": 0,
+        "connected_components": 1
+      },
+      "creases": {
+        "attributes": [
+          {
+            "name": "crease_edge",
+            "count_above_zero": 71,
+            "count_at_or_above_0_8": 71,
+            "maximum": 0.8199999928474426
+          }
+        ]
+      },
+      "high_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": false,
+          "show_render": false,
+          "levels": null,
+          "render_levels": null
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 1,
+          "render_levels": 1
+        }
+      ],
+      "low_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": false,
+          "show_render": false,
+          "levels": null,
+          "render_levels": null
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 0,
+          "render_levels": 0
+        }
+      ]
+    },
+    "weighted_base": {
+      "high": "C38_WeightedBase_HIGH",
+      "low": "C38_WeightedBase_LOW",
+      "high_collections": [
+        "HIGH_POLY"
+      ],
+      "low_collections": [
+        "LOW_POLY"
+      ],
+      "low_visibility": {
+        "hide_render": true,
+        "hide_viewport": false,
+        "hidden_in_view_layer": true
+      },
+      "topology": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "loose_edges": 0,
+        "non_manifold_edges": 0,
+        "connected_components": 1
+      },
+      "creases": {
+        "attributes": [
+          {
+            "name": "crease_edge",
+            "count_above_zero": 12,
+            "count_at_or_above_0_8": 12,
+            "maximum": 0.8199999928474426
+          }
+        ]
+      },
+      "high_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": false,
+          "show_render": false,
+          "levels": null,
+          "render_levels": null
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 1,
+          "render_levels": 2
+        }
+      ],
+      "low_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": false,
+          "show_render": false,
+          "levels": null,
+          "render_levels": null
+        },
+        {
+          "name": "Subdivision",
+          "type": "SUBSURF",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": 0,
+          "render_levels": 0
+        }
+      ]
+    },
+    "tape_roll": {
+      "high": "C38_TapeRoll_HIGH",
+      "low": "C38_TapeRoll_LOW",
+      "high_collections": [
+        "HIGH_POLY"
+      ],
+      "low_collections": [
+        "LOW_POLY"
+      ],
+      "low_visibility": {
+        "hide_render": true,
+        "hide_viewport": false,
+        "hidden_in_view_layer": true
+      },
+      "topology": {
+        "vertices": 32,
+        "edges": 48,
+        "faces": 18,
+        "triangles": 0,
+        "quads": 16,
+        "ngons": 2,
+        "loose_edges": 0,
+        "non_manifold_edges": 0,
+        "connected_components": 1
+      },
+      "creases": {
+        "attributes": []
+      },
+      "high_modifiers": [],
+      "low_modifiers": []
+    },
+    "removable_hub": {
+      "high": "C38_RemovableHub_HIGH",
+      "low": "C38_RemovableHub_LOW",
+      "high_collections": [
+        "HIGH_POLY"
+      ],
+      "low_collections": [
+        "LOW_POLY"
+      ],
+      "low_visibility": {
+        "hide_render": true,
+        "hide_viewport": false,
+        "hidden_in_view_layer": true
+      },
+      "topology": {
+        "vertices": 32,
+        "edges": 48,
+        "faces": 18,
+        "triangles": 0,
+        "quads": 16,
+        "ngons": 2,
+        "loose_edges": 0,
+        "non_manifold_edges": 0,
+        "connected_components": 1
+      },
+      "creases": {
+        "attributes": []
+      },
+      "high_modifiers": [],
+      "low_modifiers": []
+    },
+    "cutter_blade": {
+      "high": "C38_CutterBlade_HIGH",
+      "low": "C38_CutterBlade_LOW",
+      "high_collections": [
+        "HIGH_POLY"
+      ],
+      "low_collections": [
+        "LOW_POLY"
+      ],
+      "low_visibility": {
+        "hide_render": true,
+        "hide_viewport": false,
+        "hidden_in_view_layer": true
+      },
+      "topology": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "triangles": 0,
+        "quads": 6,
+        "ngons": 0,
+        "loose_edges": 0,
+        "non_manifold_edges": 0,
+        "connected_components": 1
+      },
+      "creases": {
+        "attributes": []
+      },
+      "high_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null
+        }
+      ],
+      "low_modifiers": [
+        {
+          "name": "Semantic_Bevel",
+          "type": "BEVEL",
+          "show_viewport": true,
+          "show_render": true,
+          "levels": null,
+          "render_levels": null
+        }
+      ]
+    }
+  },
+  "checks": {
+    "upper_shell:objects_present": true,
+    "upper_shell:mesh_objects": true,
+    "upper_shell:collection_separation": true,
+    "upper_shell:independent_mesh_data": true,
+    "upper_shell:same_editable_cage_counts": true,
+    "upper_shell:live_subdivision_both": true,
+    "upper_shell:low_subdivision_zero": true,
+    "upper_shell:broad_bevel_disabled": true,
+    "upper_shell:single_connected_cage": true,
+    "upper_shell:all_quad_cage": true,
+    "upper_shell:no_loose_or_nonmanifold_edges": true,
+    "upper_shell:semantic_creases_present": true,
+    "weighted_base:objects_present": true,
+    "weighted_base:mesh_objects": true,
+    "weighted_base:collection_separation": true,
+    "weighted_base:independent_mesh_data": true,
+    "weighted_base:same_editable_cage_counts": true,
+    "weighted_base:live_subdivision_both": true,
+    "weighted_base:low_subdivision_zero": true,
+    "weighted_base:broad_bevel_disabled": true,
+    "weighted_base:semantic_creases_present": true,
+    "tape_roll:objects_present": true,
+    "tape_roll:mesh_objects": true,
+    "tape_roll:collection_separation": true,
+    "tape_roll:independent_mesh_data": true,
+    "tape_roll:same_editable_cage_counts": true,
+    "removable_hub:objects_present": true,
+    "removable_hub:mesh_objects": true,
+    "removable_hub:collection_separation": true,
+    "removable_hub:independent_mesh_data": true,
+    "removable_hub:same_editable_cage_counts": true,
+    "cutter_blade:objects_present": true,
+    "cutter_blade:mesh_objects": true,
+    "cutter_blade:collection_separation": true,
+    "cutter_blade:independent_mesh_data": true,
+    "cutter_blade:same_editable_cage_counts": true,
+    "cutter_blade:bevel_live_unapplied": true
+  },
+  "pass": true,
+  "boundary": "This verifies saved editable structure and declared modifier policy. It does not claim final likeness, production retopology, UV, materials, or human acceptance."
+}

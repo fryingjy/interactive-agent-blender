@@ -28,12 +28,13 @@ Current evidence includes:
 - rollback-owned high/low variant packaging with separate collections, independent editable cages,
   and unapplied modifier stacks, including controlled rejection and real Nailsea runtime use;
 - question-driven reference research that records exact searches, accepted and rejected candidates,
-  reversible uncertainty constraints, retrieval provenance, and strict pre-modeling stage gates;
+  reversible uncertainty constraints, retrieval provenance, and strict modeling-stage gates;
 - secondary-view component-strategy evidence that makes front-only ambiguity trigger research and
   uses measured top-view depth to choose continuous versus separate construction across two shapes.
-- a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve human review.
-  The first Swingline blockout was rejected by human review and its target-specific build artifacts
-  were removed; the active C38 tape-dispenser board is pending human review and cannot self-authorize.
+- a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve post-model
+  human review. The first Swingline blockout was rejected and purged; the directly authorized C38
+  now has a connected all-quad upper cage, crease-controlled live SubD, separate editable high/low
+  collections, controlled renders, and fresh saved-file verification. Visual acceptance remains open.
 - a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
   rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs;
   controlled nonplanar/SubD transfer now adds an opt-in all-quad preflight that rejects a curved
@@ -115,7 +116,7 @@ Run the fast regression suite from the repository root:
 python -m pytest -q
 python tools/audit_repository.py
 python tools/audit_directive_coverage.py --output runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json
-python tools/verify_reference_board_gate.py runs/2026-08-16_reference-gathering-scotch-c38/human_review_gate.json --audit runs/2026-08-16_reference-gathering-scotch-c38/audit_report.json --reference-plan runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md
+python tools/verify_reference_set_gate.py runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json --output runs/2026-08-16_reference-gathering-scotch-c38/audit_report.json
 ```
 
 The directive audit must pass structurally while still reporting `directive_status: PARTIAL` whenever

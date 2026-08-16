@@ -1,0 +1,1997 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\stage_05_components_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_04_cavity.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_05_components.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "08cc2840183b",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_weighted_base",
+      "command": "create_primitive",
+      "params": {
+        "name": "C38_WeightedBase_HIGH",
+        "primitive_type": "cube",
+        "location": [
+          0,
+          0,
+          0.25
+        ],
+        "size": 2.0
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_WeightedBase_HIGH",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          0.25
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "base_identity",
+      "command": "check_external_edit",
+      "params": {
+        "name": "C38_WeightedBase_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "external_edit_detected": false,
+        "diff": {}
+      }
+    },
+    {
+      "index": 2,
+      "label": "scale_weighted_base",
+      "command": "transaction",
+      "params": {
+        "name": "C38_WeightedBase_HIGH",
+        "action_type": "establish_separate_weighted_base",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            3.25,
+            1.38,
+            0.25
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_13_1786902847884",
+          "observed_revision": 13
+        },
+        "perform": {
+          "decision_id": "dec_13_1786902847884",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "establish_separate_weighted_base",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_13_1786902847884",
+          "result_revision": 14
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "create_tape_roll",
+      "command": "create_primitive",
+      "params": {
+        "name": "C38_TapeRoll_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          -0.65,
+          0,
+          1.55
+        ],
+        "vertices": 16,
+        "radius": 0.78,
+        "depth": 1.1,
+        "end_fill_type": "NGON",
+        "calc_uvs": false
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_TapeRoll_HIGH",
+        "type": "MESH",
+        "location": [
+          -0.6499999761581421,
+          0.0,
+          1.5499999523162842
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "label": "tape_identity",
+      "command": "check_external_edit",
+      "params": {
+        "name": "C38_TapeRoll_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "external_edit_detected": false,
+        "diff": {}
+      }
+    },
+    {
+      "index": 5,
+      "label": "orient_tape_roll",
+      "command": "transaction",
+      "params": {
+        "name": "C38_TapeRoll_HIGH",
+        "action_type": "orient_tape_roll_across_cavity",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.57079632679,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_14_1786902847891",
+          "observed_revision": 14
+        },
+        "perform": {
+          "decision_id": "dec_14_1786902847891",
+          "performed": true,
+          "result": 32
+        },
+        "verify": {
+          "action_type": "orient_tape_roll_across_cavity",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_14_1786902847891",
+          "result_revision": 15
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "create_removable_hub",
+      "command": "create_primitive",
+      "params": {
+        "name": "C38_RemovableHub_HIGH",
+        "primitive_type": "cylinder",
+        "location": [
+          -0.65,
+          0,
+          1.55
+        ],
+        "vertices": 16,
+        "radius": 0.27,
+        "depth": 2.2,
+        "end_fill_type": "NGON",
+        "calc_uvs": false
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_RemovableHub_HIGH",
+        "type": "MESH",
+        "location": [
+          -0.6499999761581421,
+          0.0,
+          1.5499999523162842
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "label": "hub_identity",
+      "command": "check_external_edit",
+      "params": {
+        "name": "C38_RemovableHub_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "external_edit_detected": false,
+        "diff": {}
+      }
+    },
+    {
+      "index": 8,
+      "label": "orient_removable_hub",
+      "command": "transaction",
+      "params": {
+        "name": "C38_RemovableHub_HIGH",
+        "action_type": "orient_removable_hub_across_cavity",
+        "operation": "rotate_selection",
+        "params": {
+          "angle": 1.57079632679,
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_15_1786902847897",
+          "observed_revision": 15
+        },
+        "perform": {
+          "decision_id": "dec_15_1786902847897",
+          "performed": true,
+          "result": 32
+        },
+        "verify": {
+          "action_type": "orient_removable_hub_across_cavity",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_15_1786902847897",
+          "result_revision": 16
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "create_cutter_blade",
+      "command": "create_primitive",
+      "params": {
+        "name": "C38_CutterBlade_HIGH",
+        "primitive_type": "cube",
+        "location": [
+          2.88,
+          0,
+          2.08
+        ],
+        "size": 2.0
+      },
+      "status": "ok",
+      "result": {
+        "name": "C38_CutterBlade_HIGH",
+        "type": "MESH",
+        "location": [
+          2.880000114440918,
+          0.0,
+          2.0799999237060547
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "label": "blade_identity",
+      "command": "check_external_edit",
+      "params": {
+        "name": "C38_CutterBlade_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "external_edit_detected": false,
+        "diff": {}
+      }
+    },
+    {
+      "index": 11,
+      "label": "scale_cutter_blade",
+      "command": "transaction",
+      "params": {
+        "name": "C38_CutterBlade_HIGH",
+        "action_type": "establish_separate_metal_cutter_blade",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            0.16,
+            1.22,
+            0.055
+          ],
+          "center": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_16_1786902847900",
+          "observed_revision": 16
+        },
+        "perform": {
+          "decision_id": "dec_16_1786902847900",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "establish_separate_metal_cutter_blade",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_16_1786902847900",
+          "result_revision": 17
+        }
+      }
+    },
+    {
+      "index": 12,
+      "label": "inspect_upper_shell",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_UpperShell_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 17,
+        "mesh_health": {
+          "vertices": 60,
+          "edges": 116,
+          "faces": 58,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 12,
+          "4": 44,
+          "5": 4
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 48,
+              "agent_id": 187
+            },
+            {
+              "index": 49,
+              "agent_id": 188
+            },
+            {
+              "index": 50,
+              "agent_id": 189
+            },
+            {
+              "index": 51,
+              "agent_id": 190
+            },
+            {
+              "index": 52,
+              "agent_id": 191
+            },
+            {
+              "index": 53,
+              "agent_id": 192
+            },
+            {
+              "index": 54,
+              "agent_id": 193
+            },
+            {
+              "index": 55,
+              "agent_id": 194
+            },
+            {
+              "index": 56,
+              "agent_id": 195
+            },
+            {
+              "index": 57,
+              "agent_id": 196
+            },
+            {
+              "index": 58,
+              "agent_id": 197
+            },
+            {
+              "index": 59,
+              "agent_id": 198
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 88,
+              "agent_id": 199
+            },
+            {
+              "index": 89,
+              "agent_id": 200
+            },
+            {
+              "index": 90,
+              "agent_id": 201
+            },
+            {
+              "index": 91,
+              "agent_id": 202
+            },
+            {
+              "index": 92,
+              "agent_id": 203
+            },
+            {
+              "index": 93,
+              "agent_id": 204
+            },
+            {
+              "index": 94,
+              "agent_id": 205
+            },
+            {
+              "index": 95,
+              "agent_id": 206
+            },
+            {
+              "index": 96,
+              "agent_id": 207
+            },
+            {
+              "index": 97,
+              "agent_id": 208
+            },
+            {
+              "index": 98,
+              "agent_id": 209
+            },
+            {
+              "index": 99,
+              "agent_id": 210
+            },
+            {
+              "index": 100,
+              "agent_id": 211
+            },
+            {
+              "index": 101,
+              "agent_id": 212
+            },
+            {
+              "index": 102,
+              "agent_id": 213
+            },
+            {
+              "index": 103,
+              "agent_id": 214
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 41,
+              "agent_id": 227
+            },
+            {
+              "index": 42,
+              "agent_id": 228
+            },
+            {
+              "index": 43,
+              "agent_id": 229
+            },
+            {
+              "index": 44,
+              "agent_id": 230
+            },
+            {
+              "index": 45,
+              "agent_id": 231
+            }
+          ],
+          "selected_vertex_count": 12,
+          "selected_edge_count": 16,
+          "selected_face_count": 5
+        },
+        "persistent_id_coverage": {
+          "verts": 60,
+          "edges": 116,
+          "faces": 58
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "inspect_weighted_base",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_WeightedBase_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 17,
+        "mesh_health": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 9
+            },
+            {
+              "index": 1,
+              "agent_id": 10
+            },
+            {
+              "index": 2,
+              "agent_id": 11
+            },
+            {
+              "index": 3,
+              "agent_id": 12
+            },
+            {
+              "index": 4,
+              "agent_id": 13
+            },
+            {
+              "index": 5,
+              "agent_id": 14
+            },
+            {
+              "index": 6,
+              "agent_id": 15
+            },
+            {
+              "index": 7,
+              "agent_id": 16
+            },
+            {
+              "index": 8,
+              "agent_id": 17
+            },
+            {
+              "index": 9,
+              "agent_id": 18
+            },
+            {
+              "index": 10,
+              "agent_id": 19
+            },
+            {
+              "index": 11,
+              "agent_id": 20
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 21
+            },
+            {
+              "index": 1,
+              "agent_id": 22
+            },
+            {
+              "index": 2,
+              "agent_id": 23
+            },
+            {
+              "index": 3,
+              "agent_id": 24
+            },
+            {
+              "index": 4,
+              "agent_id": 25
+            },
+            {
+              "index": 5,
+              "agent_id": 26
+            }
+          ],
+          "selected_vertex_count": 8,
+          "selected_edge_count": 12,
+          "selected_face_count": 6
+        },
+        "persistent_id_coverage": {
+          "verts": 8,
+          "edges": 12,
+          "faces": 6
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "inspect_tape_roll",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_TapeRoll_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 17,
+        "mesh_health": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18,
+          "non_manifold_edges": 0,
+          "ngons": 2,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 32
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            },
+            {
+              "index": 30,
+              "agent_id": 31
+            },
+            {
+              "index": 31,
+              "agent_id": 32
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 33
+            },
+            {
+              "index": 1,
+              "agent_id": 34
+            },
+            {
+              "index": 2,
+              "agent_id": 35
+            },
+            {
+              "index": 3,
+              "agent_id": 36
+            },
+            {
+              "index": 4,
+              "agent_id": 37
+            },
+            {
+              "index": 5,
+              "agent_id": 38
+            },
+            {
+              "index": 6,
+              "agent_id": 39
+            },
+            {
+              "index": 7,
+              "agent_id": 40
+            },
+            {
+              "index": 8,
+              "agent_id": 41
+            },
+            {
+              "index": 9,
+              "agent_id": 42
+            },
+            {
+              "index": 10,
+              "agent_id": 43
+            },
+            {
+              "index": 11,
+              "agent_id": 44
+            },
+            {
+              "index": 12,
+              "agent_id": 45
+            },
+            {
+              "index": 13,
+              "agent_id": 46
+            },
+            {
+              "index": 14,
+              "agent_id": 47
+            },
+            {
+              "index": 15,
+              "agent_id": 48
+            },
+            {
+              "index": 16,
+              "agent_id": 49
+            },
+            {
+              "index": 17,
+              "agent_id": 50
+            },
+            {
+              "index": 18,
+              "agent_id": 51
+            },
+            {
+              "index": 19,
+              "agent_id": 52
+            },
+            {
+              "index": 20,
+              "agent_id": 53
+            },
+            {
+              "index": 21,
+              "agent_id": 54
+            },
+            {
+              "index": 22,
+              "agent_id": 55
+            },
+            {
+              "index": 23,
+              "agent_id": 56
+            },
+            {
+              "index": 24,
+              "agent_id": 57
+            },
+            {
+              "index": 25,
+              "agent_id": 58
+            },
+            {
+              "index": 26,
+              "agent_id": 59
+            },
+            {
+              "index": 27,
+              "agent_id": 60
+            },
+            {
+              "index": 28,
+              "agent_id": 61
+            },
+            {
+              "index": 29,
+              "agent_id": 62
+            },
+            {
+              "index": 30,
+              "agent_id": 63
+            },
+            {
+              "index": 31,
+              "agent_id": 64
+            },
+            {
+              "index": 32,
+              "agent_id": 65
+            },
+            {
+              "index": 33,
+              "agent_id": 66
+            },
+            {
+              "index": 34,
+              "agent_id": 67
+            },
+            {
+              "index": 35,
+              "agent_id": 68
+            },
+            {
+              "index": 36,
+              "agent_id": 69
+            },
+            {
+              "index": 37,
+              "agent_id": 70
+            },
+            {
+              "index": 38,
+              "agent_id": 71
+            },
+            {
+              "index": 39,
+              "agent_id": 72
+            },
+            {
+              "index": 40,
+              "agent_id": 73
+            },
+            {
+              "index": 41,
+              "agent_id": 74
+            },
+            {
+              "index": 42,
+              "agent_id": 75
+            },
+            {
+              "index": 43,
+              "agent_id": 76
+            },
+            {
+              "index": 44,
+              "agent_id": 77
+            },
+            {
+              "index": 45,
+              "agent_id": 78
+            },
+            {
+              "index": 46,
+              "agent_id": 79
+            },
+            {
+              "index": 47,
+              "agent_id": 80
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 81
+            },
+            {
+              "index": 1,
+              "agent_id": 82
+            },
+            {
+              "index": 2,
+              "agent_id": 83
+            },
+            {
+              "index": 3,
+              "agent_id": 84
+            },
+            {
+              "index": 4,
+              "agent_id": 85
+            },
+            {
+              "index": 5,
+              "agent_id": 86
+            },
+            {
+              "index": 6,
+              "agent_id": 87
+            },
+            {
+              "index": 7,
+              "agent_id": 88
+            },
+            {
+              "index": 8,
+              "agent_id": 89
+            },
+            {
+              "index": 9,
+              "agent_id": 90
+            },
+            {
+              "index": 10,
+              "agent_id": 91
+            },
+            {
+              "index": 11,
+              "agent_id": 92
+            },
+            {
+              "index": 12,
+              "agent_id": 93
+            },
+            {
+              "index": 13,
+              "agent_id": 94
+            },
+            {
+              "index": 14,
+              "agent_id": 95
+            },
+            {
+              "index": 15,
+              "agent_id": 96
+            },
+            {
+              "index": 16,
+              "agent_id": 97
+            },
+            {
+              "index": 17,
+              "agent_id": 98
+            }
+          ],
+          "selected_vertex_count": 32,
+          "selected_edge_count": 48,
+          "selected_face_count": 18
+        },
+        "persistent_id_coverage": {
+          "verts": 32,
+          "edges": 48,
+          "faces": 18
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "inspect_hub",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_RemovableHub_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 17,
+        "mesh_health": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18,
+          "non_manifold_edges": 0,
+          "ngons": 2,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 32
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            },
+            {
+              "index": 30,
+              "agent_id": 31
+            },
+            {
+              "index": 31,
+              "agent_id": 32
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 33
+            },
+            {
+              "index": 1,
+              "agent_id": 34
+            },
+            {
+              "index": 2,
+              "agent_id": 35
+            },
+            {
+              "index": 3,
+              "agent_id": 36
+            },
+            {
+              "index": 4,
+              "agent_id": 37
+            },
+            {
+              "index": 5,
+              "agent_id": 38
+            },
+            {
+              "index": 6,
+              "agent_id": 39
+            },
+            {
+              "index": 7,
+              "agent_id": 40
+            },
+            {
+              "index": 8,
+              "agent_id": 41
+            },
+            {
+              "index": 9,
+              "agent_id": 42
+            },
+            {
+              "index": 10,
+              "agent_id": 43
+            },
+            {
+              "index": 11,
+              "agent_id": 44
+            },
+            {
+              "index": 12,
+              "agent_id": 45
+            },
+            {
+              "index": 13,
+              "agent_id": 46
+            },
+            {
+              "index": 14,
+              "agent_id": 47
+            },
+            {
+              "index": 15,
+              "agent_id": 48
+            },
+            {
+              "index": 16,
+              "agent_id": 49
+            },
+            {
+              "index": 17,
+              "agent_id": 50
+            },
+            {
+              "index": 18,
+              "agent_id": 51
+            },
+            {
+              "index": 19,
+              "agent_id": 52
+            },
+            {
+              "index": 20,
+              "agent_id": 53
+            },
+            {
+              "index": 21,
+              "agent_id": 54
+            },
+            {
+              "index": 22,
+              "agent_id": 55
+            },
+            {
+              "index": 23,
+              "agent_id": 56
+            },
+            {
+              "index": 24,
+              "agent_id": 57
+            },
+            {
+              "index": 25,
+              "agent_id": 58
+            },
+            {
+              "index": 26,
+              "agent_id": 59
+            },
+            {
+              "index": 27,
+              "agent_id": 60
+            },
+            {
+              "index": 28,
+              "agent_id": 61
+            },
+            {
+              "index": 29,
+              "agent_id": 62
+            },
+            {
+              "index": 30,
+              "agent_id": 63
+            },
+            {
+              "index": 31,
+              "agent_id": 64
+            },
+            {
+              "index": 32,
+              "agent_id": 65
+            },
+            {
+              "index": 33,
+              "agent_id": 66
+            },
+            {
+              "index": 34,
+              "agent_id": 67
+            },
+            {
+              "index": 35,
+              "agent_id": 68
+            },
+            {
+              "index": 36,
+              "agent_id": 69
+            },
+            {
+              "index": 37,
+              "agent_id": 70
+            },
+            {
+              "index": 38,
+              "agent_id": 71
+            },
+            {
+              "index": 39,
+              "agent_id": 72
+            },
+            {
+              "index": 40,
+              "agent_id": 73
+            },
+            {
+              "index": 41,
+              "agent_id": 74
+            },
+            {
+              "index": 42,
+              "agent_id": 75
+            },
+            {
+              "index": 43,
+              "agent_id": 76
+            },
+            {
+              "index": 44,
+              "agent_id": 77
+            },
+            {
+              "index": 45,
+              "agent_id": 78
+            },
+            {
+              "index": 46,
+              "agent_id": 79
+            },
+            {
+              "index": 47,
+              "agent_id": 80
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 81
+            },
+            {
+              "index": 1,
+              "agent_id": 82
+            },
+            {
+              "index": 2,
+              "agent_id": 83
+            },
+            {
+              "index": 3,
+              "agent_id": 84
+            },
+            {
+              "index": 4,
+              "agent_id": 85
+            },
+            {
+              "index": 5,
+              "agent_id": 86
+            },
+            {
+              "index": 6,
+              "agent_id": 87
+            },
+            {
+              "index": 7,
+              "agent_id": 88
+            },
+            {
+              "index": 8,
+              "agent_id": 89
+            },
+            {
+              "index": 9,
+              "agent_id": 90
+            },
+            {
+              "index": 10,
+              "agent_id": 91
+            },
+            {
+              "index": 11,
+              "agent_id": 92
+            },
+            {
+              "index": 12,
+              "agent_id": 93
+            },
+            {
+              "index": 13,
+              "agent_id": 94
+            },
+            {
+              "index": 14,
+              "agent_id": 95
+            },
+            {
+              "index": 15,
+              "agent_id": 96
+            },
+            {
+              "index": 16,
+              "agent_id": 97
+            },
+            {
+              "index": 17,
+              "agent_id": 98
+            }
+          ],
+          "selected_vertex_count": 32,
+          "selected_edge_count": 48,
+          "selected_face_count": 18
+        },
+        "persistent_id_coverage": {
+          "verts": 32,
+          "edges": 48,
+          "faces": 18
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "inspect_blade",
+      "command": "get_full_state",
+      "params": {
+        "name": "C38_CutterBlade_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 17,
+        "mesh_health": {
+          "vertices": 8,
+          "edges": 12,
+          "faces": 6,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 9
+            },
+            {
+              "index": 1,
+              "agent_id": 10
+            },
+            {
+              "index": 2,
+              "agent_id": 11
+            },
+            {
+              "index": 3,
+              "agent_id": 12
+            },
+            {
+              "index": 4,
+              "agent_id": 13
+            },
+            {
+              "index": 5,
+              "agent_id": 14
+            },
+            {
+              "index": 6,
+              "agent_id": 15
+            },
+            {
+              "index": 7,
+              "agent_id": 16
+            },
+            {
+              "index": 8,
+              "agent_id": 17
+            },
+            {
+              "index": 9,
+              "agent_id": 18
+            },
+            {
+              "index": 10,
+              "agent_id": 19
+            },
+            {
+              "index": 11,
+              "agent_id": 20
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 21
+            },
+            {
+              "index": 1,
+              "agent_id": 22
+            },
+            {
+              "index": 2,
+              "agent_id": 23
+            },
+            {
+              "index": 3,
+              "agent_id": 24
+            },
+            {
+              "index": 4,
+              "agent_id": 25
+            },
+            {
+              "index": 5,
+              "agent_id": 26
+            }
+          ],
+          "selected_vertex_count": 8,
+          "selected_edge_count": 12,
+          "selected_face_count": 6
+        },
+        "persistent_id_coverage": {
+          "verts": 8,
+          "edges": 12,
+          "faces": 6
+        }
+      }
+    },
+    {
+      "index": 17,
+      "label": "render_component_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 720,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          -15.120529174804688,
+          1.3499999046325684
+        ],
+        "camera_ortho_scale": 8.69430414932063,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.179072,
+        "foreground_unique_colors_5bit": 16,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 18,
+      "label": "render_component_top",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_top_solid.png",
+        "pass_type": "solid",
+        "view": "top",
+        "resolution": 720,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_top_solid.png",
+        "pass_type": "solid",
+        "view": "top",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          0.0,
+          0.0,
+          16.470529556274414
+        ],
+        "camera_ortho_scale": 8.69430414932063,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.23662,
+        "foreground_unique_colors_5bit": 51,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 19,
+      "label": "render_component_side",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "resolution": 720,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_05_side_solid.png",
+        "pass_type": "solid",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "frame_objects": [
+          "C38_UpperShell_HIGH",
+          "C38_WeightedBase_HIGH",
+          "C38_TapeRoll_HIGH",
+          "C38_RemovableHub_HIGH",
+          "C38_CutterBlade_HIGH"
+        ],
+        "camera_location": [
+          15.120529174804688,
+          0.0,
+          1.3499999046325684
+        ],
+        "camera_ortho_scale": 8.69430414932063,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.097112,
+        "foreground_unique_colors_5bit": 28,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_scotch-c38-model\\c38_stage_05_components.blend"
+  },
+  "pass": true
+}

@@ -1,0 +1,33 @@
+[
+  {"label":"select_rear_top","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[2,4]}},
+  {"label":"lower_rear_top","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_rear_end_profile","operation":"move_selection","params":{"delta":[0,0,-0.10]}}},
+
+  {"label":"select_rear_shoulders","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[34,47]}},
+  {"label":"raise_rear_shoulders","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_high_rear_shoulder","operation":"move_selection","params":{"delta":[0,0,0.05]}}},
+
+  {"label":"select_station_minus_1_6","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[35,46]}},
+  {"label":"begin_forward_slope","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_first_forward_slope","operation":"move_selection","params":{"delta":[0,0,-0.10]}}},
+
+  {"label":"select_station_minus_0_8","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[36,45]}},
+  {"label":"continue_forward_slope","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_second_forward_slope","operation":"move_selection","params":{"delta":[0,0,-0.40]}}},
+
+  {"label":"select_center_top","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[37,44]}},
+  {"label":"lower_center_top","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_center_tape_path","operation":"move_selection","params":{"delta":[0,0,-0.70]}}},
+
+  {"label":"select_station_plus_0_8","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[38,43]}},
+  {"label":"lower_front_tape_path","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_front_tape_path","operation":"move_selection","params":{"delta":[0,0,-1.05]}}},
+
+  {"label":"select_station_plus_1_6","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[39,42]}},
+  {"label":"form_low_bridge_station","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_low_tape_bridge","operation":"move_selection","params":{"delta":[0,0,-1.35]}}},
+
+  {"label":"select_station_plus_2_4","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[40,41]}},
+  {"label":"raise_front_cutter_support","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_front_cutter_support","operation":"move_selection","params":{"delta":[0,0,-0.65]}}},
+
+  {"label":"select_front_top","command":"select_by_ids","params":{"name":"C38_UpperShell_HIGH","vertex_ids":[6,8]}},
+  {"label":"shape_front_cutter_face","transaction":{"name":"C38_UpperShell_HIGH","action_type":"shape_front_cutter_face","operation":"move_selection","params":{"delta":[0,0,-0.55]}}},
+
+  {"label":"inspect_shaped_cage","command":"inspect_region","params":{"name":"C38_UpperShell_HIGH","center_ids":[1,2,3,4,5,6,7,8],"rings":8}},
+  {"label":"render_shaped_front","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_solid.png","pass_type":"solid","view":"front","resolution":640,"margin":1.15}},
+  {"label":"render_shaped_front_wire","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_front_wire.png","pass_type":"wireframe","view":"front","resolution":640,"margin":1.15}},
+  {"label":"render_shaped_side","command":"render_diagnostic_pass","params":{"name":["C38_UpperShell_HIGH"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-16_scotch-c38-model/stage_03_side_solid.png","pass_type":"solid","view":"side","resolution":640,"margin":1.15}}
+]
