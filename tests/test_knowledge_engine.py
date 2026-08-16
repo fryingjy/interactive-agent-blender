@@ -637,6 +637,30 @@ class SceneDecompositionTests(unittest.TestCase):
         self.assertTrue(brief.independent_motion_or_material)
         self.assertIn("handle-path", " ".join(brief.notes))
 
+    def test_secondary_path_does_not_choose_curve_for_primary_shell(self):
+        decomp = SceneDecomposition(
+            object_name="clock",
+            components=[
+                Component("shell", "primary", evidence_status="OBSERVED", confidence=0.9, evidence=["front"]),
+                Component("handle", "secondary", evidence_status="OBSERVED", confidence=0.9, evidence=["front"]),
+            ],
+            claims=[
+                ReferenceClaim(
+                    "shell-smooth", "primary_forms", "Shell is continuously curved.", "OBSERVED", 0.9,
+                    evidence=["front"], component_refs=["shell"],
+                    modeling_signals={"smooth_continuous_surface": True},
+                ),
+                ReferenceClaim(
+                    "handle-curve", "continuous_surfaces", "Handle follows an arch.", "OBSERVED", 0.9,
+                    evidence=["front"], component_refs=["handle"],
+                    modeling_signals={"follows_path": True},
+                ),
+            ],
+        )
+        brief = decomp.to_modeling_brief()
+        self.assertTrue(brief.smooth_continuous_surface)
+        self.assertFalse(brief.follows_path)
+
     def test_conflicting_supported_signals_block_strategy(self):
         decomp = self._strict_lantern_decomposition(extra_claims=[
             ReferenceClaim(

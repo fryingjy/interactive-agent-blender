@@ -4,6 +4,10 @@ Target: the current silver Westclox 70010A twin-bell quartz alarm clock. The ref
 from one matching product listing and includes front, oblique, rear, and dimensioned views. It
 supports primary-form work, but not hidden internal construction.
 
+The formal evidence-bound [scene decomposition](scene_decomposition.json) and its verified
+[planner strategy record](planner_strategy_record.json) are authoritative over this prose for any
+future retry. They were added after the primitive-only Stage 01/02 attempt was rejected.
+
 ## Observable hierarchy
 
 1. A shallow circular main shell: silver outer rim and front bezel, white face inset, dark rear plate.

@@ -95,6 +95,14 @@ MODELING_SIGNAL_FIELDS = {
     "watertight_union_required",
     "independent_motion_or_material",
 }
+# These describe the representation of the *dominant continuous form*. A claim
+# that only concerns a secondary component (for example, a curve-shaped carry
+# handle) must not silently choose CURVE for the whole asset's primary cage.
+PRIMARY_REPRESENTATION_SIGNALS = {
+    "smooth_continuous_surface",
+    "follows_path",
+    "deformation_expected",
+}
 
 
 def _validate_evidence_binding(label: str, status: str, confidence: float, evidence: list[str]) -> None:
@@ -368,11 +376,23 @@ class SceneDecomposition:
 
         values = asdict(base) if base is not None else asdict(ModelingBrief())
         notes = list(values.pop("notes", ()))
+        primary_names = {component.name for component in self.primary_components()}
         signal_claims: dict[str, list[tuple[str, bool]]] = {}
         for claim in self.claims:
             if claim.evidence_status not in {"OBSERVED", "STRONGLY_INFERRED"}:
                 continue
             for key, value in claim.modeling_signals.items():
+                # An unscoped claim remains global.  A scoped primary-shape
+                # signal, however, only affects the primary representation
+                # when it is actually about a primary component.  Component
+                # strategies remain available in the decomposition/contract
+                # rather than being flattened into one asset-wide boolean.
+                if (
+                    key in PRIMARY_REPRESENTATION_SIGNALS
+                    and claim.component_refs
+                    and not (set(claim.component_refs) & primary_names)
+                ):
+                    continue
                 signal_claims.setdefault(key, []).append((claim.claim_id, bool(value)))
             if claim.modeling_consequence:
                 notes.append(f"{claim.claim_id}: {claim.modeling_consequence}")
