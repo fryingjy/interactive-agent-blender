@@ -13,8 +13,8 @@ def main():
     blend_path, out_path = Path(argv[0]).resolve(), Path(argv[1]).resolve()
     view = argv[2] if len(argv) > 2 else "iso"
     color_mode = argv[3].lower() if len(argv) > 3 else "single"
-    if color_mode not in {"single", "material"}:
-        raise SystemExit("color_mode must be 'single' or 'material'")
+    if color_mode not in {"single", "material", "silhouette"}:
+        raise SystemExit("color_mode must be 'single', 'material', or 'silhouette'")
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     bpy.ops.wm.open_mainfile(filepath=str(blend_path))
@@ -72,10 +72,20 @@ def main():
     shading.type = "SOLID"
     shading.light = "STUDIO"
     shading.color_type = "MATERIAL" if color_mode == "material" else "SINGLE"
-    if color_mode == "single":
+    if color_mode in {"single", "silhouette"}:
         shading.single_color = (0.55, 0.55, 0.58)
-    shading.show_shadows = True
-    shading.show_cavity = True
+    if color_mode == "silhouette":
+        # The alpha channel is the exact Workbench object silhouette. This
+        # supports reference comparison without thresholding a shaded render.
+        shading.single_color = (0.0, 0.0, 0.0)
+        shading.light = "FLAT"
+        shading.show_shadows = False
+        shading.show_cavity = False
+        render_scene.render.film_transparent = True
+        render_scene.render.image_settings.color_mode = "RGBA"
+    else:
+        shading.show_shadows = True
+        shading.show_cavity = True
     shading.cavity_type = "BOTH"
     render_scene.render.resolution_x = 1000
     render_scene.render.resolution_y = 1000

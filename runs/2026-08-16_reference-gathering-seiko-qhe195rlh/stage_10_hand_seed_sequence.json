@@ -1,0 +1,32 @@
+[
+  {
+    "label": "create_hour_hand_editable_cube_seed",
+    "command": "create_primitive",
+    "params": {"name": "HourHand", "primitive_type": "cube", "location": [0.275, -1.135, 0.175], "size": 2.0}
+  },
+  {
+    "label": "create_minute_hand_editable_cube_seed",
+    "command": "create_primitive",
+    "params": {"name": "MinuteHand", "primitive_type": "cube", "location": [-0.42, -1.145, 0.31], "size": 2.0}
+  },
+  {
+    "label": "create_separate_center_pivot",
+    "command": "create_primitive",
+    "params": {"name": "HandPivot", "primitive_type": "cylinder", "location": [0.0, -1.16, 0.0], "vertices": 16, "radius": 0.11, "depth": 0.06, "rotation": [1.57079632679, 0.0, 0.0]}
+  },
+  {
+    "label": "observe_hour_hand_seed_ids",
+    "command": "get_mesh_geometry",
+    "params": {"name": "HourHand"}
+  },
+  {
+    "label": "observe_minute_hand_seed_ids",
+    "command": "get_mesh_geometry",
+    "params": {"name": "MinuteHand"}
+  },
+  {
+    "label": "observe_center_pivot_seed_ids",
+    "command": "get_mesh_geometry",
+    "params": {"name": "HandPivot"}
+  }
+]

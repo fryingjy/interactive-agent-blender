@@ -62,6 +62,25 @@ def create_primitive(name, primitive_type, location=(0.0, 0.0, 0.0), **kwargs):
     return {"name": obj.name, "type": obj.type, "location": list(obj.location)}
 
 
+def translate_object(name, delta):
+    """Translate an independently manufactured assembly in world space.
+
+    Mesh edits remain the right mechanism for a connected cage. This operation
+    is intentionally separate for assemblies (dial modules, controls, moving
+    hands) whose relative placement is a reversible object-level decision.
+    ``DecisionTransaction`` snapshots object transforms, so rejection restores
+    this translation without depending on global Undo.
+    """
+    if not isinstance(delta, (list, tuple)) or len(delta) != 3:
+        raise ValueError("delta must contain exactly three numeric values")
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type not in {"MESH", "CURVE"}:
+        raise ValueError(f"translate_object requires a MESH or CURVE object, got {name!r}")
+    offset = tuple(float(value) for value in delta)
+    obj.location = tuple(float(current) + change for current, change in zip(obj.location, offset))
+    return {"name": obj.name, "location": [float(value) for value in obj.location], "delta": list(offset)}
+
+
 def create_reference_image(
     name,
     image_path,

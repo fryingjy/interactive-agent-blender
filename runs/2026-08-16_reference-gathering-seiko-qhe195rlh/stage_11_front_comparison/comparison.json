@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_RENDER_COMPARISON",
+  "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\references\\official_front.png",
+  "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\stage_11_silhouette_front.png",
+  "view": "front_product",
+  "reference_roi_xyxy_exclusive": null,
+  "candidate_roi_xyxy_exclusive": null,
+  "alignment": {
+    "mode": "uniform-bbox",
+    "normalization": "candidate foreground cropped, uniformly scaled to fit the reference foreground bounding box, and center-aligned",
+    "uniform_scale": 0.6245954692556634,
+    "reference_bbox": [
+      0,
+      21,
+      385,
+      365
+    ],
+    "candidate_bbox_before_alignment": [
+      191,
+      227,
+      808,
+      772
+    ],
+    "candidate_bbox_after_alignment": [
+      0,
+      23,
+      385,
+      363
+    ],
+    "claim_boundary": "Translation and overall scale were removed, but aspect ratio and contour differences remain measurable."
+  },
+  "metrics": {
+    "width": 386,
+    "height": 386,
+    "reference_pixels": 118109,
+    "candidate_pixels": 128887,
+    "silhouette_iou": 0.9131108305514031,
+    "centroid_error_normalized": 0.004339364706480497,
+    "bounding_box_error_normalized": 0.00183188285281489,
+    "symmetric_contour_error_normalized": 0.013353803988152411,
+    "negative_space_iou": 1.0,
+    "reference_negative_space_pixels": 0,
+    "candidate_negative_space_pixels": 0,
+    "reference_bbox": [
+      0,
+      21,
+      385,
+      365
+    ],
+    "candidate_bbox": [
+      0,
+      23,
+      385,
+      363
+    ]
+  },
+  "tickets": [
+    {
+      "type": "silhouette_contour",
+      "target": "front_product",
+      "severity": 0.013353803988152411,
+      "evidence": 0.013353803988152411,
+      "priority": 1
+    }
+  ]
+}

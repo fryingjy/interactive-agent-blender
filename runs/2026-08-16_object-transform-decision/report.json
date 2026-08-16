@@ -1,0 +1,28 @@
+{
+  "record_type": "OBJECT_TRANSFORM_DECISION_LAB",
+  "checks": {
+    "rejected_translation_performed": true,
+    "rejected_translation_changed_transform": true,
+    "reject_restored_exact_location": true,
+    "rejected_revision_unchanged": true,
+    "commit_translation_performed": true,
+    "commit_advanced_revision_once": true,
+    "commit_persisted_location": true,
+    "verification_preserves_mesh_health": true
+  },
+  "rejected": {
+    "decision_id": "dec_0_1786922585255",
+    "rejected": true,
+    "restored_revision": 0,
+    "reason": "controlled transform rollback",
+    "removed_created_objects": [],
+    "removed_created_collections": [],
+    "removed_created_materials": []
+  },
+  "committed": {
+    "decision_id": "dec_0_1786922585257",
+    "result_revision": 1
+  },
+  "pass": true,
+  "claim_boundary": "This validates transaction-owned object translation for independently manufactured assemblies. It does not prescribe object transforms for a connected primary cage."
+}
