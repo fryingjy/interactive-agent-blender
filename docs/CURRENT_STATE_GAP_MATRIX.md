@@ -1,11 +1,11 @@
 # Current-state to professional-modeler gap matrix
 
-Updated: 2026-08-15 after question-driven research and secondary-view strategy evidence. This matrix
+Updated: 2026-08-16 after direct-video identity hardening and Bialetti decomposition reconciliation. This matrix
 distinguishes demonstrated evidence from capability still lacking proof.
 
 | Capability needed for the ultimate goal | Current evidence | State | Highest-value proof still required |
 | --- | --- | --- | --- |
-| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records; Bialetti runtime use; strict stage rejection; focused controls | Reference policy runtime validated on one model-free product board; visual/modeling transfer unproven | Human-review the board, then show improved equal-budget Blender outcomes on unrelated objects |
+| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records; strict Bialetti evidence-bound primary assemblies, construction strategy, official dimensions, unknown underside, agent visual cross-check, strict stage rejection, and focused controls | Reference policy runtime validated on one model-free product board; the board passes machine validation but its human approval and visual/modeling transfer remain unproven | Human-review the board, then show improved equal-budget Blender outcomes on unrelated objects |
 | Component/depth/continuity/separation reasoning | Typed categories plus a two-family Blender experiment where front-identical continuous/separate candidates are resolved by top-view depth, connected-component truth, and planner gating | Controlled synthetic transfer; real-image inference and real-prop use remain manual/unproven | Apply the policy to unrelated real multi-view references, measure fidelity improvement, and obtain human review |
 | Knowledge changes runtime behavior | Supported claims now alter planner representation/component policy; weak/conflicting claims cannot silently harden | Demonstrated in declared policy cases | Runtime telemetry from actual Blender decisions and measured outcome improvement |
 | Knowledge provenance integrity | `tools/audit_source_registry.py` now distinguishes path-like artifacts from non-path skill/prose references and explicitly non-retained media, then fail-closes absent artifacts | **Incomplete:** refined audit finds 76 missing claimed artifacts across 70 source records; 39 non-path references and 1 intentionally non-retained source are excluded | Classify each historical artifact path as retained evidence, intentionally non-retained source media, or stale claim; downgrade or repair records before relying on them locally |
