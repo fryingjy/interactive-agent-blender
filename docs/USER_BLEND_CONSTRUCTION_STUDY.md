@@ -8,6 +8,7 @@ This records direct, read-only scene facts from the user's local `.blend` exampl
 - The editable `blade`, `hilt`, and `handle` meshes in that file are quad-only in the inspected state and retain live Mirror, Subdivision Surface, and Smooth-by-Angle modifier stacks.
 - Low-poly counterparts use a separate collection and triangulate only as an explicit downstream/export step, not as the editable high-poly construction surface.
 - Edge-crease attributes are present on the editable blade, hilt, and handle cages. This supports crease/SubD as the primary sharpness tool when it matches the form, with bevel reserved for a required physical radius.
+- `wrap test.blend` uses a 102-vertex all-quad strip with live `Array` (count 18), `Solidify`, and `Subdivision`; its denser wrap variant remains a separate editable quad mesh with live Solidify/SubD. This supports repeated-strip construction only when the observed form is actually a wrap.
 
 ## Operational rule added after the Westclox failure
 
@@ -23,3 +24,4 @@ A primitive is only a starting cage. A continuous primary form may not advance b
 - [broken sword inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/broken%20sword.json)
 - [battle axe inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/battle%20axe.json)
 - [dragon radar inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/dragon%20radar.json)
+- [wrap test inventory](../runs/2026-08-16_user-blend-library-audit/deep-study/wrap-test.json)
