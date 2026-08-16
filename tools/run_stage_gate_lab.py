@@ -36,9 +36,22 @@ def main():
     )
     state_after_weak = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
     strong_primary = advance_stage(obj.name, "PRIMARY_BLOCKOUT", reference_evidence)
-    weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": False})
+    coverage = {
+        "declared_primary_components": ["stage_gate_asset"],
+        "built_object_names": [obj.name],
+        "component_matches": {"stage_gate_asset": obj.name},
+        "unmatched_primary_components": [],
+        "coverage_ok": True,
+    }
+    weak_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
+        "dimensions_checked": True, "primary_components_present": True,
+        "component_coverage": {**coverage, "coverage_ok": False},
+    })
     state_after_weak_visual = {"stage": get_stage(obj.name), "log_count": len(get_stage_log(obj.name))}
-    strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {"dimensions_checked": True, "primary_components_present": True})
+    strong_visual = advance_stage(obj.name, "PROPORTION_SILHOUETTE", {
+        "dimensions_checked": True, "primary_components_present": True,
+        "component_coverage": coverage,
+    })
     final_log = get_stage_log(obj.name)
     assertions = {
         "open_reference_question_rejected": not weak_primary["advanced"],

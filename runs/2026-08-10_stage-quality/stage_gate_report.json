@@ -59,11 +59,12 @@
         "stage": "PRIMARY_BLOCKOUT",
         "required": [
           "dimensions_checked",
-          "primary_components_present"
+          "primary_components_present",
+          "component_coverage"
         ],
         "missing": [],
         "failures": [
-          "primary components missing"
+          "structured one-to-one component coverage is missing or invalid"
         ],
         "pass": false
       }
@@ -78,7 +79,8 @@
         "stage": "PRIMARY_BLOCKOUT",
         "required": [
           "dimensions_checked",
-          "primary_components_present"
+          "primary_components_present",
+          "component_coverage"
         ],
         "missing": [],
         "failures": [],
@@ -122,7 +124,7 @@
         }
       },
       "gate_criteria_for_completed_stage": "same-target structured reference audit, required views, critical-property authority, conflicts, component decomposition, measured proportions, and uncertainty recorded before geometry",
-      "gate_criteria_for_entered_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable"
+      "gate_criteria_for_entered_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable; structured one-to-one component coverage recorded"
     },
     {
       "from": "PRIMARY_BLOCKOUT",
@@ -130,20 +132,34 @@
       "evidence": {
         "structured_evidence": {
           "dimensions_checked": true,
-          "primary_components_present": true
+          "primary_components_present": true,
+          "component_coverage": {
+            "declared_primary_components": [
+              "stage_gate_asset"
+            ],
+            "built_object_names": [
+              "StageGateAsset"
+            ],
+            "component_matches": {
+              "stage_gate_asset": "StageGateAsset"
+            },
+            "unmatched_primary_components": [],
+            "coverage_ok": true
+          }
         },
         "gate": {
           "stage": "PRIMARY_BLOCKOUT",
           "required": [
             "dimensions_checked",
-            "primary_components_present"
+            "primary_components_present",
+            "component_coverage"
           ],
           "missing": [],
           "failures": [],
           "pass": true
         }
       },
-      "gate_criteria_for_completed_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable",
+      "gate_criteria_for_completed_stage": "major proportions plausible; primary silhouette sufficiently close; component layout stable; structured one-to-one component coverage recorded",
       "gate_criteria_for_entered_stage": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression"
     }
   ],

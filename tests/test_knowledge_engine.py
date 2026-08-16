@@ -596,6 +596,40 @@ class VisualComparisonTests(unittest.TestCase):
 
 
 class QualityReviewTests(unittest.TestCase):
+    def test_primary_blockout_requires_structured_one_to_one_component_coverage(self):
+        base = {
+            "dimensions_checked": True,
+            "primary_components_present": True,
+        }
+        rejected = evaluate_stage_gate("PRIMARY_BLOCKOUT", base)
+        self.assertFalse(rejected["pass"])
+        self.assertIn("component_coverage", rejected["missing"])
+
+        stale_or_collapsed = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
+            **base,
+            "component_coverage": {
+                "declared_primary_components": ["boiler_lower_shell", "collector_upper_shell"],
+                "built_object_names": ["Collector_Upper_Shell"],
+                "component_matches": {"collector_upper_shell": "Collector_Upper_Shell"},
+                "unmatched_primary_components": ["boiler_lower_shell"],
+                "coverage_ok": False,
+            },
+        })
+        self.assertFalse(stale_or_collapsed["pass"])
+        self.assertIn("structured one-to-one component coverage is missing or invalid", stale_or_collapsed["failures"])
+
+        accepted = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
+            **base,
+            "component_coverage": {
+                "declared_primary_components": ["body", "handle"],
+                "built_object_names": ["Body", "Handle"],
+                "component_matches": {"body": "Body", "handle": "Handle"},
+                "unmatched_primary_components": [],
+                "coverage_ok": True,
+            },
+        })
+        self.assertTrue(accepted["pass"])
+
     def test_stage_gate_rejects_global_only_visual_evidence(self):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True})
         self.assertFalse(result["pass"])

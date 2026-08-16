@@ -128,6 +128,10 @@ any with no plausible match. Matching is one-to-one and ignores generic tokens: 
 contain "shell". It remains a component-presence smoke test, not a geometry or likeness judgment.
 Run `tools/verify_scene_component_coverage.py` in a fresh Blender process against the saved asset,
 the decomposition JSON, and its intended collection to record this check beside an asset review.
+Advancing from `PRIMARY_BLOCKOUT` to silhouette/proportion review requires a structured one-to-one
+coverage object as `component_coverage` stage evidence; a hand-authored boolean is deliberately
+insufficient. A saved-asset evaluation should use the fresh-process report above rather than claim
+that a live-stage record is independent verification.
 Graph-shape validity
 (duplicate/missing ids, dangling relationships) delegates to the existing
 `knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from

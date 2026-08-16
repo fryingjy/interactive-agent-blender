@@ -12,7 +12,9 @@ STAGE_REQUIREMENTS = {
         "critical_property_coverage_pass", "conflicts_resolved_pass",
         "question_driven_research_pass",
     ),
-    "PRIMARY_BLOCKOUT": ("dimensions_checked", "primary_components_present"),
+    "PRIMARY_BLOCKOUT": (
+        "dimensions_checked", "primary_components_present", "component_coverage",
+    ),
     "PROPORTION_SILHOUETTE": ("view_count", "worst_view_iou", "multiview_regression_pass"),
     "SECONDARY_FORMS": ("secondary_components_present", "placement_checked"),
     "TOPOLOGY_SURFACE": ("technical_clean", "topology_reviewed", "evaluated_surface_reviewed"),
@@ -24,6 +26,31 @@ STAGE_REQUIREMENTS = {
 
 def _is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _component_coverage_is_valid(value: Any) -> bool:
+    """Validate the useful subset of a structured scene-component coverage report.
+
+    A mere ``primary_components_present=True`` is a self-authored assertion.  The
+    report must instead preserve the declared components, inspected object names,
+    one-to-one matches, and the absence of unmatched primary components.  This
+    remains a presence gate rather than a reference-likeness gate.
+    """
+    if not isinstance(value, dict) or value.get("coverage_ok") is not True:
+        return False
+    declared = value.get("declared_primary_components")
+    built = value.get("built_object_names")
+    matches = value.get("component_matches")
+    unmatched = value.get("unmatched_primary_components")
+    if (
+        not isinstance(declared, list) or not declared
+        or not isinstance(built, list) or not isinstance(matches, dict)
+        or unmatched != []
+    ):
+        return False
+    if set(matches) != set(declared) or len(set(matches.values())) != len(matches):
+        return False
+    return all(name in built for name in matches.values())
 
 
 def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float = 0.9) -> dict:
@@ -47,6 +74,8 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")
+            if not _component_coverage_is_valid(evidence["component_coverage"]):
+                failures.append("structured one-to-one component coverage is missing or invalid")
         elif stage == "PROPORTION_SILHOUETTE":
             view_count = evidence["view_count"]
             worst_view_iou = evidence["worst_view_iou"]
