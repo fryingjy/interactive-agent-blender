@@ -53,3 +53,16 @@ human rejection
 This protocol validates the *shape and freshness* of external feedback. It does not manufacture a
 human review, certify a model, or authorize work currently held behind a separate review gate such
 as the Bialetti reference board.
+
+## Retaining a review handoff
+
+Use the provided CLI to validate a human-authored JSON file and write the exact review plus its
+planner tickets into a dated run directory:
+
+```powershell
+python tools/record_external_visual_review.py REVIEW.json runs/YYYY-MM-DD_asset/human_review_repair_handoff.json --current-scene-revision 12
+```
+
+The command fails on an agent review, malformed review, or a stale scene revision. The resulting
+artifact records an `INSPECT_BEFORE_REPAIR` disposition for a rejection; it does not assert that
+any subsequent Blender edit was correct.

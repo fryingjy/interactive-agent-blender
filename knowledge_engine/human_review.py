@@ -111,3 +111,22 @@ def review_to_repair_tickets(review: dict[str, Any], *, current_scene_revision: 
     for priority, ticket in enumerate(tickets, start=1):
         ticket["priority"] = priority
     return tickets
+
+
+def build_repair_record(review: dict[str, Any], *, current_scene_revision: int | float) -> dict[str, Any]:
+    """Build the retainable artifact consumed by a later planner/repair session."""
+    validated = validate_external_visual_review(review)
+    tickets = review_to_repair_tickets(validated, current_scene_revision=current_scene_revision)
+    return {
+        "schema_version": 1,
+        "record_type": "EXTERNAL_HUMAN_VISUAL_REVIEW_REPAIR_HANDOFF",
+        "asset_id": validated["asset_id"],
+        "scene_revision": validated["scene_revision"],
+        "review": validated,
+        "repair_tickets": tickets,
+        "disposition": "REVIEW_ACCEPTED_NO_REPAIR" if validated["review_result"] == "accept" else "INSPECT_BEFORE_REPAIR",
+        "limitation": (
+            "This preserves human feedback and creates inspection tickets. It does not prove that a repair "
+            "was performed, that the current scene still matches a later edit, or that a future review will pass."
+        ),
+    }

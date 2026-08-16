@@ -25,7 +25,7 @@ from knowledge_engine.scene_decomposition import (
 )
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
 from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
-from knowledge_engine.human_review import review_to_repair_tickets, validate_external_visual_review
+from knowledge_engine.human_review import build_repair_record, review_to_repair_tickets, validate_external_visual_review
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 from knowledge_engine.planner import PlannerContext, plan_next_decision
@@ -748,6 +748,9 @@ class QualityReviewTests(unittest.TestCase):
         agent_review = {**review, "reviewer_type": "agent"}
         with self.assertRaisesRegex(ValueError, "only a human"):
             validate_external_visual_review(agent_review)
+        handoff = build_repair_record(review, current_scene_revision=7)
+        self.assertEqual(handoff["disposition"], "INSPECT_BEFORE_REPAIR")
+        self.assertEqual(handoff["repair_tickets"], tickets)
 
 
 class SessionLearningTests(unittest.TestCase):
