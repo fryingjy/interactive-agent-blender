@@ -126,13 +126,14 @@
     }
   ],
   "active_state": {
-    "active_prop_id": 3,
-    "active_prop": "Classic Desk Lamp",
-    "active_target_variant": "Anglepoise Type 75 Slate Grey standard desk-base variant",
-    "phase": "reference_analysis",
+    "active_prop_id": 4,
+    "active_prop": "Electric Kettle",
+    "active_target_variant": null,
+    "phase": "target_selection_and_reference_research",
     "authorization": "DIRECT_USER_AUTHORIZATION",
     "modeling_authorized": true,
     "prior_prop_outcome": "Prop 2 Scotch C38 received a qualified human stage pass after its broad bevel treatment was replaced by live crease-controlled SubD. This is not final-asset or production approval; reference likeness was described as only somewhat acceptable, and UV/material/underside/export work remains unapproved.",
-    "next_action": "audit the official Anglepoise Type 75 multi-view evidence, then build the linked primary forms incrementally through the typed Blender path without copied CAD or primitive stacking"
+    "prior_prop_outcome_2": "Prop 3 failed direct human likeness review at 3/10. Its model, renders, reference package, helper, and derived benchmark records were purged on user instruction instead of overfitting further repairs.",
+    "next_action": "select one specific unfamiliar electric-kettle target, gather authoritative multi-view references, audit identity and dimensions, then model primary forms incrementally through the typed Blender path"
   }
 }
