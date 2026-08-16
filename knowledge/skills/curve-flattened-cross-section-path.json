@@ -1,0 +1,32 @@
+{
+  "skill_id": "curve.flattened_cross_section_path",
+  "title": "Use an editable curve profile for a flattened path assembly",
+  "topic_tags": ["curves", "hard-surface", "handle", "strap", "molded-path"],
+  "status": "EXPERIMENTALLY_TESTED",
+  "applicability": {
+    "modeling_stage": ["SECONDARY_FORMS", "TOPOLOGY_SURFACE"],
+    "workflow": ["curve-based separate assembly", "flattened handle or strap"],
+    "surface_type": ["molded path", "flattened tube", "non-circular handle"],
+    "reference_issue": ["circular curve bevel does not match a visibly flattened cross-section"]
+  },
+  "action_policy": [
+    "Use a curve path only when the assembly's primary identity is its editable centerline/path.",
+    "Author a separate closed curve profile at the required cross-section aspect ratio.",
+    "Assign it as the path's bevel object and hide the profile object from viewport/render output.",
+    "Keep both path and profile unapplied; inspect the combined solid diagnostic before accepting the shape."
+  ],
+  "failure_predicates": [
+    "a circular bevel depth is used for an observed flattened or rectangular molded section",
+    "the profile curve is visible as unintended scene geometry",
+    "the path is converted to mesh before silhouette and cross-section are verified"
+  ],
+  "recovery": [
+    "adjust profile width/height or path points separately, then rerender the combined assembly",
+    "replace the curve strategy with an edit-mode mesh cage if the component's cross-section changes incompatibly along its path"
+  ],
+  "evidence": [{
+    "run": "runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_18_flat_handle_profile_report.json",
+    "result": "PASS: an editable Bézier handle path accepts a hidden closed profile curve through the typed runtime and renders as a flattened cross-section."
+  }],
+  "promotion_limit": "One real-reference repair exercise. It proves runtime support and an editable construction alternative, not final reference likeness or general curve-profile quality."
+}

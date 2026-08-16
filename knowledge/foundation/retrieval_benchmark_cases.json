@@ -1,7 +1,7 @@
 {
-  "version": 8,
+  "version": 9,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. Version 8 adds strict all-quad Connect Vertex Path selection on a curved SubD patch. These are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. Version 8 adds strict all-quad Connect Vertex Path selection on a curved SubD patch. Version 9 adds an editable flattened curve-profile path case. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -127,6 +127,13 @@
       "kind": "positive",
       "context": {"query": "curved SubD face-spanning vertex path diagonal would leave endpoint triangles", "modeling_stage": "TOPOLOGY_SURFACE", "workflow": "SubD-safe connected topology repair", "surface_type": "nonplanar open patch", "defect": "non-quad path output", "local_topology": ["two selected nonadjacent vertices"], "modifiers": ["SUBSURF"]},
       "expected_top_skill": "topology.connect_vertex_path.subd_safe_quads",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "curve_flattened_handle_cross_section",
+      "kind": "positive",
+      "context": {"query": "molded handle is visibly flattened but curve bevel depth only produces a circular tube", "modeling_stage": "SECONDARY_FORMS", "workflow": "curve-based separate assembly", "surface_type": "flattened tube", "reference_issue": "circular curve bevel does not match a visibly flattened cross-section"},
+      "expected_top_skill": "curve.flattened_cross_section_path",
       "minimum_top_margin": 1.0
     },
     {
