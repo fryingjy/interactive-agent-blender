@@ -71,27 +71,6 @@
       "modeling_signals": {}
     },
     {
-      "claim_id": "front_keyway",
-      "category": "secondary_forms",
-      "statement": "A circular keyway insert is located low on the front body face.",
-      "evidence_status": "STRONGLY_INFERRED",
-      "confidence": 0.75,
-      "evidence": [
-        "front-right product reference"
-      ],
-      "modeling_consequence": "Keep keyway separate and defer it until the primary body/opening relationship is validated.",
-      "impact": "medium",
-      "component_refs": [
-        "keyway_insert"
-      ],
-      "source_views": [
-        "front_right_oblique"
-      ],
-      "modeling_signals": {
-        "independent_motion_or_material": true
-      }
-    },
-    {
       "claim_id": "bilateral_shackle",
       "category": "symmetry",
       "statement": "The shackle is approximately bilateral across the front vertical centerline.",
@@ -135,19 +114,18 @@
     {
       "claim_id": "construction_split",
       "category": "construction_hypotheses",
-      "statement": "The primary body is a single continuous brass cage, while the shackle and keyway are physically separate assemblies.",
+      "statement": "The primary body is a single continuous brass cage, while the shackle is a physically separate assembly. The cylinder/keyway location remains unresolved.",
       "evidence_status": "STRONGLY_INFERRED",
       "confidence": 0.85,
       "evidence": [
         "visible top sockets and material separation in the product reference",
         "official separate shackle specification"
       ],
-      "modeling_consequence": "Model one connected cube-derived body, one continuous separate shackle path, and defer the separate keyway insert until primary validation.",
+      "modeling_consequence": "Model one connected cube-derived body and one continuous separate shackle path. Defer cylinder/keyway construction until its location is directly observed.",
       "impact": "high",
       "component_refs": [
         "brass_body",
-        "steel_shackle",
-        "keyway_insert"
+        "steel_shackle"
       ],
       "source_views": [
         "front_right_oblique",
@@ -159,6 +137,25 @@
     }
   ],
   "unknown": [
+    {
+      "claim_id": "front_keyway",
+      "category": "secondary_forms",
+      "statement": "No circular keyway is visible on the retained front face; the visible lower-front features are a shallow horizontal seam and the Master wordmark.",
+      "evidence_status": "UNKNOWN",
+      "confidence": 0.05,
+      "evidence": [
+        "retained front product reference"
+      ],
+      "modeling_consequence": "Do not create a circular front insert. Defer the cylinder/keyway until a direct underside or reverse-side reference establishes it.",
+      "impact": "medium",
+      "component_refs": [
+        "brass_body"
+      ],
+      "source_views": [
+        "front_product"
+      ],
+      "modeling_signals": {}
+    },
     {
       "claim_id": "body_depth_unknown",
       "category": "unknowns",
@@ -204,7 +201,7 @@
       "role": "primary",
       "manufacture": "structural",
       "separately_manufactured": true,
-      "notes": "One continuous shallow rectangular body cage; front keyway remains a later separate insert.",
+      "notes": "One continuous shallow rectangular body cage; cylinder/keyway location is deferred because it is not visible on the retained front reference.",
       "evidence_status": "OBSERVED",
       "confidence": 0.9,
       "evidence": [
@@ -230,15 +227,15 @@
   ],
   "secondary_components": [
     {
-      "name": "keyway_insert",
+      "name": "front_seam_and_wordmark",
       "role": "secondary",
-      "manufacture": "structural",
-      "separately_manufactured": true,
-      "notes": "Circular front insert; detailed cylinder/keyway deferred until body and opening pass.",
-      "evidence_status": "STRONGLY_INFERRED",
-      "confidence": 0.75,
+      "manufacture": "cosmetic",
+      "separately_manufactured": false,
+      "notes": "The retained front view shows a shallow horizontal seam and wordmark in the same brass body surface; create neither a circular front insert nor a separate front assembly.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
       "evidence": [
-        "front-right product reference visible lower-front circular keyway"
+        "retained front product reference"
       ],
       "expected_region": {}
     }
@@ -386,7 +383,7 @@
       "body_box_with_small_radii": 0.9,
       "u_shackle_is_separate": 0.95,
       "shackle_opening": 0.95,
-      "front_keyway": 0.75,
+      "front_keyway": 0.05,
       "body_depth_unknown": 0.1,
       "bilateral_shackle": 0.9,
       "dimension_anchor": 0.98,
@@ -395,7 +392,7 @@
     "components": {
       "brass_body": 0.9,
       "steel_shackle": 0.95,
-      "keyway_insert": 0.75
+      "front_seam_and_wordmark": 0.95
     }
   },
   "reference_readiness": {
@@ -406,8 +403,8 @@
     "conflicting_modeling_signals": [],
     "claim_counts_by_status": {
       "OBSERVED": 5,
-      "STRONGLY_INFERRED": 2,
-      "UNKNOWN": 1,
+      "STRONGLY_INFERRED": 1,
+      "UNKNOWN": 2,
       "WEAKLY_INFERRED": 0
     }
   },

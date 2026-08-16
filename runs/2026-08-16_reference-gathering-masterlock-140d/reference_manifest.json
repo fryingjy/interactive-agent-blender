@@ -2,7 +2,7 @@
   "target_id": "master_lock_140d",
   "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
   "required_views": ["front_right_oblique", "front_product", "specification"],
-  "critical_properties": ["body_width", "body_height", "shackle_diameter", "shackle_clearance_height", "shackle_clearance_width", "body_to_shackle_separation", "keyway_location"],
+  "critical_properties": ["body_width", "body_height", "shackle_diameter", "shackle_clearance_height", "shackle_clearance_width", "body_to_shackle_separation", "front_seam_location"],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 1,
   "items": [
@@ -20,7 +20,7 @@
       "claims": [
         {"property_id": "body_to_shackle_separation", "purpose": "CONSTRUCTION", "observation": "The brass body and steel U-shackle meet at two visibly distinct sockets; the shackle is an articulated/separate assembly.", "confidence": "HIGH"},
         {"property_id": "body_primary_form", "purpose": "PRIMARY_FORM", "observation": "The body is a shallow rectangular brass solid with small manufactured edge radii, not a fully rounded capsule.", "confidence": "HIGH"},
-        {"property_id": "keyway_location", "purpose": "CONSTRUCTION", "observation": "The front keyway is a separate circular insert near the lower front face.", "confidence": "MEDIUM"}
+        {"property_id": "front_seam_location", "purpose": "CONSTRUCTION", "observation": "The visible lower-front feature is a shallow horizontal seam; no circular front keyway is visible in the retained product view.", "confidence": "HIGH"}
       ],
       "dimensional_anchors": [],
       "limitations": ["Perspective product image; exact rear and underside profile are not observed."]
