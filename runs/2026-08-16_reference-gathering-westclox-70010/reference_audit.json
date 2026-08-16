@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-westclox-70010\\reference_manifest.json",
+      "audit": {
+        "target_id": "westclox_70010_twin_bell",
+        "target_variant": "Westclox 70010A silver twin-bell quartz alarm clock",
+        "reference_count": 4,
+        "matching_reference_count": 4,
+        "independent_source_count": 1,
+        "view_count": 4,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
+        },
+        "covered_properties": {
+          "twin_bell_and_handle_layout": [
+            "westclox_70010_front",
+            "westclox_70010_angle"
+          ],
+          "leg_geometry": [
+            "westclox_70010_front"
+          ],
+          "circular_case_depth": [
+            "westclox_70010_angle",
+            "westclox_70010_dimensioned_oblique"
+          ],
+          "rear_control_layout": [
+            "westclox_70010_rear"
+          ],
+          "overall_envelope": [
+            "westclox_70010_dimensioned_oblique"
+          ]
+        },
+        "dimensional_anchors": [
+          "product infocard: length 4.56 in, width/depth 2.36 in, height 6.49 in"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 2,
+          "candidate_counts": {
+            "ACCEPTED": 1,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [
+            "westclox_70010_angle"
+          ],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "westclox_70010_hidden_interface_details"
+          ],
+          "modeling_constraints": [
+            "Do not invent screw patterns, internal bell mechanics, glass retaining clips, or unseen seams."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source_page": "https://westcloxsource.com/products/westclox-twin-bell-alarm-clock-70010",
+  "downloaded_at": "2026-08-16",
+  "media": [
+    {"file": "70010A_front.jpg", "url": "https://westcloxsource.com/cdn/shop/files/70010A.jpg?v=1763732326&width=1946", "sha256": "579EBA4073ED53AC8F1DCDFBF9180EA24FD1B04E7F79EDC06B5713BB6A10E74E", "role": "front primary form"},
+    {"file": "70010A_angle.jpg", "url": "https://westcloxsource.com/cdn/shop/files/70010A_Angle.jpg?v=1763732326&width=1946", "sha256": "D1082BE3A338B0F719675CE4A75E31C51CDDD0DF270F1B5FB1D2573EAC523354", "role": "front-left depth and assembly"},
+    {"file": "70010A_back.jpg", "url": "https://westcloxsource.com/cdn/shop/files/70010A_Back.jpg?v=1763732326&width=1946", "sha256": "A33C811DCC480AA59810C3FF66ED4780D5ECE359258CBD452A1378B453325BF2", "role": "rear construction"},
+    {"file": "70010A_info_dimensions.jpg", "url": "https://westcloxsource.com/cdn/shop/files/70010A_Info_1.jpg?v=1763732326&width=1946", "sha256": "05004D5EE20A14B749FAFD7AD3D85E1A08DBC94A88F751066E76D992224E38D6", "role": "envelope dimensions"},
+    {"file": "70010A_info_features.jpg", "url": "https://westcloxsource.com/cdn/shop/files/70010A_Info_2.jpg?v=1763732326&width=1946", "sha256": "E080FFC75470ABC7D7D315426B8EB8EEF994C4917C506D00F7B08EA9EA316F7D", "role": "visible feature corroboration"}
+  ],
+  "retention": "Reference media remains local project evidence; it is not a claim of image ownership or a substitute for the source listing."
+}

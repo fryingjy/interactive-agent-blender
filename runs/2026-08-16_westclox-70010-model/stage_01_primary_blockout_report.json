@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_westclox-70010-model\\stage_01_primary_blockout_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_westclox-70010-model\\westclox_70010_stage_01_blockout.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "a476efe59ab7",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_case",
+      "command": "create_primitive",
+      "params": {
+        "name": "ClockShell_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          0,
+          3.0
+        ],
+        "vertices": 16,
+        "radius": 2.22,
+        "depth": 1.52,
+        "end_fill_type": "NGON",
+        "rotation": [
+          1.57079632679,
+          0,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "ClockShell_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          3.0
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "create_bezel",
+      "command": "create_primitive",
+      "params": {
+        "name": "FrontBezel_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          -0.82,
+          3.0
+        ],
+        "vertices": 16,
+        "radius": 2.29,
+        "depth": 0.16,
+        "end_fill_type": "NGON",
+        "rotation": [
+          1.57079632679,
+          0,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "FrontBezel_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.8199999928474426,
+          3.0
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_face",
+      "command": "create_primitive",
+      "params": {
+        "name": "ClockFace_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          -0.92,
+          3.0
+        ],
+        "vertices": 16,
+        "radius": 1.98,
+        "depth": 0.05,
+        "end_fill_type": "NGON",
+        "rotation": [
+          1.57079632679,
+          0,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "ClockFace_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.9200000166893005,
+          3.0
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "label": "create_rear_plate",
+      "command": "create_primitive",
+      "params": {
+        "name": "RearPlate_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          0.82,
+          3.0
+        ],
+        "vertices": 16,
+        "radius": 2.06,
+        "depth": 0.12,
+        "end_fill_type": "NGON",
+        "rotation": [
+          1.57079632679,
+          0,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "RearPlate_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.8199999928474426,
+          3.0
+        ]
+      }
+    },
+    {
+      "index": 4,
+      "label": "create_bell_left",
+      "command": "create_primitive",
+      "params": {
+        "name": "Bell_L_BLOCKOUT",
+        "primitive_type": "sphere",
+        "location": [
+          -1.18,
+          -0.02,
+          5.32
+        ],
+        "segments": 16,
+        "ring_count": 8,
+        "radius": 1.0,
+        "scale": [
+          1.12,
+          0.68,
+          0.47
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "Bell_L_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          -1.1799999475479126,
+          -0.019999999552965164,
+          5.320000171661377
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "label": "create_bell_right",
+      "command": "create_primitive",
+      "params": {
+        "name": "Bell_R_BLOCKOUT",
+        "primitive_type": "sphere",
+        "location": [
+          1.18,
+          -0.02,
+          5.32
+        ],
+        "segments": 16,
+        "ring_count": 8,
+        "radius": 1.0,
+        "scale": [
+          1.12,
+          0.68,
+          0.47
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "Bell_R_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          1.1799999475479126,
+          -0.019999999552965164,
+          5.320000171661377
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "label": "create_handle",
+      "command": "create_curve",
+      "params": {
+        "name": "BellHandle_BLOCKOUT",
+        "points": [
+          [
+            -1.48,
+            0.1,
+            5.48
+          ],
+          [
+            -1.52,
+            0.1,
+            6.56
+          ],
+          [
+            -0.86,
+            0.1,
+            7.05
+          ],
+          [
+            0.0,
+            0.1,
+            7.15
+          ],
+          [
+            0.86,
+            0.1,
+            7.05
+          ],
+          [
+            1.52,
+            0.1,
+            6.56
+          ],
+          [
+            1.48,
+            0.1,
+            5.48
+          ]
+        ],
+        "bevel_depth": 0.085,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "BellHandle_BLOCKOUT",
+        "type": "CURVE",
+        "point_count": 7,
+        "bevel_depth": 0.085
+      }
+    },
+    {
+      "index": 7,
+      "label": "create_hammer_strut",
+      "command": "create_primitive",
+      "params": {
+        "name": "HammerStrut_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          -0.16,
+          5.18
+        ],
+        "vertices": 12,
+        "radius": 0.045,
+        "depth": 0.62
+      },
+      "status": "ok",
+      "result": {
+        "name": "HammerStrut_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.1599999964237213,
+          5.179999828338623
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "label": "create_hammer_head",
+      "command": "create_primitive",
+      "params": {
+        "name": "HammerHead_BLOCKOUT",
+        "primitive_type": "cylinder",
+        "location": [
+          0,
+          -0.16,
+          5.52
+        ],
+        "vertices": 12,
+        "radius": 0.13,
+        "depth": 0.42,
+        "rotation": [
+          0,
+          1.57079632679,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "HammerHead_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.1599999964237213,
+          5.519999980926514
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "label": "create_leg_left",
+      "command": "create_primitive",
+      "params": {
+        "name": "Leg_L_BLOCKOUT",
+        "primitive_type": "cone",
+        "location": [
+          -1.54,
+          0.0,
+          0.88
+        ],
+        "vertices": 12,
+        "radius1": 0.17,
+        "radius2": 0.11,
+        "depth": 1.45,
+        "rotation": [
+          0,
+          -0.35,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "Leg_L_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          -1.5399999618530273,
+          0.0,
+          0.8799999952316284
+        ]
+      }
+    },
+    {
+      "index": 10,
+      "label": "create_leg_right",
+      "command": "create_primitive",
+      "params": {
+        "name": "Leg_R_BLOCKOUT",
+        "primitive_type": "cone",
+        "location": [
+          1.54,
+          0.0,
+          0.88
+        ],
+        "vertices": 12,
+        "radius1": 0.17,
+        "radius2": 0.11,
+        "depth": 1.45,
+        "rotation": [
+          0,
+          0.35,
+          0
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "Leg_R_BLOCKOUT",
+        "type": "MESH",
+        "location": [
+          1.5399999618530273,
+          0.0,
+          0.8799999952316284
+        ]
+      }
+    },
+    {
+      "index": 11,
+      "label": "front_silhouette",
+      "command": "render_silhouette",
+      "params": {
+        "name": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_silhouette.png",
+        "view": "front",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_silhouette.png",
+        "view": "front",
+        "resolution": 900,
+        "frame_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "silhouette_fill_ratio": 0.2193
+      }
+    },
+    {
+      "index": 12,
+      "label": "front_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "frame_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "camera_location": [
+          1.1920928955078125e-07,
+          -17.3353271484375,
+          3.688772201538086
+        ],
+        "camera_ortho_scale": 9.689583289100014,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.219342,
+        "foreground_unique_colors_5bit": 70,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "left_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_left_solid.png",
+        "pass_type": "solid",
+        "view": "left",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_left_solid.png",
+        "pass_type": "solid",
+        "view": "left",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "frame_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "camera_location": [
+          -17.302827835083008,
+          -0.03250002861022949,
+          3.688772201538086
+        ],
+        "camera_ortho_scale": 9.689583289100014,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.097521,
+        "foreground_unique_colors_5bit": 58,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "rear_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_rear_solid.png",
+        "pass_type": "solid",
+        "view": "back",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_rear_solid.png",
+        "pass_type": "solid",
+        "view": "back",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "frame_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "camera_location": [
+          1.1920928955078125e-07,
+          17.270328521728516,
+          3.688772201538086
+        ],
+        "camera_ortho_scale": 9.689583289100014,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.219343,
+        "foreground_unique_colors_5bit": 59,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "front_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 900,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          900,
+          900
+        ],
+        "target_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "frame_objects": [
+          "ClockShell_BLOCKOUT",
+          "FrontBezel_BLOCKOUT",
+          "ClockFace_BLOCKOUT",
+          "RearPlate_BLOCKOUT",
+          "Bell_L_BLOCKOUT",
+          "Bell_R_BLOCKOUT",
+          "BellHandle_BLOCKOUT",
+          "HammerStrut_BLOCKOUT",
+          "HammerHead_BLOCKOUT",
+          "Leg_L_BLOCKOUT",
+          "Leg_R_BLOCKOUT"
+        ],
+        "camera_location": [
+          1.1920928955078125e-07,
+          -17.3353271484375,
+          3.688772201538086
+        ],
+        "camera_ortho_scale": 9.689583289100014,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.023219,
+        "foreground_unique_colors_5bit": 3,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_westclox-70010-model\\westclox_70010_stage_01_blockout.blend"
+  },
+  "pass": true
+}

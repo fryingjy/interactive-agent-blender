@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "ClockShell_BLOCKOUT",
+      "origin": null,
+      "topology_operations": [],
+      "connected_profile_origin": false,
+      "pass": false
+    }
+  ],
+  "pass": false,
+  "failures": [
+    "ClockShell_BLOCKOUT: no committed topology edit after an unknown origin"
+  ]
+}

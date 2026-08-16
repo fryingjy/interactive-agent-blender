@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_RENDER_COMPARISON",
+  "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-westclox-70010\\70010A_front.jpg",
+  "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_westclox-70010-model\\stage_01_top_assembly_component.png",
+  "view": "top_assembly",
+  "reference_roi_xyxy_exclusive": [
+    385,
+    50,
+    1590,
+    770
+  ],
+  "candidate_roi_xyxy_exclusive": null,
+  "alignment": {
+    "mode": "uniform-bbox",
+    "normalization": "candidate foreground cropped, uniformly scaled to fit the reference foreground bounding box, and center-aligned",
+    "uniform_scale": 1.594850948509485,
+    "reference_bbox": [
+      10,
+      7,
+      1186,
+      719
+    ],
+    "candidate_bbox_before_alignment": [
+      81,
+      258,
+      818,
+      641
+    ],
+    "candidate_bbox_after_alignment": [
+      10,
+      58,
+      1186,
+      669
+    ],
+    "claim_boundary": "Translation and overall scale were removed, but aspect ratio and contour differences remain measurable."
+  },
+  "metrics": {
+    "width": 1205,
+    "height": 720,
+    "reference_pixels": 365220,
+    "candidate_pixels": 282561,
+    "silhouette_iou": 0.4624444625054183,
+    "centroid_error_normalized": 0.018815910541423814,
+    "bounding_box_error_normalized": 0.017987939903118616,
+    "symmetric_contour_error_normalized": 0.03390819650545946,
+    "negative_space_iou": 0.538078116135307,
+    "reference_negative_space_pixels": 185611,
+    "candidate_negative_space_pixels": 231888,
+    "reference_bbox": [
+      10,
+      7,
+      1186,
+      719
+    ],
+    "candidate_bbox": [
+      10,
+      58,
+      1186,
+      669
+    ]
+  },
+  "tickets": [
+    {
+      "type": "negative_space",
+      "target": "top_assembly",
+      "severity": 0.461921883864693,
+      "evidence": 0.538078116135307,
+      "priority": 1
+    },
+    {
+      "type": "silhouette_contour",
+      "target": "top_assembly",
+      "severity": 0.03390819650545946,
+      "evidence": 0.03390819650545946,
+      "priority": 2
+    }
+  ]
+}

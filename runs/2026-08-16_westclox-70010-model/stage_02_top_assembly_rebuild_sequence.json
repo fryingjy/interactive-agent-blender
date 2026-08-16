@@ -1,0 +1,136 @@
+[
+  {
+    "label": "create_rebuilt_left_bell",
+    "command": "create_primitive",
+    "params": {
+      "name": "Bell_L_REBUILD",
+      "primitive_type": "sphere",
+      "location": [-1.11, -0.01, 5.25],
+      "segments": 16,
+      "ring_count": 8,
+      "radius": 1.0,
+      "scale": [0.96, 0.57, 0.39]
+    }
+  },
+  {
+    "label": "create_rebuilt_right_bell",
+    "command": "create_primitive",
+    "params": {
+      "name": "Bell_R_REBUILD",
+      "primitive_type": "sphere",
+      "location": [1.11, -0.01, 5.25],
+      "segments": 16,
+      "ring_count": 8,
+      "radius": 1.0,
+      "scale": [0.96, 0.57, 0.39]
+    }
+  },
+  {
+    "label": "create_rebuilt_handle",
+    "command": "create_curve",
+    "params": {
+      "name": "BellHandle_REBUILD",
+      "points": [[-1.30, 0.10, 5.40], [-1.34, 0.10, 6.18], [-0.76, 0.10, 6.62], [0.0, 0.10, 6.72], [0.76, 0.10, 6.62], [1.34, 0.10, 6.18], [1.30, 0.10, 5.40]],
+      "bevel_depth": 0.075,
+      "closed": false,
+      "curve_type": "BEZIER"
+    }
+  },
+  {
+    "label": "smooth_case_by_angle",
+    "transaction": {
+      "name": "ClockShell_BLOCKOUT",
+      "action_type": "SHADING_POLICY",
+      "operation": "set_smooth_by_angle",
+      "params": {"angle": 0.5235987756, "keep_sharp_edges": true},
+      "accept": true
+    }
+  },
+  {
+    "label": "smooth_rebuilt_left_bell",
+    "transaction": {
+      "name": "Bell_L_REBUILD",
+      "action_type": "SHADING_POLICY",
+      "operation": "set_shading",
+      "params": {"smooth": true},
+      "accept": true
+    }
+  },
+  {
+    "label": "smooth_rebuilt_right_bell",
+    "transaction": {
+      "name": "Bell_R_REBUILD",
+      "action_type": "SHADING_POLICY",
+      "operation": "set_shading",
+      "params": {"smooth": true},
+      "accept": true
+    }
+  },
+  {
+    "label": "archive_wrong_left_bell",
+    "transaction": {
+      "name": "Bell_L_BLOCKOUT",
+      "action_type": "COMPONENT_RECOVERY",
+      "operation": "archive_object",
+      "params": {"collection_name": "REJECTED_COMPONENTS"},
+      "accept": true
+    }
+  },
+  {
+    "label": "archive_wrong_right_bell",
+    "transaction": {
+      "name": "Bell_R_BLOCKOUT",
+      "action_type": "COMPONENT_RECOVERY",
+      "operation": "archive_object",
+      "params": {"collection_name": "REJECTED_COMPONENTS"},
+      "accept": true
+    }
+  },
+  {
+    "label": "front_silhouette_rebuild",
+    "command": "render_silhouette",
+    "params": {
+      "name": ["ClockShell_BLOCKOUT", "FrontBezel_BLOCKOUT", "ClockFace_BLOCKOUT", "RearPlate_BLOCKOUT", "Bell_L_REBUILD", "Bell_R_REBUILD", "BellHandle_REBUILD", "HammerStrut_BLOCKOUT", "HammerHead_BLOCKOUT", "Leg_L_BLOCKOUT", "Leg_R_BLOCKOUT"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_02_front_silhouette.png",
+      "view": "front",
+      "resolution": 900,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "front_solid_rebuild",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["ClockShell_BLOCKOUT", "FrontBezel_BLOCKOUT", "ClockFace_BLOCKOUT", "RearPlate_BLOCKOUT", "Bell_L_REBUILD", "Bell_R_REBUILD", "BellHandle_REBUILD", "HammerStrut_BLOCKOUT", "HammerHead_BLOCKOUT", "Leg_L_BLOCKOUT", "Leg_R_BLOCKOUT"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_02_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 900,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "left_solid_rebuild",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["ClockShell_BLOCKOUT", "FrontBezel_BLOCKOUT", "ClockFace_BLOCKOUT", "RearPlate_BLOCKOUT", "Bell_L_REBUILD", "Bell_R_REBUILD", "BellHandle_REBUILD", "HammerStrut_BLOCKOUT", "HammerHead_BLOCKOUT", "Leg_L_BLOCKOUT", "Leg_R_BLOCKOUT"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_02_left_solid.png",
+      "pass_type": "solid",
+      "view": "left",
+      "resolution": 900,
+      "margin": 1.12
+    }
+  },
+  {
+    "label": "front_wire_rebuild",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["ClockShell_BLOCKOUT", "FrontBezel_BLOCKOUT", "ClockFace_BLOCKOUT", "RearPlate_BLOCKOUT", "Bell_L_REBUILD", "Bell_R_REBUILD", "BellHandle_REBUILD", "HammerStrut_BLOCKOUT", "HammerHead_BLOCKOUT", "Leg_L_BLOCKOUT", "Leg_R_BLOCKOUT"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_02_front_wire.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 900,
+      "margin": 1.12
+    }
+  }
+]

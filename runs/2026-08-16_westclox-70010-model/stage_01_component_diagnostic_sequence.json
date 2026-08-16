@@ -1,0 +1,5 @@
+[
+  {"label": "case_only", "command": "render_silhouette", "params": {"name": ["ClockShell_BLOCKOUT", "FrontBezel_BLOCKOUT", "ClockFace_BLOCKOUT", "RearPlate_BLOCKOUT"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_case_component.png", "view": "front", "resolution": 900, "margin": 1.05}},
+  {"label": "top_assembly_only", "command": "render_silhouette", "params": {"name": ["Bell_L_BLOCKOUT", "Bell_R_BLOCKOUT", "BellHandle_BLOCKOUT", "HammerStrut_BLOCKOUT", "HammerHead_BLOCKOUT"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_top_assembly_component.png", "view": "front", "resolution": 900, "margin": 1.05}},
+  {"label": "legs_only", "command": "render_silhouette", "params": {"name": ["Leg_L_BLOCKOUT", "Leg_R_BLOCKOUT"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_westclox-70010-model/stage_01_legs_component.png", "view": "front", "resolution": 900, "margin": 1.05}}
+]

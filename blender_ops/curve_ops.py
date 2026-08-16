@@ -28,16 +28,27 @@ def create_curve_from_points(name, points, bevel_depth=0.05, closed=False, curve
     'BEZIER' where each point's handle directions also need reasoning
     about. Start with POLY; a later decision can convert control-point
     density/smoothing once the gross path is verified correct."""
+    clean_type = str(curve_type).strip().upper()
+    if clean_type not in {"POLY", "BEZIER", "NURBS"}:
+        raise ValueError("curve_type must be POLY, BEZIER, or NURBS")
     if name in bpy.data.objects:
         raise ValueError(f"object '{name}' already exists")
     if len(points) < 2:
         raise ValueError("need at least 2 points to define a curve")
     curve_data = bpy.data.curves.new(name, type="CURVE")
     curve_data.dimensions = "3D"
-    spline = curve_data.splines.new(curve_type)
-    spline.points.add(len(points) - 1)
-    for i, p in enumerate(points):
-        spline.points[i].co = (p[0], p[1], p[2], 1.0)
+    spline = curve_data.splines.new(clean_type)
+    if clean_type == "BEZIER":
+        spline.bezier_points.add(len(points) - 1)
+        for index, point in enumerate(points):
+            control = spline.bezier_points[index]
+            control.co = (point[0], point[1], point[2])
+            control.handle_left_type = "AUTO"
+            control.handle_right_type = "AUTO"
+    else:
+        spline.points.add(len(points) - 1)
+        for index, point in enumerate(points):
+            spline.points[index].co = (point[0], point[1], point[2], 1.0)
     spline.use_cyclic_u = closed
     curve_data.bevel_depth = bevel_depth
     curve_data.fill_mode = "FULL"
