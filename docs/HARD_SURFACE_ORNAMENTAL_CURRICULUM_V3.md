@@ -21,7 +21,7 @@ reproduction, a different-geometry transfer, and (where useful) runtime use.
 
 | Priority | Source / curriculum role | Existing status | Required evidence before it changes modeling policy |
 | --- | --- | --- | --- |
-| P0 | `xHJzDpijPqg` — robot from front/side references | Listed but not independently studied | Visible/audible episode review of shared landmarks and front/side correction; reproduce on a non-robot reference; measure localized errors in both views |
+| P0 | `xHJzDpijPqg` — robot from front/side references | **Unavailable:** direct YouTube check on 2026-08-16 reports “Private video”; no analysis was made | Obtain a user-authorized/public replacement that visibly models from matched front/side references, then review shared landmarks and front/side correction; reproduce on a non-robot reference; measure localized errors in both views |
 | P0 | User-provided same-object reference sets | Available locally, but current sword work is front-view constrained | Reference-set audit, landmarks, projection uncertainty, and a human-approved reference plan before blockout |
 | P1 | `HH7InXu7ZdU` — smoothing and hard edges | Listed; no verified episode in the current curriculum record | Controlled classification test separating geometry, normal, SubD, and edge-radius causes |
 | P1 | `2Gg5QY5h9pQ` — cylinders / circular forms | Listed; no verified episode in the current curriculum record | Scale- and silhouette-aware radial-density transfer, not a fixed segment-count rule |
@@ -68,8 +68,10 @@ use (when a planner policy is claimed) -> reference-driven application`.
 
 Current Gemini prerequisite: install `requirements-video-learning.txt`. A denied API credential is
 an external-access failure, not evidence that a source was watched. The 2026-08-16 attempt against
-the P0 robot lesson was denied by the currently configured credential; no analysis file, source
-media, or modeling claim was created.
+the P0 robot lesson was denied by the currently configured credential. A direct browser check then
+found that the source itself is private in the available session. No analysis file, source media,
+or modeling claim was created; see
+`runs/2026-08-16_video-study-multiview-reference-robot/source_availability.json`.
 
 ## Acceptance before another sword-like attempt
 
