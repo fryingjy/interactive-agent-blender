@@ -41,6 +41,7 @@ The authoritative readiness decision is in
 | --- | --- |
 | Operating contract | [`docs/MASTER_DIRECTIVE.md`](docs/MASTER_DIRECTIVE.md) |
 | Current requirement audit | [`docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`](docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md) |
+| Executable directive coverage | [`knowledge/foundation/directive_coverage_matrix.json`](knowledge/foundation/directive_coverage_matrix.json) |
 | Research/learning roadmap | [`docs/RESEARCH_ROADMAP.md`](docs/RESEARCH_ROADMAP.md) |
 | Reference sourcing and analysis | [`docs/REFERENCE_COLLECTION_PROTOCOL.md`](docs/REFERENCE_COLLECTION_PROTOCOL.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
@@ -99,7 +100,12 @@ Run the fast regression suite from the repository root:
 ```powershell
 python -m pytest -q
 python tools/audit_repository.py
+python tools/audit_directive_coverage.py --output runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json
 ```
+
+The directive audit must pass structurally while still reporting `directive_status: PARTIAL` whenever
+any section remains partial, externally review-gated, or deliberately deferred. Its passing result
+proves evidence traceability, not professional modeling autonomy.
 
 Blender evidence scripts target Blender 5.2 LTS and are normally run in factory-startup background
 mode. Each run's report or session note records its exact command and evidence boundary. Independent

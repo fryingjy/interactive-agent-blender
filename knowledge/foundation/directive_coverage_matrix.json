@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "assessed_on": "2026-08-16",
+  "directive": "docs/MASTER_DIRECTIVE.md",
+  "overall_status": "PARTIAL",
+  "status_definitions": {
+    "IMPLEMENTED_VERIFIED": "The section's reusable mechanism is present and has current, inspectable verification. It is not a claim of professional generalization.",
+    "PARTIAL": "Some relevant mechanism or evidence exists, but the directive's full behavioral requirement remains unproven.",
+    "EXTERNAL_REVIEW_REQUIRED": "Further progress depends on an explicit human or external review rather than an agent assumption.",
+    "DEFERRED_BY_PRIORITY": "The work is intentionally postponed by the live priority rule and is not represented as complete."
+  },
+  "requirements": [
+    {
+      "id": "1",
+      "title": "Mission",
+      "status": "PARTIAL",
+      "evidence": ["README.md", "knowledge/foundation/foundation_exit_report.md", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "The typed loop and evidence infrastructure exist, but unseen-reference professional modeling has not been demonstrated repeatedly.",
+      "next_step": "Complete a human-authorized Level-1 reference prop through independent review and retain the correction trail."
+    },
+    {
+      "id": "2",
+      "title": "Precedence and scope",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["docs/MASTER_DIRECTIVE.md", "README.md", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
+      "current_boundary": "This verifies the repository policy and its documentation cross-references, not future operator compliance.",
+      "next_step": "Apply the precedence check during each substantive session and reconcile new contradictory evidence."
+    },
+    {
+      "id": "3",
+      "title": "Session start",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["docs/MASTER_DIRECTIVE.md", "docs/REPOSITORY_LAYOUT.md", "tools/audit_repository.py"],
+      "current_boundary": "The checklist and repository audit are available; a live Blender connection is only inspected when the task needs one.",
+      "next_step": "Record live Blender identity and state before the next authorized scene mutation."
+    },
+    {
+      "id": "4",
+      "title": "Professional modeling judgment",
+      "status": "PARTIAL",
+      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "Foundational strategy/topology/surface knowledge is recorded, while credible broad professional visual judgment remains open.",
+      "next_step": "Use the knowledge on several independent simple reference props and preserve rejection evidence."
+    },
+    {
+      "id": "5",
+      "title": "Modeling stages",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["blender_ops/modeling_stage.py", "blender_ops/stage_gates.py", "tools/run_stage_gate_lab.py"],
+      "current_boundary": "The state machine and evidence gate are verified in controlled work; artistic stage judgment remains partial under Section 4.",
+      "next_step": "Use the gate for the next human-authorized reference-modeling run."
+    },
+    {
+      "id": "6",
+      "title": "Component and strategy planning",
+      "status": "PARTIAL",
+      "evidence": ["knowledge_engine/component_strategy.py", "tools/run_secondary_view_component_strategy_lab.py", "runs/2026-08-16_reference-gathering-swingline-747/reference_plan.md"],
+      "current_boundary": "Secondary-view component decisions are tested, but production reference interpretation remains constrained by the pending Swingline review.",
+      "next_step": "Use the approved component plan to build only after a reviewer authorizes its interpretation."
+    },
+    {
+      "id": "7",
+      "title": "Planner contract",
+      "status": "PARTIAL",
+      "evidence": ["knowledge_engine/planner.py", "tools/run_planner_contract_lab.py", "runs/2026-08-15_video-transfer-uniform-deformation/planner_use_verification.json"],
+      "current_boundary": "A revision-bound local-decision contract is tested, but broad adaptive use on unfamiliar assets is sparse.",
+      "next_step": "Exercise planner choices during a new authorized reference run and review each accepted or rejected decision."
+    },
+    {
+      "id": "8",
+      "title": "Closed-loop execution",
+      "status": "PARTIAL",
+      "evidence": ["blender_ops/decision_transaction.py", "tools/run_transaction_channel_rollback_lab.py", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
+      "current_boundary": "Typed transaction, rollback, and verification mechanisms are demonstrated; their artistic closed-loop use is not yet sufficient for the mission claim.",
+      "next_step": "Retain full observe-diagnose-decide-verify evidence on the next authorized prop."
+    },
+    {
+      "id": "9",
+      "title": "State authority and recovery",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["blender_ops/state_probe.py", "blender_ops/decision_transaction.py", "tools/run_transaction_channel_rollback_lab.py"],
+      "current_boundary": "State/rollback behavior is verified for the tested operation surface, not every arbitrary Blender edit.",
+      "next_step": "Extend coverage only when a new sanctioned operation needs additional state fidelity."
+    },
+    {
+      "id": "10",
+      "title": "Persistent geometry and semantics",
+      "status": "PARTIAL",
+      "evidence": ["blender_ops/persistent_ids.py", "blender_ops/semantic_regions.py", "tools/run_semantic_region_render_lab.py"],
+      "current_boundary": "Identity and semantic regions are implemented for the tested typed operations; unsupported discontinuities still require explicit handling.",
+      "next_step": "Add operation-specific tests only when newly sanctioned operations require them."
+    },
+    {
+      "id": "11",
+      "title": "Separate truth channels",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["blender_ops/render_passes.py", "knowledge_engine/quality_review.py", "tools/run_professional_review_audit.py"],
+      "current_boundary": "Base/evaluated/visual/technical channels are available, but their outputs still require informed interpretation.",
+      "next_step": "Use all relevant channels in the next asset review rather than treating a technical pass as visual approval."
+    },
+    {
+      "id": "12",
+      "title": "Reference modeling and perception",
+      "status": "EXTERNAL_REVIEW_REQUIRED",
+      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-swingline-747/human_review_gate.json", "docs/field-report/swingline-747-review.html"],
+      "current_boundary": "The active board and machine gate pass, but interpretation is deliberately not self-authorized before human review.",
+      "next_step": "Obtain the explicit Swingline board decision, then compare all relevant modeled views and turn mismatches into tickets."
+    },
+    {
+      "id": "13",
+      "title": "Research and knowledge lifecycle",
+      "status": "PARTIAL",
+      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json"],
+      "current_boundary": "Source observation, bounded episode review, and experimental promotion exist; long-horizon skill reuse remains incomplete.",
+      "next_step": "Promote only techniques that are reproduced, transferred, and then used on an authorized asset."
+    },
+    {
+      "id": "14",
+      "title": "Controlled experiments and retrieval",
+      "status": "PARTIAL",
+      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_003_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json"],
+      "current_boundary": "Controlled labs, retrieval cases, and short-gap quizzes exist; independent long-horizon retention and broader transfer remain open.",
+      "next_step": "Run a second delayed retrieval assessment and reuse validated knowledge on a fresh asset."
+    },
+    {
+      "id": "15",
+      "title": "Quality and completion",
+      "status": "PARTIAL",
+      "evidence": ["knowledge_engine/high_low_audit.py", "tools/run_production_high_low_audit_lab.py", "runs/2026-08-15_production-high-low-audit/fresh_source_audit.json", "knowledge_engine/quality_review.py"],
+      "current_boundary": "Production high/low packaging and quality checks are demonstrated in controlled cases, not on a reviewer-accepted unfamiliar asset.",
+      "next_step": "Apply the complete quality checklist to an approved prop and preserve live, unapplied modifier stacks."
+    },
+    {
+      "id": "16",
+      "title": "Evaluation and anti-fake-progress rules",
+      "status": "PARTIAL",
+      "evidence": ["knowledge/foundation/benchmark_readiness.json", "knowledge/foundation/held_out_reference_registry.json", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
+      "current_boundary": "The project preserves explicit rejections and rejects automated-only success, but lacks enough accepted held-out assets for a capability claim.",
+      "next_step": "Keep thresholds frozen before new benchmarks and seek independent visual acceptance after technical checks."
+    },
+    {
+      "id": "17",
+      "title": "Reporting",
+      "status": "IMPLEMENTED_VERIFIED",
+      "evidence": ["runs/README.md", "docs/field-report/index.html", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
+      "current_boundary": "Report structure and evidence navigation exist; individual reports remain limited to what was actually measured.",
+      "next_step": "Update the field report only with verified current evidence after each substantive session."
+    },
+    {
+      "id": "18",
+      "title": "Tool architecture: Cloudglue and the Blender Connector (2026-08-13)",
+      "status": "PARTIAL",
+      "evidence": ["knowledge_engine/ingest/video_ingest.py", "tools/ingest_local_video.py", "tools/analyze_video_with_gemini.py", "docs/MASTER_DIRECTIVE.md"],
+      "current_boundary": "Portable local ingestion is implemented and Gemini analysis is bounded by provenance controls; optional connectors are not assumed available or authoritative.",
+      "next_step": "Use connector output only as source observation and formalize any mutation needed for evidence through the typed runtime."
+    },
+    {
+      "id": "19a",
+      "title": "Continuation directive reconciliation (2026-08-14)",
+      "status": "DEFERRED_BY_PRIORITY",
+      "evidence": ["docs/MASTER_DIRECTIVE.md", "docs/DEVELOPMENT_PRIORITIES.md", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "The directive's Level-1-first correction is adopted; advanced curriculum and sculpt specialization remain intentionally deferred.",
+      "next_step": "Build breadth across simple, structurally distinct authorized props before returning to Level-5-plus complexity."
+    },
+    {
+      "id": "19",
+      "title": "Current development rule",
+      "status": "PARTIAL",
+      "evidence": ["docs/DEVELOPMENT_PRIORITIES.md", "docs/CURRENT_STATE_GAP_MATRIX.md", "knowledge/foundation/foundation_exit_report.md"],
+      "current_boundary": "The live priorities identify reference interpretation and reviewer-approved Level-1 breadth as the bottleneck; this has not yet been resolved.",
+      "next_step": "Do not substitute additional infrastructure or passive tutorial collection for the pending reference-modeling proof."
+    }
+  ]
+}

@@ -5,6 +5,21 @@
 **Disposition:** substantial foundation evidence exists, but locally actionable professional-
 judgment and generalization priorities remain; the professional target is not falsely claimed.
 
+## Executable section coverage (2026-08-16)
+
+`knowledge/foundation/directive_coverage_matrix.json` now maps every one of the 20 headings in the
+durable directive (including Section 19a) to existing repository evidence, an explicit status, a
+claim boundary, and a next step. `tools/audit_directive_coverage.py` checks that the mapping is
+complete, section titles still match the directive, evidence paths remain inside the repository and
+exist, statuses are recognized, and the overall status cannot say `IMPLEMENTED_VERIFIED` while any
+section remains partial, review-gated, or deferred.
+
+The current machine result is structurally `PASS` with the directive still honestly `PARTIAL`: 6
+sections are `IMPLEMENTED_VERIFIED`, 12 are `PARTIAL`, 1 is `EXTERNAL_REVIEW_REQUIRED`, and 1 is
+`DEFERRED_BY_PRIORITY`. The report is retained at
+`runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json`. This is traceability
+evidence only; it does not promote professional readiness or bypass the Swingline human-review gate.
+
 ## Implemented and evidenced
 
 | Directive area | Implementation/evidence | Status |
