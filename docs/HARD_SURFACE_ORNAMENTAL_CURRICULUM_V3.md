@@ -66,6 +66,11 @@ validator. Each source must retain only permitted derived evidence, then pass:
 frame + speech alignment -> controlled reproduction -> different-geometry transfer -> runtime
 use (when a planner policy is claimed) -> reference-driven application`.
 
+Identity binding is required before extraction: use a ranked discovery candidate or an independent
+direct-source record containing the exact URL, title, creator, and duration. This guards both
+Gemini endpoints against accidental near-match tutorial substitution; it does not validate the
+technique itself.
+
 Current Gemini prerequisite: install `requirements-video-learning.txt`. A denied API credential is
 an external-access failure, not evidence that a source was watched. The 2026-08-16 attempt against
 the P0 robot lesson was denied by the currently configured credential. A direct browser check then
