@@ -1,0 +1,9 @@
+[
+  {"label":"move_existing_handle_behind_bells","transaction":{"name":"DekadHandle","action_type":"correct_handle_depth_relative_to_bells","operation":"translate_object","params":{"delta":[0.0,0.70,0.0]}}},
+  {"label":"create_left_nearly_closed_bell_cap","command":"create_revolved_profile","params":{"name":"DekadLeftBell","segments":12,"profile":[[0.06,-0.48],[1.35,-0.48],[1.68,-0.30],[1.78,0.02],[1.62,0.34],[1.18,0.62],[0.62,0.72],[0.12,0.55]]}},
+  {"label":"orient_left_bell_cap_to_front_axis","transaction":{"name":"DekadLeftBell","action_type":"orient_left_bell_cap","operation":"rotate_object","params":{"delta_radians":[1.5707963267948966,0.0,0.0]}}},
+  {"label":"place_left_bell_cap","transaction":{"name":"DekadLeftBell","action_type":"place_left_bell_cap","operation":"translate_object","params":{"delta":[-2.70,-1.75,4.35]}}},
+  {"label":"create_right_nearly_closed_bell_cap","command":"create_revolved_profile","params":{"name":"DekadRightBell","segments":12,"profile":[[0.06,-0.48],[1.35,-0.48],[1.68,-0.30],[1.78,0.02],[1.62,0.34],[1.18,0.62],[0.62,0.72],[0.12,0.55]]}},
+  {"label":"orient_right_bell_cap_to_front_axis","transaction":{"name":"DekadRightBell","action_type":"orient_right_bell_cap","operation":"rotate_object","params":{"delta_radians":[1.5707963267948966,0.0,0.0]}}},
+  {"label":"place_right_bell_cap","transaction":{"name":"DekadRightBell","action_type":"place_right_bell_cap","operation":"translate_object","params":{"delta":[2.70,-1.75,4.35]}}}
+]
