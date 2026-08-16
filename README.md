@@ -36,7 +36,9 @@ Current evidence includes:
   review page now emits a reviewer-identified decision bound to the exact audit and construction
   plan, with a fail-closed recorder for approval or correction.
 - a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
-  rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs.
+  rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs;
+  controlled nonplanar/SubD transfer now adds an opt-in all-quad preflight that rejects a curved
+  diagonal without state drift rather than treating connected topology as automatically SubD-safe.
 - a current two-family seam-directed UV production transfer whose connected all-quad high/low
   sources keep live modifiers, outperform matched no-seam controls, bake tangent normals, and
   round-trip as low-only GLBs under an independent Blender verifier.

@@ -1,0 +1,158 @@
+{
+  "lab": "typed_connect_vertex_path_curved_subd_transfer",
+  "blender_version": "5.2.0 LTS",
+  "scope": "two endpoint Connect Vertex Path; strict all-quad preflight for SubD-sensitive calls",
+  "records": {
+    "Crown_Hex_Repair": {
+      "base": {
+        "vertices": 6,
+        "edges": 7,
+        "faces": 2,
+        "face_sizes": [
+          4,
+          4
+        ],
+        "triangles": 0,
+        "quads": 2,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "boundary_edges": 6
+      },
+      "evaluated": {
+        "vertices": 45,
+        "faces": 32,
+        "triangles": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "non_manifold_edges": 0
+      },
+      "transaction": {
+        "operation": {
+          "endpoint_vertex_ids": [
+            1,
+            4
+          ],
+          "path_edges": 1,
+          "check_degenerate": true,
+          "require_all_quads": true,
+          "new_verts": 0,
+          "new_edges": 1,
+          "new_faces": 1
+        },
+        "begin_revision": 0,
+        "result_revision": 1,
+        "verified_after_present": true
+      }
+    },
+    "Twisted_Hex_Repair": {
+      "base": {
+        "vertices": 6,
+        "edges": 7,
+        "faces": 2,
+        "face_sizes": [
+          4,
+          4
+        ],
+        "triangles": 0,
+        "quads": 2,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "boundary_edges": 6
+      },
+      "evaluated": {
+        "vertices": 45,
+        "faces": 32,
+        "triangles": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "non_manifold_edges": 0
+      },
+      "transaction": {
+        "operation": {
+          "endpoint_vertex_ids": [
+            1,
+            4
+          ],
+          "path_edges": 1,
+          "check_degenerate": true,
+          "require_all_quads": true,
+          "new_verts": 0,
+          "new_edges": 1,
+          "new_faces": 1
+        },
+        "begin_revision": 1,
+        "result_revision": 2,
+        "verified_after_present": true
+      }
+    },
+    "Curved_Strip_Diagonal_Control": {
+      "base": {
+        "vertices": 8,
+        "edges": 10,
+        "faces": 3,
+        "face_sizes": [
+          4,
+          4,
+          4
+        ],
+        "triangles": 0,
+        "quads": 3,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "boundary_edges": 8
+      },
+      "evaluated": {
+        "vertices": 65,
+        "faces": 48,
+        "triangles": 0,
+        "ngons": 0,
+        "degenerate_faces": 0,
+        "non_manifold_edges": 0
+      },
+      "rejection": {
+        "begin_revision": 2,
+        "error": "Connect Vertex Path preflight on 'Curved_Strip_Diagonal_Control' would leave 2 non-quad faces; require_all_quads is enabled",
+        "abandoned": {
+          "decision_id": "dec_2_1786900723154",
+          "abandoned": true,
+          "reason": "strict quad preflight rejection",
+          "failed_operation_rolled_back": true
+        },
+        "fingerprint_changed": false,
+        "fingerprint_diff": {
+          "topology": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_moved": false,
+          "transform_changed": false,
+          "modifiers_changed": false
+        }
+      }
+    }
+  },
+  "assertions": {
+    "two_curved_hex_repairs_become_all_quad": true,
+    "two_curved_subd_results_are_clean": true,
+    "live_subdivision_remains_unapplied": true,
+    "typed_transactions_commit_and_verify": true,
+    "strict_quad_preflight_rejects_curved_diagonal_without_mutation": true,
+    "render_evidence_exists": true
+  },
+  "renders": [
+    "connect_vertex_path_curved_transfer_matcap.png",
+    "connect_vertex_path_curved_transfer_wire.png"
+  ],
+  "pass": true,
+  "claim_boundary": "Two controlled curved nonplanar six-sided repair patches and one curved strip rejection. This demonstrates a strict typed preflight and live SubD topology outcome, not ordered multi-point support, arbitrary real-prop path selection, or professional reference fidelity."
+}

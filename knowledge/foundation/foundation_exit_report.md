@@ -399,6 +399,16 @@ is rejected as distinct multi-view evidence. This improves setup integrity but d
 missing Swingline human decision or prove real-image fidelity, so the exit decision stays
 **PARTIAL**.
 
+### 2026-08-16 strict all-quad Connect Vertex Path update
+
+`connect_vertex_path` now offers a copy-first `require_all_quads` contract for SubD-sensitive
+repairs. Two controlled nonplanar six-sided patches become all-quad base topology under live,
+unapplied Catmull-Clark Subdivision, while a curved three-quad diagonal that would retain endpoint
+triangles is rejected before mutation with unchanged fingerprint and scene revision. The retained
+builder passes 6/6 assertions and a fresh Blender process passes 9/9 checks. The promoted skill is
+narrow: it neither chooses a repair path from visual reference nor covers longer selection history
+or a human-authorized asset. The exit decision remains **PARTIAL**.
+
 ### 2026-08-15 secondary-view strategy update
 
 A controlled Blender 5.2 experiment now proves one narrow depth-reasoning mechanism across

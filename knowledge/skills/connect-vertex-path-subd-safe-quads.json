@@ -1,0 +1,26 @@
+{
+  "skill_id": "topology.connect_vertex_path.subd_safe_quads",
+  "title": "Require all-quad output for a SubD-sensitive Connect Vertex Path repair",
+  "topic_tags": ["Connect Vertex Path", "J path", "all-quad topology", "nonplanar patch", "Subdivision Surface", "BMesh preflight"],
+  "problem": "A connected vertex path can be topologically continuous but still leave endpoint triangles. On a nonplanar SubD-sensitive patch, accepting that result creates non-quad topology instead of a safe repair.",
+  "status": "TRANSFER_VALIDATED",
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE"],
+    "workflow": ["SubD-safe connected topology repair", "strict all-quad Connect Vertex Path"],
+    "surface_type": ["nonplanar open patch", "curved SubD surface"],
+    "defect": ["non-quad path output", "endpoint triangles", "triangle-producing diagonal"],
+    "local_topology": ["two selected nonadjacent vertices", "six-sided face region", "curved quad strip"],
+    "modifiers_involved": ["SUBSURF"]
+  },
+  "preconditions": ["Exactly two visible selected endpoint vertices lie on one connected face region.", "The endpoints do not already share an edge.", "A live Subdivision modifier must remain unapplied for later review."],
+  "required_observations": ["Copy-first BMesh preflight result and residual face sizes.", "Base and evaluated triangles, n-gons, degenerates, and non-manifold edges.", "Decision fingerprint and scene revision before and after a rejected candidate.", "Solid or wireframe view of the retained repair."],
+  "action_policy": ["Run connect_vertex_path with check_degenerate=true and require_all_quads=true.", "If preflight finds a triangle or n-gon, abandon the decision without mutating the mesh.", "For accepted output, verify base and evaluated topology, persistent IDs, and live modifier state before commit.", "Do not treat mere connectedness as SubD readiness."],
+  "expected_effects": ["A valid face-spanning hex repair becomes two base quads.", "A triangle-producing diagonal is rejected before scene state changes.", "Subdivision remains live and unapplied after the accepted repair."],
+  "failure_predicates": ["Any residual triangle or n-gon after the candidate split.", "Adjacent or disconnected endpoint selection.", "Fingerprint or scene revision drift after strict preflight rejection."],
+  "recovery": ["Abandon the typed decision and choose a different topology plan rather than accepting endpoint triangles.", "Use a dedicated retopology or redesign step if no all-quad two-endpoint path exists.", "Keep ordered three-or-more-point paths out of the remote interface until selection-history provenance is available."],
+  "sources": [{"type": "official_documentation", "source_id": "blender-manual-connect-vertex-path-2026-08-16", "description": "Connect Vertex Path splits traversed faces and crossed edges."}, {"type": "controlled_transfer", "source_id": "experiment-connect-vertex-path-curved-transfer-2026-08-16", "evidence_path": "runs/2026-08-16_connect-vertex-path-curved-transfer/", "description": "Two nonplanar six-sided repairs and one no-mutation triangle control."}],
+  "experiments": [{"type": "two nonplanar accepted repairs plus one strict rejection", "evidence_path": "runs/2026-08-16_connect-vertex-path-curved-transfer/", "result": "PASS", "measurements": {"accepted_cases": 2, "rejected_no_mutation_cases": 1, "builder_assertions": 6, "fresh_verification_checks": 9}, "limitations": "Controlled open patches only; no reference-driven path choice, production prop, or multi-point selection history."}],
+  "runtime_usage": [],
+  "version_scope": "Typed decisions and saved-state behavior verified in Blender 5.2.0 LTS.",
+  "status_note": "Transferred across crown and twisted nonplanar patches with a strict curved-strip rejection control; real prop use remains open."
+}

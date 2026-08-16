@@ -436,3 +436,14 @@ unclassified missing pointers. Those classifications do not make the associated 
 locally reproducible; they preserve the honest boundary between source provenance and retained local
 evidence. The audit remains fail-closed for any future unclassified pointer, and the registry must
 not be used as evidence of local reproduction merely because an absent artifact has a retention note.
+
+## 2026-08-16 addendum: strict all-quad curved Connect Vertex Path transfer
+
+The bounded two-endpoint operation now accepts `require_all_quads=true`. It first performs the
+candidate split on an independent BMesh copy and rejects before mutation when any triangle or ngon
+would remain. `runs/2026-08-16_connect-vertex-path-curved-transfer/` records two nonplanar
+six-sided patch repairs that become two quads each under live, unapplied Catmull-Clark Subdivision.
+A curved three-quad diagonal control is rejected without fingerprint or revision drift. The builder
+passes 6/6 assertions and an independent Blender process passes 9/9 saved-state checks. This is
+controlled topology transfer only; it does not select repair paths from references or prove a
+production asset.

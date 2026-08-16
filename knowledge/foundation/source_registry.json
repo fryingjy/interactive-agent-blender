@@ -2855,6 +2855,35 @@
     }
   },
   {
+    "id": "experiment-connect-vertex-path-curved-transfer-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_connect-vertex-path-curved-transfer/",
+    "title": "Strict All-Quad Connect Vertex Path on Nonplanar SubD Patches",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["Connect-Vertex-Path", "BMesh", "all-quad-topology", "Subdivision-Surface", "transaction-rollback"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "solid_render", "wireframe_render", "evaluated_mesh", "persistent_ids", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_connect-vertex-path-curved-transfer/"],
+      "skills": ["knowledge/skills/connect-vertex-path-subd-safe-quads.json"],
+      "direct_observations": [
+        "Two nonplanar six-sided patches become two all-quad base faces through typed decisions while live Catmull-Clark Subdivision stays unapplied",
+        "A curved three-quad diagonal is rejected before mutation when require_all_quads is enabled",
+        "The builder passes 6 assertions and a separate Blender process passes 9 saved-state checks"
+      ],
+      "limitations": [
+        "Only two endpoint selections are supported",
+        "Controlled open-patch evidence only",
+        "No reference-driven path choice or human-authorized production prop"
+      ]
+    }
+  },
+  {
     "id": "experiment-double-curvature-bevel-subd-2026-08-16",
     "url": null,
     "local_path": "runs/2026-08-16_double-curvature-bevel-subd/",

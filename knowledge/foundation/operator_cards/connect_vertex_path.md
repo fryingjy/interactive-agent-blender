@@ -42,12 +42,23 @@ Bad:
 clears inherited IDs on created geometry, and participates in transaction-owned rollback and
 persistent-ID reconciliation.
 
+For a SubD-sensitive repair, callers can pass `require_all_quads=True`. The independent BMesh
+preflight then rejects the operation before mutation if its result would leave any triangle or
+n-gon. This is deliberately a strict whole-mesh contract, not a promise that every connected path
+can be made SubD-safe.
+
 ## Evidence and boundary
 
 `runs/2026-08-16_connect-vertex-path/` contains 6/6 Blender 5.2 transaction cases (including a live
-Edit Mode mutation), a solid topology render, saved `.blend`, and 5/5 fresh-process checks. Adjacent and disconnected controls preserve
-the complete layered fingerprint and scene revision. Evidence is controlled planar geometry; real
-prop use, ordered multi-point support, curved-surface behavior, and SubD transfer remain open.
+Edit Mode mutation), a solid topology render, saved `.blend`, and 5/5 fresh-process checks. Adjacent
+and disconnected controls preserve the complete layered fingerprint and scene revision.
+
+`runs/2026-08-16_connect-vertex-path-curved-transfer/` adds two nonplanar six-sided patch repairs:
+each becomes two base quads with a live unapplied Catmull-Clark Subdivision modifier and clean
+evaluated topology. A curved three-quad diagonal control is rejected by the strict all-quad
+preflight with unchanged fingerprint and scene revision. The clean builder passes 6/6 assertions and
+an independent fresh Blender process passes 9/9 checks. Evidence is still controlled geometry; real
+prop use and ordered multi-point support remain open.
 
 ## Official sources
 

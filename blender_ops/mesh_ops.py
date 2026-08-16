@@ -755,7 +755,7 @@ def loop_cut_selection(name, cuts=1):
     return {"cuts": cuts, "created_geometry": sum(created.values()), **created}
 
 
-def connect_vertex_path(name, check_degenerate=True):
+def connect_vertex_path(name, check_degenerate=True, require_all_quads=False):
     """Connect exactly two selected vertices through intervening faces.
 
     This is the deterministic, remotely callable subset of Blender's Connect
@@ -770,7 +770,9 @@ def connect_vertex_path(name, check_degenerate=True):
     repeated T-junction failure where only one side of a shared boundary was
     subdivided.  It does not promise all-quad output; diagonal endpoints can
     legitimately create triangles and must still be judged for the target
-    deformation/subdivision context.
+    deformation/subdivision context. SubD-sensitive callers can opt into
+    ``require_all_quads`` so the independent preflight rejects such a route
+    before the live BMesh is changed.
     """
     obj, bm = _bm_from_object(name)
     bm.verts.ensure_lookup_table()
@@ -822,6 +824,14 @@ def connect_vertex_path(name, check_degenerate=True):
                     f"Connect Vertex Path preflight on '{name}' would create "
                     f"{len(invalid_faces)} degenerate faces"
                 )
+        if require_all_quads:
+            non_quads = [face for face in probe.faces if len(face.verts) != 4]
+            if non_quads:
+                _write_back(obj, bm)
+                raise ValueError(
+                    f"Connect Vertex Path preflight on '{name}' would leave "
+                    f"{len(non_quads)} non-quad faces; require_all_quads is enabled"
+                )
     finally:
         probe.free()
 
@@ -850,6 +860,7 @@ def connect_vertex_path(name, check_degenerate=True):
         "endpoint_vertex_ids": endpoint_ids,
         "path_edges": len(path_edges),
         "check_degenerate": bool(check_degenerate),
+        "require_all_quads": bool(require_all_quads),
         **created,
     }
 

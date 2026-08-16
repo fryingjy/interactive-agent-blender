@@ -1,7 +1,7 @@
 {
-  "version": 7,
+  "version": 8,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. These are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. Version 8 adds strict all-quad Connect Vertex Path selection on a curved SubD patch. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -120,6 +120,13 @@
       "kind": "positive",
       "context": {"query": "weighted bevel has missing sharp rim segments and broken highlights even though the mesh is manifold", "modeling_stage": "TOPOLOGY_SURFACE", "workflow": "explicit semantic bevel-edge completeness audit", "surface_type": "double-curved manufactured panel", "defect": "incomplete bevel map", "local_topology": ["declared perimeter edge loop"], "modifiers": ["BEVEL", "SUBSURF"]},
       "expected_top_skill": "hard-surface.explicit_semantic_bevel_edge_intent",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "connect_vertex_path_subd_safe_quads",
+      "kind": "positive",
+      "context": {"query": "curved SubD face-spanning vertex path diagonal would leave endpoint triangles", "modeling_stage": "TOPOLOGY_SURFACE", "workflow": "SubD-safe connected topology repair", "surface_type": "nonplanar open patch", "defect": "non-quad path output", "local_topology": ["two selected nonadjacent vertices"], "modifiers": ["SUBSURF"]},
+      "expected_top_skill": "topology.connect_vertex_path.subd_safe_quads",
       "minimum_top_margin": 1.0
     },
     {

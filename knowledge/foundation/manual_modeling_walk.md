@@ -12,7 +12,7 @@ incomplete; `OPEN` means no adequate evidence exists.
 | Documentation branch | Primary official source | Status | Repository evidence | Remaining work |
 | --- | --- | --- | --- | --- |
 | Mesh editing overview | Mesh Editing operator index | INDEXED | mandatory operator inventory plus prior labs/cards | child pages are not exhaustively studied |
-| Connect Vertex Path | Connect Vertex Path Manual + current BMesh operators API | TESTED | bounded typed operation, transaction controls, solid topology render, and fresh-process verifier | ordered three-plus endpoint history, curved surfaces, and real-prop/SubD transfer |
+| Connect Vertex Path | Connect Vertex Path Manual + current BMesh operators API | TESTED | bounded typed operation, transaction controls, planar plus nonplanar/SubD all-quad preflight, solid topology render, and fresh-process verifiers | ordered three-plus endpoint history and real-prop transfer |
 | Extrude / inset | Mesh Editing branch | USED | speaker, soap-dish, operator runs | formal parameter sweep is incomplete |
 | Bevel operation | Bevel Manual | TESTED/USED | operator card and prior runs | profile/custom-profile breadth |
 | Delete / dissolve | Blender 5.2 Deleting & Dissolving page | TESTED | operator and BMesh labs plus current child-page card | parameter breadth beyond modeler-critical cases |
