@@ -74,6 +74,39 @@ def set_curve_bevel_depth(name, depth):
     return {"name": name, "bevel_depth": depth}
 
 
+def set_curve_points(name, points):
+    """Replace an existing curve spline's editable control-point positions.
+
+    Curve assemblies need the same revise-after-observation loop as meshes.
+    This changes only coordinates, preserves spline type/profile/taper and
+    does not silently convert the object to mesh geometry.
+    """
+    obj = bpy.data.objects[name]
+    if obj.type != "CURVE":
+        raise ValueError(f"'{name}' is not a curve object")
+    if not obj.data.splines:
+        raise ValueError(f"'{name}' has no spline")
+    # A production curve path is currently restricted to one authored
+    # spline.  Indexing avoids relying on UI selection/"active" state in
+    # Blender's background process, where there is no Edit Mode context.
+    if len(obj.data.splines) != 1:
+        raise ValueError("set_curve_points requires exactly one spline; edit a specific spline API is needed")
+    spline = obj.data.splines[0]
+    if len(points) != len(spline.bezier_points if spline.type == "BEZIER" else spline.points):
+        raise ValueError("point count must match existing spline; recreate the curve for topology changes")
+    if spline.type == "BEZIER":
+        for control, point in zip(spline.bezier_points, points):
+            control.co = (point[0], point[1], point[2])
+    else:
+        for control, point in zip(spline.points, points):
+            control.co = (point[0], point[1], point[2], 1.0)
+    # Curve datablocks in Blender 5.x do not expose ``update()``.  Tag the
+    # owning object so the dependency graph evaluates the revised path for
+    # viewport/render/save without requiring a UI context.
+    obj.update_tag()
+    return {"name": name, "spline_type": spline.type, "point_count": len(points)}
+
+
 def set_curve_taper(name, taper_object_name):
     """Attach a separate curve object as this curve's taper -- its shape
     (as a profile along its own length, evaluated 0..1) scales this

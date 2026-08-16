@@ -522,6 +522,9 @@ class ModelerServer:
     def cmd_set_curve_bevel_depth(self, name, depth):
         return curve_ops.set_curve_bevel_depth(name, depth)
 
+    def cmd_set_curve_points(self, name, points):
+        return curve_ops.set_curve_points(name, points)
+
     def cmd_set_curve_taper(self, name, taper_object_name):
         return curve_ops.set_curve_taper(name, taper_object_name)
 

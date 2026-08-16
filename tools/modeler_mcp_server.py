@@ -178,6 +178,13 @@ def set_curve_bevel_depth(object_name: str, depth: float) -> dict:
 
 
 @mcp.tool()
+def set_curve_points(object_name: str, points: list[list[float]]) -> dict:
+    """Revise an existing curve's control-point coordinates without converting
+    its spline, bevel profile, taper, or other editable curve settings."""
+    return _call("set_curve_points", name=object_name, points=points)
+
+
+@mcp.tool()
 def set_curve_taper(object_name: str, taper_object_name: str) -> dict:
     """Attach a separate curve object (typically a simple 2-point width-vs-position profile) as object_name's taper, scaling its cross-section along its own length. Both curve objects must already exist."""
     return _call("set_curve_taper", name=object_name, taper_object_name=taper_object_name)
