@@ -2853,5 +2853,36 @@
         "No runtime use on a human-authorized benchmark prop"
       ]
     }
+  },
+  {
+    "id": "experiment-double-curvature-bevel-subd-2026-08-16",
+    "url": null,
+    "local_path": "runs/2026-08-16_double-curvature-bevel-subd/",
+    "title": "Explicit Semantic Bevel-Edge Completeness on Double Curvature",
+    "creator": "interactive-agent-blender",
+    "source_type": "controlled_experiment",
+    "trust_tier": "A",
+    "version": "Blender 5.2.0 LTS",
+    "topics": ["hard-surface", "semantic-bevel-weight", "sharp-edge-completeness", "double-curvature", "Subdivision-Surface", "highlight-flow"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": true},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["blend_data", "base_cage_wireframe", "MatCap_render", "persistent_edge_ids", "fixed_frame_pixel_difference", "fresh_process_verification"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_double-curvature-bevel-subd/"],
+      "skills": ["knowledge/skills/explicit-semantic-bevel-edge-intent.json"],
+      "direct_observations": [
+        "Crown and saddle families each use matched one-component closed 98-vertex/96-quad cages with live Bevel then Subdivision stacks",
+        "Complete variants declare and weight all 48 physical rim segments; negative controls preserve the declaration but omit eight distributed weights",
+        "All four evaluated meshes remain closed, nondegenerate, and all-quad, while the explicit audit still rejects both incomplete controls with exact missing persistent IDs",
+        "Matched MatCap comparisons change 7012 crown pixels and 8339 saddle pixels; visible failures include bumps, pinches, and broken rim highlights",
+        "A clean builder rerun exits 0 and a fresh Blender process passes 11 saved-state checks"
+      ],
+      "limitations": [
+        "Authored controlled edge intent rather than automatic inference from an unfamiliar reference",
+        "No human-authorized prop runtime use or professional visual acceptance",
+        "The retained Intel driver teardown crash is not counted as successful execution evidence"
+      ]
+    }
   }
 ]

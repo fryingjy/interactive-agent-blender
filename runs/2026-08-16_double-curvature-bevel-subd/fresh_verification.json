@@ -1,0 +1,109 @@
+{
+  "lab": "independent_double_curvature_bevel_subd_verification",
+  "blender_version": "5.2.0 LTS",
+  "records": {
+    "CROWN_COMPLETE": {
+      "base_vertices": 98,
+      "base_faces": 96,
+      "base_non_quads": 0,
+      "base_health": {
+        "components": 1,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "modifier_types": [
+        "BEVEL",
+        "SUBSURF"
+      ],
+      "intent_source": "EXPLICIT_DECLARATION",
+      "intended_count": 48,
+      "weighted_count": 48,
+      "health": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0
+      }
+    },
+    "CROWN_INCOMPLETE": {
+      "base_vertices": 98,
+      "base_faces": 96,
+      "base_non_quads": 0,
+      "base_health": {
+        "components": 1,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "modifier_types": [
+        "BEVEL",
+        "SUBSURF"
+      ],
+      "intent_source": "EXPLICIT_DECLARATION",
+      "intended_count": 48,
+      "weighted_count": 40,
+      "health": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0
+      }
+    },
+    "SADDLE_COMPLETE": {
+      "base_vertices": 98,
+      "base_faces": 96,
+      "base_non_quads": 0,
+      "base_health": {
+        "components": 1,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "modifier_types": [
+        "BEVEL",
+        "SUBSURF"
+      ],
+      "intent_source": "EXPLICIT_DECLARATION",
+      "intended_count": 48,
+      "weighted_count": 48,
+      "health": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0
+      }
+    },
+    "SADDLE_INCOMPLETE": {
+      "base_vertices": 98,
+      "base_faces": 96,
+      "base_non_quads": 0,
+      "base_health": {
+        "components": 1,
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0
+      },
+      "modifier_types": [
+        "BEVEL",
+        "SUBSURF"
+      ],
+      "intent_source": "EXPLICIT_DECLARATION",
+      "intended_count": 48,
+      "weighted_count": 40,
+      "health": {
+        "non_manifold_edges": 0,
+        "degenerate_faces": 0,
+        "ngons": 0
+      }
+    }
+  },
+  "checks": {
+    "generator_report_passed": true,
+    "all_four_objects_exist": true,
+    "all_base_cages_are_98_vertex_96_quad": true,
+    "all_intent_sources_remain_explicit": true,
+    "complete_maps_cover_all_declared_edges": true,
+    "incomplete_maps_retain_eight_detectable_omissions": true,
+    "bevel_precedes_subd_in_saved_stacks": true,
+    "all_saved_evaluated_meshes_are_clean_quads": true,
+    "all_render_evidence_is_retained": true,
+    "temporary_wire_objects_not_saved": true,
+    "no_applied_duplicate_meshes_saved": true
+  },
+  "pass": true,
+  "claim_boundary": "Controlled manufactured crown and saddle panels with predeclared rim intent. The run proves auditable edge-selection completeness and measurable evaluated visual consequences under a live Bevel->SubD stack; it does not identify sharp edges from arbitrary references or establish held-out asset quality."
+}

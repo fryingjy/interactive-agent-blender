@@ -79,6 +79,7 @@ CAPABILITIES = [
     "production_high_low_audit",
     "scene_component_coverage",
     "axis_aligned_reference_images",
+    "explicit_sharp_edge_intent",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -125,6 +126,7 @@ _OPS = {
     "package_high_low_variants": object_ops.package_high_low_variants,
     "set_shading": object_ops.set_shading,
     "set_smooth_by_angle": object_ops.set_smooth_by_angle,
+    "declare_bevel_edge_intent": object_ops.declare_bevel_edge_intent,
     "set_bevel_weight_by_ids": object_ops.set_bevel_weight_by_ids,
     "set_bevel_scoping": object_ops.set_bevel_scoping,
     "set_edge_crease_by_ids": object_ops.set_edge_crease_by_ids,

@@ -555,6 +555,40 @@ def set_smooth_by_angle(name, angle=0.5235987756, keep_sharp_edges=True):
     }
 
 
+def declare_bevel_edge_intent(name, edge_ids, rationale):
+    """Declare every edge expected to receive a physical bevel radius.
+
+    This is deliberately separate from assigning the weights.  If declaration
+    and assignment are the same operation, an omitted sharp edge silently
+    disappears from both sets and a completeness audit can never detect it.
+    Persistent IDs keep the authored design intent inspectable after unrelated
+    topology edits.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != "MESH":
+        raise ValueError(f"'{name}' is not a mesh object")
+    if obj.mode == "EDIT":
+        raise ValueError("declare_bevel_edge_intent requires Object Mode")
+    if not rationale or not str(rationale).strip():
+        raise ValueError("rationale is required for an explicit bevel-edge declaration")
+    persistent_ids.ensure_persistent_ids(name)
+    id_map = persistent_ids.get_id_maps(name)["edges"]["id_to_index"]
+    requested = sorted({int(agent_id) for agent_id in edge_ids})
+    if not requested:
+        raise ValueError("declare at least one intended bevel edge")
+    missing = [agent_id for agent_id in requested if agent_id not in id_map]
+    if missing:
+        raise ValueError(f"unknown persistent edge IDs: {missing}")
+    obj["hard_surface_intended_bevel_edge_ids"] = requested
+    obj["hard_surface_bevel_intent_source"] = "EXPLICIT_DECLARATION"
+    obj["hard_surface_bevel_intent_rationale"] = str(rationale).strip()
+    return {
+        "intended_bevel_edge_ids": requested,
+        "intent_source": "EXPLICIT_DECLARATION",
+        "rationale": str(rationale).strip(),
+    }
+
+
 def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
     """Assign a semantic bevel-weight set by persistent edge IDs.
 
@@ -590,12 +624,17 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
             continue
         attribute.data[edge_index].value = value
         assigned.append(int(agent_id))
-    # Persist exactly what this decision regarded as sharp so later review can
-    # distinguish an incomplete semantic map from an intentionally sparse one.
+    # Preserve an explicit declaration when one exists.  Older callers that
+    # assign without declaring remain supported, but their intent is marked as
+    # inferred from the assignment and therefore cannot prove edge-selection
+    # completeness independently.
     index_to_id = persistent_ids.get_id_maps(name)["edges"]["index_to_id"]
-    obj["hard_surface_intended_bevel_edge_ids"] = sorted(
+    weighted_ids = sorted(
         int(index_to_id[index]) for index, item in enumerate(attribute.data) if item.value > 0.999
     )
+    if obj.get("hard_surface_bevel_intent_source") != "EXPLICIT_DECLARATION":
+        obj["hard_surface_intended_bevel_edge_ids"] = weighted_ids
+        obj["hard_surface_bevel_intent_source"] = "WEIGHT_ASSIGNMENT_INFERRED"
     obj.data.update()
     return {
         "attribute": "bevel_weight_edge",
@@ -603,6 +642,7 @@ def set_bevel_weight_by_ids(name, edge_ids, weight=1.0, clear_others=False):
         "assigned_edge_ids": assigned,
         "missing_edge_ids": missing,
         "clear_others": bool(clear_others),
+        "intent_source": obj.get("hard_surface_bevel_intent_source"),
     }
 
 
@@ -783,6 +823,9 @@ def hard_surface_shading_audit(name):
             if item.value > 0.999 and index in id_maps["index_to_id"]
         )
     intended_ids = sorted(int(item) for item in obj.get("hard_surface_intended_bevel_edge_ids", []))
+    intent_source = obj.get("hard_surface_bevel_intent_source", "LEGACY_UNSPECIFIED")
+    missing_weight_ids = sorted(set(intended_ids) - set(weighted_ids))
+    unexpected_weight_ids = sorted(set(weighted_ids) - set(intended_ids))
     modifier_types = [modifier.type for modifier in obj.modifiers]
     bevel_modifiers = [(index, modifier) for index, modifier in enumerate(obj.modifiers) if modifier.type == "BEVEL"]
     weighted_bevel_indices = [index for index, modifier in bevel_modifiers if modifier.limit_method == "WEIGHT"]
@@ -862,6 +905,7 @@ def hard_surface_shading_audit(name):
 
     checks = {
         "semantic_intent_recorded": bool(intended_ids),
+        "semantic_intent_explicitly_declared": intent_source == "EXPLICIT_DECLARATION",
         "semantic_weights_match_intent": bool(intended_ids) and weighted_ids == intended_ids,
         "weight_limited_bevel_present": bool(weighted_bevel_indices),
         "angle_or_vgroup_intent_recorded": scoping_intent_recorded,
@@ -889,13 +933,27 @@ def hard_surface_shading_audit(name):
         and checks["not_unannotated_blanket_smooth"]
     )
     warnings = []
+    if intended_ids and intent_source != "EXPLICIT_DECLARATION":
+        warnings.append(
+            "Semantic bevel intent was inferred from the weight assignment; this verifies the saved "
+            "map but cannot independently prove that every edge which should be sharp was selected."
+        )
+    if missing_weight_ids:
+        warnings.append(f"Declared bevel edges missing full weight: {missing_weight_ids}")
+    if unexpected_weight_ids:
+        warnings.append(f"Weighted edges absent from the declared bevel intent: {unexpected_weight_ids}")
     if no_sharp_edges_claimed and not no_sharp_edges_path_ok:
         warnings.append(
             "hard_surface_no_sharp_edges_intended is set but the mesh has a Bevel modifier, "
             "weighted edges, or creased edges -- the claim contradicts the actual geometry."
         )
     if not weight_path_ok and not angle_or_vgroup_path_ok and not crease_path_ok and not no_sharp_edges_path_ok:
-        if non_weight_scoped_indices and not weighted_bevel_indices:
+        if intended_ids and intent_source == "EXPLICIT_DECLARATION":
+            warnings.append(
+                "Explicit semantic bevel intent is recorded, but the saved weight map does not "
+                "cover it exactly; repair the missing or unexpected edge assignments."
+            )
+        elif non_weight_scoped_indices and not weighted_bevel_indices:
             method_names = "/".join(bevel_scoping_methods)
             warnings.append(
                 f"No WEIGHT-based semantic edge-ID intent is recorded; this object uses "
@@ -917,6 +975,9 @@ def hard_surface_shading_audit(name):
         "bevel_limit_methods_present": bevel_scoping_methods,
         "weighted_edge_ids": weighted_ids,
         "intended_bevel_edge_ids": intended_ids,
+        "bevel_intent_source": intent_source,
+        "missing_weight_edge_ids": missing_weight_ids,
+        "unexpected_weight_edge_ids": unexpected_weight_ids,
         "creased_edge_ids": creased_ids,
         "intended_crease_edge_ids": intended_crease_ids,
         "modifier_types": modifier_types,

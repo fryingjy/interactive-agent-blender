@@ -40,6 +40,9 @@ Current evidence includes:
 - a current two-family seam-directed UV production transfer whose connected all-quad high/low
   sources keep live modifiers, outperform matched no-seam controls, bake tangent normals, and
   round-trip as low-only GLBs under an independent Blender verifier.
+- explicit semantic bevel-edge declaration separated from weight assignment, with crown/saddle
+  double-curvature controls proving that eight omitted sharp-rim segments remain detectable even
+  when every evaluated mesh is closed, nondegenerate, and all-quad.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
@@ -225,6 +228,11 @@ retention boundary and `docs/field-report/index.html` for links to retained, ins
 - `runs/2026-08-16_curved-bevel-normal-policy/` — twelve live radial/taper variants separate
   Bevel-induced normal damage from uneven-cage error; Harden Normals restores the baseline while
   Weighted Normal is explicitly rejected on the uneven curved fixture.
+- `runs/2026-08-16_double-curvature-bevel-subd/` — two connected all-quad double-curvature families
+  separate declared physical-rim intent from weight assignment; complete controls stay visually
+  continuous while eight-edge omissions remain technically clean but visibly pinch and fail the
+  exact persistent-ID audit. Live stacks, base-cage wireframe, MatCap comparisons, and 11/11 fresh
+  checks are retained.
 - `runs/2026-08-16_real-video-reference-setup-review/` — identity-bound whole-video plus native
   range-scoped Gemini analysis, five independently inspected browser frames, sampled visible
   captions, one verified 24–124 s orthographic-correction episode, and explicit rejection of later

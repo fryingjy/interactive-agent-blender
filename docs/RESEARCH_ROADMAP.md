@@ -1088,3 +1088,26 @@ rotations had stale `matrix_world` values; a view-layer update repaired the meas
 changing thresholds. The resulting skill is `TRANSFER_VALIDATED` for scene setup only. It does not
 prove photographic orthography, source identity, calibration, model likeness, or authorization to
 bypass Swingline's human gate.
+
+## Update -- 2026-08-16 (explicit Bevel intent on double curvature)
+
+The camera corrections exposed a semantic-audit flaw: `set_bevel_weight_by_ids` recorded its own
+result as the intended sharp-edge set. An omitted edge therefore vanished from both the assignment
+and the supposed ground truth. `declare_bevel_edge_intent` now records the complete persistent-ID
+set and rationale in a separate typed decision. Later assignment remains backward compatible but is
+marked `WEIGHT_ASSIGNMENT_INFERRED` unless an explicit declaration already exists.
+
+`runs/2026-08-16_double-curvature-bevel-subd/` tests that separation on positive-crown and saddle
+panels. Every fixture is a single connected closed 98-vertex/96-quad cage with live WEIGHT Bevel →
+Catmull-Clark Subdivision and Smooth by Angle. Complete controls declare and weight 48 top/bottom
+rim segments. Negative controls preserve the declaration but omit eight distributed segments. All
+four evaluated meshes remain closed, nondegenerate, and all-quad, yet the audit rejects both
+incomplete maps with the exact missing IDs. MatCap differences cover 7,012 crown pixels and 8,339
+saddle pixels and visibly localize bumps, pinches, and interrupted rim highlights.
+
+The first report failure was only persistent-ID ordering and was corrected to compare sets. The
+first wire image incorrectly relied on a viewport-only flag and was replaced by temporary Wireframe
+geometry removed before save. One passing invocation then crashed in Intel driver teardown after
+saving; it is not counted. The retained builder rerun exits 0 and a separate Blender process passes
+11/11 checks. This validates the controlled completeness mechanism, not automatic sharp-edge
+inference or a held-out prop.

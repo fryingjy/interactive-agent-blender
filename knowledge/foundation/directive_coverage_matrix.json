@@ -38,8 +38,8 @@
       "id": "4",
       "title": "Professional modeling judgment",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "knowledge/skills/curved-bevel-normal-policy.json", "runs/2026-08-16_curved-bevel-normal-policy/", "docs/CURRENT_STATE_GAP_MATRIX.md"],
-      "current_boundary": "Foundational strategy/topology/surface knowledge includes a measured uniform-versus-uneven curved normal-policy rejection, while arbitrary double curvature and credible broad professional visual judgment remain open.",
+      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "knowledge/skills/curved-bevel-normal-policy.json", "runs/2026-08-16_curved-bevel-normal-policy/", "knowledge/skills/explicit-semantic-bevel-edge-intent.json", "runs/2026-08-16_double-curvature-bevel-subd/", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "Foundational strategy/topology/surface knowledge includes measured radial normal-policy rejection plus explicit bevel-intent completeness across crown and saddle double curvature; reference-driven sharp intent and credible broad professional visual judgment remain open.",
       "next_step": "Use the knowledge on several independent simple reference props and preserve rejection evidence."
     },
     {
@@ -70,7 +70,7 @@
       "id": "8",
       "title": "Closed-loop execution",
       "status": "PARTIAL",
-      "evidence": ["blender_ops/decision_transaction.py", "tools/run_transaction_channel_rollback_lab.py", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
+      "evidence": ["blender_ops/decision_transaction.py", "tools/run_transaction_channel_rollback_lab.py", "runs/2026-08-16_double-curvature-bevel-subd/double_curvature_bevel_subd_report.json", "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"],
       "current_boundary": "Typed transaction, rollback, and verification mechanisms are demonstrated; their artistic closed-loop use is not yet sufficient for the mission claim.",
       "next_step": "Retain full observe-diagnose-decide-verify evidence on the next authorized prop."
     },
@@ -86,8 +86,8 @@
       "id": "10",
       "title": "Persistent geometry and semantics",
       "status": "PARTIAL",
-      "evidence": ["blender_ops/persistent_ids.py", "blender_ops/semantic_regions.py", "tools/run_semantic_region_render_lab.py"],
-      "current_boundary": "Identity and semantic regions are implemented for the tested typed operations; unsupported discontinuities still require explicit handling.",
+      "evidence": ["blender_ops/persistent_ids.py", "blender_ops/semantic_regions.py", "tools/run_semantic_region_render_lab.py", "blender_ops/object_ops.py", "runs/2026-08-16_double-curvature-bevel-subd/fresh_verification.json"],
+      "current_boundary": "Identity and semantic regions are implemented for the tested typed operations; explicit bevel intent now remains independently comparable with later persistent-ID weight assignment, while unsupported discontinuities still require explicit handling.",
       "next_step": "Add operation-specific tests only when newly sanctioned operations require them."
     },
     {
@@ -110,16 +110,16 @@
       "id": "13",
       "title": "Research and knowledge lifecycle",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge/skills/uv-seam-graph-connected-tube.json", "runs/2026-08-16_real-video-reference-setup-review/episode_review.json", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
-      "current_boundary": "Source observation, bounded episode review, two-family UV transfer, and principal-axis Image Empty transfer exist; later timestamp drift is retained as rejected evidence, while real-asset runtime use and long-horizon skill reuse remain incomplete.",
+      "evidence": ["knowledge/foundation/source_registry.json", "knowledge_engine/video_knowledge.py", "runs/2026-08-16_real-video-bevel-review/episode_review.json", "runs/2026-08-16_real-video-uv-review/episode_review.json", "runs/2026-08-16_uv-seam-production-transfer/fresh_verification.json", "knowledge/skills/uv-seam-graph-connected-tube.json", "runs/2026-08-16_real-video-reference-setup-review/episode_review.json", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json", "runs/2026-08-16_double-curvature-bevel-subd/fresh_verification.json", "knowledge/skills/explicit-semantic-bevel-edge-intent.json"],
+      "current_boundary": "Source observation, bounded episode review, two-family UV transfer, principal-axis Image Empty transfer, and two-family explicit bevel-intent transfer exist; later timestamp drift and visual failure controls are retained, while real-asset runtime use and long-horizon skill reuse remain incomplete.",
       "next_step": "Promote only techniques that are reproduced, transferred, and then used on an authorized asset."
     },
     {
       "id": "14",
       "title": "Controlled experiments and retrieval",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json", "runs/2026-08-16_uv-seam-production-transfer/", "runs/2026-08-16_reference-image-alignment-transfer/"],
-      "current_boundary": "Controlled labs, 21 retrieval positive/abstention cases, two bounded lesson transfers, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader real-asset transfer remain open.",
+      "evidence": ["knowledge_engine/retrieval.py", "tools/run_retrieval_benchmark.py", "knowledge/foundation/quizzes/quiz_004_validation.json", "runs/2026-08-15_video-transfer-uniform-deformation/independent_verification.json", "runs/2026-08-16_uv-seam-production-transfer/", "runs/2026-08-16_reference-image-alignment-transfer/", "runs/2026-08-16_double-curvature-bevel-subd/"],
+      "current_boundary": "Controlled labs, 22 retrieval positive/abstention cases, two bounded lesson transfers, explicit sharp-edge completeness transfer, and a structurally validated five-day fresh-scenario quiz exist; factual independence, week-scale retention, and broader real-asset transfer remain open.",
       "next_step": "Obtain an independent delayed assessment and reuse validated knowledge on a fresh human-authorized asset."
     },
     {

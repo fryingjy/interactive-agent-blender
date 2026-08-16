@@ -1,7 +1,7 @@
 {
-  "version": 6,
+  "version": 7,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. These are regression cases, not held-out evidence.",
+  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. These are regression cases, not held-out evidence.",
   "cases": [
     {
       "case_id": "boolean_tangent",
@@ -113,6 +113,13 @@
       "kind": "positive",
       "context": {"query": "construction Image Empty was imported from a free view and is tilted instead of aligned to the declared front axis", "modeling_stage": "REFERENCE_ANALYSIS", "workflow": "axis-aligned construction reference setup", "reference_issue": "construction card imported from free perspective view"},
       "expected_top_skill": "reference.axis_aligned_image_empty_setup",
+      "minimum_top_margin": 1.0
+    },
+    {
+      "case_id": "explicit_bevel_edge_completeness",
+      "kind": "positive",
+      "context": {"query": "weighted bevel has missing sharp rim segments and broken highlights even though the mesh is manifold", "modeling_stage": "TOPOLOGY_SURFACE", "workflow": "explicit semantic bevel-edge completeness audit", "surface_type": "double-curved manufactured panel", "defect": "incomplete bevel map", "local_topology": ["declared perimeter edge loop"], "modifiers": ["BEVEL", "SUBSURF"]},
+      "expected_top_skill": "hard-surface.explicit_semantic_bevel_edge_intent",
       "minimum_top_margin": 1.0
     },
     {

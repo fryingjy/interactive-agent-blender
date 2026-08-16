@@ -66,6 +66,9 @@ specialization. Existing evidence remains **KNOWN / DEFERRED**; it is not delete
   semantic weighted bevels where physical edge radius is required, use Bevel before SubD when both
   modifiers apply, and use Blender's Smooth by Angle/Auto Smooth behavior for remaining normal
   interpolation. SubD belongs only on continuous curved shells whose cage supports it.
+- When edge-selection completeness matters, declare the full persistent-ID bevel intent before the
+  separate weight-assignment decision. A weight map cannot prove its own completeness: omitted
+  edges otherwise disappear from both the implementation and the supposed intent record.
 - The next-task question is: does this materially improve hard-surface, SubD, topology,
   reference-modeling, or production-prop capability? If not, defer it unless it blocks such work.
 

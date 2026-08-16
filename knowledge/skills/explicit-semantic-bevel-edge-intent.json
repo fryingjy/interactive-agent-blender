@@ -1,0 +1,90 @@
+{
+  "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+  "title": "Declare the complete physical bevel-edge set before assigning weights",
+  "topic_tags": [
+    "hard surface",
+    "semantic bevel weights",
+    "sharp edge completeness",
+    "double curvature",
+    "Subdivision Surface",
+    "highlight continuity"
+  ],
+  "problem": "A mesh can be closed, all-quad, and technically clean while omitted weighted edge segments create bumps, pinches, and broken highlight rails after Bevel and Subdivision. If intended edges are inferred from the final weight map, the omissions are impossible to audit.",
+  "status": "TRANSFER_VALIDATED",
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE", "FINAL_REVIEW"],
+    "workflow": ["explicit semantic bevel-edge completeness audit", "weighted Bevel before Subdivision"],
+    "surface_type": ["double-curved manufactured panel", "continuous hard-surface shell"],
+    "defect": ["missing weighted sharp edges", "broken highlight rail", "local rim bump", "incomplete bevel map"],
+    "local_topology": ["one connected all-quad cage", "declared perimeter edge loop"],
+    "modifiers_involved": ["BEVEL", "SUBSURF"]
+  },
+  "preconditions": [
+    "the reference or design decision establishes which transitions require a real physical radius",
+    "persistent edge IDs are available before declaration and assignment",
+    "the Bevel modifier uses WEIGHT limiting and remains live before Subdivision Surface",
+    "Smooth by Angle is recorded for the remaining interpolation policy"
+  ],
+  "required_observations": [
+    "the explicitly declared persistent edge-ID set",
+    "the independently measured nonzero bevel-weight edge-ID set",
+    "missing and unexpected set differences",
+    "base-cage connectivity, quads, manifoldness, and modifier order",
+    "fixed-view MatCap or grazing-light continuity around the entire declared transition"
+  ],
+  "action_policy": [
+    "Declare the complete semantic physical-radius edge set before assigning any weights; do not derive design intent from the resulting weight map.",
+    "Assign weight through a separate typed decision, then compare actual weighted IDs with the declaration exactly.",
+    "Inspect the full transition around the object, including sides and corners that may be hidden in the primary view.",
+    "Keep Bevel before Subdivision Surface for this tested physical-rim workflow and leave both modifiers unapplied.",
+    "Treat a clean manifold/all-quad result as necessary technical evidence, not proof that sharp-edge coverage is complete.",
+    "If the sets differ, return to the missing persistent IDs and repair the assignment before judging normal policy or adding topology."
+  ],
+  "expected_effects": [
+    "the semantic audit reports no missing or unexpected weighted edge IDs",
+    "continuous rim width and highlight flow survive Bevel-before-SubD evaluation",
+    "an omitted edge remains diagnosable even when the evaluated mesh is closed and all-quad",
+    "authored intent survives saving and fresh-process inspection"
+  ],
+  "failure_predicates": [
+    "intent source is WEIGHT_ASSIGNMENT_INFERRED when completeness must be proven",
+    "declared and weighted persistent edge-ID sets differ",
+    "local protrusions, pinches, or highlight discontinuities align with missing weight segments",
+    "the audit passes only because omitted edges disappeared from both intent and assignment records"
+  ],
+  "recovery": [
+    "restore the explicit declaration and assign every missing edge ID in a scoped transaction",
+    "remove any unexpected weighted IDs that do not represent a physical design radius",
+    "repeat the full-perimeter MatCap check with the live modifier stack",
+    "revisit reference-defined sharp intent rather than mechanically weighting every mesh edge"
+  ],
+  "sources": [
+    {
+      "type": "controlled_transfer",
+      "source_id": "experiment-double-curvature-bevel-subd-2026-08-16",
+      "evidence_path": "runs/2026-08-16_double-curvature-bevel-subd/",
+      "description": "Crown and saddle all-quad panels compare complete and eight-edge-omission maps through typed declaration, assignment, and Smooth-by-Angle decisions."
+    }
+  ],
+  "experiments": [
+    {
+      "type": "two-family double-curvature transfer with negative controls",
+      "evidence_path": "runs/2026-08-16_double-curvature-bevel-subd/",
+      "result": "PASS",
+      "measurements": {
+        "variants": 4,
+        "base_vertices_per_variant": 98,
+        "base_faces_per_variant": 96,
+        "declared_rim_edges_per_variant": 48,
+        "negative_control_missing_edges_per_variant": 8,
+        "crown_changed_pixels": 7012,
+        "saddle_changed_pixels": 8339,
+        "fresh_verification_checks": 11
+      },
+      "limitations": "Controlled manufactured fixtures with authored ground-truth edge intent. This does not infer sharp edges from arbitrary references or establish held-out asset quality."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Typed decisions and Blender saved-state behavior verified in Blender 5.2.0 LTS.",
+  "status_note": "Transferred across positive crown and negative saddle double curvature with explicit failure controls; real reference-driven use remains open."
+}

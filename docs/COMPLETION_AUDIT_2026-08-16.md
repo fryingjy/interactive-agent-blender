@@ -45,6 +45,11 @@ directive. It is deliberately not a declaration of professional-modeler completi
   identity-bound and independently frame/caption checked; Blender 5.2 then rejects a free-view card,
   verifies 0° FRONT/RIGHT Image Empty alignment, and refuses a duplicated image as distinct
   multi-view evidence. Later whole-video timestamp drift remains explicitly rejected.
+- `runs/2026-08-16_double-curvature-bevel-subd/` — four connected closed all-quad crown/saddle
+  variants separate explicit physical-rim declarations from the later weight assignment. Complete
+  maps pass; two technically clean negative controls omit eight distributed weights each, fail on
+  exact persistent IDs, and visibly break 7,012/8,339 fixed-frame pixels. A clean retained builder
+  run exits 0 and fresh Blender verification passes 11/11 checks.
 
 ## Directive requirement status
 
@@ -55,7 +60,7 @@ directive. It is deliberately not a declaration of professional-modeler completi
 | Reference uncertainty and source provenance | question-driven policy, source-retention ledger, source audit, current official Swingline gallery/specification records, and exact-variant feature evidence | Implemented and bounded; the continuous rubber pad is evidenced while hidden underside detail remains explicitly deferred |
 | Video-learning pipeline | Gemini/direct-source identity binding, local ingestion, native `video_metadata` range scoping, review gate, retained rejected outputs | Implemented; one public reference-setup range now has independent review and Blender transfer, while TubeAlfred remains an optional unavailable transcript/metadata provider in this environment |
 | Delayed self-retrieval | `knowledge/foundation/quizzes/quiz_004.md` and executable structural/novelty validation | Five-day contextual retrieval demonstrated; independent correctness and week-/month-scale retention remain unproven |
-| Core topology/modifier/UV/reference/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, typed axis-aligned Image Empty transfer, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
+| Core topology/modifier/UV/reference/production foundations | operator cards, controlled labs, two-family seam-directed UV transfer, typed axis-aligned Image Empty transfer, explicit bevel-intent/assignment separation across crown and saddle SubD panels, current bakes/exports, implementation audit | Broad reproducible foundation evidence exists; real-asset production judgment remains unproven |
 | Progressive prop promotion sequence | executable 30-prop curriculum, A-G gates, evidence contract, and human-review override | Operationalized; only prop 1 is active and it remains externally locked |
 | Human visual review as a separate authority | post-model repair review plus the distinct SHA-bound reference-board validator/recorder and current Swingline board | Enforced with a complete return path; **pending an actual external decision** |
 | Human rejection → repair handoff | revision-bound repair tickets and stale-review guard | Implemented as an inspect-first path |

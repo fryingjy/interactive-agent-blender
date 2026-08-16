@@ -1,6 +1,6 @@
 {
   "benchmark": "structured_cross_session_skill_retrieval_with_abstention",
-  "case_count": 21,
+  "case_count": 22,
   "minimum_score": 4.0,
   "positive_accuracy": 1.0,
   "abstention_accuracy": 1.0,
@@ -188,6 +188,22 @@
           "score": 7.0,
           "score_breakdown": {
             "query": 3.0,
+            "modeling_stage": 0.0,
+            "workflow": 2.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 2.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+          "score": 5.5,
+          "score_breakdown": {
+            "query": 1.5,
             "modeling_stage": 0.0,
             "workflow": 2.0,
             "surface_type": 0.0,
@@ -433,7 +449,7 @@
       "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
       "actual_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 5.1761,
+      "actual_top_margin": 4.2275,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -455,10 +471,10 @@
           }
         },
         {
-          "skill_id": "deformation.topology.uniform_rings_before_shaping",
-          "score": 5.8974,
+          "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+          "score": 6.846,
           "score_breakdown": {
-            "query": 1.8974,
+            "query": 2.846,
             "modeling_stage": 0.0,
             "workflow": 2.0,
             "surface_type": 0.0,
@@ -471,12 +487,12 @@
           }
         },
         {
-          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
-          "score": 5.7947,
+          "skill_id": "deformation.topology.uniform_rings_before_shaping",
+          "score": 5.8974,
           "score_breakdown": {
-            "query": 3.7947,
+            "query": 1.8974,
             "modeling_stage": 0.0,
-            "workflow": 0.0,
+            "workflow": 2.0,
             "surface_type": 0.0,
             "defect": 0.0,
             "local_topology": 0.0,
@@ -546,16 +562,16 @@
           }
         },
         {
-          "skill_id": "uv.seam_graph.connected_tube_unwrap",
-          "score": 4.9497,
+          "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+          "score": 4.9789,
           "score_breakdown": {
             "query": 2.1213,
             "modeling_stage": 0.0,
             "workflow": 0.0,
             "surface_type": 0.0,
-            "defect": 0.0,
+            "defect": 1.4434,
             "local_topology": 0.0,
-            "modifiers": 2.8284,
+            "modifiers": 1.4142,
             "reference_issue": 0.0,
             "runtime_success": 0.0,
             "version_relevance": 0.0
@@ -584,7 +600,7 @@
       "expected_top_skill": "deformation.topology.uniform_rings_before_shaping",
       "actual_top_skill": "deformation.topology.uniform_rings_before_shaping",
       "minimum_top_margin": 1.0,
-      "actual_top_margin": 14.818,
+      "actual_top_margin": 9.952,
       "identity_pass": true,
       "margin_pass": true,
       "pass": true,
@@ -599,6 +615,22 @@
             "surface_type": 0.0,
             "defect": 3.3541,
             "local_topology": 2.5981,
+            "modifiers": 2.0,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+          "score": 4.866,
+          "score_breakdown": {
+            "query": 1.1339,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 1.7321,
             "modifiers": 2.0,
             "reference_issue": 0.0,
             "runtime_success": 0.0,
@@ -966,6 +998,83 @@
             "local_topology": 0.0,
             "modifiers": 0.0,
             "reference_issue": 0.9449,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "explicit_bevel_edge_completeness",
+      "kind": "positive",
+      "context": {
+        "query": "weighted bevel has missing sharp rim segments and broken highlights even though the mesh is manifold",
+        "modeling_stage": "TOPOLOGY_SURFACE",
+        "workflow": "explicit semantic bevel-edge completeness audit",
+        "surface_type": "double-curved manufactured panel",
+        "defect": "incomplete bevel map",
+        "local_topology": [
+          "declared perimeter edge loop"
+        ],
+        "modifiers": [
+          "BEVEL",
+          "SUBSURF"
+        ],
+        "reference_issue": null,
+        "blender_version": null
+      },
+      "expected_top_skill": "hard-surface.explicit_semantic_bevel_edge_intent",
+      "actual_top_skill": "hard-surface.explicit_semantic_bevel_edge_intent",
+      "minimum_top_margin": 1.0,
+      "actual_top_margin": 17.7469,
+      "identity_pass": true,
+      "margin_pass": true,
+      "pass": true,
+      "top_results": [
+        {
+          "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+          "score": 28.8253,
+          "score_breakdown": {
+            "query": 9.0,
+            "modeling_stage": 1.7678,
+            "workflow": 4.899,
+            "surface_type": 3.0,
+            "defect": 4.3301,
+            "local_topology": 3.0,
+            "modifiers": 2.8284,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "modifier.stack_order.subd_safe_mirror_placement",
+          "score": 11.0784,
+          "score_breakdown": {
+            "query": 8.25,
+            "modeling_stage": 0.0,
+            "workflow": 0.0,
+            "surface_type": 0.0,
+            "defect": 0.0,
+            "local_topology": 0.0,
+            "modifiers": 2.8284,
+            "reference_issue": 0.0,
+            "runtime_success": 0.0,
+            "version_relevance": 0.0
+          }
+        },
+        {
+          "skill_id": "hard-surface.curved-bevel-normal-policy",
+          "score": 10.6919,
+          "score_breakdown": {
+            "query": 4.5,
+            "modeling_stage": 1.7678,
+            "workflow": 0.8165,
+            "surface_type": 0.75,
+            "defect": 1.4434,
+            "local_topology": 0.0,
+            "modifiers": 1.4142,
+            "reference_issue": 0.0,
             "runtime_success": 0.0,
             "version_relevance": 0.0
           }

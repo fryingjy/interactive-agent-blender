@@ -421,5 +421,18 @@ the uneven circle's side error from a `5.0°` baseline to `9.9988°`.
 
 This closes the narrow radial normal-policy transfer question and promotes a retrievable
 `EXPERIMENTALLY_TESTED` skill. It does not upgrade the overall exit decision: uneven spacing remains
-a topology error, arbitrary double curvature and SubD interaction are untested, and no
-human-authorized reference asset has used the rule.
+a topology error, reference-driven normal-policy choice remains untested, and no human-authorized
+reference asset has used the rule.
+
+### 2026-08-16 explicit Bevel-intent and double-curvature update
+
+The runtime now separates a declared complete physical-radius edge set from the later bevel-weight
+assignment. This closes a real audit loophole: assignment-derived intent could never reveal omitted
+sharp edges. Crown and saddle connected all-quad panels retain live Bevel→SubD stacks; complete
+48-edge maps pass, while eight-edge omission controls stay technically clean but visibly pinch and
+fail the exact persistent-ID audit. A clean builder run and 11/11 fresh-process checks are retained.
+
+This promotes a narrow `TRANSFER_VALIDATED` completeness skill and supplies controlled arbitrary-
+sign double-curvature SubD interaction. It does not infer sharp intent from references, repair an
+unfamiliar prop, or supply the pending human decision. The foundation therefore remains
+**PARTIAL**.
