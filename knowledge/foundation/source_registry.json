@@ -2476,5 +2476,57 @@
         "Frame verification does not validate or promote a transferable modeling principle"
       ]
     }
+  },
+  {
+    "id": "swingline-747-classic-official-gallery-2026-08-16",
+    "url": "https://www.swingline.com/p/staplers/desktop-staplers/full-size-staplers/747-classic-staplers/",
+    "local_path": "runs/2026-08-16_reference-gathering-swingline-747/",
+    "title": "Swingline 747 Classic Staplers — official current gallery",
+    "creator": "Swingline / ACCO Brands",
+    "source_type": "manufacturer_product_page",
+    "trust_tier": "A",
+    "version": "accessed 2026-08-16",
+    "topics": ["reference-gathering", "hard-surface", "component-boundaries", "multi-view", "stapler"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["web_text", "official_product_images"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-swingline-747/"],
+      "direct_observations": [
+        "Official side and top-oblique product views establish the current 747 geometry family, including the top lever, base, rear housing, throat, anvil recess, and opening mechanism",
+        "The manufacturer describes a metal, full-strip stapler with a die-cast base, inner rail, positive locking latch, tacking motion, and reversible anvil"
+      ],
+      "limitations": [
+        "Gallery colors differ from the lipstick-red target surface variant",
+        "Product photographs do not provide orthographic drawings or current underside detail"
+      ]
+    }
+  },
+  {
+    "id": "swingline-74718-official-specification-2026-08-16",
+    "url": "https://www.webstaurantstore.com/documents/specsheets/swingline_74718_specsheet.pdf",
+    "local_path": "runs/2026-08-16_reference-gathering-swingline-747/",
+    "title": "Swingline 747 Classic 74718 Lipstick Red — official specification sheet",
+    "creator": "ACCO Brands / Swingline",
+    "source_type": "manufacturer_specification",
+    "trust_tier": "A",
+    "version": "published 2017; accessed 2026-08-16",
+    "topics": ["reference-gathering", "dimensions", "hard-surface", "stapler"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["PDF_text", "product_metadata"],
+    "metadata": {
+      "experiments": ["runs/2026-08-16_reference-gathering-swingline-747/"],
+      "direct_observations": [
+        "The exact 74718 lipstick-red product sheet specifies a 7.5 x 2.5 x 1.7 inch overall envelope",
+        "The sheet confirms metal construction, die-cast base, inner rail, tacking motion, reversible anvil, and positive locking latch"
+      ],
+      "limitations": [
+        "The one-page sheet provides no orthographic or underside drawing",
+        "Its date limits it to the documented current product family rather than proving every historic revision"
+      ]
+    }
   }
 ]

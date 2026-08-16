@@ -372,9 +372,10 @@ character benchmarks remain deferred.
 ### 2026-08-16 reference-gate status
 
 The reusable question-driven policy retains typed unknowns, exact searches, candidate decisions,
-and reversible constraints. The prior target-specific evidence exercise has been retired. A new
-reference board must establish its own provenance and pass independent human review before it can
-authorize a blockout or support a held-out modeling claim.
+and reversible constraints. The active Swingline 747 board has machine-ready current-gallery and
+official-dimension evidence, while current underside detail is explicitly deferred. It remains
+behind independent human reference review and therefore cannot yet authorize a blockout or support
+a held-out modeling claim.
 
 ### 2026-08-15 secondary-view strategy update
 
