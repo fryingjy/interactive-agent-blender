@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "record_type": "VISUAL_MODELING_REJECTION",
+  "target_id": "ikea_dekad_30540479",
+  "candidate": "ikea_dekad_stage_08_bell_profile_correction.blend",
+  "decision": "REJECT_AND_STOP_POLISHING",
+  "evidence": [
+    "stage_08_front_solid.png",
+    "../reference-gathering-ikea-dekad/official_3d_reference/reference_front_beauty.png",
+    "../reference-gathering-ikea-dekad/official_3d_reference/reference_side_beauty.png"
+  ],
+  "observed_mismatches": [
+    "The authored bell profiles read as radial caps with visible central openings instead of the reference's shallow, asymmetric twin-bell shells.",
+    "The body and dial remain over-faceted at the blockout stage and do not yet reproduce the reference's smooth rolled rim hierarchy.",
+    "The handle/bell attachment, hammer, legs, dial markings, rear controls, materials, and final surface treatment are absent; adding them would not repair the incorrect bell primary forms."
+  ],
+  "retained_learning": [
+    "A same-target official multi-view source and depth check found an early axis/depth error before tertiary detail.",
+    "Curve handles must appear in diagnostic renders; the renderer now includes evaluated CURVE objects.",
+    "A closed profile should not be selected for a bell merely because it is rotationally convenient; its projected opening and rim silhouette must be checked first."
+  ],
+  "disposition_boundary": "This rejection preserves the evidence for diagnosis. It is not a visual acceptance, production asset, or evidence of professional reference-modeling capability."
+}
