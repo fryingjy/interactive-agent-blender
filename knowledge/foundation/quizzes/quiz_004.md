@@ -154,4 +154,3 @@ reviewed use across unfamiliar assets with limited correction and preserved edit
   hard-surface semantic bevel policy, editable high/low packaging, synchronized video evidence,
   strict Gemini provenance, retrieval abstention, and current Level-1 curriculum control.
 - The five-day interval improves the prior one-day evidence but remains contextual and self-scored.
-
