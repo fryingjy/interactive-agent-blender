@@ -19,8 +19,9 @@ and improves a later reference-driven decision.
    multiple connected forms from one edited base mesh where appropriate.
 4. `2YIvX3SeJQA` — video reference backgrounds. Treat as reference-media setup, not evidence of
    reference interpretation skill.
-5. `xHJzDpijPqg` — robot from front/side references. Extract shared-landmark alignment and
-   cross-view checks.
+5. `xHJzDpijPqg` / companion `CrCX7N_Q3XE` — robot from front/side references. Both are
+   currently private in the available browser session; retain the desired shared-landmark and
+   cross-view curriculum requirements, but do not claim an extraction or retry the sequence.
 6. `46XJ6_V5PN0` — carabiner from a curved reference. Compare direct polygon construction against
    curve-based construction and conversion.
 7. `HH7InXu7ZdU` — smoothing and hard edges. Separate geometry, normals, SubD control, edge radius,
