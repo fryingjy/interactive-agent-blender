@@ -2,11 +2,11 @@
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
   "record_count": 70,
-  "missing_artifact_count": 76,
+  "missing_artifact_count": 62,
   "unclassified_missing_artifact_count": 0,
-  "classified_missing_artifact_count": 76,
-  "explicitly_non_retained_count": 1,
-  "non_path_reference_count": 39,
+  "classified_missing_artifact_count": 62,
+  "explicitly_non_retained_count": 13,
+  "non_path_reference_count": 41,
   "locally_reproducible": false,
   "missing_artifacts": [],
   "classified_missing_artifacts": [
@@ -454,21 +454,6 @@
     },
     {
       "source_id": "blender-fundamentals-modeling-intro-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-modeling-intro-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-modeling-intro-video",
       "field": "metadata.experiments",
       "path": "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-modeling-intro/video_ingest_report.json",
       "exists": false,
@@ -481,21 +466,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-extrude-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/extrude.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-extrude-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/extrude.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -518,21 +488,6 @@
     },
     {
       "source_id": "blender-fundamentals-bevel-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-bevel-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-bevel-video",
       "field": "metadata.experiments",
       "path": "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-bevel/video_ingest_report.json",
       "exists": false,
@@ -545,21 +500,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-uv-unwrapping-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-uv-unwrapping-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -594,21 +534,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-intro-sculpting-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-intro-sculpting-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -665,21 +590,6 @@
     },
     {
       "source_id": "blender-studio-planning-facial-retopology-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-studio-planning-facial-retopology-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-studio-planning-facial-retopology-video",
       "field": "metadata.experiments",
       "path": "runs/2026-08-10_online-lessons/ingested/blender-studio-planning-facial-retopology/video_ingest_report.json",
       "exists": false,
@@ -726,21 +636,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-three-point-lighting-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-three-point-lighting-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -809,21 +704,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-studio-snow-retopology-live-2",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-studio-snow-retopology-live-2",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -914,21 +794,6 @@
     },
     {
       "source_id": "blender-fundamentals-intro-shading-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-intro-shading-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-intro-shading-video",
       "field": "metadata.experiments",
       "path": "runs/2026-08-10_online-lessons/ingested/blender-fundamentals-intro-shading/video_ingest_report.json",
       "exists": false,
@@ -992,21 +857,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-fundamentals-knife-tool-video",
-      "field": "local_path",
-      "path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-fundamentals-knife-tool-video",
-        "field": "local_path",
-        "path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -1114,21 +964,6 @@
     },
     {
       "source_id": "polyhaven-barrel-01-cc0",
-      "field": "local_path",
-      "path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "polyhaven-barrel-01-cc0",
-        "field": "local_path",
-        "path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "polyhaven-barrel-01-cc0",
       "field": "metadata.experiments",
       "path": "runs/2026-08-11_multiview-barrel/",
       "exists": false,
@@ -1141,21 +976,6 @@
         "deleted_commits": [
           "13e3fb20406c80542d7756546b39a16b7b925b52"
         ],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "blender-human-base-meshes-bundle-v1",
-      "field": "local_path",
-      "path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "blender-human-base-meshes-bundle-v1",
-        "field": "local_path",
-        "path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
     },
@@ -1243,39 +1063,189 @@
         ],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
-    },
-    {
-      "source_id": "professional-blend-battle-axe",
-      "field": "metadata.experiments",
-      "path": "runs/2026-08-13_blend-file-study/battle_axe/ (inspection, crease/node dump, reference render)",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "professional-blend-battle-axe",
-        "field": "metadata.experiments",
-        "path": "runs/2026-08-13_blend-file-study/battle_axe/ (inspection, crease/node dump, reference render)",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
-    },
-    {
-      "source_id": "professional-blend-battle-axe",
-      "field": "metadata.experiments",
-      "path": "runs/2026-08-13_blend-file-study/crease_experiment/ (crease vs. Bevel reproduction, 4 variants, fresh-process verified)",
-      "exists": false,
-      "kind": "missing",
-      "retention": {
-        "source_id": "professional-blend-battle-axe",
-        "field": "metadata.experiments",
-        "path": "runs/2026-08-13_blend-file-study/crease_experiment/ (crease vs. Bevel reproduction, 4 variants, fresh-process verified)",
-        "classification": "UNRESOLVED_MISSING_ARTIFACT",
-        "deleted_commits": [],
-        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-      }
     }
   ],
   "explicitly_non_retained": [
+    {
+      "source_id": "blender-fundamentals-modeling-intro-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-modeling-intro-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-extrude-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/extrude.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-extrude-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/extrude.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-bevel-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-bevel-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-uv-unwrapping-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-uv-unwrapping-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-intro-sculpting-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-intro-sculpting-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-studio-planning-facial-retopology-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-studio-planning-facial-retopology-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-three-point-lighting-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-three-point-lighting-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-studio-snow-retopology-live-2",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-studio-snow-retopology-live-2",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-intro-shading-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-intro-shading-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-fundamentals-knife-tool-video",
+      "field": "local_path",
+      "path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-fundamentals-knife-tool-video",
+        "field": "local_path",
+        "path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "polyhaven-barrel-01-cc0",
+      "field": "local_path",
+      "path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "polyhaven-barrel-01-cc0",
+        "field": "local_path",
+        "path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "blender-human-base-meshes-bundle-v1",
+      "field": "local_path",
+      "path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "blender-human-base-meshes-bundle-v1",
+        "field": "local_path",
+        "path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
+        "classification": "SOURCE_MEDIA_NOT_RETAINED",
+        "deleted_commits": [],
+        "claim_boundary": "Not locally reproducible; retained only as a historical reference."
+      }
+    },
     {
       "source_id": "polyhaven-boombox-cc0-heldout",
       "field": "local_path",
@@ -1422,6 +1392,16 @@
       "source_id": "professional-blend-battle-axe",
       "field": "local_path",
       "path": "C:\\Users\\odane\\Downloads\\blender\\blend\\battle axe.blend"
+    },
+    {
+      "source_id": "professional-blend-battle-axe",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-13_blend-file-study/battle_axe/ (inspection, crease/node dump, reference render)"
+    },
+    {
+      "source_id": "professional-blend-battle-axe",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-13_blend-file-study/crease_experiment/ (crease vs. Bevel reproduction, 4 variants, fresh-process verified)"
     },
     {
       "source_id": "professional-blend-battle-axe",

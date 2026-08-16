@@ -33,6 +33,15 @@ class SourceRegistryAuditTests(unittest.TestCase):
             "non_path_reference",
         )
 
+    def test_path_with_parenthetical_annotation_is_not_a_filesystem_promise(self):
+        self.assertEqual(
+            classify_reference(
+                "metadata.experiments",
+                "runs/2026-08-13_blend-file-study/battle_axe/ (inspection notes)",
+            ),
+            "non_path_reference",
+        )
+
     def test_retention_ledger_is_keyed_and_rejects_duplicate_records(self):
         record = {
             "source_id": "source", "field": "metadata.experiments", "path": "runs/missing",

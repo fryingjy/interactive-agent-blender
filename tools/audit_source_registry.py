@@ -35,6 +35,8 @@ def classify_reference(field: str, value: str) -> str:
         return "explicitly_non_retained"
     if field == "metadata.skills":
         return "non_path_reference"
+    if " (" in text:
+        return "non_path_reference"
     if text.startswith(("runs/", "knowledge/", "docs/", "tools/")):
         return "artifact"
     return "non_path_reference"
@@ -84,6 +86,8 @@ def main() -> int:
         retention = ledger.get(retention_key(record_id, field, str(check["path"])))
         if retention is None:
             findings.append(entry)
+        elif retention.get("classification") == "SOURCE_MEDIA_NOT_RETAINED":
+            intentionally_non_retained.append({**entry, "retention": retention})
         else:
             classified_missing.append({**entry, "retention": retention})
 

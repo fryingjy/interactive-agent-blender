@@ -54,13 +54,19 @@ def main() -> int:
                 for value in metadata.get(field, [])
             )
         for field, value in references:
-            if not isinstance(value, str) or not value.startswith(("runs/", "knowledge/", "docs/", "tools/")):
+            if (
+                not isinstance(value, str)
+                or " (" in value
+                or not value.startswith(("runs/", "knowledge/", "docs/", "tools/"))
+            ):
                 continue
             if path_check(value)["exists"]:
                 continue
             commits = deleted_commits(value)
             classification = (
-                "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY"
+                "SOURCE_MEDIA_NOT_RETAINED"
+                if "/media/" in value
+                else "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY"
                 if commits else "UNRESOLVED_MISSING_ARTIFACT"
             )
             entries.append({

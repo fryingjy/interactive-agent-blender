@@ -26,7 +26,7 @@
       "source_id": "blender-fundamentals-bevel-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/bevel-tool.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -44,7 +44,7 @@
       "source_id": "blender-fundamentals-extrude-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/extrude.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -62,7 +62,7 @@
       "source_id": "blender-fundamentals-intro-sculpting-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/intro-to-sculpting.mp4",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -100,7 +100,7 @@
       "source_id": "blender-fundamentals-intro-shading-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/intro-to-shading.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -148,7 +148,7 @@
       "source_id": "blender-fundamentals-knife-tool-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/knife-tool.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -186,7 +186,7 @@
       "source_id": "blender-fundamentals-modeling-intro-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/modeling-introduction.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -204,7 +204,7 @@
       "source_id": "blender-fundamentals-three-point-lighting-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/three-point-lighting.mp4",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -252,7 +252,7 @@
       "source_id": "blender-fundamentals-uv-unwrapping-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/uv-unwrapping.webm",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -280,7 +280,7 @@
       "source_id": "blender-human-base-meshes-bundle-v1",
       "field": "local_path",
       "path": "runs/2026-08-11_facial-expression-transfer/media/bundle/human_base_meshes_bundle.blend",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -608,7 +608,7 @@
       "source_id": "blender-studio-planning-facial-retopology-video",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/planning-facial-retopology.mp4",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -646,7 +646,7 @@
       "source_id": "blender-studio-snow-retopology-live-2",
       "field": "local_path",
       "path": "runs/2026-08-10_online-lessons/media/snow-retopo-live-2.mp4",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -704,7 +704,7 @@
       "source_id": "polyhaven-barrel-01-cc0",
       "field": "local_path",
       "path": "runs/2026-08-11_multiview-barrel/media/Barrel_01_1k.gltf",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
+      "classification": "SOURCE_MEDIA_NOT_RETAINED",
       "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     },
@@ -716,22 +716,6 @@
       "deleted_commits": [
         "13e3fb20406c80542d7756546b39a16b7b925b52"
       ],
-      "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-    },
-    {
-      "source_id": "professional-blend-battle-axe",
-      "field": "metadata.experiments",
-      "path": "runs/2026-08-13_blend-file-study/battle_axe/ (inspection, crease/node dump, reference render)",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
-      "deleted_commits": [],
-      "claim_boundary": "Not locally reproducible; retained only as a historical reference."
-    },
-    {
-      "source_id": "professional-blend-battle-axe",
-      "field": "metadata.experiments",
-      "path": "runs/2026-08-13_blend-file-study/crease_experiment/ (crease vs. Bevel reproduction, 4 variants, fresh-process verified)",
-      "classification": "UNRESOLVED_MISSING_ARTIFACT",
-      "deleted_commits": [],
       "claim_boundary": "Not locally reproducible; retained only as a historical reference."
     }
   ]
