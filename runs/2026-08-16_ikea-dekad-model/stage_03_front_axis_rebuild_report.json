@@ -1,0 +1,378 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\stage_03_front_axis_rebuild_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_03_front_axis_rebuild.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "9e4e2735ae4c",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_connected_front_axis_clock_shell",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "DekadClockShell",
+        "segments": 16,
+        "profile": [
+          [
+            4.45,
+            -0.62
+          ],
+          [
+            4.78,
+            -0.54
+          ],
+          [
+            4.98,
+            -0.31
+          ],
+          [
+            5.0,
+            0.24
+          ],
+          [
+            4.85,
+            0.5
+          ],
+          [
+            4.55,
+            0.62
+          ],
+          [
+            4.32,
+            0.48
+          ],
+          [
+            4.25,
+            0.18
+          ],
+          [
+            4.25,
+            -0.23
+          ],
+          [
+            4.32,
+            -0.5
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "DekadClockShell",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 10,
+        "vertices": 160,
+        "edges": 320,
+        "faces": 160
+      }
+    },
+    {
+      "index": 1,
+      "label": "orient_connected_shell_to_documented_front_axis",
+      "command": "transaction",
+      "params": {
+        "name": "DekadClockShell",
+        "action_type": "orient_profile_cage_to_front_axis",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.5707963267948966,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1786924091826",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1786924091826",
+          "performed": true,
+          "result": {
+            "name": "DekadClockShell",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.5707963267948966,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "orient_profile_cage_to_front_axis",
+          "op_delta": 0,
+          "before": {
+            "vertices": 160,
+            "edges": 320,
+            "faces": 160,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 160,
+            "edges": 320,
+            "faces": 160,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1786924091826",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_front_glass_bezel_assembly",
+      "command": "create_primitive",
+      "params": {
+        "name": "DekadGlassBezel",
+        "primitive_type": "cylinder",
+        "vertices": 16,
+        "radius": 4.42,
+        "depth": 0.12,
+        "location": [
+          0.0,
+          -0.64,
+          0.0
+        ],
+        "end_fill_type": "NGON"
+      },
+      "status": "ok",
+      "result": {
+        "name": "DekadGlassBezel",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.6399999856948853,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "label": "orient_front_glass_bezel_to_front_axis",
+      "command": "transaction",
+      "params": {
+        "name": "DekadGlassBezel",
+        "action_type": "orient_front_glass_bezel",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.5707963267948966,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1786924091834",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1786924091834",
+          "performed": true,
+          "result": {
+            "name": "DekadGlassBezel",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.5707963267948966,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "orient_front_glass_bezel",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1786924091834",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "create_front_dial_assembly",
+      "command": "create_primitive",
+      "params": {
+        "name": "DekadDial",
+        "primitive_type": "cylinder",
+        "vertices": 16,
+        "radius": 4.05,
+        "depth": 0.1,
+        "location": [
+          0.0,
+          -0.74,
+          0.0
+        ],
+        "end_fill_type": "NGON"
+      },
+      "status": "ok",
+      "result": {
+        "name": "DekadDial",
+        "type": "MESH",
+        "location": [
+          0.0,
+          -0.7400000095367432,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "label": "orient_front_dial_to_front_axis",
+      "command": "transaction",
+      "params": {
+        "name": "DekadDial",
+        "action_type": "orient_front_dial",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.5707963267948966,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1786924091839",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1786924091839",
+          "performed": true,
+          "result": {
+            "name": "DekadDial",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.5707963267948966,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "orient_front_dial",
+          "op_delta": 0,
+          "before": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 32,
+            "edges": 48,
+            "faces": 18,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1786924091839",
+          "result_revision": 3
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-dekad-model\\ikea_dekad_stage_03_front_axis_rebuild.blend"
+  },
+  "pass": true
+}

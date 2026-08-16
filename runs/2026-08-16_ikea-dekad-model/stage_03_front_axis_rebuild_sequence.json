@@ -1,0 +1,38 @@
+[
+  {
+    "label": "create_connected_front_axis_clock_shell",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "DekadClockShell",
+      "segments": 16,
+      "profile": [[4.45,-0.62],[4.78,-0.54],[4.98,-0.31],[5.0,0.24],[4.85,0.50],[4.55,0.62],[4.32,0.48],[4.25,0.18],[4.25,-0.23],[4.32,-0.50]]
+    }
+  },
+  {
+    "label": "orient_connected_shell_to_documented_front_axis",
+    "transaction": {
+      "name": "DekadClockShell",
+      "action_type": "orient_profile_cage_to_front_axis",
+      "operation": "rotate_object",
+      "params": {"delta_radians": [1.5707963267948966,0.0,0.0]}
+    }
+  },
+  {
+    "label": "create_front_glass_bezel_assembly",
+    "command": "create_primitive",
+    "params": {"name":"DekadGlassBezel","primitive_type":"cylinder","vertices":16,"radius":4.42,"depth":0.12,"location":[0.0,-0.64,0.0],"end_fill_type":"NGON"}
+  },
+  {
+    "label": "orient_front_glass_bezel_to_front_axis",
+    "transaction": {"name":"DekadGlassBezel","action_type":"orient_front_glass_bezel","operation":"rotate_object","params":{"delta_radians":[1.5707963267948966,0.0,0.0]}}
+  },
+  {
+    "label": "create_front_dial_assembly",
+    "command": "create_primitive",
+    "params": {"name":"DekadDial","primitive_type":"cylinder","vertices":16,"radius":4.05,"depth":0.10,"location":[0.0,-0.74,0.0],"end_fill_type":"NGON"}
+  },
+  {
+    "label": "orient_front_dial_to_front_axis",
+    "transaction": {"name":"DekadDial","action_type":"orient_front_dial","operation":"rotate_object","params":{"delta_radians":[1.5707963267948966,0.0,0.0]}}
+  }
+]

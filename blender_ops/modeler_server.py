@@ -129,6 +129,7 @@ _OPS = {
     "assign_vertex_group": mesh_ops.assign_vertex_group,
     "add_modifier": object_ops.add_modifier,
     "translate_object": object_ops.translate_object,
+    "rotate_object": object_ops.rotate_object,
     "set_modifier_parameter": object_ops.set_modifier_parameter,
     "replace_mesh_from_object": object_ops.replace_mesh_from_object,
     "archive_object": object_ops.archive_object,

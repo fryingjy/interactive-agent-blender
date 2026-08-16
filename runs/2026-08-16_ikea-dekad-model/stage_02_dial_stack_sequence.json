@@ -1,0 +1,28 @@
+[
+  {
+    "label": "create_separate_glass_bezel_assembly",
+    "command": "create_primitive",
+    "params": {
+      "name": "DekadGlassBezel",
+      "primitive_type": "cylinder",
+      "vertices": 16,
+      "radius": 4.42,
+      "depth": 0.12,
+      "location": [0.0, 0.0, 0.64],
+      "end_fill_type": "NGON"
+    }
+  },
+  {
+    "label": "create_separate_clock_dial_assembly",
+    "command": "create_primitive",
+    "params": {
+      "name": "DekadDial",
+      "primitive_type": "cylinder",
+      "vertices": 16,
+      "radius": 4.05,
+      "depth": 0.10,
+      "location": [0.0, 0.0, 0.74],
+      "end_fill_type": "NGON"
+    }
+  }
+]

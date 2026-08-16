@@ -81,6 +81,29 @@ def translate_object(name, delta):
     return {"name": obj.name, "location": [float(value) for value in obj.location], "delta": list(offset)}
 
 
+def rotate_object(name, delta_radians):
+    """Rotate a separate assembly without baking its editable mesh coordinates.
+
+    This is the rotational counterpart to :func:`translate_object`. It is for
+    placing a completed independent component or orienting an authored profile
+    cage into its documented reference axis; connected-form changes still
+    belong in mesh Edit Mode. Transaction snapshots restore the transform on
+    rejection.
+    """
+    if not isinstance(delta_radians, (list, tuple)) or len(delta_radians) != 3:
+        raise ValueError("delta_radians must contain exactly three numeric values")
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type not in {"MESH", "CURVE"}:
+        raise ValueError(f"rotate_object requires a MESH or CURVE object, got {name!r}")
+    delta = tuple(float(value) for value in delta_radians)
+    obj.rotation_euler = tuple(float(current) + change for current, change in zip(obj.rotation_euler, delta))
+    return {
+        "name": obj.name,
+        "rotation_euler": [float(value) for value in obj.rotation_euler],
+        "delta_radians": list(delta),
+    }
+
+
 def create_reference_image(
     name,
     image_path,
