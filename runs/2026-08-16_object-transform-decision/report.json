@@ -8,10 +8,17 @@
     "commit_translation_performed": true,
     "commit_advanced_revision_once": true,
     "commit_persisted_location": true,
+    "rejected_rotation_performed": true,
+    "rejected_rotation_changed_transform": true,
+    "reject_restored_exact_rotation": true,
+    "rejected_rotation_revision_unchanged": true,
+    "commit_rotation_performed": true,
+    "commit_rotation_advanced_revision_once": true,
+    "commit_persisted_rotation": true,
     "verification_preserves_mesh_health": true
   },
   "rejected": {
-    "decision_id": "dec_0_1786922585255",
+    "decision_id": "dec_0_1786924291289",
     "rejected": true,
     "restored_revision": 0,
     "reason": "controlled transform rollback",
@@ -20,9 +27,22 @@
     "removed_created_materials": []
   },
   "committed": {
-    "decision_id": "dec_0_1786922585257",
+    "decision_id": "dec_0_1786924291290",
     "result_revision": 1
   },
+  "rotation_rejected": {
+    "decision_id": "dec_1_1786924291291",
+    "rejected": true,
+    "restored_revision": 1,
+    "reason": "controlled rotation rollback",
+    "removed_created_objects": [],
+    "removed_created_collections": [],
+    "removed_created_materials": []
+  },
+  "rotation_committed": {
+    "decision_id": "dec_1_1786924291292",
+    "result_revision": 2
+  },
   "pass": true,
-  "claim_boundary": "This validates transaction-owned object translation for independently manufactured assemblies. It does not prescribe object transforms for a connected primary cage."
+  "claim_boundary": "This validates transaction-owned object translation and rotation for independently manufactured assemblies. It does not prescribe object transforms for a connected primary cage."
 }
