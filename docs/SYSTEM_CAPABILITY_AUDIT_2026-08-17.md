@@ -5,9 +5,10 @@
 - Blender 5.2 LTS is available locally.
 - Python 3.12.10, FFmpeg 9.0, and yt-dlp 2026.07.04 are installed.
 - Local-video ingestion and Gemini range-analysis commands load and validate.
-- The Gemini API key is **not** configured in the current process. Public
-  YouTube analysis therefore cannot run until the user configures a key; no
-  credential was requested, printed, or persisted by this audit.
+- A user-provided Gemini API key is configured in the user environment and a
+  bounded public-video range call completed on 2026-08-17. No credential is
+  stored in the repository or printed by the workflow. The resulting
+  extraction remains model-produced and independently unverified.
 
 No additional local tool installation is currently the limiting factor.
 
@@ -30,10 +31,11 @@ No additional local tool installation is currently the limiting factor.
    repeated reviewer-accepted reference resemblance. The next gains must
    couple multi-view references, small connected-cage decisions, and
    independent review.
-5. **Video-learning infrastructure exists but needs live source use.** The
-   Gemini/local pipeline is available, but the missing API key blocks a new
-   public-video study in this process. Existing video records cannot be
-   relabeled as new learning.
+5. **Video-learning infrastructure exists but needs independent review and
+   transfer.** Gemini/local ingestion is now live. An extraction is source
+   observation only until representative frames/speech are checked and a
+   resulting technique is reproduced and transferred; existing records cannot
+   be relabeled as new learning.
 
 ## Correct development rule
 

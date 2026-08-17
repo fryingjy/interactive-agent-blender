@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_VIDEO_ACCESS_VALIDATION",
+  "requested_source_url": "https://www.youtube.com/watch?v=QHUBIC6XD1Y",
+  "identity_metadata": "runs/2026-08-16_real-video-reference-setup-review/source_identity.json",
+  "requested_time_range": [24, 124],
+  "result": "SUCCESS",
+  "modalities_reported": ["VIDEO", "AUDIO", "CAPTIONS", "UI_TEXT"],
+  "source_video_archived": false,
+  "credential_retention": "No API key is stored in this repository or this record.",
+  "promotion_status": "MODEL_EXTRACTED_UNVERIFIED",
+  "claim_boundary": "This proves configured Gemini range access and schema validation only. It does not independently verify the episode observations or promote a technique to learned skill."
+}
