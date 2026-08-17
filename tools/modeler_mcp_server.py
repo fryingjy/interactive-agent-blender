@@ -89,6 +89,12 @@ def create_primitive(name: str, primitive_type: str, location: list[float] | Non
 
 
 @mcp.tool()
+def create_profile_extrusion(name: str, profile: list[list[float]], depth: float) -> dict:
+    """Create a single connected mesh by extruding an authored closed X/Z profile along Y. This is for measured continuous shells that should start from one editable cage rather than several object primitives. Side walls are quads; profiles with more than four points begin with n-gon caps and must receive deliberate local quad topology before SubD surface work. Free to call outside a decision because the object does not yet exist."""
+    return _call("create_profile_extrusion", name=name, profile=profile, depth=depth)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

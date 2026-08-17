@@ -39,3 +39,10 @@ def test_connected_revolved_profile_is_valid_authored_starting_cage():
         [{"command": "create_revolved_profile", "params": {"name": "Shell"}}], ["Shell"]
     )
     assert result["pass"] is True
+
+
+def test_connected_profile_extrusion_is_valid_authored_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_profile_extrusion", "params": {"name": "Shell"}}], ["Shell"]
+    )
+    assert result["pass"] is True

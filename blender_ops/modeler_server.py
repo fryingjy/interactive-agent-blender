@@ -83,6 +83,7 @@ CAPABILITIES = [
     "axis_aligned_reference_images",
     "explicit_sharp_edge_intent",
     "profile_revolution_geometry",
+    "profile_extrusion_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -487,6 +488,30 @@ class ModelerServer:
             "vertices": len(obj.data.vertices),
             "edges": len(obj.data.edges),
             "faces": len(obj.data.polygons),
+        }
+
+    def cmd_create_profile_extrusion(self, name, profile, depth):
+        """Create one connected X/Z profile cage extruded along local Y.
+
+        It is a generic typed starting form for flat/manufactured shells.  It
+        does not import, inspect, or reproduce source topology; the profile is
+        authored from the active reference constraint sheet.
+        """
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        clean_profile = [tuple(float(value) for value in point) for point in profile]
+        obj = profile_mesh.extrude_closed_profile(name, clean_profile, depth=float(depth))
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "profile_point_count": len(clean_profile),
+            "depth": float(depth),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "cap_topology": "NGON" if len(clean_profile) > 4 else "QUAD_OR_TRIANGLE",
+            "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work.",
         }
 
     def cmd_create_reference_image(

@@ -1,0 +1,55 @@
+{
+  "record_type": "PROFILE_EXTRUSION_RUNTIME_LAB",
+  "claim_boundary": "Proves a generic connected profile cage can be created and inspected through the typed server; it does not prove artistic reference fidelity.",
+  "profile": [
+    [
+      -1.4,
+      -0.9
+    ],
+    [
+      1.4,
+      -0.9
+    ],
+    [
+      1.2,
+      0.25
+    ],
+    [
+      0.8,
+      0.9
+    ],
+    [
+      -1.05,
+      0.9
+    ]
+  ],
+  "result": {
+    "name": "Measured_Profile_Cage",
+    "type": "MESH",
+    "profile_point_count": 5,
+    "depth": 0.6,
+    "vertices": 10,
+    "edges": 15,
+    "faces": 7,
+    "cap_topology": "NGON",
+    "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work."
+  },
+  "mesh_health": {
+    "vertices": 10,
+    "edges": 15,
+    "faces": 7,
+    "non_manifold_edges": 0,
+    "ngons": 2,
+    "loose_verts": 0,
+    "degenerate_faces": 0
+  },
+  "checks": {
+    "one_mesh_object": true,
+    "connected": true,
+    "manifold": true,
+    "side_faces_are_quads": true,
+    "persistent_ids_assigned": true,
+    "caps_explicitly_recorded_as_ngons": true
+  },
+  "pass": true
+}
