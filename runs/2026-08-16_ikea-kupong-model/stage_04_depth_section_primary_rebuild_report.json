@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\stage_04_depth_section_primary_rebuild_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_03_all_quad_primary.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_04_depth_section_primary.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "c7d9ec5a7e97",
+  "results": [
+    {
+      "index": 0,
+      "label": "author_three_section_folded_a_frame_shell",
+      "command": "create_quad_shell_sections",
+      "params": {
+        "name": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+        "section_grids": [
+          [
+            [
+              [
+                -1.38,
+                -0.75,
+                -1.12
+              ],
+              [
+                -0.82,
+                -0.75,
+                -1.12
+              ],
+              [
+                0.0,
+                -0.75,
+                -1.12
+              ],
+              [
+                0.82,
+                -0.75,
+                -1.12
+              ],
+              [
+                1.38,
+                -0.75,
+                -1.12
+              ]
+            ],
+            [
+              [
+                -1.37,
+                -0.75,
+                -0.3
+              ],
+              [
+                -0.82,
+                -0.75,
+                -0.3
+              ],
+              [
+                0.0,
+                -0.75,
+                -0.3
+              ],
+              [
+                0.82,
+                -0.75,
+                -0.3
+              ],
+              [
+                1.37,
+                -0.75,
+                -0.3
+              ]
+            ],
+            [
+              [
+                -1.28,
+                -0.75,
+                0.56
+              ],
+              [
+                -0.76,
+                -0.75,
+                0.56
+              ],
+              [
+                0.0,
+                -0.75,
+                0.56
+              ],
+              [
+                0.76,
+                -0.75,
+                0.56
+              ],
+              [
+                1.28,
+                -0.75,
+                0.56
+              ]
+            ],
+            [
+              [
+                -1.16,
+                -0.75,
+                1.12
+              ],
+              [
+                -0.66,
+                -0.75,
+                1.12
+              ],
+              [
+                0.0,
+                -0.75,
+                1.12
+              ],
+              [
+                0.66,
+                -0.75,
+                1.12
+              ],
+              [
+                1.16,
+                -0.75,
+                1.12
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -1.34,
+                0.0,
+                -1.02
+              ],
+              [
+                -0.8,
+                0.0,
+                -1.02
+              ],
+              [
+                0.0,
+                0.0,
+                -1.02
+              ],
+              [
+                0.8,
+                0.0,
+                -1.02
+              ],
+              [
+                1.34,
+                0.0,
+                -1.02
+              ]
+            ],
+            [
+              [
+                -1.31,
+                0.0,
+                -0.18
+              ],
+              [
+                -0.77,
+                0.0,
+                -0.18
+              ],
+              [
+                0.0,
+                0.0,
+                -0.18
+              ],
+              [
+                0.77,
+                0.0,
+                -0.18
+              ],
+              [
+                1.31,
+                0.0,
+                -0.18
+              ]
+            ],
+            [
+              [
+                -1.18,
+                0.0,
+                0.82
+              ],
+              [
+                -0.7,
+                0.0,
+                0.82
+              ],
+              [
+                0.0,
+                0.0,
+                0.82
+              ],
+              [
+                0.7,
+                0.0,
+                0.82
+              ],
+              [
+                1.18,
+                0.0,
+                0.82
+              ]
+            ],
+            [
+              [
+                -1.02,
+                0.0,
+                1.36
+              ],
+              [
+                -0.6,
+                0.0,
+                1.36
+              ],
+              [
+                0.0,
+                0.0,
+                1.36
+              ],
+              [
+                0.6,
+                0.0,
+                1.36
+              ],
+              [
+                1.02,
+                0.0,
+                1.36
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -1.33,
+                0.75,
+                -1.0
+              ],
+              [
+                -0.78,
+                0.75,
+                -1.0
+              ],
+              [
+                0.0,
+                0.75,
+                -1.0
+              ],
+              [
+                0.78,
+                0.75,
+                -1.0
+              ],
+              [
+                1.33,
+                0.75,
+                -1.0
+              ]
+            ],
+            [
+              [
+                -1.27,
+                0.75,
+                -0.26
+              ],
+              [
+                -0.74,
+                0.75,
+                -0.26
+              ],
+              [
+                0.0,
+                0.75,
+                -0.26
+              ],
+              [
+                0.74,
+                0.75,
+                -0.26
+              ],
+              [
+                1.27,
+                0.75,
+                -0.26
+              ]
+            ],
+            [
+              [
+                -1.12,
+                0.75,
+                0.48
+              ],
+              [
+                -0.65,
+                0.75,
+                0.48
+              ],
+              [
+                0.0,
+                0.75,
+                0.48
+              ],
+              [
+                0.65,
+                0.75,
+                0.48
+              ],
+              [
+                1.12,
+                0.75,
+                0.48
+              ]
+            ],
+            [
+              [
+                -0.98,
+                0.75,
+                0.88
+              ],
+              [
+                -0.56,
+                0.75,
+                0.88
+              ],
+              [
+                0.0,
+                0.75,
+                0.88
+              ],
+              [
+                0.56,
+                0.75,
+                0.88
+              ],
+              [
+                0.98,
+                0.75,
+                0.88
+              ]
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            false,
+            false,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+        "type": "MESH",
+        "section_count": 3,
+        "grid_rows": 4,
+        "grid_columns": 5,
+        "active_cell_count": 10,
+        "vertices": 54,
+        "edges": 104,
+        "faces": 52,
+        "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse."
+      }
+    },
+    {
+      "index": 1,
+      "label": "replace_slab_like_primary_with_depth_section_cage",
+      "command": "transaction",
+      "params": {
+        "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+        "action_type": "rebuild_primary_cage_with_depth_section_rollover",
+        "operation": "replace_mesh_from_object",
+        "params": {
+          "source_name": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+          "copy_modifiers": false,
+          "copy_transform": false
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1786926429147",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1786926429147",
+          "performed": true,
+          "result": {
+            "target": "KUPONG_A_FRAME_SHELL_PRIMARY",
+            "source": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+            "mesh": "KUPONG_A_FRAME_SHELL_PRIMARY_Mesh",
+            "vertices": 54,
+            "edges": 104,
+            "faces": 52,
+            "copied_modifiers": [],
+            "transform_copied": false,
+            "source_preserved": true
+          }
+        },
+        "verify": {
+          "action_type": "rebuild_primary_cage_with_depth_section_rollover",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 54,
+            "edges": 104,
+            "faces": 52,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": [
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72
+              ]
+            },
+            "edges": {
+              "added": [
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72
+              ],
+              "removed": [
+                159,
+                160,
+                161,
+                162,
+                163,
+                164,
+                165,
+                166,
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212
+              ]
+            },
+            "faces": {
+              "added": [
+                159,
+                160,
+                161,
+                162,
+                163,
+                164,
+                165,
+                166,
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210
+              ],
+              "removed": [
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226,
+                227,
+                228,
+                229,
+                230,
+                231,
+                232,
+                233,
+                234,
+                235,
+                236,
+                237,
+                238,
+                239,
+                240,
+                241,
+                242,
+                243,
+                244,
+                245,
+                246,
+                247,
+                248,
+                249,
+                250,
+                251,
+                252,
+                253,
+                254,
+                255,
+                256,
+                257,
+                258,
+                259,
+                260,
+                261,
+                262,
+                263,
+                264,
+                265,
+                266,
+                267,
+                268,
+                269,
+                270,
+                271,
+                272,
+                273,
+                274,
+                275,
+                276,
+                277,
+                278,
+                279,
+                280,
+                281,
+                282
+              ]
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1786926429147",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "archive_transferred_depth_section_source",
+      "command": "transaction",
+      "params": {
+        "name": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+        "action_type": "archive_transferred_depth_section_source",
+        "operation": "archive_object",
+        "params": {
+          "collection_name": "REJECTED_COMPONENTS"
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1786926429150",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1786926429150",
+          "performed": true,
+          "result": {
+            "name": "KUPONG_A_FRAME_DEPTH_SECTION_SOURCE",
+            "archive_collection": "REJECTED_COMPONENTS",
+            "archive_collection_created": false,
+            "previous_collections": [
+              "Scene Collection"
+            ],
+            "hidden_in_viewport": true,
+            "hidden_in_render": true,
+            "recoverable": true
+          }
+        },
+        "verify": {
+          "action_type": "archive_transferred_depth_section_source",
+          "op_delta": 0,
+          "before": {
+            "vertices": 54,
+            "edges": 104,
+            "faces": 52,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 54,
+            "edges": 104,
+            "faces": 52,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1786926429150",
+          "result_revision": 6
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_04_depth_section_primary.blend"
+  },
+  "pass": true
+}
