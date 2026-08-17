@@ -96,6 +96,43 @@ because that is the gate this project's own accumulated evidence says should be 
 detail work starts (see the same-day Level 14 synthesis and multiple `docs/BENCHMARK_HISTORY.md`
 entries on the same lesson).
 
+## Stage 4: a real defect, found via an actual shaded render, root-caused and fixed
+
+Direct user feedback after seeing the silhouette-only renders: modeling quality still looks bad, and
+silhouettes aren't good enough evidence -- show real in-Blender shaded renders, and go do the
+video/tool research needed to actually fix problems rather than defer it. Both points were correct
+and actionable.
+
+`tools/render_blend_beauty.py` (Workbench SOLID shading, STUDIO lighting, cavity, shadows -- the
+same tool other props in this project use for their `*_beauty.png` outputs) produced
+`beauty_iso.png` on `flashlight_stage03.blend`. It showed something the silhouette renders had
+completely hidden: a visible concave crater at the front cap, not a clean rounded tip.
+
+Root cause, found by querying the mesh directly rather than guessing: `revolve_closed_profile`'s
+implicit wraparound closing behavior, when a profile pinches to near-zero radius at BOTH ends,
+creates a long thin near-degenerate quad strip connecting the two tips across the object's full
+25.4cm length -- not a normal short pole. Subdivision Surface handles that extreme-aspect-ratio
+connector badly, producing the dimple. Mesh-health checks never caught this (0 non-manifold, 0
+degenerate faces reported at every stage) -- only an actual shaded render did.
+
+Researched the fix rather than hand-waving it: Ian McGlasham's "A better cylinder"
+(`runs/2026-08-17_video-study-mcglasham-cylinder-subd/`, channel already trusted in this project's
+own knowledge base) confirms the general failure class (naive cylinder caps break under Subsurf) and
+the general fix (inset away from the edge, add a control loop, Grid Fill instead of a pole). Applied
+the simpler half of that fix: deleted the 32 identified "spine" faces and re-capped each resulting
+open ring with a single ngon via `fill_selection`, then re-applied the same Subsurf + smooth-by-angle
+setup. `stage_04_fix_spine_sequence.json` / `flashlight_stage04.blend` / `stage_04_report.json`.
+
+Result: `beauty_iso_v2.png` and `beauty_side_v2.png` show a clean, correctly rounded cap with no
+dimpling -- a real, verified, before/after fix, not just a description of one. Mesh health after:
+480 verts, 928 edges, 450 faces, 0 non-manifold, 0 degenerate, 2 ngons (the two new tip caps,
+expected and matching the video's own "ngon cap is a valid starting point" framing).
+
+**Still not done**: the full McGlasham technique (an explicit control/holding loop at the
+neck-to-head shoulder transition, and true Grid Fill instead of a bare ngon at each tip) was not
+applied -- this fix addressed the specific defect found, not a comprehensive topology pass. The
+switch, knurl band, bezel ring, and lens remain deliberately deferred secondary/tertiary detail.
+
 ## What this pass does and does not prove
 
 It proves the headless, non-interactive pipeline works end to end on a genuinely new target: real
