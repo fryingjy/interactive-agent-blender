@@ -773,7 +773,7 @@ class QualityReviewTests(unittest.TestCase):
         self.assertIn("structured one-to-one component coverage is missing or invalid", result["failures"])
 
     def test_stage_gate_rejects_global_only_visual_evidence(self):
-        result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True, "declared_view_ids": ["front", "side"], "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []}, "visual_mismatch_ledger": [{"view_id": "front", "status": "accepted", "salience": "low", "observation": "reviewed"}, {"view_id": "side", "status": "accepted", "salience": "low", "observation": "reviewed"}]})
+        result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True, "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []}, "declared_view_ids": ["front", "side"], "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []}, "visual_mismatch_ledger": [{"view_id": "front", "status": "accepted", "salience": "low", "observation": "reviewed"}, {"view_id": "side", "status": "accepted", "salience": "low", "observation": "reviewed"}]})
         self.assertFalse(result["pass"])
         self.assertIn("worst-view IoU below 0.9", result["failures"])
 
@@ -781,6 +781,7 @@ class QualityReviewTests(unittest.TestCase):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {
             "view_count": "three", "worst_view_iou": "high",
             "multiview_regression_pass": True,
+            "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
             "declared_view_ids": ["front", "side"],
             "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []},
             "visual_mismatch_ledger": [
@@ -1017,6 +1018,7 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(visual.target_region, "rim")
         advance = plan_next_decision(self.context(stage_evidence={
             "view_count": 3, "worst_view_iou": 0.95, "multiview_regression_pass": True,
+            "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
             "declared_view_ids": ["front", "side"],
             "constraint_report": {
                 "record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION",

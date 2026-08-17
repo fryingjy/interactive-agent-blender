@@ -17,7 +17,7 @@ STAGE_REQUIREMENTS = {
     ),
     "PROPORTION_SILHOUETTE": (
         "view_count", "worst_view_iou", "multiview_regression_pass",
-        "declared_view_ids", "constraint_report", "visual_mismatch_ledger",
+        "declared_view_ids", "constraint_report", "visual_mismatch_ledger", "render_evidence_preflight",
     ),
     "SECONDARY_FORMS": ("secondary_components_present", "placement_checked"),
     "TOPOLOGY_SURFACE": ("technical_clean", "topology_reviewed", "evaluated_surface_reviewed"),
@@ -95,6 +95,15 @@ def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
     mismatch must keep the asset at the proportion stage.
     """
     failures: list[str] = []
+    preflight = evidence["render_evidence_preflight"]
+    if not isinstance(preflight, dict) or preflight.get("record_type") != "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT":
+        failures.append("render_evidence_preflight must be a multiview render evidence report")
+    elif (
+        preflight.get("pass") is not True
+        or preflight.get("blank_views") != []
+        or preflight.get("duplicate_view_groups") != []
+    ):
+        failures.append("render evidence contains blank or duplicate declared views")
     view_ids = evidence["declared_view_ids"]
     if (
         not isinstance(view_ids, list)

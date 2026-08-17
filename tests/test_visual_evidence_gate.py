@@ -6,6 +6,7 @@ def _base_evidence():
         "view_count": 2,
         "worst_view_iou": 0.95,
         "multiview_regression_pass": True,
+        "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
         "declared_view_ids": ["front", "side"],
         "constraint_report": {
             "record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION",
