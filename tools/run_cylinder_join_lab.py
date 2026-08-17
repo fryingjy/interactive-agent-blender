@@ -90,14 +90,15 @@ def open_capped_cylinder(name, *, axis, radius, far, near, segments=16):
     return obj
 
 
-def add_shrinkwrap(obj, *, target, vertex_group, axis, offset):
+def add_shrinkwrap(obj, *, target, vertex_group, axis, offset, wrap_method="PROJECT"):
     modifier = obj.modifiers.new("Shrinkwrap", "SHRINKWRAP")
-    modifier.wrap_method = "PROJECT"
-    modifier.use_project_x = axis == "X"
-    modifier.use_project_y = axis == "Y"
-    modifier.use_project_z = axis == "Z"
-    modifier.use_negative_direction = True
-    modifier.use_positive_direction = True
+    modifier.wrap_method = wrap_method
+    if wrap_method == "PROJECT":
+        modifier.use_project_x = axis == "X"
+        modifier.use_project_y = axis == "Y"
+        modifier.use_project_z = axis == "Z"
+        modifier.use_negative_direction = True
+        modifier.use_positive_direction = True
     modifier.target = target
     modifier.vertex_group = vertex_group
     modifier.offset = offset
@@ -147,8 +148,39 @@ def mesh_metrics(obj) -> dict:
         evaluated.to_mesh_clear()
 
 
-def build_treatment(report: dict, output_dir: Path) -> None:
-    """Shrinkwrap-Project + delete-interior + join + Bridge Edge Loops, per the captured recipe."""
+def max_dihedral_angle_degrees(obj) -> dict:
+    """Sharpest and median angle between adjacent face normals on the base control cage.
+
+    Distinguishes a genuine geometric fold (a hard local crease) from healthy SubD
+    curvature, which this project's own flashlight-crater finding showed a plain
+    non-manifold/ngon mesh-health check cannot tell apart.
+    """
+    bm = bmesh.new()
+    bm.from_mesh(obj.data)
+    try:
+        angles = [
+            math.degrees(edge.link_faces[0].normal.angle(edge.link_faces[1].normal))
+            for edge in bm.edges
+            if len(edge.link_faces) == 2
+        ]
+        angles.sort(reverse=True)
+        return {
+            "max_degrees": angles[0] if angles else None,
+            "top5_degrees": angles[:5],
+            "median_degrees": angles[len(angles) // 2] if angles else None,
+        }
+    finally:
+        bm.free()
+
+
+def build_treatment(report: dict, output_dir: Path, *, wrap_method: str, label: str) -> None:
+    """Shrinkwrap + delete-interior + join + Bridge Edge Loops, per the captured recipe.
+
+    ``wrap_method`` isolates one variable against the literal captured recipe (PROJECT):
+    NEAREST_SURFACEPOINT always finds some point on the target regardless of ray
+    direction, directly testing whether the diagnosed partial-coverage fold (PROJECT
+    leaves an unhit vertex exactly where it started) is actually caused by wrap method.
+    """
     clear_scene()
 
     body = open_capped_cylinder(
@@ -161,10 +193,11 @@ def build_treatment(report: dict, output_dir: Path) -> None:
     # Body's tube runs along its own local Z (unrotated) -> project along Z.
     # Spout's tube geometry runs along X but the object itself was never rotated,
     # so its "own axis" in local-frame terms is still X, not Z -- project along X.
-    add_shrinkwrap(body, target=spout, vertex_group="collar", axis="Z", offset=-0.1)
-    add_shrinkwrap(spout, target=body, vertex_group="collar", axis="X", offset=-0.1)
+    add_shrinkwrap(body, target=spout, vertex_group="collar", axis="Z", offset=-0.1, wrap_method=wrap_method)
+    add_shrinkwrap(spout, target=body, vertex_group="collar", axis="X", offset=-0.1, wrap_method=wrap_method)
 
-    report["treatment"]["pre_shrinkwrap"] = {
+    report[label]["wrap_method"] = wrap_method
+    report[label]["pre_shrinkwrap"] = {
         "body": mesh_metrics(body),
         "spout": mesh_metrics(spout),
     }
@@ -172,7 +205,7 @@ def build_treatment(report: dict, output_dir: Path) -> None:
     apply_modifier(body, "Shrinkwrap")
     apply_modifier(spout, "Shrinkwrap")
 
-    report["treatment"]["post_shrinkwrap"] = {
+    report[label]["post_shrinkwrap"] = {
         "body": mesh_metrics(body),
         "spout": mesh_metrics(spout),
     }
@@ -182,19 +215,21 @@ def build_treatment(report: dict, output_dir: Path) -> None:
     bpy.context.view_layer.objects.active = body
     bpy.ops.object.join()
     joined = body
-    joined.name = "BodySpoutJoined"
+    joined.name = f"BodySpoutJoined_{label}"
 
     bm = bmesh.new()
     bm.from_mesh(joined.data)
     bm.verts.ensure_lookup_table()
     boundary_edges = [edge for edge in bm.edges if edge.is_boundary]
-    report["treatment"]["boundary_edges_before_bridge"] = len(boundary_edges)
+    report[label]["boundary_edges_before_bridge"] = len(boundary_edges)
     bridge_result = bmesh.ops.bridge_loops(bm, edges=boundary_edges)
-    report["treatment"]["bridge_faces_created"] = len(bridge_result.get("faces", []))
+    report[label]["bridge_faces_created"] = len(bridge_result.get("faces", []))
     bm.normal_update()
     bm.to_mesh(joined.data)
     joined.data.update()
     bm.free()
+
+    report[label]["dihedral_angles_pre_subsurf"] = max_dihedral_angle_degrees(joined)
 
     subsurf = joined.modifiers.new("Subdivision", "SUBSURF")
     subsurf.levels = 2
@@ -202,11 +237,11 @@ def build_treatment(report: dict, output_dir: Path) -> None:
     joined.data.polygons.foreach_set("use_smooth", [True] * len(joined.data.polygons))
     joined.data.update()
 
-    report["treatment"]["final"] = mesh_metrics(joined)
+    report[label]["final"] = mesh_metrics(joined)
 
-    blend_path = output_dir / "cylinder_join_treatment.blend"
+    blend_path = output_dir / f"cylinder_join_{label}.blend"
     bpy.ops.wm.save_as_mainfile(filepath=str(blend_path))
-    report["treatment"]["blend_path"] = str(blend_path)
+    report[label]["blend_path"] = str(blend_path)
 
 
 def build_control(report: dict, output_dir: Path) -> None:
@@ -270,10 +305,14 @@ def main() -> None:
             "produce a manifold, clean-topology joint, compared to a naive Boolean Union?"
         ),
         "treatment": {},
+        "treatment_nearest_surface_variant": {},
         "control": {},
     }
 
-    build_treatment(report, output_dir)
+    build_treatment(report, output_dir, wrap_method="PROJECT", label="treatment")
+    build_treatment(
+        report, output_dir, wrap_method="NEAREST_SURFACEPOINT", label="treatment_nearest_surface_variant"
+    )
     build_control(report, output_dir)
 
     report_path = output_dir / "report.json"

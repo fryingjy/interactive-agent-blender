@@ -76,12 +76,42 @@ non-manifold-edge count -- visually smoother than expected from that count alone
 topological messiness under shading), a useful reminder that mesh-health metrics and shaded
 appearance can each miss what the other catches, which is exactly why both were checked.
 
+## Follow-up: isolated variable test of the fold's cause -- hypothesis rejected
+
+Bug 2's diagnosis (partial angular coverage: `PROJECT` mode leaves a vertex exactly where it started
+when its ray finds no hit) implied a specific, testable prediction: switching `wrap_method` from
+`PROJECT` to `NEAREST_SURFACEPOINT` (which always finds *some* point on the target regardless of ray
+direction) should measurably close the fold. Tested as an isolated variant
+(`treatment_nearest_surface_variant`, everything else held constant) with a proper measurement added
+to the script itself (`max_dihedral_angle_degrees`, run pre-Subsurf on the base cage) instead of an
+ad hoc one-off check:
+
+| | PROJECT (treatment) | NEAREST_SURFACEPOINT (variant) |
+|---|---|---|
+| Max dihedral angle | 173.0 deg | 163.6 deg |
+| Median dihedral angle | 27.4 deg | 82.1 deg |
+
+The prediction is **rejected**. The worst-case fold barely improved (173 -> 163.6, still a near-hard
+crease), and the median angle got much worse (27.4 -> 82.1) -- the whole ring became uniformly
+tighter/more strained, not just the localized fold. `variant_nearest_surface_iso.png` confirms this
+visually: a hard fin-like flap at the joint, a more obvious defect than the original PROJECT-mode
+pinch, not a fix. Wrap method alone does not explain or resolve this fold.
+
+This means the earlier root-cause hypothesis (ray-miss on a partially-overlapping ring) was
+incomplete. The more likely explanation, not yet tested: a single flat 360-degree ring is the wrong
+starting shape for a joint where the target only wraps around part of that circle -- no shrinkwrap
+mode can cleanly relax a full circle onto a surface it partially misses by design, regardless of
+projection rule. A proper fix likely needs the collar's *shape* to change (e.g. an inset cut roughly
+matching the target's footprint before the loop is even created), not just its shrinkwrap parameters
+-- closer to how real hard-surface tutorials actually cut T-junction holes, and a materially bigger
+change than this pass's scope.
+
 ## Status and next step
 
 This is `EXPERIMENTALLY_TESTED`, not `TRANSFER_VALIDATED` -- reproduced once on the geometry built
-specifically for this test, not yet on a second, different shape. Per `docs/KNOWLEDGE_SYSTEM.md`,
-the underlying knowledge item status is unchanged (still `CAPTURED`). Concrete next step: add the
-seam control loop (the specific step this pass deliberately omitted) and re-measure the same
-dihedral-angle sweep before attempting a second transfer target (a different radius ratio or join
-angle, per this project's own transfer-test rule: change the shape while preserving the same
-underlying joining problem).
+specifically for this test, not yet on a second, different shape, and with one identified defect
+still open after two genuine (not guessed) diagnostic attempts. Per `docs/KNOWLEDGE_SYSTEM.md`, the
+underlying knowledge item status is unchanged (still `CAPTURED`). The Boolean-vs-Shrinkwrap
+comparison itself stands (0 vs 24 non-manifold edges) regardless of this open fold. Concrete next
+step: redesign the collar as a footprint-matched inset cut rather than a flat full ring, before
+attempting a second transfer target on a different shape.
