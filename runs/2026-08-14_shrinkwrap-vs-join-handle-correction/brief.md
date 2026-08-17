@@ -53,3 +53,31 @@ of overclaiming this project's own knowledge discipline exists to prevent.
   Shrinkwrap attempt were left in the scene, mid-setup, not cleaned up further -- superseded by this
   correction, not deleted, so the abandoned attempt remains visible as a real record rather than
   quietly erased.
+
+## Addendum (2026-08-17): re-inspected live instead of reproducing an unwatched video
+
+This session independently attempted to reproduce a different curved-surface fusion technique
+(McGlasham's "Connecting Cylinders," Shrinkwrap+Bridge on a T-junction) purely from a video whose
+frames could never actually be watched (a real, documented environment limitation, not a shortcut).
+After several iterations it still had a genuine, unresolved fold defect and was scrapped rather than
+fixed. That failure prompted going back to re-examine this file's own already-successful result
+in detail, which had only been summarized, never actually re-inspected, since it was first built.
+
+Re-loaded `mug_handle_join.blend` live (`restore_checkpoint`) once a working live connection became
+available this session, and checked it with tools that did not exist or were not applied to it back
+on 2026-08-14: `get_evaluated_defect_regions` flags 280 candidate tickets on this mesh, but the top 20
+by severity are **all at the mug's own rim** (z = +-1.0, an intentional sharp cap edge), not the
+handle seam at all -- the seam itself doesn't rank as notably severe by the same metric that flagged
+the cylinder-join fold as the single worst thing in that entire scene. A fresh `solid`-shaded render
+(`live_reinspect_solid.png`) shows both seams blending smoothly into the body with no visible pinch
+or crease, matching the mesh-health numbers (0 non-manifold, only 16 poles total across 368 vertices,
+8 valence-3 and 8 valence-5, symmetric and paired at the seam -- not scattered).
+
+**The actual lesson from comparing these two attempts directly:** the technique that worked was not
+one reproduced from external tutorial description at all -- it was the user demonstrating, live, in
+their own hands, exactly how to grow/join/bridge a secondary curved form into a primary one. The
+technique that struggled was reconstructed secondhand from a source that could only ever be partially
+observed. When this project already holds a verified-good example of the same class of problem, that
+is better grounding for judgment than attempting a new secondhand reproduction of a different video
+covering roughly the same territory. `live_reinspect_solid.png` and `live_reinspect_wireframe.png`
+are retained alongside the original evidence in this directory.
