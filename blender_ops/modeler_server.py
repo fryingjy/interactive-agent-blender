@@ -574,6 +574,14 @@ class ModelerServer:
             "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse.",
         }
 
+    def cmd_create_quad_open_surface(self, name, front_grid, rear_grid, active_cells, bridge_edges):
+        """Create an open connected quad cage with explicitly declared bridges."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_open_surface_from_grids(name, front_grid, rear_grid, active_cells, bridge_edges)
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {"name": obj.name, "type": obj.type, "vertices": len(obj.data.vertices), "edges": len(obj.data.edges), "faces": len(obj.data.polygons), "bridge_edge_count": len(bridge_edges), "construction_boundary": "Open boundaries are intentional; use live Solidify only after silhouette review."}
+
     def cmd_create_reference_image(
         self,
         name,

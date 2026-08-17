@@ -327,6 +327,59 @@ def quad_shell_from_sections(name, section_grids, active_cells, *, collection=No
     return obj
 
 
+def quad_open_surface_from_grids(name, front_grid, rear_grid, active_cells, bridge_edges, *, collection=None):
+    """Create one connected, open all-quad surface from authored grids.
+
+    ``bridge_edges`` contains only the physical boundaries that continue from
+    front to rear, as ``[row_a, column_a, row_b, column_b]`` entries.  Other
+    boundaries intentionally remain open for a later live Solidify modifier.
+    This avoids falsely sealing folded products such as open A-frame shells.
+    """
+    def normalize(label, grid):
+        if not isinstance(grid, (list, tuple)) or len(grid) < 2 or not isinstance(grid[0], (list, tuple)) or len(grid[0]) < 2:
+            raise ValueError(f"{label} grid needs at least two rows and columns")
+        columns = len(grid[0])
+        if any(not isinstance(row, (list, tuple)) or len(row) != columns for row in grid):
+            raise ValueError(f"{label} grid rows must share one width")
+        return [[tuple(float(value) for value in point) for point in row] for row in grid]
+
+    front, rear = normalize("front", front_grid), normalize("rear", rear_grid)
+    rows, columns = len(front), len(front[0])
+    if len(rear) != rows or len(rear[0]) != columns:
+        raise ValueError("open surface grids must have matching dimensions")
+    if len(active_cells) != rows - 1 or any(len(row) != columns - 1 for row in active_cells):
+        raise ValueError("active_cells must be one row and column smaller than the grids")
+    cells = [[bool(value) for value in row] for row in active_cells]
+    if not any(value for row in cells for value in row):
+        raise ValueError("open surface needs an active cell")
+
+    def node(row, column): return row * columns + column
+    used, rings = set(), []
+    for row in range(rows - 1):
+        for column in range(columns - 1):
+            if cells[row][column]:
+                ring = (node(row, column), node(row, column + 1), node(row + 1, column + 1), node(row + 1, column))
+                rings.append(ring); used.update(ring)
+    ordered = sorted(used)
+    front_index = {key: index for index, key in enumerate(ordered)}
+    rear_index = {key: index + len(ordered) for index, key in enumerate(ordered)}
+    vertices = [front[row][column] for key in ordered for row, column in [divmod(key, columns)]] + [rear[row][column] for key in ordered for row, column in [divmod(key, columns)]]
+    faces = [tuple(front_index[key] for key in ring) for ring in rings] + [tuple(rear_index[key] for key in reversed(ring)) for ring in rings]
+    for edge in bridge_edges:
+        if not isinstance(edge, (list, tuple)) or len(edge) != 4:
+            raise ValueError("bridge_edges entries must be [row_a, column_a, row_b, column_b]")
+        first, second = node(int(edge[0]), int(edge[1])), node(int(edge[2]), int(edge[3]))
+        if first not in used or second not in used:
+            raise ValueError("bridge edge must use active grid nodes")
+        faces.append((front_index[first], front_index[second], rear_index[second], rear_index[first]))
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces); mesh.update()
+    mesh.uv_layers.new(name="QuadOpenSurfaceUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
 def capped_cylinder(name, *, radius, z_bottom, z_top, segments=64, collection=None):
     """Create a manifold capped cylinder from explicit vertices and triangles."""
     if radius <= 0 or z_top <= z_bottom:

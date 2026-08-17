@@ -113,6 +113,12 @@ def create_quad_shell_sections(name: str, section_grids: list[list[list[list[flo
 
 
 @mcp.tool()
+def create_quad_open_surface(name: str, front_grid: list[list[list[float]]], rear_grid: list[list[list[float]]], active_cells: list[list[bool]], bridge_edges: list[list[int]]) -> dict:
+    """Create one connected open all-quad cage from authored front/rear grids. Explicit bridge_edges name only physical fold boundaries; unbridged boundaries remain open for a later unapplied Solidify modifier."""
+    return _call("create_quad_open_surface", name=name, front_grid=front_grid, rear_grid=rear_grid, active_cells=active_cells, bridge_edges=bridge_edges)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)
