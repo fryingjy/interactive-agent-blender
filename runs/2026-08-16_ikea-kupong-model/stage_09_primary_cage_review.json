@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_CAGE_VISUAL_REVIEW",
+  "target_id": "ikea_kupong_90621811",
+  "candidate": "ikea_kupong_stage_09_live_solidify.blend",
+  "decision": "ACCEPT_PRIMARY_CONSTRUCTION_WITH_SURFACE_WORK_PENDING",
+  "declared_views": ["front_orthographic", "side_orthographic", "isometric"],
+  "visual_mismatch_ledger": [
+    {"view_id":"front_orthographic","status":"deferred_secondary","salience":"high","observation":"The continuous front shell and two feet are present, but the display recess is deliberately absent from this primary-cage scope."},
+    {"view_id":"side_orthographic","status":"acceptable_primary","salience":"medium","observation":"The shell is now visibly open beneath the A-frame instead of being sealed by a false side wall. The rounded crest remains surface-work pending."},
+    {"view_id":"isometric","status":"acceptable_primary","salience":"medium","observation":"One connected open shell, a narrow top bridge, and live unapplied thickness reproduce the product's core physical construction more faithfully than the rejected closed cages."}
+  ],
+  "technical_observations":{"base_topology":"connected open all-quad surface","live_modifier":{"name":"Live shell thickness","type":"SOLIDIFY","applied":false,"thickness":0.075,"offset":0.0},"separate_visible_assemblies":[]},
+  "accepted_scope":"Primary shell construction only. This does not approve the display, rounded surface quality, materials, or final reference fidelity.",
+  "next_action":"Add controlled support topology and crease/SubD only where the official shell shows a rounded rollover; then author the display as the explicitly permitted separate assembly.",
+  "disposition_boundary":"Agent visual acceptance for progression, not a human final-quality signoff."
+}

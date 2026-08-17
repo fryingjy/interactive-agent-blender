@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\stage_09_live_solidify_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_08_open_aframe_surface.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_09_live_solidify.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "11f69fedc45e",
+  "results": [
+    {
+      "index": 0,
+      "label": "add_unapplied_shell_thickness",
+      "command": "transaction",
+      "params": {
+        "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+        "action_type": "evaluate_open_shell_with_live_thickness",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SOLIDIFY",
+          "modifier_name": "Live shell thickness"
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_12_1786927057984",
+          "observed_revision": 12
+        },
+        "perform": {
+          "decision_id": "dec_12_1786927057984",
+          "performed": true,
+          "result": {
+            "modifier_name": "Live shell thickness",
+            "type": "SOLIDIFY",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "evaluate_open_shell_with_live_thickness",
+          "op_delta": 0,
+          "before": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_12_1786927057984",
+          "result_revision": 13
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "set_reference_scale_shell_thickness",
+      "command": "transaction",
+      "params": {
+        "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+        "action_type": "set_unapplied_shell_thickness",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Live shell thickness",
+          "parameter": "thickness",
+          "value": 0.075
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_13_1786927057992",
+          "observed_revision": 13
+        },
+        "perform": {
+          "decision_id": "dec_13_1786927057992",
+          "performed": true,
+          "result": {
+            "modifier_name": "Live shell thickness",
+            "parameter": "thickness",
+            "value": 0.07500000298023224
+          }
+        },
+        "verify": {
+          "action_type": "set_unapplied_shell_thickness",
+          "op_delta": 0,
+          "before": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_13_1786927057992",
+          "result_revision": 14
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "center_live_thickness_on_cage",
+      "command": "transaction",
+      "params": {
+        "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+        "action_type": "center_unapplied_shell_thickness",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Live shell thickness",
+          "parameter": "offset",
+          "value": 0.0
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_14_1786927057995",
+          "observed_revision": 14
+        },
+        "perform": {
+          "decision_id": "dec_14_1786927057995",
+          "performed": true,
+          "result": {
+            "modifier_name": "Live shell thickness",
+            "parameter": "offset",
+            "value": 0.0
+          }
+        },
+        "verify": {
+          "action_type": "center_unapplied_shell_thickness",
+          "op_delta": 0,
+          "before": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 38,
+            "edges": 61,
+            "faces": 24,
+            "non_manifold_edges": 26,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_14_1786927057995",
+          "result_revision": 15
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_ikea-kupong-model\\ikea_kupong_stage_09_live_solidify.blend"
+  },
+  "pass": true
+}
