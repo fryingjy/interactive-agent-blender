@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-ikea-kupong\\reference_manifest.json",
+      "audit": {
+        "target_id": "ikea_kupong_90621811",
+        "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+        "reference_count": 4,
+        "matching_reference_count": 4,
+        "independent_source_count": 1,
+        "view_count": 4,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
+        },
+        "covered_properties": {
+          "overall_width": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "overall_height": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "overall_depth": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "continuous_shell_silhouette": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "front_display_recess": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "front_underbody_opening": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "rear_support_profile": [
+            "ikea_kupong_official_3d_orthographic_views"
+          ]
+        },
+        "dimensional_anchors": [
+          "length 2.75 in",
+          "height 2.25 in",
+          "depth 1.5 in",
+          "official product model cross-check only; manufacturer dimensions remain the scale authority"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

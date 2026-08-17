@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_TO_BLOCKOUT_CONTRACT",
+  "target": "IKEA KUPONG black alarm clock, article 906.218.11",
+  "reference_set_id": "ikea-kupong-official-v1",
+  "known": [
+    {
+      "claim_id": "kupong_projection",
+      "category": "camera_assumptions",
+      "statement": "The isolated manufacturer photo is perspective; neutral local renders from the official embedded 3D product asset are orthographic pixel references with source-axis labels mapped by visible content.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official product photo",
+        "official_3d_reference/reference_manifest.json"
+      ],
+      "modeling_consequence": "Use the product photo for surface/read intent and the orthographic pixel renders for depth and side contour checks.",
+      "impact": "high",
+      "component_refs": [],
+      "source_views": [
+        "front_oblique",
+        "front_orthographic",
+        "side_orthographic",
+        "rear_orthographic"
+      ],
+      "modeling_signals": {}
+    },
+    {
+      "claim_id": "kupong_primary_shell",
+      "category": "primary_forms",
+      "statement": "The dominant object is one compact, rounded A-frame shell approximately 2.75 in wide, 2.25 in tall, and 1.5 in deep.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.94,
+      "evidence": [
+        "official measurements",
+        "official product photo",
+        "official 3D-derived views"
+      ],
+      "modeling_consequence": "Start with one connected measured profile cage rather than a body plus separate cylinders or feet.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "front_orthographic",
+        "side_orthographic"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    },
+    {
+      "claim_id": "kupong_underbody_opening",
+      "category": "negative_spaces",
+      "statement": "A large U-shaped negative space is cut through the lower front, leaving two integrated feet.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front product photo",
+        "official front orthographic pixel render"
+      ],
+      "modeling_consequence": "Reserve the central lower face region in the primary shell, then form the opening through connected topology before any surface modifiers.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "front_orthographic"
+      ],
+      "modeling_signals": {}
+    },
+    {
+      "claim_id": "kupong_rear_support",
+      "category": "continuous_surfaces",
+      "statement": "The shell bends across the top into a rear support; it should be treated as a continuous surface, not a detached back plate.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official 3D-derived side and rear pixel renders"
+      ],
+      "modeling_consequence": "Preserve a continuous top-to-rear edge flow and verify the side profile before introducing any display detail.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "side_orthographic",
+        "rear_orthographic"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    },
+    {
+      "claim_id": "kupong_display_assembly",
+      "category": "separate_parts",
+      "statement": "The digital display is a distinct recessed insert from the outer shell.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official front product photo"
+      ],
+      "modeling_consequence": "Keep the display as a separate assembly only after the shell primary form passes review.",
+      "impact": "medium",
+      "component_refs": [
+        "display_insert"
+      ],
+      "source_views": [
+        "front_oblique"
+      ],
+      "modeling_signals": {
+        "independent_motion_or_material": true
+      }
+    },
+    {
+      "claim_id": "kupong_profile_cage_strategy",
+      "category": "construction_hypotheses",
+      "statement": "A measured connected front-outline cage, extended through the known depth and then locally edited into the U opening and rollover, best preserves the shell's continuous manufactured form.",
+      "evidence_status": "STRONGLY_INFERRED",
+      "confidence": 0.82,
+      "evidence": [
+        "observed continuous shell",
+        "observed lower negative space",
+        "generic profile-extrusion runtime lab"
+      ],
+      "modeling_consequence": "Use the typed profile extrusion only as the seed; execute and verify topology edits for the opening and surface transitions before any detail.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_orthographic",
+        "side_orthographic"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    },
+    {
+      "claim_id": "kupong_dimensions",
+      "category": "known_dimensions",
+      "statement": "Manufacturer measurements are length 2.75 in, height 2.25 in, and depth 1.5 in.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.99,
+      "evidence": [
+        "official IKEA product measurements"
+      ],
+      "modeling_consequence": "Use these values for the primary cage envelope; local pixel ratios define only internal placement.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "side_orthographic"
+      ],
+      "modeling_signals": {}
+    }
+  ],
+  "unknown": [],
+  "primary_forms": [
+    {
+      "claim_id": "kupong_primary_shell",
+      "category": "primary_forms",
+      "statement": "The dominant object is one compact, rounded A-frame shell approximately 2.75 in wide, 2.25 in tall, and 1.5 in deep.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.94,
+      "evidence": [
+        "official measurements",
+        "official product photo",
+        "official 3D-derived views"
+      ],
+      "modeling_consequence": "Start with one connected measured profile cage rather than a body plus separate cylinders or feet.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "front_orthographic",
+        "side_orthographic"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    }
+  ],
+  "primary_components": [
+    {
+      "name": "a_frame_shell",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": false,
+      "notes": "One rounded plastic shell that rolls across the top from the front feet to the rear support.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.92,
+      "evidence": [
+        "official front product photo",
+        "official 3D-derived side and rear pixel renders"
+      ],
+      "expected_region": {}
+    }
+  ],
+  "secondary_components": [
+    {
+      "name": "display_insert",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Rounded rectangular digital display inset in the upper front plane; display glyphs are tertiary scope.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official front product photo"
+      ],
+      "expected_region": {}
+    }
+  ],
+  "negative_spaces": [
+    {
+      "claim_id": "kupong_underbody_opening",
+      "category": "negative_spaces",
+      "statement": "A large U-shaped negative space is cut through the lower front, leaving two integrated feet.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.95,
+      "evidence": [
+        "official front product photo",
+        "official front orthographic pixel render"
+      ],
+      "modeling_consequence": "Reserve the central lower face region in the primary shell, then form the opening through connected topology before any surface modifiers.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "front_orthographic"
+      ],
+      "modeling_signals": {}
+    }
+  ],
+  "silhouette_landmarks": [],
+  "depth_landmarks": [],
+  "symmetry": [],
+  "continuous_surface_hypotheses": [
+    {
+      "claim_id": "kupong_rear_support",
+      "category": "continuous_surfaces",
+      "statement": "The shell bends across the top into a rear support; it should be treated as a continuous surface, not a detached back plate.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official 3D-derived side and rear pixel renders"
+      ],
+      "modeling_consequence": "Preserve a continuous top-to-rear edge flow and verify the side profile before introducing any display detail.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "side_orthographic",
+        "rear_orthographic"
+      ],
+      "modeling_signals": {
+        "smooth_continuous_surface": true
+      }
+    }
+  ],
+  "separate_component_hypotheses": [
+    {
+      "claim_id": "kupong_display_assembly",
+      "category": "separate_parts",
+      "statement": "The digital display is a distinct recessed insert from the outer shell.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "official front product photo"
+      ],
+      "modeling_consequence": "Keep the display as a separate assembly only after the shell primary form passes review.",
+      "impact": "medium",
+      "component_refs": [
+        "display_insert"
+      ],
+      "source_views": [
+        "front_oblique"
+      ],
+      "modeling_signals": {
+        "independent_motion_or_material": true
+      }
+    }
+  ],
+  "dimensional_anchors": [
+    {
+      "claim_id": "kupong_dimensions",
+      "category": "known_dimensions",
+      "statement": "Manufacturer measurements are length 2.75 in, height 2.25 in, and depth 1.5 in.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.99,
+      "evidence": [
+        "official IKEA product measurements"
+      ],
+      "modeling_consequence": "Use these values for the primary cage envelope; local pixel ratios define only internal placement.",
+      "impact": "high",
+      "component_refs": [
+        "a_frame_shell"
+      ],
+      "source_views": [
+        "front_oblique",
+        "side_orthographic"
+      ],
+      "modeling_signals": {}
+    }
+  ],
+  "candidate_strategies": [
+    {
+      "name": "connected_profile_cage_then_topology_opening",
+      "representation": "PROFILE_EXTRUSION_PLUS_EDIT_MODE",
+      "rationale_claim_ids": [
+        "kupong_primary_shell",
+        "kupong_underbody_opening",
+        "kupong_rear_support",
+        "kupong_profile_cage_strategy"
+      ],
+      "status": "candidate",
+      "rejection_reason": "",
+      "reversible": true
+    }
+  ],
+  "selected_strategy": {
+    "name": "connected_profile_cage_then_topology_opening",
+    "representation": "PROFILE_EXTRUSION_PLUS_EDIT_MODE",
+    "rationale_claim_ids": [
+      "kupong_primary_shell",
+      "kupong_underbody_opening",
+      "kupong_rear_support",
+      "kupong_profile_cage_strategy"
+    ],
+    "status": "candidate",
+    "rejection_reason": "",
+    "reversible": true
+  },
+  "rejected_strategies": [
+    {
+      "name": "assembled_box_and_leg_primitives",
+      "representation": "SEPARATE_PRIMITIVE_ASSEMBLY",
+      "rationale_claim_ids": [
+        "kupong_primary_shell",
+        "kupong_underbody_opening"
+      ],
+      "status": "rejected",
+      "rejection_reason": "It would falsely split the visibly continuous shell and repeat the primitive-assembly failure mode.",
+      "reversible": true
+    }
+  ],
+  "confidence": {
+    "claims": {
+      "kupong_projection": 0.95,
+      "kupong_primary_shell": 0.94,
+      "kupong_underbody_opening": 0.95,
+      "kupong_rear_support": 0.9,
+      "kupong_display_assembly": 0.9,
+      "kupong_profile_cage_strategy": 0.82,
+      "kupong_dimensions": 0.99
+    },
+    "components": {
+      "a_frame_shell": 0.92,
+      "display_insert": 0.9
+    }
+  },
+  "reference_readiness": {
+    "ready_for_blockout": true,
+    "missing_requirements": [],
+    "high_impact_unresolved_claims": [],
+    "research_questions": [],
+    "conflicting_modeling_signals": [],
+    "claim_counts_by_status": {
+      "OBSERVED": 6,
+      "STRONGLY_INFERRED": 1,
+      "UNKNOWN": 0,
+      "WEAKLY_INFERRED": 0
+    }
+  },
+  "limitation": "This contract makes reference interpretation and selected representation traceable. It does not authorize Blender construction until required external/human review gates pass."
+}

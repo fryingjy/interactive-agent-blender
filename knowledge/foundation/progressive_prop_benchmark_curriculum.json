@@ -128,14 +128,14 @@
   "active_state": {
     "active_prop_id": 5,
     "active_prop": "Vintage Alarm Clock",
-    "active_target_variant": null,
-    "phase": "reference-tooling-transfer-and-exercise-reproduction",
-    "authorization": "REFERENCE_ANALYSIS_REQUIRED",
-    "modeling_authorized": false,
+    "active_target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+    "phase": "reversible-primary-cage-exercise",
+    "authorization": "DIRECT_USER_AUTHORIZATION",
+    "modeling_authorized": true,
     "prior_prop_outcome": "Prop 2 Scotch C38 received a qualified human stage pass after its broad bevel treatment was replaced by live crease-controlled SubD. This is not final-asset or production approval; reference likeness was described as only somewhat acceptable, and UV/material/underside/export work remains unapproved.",
     "prior_prop_outcome_2": "Prop 3 failed direct human likeness review at 3/10. Its model, renders, reference package, helper, and derived benchmark records were purged on user instruction instead of overfitting further repairs.",
     "prior_prop_outcome_3": "Prop 4 Smeg KLF03 was rejected for obvious reference mismatch despite technically valid editable cages and live modifiers. Isolated component comparisons exposed weak normalized silhouette overlap for the spout (0.4001), handle (0.5741), and base (0.5156), while full-object normalization misleadingly reported approximately 0.77–0.88. The correct response is to retain the failure evidence, improve the component-comparison and recoverable-rebuild workflow, and stop target-specific polishing rather than claim progression.",
     "active_prop_exercise_outcome": "The IKEA DEKAD 305.404.79 exercise was rejected at blockout: its first profile used the wrong front axis, the corrected shell initially lacked the required depth, and its later bell-cap profiles remained visibly unlike the official shallow asymmetric bells. The stages and visual rejection are retained under runs/2026-08-16_ikea-dekad-model/. This is negative evidence for current reference-to-form judgment, not a completed Prop 5 or an authorization to advance.",
-    "next_action": "Do not polish the rejected DEKAD target. Select a fresh unfamiliar Prop-5 reference package whose primary forms can be decomposed and verified before secondary detail; apply the retained axis, depth, curve-render, and profile-silhouette lessons through the typed path."
+    "next_action": "Build only the IKEA KUPONG continuous A-frame primary cage from the validated official source package. Use the connected-profile-cage strategy, form the U opening from shell topology, and compare solid front/side/isometric views against the recorded high-salience constraints before adding the display, modifiers, materials, or high/low packaging."
   }
 }

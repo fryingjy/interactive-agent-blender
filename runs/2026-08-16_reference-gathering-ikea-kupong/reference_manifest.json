@@ -1,0 +1,78 @@
+{
+  "target_id": "ikea_kupong_90621811",
+  "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+  "required_views": ["front_oblique", "front_orthographic", "side_orthographic", "rear_orthographic"],
+  "critical_properties": ["overall_width", "overall_height", "overall_depth", "continuous_shell_silhouette", "front_display_recess", "front_underbody_opening", "rear_support_profile"],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 1,
+  "items": [
+    {
+      "reference_id": "ikea_kupong_official_product_photo",
+      "source_id": "ikea_kupong_90621811_official",
+      "source_url": "https://www.ikea.com/us/en/p/kupong-alarm-clock-black-90621811/",
+      "local_file": "references/official_front.jpg",
+      "target_id": "ikea_kupong_90621811",
+      "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+      "purposes": ["PRIMARY_FORM", "DETAIL", "CONSTRUCTION", "DIMENSION", "MATERIAL"],
+      "view": "front_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_width", "purpose": "DIMENSION", "observation": "The official listing states a 2 3/4 inch length.", "confidence": "HIGH"},
+        {"property_id": "overall_height", "purpose": "DIMENSION", "observation": "The official listing states a 2 1/4 inch height.", "confidence": "HIGH"},
+        {"property_id": "overall_depth", "purpose": "DIMENSION", "observation": "The official listing states a 1 1/2 inch width/depth.", "confidence": "HIGH"},
+        {"property_id": "continuous_shell_silhouette", "purpose": "PRIMARY_FORM", "observation": "The photo shows one rounded plastic A-frame outer shell with a top rollover and two front feet.", "confidence": "HIGH"},
+        {"property_id": "front_display_recess", "purpose": "DETAIL", "observation": "A rounded rectangular display sits recessed in the upper front plane.", "confidence": "HIGH"},
+        {"property_id": "front_underbody_opening", "purpose": "CONSTRUCTION", "observation": "The lower front has a large U-shaped negative space between two feet.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["length 2.75 in", "height 2.25 in", "depth 1.5 in"],
+      "limitations": ["The product photo is perspective, so it cannot alone establish exact planar dimensions or rear geometry."]
+    },
+    {
+      "reference_id": "ikea_kupong_official_3d_orthographic_views",
+      "source_id": "ikea_kupong_90621811_official",
+      "source_url": "https://web-api.ikea.com/dimma/assets/geomagical/90621811/PS01_S01_NV_01/simple/glb/58947bde380d4756c0b4f86200c61a9f-G-90621811-cdd00b99c3a5067df7cfd95ac55ae316a79c1560-simple.glb?cn=pip",
+      "local_file": "official_3d_reference/reference_manifest.json",
+      "target_id": "ikea_kupong_90621811",
+      "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+      "purposes": ["PRIMARY_FORM", "ORTHOGRAPHIC", "CONSTRUCTION", "DIMENSION"],
+      "view": "front_orthographic",
+      "projection": "ORTHOGRAPHIC",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "rear_support_profile", "purpose": "CONSTRUCTION", "observation": "Neutral renders derived from the official embedded product model resolve the rear A-frame support, recessed rear panel, and the shell's depth profile.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["official product model cross-check only; manufacturer dimensions remain the scale authority"],
+      "limitations": ["The official 3D asset is rendered only to pixels for reference. Its topology is not inspected or copied."]
+    },
+    {
+      "reference_id": "ikea_kupong_official_3d_side_view",
+      "source_id": "ikea_kupong_90621811_official",
+      "source_url": "https://web-api.ikea.com/dimma/assets/geomagical/90621811/PS01_S01_NV_01/simple/glb/58947bde380d4756c0b4f86200c61a9f-G-90621811-cdd00b99c3a5067df7cfd95ac55ae316a79c1560-simple.glb?cn=pip",
+      "local_file": "official_3d_reference/reference_side_beauty.png",
+      "target_id": "ikea_kupong_90621811",
+      "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+      "purposes": ["PRIMARY_FORM", "ORTHOGRAPHIC", "CONSTRUCTION"],
+      "view": "side_orthographic",
+      "projection": "ORTHOGRAPHIC",
+      "source_tier": "VERY_HIGH",
+      "claims": [],
+      "limitations": ["Pixel reference derived from the official embedded model; no mesh topology is used as construction data."]
+    },
+    {
+      "reference_id": "ikea_kupong_official_3d_rear_view",
+      "source_id": "ikea_kupong_90621811_official",
+      "source_url": "https://web-api.ikea.com/dimma/assets/geomagical/90621811/PS01_S01_NV_01/simple/glb/58947bde380d4756c0b4f86200c61a9f-G-90621811-cdd00b99c3a5067df7cfd95ac55ae316a79c1560-simple.glb?cn=pip",
+      "local_file": "official_3d_reference/reference_front_beauty.png",
+      "target_id": "ikea_kupong_90621811",
+      "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+      "purposes": ["PRIMARY_FORM", "ORTHOGRAPHIC", "CONSTRUCTION"],
+      "view": "rear_orthographic",
+      "projection": "ORTHOGRAPHIC",
+      "source_tier": "VERY_HIGH",
+      "claims": [],
+      "limitations": ["The render tool's arbitrary source axis is explicitly mapped here by visible content, not assumed from its filename."]
+    }
+  ],
+  "research_questions": []
+}
