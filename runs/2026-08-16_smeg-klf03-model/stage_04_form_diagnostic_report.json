@@ -1,0 +1,4220 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\stage_04_form_diagnostic_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\klf03_stage_03_spout_refined.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "37ceea45e7a8",
+  "results": [
+    {
+      "index": 0,
+      "label": "inspect_base_bottom_rings",
+      "command": "inspect_region",
+      "params": {
+        "name": "KLF03_BaseBand_HIGH",
+        "center_ids": [
+          1,
+          8,
+          9,
+          16,
+          17,
+          24,
+          25,
+          32,
+          33,
+          40,
+          41,
+          48,
+          49,
+          56,
+          57,
+          64,
+          65,
+          72,
+          73,
+          80,
+          81,
+          88,
+          89,
+          96,
+          97,
+          104,
+          105,
+          112,
+          113,
+          120,
+          121,
+          128
+        ],
+        "rings": 0
+      },
+      "status": "ok",
+      "result": {
+        "center_ids": [
+          1,
+          8,
+          9,
+          16,
+          17,
+          24,
+          25,
+          32,
+          33,
+          40,
+          41,
+          48,
+          49,
+          56,
+          57,
+          64,
+          65,
+          72,
+          73,
+          80,
+          81,
+          88,
+          89,
+          96,
+          97,
+          104,
+          105,
+          112,
+          113,
+          120,
+          121,
+          128
+        ],
+        "missing_center_ids": [],
+        "rings": 0,
+        "vertex_count": 32,
+        "edge_count": 80,
+        "face_count": 48,
+        "vertices": {
+          "1": {
+            "index": 0,
+            "agent_id": 1,
+            "position": [
+              2.9,
+              0.0,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              2,
+              9,
+              8,
+              121
+            ]
+          },
+          "8": {
+            "index": 7,
+            "agent_id": 8,
+            "position": [
+              2.78,
+              0.0,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              7,
+              16,
+              1,
+              128
+            ]
+          },
+          "9": {
+            "index": 8,
+            "agent_id": 9,
+            "position": [
+              2.67925,
+              1.10978,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              10,
+              16,
+              17
+            ]
+          },
+          "16": {
+            "index": 15,
+            "agent_id": 16,
+            "position": [
+              2.56839,
+              1.06386,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              15,
+              8,
+              9,
+              24
+            ]
+          },
+          "17": {
+            "index": 16,
+            "agent_id": 17,
+            "position": [
+              2.05061,
+              2.05061,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              9,
+              18,
+              24,
+              25
+            ]
+          },
+          "24": {
+            "index": 23,
+            "agent_id": 24,
+            "position": [
+              1.96576,
+              1.96576,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              23,
+              16,
+              17,
+              32
+            ]
+          },
+          "25": {
+            "index": 24,
+            "agent_id": 25,
+            "position": [
+              1.10978,
+              2.67925,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              17,
+              26,
+              32,
+              33
+            ]
+          },
+          "32": {
+            "index": 31,
+            "agent_id": 32,
+            "position": [
+              1.06386,
+              2.56839,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              31,
+              24,
+              25,
+              40
+            ]
+          },
+          "33": {
+            "index": 32,
+            "agent_id": 33,
+            "position": [
+              0.0,
+              2.9,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              25,
+              34,
+              40,
+              41
+            ]
+          },
+          "40": {
+            "index": 39,
+            "agent_id": 40,
+            "position": [
+              0.0,
+              2.78,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              39,
+              32,
+              33,
+              48
+            ]
+          },
+          "41": {
+            "index": 40,
+            "agent_id": 41,
+            "position": [
+              -1.10978,
+              2.67925,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              33,
+              42,
+              48,
+              49
+            ]
+          },
+          "48": {
+            "index": 47,
+            "agent_id": 48,
+            "position": [
+              -1.06386,
+              2.56839,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              47,
+              40,
+              41,
+              56
+            ]
+          },
+          "49": {
+            "index": 48,
+            "agent_id": 49,
+            "position": [
+              -2.05061,
+              2.05061,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              41,
+              50,
+              56,
+              57
+            ]
+          },
+          "56": {
+            "index": 55,
+            "agent_id": 56,
+            "position": [
+              -1.96576,
+              1.96576,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              55,
+              48,
+              49,
+              64
+            ]
+          },
+          "57": {
+            "index": 56,
+            "agent_id": 57,
+            "position": [
+              -2.67925,
+              1.10978,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              49,
+              58,
+              64,
+              65
+            ]
+          },
+          "64": {
+            "index": 63,
+            "agent_id": 64,
+            "position": [
+              -2.56839,
+              1.06386,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              63,
+              56,
+              57,
+              72
+            ]
+          },
+          "65": {
+            "index": 64,
+            "agent_id": 65,
+            "position": [
+              -2.9,
+              0.0,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              57,
+              66,
+              72,
+              73
+            ]
+          },
+          "72": {
+            "index": 71,
+            "agent_id": 72,
+            "position": [
+              -2.78,
+              0.0,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              71,
+              64,
+              65,
+              80
+            ]
+          },
+          "73": {
+            "index": 72,
+            "agent_id": 73,
+            "position": [
+              -2.67925,
+              -1.10978,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              65,
+              74,
+              80,
+              81
+            ]
+          },
+          "80": {
+            "index": 79,
+            "agent_id": 80,
+            "position": [
+              -2.56839,
+              -1.06386,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              79,
+              72,
+              73,
+              88
+            ]
+          },
+          "81": {
+            "index": 80,
+            "agent_id": 81,
+            "position": [
+              -2.05061,
+              -2.05061,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              73,
+              82,
+              88,
+              89
+            ]
+          },
+          "88": {
+            "index": 87,
+            "agent_id": 88,
+            "position": [
+              -1.96576,
+              -1.96576,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              87,
+              80,
+              81,
+              96
+            ]
+          },
+          "89": {
+            "index": 88,
+            "agent_id": 89,
+            "position": [
+              -1.10978,
+              -2.67925,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              81,
+              90,
+              96,
+              97
+            ]
+          },
+          "96": {
+            "index": 95,
+            "agent_id": 96,
+            "position": [
+              -1.06386,
+              -2.56839,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              95,
+              88,
+              89,
+              104
+            ]
+          },
+          "97": {
+            "index": 96,
+            "agent_id": 97,
+            "position": [
+              -0.0,
+              -2.9,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              89,
+              98,
+              104,
+              105
+            ]
+          },
+          "104": {
+            "index": 103,
+            "agent_id": 104,
+            "position": [
+              -0.0,
+              -2.78,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              103,
+              96,
+              97,
+              112
+            ]
+          },
+          "105": {
+            "index": 104,
+            "agent_id": 105,
+            "position": [
+              1.10978,
+              -2.67925,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              97,
+              106,
+              112,
+              113
+            ]
+          },
+          "112": {
+            "index": 111,
+            "agent_id": 112,
+            "position": [
+              1.06386,
+              -2.56839,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              111,
+              104,
+              105,
+              120
+            ]
+          },
+          "113": {
+            "index": 112,
+            "agent_id": 113,
+            "position": [
+              2.05061,
+              -2.05061,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              105,
+              114,
+              120,
+              121
+            ]
+          },
+          "120": {
+            "index": 119,
+            "agent_id": 120,
+            "position": [
+              1.96576,
+              -1.96576,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              119,
+              112,
+              113,
+              128
+            ]
+          },
+          "121": {
+            "index": 120,
+            "agent_id": 121,
+            "position": [
+              2.67925,
+              -1.10978,
+              0.1
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              113,
+              122,
+              128,
+              1
+            ]
+          },
+          "128": {
+            "index": 127,
+            "agent_id": 128,
+            "position": [
+              2.56839,
+              -1.06386,
+              0.28
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              127,
+              120,
+              121,
+              8
+            ]
+          }
+        },
+        "edges": [
+          {
+            "index": 181,
+            "agent_id": 310,
+            "vertex_indices": [
+              94,
+              95
+            ],
+            "vertex_agent_ids": [
+              95,
+              96
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 182,
+            "agent_id": 311,
+            "vertex_indices": [
+              87,
+              95
+            ],
+            "vertex_agent_ids": [
+              88,
+              96
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 183,
+            "agent_id": 312,
+            "vertex_indices": [
+              88,
+              95
+            ],
+            "vertex_agent_ids": [
+              89,
+              96
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 184,
+            "agent_id": 313,
+            "vertex_indices": [
+              88,
+              96
+            ],
+            "vertex_agent_ids": [
+              89,
+              97
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 185,
+            "agent_id": 314,
+            "vertex_indices": [
+              96,
+              97
+            ],
+            "vertex_agent_ids": [
+              97,
+              98
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 85,
+            "agent_id": 214,
+            "vertex_indices": [
+              46,
+              47
+            ],
+            "vertex_agent_ids": [
+              47,
+              48
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 86,
+            "agent_id": 215,
+            "vertex_indices": [
+              39,
+              47
+            ],
+            "vertex_agent_ids": [
+              40,
+              48
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 87,
+            "agent_id": 216,
+            "vertex_indices": [
+              40,
+              47
+            ],
+            "vertex_agent_ids": [
+              41,
+              48
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 88,
+            "agent_id": 217,
+            "vertex_indices": [
+              40,
+              48
+            ],
+            "vertex_agent_ids": [
+              41,
+              49
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 89,
+            "agent_id": 218,
+            "vertex_indices": [
+              48,
+              49
+            ],
+            "vertex_agent_ids": [
+              49,
+              50
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 197,
+            "agent_id": 326,
+            "vertex_indices": [
+              102,
+              103
+            ],
+            "vertex_agent_ids": [
+              103,
+              104
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 198,
+            "agent_id": 327,
+            "vertex_indices": [
+              95,
+              103
+            ],
+            "vertex_agent_ids": [
+              96,
+              104
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 199,
+            "agent_id": 328,
+            "vertex_indices": [
+              96,
+              103
+            ],
+            "vertex_agent_ids": [
+              97,
+              104
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 200,
+            "agent_id": 329,
+            "vertex_indices": [
+              96,
+              104
+            ],
+            "vertex_agent_ids": [
+              97,
+              105
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 201,
+            "agent_id": 330,
+            "vertex_indices": [
+              104,
+              105
+            ],
+            "vertex_agent_ids": [
+              105,
+              106
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 101,
+            "agent_id": 230,
+            "vertex_indices": [
+              54,
+              55
+            ],
+            "vertex_agent_ids": [
+              55,
+              56
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 102,
+            "agent_id": 231,
+            "vertex_indices": [
+              47,
+              55
+            ],
+            "vertex_agent_ids": [
+              48,
+              56
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 0,
+            "agent_id": 129,
+            "vertex_indices": [
+              0,
+              1
+            ],
+            "vertex_agent_ids": [
+              1,
+              2
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 103,
+            "agent_id": 232,
+            "vertex_indices": [
+              48,
+              55
+            ],
+            "vertex_agent_ids": [
+              49,
+              56
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 1,
+            "agent_id": 130,
+            "vertex_indices": [
+              0,
+              8
+            ],
+            "vertex_agent_ids": [
+              1,
+              9
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 104,
+            "agent_id": 233,
+            "vertex_indices": [
+              48,
+              56
+            ],
+            "vertex_agent_ids": [
+              49,
+              57
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 2,
+            "agent_id": 131,
+            "vertex_indices": [
+              8,
+              9
+            ],
+            "vertex_agent_ids": [
+              9,
+              10
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 105,
+            "agent_id": 234,
+            "vertex_indices": [
+              56,
+              57
+            ],
+            "vertex_agent_ids": [
+              57,
+              58
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 213,
+            "agent_id": 342,
+            "vertex_indices": [
+              110,
+              111
+            ],
+            "vertex_agent_ids": [
+              111,
+              112
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 214,
+            "agent_id": 343,
+            "vertex_indices": [
+              103,
+              111
+            ],
+            "vertex_agent_ids": [
+              104,
+              112
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 215,
+            "agent_id": 344,
+            "vertex_indices": [
+              104,
+              111
+            ],
+            "vertex_agent_ids": [
+              105,
+              112
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 216,
+            "agent_id": 345,
+            "vertex_indices": [
+              104,
+              112
+            ],
+            "vertex_agent_ids": [
+              105,
+              113
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 217,
+            "agent_id": 346,
+            "vertex_indices": [
+              112,
+              113
+            ],
+            "vertex_agent_ids": [
+              113,
+              114
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 117,
+            "agent_id": 246,
+            "vertex_indices": [
+              62,
+              63
+            ],
+            "vertex_agent_ids": [
+              63,
+              64
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 118,
+            "agent_id": 247,
+            "vertex_indices": [
+              55,
+              63
+            ],
+            "vertex_agent_ids": [
+              56,
+              64
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 119,
+            "agent_id": 248,
+            "vertex_indices": [
+              56,
+              63
+            ],
+            "vertex_agent_ids": [
+              57,
+              64
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 120,
+            "agent_id": 249,
+            "vertex_indices": [
+              56,
+              64
+            ],
+            "vertex_agent_ids": [
+              57,
+              65
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 121,
+            "agent_id": 250,
+            "vertex_indices": [
+              64,
+              65
+            ],
+            "vertex_agent_ids": [
+              65,
+              66
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 19,
+            "agent_id": 148,
+            "vertex_indices": [
+              6,
+              7
+            ],
+            "vertex_agent_ids": [
+              7,
+              8
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 20,
+            "agent_id": 149,
+            "vertex_indices": [
+              14,
+              15
+            ],
+            "vertex_agent_ids": [
+              15,
+              16
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 21,
+            "agent_id": 150,
+            "vertex_indices": [
+              7,
+              15
+            ],
+            "vertex_agent_ids": [
+              8,
+              16
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 22,
+            "agent_id": 151,
+            "vertex_indices": [
+              0,
+              7
+            ],
+            "vertex_agent_ids": [
+              1,
+              8
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 23,
+            "agent_id": 152,
+            "vertex_indices": [
+              8,
+              15
+            ],
+            "vertex_agent_ids": [
+              9,
+              16
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 24,
+            "agent_id": 153,
+            "vertex_indices": [
+              8,
+              16
+            ],
+            "vertex_agent_ids": [
+              9,
+              17
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 229,
+            "agent_id": 358,
+            "vertex_indices": [
+              118,
+              119
+            ],
+            "vertex_agent_ids": [
+              119,
+              120
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 25,
+            "agent_id": 154,
+            "vertex_indices": [
+              16,
+              17
+            ],
+            "vertex_agent_ids": [
+              17,
+              18
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 230,
+            "agent_id": 359,
+            "vertex_indices": [
+              111,
+              119
+            ],
+            "vertex_agent_ids": [
+              112,
+              120
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 231,
+            "agent_id": 360,
+            "vertex_indices": [
+              112,
+              119
+            ],
+            "vertex_agent_ids": [
+              113,
+              120
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 232,
+            "agent_id": 361,
+            "vertex_indices": [
+              112,
+              120
+            ],
+            "vertex_agent_ids": [
+              113,
+              121
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 233,
+            "agent_id": 362,
+            "vertex_indices": [
+              120,
+              121
+            ],
+            "vertex_agent_ids": [
+              121,
+              122
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 133,
+            "agent_id": 262,
+            "vertex_indices": [
+              70,
+              71
+            ],
+            "vertex_agent_ids": [
+              71,
+              72
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 134,
+            "agent_id": 263,
+            "vertex_indices": [
+              63,
+              71
+            ],
+            "vertex_agent_ids": [
+              64,
+              72
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 135,
+            "agent_id": 264,
+            "vertex_indices": [
+              64,
+              71
+            ],
+            "vertex_agent_ids": [
+              65,
+              72
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 136,
+            "agent_id": 265,
+            "vertex_indices": [
+              64,
+              72
+            ],
+            "vertex_agent_ids": [
+              65,
+              73
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 137,
+            "agent_id": 266,
+            "vertex_indices": [
+              72,
+              73
+            ],
+            "vertex_agent_ids": [
+              73,
+              74
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 37,
+            "agent_id": 166,
+            "vertex_indices": [
+              22,
+              23
+            ],
+            "vertex_agent_ids": [
+              23,
+              24
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 38,
+            "agent_id": 167,
+            "vertex_indices": [
+              15,
+              23
+            ],
+            "vertex_agent_ids": [
+              16,
+              24
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 39,
+            "agent_id": 168,
+            "vertex_indices": [
+              16,
+              23
+            ],
+            "vertex_agent_ids": [
+              17,
+              24
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 40,
+            "agent_id": 169,
+            "vertex_indices": [
+              16,
+              24
+            ],
+            "vertex_agent_ids": [
+              17,
+              25
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 245,
+            "agent_id": 374,
+            "vertex_indices": [
+              126,
+              127
+            ],
+            "vertex_agent_ids": [
+              127,
+              128
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 41,
+            "agent_id": 170,
+            "vertex_indices": [
+              24,
+              25
+            ],
+            "vertex_agent_ids": [
+              25,
+              26
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 246,
+            "agent_id": 375,
+            "vertex_indices": [
+              119,
+              127
+            ],
+            "vertex_agent_ids": [
+              120,
+              128
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 247,
+            "agent_id": 376,
+            "vertex_indices": [
+              120,
+              127
+            ],
+            "vertex_agent_ids": [
+              121,
+              128
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 248,
+            "agent_id": 377,
+            "vertex_indices": [
+              0,
+              120
+            ],
+            "vertex_agent_ids": [
+              1,
+              121
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 149,
+            "agent_id": 278,
+            "vertex_indices": [
+              78,
+              79
+            ],
+            "vertex_agent_ids": [
+              79,
+              80
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 150,
+            "agent_id": 279,
+            "vertex_indices": [
+              71,
+              79
+            ],
+            "vertex_agent_ids": [
+              72,
+              80
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 151,
+            "agent_id": 280,
+            "vertex_indices": [
+              72,
+              79
+            ],
+            "vertex_agent_ids": [
+              73,
+              80
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 152,
+            "agent_id": 281,
+            "vertex_indices": [
+              72,
+              80
+            ],
+            "vertex_agent_ids": [
+              73,
+              81
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 255,
+            "agent_id": 384,
+            "vertex_indices": [
+              7,
+              127
+            ],
+            "vertex_agent_ids": [
+              8,
+              128
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 153,
+            "agent_id": 282,
+            "vertex_indices": [
+              80,
+              81
+            ],
+            "vertex_agent_ids": [
+              81,
+              82
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 53,
+            "agent_id": 182,
+            "vertex_indices": [
+              30,
+              31
+            ],
+            "vertex_agent_ids": [
+              31,
+              32
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 54,
+            "agent_id": 183,
+            "vertex_indices": [
+              23,
+              31
+            ],
+            "vertex_agent_ids": [
+              24,
+              32
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 55,
+            "agent_id": 184,
+            "vertex_indices": [
+              24,
+              31
+            ],
+            "vertex_agent_ids": [
+              25,
+              32
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 56,
+            "agent_id": 185,
+            "vertex_indices": [
+              24,
+              32
+            ],
+            "vertex_agent_ids": [
+              25,
+              33
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 57,
+            "agent_id": 186,
+            "vertex_indices": [
+              32,
+              33
+            ],
+            "vertex_agent_ids": [
+              33,
+              34
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 165,
+            "agent_id": 294,
+            "vertex_indices": [
+              86,
+              87
+            ],
+            "vertex_agent_ids": [
+              87,
+              88
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 166,
+            "agent_id": 295,
+            "vertex_indices": [
+              79,
+              87
+            ],
+            "vertex_agent_ids": [
+              80,
+              88
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 167,
+            "agent_id": 296,
+            "vertex_indices": [
+              80,
+              87
+            ],
+            "vertex_agent_ids": [
+              81,
+              88
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 168,
+            "agent_id": 297,
+            "vertex_indices": [
+              80,
+              88
+            ],
+            "vertex_agent_ids": [
+              81,
+              89
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 169,
+            "agent_id": 298,
+            "vertex_indices": [
+              88,
+              89
+            ],
+            "vertex_agent_ids": [
+              89,
+              90
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          },
+          {
+            "index": 69,
+            "agent_id": 198,
+            "vertex_indices": [
+              38,
+              39
+            ],
+            "vertex_agent_ids": [
+              39,
+              40
+            ],
+            "length": 0.54037,
+            "is_boundary": false,
+            "face_angle_radians": 0.39244
+          },
+          {
+            "index": 70,
+            "agent_id": 199,
+            "vertex_indices": [
+              31,
+              39
+            ],
+            "vertex_agent_ids": [
+              32,
+              40
+            ],
+            "length": 1.0847,
+            "is_boundary": false,
+            "face_angle_radians": 0.54277
+          },
+          {
+            "index": 71,
+            "agent_id": 200,
+            "vertex_indices": [
+              32,
+              39
+            ],
+            "vertex_agent_ids": [
+              33,
+              40
+            ],
+            "length": 0.21633,
+            "is_boundary": false,
+            "face_angle_radians": 0.32804
+          },
+          {
+            "index": 72,
+            "agent_id": 201,
+            "vertex_indices": [
+              32,
+              40
+            ],
+            "vertex_agent_ids": [
+              33,
+              41
+            ],
+            "length": 1.13152,
+            "is_boundary": false,
+            "face_angle_radians": 1.40368
+          },
+          {
+            "index": 73,
+            "agent_id": 202,
+            "vertex_indices": [
+              40,
+              41
+            ],
+            "vertex_agent_ids": [
+              41,
+              42
+            ],
+            "length": 0.15232,
+            "is_boundary": false,
+            "face_angle_radians": 0.15639
+          }
+        ],
+        "faces": [
+          {
+            "index": 70,
+            "agent_id": 455,
+            "vertex_indices": [
+              70,
+              78,
+              79,
+              71
+            ],
+            "vertex_agent_ids": [
+              71,
+              79,
+              80,
+              72
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.98014,
+              0.19496,
+              -0.0363
+            ]
+          },
+          {
+            "index": 71,
+            "agent_id": 456,
+            "vertex_indices": [
+              71,
+              79,
+              72,
+              64
+            ],
+            "vertex_agent_ids": [
+              72,
+              80,
+              73,
+              65
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.82088,
+              0.16328,
+              -0.54726
+            ]
+          },
+          {
+            "index": 72,
+            "agent_id": 457,
+            "vertex_indices": [
+              72,
+              80,
+              81,
+              73
+            ],
+            "vertex_agent_ids": [
+              73,
+              81,
+              82,
+              74
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.33293,
+              -0.22246,
+              -0.91634
+            ]
+          },
+          {
+            "index": 0,
+            "agent_id": 385,
+            "vertex_indices": [
+              0,
+              8,
+              9,
+              1
+            ],
+            "vertex_agent_ids": [
+              1,
+              9,
+              10,
+              2
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.39272,
+              0.07812,
+              -0.91634
+            ]
+          },
+          {
+            "index": 110,
+            "agent_id": 495,
+            "vertex_indices": [
+              110,
+              118,
+              119,
+              111
+            ],
+            "vertex_agent_ids": [
+              111,
+              119,
+              120,
+              112
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.5552,
+              0.83092,
+              -0.0363
+            ]
+          },
+          {
+            "index": 111,
+            "agent_id": 496,
+            "vertex_indices": [
+              111,
+              119,
+              112,
+              104
+            ],
+            "vertex_agent_ids": [
+              112,
+              120,
+              113,
+              105
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.46499,
+              0.69591,
+              -0.54726
+            ]
+          },
+          {
+            "index": 38,
+            "agent_id": 423,
+            "vertex_indices": [
+              38,
+              46,
+              47,
+              39
+            ],
+            "vertex_agent_ids": [
+              39,
+              47,
+              48,
+              40
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.19496,
+              -0.98014,
+              -0.0363
+            ]
+          },
+          {
+            "index": 39,
+            "agent_id": 424,
+            "vertex_indices": [
+              39,
+              47,
+              40,
+              32
+            ],
+            "vertex_agent_ids": [
+              40,
+              48,
+              41,
+              33
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.16328,
+              -0.82088,
+              -0.54726
+            ]
+          },
+          {
+            "index": 112,
+            "agent_id": 497,
+            "vertex_indices": [
+              112,
+              120,
+              121,
+              113
+            ],
+            "vertex_agent_ids": [
+              113,
+              121,
+              122,
+              114
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.33293,
+              -0.22246,
+              -0.91634
+            ]
+          },
+          {
+            "index": 40,
+            "agent_id": 425,
+            "vertex_indices": [
+              40,
+              48,
+              49,
+              41
+            ],
+            "vertex_agent_ids": [
+              41,
+              49,
+              50,
+              42
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.22246,
+              0.33293,
+              -0.91634
+            ]
+          },
+          {
+            "index": 78,
+            "agent_id": 463,
+            "vertex_indices": [
+              78,
+              86,
+              87,
+              79
+            ],
+            "vertex_agent_ids": [
+              79,
+              87,
+              88,
+              80
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.83092,
+              0.5552,
+              -0.0363
+            ]
+          },
+          {
+            "index": 79,
+            "agent_id": 464,
+            "vertex_indices": [
+              79,
+              87,
+              80,
+              72
+            ],
+            "vertex_agent_ids": [
+              80,
+              88,
+              81,
+              73
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.69591,
+              0.46499,
+              -0.54726
+            ]
+          },
+          {
+            "index": 6,
+            "agent_id": 391,
+            "vertex_indices": [
+              6,
+              14,
+              15,
+              7
+            ],
+            "vertex_agent_ids": [
+              7,
+              15,
+              16,
+              8
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.98014,
+              -0.19496,
+              -0.0363
+            ]
+          },
+          {
+            "index": 7,
+            "agent_id": 392,
+            "vertex_indices": [
+              7,
+              15,
+              8,
+              0
+            ],
+            "vertex_agent_ids": [
+              8,
+              16,
+              9,
+              1
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.82088,
+              -0.16328,
+              -0.54726
+            ]
+          },
+          {
+            "index": 80,
+            "agent_id": 465,
+            "vertex_indices": [
+              80,
+              88,
+              89,
+              81
+            ],
+            "vertex_agent_ids": [
+              81,
+              89,
+              90,
+              82
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.22246,
+              -0.33293,
+              -0.91634
+            ]
+          },
+          {
+            "index": 8,
+            "agent_id": 393,
+            "vertex_indices": [
+              8,
+              16,
+              17,
+              9
+            ],
+            "vertex_agent_ids": [
+              9,
+              17,
+              18,
+              10
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.33293,
+              0.22246,
+              -0.91634
+            ]
+          },
+          {
+            "index": 118,
+            "agent_id": 503,
+            "vertex_indices": [
+              118,
+              126,
+              127,
+              119
+            ],
+            "vertex_agent_ids": [
+              119,
+              127,
+              128,
+              120
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.83092,
+              0.5552,
+              -0.0363
+            ]
+          },
+          {
+            "index": 119,
+            "agent_id": 504,
+            "vertex_indices": [
+              119,
+              127,
+              120,
+              112
+            ],
+            "vertex_agent_ids": [
+              120,
+              128,
+              121,
+              113
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.69591,
+              0.46499,
+              -0.54726
+            ]
+          },
+          {
+            "index": 46,
+            "agent_id": 431,
+            "vertex_indices": [
+              46,
+              54,
+              55,
+              47
+            ],
+            "vertex_agent_ids": [
+              47,
+              55,
+              56,
+              48
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.5552,
+              -0.83092,
+              -0.0363
+            ]
+          },
+          {
+            "index": 120,
+            "agent_id": 505,
+            "vertex_indices": [
+              120,
+              0,
+              1,
+              121
+            ],
+            "vertex_agent_ids": [
+              121,
+              1,
+              2,
+              122
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.39272,
+              -0.07812,
+              -0.91634
+            ]
+          },
+          {
+            "index": 47,
+            "agent_id": 432,
+            "vertex_indices": [
+              47,
+              55,
+              48,
+              40
+            ],
+            "vertex_agent_ids": [
+              48,
+              56,
+              49,
+              41
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.46499,
+              -0.69591,
+              -0.54726
+            ]
+          },
+          {
+            "index": 48,
+            "agent_id": 433,
+            "vertex_indices": [
+              48,
+              56,
+              57,
+              49
+            ],
+            "vertex_agent_ids": [
+              49,
+              57,
+              58,
+              50
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.33293,
+              0.22246,
+              -0.91634
+            ]
+          },
+          {
+            "index": 86,
+            "agent_id": 471,
+            "vertex_indices": [
+              86,
+              94,
+              95,
+              87
+            ],
+            "vertex_agent_ids": [
+              87,
+              95,
+              96,
+              88
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.5552,
+              0.83092,
+              -0.0363
+            ]
+          },
+          {
+            "index": 87,
+            "agent_id": 472,
+            "vertex_indices": [
+              87,
+              95,
+              88,
+              80
+            ],
+            "vertex_agent_ids": [
+              88,
+              96,
+              89,
+              81
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.46499,
+              0.69591,
+              -0.54726
+            ]
+          },
+          {
+            "index": 14,
+            "agent_id": 399,
+            "vertex_indices": [
+              14,
+              22,
+              23,
+              15
+            ],
+            "vertex_agent_ids": [
+              15,
+              23,
+              24,
+              16
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.83092,
+              -0.5552,
+              -0.0363
+            ]
+          },
+          {
+            "index": 15,
+            "agent_id": 400,
+            "vertex_indices": [
+              15,
+              23,
+              16,
+              8
+            ],
+            "vertex_agent_ids": [
+              16,
+              24,
+              17,
+              9
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.69591,
+              -0.46499,
+              -0.54726
+            ]
+          },
+          {
+            "index": 88,
+            "agent_id": 473,
+            "vertex_indices": [
+              88,
+              96,
+              97,
+              89
+            ],
+            "vertex_agent_ids": [
+              89,
+              97,
+              98,
+              90
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.07812,
+              -0.39272,
+              -0.91634
+            ]
+          },
+          {
+            "index": 16,
+            "agent_id": 401,
+            "vertex_indices": [
+              16,
+              24,
+              25,
+              17
+            ],
+            "vertex_agent_ids": [
+              17,
+              25,
+              26,
+              18
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.22246,
+              0.33293,
+              -0.91634
+            ]
+          },
+          {
+            "index": 126,
+            "agent_id": 511,
+            "vertex_indices": [
+              126,
+              6,
+              7,
+              127
+            ],
+            "vertex_agent_ids": [
+              127,
+              7,
+              8,
+              128
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.98014,
+              0.19496,
+              -0.0363
+            ]
+          },
+          {
+            "index": 127,
+            "agent_id": 512,
+            "vertex_indices": [
+              127,
+              7,
+              0,
+              120
+            ],
+            "vertex_agent_ids": [
+              128,
+              8,
+              1,
+              121
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.82088,
+              0.16328,
+              -0.54726
+            ]
+          },
+          {
+            "index": 54,
+            "agent_id": 439,
+            "vertex_indices": [
+              54,
+              62,
+              63,
+              55
+            ],
+            "vertex_agent_ids": [
+              55,
+              63,
+              64,
+              56
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.83092,
+              -0.5552,
+              -0.0363
+            ]
+          },
+          {
+            "index": 55,
+            "agent_id": 440,
+            "vertex_indices": [
+              55,
+              63,
+              56,
+              48
+            ],
+            "vertex_agent_ids": [
+              56,
+              64,
+              57,
+              49
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.69591,
+              -0.46499,
+              -0.54726
+            ]
+          },
+          {
+            "index": 56,
+            "agent_id": 441,
+            "vertex_indices": [
+              56,
+              64,
+              65,
+              57
+            ],
+            "vertex_agent_ids": [
+              57,
+              65,
+              66,
+              58
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.39272,
+              0.07812,
+              -0.91634
+            ]
+          },
+          {
+            "index": 94,
+            "agent_id": 479,
+            "vertex_indices": [
+              94,
+              102,
+              103,
+              95
+            ],
+            "vertex_agent_ids": [
+              95,
+              103,
+              104,
+              96
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.19496,
+              0.98014,
+              -0.0363
+            ]
+          },
+          {
+            "index": 95,
+            "agent_id": 480,
+            "vertex_indices": [
+              95,
+              103,
+              96,
+              88
+            ],
+            "vertex_agent_ids": [
+              96,
+              104,
+              97,
+              89
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.16328,
+              0.82088,
+              -0.54726
+            ]
+          },
+          {
+            "index": 22,
+            "agent_id": 407,
+            "vertex_indices": [
+              22,
+              30,
+              31,
+              23
+            ],
+            "vertex_agent_ids": [
+              23,
+              31,
+              32,
+              24
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.5552,
+              -0.83092,
+              -0.0363
+            ]
+          },
+          {
+            "index": 23,
+            "agent_id": 408,
+            "vertex_indices": [
+              23,
+              31,
+              24,
+              16
+            ],
+            "vertex_agent_ids": [
+              24,
+              32,
+              25,
+              17
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.46499,
+              -0.69591,
+              -0.54726
+            ]
+          },
+          {
+            "index": 96,
+            "agent_id": 481,
+            "vertex_indices": [
+              96,
+              104,
+              105,
+              97
+            ],
+            "vertex_agent_ids": [
+              97,
+              105,
+              106,
+              98
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.07812,
+              -0.39272,
+              -0.91634
+            ]
+          },
+          {
+            "index": 24,
+            "agent_id": 409,
+            "vertex_indices": [
+              24,
+              32,
+              33,
+              25
+            ],
+            "vertex_agent_ids": [
+              25,
+              33,
+              34,
+              26
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.07812,
+              0.39272,
+              -0.91634
+            ]
+          },
+          {
+            "index": 62,
+            "agent_id": 447,
+            "vertex_indices": [
+              62,
+              70,
+              71,
+              63
+            ],
+            "vertex_agent_ids": [
+              63,
+              71,
+              72,
+              64
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              0.98014,
+              -0.19496,
+              -0.0363
+            ]
+          },
+          {
+            "index": 63,
+            "agent_id": 448,
+            "vertex_indices": [
+              63,
+              71,
+              64,
+              56
+            ],
+            "vertex_agent_ids": [
+              64,
+              72,
+              65,
+              57
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              0.82088,
+              -0.16328,
+              -0.54726
+            ]
+          },
+          {
+            "index": 64,
+            "agent_id": 449,
+            "vertex_indices": [
+              64,
+              72,
+              73,
+              65
+            ],
+            "vertex_agent_ids": [
+              65,
+              73,
+              74,
+              66
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.39272,
+              -0.07812,
+              -0.91634
+            ]
+          },
+          {
+            "index": 104,
+            "agent_id": 489,
+            "vertex_indices": [
+              104,
+              112,
+              113,
+              105
+            ],
+            "vertex_agent_ids": [
+              105,
+              113,
+              114,
+              106
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              0.22246,
+              -0.33293,
+              -0.91634
+            ]
+          },
+          {
+            "index": 102,
+            "agent_id": 487,
+            "vertex_indices": [
+              102,
+              110,
+              111,
+              103
+            ],
+            "vertex_agent_ids": [
+              103,
+              111,
+              112,
+              104
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.19496,
+              0.98014,
+              -0.0363
+            ]
+          },
+          {
+            "index": 103,
+            "agent_id": 488,
+            "vertex_indices": [
+              103,
+              111,
+              104,
+              96
+            ],
+            "vertex_agent_ids": [
+              104,
+              112,
+              105,
+              97
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.16328,
+              0.82088,
+              -0.54726
+            ]
+          },
+          {
+            "index": 30,
+            "agent_id": 415,
+            "vertex_indices": [
+              30,
+              38,
+              39,
+              31
+            ],
+            "vertex_agent_ids": [
+              31,
+              39,
+              40,
+              32
+            ],
+            "vertex_count": 4,
+            "area": 0.584017,
+            "normal": [
+              -0.19496,
+              -0.98014,
+              -0.0363
+            ]
+          },
+          {
+            "index": 31,
+            "agent_id": 416,
+            "vertex_indices": [
+              31,
+              39,
+              32,
+              24
+            ],
+            "vertex_agent_ids": [
+              32,
+              40,
+              33,
+              25
+            ],
+            "vertex_count": 4,
+            "area": 0.238314,
+            "normal": [
+              -0.16328,
+              -0.82088,
+              -0.54726
+            ]
+          },
+          {
+            "index": 32,
+            "agent_id": 417,
+            "vertex_indices": [
+              32,
+              40,
+              41,
+              33
+            ],
+            "vertex_agent_ids": [
+              33,
+              41,
+              42,
+              34
+            ],
+            "vertex_count": 4,
+            "area": 0.173648,
+            "normal": [
+              -0.07812,
+              0.39272,
+              -0.91634
+            ]
+          }
+        ],
+        "poles": [],
+        "local_face_composition": {
+          "tri": 0,
+          "quad": 48,
+          "ngon": 0
+        },
+        "edge_length_ratio": 7.429,
+        "face_area_ratio": 3.363,
+        "connected_components": 1
+      }
+    },
+    {
+      "index": 1,
+      "label": "inspect_spout_cage",
+      "command": "inspect_region",
+      "params": {
+        "name": "KLF03_Spout_HIGH",
+        "center_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          27,
+          28,
+          35,
+          36
+        ],
+        "rings": 0
+      },
+      "status": "ok",
+      "result": {
+        "center_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          27,
+          28,
+          35,
+          36
+        ],
+        "missing_center_ids": [],
+        "rings": 0,
+        "vertex_count": 12,
+        "edge_count": 20,
+        "face_count": 10,
+        "vertices": {
+          "1": {
+            "index": 0,
+            "agent_id": 1,
+            "position": [
+              -1.66039,
+              -0.3224,
+              -0.42144
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              27,
+              2,
+              5
+            ]
+          },
+          "2": {
+            "index": 1,
+            "agent_id": 2,
+            "position": [
+              -1.52749,
+              -0.3224,
+              1.25311
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              6,
+              28
+            ]
+          },
+          "3": {
+            "index": 2,
+            "agent_id": 3,
+            "position": [
+              -1.66039,
+              0.3224,
+              -0.42144
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              4,
+              7,
+              27
+            ]
+          },
+          "4": {
+            "index": 3,
+            "agent_id": 4,
+            "position": [
+              -1.52749,
+              0.3224,
+              1.25311
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              28,
+              3,
+              8
+            ]
+          },
+          "5": {
+            "index": 4,
+            "agent_id": 5,
+            "position": [
+              0.96672,
+              -0.62,
+              -1.38342
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              6,
+              1,
+              35
+            ]
+          },
+          "6": {
+            "index": 5,
+            "agent_id": 6,
+            "position": [
+              1.22229,
+              -0.62,
+              1.16379
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              36,
+              5,
+              2
+            ]
+          },
+          "7": {
+            "index": 6,
+            "agent_id": 7,
+            "position": [
+              0.96672,
+              0.62,
+              -1.38342
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              3,
+              8,
+              35
+            ]
+          },
+          "8": {
+            "index": 7,
+            "agent_id": 8,
+            "position": [
+              1.22229,
+              0.62,
+              1.16379
+            ],
+            "valence": 3,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              4,
+              7,
+              36
+            ]
+          },
+          "27": {
+            "index": 8,
+            "agent_id": 27,
+            "position": [
+              -1.66039,
+              0.0,
+              -0.60144
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              1,
+              3,
+              28,
+              35
+            ]
+          },
+          "28": {
+            "index": 9,
+            "agent_id": 28,
+            "position": [
+              -1.52749,
+              0.0,
+              0.73311
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              4,
+              2,
+              27,
+              36
+            ]
+          },
+          "35": {
+            "index": 10,
+            "agent_id": 35,
+            "position": [
+              0.96672,
+              0.0,
+              -1.38342
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              7,
+              5,
+              36,
+              27
+            ]
+          },
+          "36": {
+            "index": 11,
+            "agent_id": 36,
+            "position": [
+              1.22229,
+              0.0,
+              1.16379
+            ],
+            "valence": 4,
+            "is_boundary": false,
+            "neighbor_agent_ids": [
+              6,
+              8,
+              35,
+              28
+            ]
+          }
+        },
+        "edges": [
+          {
+            "index": 5,
+            "agent_id": 14,
+            "vertex_indices": [
+              3,
+              7
+            ],
+            "vertex_agent_ids": [
+              4,
+              8
+            ],
+            "length": 2.76728,
+            "is_boundary": false,
+            "face_angle_radians": 2.05818
+          },
+          {
+            "index": 6,
+            "agent_id": 15,
+            "vertex_indices": [
+              7,
+              6
+            ],
+            "vertex_agent_ids": [
+              8,
+              7
+            ],
+            "length": 2.56,
+            "is_boundary": false,
+            "face_angle_radians": 1.67956
+          },
+          {
+            "index": 7,
+            "agent_id": 37,
+            "vertex_indices": [
+              10,
+              6
+            ],
+            "vertex_agent_ids": [
+              35,
+              7
+            ],
+            "length": 0.62,
+            "is_boundary": false,
+            "face_angle_radians": 1.79725
+          },
+          {
+            "index": 8,
+            "agent_id": 38,
+            "vertex_indices": [
+              11,
+              5
+            ],
+            "vertex_agent_ids": [
+              36,
+              6
+            ],
+            "length": 0.62,
+            "is_boundary": false,
+            "face_angle_radians": 1.68648
+          },
+          {
+            "index": 9,
+            "agent_id": 18,
+            "vertex_indices": [
+              5,
+              4
+            ],
+            "vertex_agent_ids": [
+              6,
+              5
+            ],
+            "length": 2.56,
+            "is_boundary": false,
+            "face_angle_radians": 1.67956
+          },
+          {
+            "index": 10,
+            "agent_id": 19,
+            "vertex_indices": [
+              0,
+              4
+            ],
+            "vertex_agent_ids": [
+              1,
+              5
+            ],
+            "length": 2.81348,
+            "is_boundary": false,
+            "face_angle_radians": 1.36741
+          },
+          {
+            "index": 11,
+            "agent_id": 20,
+            "vertex_indices": [
+              5,
+              1
+            ],
+            "vertex_agent_ids": [
+              6,
+              2
+            ],
+            "length": 2.76728,
+            "is_boundary": false,
+            "face_angle_radians": 2.05818
+          },
+          {
+            "index": 12,
+            "agent_id": 31,
+            "vertex_indices": [
+              2,
+              8
+            ],
+            "vertex_agent_ids": [
+              3,
+              27
+            ],
+            "length": 0.36924,
+            "is_boundary": false,
+            "face_angle_radians": 1.3511
+          },
+          {
+            "index": 13,
+            "agent_id": 32,
+            "vertex_indices": [
+              1,
+              9
+            ],
+            "vertex_agent_ids": [
+              2,
+              28
+            ],
+            "length": 0.61183,
+            "is_boundary": false,
+            "face_angle_radians": 1.41969
+          },
+          {
+            "index": 14,
+            "agent_id": 33,
+            "vertex_indices": [
+              9,
+              8
+            ],
+            "vertex_agent_ids": [
+              28,
+              27
+            ],
+            "length": 1.34115,
+            "is_boundary": false,
+            "face_angle_radians": 0.19046
+          },
+          {
+            "index": 15,
+            "agent_id": 39,
+            "vertex_indices": [
+              4,
+              10
+            ],
+            "vertex_agent_ids": [
+              5,
+              35
+            ],
+            "length": 0.62,
+            "is_boundary": false,
+            "face_angle_radians": 1.79725
+          },
+          {
+            "index": 16,
+            "agent_id": 40,
+            "vertex_indices": [
+              7,
+              11
+            ],
+            "vertex_agent_ids": [
+              8,
+              36
+            ],
+            "length": 0.62,
+            "is_boundary": false,
+            "face_angle_radians": 1.68648
+          },
+          {
+            "index": 17,
+            "agent_id": 41,
+            "vertex_indices": [
+              11,
+              10
+            ],
+            "vertex_agent_ids": [
+              36,
+              35
+            ],
+            "length": 2.56,
+            "is_boundary": false,
+            "face_angle_radians": 0.0
+          },
+          {
+            "index": 18,
+            "agent_id": 43,
+            "vertex_indices": [
+              10,
+              8
+            ],
+            "vertex_agent_ids": [
+              35,
+              27
+            ],
+            "length": 2.74102,
+            "is_boundary": false,
+            "face_angle_radians": 0.35751
+          },
+          {
+            "index": 19,
+            "agent_id": 45,
+            "vertex_indices": [
+              9,
+              11
+            ],
+            "vertex_agent_ids": [
+              28,
+              36
+            ],
+            "length": 2.7833,
+            "is_boundary": false,
+            "face_angle_radians": 1.00798
+          },
+          {
+            "index": 0,
+            "agent_id": 29,
+            "vertex_indices": [
+              8,
+              0
+            ],
+            "vertex_agent_ids": [
+              27,
+              1
+            ],
+            "length": 0.36924,
+            "is_boundary": false,
+            "face_angle_radians": 1.3511
+          },
+          {
+            "index": 1,
+            "agent_id": 10,
+            "vertex_indices": [
+              0,
+              1
+            ],
+            "vertex_agent_ids": [
+              1,
+              2
+            ],
+            "length": 1.67981,
+            "is_boundary": false,
+            "face_angle_radians": 1.55726
+          },
+          {
+            "index": 2,
+            "agent_id": 30,
+            "vertex_indices": [
+              9,
+              3
+            ],
+            "vertex_agent_ids": [
+              28,
+              4
+            ],
+            "length": 0.61183,
+            "is_boundary": false,
+            "face_angle_radians": 1.41969
+          },
+          {
+            "index": 3,
+            "agent_id": 12,
+            "vertex_indices": [
+              3,
+              2
+            ],
+            "vertex_agent_ids": [
+              4,
+              3
+            ],
+            "length": 1.67981,
+            "is_boundary": false,
+            "face_angle_radians": 1.55726
+          },
+          {
+            "index": 4,
+            "agent_id": 13,
+            "vertex_indices": [
+              6,
+              2
+            ],
+            "vertex_agent_ids": [
+              7,
+              3
+            ],
+            "length": 2.81348,
+            "is_boundary": false,
+            "face_angle_radians": 1.36741
+          }
+        ],
+        "faces": [
+          {
+            "index": 5,
+            "agent_id": 26,
+            "vertex_indices": [
+              11,
+              9,
+              1,
+              5
+            ],
+            "vertex_agent_ids": [
+              36,
+              28,
+              2,
+              6
+            ],
+            "vertex_count": 4,
+            "area": 1.480443,
+            "normal": [
+              -0.02819,
+              0.48292,
+              0.87521
+            ]
+          },
+          {
+            "index": 6,
+            "agent_id": 34,
+            "vertex_indices": [
+              0,
+              1,
+              9,
+              8
+            ],
+            "vertex_agent_ids": [
+              1,
+              2,
+              28,
+              27
+            ],
+            "vertex_count": 4,
+            "area": 0.489172,
+            "normal": [
+              -0.99161,
+              0.09509,
+              0.08759
+            ]
+          },
+          {
+            "index": 7,
+            "agent_id": 42,
+            "vertex_indices": [
+              6,
+              7,
+              11,
+              10
+            ],
+            "vertex_agent_ids": [
+              7,
+              8,
+              36,
+              35
+            ],
+            "vertex_count": 4,
+            "area": 1.5872,
+            "normal": [
+              0.995,
+              0.0,
+              -0.09983
+            ]
+          },
+          {
+            "index": 8,
+            "agent_id": 44,
+            "vertex_indices": [
+              2,
+              6,
+              10,
+              8
+            ],
+            "vertex_agent_ids": [
+              3,
+              7,
+              35,
+              27
+            ],
+            "vertex_count": 4,
+            "area": 1.329768,
+            "normal": [
+              -0.31905,
+              0.17781,
+              -0.93091
+            ]
+          },
+          {
+            "index": 9,
+            "agent_id": 46,
+            "vertex_indices": [
+              7,
+              3,
+              9,
+              11
+            ],
+            "vertex_agent_ids": [
+              8,
+              4,
+              28,
+              36
+            ],
+            "vertex_count": 4,
+            "area": 1.480443,
+            "normal": [
+              -0.02819,
+              -0.48292,
+              0.87521
+            ]
+          },
+          {
+            "index": 0,
+            "agent_id": 21,
+            "vertex_indices": [
+              8,
+              9,
+              3,
+              2
+            ],
+            "vertex_agent_ids": [
+              27,
+              28,
+              4,
+              3
+            ],
+            "vertex_count": 4,
+            "area": 0.489172,
+            "normal": [
+              -0.99161,
+              -0.09509,
+              0.08759
+            ]
+          },
+          {
+            "index": 1,
+            "agent_id": 22,
+            "vertex_indices": [
+              2,
+              3,
+              7,
+              6
+            ],
+            "vertex_agent_ids": [
+              3,
+              4,
+              8,
+              7
+            ],
+            "vertex_count": 4,
+            "area": 5.811419,
+            "normal": [
+              -0.1081,
+              0.99409,
+              0.00995
+            ]
+          },
+          {
+            "index": 2,
+            "agent_id": 23,
+            "vertex_indices": [
+              10,
+              11,
+              5,
+              4
+            ],
+            "vertex_agent_ids": [
+              35,
+              36,
+              6,
+              5
+            ],
+            "vertex_count": 4,
+            "area": 1.5872,
+            "normal": [
+              0.995,
+              0.0,
+              -0.09983
+            ]
+          },
+          {
+            "index": 3,
+            "agent_id": 24,
+            "vertex_indices": [
+              4,
+              5,
+              1,
+              0
+            ],
+            "vertex_agent_ids": [
+              5,
+              6,
+              2,
+              1
+            ],
+            "vertex_count": 4,
+            "area": 5.811419,
+            "normal": [
+              -0.1081,
+              -0.99409,
+              0.00995
+            ]
+          },
+          {
+            "index": 4,
+            "agent_id": 25,
+            "vertex_indices": [
+              8,
+              10,
+              4,
+              0
+            ],
+            "vertex_agent_ids": [
+              27,
+              35,
+              5,
+              1
+            ],
+            "vertex_count": 4,
+            "area": 1.329768,
+            "normal": [
+              -0.31905,
+              -0.17781,
+              -0.93091
+            ]
+          }
+        ],
+        "poles": [
+          {
+            "agent_id": 1,
+            "index": 0,
+            "valence": 3,
+            "position": [
+              -1.66039,
+              -0.3224,
+              -0.42144
+            ]
+          },
+          {
+            "agent_id": 2,
+            "index": 1,
+            "valence": 3,
+            "position": [
+              -1.52749,
+              -0.3224,
+              1.25311
+            ]
+          },
+          {
+            "agent_id": 3,
+            "index": 2,
+            "valence": 3,
+            "position": [
+              -1.66039,
+              0.3224,
+              -0.42144
+            ]
+          },
+          {
+            "agent_id": 4,
+            "index": 3,
+            "valence": 3,
+            "position": [
+              -1.52749,
+              0.3224,
+              1.25311
+            ]
+          },
+          {
+            "agent_id": 5,
+            "index": 4,
+            "valence": 3,
+            "position": [
+              0.96672,
+              -0.62,
+              -1.38342
+            ]
+          },
+          {
+            "agent_id": 6,
+            "index": 5,
+            "valence": 3,
+            "position": [
+              1.22229,
+              -0.62,
+              1.16379
+            ]
+          },
+          {
+            "agent_id": 7,
+            "index": 6,
+            "valence": 3,
+            "position": [
+              0.96672,
+              0.62,
+              -1.38342
+            ]
+          },
+          {
+            "agent_id": 8,
+            "index": 7,
+            "valence": 3,
+            "position": [
+              1.22229,
+              0.62,
+              1.16379
+            ]
+          }
+        ],
+        "local_face_composition": {
+          "tri": 0,
+          "quad": 10,
+          "ngon": 0
+        },
+        "edge_length_ratio": 7.62,
+        "face_area_ratio": 11.88,
+        "connected_components": 1
+      }
+    },
+    {
+      "index": 2,
+      "label": "inspect_handle_bounds",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "KLF03_Handle_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 1152,
+          "edges": 2310,
+          "faces": 1160,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "5": 16,
+          "3": 4,
+          "4": 1132
+        },
+        "surface_quality": {
+          "face_count": 1160,
+          "min_area": 0.00030362,
+          "max_area": 0.0252,
+          "median_area": 0.007191,
+          "area_outlier_count": 2,
+          "area_outlier_ratio": 0.0017,
+          "max_adjacent_face_angle_radians": 2.9404,
+          "angle_samples": 2310
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 1152,
+          "median_edge_length": 0.09312054,
+          "median_absolute_laplacian": 0.17215549,
+          "laplacian_mad": 0.03794895,
+          "max_robust_outlier_z": 19.5995,
+          "pinch_candidate_count": 17,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 0,
+              "position": [
+                3.28018,
+                0.14549,
+                2.27911
+              ],
+              "robust_outlier_z": 19.5995,
+              "signed_laplacian": 1.274884
+            },
+            {
+              "evaluated_vertex_index": 12,
+              "position": [
+                2.982,
+                0.14549,
+                7.46633
+              ],
+              "robust_outlier_z": 18.0736,
+              "signed_laplacian": 1.189033
+            },
+            {
+              "evaluated_vertex_index": 23,
+              "position": [
+                3.02167,
+                0.168,
+                7.32167
+              ],
+              "robust_outlier_z": 17.6657,
+              "signed_laplacian": 1.16608
+            },
+            {
+              "evaluated_vertex_index": 17,
+              "position": [
+                3.02167,
+                -0.168,
+                7.32167
+              ],
+              "robust_outlier_z": 17.5423,
+              "signed_laplacian": 1.159138
+            },
+            {
+              "evaluated_vertex_index": 11,
+              "position": [
+                3.33999,
+                0.168,
+                2.41667
+              ],
+              "robust_outlier_z": 17.2242,
+              "signed_laplacian": 1.141245
+            },
+            {
+              "evaluated_vertex_index": 5,
+              "position": [
+                3.33999,
+                -0.168,
+                2.41667
+              ],
+              "robust_outlier_z": 16.778,
+              "signed_laplacian": 1.11614
+            },
+            {
+              "evaluated_vertex_index": 18,
+              "position": [
+                3.06133,
+                -0.14549,
+                7.17701
+              ],
+              "robust_outlier_z": 15.5877,
+              "signed_laplacian": 1.049167
+            },
+            {
+              "evaluated_vertex_index": 4,
+              "position": [
+                3.28018,
+                -0.14549,
+                2.27911
+              ],
+              "robust_outlier_z": 14.5694,
+              "signed_laplacian": 0.991877
+            },
+            {
+              "evaluated_vertex_index": 1,
+              "position": [
+                3.2364,
+                0.084,
+                2.1784
+              ],
+              "robust_outlier_z": 14.1884,
+              "signed_laplacian": 0.970439
+            },
+            {
+              "evaluated_vertex_index": 16,
+              "position": [
+                2.982,
+                -0.14549,
+                7.46633
+              ],
+              "robust_outlier_z": 13.265,
+              "signed_laplacian": 0.918487
+            },
+            {
+              "evaluated_vertex_index": 13,
+              "position": [
+                2.95297,
+                0.084,
+                7.57223
+              ],
+              "robust_outlier_z": 11.7027,
+              "signed_laplacian": 0.830587
+            },
+            {
+              "evaluated_vertex_index": 22,
+              "position": [
+                3.06133,
+                0.14549,
+                7.17701
+              ],
+              "robust_outlier_z": 11.3515,
+              "signed_laplacian": 0.810827
+            },
+            {
+              "evaluated_vertex_index": 7,
+              "position": [
+                3.44359,
+                -0.084,
+                2.65493
+              ],
+              "robust_outlier_z": 11.3275,
+              "signed_laplacian": -0.809479
+            },
+            {
+              "evaluated_vertex_index": 2,
+              "position": [
+                3.22038,
+                0.0,
+                2.14155
+              ],
+              "robust_outlier_z": 9.3741,
+              "signed_laplacian": 0.699572
+            },
+            {
+              "evaluated_vertex_index": 3,
+              "position": [
+                3.2364,
+                -0.084,
+                2.1784
+              ],
+              "robust_outlier_z": 9.2689,
+              "signed_laplacian": 0.693652
+            },
+            {
+              "evaluated_vertex_index": 15,
+              "position": [
+                2.95297,
+                -0.084,
+                7.57223
+              ],
+              "robust_outlier_z": 6.4948,
+              "signed_laplacian": 0.537571
+            },
+            {
+              "evaluated_vertex_index": 9,
+              "position": [
+                3.44359,
+                0.084,
+                2.65493
+              ],
+              "robust_outlier_z": 6.1074,
+              "signed_laplacian": -0.515777
+            }
+          ],
+          "meaningful_signed_edges": 2305,
+          "laplacian_sign_change_ratio": 0.003471,
+          "mean_neighbor_normal_angle_p95_degrees": 23.337,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            1.8839,
+            0.336,
+            5.521
+          ],
+          "evaluated_dimensions": [
+            1.8839,
+            0.336,
+            5.521
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              2.9423,
+              -0.168,
+              2.1177
+            ],
+            "max": [
+              4.8262,
+              0.168,
+              7.6387
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              2.9423,
+              -0.168,
+              2.1177
+            ],
+            "max": [
+              4.8262,
+              0.168,
+              7.6387
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "stage03_spout_matched_left",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage03_spout_matched_left.png",
+        "pass_type": "matcap",
+        "view": "left",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage03_spout_matched_left.png",
+        "pass_type": "matcap",
+        "view": "left",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          -29.62438201904297,
+          0.0,
+          4.77609395980835
+        ],
+        "camera_ortho_scale": 16.603384673529295,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.191706,
+        "foreground_unique_colors_5bit": 82,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "stage03_handle_matched_back",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage03_handle_matched_back.png",
+        "pass_type": "matcap",
+        "view": "back",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage03_handle_matched_back.png",
+        "pass_type": "matcap",
+        "view": "back",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          0.024518489837646484,
+          29.648900985717773,
+          4.77609395980835
+        ],
+        "camera_ortho_scale": 16.603384673529295,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.219695,
+        "foreground_unique_colors_5bit": 80,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "label": "set_semantic_spout_lip_creases",
+    "transaction": {
+      "name": "KLF03_Spout_HIGH",
+      "action_type": "release_longitudinal_spout_curvature_keep_lip_definition",
+      "operation": "set_edge_crease_by_ids",
+      "params": {"edge_ids": [10, 12, 29, 30, 31, 32, 33], "value": 0.45, "clear_others": true}
+    }
+  },
+  {
+    "label": "inspect_spout_hard_surface_policy",
+    "command": "get_hard_surface_shading_audit",
+    "params": {"name": "KLF03_Spout_HIGH"}
+  },
+  {
+    "label": "inspect_spout_evaluated",
+    "command": "get_evaluated_state",
+    "params": {"name": "KLF03_Spout_HIGH"}
+  },
+  {
+    "label": "stage06_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage06_front.png", "pass_type": "matcap", "view": "front", "resolution": 1000, "margin": 1.12}
+  },
+  {
+    "label": "stage06_spout_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage06_spout_front.png", "pass_type": "matcap", "view": "left", "resolution": 1000, "margin": 1.12}
+  },
+  {
+    "label": "stage06_iso",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage06_iso.png", "pass_type": "matcap", "view": "isometric", "resolution": 1000, "margin": 1.12}
+  }
+]

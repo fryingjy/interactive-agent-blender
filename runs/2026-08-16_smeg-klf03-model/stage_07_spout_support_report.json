@@ -1,0 +1,688 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\stage_07_spout_support_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\klf03_stage_06_semantic_spout.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\klf03_stage_07_primary_refined.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "abbac2bfdf8b",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_spout_all",
+      "command": "select_by_ids",
+      "params": {
+        "name": "KLF03_Spout_HIGH",
+        "vertex_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          27,
+          28,
+          35,
+          36
+        ],
+        "edge_ids": [],
+        "face_ids": [],
+        "extend": false
+      },
+      "status": "ok",
+      "result": {
+        "verts": 12,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 1,
+      "label": "restore_reference_spout_width_after_subd",
+      "command": "transaction",
+      "params": {
+        "name": "KLF03_Spout_HIGH",
+        "action_type": "restore_official_spout_width_after_subdivision_shrinkage",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            1.0,
+            1.45,
+            1.0
+          ],
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_53_1786907913792",
+          "observed_revision": 53
+        },
+        "perform": {
+          "decision_id": "dec_53_1786907913792",
+          "performed": true,
+          "result": 12
+        },
+        "verify": {
+          "action_type": "restore_official_spout_width_after_subdivision_shrinkage",
+          "op_delta": 0,
+          "before": {
+            "vertices": 12,
+            "edges": 20,
+            "faces": 10,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 12,
+            "edges": 20,
+            "faces": 10,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_53_1786907913792",
+          "result_revision": 54
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "support_spout_lip_and_attachment",
+      "command": "transaction",
+      "params": {
+        "name": "KLF03_Spout_HIGH",
+        "action_type": "support_spout_end_boundaries_leave_longitudinal_curvature_free",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            10,
+            12,
+            15,
+            18,
+            29,
+            30,
+            31,
+            32,
+            33,
+            37,
+            38,
+            39,
+            40,
+            41
+          ],
+          "value": 0.4,
+          "clear_others": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_54_1786907913793",
+          "observed_revision": 54
+        },
+        "perform": {
+          "decision_id": "dec_54_1786907913793",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.4,
+            "assigned_edge_ids": [
+              10,
+              12,
+              15,
+              18,
+              29,
+              30,
+              31,
+              32,
+              33,
+              37,
+              38,
+              39,
+              40,
+              41
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "support_spout_end_boundaries_leave_longitudinal_curvature_free",
+          "op_delta": 0,
+          "before": {
+            "vertices": 12,
+            "edges": 20,
+            "faces": 10,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 12,
+            "edges": 20,
+            "faces": 10,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_54_1786907913793",
+          "result_revision": 55
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "inspect_spout_base",
+      "command": "get_full_state",
+      "params": {
+        "name": "KLF03_Spout_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 55,
+        "mesh_health": {
+          "vertices": 12,
+          "edges": 20,
+          "faces": 10,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 4
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 27
+            },
+            {
+              "index": 9,
+              "agent_id": 28
+            },
+            {
+              "index": 10,
+              "agent_id": 35
+            },
+            {
+              "index": 11,
+              "agent_id": 36
+            }
+          ],
+          "selected_edges": [],
+          "selected_faces": [],
+          "selected_vertex_count": 12,
+          "selected_edge_count": 0,
+          "selected_face_count": 0
+        },
+        "persistent_id_coverage": {
+          "verts": 12,
+          "edges": 20,
+          "faces": 10
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "inspect_spout_evaluated",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "KLF03_Spout_HIGH"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 162,
+          "edges": 320,
+          "faces": 160,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 154
+        },
+        "surface_quality": {
+          "face_count": 160,
+          "min_area": 0.04536732,
+          "max_area": 0.27966,
+          "median_area": 0.137769,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.2148,
+          "angle_samples": 320
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 162,
+          "median_edge_length": 0.35909793,
+          "median_absolute_laplacian": 0.11512734,
+          "laplacian_mad": 0.0581741,
+          "max_robust_outlier_z": 3.6382,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 225,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 28.5093,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            2.8827,
+            2.8049,
+            2.6365
+          ],
+          "evaluated_dimensions": [
+            2.7615,
+            2.0768,
+            2.2804
+          ],
+          "shrinkage_ratio_xyz": [
+            0.958,
+            0.7404,
+            0.8649
+          ],
+          "base_bounds": {
+            "min": [
+              -1.6604,
+              -1.4024,
+              -1.3834
+            ],
+            "max": [
+              1.2223,
+              1.4024,
+              1.2531
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -1.6157,
+              -1.0384,
+              -1.1927
+            ],
+            "max": [
+              1.1459,
+              1.0384,
+              1.0877
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "stage07_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_front.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_front.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          -0.12169647216796875,
+          -29.24417495727539,
+          4.77609395980835
+        ],
+        "camera_ortho_scale": 16.376737998177095,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.220709,
+        "foreground_unique_colors_5bit": 102,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "stage07_spout_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_spout_front.png",
+        "pass_type": "matcap",
+        "view": "left",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_spout_front.png",
+        "pass_type": "matcap",
+        "view": "left",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          -29.36587142944336,
+          0.0,
+          4.77609395980835
+        ],
+        "camera_ortho_scale": 16.376737998177095,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.196039,
+        "foreground_unique_colors_5bit": 80,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "stage07_handle_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_handle_front.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_handle_front.png",
+        "pass_type": "matcap",
+        "view": "side",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          29.122478485107422,
+          0.0,
+          4.77609395980835
+        ],
+        "camera_ortho_scale": 16.376737998177095,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.196039,
+        "foreground_unique_colors_5bit": 99,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "stage07_iso",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_iso.png",
+        "pass_type": "matcap",
+        "view": "isometric",
+        "resolution": 1000,
+        "margin": 1.12
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage07_iso.png",
+        "pass_type": "matcap",
+        "view": "isometric",
+        "projection": "ORTHO",
+        "resolution": [
+          1000,
+          1000
+        ],
+        "target_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "frame_objects": [
+          "KLF03_Body_HIGH",
+          "KLF03_Lid_HIGH",
+          "KLF03_BaseBand_HIGH",
+          "KLF03_Handle_HIGH",
+          "KLF03_HandleMountUpper_HIGH",
+          "KLF03_HandleMountLower_HIGH",
+          "KLF03_Spout_HIGH",
+          "KLF03_LidButton_HIGH",
+          "KLF03_Switch_HIGH"
+        ],
+        "camera_location": [
+          16.762435913085938,
+          -16.884132385253906,
+          21.660226821899414
+        ],
+        "camera_ortho_scale": 16.376737998177095,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.211784,
+        "foreground_unique_colors_5bit": 107,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\klf03_stage_07_primary_refined.blend"
+  },
+  "pass": true
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_RENDER_COMPARISON",
+  "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-smeg-klf03\\media\\KLF03NBUS_04.jpg",
+  "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_smeg-klf03-model\\rejected_top_silhouette.png",
+  "view": "top",
+  "alignment": {
+    "mode": "uniform-bbox",
+    "normalization": "candidate foreground cropped, uniformly scaled to fit the reference foreground bounding box, and center-aligned",
+    "uniform_scale": 1.513959390862944,
+    "reference_bbox": [
+      53,
+      231,
+      1245,
+      1071
+    ],
+    "candidate_bbox_before_alignment": [
+      256,
+      377,
+      1043,
+      922
+    ],
+    "candidate_bbox_after_alignment": [
+      53,
+      238,
+      1245,
+      1064
+    ],
+    "claim_boundary": "Translation and overall scale were removed, but aspect ratio and contour differences remain measurable."
+  },
+  "metrics": {
+    "width": 1300,
+    "height": 1300,
+    "reference_pixels": 631936,
+    "candidate_pixels": 615715,
+    "silhouette_iou": 0.7673662559601552,
+    "centroid_error_normalized": 0.04650581809331489,
+    "bounding_box_error_normalized": 0.001903749026271474,
+    "symmetric_contour_error_normalized": 0.02615949636664265,
+    "negative_space_iou": 0.0022865853658536584,
+    "reference_negative_space_pixels": 1058,
+    "candidate_negative_space_pixels": 1572,
+    "reference_bbox": [
+      53,
+      231,
+      1245,
+      1071
+    ],
+    "candidate_bbox": [
+      53,
+      238,
+      1245,
+      1064
+    ]
+  },
+  "tickets": [
+    {
+      "type": "negative_space",
+      "target": "top",
+      "severity": 0.9977134146341463,
+      "evidence": 0.0022865853658536584,
+      "priority": 1
+    },
+    {
+      "type": "silhouette_contour",
+      "target": "top",
+      "severity": 0.02615949636664265,
+      "evidence": 0.02615949636664265,
+      "priority": 2
+    }
+  ]
+}

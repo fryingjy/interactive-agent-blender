@@ -1,0 +1,46 @@
+{
+  "source": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-kupong\\references\\official_3d_reference.glb",
+  "source_sha256": "c95470302be10576ce653510d79dc77a4dfdc8583e3a55cc52a98816e2c44339",
+  "source_rights_context": "Copyrighted product reference; rendered views are retained solely for analysis and no source geometry is copied into a candidate.",
+  "asset_page": "https://www.ikea.com/us/en/p/kupong-alarm-clock-black-90621811/",
+  "neutral_material_override": true,
+  "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
+  "excluded_source_objects": [],
+  "exclude_name_regex": null,
+  "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
+  "views": [
+    "front",
+    "side",
+    "top",
+    "isometric"
+  ],
+  "silhouette_reports": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-kupong\\official_3d_reference\\reference_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "50621813_50621813_cn"
+      ],
+      "silhouette_fill_ratio": 0.2843
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-kupong\\official_3d_reference\\reference_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "50621813_50621813_cn"
+      ],
+      "silhouette_fill_ratio": 0.0729
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-kupong\\official_3d_reference\\reference_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "50621813_50621813_cn"
+      ],
+      "silhouette_fill_ratio": 0.1931
+    }
+  ]
+}

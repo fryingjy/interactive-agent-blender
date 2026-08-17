@@ -1,0 +1,49 @@
+{
+  "source": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-dekad\\references\\ikea_30540479_official.glb",
+  "source_sha256": "c3959d0cc6357ee88cee9f853ff1543d70272af4e0405a4c938fee662d73c419",
+  "source_rights_context": "Copyrighted product reference; rendered views are retained solely for analysis and no source geometry is copied into a candidate.",
+  "asset_page": "https://www.ikea.com/us/en/p/dekad-alarm-clock-black-30540479/",
+  "neutral_material_override": true,
+  "neutral_review_engine": "BLENDER_WORKBENCH_STUDIO_CAVITY",
+  "excluded_source_objects": [],
+  "exclude_name_regex": "",
+  "use_boundary": "Source geometry is used only to produce neutral reference renders; its topology is not evaluated as modeling guidance or copied into the candidate.",
+  "views": [
+    "front",
+    "side",
+    "top",
+    "isometric"
+  ],
+  "silhouette_reports": [
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-dekad\\official_3d_reference\\reference_front_mask.png",
+      "view": "front",
+      "resolution": 720,
+      "frame_objects": [
+        "Mesh_0.001",
+        "Mesh_1.001"
+      ],
+      "silhouette_fill_ratio": 0.2391
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-dekad\\official_3d_reference\\reference_side_mask.png",
+      "view": "side",
+      "resolution": 720,
+      "frame_objects": [
+        "Mesh_0.001",
+        "Mesh_1.001"
+      ],
+      "silhouette_fill_ratio": 0.1408
+    },
+    {
+      "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-16_reference-gathering-ikea-dekad\\official_3d_reference\\reference_top_mask.png",
+      "view": "top",
+      "resolution": 720,
+      "frame_objects": [
+        "Mesh_0.001",
+        "Mesh_1.001"
+      ],
+      "silhouette_fill_ratio": 0.1437
+    }
+  ]
+}

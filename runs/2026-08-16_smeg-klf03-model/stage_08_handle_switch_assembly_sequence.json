@@ -1,0 +1,91 @@
+[
+  {
+    "label": "select_lower_mount_all",
+    "command": "select_by_ids",
+    "params": {"name": "KLF03_HandleMountLower_HIGH", "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8], "edge_ids": [], "face_ids": [], "extend": false}
+  },
+  {
+    "label": "seat_lower_mount_over_handle_end",
+    "transaction": {
+      "name": "KLF03_HandleMountLower_HIGH",
+      "action_type": "seat_lower_handle_mount_at_visible_end",
+      "operation": "move_selection",
+      "params": {"delta": [0.46, 0.0, -0.04]}
+    }
+  },
+  {
+    "label": "soften_upper_mount_crease",
+    "transaction": {
+      "name": "KLF03_HandleMountUpper_HIGH",
+      "action_type": "match_rounded_upper_handle_collar",
+      "operation": "set_edge_crease_by_ids",
+      "params": {"edge_ids": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], "value": 0.48, "clear_others": true}
+    }
+  },
+  {
+    "label": "soften_lower_mount_crease",
+    "transaction": {
+      "name": "KLF03_HandleMountLower_HIGH",
+      "action_type": "match_rounded_lower_handle_collar",
+      "operation": "set_edge_crease_by_ids",
+      "params": {"edge_ids": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], "value": 0.48, "clear_others": true}
+    }
+  },
+  {
+    "label": "create_switch_stem",
+    "command": "create_primitive",
+    "params": {"name": "KLF03_SwitchStem_HIGH", "primitive_type": "cylinder", "location": [3.05, 0.0, 1.85], "radius": 0.075, "depth": 0.48, "vertices": 12, "rotation": [0.0, 1.5707963268, 0.0]}
+  },
+  {
+    "label": "smooth_switch_stem_by_angle",
+    "transaction": {
+      "name": "KLF03_SwitchStem_HIGH",
+      "action_type": "set_switch_stem_shading_policy",
+      "operation": "set_smooth_by_angle",
+      "params": {"angle": 0.5235987756, "keep_sharp_edges": true}
+    }
+  },
+  {
+    "label": "create_switch_bezel",
+    "command": "create_primitive",
+    "params": {"name": "KLF03_SwitchBezel_HIGH", "primitive_type": "sphere", "location": [2.93, 0.0, 1.85], "radius": 1.0, "segments": 12, "ring_count": 8}
+  },
+  {
+    "label": "shape_switch_bezel",
+    "transaction": {
+      "name": "KLF03_SwitchBezel_HIGH",
+      "action_type": "shape_vertical_switch_mount_bezel",
+      "operation": "scale_selection",
+      "params": {"factor": [0.13, 0.31, 0.47], "center": [0.0, 0.0, 0.0]}
+    }
+  },
+  {
+    "label": "smooth_switch_bezel_by_angle",
+    "transaction": {
+      "name": "KLF03_SwitchBezel_HIGH",
+      "action_type": "set_switch_bezel_shading_policy",
+      "operation": "set_smooth_by_angle",
+      "params": {"angle": 0.5235987756, "keep_sharp_edges": true}
+    }
+  },
+  {
+    "label": "stage08_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_SwitchBezel_HIGH", "KLF03_SwitchStem_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage08_front.png", "pass_type": "matcap", "view": "front", "resolution": 1000, "margin": 1.12}
+  },
+  {
+    "label": "stage08_spout_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_SwitchBezel_HIGH", "KLF03_SwitchStem_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage08_spout_front.png", "pass_type": "matcap", "view": "left", "resolution": 1000, "margin": 1.12}
+  },
+  {
+    "label": "stage08_handle_front",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_SwitchBezel_HIGH", "KLF03_SwitchStem_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage08_handle_front.png", "pass_type": "matcap", "view": "side", "resolution": 1000, "margin": 1.12}
+  },
+  {
+    "label": "stage08_iso",
+    "command": "render_diagnostic_pass",
+    "params": {"name": ["KLF03_Body_HIGH", "KLF03_Lid_HIGH", "KLF03_BaseBand_HIGH", "KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH", "KLF03_Spout_HIGH", "KLF03_LidButton_HIGH", "KLF03_SwitchBezel_HIGH", "KLF03_SwitchStem_HIGH", "KLF03_Switch_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/stage08_iso.png", "pass_type": "matcap", "view": "isometric", "resolution": 1000, "margin": 1.12}
+  }
+]
