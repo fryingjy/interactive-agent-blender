@@ -1,0 +1,259 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "interactions",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=IS2LPVNp6SE",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": "v1_ChduRGVEYXNiOExKN1ZqckVQam8zSDRRNBIXbkRlRGFzYjhMSjdWanJFUGpvM0g0UTQ",
+    "reported_source_url": "https://www.youtube.com/watch?v=IS2LPVNp6SE",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": null
+  },
+  "analysis": {
+    "source": {
+      "title": "Blender - Connecting Cylinders - #15 Subdivision Surface Modelling in Blender",
+      "creator": "Ian McGlasham",
+      "url": "https://www.youtube.com/watch?v=IS2LPVNp6SE",
+      "duration_seconds": 788,
+      "blender_version_mentions": [
+        "2.83"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Shrinkwrap-based cylinder joining technique for clean subdivision topology",
+    "episodes": [
+      {
+        "start_seconds": 12,
+        "end_seconds": 182,
+        "timestamp_label": "00:12 - 03:02",
+        "modeling_stage": "Problem Demonstration / Alternative Evaluation",
+        "problem": "Combining intersecting cylinders using standard Booleans destroys clean subdivision topology.",
+        "observed_fact": "Boolean union creates dense n-gons and triangles at intersections, resulting in severe shading artifacts when smooth shaded or subdivided.",
+        "instructor_claim": "Booleans ruin topology permanently, making manual vertex merging tedious and ineffective for subdivision surfaces.",
+        "interpretation": "Boolean intersections lack aligned edge loops required for clean quad transitions.",
+        "hypothesis": "Non-destructive modifiers can generate aligned boundary loops without manual vertex welding.",
+        "reference_evidence": "Shading distortion and broken mesh structure upon applying Subdivision Surface to a Boolean result.",
+        "modeling_decision": "Avoid Booleans; set up base geometry for modifier-driven loop alignment.",
+        "visible_action": "Applied Boolean Union on two intersecting cylinders and inspected resulting wireframe and smooth-shaded shading distortions.",
+        "spoken_reason": "Demonstrating why Booleans fail for clean subdivision workflows.",
+        "topology_surface_effect": "Uncontrolled triangle/n-gon generation causing surface pinching and shading errors.",
+        "failure": "Boolean Union creates non-quad topology incompatible with SubD.",
+        "correction": "Discard Boolean mesh and start with low-poly, 16-sided cylinders.",
+        "alternatives": "Manual vertex merging (rejected as inefficient and destructive).",
+        "transferable_principle": "Avoid Boolean operations when clean, low-poly subdivision flow is required across intersecting curved surfaces.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 182,
+        "end_seconds": 242,
+        "timestamp_label": "03:02 - 04:02",
+        "modeling_stage": "Base Geometry Setup",
+        "problem": "High-density cylinders increase complexity unnecessarily during intersection setup.",
+        "observed_fact": "Added a 16-sided cylinder with open ends, scaled on Z, duplicated, rotated 90 degrees on Y, and enabled Edge Snapping.",
+        "instructor_claim": "16 vertices provide adequate resolution for smooth subdivision geometry without excess density.",
+        "interpretation": "Low vertex counts keep loop alignment manageable and predictable.",
+        "hypothesis": "Edge snapping will allow loop cuts to align precisely with intersecting cylinder edges.",
+        "reference_evidence": "3D Viewport displaying two intersecting 16-sided open cylinders.",
+        "modeling_decision": "Use matching 16-sided cylinders and enable edge snapping for exact alignment.",
+        "visible_action": "Added 16-sided cylinder without caps, duplicated (Shift+D), rotated 90° on Y (R Y 90), positioned along Y axis, and set snap target to Edge.",
+        "spoken_reason": "Establishing clean base cylinders with snapping enabled for exact loop placement.",
+        "topology_surface_effect": "Clean, identical low-poly cylindrical quad grids.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Matching segment counts between intersecting cylinders simplifies topology alignment.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 242,
+        "end_seconds": 350,
+        "timestamp_label": "04:02 - 05:50",
+        "modeling_stage": "Loop Placement & Group Assignment",
+        "problem": "Isolating specific vertex loops for dynamic projection along intersection boundaries.",
+        "observed_fact": "Loop cuts added to both cylinders snapping to adjacent edges, each assigned to distinct vertex groups via Ctrl+G.",
+        "instructor_claim": "Assigning boundary loops to dedicated vertex groups isolates them for individual Shrinkwrap modification.",
+        "interpretation": "Vertex groups restrict modifier deformations strictly to boundary rings.",
+        "hypothesis": "Shrinkwrapping isolated vertex groups toward the intersecting object will trace the intersection outline.",
+        "reference_evidence": "Vertex Group panel showing created groups ('Group', 'Group.001') per cylinder.",
+        "modeling_decision": "Add snapped loop cuts on both sides of center intersection and assign each to its own vertex group.",
+        "visible_action": "Executed Loop Cut (Ctrl+R), snapped to opposing cylinder edges, assigned selected loops to new vertex groups via Ctrl+G.",
+        "spoken_reason": "Isolating loop vertices so Shrinkwrap modifies only target edge rings.",
+        "topology_surface_effect": "Targeted loop cuts aligned precisely along intersection bounds.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Assigning isolated edge loops to vertex groups allows selective modifier targeting without affecting overall mesh structure.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 350,
+        "end_seconds": 434,
+        "timestamp_label": "05:50 - 07:14",
+        "modeling_stage": "Shrinkwrap Modifier Setup",
+        "problem": "Conforming straight edge loops onto intersecting cylindrical surfaces non-destructively.",
+        "observed_fact": "Added Shrinkwrap modifier set to Project mode on Z axis targeting opposing cylinder, applied to vertex group with -0.1 offset.",
+        "instructor_claim": "Project mode on the cylinder's local axis pushes loop vertices onto the target surface; negative offset provides transitional gap.",
+        "interpretation": "Negative offset generates an even offset border surrounding the intersection boundary.",
+        "hypothesis": "Replicating projection for opposite vertex groups will enclose the intersection seamlessly.",
+        "reference_evidence": "Viewport wireframe showing edge loop bending cleanly around target cylinder surface.",
+        "modeling_decision": "Configure Shrinkwrap in Project mode along local Z axis with vertex group restriction and negative offset.",
+        "visible_action": "Added Shrinkwrap modifier, set Wrap Method to Project, Axis to Z, Target to second cylinder, assigned Vertex Group, set Offset to -0.1, then duplicated modifier for second group with inverted projection directional sign.",
+        "spoken_reason": "Projecting vertices along axis creates clean boundary loop hugging target surface.",
+        "topology_surface_effect": "Planar edge loops project into smooth 3D curves matching target cylinder contour.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Projected Shrinkwrap modifiers combined with negative offset generate uniform junction loop boundaries automatically.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 434,
+        "end_seconds": 480,
+        "timestamp_label": "07:14 - 08:00",
+        "modeling_stage": "Modifier Transfer & Re-targeting",
+        "problem": "Replicating exact Shrinkwrap settings across reciprocal intersecting objects quickly.",
+        "observed_fact": "Copied modifiers via Ctrl+L (Link/Transfer Data -> Copy Modifiers) and re-targeted target fields to primary cylinder.",
+        "instructor_claim": "Copying modifiers ensures identical projection parameters across both objects.",
+        "interpretation": "Reciprocal setup guarantees identical junction geometry on both parts.",
+        "hypothesis": "Both cylinders will now feature matching boundary loops around the intersection.",
+        "reference_evidence": "Modifier stacks on both objects showing identical Shrinkwrap configurations targeting each other.",
+        "modeling_decision": "Transfer modifier stack via Ctrl+L and update Target reference fields.",
+        "visible_action": "Selected target cylinder, Shift-selected source cylinder, pressed Ctrl+L > Copy Modifiers, then swapped Target object in modifier panels.",
+        "spoken_reason": "Streamlining setup by copying modifier settings across objects.",
+        "topology_surface_effect": "Both objects mirror matching projected loop profiles at intersection zone.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Transferring and re-targeting modifier setups guarantees symmetry and speeds up repetitive geometric setups.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 480,
+        "end_seconds": 515,
+        "timestamp_label": "08:00 - 08:35",
+        "modeling_stage": "Interactive Spacing & Real-time Adjustment",
+        "problem": "Achieving even poly distribution and desired joint depth dynamically.",
+        "observed_fact": "Moved cylinder along Y axis in Object Mode; projected loops dynamically adjusted to maintain surface alignment and spacing.",
+        "instructor_claim": "Because Shrinkwrap is live, moving the cylinders adjusts connection depth and loop density dynamically.",
+        "interpretation": "Live modifier evaluation permits real-time aesthetic and structural tuning.",
+        "hypothesis": "Adjusting mesh placement visually ensures optimal quad aspect ratios before collapsing modifiers.",
+        "reference_evidence": "Live viewport updates displaying adapting wireframe as cylinder slides.",
+        "modeling_decision": "Translate object along intersection axis to balance polygon spacing across the joint.",
+        "visible_action": "Selected cylinder, pressed G Y, moved mouse to adjust joint overlap depth, observing real-time wireframe adjustment.",
+        "spoken_reason": "Finding visual position with equal polygon distribution prior to applying modifiers.",
+        "topology_surface_effect": "Dynamically updated quad spacing surrounding transition zone.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Leverating unapplied procedural deformers allows non-destructive optimization of mesh density before finalizing mesh edits.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 515,
+        "end_seconds": 605,
+        "timestamp_label": "08:35 - 10:10",
+        "modeling_stage": "Face Deletion, Object Joining & Bridging",
+        "problem": "Combining separate meshes into a manifold topology with bridged edge loops.",
+        "observed_fact": "Applied modifiers, deleted internal faces within boundary loops on both cylinders, joined objects (Ctrl+J), and bridged edge loops.",
+        "instructor_claim": "Deleting intersecting internal faces leaves matching open boundary loops ready for seamless bridging.",
+        "interpretation": "Bridging open, equal-count boundary loops forms clean quad transitions.",
+        "hypothesis": "Bridging matching boundary loops creates continuous quad surface topology without manual vertex welding.",
+        "reference_evidence": "Bridged quad strip connecting former separate cylinder meshes smoothly.",
+        "modeling_decision": "Apply modifiers, delete interior faces, join objects with Ctrl+J, select boundary loops, and apply Bridge Edge Loops.",
+        "visible_action": "Applied Shrinkwrap modifiers on both cylinders, entered Face Select mode, deleted internal faces, joined meshes via Ctrl+J, Alt+Shift selected opposing boundary loops, pressed Ctrl+E > Bridge Edge Loops.",
+        "spoken_reason": "Removing geometry inside junction and bridging matching loop counts to form unified quad mesh.",
+        "topology_surface_effect": "Two separate open meshes joined into single manifold quad mesh with seamless transition loop.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Clearing internal geometry and bridging matched-count boundary loops generates clean manifold junctions between intersecting volumes.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 605,
+        "end_seconds": 670,
+        "timestamp_label": "10:10 - 11:10",
+        "modeling_stage": "SubD Refinement & Sharp Control Loops",
+        "problem": "Controlling joint tightness under Subdivision Surface without creasing or adding unwanted geometry.",
+        "observed_fact": "Added Subdivision Surface modifier (Ctrl+3), set Shade Smooth, added loop cut inside bridge zone with Linear profile and high Factor value (4.0).",
+        "instructor_claim": "Inserting a control loop with linear interpolation sharpens joint transition naturally without creasing artifacts.",
+        "interpretation": "Adjusting loop cut interpolation shifts vertex distribution towards boundary edges to tighten curvature radius.",
+        "hypothesis": "Linear loop cut interpolation with elevated factor sharpens SubD transition curves smoothly.",
+        "reference_evidence": "Viewport smooth shading showing crisp, artifact-free joint fillet under subdivision.",
+        "modeling_decision": "Add central loop cut across bridged quad strip and set interpolation profile to Linear with elevated factor value.",
+        "visible_action": "Pressed Ctrl+3 for SubD level 3, enabled Shade Smooth, added Loop Cut (Ctrl+R) inside bridge, opened operator box, set Interpolation to Linear, increased Factor to 4.0.",
+        "spoken_reason": "Tightening subdivision curvature transition smoothly using loop cut profile controls.",
+        "topology_surface_effect": "Controlled vertex distribution creating crisp, artifact-free fillet transition under subdivision.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Edge Creasing (avoided in favor of geometric control loops).",
+        "transferable_principle": "Adjusting loop cut interpolation and smoothing factors provides precise, non-destructive curvature control over subdivision joint fillets.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "00:00 - 00:12: Channel intro animation",
+      "11:10 - 13:08: Outro demonstration of procedural deformers on arrayed result grid"
+    ],
+    "limitations": [
+      "Demonstration uses Blender 2.83 UI layout; menu locations may slightly vary in modern versions."
+    ]
+  }
+}
