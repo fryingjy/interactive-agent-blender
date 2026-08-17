@@ -1,0 +1,216 @@
+{
+  "question": "Does the captured Shrinkwrap-Project + delete + join + Bridge Edge Loops recipe produce a manifold, clean-topology joint, compared to a naive Boolean Union?",
+  "treatment": {
+    "pre_shrinkwrap": {
+      "body": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17
+        },
+        "evaluated": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17,
+          "quads": 16,
+          "triangles": 0,
+          "ngons": 1,
+          "non_manifold_edges": 16,
+          "boundary_edges": 16,
+          "valence_distribution": {
+            "3": 32
+          }
+        }
+      },
+      "spout": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17
+        },
+        "evaluated": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17,
+          "quads": 16,
+          "triangles": 0,
+          "ngons": 1,
+          "non_manifold_edges": 16,
+          "boundary_edges": 16,
+          "valence_distribution": {
+            "3": 32
+          }
+        }
+      }
+    },
+    "post_shrinkwrap": {
+      "body": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17
+        },
+        "evaluated": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17,
+          "quads": 16,
+          "triangles": 0,
+          "ngons": 1,
+          "non_manifold_edges": 16,
+          "boundary_edges": 16,
+          "valence_distribution": {
+            "3": 32
+          }
+        }
+      },
+      "spout": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17
+        },
+        "evaluated": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 17,
+          "quads": 16,
+          "triangles": 0,
+          "ngons": 1,
+          "non_manifold_edges": 16,
+          "boundary_edges": 16,
+          "valence_distribution": {
+            "3": 32
+          }
+        }
+      }
+    },
+    "boundary_edges_before_bridge": 32,
+    "bridge_faces_created": 16,
+    "final": {
+      "base": {
+        "vertices": 64,
+        "edges": 112,
+        "faces": 50
+      },
+      "evaluated": {
+        "vertices": 898,
+        "edges": 1792,
+        "faces": 896,
+        "quads": 896,
+        "triangles": 0,
+        "ngons": 0,
+        "non_manifold_edges": 0,
+        "boundary_edges": 0,
+        "valence_distribution": {
+          "3": 32,
+          "4": 864,
+          "16": 2
+        }
+      }
+    },
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-17_cylinder-join-transfer-lab\\cylinder_join_treatment.blend"
+  },
+  "control": {
+    "pre_boolean": {
+      "body": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18
+        },
+        "evaluated": {
+          "vertices": 102,
+          "edges": 173,
+          "faces": 72,
+          "quads": 56,
+          "triangles": 4,
+          "ngons": 12,
+          "non_manifold_edges": 6,
+          "boundary_edges": 6,
+          "valence_distribution": {
+            "3": 68,
+            "5": 2,
+            "4": 26,
+            "8": 2,
+            "2": 3,
+            "6": 1
+          }
+        }
+      },
+      "spout": {
+        "base": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18
+        },
+        "evaluated": {
+          "vertices": 32,
+          "edges": 48,
+          "faces": 18,
+          "quads": 16,
+          "triangles": 0,
+          "ngons": 2,
+          "non_manifold_edges": 0,
+          "boundary_edges": 0,
+          "valence_distribution": {
+            "3": 32
+          }
+        }
+      }
+    },
+    "post_boolean": {
+      "base": {
+        "vertices": 102,
+        "edges": 173,
+        "faces": 72
+      },
+      "evaluated": {
+        "vertices": 102,
+        "edges": 173,
+        "faces": 72,
+        "quads": 56,
+        "triangles": 4,
+        "ngons": 12,
+        "non_manifold_edges": 6,
+        "boundary_edges": 6,
+        "valence_distribution": {
+          "3": 68,
+          "5": 2,
+          "4": 26,
+          "8": 2,
+          "2": 3,
+          "6": 1
+        }
+      }
+    },
+    "final": {
+      "base": {
+        "vertices": 102,
+        "edges": 173,
+        "faces": 72
+      },
+      "evaluated": {
+        "vertices": 1373,
+        "edges": 2732,
+        "faces": 1360,
+        "quads": 1360,
+        "triangles": 0,
+        "ngons": 0,
+        "non_manifold_edges": 24,
+        "boundary_edges": 24,
+        "valence_distribution": {
+          "3": 90,
+          "5": 7,
+          "4": 1263,
+          "8": 3,
+          "2": 3,
+          "6": 3,
+          "16": 3,
+          "11": 1
+        }
+      }
+    },
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-17_cylinder-join-transfer-lab\\cylinder_join_control.blend"
+  }
+}
