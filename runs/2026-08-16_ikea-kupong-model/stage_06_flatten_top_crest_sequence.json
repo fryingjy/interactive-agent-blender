@@ -1,0 +1,4 @@
+[
+  {"label":"select_measured_middle_crest_vertices","command":"select_by_ids","params":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","vertex_ids":[31,32,33,34,35]}},
+  {"label":"lower_center_section_into_top_height_band","transaction":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","action_type":"correct_a_frame_crest_from_official_side_reference","operation":"move_selection","params":{"delta":[0.0,0.0,-0.18]},"accept":true}}
+]
