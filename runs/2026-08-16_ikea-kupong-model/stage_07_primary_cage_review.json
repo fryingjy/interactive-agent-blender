@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_CAGE_VISUAL_REVIEW",
+  "target_id": "ikea_kupong_90621811",
+  "candidate": "ikea_kupong_stage_07_level_crest.blend",
+  "decision": "REJECT_CONSTRUCTION_ABSTRACTION",
+  "declared_views": ["side_orthographic", "isometric"],
+  "visual_mismatch_ledger": [
+    {"view_id":"side_orthographic","status":"reject","salience":"high","observation":"Leveling the crest removed the strongest point, but the generic closed-shell operation still fills the exterior side boundary. The reference is an open-underbody A-frame, not a solid triangular side wall."},
+    {"view_id":"isometric","status":"reject","salience":"high","observation":"The artifact has continuous all-quad topology but uses the wrong physical construction abstraction for this product."}
+  ],
+  "technical_observations":{"base_topology":"closed manifold all-quad shell","surface_modifiers_added":false,"rejection_reason":"closed-manifold requirement conflicts with observed open A-frame construction"},
+  "required_next_action":"Use one connected open surface cage with selective top-boundary bridging, then use an unapplied Solidify modifier only after silhouette review.",
+  "disposition_boundary":"Rejected for reference mismatch despite valid manifold topology."
+}
