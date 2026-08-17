@@ -1,0 +1,110 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Loop Tools' Curve operator only repositions UNSELECTED vertices; selected vertices are the fixed control points that define the target curvature and never move. To sculpt a single ridge along one loop: select one vertex in the middle of the loop and move it (this sets the peak/apex of the desired curvature), then select that moved vertex plus one vertex at each end of the same loop (three selected points total, all on one loop), open the N-panel's Edit tab, and press Curve -- the tool recalculates every unselected vertex between the three selected ones into a cubic curve that passes through the peak.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 160.32, "end_seconds": 222.48},
+    "confidence": 0.55,
+    "supporting_evidence": "Per the transcript, narrated while demonstrating on a subdivided plane: 'this time it's the only point that moves. And what we're describing here is the peak or the apex of the curvature we want to achieve... it creates this Ridge which has been created by moving the unselected vertices into positions between the ones we do have selected... The curve tool works only on unselected vertices.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using Curve only in its simplest form -- select exactly three points along one edge and press Curve once -- and never learning the selected/unselected mechanic that makes the tool useful for anything beyond that. Per the transcript this is explicitly called out as the common stopping point: 'that's how everyone seems to use the curve tool in loop tools. And they never go beyond that.'",
+    "reason": "This is the load-bearing mechanic behind every other use of the Curve tool covered in this video (surface repair, sharp panel details, whole-mesh re-curving). Understanding that selection state, not a falloff radius or a target shape, is the actual control surface is the one piece of knowledge that makes the rest of the technique legible and reproducible for future hard-surface/sheet-metal work.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Curve is designed to operate between whole edge loops, not just individual vertices -- this is why it lives in Loop Tools. To spread a single-loop ridge (built per the item above) across an entire surface while keeping the surface's outer boundary completely fixed: Alt-click one boundary loop to select it whole, Shift+Alt-click the opposite boundary loop, Shift+Alt-click the ridge loop itself (order does not matter), then press Curve. The interior grid is recalculated to flow between all three loops; every vertex on the two boundary loops stays in exactly the position it started at.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 222.48, "end_seconds": 252.54},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript: 'the curve tool is designed to work between Loops, Not just between vertices. That's why it's in Loop tools... alt and click on this loop at the bottom to select the whole thing, shift-alt and click on the loop at the top and finally shift-alt and click our curved Loop in the middle... the whole surface has now been curved; to match the single point that we originally moved. But very importantly, all the vertices around the edge are in exactly the same place they were when they're started.'",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": "This is the actual mechanism that produces the 'panel beating' surface look this video was picked for -- a smoothly curved sheet-like surface built from an explicit boundary and one or more interior control loops, with guaranteed-fixed edges. Directly reusable for any future paneled hard-surface form (appliance shells, automotive body panels) where an outer silhouette must stay fixed while the interior domes or ripples.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To remove or reduce an unwanted local feature (e.g. vertices that were moved to the wrong place, or a bump/detail that no longer fits the design) without using undo: select only the offending vertices, press Ctrl+I to invert the selection (so the problem vertices become unselected and everything else becomes selected), then press Curve. Because Curve only repositions unselected vertices, this rebuilds just the problem area to match the cubic curvature implied by the surrounding (selected, fixed) geometry. The operator's Influence slider (0-100%, in the redo/properties panel) then lets the correction be applied partially instead of fully, scaling how much the feature's magnitude is reduced rather than eliminating it outright.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 270.9, "end_seconds": 385.02},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript: 'we select the points we don't like, then we press Ctrl and I to invert the selection... blender will rebuild the curvature using these unselected points. But with respect to all of the curvature surrounding it and that's all calculated cubicly, which effectively makes the continuity perfect. And that is really impossible to do any other way... that's possible with the influence slider in the properties box down here. As we move this, we can see we can actually reduce the magnitude of a feature.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Trying to manually move the bad vertices back, or smooth/average them, to repair a local defect on a curved surface. Per the transcript this is framed as fundamentally unreliable: 'it's really difficult to move them back into place or to smooth them out or average them or rebuild them; without the surface becoming very flat or too curved. You will always end up with bumps and errors around this area.'",
+    "reason": "A general-purpose, non-destructive repair technique for curved quad meshes that does not require reverting other work. Complements this project's existing modeling-error-recovery gap: previously the only documented recourse for a bad local region was undo or manual rebuild, both of which are lossy or slow on a long modeling session.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "On a complex derived mesh (a torus with Subdivision Surface plus an applied Simple Deform bend modifier, edited further in edit mode), a small number of vertices accidentally moved out of place -- and not noticed immediately because the camera was facing away from them -- were still fully recoverable much later, after many additional modeling changes, using the same invert-selection Curve workflow: select the mispositioned vertices, Ctrl+I to invert, press Curve. The fix was reported as complete and clean even though the surrounding curvature was itself already highly irregular (post-bend, post-subdivision), and did not require undoing any of the intervening work.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 474.24, "end_seconds": 578.4},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript: 'A mistake often made when working with the mesh is that vertices get moved by accident... the camera's facing the wrong way to see them, and you might keep working away. It happens to everyone... To put these vertices back into place is virtually impossible... Unless we use the curve tool. So again, I just select the vertices that are incorrectly positioned... press Ctrl and I to invert the selection... Now I press the curve tool and our problem's gone. It's as simple as that. All the curvature has been rebuilt correctly.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Treating an unnoticed stray-vertex mistake, discovered only after substantial further work, as something that can only be fixed by undoing back past the point of the mistake (destroying the subsequent work) or by manually rebuilding geometry in that area, which the narration says 'is never going to work properly' and 'always going to be problems in that area' without the Curve tool.",
+    "reason": "This is the strongest evidence in the transcript that the invert-selection repair technique (captured separately above as a general procedure) genuinely holds up under realistic, messy conditions -- a heavily modifier-distorted base mesh, an old and unnoticed mistake, no memory of when it happened -- rather than only working on the clean, freshly-built flat-plane example used earlier in the video.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To add a sharp, raised or sunken panel-line detail that still blends smoothly into the surrounding curved surface (the kind of crease line common on car body panels): select a loop and Ctrl+B (Bevel) it out to three loops, position the bevel where the detail should run, select two points on the new middle loop and move them up (or down) to set the ridge height, then select a few points further along the same loop toward each end and leave them selected (so they act as the fixed taper points), and press Curve. The selected taper points stay fixed while the tool cubically blends the ridge into the base panel between them.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 965.16, "end_seconds": 994.5},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the transcript: 'I'll select a loop here and press Ctrl and B to bevel it. I'm going to roll my mouse so that there are three loops... I'm going to select two points in this middle loop here and just move them up a little then again I'm going to select a few down at the other end to taper the curve off into our curved panel. Remember, that the selected points won't move at all. And press curve. And now you can see this sharper detail running across the panel.'",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "reason": "A directly reusable construction pattern for the exact category of surface detail (pressed/stamped panel lines) this video was chosen for -- a named, reproducible combination of Bevel plus the Curve tool's fixed-vs-unselected mechanic, rather than freehand vertex pushing.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Loop Tools' Curve operator has hard topology prerequisites: it will not work at all on a mesh that has been through a Boolean operation, and it will not work on n-gons, triangles, or vertices with extraordinary pole valence (anything other than 4-edge poles). It requires clean, continuous all-quad topology to compute its cubic interpolation.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 1207.56, "end_seconds": 1231.2},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript: 'it's tools like these that are one of the multitude of reasons to maintain good quad topology on your objects while you're modeling. They won't work at all on meshes that have used the Boolean operators. It won't work with n-gons or triangles or extraordinary poles. You lose access to the more powerful modeling tools in blender once you start using a Boolean.'",
+    "reason": "A hard, testable precondition for whether the Curve tool (and by extension the whole panel-beating workflow captured in this batch) is even available on a given asset. Reinforces, from a second independent source in this project's knowledge base, the standing preference for the boolean-free join technique already captured from this same channel's 'Connecting Cylinders' episode -- here the cost of a boolean is stated explicitly as losing access to Curve, not just producing bad topology in general.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "When applying Curve to a partial selection of loops (rather than the whole mesh), the surrounding, unselected-by-loop geometry can shift unexpectedly unless the operator's Boundary option is checked/verified in the redo panel -- this needs to be actively checked each time, it is not safe to assume the rest of the mesh will stay put.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 937.98, "end_seconds": 945.48},
+    "confidence": 0.4,
+    "supporting_evidence": "Per the transcript: 'When you do it like this, just selecting a few loops, you need to check the boundary box to make sure everything else around the mesh doesn't move. Because it can.'",
+    "reason": "A specific, easy-to-miss gotcha on the loop-based propagation procedure captured above -- worth flagging separately since the earlier full-surface examples in the same video did not need this check, so it would be easy to assume the operator is always boundary-safe by default.",
+    "status": "CAPTURED",
+    "rejected_alternative": null,
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For adding controlled curvature to a quad surface, use Loop Tools' Curve operator with explicit vertex/loop selection rather than Proportional Editing. Per the transcript, Proportional Editing's falloff area is always circular (not reshapeable), its size is controlled only by an imprecise scroll-wheel radius, and enlarging it pulls the mesh's boundary vertices out of position along with the interior -- whereas Curve leaves every vertex outside the selected control loops in exactly its original position.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 98.46, "end_seconds": 262.5},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the transcript: 'the shape of the area that we're moving is decided by this circle. And it's always a circle. That can't be changed and that's quite a big problem... you can see that the edges of our mesh are being pulled up. And we very rarely want this to happen or if we do we want much more control than this. Proportional editing is powerful, but it's very limited. There's a much better way to curve a surface.' Followed later by the direct contrast once Curve is demonstrated: 'all the vertices around the edge are in exactly the same place they were when they're started. Unlike the mesh we ended up with when we used the proportional editing tool. Which pulled up those edges and all the vertices with it.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Proportional Editing (default falloff shape, radius set by scroll wheel) to create surface curvature -- explicitly demonstrated first and then rejected in the same segment for uncontrolled, always-circular influence and for moving boundary vertices that should stay fixed.",
+    "reason": "This project already reaches for Proportional Editing casually for quick surface pushes; this is a direct, sourced reason to default to loop-selected Curve instead whenever a surface's boundary must stay exactly fixed while its interior is reshaped -- the exact requirement for panel-style sheet-metal surfacing on future automotive/appliance props.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Maintain one master all-quad mesh per model -- referred to in the video as the 'framework mesh' -- as the single editable source of truth. Destination-specific derivative versions (triangulated for game engines, n-gon'd or triangulated differently for VFX or 3D printing, etc.) should be generated FROM the framework mesh via triangulation/decimation, not edited directly, because staying in quads is what keeps tools like Curve (and general re-editability if a model needs to be redesigned or rebooted later) available on the master mesh.",
+    "source": {"source_id": "goJ4LVHXkC4", "start_seconds": 1267.74, "end_seconds": 1350.48},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the transcript: 'We're always looking to create something called the \"framework mesh\" for any given model... it would always be all in quads... all of these different versions will be derived from the \"framework mesh\"... it'll always be quads and it'll always be as easy to edit and change as possible and that means good quad topology... Maybe Unity or Unreal or Godot or VFX or 3D printing. They'll all have different requirements and triangulations and even n-gons, and you'll often need to make all of these versions and they'll all come from this one framework mesh -- using triangulation and decimation techniques.'",
+    "reason": "Names and generalizes a workflow discipline (a single quad master plus generated derivatives) that this project has been following implicitly (Model/low-poly collection pairs, per prior memory notes) but had not seen stated as an explicit named practice with its own rationale tied to preserving access to tools like Curve -- useful framing for how this project should structure future multi-destination asset exports.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Directly editing whichever triangulated or n-gon'd export version is on hand when a model needs a change, rather than editing the quad framework mesh and re-deriving the export -- loses access to quad-dependent tools and makes the model harder to adapt for a future redesign.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

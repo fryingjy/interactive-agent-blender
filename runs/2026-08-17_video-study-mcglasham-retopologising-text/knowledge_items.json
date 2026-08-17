@@ -1,0 +1,98 @@
+[
+  {
+    "knowledge_type": "DECISION",
+    "claim": "For converting a closed 2D outline (text, a logo, or any closed curve) into a SubD-ready mesh, hand-retopologize the outline point-by-point rather than reaching for the Remesh modifier as an automated shortcut. The video names Remesh explicitly as the common 'close but not quite good enough' approach people default to for this exact problem, and frames the entire episode as the correct alternative.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 6.88, "end_seconds": 31.36},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly (transcript): 'i want to quickly talk about text or any closed curve like a logo and how to handle that, i see a lot of people struggling with this and a lot of close but not quite good enough methods seem to be being used, the remesh modifier is often used and it's just not quite good enough, i'm going to quickly show you how to retopologize one letter and from there hopefully you'll see that you can use the method to retopologize any text.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using the Remesh modifier to auto-generate a mesh from the closed-curve/text outline.",
+    "reason": "This project has repeatedly hit ngon/T-junction messes from automated shortcut approaches (Booleans, and now Remesh) on hard-surface and curve-outline geometry. This is a second independent source naming a specific automated modifier as inadequate for a specific geometry class, reinforcing that hand-retopology is the reliable default for arbitrary outline shapes in this project's pipeline, not just text/logos.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Before converting a closed outline curve (text, a logo, or any closed 2D curve) to a mesh, lower the curve's Resolution Preview value in its object-data properties (the video uses 3, well below Blender's much higher default) so the resulting outline mesh stays light rather than dense, and set Fill to none/off so only the outline geometry exists -- no automatic interior cap. Then use Object > Convert > Mesh. The narration frames this as the general starting point for retopologizing 'any closed curve,' not a text-only step.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 104.72, "end_seconds": 132.32},
+    "confidence": 0.4,
+    "supporting_evidence": "Read directly: 'the resolution preview is just way too high for our needs, we're gonna end up with a really dense mesh if we do that and that's not really what we want, subdivision surface models should be as light as possible so for the blender font i normally use three... the next thing we want to do is turn off the fill completely we just want the outline, that's how we work with text, that's how you retopologize any closed curves.' (final phrase transcribed as 'clause curves', almost certainly 'closed curves').",
+    "status": "CAPTURED",
+    "rejected_alternative": "Converting the curve to a mesh at its default high resolution-preview with Fill enabled, which produces a dense, filled n-gon mesh that then has to be undone before real retopology can start -- effectively what the border-generation procedure below has to strip back out.",
+    "reason": "A cheap, upfront setting that keeps the eventual retopologized base mesh light, matching this project's existing 'as light as possible' base-mesh discipline for SubD models. Generalizes to any procedurally-generated closed-curve outline this project might need to retopologize (imported logos, profile curves), not just text.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When preparing a closed outline's control points for retopology, compare vertex/span counts along each pair of boundary segments that will eventually need to connect to each other, and add matching points with Ctrl+R (which the video notes also works directly on curve control points, not just mesh edges) wherever the counts don't line up, before doing any real fill work. After adding points this way, do not hand-push the points to smooth the resulting shape -- instead select the curve and run Loop Tools > Relax (in the N-panel Edit tab) exactly once to let Blender redistribute it into a more natural curve.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 145.2, "end_seconds": 257.52},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly: 'we want to make sure that there are enough edges... one two three four five six seven spans there and on the top we've got one two three four five six, we could do with another one... now because we've changed the shape of this curve we need to relax it a little but we don't want to pull this point around, it just won't work, you can't be precise enough by pulling pushing and pulling points around, we're going to use an automatic process first... we use something called relax and if we just press it once you'll see that the whole curve became more of a curve, just pressing it once will do, that's absolutely fine.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually dragging/pushing the curve's points into a smoother arrangement by eye after adding extra points -- the video states directly this can't be precise enough; Loop Tools Relax, applied once, is the accurate substitute.",
+    "reason": "A concrete, sourced case where a single automatic operator (Relax, applied exactly once) is explicitly preferred over manual point-pushing for evening out a curve/mesh boundary -- relevant to this project's own recurring friction with manual vertex placement on curved boundaries.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To convert an arbitrary closed-curve outline (already reduced to outline-only points, per the curve-prep step above) into an evenly-spaced, retopology-ready border ring: (1) select all the outline's vertices and press F to fill it with large throwaway n-gon faces -- discarded later, but a necessary intermediate step; (2) Inset all of those faces by a very small amount (I, then a tiny numeric value); (3) switch to face-select, click each remaining big inner face and X > Delete Faces, leaving only a thin border strip tracing the original outline; (4) in point-select mode, Alt-click outside (or inside, for a hole) the shape to select that boundary's full loop; (5) press G G (Edge Slide) then hold Alt so every selected vertex slides along its own edge simultaneously, watching the edge-slide factor readout in the top-left of the viewport to avoid pushing far enough that vertices start to overlap, and type a specific numeric factor to confirm (the video types -6, well short of the ~13 at which overlap began) for a precise, evenly-redistributed border. Repeat steps 4-5 separately for every closed boundary in the shape, including interior holes.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 257.52, "end_seconds": 373.68},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly: 'we're going to inset all of these faces by a really small amount... now if we go back to point select mode... alt and click anywhere outside of our letter and it will select all of the vertices which make up the outer side of this little border... i can press gg and it'll start to slide it but it can only go so far unless i press alt in which case all of the vertices travel along their edges... if you look at the edge slide number in the top left hand corner of the 3d view you can see the edge slide distance and it looks like i can go up to 13 but i'm not going to go up to 13, i'm just going to go to 6, so i'm going to type minus six while i'm still holding down the alt key and then just hit enter.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Manually dragging each border vertex into an evenly-spaced position by eye -- the same 'pushing and pulling points around' approach explicitly rejected earlier in the video for the curve-relax step. Edge Slide with a typed numeric factor gives a precise, repeatable redistribution instead.",
+    "reason": "This is the core mechanism of the whole technique and the single most reusable idea in this video: fill-then-inset-then-delete-then-edge-slide is a general recipe for turning any closed outline, however messy or organic, into a clean, evenly-spaced border loop, decoupled from the outline's original point spacing. Directly applicable to any future logo, decal, or arbitrary-silhouette asset in this project, not just text.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "Once a closed outline has a clean, evenly-spaced border (per the inset/delete/edge-slide step above), fill its interior with real quads using the F2 add-on (must be enabled in Preferences): in edge-select mode, select one border edge and press F repeatedly to extend the quad fill along a direction. Where the fill direction is ambiguous -- the video notes F 'can often do something unpredictable' at a branch point -- first select the two specific vertices that should form the next face's far edge and press F once to commit that single face and disambiguate the direction, then return to edge-select and keep pressing F to continue. Where two sides of a gap that still needs filling have an unequal vertex count, add loop cuts (Ctrl+R) on the side with fewer vertices until both sides match before filling across the gap.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 373.68, "end_seconds": 502.24},
+    "confidence": 0.4,
+    "supporting_evidence": "Read directly: 'select uh well this edge here is a good place to start and just press f and it will start filling those in... if i press f now it can often do something unpredictable, we need to tell blender which direction we want to go, so i'm going to go back to point select mode... shift select these two and then just to tell it that this is where i want my first face, f... between here i've got one two three vertices here and over this side i've only got one so i need another two edges in here so i'll press ctrl r.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using regular Fill or Grid Fill directly on a gap whose two sides have mismatched vertex counts, which is what produces the 'unpredictable' result the video warns about. Matching counts with extra loop cuts first, then using F2's directional single-face commit, avoids it.",
+    "reason": "A concrete, transferable fill-order discipline (match vertex counts before filling; disambiguate F2's direction with a pre-selected pair of vertices) for hand-building all-quad topology across any irregular gap -- a recurring need whenever this project retopologizes non-primitive, hand-authored outlines.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "On a retopologized flat outline mesh, after the base quad fill is done, add a tight pair of extra loop cuts running parallel to and just inside every boundary of the shape (the outer silhouette and every interior hole) -- these become 'control loops' that govern the softness/curvature of that edge once Subdivision Surface is applied. Mark each as a Seam purely as a personal visual convention (turns it red in the viewport) so it stays identifiable later as a curvature control loop rather than a UV seam. A single boundary can carry more than one control loop (the video adds them at multiple points along the same edge, plus corner-tightening loops). Each loop's curvature/softness can then be tuned non-destructively at any time by Alt-clicking it to select the full loop and pressing G G to slide it in or out, without needing to think about which axis the loop lies on.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 503.68, "end_seconds": 634.96},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly: 'the most important curves in this are the control curves which control the softness of the very edges... left click to confirm it then right click to leave it in the middle and then right click again and i like to choose mark seam to make it red so i know this is one of my control loops... you can never have too much control in a subdivision surface model... we have very fine control over our curvature which we can affect by alt and clicking any of the red loops and just pressing gg and sliding them in and out will change the softness of our edges, and it's always gg we don't have to worry about which axis they're on.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Relying on Subdivision Surface's default smoothing alone without dedicated inner control loops, which rounds off the outline's corners/edges uniformly instead of letting the artist tune softness per edge. Crease-based sharpening was not used here -- Seam is used purely as a visual label, and softness is tuned by loop position (G G), not a crease weight.",
+    "reason": "The same 'control loop' mental model already captured from this creator's cylinder/cone videos, applied here to a flat hand-retopologized outline -- confirms the pattern generalizes beyond primitives to any hand-built quad mesh. The Seam-as-label convention, distinct from the Crease-based seam sharpening captured from the Connecting-Cylinders video, is a new detail worth keeping separate.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "After extruding a retopologized flat outline to give it thickness and applying Subdivision Surface, check the result by enabling 'On Cage' display for the modifier in the modifier panel. A hand-built quad mesh assembled via manual F/F2 fill work can end up with a handful of vertices whose normals point the wrong way, which shows up as small pinched/pointed problem areas in the smoothed result even though the topology itself is genuinely all-quad. The video treats this as a near-certain side effect of the manual fill process, not a rare edge case. The fix is Select All (A) then Alt+N > Recalculate Normals Outside, which resolves the pinching without changing any geometry, after which every pole in the mesh reads as a clean four-spoked pole.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 632.64, "end_seconds": 664.16},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly: 'if we now go over to the modifier panel we can actually just select the on cage and we can see exactly how our mesh is going, now i have these funny little pointed areas and you may have some of these too, in fact you probably will, so the next thing you have to do is press a to select everything and then press alt n and we want to recalculate the normals outside and that just fixes all of those problems, now everything is a perfectly smooth curve, all of the edges are four spoked poles.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Assuming the pinched/pointed areas are a topology defect (an actual bad pole) and re-editing the mesh's geometry to fix them, when the video frames this as an expected side effect of manual F/F2 fill work ('you probably will' have some) that a normals recalculation resolves without touching geometry.",
+    "reason": "A specific, named failure mode of exactly the hand-fill workflow captured above, with its check (On Cage display) and fix (Recalculate Normals Outside) -- worth keeping paired with those items so future hand-retopology work in this project checks for and fixes this before mistaking a shading artifact for a topology problem.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To verify what a Subdivision Surface modifier is actually treating as its base ('cage') mesh, independent of the smoothed on-screen result: switch the object's viewport display to Wireframe (object properties > Viewport Display), then in the Subdivision Surface modifier turn off 'Optimal Display', then step the modifier's viewport subdivision Level through 0, 1, 2, 3. Level 0 shows the actual unmodified base mesh; each step up shows progressively higher resolution, non-destructively, without altering the underlying geometry.",
+    "source": {"source_id": "TC-qyGzRyeQ", "start_seconds": 755.44, "end_seconds": 787.84},
+    "confidence": 0.4,
+    "supporting_evidence": "Read directly: 'by going to this little icon here and going to viewport display and wireframe, and then if we go back to our modifiers and change the uh optimal display of subdivision so that it's turned off and we'll see the actual mesh that it's considering, and that depends completely on our subdivision surface modifier level, so if we change it down to zero that's the actual mesh, change it to one and that's a little higher resolution, two, three, and it's completely non-destructive.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Judging topology quality only from the final smoothed/shaded viewport result. Optimal Display is on by default and actually hides the true base-mesh wireframe, which can make bad topology look fine until it's inspected directly at level 0.",
+    "reason": "A general-purpose, source-cited inspection technique for confirming a SubD base mesh is genuinely clean before trusting it -- useful whenever this project needs to sanity-check hand-built or agent-built quad topology independent of the smoothed render.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]

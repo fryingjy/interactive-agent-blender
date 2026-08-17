@@ -1,0 +1,86 @@
+[
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Five-spoked poles are not inherently bad -- they are essential to describe complex shapes. The actual problem is location: a pole introduces a new loop-cut direction that cannot be predicted or controlled the way loop cuts on a clean quad grid can (hovering near a pole makes a loop-cut preview suddenly jump to a completely different path around the mesh), and this unpredictable pull is especially damaging on an area of curvature or a corner. The practical rule that follows is to keep five-spoked poles on the flattest area of the mesh you can manage, not to avoid them altogether.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 8, "end_seconds": 105},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the narration (transcript): 'five-spoked poles are not bad, they're essential to describe complex shapes, the problem is a lot of modelling tasks leave them in the wrong place where they can cause a lot of trouble.' Demonstrated on a plane: joining two points to force a 5-pole, then subdividing and loop-cutting -- 'if i hover over this newly created edge the loop that it wants to create goes off around in a completely different direction... there's nothing we can do about this, this is how topology works... so we do our best to keep these five spoked poles on as flattened area of the mesh as we can find.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Treating any five-spoked pole as a defect to be eliminated on sight, rather than recognizing that poles are unavoidable in complex topology and the real lever is controlling where they end up.",
+    "reason": "Reframes this project's existing 'inset before extrude' rule: the goal isn't pole-avoidance, it's pole-placement. Useful context for judging any future mesh-quality check that flags poles -- a pole on a flat area is not automatically a problem worth fixing.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "FAILURE",
+    "claim": "Extruding a face directly (without insetting first), even on an already-subdivided flat plane, plants a five-spoked pole exactly at the base of the extrusion -- the area of maximum distortion, which is the worst possible location for one. Because there is no local loop bounding the new feature, controlling the softness of that connection afterward requires adding loop cuts that run all the way across the entire surrounding mesh (not just around the new feature), and those loops affect every other face in their path, not just the intended connection.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 137, "end_seconds": 225},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the narration (transcript): 'i'll press e to extrude and then extrude up this single face... we've already made a mistake... we've created these five spoked poles and they live on the area of maximum distortion within our geometry, it's the worst place for them... if we want to control the softness of the curvature into the shape we have to add loops which have flung across the entire mesh affecting the shape of anything in their way... they all need to be adjusted individually to control what should be a single aspect of curvature.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Extruding directly out of a flat/mostly-flat face and only discovering the cost later, when trying to add a control loop and finding there is no local loop to select -- forcing mesh-wide tightening loops as a workaround instead of preventing the problem at extrude time.",
+    "reason": "Gives the concrete failure mode behind this project's existing 'always inset before extrude' rule -- not an abstract preference but a specific, demonstrated consequence (uncontrollable, mesh-wide tightening loops) that directly explains why the rule exists and what breaks if it's skipped.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When insetting a face before extruding it (to avoid the failure above), press O while the Inset Faces operator is still active to flip it into Outset mode. Outset keeps the selected face at its original footprint size (useful when matching an existing reference extrusion of the same size) while relocating the new border ring -- and whatever pole it introduces -- onto the surrounding flat mesh rather than at the curvature transition. The new border's corner vertices come out as clean, non-pole points, so the extrusion above them flows as a regular quad grid, and a control loop can then be added directly on that new border to tune the connection's curvature in isolation, without affecting the rest of the mesh.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 229, "end_seconds": 305},
+    "confidence": 0.55,
+    "supporting_evidence": "Per the narration (transcript): 'before i extrude it i'm going to press i to inset it, now because this makes our face a little smaller than the other one i'm going to press o on the keyboard to change it to an outset... in our case we're using it to keep our extrusion exactly the same size as the other one and at the same time we're deciding where the curvature up into the extrusion will start and we push the five-spoked pole onto the flattest part of our mesh... i can add a control loop in this new border which directly controls the curvature of the connection... it doesn't affect anything else anywhere on the mesh, we can't do that on the other one, there are no loops to select.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using plain Inset (without the Outset toggle) when the extrusion needs to match another feature's exact footprint size, which would shrink the extrusion relative to the reference and leave the modeler manually resizing it afterward instead of getting the correct size for free as a side effect of Outset.",
+    "reason": "Adds a specific, previously-uncaptured mechanic (the O/outset toggle inside the live Inset operator) to this project's existing inset-then-extrude principle -- a concrete way to both preserve a matching footprint size and steer pole placement in one operation, not just the general 'inset first' rule already on file.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "VISUAL_CUE",
+    "claim": "Loops added to tighten/control curvature that had to be run across the whole mesh (because the underlying extrusion was made without insetting first, per the failure above) look acceptable on a static mesh but become visibly wrong once the mesh actually deforms: under cloth or soft-body simulation they show up as hard ridges tracing the loops' paths, because those loops are not a local, isolated control -- they are rigid lines constraining the whole surface's ability to flex. The same mesh with no inset-driven tightening loops deforms smoothly with no ridges under identical simulation settings.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 742, "end_seconds": 786},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the narration (transcript), watching the cloth simulation on the non-inset cube: 'wherever we have the tightening loops we can now see them as ridges around our shape, and that's going to be a real problem in soft body simulation or any deformation of this kind of mesh, they really are quite obvious... those edges are changing the actual structure of our shape and that's what we need to avoid, certainly in soft body simulation.' Confirmed by lowering the bending value further (0.02) and re-simulating: 'you can clearly see all of these ridges all around our mesh, it's just not good enough.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Judging topology quality only in its static, undeformed pose -- a mesh can look fine at rest and still contain constraints (mesh-wide tightening loops) that only reveal themselves as visible defects once the geometry is deformed, animated, or simulated.",
+    "reason": "A genuinely new angle for this project: topology correctness isn't only about static shading/poles, it also determines how a mesh behaves under any future deformation (rigging, simulation, even simple sculpting/lattice work). Directly extends the inset-before-extrude rule with a reason that goes beyond appearance.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Inset-before-extrude (with Outset to preserve footprint size, per the procedure above) is not just cleaner topology -- it measurably reduces vertex count and simulation cost. In the video's paired-cube comparison (same overall spike shape, same cloth settings, same material), the version built by insetting each face before extruding had 104 vertices, while the otherwise-identical version built by extruding directly had 176 vertices -- described as 'about 70 percent heavier,' with a correspondingly slower cloth simulation.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 838, "end_seconds": 899},
+    "confidence": 0.55,
+    "supporting_evidence": "Per the narration (transcript): 'if i tab into edit mode i can look down here and see that it has 104 vertices, whereas if we check on the other object... we'll see that has 176 vertices, it's about 70 percent heavier and that means it will be about 70 slower in the cloth simulation.' Followed by playback: 'with exactly the same properties this one distorts perfectly... there are no ridges and everything looks very smooth... that's not true in any way of this shape, we can tell all of this it's rubbish.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Treating inset-before-extrude as purely a topology/shading best practice with no measurable cost -- the video gives an explicit, sourced vertex-count and simulation-speed delta between the two approaches on an identical shape, which is a concrete argument for the habit beyond aesthetics.",
+    "reason": "Gives this project a real, cited number to point to when justifying the inset-before-extrude habit on performance grounds, not just topology-quality grounds -- relevant if the project ever needs to reason about poly budgets or simulation/bake cost for a modeled asset.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "The Subdivision Surface modifier should always be the last modifier in the stack. For cloth/soft-body work this is stated as a hard requirement -- placed before Cloth, the simulation will not produce good results -- and the same ordering is also required for Blender's GPU-accelerated subdivision (Blender 3.1+) to activate at all, and for Array-modifier-generated duplicates used as simulation objects.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 301, "end_seconds": 310},
+    "confidence": 0.5,
+    "supporting_evidence": "Per the narration (transcript): 'before we look at any of these properties we need to go to the modifiers panel... and make sure the subdivision surface modifier is moved after the cloth, this is really important and you won't get good soft body results without doing this, the subdivision surface modifier should always be the very last thing in any stack.' Restated later for GPU subdivision ('for it to work with any object the subdivision surface modifier has to be the very last modifier on a stack, which it always should be anyway') and again when adding an Array modifier ('very importantly i need to move the array modifier above the cloth modifier').",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving Subdivision Surface wherever it happened to land in the modifier stack (e.g. added before a later Cloth or Array modifier), which the video states breaks soft-body results and silently disables GPU subdivision acceleration.",
+    "reason": "A general modifier-ordering rule stated as unconditional ('always... in any stack'), not softbody-specific -- worth applying as a default check on any future modifier stack this project builds, independent of whether physics is involved.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "DECISION",
+    "claim": "To get soft-body-style deformation (an object squashing/flexing realistically on collision), use Blender's Cloth physics system rather than its dedicated Soft Body system. The two main levers for shaping the effect are the Cloth modifier's Bending stiffness and Bending damping values under Shape/Stiffness -- Structural and Shear are pushed to their maximum (10000 / 50 damping) to remove them from consideration, leaving Bending as the only real shape control.",
+    "source": {"source_id": "K5VJYlUV23I", "start_seconds": 491, "end_seconds": 513},
+    "confidence": 0.45,
+    "supporting_evidence": "Per the narration (transcript): 'let's quickly set up the simulation which is normally done using the cloth system not the soft body system, cloth is better than soft body in lots of ways, it's more stable, it's faster, it's interruptable, and i would always use cloth for this kind of simulation, softbody most certainly does have its uses and i'll talk about those in later tutorials, but cloth simulates soft body significantly faster than the soft body system itself.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using Blender's Soft Body physics system, which is the semantically obvious choice for a 'soft body' effect but is described in the video as slower, less stable, and not interruptable compared to using Cloth tuned toward zero structural/shear stiffness instead.",
+    "reason": "This project has not previously touched soft-body/cloth simulation at all; recording the tool choice (and why) up front avoids re-deriving it if soft-body-style deformation is ever needed for a future asset (e.g. previewing how a part would flex, or a non-rigid prop).",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
