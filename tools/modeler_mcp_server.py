@@ -101,6 +101,12 @@ def create_profile_loft(name: str, front_profile: list[list[float]], rear_profil
 
 
 @mcp.tool()
+def create_quad_shell_grid(name: str, front_grid: list[list[list[float]]], rear_grid: list[list[list[float]]], active_cells: list[list[bool]]) -> dict:
+    """Create one closed, connected, all-quad shell from matching authored front/rear point grids. Each true active_cells entry creates a quad patch; false cells create integrated openings whose boundary is bridged through the shell. This is for connected manufactured cages with U openings, vents, or apertures—not separate primitive assemblies. Keep grid coordinates authored from the reference rather than copied source geometry."""
+    return _call("create_quad_shell_grid", name=name, front_grid=front_grid, rear_grid=rear_grid, active_cells=active_cells)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

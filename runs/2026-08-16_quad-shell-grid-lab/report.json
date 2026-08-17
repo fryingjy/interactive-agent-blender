@@ -1,0 +1,32 @@
+{
+  "record_type": "QUAD_SHELL_GRID_RUNTIME_LAB",
+  "claim_boundary": "Proves generic all-quad connected-shell construction with an opening; it does not prove visual reference fidelity.",
+  "result": {
+    "name": "Quad_Opening_Shell",
+    "type": "MESH",
+    "grid_rows": 4,
+    "grid_columns": 4,
+    "active_cell_count": 8,
+    "vertices": 32,
+    "edges": 60,
+    "faces": 30,
+    "construction_boundary": "All base faces are quads. Grid positions and active cells are authored reference decisions, not imported source topology."
+  },
+  "mesh_health": {
+    "vertices": 32,
+    "edges": 60,
+    "faces": 30,
+    "non_manifold_edges": 0,
+    "ngons": 0,
+    "loose_verts": 0,
+    "degenerate_faces": 0
+  },
+  "checks": {
+    "single_mesh": true,
+    "manifold": true,
+    "all_base_faces_quads": true,
+    "opening_preserved": true,
+    "persistent_ids": true
+  },
+  "pass": true
+}

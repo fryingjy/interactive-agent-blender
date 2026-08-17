@@ -144,6 +144,90 @@ def loft_closed_profiles(name, front_profile, rear_profile, *, depth, collection
     return obj
 
 
+def quad_shell_from_grids(name, front_grid, rear_grid, active_cells, *, collection=None):
+    """Build one closed all-quad shell from two authored control grids.
+
+    ``front_grid`` and ``rear_grid`` are matching row-major 3D point grids;
+    ``active_cells`` says which grid cells are material.  Omitted cells become
+    genuine openings and their boundary is bridged between the grids, so a
+    U-opening, vent, or handle aperture remains part of one manifold cage.
+    This is a typed, general representation of a modeler's manual quad layout,
+    not an asset-specific generator and not a source-mesh import path.
+    """
+    def validate_grid(label, grid):
+        if not isinstance(grid, (list, tuple)) or len(grid) < 2:
+            raise ValueError(f"{label} grid needs at least two rows")
+        width = len(grid[0]) if isinstance(grid[0], (list, tuple)) else 0
+        if width < 2 or any(not isinstance(row, (list, tuple)) or len(row) != width for row in grid):
+            raise ValueError(f"{label} grid rows must have one shared width of at least two")
+        normalized = []
+        for row in grid:
+            normalized_row = []
+            for point in row:
+                if not isinstance(point, (list, tuple)) or len(point) != 3:
+                    raise ValueError(f"{label} grid points must be [x, y, z] values")
+                normalized_row.append(tuple(float(value) for value in point))
+            normalized.append(normalized_row)
+        return normalized
+
+    front = validate_grid("front", front_grid)
+    rear = validate_grid("rear", rear_grid)
+    rows, columns = len(front), len(front[0])
+    if len(rear) != rows or len(rear[0]) != columns:
+        raise ValueError("front and rear quad grids must have matching row and column counts")
+    if (
+        not isinstance(active_cells, (list, tuple))
+        or len(active_cells) != rows - 1
+        or any(not isinstance(row, (list, tuple)) or len(row) != columns - 1 for row in active_cells)
+    ):
+        raise ValueError("active_cells must have one boolean row/column less than the point grids")
+    cells = [[bool(value) for value in row] for row in active_cells]
+    if not any(value for row in cells for value in row):
+        raise ValueError("quad shell needs at least one active cell")
+
+    def node(row, column):
+        return row * columns + column
+
+    used_nodes = set()
+    for row in range(rows - 1):
+        for column in range(columns - 1):
+            if cells[row][column]:
+                used_nodes.update((node(row, column), node(row, column + 1), node(row + 1, column + 1), node(row + 1, column)))
+    ordered_nodes = sorted(used_nodes)
+    front_index = {key: index for index, key in enumerate(ordered_nodes)}
+    rear_index = {key: index + len(ordered_nodes) for index, key in enumerate(ordered_nodes)}
+    vertices = []
+    for key in ordered_nodes:
+        row, column = divmod(key, columns)
+        vertices.append(front[row][column])
+    for key in ordered_nodes:
+        row, column = divmod(key, columns)
+        vertices.append(rear[row][column])
+
+    faces = []
+    edge_counts = {}
+    for row in range(rows - 1):
+        for column in range(columns - 1):
+            if not cells[row][column]:
+                continue
+            ring = (node(row, column), node(row, column + 1), node(row + 1, column + 1), node(row + 1, column))
+            faces.append(tuple(front_index[key] for key in ring))
+            faces.append(tuple(rear_index[key] for key in reversed(ring)))
+            for first, second in zip(ring, ring[1:] + ring[:1]):
+                edge = tuple(sorted((first, second)))
+                edge_counts[edge] = edge_counts.get(edge, 0) + 1
+    for first, second in sorted(edge for edge, count in edge_counts.items() if count == 1):
+        faces.append((front_index[first], front_index[second], rear_index[second], rear_index[first]))
+
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.uv_layers.new(name="QuadShellUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
 def capped_cylinder(name, *, radius, z_bottom, z_top, segments=64, collection=None):
     """Create a manifold capped cylinder from explicit vertices and triangles."""
     if radius <= 0 or z_top <= z_bottom:

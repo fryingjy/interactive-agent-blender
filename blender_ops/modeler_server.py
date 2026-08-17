@@ -85,6 +85,7 @@ CAPABILITIES = [
     "profile_revolution_geometry",
     "profile_extrusion_geometry",
     "profile_loft_geometry",
+    "quad_shell_grid_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -534,6 +535,24 @@ class ModelerServer:
             "faces": len(obj.data.polygons),
             "cap_topology": "NGON" if len(front) > 4 else "QUAD_OR_TRIANGLE",
             "construction_boundary": "Loft walls are connected quads; n-gon caps require local quad layout before SubD surface work.",
+        }
+
+    def cmd_create_quad_shell_grid(self, name, front_grid, rear_grid, active_cells):
+        """Create one manifold all-quad shell from matching authored grids."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_shell_from_grids(name, front_grid, rear_grid, active_cells)
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "grid_rows": len(front_grid),
+            "grid_columns": len(front_grid[0]) if front_grid else 0,
+            "active_cell_count": sum(bool(cell) for row in active_cells for cell in row),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "construction_boundary": "All base faces are quads. Grid positions and active cells are authored reference decisions, not imported source topology.",
         }
 
     def cmd_create_reference_image(

@@ -53,3 +53,10 @@ def test_connected_profile_loft_is_valid_authored_starting_cage():
         [{"command": "create_profile_loft", "params": {"name": "Shell"}}], ["Shell"]
     )
     assert result["pass"] is True
+
+
+def test_connected_quad_shell_grid_is_valid_authored_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_quad_shell_grid", "params": {"name": "Shell"}}], ["Shell"]
+    )
+    assert result["pass"] is True
