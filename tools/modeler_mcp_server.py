@@ -95,6 +95,12 @@ def create_profile_extrusion(name: str, profile: list[list[float]], depth: float
 
 
 @mcp.tool()
+def create_profile_loft(name: str, front_profile: list[list[float]], rear_profile: list[list[float]], depth: float) -> dict:
+    """Create one connected mesh by bridging authored front and rear X/Z outline loops along Y. Use this when a continuous manufactured shell changes from front to rear (taper, A-frame, rollover) and must not be assembled from separate box/cylinder primitives. Both loops must have matching point counts/order. Bridge walls are quads; n-gon caps need deliberate local quad topology before SubD work."""
+    return _call("create_profile_loft", name=name, front_profile=front_profile, rear_profile=rear_profile, depth=depth)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

@@ -84,6 +84,7 @@ CAPABILITIES = [
     "explicit_sharp_edge_intent",
     "profile_revolution_geometry",
     "profile_extrusion_geometry",
+    "profile_loft_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -512,6 +513,27 @@ class ModelerServer:
             "faces": len(obj.data.polygons),
             "cap_topology": "NGON" if len(clean_profile) > 4 else "QUAD_OR_TRIANGLE",
             "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work.",
+        }
+
+    def cmd_create_profile_loft(self, name, front_profile, rear_profile, depth):
+        """Create one connected cage between authored front and rear outlines."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        front = [tuple(float(value) for value in point) for point in front_profile]
+        rear = [tuple(float(value) for value in point) for point in rear_profile]
+        obj = profile_mesh.loft_closed_profiles(name, front, rear, depth=float(depth))
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "front_profile_point_count": len(front),
+            "rear_profile_point_count": len(rear),
+            "depth": float(depth),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "cap_topology": "NGON" if len(front) > 4 else "QUAD_OR_TRIANGLE",
+            "construction_boundary": "Loft walls are connected quads; n-gon caps require local quad layout before SubD surface work.",
         }
 
     def cmd_create_reference_image(

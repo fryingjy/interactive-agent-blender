@@ -1,0 +1,32 @@
+[
+  {
+    "label": "author_front_rear_shell_loops_with_integrated_u_opening",
+    "command": "create_profile_loft",
+    "params": {
+      "name": "KUPONG_A_FRAME_SHELL_REBUILD_SOURCE",
+      "front_profile": [[-1.375, -1.125], [-0.62, -1.125], [-0.62, -0.36], [0.62, -0.36], [0.62, -1.125], [1.375, -1.125], [1.36, 0.55], [1.20, 1.125], [-1.20, 1.125], [-1.36, 0.55]],
+      "rear_profile": [[-1.34, -1.00], [-0.55, -1.00], [-0.55, -0.34], [0.55, -0.34], [0.55, -1.00], [1.34, -1.00], [1.28, 0.35], [1.08, 0.88], [-1.08, 0.88], [-1.28, 0.35]],
+      "depth": 1.5
+    }
+  },
+  {
+    "label": "replace_wrong_block_with_recoverable_connected_loft",
+    "transaction": {
+      "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+      "action_type": "rebuild_primary_cage_after_visual_rejection",
+      "operation": "replace_mesh_from_object",
+      "params": {"source_name": "KUPONG_A_FRAME_SHELL_REBUILD_SOURCE", "copy_modifiers": false, "copy_transform": false},
+      "accept": true
+    }
+  },
+  {
+    "label": "archive_rebuild_source_after_transfer",
+    "transaction": {
+      "name": "KUPONG_A_FRAME_SHELL_REBUILD_SOURCE",
+      "action_type": "archive_transferred_rebuild_source",
+      "operation": "archive_object",
+      "params": {"collection_name": "REJECTED_COMPONENTS"},
+      "accept": true
+    }
+  }
+]

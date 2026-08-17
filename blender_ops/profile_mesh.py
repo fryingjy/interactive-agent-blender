@@ -102,6 +102,48 @@ def extrude_closed_profile(name, profile, *, depth, collection=None):
     return obj
 
 
+def loft_closed_profiles(name, front_profile, rear_profile, *, depth, collection=None):
+    """Create a connected shell between two authored X/Z outline loops.
+
+    The two loops have matching vertex order and are placed at opposite Y
+    positions.  This is the generic Edit Mode equivalent of creating a second
+    profile and bridging corresponding boundary loops; it supports an A-frame,
+    taper, or changing front/rear silhouette without fragmenting the asset into
+    object primitives.  It does not choose either profile for the caller.
+
+    The bridge wall is all quads.  The front/rear caps retain the same explicit
+    n-gon caveat as :func:`extrude_closed_profile` and must be locally resolved
+    before a SubD surface workflow where those caps matter.
+    """
+    if not isinstance(depth, (int, float)) or isinstance(depth, bool) or float(depth) <= 0:
+        raise ValueError("profile loft depth must be positive")
+    if len(front_profile) < 3 or len(front_profile) != len(rear_profile):
+        raise ValueError("profile loft needs equal-length front and rear profiles with at least three points")
+    profiles = []
+    for label, raw_profile in (("front", front_profile), ("rear", rear_profile)):
+        if any(not isinstance(point, (list, tuple)) or len(point) != 2 for point in raw_profile):
+            raise ValueError(f"{label} loft profile points must be [x, z] pairs")
+        profile = [(float(point[0]), float(point[1])) for point in raw_profile]
+        if len(set(profile)) != len(profile):
+            raise ValueError(f"{label} loft profile points must be unique")
+        profiles.append(profile)
+    front, rear = profiles
+    count = len(front)
+    half_depth = float(depth) / 2.0
+    vertices = [(x, -half_depth, z) for x, z in front] + [(x, half_depth, z) for x, z in rear]
+    faces = [tuple(reversed(range(count))), tuple(range(count, count * 2))]
+    for index in range(count):
+        next_index = (index + 1) % count
+        faces.append((index, next_index, count + next_index, count + index))
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.uv_layers.new(name="ProfileLoftUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
 def capped_cylinder(name, *, radius, z_bottom, z_top, segments=64, collection=None):
     """Create a manifold capped cylinder from explicit vertices and triangles."""
     if radius <= 0 or z_top <= z_bottom:

@@ -1,0 +1,77 @@
+{
+  "record_type": "PROFILE_LOFT_RUNTIME_LAB",
+  "claim_boundary": "Proves generic connected profile-loft construction only; it does not establish an asset's reference likeness or final topology quality.",
+  "front_profile": [
+    [
+      -1.4,
+      -1.0
+    ],
+    [
+      1.4,
+      -1.0
+    ],
+    [
+      1.2,
+      0.4
+    ],
+    [
+      0.7,
+      1.0
+    ],
+    [
+      -1.1,
+      1.0
+    ]
+  ],
+  "rear_profile": [
+    [
+      -1.25,
+      -1.0
+    ],
+    [
+      1.25,
+      -1.0
+    ],
+    [
+      1.05,
+      0.15
+    ],
+    [
+      0.5,
+      0.72
+    ],
+    [
+      -0.9,
+      0.72
+    ]
+  ],
+  "result": {
+    "name": "Measured_Profile_Loft",
+    "type": "MESH",
+    "front_profile_point_count": 5,
+    "rear_profile_point_count": 5,
+    "depth": 0.8,
+    "vertices": 10,
+    "edges": 15,
+    "faces": 7,
+    "cap_topology": "NGON",
+    "construction_boundary": "Loft walls are connected quads; n-gon caps require local quad layout before SubD surface work."
+  },
+  "mesh_health": {
+    "vertices": 10,
+    "edges": 15,
+    "faces": 7,
+    "non_manifold_edges": 0,
+    "ngons": 2,
+    "loose_verts": 0,
+    "degenerate_faces": 0
+  },
+  "checks": {
+    "single_mesh": true,
+    "manifold": true,
+    "all_bridge_walls_quad": true,
+    "cap_ngons_explicit": true,
+    "persistent_ids": true
+  },
+  "pass": true
+}

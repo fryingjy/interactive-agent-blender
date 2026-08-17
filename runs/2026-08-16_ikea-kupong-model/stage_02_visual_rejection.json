@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_CAGE_VISUAL_REVIEW",
+  "target_id": "ikea_kupong_90621811",
+  "candidate": "ikea_kupong_stage_02_u_opening_loft.blend",
+  "decision": "REJECT_AND_REBUILD_PRIMARY_CAGE",
+  "declared_views": ["front_oblique", "front_orthographic", "side_orthographic", "isometric"],
+  "visual_mismatch_ledger": [
+    {
+      "view_id": "front_oblique",
+      "status": "repair",
+      "salience": "high",
+      "observation": "The U opening is now structurally present, but the front remains a flat polygonal plate and lacks the reference's rounded plastic rollover and display region."
+    },
+    {
+      "view_id": "front_orthographic",
+      "status": "repair",
+      "salience": "high",
+      "observation": "The feet/opening hierarchy is present but corner transitions are angular and the shell has not yet earned any surface modifier."
+    },
+    {
+      "view_id": "side_orthographic",
+      "status": "repair",
+      "salience": "high",
+      "observation": "The cage reads as a planar tapered slab; it fails to describe the A-frame's folded continuous side/rear support and depth transition."
+    },
+    {
+      "view_id": "isometric",
+      "status": "repair",
+      "salience": "high",
+      "observation": "The continuous one-piece intent is visible, but the broad caps and simple loft reveal an inadequate 3D quad layout rather than the reference's manufactured shell."
+    }
+  ],
+  "technical_observations": {
+    "connected": true,
+    "manifold": true,
+    "visible_objects": ["KUPONG_A_FRAME_SHELL_PRIMARY"],
+    "base_ngon_caps": 2,
+    "surface_modifiers_added": false
+  },
+  "what_was_retained": [
+    "A general front-to-rear profile loft creates one connected, manifold shell and is preferable to primitive assembly for a changing outer silhouette.",
+    "An integrated concave U profile can establish the foot opening without separate feet objects.",
+    "A front/rear loft alone cannot replace the transverse edge-loop layout required to control the side-fold and rounded plastic rollover of this target."
+  ],
+  "required_next_rebuild": "Add a generic quad-cage construction path that supports deliberate transverse loops and a U opening in the same continuous shell. Rebuild from that topology before display, bevel, crease, SubD, material, or high/low work.",
+  "disposition_boundary": "This is rejected primary-cage evidence, not a visual pass, production asset, or proof of improved reference-modeling capability."
+}

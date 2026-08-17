@@ -1,0 +1,11 @@
+[
+  {
+    "label": "create_measured_continuous_primary_cage",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "KUPONG_A_FRAME_SHELL_PRIMARY",
+      "profile": [[-1.375, -1.125], [1.375, -1.125], [1.36, 0.55], [1.20, 1.125], [-1.20, 1.125], [-1.36, 0.55]],
+      "depth": 1.5
+    }
+  }
+]
