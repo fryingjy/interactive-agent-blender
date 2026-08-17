@@ -15,7 +15,10 @@ STAGE_REQUIREMENTS = {
     "PRIMARY_BLOCKOUT": (
         "dimensions_checked", "primary_components_present", "component_coverage",
     ),
-    "PROPORTION_SILHOUETTE": ("view_count", "worst_view_iou", "multiview_regression_pass"),
+    "PROPORTION_SILHOUETTE": (
+        "view_count", "worst_view_iou", "multiview_regression_pass",
+        "declared_view_ids", "constraint_report", "visual_mismatch_ledger",
+    ),
     "SECONDARY_FORMS": ("secondary_components_present", "placement_checked"),
     "TOPOLOGY_SURFACE": ("technical_clean", "topology_reviewed", "evaluated_surface_reviewed"),
     "TERTIARY_DETAIL": ("upstream_gates_pass", "detail_scope_reviewed"),
@@ -83,6 +86,64 @@ def _component_coverage_is_valid(value: Any) -> bool:
     )
 
 
+def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
+    """Validate the review records that numbers alone cannot replace.
+
+    This deliberately checks provenance and completeness rather than trying to
+    turn a subjective review into an automated resemblance score.  Every
+    declared view needs an explicit assessment, and an unresolved high-salience
+    mismatch must keep the asset at the proportion stage.
+    """
+    failures: list[str] = []
+    view_ids = evidence["declared_view_ids"]
+    if (
+        not isinstance(view_ids, list)
+        or len(view_ids) < 2
+        or any(not isinstance(view_id, str) or not view_id.strip() for view_id in view_ids)
+        or len(set(view_ids)) != len(view_ids)
+    ):
+        failures.append("declared_view_ids must contain at least two unique non-empty view identifiers")
+        return failures
+
+    report = evidence["constraint_report"]
+    if not isinstance(report, dict) or report.get("record_type") != "LOCAL_REFERENCE_CONSTRAINT_EVALUATION":
+        failures.append("constraint_report must be a local reference-constraint evaluation")
+    elif report.get("pass") is not True or report.get("blocking_constraint_ids") != []:
+        failures.append("high-salience reference constraints remain unresolved")
+
+    ledger = evidence["visual_mismatch_ledger"]
+    if not isinstance(ledger, list) or not ledger:
+        failures.append("visual_mismatch_ledger must record a review for every declared view")
+        return failures
+    reviewed_views: set[str] = set()
+    allowed_statuses = {"accepted", "repair", "unresolved"}
+    allowed_salience = {"high", "medium", "low"}
+    for entry in ledger:
+        if not isinstance(entry, dict):
+            failures.append("visual_mismatch_ledger contains a non-object entry")
+            continue
+        view_id = entry.get("view_id")
+        status = entry.get("status")
+        salience = entry.get("salience", "low")
+        observation = entry.get("observation")
+        if view_id not in view_ids:
+            failures.append("visual_mismatch_ledger references an undeclared view")
+        else:
+            reviewed_views.add(view_id)
+        if status not in allowed_statuses:
+            failures.append("visual_mismatch_ledger status must be accepted, repair, or unresolved")
+        if salience not in allowed_salience:
+            failures.append("visual_mismatch_ledger salience must be high, medium, or low")
+        if not isinstance(observation, str) or not observation.strip():
+            failures.append("visual_mismatch_ledger entries require an observation")
+        if salience == "high" and status != "accepted":
+            failures.append("an unresolved high-salience visual mismatch blocks proportion advance")
+    missing_views = sorted(set(view_ids) - reviewed_views)
+    if missing_views:
+        failures.append("visual_mismatch_ledger is missing declared views: " + ", ".join(missing_views))
+    return failures
+
+
 def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float = 0.9) -> dict:
     if stage not in STAGE_REQUIREMENTS:
         raise ValueError(f"unknown modeling stage: {stage}")
@@ -116,6 +177,7 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             elif worst_view_iou < min_iou:
                 failures.append(f"worst-view IoU below {min_iou}")
             if not evidence["multiview_regression_pass"]: failures.append("a relevant view regressed")
+            failures.extend(_visual_evidence_failures(evidence))
         else:
             for key in STAGE_REQUIREMENTS[stage]:
                 if isinstance(evidence[key], bool) and not evidence[key]:

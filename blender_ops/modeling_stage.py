@@ -56,7 +56,7 @@ _KEY_LOG = "modeling_stage_log"
 GATE_CRITERIA = {
     "REFERENCE_ANALYSIS": "same-target structured reference audit, required views, critical-property authority, conflicts, component decomposition, measured proportions, and uncertainty recorded before geometry",
     "PRIMARY_BLOCKOUT": "major proportions plausible; primary silhouette sufficiently close; component layout stable; structured one-to-one component coverage recorded",
-    "PROPORTION_SILHOUETTE": "measured silhouette comparison (e.g. render_silhouette + fill-ratio or better) against the reference, not just visual impression",
+    "PROPORTION_SILHOUETTE": "measured multi-view silhouette comparison plus a declared-view mismatch ledger and passing high-salience local constraints; metrics prioritize inspection but never replace the written visual review",
     "SECONDARY_FORMS": "distinct sub-components/features present and correctly placed, still without fine surface detail",
     "TOPOLOGY_SURFACE": "technical validity acceptable (verify_mesh.py clean); surface quality acceptable (evaluated_probe signals); topology contextually appropriate",
     "TERTIARY_DETAIL": "fine detail added only after the above are stable",
