@@ -1,4 +1,0 @@
-[
-  {"label":"select_rear_crest_vertices","command":"select_by_ids","params":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","vertex_ids":[50,51,52,53,54]}},
-  {"label":"raise_rear_crest_into_reference_band","transaction":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","action_type":"level_a_frame_crest_using_official_side_reference","operation":"move_selection","params":{"delta":[0.0,0.0,0.24]},"accept":true}}
-]

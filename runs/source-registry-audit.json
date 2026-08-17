@@ -2,13 +2,70 @@
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
   "record_count": 89,
-  "missing_artifact_count": 62,
-  "unclassified_missing_artifact_count": 0,
+  "missing_artifact_count": 70,
+  "unclassified_missing_artifact_count": 8,
   "classified_missing_artifact_count": 62,
   "explicitly_non_retained_count": 13,
   "non_path_reference_count": 51,
   "locally_reproducible": false,
-  "missing_artifacts": [],
+  "missing_artifacts": [
+    {
+      "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_scotch-c38-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_scotch-c38-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_westclox-70010-model/",
+      "exists": false,
+      "kind": "missing"
+    },
+    {
+      "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_westclox-70010-model/",
+      "exists": false,
+      "kind": "missing"
+    }
+  ],
   "classified_missing_artifacts": [
     {
       "source_id": "blender-manual-subsurf",

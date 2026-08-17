@@ -38,8 +38,8 @@
       "id": "4",
       "title": "Professional modeling judgment",
       "status": "PARTIAL",
-      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "knowledge/skills/curved-bevel-normal-policy.json", "runs/2026-08-16_curved-bevel-normal-policy/", "knowledge/skills/explicit-semantic-bevel-edge-intent.json", "runs/2026-08-16_double-curvature-bevel-subd/", "knowledge/skills/connect-vertex-path-subd-safe-quads.json", "runs/2026-08-16_connect-vertex-path-curved-transfer/", "runs/2026-08-16_scotch-c38-model/human_stage_review.json", "docs/CURRENT_STATE_GAP_MATRIX.md"],
-      "current_boundary": "The C38 correction uses crease-controlled connected cages and small bevels only for evidenced physical radii, but broad professional generalization remains unproven.",
+      "evidence": ["knowledge/foundation/operator_cards/topology_context_subd.md", "knowledge/foundation/operator_cards/smooth_by_angle.md", "knowledge/skills/curved-bevel-normal-policy.json", "runs/2026-08-16_curved-bevel-normal-policy/", "knowledge/skills/explicit-semantic-bevel-edge-intent.json", "runs/2026-08-16_double-curvature-bevel-subd/", "knowledge/skills/connect-vertex-path-subd-safe-quads.json", "runs/2026-08-16_connect-vertex-path-curved-transfer/", "docs/CURRENT_STATE_GAP_MATRIX.md"],
+      "current_boundary": "The C38 model run and its human_stage_review.json evidence were deliberately deleted 2026-08-17 (direct user instruction: every named-product model-build attempt to date was judged not good enough to keep). Broad professional generalization remains unproven, and the specific qualified-stage-pass evidence this requirement previously cited no longer exists.",
       "next_step": "Apply the learned construction rules to a fresh unfamiliar target and seek independent visual review."
     },
     {
@@ -54,8 +54,8 @@
       "id": "6",
       "title": "Component and strategy planning",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/component_strategy.py", "tools/run_secondary_view_component_strategy_lab.py", "runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md", "runs/2026-08-16_scotch-c38-model/human_stage_review.json"],
-      "current_boundary": "C38 has a qualified stage pass, while component-graph transfer to a fresh complex target remains unproven.",
+      "evidence": ["knowledge_engine/component_strategy.py", "tools/run_secondary_view_component_strategy_lab.py", "runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md"],
+      "current_boundary": "The C38 model run and its human_stage_review.json qualified-stage-pass evidence were deliberately deleted 2026-08-17 (direct user instruction). Component-graph transfer to a fresh complex target remains unproven, and this requirement's strongest prior evidence no longer exists.",
       "next_step": "Build and review a new target's component graph before detailed modeling."
     },
     {
@@ -102,8 +102,8 @@
       "id": "12",
       "title": "Reference modeling and perception",
       "status": "PARTIAL",
-      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json", "runs/2026-08-16_scotch-c38-model/human_stage_review.json", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
-      "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist, but repeatable human-accepted resemblance remains unproven.",
+      "evidence": ["knowledge_engine/reference_analysis.py", "tools/verify_reference_set_gate.py", "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json", "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json", "knowledge/skills/reference-axis-aligned-image-empty-setup.json"],
+      "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist, but repeatable human-accepted resemblance remains unproven. The C38 model run's human_stage_review.json evidence was deliberately deleted 2026-08-17 (direct user instruction: every named-product model-build attempt to date was judged not good enough to keep).",
       "next_step": "Use multi-view visual review to localize silhouette and component mismatches before any production-detail claim."
     },
     {

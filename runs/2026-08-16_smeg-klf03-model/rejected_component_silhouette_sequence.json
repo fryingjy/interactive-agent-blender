@@ -1,5 +1,0 @@
-[
-  {"label": "spout_only", "command": "render_silhouette", "params": {"name": "KLF03_Spout_HIGH", "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/rejected_spout_component.png", "view": "left", "resolution": 800, "margin": 1.05}},
-  {"label": "handle_assembly_only", "command": "render_silhouette", "params": {"name": ["KLF03_Handle_HIGH", "KLF03_HandleMountUpper_HIGH", "KLF03_HandleMountLower_HIGH"], "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/rejected_handle_component.png", "view": "side", "resolution": 800, "margin": 1.05}},
-  {"label": "base_only", "command": "render_silhouette", "params": {"name": "KLF03_BaseBand_HIGH", "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-16_smeg-klf03-model/rejected_base_component.png", "view": "left", "resolution": 800, "margin": 1.05}}
-]

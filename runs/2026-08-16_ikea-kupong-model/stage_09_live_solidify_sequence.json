@@ -1,5 +1,0 @@
-[
-  {"label":"add_unapplied_shell_thickness","transaction":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","action_type":"evaluate_open_shell_with_live_thickness","operation":"add_modifier","params":{"modifier_type":"SOLIDIFY","modifier_name":"Live shell thickness"},"accept":true}},
-  {"label":"set_reference_scale_shell_thickness","transaction":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","action_type":"set_unapplied_shell_thickness","operation":"set_modifier_parameter","params":{"modifier_name":"Live shell thickness","parameter":"thickness","value":0.075},"accept":true}},
-  {"label":"center_live_thickness_on_cage","transaction":{"name":"KUPONG_A_FRAME_SHELL_PRIMARY","action_type":"center_unapplied_shell_thickness","operation":"set_modifier_parameter","params":{"modifier_name":"Live shell thickness","parameter":"offset","value":0.0},"accept":true}}
-]
