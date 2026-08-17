@@ -106,6 +106,28 @@ matching the target's footprint before the loop is even created), not just its s
 -- closer to how real hard-surface tutorials actually cut T-junction holes, and a materially bigger
 change than this pass's scope.
 
+## Live cross-validation (2026-08-17, after the live Blender connection came up)
+
+Once a live typed-modeler connection became available mid-session (see the connectivity note
+below), the same `treatment` blend was loaded live via `restore_checkpoint` and checked with this
+project's own purpose-built diagnostic tool, `get_evaluated_defect_regions` -- independent of the
+headless dihedral-angle script. It flagged 147 candidate defect tickets, and the 20 most severe all
+cluster at the same seam positions (y around +-0.47-0.48) the headless dihedral-angle sweep already
+identified. Two independently-implemented measurements (a from-scratch angle sweep in the lab script,
+and this project's own live diagnostic tool) agree on where the defect is. `render_diagnostic_pass`
+(live, solid shading) reproduced the same visible pinch as the headless `render_blend_beauty.py`
+output -- `live_diagnostic_solid.png`.
+
+**Connectivity note, unrelated to the modeling result but worth recording**: the live connection was
+not initially available. The third-party Blender Connector addon's own bridge process
+(`mcp__Blender__*` tools) accepted TCP connections but never responded to any request in this
+session -- confirmed to be a bug in that specific bridge, not in Blender or its addon, by connecting
+directly to the addon's raw socket (port 9876) with a plain Python script and getting immediate,
+correct responses to `get_scene_info` and `execute_code`. Used that same working raw-socket path to
+inject and start `blender_ops/modeler_server.py` (port 9878) directly inside the already-running
+Blender process, which this project's own `mcp__modeler__*` tools talk to directly and which then
+worked immediately and reliably.
+
 ## Status and next step
 
 This is `EXPERIMENTALLY_TESTED`, not `TRANSFER_VALIDATED` -- reproduced once on the geometry built
