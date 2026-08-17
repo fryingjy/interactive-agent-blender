@@ -1,0 +1,90 @@
+{
+  "target_id": "maglite_2d_led",
+  "target_variant": "Maglite 2-Cell D LED Flashlight (silver anodized, generic 2D body shared across incandescent/xenon/LED variants)",
+  "required_views": ["three_quarter_oblique"],
+  "critical_properties": ["overall_length", "barrel_diameter", "head_diameter", "knurl_grip_band_position", "side_switch_shape_and_position", "tail_cap_profile"],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 2,
+  "items": [
+    {
+      "reference_id": "maglite_official_specs",
+      "source_id": "maglite_com_specifications_2d_led",
+      "source_url": "https://maglite.com/pages/specifications-maglite-2-cell-d-led-flashlight",
+      "target_id": "maglite_2d_led",
+      "target_variant": "Maglite 2-Cell D LED Flashlight (silver anodized, generic 2D body shared across incandescent/xenon/LED variants)",
+      "purposes": ["DIMENSION"],
+      "view": "specification_table",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "claims": [
+        {"property_id": "overall_length", "purpose": "DIMENSION", "observation": "Official manufacturer specification table: Length 10 in. / 254 mm.", "confidence": "HIGH"},
+        {"property_id": "barrel_diameter", "purpose": "DIMENSION", "observation": "Official manufacturer specification table: Barrel Diameter 1 9/16 in. / 39.67 mm.", "confidence": "HIGH"},
+        {"property_id": "head_diameter", "purpose": "DIMENSION", "observation": "Official manufacturer specification table: Head Diameter 2.25 in. / 57 mm.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["length 254 mm", "barrel diameter 39.67 mm", "head diameter 57 mm"],
+      "limitations": ["Text specification table only, no accompanying orthographic drawing.", "The body shape shown in photographs is shared across multiple internal-electronics variants (incandescent/xenon/LED); the exterior dimensions given are for the current LED model but the external body geometry is understood to be the long-standing common 2D shell."]
+    },
+    {
+      "reference_id": "wikimedia_maglite_oblique",
+      "source_id": "wikimedia_commons_maglite_flashlight_jpg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maglite_Flashlight.jpg",
+      "target_id": "maglite_2d_led",
+      "target_variant": "Maglite 2-Cell D LED Flashlight (silver anodized, generic 2D body shared across incandescent/xenon/LED variants)",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "view": "three_quarter_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "local_file": "references/wikimedia_maglite_01.jpg",
+      "claims": [
+        {"property_id": "tail_cap_profile", "purpose": "PRIMARY_FORM", "observation": "The tail cap is a rounded, roughly hemispherical closure at the same diameter as the barrel, with a cross-hatch knurl pattern visible on it, distinct from the main grip knurl band.", "confidence": "HIGH"},
+        {"property_id": "knurl_grip_band_position", "purpose": "CONSTRUCTION", "observation": "A diamond-pattern knurled grip band occupies roughly the middle third of the barrel length, bounded by smooth polished barrel sections both toward the tail and toward the head.", "confidence": "HIGH"},
+        {"property_id": "side_switch_shape_and_position", "purpose": "PRIMARY_FORM", "observation": "A single oval/lozenge-shaped push-button switch sits on the smooth barrel section immediately behind (tailward of) the knurled grip band, not within the knurled band itself.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Oblique perspective photo, not orthographic -- proportions along the visible axis are read by eye and anchored to the official length/diameter numbers above, not measured pixel-for-pixel.", "Only one viewing angle retained; the far side of the barrel/head is not directly observed."]
+    },
+    {
+      "reference_id": "wikimedia_maglite_switch_detail",
+      "source_id": "wikimedia_commons_blue_maglite_switch_jpeg",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Blue_Maglite,_switch_and_serial_number,_1.jpeg",
+      "target_id": "maglite_2d_led",
+      "target_variant": "Maglite 2-Cell D LED Flashlight (silver anodized, generic 2D body shared across incandescent/xenon/LED variants)",
+      "purposes": ["DETAIL", "CONSTRUCTION"],
+      "view": "switch_closeup",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "local_file": "references/wikimedia_maglite_switch_detail.jpg",
+      "claims": [
+        {"property_id": "side_switch_shape_and_position", "purpose": "DETAIL", "observation": "Close-up confirms the switch button is a pointed-oval (leaf/eye) shaped rubber insert recessed into a matching pointed-oval cutout in the barrel wall, positioned right at the boundary where the smooth barrel meets the start of the knurled grip band.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": [],
+      "limitations": ["Photographed on a different color variant (blue) of the same body shape -- color is not a claimed property here, only switch geometry and position, which are shared across color variants of the same shell."]
+    }
+  ],
+  "research_questions": [
+    {
+      "question_id": "maglite_bezel_focus_ring_detail",
+      "property_id": "head_bezel_and_lens_detail",
+      "question": "Exactly how many distinct rings/steps make up the head (reflector housing, knurled focus bezel, lens retaining ring) and what is the precise lens recess depth?",
+      "trigger": "The retained oblique photo shows a rounded head with a visible knurled focus ring and a recessed lens, but the exact number of stepped surfaces and the lens recess depth are not measurable from a single oblique photo at this resolution.",
+      "impact": "LOW",
+      "search_queries": ["maglite 2D head bezel exploded diagram", "maglite flashlight lens focus ring cross section"],
+      "candidates": [
+        {
+          "candidate_id": "maglite_official_specs_page_reexamined",
+          "source_url": "https://maglite.com/pages/specifications-maglite-2-cell-d-led-flashlight",
+          "source_id": "maglite_com_specifications_2d_led",
+          "observed_identity": "Maglite 2-Cell D LED Flashlight",
+          "observed_variant": "official specification table",
+          "purpose": "CONSTRUCTION",
+          "disposition": "REJECTED",
+          "reason": "The official specifications page lists numeric specs only (length, diameters, lumens, run time) with no exploded diagram or bezel cross-section image; it does not answer the internal step-count question.",
+          "limitations": ["Text/number specification table only, no diagram assets on this page."]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "Not pursued for this pass -- the head bezel/lens is a secondary/tertiary-level detail, not required for a primary-form-and-silhouette first pass.",
+      "modeling_constraint": "Model the head bezel as a single simplified knurled ring with one shallow lens recess step rather than attempting to reproduce an unverified exact internal step count."
+    }
+  ]
+}
