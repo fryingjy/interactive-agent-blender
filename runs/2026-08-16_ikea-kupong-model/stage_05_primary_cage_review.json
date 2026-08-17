@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_CAGE_VISUAL_REVIEW",
+  "target_id": "ikea_kupong_90621811",
+  "candidate": "ikea_kupong_stage_05_a_frame_profile.blend",
+  "decision": "REJECT_REBUILD_REQUIRED",
+  "declared_views": ["front_orthographic", "side_orthographic", "isometric"],
+  "visual_mismatch_ledger": [
+    {"view_id":"front_orthographic","status":"improved_but_repair","salience":"medium","observation":"The leaning front plane and foot spacing are closer to the official front silhouette, but it remains an unsmoothed primary cage."},
+    {"view_id":"side_orthographic","status":"reject","salience":"high","observation":"The middle depth section rises above the two outer top sections, producing a pointed roof. The official side reference has a short rounded crest and continuous A-frame legs instead."},
+    {"view_id":"isometric","status":"reject","salience":"high","observation":"The front plane now leans correctly, but the pointed center ridge invalidates the shell's most important folded profile."}
+  ],
+  "technical_observations":{"base_topology":"connected all-quad shell with integrated opening","surface_modifiers_added":false,"secondary_assemblies_added":false},
+  "retained_learning":["Section-grid heights must be constrained across adjacent depth sections; an unmeasured center maximum creates a false pointed roof.","The official side view is decisive for the rollover: correct front silhouette cannot compensate for a wrong cross-section.","SubD, crease, bevel, display, and material remain deferred."],
+  "required_next_action":"Rebuild using a bounded top-height band across the three sections, then repeat front/side/isometric evaluation before surface work.",
+  "disposition_boundary":"Rejected visual evidence; no acceptance or reference-fidelity claim."
+}
