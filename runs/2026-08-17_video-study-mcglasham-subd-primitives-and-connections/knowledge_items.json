@@ -1,0 +1,74 @@
+[
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "To join two intersecting curved surfaces (e.g. two cylinders/pipes) with clean SubD-ready topology instead of a boolean: (1) add a loop cut on each cylinder near the intersection, one on each side of the join line; (2) assign each loop to its own vertex group; (3) add a Shrinkwrap modifier (Project mode, correct local axis, small negative Offset e.g. -0.1) to each loop's vertex group targeting the OTHER cylinder, so the loop deforms to trace that cylinder's exact profile at the intersection; (4) slide the two cylinders along the connecting axis until both loops read as evenly spaced around the join; (5) apply all modifiers; (6) delete the interpenetrating 'inside' faces on both objects; (7) join into one object (Ctrl+J); (8) select both now-exposed boundary loops and Bridge Edge Loops; (9) add Subdivision Surface. Result: a fully connected, all-quad, SubD-ready join with no booleans and no manual point-pushing.",
+    "source": {"source_id": "IS2LPVNp6SE", "start_seconds": 0, "end_seconds": 789},
+    "confidence": 0.6,
+    "supporting_evidence": "Read directly (transcript, 2026-08-17): full step-by-step narration, e.g. 'add a shrink wrap modifier, we'll change the wrap method to project... select the target as the other cylinder... in vertex group we want to select the first group... change the offset here to minus 0.1... this offset kind of pushes it away from the other cylinder and whatever you set this value to will define the overall softness of the connecting area.' Confirmed working result: 'the whole thing is only 142 vertices,' clean quad flow, and the model then accepts Array/SimpleDeform modifiers without breaking.",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using a Boolean Union modifier to join the two cylinders, then manually moving/merging points to clean up the resulting ngons/triangles. The video states this plainly and matches this project's own repeated real experience: 'a boolean will destroy your topology instantly with zero chance of recovery... the shape doesn't just have bad topology, it really doesn't have any topology at all.'",
+    "reason": "This is a genuine, complete, sourced fix for the exact class of problem this project has hit repeatedly this session (T-junction ngons from subdivide/bisect, the still-open boolean-cleanup gap flagged from the CG Boost 100+ Tips Modifiers chapter, and the general 'how do I connect two hard-surface tubes without a boolean' question). Directly reusable across many future props with intersecting cylindrical/tubular forms (pipes, handles, connectors, joints).",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "After bridging two loops together, a loop cut added directly on the seam with Interpolation set to 'Linear' and a Smoothing value (up to roughly 8, entered as a raw number, not limited to the slider's visible max of 4) sharpens the connection by repositioning the loop's vertices -- without adding a crease and without changing the underlying topology.",
+    "source": {"source_id": "IS2LPVNp6SE", "start_seconds": 700, "end_seconds": 730},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly: 'add a control loop in between the edge border... change the interpolation to linear and set the smoothing value, the slider goes up to four which gives a good sharp connection but you can actually enter any value in here, i don't generally like to go above eight... it's not creasing or doing anything unusual, it's just altering the actual position of the vertices in a way which naturally sharpens this connection.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Using Edge Crease to sharpen a bridged seam, which (per this project's own earlier-cited manual research) only behaves reliably at maximum value, not partial values -- Loop Cut's own Interpolation/Smoothing parameter is a finer-grained, geometry-based alternative for controlling seam sharpness after a bridge.",
+    "reason": "A precise, tunable technique for controlling how sharp a bridged connection reads, complementing the Shrinkwrap-based joining technique above and this project's separately-flagged Bridge Edge Loops Twist-parameter finding -- both are now understood parameters of the same operation family.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "Never extrude a face directly if it sits in a flat or mostly-flat area -- always Inset it first. Insetting before extruding creates the area of curvature a control loop needs, avoids leaving a 5-spoked pole at the base of the extrusion, and avoids needing to add holding loops around the entire surrounding mesh just to contain the new feature's influence.",
+    "source": {"source_id": "mwpwLRdduUs", "start_seconds": 7, "end_seconds": 40},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly: 'hopefully you know already that you don't extrude a face if it's surrounded by a flat or even mostly flat area, you always inset it first... it creates an area of curvature into which we can place a control loop, it doesn't leave five spoked poles on areas of curvature and we don't have to throw loops all around the entire mesh to control the connection area.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Extruding a detail feature directly out of a flat face without insetting first, then discovering later that the new feature's boundary is a high-valence pole requiring loops to be added much more broadly across the mesh to contain the resulting shading artifact.",
+    "reason": "A blanket rule this project should apply to every future inset-then-extrude detail (buttons, vents, panel lines, the flashlight switch that was deferred as future work) -- inset-before-extrude was already this project's habit in places, but this gives it an explicit, sourced justification tied to pole-count reasoning rather than just convention.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "A UV Sphere's pole pinching under Subdivision Surface, and the light-bending artifact around extrusion borders on curved surfaces (both caused by high-spoke poles), can be corrected with a vertex-group-scoped Normal Edit modifier (Radial mix mode, Max Angle dialed down from 180 toward 0, typically landing around 6-7 degrees for sphere poles and around 4.2 degrees for extrusion borders) placed directly after the Subdivision Surface modifier. This is a SHADING-only fix -- it does not change the underlying geometry -- and the same video explicitly states this makes the resulting file non-compliant with standard professional/industry normal conventions: 'models with any modifications to normals that take them away from the standard calculated average are always considered to be unacceptable.'",
+    "source": {"source_id": "mwpwLRdduUs", "start_seconds": 87, "end_seconds": 349},
+    "confidence": 0.45,
+    "supporting_evidence": "Read directly: full step-by-step Normal Edit modifier setup narrated for both the sphere-pole case and the extrusion-border case, ending with the explicit industry-standard caveat quoted above, plus a required companion fix ('when you apply a subdivision surface modifier to a uv sphere you need to scale it in x and y by a factor of 1.01 because it does change the shape slightly').",
+    "status": "CAPTURED",
+    "rejected_alternative": "Avoiding the UV Sphere entirely for any subdivision-surface work (the video frames this as the common assumption -- 'this is widely considered to be an unfixable problem') and reaching for Blender's Quad Sphere / Cast-modifier construction instead (already captured this project from a separate source, runs/2026-08-15_video-study-cgboost-100-tips-modifiers/).",
+    "reason": "A real technique worth knowing about, but flagged with its own stated limitation: use the Quad Sphere construction (already captured) as the default for anything that needs to be a clean, industry-standard deliverable; this Normal Edit trick is a fallback specifically for game-engine/personal-project contexts where non-standard normals are acceptable, not a general substitute for correct topology.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PRINCIPLE",
+    "claim": "In the Bevel modifier (or Bevel Edit-Mode operator), always keep Segments to an even number. Any odd segment count (including the default of 1) creates a triangle at the point where two bevels meet at a corner; an even count (2 is usually sufficient) keeps the corner all-quad.",
+    "source": {"source_id": "BmxF8gBSKmQ", "start_seconds": 79, "end_seconds": 107},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly: 'the reason it's done that is because the segments is initially set to one and any time the segments in a bevel modifier are set to an odd number, any odd number, a triangle will be created... so we always want to keep the segments in a bevel modifier to an even number, generally 2 is all you will ever need.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Leaving a Bevel modifier or bevel_selection call at its default segment count without checking parity, and only discovering the resulting triangle later via a mesh-health ngon/triangle count check rather than avoiding it up front.",
+    "reason": "A simple, immediately-actionable rule for every future bevel_selection / Bevel-modifier call in this project's typed op surface -- cheap to apply proactively (always pass an even segments value) rather than something to catch after the fact.",
+    "captured_while_building": null,
+    "transfer_tests": []
+  },
+  {
+    "knowledge_type": "PROCEDURE",
+    "claim": "When a revolved/lathed primitive (e.g. a cone) is closed by scaling a ring of boundary vertices to a single point (rather than merging them), the resulting point has as many un-merged, coincident vertices as the ring had segments, and under Subdivision Surface these coincident-but-separate vertices pull the geometry toward the point far more aggressively than a single merged vertex would, producing an unnaturally sharp/spiky tip. Running Merge by Distance immediately after scaling to a point fixes this. Separately, if the resulting tip fan is made of triangles (not quads), select every other boundary edge of the fan and Dissolve Edges to convert it into a small ring of quads, then save that ring as a vertex group so it can still be selected as one loop afterward (since it's no longer topologically a single continuous loop).",
+    "source": {"source_id": "NvzOErzvcqM", "start_seconds": 180, "end_seconds": 280},
+    "confidence": 0.5,
+    "supporting_evidence": "Read directly: 'the reason the top of the cone is very very sharp is because there are actually eight points here pulling up the geometry towards the top... they're having a huge influence over the geometry as the subdivision surface modifier sees it, so we have to merge them so they're just one vertex... mesh, cleanup, merge by distance.' Followed by the triangle-to-quad fix: 'these sides here are triangles and we need them to be quads... convert these triangles at the top to quads by deleting every other edge between two triangles.'",
+    "status": "CAPTURED",
+    "rejected_alternative": "Assuming 'scale to zero' is equivalent to a true single-point merge, and treating the resulting spiky tip as an inherent, unfixable property of cone-like primitives under SubD.",
+    "reason": "Directly explains a plausible root cause for a class of 'unexpectedly spiky tip' defects on any future revolved/lathed primary form (this project's own flashlight tail-cap fix used a related but different technique -- deleting a degenerate spine and re-capping with a single ngon; this Merge-by-Distance approach is a lighter-weight alternative worth trying first when the tip is a genuine single point rather than a long connecting strip).",
+    "captured_while_building": null,
+    "transfer_tests": []
+  }
+]
