@@ -555,6 +555,25 @@ class ModelerServer:
             "construction_boundary": "All base faces are quads. Grid positions and active cells are authored reference decisions, not imported source topology.",
         }
 
+    def cmd_create_quad_shell_sections(self, name, section_grids, active_cells):
+        """Create one all-quad connected shell through authored depth sections."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_shell_from_sections(name, section_grids, active_cells)
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "section_count": len(section_grids),
+            "grid_rows": len(section_grids[0]) if section_grids else 0,
+            "grid_columns": len(section_grids[0][0]) if section_grids and section_grids[0] else 0,
+            "active_cell_count": sum(bool(cell) for row in active_cells for cell in row),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse.",
+        }
+
     def cmd_create_reference_image(
         self,
         name,

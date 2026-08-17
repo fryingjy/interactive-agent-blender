@@ -228,6 +228,105 @@ def quad_shell_from_grids(name, front_grid, rear_grid, active_cells, *, collecti
     return obj
 
 
+def quad_shell_from_sections(name, section_grids, active_cells, *, collection=None):
+    """Build one closed all-quad shell through authored depth sections.
+
+    Each entry in ``section_grids`` is a matching X/Z control grid at a chosen
+    depth.  Unlike a two-grid shell, intermediate sections explicitly control
+    the side/top/bottom transitions, so a folded or rolled manufactured form
+    can be matched without turning it into a stack of separate primitives.
+    Active cells remain the sole description of material: false cells create
+    real openings that are bridged around their boundary through every section.
+    """
+    if not isinstance(section_grids, (list, tuple)) or len(section_grids) < 2:
+        raise ValueError("quad shell sections need at least two matching grids")
+
+    def validate_grid(label, grid):
+        if not isinstance(grid, (list, tuple)) or len(grid) < 2:
+            raise ValueError(f"{label} grid needs at least two rows")
+        width = len(grid[0]) if isinstance(grid[0], (list, tuple)) else 0
+        if width < 2 or any(not isinstance(row, (list, tuple)) or len(row) != width for row in grid):
+            raise ValueError(f"{label} grid rows must have one shared width of at least two")
+        normalized = []
+        for row in grid:
+            normalized_row = []
+            for point in row:
+                if not isinstance(point, (list, tuple)) or len(point) != 3:
+                    raise ValueError(f"{label} grid points must be [x, y, z] values")
+                normalized_row.append(tuple(float(value) for value in point))
+            normalized.append(normalized_row)
+        return normalized
+
+    sections = [validate_grid(f"section {index}", grid) for index, grid in enumerate(section_grids)]
+    rows, columns = len(sections[0]), len(sections[0][0])
+    if any(len(grid) != rows or len(grid[0]) != columns for grid in sections[1:]):
+        raise ValueError("quad shell section grids must have matching row and column counts")
+    if (
+        not isinstance(active_cells, (list, tuple))
+        or len(active_cells) != rows - 1
+        or any(not isinstance(row, (list, tuple)) or len(row) != columns - 1 for row in active_cells)
+    ):
+        raise ValueError("active_cells must have one boolean row/column less than the point grids")
+    cells = [[bool(value) for value in row] for row in active_cells]
+    if not any(value for row in cells for value in row):
+        raise ValueError("quad shell needs at least one active cell")
+
+    def node(row, column):
+        return row * columns + column
+
+    used_nodes = set()
+    edge_counts = {}
+    active_rings = []
+    for row in range(rows - 1):
+        for column in range(columns - 1):
+            if not cells[row][column]:
+                continue
+            ring = (node(row, column), node(row, column + 1), node(row + 1, column + 1), node(row + 1, column))
+            active_rings.append(ring)
+            used_nodes.update(ring)
+            for first, second in zip(ring, ring[1:] + ring[:1]):
+                edge = tuple(sorted((first, second)))
+                edge_counts[edge] = edge_counts.get(edge, 0) + 1
+    boundary_edges = sorted(edge for edge, count in edge_counts.items() if count == 1)
+    boundary_nodes = {key for edge in boundary_edges for key in edge}
+    # Only the outer surface boundary travels through intermediate sections.
+    # Adding every grid point at every intermediate depth would create loose
+    # interior vertices because those points have no surface face to own them.
+    section_nodes = [
+        sorted(used_nodes if index in {0, len(sections) - 1} else boundary_nodes)
+        for index in range(len(sections))
+    ]
+    index_for = []
+    vertices = []
+    for section_index, nodes in enumerate(section_nodes):
+        index_for.append({key: len(vertices) + index for index, key in enumerate(nodes)})
+        for key in nodes:
+            row, column = divmod(key, columns)
+            vertices.append(sections[section_index][row][column])
+
+    def vertex(section_index, key):
+        return index_for[section_index][key]
+
+    faces = []
+    for ring in active_rings:
+        faces.append(tuple(vertex(0, key) for key in ring))
+        faces.append(tuple(vertex(len(sections) - 1, key) for key in reversed(ring)))
+    for section_index in range(len(sections) - 1):
+        for first, second in boundary_edges:
+            faces.append((
+                vertex(section_index, first), vertex(section_index, second),
+                vertex(section_index + 1, second), vertex(section_index + 1, first),
+            ))
+
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.uv_layers.new(name="QuadShellSectionUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
 def capped_cylinder(name, *, radius, z_bottom, z_top, segments=64, collection=None):
     """Create a manifold capped cylinder from explicit vertices and triangles."""
     if radius <= 0 or z_top <= z_bottom:

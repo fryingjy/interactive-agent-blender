@@ -107,6 +107,12 @@ def create_quad_shell_grid(name: str, front_grid: list[list[list[float]]], rear_
 
 
 @mcp.tool()
+def create_quad_shell_sections(name: str, section_grids: list[list[list[list[float]]]], active_cells: list[list[bool]]) -> dict:
+    """Create one closed connected all-quad shell through two or more authored depth-section grids. Use intermediate sections to match a rounded top, folded A-frame, or tapered transition while keeping the form one editable mesh; false active cells are integrated openings."""
+    return _call("create_quad_shell_sections", name=name, section_grids=section_grids, active_cells=active_cells)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)
