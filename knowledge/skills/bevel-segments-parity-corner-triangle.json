@@ -75,8 +75,31 @@
     }
   ],
 
-  "runtime_usage": [],
+  "runtime_usage": [
+    {
+      "evidence_path": "runs/2026-08-17_bevel-skill-runtime-use/bevel_skill_runtime_use.json",
+      "success": true,
+      "asset": "RuntimeBracketCorner",
+      "summary": "The skill ranked first for a matching multi_edge_corner_bevel ticket at TOPOLOGY_SURFACE stage; the planner selected bevel_selection with the ticket's own offset/segments, a typed transaction committed it, and the resulting corner had zero triangle faces (12 quads + 3 hexagons -- correctly matching the skill's own documented single-corner-partial-selection nuance, not a false all-quad claim)."
+    }
+  ],
 
-  "status": "TRANSFER_VALIDATED",
-  "status_note": "Reproduced exactly as captured (triangle presence tied to segment parity) and transfer-tested on different geometry (single partial corner vs. full all-edge cube bevel), which surfaced and corrected a real overstatement in the original source claim ('all-quad' is conditional on beveling all edges at a vertex together, not a guaranteed consequence of even segments alone). Verified via direct per-face vertex-count queries (not this project's own mesh_health.ngons field, which does not count triangles) plus wireframe visual inspection. Not yet RUNTIME_VALIDATED -- no planner/retrieval-triggered live use on a real modeling task yet; that is the natural next step."
+  "planner_hint": {
+    "trigger_ticket_types": ["multi_edge_corner_bevel"],
+    "modeling_stages": ["SECONDARY_FORMS", "TOPOLOGY_SURFACE"],
+    "required_ticket_fields": ["target", "operation_params"],
+    "action": "BEVEL_CORNER_ALL_EDGES_EVEN_SEGMENTS",
+    "operation": "bevel_selection",
+    "reason": "Transfer-tested rule: beveling every edge meeting at a multi-edge corner together with an even segment count avoids the triangle the source video warned about and, unlike a partial-selection bevel, produces a genuinely all-quad corner.",
+    "expected_effect": "Zero triangle faces at the target corner; all-quad result if the ticket's edge selection already covers every edge meeting at that vertex.",
+    "verification": [
+      "query real per-face vertex counts at the target corner (not mesh_health.ngons, which does not count triangles)",
+      "confirm 0 faces with exactly 3 vertices at the corner",
+      "if any face there has 5+ vertices, confirm every edge meeting at that vertex was included in operation_params' edge selection"
+    ],
+    "confidence": "MEDIUM"
+  },
+
+  "status": "RUNTIME_VALIDATED",
+  "status_note": "Reproduced exactly as captured (triangle presence tied to segment parity) and transfer-tested on different geometry (single partial corner vs. full all-edge cube bevel), which surfaced and corrected a real overstatement in the original source claim ('all-quad' is conditional on beveling all edges at a vertex together, not a guaranteed consequence of even segments alone). Verified via direct per-face vertex-count queries (not this project's own mesh_health.ngons field, which does not count triangles) plus wireframe visual inspection. Runtime-validated 2026-08-17: retrieval ranked it first for a matching ticket, the planner (knowledge_engine.planner.plan_next_decision) selected bevel_selection with the ticket's own parameters, and a typed decision transaction committed a zero-triangle result -- runs/2026-08-17_bevel-skill-runtime-use/. Not yet PROMOTED to a default/automatic planner behavior outside an explicit matching ticket, and not yet used on an actual unfamiliar-reference modeling task (only a synthetic bracket-corner fixture)."
 }

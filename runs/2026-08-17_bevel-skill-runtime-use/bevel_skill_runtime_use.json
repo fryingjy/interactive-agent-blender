@@ -1,0 +1,240 @@
+{
+  "skill_id": "bevel.segments.parity_avoids_corner_triangle",
+  "retrieved": [
+    {
+      "skill_id": "bevel.segments.parity_avoids_corner_triangle",
+      "score": 24.4001,
+      "status": "TRANSFER_VALIDATED"
+    },
+    {
+      "skill_id": "hard-surface.explicit_semantic_bevel_edge_intent",
+      "score": 13.4712,
+      "status": "TRANSFER_VALIDATED"
+    },
+    {
+      "skill_id": "hard-surface.curved-bevel-normal-policy",
+      "score": 11.3499,
+      "status": "EXPERIMENTALLY_TESTED"
+    },
+    {
+      "skill_id": "topology.connect_vertex_path.subd_safe_quads",
+      "score": 9.5287,
+      "status": "TRANSFER_VALIDATED"
+    },
+    {
+      "skill_id": "boolean-groove-cut-topology-cleanup",
+      "score": 6.8162,
+      "status": "UNKNOWN"
+    }
+  ],
+  "planner_decision": {
+    "disposition": "ACT",
+    "action": "BEVEL_CORNER_ALL_EDGES_EVEN_SEGMENTS",
+    "target_object": "RuntimeBracketCorner",
+    "target_region": "bracket_top_corner",
+    "rationale": [
+      "highest-priority visual ticket is multi_edge_corner_bevel",
+      "transfer-validated skill bevel.segments.parity_avoids_corner_triangle matches this ticket",
+      "Transfer-tested rule: beveling every edge meeting at a multi-edge corner together with an even segment count avoids the triangle the source video warned about and, unlike a partial-selection bevel, produces a genuinely all-quad corner."
+    ],
+    "expected_effect": "Zero triangle faces at the target corner; all-quad result if the ticket's edge selection already covers every edge meeting at that vertex.",
+    "verification": [
+      "query real per-face vertex counts at the target corner (not mesh_health.ngons, which does not count triangles)",
+      "confirm 0 faces with exactly 3 vertices at the corner",
+      "if any face there has 5+ vertices, confirm every edge meeting at that vertex was included in operation_params' edge selection"
+    ],
+    "observed_revision": 0,
+    "confidence": "MEDIUM",
+    "operation": "bevel_selection",
+    "operation_params": {
+      "offset": 0.25,
+      "segments": 2
+    },
+    "retrieved_skill_ids": [
+      "bevel.segments.parity_avoids_corner_triangle",
+      "hard-surface.explicit_semantic_bevel_edge_intent",
+      "hard-surface.curved-bevel-normal-policy",
+      "topology.connect_vertex_path.subd_safe_quads",
+      "boolean-groove-cut-topology-cleanup"
+    ],
+    "next_stage": null
+  },
+  "edge_ids_selected": [
+    14,
+    15,
+    17
+  ],
+  "typed_transaction": {
+    "begin": {
+      "decision_id": "dec_0_1787062478819",
+      "observed_revision": 0
+    },
+    "performed": {
+      "decision_id": "dec_0_1787062478819",
+      "performed": true,
+      "result": {
+        "selected_edges": 3,
+        "offset": 0.25,
+        "offset_type": "OFFSET",
+        "segments": 2,
+        "profile": 0.5,
+        "clamp_overlap": false,
+        "new_verts": 16,
+        "new_edges": 30,
+        "new_faces": 15
+      }
+    },
+    "verified": {
+      "action_type": "BEVEL_CORNER_ALL_EDGES_EVEN_SEGMENTS",
+      "op_delta": 0,
+      "before": {
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "non_manifold_edges": 0,
+        "ngons": 0,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "after": {
+        "vertices": 20,
+        "edges": 33,
+        "faces": 15,
+        "non_manifold_edges": 0,
+        "ngons": 3,
+        "loose_verts": 0,
+        "degenerate_faces": 0
+      },
+      "id_delta": {
+        "verts": {
+          "added": [
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42
+          ],
+          "removed": [
+            4,
+            6,
+            7,
+            8
+          ]
+        },
+        "edges": {
+          "added": [
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72
+          ],
+          "removed": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+          ]
+        },
+        "faces": {
+          "added": [
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87
+          ],
+          "removed": [
+            21,
+            22,
+            23,
+            24,
+            25,
+            26
+          ]
+        }
+      }
+    },
+    "committed": {
+      "decision_id": "dec_0_1787062478819",
+      "result_revision": 1
+    }
+  },
+  "face_vertex_counts_before": {
+    "4": 6
+  },
+  "face_vertex_counts_after": {
+    "4": 12,
+    "6": 3
+  },
+  "after_health": {
+    "vertices": 20,
+    "edges": 33,
+    "faces": 15,
+    "non_manifold_edges": 0,
+    "ngons": 3,
+    "loose_verts": 0,
+    "degenerate_faces": 0
+  },
+  "checks": {
+    "skill_retrieved": true,
+    "planner_selected_skill_operation": true,
+    "planner_preserved_ticket_params": true,
+    "typed_operation_performed": true,
+    "no_triangle_at_corner": true,
+    "base_mesh_remains_manifold": true
+  },
+  "claim_boundary": "One fresh typed runtime use of this skill on a planned multi-edge corner bevel ticket; it validates that retrieval->planner->typed-execution actually connects for this narrow skill, not general asset autonomy or that every future corner bevel will be planner-routed without a matching ticket.",
+  "pass": true
+}
