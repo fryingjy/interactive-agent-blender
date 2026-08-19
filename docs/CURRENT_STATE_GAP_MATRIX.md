@@ -1,6 +1,6 @@
 # Current-state to professional-modeler gap matrix
 
-Updated: 2026-08-18. **Every named-product model-build attempt referenced in the table below as
+Updated: 2026-08-19 after an independent audit that WITHDREW two of the three previously recorded RUNTIME_VALIDATED claims as circular (see `runs/2026-08-19_observation-to-skill-gap-audit/README.md`). Read that audit before trusting any runtime-validation language below. **Every named-product model-build attempt referenced in the table below as
 of 2026-08-16 (Swingline, Scotch C38, Panasonic RF-2400D, and others from the same period) was
 deliberately deleted 2026-08-17** on direct instruction, having been judged not good enough to
 keep as modeling evidence; their historical retention is classified in
@@ -15,14 +15,18 @@ evidence from capability still lacking proof.
 ## 2026-08-17/18 additions (the current real state)
 
 - **`bevel.segments.parity_avoids_corner_triangle`** (`knowledge/skills/bevel-segments-parity-corner-triangle.json`):
-  `RUNTIME_VALIDATED`. Reproduced the source's triangle-vs-parity claim exactly; transfer-tested on
+  `RUNTIME_VALIDATED` -- and, after the 2026-08-19 audit, the ONLY skill for which that status is
+  earned: it is the one skill whose planner trigger a real observer can emit. Reproduced the
+  source's triangle-vs-parity claim exactly; transfer-tested on
   full-object vs. partial-corner bevels and found the source's stronger "even segments = all-quad"
   claim was false in general (conditional on beveling every edge at a vertex together). Retrieval
   ranks it first for matching queries and abstains correctly on unrelated ones; a planner-driven
   typed transaction on a synthetic ticket committed cleanly. **Not yet proven on a real unfamiliar
   reference**, only a synthetic bracket-corner fixture.
 - **`extrude.inset_first.local_containment`** (`knowledge/skills/inset-before-extrude-containment.json`):
-  `RUNTIME_VALIDATED`. Reproduced on a fine flat grid and found the source's "even on an
+  `TRANSFER_VALIDATED` -- runtime status WITHDRAWN 2026-08-19 as circular (the runtime test
+  hand-authored a ticket copied from this skill's own trigger list). The transfer evidence below
+  is real and unaffected. Reproduced on a fine flat grid and found the source's "even on an
   already-subdivided plane" claim did *not* hold there (direct and inset were near-identical);
   transfer-tested on a coarser curved surface where a real, visually-confirmed difference appeared.
   Found that raw dihedral angle and pole count both pointed the wrong way or didn't discriminate at
@@ -61,7 +65,7 @@ evidence from capability still lacking proof.
 | Multi-view reference fidelity and error localization | Silhouette, landmark, component, negative-space metrics and mismatch tickets exist; typed Image Empty setup records and audits FRONT/RIGHT/TOP card normals and rejects duplicated imagery as distinct multi-view evidence. The C38 run that exercised this tooling was deleted 2026-08-17; the tooling itself is unchanged. | Machinery proven functional on deleted evidence; no current candidate exercises it | Apply to the next real-reference build and turn rendered-view mismatches into structured corrections |
 | Adaptive professional Blender modeling | Typed operations, transactions, rollback, fingerprints, state probes, stages, and independent verifiers. Since 2026-08-16 the live connection was debugged and made reliable (root-caused a broken third-party bridge, bootstrapped this project's own server directly over a raw socket instead of working around it indefinitely), and two knowledge_engine.planner-routed typed transactions were proven end to end on synthetic tickets (bevel-segment-parity, inset-before-extrude-containment). Separately, a curved-surface-join reproduction was attempted, diagnosed with real evidence, and correctly scrapped rather than kept as a false success -- then a working alternative (grow the attached form from the body) was found by re-examining this project's own earlier live-built example, not by guessing again. | Infrastructure and self-correction are both demonstrated; artistic autonomy on a genuinely unfamiliar reference is still the open item | Complete an unfamiliar nontrivial prop from reference through repair and production prep without an object-specific builder |
 | Recoverable curve-based form correction | Curves now use the same one-decision transaction boundary as mesh decisions: direct spline-state observation, control-point rollback on rejection or post-mutation failure, curve-aware external-edit fingerprints, and typed-server execution. The Blender 5.2 lab verifies both the direct and server paths. | Runtime safety demonstrated; reference-driven curve judgment remains unproven | Use it for a source-backed handle, shackle, cable, or trim only after multi-view evidence establishes that a curve is the right representation |
-| Curved hard-surface and SubD judgment | Flat/radial normal-policy evidence plus connected all-quad positive-crown and saddle panels under live Bevel→SubD; MatCap review localizes bumps/broken highlights even on technically-clean meshes. Since 2026-08-16: `bevel.segments.parity_avoids_corner_triangle` and `extrude.inset_first.local_containment` are both `RUNTIME_VALIDATED` (retrieval-ranked, planner-selected, typed-transaction-executed on synthetic tickets), each with a real correction to its source's overreach found via genuine transfer testing, not assumed. A Shrinkwrap+Bridge curved-join reproduction was attempted, diagnosed, and correctly scrapped; a body-grown attached-form alternative was proven instead with zero non-manifold edges. | Two skills now genuinely `RUNTIME_VALIDATED`, not just captured; a real technique failure was caught and replaced rather than hidden | Same as before, sharper now: a held-out curved manufactured asset where these validated skills would naturally need to fire, showing whether retrieval actually improves the resulting model |
+| Curved hard-surface and SubD judgment | Flat/radial normal-policy evidence plus connected all-quad positive-crown and saddle panels under live Bevel→SubD; MatCap review localizes bumps/broken highlights even on technically-clean meshes. Since 2026-08-16, two skills were transfer-tested with a real correction to their source's overreach in each case. The 2026-08-19 audit then WITHDREW the runtime claim on one of them as circular; only `bevel.segments.parity_avoids_corner_triangle` retains `RUNTIME_VALIDATED`, now on non-circular evidence (a real classifier emits its trigger, knowledge supplies the segment parameter, and the loop rolls back rather than committing a defect). Testing that loop also falsified a recovery claim already sitting in the knowledge base. A Shrinkwrap+Bridge curved-join reproduction was attempted, diagnosed, and correctly scrapped; a body-grown attached-form alternative was proven instead with zero non-manifold edges. | One skill genuinely `RUNTIME_VALIDATED` on observation-driven evidence; a second demoted to `TRANSFER_VALIDATED` when its runtime proof was found circular; two separate false claims (a tutorial's and the project's own) caught and recorded | Same as before, sharper now: a held-out curved manufactured asset where these validated skills would naturally need to fire, showing whether retrieval actually improves the resulting model |
 | UV/material/production preparation | A verified official seam lesson now has current Blender 5.2 reproduction and different-shape transfer: radial and bent rounded-rectangle connected all-quad source cages, matched no-seam distortion controls, measured UVs, separate high/low collections, live unapplied Solidify→Bevel stacks, tangent bakes, three-view production audits, low-only GLBs, and fresh verification | Strong controlled transfer; still not end-to-end production proof on a reviewer-accepted unfamiliar prop | Retrieve and apply the seam policy during an authorized asset's production stage, then obtain visual/material/export review |
 | Editable high/low packaging | Typed operation creates reusable separate collections for multi-component props, independent cages, live modifier stacks, and exact rollback including array custom properties. The C38 run that used this path was deleted 2026-08-17; the operation itself is unchanged. | Machinery proven functional on deleted evidence; still not retopology, and no current candidate exercises it | Purpose-authored low topology with UVs, bake, and export on an accepted unfamiliar asset |
 | Advanced sculpting/organic specialization | Explicitly deprioritized by current directive | Deferred by design | No action until prop modeling and reference interpretation gates are stronger |
@@ -69,10 +73,11 @@ evidence from capability still lacking proof.
 
 The bottleneck is unchanged in kind, sharper in specifics: it is still converting uncertain visual
 evidence into the right editable construction, measuring whether it improved resemblance, and
-recovering when it did not. What is new is that two techniques now sit in the library as genuinely
-`RUNTIME_VALIDATED` (not just captured or transfer-tested) with retrieval and planner integration
-proven against the real consumer code, not assumed. Neither has been exercised on an actual
-unfamiliar reference yet -- only synthetic tickets built specifically to test the wiring. That is
+recovering when it did not. What is new is that ONE technique sits in the library as genuinely `RUNTIME_VALIDATED`, on
+evidence that survives the 2026-08-19 audit: a real classifier emits its trigger from geometry,
+knowledge rather than the ticket supplies the technique parameter, and the defect is rolled back
+instead of committed. Two other skills lost that status when their runtime proof turned out to
+hand-author the answer. Nothing here has been exercised on an actual unfamiliar reference. That is
 the single highest-value open gap: not more validated skills, not more documentation, but one real
 reference-driven build where the existing validated skills would naturally need to fire, with a
 frozen reference/decomposition/evaluation contract set before geometry starts, and mandatory shaded

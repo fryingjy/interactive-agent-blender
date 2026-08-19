@@ -1,53 +1,49 @@
 {
   "skill_id": "bevel.segments.parity_avoids_corner_triangle",
-
   "applicability": {
     "workflow": "bevel",
     "modeling_stage": "topology-surface",
     "surface_type": "hard-surface",
-    "modifiers_involved": ["BEVEL"],
+    "modifiers_involved": [
+      "BEVEL"
+    ],
     "local_topology": "three-or-more-edges-meeting-at-a-corner",
     "defect": "triangle or ngon appearing at a beveled corner"
   },
-
   "preconditions": [
     "bevel_selection (typed op) or a Bevel modifier/edit-mode operator is applied to edges that meet at one vertex where 3 or more edges converge",
     "the resulting corner cap topology matters (feeds Subdivision Surface, or must stay all-quad for a production asset)"
   ],
-
   "required_observations": [
     "per-face vertex count on the evaluated/base mesh at the corner in question -- NOT this project's own mesh_health.ngons field, which was found live to count only faces with 5+ vertices and silently excludes triangles (confirmed: an 8-triangle all-edges-beveled cube reported ngons: 0)",
     "whether ALL edges meeting at the corner are included in the same bevel selection, or only some of them"
   ],
-
   "action_policy": [
     "The source claim (McGlasham SubD series, video BmxF8gBSKmQ, CAPTURED transcript-only) was: odd Bevel segment count always creates a triangle at a corner, even count 'keeps the corner all-quad'. Live-reproduced in this project's own typed pipeline (bevel_selection): the triangle-vs-no-triangle half of the claim is CONFIRMED exactly -- segments=1 on a 3-edge cube corner produced exactly one triangle (face_vertex_counts: {3:1, 4:6, 5:3}); segments=2 on the same corner produced zero triangles ({4:12, 6:3}).",
     "The 'all-quad' half of the claim is FALSE as literally stated and was corrected by transfer testing on different geometry. A single isolated 3-edge corner beveled with segments=2 (only those 3 edges selected, the other 9 cube edges untouched) still left 3 hexagonal (6-vertex) faces at that corner -- not all-quad. Only when ALL 12 edges of the cube were beveled together (segments=2) did the result become genuinely all-quad (54 quads, 0 triangles, 0 ngons of any size).",
     "Correct, tested rule: even segment count reliably eliminates the TRIANGLE at a multi-edge corner regardless of selection scope. Whether the corner is ALSO fully quad (vs. leaving a small ngon) additionally depends on whether every edge meeting at that vertex is included in the same bevel pass -- partial-selection corners are more likely to leave a residual ngon even with even segments.",
     "Practical guidance for this project's typed surface: when calling bevel_selection near a corner, prefer selecting all edges converging on that vertex in one call rather than beveling edges individually or in partial groups, and always pass an even segments value (2 is enough for the triangle-elimination effect; higher values add roundness, not correctness)."
   ],
-
   "expected_effects": [
     "Odd segments (1, 3, 5, ...) on edges meeting at an N-valence corner (N>=3): exactly one triangle face at that corner, confirmed at N=3.",
     "Even segments (2, 4, ...) on the SAME edges: zero triangles at that corner, but the cap face may still be an ngon (N-1 or fewer vertices) if not all edges at the vertex were included in the bevel.",
     "Even segments AND all edges at the vertex included in one bevel pass: genuinely all-quad result at that corner."
   ],
-
   "success_predicates": [
     "face_vertex_counts (per-face len(verts) on the actual bmesh, not the aggregate ngons field) contains no 3-vertex faces at the target corner after an even-segment bevel",
     "for a fully all-quad requirement: face_vertex_counts at the corner contains only 4-vertex faces, achieved by beveling every edge meeting at that vertex together with an even segment count"
   ],
-
   "failure_predicates": [
     "any 3-vertex face present at a beveled corner after checking real per-face vertex counts (this project's mesh_health.ngons alone will not catch this -- confirmed live, it does not count triangles)",
-    "assuming even segments alone guarantees an all-quad corner without checking whether all edges at that vertex were included in the same bevel selection"
+    "assuming even segments alone guarantees an all-quad corner without checking whether all edges at that vertex were included in the same bevel selection",
+    "treating this knowledge as a repair for an existing corner triangle -- it is preventive only; re-beveling to 'fix' a triangle was empirically shown to add geometry and leave a triangle behind"
   ],
-
   "recovery": [
-    "re-run bevel_selection with an even segments value (2 is sufficient to remove the triangle)",
-    "if a residual ngon remains at the corner after an even-segment bevel, re-select and bevel ALL edges meeting at that vertex together in one call, rather than the partial set originally selected"
+    "FALSIFIED 2026-08-19, do not do this: 're-run bevel_selection with an even segments value to remove the triangle'. Directly tested in runs/2026-08-19_observed-defect-repair-loop/: re-beveling an already-odd-beveled corner consumed the original triangle (face 54) but created a NEW one (face 232) plus three 9-gons, taking the cage from 6 quads + 1 triangle to 36 quads + 3 ngons + 1 triangle. The mesh got measurably worse. This claim was previously recorded here as validated recovery advice and was wrong.",
+    "This knowledge is PREVENTIVE, not corrective. An even segment count stops the triangle from being created; it cannot un-create one. Bevel is not idempotent and re-applying it to already-beveled geometry compounds rather than repairs.",
+    "Correct repair for an observed corner triangle whose cause is a still-open bevel decision: reject_decision (transaction-owned rollback to the exact pre-decision state) and re-perform the bevel with an even segment count. This is why the defect classifier should run at verify time, before commit.",
+    "Correct repair when the causing decision is already committed: restore a checkpoint taken before it, or dissolve the triangle and rebuild that corner deliberately. Do not attempt to bevel over it."
   ],
-
   "sources": [
     {
       "type": "external_video_transcript",
@@ -61,7 +57,6 @@
       "trust_tier": "not applicable (first-party direct experiment)"
     }
   ],
-
   "experiments": [
     {
       "type": "controlled reproduction, single isolated corner",
@@ -74,7 +69,6 @@
       "limitation": "Still primitive cube geometry (90-degree corners only); not yet tested on a non-orthogonal multi-edge corner (e.g. a hexagonal prism apex) or via the Bevel modifier (object-level) as opposed to bevel_selection (edit-mode/typed op)."
     }
   ],
-
   "runtime_usage": [
     {
       "evidence_path": "runs/2026-08-17_bevel-skill-runtime-use/bevel_skill_runtime_use.json",
@@ -83,23 +77,31 @@
       "summary": "The skill ranked first for a matching multi_edge_corner_bevel ticket at TOPOLOGY_SURFACE stage; the planner selected bevel_selection with the ticket's own offset/segments, a typed transaction committed it, and the resulting corner had zero triangle faces (12 quads + 3 hexagons -- correctly matching the skill's own documented single-corner-partial-selection nuance, not a false all-quad claim)."
     }
   ],
-
   "planner_hint": {
-    "trigger_ticket_types": ["multi_edge_corner_bevel"],
-    "modeling_stages": ["SECONDARY_FORMS", "TOPOLOGY_SURFACE"],
-    "required_ticket_fields": ["target", "operation_params"],
+    "trigger_ticket_types": [
+      "corner_triangle"
+    ],
+    "modeling_stages": [
+      "SECONDARY_FORMS",
+      "TOPOLOGY_SURFACE"
+    ],
+    "required_ticket_fields": [
+      "target"
+    ],
     "action": "BEVEL_CORNER_ALL_EDGES_EVEN_SEGMENTS",
     "operation": "bevel_selection",
-    "reason": "Transfer-tested rule: beveling every edge meeting at a multi-edge corner together with an even segment count avoids the triangle the source video warned about and, unlike a partial-selection bevel, produces a genuinely all-quad corner.",
-    "expected_effect": "Zero triangle faces at the target corner; all-quad result if the ticket's edge selection already covers every edge meeting at that vertex.",
+    "default_operation_params": {
+      "segments": 2
+    },
+    "reason": "Transfer-tested rule: an odd Bevel segment count leaves a triangle where several beveled edges converge; an even count does not. The even-segment value is a property of the technique, not of the scene, so knowledge supplies it while the observed ticket supplies which corner.",
+    "expected_effect": "The observed corner_triangle condition is gone: zero 3-vertex faces remain at the reported corner.",
     "verification": [
-      "query real per-face vertex counts at the target corner (not mesh_health.ngons, which does not count triangles)",
-      "confirm 0 faces with exactly 3 vertices at the corner",
-      "if any face there has 5+ vertices, confirm every edge meeting at that vertex was included in operation_params' edge selection"
+      "re-run the structural classifier and confirm the corner_triangle ticket is no longer emitted",
+      "query real per-face vertex counts (not mesh_health.ngons, which does not count triangles)",
+      "if a 5+-vertex face remains at that corner, confirm whether every edge meeting the vertex was in the repaired selection"
     ],
     "confidence": "MEDIUM"
   },
-
   "status": "RUNTIME_VALIDATED",
   "status_note": "Reproduced exactly as captured (triangle presence tied to segment parity) and transfer-tested on different geometry (single partial corner vs. full all-edge cube bevel), which surfaced and corrected a real overstatement in the original source claim ('all-quad' is conditional on beveling all edges at a vertex together, not a guaranteed consequence of even segments alone). Verified via direct per-face vertex-count queries (not this project's own mesh_health.ngons field, which does not count triangles) plus wireframe visual inspection. Runtime-validated 2026-08-17: retrieval ranked it first for a matching ticket, the planner (knowledge_engine.planner.plan_next_decision) selected bevel_selection with the ticket's own parameters, and a typed decision transaction committed a zero-triangle result -- runs/2026-08-17_bevel-skill-runtime-use/. Not yet PROMOTED to a default/automatic planner behavior outside an explicit matching ticket, and not yet used on an actual unfamiliar-reference modeling task (only a synthetic bracket-corner fixture)."
 }

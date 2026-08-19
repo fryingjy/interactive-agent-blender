@@ -1,14 +1,39 @@
 {
   "skill_id": "topology.loop_cuts.reserve_functional_regions",
   "title": "Reserve functional face regions with loop cuts before feature extrusion",
-  "topic_tags": ["loop cut", "box modeling", "quad topology", "continuous mesh", "functional regions", "extrusion"],
+  "topic_tags": [
+    "loop cut",
+    "box modeling",
+    "quad topology",
+    "continuous mesh",
+    "functional regions",
+    "extrusion"
+  ],
   "applicability": {
-    "modeling_stage": ["PRIMARY_BLOCKOUT", "SECONDARY_FORMS"],
-    "workflow": ["box modeling", "hard-surface blockout"],
-    "surface_type": ["planar mechanical", "functional enclosure"],
-    "defect": ["missing functional face regions", "primitive assembly", "unplanned feature placement"],
-    "local_topology": ["continuous quad shell", "traversable quad edge ring"],
-    "modifiers_involved": ["BEVEL"]
+    "modeling_stage": [
+      "PRIMARY_BLOCKOUT",
+      "SECONDARY_FORMS"
+    ],
+    "workflow": [
+      "box modeling",
+      "hard-surface blockout"
+    ],
+    "surface_type": [
+      "planar mechanical",
+      "functional enclosure"
+    ],
+    "defect": [
+      "missing functional face regions",
+      "primitive assembly",
+      "unplanned feature placement"
+    ],
+    "local_topology": [
+      "continuous quad shell",
+      "traversable quad edge ring"
+    ],
+    "modifiers_involved": [
+      "BEVEL"
+    ]
   },
   "preconditions": [
     "the target begins as a continuous box-like quad mesh",
@@ -25,25 +50,68 @@
     "new cuts are generic density rather than supporting an identified feature",
     "the result becomes disconnected, non-manifold, or requires an applied modifier to read correctly"
   ],
-  "recovery": ["reject the scoped loop-cut decision", "reinspect the functional-region plan", "choose fewer or differently placed rings"],
+  "recovery": [
+    "reject the scoped loop-cut decision",
+    "reinspect the functional-region plan",
+    "choose fewer or differently placed rings"
+  ],
   "planner_hint": {
-    "trigger_ticket_types": ["reserve_functional_face_regions"],
-    "modeling_stages": ["PRIMARY_BLOCKOUT", "SECONDARY_FORMS"],
-    "required_ticket_fields": ["target", "operation_params"],
+    "trigger_ticket_types": [
+      "reserve_functional_face_regions"
+    ],
+    "modeling_stages": [
+      "PRIMARY_BLOCKOUT",
+      "SECONDARY_FORMS"
+    ],
+    "required_ticket_fields": [
+      "target",
+      "operation_params"
+    ],
     "action": "RESERVE_FUNCTIONAL_FACE_REGIONS",
     "operation": "loop_cut_selection",
     "reason": "The verified lesson and two controlled Blender constructions show that planned loop cuts create the exact face regions needed for later feature operations without primitive assembly.",
     "expected_effect": "Create an explicitly planned, selectable quad region for the next feature operation.",
-    "verification": ["confirm the cut traverses only the selected quad ring", "confirm the planned face region exists", "inspect base manifoldness and evaluated modifier result"],
-    "confidence": "MEDIUM"
+    "verification": [
+      "confirm the cut traverses only the selected quad ring",
+      "confirm the planned face region exists",
+      "inspect base manifoldness and evaluated modifier result"
+    ],
+    "confidence": "MEDIUM",
+    "trigger_vocabulary_status": "NOT_YET_OBSERVABLE -- `reserve_functional_face_regions` is an INTENT, not a defect. It cannot be observed from geometry even in principle; it must come from a task brief or component plan. Reaching it requires intent-side planning, not a defect classifier."
   },
-  "sources": [{"type": "independently reviewed official training video", "source_id": "blender-fundamentals-loop-cut-video", "timestamp_seconds": [151, 178], "description": "The chair blockout places cuts only to provide the leg and back face regions needed before extrusion."}],
-  "experiments": [
-    {"type": "reproduction", "evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_chair_transfer_report.json", "result": "PASS"},
-    {"type": "different-geometry transfer", "evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_control_panel_transfer_report.json", "result": "PASS"}
+  "sources": [
+    {
+      "type": "independently reviewed official training video",
+      "source_id": "blender-fundamentals-loop-cut-video",
+      "timestamp_seconds": [
+        151,
+        178
+      ],
+      "description": "The chair blockout places cuts only to provide the leg and back face regions needed before extrusion."
+    }
   ],
-  "runtime_usage": [{"evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_skill_runtime_use.json", "success": true, "asset": "RuntimePlannedPanel", "summary": "The skill ranked first for a matching planned-region ticket; the planner selected loop_cut_selection and a typed transaction committed two cuts without manifold regression."}],
+  "experiments": [
+    {
+      "type": "reproduction",
+      "evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_chair_transfer_report.json",
+      "result": "PASS"
+    },
+    {
+      "type": "different-geometry transfer",
+      "evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_control_panel_transfer_report.json",
+      "result": "PASS"
+    }
+  ],
+  "runtime_usage": [
+    {
+      "evidence_path": "runs/2026-08-16_real-video-loopcut-review/loopcut_skill_runtime_use.json",
+      "success": false,
+      "asset": "RuntimePlannedPanel",
+      "summary": "The skill ranked first for a matching planned-region ticket; the planner selected loop_cut_selection and a typed transaction committed two cuts without manifold regression.",
+      "withdrawn_by_audit": "2026-08-19: circular ticket authored to match this skill's own trigger."
+    }
+  ],
   "version_scope": "Blender 5.2 LTS transfer; source lesson is Blender 2.80",
-  "status": "RUNTIME_VALIDATED",
-  "status_note": "Frame-and-speech verified episode, reproduction, different-geometry transfer, and one fresh planner-guided typed runtime use are complete."
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "Frame-and-speech verified episode, reproduction, different-geometry transfer, and one fresh planner-guided typed runtime use are complete. RUNTIME VALIDATION WITHDRAWN 2026-08-19 by audit: same circularity as the other skills -- runs/2026-08-16_real-video-loopcut-review/loopcut_skill_runtime_use.json hand-authored a ticket of type `reserve_functional_face_regions`, a string that exists only in this skill's own trigger list and in that test script. No observer emits it. The controlled construction evidence is unaffected."
 }

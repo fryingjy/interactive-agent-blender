@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "assessed_on": "2026-08-18",
+  "assessed_on": "2026-08-19",
   "directive": "docs/MASTER_DIRECTIVE.md",
   "overall_status": "PARTIAL",
   "status_definitions": {
@@ -214,10 +214,15 @@
         "runs/2026-08-17_bevel-skill-runtime-use/",
         "knowledge/skills/inset-before-extrude-containment.json",
         "runs/2026-08-18_inset-before-extrude-validation/",
-        "runs/2026-08-18_inset-containment-skill-runtime-use/"
+        "runs/2026-08-18_inset-containment-skill-runtime-use/",
+        "knowledge_engine/defect_classifier.py",
+        "tools/audit_observation_to_skill_gap.py",
+        "runs/2026-08-19_observation-to-skill-gap-audit/",
+        "runs/2026-08-19_observed-defect-repair-loop/",
+        "tests/test_skill_trigger_vocabulary.py"
       ],
-      "current_boundary": "Controlled labs, retrieval positive/abstention cases, and several bounded lesson transfers exist. Since 2026-08-17, StructuredSkillStore retrieval was confirmed against the real consumer for two new skills (ranks first for matching natural-language queries, correctly abstains on unrelated ones), and knowledge_engine.planner.plan_next_decision was confirmed to actually select the retrieved skill's operation and parameters for a matching visual ticket, executed through a real typed decision transaction, for both skills. This is retrieval demonstrably changing a planned Blender action, not just a search score. Only synthetic tickets so far -- real-asset transfer remains open.",
-      "next_step": "Reuse a validated skill during a real reference-driven build's own visual-ticket flow, not a fixture built specifically to exercise retrieval."
+      "current_boundary": "CORRECTED 2026-08-19 by audit. The previously recorded runtime validations for three skills were circular: each test hand-authored a ticket whose type string was copied from the skill's own planner_hint trigger list and whose operation_params carried the fix, so the planner only performed a dictionary lookup and knowledge contributed nothing to the mutation. Two of those RUNTIME_VALIDATED statuses are withdrawn to TRANSFER_VALIDATED. One skill (bevel-segment parity) now has genuine non-circular evidence: knowledge_engine/defect_classifier.py emits a structurally-decidable `corner_triangle` ticket from real base-cage topology, the planner supplies the even-segment parameter from knowledge rather than from the ticket, and the loop gates commit-vs-rollback at verify time. Testing that loop also FALSIFIED a claim in the knowledge base (re-beveling to remove a corner triangle makes the cage strictly worse), which is now recorded as such. A fail-closed test (tests/test_skill_trigger_vocabulary.py) prevents the circularity recurring silently.",
+      "next_step": "Fire a validated skill during an actual reference-driven build. No skill has yet influenced a model made from an unfamiliar reference, because no such build currently exists in the repo."
     },
     {
       "id": "15",

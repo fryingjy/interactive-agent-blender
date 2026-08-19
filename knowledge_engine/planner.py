@@ -146,9 +146,19 @@ def _skill_guided_ticket_decision(
 ) -> DecisionContract | None:
     """Use only transfer-validated-or-better knowledge to resolve a matching ticket.
 
-    A retrieved record does not get to invent targets or parameters. The visual/topology
-    ticket still owns those scene-specific facts; the skill contributes the operation,
-    expected effect, and verification policy for a narrow declared ticket type.
+    A retrieved record does not get to invent SCENE-SPECIFIC facts. The visual/topology
+    ticket still owns those (which object, which region, which elements); the skill
+    contributes the operation, expected effect, and verification policy for a narrow
+    declared ticket type.
+
+    CORRECTION (2026-08-19 audit): the skill may also supply TECHNIQUE parameters that are
+    properties of the technique itself rather than of the scene -- e.g. "Bevel segments must
+    be even to avoid a corner triangle" is knowledge, not an observation. Previously
+    operation_params came entirely from the ticket, which meant a ticket author had to write
+    the answer for the skill to look correct; the skill contributed nothing to the actual
+    mutation. Now the ticket's params still win on any key they specify (the scene can always
+    override), and the skill's declared `default_operation_params` fill only the keys the
+    ticket left unspecified. A skill still cannot name a target or select elements.
     """
     ticket_type = str(ticket.get("type", ""))
     for retrieved in context.retrieved_skills:
@@ -169,18 +179,30 @@ def _skill_guided_ticket_decision(
         if not operation:
             continue
         skill_id = retrieved.get("skill_id") or retrieved.get("id") or skill.get("skill_id") or skill.get("id")
+        # Technique defaults from knowledge, overridden by any scene-specific value the
+        # ticket states explicitly. Never lets a skill choose a target or an element set.
+        skill_defaults = hint.get("default_operation_params")
+        resolved_params = dict(skill_defaults) if isinstance(skill_defaults, dict) else {}
+        knowledge_supplied = sorted(
+            key for key in resolved_params if key not in dict(ticket.get("operation_params", {}))
+        )
+        resolved_params.update(dict(ticket.get("operation_params", {})))
         return _contract(
             context,
             disposition="ACT",
             action=str(hint.get("action", "APPLY_RETRIEVED_SKILL")),
             operation=str(operation),
-            operation_params=dict(ticket.get("operation_params", {})),
+            operation_params=resolved_params,
             target_object=context.active_object,
             target_region=str(ticket.get("target")) if ticket.get("target") else None,
             rationale=(
                 f"highest-priority visual ticket is {ticket_type}",
                 f"transfer-validated skill {skill_id} matches this ticket",
                 str(hint.get("reason", "use the validated local intervention before broader repair")),
+                *(
+                    (f"technique parameters supplied by knowledge, not the ticket: {knowledge_supplied}",)
+                    if knowledge_supplied else ()
+                ),
             ),
             expected_effect=str(hint.get("expected_effect", "Reduce the named local defect.")),
             verification=tuple(map(str, hint.get("verification", ["reinspect the affected region"]))),

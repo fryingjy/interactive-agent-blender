@@ -72,9 +72,10 @@
   "runtime_usage": [
     {
       "evidence_path": "runs/2026-08-18_inset-containment-skill-runtime-use/inset_containment_skill_runtime_use.json",
-      "success": true,
+      "success": false,
       "asset": "RuntimeCoarseBody",
-      "summary": "The skill ranked first for a matching local_feature_extrusion_on_coarse_surface ticket at SECONDARY_FORMS stage on a coarse 3-band curved body (matching the validated curved_large transfer case); the planner selected inset_selection with the ticket's own thickness/depth, then a follow-up typed extrude committed the feature. Both typed transactions verified cleanly with non-manifold edges unchanged from the declared-intentional open-collar baseline."
+      "summary": "The skill ranked first for a matching local_feature_extrusion_on_coarse_surface ticket at SECONDARY_FORMS stage on a coarse 3-band curved body (matching the validated curved_large transfer case); the planner selected inset_selection with the ticket's own thickness/depth, then a follow-up typed extrude committed the feature. Both typed transactions verified cleanly with non-manifold edges unchanged from the declared-intentional open-collar baseline.",
+      "withdrawn_by_audit": "2026-08-19: circular -- the ticket type was copied from this skill's own trigger list and the ticket supplied the operation parameters. Does not demonstrate runtime usefulness."
     }
   ],
   "planner_hint": {
@@ -97,8 +98,9 @@
       "render the finished feature in solid/MatCap shading and inspect containment directly -- do not rely on pole count or dihedral angle alone, which can point the wrong way (this skill's own test found inset showing a HIGHER max angle while looking visually better)",
       "confirm the inset ring exists as a genuine local boundary loop around the feature base"
     ],
-    "confidence": "MEDIUM"
+    "confidence": "MEDIUM",
+    "trigger_vocabulary_status": "NOT_YET_OBSERVABLE -- no classifier emits `local_feature_extrusion_on_coarse_surface`. This skill can only be reached by a caller who already decided to apply it. Reaching it from observation requires a classifier for 'local feature on a coarse surrounding surface', which is a genuinely harder judgment than the structural `corner_triangle` case and is not yet built."
   },
-  "status": "RUNTIME_VALIDATED",
-  "status_note": "Reproduced on a fine flat grid (claim did NOT hold there -- direct and inset were visually/topologically near-equivalent) and transfer-tested on a curved body with a coarser surrounding structure (claim DID hold there, confirmed visually, with the important correction that raw dihedral angle alone points the wrong way for this defect -- containment must be judged from a shaded render). The conditional rule (surrounding mesh density is the deciding factor, not a blanket 'always inset') is the actual validated finding, replacing the source's overly broad 'even on an already-subdivided plane' framing. Runtime-validated 2026-08-18: retrieval ranked it first for a matching ticket on a coarse curved body (mirroring the curved_large transfer case), the planner selected inset_selection with the ticket own parameters, and a typed decision transaction committed the inset followed by a second typed transaction committing the extrude, both verified clean -- runs/2026-08-18_inset-containment-skill-runtime-use/. Not yet PROMOTED to default/automatic planner behavior outside an explicit matching ticket, and not yet used on an actual unfamiliar-reference modeling task."
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "Reproduced on a fine flat grid (claim did NOT hold there -- direct and inset were visually/topologically near-equivalent) and transfer-tested on a curved body with a coarser surrounding structure (claim DID hold there, confirmed visually, with the important correction that raw dihedral angle alone points the wrong way for this defect -- containment must be judged from a shaded render). The conditional rule (surrounding mesh density is the deciding factor, not a blanket 'always inset') is the actual validated finding, replacing the source's overly broad 'even on an already-subdivided plane' framing. RUNTIME VALIDATION WITHDRAWN 2026-08-19 by audit: the recorded runtime evidence used a hand-authored ticket whose `type` string was copied out of this skill's own planner_hint.trigger_ticket_types, and whose operation_params carried the answer. That test proved dictionary plumbing, not that knowledge changed a modeling decision. tools/audit_observation_to_skill_gap.py demonstrates that nothing in the system observes geometry and emits `local_feature_extrusion_on_coarse_surface`, so this skill cannot yet fire from observation. The transfer evidence below (fine flat grid vs. coarse curved body, with the source's over-broad claim corrected) is unaffected and remains real."
 }

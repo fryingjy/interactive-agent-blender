@@ -10,12 +10,34 @@
     "smooth profile"
   ],
   "applicability": {
-    "modeling_stage": ["PRIMARY_BLOCKOUT", "PROPORTION_SILHOUETTE", "TOPOLOGY_SURFACE"],
-    "workflow": ["box modeling", "radial product modeling", "subdivision deformation"],
-    "surface_type": ["smooth taper", "concave waist", "flared profile"],
-    "defect": ["uneven deformation density", "stepped profile", "buckling", "pinching"],
-    "local_topology": ["connected quad rings", "uneven axial spacing"],
-    "modifiers_involved": ["SUBSURF"]
+    "modeling_stage": [
+      "PRIMARY_BLOCKOUT",
+      "PROPORTION_SILHOUETTE",
+      "TOPOLOGY_SURFACE"
+    ],
+    "workflow": [
+      "box modeling",
+      "radial product modeling",
+      "subdivision deformation"
+    ],
+    "surface_type": [
+      "smooth taper",
+      "concave waist",
+      "flared profile"
+    ],
+    "defect": [
+      "uneven deformation density",
+      "stepped profile",
+      "buckling",
+      "pinching"
+    ],
+    "local_topology": [
+      "connected quad rings",
+      "uneven axial spacing"
+    ],
+    "modifiers_involved": [
+      "SUBSURF"
+    ]
   },
   "preconditions": [
     "the target surface is intended to deform as one continuous smooth form",
@@ -50,9 +72,20 @@
     "use a local reroute, lattice, curve/profile construction, or fewer purposefully placed rings when uniform rings are not suitable"
   ],
   "planner_hint": {
-    "trigger_ticket_types": ["uneven_deformation_density", "stepped_profile", "deformation_buckling"],
-    "modeling_stages": ["PRIMARY_BLOCKOUT", "PROPORTION_SILHOUETTE", "TOPOLOGY_SURFACE"],
-    "required_ticket_fields": ["target", "operation_params"],
+    "trigger_ticket_types": [
+      "uneven_deformation_density",
+      "stepped_profile",
+      "deformation_buckling"
+    ],
+    "modeling_stages": [
+      "PRIMARY_BLOCKOUT",
+      "PROPORTION_SILHOUETTE",
+      "TOPOLOGY_SURFACE"
+    ],
+    "required_ticket_fields": [
+      "target",
+      "operation_params"
+    ],
     "action": "ESTABLISH_UNIFORM_DEFORMATION_RINGS",
     "operation": "loop_cut_selection",
     "reason": "The transferred experiment showed that uniform pre-distribution materially improved profile accuracy and quad density at the same topology budget.",
@@ -63,13 +96,17 @@
       "reapply or preview the deformation and compare the profile/silhouette",
       "inspect the evaluated surface and all relevant views for regression"
     ],
-    "confidence": "MEDIUM"
+    "confidence": "MEDIUM",
+    "trigger_vocabulary_status": "NOT_YET_OBSERVABLE -- no classifier emits `uneven_deformation_density`, `stepped_profile`, or `deformation_buckling`. These are visual/deformation judgments about how a surface reads, not structurally decidable topology conditions like `corner_triangle`, so they need either a deformation-aware probe or human/render review to raise. This skill never claimed runtime validation (status TRANSFER_VALIDATED, runtime_usage empty), so nothing is withdrawn here -- the label is added to keep the reachability of every trigger vocabulary explicit."
   },
   "sources": [
     {
       "type": "video_observation",
       "source_id": "yi87Dap_WOc",
-      "timestamp_seconds": [307, 400],
+      "timestamp_seconds": [
+        307,
+        400
+      ],
       "description": "Blender Guru deliberately demonstrates uneven manual extrude-and-scale spacing, then establishes the full height and adds uniformly spaced loop cuts before proportional deformation."
     },
     {
