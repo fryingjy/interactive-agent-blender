@@ -1,0 +1,104 @@
+{
+  "skill_id": "extrude.inset_first.local_containment",
+  "applicability": {
+    "workflow": "extrude",
+    "modeling_stage": "secondary-forms",
+    "surface_type": "hard-surface",
+    "modifiers_involved": [
+      "SUBSURF"
+    ],
+    "local_topology": "single-or-few-face-region-becoming-a-raised-or-attached-feature",
+    "defect": "extruded feature reads as an uncontained, drooping, or spreading bump instead of a clean deliberate shape"
+  },
+  "preconditions": [
+    "a face region on an existing body is about to be extruded to form a new local feature (a button, boss, or an attached secondary form like a spout/handle stub)",
+    "the surrounding surface will be evaluated under Subdivision Surface"
+  ],
+  "required_observations": [
+    "how coarse the surrounding topology already is relative to the intended feature size -- an already finely subdivided grid changes the outcome (see action_policy)",
+    "visual containment of the feature under a shaded/MatCap render, not just pole count or raw dihedral angle -- this project's own controlled test found the naive 'inset = lower angle = better' reading is backwards in practice",
+    "per-face vertex count and valence distribution at the feature boundary, for pole bookkeeping (separate from the containment question)"
+  ],
+  "action_policy": [
+    "Source claim (McGlasham insetting/softbodies episode, CAPTURED transcript-only): extruding directly (no inset) 'plants a five-spoked pole exactly at the base of the extrusion... the area of maximum distortion', even on an already-subdivided flat plane, and forces mesh-wide tightening loops instead of a local control loop.",
+    "Reproduced on a genuinely fine, already-subdivided flat grid (6x6, single interior face extruded): the claim did NOT hold as stated. Direct and inset produced visually near-identical clean bumps, identical pole counts (4 five-valence poles each), and similar dihedral angles (27.9 vs 32.3 degrees). On this configuration insetting first made no meaningful practical difference -- the source's own 'even on an already-subdivided plane' framing is too broad.",
+    "Transfer-tested on a curved cylinder body with a larger attached feature and a coarser surrounding structure (3 height bands, not a fine grid): a real, visually confirmed difference appeared. Direct extrude produced an uneven, drooping bump whose influence spread unevenly into the surrounding wall; inset-first produced a clean, well-contained, deliberately-shaped feature. This is the genuine, transfer-validated form of the claim.",
+    "Critical correction found only by looking at the actual render, not the numbers: raw max dihedral angle was HIGHER for the inset case (88.8 vs 53.6 degrees) in the curved/larger test, which naively reads as inset being 'worse'. It is not -- the higher angle there comes from a tighter, better-contained transition boundary, while the lower angle in the direct case comes from the deformation drooping and spreading with no local edge loop to contain it. Angle magnitude alone does not discriminate this defect; visual containment does. This is a direct instance of this project's own standing rule that a technically-measured metric can point the wrong way and shaded visual inspection is mandatory, not optional.",
+    "Conditional rule, correctly scoped: inset-before-extrude's real mechanism is guaranteeing a local boundary loop around the new feature, independent of whatever the surrounding topology already provides. On an already-fine surrounding grid, an adequate implicit local loop already exists, so the practical benefit of insetting first is small. On a relatively coarse surrounding surface (the common case for early-stage hard-surface blockouts, which is exactly where this technique is normally reached for), skipping the inset leaves no local containment and the feature visibly droops/spreads. Do not treat this as a universal 'always inset' law; treat surrounding mesh density as the actual deciding factor."
+  ],
+  "expected_effects": [
+    "Fine, already-subdivided surrounding topology + small feature: direct extrude and inset-first extrude are visually and topologically near-equivalent; insetting is optional there, not required.",
+    "Coarse surrounding topology + larger attached feature: inset-first produces a visually contained, well-defined feature; direct extrude produces a drooping, uncontained bump whose deformation spreads into the surrounding surface.",
+    "Pole count/valence at the feature boundary does not reliably distinguish the two cases by itself; visual containment under shaded/MatCap render does."
+  ],
+  "success_predicates": [
+    "shaded isometric (or MatCap) render of the finished feature shows a clean, contained boundary with no visible droop or uneven spread into the surrounding surface",
+    "if surrounding topology is coarse relative to the feature, an inset ring exists at the feature's base providing a genuine local control loop"
+  ],
+  "failure_predicates": [
+    "judging feature quality from mesh_health/pole-count/dihedral-angle numbers alone without a shaded render -- this project's own test showed the raw angle metric points the wrong way for this specific defect",
+    "assuming a direct extrude is unsafe on any surface regardless of how finely the surrounding topology is already subdivided (over-generalizing the source's 'even on an already-subdivided plane' claim, which did not reproduce)",
+    "assuming insetting first is a substitute for adequate surrounding topology when the base mesh is genuinely coarse (inset alone; the surrounding density still matters for the rest of the surface)"
+  ],
+  "recovery": [
+    "if a direct-extrude feature reads as drooping/uncontained in a shaded render, add an inset ring at its base retroactively (select the boundary loop, inset outward with use_outset if the footprint size must be preserved) to give it a local control boundary",
+    "re-render and re-inspect visually after the fix; do not rely on the angle/pole numbers alone to confirm the repair"
+  ],
+  "sources": [
+    {
+      "type": "external_video_transcript",
+      "source_id": "K5VJYlUV23I",
+      "description": "Ian McGlasham 'Insetting and softbodies' episode -- transcript-only claim, not independently frame-reviewed.",
+      "trust_tier": "USEFUL_VERIFY (transcript-only, per this project's own source-tier discipline)"
+    },
+    {
+      "type": "direct_experiment",
+      "description": "This project's own live/headless reproduction and transfer test, session 2026-08-18, via bmesh.ops.inset_region/extrude_face_region matching this project's own mesh_ops.py conventions -- runs/2026-08-18_inset-before-extrude-validation/.",
+      "trust_tier": "not applicable (first-party direct experiment)"
+    }
+  ],
+  "experiments": [
+    {
+      "type": "controlled reproduction, fine flat grid",
+      "description": "A 6x6-subdivided flat panel; one interior face extruded 0.4 units, direct vs inset(thickness 0.08)-then-extrude, both evaluated under 2 levels of Subsurf. Direct: max dihedral 27.9deg, 4 five-valence poles. Inset: max dihedral 32.3deg, 4 five-valence poles (same count/location). Isometric shaded renders (flat_small_direct_iso.png, flat_small_inset_iso.png) are visually near-identical clean rounded buttons. The claim's 'even on an already-subdivided plane' framing did not reproduce here.",
+      "limitation": "Single interior face on a uniform, already-fine grid; does not represent a coarse hard-surface blockout base mesh."
+    },
+    {
+      "type": "controlled second-geometry transfer, curved body + coarser surrounding structure",
+      "description": "A 16-segment, 3-height-band open cylinder (matching this project's own live-validated spout-growth construction); the front mid-band face extruded 0.8 units, direct vs inset(thickness scaled to the face's own measured size)-then-extrude. Direct: max dihedral 53.6deg, drooping/uneven bump in the shaded render (curved_large_direct_iso.png). Inset: max dihedral 88.8deg (higher, but from tighter containment, not a defect) with a clean, well-contained bump (curved_large_inset_iso.png). Pole counts were identical between conditions (5 five-plus-valence points each) -- containment, not pole count or angle magnitude, is what actually differs and what the render shows.",
+      "limitation": "One offset/thickness pairing on one curved body; not yet tested across a range of surrounding-density levels to find where the crossover from 'no practical difference' to 'real visible difference' actually sits."
+    }
+  ],
+  "runtime_usage": [
+    {
+      "evidence_path": "runs/2026-08-18_inset-containment-skill-runtime-use/inset_containment_skill_runtime_use.json",
+      "success": true,
+      "asset": "RuntimeCoarseBody",
+      "summary": "The skill ranked first for a matching local_feature_extrusion_on_coarse_surface ticket at SECONDARY_FORMS stage on a coarse 3-band curved body (matching the validated curved_large transfer case); the planner selected inset_selection with the ticket's own thickness/depth, then a follow-up typed extrude committed the feature. Both typed transactions verified cleanly with non-manifold edges unchanged from the declared-intentional open-collar baseline."
+    }
+  ],
+  "planner_hint": {
+    "trigger_ticket_types": [
+      "local_feature_extrusion_on_coarse_surface"
+    ],
+    "modeling_stages": [
+      "SECONDARY_FORMS",
+      "TOPOLOGY_SURFACE"
+    ],
+    "required_ticket_fields": [
+      "target",
+      "operation_params"
+    ],
+    "action": "INSET_THEN_EXTRUDE_FOR_CONTAINMENT",
+    "operation": "inset_selection",
+    "reason": "Transfer-tested: on a relatively coarse surrounding surface, insetting before extruding a local feature keeps the result visually contained instead of drooping/spreading into the surrounding surface. On an already-fine surrounding grid the benefit is negligible, so this hint should only fire when the ticket identifies genuinely coarse surrounding topology.",
+    "expected_effect": "The extruded feature reads as a clean, contained shape in a shaded render rather than an uneven, drooping bump.",
+    "verification": [
+      "render the finished feature in solid/MatCap shading and inspect containment directly -- do not rely on pole count or dihedral angle alone, which can point the wrong way (this skill's own test found inset showing a HIGHER max angle while looking visually better)",
+      "confirm the inset ring exists as a genuine local boundary loop around the feature base"
+    ],
+    "confidence": "MEDIUM"
+  },
+  "status": "RUNTIME_VALIDATED",
+  "status_note": "Reproduced on a fine flat grid (claim did NOT hold there -- direct and inset were visually/topologically near-equivalent) and transfer-tested on a curved body with a coarser surrounding structure (claim DID hold there, confirmed visually, with the important correction that raw dihedral angle alone points the wrong way for this defect -- containment must be judged from a shaded render). The conditional rule (surrounding mesh density is the deciding factor, not a blanket 'always inset') is the actual validated finding, replacing the source's overly broad 'even on an already-subdivided plane' framing. Runtime-validated 2026-08-18: retrieval ranked it first for a matching ticket on a coarse curved body (mirroring the curved_large transfer case), the planner selected inset_selection with the ticket own parameters, and a typed decision transaction committed the inset followed by a second typed transaction committing the extrude, both verified clean -- runs/2026-08-18_inset-containment-skill-runtime-use/. Not yet PROMOTED to default/automatic planner behavior outside an explicit matching ticket, and not yet used on an actual unfamiliar-reference modeling task."
+}

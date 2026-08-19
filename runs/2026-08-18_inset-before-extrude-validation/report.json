@@ -1,0 +1,75 @@
+{
+  "question": "Does inset-before-extrude measurably reduce pole burden and surface distortion, and does that benefit hold across both flat/curved surfaces and small/large features, or is it conditional?",
+  "flat_small_direct": {
+    "vertices": 753,
+    "faces": 704,
+    "quads": 704,
+    "triangles": 0,
+    "ngons": 0,
+    "non_manifold_edges": 96,
+    "valence_distribution": {
+      "2": 4,
+      "3": 96,
+      "4": 649,
+      "5": 4
+    },
+    "five_plus_poles": 4,
+    "max_dihedral_degrees": 27.86316420015652,
+    "median_dihedral_degrees": 0.22899729976775132,
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-18_inset-before-extrude-validation\\flat_small_direct.blend"
+  },
+  "flat_small_inset": {
+    "vertices": 881,
+    "faces": 832,
+    "quads": 832,
+    "triangles": 0,
+    "ngons": 0,
+    "non_manifold_edges": 96,
+    "valence_distribution": {
+      "2": 4,
+      "3": 96,
+      "4": 777,
+      "5": 4
+    },
+    "five_plus_poles": 4,
+    "max_dihedral_degrees": 32.3151788313665,
+    "median_dihedral_degrees": 0.0,
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-18_inset-before-extrude-validation\\flat_small_inset.blend"
+  },
+  "curved_large_direct": {
+    "vertices": 929,
+    "faces": 896,
+    "quads": 896,
+    "triangles": 0,
+    "ngons": 0,
+    "non_manifold_edges": 64,
+    "valence_distribution": {
+      "3": 84,
+      "5": 4,
+      "4": 840,
+      "16": 1
+    },
+    "five_plus_poles": 5,
+    "max_dihedral_degrees": 53.55279145168573,
+    "median_dihedral_degrees": 5.620333429779474,
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-18_inset-before-extrude-validation\\curved_large_direct.blend"
+  },
+  "curved_large_inset": {
+    "vertices": 993,
+    "faces": 960,
+    "quads": 960,
+    "triangles": 0,
+    "ngons": 0,
+    "non_manifold_edges": 64,
+    "valence_distribution": {
+      "3": 84,
+      "4": 904,
+      "5": 4,
+      "16": 1
+    },
+    "five_plus_poles": 5,
+    "max_dihedral_degrees": 88.76268641557368,
+    "median_dihedral_degrees": 5.592507665987665,
+    "blend_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-18_inset-before-extrude-validation\\curved_large_inset.blend"
+  }
+}
