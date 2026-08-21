@@ -18,10 +18,9 @@ import bmesh
 import bpy
 from mathutils import Vector
 
-ROOT = Path(__file__).resolve().parents[1]
-OPS = ROOT / "blender_ops"
-if str(OPS) not in sys.path:
-    sys.path.insert(0, str(OPS))
+from lab_common import add_repo_paths
+
+ROOT, OPS = add_repo_paths(__file__)
 
 import persistent_ids
 from modeler_server import ModelerServer

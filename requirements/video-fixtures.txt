@@ -1,0 +1,5 @@
+# Used by tools/generate_owned_modeling_lesson_fixture.py to build/decode legal
+# local video fixtures. This does not download or archive third-party media.
+av>=13,<19
+numpy>=2.0,<3
+Pillow>=10.0,<13
