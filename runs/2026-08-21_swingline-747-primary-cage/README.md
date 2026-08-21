@@ -91,6 +91,69 @@ hid the recess behind the taller lever object, so rendered the base in isolation
 lever hidden) specifically to see it clearly, rather than accepting an inconclusive check. It reads
 correctly: a clean, visible shallow channel running the base's length, matching reference intent.
 
-Not yet built: the hinge cut, the lever's own crown/nose profile, and the separate `AnvilPlate`,
-`MagazineRail`, `HingePin`, `Latch`, `Spring`, `RubberBasePad` components this prop's `reference_plan.md`
-calls for once the primary cages are correct.
+Not yet built: the lever's own crown/nose profile, and the separate `AnvilPlate`, `MagazineRail`,
+`HingePin`, `Latch`, `Spring`, `RubberBasePad` components this prop's `reference_plan.md` calls for
+once the primary cages are correct.
+
+## Stage 2: a real coordinate-space bug, found by direct inspection, not by trusting a render
+
+Attempted the hinge throat next (`OPEN_HINGE_THROAT`, tapering the lever's underside up from the
+rear hinge toward the front, per `reference_plan.md`'s flag that the cover/base throat "is a
+critical negative space [that] must survive every blockout"). It committed clean and the render
+looked plausible at a glance -- but two views (`throat_side.png`, an end-on view that can't show a
+taper varying along that same axis at all, and `throat_iso.png`, where the gap was too subtle to
+read confidently) weren't good enough evidence, so a proper front elevation was rendered next.
+
+That still didn't resolve it cleanly, so the actual vertex data was inspected directly rather than
+keep reasoning from renders -- and that's what found the real bug: `mesh_ops._bm_from_object` reads
+`bpy.data.objects[name].data` directly, which Blender always stores in **local** (object-space)
+coordinates, but both `CUT_ANVIL_RECESS` and `OPEN_HINGE_THROAT` computed their target positions in
+**world** space and applied them directly to local vertex coordinates. Concretely:
+
+- `BaseShell_HIGH`'s "recess" was actually a 4.6mm **bump** above the top surface (world Z 18.87 vs.
+  the true top at 14.25), not a 2.5mm recess below it. The earlier isolated render
+  (`base_only_iso.png`, described at the time as "a clean visible channel") was real geometry, but
+  its shading direction was misread -- a raised strip and a recessed groove can look close to
+  identical under flat matcap-style lighting without a raking light or a numeric check. Re-rendering
+  the corrected version afterward (still `base_only_iso.png`) looks **visually almost identical** to
+  the wrong version -- confirming this render style genuinely cannot reliably disambiguate the two on
+  its own. Worth remembering for future stages: a shallow depth feature needs either raking light,
+  a wireframe/cross-section check, or direct vertex inspection, not just a solid-shaded glance.
+- `TopLeverShell_HIGH`'s hinge taper never applied at all in the first attempt -- the world-space Z
+  target never matched any local vertex Z, so the intended "move" step silently selected nothing.
+  `PERFORM_RESULT` and the health check both looked clean because the topology from the X-bisects
+  was still valid; only a direct vertex dump caught that the Z edit was a no-op.
+
+**Two more layers surfaced while fixing this, each caught the same way -- by inspecting actual
+vertex positions rather than trusting the previous fix's clean commit:**
+
+1. A first fix attempt (`FIX_COORDINATE_SPACE_BUG`) converted world targets to local by subtracting
+   the object's own origin offset -- correct in principle, but it needed to match vertices the
+   *original bug* had already placed at the raw world-intended numbers (since that bug treated world
+   values as local directly), not at a freshly-recomputed "correct" local position. It ended up
+   moving the box's own unrelated front-corner vertex instead of the intended cut points.
+2. A second fix (`FIX_LEVER_THROAT_PRECISELY`) matched the verified existing positions directly and
+   got the five real taper cuts right (confirmed: `reverted: 2, moved: 10`, matching the two stray
+   verts undone and five cuts times two sides) -- but left one small sliver: the *original* buggy
+   script's last cut had landed 6.66mm short of the lever's true front edge (the same
+   world-used-as-local error, applied to the box's own boundary this time), leaving a thin ungapped
+   nub right at the tip instead of a smooth taper to the edge. Closed with one more targeted fix
+   (`CLOSE_FRONT_SLIVER`).
+
+Final state verified two ways, not one: a direct world-space vertex dump (base recess floor at world
+Z 11.75, correctly below the 14.25 top; lever underside progressing smoothly from Z 14.25 at the
+rear hinge up to Z 22.24 near the front, all the way to the true edge) and a front-elevation render
+(`fixed_front.png`) that now shows the intended wedge clearly: flush at the rear, opening into a
+real visible gap toward the front, matching what `747_open_mechanism.jpg` and the closed-state
+photos both show. Five decisions total for this bug (`OPEN_HINGE_THROAT` through `CLOSE_FRONT_SLIVER`),
+decision_revision 1 -> 5, all individually committed and health-checked, none silently squashed.
+
+**The generalizable lesson, worth carrying into every future construction script on this project**:
+`mesh_ops._bm_from_object`/`_write_back` operate in the object's local space. Any script that creates
+an object with a non-zero `location` (as every script in this run has, to place parts at their real
+world positions) must either convert world-intended targets to local before touching `v.co`, or
+avoid the ambiguity entirely by baking location into the mesh at creation time. Every prior
+prop this session (MasterLock, C38, KUPONG) happened not to hit this because their target-writing
+code either worked at an object origin of `(0,0,0)` or derived its targets by reading the mesh's own
+current values back out (as the KUPONG taper fixes did) rather than computing a fresh world-space
+number -- this bug was waiting to happen the first time a script mixed both patterns, and it did.
