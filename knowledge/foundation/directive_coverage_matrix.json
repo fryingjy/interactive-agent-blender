@@ -59,9 +59,7 @@
         "runs/2026-08-16_double-curvature-bevel-subd/",
         "knowledge/skills/connect-vertex-path-subd-safe-quads.json",
         "runs/2026-08-16_connect-vertex-path-curved-transfer/",
-        "docs/CURRENT_STATE_GAP_MATRIX.md",
-        "runs/2026-08-20_mallet-build/human_review_repair_handoff.json",
-        "runs/2026-08-20_mug-handle-join/human_review_repair_handoff.json"
+        "docs/CURRENT_STATE_GAP_MATRIX.md"
       ],
       "current_boundary": "The C38 model run and its human_stage_review.json evidence were deliberately deleted 2026-08-17 (direct user instruction: every named-product model-build attempt to date was judged not good enough to keep). A subsequent magnifying-glass build was purged 2026-08-20 for repeated overclaiming. The mallet and mug-handle-join builds (2026-08-20) are the first in this project's history to receive and pass an actual human-authored visual review record (REVIEW_ACCEPTED_NO_REPAIR via tools/record_external_visual_review.py) rather than only self-assessment or a recorded rejection; the mug-handle-join build specifically re-tests the authored two-part join skill that broke the magnifying glass. Both deliberately used known/authored forms, not an unfamiliar reference, so broad professional generalization to an unseen target remains unproven.",
       "next_step": "Apply the learned construction rules -- including the now-demonstrated authored-bridge join -- to a genuine unfamiliar reference target and again seek independent human visual review."
@@ -165,11 +163,7 @@
         "tools/verify_reference_set_gate.py",
         "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json",
         "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json",
-        "knowledge/skills/reference-axis-aligned-image-empty-setup.json",
-        "runs/2026-08-20_masterlock-140d-resume/README.md",
-        "runs/2026-08-20_masterlock-140d-resume/silhouette_comparison/comparison.json",
-        "runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html",
-        "runs/2026-08-20_masterlock-140d-resume/human_review.json"
+        "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
       ],
       "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist. The MasterLock 140D padlock (runs/2026-08-20_masterlock-140d-resume/) reached its first recorded human review 2026-08-21 -- REVIEW_ACCEPTED_NO_REPAIR, but the reviewer's own words were 'its ok for the most part': a qualified accept, not a claim of a finished or maximally detailed model, recorded as exactly that rather than rounded up. This is the first genuinely reference-driven build (not a technique exercise against an authored form) in this project's history to reach a recorded human accept. Open items remain: the front wordmark/seam detail is unbuilt, the rear/underside is unmodeled, and the negative-space gap found by measurement was deliberately left unfixed rather than closed by contradicting a verified dimensional spec against a photo the reference manifest itself labels PERSPECTIVE, not orthographic.",
       "next_step": "Apply this same measured, reference-checked construction discipline to a component this build hasn't touched yet (the front wordmark, or a second reference-driven asset on the curriculum ladder) -- the mechanism this requirement tracks is now demonstrated once; repeating it is what would move this from PARTIAL toward something stronger."
