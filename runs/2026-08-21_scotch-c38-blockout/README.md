@@ -54,9 +54,20 @@ real profile, and copying it would bake a camera artifact into the mesh. `docs/
 REFERENCE_COLLECTION_PROTOCOL.md`'s warning against tracing a perspective photo as if it were
 orthographic applies directly here, same as it did on the MasterLock's negative-space decision.
 
+## Top cavity (decision_revision 1 -> 2)
+
+Cut the top cavity -- `reference_plan.md`'s declared "primary negative space" -- via
+`ADD_TOP_CAVITY`. Same bisect-isolate-then-extrude technique validated on the MasterLock sockets
+(no boolean, no inset+bevel): 4 vertical planes isolate a rectangular region of the shell's tilted
+top face, that region's 4 corner verts are set to a flat floor Z directly (not translated by a
+uniform delta, since the tilted roof means they start at different heights), then the original
+face is deleted. Structurally clean (0 non-manifold, 0 degenerate). Bounds read off the shell's own
+current geometry (not re-guessed): opens 15% in from the rear, closes at 80% along the length
+(leaving room for the front cutter/bridge, not yet built), spans 58% of the shell's width, centered.
+
 ## Status
 
-Recognizable wedge silhouette established. Still open, in order: base footprint should probably
-taper too (currently a plain box, but the reference shows it narrowing toward the front to match
-the shell), the top cavity, the front cutter face, and the hub/tape-roll assembly. One bounded
-decision at a time, each rendered and checked before the next -- not attempted in this pass.
+Real negative space now visible, matching the reference's gestalt. Still open, in order: base
+footprint taper (currently a plain box; the reference shows it narrowing toward the front), the
+front cutter face, and the hub/tape-roll assembly. One bounded decision at a time, each rendered
+and checked before the next.
