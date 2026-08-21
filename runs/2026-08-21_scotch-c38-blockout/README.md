@@ -39,9 +39,24 @@ cavity, and cutter face -- start from here through `DecisionTransaction`, unlike
 build (which inherited pre-transaction-system geometry); this prop is typed from the very first
 shaping edit.
 
+## Shell taper (decision_revision 0 -> 1)
+
+Tapered `UpperShell_HIGH`'s roofline: moved the two front-top vertices down to 60% of the rear
+height, via a real `DecisionTransaction` (`TAPER_SHELL_ROOFLINE`). Structurally clean (0
+non-manifold, 0 degenerate) and now reads as a genuine wedge silhouette against the reference's
+gestalt in a front render.
+
+The 60% figure is a visual estimate, not measured. Directly tracing the roofline from
+`ofix_clean_profile.jpg`'s pixels was deliberately rejected as a method: the traced curve visibly
+*peaks* mid-object (min-y column around x=340-360, rising toward both ends) rather than sloping
+monotonically -- that shape is the oblique photo's own perspective foreshortening, not the object's
+real profile, and copying it would bake a camera artifact into the mesh. `docs/
+REFERENCE_COLLECTION_PROTOCOL.md`'s warning against tracing a perspective photo as if it were
+orthographic applies directly here, same as it did on the MasterLock's negative-space decision.
+
 ## Status
 
-Primary envelope blockout only. Not yet reviewable as "does this read as the object" -- a plain
-stacked box doesn't yet. Next decision: taper the shell's roofline (sloped from tall rear to lower
-front cutter face) per the reference photos, one bounded edit at a time, each rendered and checked
-before the next.
+Recognizable wedge silhouette established. Still open, in order: base footprint should probably
+taper too (currently a plain box, but the reference shows it narrowing toward the front to match
+the shell), the top cavity, the front cutter face, and the hub/tape-roll assembly. One bounded
+decision at a time, each rendered and checked before the next -- not attempted in this pass.
