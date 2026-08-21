@@ -64,11 +64,42 @@ alongside a full research-and-comparison pass, and this project's own history (s
 cross-section-shear fix) shows this class of operation deserves its own focused, iterative attempt
 rather than being rushed to close out a session.
 
+## Socket construction (decision_revision 11 -> 12)
+
+Built through a real `DecisionTransaction` (`ADD_SHACKLE_SOCKETS`), not a raw script edit outside
+the tracked system. Technique: `bisect_plane` only, never inset+bevel or boolean --
+
+1. Local frame cuts isolate a square region around each socket center, restricted each time to just
+   that region's own current geometry (an early attempt that passed the whole top plane let the
+   cuts ripple across the entire top face).
+2. 12 tangent-plane bisects around the target radius carve a regular 12-gon hole. An earlier attempt
+   used `inset_individual` + vertex-bevel instead; that silently clipped a corner off the
+   *neighboring* ring faces too, because bmesh vertex-bevel affects every face touching an edge at
+   the target vertex, not just the one face you meant to round. Pure bisect has no such side effect.
+3. The resulting 12-gon's vertices are projected exactly onto the target circle (a bisect polygon is
+   circumscribed, slightly larger than the true circle otherwise).
+4. Extrude the circle face down 2 mm for the recess floor, then explicitly delete the original face
+   -- `extrude_face_region` does not consume it, and leaving it in place produces non-manifold edges
+   (the exact bug already diagnosed once in `mesh_ops.extrude_selection`'s own docstring; re-found
+   here independently on first attempt, fixed the same documented way).
+
+First attempt (`SOCKET_RADIUS=3.5`) was structurally clean but visually too subtle to read as a
+collar against the shackle's own 3 mm tube radius; second attempt confirmed a real process mistake
+along the way -- a debug script that modified geometry in memory but never called
+`save_as_mainfile`, so two render passes silently re-rendered the same untouched file and looked
+identical, which could easily have been misread as "the parameter change had no effect" if not
+caught. Final version uses `SOCKET_RADIUS=4.2`, which reads clearly as a distinct collar in the iso
+render, matching the reference photo's junction. `brass_body` carries no SubD modifier, so this
+region's flat n-gon wedges (the frame material between the circle and the outer square, from the
+tangent cuts) carry no shading risk -- the concern that makes n-gons dangerous elsewhere in this
+project doesn't apply to a planar, non-subdivided face.
+
+Fresh check after commit: 0 non-manifold edges, 0 degenerate faces, 0 loose vertices. Full test
+suite unaffected (233 passed).
+
 ## Status
 
-In progress, honestly assessed, not advanced past stage 12. Next concrete step: construct the two
-shackle sockets (clean quad topology, no boolean, sized to the shackle's 6 mm diameter plus a small
-visible clearance, shallow recess only — not a through-hole, since the internal locking mechanism is
-explicitly out of evidence and out of scope) as one verified `DecisionTransaction`, then the front
-corner chamfer as a separate decision. No claim of "done," "fixed," or "clean" beyond what these
-renders actually show.
+Sockets built and verified. **Not yet done**: the front corner chamfer (the second gap found against
+the reference, a 45-degree facet, still not built) and a fresh full-view human review of this
+socket work specifically -- the renders here are my own inspection, not a substitute for that. No
+claim of "done," "fixed," or "clean" beyond what these renders actually show.
