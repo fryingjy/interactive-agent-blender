@@ -171,3 +171,28 @@ what `docs/CURRENT_STATE_GAP_MATRIX.md` already names: proportion and component 
 these two decisions never touched.
 
 Full report: `silhouette_comparison/comparison.json`.
+
+## Why the negative-space gap (0.719 IoU) should not be chased by narrowing the shackle
+
+`negative_space_iou` (0.719) trails `silhouette_iou` (0.858) by a wide enough margin to be worth
+investigating on its own -- stage 06's README already flagged it once ("the shackle opening remains
+the material localized mismatch") and it never actually closed. Measured the row-by-row outer and
+inner (hole) width of both masks directly: at the arch's widest row, the candidate's negative-space
+width is ~20% wider than the reference's, versus only ~8% wider on outer width -- a real,
+disproportionate mismatch, not noise.
+
+The obvious-looking fix is to narrow the shackle legs. **Did not do this.** The current leg
+centerlines (`x = +/-13.5mm`) aren't a photo-fitted guess -- they're set to reproduce the official
+21mm clearance specification exactly, and `reference_manifest.json` explicitly labels the photo
+this comparison is measured against as `front_right_oblique`, `projection: PERSPECTIVE`, not
+orthographic. `docs/REFERENCE_COLLECTION_PROTOCOL.md` is direct about this exact situation:
+"Photographs are not orthographic drawings... Use photographs for visual evidence and
+orthographic/dimensional sources for proportions. Do not directly trace a perspective photograph as
+if it were an orthographic projection." Narrowing a dimensionally-anchored shackle to better match
+one perspective-distorted photo's pixel silhouette would be trading a verified real-world
+measurement for a worse one, in the direction the pixel metric happens to reward.
+
+This is a real limit of the current reference set, not a construction defect: a true front-on
+orthogonal photo (or a second corroborating angle) would be needed before the negative-space gap
+could be diagnosed as shape error versus perspective artifact with any confidence. Recorded here so
+a future session doesn't rediscover the same tempting-but-wrong fix.
