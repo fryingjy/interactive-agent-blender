@@ -100,8 +100,18 @@ front (+X) corners via `CHAMFER_BASE_FRONT_CORNERS` (bisect_plane + edgenet_fill
 Only the front: the rear isn't visible in any reference photo at this angle, so it stays a plain
 box edge rather than inventing a matching treatment with no evidence for it. Structurally clean.
 
+## Cutter blade
+
+Added `CutterBlade` -- `reference_plan.md`'s declared separate functional assembly (metal, a real
+material/function boundary from the plastic shell). A close photo crop shows a thin metallic plate
+with a serrated front edge, mounted at the shell's front-top edge, projecting slightly forward.
+Serration itself is tertiary detail and not built yet -- this establishes the mass and position
+only, per this same plan's own instruction not to add detail before primary form is settled.
+Position read directly off the shell's own current front-face geometry, not re-guessed.
+
 ## Status
 
-Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, hub, tape roll, and a
-chamfered base front. Still open: the front cutter face (currently just the shell's plain sloped
-front wall). One bounded decision at a time, each rendered and checked before the next.
+All five components `reference_plan.md` names are now present: `UpperShell_HIGH` (wedge, tapered,
+with the cavity), `WeightedBase_HIGH` (chamfered front), `Hub`, `TapeRoll`, `CutterBlade`. This is
+a genuine primary-form blockout, not just a box -- ready for a real proportion/silhouette review
+against the reference next, before any further detail. Not yet reviewed by a human.
