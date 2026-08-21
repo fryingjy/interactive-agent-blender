@@ -100,5 +100,13 @@ Not proven, and explicitly not claimed: that the classifier covers other defect 
 vocabulary generalises; that any of this improves **resemblance to an unfamiliar reference**. The
 single highest-value remaining gap is unchanged by this work and is now the sharpest it has been:
 **no validated skill has ever fired during a real reference-driven build, because no real
-reference-driven build currently exists in the repo.** The frozen magnifying-glass contract
-(`runs/2026-08-18_magnifying-glass-reference/contract.md`) is the correct next target.
+reference-driven build currently exists in the repo.**
+
+**Correction (2026-08-20):** this section originally pointed at the frozen magnifying-glass contract
+as the next target. That contract and its build (`runs/2026-08-18_magnifying-glass-reference/`,
+`runs/2026-08-19_magnifying-glass-build/`) were purged for overclaiming; the citation above is a
+dangling reference to evidence that no longer exists on disk (recoverable from git history), not a
+claim that it never existed. The mallet (`runs/2026-08-20_mallet-build/`) and mug-handle-join
+(`runs/2026-08-20_mug-handle-join/`) builds are the current trust-rebuild work; per
+`docs/CURRENT_STATE_GAP_MATRIX.md`, the gap this section describes still needs a genuine
+reference-driven build, and neither of those two is that build.
