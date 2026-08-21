@@ -172,3 +172,39 @@ removing material outside the arch envelope while leaving the front/rear notch p
 `depth_to_width` (0.5455, from the genuinely orthographic `side_orthographic` source) sets the
 overall proportion; the exact curve shape is a flagged visual estimate from the side-view render,
 same honesty standard as every other unmeasured curve this project has built.
+
+## Stage 2 actually built (decision_revision 1 -> 2 -> 3 -> 4), then found to be the wrong shape
+
+Built the taper as a solid-block narrowing: bisected above the notch and tapered the outer Y-extent
+inward toward the peak (`TAPER_ARCH_ABOVE_NOTCH`), then did the same within the two individual feet
+below the notch (`TAPER_LEGS_BELOW_NOTCH`). Rendering after the first pass showed exactly the
+scope limit already flagged before building it (no leg separation, since the leg region was
+untouched) -- expected, not a surprise. Rendering after the second pass showed a real, unflagged
+defect instead: a visible flare/kink right at the seam between the two passes, because the leg
+taper's own end value (0.68 keep-fraction) didn't match the upper taper's start value (1.0,
+untouched) at the shared boundary. Fixed with a third corrective decision
+(`FIX_TAPER_SEAM_DISCONTINUITY`) replacing both passes' Y-extent values with one continuous
+function of height -- confirmed smooth under render, no more seam.
+
+**But that render then exposed a much bigger problem than the seam.** With the seam fixed, the side
+silhouette reads as one smooth, solid, cone-like taper (`fixed_side.png`) -- and comparing it
+directly against the reference's actual side view shows this is the wrong *class* of shape
+entirely, not just imprecise. The reference's two "legs" aren't the outer edges of a solid block
+narrowing inward -- there's real, visible background/daylight showing *through* the object between
+the front leg and rear leg in the lower-middle height range, exactly like a real physical A-frame
+stand or easel. That directly confirms what the isometric reference render showed early in this
+run's research (a distinctly thin rear leg with a visible gap behind a thicker front panel) --
+which I had provisionally reconciled as "one continuous shell, just thickness-tapered," but the
+side-view comparison now shows that reconciliation was wrong. The object is genuinely **hollow
+through the middle in Y** (front wall and rear wall, open space between them at mid-height), not a
+solid mass that merely narrows in cross-section.
+
+**Everything built so far in stage 2 is the wrong construction and needs real correction, not
+polish.** Recorded honestly rather than left implied by silence: the current `Shell_HIGH` is a
+solid tapered block, structurally clean and internally consistent, but visually wrong against the
+reference in a way overlaying the seam-fix render exposed clearly. Not reverting it yet -- it's a
+legitimate, useful intermediate state (correct front/rear silhouette, correct overall envelope) to
+carve the hollow into, not throwaway work. Next real step: cut through the middle-Y material in the
+upper/leg height range (leaving the front and rear walls standing, open between them), using the
+same bisect-isolate-then-extrude/delete technique already validated on the MasterLock sockets and
+the C38 cavity -- not yet attempted this run.
