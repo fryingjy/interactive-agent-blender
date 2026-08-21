@@ -91,9 +91,46 @@ hid the recess behind the taller lever object, so rendered the base in isolation
 lever hidden) specifically to see it clearly, rather than accepting an inconclusive check. It reads
 correctly: a clean, visible shallow channel running the base's length, matching reference intent.
 
-Not yet built: the lever's own crown/nose profile, and the separate `AnvilPlate`, `MagazineRail`,
+Not yet built: the lever's front nose taper, and the separate `AnvilPlate`, `MagazineRail`,
 `HingePin`, `Latch`, `Spring`, `RubberBasePad` components this prop's `reference_plan.md` calls for
 once the primary cages are correct.
+
+## Stage 3: lever crown, a second real bug chain (found before committing this time)
+
+Rounded `TopLeverShell_HIGH`'s top cross-section into the domed "crown" every reference photo shows
+(currently a flat-topped box). First attempt committed clean (0 non-manifold/degenerate) but a direct
+vertex dump -- done proactively this time, per the coordinate-space lesson two sections up -- showed
+the Z values weren't monotonic toward center at all, and didn't match any of the intended per-step
+targets past the first cut. Rejected the commit's premise rather than trust the clean health check;
+reverted the blend file to the last git-committed state (this attempt had not yet been git-committed)
+and diagnosed with a step-by-step script instead of debugging blind.
+
+**Root cause, found by tracing one bisect at a time**: moving a shared boundary vertex after the
+first cut leaves the "inner" region no longer flat -- it's linearly interpolated between the two
+symmetric drop points already made. Every later step's matching condition (`z ≈ original flat top`)
+therefore never matched anything again, so those steps silently moved zero vertices while still
+reporting a clean commit. Fixed by moving whatever vertex each bisect actually creates at its own Y
+position, not requiring it to match the untouched original height.
+
+**A second, purely conceptual bug surfaced once the mechanics were fixed**: the drop-fraction
+direction was backwards -- built so the *center* dropped the most and the *edges* stayed near full
+height, the opposite of an actual crown (tallest at center, rounding down toward the sides). Also
+extended the same "true edge" fix already needed once on the hinge throat: the taper originally
+stopped short of the box's real edge vertices, which would have left a flush sliver at the sides
+identical in kind to the earlier front-tip sliver -- closed by moving the true edge vertices to the
+deepest drop directly, not just the interior cut points.
+
+Final state verified two ways again: a direct vertex dump (symmetric, monotonically decreasing from
+13.66 at the center ridge to 6.36 at the true edges) and an isolated render (`lever_crown_iso.png`)
+that reads as a genuine rounded dome cross-section, not a flat box or an inverted dip. Structurally
+clean, decision_revision 5 -> 6.
+
+**Compounding pattern worth naming explicitly**: this is the second construction in this same run
+where the first attempt committed clean and only a deliberate, skeptical direct inspection (not
+trusting the health check or a render glance) caught that the actual geometry didn't match intent.
+Adopting direct vertex verification as the default check for every multi-step taper/bisect
+construction on this project going forward, not an occasional extra step reserved for when something
+already looks suspicious.
 
 ## Stage 2: a real coordinate-space bug, found by direct inspection, not by trusting a render
 
