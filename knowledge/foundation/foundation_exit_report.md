@@ -478,8 +478,13 @@ shackle, since that would trade a verified dimensional spec for a better fit aga
 reference manifest itself labels `PERSPECTIVE`, not orthographic. A structured human-review board
 (`runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html`) is prepared.
 
-This still does not upgrade the exit decision: no human review has been recorded against this build
-yet, and its construction so far has not exercised this project's retrieval/skill system (direct
-bmesh work, not retrieval-driven skill selection). But it is the first build since the 2026-08-17
-deletions to reach the human-review step on a genuine reference target. The foundation remains
-**PARTIAL**.
+**Update, same day:** the review board reached a recorded human review -- `REVIEW_ACCEPTED_NO_REPAIR`,
+on the reviewer's own qualified terms ("its ok for the most part", not a claim of a finished or
+maximally detailed model). This is the first genuinely reference-driven build in this project's
+history to reach a recorded human accept.
+
+This still does not upgrade the exit decision: one accepted build does not establish repeatability,
+its construction so far has not exercised this project's retrieval/skill system (direct bmesh work,
+not retrieval-driven skill selection), and known open items (front wordmark/seam detail, unmodeled
+rear/underside, the negative-space gap deliberately left unfixed) remain exactly as open as before
+acceptance. The foundation remains **PARTIAL**.

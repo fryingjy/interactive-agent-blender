@@ -205,4 +205,17 @@ and wireframe evidence, the measured-comparison table and silhouette overlay abo
 uncertainties, and 8 structured review questions (not "does this look good"). Matches
 `docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md`'s stance that a human rejection is first-class evidence never
 overwritten by a passing metric -- this package is the input to that review, not a substitute for
-it. No review has been recorded against it yet.
+it.
+
+## Human review: REVIEW_ACCEPTED_NO_REPAIR
+
+Recorded via `tools/record_external_visual_review.py` against `scene_revision: 13`. Reviewer's own
+words: "its ok for the most part" -- a qualified accept, not a claim that this is a finished or
+maximally detailed model, and recorded as exactly that in `human_review.json`. This is the first
+genuinely reference-driven build (not a technique exercise against an authored/known form) in this
+project's history to reach a recorded human accept.
+
+Does not close out the build. The open items this README already names -- the front wordmark/seam
+detail, unmodeled rear/underside, and the negative-space gap deliberately left unfixed -- remain
+exactly as open as before. Acceptance means the primary form currently built is good enough to move
+on from, not that nothing further is worth doing.

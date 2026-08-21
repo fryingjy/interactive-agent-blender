@@ -1,0 +1,11 @@
+{
+  "review_result": "accept",
+  "reviewer_type": "human",
+  "reviewer_id": "fryingjy",
+  "asset_id": "2026-08-20_masterlock-140d-resume",
+  "scene_revision": 13,
+  "failure_types": [],
+  "regions": [],
+  "severity": {},
+  "notes": "Reviewed against the review board (front/side/3-4 material renders, MatCap, wireframe, reference photos, measured comparison). Reviewer's own words: 'its ok for the most part' -- a qualified accept, not a claim of a finished or maximally detailed model. No specific defect named. Known open items recorded separately in the run README (front wordmark/seam detail not built, rear/underside unmodeled, negative-space gap attributed to reference-photo perspective rather than construction error) remain open regardless of this acceptance."
+}
