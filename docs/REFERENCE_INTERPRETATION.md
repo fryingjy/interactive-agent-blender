@@ -90,3 +90,14 @@ Low-confidence regions must stay cheap to revise. A single candidate strategy is
 its claim IDs, preserve rejected alternatives and reasons, compare bounded representatives when the
 choice is consequential, and revisit interpretation when multi-view or human review contradicts the
 model.
+
+"Compare bounded representatives" and "revisit when contradicted" are enforced, not just stated:
+`StrategyCandidate.predicted_consequences` (`knowledge_engine/scene_decomposition.py`) lets a
+candidate declare what it predicts should be observable in reference evidence if it's correct, and
+`knowledge_engine/representation_hypothesis.py::evaluate_predicted_consequence()` actually tests that
+prediction against a specific reference item's recorded `projection` before trusting a measurement --
+refusing with `UNDECIDABLE` rather than silently assuming an orthographic reading of a perspective
+photo (the exact failure a flat-vs-curved roofline test hit on the Scotch C38, see
+`runs/2026-08-21_scotch-c38-blockout/README.md`). Run `tools/test_representation_hypotheses.py`
+against a scene JSON of candidates and a reference manifest to get a structured report before
+committing to a representation, not after.

@@ -157,6 +157,15 @@ class StrategyCandidate:
     status: str = "candidate"  # candidate / rejected
     rejection_reason: str = ""
     reversible: bool = True
+    # What this candidate PREDICTS should be observable in reference evidence
+    # if it's correct -- e.g. {"view": "side_profile", "property": "roofline",
+    # "prediction_type": "boundary_linearity", "prediction": "linear",
+    # "testable_projection_types": ["ORTHOGRAPHIC"]}. Optional: older
+    # candidates and most quick synthetic-only strategies won't have this.
+    # Checked by knowledge_engine.representation_hypothesis, not here -- this
+    # dataclass only carries the claim, it doesn't evaluate it (same
+    # separation this module already keeps between claims and checks).
+    predicted_consequences: list[dict] = field(default_factory=list)
 
     def validate(self, claim_ids: set[str]) -> None:
         if not self.name.strip() or not self.representation.strip():
@@ -170,6 +179,13 @@ class StrategyCandidate:
             raise ValueError(f"strategy '{self.name}' references missing claims: {missing}")
         if self.status == "rejected" and not self.rejection_reason.strip():
             raise ValueError(f"rejected strategy '{self.name}' requires a reason")
+        for consequence in self.predicted_consequences:
+            required = {"view", "property", "prediction_type", "prediction"}
+            missing_keys = required - set(consequence)
+            if missing_keys:
+                raise ValueError(
+                    f"strategy '{self.name}' predicted_consequence missing keys: {sorted(missing_keys)}"
+                )
 
 
 @dataclass

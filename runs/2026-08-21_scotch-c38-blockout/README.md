@@ -161,6 +161,38 @@ reference's more sweeping curve, and only the two extreme corner points are roun
 the whole ridge -- a real improvement in the right direction, not yet a full match. Left as-is for
 this pass rather than over-iterating on one shading detail.
 
+## Roof shape (flat vs. curved): recorded as UNDECIDABLE, not resolved
+
+Direct human feedback ("far from accurate, figure out why") led to re-examining whether
+`UpperShell_HIGH`'s tapered roofline should actually be a single flat plane (as built) or a
+continuously curved profile. A landmark-based pixel measurement on `ofix_clean_profile.jpg` came
+back internally contradictory -- the traced boundary didn't behave consistently with either a
+straight line or a clean curve. Root cause, confirmed today: a flat 3D plane does not project to a
+straight line in image space under uncalibrated PERSPECTIVE projection (only under orthographic or
+a calibrated camera does "does the silhouette look straight" actually test "is the surface flat").
+The measurement had silently assumed an orthographic reading of an oblique photo -- the same mistake
+this project's own docs already warned against for the shell taper decision above and the
+MasterLock's negative-space decision, made again anyway because nothing actually checked the
+reference's recorded projection before running the test.
+
+Built the fix for the mechanism, not just the one measurement: `knowledge_engine/representation_hypothesis.py`'s
+`evaluate_predicted_consequence()` now reads a reference item's `projection` before testing a
+`boundary_linearity` prediction, and refuses with `UNDECIDABLE` on `PERSPECTIVE`/`UNKNOWN` instead of
+guessing. Ran it for real against this exact question --
+`runs/2026-08-21_scotch-c38-blockout/roof_shape_hypothesis.json` (both the flat and curved
+candidates) against `runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json`'s
+`ofix_c38_left_side` item (`projection: PERSPECTIVE`) via `tools/test_representation_hypotheses.py`
+-- and it reproduces today's real finding: both candidates come back `UNDECIDABLE` with the reason
+above, saved in `roof_shape_hypothesis_result.json`.
+
+**Honest status: the roof shape stays UNKNOWN.** Not resolved either way, not left silently as
+whatever happens to be currently built. Deciding it for real needs either a genuinely orthographic
+or camera-calibrated reference view of the shell's profile (none currently gathered for this prop),
+or a different, non-boundary-linearity test that doesn't depend on projection geometry. Until then
+the flat-plane roof stays as built because it's what's already there, not because it's been shown
+correct -- the next reference-gathering pass for this prop should prioritize a true side-profile
+orthographic or calibrated shot specifically to close this out.
+
 ## Human review board
 
 `review_board/review_board.html` -- a self-contained primary-form review package (both reference
