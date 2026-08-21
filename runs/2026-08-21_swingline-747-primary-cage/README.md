@@ -75,3 +75,22 @@ correctly against the reference before doing any further shaping: low base, tall
 from the front edge, right general mass distribution. Both objects still literal boxes -- no anvil
 recess, no hinge cut, no crown/nose shaping yet. That's the next real construction step, deliberately
 not started in the same pass as verifying the envelope, per this project's own staging discipline.
+
+## Stage 1: anvil/staple-channel recess (decision_revision 0 -> 1, `CUT_ANVIL_RECESS`)
+
+Cut the recessed channel into `BaseShell_HIGH`'s top surface -- 4 vertical bisects isolating the
+rectangular region (candidate geometry re-collected fresh before each cut, avoiding the shared-edge
+fragmentation bug class already hit twice on this project), then lowering the isolated top verts
+by 2.5 mm. Position/size are flagged visual estimates from `74718_product_elevation.jpeg` and
+`747_open_mechanism.jpg` (12%-88% of the base's length from the rear, centered, 40% of the width) --
+no orthographic source exists for this prop, so no more precision than that is claimed.
+
+Structurally clean (0 non-manifold, 0 degenerate). Verified visually, not just via the health check --
+matching this session's clearest lesson from the KUPONG run. The first render (assembled, iso) mostly
+hid the recess behind the taller lever object, so rendered the base in isolation (`base_only_iso.png`,
+lever hidden) specifically to see it clearly, rather than accepting an inconclusive check. It reads
+correctly: a clean, visible shallow channel running the base's length, matching reference intent.
+
+Not yet built: the hinge cut, the lever's own crown/nose profile, and the separate `AnvilPlate`,
+`MagazineRail`, `HingePin`, `Latch`, `Spring`, `RubberBasePad` components this prop's `reference_plan.md`
+calls for once the primary cages are correct.
