@@ -58,9 +58,47 @@ boolean, not overlapping/intersecting geometry) -- and any interior face left ov
 must be deleted, or smooth shading reads as broken across that seam even though the outer surface
 looks joined.
 
+## Part 2 built: mug handle, a genuinely subtle bug chain
+
+Baked the Solidify modifier into real geometry first (`bpy.ops.object.modifier_apply`), matching the
+tutorial's own instruction. Building the actual handle loop took four attempts, each caught by a real
+structural health check rather than assumed clean:
+
+1. **Repeated `extrude_face_region` calls, feeding all returned faces back into the next
+   extrusion.** `extrude_face_region` on one quad returns the new cap face *and* the connecting
+   side-wall faces -- feeding all of them back in compounds into self-intersecting geometry. Caught
+   by a direct vertex/edge dump (20 non-manifold edges, 2 degenerate faces), not by eyeballing a
+   render.
+2. **Selecting the cap face by matching its normal direction to the original face's normal**, then
+   continuing to extrude from just that one. Diagnostic prints showed this actually worked correctly
+   in isolation (each step's own candidate list only ever held one face) -- so this wasn't the real
+   remaining bug, just a correct fix for a problem that turned out to have a second, separate cause.
+3. **Switched to the swept-cross-section + `bridge_loops` technique** already proven this session on
+   the KUPONG arch and Swingline throat (build each ring's vertices directly at each path position,
+   bridge consecutive rings) -- fixed the non-manifold edges (0), but 2 degenerate faces persisted at
+   the exact same location. Matches this project's own documented `bridge_loops` twist/ambiguous-
+   pairing bug class, so the next attempt removed all automatic pairing.
+4. **Fully explicit, by-index face construction** (no `bridge_loops` at all) still produced the same
+   2 degenerate faces -- proving the twist-bug hypothesis wrong. Traced by hand: the handle's
+   semicircular arc path samples parameter values that are mirror-symmetric around its peak (with
+   5 segments, t=0.4 and t=0.6 give the identical sine value, hence the identical X position), and
+   those two mirror-symmetric rings land *directly adjacent* to each other in the walk. Every vertex
+   in the connecting face between them then shares both X and Y (the cross-section's own local
+   coordinate only varies in Y and Z, not X), leaving a face collinear in Z alone -- genuinely
+   zero-area, not a winding-order bug. Fixed by using 4 segments instead of 5: t=0.25 and t=0.75 are
+   still a mirror pair, but t=0.5 sits between them in the walk, so no two *adjacent* rings ever share
+   an X position.
+
+Final state: 0 non-manifold edges, 0 degenerate faces (2 remaining n-gons are the pre-existing flat
+bottom-cap faces from Part 1's cylinder base, not curved surfaces, not a defect per this project's
+own SubD topology guidance). Verified two ways: the structural health check, and a render from the
+handle's own side (`part2_handle_side.png`) rather than the first isometric angle tried
+(`part1_iso.png`'s camera direction mostly occluded the handle behind the mug body -- rendering from
+the wrong side would have looked like nothing changed). Reads as a real, smoothly-blended handle with
+no visible seam.
+
 ## Plan for this run
 
-Work through Part 1 first (this session), then Part 2, then continue part by part in later turns --
-each part gets its own verified `DecisionTransaction`-backed construction pass and a render
-comparison against what the tutorial actually shows, not just a health check. Not attempting to
-compress multiple parts into one pass.
+Part 1 and Part 2 done. Part 3 (Organic Modelling -- donut icing/sculpting) is next, not attempted in
+this same pass. Continuing part by part, each with its own verified construction pass and a render
+comparison against what the tutorial actually shows, not just a health check.
