@@ -113,5 +113,26 @@ Position read directly off the shell's own current front-face geometry, not re-g
 
 All five components `reference_plan.md` names are now present: `UpperShell_HIGH` (wedge, tapered,
 with the cavity), `WeightedBase_HIGH` (chamfered front), `Hub`, `TapeRoll`, `CutterBlade`. This is
-a genuine primary-form blockout, not just a box -- ready for a real proportion/silhouette review
-against the reference next, before any further detail. Not yet reviewed by a human.
+a genuine primary-form blockout, not just a box.
+
+## Primary-form comparison against the reference
+
+Segmented the reference photo (`reference_segmentation/`, `tools/segment_reference_grabcut.py`,
+visually verified clean) but deliberately did **not** force a numeric silhouette IoU against it:
+the photo is oblique (`front_right_oblique`, `PERSPECTIVE` per the manifest), the model has no
+calibrated camera angle matching it the way the MasterLock inherited one, and forcing that
+comparison would reintroduce the same oblique-vs-orthographic distortion problem already caught
+once this session. A direct side-by-side crop against the model's iso render instead:
+
+- **Reads as the same object.** Wedge shell, top cavity, hub + roll, stepped/chamfered base --
+  all present and roughly proportioned right.
+- **Real, visible difference**: the reference's rear shell corner and roofline are smoothly
+  rounded/curved; the current blockout's are hard box angles. Not a defect at this stage --
+  `reference_plan.md` explicitly stages rounding *after* proportions and cavity match the board,
+  which is exactly where this build is. Flagged as the next real primary-form/secondary-form step,
+  not silently left unrecorded.
+- Minor, lower-confidence observations, not yet acted on: the cavity opening may read slightly
+  narrow relative to the shell width in the reference; the cutter blade's integration with the
+  front slope could be more continuous rather than a distinct add-on tab.
+
+Not yet reviewed by a human.
