@@ -139,3 +139,35 @@ not assumed clean from a passing structural check. Full test suite unaffected (2
 **Not yet done**: a fresh full-view human review of this specific work -- the renders here are my
 own inspection, not a substitute for that. No claim of "done," "fixed," or "clean" beyond what
 these renders actually show.
+
+## Fresh measured silhouette comparison against the reference photo
+
+The last IoU numbers on file for this build (stage 08, `silhouette_iou: 0.8618`) predate today's
+chamfer and socket work entirely. Re-ran the same methodology (`tools/compare_reference_render.py`,
+`uniform-bbox` alignment, against the same `stage_06_front_segmentation/reference_silhouette.png`)
+on the current geometry rather than assuming construction progress also means measured progress.
+Two mask-detection pitfalls hit along the way, both already-documented failure modes in this
+project's own history, re-found independently: `--reference-mask-mode auto` treated the whole
+segmented-reference image as foreground (the exact bug stage 06's own README already flagged once,
+"incorrectly treated the whole image as foreground"), and `--candidate-mask-mode light-background`
+did the same to the candidate render, because `render_blend_beauty.py` renders with
+`film_transparent=True` -- the white background an image viewer shows is composited alpha, not the
+actual light RGB a background-threshold check needs. The render script's own comment already says
+the alpha channel *is* the exact silhouette; using `--candidate-mask-mode alpha` fixed it.
+
+| Metric | Stage 08 (pre-chamfer/socket) | Current | Direction |
+| --- | ---: | ---: | --- |
+| Silhouette IoU | 0.8618 | 0.8583 | flat (-0.0035) |
+| Negative-space IoU | 0.7190 | 0.7188 | flat (-0.0002) |
+| Bounding-box error | 0.00371 | 0.00442 | flat (+0.00071) |
+| Symmetric contour error | 0.00740 | 0.00775 | flat (+0.00035) |
+
+Honest reading: today's work did not move these numbers, and shouldn't have. The chamfer is a
+corner facet within the existing bounding envelope, and the sockets are a recess into the surface
+-- neither changes the outer silhouette a front-view outline measure can see. This construction was
+detail/surface work, not a proportion or component-shape correction, and the measurement confirms
+that rather than being contradicted by it. The actual bottleneck this table cannot move on is still
+what `docs/CURRENT_STATE_GAP_MATRIX.md` already names: proportion and component fidelity, which
+these two decisions never touched.
+
+Full report: `silhouette_comparison/comparison.json`.
