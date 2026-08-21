@@ -91,9 +91,17 @@ render-only artifact, not a geometry defect, by rendering each object's own wire
 (`wireframe_TapeRoll_front.png` clearly shows a distinct 16-sided cylinder at the expected size).
 Distinct materials belong at a later stage, not blockout.
 
+## Base front chamfer (decision_revision 2 -> 3), correcting an earlier guess
+
+A closer crop of the reference photo showed the base doesn't narrow along its length at all --
+that was a misreading. What's actually there is a diagonal chamfered facet at the front corners,
+the same kind of treatment already validated on the MasterLock 140D's front corner. Chamfered both
+front (+X) corners via `CHAMFER_BASE_FRONT_CORNERS` (bisect_plane + edgenet_fill, same technique).
+Only the front: the rear isn't visible in any reference photo at this angle, so it stays a plain
+box edge rather than inventing a matching treatment with no evidence for it. Structurally clean.
+
 ## Status
 
-Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, hub, and tape roll. Still
-open, in order: base footprint taper (currently a plain box; the reference shows it narrowing
-toward the front) and the front cutter face. One bounded decision at a time, each rendered and
-checked before the next.
+Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, hub, tape roll, and a
+chamfered base front. Still open: the front cutter face (currently just the shell's plain sloped
+front wall). One bounded decision at a time, each rendered and checked before the next.
