@@ -132,6 +132,44 @@ Adopting direct vertex verification as the default check for every multi-step ta
 construction on this project going forward, not an occasional extra step reserved for when something
 already looks suspicious.
 
+## Human review: rejected (construction_strategy)
+
+Direct human rejection at decision_revision 6, recorded via `tools/record_external_visual_review.py`
+(`human_review.json`, `human_review_repair_handoff.json`, disposition `INSPECT_BEFORE_REPAIR`).
+Confirmed failure mode: the construction *approach* itself, not proportion or unfinished detail --
+the repeated multi-step bisect-and-reposition faceted taper technique produces a visibly faceted,
+mechanical surface baked directly into the mesh, not the smooth continuous molded surface the real
+product has. Same class of correction this project already made once on the Scotch C38 (broad bevel
+replaced by live crease-controlled SubD). Direct instruction: rebuild this same prop with proper
+SubD/crease topology rather than purge or move on.
+
+## Stage 4: SubD/crease rebuild (decision_revision 6 -> 8) -- a genuine improvement with a new, real regression
+
+Rebuilt both shells from scratch. `BaseShell_HIGH` kept its flat box + anvil recess construction
+(not the rejected element -- the base has no smooth curves in the reference, sharp edges are
+correct there) but rebuilt cleanly rather than reusing the flagged geometry. `TopLeverShell_HIGH`
+was rebuilt with a genuinely different technique this time: a SPARSE control cage (only 3 loop
+cuts along its length, at real silhouette-change points -- hinge, mid-length, nose -- per
+`reference_plan.md`'s own original instruction), a Catmull-Clark SubD modifier, and edge crease
+(not bisect faceting) on the rear hinge face's boundary to keep that specific joint sharp while
+letting SubD smooth everything else.
+
+**Rendering the evaluated (SubD) result, not just the control cage, shows a genuine mixed result --
+reported honestly rather than claimed as a fix.** The faceted, mechanical look the human review
+called out is gone -- `subd_iso.png` shows an actually smooth, continuously curved crown, which is
+the real improvement this rebuild was for. But `subd_front.png` shows a real, new regression: the
+hinge throat gap -- the negative space `reference_plan.md` explicitly calls "critical... must
+survive every blockout" -- has been smoothed away entirely. The lever now reads as a smooth rounded
+capsule/pill sitting flush on the base, with no visible hinge separation and no distinct nose
+character, over-correcting past the original complaint into a different problem.
+
+**Not yet resolved.** The likely next step is adding support loops near the throat-gap boundary
+(the same "adequate face density near a creased edge" principle
+`knowledge/foundation/operator_cards/topology_context_subd.md` already documents, just applied to a
+gap boundary instead of a flat panel) and/or creasing the gap's own edges so SubD doesn't
+interpolate across it, rather than reducing SubD levels or reverting to faceting. Recording this
+honestly now rather than pushing further without stopping to report the actual state.
+
 ## Stage 2: a real coordinate-space bug, found by direct inspection, not by trusting a render
 
 Attempted the hinge throat next (`OPEN_HINGE_THROAT`, tapering the lever's underside up from the

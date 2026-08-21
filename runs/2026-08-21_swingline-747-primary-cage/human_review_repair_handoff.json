@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "record_type": "EXTERNAL_HUMAN_VISUAL_REVIEW_REPAIR_HANDOFF",
+  "asset_id": "2026-08-21_swingline-747-primary-cage",
+  "scene_revision": 6,
+  "review": {
+    "review_result": "reject",
+    "reviewer_type": "human",
+    "reviewer_id": "fryingjy",
+    "asset_id": "2026-08-21_swingline-747-primary-cage",
+    "scene_revision": 6,
+    "failure_types": [
+      "construction_strategy"
+    ],
+    "regions": [
+      {
+        "target": "TopLeverShell_HIGH",
+        "failure_type": "construction_strategy",
+        "severity": 0.9
+      },
+      {
+        "target": "BaseShell_HIGH",
+        "failure_type": "construction_strategy",
+        "severity": 0.7
+      }
+    ],
+    "severity": {
+      "construction_strategy": 0.85
+    },
+    "notes": "Rejected as a failed attempt. User confirmed the failure mode is the construction approach itself, not proportion or unfinished detail: the repeated multi-step bisect-and-reposition faceted taper technique (hinge throat, lever crown) produces a visibly faceted, low-poly, mechanical surface baked directly into the mesh, not the smooth continuous molded-plastic/metal surface the real product has. This is the same class of correction this project already made once on the Scotch C38 (its 'broad bevel treatment was replaced by live crease-controlled SubD' per the curriculum's own record) -- the fix here is not more facets or bug-fixing the same technique, it's switching the construction method itself to proper edge-loop topology with SubD/crease-weight shading, matching reference_plan.md's own original instruction ('begin from one box-shaped cage, add loops where the silhouette changes') rather than the hard-bisect-taper approach actually used this run."
+  },
+  "repair_tickets": [
+    {
+      "type": "human_review_construction_strategy",
+      "target": "TopLeverShell_HIGH",
+      "view": "human_review",
+      "severity": 0.9,
+      "evidence": "Rejected as a failed attempt. User confirmed the failure mode is the construction approach itself, not proportion or unfinished detail: the repeated multi-step bisect-and-reposition faceted taper technique (hinge throat, lever crown) produces a visibly faceted, low-poly, mechanical surface baked directly into the mesh, not the smooth continuous molded-plastic/metal surface the real product has. This is the same class of correction this project already made once on the Scotch C38 (its 'broad bevel treatment was replaced by live crease-controlled SubD' per the curriculum's own record) -- the fix here is not more facets or bug-fixing the same technique, it's switching the construction method itself to proper edge-loop topology with SubD/crease-weight shading, matching reference_plan.md's own original instruction ('begin from one box-shaped cage, add loops where the silhouette changes') rather than the hard-bisect-taper approach actually used this run.",
+      "source": "EXTERNAL_HUMAN_REVIEW",
+      "reviewer_id": "fryingjy",
+      "scene_revision": 6,
+      "priority": 1
+    },
+    {
+      "type": "human_review_construction_strategy",
+      "target": "BaseShell_HIGH",
+      "view": "human_review",
+      "severity": 0.7,
+      "evidence": "Rejected as a failed attempt. User confirmed the failure mode is the construction approach itself, not proportion or unfinished detail: the repeated multi-step bisect-and-reposition faceted taper technique (hinge throat, lever crown) produces a visibly faceted, low-poly, mechanical surface baked directly into the mesh, not the smooth continuous molded-plastic/metal surface the real product has. This is the same class of correction this project already made once on the Scotch C38 (its 'broad bevel treatment was replaced by live crease-controlled SubD' per the curriculum's own record) -- the fix here is not more facets or bug-fixing the same technique, it's switching the construction method itself to proper edge-loop topology with SubD/crease-weight shading, matching reference_plan.md's own original instruction ('begin from one box-shaped cage, add loops where the silhouette changes') rather than the hard-bisect-taper approach actually used this run.",
+      "source": "EXTERNAL_HUMAN_REVIEW",
+      "reviewer_id": "fryingjy",
+      "scene_revision": 6,
+      "priority": 2
+    }
+  ],
+  "disposition": "INSPECT_BEFORE_REPAIR",
+  "limitation": "This preserves human feedback and creates inspection tickets. It does not prove that a repair was performed, that the current scene still matches a later edit, or that a future review will pass."
+}
