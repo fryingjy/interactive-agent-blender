@@ -136,3 +136,27 @@ once this session. A direct side-by-side crop against the model's iso render ins
   front slope could be more continuous rather than a distinct add-on tab.
 
 Not yet reviewed by a human.
+
+## Rear shoulder rounding (decision_revision 3 -> 4)
+
+Addressed the one real difference the comparison above found. Two real bugs surfaced and fixed
+before this landed, not after:
+
+1. The earlier `ADD_TOP_CAVITY` decision's Y-direction cuts weren't restricted to a local band and
+   quietly split the rear-top edge -- far away in X from the cavity -- into three collinear
+   segments. Same class of bug already fixed once on the MasterLock (unrestricted cuts reaching
+   further than intended); harmless-looking here since the split stayed a straight line, only
+   surfacing now that a bevel needed one clean edge, not three fragments. Fixed by dissolving the
+   two redundant middle vertices first.
+2. After that dissolve, no single edge remained directly connecting the two true rear-top corners
+   (the flanking faces had different vertex counts -- 4 and 6 -- so the merge didn't preserve a
+   bevelable ridge edge). Switched to a vertex bevel on the two corner points instead, which turned
+   out to be the more correct tool anyway: the reference shows a real rounded 3D corner (roof,
+   back, and side curving together), not just a curved ridge line.
+
+Structurally clean (0 non-manifold, 0 degenerate). Real geometry, not just shading -- re-baked
+`set_smooth_by_angle` afterward per this project's own established policy (smooth shading alone
+does not make a hard edge read as round). Honest assessment: modest in scale compared to the
+reference's more sweeping curve, and only the two extreme corner points are rounded rather than
+the whole ridge -- a real improvement in the right direction, not yet a full match. Left as-is for
+this pass rather than over-iterating on one shading detail.
