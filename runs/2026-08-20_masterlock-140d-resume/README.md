@@ -97,9 +97,45 @@ project doesn't apply to a planar, non-subdivided face.
 Fresh check after commit: 0 non-manifold edges, 0 degenerate faces, 0 loose vertices. Full test
 suite unaffected (233 passed).
 
+## Front corner chamfer (decision_revision 11 -> 12) and a rebuild after a real defect
+
+Closed the second gap found against the reference: a narrow (~3.5 mm) flat facet at the front-left
+vertical corner. A close crop of the reference photo confirmed it's a genuine third facet (a small
+manufacturing chamfer), not just a specular highlight on a normal box corner -- and considerably
+narrower than first guessed ("large 45-degree facet" was an overstatement from the initial read).
+
+Getting a *watertight* cut here took real diagnosis, all against a mesh with a pre-existing
+delicate detail right at that same corner (the stage-12 recessed front seam band, only 0.15 mm
+wide): `bisect_plane(..., clear_outer=True)` deletes the cut-off material but does not fill the
+newly exposed boundary with a face -- found live as non-manifold edges even on the simple
+pre-socket mesh, nowhere near the sockets. `bmesh.ops.edgenet_fill` on the returned `geom_cut`
+edges closes it correctly, including the small notch where the cut crosses the seam band.
+
+**Rebuilding the sockets on top of the chamfer surfaced a second, more serious defect**, this one
+purely visual: a diagonal shading crease across the otherwise flat front face, in the material
+render only -- 0 non-manifold edges, 0 degenerate faces, perfectly planar vertices, every
+structural check clean. Root cause, found by direct inspection rather than assumption: the socket
+frame's X-direction bisect cuts were restricted to "the whole top plane" but not to the local
+socket area, so they reached all the way to the front/back wall's *shared* boundary edge at
+y=+-8 and split it -- splitting a shared edge splits it for every face using it, not just the top
+face, silently fragmenting the front and back walls into 7-8 sided flat n-gons. A second,
+independent bug compounded it: `shade_smooth_by_angle` bakes custom split normals at the moment
+it's called rather than living as an updating modifier on this object, so even after any fix, new
+bmesh geometry keeps stale normals until it's explicitly re-applied.
+
+Both are now fixed at the root: the frame cuts run Y-direction first (safe by position, since
+y=+-5 never reaches y=+-8), *then* X-direction restricted to the resulting middle band, which no
+longer touches the wall boundary at all; and `object_ops.set_smooth_by_angle` is re-applied inside
+both construction steps, immediately after `_write_back`, not deferred as an afterthought. Verified
+directly: `brass_body`'s front and back walls are clean 4-vertex quads again.
+
 ## Status
 
-Sockets built and verified. **Not yet done**: the front corner chamfer (the second gap found against
-the reference, a 45-degree facet, still not built) and a fresh full-view human review of this
-socket work specifically -- the renders here are my own inspection, not a substitute for that. No
-claim of "done," "fixed," or "clean" beyond what these renders actually show.
+Chamfer and sockets both built and committed through real `DecisionTransaction`s
+(`decision_revision` 11 -> 12 -> 13), structurally clean (0 non-manifold, 0 degenerate, 0 loose
+verts) and, this time, actually verified clean under material rendering after the fixes above --
+not assumed clean from a passing structural check. Full test suite unaffected (233 passed).
+
+**Not yet done**: a fresh full-view human review of this specific work -- the renders here are my
+own inspection, not a substitute for that. No claim of "done," "fixed," or "clean" beyond what
+these renders actually show.
