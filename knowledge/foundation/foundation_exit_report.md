@@ -441,3 +441,26 @@ sign double-curvature SubD interaction. A later directly authorized C38 run appl
 intent on a real prop, then replaces broad shell/base Bevel with semantic edge creases after human
 feedback. The saved candidate is structurally verified but still approximate and not visually
 accepted. The foundation therefore remains **PARTIAL**.
+
+### 2026-08-20 magnifying-glass purge and first human-review acceptance
+
+A magnifying-glass build (`runs/2026-08-18_magnifying-glass-reference/`,
+`runs/2026-08-19_magnifying-glass-build/`) was purged for repeated overclaiming — declaring a
+neck/ring junction "fixed" from flat-grey renders and non-manifold counts alone while it was still
+visibly broken. Two trust-rebuild exercises followed: a single-profile mallet (no join) and a
+mug-handle-join built from an authored bridge between two boundary loops (weld-by-construction, no
+`bridge_loops`/merge-by-distance) that specifically re-tests the join failure class the magnifying
+glass exposed. Both found and fixed real defects only visible under material lighting (a sawtooth
+shading artifact from sparse geometry near a bevel weight; a cross-section-shear bug from
+independently-computed per-vertex sweep paths instead of a rigid centroid-offset sweep).
+
+Both builds then went through `docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md` end to end via
+`tools/record_external_visual_review.py` and came back `REVIEW_ACCEPTED_NO_REPAIR` — the first time
+this project has completed and passed an actual human-authored visual review record, rather than
+only self-assessment or a recorded rejection. This closes the "seek independent visual review"
+mechanism gap referenced throughout this report's earlier addenda.
+
+It does not upgrade the exit decision: both builds deliberately used known/authored forms rather
+than an unfamiliar reference, so they do not touch the reference-interpretation gap that
+`docs/CURRENT_STATE_GAP_MATRIX.md` has called the single highest-value open item since 2026-08-16.
+The foundation therefore remains **PARTIAL**.

@@ -48,9 +48,34 @@ evidence from capability still lacking proof.
   strongest evidence for attached-component construction, stronger than the scrapped tutorial
   reproduction it replaced.
 
+## 2026-08-20 additions
+
+A magnifying-glass build (`runs/2026-08-18_magnifying-glass-reference/`,
+`runs/2026-08-19_magnifying-glass-build/`) was purged the same day for repeated overclaiming
+(declaring a neck/ring junction "fixed" from flat-grey renders and non-manifold counts alone while
+it was still visibly broken). Two trust-rebuild exercises followed, both **technique-proof builds
+using authored/known forms, not reference-driven builds** -- they do not touch the reference-
+interpretation gap this table has called the single highest-value open item since 2026-08-16:
+
+- **Mallet** (`runs/2026-08-20_mallet-build/`): single continuous revolved profile, 928 faces,
+  all-quad, 0 non-manifold. Deliberately avoided any join, sidestepping the exact failure class that
+  broke the magnifying glass.
+- **Mug-handle-join** (`runs/2026-08-20_mug-handle-join/`): the actual join re-test the mallet
+  avoided. An authored bridge between two boundary loops on the body mesh, weld-by-construction
+  (canonicalized matched vertex order, no `bridge_loops`/merge-by-distance), 584 faces, all-quad.
+  Found and fixed a real cross-section-shear bug (rigid centroid-offset sweep instead of per-vertex
+  independent lerp) only visible under material lighting, not flat shading.
+
+Both are the **first builds in this project's history to receive and pass an actual human-authored
+visual review record** (`REVIEW_ACCEPTED_NO_REPAIR` via `tools/record_external_visual_review.py`)
+rather than only self-assessment or a recorded rejection -- see
+`knowledge/foundation/directive_coverage_matrix.json` requirement 4. This closes the "seek
+independent visual review" mechanism gap; it does not close the reference-interpretation gap below,
+which remains open and unstarted since the 2026-08-17 deletions.
+
 | Capability needed for the ultimate goal | Current evidence | State | Highest-value proof still required |
 | --- | --- | --- | --- |
-| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records, explicit reference-to-blockout contracts, strict stage rejection, and focused controls. The Swingline, Scotch C38, and Panasonic RF-2400D runs previously cited here were all deleted 2026-08-17 as not good enough to retain as modeling evidence (classified in the source retention ledger, not left dangling). The tooling itself (`knowledge_engine/reference_analysis.py`, `verify_reference_set_gate.py`, the reference-audit pipeline) is untouched and was reused directly to gather real AA-battery reference (authoritative Wikipedia/Wikidata dimensions plus a Wikimedia Commons photo) for the next real-reference attempt, still in progress. | No product-model candidate currently exists in the repo; the reference-gathering and decomposition tooling is proven functional and was just reused, not rebuilt | Complete an actual real-reference build through blockout and human review -- this is now the single highest-priority open item |
+| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records, explicit reference-to-blockout contracts, strict stage rejection, and focused controls. The Swingline, Scotch C38, and Panasonic RF-2400D runs previously cited here were all deleted 2026-08-17 as not good enough to retain as modeling evidence (classified in the source retention ledger, not left dangling). The tooling itself (`knowledge_engine/reference_analysis.py`, `verify_reference_set_gate.py`, the reference-audit pipeline) is untouched and was reused directly to gather real AA-battery reference (authoritative Wikipedia/Wikidata dimensions plus a Wikimedia Commons photo) for the next real-reference attempt, still in progress. | No reference-driven product-model candidate currently exists in the repo (the 2026-08-20 mallet and mug-handle-join builds are technique proofs against authored forms, not reference builds); the reference-gathering and decomposition tooling is proven functional and was just reused, not rebuilt | Complete an actual real-reference build through blockout and human review -- this is still the single highest-priority open item |
 | Component/depth/continuity/separation reasoning | Typed categories plus a two-family Blender experiment where front-identical continuous/separate candidates are resolved by top-view depth, connected-component truth, and planner gating | Controlled synthetic transfer; real-image inference and real-prop use remain manual/unproven | Apply the policy to unrelated real multi-view references and obtain human review |
 | Knowledge changes runtime behavior | Supported claims alter planner representation/component policy; weak/conflicting claims cannot silently harden. An evidence-ready decomposition requests a revision-bound live component capture before further blockout. | Demonstrated in declared policy cases and a controlled Blender planner→runtime→stage-gate loop | Runtime telemetry from actual Blender decisions and measured outcome improvement |
 | Delayed knowledge retrieval | Four self-administered quizzes now span 2026-08-08 through 2026-08-16; quiz 004 contains 20 fresh applied scenarios after a five-day interval, with executable checks for count, answer depth, interval, and low textual similarity | Contextual five-day self-retrieval demonstrated; validator cannot certify correctness, independence, or professional use | Independent delayed assessment plus measured reuse on a fresh human-authorized asset |

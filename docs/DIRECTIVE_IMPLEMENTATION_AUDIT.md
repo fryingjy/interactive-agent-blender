@@ -451,3 +451,17 @@ A curved three-quad diagonal control is rejected without fingerprint or revision
 passes 6/6 assertions and an independent Blender process passes 9/9 saved-state checks. This is
 controlled topology transfer only; it does not select repair paths from references or prove a
 production asset.
+
+## 2026-08-20 addendum: this audit is now stale by one work cycle
+
+Everything above predates the 2026-08-17 named-product-model deletion, the 2026-08-18/19
+magnifying-glass build and its purge for overclaiming, and the 2026-08-20 mallet/mug-handle-join
+trust-rebuild. It is retained as a historical snapshot rather than corrected line-by-line here,
+consistent with how `runs/README.md` treats prior purges: do not silently rewrite a citation to
+hide that its underlying evidence changed.
+
+The two documents that *are* kept current across that boundary are
+`knowledge/foundation/directive_coverage_matrix.json` (see its requirement 4 for the first
+completed human visual-review acceptance in this project's history) and
+`docs/CURRENT_STATE_GAP_MATRIX.md` (see its "2026-08-20 additions" section). Read those two for
+current state; this file's tables above should not be cited as current without cross-checking them.

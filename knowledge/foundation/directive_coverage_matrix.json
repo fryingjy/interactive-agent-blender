@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "assessed_on": "2026-08-19",
+  "assessed_on": "2026-08-20",
   "directive": "docs/MASTER_DIRECTIVE.md",
   "overall_status": "PARTIAL",
   "status_definitions": {
@@ -59,10 +59,12 @@
         "runs/2026-08-16_double-curvature-bevel-subd/",
         "knowledge/skills/connect-vertex-path-subd-safe-quads.json",
         "runs/2026-08-16_connect-vertex-path-curved-transfer/",
-        "docs/CURRENT_STATE_GAP_MATRIX.md"
+        "docs/CURRENT_STATE_GAP_MATRIX.md",
+        "runs/2026-08-20_mallet-build/human_review_repair_handoff.json",
+        "runs/2026-08-20_mug-handle-join/human_review_repair_handoff.json"
       ],
-      "current_boundary": "The C38 model run and its human_stage_review.json evidence were deliberately deleted 2026-08-17 (direct user instruction: every named-product model-build attempt to date was judged not good enough to keep). Broad professional generalization remains unproven, and the specific qualified-stage-pass evidence this requirement previously cited no longer exists.",
-      "next_step": "Apply the learned construction rules to a fresh unfamiliar target and seek independent visual review."
+      "current_boundary": "The C38 model run and its human_stage_review.json evidence were deliberately deleted 2026-08-17 (direct user instruction: every named-product model-build attempt to date was judged not good enough to keep). A subsequent magnifying-glass build was purged 2026-08-20 for repeated overclaiming. The mallet and mug-handle-join builds (2026-08-20) are the first in this project's history to receive and pass an actual human-authored visual review record (REVIEW_ACCEPTED_NO_REPAIR via tools/record_external_visual_review.py) rather than only self-assessment or a recorded rejection; the mug-handle-join build specifically re-tests the authored two-part join skill that broke the magnifying glass. Both deliberately used known/authored forms, not an unfamiliar reference, so broad professional generalization to an unseen target remains unproven.",
+      "next_step": "Apply the learned construction rules -- including the now-demonstrated authored-bridge join -- to a genuine unfamiliar reference target and again seek independent human visual review."
     },
     {
       "id": "5",
