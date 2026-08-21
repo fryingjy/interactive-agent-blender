@@ -160,3 +160,12 @@ does not make a hard edge read as round). Honest assessment: modest in scale com
 reference's more sweeping curve, and only the two extreme corner points are rounded rather than
 the whole ridge -- a real improvement in the right direction, not yet a full match. Left as-is for
 this pass rather than over-iterating on one shading detail.
+
+## Human review board
+
+`review_board/review_board.html` -- a self-contained primary-form review package (both reference
+photos, verified silhouette segmentation, front/side/3-4 model renders, shell MatCap and wireframe,
+the full component/construction log, known uncertainties, and 8 structured review questions), same
+format as the MasterLock 140D's. Explicitly notes what's *not* done here yet: no calibrated
+silhouette IoU (both reference photos are oblique with no matching camera setup), modest-not-full
+shoulder rounding, and an unintegrated cutter blade placeholder. No review recorded against it yet.
