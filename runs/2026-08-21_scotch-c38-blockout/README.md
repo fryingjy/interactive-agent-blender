@@ -185,13 +185,44 @@ candidates) against `runs/2026-08-16_reference-gathering-scotch-c38/reference_ma
 -- and it reproduces today's real finding: both candidates come back `UNDECIDABLE` with the reason
 above, saved in `roof_shape_hypothesis_result.json`.
 
-**Honest status: the roof shape stays UNKNOWN.** Not resolved either way, not left silently as
-whatever happens to be currently built. Deciding it for real needs either a genuinely orthographic
-or camera-calibrated reference view of the shell's profile (none currently gathered for this prop),
-or a different, non-boundary-linearity test that doesn't depend on projection geometry. Until then
-the flat-plane roof stays as built because it's what's already there, not because it's been shown
-correct -- the next reference-gathering pass for this prop should prioritize a true side-profile
-orthographic or calibrated shot specifically to close this out.
+**The precise pixel-linearity question stays UNKNOWN** -- that result doesn't change, and shouldn't:
+it was never possible to prove or disprove flat-vs-curved by measuring pixel positions on a
+PERSPECTIVE photo, and it still isn't.
+
+**But a different, coarser kind of evidence turned up real signal, and the geometry has now been
+changed on the strength of it (decision_revision 4 -> 5, `CURVE_SHELL_ROOFLINE`).** Looking directly
+at the highest-quality reference image available (`media/retailer/texas_art_white_background.jpg`,
+much cleaner than the small/blurry ofix crop the earlier pixel test used) shows the roofline reading
+as one smooth continuous curve from the rear shoulder down to the front -- not a flat facet meeting a
+hard crease. This is a *qualitative* shape-class judgment ("does this look like one curve or two
+flat planes meeting at a line"), not a precision measurement, and it's a fundamentally different kind
+of evidence than the boundary-linearity pixel test: a real 3D crease stays visually salient under
+almost any projection, so this read is far more robust to the oblique camera angle than trying to
+fit precise straight lines to pixel coordinates ever was. It does NOT retroactively make the earlier
+`UNDECIDABLE` result wrong -- both are honest, correct conclusions from different evidence types.
+
+Reshaped `UpperShell_HIGH`'s roof from the fixed anchor at the cavity's rear wall (x=-56.896, where
+the already-verified rounded corner from the previous decision ends -- deliberately never touched)
+through to the front-top corner (x=81.28), using 4 new loop cuts and a smooth sine-based bulge
+(5mm magnitude, a flagged visual estimate of curvature *amount*, not a measurement -- same honesty
+standard as the original 60% taper estimate) rather than a straight interpolation between the two
+endpoints. Structurally clean (0 non-manifold, 0 degenerate; verified via `state_probe.mesh_health`)
+and confirmed under real material rendering, not just the health check --
+`curved_roofline_front.png`, `curved_roofline_iso.png`, and `curved_roofline_wireframe_front.png`
+all show a clean continuous curve with no fragmented topology. Caught and fixed a real bug before
+this landed: the first attempt at the bisect cuts filtered candidate geometry to faces where *every*
+vertex was past the protected boundary, which wrongly excluded every face that legitimately spans
+the boundary (the roof-land strips, the cavity side walls) and left the roof almost untouched (8
+verts moved instead of the intended 20). Found by checking the actual `PERFORM_RESULT` counts against
+what the topology should have produced, not by trusting a clean health check alone -- fixed by
+requiring only *any* vertex past the boundary, re-verified clean on the corrected run.
+
+**Honest status: the exact curve profile (its precise shape, whether it's symmetric, where it's
+steepest) remains a visual estimate, not a measurement** -- that part of the original UNKNOWN finding
+still applies and isn't overclaimed as resolved. What changed is the shape *class*: flat-plane-with-
+crease is no longer the model's claim: continuously-curved is, on the strength of a real qualitative
+read from the best available photo. If a genuinely orthographic or calibrated reference view ever
+becomes available, the exact curve shape can be measured for real and this estimate corrected.
 
 ## Human review board
 
