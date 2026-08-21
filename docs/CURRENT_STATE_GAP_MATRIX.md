@@ -73,9 +73,32 @@ rather than only self-assessment or a recorded rejection -- see
 independent visual review" mechanism gap; it does not close the reference-interpretation gap below,
 which remains open and unstarted since the 2026-08-17 deletions.
 
+## 2026-08-21 addition: the MasterLock 140D is now the real reference-driven candidate
+
+Found and resumed `runs/2026-08-16_reference-gathering-masterlock-140d/` -- a padlock blockout
+that reached stage 12 with a frozen reference contract and real `decision_revision` history,
+then simply stopped (never purged, never rejected, untracked in this project's own curriculum
+docs). Unlike the mallet and mug-handle-join, this genuinely is a reference-driven build: real
+photos, an official dimensional spec, and an active measured comparison against both.
+
+Since resuming: added two shackle sockets and a front corner chamfer, each confirmed against
+the actual reference photo (a close crop settled whether the chamfer was a real facet or just a
+highlight) rather than assumed; re-measured the silhouette/negative-space IoU against the
+reference and found today's construction correctly left those numbers flat (chamfers and
+sockets don't move an outer-silhouette measurement); investigated the one real localized gap
+(negative-space IoU trailing silhouette IoU) and deliberately did NOT narrow the shackle to
+close it, because the reference photo is labeled `PERSPECTIVE`/oblique in its own manifest and
+the shackle spacing reproduces a verified 21mm clearance spec -- chasing the pixel metric would
+have meant trading a verified measurement for a worse one. A structured human-review board
+(`runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html`) is now prepared but
+not yet reviewed.
+
+This does not close the gap this table names below -- no human review has accepted this build
+yet -- but it is the first real, in-progress attempt at it since the 2026-08-17 deletions.
+
 | Capability needed for the ultimate goal | Current evidence | State | Highest-value proof still required |
 | --- | --- | --- | --- |
-| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records, explicit reference-to-blockout contracts, strict stage rejection, and focused controls. The Swingline, Scotch C38, and Panasonic RF-2400D runs previously cited here were all deleted 2026-08-17 as not good enough to retain as modeling evidence (classified in the source retention ledger, not left dangling). The tooling itself (`knowledge_engine/reference_analysis.py`, `verify_reference_set_gate.py`, the reference-audit pipeline) is untouched and was reused directly to gather real AA-battery reference (authoritative Wikipedia/Wikidata dimensions plus a Wikimedia Commons photo) for the next real-reference attempt, still in progress. | No reference-driven product-model candidate currently exists in the repo (the 2026-08-20 mallet and mug-handle-join builds are technique proofs against authored forms, not reference builds); the reference-gathering and decomposition tooling is proven functional and was just reused, not rebuilt | Complete an actual real-reference build through blockout and human review -- this is still the single highest-priority open item |
+| Evidence-bound reference interpretation | Typed decomposition plus question-driven unknown/search/candidate/constraint records, explicit reference-to-blockout contracts, strict stage rejection, and focused controls. The Swingline, Scotch C38, and Panasonic RF-2400D runs previously cited here were all deleted 2026-08-17 as not good enough to retain as modeling evidence (classified in the source retention ledger, not left dangling). The tooling itself (`knowledge_engine/reference_analysis.py`, `verify_reference_set_gate.py`, the reference-audit pipeline) is untouched and was reused directly to gather real AA-battery reference (authoritative Wikipedia/Wikidata dimensions plus a Wikimedia Commons photo) for the next real-reference attempt, still in progress. | A reference-driven candidate is now in progress for the first time since 2026-08-17: the MasterLock 140D (runs/2026-08-20_masterlock-140d-resume/), with a frozen contract, measured comparison against the actual reference photo, and a prepared human-review board -- but no human review recorded yet | Get the prepared review board in front of an actual human reviewer and record the result -- this is now the literal next step, not a general direction |
 | Component/depth/continuity/separation reasoning | Typed categories plus a two-family Blender experiment where front-identical continuous/separate candidates are resolved by top-view depth, connected-component truth, and planner gating | Controlled synthetic transfer; real-image inference and real-prop use remain manual/unproven | Apply the policy to unrelated real multi-view references and obtain human review |
 | Knowledge changes runtime behavior | Supported claims alter planner representation/component policy; weak/conflicting claims cannot silently harden. An evidence-ready decomposition requests a revision-bound live component capture before further blockout. | Demonstrated in declared policy cases and a controlled Blender planner→runtime→stage-gate loop | Runtime telemetry from actual Blender decisions and measured outcome improvement |
 | Delayed knowledge retrieval | Four self-administered quizzes now span 2026-08-08 through 2026-08-16; quiz 004 contains 20 fresh applied scenarios after a five-day interval, with executable checks for count, answer depth, interval, and low textual similarity | Contextual five-day self-retrieval demonstrated; validator cannot certify correctness, independence, or professional use | Independent delayed assessment plus measured reuse on a fresh human-authorized asset |
@@ -102,11 +125,14 @@ recovering when it did not. What is new is that ONE technique sits in the librar
 evidence that survives the 2026-08-19 audit: a real classifier emits its trigger from geometry,
 knowledge rather than the ticket supplies the technique parameter, and the defect is rolled back
 instead of committed. Two other skills lost that status when their runtime proof turned out to
-hand-author the answer. Nothing here has been exercised on an actual unfamiliar reference. That is
-the single highest-value open gap: not more validated skills, not more documentation, but one real
-reference-driven build where the existing validated skills would naturally need to fire, with a
-frozen reference/decomposition/evaluation contract set before geometry starts, and mandatory shaded
-multi-view inspection at every stage rather than mesh-health metrics alone. The detailed boundary
+hand-author the answer. None of this project's validated skills has fired during the MasterLock
+140D build in progress (`runs/2026-08-20_masterlock-140d-resume/`) -- its construction so far
+(sockets, chamfer) used direct bmesh work, not retrieval-driven skill selection. That is
+the single highest-value open gap: not more validated skills, not more documentation, but a
+reference-driven build where the existing validated skills actually fire, with mandatory shaded
+multi-view inspection at every stage (now demonstrated on MasterLock) rather than mesh-health
+metrics alone -- and, since this session, a build that has reached the human-review step for the
+first time, pending an actual recorded review. The detailed boundary
 predating the 2026-08-17 deletions is recorded in
 [`COMPLETION_AUDIT_2026-08-16.md`](COMPLETION_AUDIT_2026-08-16.md), itself now a historical
 snapshot rather than a description of current repo contents.

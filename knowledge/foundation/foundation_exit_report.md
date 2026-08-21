@@ -464,3 +464,22 @@ It does not upgrade the exit decision: both builds deliberately used known/autho
 than an unfamiliar reference, so they do not touch the reference-interpretation gap that
 `docs/CURRENT_STATE_GAP_MATRIX.md` has called the single highest-value open item since 2026-08-16.
 The foundation therefore remains **PARTIAL**.
+
+### 2026-08-21 addendum: a real reference-driven candidate is in progress, not yet reviewed
+
+`runs/2026-08-16_reference-gathering-masterlock-140d/` -- a padlock blockout frozen at stage 12
+since before the magnifying-glass episode, never purged or rejected, just stalled -- was found and
+resumed. Unlike the mallet/mug, this is a genuine reference-driven build: real photos, an official
+dimensional spec, and an active measured comparison against both. Added two shackle sockets and a
+front corner chamfer, each checked against the actual reference photo rather than assumed; measured
+fresh silhouette/negative-space IoU and correctly found today's construction left it flat; found the
+one real localized gap (negative-space) and deliberately declined to close it by narrowing the
+shackle, since that would trade a verified dimensional spec for a better fit against a photo the
+reference manifest itself labels `PERSPECTIVE`, not orthographic. A structured human-review board
+(`runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html`) is prepared.
+
+This still does not upgrade the exit decision: no human review has been recorded against this build
+yet, and its construction so far has not exercised this project's retrieval/skill system (direct
+bmesh work, not retrieval-driven skill selection). But it is the first build since the 2026-08-17
+deletions to reach the human-review step on a genuine reference target. The foundation remains
+**PARTIAL**.
