@@ -196,3 +196,13 @@ This is a real limit of the current reference set, not a construction defect: a 
 orthogonal photo (or a second corroborating angle) would be needed before the negative-space gap
 could be diagnosed as shape error versus perspective artifact with any confidence. Recorded here so
 a future session doesn't rediscover the same tempting-but-wrong fix.
+
+## Human review board
+
+`review_board/review_board.html` -- a self-contained (embedded images, no external requests)
+primary-form review package: both reference photos, front/side/3-4 model renders, per-object MatCap
+and wireframe evidence, the measured-comparison table and silhouette overlay above, known
+uncertainties, and 8 structured review questions (not "does this look good"). Matches
+`docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md`'s stance that a human rejection is first-class evidence never
+overwritten by a passing metric -- this package is the input to that review, not a substitute for
+it. No review has been recorded against it yet.
