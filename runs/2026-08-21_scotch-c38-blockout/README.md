@@ -65,9 +65,25 @@ face is deleted. Structurally clean (0 non-manifold, 0 degenerate). Bounds read 
 current geometry (not re-guessed): opens 15% in from the rear, closes at 80% along the length
 (leaving room for the front cutter/bridge, not yet built), spans 58% of the shell's width, centered.
 
+## Hub
+
+Added `Hub` as its own object -- `reference_plan.md` lists Hub/TapeRoll/CutterBlade as separate
+functional assemblies from the shell (a removable plastic hub, independently manufactured).
+Cylinder primitive, 12 radial sides, 25.4mm diameter matching the official "replaceable 1-inch
+hub" spec. Position and height read directly off the cavity's own geometry.
+
+Caught and fixed a real bug before committing, not after: the first attempt found the cavity's
+extent by filtering "any vertex below some Z," which also matched the shell's actual bottom cap
+(also well below zero) -- it silently put the hub's base 22mm too low, fully inside solid material
+and invisible in the cavity rather than sitting in it. Direct inspection of every face's normal
+found the actual bug: the cavity floor's outward normal points +Z (up, into the open cavity), not
+-Z as assumed, and needed to be picked out from several similarly-oriented roof faces by being the
+lowest of them, not the only match. Verified correct by rendering before saving the fix as final,
+not by re-deriving the same wrong assumption more confidently.
+
 ## Status
 
-Real negative space now visible, matching the reference's gestalt. Still open, in order: base
-footprint taper (currently a plain box; the reference shows it narrowing toward the front), the
-front cutter face, and the hub/tape-roll assembly. One bounded decision at a time, each rendered
-and checked before the next.
+Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, and a hub sitting in it.
+Still open, in order: base footprint taper (currently a plain box; the reference shows it
+narrowing toward the front), the front cutter face, and the tape roll. One bounded decision at a
+time, each rendered and checked before the next.
