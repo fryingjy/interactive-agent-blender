@@ -135,5 +135,40 @@ a guess:
 Going with the second hypothesis as the construction target, but treating it as a hypothesis to
 verify against renders once built, not a settled fact -- consistent with this project's own
 "build, render, compare, correct" discipline rather than resolving ambiguous 3D topology by
-reasoning alone. Next step: shape `Shell_HIGH` into this profile-extruded-then-bent form, verify
-against all four reference views before cutting the U-opening or adding the display recess.
+reasoning alone.
+
+## Stage 1: front-profile prism (decision_revision 0 -> 1, `BUILD_FRONT_PROFILE_PRISM`)
+
+Replaced the box with the actual front-view boundary -- rounded-rectangle envelope with a
+rectangular notch cut into the bottom-middle, leaving two feet -- built as one closed 8-vertex
+loop (`edgenet_fill` for the cap, matching the chamfer technique already validated on the
+MasterLock/C38), then extruded straight through the full depth (38.1 mm). Sharp corners, no
+rounding yet -- that's a later, separate decision, same staging as the Scotch C38's front-corner
+chamfer coming after its box blockout, not bundled into this one. Notch position/width read
+directly from `primary_cage_constraints.json`'s `underbody_opening` fractions (already vetted
+against the genuinely orthographic `front_orthographic` source), not re-estimated.
+
+Structurally clean (0 non-manifold, 0 degenerate; 16 vertices, 10 faces, 2 ngons -- the front and
+rear cap faces, expected from `edgenet_fill` on an 8-sided notched boundary). Rendered and confirmed
+against the reference target (`prism_iso.png`, `prism_front.png`): the silhouette now matches the
+front/rear reference renders' rounded-rect-with-U-notch outline directly, not just by construction
+intent -- this is prism A of the two-hypothesis reasoning above, correctly built as a straight
+extrusion with no bend yet.
+
+Caught the same object-identity risk this project has hit before with a different symptom: my
+first draft deleted the existing object and created a brand-new one with the same name, which
+would have silently bypassed the persistent-ID layer setup (`persistent_ids.ensure_layers`) that
+`_bm_from_object`/`_write_back` rely on. Caught before running by re-reading `mesh_ops.py`'s actual
+implementation rather than assuming delete-and-recreate was safe; fixed by clearing the existing
+object's geometry in place (`bmesh.ops.delete`) and rebuilding inside the same bmesh/object instead.
+
+## Stage 2, not yet started: carve the side-view arch into the prism
+
+`Shell_HIGH` currently reads correctly from front and rear but is still a straight rectangular
+block from the side (no taper/arch at all). Next: carve the side-view A-arch silhouette into this
+prism's currently-flat top/side edges -- via a series of bisect cuts approximating the arch curve
+(the same faceted-curve technique already used for the rear shoulder rounding on the Scotch C38),
+removing material outside the arch envelope while leaving the front/rear notch profile untouched.
+`depth_to_width` (0.5455, from the genuinely orthographic `side_orthographic` source) sets the
+overall proportion; the exact curve shape is a flagged visual estimate from the side-view render,
+same honesty standard as every other unmeasured curve this project has built.
