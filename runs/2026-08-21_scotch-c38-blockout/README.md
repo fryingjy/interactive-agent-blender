@@ -81,9 +81,19 @@ found the actual bug: the cavity floor's outward normal points +Z (up, into the 
 lowest of them, not the only match. Verified correct by rendering before saving the fix as final,
 not by re-deriving the same wrong assumption more confidently.
 
+## Tape roll
+
+Added `TapeRoll` concentric with `Hub`. Width 19.05mm from the official "3/4-inch maximum tape
+width" spec; outer diameter (38mm) is a visual estimate, flagged as such -- no exact spec exists
+for it. In the combined material render the roll and hub visually blend into one shape, since both
+currently share the same flat grey material and sit at a similar height/Z -- confirmed this is a
+render-only artifact, not a geometry defect, by rendering each object's own wireframe separately
+(`wireframe_TapeRoll_front.png` clearly shows a distinct 16-sided cylinder at the expected size).
+Distinct materials belong at a later stage, not blockout.
+
 ## Status
 
-Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, and a hub sitting in it.
-Still open, in order: base footprint taper (currently a plain box; the reference shows it
-narrowing toward the front), the front cutter face, and the tape roll. One bounded decision at a
-time, each rendered and checked before the next.
+Recognizable tape-dispenser gestalt: wedge shell, negative-space cavity, hub, and tape roll. Still
+open, in order: base footprint taper (currently a plain box; the reference shows it narrowing
+toward the front) and the front cutter face. One bounded decision at a time, each rendered and
+checked before the next.
