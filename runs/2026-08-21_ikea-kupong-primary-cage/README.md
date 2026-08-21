@@ -103,6 +103,37 @@ hypothesis, refined by the above:
    its own review, per the contract's own staging (`construction_intent.surface_plan`: no SubD,
    crease, or bevel until the shell passes front/side/isometric primary-cage review).
 
-Not yet started. This is real, substantive reference-analysis work worth its own record before the
-construction pass -- matching this project's established practice of not cramming a nontrivial new
-bmesh construction into the same turn as the research that informs it.
+## Stage 0: literal box blockout (decision_revision 0)
+
+Started construction. `Shell_HIGH`, one literal box primitive at the official envelope
+(69.85 x 38.1 x 57.15 mm -- 2.75 x 1.5 x 2.25 in, `ikea_kupong_official_product_photo`'s
+dimensional anchors, not estimated) -- same staging discipline already proven on the Scotch C38
+("begin with literal box profiles, do not round/carve/bend before the envelope itself is verified").
+Caught a real bug before it propagated: `bpy.ops.mesh.primitive_cube_add(size=1.0)` creates an edge
+length of 1.0 (spanning -0.5 to +0.5), not a radius of 1.0 -- scaling by half the target dimension
+produced a box exactly half the intended size on the first attempt (34.925 x 19.05 x 28.575 mm).
+Caught immediately by checking `obj.dimensions` against the intended numbers rather than assuming
+the scale math was right, fixed by scaling by the full dimension instead of half of it. Verified
+correct on the second run and rendered front/side to confirm (`box_front.png`, `box_side.png`).
+
+## Reconsidering the sweep topology before building it (documented, not yet executed)
+
+Worked through several competing hypotheses for how the front-facing U-shaped-cutout-with-two-feet
+profile relates to the side view's continuous arch, rather than start cutting bmesh geometry against
+a guess:
+
+- A swept small tube/blob cross-section bent along the arch path -- rejected: this would produce
+  a ring/donut-like silhouette when viewed from directly front or rear, not the solid
+  rounded-rectangle-with-U-cutout actually seen in both the front and rear renders.
+- The U-shaped-with-feet profile (matching the front-view silhouette) extruded straight through
+  depth, with the *entire* extrusion then bent along the arch path (cross-section constant in the
+  profile's own local frame, rotating to stay perpendicular to the path) -- this is consistent with
+  the identical front/rear silhouettes (both ends of the bend show the same local cross-section) and
+  with the top view showing no obvious gap (the notch, local to each cross-section, rotates out of
+  a straight-down view once the path curves over the top).
+
+Going with the second hypothesis as the construction target, but treating it as a hypothesis to
+verify against renders once built, not a settled fact -- consistent with this project's own
+"build, render, compare, correct" discipline rather than resolving ambiguous 3D topology by
+reasoning alone. Next step: shape `Shell_HIGH` into this profile-extruded-then-bent form, verify
+against all four reference views before cutting the U-opening or adding the display recess.
