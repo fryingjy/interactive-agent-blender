@@ -174,3 +174,11 @@ cross-section) is fixed and confirmed working, table definition is real
 progress, and two remaining specific problems (horn-junction roughness,
 underweighted base foot) are named precisely rather than left as a vague
 "needs polish."
+
+A quick follow-up tried extending the base shoulder-to-floor Z-span
+(0.08 to 0.14 units) to give the foot more room to flare before SubD
+softens it. The render showed no meaningful improvement -- not committed,
+since it wasn't a clear win and this project doesn't keep evidence that
+doesn't add information. The base foot and horn-junction roughness remain
+open, correctly-named items rather than something a quick numeric tweak
+resolved.
