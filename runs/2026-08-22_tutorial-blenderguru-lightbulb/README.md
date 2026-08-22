@@ -141,6 +141,65 @@ the actual goal. The next corrective step is to rebuild the layout as a lying-bu
 shallow DOF, on top of v13's material/geometry state, and only then re-score against the creator
 reference.
 
+## Correction pass v14-v19: right concept, execution not yet clean -- explicitly not scored
+
+Attempted the recommended next step above: rebuild the composition as a lying-bulb cluster with
+real shallow DOF on top of v13's corrected materials, judged directly against
+`media/creator_finished_result.jpg` throughout instead of assumption.
+
+**v14**: added back 8 linked duplicates (14 total), laid every non-hero bulb on its side around a
+loose ring, removed the floor stripes (the reference shows a plain seamless sweep, not stripes),
+switched to bright warm high-key lighting. The lighting/backdrop/lying-pose direction was
+confirmed correct by comparison -- a real improvement in matching the reference's mood -- but the
+camera was placed almost inside the cluster, producing an extreme close-up of one bulb's threading
+instead of a group shot.
+
+**v15**: pulled the camera back to an actual group-shot distance. This is the cleanest single frame
+of the whole v14-v19 attempt: distinct lying bulbs, correct warm/bright mood, no floor stripes,
+clear (not blue) glass. Two real gaps remained: the pile read too sparse (2.4-5.5 unit placement
+radius left visible gaps the reference's dense pile doesn't have), and the glowing hero bulb did
+not visually dominate the frame the way it does in the reference.
+
+**v16-v17**: tightening the placement radius to close the gaps (down to 1.2-2.8, then 1.8-3.3
+units) instead produced real mesh interpenetration -- bulbs clipping through each other into fused,
+Siamese-twin shapes, not a photographed pile of distinct touching bulbs. Pixel-sampling v17's render
+directly (not assuming) confirmed the hero filament was genuinely emitting at full clip (255,252,242
+in its region) but stayed a thin sharp line rather than a soft glow, traced to the v7 anti-ghosting
+fix's `Clamp Highlights`/`Maximum Highlights=4.0`, which was caps the bloom source before the Glare
+node ever sees how bright the filament really is.
+
+**v18**: raised `Maximum Highlights` and glare strength, and attempted a first z-height fix
+(resting height = measured half-diameter, 1.39 units). Direct measurement of the saved file showed
+this was wrong: the floor sits at z=-0.02, but a repositioned bulb's own world-space geometry sat
+between z=1.72 and z=5.53 -- floating well above the floor rather than resting on it.
+
+**v19 (root cause found, still not clean)**: measuring further showed each bulb's object origin
+sits at its screw-thread base, not its geometric center -- a sensible origin for a bulb that stands
+upright on that base, but it means a 90-degree "lie on its side" rotation pivots around the base and
+swings the whole body upward instead of rotating in place. Fixed by measuring each bulb's actual
+post-rotation world-space lowest point and shifting its Z so that point sits exactly on the floor,
+rather than assuming a fixed rest height. Most bulbs now genuinely rest on the floor, which is a real
+fix -- but combined with the v16-v17 tight radius this produced heavy fusion between adjacent bulbs
+and one bulb left floating disconnected above the pile, reading as a confusing metallic/glass
+amalgam rather than a legible group of bulbs. This is a clear regression in legibility versus v15,
+even though the specific floating-origin bug it targeted is now correctly understood and fixed.
+
+**Explicitly not scored.** v14-v19 is retained as real diagnostic progress -- the compositional
+concept (lying-bulb cluster, bright warm lighting, plain backdrop) is now confirmed correct by
+direct reference comparison, and two genuine root-cause bugs (origin-based rotation pivot causing
+bulbs to float; highlight clamping suppressing bloom) were found and understood, not guessed at.
+But no version in this second pass produced a clean, legible render, so none of them get a fidelity
+score against v4's 7.2/10 or v13's technical-but-differently-composed state. `v15` (best composition,
+still too sparse) and `v19` (floor-rest math fixed, but too tightly packed and fused) are kept as the
+two most informative waypoints; v14, v16, v17, and v18 were deleted after being fully described
+above, per repo-hygiene practice, since each was fully superseded by the next.
+
+The next corrective step, not yet attempted: reuse v19's correct per-bulb floor-rest math with a
+placement radius between v15's too-sparse 1.8-5.5 range and v16-v19's too-tight 1.2-3.3 range (something
+around 2.2-4.0 units, informed by the measured 2.78-unit core diameter so adjacent bulbs can touch
+without clipping through each other), then re-tune the glare bloom once the pile itself reads
+cleanly, and only then compare against the reference for a real score.
+
 ## Sources
 
 - Creator page: <https://www.blenderguru.com/posts/lightbulb-tutorial>
