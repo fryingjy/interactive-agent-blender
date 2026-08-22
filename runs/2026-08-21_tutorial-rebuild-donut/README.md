@@ -179,9 +179,34 @@ enabled (the tutorial calls the default-off setting a mistake -- it's what produ
 and real reflections instead of flat, plasticky shading). First render composition was too tight
 (cropped the group); repositioned the camera and enlarged the table plane to fix it.
 
+## Part 5: UV unwrapping done for real; PBR texturing substituted honestly, not skipped silently
+
+Part 5's real technique is downloading photo-scanned PBR texture maps (base color, normal, roughness)
+from Poliigon and wiring them through shader nodes (Image Texture -> Normal Map node for
+color-to-vector conversion, correct non-color data space for anything but base color). That first
+step needs a real account and an internet download from a specific commercial vendor -- outside this
+project's own established restriction on autonomous web-fetching, and a copyright concern for
+downloading proprietary texture assets even under a free tier. Substituted Blender's own procedural
+textures (Noise Texture nodes) for the table's material, keeping the actual reusable skill intact:
+the same node graph shape (a Bump/Normal Map node between a grayscale source and the Normal input,
+non-color data space, a separate roughness variation source) rather than skipping shader-node
+texturing entirely.
+
+The UV unwrapping step has no such dependency and was done for real: marked seams around the icing's
+outer boundary (reusing the same edge loop that already carries the crease) and one more seam around
+the donut's inner hole, then unwrapped angle-based -- necessary because the icing's UVs, inherited
+from the base torus, no longer match the mesh after all the drip extrusions and lattice deformation.
+
+Also caught and fixed a real exposure problem, not a broken material: the table looked blown-out
+white at the original 40W area light energy (fine for a much larger scene, way too strong this
+close), then overcorrected to near-black at 1.2W. Settled on 5.0W/0.5 size as a reasonable middle
+ground -- confirmed the base color/normal/roughness node graph itself was correctly linked the whole
+time by checking `is_linked` directly rather than guessing from the render alone.
+
 ## Plan for this run
 
-Parts 1-4 done (donut, mug, icing, plate, materials, lumpiness, camera/lighting). Part 5 (Texturing)
-is next. Continuing part by part, each with its own verified construction pass, a real structural
-sanity check performed *before* saving, and an isolated render from the correct angle before trusting
-a shape or composition reads the way it's supposed to.
+Parts 1-5 done (donut, mug, icing, plate, materials, lumpiness, camera/lighting, UV unwrap, table
+shader). Part 6 (UV Unwrapping the mug -- a harder, non-flat case) is next. Continuing part by part,
+each with its own verified construction pass, a real structural sanity check performed *before*
+saving, and an isolated render from the correct angle before trusting a shape or composition reads
+the way it's supposed to.
