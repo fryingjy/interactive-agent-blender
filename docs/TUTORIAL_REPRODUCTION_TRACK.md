@@ -23,7 +23,7 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 | 1 | Edit Mode, continuous extrusion, radial profiles, quad openings, SubD spacing | JL Mussi energy can plus bottle-density transfer | COMPLETE WITH BOUNDED SIMPLIFICATION |
 | 2 | Planar-to-curved topology and loop redirection | Blender Bros controller-opening chapter plus offset rounded-panel transfer | COMPLETE WITH BOUNDED CHAPTER REPRODUCTION |
 | 3 | Product hard surface: symmetry, bevel/crease choice, booleans, shading | Complete layered mechanical tutorial asset | COMPLETE WITH EVALUATED-TOPOLOGY LIMITATION |
-| 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | IN PROGRESS — TOPOLOGY SHEET COMPLETE; ASSET NEXT |
+| 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | COMPLETE WITH BOUNDED INTEGRATED-DETAIL REPRODUCTION |
 | 5 | Retopology and deformation-aware flow | Tutorial retopo asset plus deformation test | PENDING |
 | 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | PENDING |
 | 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | PENDING |
@@ -35,3 +35,10 @@ Current evidence:
 - `runs/2026-08-21_tutorial-blenderbros-hive-controller/`
 - `runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/`
 - `runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/`
+- `runs/2026-08-22_tutorial-blenderbros-tricky-subd-detail/`
+
+Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
+perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like
+tapered shell, an intentionally pinched failure, gradual integrated-detail correction, and a
+different 14-segment diagonal-fade transfer. Stage 5 retopology is now active. Held-out prop work
+remains blocked until the tutorial ladder's return gate.

@@ -144,6 +144,12 @@ def create_authored_quad_mesh(name: str, vertices: list[list[float]], faces: lis
 
 
 @mcp.tool()
+def create_quad_radial_surface(name: str, rings: list[dict], segments: int = 16, phase: float = 0.0) -> dict:
+    """Create one connected open all-quad radial cage from authored ring radii plus optional per-segment radial/z offsets. Use 12-16 segments at ordinary prop scale unless evidence requires more. Local relief remains connected to the host surface; use live Solidify/SubD after silhouette review."""
+    return _call("create_quad_radial_surface", name=name, rings=rings, segments=segments, phase=phase)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "record_type": "VIDEO_EPISODE_INDEPENDENT_REVIEW",
+  "source_url": "https://www.youtube.com/watch?v=NJz4xoVyseY",
+  "identity": {
+    "title": "Subd Hard Surface Modeling - Dealing With \"Tricky\" Details (Blender Tutorial)",
+    "creator": "Josh - Blender Bros",
+    "duration_seconds": 1133,
+    "verification": [
+      "YouTube oEmbed title and creator",
+      "search-indexed 18:53 duration marker",
+      "retained YouTube thumbnail showing the tapered curved shell and local topology detail"
+    ]
+  },
+  "semantic_inspection": {
+    "method": "Google Gemini video understanding",
+    "ranges_seconds": [[0, 600], [600, 1133]],
+    "modalities_reported": ["video", "audio", "captions", "UI text"],
+    "coverage": "complete source duration across two calls",
+    "records": ["gemini_part1_unverified.json", "gemini_part2_unverified.json"]
+  },
+  "independent_frame_limit": "Direct timestamp-frame extraction was blocked by YouTube anti-bot/cookie requirements and the in-app browser runtime was unavailable. The thumbnail verifies the target family, but does not independently verify every episode timestamp.",
+  "decision": "ACCEPT_FOR_BOUNDED_REPRODUCTION",
+  "claim_boundary": "Episode observations remain model-extracted-unverified. Promotion depends on Blender reproduction and different-geometry transfer, not Gemini text alone."
+}

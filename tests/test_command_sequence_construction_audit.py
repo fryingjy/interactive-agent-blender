@@ -96,3 +96,11 @@ def test_connected_authored_quad_mesh_is_valid_starting_cage():
         ["TerminationPatch"],
     )
     assert result["pass"] is True
+
+
+def test_connected_quad_radial_surface_is_valid_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_quad_radial_surface", "params": {"name": "CurvedHost"}}],
+        ["CurvedHost"],
+    )
+    assert result["pass"] is True

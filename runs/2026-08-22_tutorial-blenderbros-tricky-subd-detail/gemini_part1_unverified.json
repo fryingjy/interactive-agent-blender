@@ -1,0 +1,155 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "generate_content_range",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=NJz4xoVyseY",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": null,
+    "reported_source_url": "https://www.youtube.com/watch?v=NJz4xoVyseY",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": [
+      0.0,
+      600.0
+    ]
+  },
+  "analysis": {
+    "source": {
+      "title": "Subd Hard Surface Modeling - Dealing With \"Tricky\" Details (Blender Tutorial)",
+      "creator": "Josh - Blender Bros",
+      "url": "https://www.youtube.com/watch?v=NJz4xoVyseY",
+      "duration_seconds": 1133.0,
+      "blender_version_mentions": [
+        "4.2.0"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": [
+        "600-1133s range excluded per study scope instructions"
+      ]
+    },
+    "study_scope": "Analysis of hard surface SubD blockout, lattice deformation, topology management, shear alignment, and inset boolean operations from 00:00 to 10:00 (0 to 600 seconds).",
+    "episodes": [
+      {
+        "timestamp_label": "01:05 - 03:05",
+        "modeling_stage": "Base Blockout",
+        "problem": "Establishing tapered curved main body geometry for SubD modeling without distorting edge flow.",
+        "observed_fact": "Instructor creates a 16-vertex cylinder with horizontal loop cuts and deforms it using a 3x3x3 Lattice object.",
+        "instructor_claim": "Using a low-vertex cylinder combined with lattice deformation provides controllable initial curvature for SubD workflow.",
+        "interpretation": "Lattice deformation enables global shape tweaking on low-poly primitives without manually manipulating individual vertex rings.",
+        "hypothesis": "Starting with a high-density cylinder would complicate subsequent SubD smoothing and cleanup.",
+        "reference_evidence": "Pinterest industrial design concept overlay shown in viewport.",
+        "modeling_decision": "Use a 16-vertex cylinder bound to a 3x3x3 Lattice object to create base body curvature.",
+        "visible_action": "Adds 16-vertex cylinder, applies scale, inserts 6 loop cuts, creates Lattice object set to 3x3x3 resolution, binds cylinder with Lattice modifier, deforms lattice control points.",
+        "spoken_reason": "Low vertex count cylinder combined with lattice deformation keeps topology manageable prior to SubD subdivision.",
+        "topology_surface_effect": "Deforms cylinder outward along X and Y axes while preserving quad layout.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Manual proportional scaling of individual loop cuts.",
+        "transferable_principle": "Deform low-density quad primitives using lattice deformers to establish complex organic curves early in blockout.",
+        "start_seconds": 65,
+        "end_seconds": 185,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "03:05 - 05:04",
+        "modeling_stage": "Topology Refinement & Resolution Reduction",
+        "problem": "Reducing polygon density after lattice deformation to maintain clean SubD quad workflow.",
+        "observed_fact": "Instructor applies Decimate modifier set to Unsubdivide, observes heavy mesh distortion, removes it, and manually dissolves alternating edge loops.",
+        "instructor_claim": "Decimate unsubdivide distorts deformed shapes, requiring manual edge loop dissolution.",
+        "interpretation": "Automatic unsubdivision disrupts non-grid quad edge loops resulting from lattice deforms.",
+        "hypothesis": "Retaining excess edge loops would complicate upcoming boolean operations.",
+        "reference_evidence": "Pinterest reference image showing smooth main body shell.",
+        "modeling_decision": "Manually dissolve alternating edge loops instead of automated unsubdivision.",
+        "visible_action": "Applies Lattice modifier, adds and applies Mirror modifier, dissolves seam edges, applies Decimate Unsubdivide modifier, deletes Decimate modifier, selects and dissolves alternating edge loops.",
+        "spoken_reason": "Decimate modifier creates triangular topology distortions on curved geometry; manual dissolution preserves quad continuity.",
+        "topology_surface_effect": "Halves vertical segment density while retaining quad structure and smooth shading.",
+        "failure": "Decimate Unsubdivide modifier generated twisted triangular artifacts across cylinder surface.",
+        "correction": "Removed Decimate modifier and manually dissolved alternating horizontal edge loops.",
+        "alternatives": "Remesh modifier or manual retopology overlay.",
+        "transferable_principle": "Prefer manual edge loop dissolution over automated unsubdivision on curved quad meshes to prevent topological artifacts.",
+        "start_seconds": 185,
+        "end_seconds": 304,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "05:04 - 07:03",
+        "modeling_stage": "Shape Angling & Viewport Inspection",
+        "problem": "Angling top boundary opening without distorting circular cross-section or producing misleading shading lines.",
+        "observed_fact": "Instructor selects top edge loop, executes Shear command along Y axis, and disables Viewport Cavity overlay.",
+        "instructor_claim": "Shear operator slides vertices linearly along axis without pinching; disabling Cavity prevents false viewport shading lines.",
+        "interpretation": "Shear maintains parallel edge alignment across open boundary loops better than standard rotation.",
+        "hypothesis": "Directly rotating top edge loop around X axis would flatten circular cross-section profile.",
+        "reference_evidence": "Reference concept photo showing angled top collar.",
+        "modeling_decision": "Angle top rim using Shear along Y axis instead of rotation tool, and turn off Cavity overlay.",
+        "visible_action": "Selects top boundary loop, invokes Shear operator (F3 -> Shear), toggles Y axis, shifts geometry; opens Viewport Shading menu and unchecks Cavity.",
+        "spoken_reason": "Shear slides edge loops linearly along an axis to maintain clean profile; disabling Cavity removes artifact lines.",
+        "topology_surface_effect": "Tilts top rim uniformly while preserving smooth vertical quad shading.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Rotation combined with vertex snapping alignment.",
+        "transferable_principle": "Use Shear instead of rotation to tilt planar openings on curved objects while keeping cross-sectional quad integrity.",
+        "start_seconds": 304,
+        "end_seconds": 423,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "07:03 - 10:00",
+        "modeling_stage": "Boolean Detail Integration",
+        "problem": "Creating an inset side panel detail on a curved body using boolean cutters without unwanted base bevel artifacts.",
+        "observed_fact": "Instructor caps mesh openings to ensure manifold state, applies Inset boolean with an Ngon cutter, bevels cutter corners, and sets Mean Bevel Weight on cutter bottom edges to 0.",
+        "instructor_claim": "Inset booleans demand manifold geometry; setting mean bevel weight on bottom cutter edges to zero prevents bevel propagation at the base.",
+        "interpretation": "HardOps bevel modifiers bleed onto unwanted cutter edges unless edge weights are manually zeroed.",
+        "hypothesis": "Leaving cutter base edges weighted would create distorted bevel intersections at bottom boundary.",
+        "reference_evidence": "Reference concept drawing depicting inset side panel on main housing.",
+        "modeling_decision": "Fill body caps, cut inset profile via HardOps Ngon cutter, bevel cutter corners, and zero out base edge bevel weights.",
+        "visible_action": "Fills open end caps, draws Ngon cutter using BoxCutter, executes Inset boolean ('I' key), bevels cutter corners ('B' key), selects bottom cutter edges, sets Mean Bevel Weight to 0 in N-panel Item tab.",
+        "spoken_reason": "Non-manifold geometry causes boolean failure; clearing bevel weight on bottom edges stops bevel modifier from distorting base.",
+        "topology_surface_effect": "Generates an integrated inset panel cut with rounded corners and clean un-beveled base edges.",
+        "failure": "Bevel modifier on inset cutter generated unwanted bevel geometry along bottom boundary.",
+        "correction": "Selected cutter bottom edges and reduced Mean Bevel Weight to 0 in N-panel.",
+        "alternatives": "Manual knife project and inset extrusion.",
+        "transferable_principle": "Ensure manifold geometry before executing booleans and clear edge weights on cutter boundaries to control bevel modifier scope.",
+        "start_seconds": 423,
+        "end_seconds": 600,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "00:00 - 01:05 Promotional intro and channel course announcement."
+    ],
+    "limitations": [
+      "Analysis restricted to 00:00 - 10:00 interval per prompt instructions."
+    ]
+  }
+}

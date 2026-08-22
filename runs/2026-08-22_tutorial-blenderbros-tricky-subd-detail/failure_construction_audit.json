@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "tricky_subd_abrupt_failure",
+      "origin": "create_quad_radial_surface",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "failures": []
+}

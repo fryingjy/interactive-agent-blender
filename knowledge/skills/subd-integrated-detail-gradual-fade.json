@@ -1,0 +1,35 @@
+{
+  "skill_id": "subd.integrated_detail.gradual_multiaxis_fade",
+  "title": "Fade integrated SubD detail continuously across a curved host",
+  "topic_tags": ["subdivision surface", "curved host", "integrated detail", "loop termination", "pinching", "radial cage"],
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE", "SECONDARY_FORMS"],
+    "workflow": ["connected quad cage", "subdivision hard surface"],
+    "defect": ["abrupt relief crease", "wavy diagonal detail", "floating decorative strip", "support loops propagated across the whole host"]
+  },
+  "preconditions": [
+    "the feature physically belongs to the host surface rather than being a separate assembly",
+    "the broad host silhouette and radial density are already sufficient",
+    "the feature can reach zero depth in a low-stress region"
+  ],
+  "required_observations": [
+    "base cage connectivity and radial/longitudinal spacing",
+    "fixed MatCap views that cross the feature fade",
+    "evaluated manifoldness and curvature diagnostics",
+    "a second view when the feature is nearly tangent to the first camera"
+  ],
+  "action_policy": [
+    "Keep the feature connected to the host cage and ramp its depth through multiple rings rather than switching from zero to full depth on one ring.",
+    "When the feature changes lateral direction, blend influence across neighboring columns instead of jumping the active column between adjacent rings.",
+    "Terminate or dissolve support flow only where the feature is already flush and the evaluated highlight stays continuous.",
+    "Prefer 12-16 radial segments at ordinary prop scale unless silhouette or highlight evidence requires more."
+  ],
+  "failure_predicates": ["horizontal pinch at fade onset", "wavy diagonal highlight", "detached visible strip", "global density added for one local feature", "candidate metrics accepted without visual confirmation"],
+  "recovery": ["add intermediate fade rings", "interpolate influence across neighboring columns", "move termination into a flatter or lower-stress region", "rebuild the local flow instead of patching repeated pinches"],
+  "sources": [{"type":"video_observation","source_id":"NJz4xoVyseY","timestamp_seconds":[770,1133],"description":"Josh - Blender Bros reroutes the detail boundary, creates a local buffer, fades depth to flush, terminates flow, and relaxes curved spacing."}],
+  "experiments": [{"type":"source-like reproduction plus different-geometry transfer","evidence_path":"runs/2026-08-22_tutorial-blenderbros-tricky-subd-detail/","result":"PASS_BOUNDED","measurements":{"failure_max_robust_outlier_z":8.5756,"correction_max_robust_outlier_z":7.2550,"transfer_pinch_candidates":0,"transfer_evaluated_non_manifold_edges":0},"counterevidence":"Raw pinch-candidate count increased from 26 to 32 in the visually better source-like correction, so it cannot be used as a standalone gate."}],
+  "runtime_usage": [{"operation":"create_quad_radial_surface","usage":"Author one connected ring-based cage with local per-segment radial and vertical offsets; keep Solidify/SubD live."}],
+  "version_scope": "Blender 5.2 LTS reproduction; source reports Blender 4.2.0",
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "Validated on a source-like 16-segment tapered shell and a different 14-segment oval cuff. Exact local triangle termination remains bounded by the companion topology-sheet experiment."
+}

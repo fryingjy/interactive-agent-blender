@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "TUTORIAL_REPRODUCTION_SYNTHESIS",
+  "source_id": "NJz4xoVyseY",
+  "problem": "An elongated hard-surface detail must merge into a curved SubD host without a detached strip, an abrupt crease, or global support-loop propagation.",
+  "source_observation": "The tutorial cleans and reroutes the cut boundary, creates a local buffer, fades detail depth to flush, terminates loops in a low-stress region, and relaxes curved-border spacing.",
+  "controlled_failure": "Full relief begins on one radial ring; the fixed MatCap view shows a hard horizontal pinch.",
+  "correction": "Relief influence is ramped across successive rings while the host remains one connected 16-segment all-quad cage with live Solidify and SubD.",
+  "transfer": "A different 14-segment oval cuff routes a diagonal relief by blending both depth and lateral column influence. The first column-jumping attempt was rejected for waviness; the retained transfer has zero automated pinch candidates.",
+  "promoted_rule": "On a curved SubD host, fade integrated-detail displacement continuously in every changing grid direction and inspect fixed MatCap highlights; do not infer success from topology validity or pinch-candidate count alone.",
+  "non_rule": "Triangles or poles are not universally required, forbidden, or automatically safe. Their placement must be tested against local curvature and highlight flow.",
+  "limitations": [
+    "The source-like asset uses a regular radial grid rather than reproducing the tutorial's exact Boolean cleanup and local triangle termination.",
+    "The source thumbnail, not independent timestamp frames, is the non-Gemini visual check.",
+    "The transfer validates a diagonal relief on one additional surface family, not arbitrary curved hosts."
+  ],
+  "result": "PASS_BOUNDED"
+}

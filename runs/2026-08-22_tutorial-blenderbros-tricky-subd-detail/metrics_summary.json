@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "record_type": "TUTORIAL_REPRODUCTION_METRICS",
+  "blender_version": "5.2.0 LTS",
+  "variants": {
+    "abrupt_failure": {"segments":16,"rings":14,"base_vertices":224,"base_quads":208,"base_ngons":0,"base_non_manifold_edges":32,"evaluated_vertices":7168,"evaluated_quads":7168,"evaluated_non_manifold_edges":0,"median_absolute_laplacian":0.02771760,"max_robust_outlier_z":8.5756,"pinch_candidate_count":26,"normal_angle_p95_degrees":16.0053},
+    "gradual_correction": {"segments":16,"rings":14,"base_vertices":224,"base_quads":208,"base_ngons":0,"base_non_manifold_edges":32,"evaluated_vertices":7168,"evaluated_quads":7168,"evaluated_non_manifold_edges":0,"median_absolute_laplacian":0.02762836,"max_robust_outlier_z":7.2550,"pinch_candidate_count":32,"normal_angle_p95_degrees":16.0053},
+    "diagonal_transfer": {"segments":14,"rings":11,"base_vertices":154,"base_quads":140,"base_ngons":0,"base_non_manifold_edges":28,"evaluated_vertices":4928,"evaluated_quads":4928,"evaluated_non_manifold_edges":0,"median_absolute_laplacian":0.03877855,"max_robust_outlier_z":3.0745,"pinch_candidate_count":0,"normal_angle_p95_degrees":15.6589}
+  },
+  "interpretation": "The gradual branch removes the visible horizontal pinch and lowers the strongest curvature outlier. Candidate count is not monotonic with visual quality and remains advisory. Open base boundaries are intentional rims closed by live Solidify in evaluated geometry."
+}

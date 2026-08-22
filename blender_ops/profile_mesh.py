@@ -84,6 +84,93 @@ def authored_quad_mesh(name, vertices, faces, *, collection=None):
     return obj
 
 
+def quad_radial_surface(name, rings, *, segments=16, phase=0.0, collection=None):
+    """Create one connected open all-quad radial surface from authored rings.
+
+    Each ring is a mapping with ``z``, ``radius_x``, ``radius_y`` and optional
+    ``radial_offsets`` / ``z_offsets`` arrays of ``segments`` values.  The
+    offsets allow a local integrated detail or a sheared rim while preserving
+    one continuous cage.  This is not a cylinder primitive wrapper: ring shape,
+    taper, local relief, and vertical spacing remain explicit caller decisions.
+    """
+    segment_count = int(segments)
+    if segment_count < 3:
+        raise ValueError("quad radial surface needs at least three segments")
+    phase_value = float(phase)
+    if not math.isfinite(phase_value):
+        raise ValueError("quad radial surface phase must be finite")
+    if not isinstance(rings, (list, tuple)) or len(rings) < 2:
+        raise ValueError("quad radial surface needs at least two authored rings")
+    normalized = []
+    previous_z = None
+    for ring_index, ring in enumerate(rings):
+        if not isinstance(ring, dict):
+            raise ValueError(f"ring {ring_index} must be an object")
+        z_value = float(ring["z"])
+        radius_x = float(ring["radius_x"])
+        radius_y = float(ring["radius_y"])
+        if not all(math.isfinite(value) for value in (z_value, radius_x, radius_y)):
+            raise ValueError(f"ring {ring_index} values must be finite")
+        if previous_z is not None and z_value <= previous_z:
+            raise ValueError("quad radial surface ring z values must be strictly increasing")
+        previous_z = z_value
+        if radius_x <= 0.0 or radius_y <= 0.0:
+            raise ValueError(f"ring {ring_index} radii must be positive")
+        radial_offsets = ring.get("radial_offsets", [0.0] * segment_count)
+        z_offsets = ring.get("z_offsets", [0.0] * segment_count)
+        if len(radial_offsets) != segment_count or len(z_offsets) != segment_count:
+            raise ValueError(f"ring {ring_index} offsets must match segments={segment_count}")
+        radial_offsets = [float(value) for value in radial_offsets]
+        z_offsets = [float(value) for value in z_offsets]
+        if not all(math.isfinite(value) for value in radial_offsets + z_offsets):
+            raise ValueError(f"ring {ring_index} offsets must be finite")
+        if any(radius_x + offset <= 0.0 or radius_y + offset <= 0.0 for offset in radial_offsets):
+            raise ValueError(f"ring {ring_index} radial offsets collapse or invert the ring")
+        normalized.append((
+            z_value,
+            radius_x,
+            radius_y,
+            radial_offsets,
+            z_offsets,
+        ))
+    vertices = []
+    for ring_index, (z_value, radius_x, radius_y, radial_offsets, z_offsets) in enumerate(normalized):
+        for segment in range(segment_count):
+            angle = phase_value + 2.0 * math.pi * segment / segment_count
+            offset = radial_offsets[segment]
+            vertices.append((
+                (radius_x + offset) * math.cos(angle),
+                (radius_y + offset) * math.sin(angle),
+                z_value + z_offsets[segment],
+            ))
+    faces = []
+    for ring_index in range(len(normalized) - 1):
+        lower = ring_index * segment_count
+        upper = (ring_index + 1) * segment_count
+        for segment in range(segment_count):
+            nxt = (segment + 1) % segment_count
+            faces.append((lower + segment, lower + nxt, upper + nxt, upper + segment))
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    uv_layer = mesh.uv_layers.new(name="RadialSurfaceUV")
+    for polygon_index, polygon in enumerate(mesh.polygons):
+        ring_index = polygon_index // segment_count
+        segment = polygon_index % segment_count
+        u0 = segment / segment_count
+        u1 = (segment + 1) / segment_count
+        v0 = ring_index / (len(normalized) - 1)
+        v1 = (ring_index + 1) / (len(normalized) - 1)
+        for loop_index, uv in zip(polygon.loop_indices, ((u0, v0), (u1, v0), (u1, v1), (u0, v1))):
+            uv_layer.data[loop_index].uv = uv
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    obj["construction_origin"] = "QUAD_RADIAL_SURFACE"
+    obj["radial_segments"] = segment_count
+    obj["radial_ring_count"] = len(normalized)
+    return obj
+
+
 def revolve_closed_profile(name, profile, *, segments=96, collection=None):
     """Revolve a closed ``(radius, z)`` profile around world Z.
 

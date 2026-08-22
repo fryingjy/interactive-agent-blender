@@ -89,6 +89,7 @@ CAPABILITIES = [
     "quad_annular_shell_geometry",
     "quad_layered_annular_shell_geometry",
     "authored_quad_mesh_geometry",
+    "quad_radial_surface_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -594,6 +595,28 @@ class ModelerServer:
             "faces": len(obj.data.polygons),
             "mesh_health": health,
             "construction_boundary": "Explicit authored topology is connected and all-quad; open boundaries are intentional for live Solidify/SubD studies.",
+        }
+
+    def cmd_create_quad_radial_surface(self, name, rings, segments=16, phase=0.0):
+        """Create one connected radial quad cage with authored local relief."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_radial_surface(
+            name,
+            rings,
+            segments=int(segments),
+            phase=float(phase),
+        )
+        persistent_ids.ensure_persistent_ids(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "segments": int(segments),
+            "ring_count": len(rings),
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "construction_boundary": "One connected open all-quad radial cage; taper, shear, and local relief are authored ring data, not separate visible primitives.",
         }
 
     def cmd_create_quad_open_surface(self, name, front_grid, rear_grid, active_cells, bridge_edges):
