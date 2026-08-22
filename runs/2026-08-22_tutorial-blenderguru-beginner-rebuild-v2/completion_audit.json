@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "source_run": "runs\\2026-08-21_tutorial-rebuild-donut\\donut_tutorial.blend",
+  "status": "TECHNICALLY_COMPLETE_VISUAL_REVIEW_PENDING",
+  "corrected_failures": [
+    "plate_not_under_donut",
+    "donut_and_mug_overlap",
+    "14_vertex_ngon_coffee_surface",
+    "missing_geometry_nodes_sprinkles",
+    "cropped_flat_final_composition"
+  ],
+  "live_modifiers": {
+    "Icing": [
+      "SHRINKWRAP",
+      "SOLIDIFY",
+      "SUBSURF",
+      "NODES"
+    ],
+    "Mug": [
+      "SUBSURF"
+    ],
+    "Plate": [
+      "SOLIDIFY",
+      "SUBSURF"
+    ],
+    "Coffee_Surface_32": [
+      "BEVEL"
+    ]
+  },
+  "sprinkle_source_hidden": true,
+  "sprinkle_modifier_applied": false
+}

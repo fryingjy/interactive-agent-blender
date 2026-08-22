@@ -1,5 +1,10 @@
 # Tutorial rebuild: Blender Guru "Beginner Blender Tutorial" (donut + mug)
 
+> **REJECTED / SUPERSEDED:** this run stopped after Part 6 and its latest render has poor object
+> placement, a visibly faceted coffee surface, no sprinkle-scattering stage, and weak final
+> composition. It remains as failure evidence only. Continuation moved to
+> `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/` under the strict apprenticeship gate.
+
 ## Why this exists
 
 Direct instruction: scrap every prop model this project has ever attempted (see the deletion commit

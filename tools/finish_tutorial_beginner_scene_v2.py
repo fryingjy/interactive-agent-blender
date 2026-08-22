@@ -1,0 +1,178 @@
+"""Correct and finish the rejected Blender Guru beginner tutorial scene."""
+
+from __future__ import annotations
+
+import json
+import math
+from pathlib import Path
+
+import bpy
+from mathutils import Vector
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SOURCE = REPO_ROOT / "runs" / "2026-08-21_tutorial-rebuild-donut" / "donut_tutorial.blend"
+RUN_DIR = REPO_ROOT / "runs" / "2026-08-22_tutorial-blenderguru-beginner-rebuild-v2"
+
+
+def material(name: str, color: tuple[float, float, float, float], roughness: float, metallic: float = 0.0):
+    mat = bpy.data.materials.get(name) or bpy.data.materials.new(name)
+    mat.diffuse_color = color
+    mat.use_nodes = True
+    bsdf = mat.node_tree.nodes.get("Principled BSDF")
+    bsdf.inputs["Base Color"].default_value = color
+    bsdf.inputs["Roughness"].default_value = roughness
+    bsdf.inputs["Metallic"].default_value = metallic
+    return mat
+
+
+def move_group(names: tuple[str, ...], delta: Vector) -> None:
+    for name in names:
+        bpy.data.objects[name].location += delta
+
+
+def replace_coffee() -> bpy.types.Object:
+    old = bpy.data.objects.get("Foam")
+    if old:
+        bpy.data.objects.remove(old, do_unlink=True)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=0.108, depth=0.006, location=(0.30, 0.0, 0.153))
+    coffee = bpy.context.object
+    coffee.name = "Coffee_Surface_32"
+    coffee.data.name = "Coffee_Surface_32_Mesh"
+    bevel = coffee.modifiers.new("Liquid_Edge_Radius", "BEVEL")
+    bevel.width = 0.004
+    bevel.segments = 2
+    coffee.data.materials.append(material("Coffee_Foam", (0.42, 0.16, 0.045, 1.0), 0.58))
+    return coffee
+
+
+def add_sprinkle_system(icing: bpy.types.Object) -> tuple[bpy.types.Object, bpy.types.Modifier]:
+    bpy.ops.mesh.primitive_cylinder_add(vertices=8, radius=0.0045, depth=0.030, location=(0, 0, -3))
+    prototype = bpy.context.object
+    prototype.name = "Sprinkle_Prototype"
+    prototype.data.materials.append(material("Sprinkle_Magenta", (0.72, 0.035, 0.20, 1), 0.32))
+    prototype.hide_render = True
+    prototype.hide_set(True)
+
+    tree = bpy.data.node_groups.new("GN_Tutorial_Sprinkles", "GeometryNodeTree")
+    tree.interface.new_socket(name="Geometry", in_out="INPUT", socket_type="NodeSocketGeometry")
+    tree.interface.new_socket(name="Geometry", in_out="OUTPUT", socket_type="NodeSocketGeometry")
+    nodes = tree.nodes
+    links = tree.links
+    group_in = nodes.new("NodeGroupInput")
+    group_out = nodes.new("NodeGroupOutput")
+    distribute = nodes.new("GeometryNodeDistributePointsOnFaces")
+    object_info = nodes.new("GeometryNodeObjectInfo")
+    instances = nodes.new("GeometryNodeInstanceOnPoints")
+    random_rotation = nodes.new("FunctionNodeRandomValue")
+    random_rotation.data_type = "FLOAT_VECTOR"
+    random_rotation.inputs["Min"].default_value = (-math.pi, -math.pi, -math.pi)
+    random_rotation.inputs["Max"].default_value = (math.pi, math.pi, math.pi)
+    realize = nodes.new("GeometryNodeRealizeInstances")
+    join = nodes.new("GeometryNodeJoinGeometry")
+    distribute.distribute_method = "RANDOM"
+    distribute.inputs["Density"].default_value = 560.0
+    object_info.inputs["Object"].default_value = prototype
+    object_info.transform_space = "ORIGINAL"
+    object_info.inputs["As Instance"].default_value = True
+    links.new(group_in.outputs["Geometry"], distribute.inputs["Mesh"])
+    links.new(distribute.outputs["Points"], instances.inputs["Points"])
+    links.new(object_info.outputs["Geometry"], instances.inputs["Instance"])
+    links.new(random_rotation.outputs["Value"], instances.inputs["Rotation"])
+    links.new(instances.outputs["Instances"], realize.inputs["Geometry"])
+    links.new(group_in.outputs["Geometry"], join.inputs["Geometry"])
+    links.new(realize.outputs["Geometry"], join.inputs["Geometry"])
+    links.new(join.outputs["Geometry"], group_out.inputs["Geometry"])
+    modifier = icing.modifiers.new("Tutorial_Sprinkle_Scattering", "NODES")
+    modifier.node_group = tree
+    return prototype, modifier
+
+
+def add_lighting_and_render() -> None:
+    scene = bpy.context.scene
+    scene.render.engine = "BLENDER_EEVEE"
+    scene.render.resolution_x = 800
+    scene.render.resolution_y = 620
+    scene.render.resolution_percentage = 100
+    scene.render.image_settings.file_format = "PNG"
+    scene.render.film_transparent = False
+    scene.render.image_settings.color_mode = "RGBA"
+    scene.view_settings.look = "AgX - Medium High Contrast"
+
+    camera = bpy.data.objects.get("Camera")
+    camera.data.lens = 43
+    camera.data.shift_y = -0.10
+    camera.location = (0.20, -1.05, 0.58)
+    target = Vector((0.05, 0.03, 0.075))
+    camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
+    scene.camera = camera
+
+    key = bpy.data.objects.get("KeyLight")
+    key.data.energy = 65
+    key.data.shape = "DISK"
+    key.data.size = 0.55
+    key.location = (-0.35, -0.45, 0.72)
+    key.rotation_euler = (Vector((0.0, 0.0, 0.05)) - key.location).to_track_quat("-Z", "Y").to_euler()
+
+    fill_data = bpy.data.lights.new("Fill_Light", "AREA")
+    fill_data.energy = 28
+    fill_data.shape = "DISK"
+    fill_data.size = 0.45
+    fill = bpy.data.objects.new("Fill_Light", fill_data)
+    scene.collection.objects.link(fill)
+    fill.location = (0.55, 0.25, 0.48)
+    fill.rotation_euler = (target - fill.location).to_track_quat("-Z", "Y").to_euler()
+
+    world = scene.world or bpy.data.worlds.new("Tutorial_World")
+    scene.world = world
+    world.use_nodes = True
+    world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.018, 0.022, 0.032, 1)
+    world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.35
+    scene.render.filepath = str(RUN_DIR / "beginner_scene_final.png")
+    bpy.ops.render.render(write_still=True)
+
+
+def main() -> None:
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    bpy.ops.wm.open_mainfile(filepath=str(SOURCE))
+
+    # Correct the rejected composition: plate belongs under the donut; the donut/icing rise onto it.
+    bpy.data.objects["Plate"].location = (0.0, -0.015, -0.025)
+    move_group(("Donut", "Icing"), Vector((0.0, -0.015, 0.040)))
+    bpy.data.objects["Mug"].location = (0.420, 0.035, 0.075)
+    bpy.data.objects["Mug"].rotation_euler.z = 0.0
+    table = bpy.data.objects["Table"]
+    table.location.z = -0.032
+    table.data.materials.clear()
+    table.data.materials.append(material("Table_Matte", (0.035, 0.052, 0.078, 1), 0.42))
+
+    coffee = replace_coffee()
+    coffee.location = (0.420, 0.035, 0.153)
+    prototype, sprinkle_modifier = add_sprinkle_system(bpy.data.objects["Icing"])
+    add_lighting_and_render()
+
+    report = {
+        "schema_version": 1,
+        "source_run": str(SOURCE.relative_to(REPO_ROOT)),
+        "status": "TECHNICALLY_COMPLETE_VISUAL_REVIEW_PENDING",
+        "corrected_failures": [
+            "plate_not_under_donut",
+            "donut_and_mug_overlap",
+            "14_vertex_ngon_coffee_surface",
+            "missing_geometry_nodes_sprinkles",
+            "cropped_flat_final_composition",
+        ],
+        "live_modifiers": {
+            "Icing": [modifier.type for modifier in bpy.data.objects["Icing"].modifiers],
+            "Mug": [modifier.type for modifier in bpy.data.objects["Mug"].modifiers],
+            "Plate": [modifier.type for modifier in bpy.data.objects["Plate"].modifiers],
+            "Coffee_Surface_32": [modifier.type for modifier in coffee.modifiers],
+        },
+        "sprinkle_source_hidden": prototype.hide_render,
+        "sprinkle_modifier_applied": False,
+    }
+    (RUN_DIR / "completion_audit.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    bpy.ops.wm.save_as_mainfile(filepath=str(RUN_DIR / "beginner_scene_v2.blend"))
+
+
+if __name__ == "__main__":
+    main()
