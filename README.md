@@ -197,10 +197,14 @@ The local Blender/MCP entry points are:
   high/low asset, live source modifiers, UVs on every low mesh, four PBR channels, GLB delivery, and
   a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. Historical
   technical completion does not satisfy the restarted fidelity gate.
-- `runs/2026-08-22_tutorial-game-asset-factory-chair/` starts the strict beginner apprenticeship but
-  its own source-frame review remains blocked -- the video's public thumbnail was fetched and
-  confirmed to be title-card artwork only, not a usable visual reference, so its status stays
-  MODELED/SOURCE-FRAME REVIEW PENDING rather than being forced to a score without real evidence.
+- `runs/2026-08-22_tutorial-game-asset-factory-chair/` starts the strict beginner apprenticeship.
+  Its public thumbnail is title-card artwork only and a direct browser frame-pull hit YouTube's
+  bot-detection captcha, but the run's own prior Gemini analysis already contained real frame-level
+  video inspection that had gone uncompared against the build -- doing that comparison found four of
+  five real construction decisions matching directly. Scored `7.5/10` on process/topology fidelity, a
+  narrower kind of evidence than the pixel-level comparisons other beginner lessons had (no
+  finished-result image exists for this tutorial); does not count toward the two-pass gate, which
+  B1/B4 already satisfy.
 - `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` has full audiovisual extraction, retained
   typed-modeling corrections, a connected manifold housing, live modifiers, and fresh-process
   verification; original thumbnail comparison was `6.8/10`. A later correction pass built the
