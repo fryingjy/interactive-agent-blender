@@ -1,0 +1,28 @@
+[
+  {
+    "label": "create_sparse_profile_control",
+    "command": "create_revolved_profile",
+    "params": {"name": "bottle_sparse_control", "segments": 16, "profile": [[0.018, 0.102], [0.030, 0.082], [0.032, 0.010], [0.025, 0.002], [0.015, 0.006], [0.029, 0.012], [0.028, 0.080], [0.017, 0.096]]}
+  },
+  {
+    "label": "move_sparse_control_left",
+    "transaction": {"name": "bottle_sparse_control", "action_type": "comparison_layout", "operation": "translate_object", "params": {"delta": [-0.050, 0.0, 0.0]}, "command_id": "tutorial-transfer-sparse-place-v1"}
+  },
+  {
+    "label": "create_support_distributed_transfer",
+    "command": "create_revolved_profile",
+    "params": {"name": "bottle_support_distributed", "segments": 16, "profile": [[0.017, 0.102], [0.019, 0.101], [0.023, 0.097], [0.027, 0.091], [0.030, 0.084], [0.031, 0.078], [0.032, 0.012], [0.031, 0.008], [0.027, 0.004], [0.020, 0.003], [0.015, 0.006], [0.020, 0.010], [0.029, 0.013], [0.029, 0.077], [0.027, 0.084], [0.023, 0.092], [0.019, 0.097]]}
+  },
+  {
+    "label": "move_corrected_transfer_right",
+    "transaction": {"name": "bottle_support_distributed", "action_type": "comparison_layout", "operation": "translate_object", "params": {"delta": [0.050, 0.0, 0.0]}, "command_id": "tutorial-transfer-corrected-place-v1"}
+  },
+  {"label": "add_sparse_live_subdivision", "transaction": {"name": "bottle_sparse_control", "action_type": "surface_modifier", "operation": "add_modifier", "params": {"modifier_type": "SUBSURF", "modifier_name": "Sparse_Live_Subdivision"}, "command_id": "tutorial-transfer-sparse-subd-v1"}},
+  {"label": "set_sparse_subdivision_level", "transaction": {"name": "bottle_sparse_control", "action_type": "surface_modifier_parameter", "operation": "set_modifier_parameter", "params": {"modifier_name": "Sparse_Live_Subdivision", "parameter": "levels", "value": 2}, "command_id": "tutorial-transfer-sparse-level-v1"}},
+  {"label": "shade_sparse_by_angle", "transaction": {"name": "bottle_sparse_control", "action_type": "shading_policy", "operation": "set_smooth_by_angle", "params": {"angle": 0.5235987756, "keep_sharp_edges": true}, "command_id": "tutorial-transfer-sparse-smooth-v1"}},
+  {"label": "add_corrected_live_subdivision", "transaction": {"name": "bottle_support_distributed", "action_type": "surface_modifier", "operation": "add_modifier", "params": {"modifier_type": "SUBSURF", "modifier_name": "Corrected_Live_Subdivision"}, "command_id": "tutorial-transfer-corrected-subd-v1"}},
+  {"label": "set_corrected_subdivision_level", "transaction": {"name": "bottle_support_distributed", "action_type": "surface_modifier_parameter", "operation": "set_modifier_parameter", "params": {"modifier_name": "Corrected_Live_Subdivision", "parameter": "levels", "value": 2}, "command_id": "tutorial-transfer-corrected-level-v1"}},
+  {"label": "shade_corrected_by_angle", "transaction": {"name": "bottle_support_distributed", "action_type": "shading_policy", "operation": "set_smooth_by_angle", "params": {"angle": 0.5235987756, "keep_sharp_edges": true}, "command_id": "tutorial-transfer-corrected-smooth-v1"}},
+  {"label": "inspect_sparse_result", "command": "get_evaluated_state", "params": {"name": "bottle_sparse_control"}},
+  {"label": "inspect_corrected_result", "command": "get_evaluated_state", "params": {"name": "bottle_support_distributed"}}
+]

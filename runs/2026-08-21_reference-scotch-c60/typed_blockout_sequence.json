@@ -74,6 +74,11 @@
     "transaction": {"name": "attached_hub", "action_type": "assembly_placement", "operation": "translate_object", "params": {"delta": [0.025, 0.0, 0.046]}, "command_id": "c60-hub-place-v2"}
   },
   {
+    "label": "create_observed_flat_hub_support",
+    "command": "create_profile_extrusion",
+    "params": {"name": "hub_support_arm", "profile": [[0.018, 0.041], [0.055, 0.049], [0.064, 0.058], [0.021, 0.050]], "depth": 0.010}
+  },
+  {
     "label": "create_separate_cutter_blade",
     "command": "create_profile_extrusion",
     "params": {"name": "cutter_blade", "profile": [[-0.0790, 0.0440], [-0.0640, 0.0440], [-0.0640, 0.0470], [-0.0790, 0.0470]], "depth": 0.044}

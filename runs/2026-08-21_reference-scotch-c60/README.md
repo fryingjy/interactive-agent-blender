@@ -26,10 +26,12 @@ populating a reference checklist.
    set and a live weight-limited Bevel. It does not blanket-smooth the hard parts.
 4. `visual_revision_log.json` records why the five-section result was rejected, what changed, and
    what remains visibly incomplete.
-5. `fresh_asset_inspection.json` is a clean Blender 5.2 process report: 232 base vertices, 228/228
-   quad faces, zero triangles, n-gons, non-manifold edges, or degenerate faces, with both modifiers
-   still live.
+5. `fresh_asset_inspection.json` is a clean Blender 5.2 process report: 240 base vertices, 234/234
+   quad faces, zero triangles, n-gons, non-manifold edges, or degenerate faces, with all three
+   modifiers still live.
 
 The retained third-party photographs live under ignored `media/`; the manifest preserves their
-URLs and provenance. Rendered model evidence remains tracked. Human review is open, and this run
-must not be cited as a finished or accepted asset.
+URLs and provenance. Human review rejected the reconstruction after the attached-hub correction:
+the overall form remains inaccurate and some separately authored shapes should instead be connected
+topology. Work on the prop stopped. This run is retained only as failure evidence and must not be
+cited as a finished, accepted, or capability-proving asset.

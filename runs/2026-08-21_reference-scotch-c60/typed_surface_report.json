@@ -5,7 +5,7 @@
   "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-scotch-c60\\scotch_c60_blockout.blend",
   "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-scotch-c60\\scotch_c60_surface.blend",
   "blender_version": "5.2.0 LTS",
-  "session_id": "e04e7b68d611",
+  "session_id": "59b92def112a",
   "results": [
     {
       "index": 0,
@@ -122,11 +122,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_6_1787364990364",
+          "decision_id": "dec_6_1787366037025",
           "observed_revision": 6
         },
         "perform": {
-          "decision_id": "dec_6_1787364990364",
+          "decision_id": "dec_6_1787366037025",
           "performed": true,
           "result": {
             "attribute": "crease_edge",
@@ -271,7 +271,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_6_1787364990364",
+          "decision_id": "dec_6_1787366037025",
           "result_revision": 7
         }
       }
@@ -293,11 +293,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_7_1787364990368",
+          "decision_id": "dec_7_1787366037039",
           "observed_revision": 7
         },
         "perform": {
-          "decision_id": "dec_7_1787364990368",
+          "decision_id": "dec_7_1787366037039",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Subdivision",
@@ -343,7 +343,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_7_1787364990368",
+          "decision_id": "dec_7_1787366037039",
           "result_revision": 8
         }
       }
@@ -366,11 +366,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_8_1787364990371",
+          "decision_id": "dec_8_1787366037054",
           "observed_revision": 8
         },
         "perform": {
-          "decision_id": "dec_8_1787364990371",
+          "decision_id": "dec_8_1787366037054",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Subdivision",
@@ -416,7 +416,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_8_1787364990371",
+          "decision_id": "dec_8_1787366037054",
           "result_revision": 9
         }
       }
@@ -439,11 +439,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_9_1787364990375",
+          "decision_id": "dec_9_1787366037060",
           "observed_revision": 9
         },
         "perform": {
-          "decision_id": "dec_9_1787364990375",
+          "decision_id": "dec_9_1787366037060",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Subdivision",
@@ -489,7 +489,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_9_1787364990375",
+          "decision_id": "dec_9_1787366037060",
           "result_revision": 10
         }
       }
@@ -511,11 +511,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_10_1787364990378",
+          "decision_id": "dec_10_1787366037067",
           "observed_revision": 10
         },
         "perform": {
-          "decision_id": "dec_10_1787364990378",
+          "decision_id": "dec_10_1787366037067",
           "performed": true,
           "result": {
             "shading": "SMOOTH_BY_ANGLE",
@@ -562,7 +562,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_10_1787364990378",
+          "decision_id": "dec_10_1787366037067",
           "result_revision": 11
         }
       }
@@ -597,11 +597,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_11_1787364990381",
+          "decision_id": "dec_11_1787366037075",
           "observed_revision": 11
         },
         "perform": {
-          "decision_id": "dec_11_1787364990381",
+          "decision_id": "dec_11_1787366037075",
           "performed": true,
           "result": {
             "intended_bevel_edge_ids": [
@@ -660,7 +660,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_11_1787364990381",
+          "decision_id": "dec_11_1787366037075",
           "result_revision": 12
         }
       }
@@ -696,11 +696,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_12_1787364990384",
+          "decision_id": "dec_12_1787366037079",
           "observed_revision": 12
         },
         "perform": {
-          "decision_id": "dec_12_1787364990384",
+          "decision_id": "dec_12_1787366037079",
           "performed": true,
           "result": {
             "attribute": "bevel_weight_edge",
@@ -762,7 +762,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_12_1787364990384",
+          "decision_id": "dec_12_1787366037079",
           "result_revision": 13
         }
       }
@@ -784,11 +784,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_13_1787364990385",
+          "decision_id": "dec_13_1787366037082",
           "observed_revision": 13
         },
         "perform": {
-          "decision_id": "dec_13_1787364990385",
+          "decision_id": "dec_13_1787366037082",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Base_Radius",
@@ -834,7 +834,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_13_1787364990385",
+          "decision_id": "dec_13_1787366037082",
           "result_revision": 14
         }
       }
@@ -857,11 +857,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_14_1787364990389",
+          "decision_id": "dec_14_1787366037090",
           "observed_revision": 14
         },
         "perform": {
-          "decision_id": "dec_14_1787364990389",
+          "decision_id": "dec_14_1787366037090",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Base_Radius",
@@ -907,7 +907,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_14_1787364990389",
+          "decision_id": "dec_14_1787366037090",
           "result_revision": 15
         }
       }
@@ -930,11 +930,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_15_1787364990391",
+          "decision_id": "dec_15_1787366037093",
           "observed_revision": 15
         },
         "perform": {
-          "decision_id": "dec_15_1787364990391",
+          "decision_id": "dec_15_1787366037093",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Base_Radius",
@@ -980,7 +980,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_15_1787364990391",
+          "decision_id": "dec_15_1787366037093",
           "result_revision": 16
         }
       }
@@ -1003,11 +1003,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_16_1787364990392",
+          "decision_id": "dec_16_1787366037096",
           "observed_revision": 16
         },
         "perform": {
-          "decision_id": "dec_16_1787364990392",
+          "decision_id": "dec_16_1787366037096",
           "performed": true,
           "result": {
             "modifier_name": "C60_Live_Base_Radius",
@@ -1053,7 +1053,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_16_1787364990392",
+          "decision_id": "dec_16_1787366037096",
           "result_revision": 17
         }
       }
@@ -1075,11 +1075,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_17_1787364990393",
+          "decision_id": "dec_17_1787366037099",
           "observed_revision": 17
         },
         "perform": {
-          "decision_id": "dec_17_1787364990393",
+          "decision_id": "dec_17_1787366037099",
           "performed": true,
           "result": {
             "shading": "SMOOTH_BY_ANGLE",
@@ -1126,13 +1126,477 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_17_1787364990393",
+          "decision_id": "dec_17_1787366037099",
           "result_revision": 18
         }
       }
     },
     {
       "index": 12,
+      "label": "crease_observed_hub_support_plate_edges",
+      "command": "transaction",
+      "params": {
+        "name": "hub_support_arm",
+        "action_type": "semantic_sharp_edge_intent",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20
+          ],
+          "value": 0.72,
+          "clear_others": true
+        },
+        "command_id": "c60-hub-support-crease-v3"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_18_1787366037106",
+          "observed_revision": 18
+        },
+        "perform": {
+          "decision_id": "dec_18_1787366037106",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.72,
+            "assigned_edge_ids": [
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "semantic_sharp_edge_intent",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_18_1787366037106",
+          "result_revision": 19
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "add_live_hub_support_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "hub_support_arm",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "C60_Live_Hub_Support_Subdivision"
+        },
+        "command_id": "c60-hub-support-subd-v3"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_19_1787366037124",
+          "observed_revision": 19
+        },
+        "perform": {
+          "decision_id": "dec_19_1787366037124",
+          "performed": true,
+          "result": {
+            "modifier_name": "C60_Live_Hub_Support_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_19_1787366037124",
+          "result_revision": 20
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "set_live_hub_support_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "hub_support_arm",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "C60_Live_Hub_Support_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "c60-hub-support-subd-level-v3"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_20_1787366037135",
+          "observed_revision": 20
+        },
+        "perform": {
+          "decision_id": "dec_20_1787366037135",
+          "performed": true,
+          "result": {
+            "modifier_name": "C60_Live_Hub_Support_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_20_1787366037135",
+          "result_revision": 21
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "set_live_hub_support_render_level",
+      "command": "transaction",
+      "params": {
+        "name": "hub_support_arm",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "C60_Live_Hub_Support_Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        },
+        "command_id": "c60-hub-support-subd-render-level-v3"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_21_1787366037146",
+          "observed_revision": 21
+        },
+        "perform": {
+          "decision_id": "dec_21_1787366037146",
+          "performed": true,
+          "result": {
+            "modifier_name": "C60_Live_Hub_Support_Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_21_1787366037146",
+          "result_revision": 22
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "use_angle_based_shading_on_hub_support",
+      "command": "transaction",
+      "params": {
+        "name": "hub_support_arm",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "c60-hub-support-auto-smooth-v3"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_22_1787366037148",
+          "observed_revision": 22
+        },
+        "perform": {
+          "decision_id": "dec_22_1787366037148",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_22_1787366037148",
+          "result_revision": 23
+        }
+      }
+    },
+    {
+      "index": 17,
+      "label": "audit_hub_support_shading_intent",
+      "command": "get_hard_surface_shading_audit",
+      "params": {
+        "name": "hub_support_arm"
+      },
+      "status": "ok",
+      "result": {
+        "name": "hub_support_arm",
+        "status": "PASS",
+        "checks": {
+          "semantic_intent_recorded": false,
+          "semantic_intent_explicitly_declared": false,
+          "semantic_weights_match_intent": false,
+          "weight_limited_bevel_present": false,
+          "angle_or_vgroup_intent_recorded": false,
+          "angle_or_vgroup_intent_matches_actual": false,
+          "crease_intent_recorded": true,
+          "crease_matches_intent": true,
+          "no_sharp_edges_claimed": false,
+          "no_sharp_edges_claim_matches_geometry": false,
+          "bevel_before_subd": true,
+          "smooth_by_angle_recorded": true,
+          "uniform_object_scale": true,
+          "not_unannotated_blanket_smooth": true
+        },
+        "bevel_limit_methods_present": [],
+        "weighted_edge_ids": [],
+        "intended_bevel_edge_ids": [],
+        "bevel_intent_source": "LEGACY_UNSPECIFIED",
+        "missing_weight_edge_ids": [],
+        "unexpected_weight_edge_ids": [],
+        "creased_edge_ids": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "intended_crease_edge_ids": [
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "modifier_types": [
+          "SUBSURF"
+        ],
+        "object_scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "index": 18,
       "label": "audit_base_radius_completeness",
       "command": "get_hard_surface_shading_audit",
       "params": {
@@ -1206,7 +1670,7 @@
       }
     },
     {
-      "index": 13,
+      "index": 19,
       "label": "audit_hard_surface_shading_intent",
       "command": "get_hard_surface_shading_audit",
       "params": {
@@ -1446,7 +1910,7 @@
       }
     },
     {
-      "index": 14,
+      "index": 20,
       "label": "inspect_evaluated_shell",
       "command": "get_evaluated_state",
       "params": {

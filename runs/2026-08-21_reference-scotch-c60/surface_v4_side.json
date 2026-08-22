@@ -1,0 +1,40 @@
+{
+  "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-scotch-c60\\surface_v4_side.png",
+  "pass_type": "solid",
+  "view": "side",
+  "projection": "ORTHO",
+  "resolution": [
+    900,
+    900
+  ],
+  "target_objects": [
+    "lower_weighted_base",
+    "connected_upper_shell",
+    "tape_roll",
+    "attached_hub",
+    "hub_support_arm",
+    "cutter_blade"
+  ],
+  "frame_objects": [
+    "lower_weighted_base",
+    "connected_upper_shell",
+    "tape_roll",
+    "attached_hub",
+    "hub_support_arm",
+    "cutter_blade"
+  ],
+  "camera_location": [
+    0.36677029728889465,
+    0.0,
+    0.036000002175569534
+  ],
+  "camera_ortho_scale": 0.210892921383907,
+  "scene_revision": null,
+  "foreground_fill_ratio": 0.089395,
+  "foreground_unique_colors_5bit": 65,
+  "dominant_channel_pixel_counts": {
+    "red": 0,
+    "green": 0,
+    "blue": 0
+  }
+}

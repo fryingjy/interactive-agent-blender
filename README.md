@@ -165,11 +165,14 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-21_reference-aa-battery/` is the current real-reference blockout. Independent
   observations falsify one of two competing representations before a single connected 16-sided
   cage is built through typed Blender decisions. Human visual acceptance remains open.
-- `runs/2026-08-21_reference-scotch-c60/` extends that path to a non-rotational manufactured prop.
-  Cross-view evidence rejects disconnected rail primitives and a circular-tube interpretation,
-  drives one connected U-plan cage, and records a render-driven five-to-nine-section revision plus
-  a live crease/SubD surface test. Hub support, base perimeter, production work, and human review
-  remain open.
+- `runs/2026-08-21_reference-scotch-c60/` is a rejected non-rotational reconstruction. Its evidence
+  correctly disproves disconnected rails, a circular-tube interpretation, and a floating hub, but
+  human review found the whole result inaccurate and still too fragmented. Prop work stopped; the
+  run remains only as failure evidence.
+- `runs/2026-08-21_tutorial-jl-mussi-energy-can/` begins the tutorial-reproduction reset: bounded
+  audiovisual study, an actual connected all-quad can reproduction, render-driven correction, and
+  a different-geometry SubD-density transfer test. The ordered gate is documented in
+  `docs/TUTORIAL_REPRODUCTION_TRACK.md`; held-out props remain paused.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

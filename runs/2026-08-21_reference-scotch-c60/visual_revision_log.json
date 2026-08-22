@@ -2,7 +2,7 @@
   "schema_version": 1,
   "record_type": "REFERENCE_DRIVEN_VISUAL_REVISION_LOG",
   "target_id": "scotch_c60_bk",
-  "human_review_status": "OPEN",
+  "human_review_status": "REJECTED_STOP_WORK",
   "claim_boundary": "This is a reversible primary-form and surface-strategy study. It is not a finished, production-ready, or human-approved likeness.",
   "iterations": [
     {
@@ -30,18 +30,26 @@
         "Cutter serrations, underside, materials, UVs, and production variants are intentionally absent.",
         "No human visual review has accepted the likeness."
       ]
+    },
+    {
+      "iteration": "v4_attached_hub_support_trial",
+      "evidence": ["surface_v4_isometric.png", "surface_v4_top.png", "surface_v4_side.png", "video_mechanism_review.json"],
+      "observation": "Targeted video evidence disproved the floating hub-core interpretation and supported an attached rear-hinged plate. The revised mesh is structurally clean, but the whole reconstruction remains visibly inaccurate and still separates shapes whose real construction likely calls for connected authored topology.",
+      "decision": "Reject the model and stop prop iteration. Do not promote this asset or its likeness as a modeling success.",
+      "human_feedback": "Overall form is inaccurate; some separated shapes should be connected; further autonomous prop attempts should pause in favor of modeling along beginner-to-professional Blender tutorials.",
+      "next_action": "Retain only as failure evidence and switch to tutorial reproduction plus transfer testing."
     }
   ],
   "topology_evidence": {
-    "base_mesh_objects": 5,
-    "vertices": 232,
-    "faces": 228,
-    "quads": 228,
+    "base_mesh_objects": 6,
+    "vertices": 240,
+    "faces": 234,
+    "quads": 234,
     "triangles": 0,
     "ngons": 0,
     "non_manifold_edges": 0,
     "degenerate_faces": 0,
-    "live_modifiers": ["connected_upper_shell:C60_Live_Subdivision", "lower_weighted_base:C60_Live_Base_Radius"],
+    "live_modifiers": ["connected_upper_shell:C60_Live_Subdivision", "hub_support_arm:C60_Live_Hub_Support_Subdivision", "lower_weighted_base:C60_Live_Base_Radius"],
     "modifiers_applied": false
   }
 }

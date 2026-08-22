@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "url": "https://www.youtube.com/watch?v=tRZh0K8R8mQ",
+  "video_id": "tRZh0K8R8mQ",
+  "title": "Learn Blender 3D Modeling Under 97 Minutes!",
+  "creator": "JL Mussi",
+  "duration_seconds": 6269,
+  "identity_sources": [
+    "runs/2026-08-14_video-study-jl-mussi/transcript_raw.json",
+    "runs/2026-08-14_video-curriculum/video_manifest.json"
+  ],
+  "media_archived": false
+}

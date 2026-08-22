@@ -260,6 +260,113 @@
       }
     },
     {
+      "region_id": "hub_support_mechanism",
+      "ranking": {
+        "schema_version": 1,
+        "disposition": "SELECTED",
+        "selected_candidate": "hinged_flat_support_with_radial_core",
+        "reason": "unique contradiction-free candidate confirmed across at least 2 views",
+        "minimum_confirmed_views": 2,
+        "candidates": [
+          {
+            "name": "hinged_flat_support_with_radial_core",
+            "representation": "a radial core is carried by a broad flat longitudinal support that pivots from a rear hinge housing",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "video_open_hub_frame",
+                  "observation_id": "hub_support_open",
+                  "view": "video_open_position",
+                  "property": "attached_hub_support_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "hub_support_open"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "video_closed_hub_frame",
+                  "observation_id": "hub_support_closed",
+                  "view": "video_closed_overhead",
+                  "property": "attached_hub_support_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "hub_support_closed"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 2,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "video_closed_overhead",
+              "video_open_position"
+            ],
+            "score": 2,
+            "viable": true
+          },
+          {
+            "name": "floating_detachable_radial_core",
+            "representation": "the radial core is an unsupported detachable ring with no linkage to the housing",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "video_open_hub_frame",
+                  "observation_id": "hub_support_open",
+                  "view": "video_open_position",
+                  "property": "attached_hub_support_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "hub_support_open"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "video_closed_hub_frame",
+                  "observation_id": "hub_support_closed",
+                  "view": "video_closed_overhead",
+                  "property": "attached_hub_support_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "hub_support_closed"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 0,
+              "CONTRADICTED": 2,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [],
+            "score": -2,
+            "viable": false
+          }
+        ]
+      }
+    },
+    {
       "region_id": "lower_upper_boundary",
       "ranking": {
         "schema_version": 1,
@@ -372,9 +479,10 @@
   ],
   "selected_hypothesis_ids": [
     "upper_connected_u_shell",
-    "flattened_rounded_band"
+    "flattened_rounded_band",
+    "hinged_flat_support_with_radial_core"
   ],
-  "contradiction_count": 5,
+  "contradiction_count": 7,
   "errors": [],
   "pass": true
 }

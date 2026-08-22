@@ -1,0 +1,1380 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\typed_surface_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\energy_can_reproduction.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\energy_can_surface.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "93b0e3ed1c20",
+  "results": [
+    {
+      "index": 0,
+      "label": "add_live_body_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "can_body",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Tutorial_Live_Body_Subdivision"
+        },
+        "command_id": "tutorial-can-body-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1787366847976",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1787366847976",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Body_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1787366847976",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "set_body_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "can_body",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Body_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "tutorial-can-body-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1787366848008",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1787366848008",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Body_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1787366848008",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "set_body_render_level",
+      "command": "transaction",
+      "params": {
+        "name": "can_body",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Body_Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        },
+        "command_id": "tutorial-can-body-render-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1787366848046",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1787366848046",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Body_Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1787366848046",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "shade_body_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "can_body",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-can-body-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787366848073",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787366848073",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 288,
+            "edges": 576,
+            "faces": 288,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787366848073",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "add_live_lid_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "can_lid",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Tutorial_Live_Lid_Subdivision"
+        },
+        "command_id": "tutorial-can-lid-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1787366848095",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1787366848095",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Lid_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1787366848095",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "set_lid_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "can_lid",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Lid_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "tutorial-can-lid-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1787366848108",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1787366848108",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Lid_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1787366848108",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "shade_lid_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "can_lid",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-can-lid-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1787366848121",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1787366848121",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1787366848121",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "add_live_pin_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "rivet_pin",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Tutorial_Live_Pin_Subdivision"
+        },
+        "command_id": "tutorial-can-pin-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1787366848134",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1787366848134",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Pin_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1787366848134",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "set_pin_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "rivet_pin",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Pin_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "tutorial-can-pin-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1787366848143",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1787366848143",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Pin_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1787366848143",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "shade_pin_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "rivet_pin",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-can-pin-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_10_1787366848151",
+          "observed_revision": 10
+        },
+        "perform": {
+          "decision_id": "dec_10_1787366848151",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 80,
+            "edges": 160,
+            "faces": 80,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_10_1787366848151",
+          "result_revision": 11
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "add_live_tab_bevel",
+      "command": "transaction",
+      "params": {
+        "name": "pull_tab",
+        "action_type": "physical_radius_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "BEVEL",
+          "modifier_name": "Tutorial_Live_Tab_Radius"
+        },
+        "command_id": "tutorial-can-tab-bevel-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_11_1787366848166",
+          "observed_revision": 11
+        },
+        "perform": {
+          "decision_id": "dec_11_1787366848166",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Tab_Radius",
+            "type": "BEVEL",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "physical_radius_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_11_1787366848166",
+          "result_revision": 12
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "set_tab_bevel_width",
+      "command": "transaction",
+      "params": {
+        "name": "pull_tab",
+        "action_type": "physical_radius_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Tab_Radius",
+          "parameter": "width",
+          "value": 0.00055
+        },
+        "command_id": "tutorial-can-tab-width-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_12_1787366848177",
+          "observed_revision": 12
+        },
+        "perform": {
+          "decision_id": "dec_12_1787366848177",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Tab_Radius",
+            "parameter": "width",
+            "value": 0.0005499999970197678
+          }
+        },
+        "verify": {
+          "action_type": "physical_radius_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_12_1787366848177",
+          "result_revision": 13
+        }
+      }
+    },
+    {
+      "index": 12,
+      "label": "set_tab_bevel_segments",
+      "command": "transaction",
+      "params": {
+        "name": "pull_tab",
+        "action_type": "physical_radius_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Tab_Radius",
+          "parameter": "segments",
+          "value": 2
+        },
+        "command_id": "tutorial-can-tab-segments-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_13_1787366848184",
+          "observed_revision": 13
+        },
+        "perform": {
+          "decision_id": "dec_13_1787366848184",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Tab_Radius",
+            "parameter": "segments",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "physical_radius_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_13_1787366848184",
+          "result_revision": 14
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "shade_tab_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "pull_tab",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-can-tab-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_14_1787366848196",
+          "observed_revision": 14
+        },
+        "perform": {
+          "decision_id": "dec_14_1787366848196",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 56,
+            "edges": 116,
+            "faces": 58,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_14_1787366848196",
+          "result_revision": 15
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "inspect_evaluated_body",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "can_body"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 4608,
+          "edges": 9216,
+          "faces": 4608,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 4608
+        },
+        "surface_quality": {
+          "face_count": 4608,
+          "min_area": 6e-07,
+          "max_area": 6e-05,
+          "median_area": 3e-06,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 0.8862,
+          "angle_samples": 9216
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 4608,
+          "median_edge_length": 0.00255007,
+          "median_absolute_laplacian": 0.02853446,
+          "laplacian_mad": 0.00930252,
+          "max_robust_outlier_z": 4.7764,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 5696,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 16.1857,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.066,
+            0.066,
+            0.1175
+          ],
+          "evaluated_dimensions": [
+            0.0643,
+            0.0643,
+            0.117
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9746,
+            0.9746,
+            0.9959
+          ],
+          "base_bounds": {
+            "min": [
+              -0.033,
+              -0.033,
+              0.0025
+            ],
+            "max": [
+              0.033,
+              0.033,
+              0.12
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.0322,
+              -0.0322,
+              0.0028
+            ],
+            "max": [
+              0.0322,
+              0.0322,
+              0.1198
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "inspect_evaluated_tab",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "pull_tab"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 264,
+          "edges": 544,
+          "faces": 266,
+          "non_manifold_edges": 24,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 205,
+          "5": 16,
+          "3": 24,
+          "7": 2,
+          "6": 17
+        },
+        "surface_quality": {
+          "face_count": 266,
+          "min_area": 7e-08,
+          "max_area": 6.3e-05,
+          "median_area": 2e-06,
+          "area_outlier_count": 29,
+          "area_outlier_ratio": 0.109,
+          "max_adjacent_face_angle_radians": 2.8781,
+          "angle_samples": 520
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 264,
+          "median_edge_length": 0.0006926,
+          "median_absolute_laplacian": 0.30361511,
+          "laplacian_mad": 0.1771431,
+          "max_robust_outlier_z": 11.6542,
+          "pinch_candidate_count": 16,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 67,
+              "position": [
+                0.00016,
+                0.00455,
+                0.12384
+              ],
+              "robust_outlier_z": 11.6542,
+              "signed_laplacian": 3.364378
+            },
+            {
+              "evaluated_vertex_index": 199,
+              "position": [
+                0.00016,
+                0.00455,
+                0.12566
+              ],
+              "robust_outlier_z": 11.6542,
+              "signed_laplacian": 3.364373
+            },
+            {
+              "evaluated_vertex_index": 60,
+              "position": [
+                0.00016,
+                -0.00455,
+                0.12384
+              ],
+              "robust_outlier_z": 10.9637,
+              "signed_laplacian": -3.183025
+            },
+            {
+              "evaluated_vertex_index": 192,
+              "position": [
+                0.00016,
+                -0.00455,
+                0.12566
+              ],
+              "robust_outlier_z": 10.9636,
+              "signed_laplacian": -3.18302
+            },
+            {
+              "evaluated_vertex_index": 160,
+              "position": [
+                -0.01655,
+                -0.00416,
+                0.12566
+              ],
+              "robust_outlier_z": 10.905,
+              "signed_laplacian": 3.167624
+            },
+            {
+              "evaluated_vertex_index": 28,
+              "position": [
+                -0.01655,
+                -0.00416,
+                0.12384
+              ],
+              "robust_outlier_z": 10.735,
+              "signed_laplacian": 3.122961
+            },
+            {
+              "evaluated_vertex_index": 190,
+              "position": [
+                0.00055,
+                -0.00416,
+                0.12566
+              ],
+              "robust_outlier_z": 10.2692,
+              "signed_laplacian": -3.000651
+            },
+            {
+              "evaluated_vertex_index": 61,
+              "position": [
+                0.00055,
+                -0.00416,
+                0.12384
+              ],
+              "robust_outlier_z": 9.3754,
+              "signed_laplacian": -2.765902
+            },
+            {
+              "evaluated_vertex_index": 80,
+              "position": [
+                0.00744,
+                -0.00426,
+                0.12384
+              ],
+              "robust_outlier_z": 9.1012,
+              "signed_laplacian": 2.693882
+            },
+            {
+              "evaluated_vertex_index": 212,
+              "position": [
+                0.00744,
+                -0.00426,
+                0.12566
+              ],
+              "robust_outlier_z": 9.1012,
+              "signed_laplacian": 2.693875
+            },
+            {
+              "evaluated_vertex_index": 101,
+              "position": [
+                0.01455,
+                -0.00307,
+                0.12384
+              ],
+              "robust_outlier_z": 8.6812,
+              "signed_laplacian": -2.583575
+            },
+            {
+              "evaluated_vertex_index": 230,
+              "position": [
+                0.01455,
+                -0.00307,
+                0.12566
+              ],
+              "robust_outlier_z": 8.6812,
+              "signed_laplacian": -2.583572
+            },
+            {
+              "evaluated_vertex_index": 107,
+              "position": [
+                0.01416,
+                0.00351,
+                0.12384
+              ],
+              "robust_outlier_z": 8.6342,
+              "signed_laplacian": 2.571232
+            },
+            {
+              "evaluated_vertex_index": 239,
+              "position": [
+                0.01416,
+                0.00351,
+                0.12566
+              ],
+              "robust_outlier_z": 8.6342,
+              "signed_laplacian": 2.571231
+            },
+            {
+              "evaluated_vertex_index": 100,
+              "position": [
+                0.01416,
+                -0.00353,
+                0.12384
+              ],
+              "robust_outlier_z": 8.4597,
+              "signed_laplacian": -2.525414
+            },
+            {
+              "evaluated_vertex_index": 232,
+              "position": [
+                0.01416,
+                -0.00353,
+                0.12566
+              ],
+              "robust_outlier_z": 8.4597,
+              "signed_laplacian": -2.525411
+            }
+          ],
+          "meaningful_signed_edges": 253,
+          "laplacian_sign_change_ratio": 0.27668,
+          "mean_neighbor_normal_angle_p95_degrees": 78.329,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.041,
+            0.02,
+            0.0015
+          ],
+          "evaluated_dimensions": [
+            0.0421,
+            0.0205,
+            0.0026
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0259,
+            1.0275,
+            1.7333
+          ],
+          "base_bounds": {
+            "min": [
+              -0.022,
+              -0.01,
+              0.124
+            ],
+            "max": [
+              0.019,
+              0.01,
+              0.1255
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.0225,
+              -0.01,
+              0.1234
+            ],
+            "max": [
+              0.0195,
+              0.0105,
+              0.126
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\energy_can_surface.blend"
+  },
+  "pass": true
+}

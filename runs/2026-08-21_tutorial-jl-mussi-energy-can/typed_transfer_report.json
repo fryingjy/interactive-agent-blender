@@ -1,0 +1,1142 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\typed_transfer_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\profile_density_transfer.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "20e1fe151786",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_sparse_profile_control",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "bottle_sparse_control",
+        "segments": 16,
+        "profile": [
+          [
+            0.018,
+            0.102
+          ],
+          [
+            0.03,
+            0.082
+          ],
+          [
+            0.032,
+            0.01
+          ],
+          [
+            0.025,
+            0.002
+          ],
+          [
+            0.015,
+            0.006
+          ],
+          [
+            0.029,
+            0.012
+          ],
+          [
+            0.028,
+            0.08
+          ],
+          [
+            0.017,
+            0.096
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "bottle_sparse_control",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 8,
+        "vertices": 128,
+        "edges": 256,
+        "faces": 128
+      }
+    },
+    {
+      "index": 1,
+      "label": "move_sparse_control_left",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_sparse_control",
+        "action_type": "comparison_layout",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            -0.05,
+            0.0,
+            0.0
+          ]
+        },
+        "command_id": "tutorial-transfer-sparse-place-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1787366964669",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1787366964669",
+          "performed": true,
+          "result": {
+            "name": "bottle_sparse_control",
+            "location": [
+              -0.05000000074505806,
+              0.0,
+              0.0
+            ],
+            "delta": [
+              -0.05,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "comparison_layout",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1787366964669",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_support_distributed_transfer",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "bottle_support_distributed",
+        "segments": 16,
+        "profile": [
+          [
+            0.017,
+            0.102
+          ],
+          [
+            0.019,
+            0.101
+          ],
+          [
+            0.023,
+            0.097
+          ],
+          [
+            0.027,
+            0.091
+          ],
+          [
+            0.03,
+            0.084
+          ],
+          [
+            0.031,
+            0.078
+          ],
+          [
+            0.032,
+            0.012
+          ],
+          [
+            0.031,
+            0.008
+          ],
+          [
+            0.027,
+            0.004
+          ],
+          [
+            0.02,
+            0.003
+          ],
+          [
+            0.015,
+            0.006
+          ],
+          [
+            0.02,
+            0.01
+          ],
+          [
+            0.029,
+            0.013
+          ],
+          [
+            0.029,
+            0.077
+          ],
+          [
+            0.027,
+            0.084
+          ],
+          [
+            0.023,
+            0.092
+          ],
+          [
+            0.019,
+            0.097
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "bottle_support_distributed",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 17,
+        "vertices": 272,
+        "edges": 544,
+        "faces": 272
+      }
+    },
+    {
+      "index": 3,
+      "label": "move_corrected_transfer_right",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_support_distributed",
+        "action_type": "comparison_layout",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.05,
+            0.0,
+            0.0
+          ]
+        },
+        "command_id": "tutorial-transfer-corrected-place-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1787366964695",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1787366964695",
+          "performed": true,
+          "result": {
+            "name": "bottle_support_distributed",
+            "location": [
+              0.05000000074505806,
+              0.0,
+              0.0
+            ],
+            "delta": [
+              0.05,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "comparison_layout",
+          "op_delta": 0,
+          "before": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1787366964695",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "add_sparse_live_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_sparse_control",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Sparse_Live_Subdivision"
+        },
+        "command_id": "tutorial-transfer-sparse-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1787366964714",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1787366964714",
+          "performed": true,
+          "result": {
+            "modifier_name": "Sparse_Live_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1787366964714",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "set_sparse_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_sparse_control",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Sparse_Live_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "tutorial-transfer-sparse-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1787366964741",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1787366964741",
+          "performed": true,
+          "result": {
+            "modifier_name": "Sparse_Live_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1787366964741",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "shade_sparse_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_sparse_control",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-transfer-sparse-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787366964761",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787366964761",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787366964761",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "add_corrected_live_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_support_distributed",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Corrected_Live_Subdivision"
+        },
+        "command_id": "tutorial-transfer-corrected-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1787366964777",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1787366964777",
+          "performed": true,
+          "result": {
+            "modifier_name": "Corrected_Live_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1787366964777",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "set_corrected_subdivision_level",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_support_distributed",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Corrected_Live_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "tutorial-transfer-corrected-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1787366964805",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1787366964805",
+          "performed": true,
+          "result": {
+            "modifier_name": "Corrected_Live_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1787366964805",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "shade_corrected_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "bottle_support_distributed",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "tutorial-transfer-corrected-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1787366964831",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1787366964831",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 272,
+            "edges": 544,
+            "faces": 272,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1787366964831",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "inspect_sparse_result",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "bottle_sparse_control"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 2048,
+          "edges": 4096,
+          "faces": 2048,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 2048
+        },
+        "surface_quality": {
+          "face_count": 2048,
+          "min_area": 1.2e-06,
+          "max_area": 4.1e-05,
+          "median_area": 1.1e-05,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.2817,
+          "angle_samples": 4096
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 2048,
+          "median_edge_length": 0.00263073,
+          "median_absolute_laplacian": 0.09597832,
+          "laplacian_mad": 0.01876991,
+          "max_robust_outlier_z": 2.1673,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 3456,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 27.9816,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.064,
+            0.064,
+            0.1
+          ],
+          "evaluated_dimensions": [
+            0.0601,
+            0.0601,
+            0.0948
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9393,
+            0.9393,
+            0.948
+          ],
+          "base_bounds": {
+            "min": [
+              -0.032,
+              -0.032,
+              0.002
+            ],
+            "max": [
+              0.032,
+              0.032,
+              0.102
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.0301,
+              -0.0301,
+              0.0038
+            ],
+            "max": [
+              0.0301,
+              0.0301,
+              0.0986
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "inspect_corrected_result",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "bottle_support_distributed"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 4352,
+          "edges": 8704,
+          "faces": 4352,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 4352
+        },
+        "surface_quality": {
+          "face_count": 4352,
+          "min_area": 5.7e-07,
+          "max_area": 3.7e-05,
+          "median_area": 4e-06,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.2454,
+          "angle_samples": 8704
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 4352,
+          "median_edge_length": 0.00208931,
+          "median_absolute_laplacian": 0.03781789,
+          "laplacian_mad": 0.01226659,
+          "max_robust_outlier_z": 7.34,
+          "pinch_candidate_count": 128,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 802,
+              "position": [
+                -0.00974,
+                0.02353,
+                0.01654
+              ],
+              "robust_outlier_z": 7.34,
+              "signed_laplacian": 0.171306
+            },
+            {
+              "evaluated_vertex_index": 1210,
+              "position": [
+                -0.02353,
+                -0.00974,
+                0.01654
+              ],
+              "robust_outlier_z": 7.34,
+              "signed_laplacian": 0.171306
+            },
+            {
+              "evaluated_vertex_index": 1618,
+              "position": [
+                0.00974,
+                -0.02353,
+                0.01654
+              ],
+              "robust_outlier_z": 7.34,
+              "signed_laplacian": 0.171306
+            },
+            {
+              "evaluated_vertex_index": 700,
+              "position": [
+                0.0,
+                0.02546,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 1108,
+              "position": [
+                -0.02546,
+                0.0,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 1516,
+              "position": [
+                0.0,
+                -0.02546,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 379,
+              "position": [
+                0.02353,
+                0.00974,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 598,
+              "position": [
+                0.00974,
+                0.02353,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 1006,
+              "position": [
+                -0.02353,
+                0.00974,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 1414,
+              "position": [
+                -0.00974,
+                -0.02353,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 376,
+              "position": [
+                0.02546,
+                -0.0,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171305
+            },
+            {
+              "evaluated_vertex_index": 496,
+              "position": [
+                0.01801,
+                0.01801,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171304
+            },
+            {
+              "evaluated_vertex_index": 904,
+              "position": [
+                -0.01801,
+                0.01801,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171304
+            },
+            {
+              "evaluated_vertex_index": 1312,
+              "position": [
+                -0.01801,
+                -0.01801,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171304
+            },
+            {
+              "evaluated_vertex_index": 1822,
+              "position": [
+                0.02353,
+                -0.00974,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171304
+            },
+            {
+              "evaluated_vertex_index": 1720,
+              "position": [
+                0.01801,
+                -0.01801,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3399,
+              "signed_laplacian": 0.171304
+            },
+            {
+              "evaluated_vertex_index": 2317,
+              "position": [
+                0.012,
+                0.02246,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3274,
+              "signed_laplacian": 0.171077
+            },
+            {
+              "evaluated_vertex_index": 2929,
+              "position": [
+                -0.02246,
+                0.012,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3274,
+              "signed_laplacian": 0.171077
+            },
+            {
+              "evaluated_vertex_index": 3541,
+              "position": [
+                -0.012,
+                -0.02246,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3274,
+              "signed_laplacian": 0.171077
+            },
+            {
+              "evaluated_vertex_index": 4304,
+              "position": [
+                0.02437,
+                -0.00739,
+                0.01654
+              ],
+              "robust_outlier_z": 7.3273,
+              "signed_laplacian": 0.171076
+            }
+          ],
+          "meaningful_signed_edges": 7424,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 17.606,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.064,
+            0.064,
+            0.099
+          ],
+          "evaluated_dimensions": [
+            0.0617,
+            0.0617,
+            0.0978
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9645,
+            0.9645,
+            0.9877
+          ],
+          "base_bounds": {
+            "min": [
+              -0.032,
+              -0.032,
+              0.003
+            ],
+            "max": [
+              0.032,
+              0.032,
+              0.102
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.0309,
+              -0.0309,
+              0.0035
+            ],
+            "max": [
+              0.0309,
+              0.0309,
+              0.1013
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-jl-mussi-energy-can\\profile_density_transfer.blend"
+  },
+  "pass": true
+}

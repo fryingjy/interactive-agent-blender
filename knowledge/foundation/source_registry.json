@@ -3228,5 +3228,37 @@
         "The views do not distinguish conclusively between a separate lower molding and one molding with a cosmetic groove."
       ]
     }
+  },
+  {
+    "id": "youtube-jl-mussi-energy-can-tutorial",
+    "url": "https://www.youtube.com/watch?v=tRZh0K8R8mQ",
+    "local_path": "runs/2026-08-21_tutorial-jl-mussi-energy-can/",
+    "title": "Learn Blender 3D Modeling Under 97 Minutes!",
+    "creator": "JL Mussi",
+    "source_type": "video_tutorial",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-21",
+    "topics": ["connected-mesh-construction", "subdivision-surface", "quad-topology", "loop-flow", "holding-edges", "hard-surface-modeling"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["timestamped_transcript", "gemini_video_audio", "in_app_browser_frame", "blender_reproduction", "different_geometry_transfer"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_tutorial-jl-mussi-energy-can/energy_can_surface.blend", "runs/2026-08-21_tutorial-jl-mussi-energy-can/profile_density_transfer.blend"],
+      "direct_observations": [
+        "At 1:34:47 the body is visibly extruded as continuous geometry from an existing rim loop.",
+        "The tutorial routes pull-tab topology around true openings, uses Grid Fill on circular caps, and inspects SubD volume loss caused by long quads.",
+        "A bounded reproduction produced one connected can body and a manifold connected pull tab with true openings."
+      ],
+      "candidate_principles": [
+        "Detail and curvature needs determine local density; topology is not added uniformly.",
+        "Support distribution can preserve SubD volume, but clustered support loops can create pinching and require highlight inspection."
+      ],
+      "limitations": [
+        "The audiovisual pass covered 80:00-99:20 rather than the entire lesson.",
+        "Gemini's isolated Blender 3.3 mention conflicted with the full transcript's Blender 4.53 statement and was rejected.",
+        "The reproduction simplifies the tutorial blueprint and does not prove advanced modeling proficiency."
+      ]
+    }
   }
 ]

@@ -1,0 +1,114 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "interactions",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=vLOridEUYNs",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": "v1_ChdIUWlKYW9xWExzV3VfUFVQMGJPYjJRZxIXSFFpSmFvcVhMc1d1X1BVUDBiT2IyUWc",
+    "reported_source_url": "https://www.youtube.com/watch?v=vLOridEUYNs",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": null
+  },
+  "analysis": {
+    "source": {
+      "title": "Scotch C60 Magic Tape Dispenser with Scotch Magic Tape : 19mm x 33m (4 Rolls)",
+      "creator": "tactless",
+      "url": "https://www.youtube.com/watch?v=vLOridEUYNs",
+      "duration_seconds": 53.241,
+      "blender_version_mentions": []
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": false,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Physical reference analysis of C60 tape dispenser: attached hub mechanism, pivot point, swing motion, base footprint, and assembly clearances for 3D modeling.",
+    "episodes": [
+      {
+        "start_seconds": 11,
+        "end_seconds": 20,
+        "timestamp_label": "00:11 - 00:20",
+        "modeling_stage": "Reference / Base Geometry Analysis",
+        "problem": "Analyzing base footprint and underside surface structure for hard-surface housing setup.",
+        "observed_fact": "Base features two rectangular non-slip pads positioned on flat end sections with a recessed central text area.",
+        "instructor_claim": "",
+        "interpretation": "Bottom perimeter comprises two flat contact planes surrounding a shallow central inset.",
+        "hypothesis": "Base mesh can be extruded from flat bottom profile with recessed face created via inset.",
+        "reference_evidence": "Underside view showing pads, recessed text panel, and outer bevel.",
+        "modeling_decision": "Establish base boundary and pad locations relative to main shell geometry.",
+        "visible_action": "Dispenser inverted to show bottom rubber pads and base layout.",
+        "spoken_reason": "",
+        "topology_surface_effect": "N/A (Reference observation phase)",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Modeling flat base without central inset recess.",
+        "transferable_principle": "Establish main structural contact planes and pad footprints early using physical reference.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 33,
+        "end_seconds": 38,
+        "timestamp_label": "00:33 - 00:38",
+        "modeling_stage": "Mechanism Reference / Rigging Structure",
+        "problem": "Determining pivot location and motion path of attached tape hub mechanism.",
+        "observed_fact": "Hub comprises a central core on a curved arm hinged at upper rear internal wall of dispenser well.",
+        "instructor_claim": "",
+        "interpretation": "Hub mechanism operates as single-pivot swing arm rotating upward out of main cavity.",
+        "hypothesis": "Model hub arm and core as single mesh asset with pivot origin at rear hinge axle.",
+        "reference_evidence": "Hand pulling swing arm upward and backward from resting well position.",
+        "modeling_decision": "Set object pivot point at rear hinge location to allow proper rotation.",
+        "visible_action": "Opening swing arm hub mechanism upward from housing cavity.",
+        "spoken_reason": "",
+        "topology_surface_effect": "N/A",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Modeling detachable hub spool axle.",
+        "transferable_principle": "Align mechanical object origin directly on physical hinge axis for proper articulated motion.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "VIDEO"
+        ]
+      },
+      {
+        "start_seconds": 41,
+        "end_seconds": 53,
+        "timestamp_label": "00:41 - 00:53",
+        "modeling_stage": "Assembly & Clearance Reference",
+        "problem": "Verifying geometric clearances between hub cylinder core, tape roll, and housing cavity.",
+        "observed_fact": "Tape roll slides onto central hub cylinder; arm swings down placing roll centered within housing well.",
+        "instructor_claim": "",
+        "interpretation": "Hub cylinder outer diameter matches tape roll inner core; housing well cutout accommodates full roll radius.",
+        "hypothesis": "Apply subtle radius tolerance on hub cylinder to fit tape roll core mesh perfectly.",
+        "reference_evidence": "Tape roll mounted onto raised hub core and swung down into housing cavity.",
+        "modeling_decision": "Size hub cylinder outer radius to match inner core of standard tape roll model.",
+        "visible_action": "Mounting tape roll onto hub arm cylinder and locking down into dispenser body.",
+        "spoken_reason": "",
+        "topology_surface_effect": "N/A",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Maintain accurate radial clearance offsets between mating mechanical parts to avoid mesh intersection.",
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "00:00 - 00:11 (Unboxing, product packaging, and scale reference card display)",
+      "00:24 - 00:29 (Static display of tape boxes and closed dispenser overhead view)"
+    ],
+    "limitations": [
+      "Video contains physical product reference footage only; no 3D modeling software interface shown.",
+      "No audio narration present in video."
+    ]
+  }
+}

@@ -13,7 +13,9 @@
     {"reference_id": "official_3m_left_oblique", "property": "circular_tube_side_bulge_visible", "fit_for_property": true, "reason": "Left rail highlight and silhouette reveal its broad band-like cross-section."},
     {"reference_id": "market_closed_right_oblique", "property": "circular_tube_side_bulge_visible", "fit_for_property": true, "reason": "High-resolution opposing rail shows a broad flattened crown, not a circular tube flank."},
     {"reference_id": "market_closed_right_oblique", "property": "lower_upper_seam_visible", "fit_for_property": true, "reason": "High resolution clearly exposes the seam along the right side."},
-    {"reference_id": "market_closed_left_oblique", "property": "lower_upper_seam_visible", "fit_for_property": true, "reason": "Opposing view confirms the boundary continues around the other side."}
+    {"reference_id": "market_closed_left_oblique", "property": "lower_upper_seam_visible", "fit_for_property": true, "reason": "Opposing view confirms the boundary continues around the other side."},
+    {"reference_id": "video_open_hub_frame", "property": "attached_hub_support_visible", "fit_for_property": true, "reason": "The raised state exposes a broad flat linkage connecting the core to the rear interior, although the exact axle remains occluded."},
+    {"reference_id": "video_closed_hub_frame", "property": "attached_hub_support_visible", "fit_for_property": true, "reason": "The tape-free overhead state clearly shows a longitudinal support between the radial core and rectangular rear hinge housing."}
   ],
   "observations": [
     {"observation_id": "identity_c60", "reference_id": "official_3m_dimensions", "view": "specification", "region": "whole_object", "property": "target_identity", "value": true, "method": "first-party product identity", "evidence_path": "reference_manifest.json", "confidence": "HIGH"},
@@ -26,20 +28,22 @@
     {"observation_id": "flat_rail_left", "reference_id": "official_3m_left_oblique", "view": "left_oblique", "region": "rail_cross_section", "property": "circular_tube_side_bulge_visible", "value": false, "method": "broad flattened rail crown and non-circular side transition", "evidence_path": "media/official_3m_view_a.jpg", "confidence": "MEDIUM"},
     {"observation_id": "flat_rail_right", "reference_id": "market_closed_right_oblique", "view": "right_oblique", "region": "rail_cross_section", "property": "circular_tube_side_bulge_visible", "value": false, "method": "high-resolution opposing highlight/silhouette inspection", "evidence_path": "media/market_view_b.webp", "confidence": "HIGH"},
     {"observation_id": "seam_right", "reference_id": "market_closed_right_oblique", "view": "right_oblique", "region": "lower_upper_boundary", "property": "lower_upper_seam_visible", "value": true, "method": "direct boundary inspection", "evidence_path": "media/market_view_b.webp", "confidence": "HIGH"},
-    {"observation_id": "seam_left", "reference_id": "market_closed_left_oblique", "view": "left_oblique", "region": "lower_upper_boundary", "property": "lower_upper_seam_visible", "value": true, "method": "opposing boundary inspection", "evidence_path": "media/market_view_c.webp", "confidence": "HIGH"}
+    {"observation_id": "seam_left", "reference_id": "market_closed_left_oblique", "view": "left_oblique", "region": "lower_upper_boundary", "property": "lower_upper_seam_visible", "value": true, "method": "opposing boundary inspection", "evidence_path": "media/market_view_c.webp", "confidence": "HIGH"},
+    {"observation_id": "hub_support_open", "reference_id": "video_open_hub_frame", "view": "video_open_position", "region": "hub_support_mechanism", "property": "attached_hub_support_visible", "value": true, "method": "direct browser-frame inspection of raised mechanism", "evidence_path": "video_mechanism_review.json", "confidence": "MEDIUM"},
+    {"observation_id": "hub_support_closed", "reference_id": "video_closed_hub_frame", "view": "video_closed_overhead", "region": "hub_support_mechanism", "property": "attached_hub_support_visible", "value": true, "method": "direct browser-frame inspection of tape-free closed mechanism", "evidence_path": "video_mechanism_review.json", "confidence": "HIGH"}
   ],
   "passes": {
     "identity": {"status": "PASS", "evidence_ids": ["identity_c60"]},
     "silhouette": {"status": "PASS", "evidence_ids": ["wave_left", "wave_right"]},
     "massing": {"status": "PASS", "evidence_ids": ["dimensions_c60", "wave_left", "wave_right"]},
-    "components": {"status": "PASS", "evidence_ids": ["rear_bridge_open", "channel_open", "seam_right"]},
-    "depth": {"status": "PASS", "evidence_ids": ["channel_open", "rear_bridge_open"]},
+    "components": {"status": "PASS", "evidence_ids": ["rear_bridge_open", "channel_open", "seam_right", "hub_support_open", "hub_support_closed"]},
+    "depth": {"status": "PASS", "evidence_ids": ["channel_open", "rear_bridge_open", "hub_support_open", "hub_support_closed"]},
     "negative_space": {"status": "PASS", "evidence_ids": ["channel_open"]},
     "cross_sections": {"status": "PASS", "evidence_ids": ["flat_rail_left", "flat_rail_right"]},
-    "representation_hypotheses": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right"]},
-    "cross_view_prediction": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right"]},
+    "representation_hypotheses": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right", "hub_support_open", "hub_support_closed"]},
+    "cross_view_prediction": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right", "hub_support_open", "hub_support_closed"]},
     "uncertainty": {"status": "BOUNDED", "evidence_ids": ["seam_right", "seam_left"]},
-    "construction_plan": {"status": "PASS", "evidence_ids": ["dimensions_c60", "channel_open", "rear_bridge_open", "flat_rail_right"]}
+    "construction_plan": {"status": "PASS", "evidence_ids": ["dimensions_c60", "channel_open", "rear_bridge_open", "flat_rail_right", "hub_support_open", "hub_support_closed"]}
   },
   "regions": [
     {
@@ -97,6 +101,32 @@
       ]
     },
     {
+      "region_id": "hub_support_mechanism",
+      "impact": "HIGH",
+      "minimum_confirmed_views": 2,
+      "selected_hypothesis_id": "hinged_flat_support_with_radial_core",
+      "hypotheses": [
+        {
+          "hypothesis_id": "hinged_flat_support_with_radial_core",
+          "interpretation": {"structure_type": "bridged_transition", "summary": "a radial core is carried by a broad flat longitudinal support that pivots from a rear hinge housing"},
+          "construction": {"family": "profile_extrusion", "continuity": "support visually bridges core and rear housing", "object_policy": "separate functional support assembly retained for reversible motion"},
+          "predicted_consequences": [
+            {"reference_id": "video_open_hub_frame", "observation_id": "hub_support_open", "view": "video_open_position", "property": "attached_hub_support_visible", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "video_closed_hub_frame", "observation_id": "hub_support_closed", "view": "video_closed_overhead", "property": "attached_hub_support_visible", "prediction_type": "boolean_state", "prediction": true}
+          ]
+        },
+        {
+          "hypothesis_id": "floating_detachable_radial_core",
+          "interpretation": {"structure_type": "floating_separate_assembly", "summary": "the radial core is an unsupported detachable ring with no linkage to the housing"},
+          "construction": {"family": "separate_radial_assembly", "continuity": "no support between core and housing", "object_policy": "isolated revolved ring"},
+          "predicted_consequences": [
+            {"reference_id": "video_open_hub_frame", "observation_id": "hub_support_open", "view": "video_open_position", "property": "attached_hub_support_visible", "prediction_type": "boolean_state", "prediction": false},
+            {"reference_id": "video_closed_hub_frame", "observation_id": "hub_support_closed", "view": "video_closed_overhead", "property": "attached_hub_support_visible", "prediction_type": "boolean_state", "prediction": false}
+          ]
+        }
+      ]
+    },
+    {
       "region_id": "lower_upper_boundary",
       "impact": "MEDIUM",
       "minimum_confirmed_views": 2,
@@ -125,17 +155,18 @@
     }
   ],
   "construction_plan": {
-    "selected_hypothesis_ids": ["upper_connected_u_shell", "flattened_rounded_band"],
+    "selected_hypothesis_ids": ["upper_connected_u_shell", "flattened_rounded_band", "hinged_flat_support_with_radial_core"],
     "generic_operations": ["create_quad_shell_grid", "create_profile_extrusion", "create_profile_revolution", "add_modifier", "set_smooth_by_angle", "render_diagnostic_pass"],
     "component_plan": [
       "one connected all-quad U-plan upper shell with omitted center cells",
       "one provisional low base kept separately editable because the assembly boundary is unresolved",
-      "separate hub, annular tape roll, and blade only where functional/material boundaries are observed"
+      "separate annular tape roll and blade only where functional/material boundaries are observed",
+      "radial hub core carried by a broad profile-extruded support that reaches the rear hinge housing"
     ],
     "reversible_assumptions": [
       {"region_id": "lower_upper_boundary", "assumption": "start with a separate low base; merge/rebuild only if later evidence disproves the assembly seam"}
     ],
     "initial_bounds_mm": {"length": 158.7, "width": 57.1, "height": 71.0},
-    "verification": ["front/side/top/iso solid renders", "open central channel visible from top and oblique", "rear bridge continuity visible", "paired rails read as broad bands rather than tubes", "fresh-process connected-component and bounds audit"]
+    "verification": ["front/side/top/iso solid renders", "open central channel visible from top and oblique", "rear bridge continuity visible", "paired rails read as broad bands rather than tubes", "hub core visibly linked to rear hinge housing in the closed-state blockout", "fresh-process connected-component and bounds audit"]
   }
 }

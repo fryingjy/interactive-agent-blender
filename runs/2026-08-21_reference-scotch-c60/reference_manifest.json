@@ -3,7 +3,7 @@
   "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
   "required_views": ["left_oblique", "right_oblique", "open_hub_oblique"],
   "orthographic_required_views": [],
-  "critical_properties": ["overall_dimensions", "central_tape_channel", "rear_bridge_continuity", "separate_hub"],
+  "critical_properties": ["overall_dimensions", "central_tape_channel", "rear_bridge_continuity", "separate_hub", "attached_hub_support"],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 2,
   "items": [
@@ -88,6 +88,38 @@
         {"property_id": "lower_upper_boundary", "purpose": "CONSTRUCTION", "observation": "A narrow continuous seam follows the wave profile between the upper rail shell and lower side surface.", "confidence": "HIGH"}
       ],
       "limitations": ["Perspective photo; seam visibility does not alone prove whether the boundary is an assembly seam or a cosmetic groove."]
+    },
+    {
+      "reference_id": "video_open_hub_frame",
+      "source_id": "youtube_tactless_c60_demo",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["FUNCTIONAL", "CONSTRUCTION"],
+      "view": "video_open_position",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "source_url": "https://www.youtube.com/watch?v=vLOridEUYNs&t=35s",
+      "local_file": "media/video_frame_0035.png",
+      "claims": [
+        {"property_id": "attached_hub_support", "purpose": "FUNCTIONAL", "observation": "The raised core remains connected to a broad flat linkage pivoting from the rear interior housing.", "confidence": "MEDIUM"}
+      ],
+      "limitations": ["Dark handheld video frame; exact hinge axle and lower linkage surface are partly occluded."]
+    },
+    {
+      "reference_id": "video_closed_hub_frame",
+      "source_id": "youtube_tactless_c60_demo",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["FUNCTIONAL", "CONSTRUCTION"],
+      "view": "video_closed_overhead",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "source_url": "https://www.youtube.com/watch?v=vLOridEUYNs&t=40s",
+      "local_file": "media/video_frame_0040.png",
+      "claims": [
+        {"property_id": "attached_hub_support", "purpose": "CONSTRUCTION", "observation": "Without tape, a longitudinal support visibly connects the centered radial core to a rectangular rear hinge housing.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Perspective overhead frame; support thickness and underside ribs remain hidden."]
     },
     {
       "reference_id": "official_3m_dimensions",

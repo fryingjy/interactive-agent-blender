@@ -2,7 +2,7 @@
   "schema_version": 1,
   "record_type": "REFERENCE_TO_BLOCKOUT_CONTRACT",
   "target": "scotch_c60_bk",
-  "reference_set_id": "c60-reference-set-v1",
+  "reference_set_id": "scotch-c60-reference-v1",
   "known": [
     {
       "claim_id": "wave_upper_shell",
@@ -75,22 +75,51 @@
     {
       "claim_id": "separate_functional_parts",
       "category": "separate_parts",
-      "statement": "Hub, tape roll, and cutter blade have visible assembly/material boundaries and remain independently editable.",
+      "statement": "Hub core, its hinged support, tape roll, and cutter blade have visible assembly or motion boundaries and remain independently editable.",
       "evidence_status": "OBSERVED",
-      "confidence": 0.98,
+      "confidence": 0.96,
       "evidence": [
-        "opened-hub and closed marketplace obliques"
+        "opened-hub marketplace oblique",
+        "open and closed video frames",
+        "closed product obliques"
       ],
-      "modeling_consequence": "Use separate radial hub/roll geometry and a separate thin blade; separation is functional rather than primitive spam.",
+      "modeling_consequence": "Use separate radial hub/roll geometry, one broad support part, and a separate thin blade; separation is functional rather than primitive spam.",
       "impact": "high",
       "component_refs": [
         "attached_hub",
+        "hub_support_arm",
         "tape_roll",
         "cutter_blade"
       ],
       "source_views": [
         "right_oblique",
-        "open_hub_oblique"
+        "open_hub_oblique",
+        "video_open_position",
+        "video_closed_overhead"
+      ],
+      "modeling_signals": {
+        "independent_motion_or_material": true
+      }
+    },
+    {
+      "claim_id": "attached_hub_support",
+      "category": "construction_hypotheses",
+      "statement": "The radial core is not a floating ring: a broad flat support links it to a rectangular rear hinge housing in open and closed states.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.91,
+      "evidence": [
+        "direct inspection of 35.087 s and 40.087 s video frames"
+      ],
+      "modeling_consequence": "Profile-extrude a reversible broad support between hub core and rear housing; do not invent hidden axle or underside detail.",
+      "impact": "high",
+      "component_refs": [
+        "attached_hub",
+        "hub_support_arm",
+        "connected_upper_shell"
+      ],
+      "source_views": [
+        "video_open_position",
+        "video_closed_overhead"
       ],
       "modeling_signals": {
         "independent_motion_or_material": true
@@ -244,11 +273,26 @@
       "role": "secondary",
       "manufacture": "structural",
       "separately_manufactured": true,
-      "notes": "Hinged radial tape hub shown raised in one reference.",
+      "notes": "Radial tape core carried by the hinged support assembly.",
       "evidence_status": "OBSERVED",
       "confidence": 0.95,
       "evidence": [
-        "marketplace opened-hub oblique"
+        "marketplace opened-hub oblique",
+        "video closed overhead frame"
+      ],
+      "expected_region": {}
+    },
+    {
+      "name": "hub_support_arm",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Broad flat longitudinal support joining the radial core to a rear hinge housing; exact axle and underside remain unresolved.",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "video open-position frame",
+        "video closed overhead frame"
       ],
       "expected_region": {}
     },
@@ -358,22 +402,27 @@
     {
       "claim_id": "separate_functional_parts",
       "category": "separate_parts",
-      "statement": "Hub, tape roll, and cutter blade have visible assembly/material boundaries and remain independently editable.",
+      "statement": "Hub core, its hinged support, tape roll, and cutter blade have visible assembly or motion boundaries and remain independently editable.",
       "evidence_status": "OBSERVED",
-      "confidence": 0.98,
+      "confidence": 0.96,
       "evidence": [
-        "opened-hub and closed marketplace obliques"
+        "opened-hub marketplace oblique",
+        "open and closed video frames",
+        "closed product obliques"
       ],
-      "modeling_consequence": "Use separate radial hub/roll geometry and a separate thin blade; separation is functional rather than primitive spam.",
+      "modeling_consequence": "Use separate radial hub/roll geometry, one broad support part, and a separate thin blade; separation is functional rather than primitive spam.",
       "impact": "high",
       "component_refs": [
         "attached_hub",
+        "hub_support_arm",
         "tape_roll",
         "cutter_blade"
       ],
       "source_views": [
         "right_oblique",
-        "open_hub_oblique"
+        "open_hub_oblique",
+        "video_open_position",
+        "video_closed_overhead"
       ],
       "modeling_signals": {
         "independent_motion_or_material": true
@@ -405,12 +454,13 @@
   "candidate_strategies": [
     {
       "name": "connected_u_shell_over_separate_base",
-      "representation": "one connected all-quad U-plan upper shell over one low base, plus separate functional hub, roll, and blade",
+      "representation": "one connected all-quad U-plan upper shell over one low base, plus an attached hub-and-support assembly, roll, and blade",
       "rationale_claim_ids": [
         "wave_upper_shell",
         "real_central_channel",
         "rear_bridge",
         "separate_functional_parts",
+        "attached_hub_support",
         "connected_u_strategy"
       ],
       "status": "candidate",
@@ -421,12 +471,13 @@
   ],
   "selected_strategy": {
     "name": "connected_u_shell_over_separate_base",
-    "representation": "one connected all-quad U-plan upper shell over one low base, plus separate functional hub, roll, and blade",
+    "representation": "one connected all-quad U-plan upper shell over one low base, plus an attached hub-and-support assembly, roll, and blade",
     "rationale_claim_ids": [
       "wave_upper_shell",
       "real_central_channel",
       "rear_bridge",
       "separate_functional_parts",
+      "attached_hub_support",
       "connected_u_strategy"
     ],
     "status": "candidate",
@@ -453,7 +504,8 @@
       "wave_upper_shell": 0.94,
       "real_central_channel": 0.97,
       "rear_bridge": 0.9,
-      "separate_functional_parts": 0.98,
+      "separate_functional_parts": 0.96,
+      "attached_hub_support": 0.91,
       "published_bounds": 0.99,
       "bilateral_symmetry": 0.88,
       "connected_u_strategy": 0.9,
@@ -463,6 +515,7 @@
       "lower_weighted_base": 0.9,
       "connected_upper_shell": 0.92,
       "attached_hub": 0.95,
+      "hub_support_arm": 0.9,
       "tape_roll": 0.98,
       "cutter_blade": 0.98
     }
@@ -474,7 +527,7 @@
     "research_questions": [],
     "conflicting_modeling_signals": [],
     "claim_counts_by_status": {
-      "OBSERVED": 5,
+      "OBSERVED": 6,
       "STRONGLY_INFERRED": 2,
       "UNKNOWN": 1,
       "WEAKLY_INFERRED": 0

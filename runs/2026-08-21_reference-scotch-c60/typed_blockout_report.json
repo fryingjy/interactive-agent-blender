@@ -5,7 +5,7 @@
   "loaded_file": null,
   "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-scotch-c60\\scotch_c60_blockout.blend",
   "blender_version": "5.2.0 LTS",
-  "session_id": "f3695e18b344",
+  "session_id": "2486b3b7c009",
   "results": [
     {
       "index": 0,
@@ -761,11 +761,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_0_1787364306343",
+          "decision_id": "dec_0_1787366028625",
           "observed_revision": 0
         },
         "perform": {
-          "decision_id": "dec_0_1787364306343",
+          "decision_id": "dec_0_1787366028625",
           "performed": true,
           "result": {
             "name": "tape_roll",
@@ -819,7 +819,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_0_1787364306343",
+          "decision_id": "dec_0_1787366028625",
           "result_revision": 1
         }
       }
@@ -844,11 +844,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_1_1787364306345",
+          "decision_id": "dec_1_1787366028645",
           "observed_revision": 1
         },
         "perform": {
-          "decision_id": "dec_1_1787364306345",
+          "decision_id": "dec_1_1787366028645",
           "performed": true,
           "result": {
             "name": "tape_roll",
@@ -902,7 +902,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_1_1787364306345",
+          "decision_id": "dec_1_1787366028645",
           "result_revision": 2
         }
       }
@@ -964,11 +964,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_2_1787364306348",
+          "decision_id": "dec_2_1787366028658",
           "observed_revision": 2
         },
         "perform": {
-          "decision_id": "dec_2_1787364306348",
+          "decision_id": "dec_2_1787366028658",
           "performed": true,
           "result": {
             "name": "attached_hub",
@@ -1022,7 +1022,7 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_2_1787364306348",
+          "decision_id": "dec_2_1787366028658",
           "result_revision": 3
         }
       }
@@ -1047,11 +1047,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_3_1787364306350",
+          "decision_id": "dec_3_1787366028695",
           "observed_revision": 3
         },
         "perform": {
-          "decision_id": "dec_3_1787364306350",
+          "decision_id": "dec_3_1787366028695",
           "performed": true,
           "result": {
             "name": "attached_hub",
@@ -1105,13 +1105,52 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_3_1787364306350",
+          "decision_id": "dec_3_1787366028695",
           "result_revision": 4
         }
       }
     },
     {
       "index": 8,
+      "label": "create_observed_flat_hub_support",
+      "command": "create_profile_extrusion",
+      "params": {
+        "name": "hub_support_arm",
+        "profile": [
+          [
+            0.018,
+            0.041
+          ],
+          [
+            0.055,
+            0.049
+          ],
+          [
+            0.064,
+            0.058
+          ],
+          [
+            0.021,
+            0.05
+          ]
+        ],
+        "depth": 0.01
+      },
+      "status": "ok",
+      "result": {
+        "name": "hub_support_arm",
+        "type": "MESH",
+        "profile_point_count": 4,
+        "depth": 0.01,
+        "vertices": 8,
+        "edges": 12,
+        "faces": 6,
+        "cap_topology": "QUAD_OR_TRIANGLE",
+        "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work."
+      }
+    },
+    {
+      "index": 9,
       "label": "create_separate_cutter_blade",
       "command": "create_profile_extrusion",
       "params": {
@@ -1150,7 +1189,7 @@
       }
     },
     {
-      "index": 9,
+      "index": 10,
       "label": "apply_angle_based_shading_only_to_curved_parts",
       "command": "transaction",
       "params": {
@@ -1166,11 +1205,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_4_1787364306352",
+          "decision_id": "dec_4_1787366028707",
           "observed_revision": 4
         },
         "perform": {
-          "decision_id": "dec_4_1787364306352",
+          "decision_id": "dec_4_1787366028707",
           "performed": true,
           "result": {
             "shading": "SMOOTH_BY_ANGLE",
@@ -1217,13 +1256,13 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_4_1787364306352",
+          "decision_id": "dec_4_1787366028707",
           "result_revision": 5
         }
       }
     },
     {
-      "index": 10,
+      "index": 11,
       "label": "apply_angle_based_shading_to_hub",
       "command": "transaction",
       "params": {
@@ -1239,11 +1278,11 @@
       "status": "ok",
       "result": {
         "begin": {
-          "decision_id": "dec_5_1787364306357",
+          "decision_id": "dec_5_1787366028774",
           "observed_revision": 5
         },
         "perform": {
-          "decision_id": "dec_5_1787364306357",
+          "decision_id": "dec_5_1787366028774",
           "performed": true,
           "result": {
             "shading": "SMOOTH_BY_ANGLE",
@@ -1290,13 +1329,13 @@
         },
         "judgment": "committed",
         "judge_result": {
-          "decision_id": "dec_5_1787364306357",
+          "decision_id": "dec_5_1787366028774",
           "result_revision": 6
         }
       }
     },
     {
-      "index": 11,
+      "index": 12,
       "label": "verify_component_coverage_before_proportion_stage",
       "command": "advance_with_component_coverage",
       "params": {
@@ -1310,13 +1349,14 @@
       "result": {
         "component_coverage": {
           "capture_type": "LIVE_MODELER_RUNTIME",
-          "session_id": "f3695e18b344",
+          "session_id": "2486b3b7c009",
           "scene_revision": 6,
           "collection": "ALL",
           "mesh_object_names": [
             "attached_hub",
             "connected_upper_shell",
             "cutter_blade",
+            "hub_support_arm",
             "lower_weighted_base",
             "tape_roll"
           ],
@@ -1329,6 +1369,7 @@
               "attached_hub",
               "connected_upper_shell",
               "cutter_blade",
+              "hub_support_arm",
               "lower_weighted_base",
               "tape_roll"
             ],
@@ -1385,7 +1426,7 @@
       }
     },
     {
-      "index": 12,
+      "index": 13,
       "label": "inspect_connected_shell_state",
       "command": "get_full_state",
       "params": {

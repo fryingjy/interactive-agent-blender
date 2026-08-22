@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_TARGETED_VIDEO_REFERENCE_REVIEW",
+  "source": "video_source_metadata.json",
+  "model_extraction": "gemini_c60_mechanism_unverified.json",
+  "reviewer": "Codex direct browser-frame inspection",
+  "review_scope": "Only the attached hub linkage, closed/open relationship, tape clearance, and alleged underside evidence.",
+  "frame_observations": [
+    {
+      "timestamp_seconds": 15.087,
+      "frame_path": "media/video_frame_0015.png",
+      "observed_fact": "The frame is a close side view of the wave seam and lower side panel; it is not an underside view and does not expose pads or a recessed bottom text area.",
+      "gemini_episode": "00:11 - 00:20",
+      "review_disposition": "REJECTED",
+      "reason": "The extraction describes underside pads and a central inset that are not visible at the inspected timestamp."
+    },
+    {
+      "timestamp_seconds": 35.087,
+      "frame_path": "media/video_frame_0035.png",
+      "observed_fact": "The hub assembly is raised but remains connected at the rear interior; a broad flat black linkage extends from the rear hinge area toward the hub core.",
+      "gemini_episode": "00:33 - 00:38",
+      "review_disposition": "CONFIRMED_WITH_LIMITATION",
+      "reason": "Attachment and one-pivot motion are visible, but the dark linkage profile and exact hinge axle are partly occluded."
+    },
+    {
+      "timestamp_seconds": 40.087,
+      "frame_path": "media/video_frame_0040.png",
+      "observed_fact": "In the closed overhead view without tape, the radial core sits in the channel and a longitudinal support links it to a rectangular rear hinge housing.",
+      "gemini_episode": "00:33 - 00:38",
+      "review_disposition": "CONFIRMED_WITH_LIMITATION",
+      "reason": "The connected support is visible across a second state/view, while its lower surface remains hidden."
+    },
+    {
+      "timestamp_seconds": 45.087,
+      "frame_path": "media/video_frame_0045.png",
+      "observed_fact": "A standard tape roll is mounted on the attached hub and nests centrally between the side rails without detaching the hub from the housing.",
+      "gemini_episode": "00:41 - 00:53",
+      "review_disposition": "CONFIRMED_WITH_LIMITATION",
+      "reason": "The mounted relationship is visible, but the exact radial clearance cannot be measured from this perspective frame."
+    }
+  ],
+  "accepted_target_specific_conclusion": "Replace the floating annular hub blockout with a radial core plus a broad, flat, rear-hinged support assembly. Keep the exact hinge axle, underside ribs, and tolerance reversible.",
+  "knowledge_promotion": "NONE",
+  "claim_boundary": "This review can drive the current target's reversible blockout. It does not promote a general mechanism-modeling skill, validate the rejected underside claim, or establish hidden dimensions."
+}

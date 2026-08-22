@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "record_type": "TUTORIAL_REPRODUCTION_AND_TRANSFER_ASSESSMENT",
+  "lesson": "JL Mussi energy-can hard-surface workflow",
+  "source_video_id": "tRZh0K8R8mQ",
+  "reproduction": {
+    "artifact": "energy_can_surface.blend",
+    "status": "PASS_WITH_BOUNDED_SIMPLIFICATION",
+    "observed_strengths": [
+      "Can body is one connected 16-segment all-quad radial shell rather than stacked cylinder primitives.",
+      "Pull tab is one manifold quad shell with two actual openings.",
+      "Lid, tab, and pin are separate only where manufacturing and motion justify separation.",
+      "Subdivision and bevel modifiers remain live and unapplied.",
+      "The v1 lid-gap, bulbous-base, and torus-rivet failures were corrected after solid-render inspection."
+    ],
+    "limitations": [
+      "The pull-tab outline and pressed recess are simplified relative to the tutorial blueprint.",
+      "The tutorial's manual Grid Fill and Profile-1 holding-edge demonstrations are represented by equivalent all-quad cages and live modifiers, not claimed as exact hand-action replay.",
+      "No materials, UVs, labels, or production high/low pair are included because this lesson is a modeling/topology exercise."
+    ]
+  },
+  "topology": {
+    "inspection": "fresh_asset_inspection.json",
+    "all_quads_required": true,
+    "manifold_required": true,
+    "modifiers_applied": false
+  },
+  "transfer": {
+    "artifact": "profile_density_transfer.blend",
+    "status": "MIXED_PASS_REQUIRES_JUDGMENT",
+    "sparse_evaluated_shrinkage_ratio_xyz": [0.9393, 0.9393, 0.9480],
+    "support_distributed_evaluated_shrinkage_ratio_xyz": [0.9645, 0.9645, 0.9877],
+    "result": "Support distribution preserved more of the intended bounding volume on unrelated bottle geometry.",
+    "counterevidence": "The support-distributed variant produced 128 evaluator pinch candidates around one clustered transition ring; the MatCap render must arbitrate whether that ring is intentional or over-constrained.",
+    "promoted_rule": "Add or redistribute loops only where silhouette, quad aspect ratio, or highlight behavior demonstrates a need; then inspect the evaluated surface. More loops alone are not quality."
+  },
+  "next_lesson_gate": "Proceed to a beginner/intermediate tutorial that requires connected planar-to-curved topology and manual loop redirection; do not resume held-out prop benchmarks yet."
+}
