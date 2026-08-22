@@ -92,6 +92,22 @@ thread, and two glass-read corrections. Fresh-process technical verification pas
 fidelity is only 7.2/10: glass is too blue/ghosted, the hero is too orange, and the composition is
 too crowded. It is a third informative beginner failure, not an advancement pass.
 
+A later v5-v13 correction pass diagnosed the "ghosted" complaint by direct evidence at each step
+(material API inspection, compositor node inspection, DOF inspection, measured bounding boxes)
+rather than guessing repeatedly. Four real bugs were found and fixed: the glass materials were an
+alpha-blend hack rather than real raytraced transmission; the hero glass shell carried its own
+independent emission double-glowing on top of the filament; 3.2-unit bulb spacing was less than
+half a single bulb's real measured 5.7-unit footprint, guaranteeing overlap; and `Master_Bulb_Root`
+(the template the linked duplicates were made from) had `hide_render=False` and its own stray tilt,
+rendering as an uncredited extra bulb since v1. Fixing the spacing also required thinning to a
+6-bulb row, which finally revealed -- on direct pixel comparison against the creator's actual
+finished-result photo, inspected for the first time during this pass -- that the reference is many
+bulbs lying on their sides in a dense cluster with real shallow depth of field, not a spaced standing
+row. The correction pass therefore fixed four genuine bugs while also moving the composition further
+from the reference; v13 is explicitly not scored as a fidelity improvement over 7.2/10 and does not
+pass. See `runs/2026-08-22_tutorial-blenderguru-lightbulb/README.md` for the full per-version record,
+including the misdiagnosed v5-v8 attempts kept as retained failures rather than deleted.
+
 The B4 official watering-can run is the first strict pass. It uses Blender Studio's maintained
 written/video lesson and read-only CC-BY comparison file. The independently authored result is one
 connected positive-X half-cage: three body openings and eight-sided converted-curve tube boundaries

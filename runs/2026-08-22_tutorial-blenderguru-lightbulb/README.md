@@ -37,7 +37,7 @@ technical checks into a visual-fidelity pass.
 5. Scene v1 reduced unlit bulbs to black silhouettes. V2 added fill but exposed opaque-looking
    Eevee glass. V3/v4 use blended glass so internals remain visible.
 
-## Visual review
+## Visual review (v4)
 
 The v4 bulb construction is recognizably closer to the supplied incandescent reference, but the
 finished scene is only **7.2/10** against the creator result and therefore **does not pass** the
@@ -45,6 +45,101 @@ strict 8/10 gate. The render is too blue and transparent, overlapping envelopes 
 silhouettes, the glowing bulb is too orange and visually dominant, and the layout is more crowded
 and frontal. The lesson is retained as a useful technical reproduction and an honest visual
 failure. Beginner study continues; held-out prop modeling stays paused.
+
+## Correction pass v5-v13: real bugs found, one compositional regression found and disclosed
+
+A later session attempted to close the v4 gaps by direct diagnosis rather than another from-scratch
+rebuild, reusing `lightbulb_tutorial_scene_v4.blend` as the base. Each version's hypothesis was
+tested with an actual render before moving to the next, and every version that produced no visible
+or measurable change is retained rather than deleted, per this project's rule that failed attempts
+stay visible.
+
+**v5** (wrong hypothesis, partially real fixes): guessed the "ghosted" look was `Clear_Bulb_Glass`
+using an alpha-blend hack (`Transmission Weight` 0.28, blue-grey base color) instead of real glass,
+and that 16 background bulbs across a 13x6 area was simply too many. Set `Transmission Weight` to
+1.0, neutralized the tint, thinned to 8 bulbs, enabled `scene.eevee.use_raytracing`. Render showed
+no meaningful improvement -- the ghosting persisted almost unchanged.
+
+**v6**: found via direct API inspection that `scene.eevee.use_raytracing` alone does not raytrace
+a given material's transmission in Eevee Next -- each material also needs its own
+`use_raytrace_refraction = True`, and `blend_method` is deprecated in favor of
+`surface_render_method`. Applied both, refit the camera on real object bounds instead of guessed
+coordinates. Still no visible change in the render.
+
+**v7**: inspected the compositor node graph directly (`scene.compositing_node_group`) and found a
+`Fog Glow` Glare node at threshold 0.65, size 0.72, strength 1.0, with highlight clamping off --
+plausible cause of scene-wide soft circular blooms from every chrome bulb's specular highlight.
+Tightened threshold/size/strength and enabled clamping. The rendered PNG changed at the pixel level
+(confirmed by hash, not assumption) but the visible difference was negligible.
+
+**v8**: checked camera depth-of-field directly and found `use_dof=True`, `aperture_fstop=2.6`,
+focus locked on the hero bulb -- a plausible cause given every other bulb sits outside a thin focal
+plane. Raised the f-stop to 11. Again a real but visually negligible pixel-level change.
+
+**v9 (the actual root cause)**: measured a single bulb's real combined bounding box (glass + shell
++ lead wires) instead of guessing again -- **5.7 units across**, against the 3.2-unit spacing used
+since v4. At that spacing every bulb's silhouette necessarily overlaps its neighbors by simple
+geometry; that overlap was what v5-v8 kept misreading as a glass, glare, or DOF artifact, and no
+shader or compositor setting could have fixed it. Reduced to 6 bulbs in a single row at 7.5-unit
+spacing (comfortably past the measured footprint) and refit the camera. This produced the first
+genuinely different, far less crowded render.
+
+**v10**: the clearer v9 render exposed two real defects that were previously hidden inside the
+crowd: the hero bulb's glass sphere showed a "bitten" wedge cutout, traced to `show_transparent_back
+= False` (set in v6 while chasing the wrong hypothesis -- reverted it), and `Hero_Glowing_Bulb`
+carried a pre-existing ~84-degree rotation baked in since v4, meaning it had been lying on its side
+the entire time, just invisible in the original crowd. Reset its rotation to upright.
+
+**v11**: tried pulling the camera back further to reduce edge-of-frame perspective distortion on
+the outermost row bulbs. Made the image darker/smaller without fixing the apparent issue -- not
+kept as the base for v12/v13.
+
+Per this project's repo-hygiene practice, the v5-v8, v10, v11, and v12 intermediate blend/render
+pairs were deleted after this section was written -- each is described above in enough detail to
+reproduce, and none of them showed a visible improvement over the version before it. `v4`, `v9`
+(the spacing breakthrough), and `v13` (final state of this pass) are retained as the renders that
+actually differ.
+
+**v12/v13 (second real bug)**: an object that looked like a stray tilted bulb lying on the floor
+persisted through every version above. Traced to `Master_Bulb_Root`, the template Empty the 16
+linked duplicates were made from: it has `hide_render=False` and carries its own independent
+~86-degree tilt, and had been rendering as an uncredited extra bulb since v1 -- invisible only
+because it used to be buried in the crowd. The first attempt (v12) hid the Empty itself, which has
+no geometry and therefore changed nothing (confirmed by hash). The real fix (v13) hides its actual
+mesh/curve children directly, since `hide_render` on a plain parent Empty does not cascade to
+non-instanced children. This finally removed the stray object.
+
+### What v13 actually fixed, confirmed by direct comparison
+
+Against `media/creator_finished_result.jpg` (pulled up and compared pixel-by-pixel for this pass,
+not done during the original v1-v4 build): real, verifiable technical corrections survive --
+`Clear_Bulb_Glass` and `Hero_Glow_Glass` now use true raytraced transmission with a neutral tint
+instead of an alpha-blend hack with a blue-grey cast; `Hero_Glow_Glass`'s own independent emission
+(which was double-glowing on top of the filament) is removed so the glow reads as coming from the
+visible filament, matching a real incandescent bulb; the filament emission color is a warm
+white-orange (1.0, 0.55, 0.22) instead of a saturated blood-orange (1.0, 0.12, 0.01); the stray
+tilted master-template bulb and the hero bulb's accidental sideways pose are both gone; bulb spacing
+now matches each bulb's real measured footprint instead of forcing overlap.
+
+### What v13 got wrong, found only by finally comparing against the real reference
+
+The creator's finished scene is **many bulbs lying on their sides in a loose, dense cluster/ring**,
+shot with genuine shallow depth of field so the background bulbs are intentionally soft, with one
+bulb standing upright and glowing warm-white near the center. Chasing the "ghosting" as a bug across
+v5-v9 led to the opposite composition: v9-v13 stand every bulb upright in a single sparse row with
+large gaps and deep focus. That is a real regression in compositional fidelity to the tutorial's
+actual intent, not something the material/geometry fixes above should be credited for solving. The
+technical bugs found in this pass (raytraced glass, double-emission glass, spacing-vs-footprint
+math, the hidden-template leak) are real and worth keeping; the composition itself needs to go back
+to a lying-bulb cluster with intentional shallow DOF, keeping this pass's material and geometry
+fixes rather than reverting them wholesale.
+
+**v13 is not scored as a fidelity improvement over v4's 7.2/10 and does not pass the 8/10 gate.**
+It is retained as evidence that isolated technical bugs can be found and fixed correctly while the
+composition itself moves further from the reference -- a fix is not automatically progress toward
+the actual goal. The next corrective step is to rebuild the layout as a lying-bulb cluster with real
+shallow DOF, on top of v13's material/geometry state, and only then re-score against the creator
+reference.
 
 ## Sources
 

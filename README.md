@@ -208,7 +208,14 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-22_tutorial-blenderguru-lightbulb/` adds a full bulb and multi-bulb scene using
   revolved connected profiles, curve-based wires/filament/thread, linked assemblies, live glass
   subdivision, emission, and Blender 5.2 compositor glare. Fresh technical verification passes,
-  but direct creator-result comparison is only `7.2/10`; it remains beginner failure evidence.
+  but direct creator-result comparison is only `7.2/10`; it remains beginner failure evidence. A
+  later v5-v13 correction pass found and fixed four real bugs (alpha-blend glass instead of real
+  raytraced transmission, a double-emitting glass shell, bulb spacing narrower than each bulb's own
+  measured footprint, and a hidden template mesh rendering as an uncredited stray bulb) but also
+  found that chasing the visible "ghosting" led the composition away from the reference's actual
+  lying-bulb-cluster arrangement toward a standing row -- v13 is not scored as a fidelity
+  improvement and does not pass the gate either. See that run's README for the full chain,
+  including the misdiagnosed attempts kept as retained failures.
 - `runs/2026-08-22_tutorial-blender-official-watering-can/` is the first strict beginner pass:
   one connected body/handle/spout half-cage, matched eight-vertex bridge loops, transition rings,
   live unapplied Mirror, official-file proportion comparison, and fresh-process verification. Its
