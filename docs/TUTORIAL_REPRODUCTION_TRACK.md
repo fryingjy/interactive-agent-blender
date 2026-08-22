@@ -167,19 +167,21 @@ reading of the ladder's own rule.
 `runs/2026-08-22_tutorial-blenderguru-anvil-intermediate/` is the first I0 attempt: a table,
 proportionally-tapered waist/base, and horn grown as one connected mesh, a Boolean-cut concave
 throat under the horn (Part 2's technique, cleaned up with Remove Doubles rather than a Weld
-modifier, matching the source), one support loop (Part 3's technique), and a live unapplied
+modifier, matching the source), support loops throughout (Part 3's technique), and a live unapplied
 Subdivision Surface modifier. Proportions were tuned against real creator-authored evidence -- Part
 1's own video thumbnail turned out to be a wireframe render of the tutorial's finished anvil, used
 as the shape reference throughout.
 
-The base cage is structurally clean (101 verts, 73 faces, 0 loose/non-manifold/degenerate) and its
-flat-shaded silhouette holds up reasonably against the reference wireframe. The SubD-evaluated
-render does not: only one support loop exists in the whole mesh, so Subdivision Surface rounds every
-transition (waist pinch, base shoulder, horn/table junction, boolean seam) into an indistinct,
-melted-looking blob -- exactly the failure mode Part 3's own transcript notes describe and warn
-about, now reproduced rather than merely read about. **Not scored against any gate.** Full account,
-including three real construction bugs found and fixed (manual bmesh face-tracking errors, an
-un-baked object transform that put all Z-math in the wrong coordinate space, and a lighting-not-
-topology false alarm caught by a bmesh connectivity walk instead of assumption), is in that run's
-README. Next step: systematic support-loop coverage at every major transition, not a single loop
-near the table, before re-rendering and comparing against the reference for a real score.
+A first pass (v1-v5) found but did not fix a real limitation: every cross-section was 4-sided, so
+Subdivision Surface smoothed the whole body into a rounded square instead of a round/oval profile --
+confirmed not a support-loop density problem by doubling the loop offset with no visible change. A
+follow-up pass (v6-v7) fixed it by rebuilding from a 12-sided cylinder instead of a cube, so every
+ring is round from the first vertex with no square-to-round transition topology needed; this also
+explained an unrelated symptom (the material rendered washed-out white despite a near-black base
+color, because the blocky 4-sided geometry caught specular highlights across its whole faceted
+silhouette -- the round v6 geometry renders as correct dark steel). v7 reapplied the support-loop
+technique to the round cage: the table now reads as a distinct flat disc and the waist/horn genuinely
+read as round. Two problems remain, named precisely: rough geometry where the horn attaches to the
+table, and an underdeveloped base foot (a quick Z-span extension showed no improvement and wasn't
+kept). **Still not scored against any gate.** Full account of both passes, including every
+construction bug found and fixed along the way, is in that run's README.
