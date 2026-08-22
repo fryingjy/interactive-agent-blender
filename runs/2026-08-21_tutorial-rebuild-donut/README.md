@@ -97,8 +97,44 @@ handle's own side (`part2_handle_side.png`) rather than the first isometric angl
 the wrong side would have looked like nothing changed). Reads as a real, smoothly-blended handle with
 no visible seam.
 
+## Part 3 built: donut icing, another real bug caught before it got saved silently
+
+Followed the tutorial's actual technique rather than a fluid simulation (which the video explicitly
+rejects as unreliable and uncontrollable): duplicate the donut, delete the bottom half (faces only,
+keeping the boundary), Solidify with an inverted offset (thickness goes outward, not into the donut),
+a proportional-editing-equivalent random height nudge along the boundary (smoothed across neighbors
+so it reads as an organic ripple, not per-vertex noise), several drip tendrils extruded from
+boundary edges at varied depths, Subdivision Surface to round the drips, a Shrinkwrap modifier
+targeting the donut moved to the *top* of the modifier stack (the tutorial is explicit that order
+matters -- shrinkwrap has to re-snap the shape before thickness/subdivision build on top of it, not
+after), and edge crease on the original seam so the icing reads as clinging to the donut rather than
+merging into an overly-rounded blob.
+
+**A real bug this time, caught by a sanity check before it could save silently, not by a render
+glance.** After building the drips, `state_probe.mesh_health` on the result showed 926 non-manifold
+edges against only 1749 total -- far more than a normal open-boundary shell should ever show. First
+hypothesis: stale `BMEdge` references reused across the drip loop's repeated topology-changing
+extrusions (a bmesh gotcha this project has hit before). Rewrote to re-query boundary edges fresh, by
+position, before every single extrusion -- **identical result, 816 loose edges and 384 loose verts,
+proving that hypothesis wrong.** Isolated it properly instead of guessing again: checked topology
+right after each individual step, and found the corruption was already present immediately after
+deleting the bottom half, before any drip or boundary edit ever ran. Root cause:
+`bmesh.ops.delete(..., context="FACES_ONLY")` deletes only the face records and deliberately leaves
+every edge and vertex behind regardless of whether anything still uses them -- not the same as the
+tutorial's own "delete faces" (which cleans up whatever becomes genuinely orphaned as a result).
+Fixed by using `context="FACES"` instead. Added an explicit loose-edge/loose-vert check that raises
+before `bm.to_mesh()` can ever write a broken result to the file, rather than relying on a later,
+separate health-check pass to catch it after the fact.
+
+Final state: 0 loose edges, 0 loose verts, 0 degenerate faces, 110 non-manifold edges -- exactly
+matching the seam edge count, the same legitimate open-boundary pattern the mug had before its own
+Solidify modifier was baked. Verified visually too (`part3_final_iso.png`): a real icing layer with
+visible drip tendrils, correctly clinging to the donut via the (correctly-ordered) shrinkwrap and
+crease.
+
 ## Plan for this run
 
-Part 1 and Part 2 done. Part 3 (Organic Modelling -- donut icing/sculpting) is next, not attempted in
-this same pass. Continuing part by part, each with its own verified construction pass and a render
-comparison against what the tutorial actually shows, not just a health check.
+Parts 1-3 done (donut, mug base, mug handle, donut icing). Part 4 (Materials) is next, not attempted
+in this same pass. Continuing part by part, each with its own verified construction pass and a real
+structural sanity check performed *before* saving, not just a post-hoc health check or a render
+glance -- the clearest lesson from this run so far.
