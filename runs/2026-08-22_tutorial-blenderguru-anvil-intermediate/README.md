@@ -97,11 +97,32 @@ boolean and support-loop *techniques* were both genuinely applied, not
 skipped; but the finished SubD result needs substantially more support-loop
 coverage before it is presentable, let alone comparable to the reference.
 
-## Next step, not yet attempted
+## v5: systematic support loops added -- real improvement, real limitation found
 
-Add support loops systematically at every major transition (table
-perimeter -- already done once, needs the remaining 3 edges' worth of
-density it's missing; waist pinch; base shoulder; horn/table junction;
-boolean seam), following Part 3's own diagnostic ("zoom out, find the blobby
-regions, add loops there") rather than guessing a fixed count up front. Only
-then re-render and compare against the Part 1 wireframe for a real score.
+Added support loops at every horizontal ring-boundary edge (66 candidate
+edges) via `bmesh.ops.bevel` at small offset/2 segments -- a robust way to
+place two closely-spaced parallel loops flanking each transition, the same
+topological outcome as manually sliding loops close to an edge, without the
+error-prone per-edge index tracking that broke once in v4. This is not the
+Bevel modifier and not bevel weight (both explicitly avoided by the source
+tutorial); it's the edit-mode bevel operator used purely to place support
+loops accurately. Base cage grew from 101 to 313 vertices, structurally
+clean throughout (0 loose/non-manifold/degenerate).
+
+The SubD-evaluated render (`anvil_v5_solid.png`) is a real, visible
+improvement over v4 -- distinct segment bands are now visible at the waist
+and horn instead of one melted blob -- but doubling the bevel offset
+(0.012 to 0.025) produced no visible change at all, which is the signal
+that support-loop density was never the limiting factor here. **The real
+limitation, found by checking rather than guessing further: every
+cross-section in this build (table, waist, base, horn) is 4-sided.** A
+4-vertex cage under Subdivision Surface smooths into a rounded *square*,
+not a circle, no matter how many support loops flank it -- an anvil's waist
+and horn are much closer to round/oval in cross-section. This is an
+architectural limitation of the construction, not a parameter to keep
+tuning.
+
+**Still not scored.** v5 is retained as the current best state and as
+correctly-diagnosed evidence of what would actually need to change: a
+higher-sided (8- or 12-sided) cross-section for the waist/horn, not more
+support-loop iteration on the current 4-sided cage.
