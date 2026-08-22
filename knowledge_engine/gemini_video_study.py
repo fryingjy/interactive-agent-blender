@@ -11,6 +11,7 @@ import json
 import math
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import parse_qs, urlparse
@@ -492,6 +493,29 @@ def _permission_denied(exc: Exception) -> bool:
     return "permission" in message or "403" in message
 
 
+def _rate_limit_retry_delay(exc: Exception) -> float | None:
+    """Return a bounded server-requested retry interval for a retryable 429."""
+    message = str(exc)
+    if "429" not in message and "quota exceeded" not in message.casefold():
+        return None
+    match = re.search(r"retry in\s+([0-9]+(?:\.[0-9]+)?)s", message, re.IGNORECASE)
+    if not match:
+        return None
+    return min(60.0, max(0.0, float(match.group(1))))
+
+
+def _call_with_one_rate_limit_retry(call: Callable[[], Any]) -> Any:
+    """Execute a Gemini SDK call with at most one explicit server-directed retry."""
+    try:
+        return call()
+    except Exception as exc:
+        delay = _rate_limit_retry_delay(exc)
+        if delay is None:
+            raise
+        time.sleep(delay + 0.25)
+        return call()
+
+
 def analyze_youtube_video(
     url: str,
     *,
@@ -532,14 +556,16 @@ def analyze_youtube_video(
         if not callable(generate_content):
             raise RuntimeError("configured Gemini client does not support range-scoped video study")
         try:
-            response = generate_content(
-                **build_generate_content_request(
-                    requested_url,
-                    model,
-                    focus,
-                    expected_source,
-                    start_seconds=start_seconds,
-                    end_seconds=end_seconds,
+            response = _call_with_one_rate_limit_retry(
+                lambda: generate_content(
+                    **build_generate_content_request(
+                        requested_url,
+                        model,
+                        focus,
+                        expected_source,
+                        start_seconds=start_seconds,
+                        end_seconds=end_seconds,
+                    )
                 )
             )
         except Exception as range_error:
@@ -553,7 +579,9 @@ def analyze_youtube_video(
         response_model = getattr(response, "model_version", None) or model
     else:
         try:
-            interaction = client.interactions.create(**request)
+            interaction = _call_with_one_rate_limit_retry(
+                lambda: client.interactions.create(**request)
+            )
             raw_text = interaction.output_text
             response_model = getattr(interaction, "model", None)
             interaction_id = getattr(interaction, "id", None)
@@ -568,8 +596,10 @@ def analyze_youtube_video(
                     ) from interaction_error
                 raise
             try:
-                response = generate_content(
-                    **build_generate_content_request(requested_url, model, focus, expected_source)
+                response = _call_with_one_rate_limit_retry(
+                    lambda: generate_content(
+                        **build_generate_content_request(requested_url, model, focus, expected_source)
+                    )
                 )
             except Exception as fallback_error:
                 if _permission_denied(fallback_error):

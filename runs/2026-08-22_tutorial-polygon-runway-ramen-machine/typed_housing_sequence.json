@@ -1,0 +1,129 @@
+[
+  {
+    "label": "select_complete_housing_cage",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8]
+    }
+  },
+  {
+    "label": "establish_thumbnail_housing_proportions",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "PRIMARY_FORM",
+      "operation": "scale_selection",
+      "params": {
+        "factor": [1.6, 1.2, 2.2],
+        "center": [0.0, 0.0, 0.0]
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "select_tutorial_vertical_edges",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "edge_ids": [10, 12, 16, 17]
+    }
+  },
+  {
+    "label": "bevel_housing_vertical_edges",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "PRIMARY_FORM",
+      "operation": "bevel_selection",
+      "params": {
+        "offset": 0.16,
+        "segments": 3,
+        "profile": 0.5,
+        "clamp_overlap": true
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "select_front_face_for_recess",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "face_ids": [24]
+    }
+  },
+  {
+    "label": "inset_front_service_opening",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "inset_selection",
+      "params": {
+        "thickness": 0.28,
+        "depth": 0.0
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "push_front_service_opening_inward",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "extrude_selection",
+      "params": {
+        "offset": -0.34
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "select_top_face_for_basin",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "face_ids": [26]
+    }
+  },
+  {
+    "label": "inset_top_basin",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "inset_selection",
+      "params": {
+        "thickness": 0.22,
+        "depth": 0.0
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "lower_top_basin",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "extrude_selection",
+      "params": {
+        "offset": -0.16
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "recalculate_housing_normals",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "TOPOLOGY_SURFACE",
+      "operation": "recalc_normals",
+      "params": {},
+      "accept": true
+    }
+  },
+  {
+    "label": "inspect_housing_base_state",
+    "command": "get_full_state",
+    "params": {
+      "name": "ramen_machine_housing"
+    }
+  }
+]

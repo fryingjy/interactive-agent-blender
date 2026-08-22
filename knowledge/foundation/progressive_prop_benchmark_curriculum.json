@@ -132,11 +132,11 @@
     "phase": "strict-tutorial-apprenticeship",
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
-    "ladder_status": "PAUSED_AFTER_DELETED_AND_REJECTED_CANDIDATES",
-    "training_run": "runs/2026-08-22_tutorial-game-asset-factory-chair/",
+    "ladder_status": "BEGINNER_TUTORIAL_APPRENTICESHIP_ACTIVE",
+    "training_run": "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/",
     "training_run_boundary": "Tutorial-following practice is not a progressive-prop pass or unfamiliar-reference evidence. Historical technique stages do not authorize held-out work without faithful source-frame-reviewed reproductions.",
     "current_reference_execution": "runs/2026-08-21_reference-aa-battery/",
     "current_reference_execution_boundary": "Dimensionally grounded primary-form blockout only; no human acceptance and no ladder promotion.",
-    "next_action": "Complete and source-frame-review beginner tutorial reproductions, then progress through full intermediate and advanced tutorial objects. Do not select a fresh held-out prop until two consecutive tutorial artifacts pass the strict 8/10 fidelity and technical gates."
+    "next_action": "Repeat beginner tutorial reproduction with representative source frames secured before modeling. Continue beginner lessons until two consecutive artifacts pass the strict 8/10 fidelity and technical gates; only then advance to intermediate, advanced, and professional tutorials. Do not select a fresh held-out prop before that progression is complete."
   }
 }

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "url": "https://www.youtube.com/watch?v=K7__BjW4UWE",
+  "video_id": "K7__BjW4UWE",
+  "title": "2026 Blender 5.0 Beginner Tutorial",
+  "creator": "Polygon Runway",
+  "identity_source": "YouTube oEmbed",
+  "identity_checked_at": "2026-08-22",
+  "duration_seconds": 4305,
+  "visual_target_from_thumbnail": "Stylized compact ramen vending/cooking machine with dark metal housing, front service recess, upper bowl, buttons, stool-like cylinders, and floor base.",
+  "status": "FULL_AUDIOVISUAL_EXTRACTION_COMPLETE_UNVERIFIED",
+  "study_artifact": "gemini_full_video_unverified.json",
+  "identity_note": "YouTube oEmbed currently labels the same video ID as a 2026 Blender 5.0 tutorial; the audiovisual extraction reports the in-video title as a Blender 4.0 ramen-shop-machine tutorial. Creator and video ID agree, so the discrepancy is recorded as rebranding/version drift rather than silently normalized.",
+  "verification_boundary": "Gemini extraction is source-ID-consistent but unverified. Independent comparison was limited to the source thumbnail because direct representative video frames were unavailable."
+}

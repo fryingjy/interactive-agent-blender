@@ -15,6 +15,8 @@ from knowledge_engine.gemini_video_study import (
     validate_analysis,
     normalize_model_confidences,
     normalize_model_timestamps,
+    _call_with_one_rate_limit_retry,
+    _rate_limit_retry_delay,
     validate_expected_source,
     validate_time_range,
     validate_youtube_url,
@@ -68,6 +70,31 @@ def _analysis(url="https://www.youtube.com/watch?v=abc123"):
 
 
 class GeminiVideoStudyTests(unittest.TestCase):
+    def test_extracts_only_explicit_bounded_rate_limit_delay(self):
+        self.assertEqual(
+            _rate_limit_retry_delay(RuntimeError("429 quota exceeded; Please retry in 4.75s.")),
+            4.75,
+        )
+        self.assertEqual(
+            _rate_limit_retry_delay(RuntimeError("429 Please retry in 120s.")),
+            60.0,
+        )
+        self.assertIsNone(_rate_limit_retry_delay(RuntimeError("temporary error")))
+
+    def test_rate_limit_call_retries_exactly_once(self):
+        attempts = []
+
+        def operation():
+            attempts.append(len(attempts))
+            if len(attempts) == 1:
+                raise RuntimeError("429 quota exceeded; retry in 0.01s")
+            return "ok"
+
+        with patch("knowledge_engine.gemini_video_study.time.sleep") as sleep:
+            self.assertEqual(_call_with_one_rate_limit_retry(operation), "ok")
+        self.assertEqual(len(attempts), 2)
+        sleep.assert_called_once_with(0.26)
+
     def test_normalizes_numeric_percentage_confidence_with_provenance(self):
         data = _analysis()
         data["episodes"][0]["confidence"] = 85

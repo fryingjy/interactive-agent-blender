@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\typed_component_render_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\ramen_machine_components_v1.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "8d214488b80b",
+  "results": [
+    {
+      "index": 0,
+      "label": "render_all_components_front_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 640
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "frame_objects": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "camera_location": [
+          0.0,
+          -23.343090057373047,
+          2.8709752559661865
+        ],
+        "camera_ortho_scale": 13.422277197534894,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.103711,
+        "foreground_unique_colors_5bit": 52,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "render_all_components_isometric_solid",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_isometric_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "resolution": 640
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_isometric_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "frame_objects": [
+          "ramen_machine_housing",
+          "floor_platform",
+          "lower_housing_trim",
+          "service_counter",
+          "front_sign_frame",
+          "side_electrical_box",
+          "side_armor_plate",
+          "roof_ramen_bowl",
+          "right_side_cable",
+          "right_side_cable_secondary",
+          "noodle_strand_01",
+          "noodle_strand_02",
+          "chopstick_left",
+          "chopstick_right"
+        ],
+        "camera_location": [
+          13.477139472961426,
+          -13.477139472961426,
+          16.348114013671875
+        ],
+        "camera_ortho_scale": 13.422277197534894,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.208413,
+        "foreground_unique_colors_5bit": 81,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

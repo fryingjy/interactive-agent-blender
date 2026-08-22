@@ -1,0 +1,24 @@
+[
+  {
+    "label": "render_all_components_front_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["ramen_machine_housing", "floor_platform", "lower_housing_trim", "service_counter", "front_sign_frame", "side_electrical_box", "side_armor_plate", "roof_ramen_bowl", "right_side_cable", "right_side_cable_secondary", "noodle_strand_01", "noodle_strand_02", "chopstick_left", "chopstick_right"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 640
+    }
+  },
+  {
+    "label": "render_all_components_isometric_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["ramen_machine_housing", "floor_platform", "lower_housing_trim", "service_counter", "front_sign_frame", "side_electrical_box", "side_armor_plate", "roof_ramen_bowl", "right_side_cable", "right_side_cable_secondary", "noodle_strand_01", "noodle_strand_02", "chopstick_left", "chopstick_right"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/components_v1_isometric_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 640
+    }
+  }
+]

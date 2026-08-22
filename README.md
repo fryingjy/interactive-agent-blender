@@ -195,8 +195,15 @@ The local Blender/MCP entry points are:
   materials, and real saved tangent-normal bakes. Stage 7 full production delivery is next.
 - `runs/2026-08-22_tutorial-cgthoughts-game-asset/` completes Stage 7 with a simplified medical-case
   high/low asset, live source modifiers, UVs on every low mesh, four PBR channels, GLB delivery, and
-  a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. The held-out
-  return gate is now ready after consecutive Stage 6 and Stage 7 passes.
+  a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. Historical
+  technical completion does not satisfy the restarted fidelity gate.
+- `runs/2026-08-22_tutorial-game-asset-factory-chair/`,
+  `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/`, and
+  `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` start the strict beginner apprenticeship.
+  The ramen machine has full audiovisual extraction, retained typed-modeling corrections, a
+  connected manifold housing, live modifiers, and fresh-process verification, but its available
+  thumbnail comparison is only `6.8/10`. None of these runs yet supplies two consecutive,
+  independently source-frame-reviewed `8/10` passes. Held-out prop modeling remains blocked.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

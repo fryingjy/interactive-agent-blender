@@ -1,0 +1,118 @@
+[
+  {
+    "label": "select_corrected_front_face",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "face_ids": [121]
+    }
+  },
+  {
+    "label": "inset_front_service_opening",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "inset_selection",
+      "params": {
+        "thickness": 0.28,
+        "depth": 0.0
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "push_front_service_opening_inward",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "extrude_selection",
+      "params": {
+        "offset": -0.34
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "select_corrected_top_face",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "face_ids": [122]
+    }
+  },
+  {
+    "label": "inset_top_basin",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "inset_selection",
+      "params": {
+        "thickness": 0.22,
+        "depth": 0.0
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "lower_top_basin",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "SECONDARY_FORM",
+      "operation": "extrude_selection",
+      "params": {
+        "offset": -0.16
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "recalculate_housing_normals",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "TOPOLOGY_SURFACE",
+      "operation": "recalc_normals",
+      "params": {},
+      "accept": true
+    }
+  },
+  {
+    "label": "inspect_housing_base_state",
+    "command": "get_full_state",
+    "params": {
+      "name": "ramen_machine_housing"
+    }
+  },
+  {
+    "label": "render_housing_front_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "ramen_machine_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/housing_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 512
+    }
+  },
+  {
+    "label": "render_housing_isometric_solid",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "ramen_machine_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/housing_isometric_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 512
+    }
+  },
+  {
+    "label": "render_housing_wireframe",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "ramen_machine_housing",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-polygon-runway-ramen-machine/housing_isometric_wireframe.png",
+      "pass_type": "wireframe",
+      "view": "isometric",
+      "resolution": 512
+    }
+  }
+]

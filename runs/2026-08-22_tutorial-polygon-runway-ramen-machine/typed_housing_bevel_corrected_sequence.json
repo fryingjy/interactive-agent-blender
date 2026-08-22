@@ -1,0 +1,53 @@
+[
+  {
+    "label": "select_complete_housing_cage",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8]
+    }
+  },
+  {
+    "label": "establish_thumbnail_housing_proportions",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "PRIMARY_FORM",
+      "operation": "scale_selection",
+      "params": {
+        "factor": [1.6, 1.2, 2.2],
+        "center": [0.0, 0.0, 0.0]
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "select_actual_vertical_edges_after_id_review",
+    "command": "select_by_ids",
+    "params": {
+      "name": "ramen_machine_housing",
+      "edge_ids": [10, 12, 15, 18]
+    }
+  },
+  {
+    "label": "bevel_all_four_housing_vertical_edges",
+    "transaction": {
+      "name": "ramen_machine_housing",
+      "action_type": "PRIMARY_FORM",
+      "operation": "bevel_selection",
+      "params": {
+        "offset": 0.16,
+        "segments": 3,
+        "profile": 0.5,
+        "clamp_overlap": true
+      },
+      "accept": true
+    }
+  },
+  {
+    "label": "reobserve_corrected_post_bevel_geometry",
+    "command": "get_mesh_geometry",
+    "params": {
+      "name": "ramen_machine_housing"
+    }
+  }
+]

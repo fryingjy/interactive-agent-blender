@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\typed_detail_component_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\ramen_machine_components_v1.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "031f6cf12d8e",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_left_stool_base",
+      "command": "create_curve",
+      "params": {
+        "name": "stool_base_left",
+        "points": [
+          [
+            -0.98,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.88,
+            -2.42,
+            0.18
+          ],
+          [
+            -0.65,
+            -2.52,
+            0.18
+          ],
+          [
+            -0.42,
+            -2.42,
+            0.18
+          ],
+          [
+            -0.32,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.42,
+            -1.98,
+            0.18
+          ],
+          [
+            -0.65,
+            -1.88,
+            0.18
+          ],
+          [
+            -0.88,
+            -1.98,
+            0.18
+          ],
+          [
+            -0.98,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.82,
+            -2.2,
+            0.42
+          ],
+          [
+            -0.48,
+            -2.2,
+            0.68
+          ],
+          [
+            -0.65,
+            -2.2,
+            0.95
+          ]
+        ],
+        "bevel_depth": 0.045,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_base_left",
+        "type": "CURVE",
+        "point_count": 12,
+        "bevel_depth": 0.045
+      }
+    },
+    {
+      "index": 1,
+      "label": "create_right_stool_base",
+      "command": "create_curve",
+      "params": {
+        "name": "stool_base_right",
+        "points": [
+          [
+            0.32,
+            -2.3,
+            0.18
+          ],
+          [
+            0.42,
+            -2.52,
+            0.18
+          ],
+          [
+            0.65,
+            -2.62,
+            0.18
+          ],
+          [
+            0.88,
+            -2.52,
+            0.18
+          ],
+          [
+            0.98,
+            -2.3,
+            0.18
+          ],
+          [
+            0.88,
+            -2.08,
+            0.18
+          ],
+          [
+            0.65,
+            -1.98,
+            0.18
+          ],
+          [
+            0.42,
+            -2.08,
+            0.18
+          ],
+          [
+            0.32,
+            -2.3,
+            0.18
+          ],
+          [
+            0.48,
+            -2.3,
+            0.42
+          ],
+          [
+            0.82,
+            -2.3,
+            0.68
+          ],
+          [
+            0.65,
+            -2.3,
+            0.95
+          ]
+        ],
+        "bevel_depth": 0.045,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_base_right",
+        "type": "CURVE",
+        "point_count": 12,
+        "bevel_depth": 0.045
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_left_stool_seat",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "stool_seat_left",
+        "segments": 18,
+        "profile": [
+          [
+            0.0,
+            -0.1
+          ],
+          [
+            0.27,
+            -0.1
+          ],
+          [
+            0.34,
+            -0.03
+          ],
+          [
+            0.34,
+            0.09
+          ],
+          [
+            0.27,
+            0.17
+          ],
+          [
+            0.0,
+            0.17
+          ]
+        ]
+      },
+      "status": "error",
+      "error": "closed revolution profile needs >=3 positive-radius points",
+      "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\odane\\Downloads\\3d\\tools\\run_modeler_command_sequence.py\", line 118, in main\n    result = server._dispatch(command, params)\n  File \"C:\\Users\\odane\\Downloads\\3d\\blender_ops\\modeler_server.py\", line 428, in _dispatch\n    return handler(**params)\n  File \"C:\\Users\\odane\\Downloads\\3d\\blender_ops\\modeler_server.py\", line 489, in cmd_create_revolved_profile\n    obj = profile_mesh.revolve_closed_profile(name, clean_profile, segments=int(segments))\n  File \"C:\\Users\\odane\\Downloads\\3d\\blender_ops\\profile_mesh.py\", line 183, in revolve_closed_profile\n    raise ValueError(\"closed revolution profile needs >=3 positive-radius points\")\nValueError: closed revolution profile needs >=3 positive-radius points\n"
+    }
+  ],
+  "save_result": null,
+  "pass": false
+}

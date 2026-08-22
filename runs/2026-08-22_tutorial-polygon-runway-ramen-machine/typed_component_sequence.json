@@ -1,0 +1,208 @@
+[
+  {
+    "label": "create_floor_platform",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "floor_platform",
+      "profile": [[-3.4, -0.28], [3.4, -0.28], [3.4, 0.0], [-3.4, 0.0]],
+      "depth": 7.0
+    }
+  },
+  {
+    "label": "lower_platform_below_housing",
+    "transaction": {
+      "name": "floor_platform",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "translate_object",
+      "params": {"delta": [0.0, 0.0, -0.05]},
+      "accept": true
+    }
+  },
+  {
+    "label": "create_lower_housing_trim",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "lower_housing_trim",
+      "profile": [[-1.76, 0.0], [1.76, 0.0], [1.76, 0.24], [-1.76, 0.24]],
+      "depth": 2.58
+    }
+  },
+  {
+    "label": "create_service_counter",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "service_counter",
+      "profile": [[-1.22, -0.10], [1.22, -0.10], [1.22, 0.12], [-1.22, 0.12]],
+      "depth": 0.72
+    }
+  },
+  {
+    "label": "place_service_counter",
+    "transaction": {
+      "name": "service_counter",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "translate_object",
+      "params": {"delta": [0.0, -1.27, 1.55]},
+      "accept": true
+    }
+  },
+  {
+    "label": "create_front_sign_frame",
+    "command": "create_quad_annular_shell",
+    "params": {
+      "name": "front_sign_frame",
+      "front_outer": [[-1.18, -1.31, 3.93], [1.18, -1.31, 3.93], [1.28, -1.31, 3.83], [1.28, -1.31, 3.32], [1.18, -1.31, 3.22], [-1.18, -1.31, 3.22], [-1.28, -1.31, 3.32], [-1.28, -1.31, 3.83]],
+      "front_inner": [[-1.02, -1.33, 3.78], [1.02, -1.33, 3.78], [1.10, -1.33, 3.70], [1.10, -1.33, 3.45], [1.02, -1.33, 3.37], [-1.02, -1.33, 3.37], [-1.10, -1.33, 3.45], [-1.10, -1.33, 3.70]],
+      "rear_outer": [[-1.18, -1.22, 3.93], [1.18, -1.22, 3.93], [1.28, -1.22, 3.83], [1.28, -1.22, 3.32], [1.18, -1.22, 3.22], [-1.18, -1.22, 3.22], [-1.28, -1.22, 3.32], [-1.28, -1.22, 3.83]],
+      "rear_inner": [[-1.02, -1.24, 3.78], [1.02, -1.24, 3.78], [1.10, -1.24, 3.70], [1.10, -1.24, 3.45], [1.02, -1.24, 3.37], [-1.02, -1.24, 3.37], [-1.10, -1.24, 3.45], [-1.10, -1.24, 3.70]]
+    }
+  },
+  {
+    "label": "create_side_electrical_box",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "side_electrical_box",
+      "profile": [[-0.45, -0.60], [0.45, -0.60], [0.45, 0.60], [-0.45, 0.60]],
+      "depth": 0.34
+    }
+  },
+  {
+    "label": "orient_side_electrical_box",
+    "transaction": {
+      "name": "side_electrical_box",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "rotate_object",
+      "params": {"delta_radians": [0.0, 0.0, 1.57079632679]},
+      "accept": true
+    }
+  },
+  {
+    "label": "place_side_electrical_box",
+    "transaction": {
+      "name": "side_electrical_box",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "translate_object",
+      "params": {"delta": [1.77, 0.18, 2.75]},
+      "accept": true
+    }
+  },
+  {
+    "label": "create_side_armor_plate",
+    "command": "create_profile_extrusion",
+    "params": {
+      "name": "side_armor_plate",
+      "profile": [[-0.56, -0.72], [0.56, -0.72], [0.56, 0.48], [0.38, 0.72], [-0.38, 0.72], [-0.56, 0.48]],
+      "depth": 0.16
+    }
+  },
+  {
+    "label": "orient_side_armor_plate",
+    "transaction": {
+      "name": "side_armor_plate",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "rotate_object",
+      "params": {"delta_radians": [0.0, 0.0, 1.57079632679]},
+      "accept": true
+    }
+  },
+  {
+    "label": "place_side_armor_plate",
+    "transaction": {
+      "name": "side_armor_plate",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "translate_object",
+      "params": {"delta": [1.73, 0.10, 1.12]},
+      "accept": true
+    }
+  },
+  {
+    "label": "create_roof_ramen_bowl",
+    "command": "create_revolved_profile",
+    "params": {
+      "name": "roof_ramen_bowl",
+      "segments": 18,
+      "profile": [[0.54, 0.02], [0.60, 0.02], [0.84, 0.58], [0.92, 0.72], [0.90, 0.82], [0.82, 0.88], [0.72, 0.78], [0.64, 0.56]]
+    }
+  },
+  {
+    "label": "place_roof_ramen_bowl",
+    "transaction": {
+      "name": "roof_ramen_bowl",
+      "action_type": "ASSEMBLY_PLACEMENT",
+      "operation": "translate_object",
+      "params": {"delta": [0.0, 0.0, 4.35]},
+      "accept": true
+    }
+  },
+  {
+    "label": "create_right_side_cable",
+    "command": "create_curve",
+    "params": {
+      "name": "right_side_cable",
+      "points": [[1.93, 0.35, 3.10], [2.08, 0.35, 2.85], [2.08, 0.35, 2.05], [1.98, 0.35, 1.80], [1.98, 0.35, 0.35]],
+      "bevel_depth": 0.045,
+      "closed": false,
+      "curve_type": "BEZIER"
+    }
+  },
+  {
+    "label": "create_second_right_side_cable",
+    "command": "create_curve",
+    "params": {
+      "name": "right_side_cable_secondary",
+      "points": [[2.08, 0.52, 3.02], [2.20, 0.52, 2.75], [2.20, 0.52, 1.95], [2.10, 0.52, 1.70], [2.10, 0.52, 0.35]],
+      "bevel_depth": 0.038,
+      "closed": false,
+      "curve_type": "BEZIER"
+    }
+  },
+  {
+    "label": "create_noodle_strand_one",
+    "command": "create_curve",
+    "params": {
+      "name": "noodle_strand_01",
+      "points": [[-0.58, -0.05, 5.10], [-0.35, -0.25, 5.22], [-0.10, 0.12, 5.16], [0.12, -0.18, 5.26], [0.38, 0.12, 5.18], [0.62, -0.02, 5.25]],
+      "bevel_depth": 0.055,
+      "closed": false,
+      "curve_type": "BEZIER"
+    }
+  },
+  {
+    "label": "create_noodle_strand_two",
+    "command": "create_curve",
+    "params": {
+      "name": "noodle_strand_02",
+      "points": [[-0.62, 0.22, 5.20], [-0.38, 0.05, 5.12], [-0.15, 0.30, 5.24], [0.10, 0.02, 5.14], [0.38, 0.32, 5.23], [0.60, 0.16, 5.17]],
+      "bevel_depth": 0.050,
+      "closed": false,
+      "curve_type": "BEZIER"
+    }
+  },
+  {
+    "label": "create_left_chopstick",
+    "command": "create_curve",
+    "params": {
+      "name": "chopstick_left",
+      "points": [[-0.42, 0.12, 5.18], [-0.72, 0.28, 6.00]],
+      "bevel_depth": 0.035,
+      "closed": false,
+      "curve_type": "POLY"
+    }
+  },
+  {
+    "label": "create_right_chopstick",
+    "command": "create_curve",
+    "params": {
+      "name": "chopstick_right",
+      "points": [[-0.25, 0.18, 5.20], [-0.45, 0.42, 6.06]],
+      "bevel_depth": 0.035,
+      "closed": false,
+      "curve_type": "POLY"
+    }
+  },
+  {
+    "label": "inspect_component_coverage_state",
+    "command": "get_full_state",
+    "params": {"name": "ramen_machine_housing"}
+  }
+]

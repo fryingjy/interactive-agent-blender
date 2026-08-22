@@ -1,0 +1,1419 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\typed_detail_component_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\ramen_machine_components_v1.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\ramen_machine_components_v2.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "b1986658696d",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_left_stool_base",
+      "command": "create_curve",
+      "params": {
+        "name": "stool_base_left",
+        "points": [
+          [
+            -0.98,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.88,
+            -2.42,
+            0.18
+          ],
+          [
+            -0.65,
+            -2.52,
+            0.18
+          ],
+          [
+            -0.42,
+            -2.42,
+            0.18
+          ],
+          [
+            -0.32,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.42,
+            -1.98,
+            0.18
+          ],
+          [
+            -0.65,
+            -1.88,
+            0.18
+          ],
+          [
+            -0.88,
+            -1.98,
+            0.18
+          ],
+          [
+            -0.98,
+            -2.2,
+            0.18
+          ],
+          [
+            -0.82,
+            -2.2,
+            0.42
+          ],
+          [
+            -0.48,
+            -2.2,
+            0.68
+          ],
+          [
+            -0.65,
+            -2.2,
+            0.95
+          ]
+        ],
+        "bevel_depth": 0.045,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_base_left",
+        "type": "CURVE",
+        "point_count": 12,
+        "bevel_depth": 0.045
+      }
+    },
+    {
+      "index": 1,
+      "label": "create_right_stool_base",
+      "command": "create_curve",
+      "params": {
+        "name": "stool_base_right",
+        "points": [
+          [
+            0.32,
+            -2.3,
+            0.18
+          ],
+          [
+            0.42,
+            -2.52,
+            0.18
+          ],
+          [
+            0.65,
+            -2.62,
+            0.18
+          ],
+          [
+            0.88,
+            -2.52,
+            0.18
+          ],
+          [
+            0.98,
+            -2.3,
+            0.18
+          ],
+          [
+            0.88,
+            -2.08,
+            0.18
+          ],
+          [
+            0.65,
+            -1.98,
+            0.18
+          ],
+          [
+            0.42,
+            -2.08,
+            0.18
+          ],
+          [
+            0.32,
+            -2.3,
+            0.18
+          ],
+          [
+            0.48,
+            -2.3,
+            0.42
+          ],
+          [
+            0.82,
+            -2.3,
+            0.68
+          ],
+          [
+            0.65,
+            -2.3,
+            0.95
+          ]
+        ],
+        "bevel_depth": 0.045,
+        "closed": false,
+        "curve_type": "BEZIER"
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_base_right",
+        "type": "CURVE",
+        "point_count": 12,
+        "bevel_depth": 0.045
+      }
+    },
+    {
+      "index": 2,
+      "label": "create_left_stool_seat",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "stool_seat_left",
+        "segments": 18,
+        "profile": [
+          [
+            0.02,
+            -0.1
+          ],
+          [
+            0.27,
+            -0.1
+          ],
+          [
+            0.34,
+            -0.03
+          ],
+          [
+            0.34,
+            0.09
+          ],
+          [
+            0.27,
+            0.17
+          ],
+          [
+            0.02,
+            0.17
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_seat_left",
+        "type": "MESH",
+        "segments": 18,
+        "profile_point_count": 6,
+        "vertices": 108,
+        "edges": 216,
+        "faces": 108
+      }
+    },
+    {
+      "index": 3,
+      "label": "place_left_stool_seat",
+      "command": "transaction",
+      "params": {
+        "name": "stool_seat_left",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            -0.65,
+            -2.2,
+            1.02
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_15_1787390742922",
+          "observed_revision": 15
+        },
+        "perform": {
+          "decision_id": "dec_15_1787390742922",
+          "performed": true,
+          "result": {
+            "name": "stool_seat_left",
+            "location": [
+              -0.6499999761581421,
+              -2.200000047683716,
+              1.0199999809265137
+            ],
+            "delta": [
+              -0.65,
+              -2.2,
+              1.02
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_15_1787390742922",
+          "result_revision": 16
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "create_right_stool_seat",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "stool_seat_right",
+        "segments": 18,
+        "profile": [
+          [
+            0.02,
+            -0.1
+          ],
+          [
+            0.27,
+            -0.1
+          ],
+          [
+            0.34,
+            -0.03
+          ],
+          [
+            0.34,
+            0.09
+          ],
+          [
+            0.27,
+            0.17
+          ],
+          [
+            0.02,
+            0.17
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "stool_seat_right",
+        "type": "MESH",
+        "segments": 18,
+        "profile_point_count": 6,
+        "vertices": 108,
+        "edges": 216,
+        "faces": 108
+      }
+    },
+    {
+      "index": 5,
+      "label": "place_right_stool_seat",
+      "command": "transaction",
+      "params": {
+        "name": "stool_seat_right",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.65,
+            -2.3,
+            1.02
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_16_1787390742930",
+          "observed_revision": 16
+        },
+        "perform": {
+          "decision_id": "dec_16_1787390742930",
+          "performed": true,
+          "result": {
+            "name": "stool_seat_right",
+            "location": [
+              0.6499999761581421,
+              -2.299999952316284,
+              1.0199999809265137
+            ],
+            "delta": [
+              0.65,
+              -2.3,
+              1.02
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_16_1787390742930",
+          "result_revision": 17
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "create_egg_white",
+      "command": "create_profile_extrusion",
+      "params": {
+        "name": "egg_white",
+        "profile": [
+          [
+            -0.48,
+            -0.05
+          ],
+          [
+            -0.28,
+            -0.28
+          ],
+          [
+            0.05,
+            -0.36
+          ],
+          [
+            0.38,
+            -0.23
+          ],
+          [
+            0.5,
+            0.02
+          ],
+          [
+            0.38,
+            0.28
+          ],
+          [
+            0.08,
+            0.38
+          ],
+          [
+            -0.24,
+            0.3
+          ],
+          [
+            -0.46,
+            0.1
+          ]
+        ],
+        "depth": 0.1
+      },
+      "status": "ok",
+      "result": {
+        "name": "egg_white",
+        "type": "MESH",
+        "profile_point_count": 9,
+        "depth": 0.1,
+        "vertices": 18,
+        "edges": 27,
+        "faces": 11,
+        "profile_winding": "CLOCKWISE_XZ",
+        "profile_winding_normalized": true,
+        "cap_topology": "NGON",
+        "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work."
+      }
+    },
+    {
+      "index": 7,
+      "label": "orient_egg_white_horizontal",
+      "command": "transaction",
+      "params": {
+        "name": "egg_white",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.57079632679,
+            0.0,
+            0.0
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_17_1787390742933",
+          "observed_revision": 17
+        },
+        "perform": {
+          "decision_id": "dec_17_1787390742933",
+          "performed": true,
+          "result": {
+            "name": "egg_white",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.57079632679,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 18,
+            "edges": 27,
+            "faces": 11,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 18,
+            "edges": 27,
+            "faces": 11,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_17_1787390742933",
+          "result_revision": 18
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "place_egg_white_in_bowl",
+      "command": "transaction",
+      "params": {
+        "name": "egg_white",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.2,
+            -0.1,
+            5.23
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_18_1787390742934",
+          "observed_revision": 18
+        },
+        "perform": {
+          "decision_id": "dec_18_1787390742934",
+          "performed": true,
+          "result": {
+            "name": "egg_white",
+            "location": [
+              0.20000000298023224,
+              -0.10000000149011612,
+              5.230000019073486
+            ],
+            "delta": [
+              0.2,
+              -0.1,
+              5.23
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 18,
+            "edges": 27,
+            "faces": 11,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 18,
+            "edges": 27,
+            "faces": 11,
+            "non_manifold_edges": 0,
+            "ngons": 2,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_18_1787390742934",
+          "result_revision": 19
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "create_egg_yolk",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "egg_yolk",
+        "segments": 18,
+        "profile": [
+          [
+            0.02,
+            0.0
+          ],
+          [
+            0.18,
+            0.0
+          ],
+          [
+            0.25,
+            0.06
+          ],
+          [
+            0.25,
+            0.14
+          ],
+          [
+            0.17,
+            0.22
+          ],
+          [
+            0.02,
+            0.24
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "egg_yolk",
+        "type": "MESH",
+        "segments": 18,
+        "profile_point_count": 6,
+        "vertices": 108,
+        "edges": 216,
+        "faces": 108
+      }
+    },
+    {
+      "index": 10,
+      "label": "place_egg_yolk",
+      "command": "transaction",
+      "params": {
+        "name": "egg_yolk",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.27,
+            -0.1,
+            5.31
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_19_1787390742938",
+          "observed_revision": 19
+        },
+        "perform": {
+          "decision_id": "dec_19_1787390742938",
+          "performed": true,
+          "result": {
+            "name": "egg_yolk",
+            "location": [
+              0.27000001072883606,
+              -0.10000000149011612,
+              5.309999942779541
+            ],
+            "delta": [
+              0.27,
+              -0.1,
+              5.31
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 108,
+            "edges": 216,
+            "faces": 108,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_19_1787390742938",
+          "result_revision": 20
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "create_control_button_red",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "control_button_red",
+        "segments": 16,
+        "profile": [
+          [
+            0.02,
+            -0.06
+          ],
+          [
+            0.13,
+            -0.06
+          ],
+          [
+            0.16,
+            -0.02
+          ],
+          [
+            0.16,
+            0.05
+          ],
+          [
+            0.12,
+            0.09
+          ],
+          [
+            0.02,
+            0.09
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "control_button_red",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 6,
+        "vertices": 96,
+        "edges": 192,
+        "faces": 96
+      }
+    },
+    {
+      "index": 12,
+      "label": "orient_control_button_red",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_red",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.57079632679,
+            0.0,
+            0.0
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_20_1787390742944",
+          "observed_revision": 20
+        },
+        "perform": {
+          "decision_id": "dec_20_1787390742944",
+          "performed": true,
+          "result": {
+            "name": "control_button_red",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.57079632679,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_20_1787390742944",
+          "result_revision": 21
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "place_control_button_red",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_red",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.72,
+            -1.52,
+            2.25
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_21_1787390742947",
+          "observed_revision": 21
+        },
+        "perform": {
+          "decision_id": "dec_21_1787390742947",
+          "performed": true,
+          "result": {
+            "name": "control_button_red",
+            "location": [
+              0.7200000286102295,
+              -1.5199999809265137,
+              2.25
+            ],
+            "delta": [
+              0.72,
+              -1.52,
+              2.25
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_21_1787390742947",
+          "result_revision": 22
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "create_control_button_yellow",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "control_button_yellow",
+        "segments": 16,
+        "profile": [
+          [
+            0.02,
+            -0.06
+          ],
+          [
+            0.11,
+            -0.06
+          ],
+          [
+            0.14,
+            -0.02
+          ],
+          [
+            0.14,
+            0.05
+          ],
+          [
+            0.1,
+            0.08
+          ],
+          [
+            0.02,
+            0.08
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "control_button_yellow",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 6,
+        "vertices": 96,
+        "edges": 192,
+        "faces": 96
+      }
+    },
+    {
+      "index": 15,
+      "label": "orient_control_button_yellow",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_yellow",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.57079632679,
+            0.0,
+            0.0
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_22_1787390742951",
+          "observed_revision": 22
+        },
+        "perform": {
+          "decision_id": "dec_22_1787390742951",
+          "performed": true,
+          "result": {
+            "name": "control_button_yellow",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.57079632679,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_22_1787390742951",
+          "result_revision": 23
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "place_control_button_yellow",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_yellow",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            -0.72,
+            -1.52,
+            2.25
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_23_1787390742954",
+          "observed_revision": 23
+        },
+        "perform": {
+          "decision_id": "dec_23_1787390742954",
+          "performed": true,
+          "result": {
+            "name": "control_button_yellow",
+            "location": [
+              -0.7200000286102295,
+              -1.5199999809265137,
+              2.25
+            ],
+            "delta": [
+              -0.72,
+              -1.52,
+              2.25
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_23_1787390742954",
+          "result_revision": 24
+        }
+      }
+    },
+    {
+      "index": 17,
+      "label": "create_control_button_green",
+      "command": "create_revolved_profile",
+      "params": {
+        "name": "control_button_green",
+        "segments": 16,
+        "profile": [
+          [
+            0.02,
+            -0.06
+          ],
+          [
+            0.11,
+            -0.06
+          ],
+          [
+            0.14,
+            -0.02
+          ],
+          [
+            0.14,
+            0.05
+          ],
+          [
+            0.1,
+            0.08
+          ],
+          [
+            0.02,
+            0.08
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "control_button_green",
+        "type": "MESH",
+        "segments": 16,
+        "profile_point_count": 6,
+        "vertices": 96,
+        "edges": 192,
+        "faces": 96
+      }
+    },
+    {
+      "index": 18,
+      "label": "orient_control_button_green",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_green",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "rotate_object",
+        "params": {
+          "delta_radians": [
+            1.57079632679,
+            0.0,
+            0.0
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_24_1787390742962",
+          "observed_revision": 24
+        },
+        "perform": {
+          "decision_id": "dec_24_1787390742962",
+          "performed": true,
+          "result": {
+            "name": "control_button_green",
+            "rotation_euler": [
+              1.5707963705062866,
+              0.0,
+              0.0
+            ],
+            "delta_radians": [
+              1.57079632679,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_24_1787390742962",
+          "result_revision": 25
+        }
+      }
+    },
+    {
+      "index": 19,
+      "label": "place_control_button_green",
+      "command": "transaction",
+      "params": {
+        "name": "control_button_green",
+        "action_type": "ASSEMBLY_PLACEMENT",
+        "operation": "translate_object",
+        "params": {
+          "delta": [
+            0.0,
+            -1.52,
+            2.25
+          ]
+        },
+        "accept": true
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_25_1787390742965",
+          "observed_revision": 25
+        },
+        "perform": {
+          "decision_id": "dec_25_1787390742965",
+          "performed": true,
+          "result": {
+            "name": "control_button_green",
+            "location": [
+              0.0,
+              -1.5199999809265137,
+              2.25
+            ],
+            "delta": [
+              0.0,
+              -1.52,
+              2.25
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "ASSEMBLY_PLACEMENT",
+          "op_delta": 0,
+          "before": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 96,
+            "edges": 192,
+            "faces": 96,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_25_1787390742965",
+          "result_revision": 26
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-polygon-runway-ramen-machine\\ramen_machine_components_v2.blend"
+  },
+  "pass": true
+}

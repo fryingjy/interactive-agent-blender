@@ -45,7 +45,7 @@ shading defect. Two consecutive passes are required before increasing difficulty
 |---|---|---|---|
 | B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | MODELED; SOURCE-FRAME REVIEW PENDING |
 | B1 | Blender Guru beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | TECHNICALLY COMPLETE; corrected v2 modeled, SOURCE-FIDELITY REVIEW PENDING |
-| B2 | Complete beginner product/furniture exercise | Accurate multi-part decomposition, bevel/shading basics, clean presentation | PENDING |
+| B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10; DOES NOT PASS 8/10 GATE |
 | I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | PENDING |
 | I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
 | A0 | Advanced production prop tutorial | High/low collections, live modifiers, UVs, bake, materials, export | PENDING |
@@ -62,6 +62,16 @@ Current evidence:
 - `runs/2026-08-22_tutorial-cgboost-retopology/`
 - `runs/2026-08-22_tutorial-cgboost-uv-production/`
 - `runs/2026-08-22_tutorial-cgthoughts-game-asset/`
+- `runs/2026-08-22_tutorial-game-asset-factory-chair/`
+- `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/`
+- `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/`
+
+The B2 ramen-machine run is the first complete artifact under the stricter restart to combine
+full-video extraction, typed Edit Mode construction, retained visual failures, a finished scene,
+and fresh-process verification. It still fails advancement: independent review was limited to the
+source thumbnail, visible form is self-assessed at 6.8/10, and two covered top-basin n-gons remain.
+The next lesson must stay at beginner level and must secure representative source-frame evidence
+before modeling so fidelity can be judged rather than inferred.
 
 Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
 perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like
@@ -85,4 +95,6 @@ collections, one primary shell plus justified assemblies, live source modifiers,
 mesh, four delivered PBR channels, three-view silhouette checks, GLB export, and fresh-process
 re-import. Reference fidelity is explicitly bounded at a simplified `5.5/10`; technical completion
 does not erase the missing recessed panels, emblem, labels, or tertiary wear. Stages 6 and 7 provide
-two consecutive tutorial/transfer passes, so the Stage 8 held-out return gate is ready.
+historical technique evidence only. Under the strict apprenticeship restart, their bounded and
+simplified results do not satisfy the two consecutive faithful-reproduction requirement; the
+held-out return gate remains blocked.
