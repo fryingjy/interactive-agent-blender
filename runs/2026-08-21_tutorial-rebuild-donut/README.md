@@ -156,11 +156,32 @@ Structurally: 0 loose/degenerate, 32 non-manifold edges matching the open top bo
 circle, same legitimate open-shell-before-Solidify pattern as every other part), 1 ngon (the
 intentional flat bottom cap, matching the tutorial's own ngon fill choice for the base circle).
 
+## Part 4 finished: materials, lattice-deform lumpiness, camera, ray tracing
+
+Principled BSDF materials for every object, matching the tutorial's real values: pink icing and
+brown donut both with Subsurface weight=1 and a neutral (not the reddish character-skin default)
+scatter color for a milky food-like look; a dark, near-black (not pure black -- true black rarely
+occurs on a real surface) glossy mug; a lighter glossy plate; a simple plane as a table backdrop
+(matching the tutorial's own point that a full table model is unnecessary fakery when the camera only
+ever sees its top surface).
+
+Lattice Deform Selected on the donut+icing pair: a 3x3x3 lattice, the middle W-row scaled inward
+(the real detail the tutorial gives a reason for -- a donut fries on both sides but not at its
+equator, so the middle band is genuinely less puffy on a real one), plus two asymmetric bumps for
+handmade-looking irregularity, applied to bake the deformation into both meshes. Blender warned the
+modifier "was not first" when applied (Icing already had Shrinkwrap/Solidify/Subdivision on it) --
+structural health stayed clean afterward (0 non-manifold/degenerate beyond the same legitimate seam
+count as before), and the render shows the intended irregularity, so left as-is rather than chasing a
+warning that didn't correspond to an actual defect.
+
+Camera positioned for a 3/4 view of the group, a simple area light added, EEVEE with ray tracing
+enabled (the tutorial calls the default-off setting a mistake -- it's what produces bounce lighting
+and real reflections instead of flat, plasticky shading). First render composition was too tight
+(cropped the group); repositioned the camera and enlarged the table plane to fix it.
+
 ## Plan for this run
 
-Parts 1-3 done, plus the plate from Part 4. Still remaining from Part 4: materials (base color,
-roughness, subsurface scattering for the donut/icing), the lattice-deform lumpiness pass on the
-donut+icing, camera positioning, and EEVEE ray-tracing setup -- not attempted in this same pass.
-Continuing part by part, each with its own verified construction pass, a real structural sanity check
-performed *before* saving, and an isolated render from the correct angle before trusting a shape
-reads the way it's supposed to -- the two clearest lessons from this run so far.
+Parts 1-4 done (donut, mug, icing, plate, materials, lumpiness, camera/lighting). Part 5 (Texturing)
+is next. Continuing part by part, each with its own verified construction pass, a real structural
+sanity check performed *before* saving, and an isolated render from the correct angle before trusting
+a shape or composition reads the way it's supposed to.
