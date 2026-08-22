@@ -133,10 +133,10 @@
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "BEGINNER_TUTORIAL_APPRENTICESHIP_ACTIVE",
-    "training_run": "runs/2026-08-22_tutorial-blenderguru-lightbulb/",
+    "training_run": "runs/2026-08-22_tutorial-blender-official-watering-can/",
     "training_run_boundary": "Tutorial-following practice is not a progressive-prop pass or unfamiliar-reference evidence. Historical technique stages do not authorize held-out work without faithful source-frame-reviewed reproductions.",
     "current_reference_execution": "runs/2026-08-21_reference-aa-battery/",
     "current_reference_execution_boundary": "Dimensionally grounded primary-form blockout only; no human acceptance and no ladder promotion.",
-    "next_action": "Continue beginner tutorials with representative source visuals secured before modeling. The Blender Guru beginner scene, Polygon Runway ramen machine, and Blender Guru lightbulb scene are useful 7.0/10, 6.8/10, and 7.2/10 failures, not passes. Correct reference fidelity and visual-material judgment before increasing difficulty; require two consecutive artifacts to pass the strict 8/10 fidelity and technical gates before intermediate, advanced, and professional tutorials."
+    "next_action": "Complete one more beginner tutorial with representative source visuals and a full action sequence secured before modeling. The official Blender watering can is the first strict pass at 8.1/10; it does not authorize advancement alone. The Grant Abbitt low-poly well remains queued until audiovisual access is available. Require a second consecutive >=8/10 technical and visual pass before intermediate, advanced, and professional tutorials."
   }
 }

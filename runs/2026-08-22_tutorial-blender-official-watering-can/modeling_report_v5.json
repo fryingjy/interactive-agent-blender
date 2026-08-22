@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "record_type": "OFFICIAL_TUTORIAL_INDEPENDENT_REPRODUCTION",
+  "source": "https://studio.blender.org/training/blender-fundamentals-45-lts/blender_4-5_lts_modeling-the-watering-can/",
+  "blend": "runs\\2026-08-22_tutorial-blender-official-watering-can\\watering_can_tutorial_v5.blend",
+  "object_count": 1,
+  "connected_components_base_cage": 1,
+  "component_vertex_counts": [
+    678
+  ],
+  "vertices": 678,
+  "edges": 1248,
+  "faces": 570,
+  "triangles": 16,
+  "quads": 554,
+  "ngons": 0,
+  "live_modifiers": [
+    "MIRROR"
+  ],
+  "modifiers_applied": false,
+  "construction": "one connected positive-X half cage; body openings and 8-sided tube rings are bridged; live X Mirror merges the symmetry seam",
+  "reference_mesh_copied": false
+}

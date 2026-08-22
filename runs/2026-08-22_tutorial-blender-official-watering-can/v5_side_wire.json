@@ -1,0 +1,30 @@
+{
+  "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\v5_side_wire.png",
+  "pass_type": "wireframe",
+  "view": "side",
+  "projection": "ORTHO",
+  "resolution": [
+    900,
+    900
+  ],
+  "target_objects": [
+    "GEO-watering_can"
+  ],
+  "frame_objects": [
+    "GEO-watering_can"
+  ],
+  "camera_location": [
+    9.104331016540527,
+    -0.05343741178512573,
+    1.1912457942962646
+  ],
+  "camera_ortho_scale": 5.234990463740016,
+  "scene_revision": null,
+  "foreground_fill_ratio": 0.045843,
+  "foreground_unique_colors_5bit": 3,
+  "dominant_channel_pixel_counts": {
+    "red": 0,
+    "green": 0,
+    "blue": 0
+  }
+}

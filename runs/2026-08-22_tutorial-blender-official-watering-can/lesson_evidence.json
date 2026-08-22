@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "record_type": "OFFICIAL_TUTORIAL_LESSON_EVIDENCE",
+  "title": "Modeling the Watering Can",
+  "creator": "Blender Studio / Beau Gerbrands",
+  "url": "https://studio.blender.org/training/blender-fundamentals-45-lts/blender_4-5_lts_modeling-the-watering-can/",
+  "license_for_downloaded_comparison_file": "CC-BY 4.0",
+  "published_workflow": [
+    "build a tapered base from a 32-vertex circle with extrusions, loop cuts, bevels and insets",
+    "construct near-circular handle and spout as curves aligned to the body",
+    "add body topology around the intended attachment heights",
+    "convert curves to meshes and remove geometry hidden inside the can",
+    "inset eight-face body regions and snap tube endpoints to the body",
+    "delete attachment faces, join objects and Bridge Edge Loops with matching eight-vertex boundaries",
+    "verify no triangle or twist appears in the bridges",
+    "add a shallow spout inner tube only where visible",
+    "keep a live clipping Mirror and recalculate normals outside",
+    "bevel three loops around connected transitions for a more organic join"
+  ],
+  "official_file_observations": {
+    "object_count": 1,
+    "object_name": "GEO-watering_can",
+    "live_modifiers": ["MIRROR"],
+    "vertices": 1507,
+    "faces": 1344,
+    "triangles": 16,
+    "quads": 1328,
+    "ngons": 0,
+    "dimensions": [0.4125607908, 1.4684081078, 0.9418350459]
+  },
+  "comparison_boundary": "The downloaded official file was opened read-only for structure and visual comparison. Its mesh was not copied, imported, appended, or used as generated geometry."
+}

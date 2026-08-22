@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_TUTORIAL_REPRODUCTION_VERIFICATION",
+  "blend_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\watering_can_tutorial_v5.blend",
+  "blender_version": "5.2.0 LTS",
+  "checks": {
+    "single_mesh_object": true,
+    "single_connected_base_cage": true,
+    "single_connected_evaluated_mesh": true,
+    "base_has_no_ngons_or_degenerates": true,
+    "base_is_quad_dominant": true,
+    "only_intentional_bottom_triangles": true,
+    "positive_x_half_cage": true,
+    "live_unapplied_mirror": true,
+    "official_height_length_ratio_matched": true,
+    "official_depth_length_ratio_close": true,
+    "solid_and_wire_evidence_present": true,
+    "official_reference_audit_present": true
+  },
+  "passed": true,
+  "base_mesh": {
+    "vertices": 678,
+    "edges": 1248,
+    "faces": 570,
+    "components": 1,
+    "component_vertex_counts": [
+      678
+    ],
+    "triangles": 16,
+    "quads": 554,
+    "ngons": 0,
+    "boundary_edges": 232,
+    "nonmanifold_edges": 232,
+    "degenerate_faces": 0
+  },
+  "evaluated_mesh": {
+    "vertices": 1173,
+    "edges": 2318,
+    "faces": 1140,
+    "components": 1,
+    "component_vertex_counts": [
+      1173
+    ],
+    "triangles": 32,
+    "quads": 1108,
+    "ngons": 0,
+    "boundary_edges": 108,
+    "nonmanifold_edges": 108,
+    "degenerate_faces": 0
+  },
+  "evaluated_dimensions": [
+    1.1100000143051147,
+    3.7166980504989624,
+    2.3824915885925293
+  ],
+  "evaluated_ratios": {
+    "height_over_length": 0.6410237141197636,
+    "depth_over_length": 0.2986521905259693
+  },
+  "official_reference_ratios": {
+    "height_over_length": 0.6413986962460165,
+    "depth_over_length": 0.2809578540247284
+  },
+  "visual_boundary": "Technical and proportion checks do not replace the separate source-image visual review."
+}

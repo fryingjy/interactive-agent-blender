@@ -209,6 +209,13 @@ The local Blender/MCP entry points are:
   revolved connected profiles, curve-based wires/filament/thread, linked assemblies, live glass
   subdivision, emission, and Blender 5.2 compositor glare. Fresh technical verification passes,
   but direct creator-result comparison is only `7.2/10`; it remains beginner failure evidence.
+- `runs/2026-08-22_tutorial-blender-official-watering-can/` is the first strict beginner pass:
+  one connected body/handle/spout half-cage, matched eight-vertex bridge loops, transition rings,
+  live unapplied Mirror, official-file proportion comparison, and fresh-process verification. Its
+  `8.1/10` source score is one of two required consecutive passes; intermediate work stays blocked.
+- `runs/2026-08-22_tutorial-grant-abbitt-low-poly-well/` records a researched five-part beginner
+  queue. Modeling is deferred until audiovisual access is available rather than inventing steps
+  from repeated final thumbnails.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 
