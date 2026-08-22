@@ -47,3 +47,49 @@ thumbnail it is approximately **6.8/10**, not the required 8/10: proportions and
 forms are simplified, source step frames were not independently inspected, and the top basin still
 contains two covered n-gons whose viewport tessellation was visible before the bowl was installed.
 This lesson therefore does not unlock intermediate work or the held-out prop gate.
+
+## Correction pass: the missing glow, found by direct comparison and fixed
+
+Revisited after B1's donut correction established that a single, precisely diagnosed material bug
+can be the dominant gap, not always a proportion problem. Direct comparison against
+`media/source_thumbnail.jpg` found exactly that here: the reference's most visually prominent
+feature is a warm glowing service window lighting the buttons and counter from within, and this
+build had never constructed any light source or emissive geometry for it at all -- the recess just
+read as a flat dark rectangle.
+
+Found the recess's actual back-wall geometry by direct inspection rather than guessing a position
+(`bmesh` face query, filtering for -Y-facing faces near the button/counter height): a face at local
+x=[-1.24,1.24], y=-0.9, z=[-0.53,0.53] on `ramen_machine_housing`. Built an emissive plane sized to
+that opening and parented it to the housing.
+
+**Two real bugs on the way to a working result:**
+
+1. First placement used `matrix_parent_inverse = housing.matrix_world.inverted()`, which cancels
+   the parent's own world transform rather than preserving it -- the plane's local coordinates
+   became its literal world position, landing near the floor (world z~0) instead of inside the
+   recess (world z~1.7-2.7). This is the mirror image of the local/world mismatch already hit
+   several times this project, just from the opposite direction (over-compensating the parent
+   transform instead of forgetting to apply it). Fixed by leaving `matrix_parent_inverse` at
+   identity, so `glow.matrix_world = housing.matrix_world @ glow.matrix_basis` composes correctly.
+2. Even after fixing the position, the full-scene render showed no visible glow at all, while a
+   render with every other object hidden showed the plane rendering correctly (bright, right shape,
+   right screen position) -- proving the object itself worked and the problem was occlusion, not
+   emission. The plane sat almost exactly coplanar with the recess's own back wall (y=-0.895 vs.
+   -0.9); moved it forward into the middle of the actual window cavity (y=-1.05, between the front
+   wall's opening and the back wall) so it isn't buried behind other recess geometry from the
+   camera's oblique angle.
+
+Tuned emission strength down from an initial 8.0 (blown out to near-white) to 3.0 with a richer
+orange base color, so the window reads as a warm amber glow rather than a flat white rectangle.
+
+Structurally clean throughout (0 loose/non-manifold beyond the glow plane's own expected open-plane
+boundary edges, matching the same exception already established for the donut's floor plane).
+
+**Real, visible improvement** over the original 6.8/10's single largest named gap -- the service
+window now genuinely glows and reads as lit from within, much closer to the reference's warm,
+inviting mood. Remaining differences on direct comparison: the reference's glow shows visible
+interior detail/texture (hints of machinery or embers) where this build's is a flat uniform color;
+the reference's red trim and stool color are more saturated; and the "26" side branding visible in
+the reference isn't present in this build. Not re-scored to a specific number -- the gap closed is
+real but the remaining differences are enough that this still does not confidently clear the 8/10
+gate on its own.
