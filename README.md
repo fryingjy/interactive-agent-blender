@@ -193,6 +193,10 @@ The local Blender/MCP entry points are:
   audiovisual tutorial studies, a one-object connected compound cage, a visually rejected first
   transfer, a corrected curved-clasp transfer, non-overlap/distortion measurements, UV checker
   materials, and real saved tangent-normal bakes. Stage 7 full production delivery is next.
+- `runs/2026-08-22_tutorial-cgthoughts-game-asset/` completes Stage 7 with a simplified medical-case
+  high/low asset, live source modifiers, UVs on every low mesh, four PBR channels, GLB delivery, and
+  a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. The held-out
+  return gate is now ready after consecutive Stage 6 and Stage 7 passes.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

@@ -1,0 +1,20 @@
+{
+  "skill_id": "production.high_low.pbr_export_loop",
+  "title": "Close editable high-low production with baked channels and fresh import verification",
+  "topic_tags": ["high low", "game asset", "UV", "baking", "PBR", "export", "live modifiers"],
+  "applicability": {"modeling_stage":["PRODUCTION_PREP","DELIVERY"],"workflow":["complete hard-surface game-asset handoff"],"defect":["duplicate low cage","missing texture channel","applied source modifiers","unverified export"]},
+  "preconditions": ["high and low are independently authored in separate collections","component separation follows real assembly/material/motion boundaries","silhouette has already passed multiview review"],
+  "required_observations": ["high/low base topology counts","live modifier stacks","UV validity on every exported mesh","saved texture files and node hookup","fixed-frame silhouettes","fresh-process import report"],
+  "action_policy": [
+    "Preserve source modifiers and generate export geometry from evaluated state without destructively applying the source stacks.",
+    "Remove non-silhouette density from the low and compare high/low silhouettes in front, side, and top views.",
+    "Deliver BaseColor, Roughness, Metallic, and tangent Normal channels with correct color spaces and positive bake margins.",
+    "Import the delivery artifact in a clean process and verify mesh count, UVs, materials, images, and nonzero topology."
+  ],
+  "failure_predicates": ["high and low share mesh datablocks","low topology is not lower","source modifiers were applied","any exported mesh lacks UVs","required channel file is missing","normal image lacks signal","fresh import fails or loses materials"],
+  "recovery": ["author a genuinely lower independent cage","restore an editable source copy and keep modifiers live","unwrap and repack missing meshes","rebake the failed channel with the correct active target and color space","repair export settings and repeat fresh import"],
+  "sources": [{"type":"video_observation","source_id":"NamnBJ4KVeU","timestamp_seconds":[160,1350],"description":"CG Thoughts demonstrates high-poly cleanup, low derivation, UV rectification/packing, cage baking, export, and engine normal orientation."}],
+  "experiments": [{"type":"stylized medical-case full workflow reproduction","evidence_path":"runs/2026-08-22_tutorial-cgthoughts-game-asset/","result":"PASS_BOUNDED","measurements":{"minimum_silhouette_iou":0.998014,"fresh_import_meshes":6,"fresh_import_uv_coverage":1.0,"delivered_channels":4},"counterevidence":"Pipeline completeness did not erase reference-shape omissions; the asset remains a simplified 5.5/10 fidelity reproduction."}],
+  "version_scope": "Blender 5.2 LTS reproduction",
+  "status": "REPRODUCTION_VALIDATED"
+}

@@ -1,0 +1,9 @@
+[
+  {"label":"high_body","command":"create_authored_quad_mesh","params":{"name":"medical_case_HIGH_body"}},
+  {"label":"low_body","command":"create_authored_quad_mesh","params":{"name":"medical_case_LOW_body"}},
+  {"label":"high_handle","command":"create_authored_quad_mesh","params":{"name":"medical_case_HIGH_handle"}},
+  {"label":"low_handle","command":"create_authored_quad_mesh","params":{"name":"medical_case_LOW_handle"}},
+  {"label":"low_body_bevel","transaction":{"name":"medical_case_LOW_body","action_type":"live_edge_radius","operation":"add_modifier","params":{"modifier_type":"BEVEL","modifier_name":"Production edge radius - unapplied"}}},
+  {"label":"low_body_normals","transaction":{"name":"medical_case_LOW_body","action_type":"planar_shading","operation":"add_modifier","params":{"modifier_type":"WEIGHTED_NORMAL","modifier_name":"Weighted planar normals - unapplied"}}},
+  {"label":"low_handle_wall","transaction":{"name":"medical_case_LOW_handle","action_type":"connected_handle_thickness","operation":"add_modifier","params":{"modifier_type":"SOLIDIFY","modifier_name":"Handle wall - unapplied"}}}
+]

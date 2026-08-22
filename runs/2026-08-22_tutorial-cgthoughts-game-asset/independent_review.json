@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_PRODUCTION_ASSET_REVIEW",
+  "reviewed_at": "2026-08-22",
+  "disposition": "PASS_BOUNDED_SIMPLIFIED_REPRODUCTION",
+  "strengths": [
+    "The medical case reads clearly in MatCap and baked-material renders.",
+    "The red shell remains one primary object; white wrap bands, moving latches, and the handle are separated only at genuine assembly/material boundaries.",
+    "Independent high and low collections retain live Bevel, Weighted Normal, and Solidify modifiers.",
+    "The low export survives a fresh-process GLB import with six meshes, UVs on every mesh, materials, and baked images."
+  ],
+  "limitations": [
+    "The reproduction is boxier than the tutorial thumbnail and omits the deeper recessed side-panel language, cross emblem, labels, and tertiary wear.",
+    "The two front latches are simplified and their exact mechanical construction is not claimed.",
+    "The high body's extra planar grid density is a controlled workflow distinction, not an optimized final high-poly topology pattern.",
+    "The metallic map is a deliberate constant non-metal texture because the main shell is painted plastic; it is delivered but not evidence of a metallic surface bake."
+  ],
+  "score_estimate_out_of_10": 5.5,
+  "pass": true
+}

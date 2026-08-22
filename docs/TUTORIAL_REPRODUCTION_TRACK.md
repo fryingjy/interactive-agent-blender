@@ -26,8 +26,8 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 | 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | COMPLETE WITH BOUNDED INTEGRATED-DETAIL REPRODUCTION |
 | 5 | Retopology and deformation-aware flow | Tutorial retopo asset plus deformation test | COMPLETE WITH BOUNDED LANDMARK-PATCH REPRODUCTION |
 | 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | COMPLETE WITH BOUNDED CONNECTED-CAGE TRANSFER |
-| 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | PENDING |
-| 8 | Held-out reconstruction return gate | Unseen reference asset only after two consecutive tutorial/transfer passes | BLOCKED BY CURRICULUM |
+| 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | COMPLETE WITH SIMPLIFIED MEDICAL-CASE DELIVERY |
+| 8 | Held-out reconstruction return gate | Unseen reference asset only after two consecutive tutorial/transfer passes | READY AFTER STAGES 6-7 PASSES |
 
 Current evidence:
 
@@ -38,6 +38,7 @@ Current evidence:
 - `runs/2026-08-22_tutorial-blenderbros-tricky-subd-detail/`
 - `runs/2026-08-22_tutorial-cgboost-retopology/`
 - `runs/2026-08-22_tutorial-cgboost-uv-production/`
+- `runs/2026-08-22_tutorial-cgthoughts-game-asset/`
 
 Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
 perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like
@@ -54,4 +55,11 @@ Stage 6 closes with complete audiovisual UV and bake studies, a connected compou
 a rejected self-intersecting first transfer, an improved curved-clasp transfer, independent high/low
 collections, measured UV overlap/distortion, UV-driven checker renders, and saved tangent-normal
 bakes. Remaining checker stretch and the absence of complete base-color/metallic/roughness delivery
-are explicit; Stage 7 professional high/low delivery is now active.
+are explicit limitations of that stage.
+
+Stage 7 closes with a complete stylized medical-case workflow: independently generated high/low
+collections, one primary shell plus justified assemblies, live source modifiers, UVs on every low
+mesh, four delivered PBR channels, three-view silhouette checks, GLB export, and fresh-process
+re-import. Reference fidelity is explicitly bounded at a simplified `5.5/10`; technical completion
+does not erase the missing recessed panels, emblem, labels, or tertiary wear. Stages 6 and 7 provide
+two consecutive tutorial/transfer passes, so the Stage 8 held-out return gate is ready.
