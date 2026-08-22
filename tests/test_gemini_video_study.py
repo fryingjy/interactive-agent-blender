@@ -13,6 +13,8 @@ from knowledge_engine.gemini_video_study import (
     load_dotenv,
     load_expected_source_metadata,
     validate_analysis,
+    normalize_model_confidences,
+    normalize_model_timestamps,
     validate_expected_source,
     validate_time_range,
     validate_youtube_url,
@@ -66,6 +68,42 @@ def _analysis(url="https://www.youtube.com/watch?v=abc123"):
 
 
 class GeminiVideoStudyTests(unittest.TestCase):
+    def test_normalizes_numeric_percentage_confidence_with_provenance(self):
+        data = _analysis()
+        data["episodes"][0]["confidence"] = 85
+        changes = normalize_model_confidences(data)
+        self.assertEqual(data["episodes"][0]["confidence"], 0.85)
+        self.assertEqual(changes[0]["original"], 85)
+        validate_analysis(data, data["source"]["url"])
+
+    def test_does_not_normalize_ambiguous_or_invalid_confidence(self):
+        for value in ("85", -1, 101, float("inf")):
+            data = _analysis()
+            data["episodes"][0]["confidence"] = value
+            with self.subTest(value=value):
+                self.assertEqual(normalize_model_confidences(data), [])
+
+    def test_normalizes_mmss_encoded_as_decimal_integer(self):
+        data = _analysis()
+        episode = data["episodes"][0]
+        episode.update({
+            "timestamp_label": "01:05 - 01:34",
+            "start_seconds": 105,
+            "end_seconds": 134,
+        })
+        changes = normalize_model_timestamps(data)
+        self.assertEqual((episode["start_seconds"], episode["end_seconds"]), (65.0, 94.0))
+        self.assertEqual(len(changes), 2)
+
+    def test_does_not_override_valid_seconds_from_approximate_label(self):
+        data = _analysis()
+        episode = data["episodes"][0]
+        episode.update({
+            "timestamp_label": "01:05 - 01:34",
+            "start_seconds": 64,
+            "end_seconds": 95,
+        })
+        self.assertEqual(normalize_model_timestamps(data), [])
     def test_accepts_public_youtube_watch_url(self):
         url = "https://www.youtube.com/watch?v=abc123"
         self.assertEqual(validate_youtube_url(url), url)

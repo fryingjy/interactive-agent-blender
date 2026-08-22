@@ -12,6 +12,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from knowledge_engine.gemini_video_study import (
+    AnalysisValidationError,
     DEFAULT_MODEL,
     analyze_youtube_video,
     build_request,
@@ -95,14 +96,27 @@ def main() -> int:
 
     if args.output is None:
         parser.error("--output is required unless --dry-run is used")
-    result = analyze_youtube_video(
-        source_url,
-        model=args.model,
-        focus=args.focus,
-        expected_source=expected_source,
-        start_seconds=args.start_seconds,
-        end_seconds=args.end_seconds,
-    )
+    try:
+        result = analyze_youtube_video(
+            source_url,
+            model=args.model,
+            focus=args.focus,
+            expected_source=expected_source,
+            start_seconds=args.start_seconds,
+            end_seconds=args.end_seconds,
+        )
+    except AnalysisValidationError as exc:
+        rejected = args.output.with_suffix(args.output.suffix + ".rejected")
+        write_analysis(
+            {
+                "verification_status": "MODEL_EXTRACTION_REJECTED",
+                "validation_error": str(exc),
+                "analysis": exc.analysis,
+            },
+            rejected,
+        )
+        print(f"rejected extraction retained for diagnosis: {rejected}", file=sys.stderr)
+        raise
     target = write_analysis(result, args.output)
     print(f"wrote unverified Gemini extraction: {target}")
     print("next gate: independently check representative timestamps before promotion")

@@ -8,7 +8,9 @@ actual video. This module intentionally does not download or archive videos.
 from __future__ import annotations
 
 import json
+import math
 import os
+import re
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import parse_qs, urlparse
@@ -17,6 +19,14 @@ from urllib.parse import parse_qs, urlparse
 PROMPT_VERSION = "blender-video-study-v1"
 DEFAULT_MODEL = "gemini-3.6-flash"
 VALID_MODALITIES = {"VIDEO", "AUDIO", "CAPTIONS", "UI_TEXT"}
+
+
+class AnalysisValidationError(ValueError):
+    """A rejected extraction whose secret-free model payload remains inspectable."""
+
+    def __init__(self, message: str, analysis: dict[str, Any]):
+        super().__init__(message)
+        self.analysis = analysis
 
 EPISODE_FIELDS = (
     "timestamp_label",
@@ -364,6 +374,66 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
             raise ValueError(f"episode {index} is not grounded in visible video evidence")
 
 
+def normalize_model_confidences(data: dict[str, Any]) -> list[dict[str, Any]]:
+    """Normalize an unambiguous model-produced percentage to the 0..1 contract.
+
+    Structured-output providers occasionally emit ``85`` even when the schema requests a
+    bounded fraction.  Accepting arbitrary out-of-range values would weaken validation, so this
+    conversion is deliberately limited to finite numeric values in ``(1, 100]`` and every change
+    is returned for provenance.  Strings, negatives, values above 100, and non-finite values are
+    left untouched so normal validation rejects them.
+    """
+    normalizations: list[dict[str, Any]] = []
+    for index, episode in enumerate(data.get("episodes", [])):
+        value = episode.get("confidence")
+        if isinstance(value, (int, float)) and not isinstance(value, bool):
+            numeric = float(value)
+            if math.isfinite(numeric) and 1 < numeric <= 100:
+                normalized = numeric / 100.0
+                episode["confidence"] = normalized
+                normalizations.append(
+                    {
+                        "field": f"episodes[{index}].confidence",
+                        "original": value,
+                        "normalized": normalized,
+                        "reason": "provider_returned_percentage_for_fraction_schema",
+                    }
+                )
+    return normalizations
+
+
+def normalize_model_timestamps(data: dict[str, Any]) -> list[dict[str, Any]]:
+    """Repair MM:SS values copied into numeric fields as decimal-looking integers.
+
+    Example: a model may correctly label an episode ``01:05 - 01:34`` while returning numeric
+    values ``105`` and ``134``.  The label is used only when it contains exactly two timestamps and
+    the numeric value equals the corresponding colon-stripped integer.  This keeps the repair
+    deterministic and prevents approximate labels from silently overriding valid seconds.
+    """
+    changes: list[dict[str, Any]] = []
+    for index, episode in enumerate(data.get("episodes", [])):
+        stamps = re.findall(r"(?:(\d+):)?(\d{1,2}):(\d{2})", str(episode.get("timestamp_label", "")))
+        if len(stamps) != 2:
+            continue
+        for field, stamp in zip(("start_seconds", "end_seconds"), stamps):
+            hours_text, minutes_text, seconds_text = stamp
+            expected_raw = int(f"{hours_text}{minutes_text.zfill(2)}{seconds_text}") if hours_text else int(f"{minutes_text}{seconds_text}")
+            value = episode.get(field)
+            if isinstance(value, (int, float)) and not isinstance(value, bool) and float(value) == expected_raw:
+                normalized = int(hours_text or 0) * 3600 + int(minutes_text) * 60 + int(seconds_text)
+                if normalized != value:
+                    episode[field] = float(normalized)
+                    changes.append(
+                        {
+                            "field": f"episodes[{index}].{field}",
+                            "original": value,
+                            "normalized": float(normalized),
+                            "reason": "provider_encoded_mmss_label_as_numeric_seconds",
+                        }
+                    )
+    return changes
+
+
 def build_generate_content_request(
     url: str,
     model: str,
@@ -513,6 +583,8 @@ def analyze_youtube_video(
             response_model = getattr(response, "model_version", None) or model
             endpoint = "generate_content"
     data = json.loads(raw_text)
+    normalizations = normalize_model_timestamps(data)
+    normalizations.extend(normalize_model_confidences(data))
     reported_source_url = data.get("source", {}).get("url")
     try:
         reported_source_matches_request = (
@@ -525,7 +597,10 @@ def analyze_youtube_video(
             "Gemini analysis reported a different or unverifiable source URL; "
             "the extraction is rejected to prevent cross-video attribution"
         )
-    validate_analysis(data, requested_url)
+    try:
+        validate_analysis(data, requested_url)
+    except ValueError as exc:
+        raise AnalysisValidationError(str(exc), data) from exc
     if expected_source:
         validate_expected_source(data, expected_source)
     if study_range:
@@ -548,6 +623,7 @@ def analyze_youtube_video(
             "reported_source_matches_request": reported_source_matches_request,
             "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
             "video_archived": False,
+            "normalizations": normalizations,
             "requested_time_range": list(study_range) if study_range else None,
         },
         "analysis": data,

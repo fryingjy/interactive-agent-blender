@@ -129,14 +129,14 @@
     "active_prop_id": null,
     "active_prop": null,
     "active_target_variant": null,
-    "phase": "reference-reasoning-repair",
+    "phase": "strict-tutorial-apprenticeship",
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "PAUSED_AFTER_DELETED_AND_REJECTED_CANDIDATES",
-    "training_run": "runs/2026-08-21_tutorial-rebuild-donut/",
-    "training_run_boundary": "Tutorial-following practice is not a progressive-prop pass or unfamiliar-reference evidence.",
+    "training_run": "runs/2026-08-22_tutorial-game-asset-factory-chair/",
+    "training_run_boundary": "Tutorial-following practice is not a progressive-prop pass or unfamiliar-reference evidence. Historical technique stages do not authorize held-out work without faithful source-frame-reviewed reproductions.",
     "current_reference_execution": "runs/2026-08-21_reference-aa-battery/",
     "current_reference_execution_boundary": "Dimensionally grounded primary-form blockout only; no human acceptance and no ladder promotion.",
-    "next_action": "Select a fresh non-rotational manufactured target only after recording independent observations and at least two falsifiable representation hypotheses. Reuse generic typed operations; do not add an object-specific builder."
+    "next_action": "Complete and source-frame-review beginner tutorial reproductions, then progress through full intermediate and advanced tutorial objects. Do not select a fresh held-out prop until two consecutive tutorial artifacts pass the strict 8/10 fidelity and technical gates."
   }
 }

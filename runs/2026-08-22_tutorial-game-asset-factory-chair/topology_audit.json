@@ -1,0 +1,12 @@
+{
+  "objects": 1,
+  "vertices": 56,
+  "edges": 108,
+  "faces": 54,
+  "triangles": 108,
+  "non_quad_faces": 0,
+  "boundary_edges": 0,
+  "non_manifold_edges": 0,
+  "connected_components": 1,
+  "modifiers": []
+}

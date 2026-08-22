@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "url": "https://www.youtube.com/watch?v=LyPPgW9GpKo",
+  "video_id": "LyPPgW9GpKo",
+  "title": "16 Curso Blender para Iniciantes COMPLETO - Exercicio Prático - Cadeira Básica com Loop & Extrude",
+  "creator": "Game Asset Factory",
+  "identity_source": "YouTube oEmbed",
+  "identity_checked_at": "2026-08-22",
+  "duration_seconds": 124,
+  "duration_source": "Gemini audiovisual inspection; internally consistent after deterministic MM:SS normalization",
+  "notes": "yt-dlp metadata access was blocked by YouTube HTTP 429/bot verification. The exact title and creator remain independently bound through YouTube oEmbed."
+}

@@ -1,8 +1,13 @@
-# Tutorial reproduction track
+# Tutorial reproduction track — strict apprenticeship restart
 
 Held-out prop modeling is paused after repeated visual-accuracy and construction-graph failures.
-The active learning path now requires the agent to model along with tutorials from beginner through
-professional topics. Watching, transcribing, or summarizing alone never completes a lesson.
+The active learning path now requires faithful tutorial modeling from beginner through professional
+topics. Watching, transcribing, summarizing, or building a bounded technique sheet never completes
+a full-object reproduction.
+
+The former stages 1–7 remain useful historical technique evidence, but their earlier “complete”
+labels were too generous: several were chapter-bounded or simplified, and the Stage 7 medical case
+was only self-rated 5.5/10. They do **not** authorize a return to random prop benchmarks.
 
 ## Completion contract for every lesson
 
@@ -16,7 +21,7 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 7. Apply the core technique to different geometry and record both supporting and counterevidence.
 8. Promote only the rule that survived reproduction and transfer.
 
-## Ordered ladder
+## Historical technique ladder (not a professional capability gate)
 
 | Stage | Focus | Required modeled evidence | Status |
 |---|---|---|---|
@@ -27,7 +32,25 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 | 5 | Retopology and deformation-aware flow | Tutorial retopo asset plus deformation test | COMPLETE WITH BOUNDED LANDMARK-PATCH REPRODUCTION |
 | 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | COMPLETE WITH BOUNDED CONNECTED-CAGE TRANSFER |
 | 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | COMPLETE WITH SIMPLIFIED MEDICAL-CASE DELIVERY |
-| 8 | Held-out reconstruction return gate | Unseen reference asset only after two consecutive tutorial/transfer passes | READY AFTER STAGES 6-7 PASSES |
+| 8 | Held-out reconstruction return gate | Unseen reference asset only after faithful tutorial reproductions | REOPENED; NOT READY |
+
+## Strict apprenticeship ladder
+
+Advancement requires the tutorial's own modeled artifact, source-frame comparison, base/evaluated
+topology inspection, and a transfer test. A reproduction must score at least 8/10 for visible form
+and proportion, have no unexplained construction violations, and have no unresolved topology or
+shading defect. Two consecutive passes are required before increasing difficulty.
+
+| Stage | Tutorial artifact | Required modeling focus | Status |
+|---|---|---|---|
+| B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | MODELED; SOURCE-FRAME REVIEW PENDING |
+| B1 | Blender Guru beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | INCOMPLETE; prior run stopped after Part 6 and has visible quality problems |
+| B2 | Complete beginner product/furniture exercise | Accurate multi-part decomposition, bevel/shading basics, clean presentation | PENDING |
+| I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | PENDING |
+| I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
+| A0 | Advanced production prop tutorial | High/low collections, live modifiers, UVs, bake, materials, export | PENDING |
+| P0 | Professional narrated breakdown | Reference interpretation, uncertainty, revisions, final production review | PENDING |
+| H0 | Held-out return gate | Unseen reference only after two consecutive >=8/10 tutorial passes | BLOCKED |
 
 Current evidence:
 
