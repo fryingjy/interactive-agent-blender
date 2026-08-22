@@ -9,6 +9,18 @@ and is kept as a historical record, not a current-state claim)
 
 This report reflects all listed repository evidence through the 2026-08-10 completion audit. It is not a claim that the complete professional-modeling curriculum is finished.
 
+## Status correction (2026-08-21)
+
+This file remains a historical foundation report. Current state is now summarized in
+`docs/CURRENT_STATE_GAP_MATRIX.md` and `docs/REPOSITORY_AUDIT_2026-08-21.md`. In particular:
+
+- deleted KUPONG, C38, Swingline, MasterLock-resume, mallet, and mug-handle build directories are not
+  active modeling evidence;
+- the donut/mug scene is tutorial-following training, not unfamiliar-reference proof;
+- the active real-reference artifact is the AA/LR6 primary-form blockout, which has no human review;
+- HTML field reports and approval boards are no longer part of the current reporting system;
+- the foundation status remains PARTIAL.
+
 ## Status correction (2026-08-13)
 
 Per the durable rule "if prose conflicts with current code or reproducible evidence, evidence wins"

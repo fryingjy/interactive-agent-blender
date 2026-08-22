@@ -160,13 +160,16 @@
       "status": "PARTIAL",
       "evidence": [
         "knowledge_engine/reference_analysis.py",
+        "knowledge_engine/representation_hypothesis.py",
         "tools/verify_reference_set_gate.py",
-        "runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json",
+        "tools/test_representation_hypotheses.py",
+        "runs/2026-08-21_reference-aa-battery/hypothesis_evaluation.json",
+        "runs/2026-08-21_reference-aa-battery/typed_action_record.json",
         "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json",
         "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
       ],
-      "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist. The MasterLock 140D padlock (runs/2026-08-20_masterlock-140d-resume/) reached its first recorded human review 2026-08-21 -- REVIEW_ACCEPTED_NO_REPAIR, but the reviewer's own words were 'its ok for the most part': a qualified accept, not a claim of a finished or maximally detailed model, recorded as exactly that rather than rounded up. This is the first genuinely reference-driven build (not a technique exercise against an authored form) in this project's history to reach a recorded human accept. Open items remain: the front wordmark/seam detail is unbuilt, the rear/underside is unmodeled, and the negative-space gap found by measurement was deliberately left unfixed rather than closed by contradicting a verified dimensional spec against a photo the reference manifest itself labels PERSPECTIVE, not orthographic.",
-      "next_step": "Apply this same measured, reference-checked construction discipline to a component this build hasn't touched yet (the front wordmark, or a second reference-driven asset on the curriculum ladder) -- the mechanism this requirement tracks is now demonstrated once; repeating it is what would move this from PARTIAL toward something stronger."
+      "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist. Independent observation records can now confirm or contradict numeric/boolean consequences for competing representations without letting candidates embed their own proof. The AA/LR6 run uses side and top evidence to reject a stacked-terminal interpretation and drive one connected typed blockout with exact evaluated dimensions. This remains a simple rotational primary form without human acceptance; it does not prove difficult multi-view interpretation.",
+      "next_step": "Use the same non-circular competing-hypothesis path on a fresh non-rotational manufactured target with ambiguous depth or component continuity, then revise the interpretation from Blender render evidence."
     },
     {
       "id": "13",
@@ -256,11 +259,11 @@
       "status": "IMPLEMENTED_VERIFIED",
       "evidence": [
         "runs/README.md",
-        "docs/field-report/index.html",
-        "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
+        "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md",
+        "docs/REPOSITORY_AUDIT_2026-08-21.md"
       ],
-      "current_boundary": "Report structure and evidence navigation exist; individual reports remain limited to what was actually measured.",
-      "next_step": "Update the field report only with verified current evidence after each substantive session."
+      "current_boundary": "Markdown/JSON report structure and evidence navigation exist; HTML approval boards were removed by direct user instruction. Individual reports remain limited to what was actually measured.",
+      "next_step": "Update authoritative Markdown/JSON current-state records after substantive sessions without reintroducing HTML approval gates."
     },
     {
       "id": "18",

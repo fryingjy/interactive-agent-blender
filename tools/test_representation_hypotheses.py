@@ -28,12 +28,41 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from knowledge_engine.reference_analysis import reference_set_from_dict
-from knowledge_engine.representation_hypothesis import evaluate_predicted_consequence
+from knowledge_engine.representation_hypothesis import (
+    evaluate_predicted_consequence,
+    rank_competing_hypotheses,
+)
 
 
 def _run(scene_payload: dict, reference_payload: dict) -> dict:
     reference_set = reference_set_from_dict(reference_payload)
     items_by_id = {item.reference_id: item for item in reference_set.items}
+
+    # Schema 2 keeps observations outside candidates, preventing a strategy
+    # from embedding both its own prediction and the value used to "verify"
+    # that prediction.  Legacy scene files without this block retain the
+    # original per-consequence report below.
+    observation_records = scene_payload.get("observations")
+    if observation_records is not None:
+        if not isinstance(observation_records, list):
+            raise ValueError("scene observations must be a list")
+        observations = {}
+        for observation in observation_records:
+            observation_id = observation.get("observation_id")
+            if not observation_id or observation_id in observations:
+                raise ValueError("scene observations require unique observation_id values")
+            observations[observation_id] = observation
+        result = rank_competing_hypotheses(
+            scene_payload.get("candidates", []),
+            items_by_id,
+            observations,
+            minimum_confirmed_views=int(scene_payload.get("minimum_confirmed_views", 2)),
+        )
+        return {
+            **result,
+            "schema_version": 2,
+            "record_type": "COMPETING_REPRESENTATION_HYPOTHESIS_EVALUATION",
+        }
 
     candidate_reports = []
     for candidate in scene_payload.get("candidates", []):

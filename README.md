@@ -32,9 +32,8 @@ Current evidence includes:
 - secondary-view component-strategy evidence that makes front-only ambiguity trigger research and
   uses measured top-view depth to choose continuous versus separate construction across two shapes.
 - a validated 30-prop progressive benchmark ladder whose A-G promotion gates preserve post-model
-  human review. The first Swingline blockout was rejected and purged; the directly authorized C38
-  now has a connected all-quad upper cage, crease-controlled live SubD, separate editable high/low
-  collections, controlled renders, and fresh saved-file verification. Visual acceptance remains open.
+  human review. No ladder prop is currently active; deleted candidates are history, not current
+  modeling evidence.
 - a typed two-endpoint Connect Vertex Path operation that splits crossed faces/edges continuously,
   rejects invalid paths before acceptance, and preserves transaction rollback and persistent IDs;
   controlled nonplanar/SubD transfer now adds an opt-in all-quad preflight that rejects a curved
@@ -106,7 +105,6 @@ problem -> retrieve -> research -> hypothesize -> reproduce -> measure
   retained failures.
 - `reference/` — project-owned benchmark/reference inputs and notes.
 - `docs/` — current contracts, architecture, audits, roadmap, and historical narrative.
-- `docs/field-report/` — dependency-free interactive status and retained-evidence navigator.
 
 ## Local validation
 
@@ -160,90 +158,16 @@ The local Blender/MCP entry points are:
 - Do not use real-world weapon-construction or engineering material as training data. Fictional
   prop art may use general modeling principles.
 
-## Recent evidence landmarks
+## Current execution landmarks
 
-The 2026-08-10 through 2026-08-12 paths below are historical citations: their raw folders were
-intentionally removed during the 2026-08-14 cleanup after durable lessons were consolidated. They
-must not be treated as currently reproducible evidence. See `docs/REPOSITORY_LAYOUT.md` for the
-retention boundary and `docs/field-report/index.html` for links to retained, inspectable evidence.
+- `runs/2026-08-21_tutorial-rebuild-donut/` is a tutorial-following training artifact. It does not
+  count as unfamiliar-reference capability or a ladder promotion.
+- `runs/2026-08-21_reference-aa-battery/` is the current real-reference blockout. Independent
+  observations falsify one of two competing representations before a single connected 16-sided
+  cage is built through typed Blender decisions. Human visual acceptance remains open.
+- `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
+  demoted unsupported runtime claims.
 
-- `runs/2026-08-11_connected-camera-corrective/` — post-review one-object camera rebuild: one
-  connected 256-quad control cage, 16-vertex radial loops, welded inset/extrusion details, 0.828
-  mean three-view IoU, weighted lens bevels, 19/19 fresh-process checks, and one-mesh GLB round trip. This is corrective,
-  not new held-out evidence; exact detail and expert acceptance remain open.
-- `runs/2026-08-11_heldout-camera-subd/` — second online CC0 held-out family whose 19-object
-  candidate passed automated gates but was explicitly overturned by experienced review for an
-  over-broad separate-assembly strategy. The rejection is retained as evidence, not hidden.
-
-- Boombox benchmark: removed 2026-08-12. It passed every automated gate but was rejected on direct
-  human visual review for not resembling its reference at all; see
-  `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md` for the retained lesson.
-- `runs/2026-08-11_multiview-barrel/` — connected 5,376-quad barrel shell and multi-view checks.
-- `runs/2026-08-11_facial-expression-transfer/` — bounded driven facial-corrective mechanism.
-- `runs/2026-08-11_mixed-surface-diagnosis/` — adaptive five-cause diagnosis and exact clean-state
-  recovery under fixed-seed Cycles.
-- `runs/2026-08-10_online-lessons/` — decoded official lesson evidence and synchronized modalities.
-- `runs/2026-08-10_profile-authored-sword/` and `runs/2026-08-10_profile-authored-axe/` — corrective
-  profile-authored hard-surface evidence.
-- `runs/2026-08-11_expressive-facial-articulation/` — independently verified regional smile
-  coupling with five preserved rejected iterations; organic follow-on is deferred.
-- `runs/2026-08-15_video-transfer-uniform-deformation/` — direct transfer of the anvil video's
-  uniform-loop deformation lesson to a different 12-sided circular product form: identical
-  connected all-quad cages, 82.10% lower profile RMSE, 54.85% better side-quad aspect-ratio p95,
-  independent fresh-process verification, and a retrieval-to-planner behavior proof. This is a
-  controlled transfer, not held-out professional-asset evidence.
-- `runs/2026-08-15_video-study-reference-workflow/` — seven supplied reference-workflow videos
-  analyzed through public-video input with timestamped audio/visual episodes, source-fitness limits,
-  and seven unpromoted captured principles.
-- `runs/2026-08-15_reference-set-gate/` — controls proving that image count, view count, provenance
-  count, target identity, and property authority are not interchangeable.
-
-- `runs/2026-08-15_bridge-correspondence-control/` — protocol 0.3 bridge-twist analysis and typed
-  control, two-shape crossed-to-clean quad transfer, unequal-density rejection, and exact rollback
-  after a post-mutation failure; independently verified without orphan mesh datablocks.
-- `runs/2026-08-15_addon-resource-safety/` - Blender 5.2-validated connector cleanup: bounded HTTP
-  timeouts, shared streamed downloads, exact temporary-resource ownership, and a measured decision
-  not to delete unique retained evidence.
-- `runs/2026-08-15_retrieval-abstention/` - frozen positive/paraphrase and unrelated-ticket negative
-  controls proving that weak lexical overlap now abstains instead of emitting a planner hint.
-- `runs/2026-08-15_bevel-subd-order/` - controlled, rendered modifier-order comparison with an
-  independent verification record.
-- `runs/2026-08-15_shrinkwrap-footprint-transfer/` - bounded projection transfer with retained
-  `.blend`, MatCap render, report, and independent verification.
-- `runs/2026-08-15_reference-interpretation-contract/` - evidence-bound silhouette, boundary,
-  uncertainty, and target-identity decisions integrated into stage progression.
-- `runs/2026-08-15_gemini-pipeline-validation/` - retained failed provenance control: the executable
-  Gemini request returned a different source ID and is now explicitly rejected.
-- `runs/2026-08-15_video-discovery-queue/` - live metadata-only lesson discovery, known-source and
-  held-out contamination filters, strict source binding, one retained cross-video rejection, and
-  one independently detected timestamp defect; no video was archived and no lesson was promoted.
-- `runs/2026-08-15_nailsea-form-correction/` - correction of the retained rejected candlestick:
-  curvature-aware loop redistribution on one connected 12-sided quad shell, 0.955 front IoU,
-  published-dimension recovery, and a passing fresh-process Blender verifier. Human form approval
-  remains pending and no skill was promoted.
-- `runs/2026-08-16_bmesh-editmode-customdata/` — current Blender 5.2 live Edit Mode BMesh evidence:
-  destructive all-quad subdivision, valid selection flushing, edge/face/loop custom data, saved
-  `.blend`, and a fresh-process verifier.
-- `runs/2026-08-16_bevel-normal-policy/` — matched Blender 5.2 solid/evaluated-normal comparison:
-  plain smooth Bevel versus Harden Normals versus Bevel Face Strength followed by Weighted Normal,
-  with a saved `.blend`, render, numeric report, and fresh verifier.
-- `runs/2026-08-16_curved-bevel-normal-policy/` — twelve live radial/taper variants separate
-  Bevel-induced normal damage from uneven-cage error; Harden Normals restores the baseline while
-  Weighted Normal is explicitly rejected on the uneven curved fixture.
-- `runs/2026-08-16_double-curvature-bevel-subd/` — two connected all-quad double-curvature families
-  separate declared physical-rim intent from weight assignment; complete controls stay visually
-  continuous while eight-edge omissions remain technically clean but visibly pinch and fail the
-  exact persistent-ID audit. Live stacks, base-cage wireframe, MatCap comparisons, and 11/11 fresh
-  checks are retained.
-- `runs/2026-08-16_real-video-reference-setup-review/` — identity-bound whole-video plus native
-  range-scoped Gemini analysis, five independently inspected browser frames, sampled visible
-  captions, one verified 24–124 s orthographic-correction episode, and explicit rejection of later
-  timestamp drift.
-- `runs/2026-08-16_reference-image-alignment-transfer/` — typed editable Image Empty creation,
-  CUSTOM free-view failure control, 0° FRONT/RIGHT transfer, duplicated-single-source multi-view
-  rejection, saved `.blend`, controlled renders, and fresh-process verification.
-- `runs/2026-08-15_level14-synthesis-audit/` - independent audit and correction of professional-
-  judgment synthesis claims.
-
-Use the foundation report and implementation audit for the complete, bounded interpretation of
-these runs.
+Historical paths may be named in dated reports even when their raw artifacts were intentionally
+removed. `knowledge/foundation/source_retention_ledger.json` is authoritative for that boundary;
+current capability claims must point to retained evidence or current code.

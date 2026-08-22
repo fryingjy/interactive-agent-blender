@@ -3113,5 +3113,68 @@
         "The model has no approved production topology, UV, material, underside, or export state."
       ]
     }
+  },
+  {
+    "id": "duracell-id1500-lr6-datasheet",
+    "url": "https://www.feyelektronik.de/downloads/db-duracell-industrial-lr6-aa-id1500.pdf",
+    "local_path": "runs/2026-08-21_reference-aa-battery/duracell_id1500_datasheet.pdf",
+    "title": "Duracell Industrial ID1500 / LR6 AA Product Datasheet",
+    "creator": "Duracell",
+    "source_type": "manufacturer_datasheet_mirror",
+    "trust_tier": "A",
+    "version": "downloaded 2026-08-21",
+    "topics": ["reference-modeling", "dimensional-drawing", "aa-battery", "primary-form"],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": false
+    },
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["manufacturer_datasheet", "orthographic_side_drawing", "orthographic_top_drawing"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_reference-aa-battery/"],
+      "direct_observations": [
+        "The dimensional drawing bounds total cell height, including the positive terminal, to 49.2-50.5 mm and body diameter to 13.5-14.5 mm.",
+        "The positive terminal is bounded to 5.5 mm maximum diameter and 1.0 mm minimum projection."
+      ],
+      "limitations": [
+        "The file is hosted by an electronics distributor rather than Duracell's current first-party site.",
+        "The drawing defines an allowed LR6 envelope, not one branded wrapper profile."
+      ]
+    }
+  },
+  {
+    "id": "wikimedia-commons-aa-battery-labelled",
+    "url": "https://commons.wikimedia.org/wiki/File:AA_Battery_(Labelled).svg",
+    "local_path": "runs/2026-08-21_reference-aa-battery/aa_battery_labelled.svg",
+    "title": "AA Battery (Labelled)",
+    "creator": "Wikimedia Commons contributor Lead holder",
+    "source_type": "public_domain_reference_drawing",
+    "trust_tier": "B",
+    "version": "downloaded 2026-08-21",
+    "topics": ["reference-modeling", "aa-battery", "primary-form", "dimensional-anchor"],
+    "access": {
+      "text": true,
+      "video": false,
+      "audio": false,
+      "captions": false,
+      "blend_data": false
+    },
+    "status": "STUDIED",
+    "rejected_reason": null,
+    "modalities_inspected": ["public_domain_svg", "orthographic_side_drawing"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_reference-aa-battery/"],
+      "direct_observations": [
+        "The drawing labels a representative AA cell as 50 mm high and 14 mm in diameter and confirms the generic terminal-to-body silhouette."
+      ],
+      "limitations": [
+        "The dimensions are representative rather than a manufacturing tolerance specification.",
+        "The label artwork is fictional and cannot support manufacturer-specific surface detail."
+      ]
+    }
   }
 ]

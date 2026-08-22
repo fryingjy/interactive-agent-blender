@@ -37,14 +37,26 @@ def validate(data):
         errors.append("promotion must require human review")
     active = data.get("active_state", {})
     active_id = active.get("active_prop_id")
-    if not isinstance(active_id, int) or active_id not in ids or active.get("active_prop") != titles[active_id - 1]:
+    paused = (
+        active_id is None
+        and active.get("active_prop") is None
+        and active.get("active_target_variant") is None
+        and active.get("authorization") == "LADDER_PAUSED"
+        and active.get("modeling_authorized") is False
+    )
+    active_prop_valid = (
+        isinstance(active_id, int)
+        and active_id in ids
+        and active.get("active_prop") == titles[active_id - 1]
+    )
+    if not (paused or active_prop_valid):
         errors.append("active state must point to one declared prop ID and matching title")
     authorization = active.get("authorization")
     modeling_authorized = active.get("modeling_authorized")
     valid_locked = authorization in {"REFERENCE_ANALYSIS_REQUIRED", "EXTERNAL_REVIEW_REQUIRED"} and modeling_authorized is False
     valid_direct = authorization == "DIRECT_USER_AUTHORIZATION" and modeling_authorized is True
-    if not (valid_locked or valid_direct):
-        errors.append("active authorization and modeling_authorized must form a supported locked or direct-user pair")
+    if not (paused or valid_locked or valid_direct):
+        errors.append("active authorization and modeling_authorized must form a supported paused, locked, or direct-user pair")
     if len(data.get("evidence_required", [])) < 15:
         errors.append("evidence contract is incomplete")
     return errors

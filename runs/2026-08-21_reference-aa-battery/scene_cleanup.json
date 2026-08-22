@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "record_type": "BLEND_SCENE_ALLOWLIST_CLEANUP",
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-aa-battery\\aa_battery_blockout.blend",
+  "output_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-aa-battery\\aa_battery_blockout.blend",
+  "kept": [
+    "AA_Battery_Blockout"
+  ],
+  "removed": [],
+  "removed_orphan_datablocks": {
+    "meshes": [],
+    "cameras": [],
+    "lights": [],
+    "materials": [],
+    "images": [
+      "Render Result",
+      "Viewer Node"
+    ]
+  },
+  "pass": true,
+  "claim_boundary": "Scene-object allowlist cleanup; does not assess mesh or visual quality."
+}

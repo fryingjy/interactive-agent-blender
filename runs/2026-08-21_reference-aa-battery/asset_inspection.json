@@ -1,0 +1,62 @@
+{
+  "source_blend": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_reference-aa-battery\\aa_battery_blockout.blend",
+  "blender_version": "5.2.0 LTS",
+  "scene": "Scene",
+  "collections": 1,
+  "objects_by_type": {
+    "MESH": 1
+  },
+  "mesh_totals": {
+    "objects": 1,
+    "vertices": 192,
+    "faces": 178,
+    "triangles": 0,
+    "quads": 176,
+    "ngons": 2,
+    "boundary_edges": 0,
+    "non_manifold_edges": 0,
+    "degenerate_faces": 0
+  },
+  "modifier_counts": {},
+  "materials": 0,
+  "images": 0,
+  "armatures": 0,
+  "actions": 0,
+  "mesh_names": [
+    "AA_Battery_Blockout"
+  ],
+  "largest_meshes": [
+    {
+      "name": "AA_Battery_Blockout",
+      "vertices": 192,
+      "edges": 368,
+      "faces": 178,
+      "triangles": 0,
+      "quads": 176,
+      "ngons": 2,
+      "boundary_edges": 0,
+      "non_manifold_edges": 0,
+      "degenerate_faces": 0,
+      "uv_layers": 1,
+      "materials": 0,
+      "modifiers": [],
+      "dimensions": [
+        0.014499999582767487,
+        0.014499999582767487,
+        0.05049999803304672
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "hidden_viewport": false,
+      "hidden_render": false
+    }
+  ],
+  "assessment_limits": [
+    "Structural inventory does not establish artistic quality.",
+    "Open boundaries may be intentional and require object-level interpretation.",
+    "Base mesh counts do not include evaluated modifier geometry."
+  ]
+}

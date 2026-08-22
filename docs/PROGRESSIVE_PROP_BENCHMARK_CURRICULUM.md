@@ -31,13 +31,15 @@ verification, human review/repair tickets, final editable `.blend`, and transfer
 
 ## Active state
 
-The KLF03 electric-kettle attempt is the current terminal failure record. Its final checkpoint is
-technically valid and editable, but the user rejected its resemblance. Component-level silhouette
-checks showed normalized overlap of 0.4001 for the spout, 0.5741 for the handle, and 0.5156 for the
-base; whole-object normalization had obscured those errors. The model is therefore not promoted and
-will not receive more target-specific cosmetic repair.
+No ladder prop is active. The prior KUPONG state was stale after its build was deleted, and the
+donut/mug tutorial rebuild is training rather than a benchmark entry.
 
-The ladder advances to Prop 5, Vintage Alarm Clock, only after the reusable component-level reference
-comparison and recoverable component-rebuild workflow has been exercised on a focused reproduction.
-Direct user instruction removes any pre-model approval-board requirement; it does not remove the
-requirement for reference fidelity or the authority of a later human rejection.
+`runs/2026-08-21_reference-aa-battery/` is the current focused reference-reasoning execution case.
+It proves independent observation → competing representation → cross-view test → typed connected
+blockout on a simple rotational object. It has no human acceptance and does not promote or replace a
+ladder prop.
+
+The next ladder attempt must use a fresh non-rotational manufactured target, at least two falsifiable
+representation hypotheses, and generic typed operations. Direct user instruction removes any
+pre-model approval-board requirement; it does not remove reference fidelity or the authority of a
+later human rejection.

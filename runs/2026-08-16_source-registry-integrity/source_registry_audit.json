@@ -1,12 +1,12 @@
 {
   "registry": "knowledge\\foundation\\source_registry.json",
   "retention_ledger": "knowledge\\foundation\\source_retention_ledger.json",
-  "record_count": 81,
-  "missing_artifact_count": 62,
+  "record_count": 91,
+  "missing_artifact_count": 70,
   "unclassified_missing_artifact_count": 0,
-  "classified_missing_artifact_count": 62,
+  "classified_missing_artifact_count": 70,
   "explicitly_non_retained_count": 13,
-  "non_path_reference_count": 48,
+  "non_path_reference_count": 51,
   "locally_reproducible": false,
   "missing_artifacts": [],
   "classified_missing_artifacts": [
@@ -1063,6 +1063,142 @@
         ],
         "claim_boundary": "Not locally reproducible; retained only as a historical reference."
       }
+    },
+    {
+      "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_scotch-c38-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+        "field": "local_path",
+        "path": "runs/2026-08-16_scotch-c38-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_scotch-c38-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-scotch-c38-crease-model-2026-08-16",
+        "field": "metadata.experiments",
+        "path": "runs/2026-08-16_scotch-c38-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+        "field": "local_path",
+        "path": "runs/2026-08-16_smeg-klf03-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-smeg-klf03-primary-blockout-2026-08-16",
+        "field": "metadata.experiments",
+        "path": "runs/2026-08-16_smeg-klf03-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+        "field": "local_path",
+        "path": "runs/2026-08-16_smeg-klf03-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_smeg-klf03-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+        "field": "metadata.experiments",
+        "path": "runs/2026-08-16_smeg-klf03-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+      "field": "local_path",
+      "path": "runs/2026-08-16_westclox-70010-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+        "field": "local_path",
+        "path": "runs/2026-08-16_westclox-70010-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
+    },
+    {
+      "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+      "field": "metadata.experiments",
+      "path": "runs/2026-08-16_westclox-70010-model/",
+      "exists": false,
+      "kind": "missing",
+      "retention": {
+        "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+        "field": "metadata.experiments",
+        "path": "runs/2026-08-16_westclox-70010-model/",
+        "classification": "HISTORICAL_ARTIFACT_REMOVED_FROM_GIT_HISTORY",
+        "deleted_commits": [
+          "a8e7921"
+        ],
+        "claim_boundary": "Deliberately deleted 2026-08-17 per direct user instruction (every named-product model-build attempt to date was judged not good enough to keep). Not locally reproducible; retained only as a historical reference."
+      }
     }
   ],
   "explicitly_non_retained": [
@@ -1489,9 +1625,24 @@
       "path": "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
     },
     {
+      "source_id": "experiment-connect-vertex-path-curved-transfer-2026-08-16",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/connect-vertex-path-subd-safe-quads.json"
+    },
+    {
       "source_id": "experiment-double-curvature-bevel-subd-2026-08-16",
       "field": "metadata.skills",
       "path": "knowledge/skills/explicit-semantic-bevel-edge-intent.json"
+    },
+    {
+      "source_id": "experiment-reference-component-overlay-gate-2026-08-16",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/reference.component-overlay-gate-before-polish.json"
+    },
+    {
+      "source_id": "experiment-westclox-70010-construction-gate-2026-08-16",
+      "field": "metadata.skills",
+      "path": "knowledge/skills/reference.component-overlay-gate-before-polish.json"
     }
   ],
   "claim_boundary": "Classified non-retained evidence remains unavailable for local reproduction. The ledger explains its retention state but does not turn it into a passing artifact or prove the external source claim."
