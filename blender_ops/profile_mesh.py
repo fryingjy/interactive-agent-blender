@@ -80,6 +80,24 @@ def extrude_closed_profile(name, profile, *, depth, collection=None):
     if len(set(points)) != len(points):
         raise ValueError("closed extrusion profile points must be unique")
 
+    # The face construction below expects clockwise X/Z winding.  Earlier
+    # versions accepted either order without normalizing it, so the common
+    # counter-clockwise outline produced a closed manifold whose normals all
+    # pointed inward.  That is easy to miss in solid shading but materially
+    # breaks downstream Boolean cutters.  Normalize winding here because the
+    # public operation promises an authored outline, not a hidden orientation
+    # precondition.
+    signed_area = 0.5 * sum(
+        x * points[(index + 1) % len(points)][1]
+        - points[(index + 1) % len(points)][0] * z
+        for index, (x, z) in enumerate(points)
+    )
+    if abs(signed_area) <= 1e-12:
+        raise ValueError("closed extrusion profile must enclose non-zero X/Z area")
+    winding_normalized = signed_area > 0.0
+    if winding_normalized:
+        points.reverse()
+
     half_depth = float(depth) / 2.0
     count = len(points)
     vertices = [(x, -half_depth, z) for x, z in points] + [(x, half_depth, z) for x, z in points]
@@ -99,6 +117,8 @@ def extrude_closed_profile(name, profile, *, depth, collection=None):
             uv_layer.data[loop_index].uv = (x, z)
     obj = bpy.data.objects.new(name, mesh)
     (collection or bpy.context.scene.collection).objects.link(obj)
+    obj["profile_winding"] = "CLOCKWISE_XZ"
+    obj["profile_winding_normalized"] = bool(winding_normalized)
     return obj
 
 

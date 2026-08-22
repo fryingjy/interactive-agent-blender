@@ -514,6 +514,8 @@ class ModelerServer:
             "vertices": len(obj.data.vertices),
             "edges": len(obj.data.edges),
             "faces": len(obj.data.polygons),
+            "profile_winding": obj.get("profile_winding"),
+            "profile_winding_normalized": bool(obj.get("profile_winding_normalized", False)),
             "cap_topology": "NGON" if len(clean_profile) > 4 else "QUAD_OR_TRIANGLE",
             "construction_boundary": "Profile side walls are connected quads; n-gon caps require local quad layout before SubD surface work.",
         }

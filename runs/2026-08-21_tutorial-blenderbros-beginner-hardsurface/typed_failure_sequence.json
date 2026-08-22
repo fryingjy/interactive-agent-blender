@@ -1,0 +1,55 @@
+[
+  {
+    "label": "build_connected_all_quad_body",
+    "command": "create_quad_shell_sections",
+    "params": {
+      "name": "tutorial_enclosure_failure",
+      "section_grids": [
+        [[[-1.20,-0.75,-2.62],[1.20,-0.75,-2.62]],[[-1.50,-0.75,-2.38],[1.50,-0.75,-2.38]],[[-1.50,-0.75,1.10],[1.50,-0.75,1.10]],[[-1.35,-0.75,2.35],[1.35,-0.75,2.35]],[[-1.00,-0.75,3.00],[1.00,-0.75,3.00]]],
+        [[[-1.20,0.75,-2.62],[1.20,0.75,-2.62]],[[-1.50,0.75,-2.38],[1.50,0.75,-2.38]],[[-1.50,0.75,1.10],[1.50,0.75,1.10]],[[-1.35,0.75,2.35],[1.35,0.75,2.35]],[[-1.00,0.75,3.00],[1.00,0.75,3.00]]]
+      ],
+      "active_cells": [[true],[true],[true],[true]]
+    }
+  },
+  {
+    "label": "create_upper_slot_cutter",
+    "command": "create_profile_extrusion",
+    "params": {"name":"failure_upper_slot_cutter","profile":[[-0.78,1.42],[-0.66,1.30],[0.66,1.30],[0.78,1.42],[0.78,1.70],[0.66,1.82],[-0.66,1.82],[-0.78,1.70]],"depth":2.0}
+  },
+  {
+    "label": "wrong_order_add_bevel_before_boolean",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_wrong_modifier_order","operation":"add_modifier","params":{"modifier_type":"BEVEL","modifier_name":"Body_Bevel"}}
+  },
+  {
+    "label": "failure_set_bevel_width",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_bevel_width","operation":"set_modifier_parameter","params":{"modifier_name":"Body_Bevel","parameter":"width","value":0.10}}
+  },
+  {
+    "label": "failure_set_bevel_segments",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_bevel_segments","operation":"set_modifier_parameter","params":{"modifier_name":"Body_Bevel","parameter":"segments","value":3}}
+  },
+  {
+    "label": "record_deliberate_failure_angle_scope",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_angle_scope","operation":"set_bevel_scoping","params":{"method":"ANGLE","modifier_name":"Body_Bevel","angle_deg":30.0,"width":0.10,"segments":3}}
+  },
+  {
+    "label": "wrong_order_add_boolean_after_bevel",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_boolean_after_bevel","operation":"add_modifier","params":{"modifier_type":"BOOLEAN","modifier_name":"Upper_Slot_Boolean"}}
+  },
+  {
+    "label": "failure_assign_boolean_cutter",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_boolean_target","operation":"set_modifier_parameter","params":{"modifier_name":"Upper_Slot_Boolean","parameter":"object","value":"failure_upper_slot_cutter"}}
+  },
+  {
+    "label": "failure_smooth_by_angle",
+    "transaction": {"name":"tutorial_enclosure_failure","action_type":"failure_shading","operation":"set_smooth_by_angle","params":{"angle":0.5235987756,"keep_sharp_edges":true}}
+  },
+  {
+    "label": "archive_failure_cutter",
+    "transaction": {"name":"failure_upper_slot_cutter","action_type":"archive_construction_cutter","operation":"archive_object","params":{"collection_name":"CONSTRUCTION_CUTTERS"}}
+  },
+  {"label":"failure_base_state","command":"get_full_state","params":{"name":"tutorial_enclosure_failure"}},
+  {"label":"failure_evaluated_state","command":"get_evaluated_state","params":{"name":"tutorial_enclosure_failure"}},
+  {"label":"failure_shading_audit","command":"get_hard_surface_shading_audit","params":{"name":"tutorial_enclosure_failure"}},
+  {"label":"failure_front_matcap","command":"render_diagnostic_pass","params":{"name":["tutorial_enclosure_failure"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/failure_front_matcap.png","pass_type":"matcap","view":"front","resolution":512,"margin":1.15}}
+]

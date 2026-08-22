@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_VIDEO_REVIEW",
+  "source": "https://www.youtube.com/watch?v=1qVbGr_ie30",
+  "identity": {
+    "title": "COMPLETE Beginners Guide to Hard Surface Modeling (Blender Tutorial)",
+    "creator": "Josh - Blender Bros",
+    "youtube_player_duration": "40:04",
+    "gemini_reported_duration_seconds": 2393,
+    "duration_within_one_percent": true
+  },
+  "visible_checks": [
+    {
+      "timestamp": "05:30",
+      "observed": "Blender viewport showed the stretched enclosure block with transform scale values reset to 1.000 while captions explained that Blender now perceives the corrected scale.",
+      "supports": "The tutorial explicitly corrects uneven bevel behavior by applying object scale before re-beveling."
+    }
+  ],
+  "corroboration": [
+    "YouTube page title, creator, and main-player duration matched source metadata.",
+    "Timestamped transcript ended at 39:53 and aligned with the two Gemini audiovisual ranges.",
+    "The browser check is representative, not a claim that every extracted episode received a second frame-by-frame review."
+  ],
+  "status": "SOURCE_IDENTITY_AND_REPRESENTATIVE_FRAME_VERIFIED"
+}

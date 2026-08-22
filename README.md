@@ -173,6 +173,12 @@ The local Blender/MCP entry points are:
   audiovisual study, an actual connected all-quad can reproduction, render-driven correction, and
   a different-geometry SubD-density transfer test. The ordered gate is documented in
   `docs/TUTORIAL_REPRODUCTION_TRACK.md`; held-out props remain paused.
+- `runs/2026-08-21_tutorial-blenderbros-hive-controller/` completes Stage 2 with a connected
+  annular opening, a rejected overconstrained support/crease branch, and an offset-aperture transfer.
+- `runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/` completes bounded Stage 3 with an
+  actual full-video study, a connected mechanical enclosure, visible modifier-order failure and
+  correction, and a different-geometry symmetry/Boolean transfer. Its evaluated cut topology is
+  explicitly retained as a limitation; Stage 4 advanced SubD/pinch diagnosis is next.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

@@ -22,8 +22,8 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 |---|---|---|---|
 | 1 | Edit Mode, continuous extrusion, radial profiles, quad openings, SubD spacing | JL Mussi energy can plus bottle-density transfer | COMPLETE WITH BOUNDED SIMPLIFICATION |
 | 2 | Planar-to-curved topology and loop redirection | Blender Bros controller-opening chapter plus offset rounded-panel transfer | COMPLETE WITH BOUNDED CHAPTER REPRODUCTION |
-| 3 | Product hard surface: symmetry, bevel/crease choice, booleans, shading | Complete layered mechanical tutorial asset | NEXT |
-| 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | PENDING |
+| 3 | Product hard surface: symmetry, bevel/crease choice, booleans, shading | Complete layered mechanical tutorial asset | COMPLETE WITH EVALUATED-TOPOLOGY LIMITATION |
+| 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | NEXT |
 | 5 | Retopology and deformation-aware flow | Tutorial retopo asset plus deformation test | PENDING |
 | 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | PENDING |
 | 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | PENDING |
@@ -33,3 +33,4 @@ Current evidence:
 
 - `runs/2026-08-21_tutorial-jl-mussi-energy-can/`
 - `runs/2026-08-21_tutorial-blenderbros-hive-controller/`
+- `runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/`

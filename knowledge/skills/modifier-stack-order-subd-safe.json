@@ -71,11 +71,23 @@
       "type": "controlled matched-cage visual and evaluated-surface comparison",
       "description": "Blender 5.2 comparison in runs/2026-08-15_bevel-subd-order/ used identical supported all-quad box cages and the same 36 semantic design-edge segments. Bevel->Subdivision produced 2,400 evaluated quads, 0 localized pinch candidates, and a broad continuous MatCap highlight. Crease(0.75)+Subdivision->Bevel produced 1,176 quads and the flattest panels but 16 concentrated corner-curvature candidates. Unprotected Subdivision->Bevel had the same count and bounds as the protected variant yet visibly over-rounded the form, disproving count-only comparison. A fresh process independently verified modifier order, crease placement, topology health, and render dimensions.",
       "limitation": "One supported rectangular box fixture; not transfer validation on a curved hull or production prop. The surface diagnostic reports candidates, not certain defects, and was interpreted alongside fixed-frame MatCap and evaluated-wire renders."
+    },
+    {
+      "type": "full tutorial reproduction plus different-geometry transfer",
+      "description": "Stage 3 in runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/ reproduced a layered enclosure from Josh - Blender Bros' complete beginner hard-surface tutorial. The retained live stack uses Boolean->Boolean->Bevel and shows rounded aperture rims in fixed-frame MatCap. The matched rejected branch uses Bevel->Boolean and leaves the generated aperture visibly polygonal/sharp. A wide horizontal control module transferred Boolean->Bevel and a mirrored offset cutter to different proportions, again producing rounded symmetric openings.",
+      "limitation": "The base cages are connected, all-quad, and manifold, but the evaluated Boolean/Bevel outputs still report non-manifold boundary and n-gon diagnostics around cuts. This supports the visual edge-function rule only; it is not production-topology validation."
     }
   ],
 
-  "runtime_usage": [],
+  "runtime_usage": [
+    {
+      "date": "2026-08-22",
+      "context": "Stage 3 beginner-to-advanced tutorial reproduction track",
+      "use": "Selected Boolean-before-Bevel because the tutorial/reference required a physical radius on generated aperture rims; retained live modifiers and transferred the same choice to a horizontal control module.",
+      "result": "Visual MatCap evidence supported the intended rounded rim on both geometries; evaluated topology diagnostics remain a recorded limitation."
+    }
+  ],
 
   "status": "EXPERIMENTALLY_TESTED",
-  "status_note": "Controlled matched-pair evidence exists for the original four modifier pairs, a cylindrical second-shape transfer for Mirror+Subdivision, and fixed-frame MatCap/evaluated-wire evidence for Bevel versus Subdivision order. The evidence rejects universal ordering and requires per-topology, reference-defined evaluation. Not yet RUNTIME_VALIDATED or BENCHMARK_SUPPORTED; Bevel/Subdivision still needs curved-hull or real-prop transfer."
+  "status_note": "Controlled matched-pair evidence exists for the original modifier pairs, a cylindrical second-shape transfer for Mirror+Subdivision, fixed-frame MatCap/evaluated-wire evidence for Bevel versus Subdivision order, and one full tutorial plus different-geometry runtime use for Boolean-before-Bevel. The evidence rejects universal ordering and requires per-topology, reference-defined evaluation. Production validation remains blocked by unresolved evaluated cut-topology diagnostics."
 }

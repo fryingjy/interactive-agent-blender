@@ -13,6 +13,10 @@ from pathlib import Path
 
 import bpy
 
+TOOLS_DIR = Path(__file__).resolve().parent
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
+
 from lab_common import add_repo_paths
 
 ROOT, OPS = add_repo_paths(__file__)
@@ -60,6 +64,13 @@ def main() -> None:
                 for attr in ("agent_vertex_id", "agent_edge_id", "agent_face_id")
             ),
             "caps_explicitly_recorded_as_ngons": result["cap_topology"] == "NGON",
+            "front_cap_normal_points_outward": obj.data.polygons[0].normal.y < -0.999,
+            "rear_cap_normal_points_outward": obj.data.polygons[1].normal.y > 0.999,
+            "side_normals_point_outward": all(
+                polygon.normal.x * polygon.center.x + polygon.normal.z * polygon.center.z > 0.0
+                for polygon in obj.data.polygons[2:]
+            ),
+            "counter_clockwise_input_was_normalized": bool(obj.get("profile_winding_normalized")),
         },
     }
     report["pass"] = all(report["checks"].values())

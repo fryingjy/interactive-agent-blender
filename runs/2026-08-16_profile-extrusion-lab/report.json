@@ -49,7 +49,11 @@
     "manifold": true,
     "side_faces_are_quads": true,
     "persistent_ids_assigned": true,
-    "caps_explicitly_recorded_as_ngons": true
+    "caps_explicitly_recorded_as_ngons": true,
+    "front_cap_normal_points_outward": true,
+    "rear_cap_normal_points_outward": true,
+    "side_normals_point_outward": true,
+    "counter_clockwise_input_was_normalized": true
   },
   "pass": true
 }

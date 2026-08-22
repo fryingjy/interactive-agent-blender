@@ -1,0 +1,61 @@
+[
+  {
+    "label": "build_wide_connected_all_quad_control_module",
+    "command": "create_quad_shell_sections",
+    "params": {
+      "name": "transfer_horizontal_control_module",
+      "section_grids": [
+        [[[-2.70,-0.60,-1.20],[-1.45,-0.60,-1.20],[0.00,-0.60,-1.20],[1.45,-0.60,-1.20],[2.70,-0.60,-1.20]],[[-2.70,-0.60,1.20],[-1.45,-0.60,1.20],[0.00,-0.60,1.20],[1.45,-0.60,1.20],[2.70,-0.60,1.20]]],
+        [[[-2.70,0.60,-1.20],[-1.45,0.60,-1.20],[0.00,0.60,-1.20],[1.45,0.60,-1.20],[2.70,0.60,-1.20]],[[-2.70,0.60,1.20],[-1.45,0.60,1.20],[0.00,0.60,1.20],[1.45,0.60,1.20],[2.70,0.60,1.20]]]
+      ],
+      "active_cells": [[true,true,true,true]]
+    }
+  },
+  {
+    "label": "create_offset_transfer_channel",
+    "command": "create_profile_extrusion",
+    "params": {"name":"transfer_channel_cutter","profile":[[2.02,-0.74],[2.02,0.74],[2.50,0.74],[2.50,-0.74]],"depth":1.8}
+  },
+  {
+    "label": "round_transfer_channel_cutter",
+    "transaction": {"name":"transfer_channel_cutter","action_type":"different_geometry_beveled_cutter","operation":"add_modifier","params":{"modifier_type":"BEVEL","modifier_name":"Transfer_Cutter_Bevel"}}
+  },
+  {
+    "label": "scope_transfer_channel_cutter_bevel",
+    "transaction": {"name":"transfer_channel_cutter","action_type":"different_geometry_beveled_cutter_scope","operation":"set_bevel_scoping","params":{"method":"ANGLE","modifier_name":"Transfer_Cutter_Bevel","angle_deg":30.0,"width":0.11,"segments":3}}
+  },
+  {
+    "label": "mirror_transfer_channel_from_shared_origin",
+    "transaction": {"name":"transfer_channel_cutter","action_type":"different_geometry_symmetry","operation":"add_modifier","params":{"modifier_type":"MIRROR","modifier_name":"Transfer_Symmetry_Mirror"}}
+  },
+  {
+    "label": "transfer_boolean_before_bevel",
+    "transaction": {"name":"transfer_horizontal_control_module","action_type":"different_geometry_boolean_order","operation":"add_modifier","params":{"modifier_type":"BOOLEAN","modifier_name":"Transfer_Channel_Boolean"}}
+  },
+  {
+    "label": "assign_transfer_boolean_cutter",
+    "transaction": {"name":"transfer_horizontal_control_module","action_type":"different_geometry_boolean_target","operation":"set_modifier_parameter","params":{"modifier_name":"Transfer_Channel_Boolean","parameter":"object","value":"transfer_channel_cutter"}}
+  },
+  {
+    "label": "add_transfer_bevel_after_boolean",
+    "transaction": {"name":"transfer_horizontal_control_module","action_type":"different_geometry_bevel_order","operation":"add_modifier","params":{"modifier_type":"BEVEL","modifier_name":"Transfer_Bevel"}}
+  },
+  {
+    "label": "scope_transfer_bevel_deliberately",
+    "transaction": {"name":"transfer_horizontal_control_module","action_type":"different_geometry_angle_scope","operation":"set_bevel_scoping","params":{"method":"ANGLE","modifier_name":"Transfer_Bevel","angle_deg":30.0,"width":0.03,"segments":3}}
+  },
+  {
+    "label": "transfer_smooth_by_angle",
+    "transaction": {"name":"transfer_horizontal_control_module","action_type":"different_geometry_shading","operation":"set_smooth_by_angle","params":{"angle":0.5235987756,"keep_sharp_edges":true}}
+  },
+  {
+    "label": "archive_transfer_cutter",
+    "transaction": {"name":"transfer_channel_cutter","action_type":"archive_transfer_construction","operation":"archive_object","params":{"collection_name":"CONSTRUCTION_CUTTERS"}}
+  },
+  {"label":"transfer_base_state","command":"get_full_state","params":{"name":"transfer_horizontal_control_module"}},
+  {"label":"transfer_evaluated_state","command":"get_evaluated_state","params":{"name":"transfer_horizontal_control_module"}},
+  {"label":"transfer_shading_audit","command":"get_hard_surface_shading_audit","params":{"name":"transfer_horizontal_control_module"}},
+  {"label":"transfer_front_wire","command":"render_diagnostic_pass","params":{"name":["transfer_horizontal_control_module"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/transfer_front_wire.png","pass_type":"wireframe","view":"front","resolution":512,"margin":1.15}},
+  {"label":"transfer_front_matcap","command":"render_diagnostic_pass","params":{"name":["transfer_horizontal_control_module"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/transfer_front_matcap.png","pass_type":"matcap","view":"front","resolution":512,"margin":1.15}},
+  {"label":"transfer_side_solid","command":"render_diagnostic_pass","params":{"name":["transfer_horizontal_control_module"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-21_tutorial-blenderbros-beginner-hardsurface/transfer_side_solid.png","pass_type":"solid","view":"side","resolution":512,"margin":1.15}}
+]
