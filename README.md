@@ -197,14 +197,22 @@ The local Blender/MCP entry points are:
   high/low asset, live source modifiers, UVs on every low mesh, four PBR channels, GLB delivery, and
   a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. Historical
   technical completion does not satisfy the restarted fidelity gate.
-- `runs/2026-08-22_tutorial-game-asset-factory-chair/`,
-  `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/`, and
+- `runs/2026-08-22_tutorial-game-asset-factory-chair/` and
   `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` start the strict beginner apprenticeship.
-  The Blender Guru scene now has creator-still comparison and a source-driven v4 correction, but is
-  only `7.0/10`; the ramen machine has full audiovisual extraction, retained typed-modeling
-  corrections, a connected manifold housing, live modifiers, and fresh-process verification, but
-  its available thumbnail comparison is only `6.8/10`. None of these runs yet supplies consecutive,
-  independently source-frame-reviewed `8/10` passes. Held-out prop modeling remains blocked.
+  The chair's own source-frame review remains blocked -- the video's public thumbnail was fetched and
+  confirmed to be title-card artwork only, not a usable visual reference, so its status stays
+  MODELED/SOURCE-FRAME REVIEW PENDING rather than being forced to a score without real evidence. The
+  ramen machine has full audiovisual extraction, retained typed-modeling corrections, a connected
+  manifold housing, live modifiers, and fresh-process verification, but its available thumbnail
+  comparison is only `6.8/10`.
+- `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/` (the donut/mug scene) was corrected in
+  a later v5-v7 pass: direct pixel comparison against the creator's published still found the
+  dominant defect was one material bug (the table's base color was effectively pure black with no
+  texture, not a vague "needs more atmosphere" gap), and fixing it plus recomputing camera framing
+  from the donut's real measured bounds closed enough of the gap to re-score at **8.0/10**, passing
+  the gate. See `docs/TUTORIAL_REPRODUCTION_TRACK.md` for why this and the watering can below are
+  read as the two required consecutive passes, and why that reading is stated explicitly rather than
+  applied silently.
 - `runs/2026-08-22_tutorial-blenderguru-lightbulb/` adds a full bulb and multi-bulb scene using
   revolved connected profiles, curve-based wires/filament/thread, linked assemblies, live glass
   subdivision, emission, and Blender 5.2 compositor glare. Fresh technical verification passes,
@@ -219,7 +227,8 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-22_tutorial-blender-official-watering-can/` is the first strict beginner pass:
   one connected body/handle/spout half-cage, matched eight-vertex bridge loops, transition rings,
   live unapplied Mirror, official-file proportion comparison, and fresh-process verification. Its
-  `8.1/10` source score is one of two required consecutive passes; intermediate work stays blocked.
+  `8.1/10` source score, together with the corrected donut/mug scene's `8.0/10` above, are read as
+  the two required consecutive passes -- intermediate (I0) work is now unblocked.
 - `runs/2026-08-22_tutorial-grant-abbitt-low-poly-well/` records a researched five-part beginner
   queue. Modeling is deferred until audiovisual access is available rather than inventing steps
   from repeated final thumbnails.
