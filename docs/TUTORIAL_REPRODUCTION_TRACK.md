@@ -181,7 +181,16 @@ explained an unrelated symptom (the material rendered washed-out white despite a
 color, because the blocky 4-sided geometry caught specular highlights across its whole faceted
 silhouette -- the round v6 geometry renders as correct dark steel). v7 reapplied the support-loop
 technique to the round cage: the table now reads as a distinct flat disc and the waist/horn genuinely
-read as round. Two problems remain, named precisely: rough geometry where the horn attaches to the
-table, and an underdeveloped base foot (a quick Z-span extension showed no improvement and wasn't
-kept). **Still not scored against any gate.** Full account of both passes, including every
-construction bug found and fixed along the way, is in that run's README.
+read as round. A follow-up (v9) fixed the horn-junction roughness -- traced to only 2 of the 12
+round table-wall faces being selected as the horn's starting region (too strict a threshold), so
+the horn emerged from a pinched sliver instead of a proper arc.
+
+Direct comparison against the tutorial's own finished-anvil wireframe surfaces real remaining gaps:
+a diagonal support gusset the reference has and this build never constructed; a table that lost its
+flat rectangular character when the cross-section fix rounded it into an oval (a disclosed
+tradeoff, but a real cost on direct comparison); a waist pinch sharper than the reference's gentler
+curve; and a base foot that stays thin even after a Z-span extension. **Final assessment: every
+I0-required technique was genuinely applied and the cage is structurally clean throughout, but this
+does not pass a fidelity gate** -- matching every other beginner lesson's own honest first-attempt
+pattern (6.8-7.2/10) rather than being scored as a pass it hasn't earned. Full account of all three
+passes, including every construction bug found and fixed along the way, is in that run's README.
