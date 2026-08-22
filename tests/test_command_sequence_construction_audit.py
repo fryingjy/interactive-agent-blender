@@ -74,3 +74,17 @@ def test_connected_quad_open_surface_is_valid_authored_starting_cage():
         [{"command": "create_quad_open_surface", "params": {"name": "Shell"}}], ["Shell"]
     )
     assert result["pass"] is True
+
+
+def test_connected_quad_annular_shell_is_valid_authored_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_quad_annular_shell", "params": {"name": "Shell"}}], ["Shell"]
+    )
+    assert result["pass"] is True
+
+
+def test_connected_layered_quad_annular_shell_is_valid_authored_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_quad_layered_annular_shell", "params": {"name": "Shell"}}], ["Shell"]
+    )
+    assert result["pass"] is True

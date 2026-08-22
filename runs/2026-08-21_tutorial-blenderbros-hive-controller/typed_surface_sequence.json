@@ -1,0 +1,58 @@
+[
+  {
+    "label": "crease_connected_outer_and_opening_boundaries",
+    "transaction": {
+      "name": "hive_controller_shell",
+      "action_type": "subdivision_boundary_control",
+      "operation": "set_edge_crease_by_ids",
+      "params": {
+        "edge_ids": [66, 77, 85, 93, 101, 109, 117, 125, 133, 141, 149, 157, 165, 173, 181, 189, 68, 79, 87, 95, 103, 111, 119, 127, 135, 143, 151, 159, 167, 175, 183, 190, 69, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 191, 71, 81, 89, 97, 105, 113, 121, 129, 137, 145, 153, 161, 169, 177, 185, 192],
+        "value": 0.72,
+        "clear_others": true
+      },
+      "command_id": "hive-connected-boundary-creases-v1"
+    }
+  },
+  {
+    "label": "add_live_subdivision",
+    "transaction": {
+      "name": "hive_controller_shell",
+      "action_type": "surface_modifier",
+      "operation": "add_modifier",
+      "params": {"modifier_type": "SUBSURF", "modifier_name": "Tutorial_Live_Subdivision"},
+      "command_id": "hive-live-subd-v1"
+    }
+  },
+  {
+    "label": "set_viewport_subdivision",
+    "transaction": {
+      "name": "hive_controller_shell",
+      "action_type": "surface_modifier_parameter",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Tutorial_Live_Subdivision", "parameter": "levels", "value": 2},
+      "command_id": "hive-live-subd-levels-v1"
+    }
+  },
+  {
+    "label": "set_render_subdivision",
+    "transaction": {
+      "name": "hive_controller_shell",
+      "action_type": "surface_modifier_parameter",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "Tutorial_Live_Subdivision", "parameter": "render_levels", "value": 2},
+      "command_id": "hive-live-subd-render-v1"
+    }
+  },
+  {
+    "label": "shade_smooth_by_angle",
+    "transaction": {
+      "name": "hive_controller_shell",
+      "action_type": "shading_policy",
+      "operation": "set_smooth_by_angle",
+      "params": {"angle": 0.5235987756, "keep_sharp_edges": true},
+      "command_id": "hive-smooth-by-angle-v1"
+    }
+  },
+  {"label": "inspect_evaluated_surface", "command": "get_evaluated_state", "params": {"name": "hive_controller_shell"}},
+  {"label": "audit_hard_surface_policy", "command": "get_hard_surface_shading_audit", "params": {"name": "hive_controller_shell"}}
+]

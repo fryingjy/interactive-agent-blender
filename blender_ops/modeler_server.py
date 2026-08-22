@@ -86,6 +86,8 @@ CAPABILITIES = [
     "profile_extrusion_geometry",
     "profile_loft_geometry",
     "quad_shell_grid_geometry",
+    "quad_annular_shell_geometry",
+    "quad_layered_annular_shell_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -581,6 +583,87 @@ class ModelerServer:
         obj = profile_mesh.quad_open_surface_from_grids(name, front_grid, rear_grid, active_cells, bridge_edges)
         persistent_ids.ensure_persistent_ids(obj.name)
         return {"name": obj.name, "type": obj.type, "vertices": len(obj.data.vertices), "edges": len(obj.data.edges), "faces": len(obj.data.polygons), "bridge_edge_count": len(bridge_edges), "construction_boundary": "Open boundaries are intentional; use live Solidify only after silhouette review."}
+
+    def cmd_create_quad_annular_shell(self, name, front_outer, front_inner, rear_outer, rear_inner):
+        """Create one manifold all-quad shell between matched outer/inner loops."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_annular_shell_from_loops(
+            name,
+            front_outer,
+            front_inner,
+            rear_outer,
+            rear_inner,
+        )
+        persistent_ids.ensure_persistent_ids(obj.name)
+        count = len(front_outer)
+        edge_index_to_id = persistent_ids.get_id_maps(obj.name)["edges"]["index_to_id"]
+        edge_by_vertices = {
+            frozenset(edge.vertices): edge_index_to_id[edge.index]
+            for edge in obj.data.edges
+        }
+
+        def loop_edge_ids(offset):
+            return [
+                edge_by_vertices[frozenset((offset + index, offset + ((index + 1) % count)))]
+                for index in range(count)
+            ]
+
+        semantic_edge_ids = {
+            "front_outer_boundary": loop_edge_ids(0),
+            "front_opening_boundary": loop_edge_ids(count),
+            "rear_outer_boundary": loop_edge_ids(count * 2),
+            "rear_opening_boundary": loop_edge_ids(count * 3),
+        }
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "loop_point_count": count,
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "semantic_edge_ids": semantic_edge_ids,
+            "construction_boundary": "One closed all-quad annular shell; outer and opening boundaries are connected topology, not stacked ring primitives.",
+        }
+
+    def cmd_create_quad_layered_annular_shell(self, name, front_loops, rear_loops):
+        """Create one connected annular shell with localized radial support loops."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.quad_layered_annular_shell_from_loops(name, front_loops, rear_loops)
+        persistent_ids.ensure_persistent_ids(obj.name)
+        radial_count = len(front_loops)
+        point_count = len(front_loops[0])
+        edge_index_to_id = persistent_ids.get_id_maps(obj.name)["edges"]["index_to_id"]
+        edge_by_vertices = {
+            frozenset(edge.vertices): edge_index_to_id[edge.index]
+            for edge in obj.data.edges
+        }
+
+        def loop_edge_ids(offset):
+            return [
+                edge_by_vertices[frozenset((offset + index, offset + ((index + 1) % point_count)))]
+                for index in range(point_count)
+            ]
+
+        rear_offset = radial_count * point_count
+        semantic_edge_ids = {
+            "front_outer_boundary": loop_edge_ids(0),
+            "front_opening_boundary": loop_edge_ids((radial_count - 1) * point_count),
+            "rear_outer_boundary": loop_edge_ids(rear_offset),
+            "rear_opening_boundary": loop_edge_ids(rear_offset + (radial_count - 1) * point_count),
+        }
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "radial_loop_count": radial_count,
+            "loop_point_count": point_count,
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "semantic_edge_ids": semantic_edge_ids,
+            "construction_boundary": "One connected all-quad annular shell with authored local radial support; no detached opening ring.",
+        }
 
     def cmd_create_reference_image(
         self,

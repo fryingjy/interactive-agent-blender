@@ -1,0 +1,9 @@
+[
+  {"label":"record_support_loop_boundary_policy","transaction":{"name":"hive_controller_shell_v2","action_type":"shading_intent","operation":"mark_no_sharp_edges_needed","params":{"reason":"Authored radial support loops control the rounded opening and outer perimeter; no crease or bevel is intended in this soft controller-shell study."},"command_id":"hive-support-only-intent-v1"}},
+  {"label":"add_support_only_live_subdivision","transaction":{"name":"hive_controller_shell_v2","action_type":"surface_modifier","operation":"add_modifier","params":{"modifier_type":"SUBSURF","modifier_name":"Tutorial_Live_Subdivision"},"command_id":"hive-support-only-subd-v1"}},
+  {"label":"set_support_only_viewport_subdivision","transaction":{"name":"hive_controller_shell_v2","action_type":"surface_modifier_parameter","operation":"set_modifier_parameter","params":{"modifier_name":"Tutorial_Live_Subdivision","parameter":"levels","value":2},"command_id":"hive-support-only-levels-v1"}},
+  {"label":"set_support_only_render_subdivision","transaction":{"name":"hive_controller_shell_v2","action_type":"surface_modifier_parameter","operation":"set_modifier_parameter","params":{"modifier_name":"Tutorial_Live_Subdivision","parameter":"render_levels","value":2},"command_id":"hive-support-only-render-v1"}},
+  {"label":"shade_support_only_smooth_by_angle","transaction":{"name":"hive_controller_shell_v2","action_type":"shading_policy","operation":"set_smooth_by_angle","params":{"angle":0.5235987756,"keep_sharp_edges":true},"command_id":"hive-support-only-smooth-v1"}},
+  {"label":"inspect_support_only_surface","command":"get_evaluated_state","params":{"name":"hive_controller_shell_v2"}},
+  {"label":"audit_support_only_policy","command":"get_hard_surface_shading_audit","params":{"name":"hive_controller_shell_v2"}}
+]

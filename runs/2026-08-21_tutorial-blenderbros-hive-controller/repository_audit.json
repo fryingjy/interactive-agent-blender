@@ -1,0 +1,14 @@
+{
+  "tracked_file_count": 1418,
+  "checks": {
+    "no_forbidden_tracked_artifacts": true,
+    "no_unclassified_root_files": true,
+    "python_syntax_clean": true,
+    "no_exact_duplicate_tracked_files": true
+  },
+  "forbidden_tracked_artifacts": [],
+  "unclassified_root_files": [],
+  "python_syntax_errors": [],
+  "exact_duplicate_groups": [],
+  "pass": true
+}

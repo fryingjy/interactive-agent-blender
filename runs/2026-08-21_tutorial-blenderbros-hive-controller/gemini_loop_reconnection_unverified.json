@@ -1,0 +1,259 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "generate_content_range",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=3wJ81Ua7o_w",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": null,
+    "reported_source_url": "https://www.youtube.com/watch?v=3wJ81Ua7o_w",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": [
+      1100.0,
+      1950.0
+    ]
+  },
+  "analysis": {
+    "source": {
+      "title": "SUBD Hard Surface Modeling Tutorial in Blender",
+      "creator": "Josh - Blender Bros",
+      "url": "https://www.youtube.com/watch?v=3wJ81Ua7o_w",
+      "duration_seconds": 2980.0,
+      "blender_version_mentions": [
+        "3.2"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Inspect mesh construction, topology modification, and SubD surface effects from 18:20 to 32:30 in the HTC Vive controller modeling tutorial.",
+    "episodes": [
+      {
+        "timestamp_label": "18:20 - 19:30",
+        "modeling_stage": "Base Cage Topology Reduction",
+        "problem": "Ring head geometry is overly dense, making additional loop integration prone to topology artifacts.",
+        "observed_fact": "Instructor selects edge loops across the controller ring head and dissolves them using Ctrl+X.",
+        "instructor_claim": "Reducing the mesh to a lower resolution base cage prevents subdivision distortion.",
+        "interpretation": "High-density base cages complicate low-poly modeling and hinder smooth subdivision flow.",
+        "hypothesis": "Dissolving extra edge loops simplifies cage editing while preserving primary silhouette.",
+        "reference_evidence": "18:25 Dissolving edge loops on ring head using Ctrl+X.",
+        "modeling_decision": "Dissolve intermediate edge loops to achieve a simpler low-poly base cage.",
+        "visible_action": "Selected multiple edge loops around ring structure and executed Dissolve Edges (Ctrl+X).",
+        "spoken_reason": "Condense geometry to a lower poly count to avoid topology issues when matching loops.",
+        "topology_surface_effect": "Edge count across the ring ring is halved, creating larger, uniform quad faces.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Simplify base mesh density before adding complex interconnecting features to maintain control over surface flow.",
+        "start_seconds": 1100,
+        "end_seconds": 1170,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "19:30 - 20:50",
+        "modeling_stage": "Circular Feature Reconstruction",
+        "problem": "Deleting interior ring geometry leaves an irregular polygon opening.",
+        "observed_fact": "Instructor deletes inner faces, applies LoopTools Circle to boundary edges, adjusts angle settings, and extrudes faces inward.",
+        "instructor_claim": "LoopTools Circle restores perfect roundness on low-density openings.",
+        "interpretation": "Automated circle tools quickly regularize low-poly boundary loops.",
+        "hypothesis": "Adjusting circle alignment parameters prevents mesh twisting along adjacent quad faces.",
+        "reference_evidence": "18:54 Selecting boundary edge loop and invoking LoopTools -> Circle and Relax.",
+        "modeling_decision": "Re-establish circular inner profile using LoopTools Circle tool on selected perimeter edges.",
+        "visible_action": "Selected boundary edges, activated LoopTools Circle, rotated angle fit, extruded inward.",
+        "spoken_reason": "Get the opening back into a clean circular shape with even vertex distribution.",
+        "topology_surface_effect": "Irregular polygonal hole transformed into a symmetric, evenly spaced circular loop.",
+        "failure": "Relax tool deformed edge alignment on initial attempt.",
+        "correction": "Re-applied Circle tool with regular distribution and adjusted angle value.",
+        "alternatives": "Manual vertex positioning along reference circle.",
+        "transferable_principle": "Utilize boundary regularization scripts (LoopTools Circle) to maintain geometric precision on simplified base cages.",
+        "start_seconds": 1170,
+        "end_seconds": 1250,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "20:50 - 21:45",
+        "modeling_stage": "Topology Patching and Symmetrization",
+        "problem": "Gaps remain between the newly circularized ring opening and adjacent handle geometry.",
+        "observed_fact": "Instructor fills open quads with F key, adds loop cuts, joins vertices with J, and applies MachineTools Symmetrize.",
+        "instructor_claim": "Manually bridging faces ensures clean quad continuity before mirror symmetry is executed.",
+        "interpretation": "Grid-filling quad strips preserves continuous edge loops across component junctions.",
+        "hypothesis": "Symmetrizing half the model enforces identical topology across the center plane.",
+        "reference_evidence": "20:27 Filling adjacent quad faces and running MachineTools Symmetrize.",
+        "modeling_decision": "Patch open gaps manually using edge fills and symmetrize across the primary axis.",
+        "visible_action": "Selected opposing edge pairs, pressed F to create quad faces, inserted loop cut, symmetrized mesh.",
+        "spoken_reason": "Fill surrounding areas slowly to patch up topology and mirror clean half.",
+        "topology_surface_effect": "Seamless quad mesh spanning from central ring opening to lateral body walls.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Bridge mesh gaps with uniform quad patches prior to mirror operations to keep topology consistent.",
+        "start_seconds": 1250,
+        "end_seconds": 1305,
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "21:45 - 22:20",
+        "modeling_stage": "Mesh Cleanup and SubD Validation",
+        "problem": "Unmerged vertices or non-manifold geometry may hide within modified mesh seams.",
+        "observed_fact": "Instructor executes MachineTools Clean Up command (press 3 in edit mode), then applies SubD modifier (Ctrl+3).",
+        "instructor_claim": "Running cleanup removes redundant topology before previewing subdivision surface smoothing.",
+        "interpretation": "Automated cleanup prevents hidden duplicate vertices from warping subdivision interpolation.",
+        "hypothesis": "SubD modifier preview highlights shading artifacts caused by degenerate geometry.",
+        "reference_evidence": "22:06 Activating MachineTools Clean Up tool showing removed doubles notification.",
+        "modeling_decision": "Execute vertex cleanup pass prior to subdivision surface evaluation.",
+        "visible_action": "Triggered Clean Up hotkey (3), observed double vertex removal, pressed Ctrl+3 for SubD level 3 preview.",
+        "spoken_reason": "Clean up unconnected topology and ensure no redundant geometry distorts subdivision.",
+        "topology_surface_effect": "Eliminates zero-length edges and overlapping vertices; smooths surface under SubD.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Merge by Distance command in standard mesh edit menu.",
+        "transferable_principle": "Clean redundant vertices before enabling subdivision previews to prevent localized surface pinching.",
+        "start_seconds": 1305,
+        "end_seconds": 1340,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "22:20 - 24:45",
+        "modeling_stage": "Support Loop Placement and Symmetry Fix",
+        "problem": "Subdivision preview reveals overlapping center vertices and split seams along mirror axis.",
+        "observed_fact": "Instructor adds proximity loops using Ctrl+R/Bevel, notices center mesh overlap, merges vertices with MachineTools Smart Vert.",
+        "instructor_claim": "Center line vertices must be merged along X=0 axis to avoid symmetry gaps under SubD.",
+        "interpretation": "Symmetrization without strict axis clipping creates duplicate center vertices that rip under subdivision.",
+        "hypothesis": "Merging center vertices to a single median line restores continuous subdivision smoothing.",
+        "reference_evidence": "21:50 Center seam splitting under SubD; 22:00 Merging center verts with Smart Vert (Shift+1).",
+        "modeling_decision": "Manually collapse overlapping centerline vertices into a single middle seam line.",
+        "visible_action": "Selected center vertex pairs, used MachineTools Smart Vert / Merge to collapse them to center.",
+        "spoken_reason": "Symmetrize tool created redundant center vertices; need to merge them to fix center split.",
+        "topology_surface_effect": "Restores single-edge center loop along symmetry axis, eliminating center seam shading tear.",
+        "failure": "MachineTools Symmetrize duplicated center vertices along mirror axis.",
+        "correction": "Target-merged center vertices back to X=0 axis using Smart Vert.",
+        "alternatives": "Enabling Mirror Modifier Clipping and sliding vertices into center.",
+        "transferable_principle": "Verify central symmetry axes after mirror operations to prevent double-vertex splitting under subdivision.",
+        "start_seconds": 1340,
+        "end_seconds": 1485,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "24:45 - 26:30",
+        "modeling_stage": "Quad Evenness and Detail Strategy",
+        "problem": "Long stretched rectangular quads on controller handle cause uneven subdivision tension.",
+        "observed_fact": "Instructor inserts transverse loop cuts along handle; discusses decal usage for minor buttons.",
+        "instructor_claim": "Extremely small details should use decals or normal maps rather than dense SubD mesh cuts.",
+        "interpretation": "Maintaining uniform quad aspect ratios stabilizes subdivision surface tension across flat and curved spans.",
+        "hypothesis": "Adding loop cuts creates squarish face distribution, improving interpolation consistency.",
+        "reference_evidence": "25:08 Inserting loop cuts along handle body; 26:10 Discussing decal workflow for small details.",
+        "modeling_decision": "Subdivide elongated quads on handle with loop cuts and reserve mesh modeling for major forms.",
+        "visible_action": "Added 3 horizontal loop cuts along handle span using Ctrl+R.",
+        "spoken_reason": "Quads should be even and consistent so subdivision tension remains uniform across surface.",
+        "topology_surface_effect": "Converts long rectangular faces into near-square quads along handle structure.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "",
+        "transferable_principle": "Maintain near-square quad face proportions across low-poly base cages to ensure even subdivision interpolation.",
+        "start_seconds": 1485,
+        "end_seconds": 1590,
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "26:30 - 28:45",
+        "modeling_stage": "SubD Application for Circular Inset",
+        "problem": "Base cage face density on handle is too sparse to support a smooth circular trackpad cut.",
+        "observed_fact": "Instructor applies 1 level of SubD modifier to base cage, saves backup file with PowerSave, and uses LoopTools Circle on handle faces.",
+        "instructor_claim": "Applying one level of subdivision adds necessary geometry for clean secondary feature cutouts.",
+        "interpretation": "Increasing density by applying early SubD pass enables complex circular insets without manual topology routing.",
+        "hypothesis": "A 1-level subdivided cage provides sufficient vertices for clean circle conversion via LoopTools.",
+        "reference_evidence": "27:58 Applying Subdivision modifier set to Level 1; 28:54 Invoking LoopTools Circle on handle grid.",
+        "modeling_decision": "Freeze 1 subdivision iteration to build denser base cage, then cut circular trackpad opening.",
+        "visible_action": "Set SubD level to 1, applied modifier, selected central face region on handle, invoked LoopTools Circle.",
+        "spoken_reason": "Base geometry is too low poly to cut a circular recess; applying one level of SubD gives needed density.",
+        "topology_surface_effect": "Base quad grid density quadruples, allowing a smooth 8/12-vertex circle outline within handle faces.",
+        "failure": "Attempting circle inset directly on sparse low-poly cage produced distorted polygonal shape.",
+        "correction": "Applied level 1 subdivision modifier first to increase base quad resolution.",
+        "alternatives": "Manual knife cutting and vertex positioning on low-poly cage.",
+        "transferable_principle": "Apply an initial subdivision level when low-poly base topology lacks vertex density for round feature integration.",
+        "start_seconds": 1590,
+        "end_seconds": 1725,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "28:45 - 32:30",
+        "modeling_stage": "Trackpad Recess and Pinching Analysis",
+        "problem": "Circular trackpad inset near curved handle boundary causes minor surface pinching under SubD.",
+        "observed_fact": "Instructor insets circle (I), extrudes down (E), moves back, adds proximity loops, and inspects matcap shading reflections.",
+        "instructor_claim": "Pinching near outer boundaries is a known SubD limitation when round cuts sit close to sharp curved edges.",
+        "interpretation": "Non-uniform quad stretching between circular loops and adjacent boundary edges creates reflection distortion.",
+        "hypothesis": "Slightly scaling or rotating the inset loop eases edge tension and minimizes matcap reflection warping.",
+        "reference_evidence": "29:38 Extruding trackpad recess; 31:00 Inspecting surface distortion with glossy metallic matcap.",
+        "modeling_decision": "Accept minor SubD pinching distortion or adjust inset loop scale/rotation slightly to mitigate reflection pull.",
+        "visible_action": "Inset faces (I), extruded downward (E), added inner/outer support loops, switched MatCap to metallic silver/red.",
+        "spoken_reason": "SubD modeling near tight boundary curves inherently produces minor shading distortion; matcaps help evaluate acceptability.",
+        "topology_surface_effect": "Recessed circular cavity created with holding loops; minor quad distortion present near outer boundary curve.",
+        "failure": "Matcap inspection highlights subtle surface reflection warping along outer trackpad edge.",
+        "correction": "Rotated and scaled inset loop slightly to distribute quad tension more evenly.",
+        "alternatives": "Model body using CAD/NURBS booleans or bake recess from high-poly detail mesh.",
+        "transferable_principle": "Evaluate surface distortion with high-gloss matcaps; accept minor SubD tension trade-offs when circular features lie near tight boundary curves.",
+        "start_seconds": 1725,
+        "end_seconds": 1950,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [],
+    "limitations": [
+      "Analysis restricted strictly to timestamp interval 18:20 to 32:30."
+    ]
+  }
+}

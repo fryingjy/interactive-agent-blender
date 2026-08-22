@@ -380,6 +380,147 @@ def quad_open_surface_from_grids(name, front_grid, rear_grid, active_cells, brid
     return obj
 
 
+def quad_annular_shell_from_loops(
+    name,
+    front_outer,
+    front_inner,
+    rear_outer,
+    rear_inner,
+    *,
+    collection=None,
+):
+    """Bridge matched outer/inner loops into one closed all-quad annular shell.
+
+    The four loops are authored 3D point sequences with identical count and
+    correspondence.  This is the generic equivalent of bridging an opening
+    into a curved host in Edit Mode: front and rear annuli provide the broad
+    surfaces, while the outer and inner walls close both boundaries.  It is
+    useful for bezels, trackpad recess patches, handle apertures, and other
+    continuous surfaces where a separate ring primitive would destroy the
+    construction relationship.
+    """
+
+    def normalize(label, loop):
+        if not isinstance(loop, (list, tuple)) or len(loop) < 3:
+            raise ValueError(f"{label} needs at least three points")
+        points = []
+        for point in loop:
+            if not isinstance(point, (list, tuple)) or len(point) != 3:
+                raise ValueError(f"{label} points must be [x, y, z]")
+            points.append(tuple(float(value) for value in point))
+        if len(set(points)) != len(points):
+            raise ValueError(f"{label} points must be unique")
+        return points
+
+    loops = [
+        normalize("front_outer", front_outer),
+        normalize("front_inner", front_inner),
+        normalize("rear_outer", rear_outer),
+        normalize("rear_inner", rear_inner),
+    ]
+    count = len(loops[0])
+    if any(len(loop) != count for loop in loops[1:]):
+        raise ValueError("annular shell loops must have matching point counts")
+
+    vertices = [point for loop in loops for point in loop]
+    front_outer_offset = 0
+    front_inner_offset = count
+    rear_outer_offset = count * 2
+    rear_inner_offset = count * 3
+    faces = []
+    for index in range(count):
+        nxt = (index + 1) % count
+        fo, fon = front_outer_offset + index, front_outer_offset + nxt
+        fi, fin = front_inner_offset + index, front_inner_offset + nxt
+        ro, ron = rear_outer_offset + index, rear_outer_offset + nxt
+        ri, rin = rear_inner_offset + index, rear_inner_offset + nxt
+        faces.extend((
+            (fo, fon, fin, fi),
+            (ro, ri, rin, ron),
+            (fo, ro, ron, fon),
+            (fi, fin, rin, ri),
+        ))
+
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.uv_layers.new(name="QuadAnnularShellUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
+def quad_layered_annular_shell_from_loops(name, front_loops, rear_loops, *, collection=None):
+    """Create a closed all-quad annular shell with authored radial support loops.
+
+    Each side is an outer-to-inner sequence of matched loops. Additional
+    radial loops localize SubD support without detaching the opening as a
+    separate primitive or uniformly subdividing the whole host surface.
+    """
+
+    def normalize_side(label, side):
+        if not isinstance(side, (list, tuple)) or len(side) < 2:
+            raise ValueError(f"{label} needs at least outer and inner loops")
+        normalized = []
+        for loop_index, loop in enumerate(side):
+            if not isinstance(loop, (list, tuple)) or len(loop) < 3:
+                raise ValueError(f"{label}[{loop_index}] needs at least three points")
+            points = []
+            for point in loop:
+                if not isinstance(point, (list, tuple)) or len(point) != 3:
+                    raise ValueError(f"{label}[{loop_index}] points must be [x, y, z]")
+                points.append(tuple(float(value) for value in point))
+            if len(set(points)) != len(points):
+                raise ValueError(f"{label}[{loop_index}] points must be unique")
+            normalized.append(points)
+        return normalized
+
+    front = normalize_side("front_loops", front_loops)
+    rear = normalize_side("rear_loops", rear_loops)
+    if len(front) != len(rear):
+        raise ValueError("front_loops and rear_loops must have the same radial loop count")
+    point_count = len(front[0])
+    if any(len(loop) != point_count for loop in front + rear):
+        raise ValueError("all layered annular loops must have matching point counts")
+
+    radial_count = len(front)
+    loops = front + rear
+    vertices = [point for loop in loops for point in loop]
+    faces = []
+
+    def vertex(side_offset, radial_index, point_index):
+        return (side_offset + radial_index) * point_count + point_index
+
+    for radial_index in range(radial_count - 1):
+        for point_index in range(point_count):
+            nxt = (point_index + 1) % point_count
+            faces.append((
+                vertex(0, radial_index, point_index), vertex(0, radial_index, nxt),
+                vertex(0, radial_index + 1, nxt), vertex(0, radial_index + 1, point_index),
+            ))
+            faces.append((
+                vertex(radial_count, radial_index, point_index), vertex(radial_count, radial_index + 1, point_index),
+                vertex(radial_count, radial_index + 1, nxt), vertex(radial_count, radial_index, nxt),
+            ))
+
+    for radial_index in (0, radial_count - 1):
+        for point_index in range(point_count):
+            nxt = (point_index + 1) % point_count
+            quad = (
+                vertex(0, radial_index, point_index), vertex(radial_count, radial_index, point_index),
+                vertex(radial_count, radial_index, nxt), vertex(0, radial_index, nxt),
+            )
+            faces.append(tuple(reversed(quad)) if radial_index == radial_count - 1 else quad)
+
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.update()
+    mesh.uv_layers.new(name="QuadLayeredAnnularShellUV")
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    return obj
+
+
 def capped_cylinder(name, *, radius, z_bottom, z_top, segments=64, collection=None):
     """Create a manifold capped cylinder from explicit vertices and triangles."""
     if radius <= 0 or z_top <= z_bottom:

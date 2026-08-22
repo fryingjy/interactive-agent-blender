@@ -1,0 +1,30 @@
+{
+  "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\solid_top_v3.png",
+  "pass_type": "solid",
+  "view": "top",
+  "projection": "ORTHO",
+  "resolution": [
+    700,
+    700
+  ],
+  "target_objects": [
+    "hive_controller_shell_v2"
+  ],
+  "frame_objects": [
+    "hive_controller_shell_v2"
+  ],
+  "camera_location": [
+    -0.030492082238197327,
+    0.0,
+    0.3848549723625183
+  ],
+  "camera_ortho_scale": 0.21787677198622807,
+  "scene_revision": null,
+  "foreground_fill_ratio": 0.17142,
+  "foreground_unique_colors_5bit": 71,
+  "dominant_channel_pixel_counts": {
+    "red": 0,
+    "green": 0,
+    "blue": 0
+  }
+}

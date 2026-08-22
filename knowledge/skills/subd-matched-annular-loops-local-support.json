@@ -1,0 +1,55 @@
+{
+  "skill_id": "topology.subd.matched_annular_loops_local_support",
+  "title": "Reconnect openings with matched loops and non-redundant local SubD support",
+  "topic_tags": ["Subdivision Surface", "connected opening", "matched loop resolution", "local support loops", "crease triage", "quad topology"],
+  "problem": "A host surface must flow around a true opening without a detached ring, stretched radial quads, or redundant boundary controls that overconstrain the SubD result.",
+  "status": "TRANSFER_VALIDATED",
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE"],
+    "workflow": ["connected hard-surface or product shell around an opening"],
+    "surface_type": ["curved annular patch", "rounded panel aperture"],
+    "modifiers_involved": ["SUBSURF"]
+  },
+  "preconditions": [
+    "Outer and opening loops have equal, deliberate point counts and correspondence.",
+    "The opening is a real boundary in one connected manufactured part, not a separate assembly.",
+    "The Subdivision modifier remains live and unapplied during diagnosis."
+  ],
+  "required_observations": [
+    "Base all-quad/manifold health and evaluated topology.",
+    "Solid and reflective MatCap views of the perimeter, aperture, and transition zone.",
+    "Evaluated pinch-candidate count and normal-angle distribution before and after support changes."
+  ],
+  "action_policy": [
+    "Reduce independently authored regions to a shared low resolution before reconnecting them.",
+    "Bridge corresponding outer-to-inner loops as one connected all-quad shell.",
+    "Add radial support loops locally near boundaries when one broad span loses the intended profile.",
+    "Do not combine support loops with crease or bevel by default; test each control separately and retain the least constrained version that passes silhouette and highlight review."
+  ],
+  "failure_predicates": [
+    "Detached ring geometry substitutes for connected host topology.",
+    "Long radial quads visibly pull the opening or host silhouette.",
+    "Support plus crease increases pinching or highlight concentration without a required shape benefit.",
+    "Any n-gon, degenerate face, or non-manifold edge appears in the authored or evaluated shell."
+  ],
+  "recovery": [
+    "Insert one or two authored radial support loops while preserving point correspondence.",
+    "Remove redundant crease control and reassess under MatCap.",
+    "If correspondence itself twists, reorder or rebuild the loops before adding density."
+  ],
+  "sources": [
+    {"type": "video_tutorial", "source_id": "youtube-blenderbros-hive-controller-tutorial", "evidence_path": "runs/2026-08-21_tutorial-blenderbros-hive-controller/"}
+  ],
+  "experiments": [
+    {
+      "type": "tutorial reproduction plus different-geometry transfer",
+      "evidence_path": "runs/2026-08-21_tutorial-blenderbros-hive-controller/learning_assessment.json",
+      "result": "PASS_WITH_REJECTED_CONTROLS",
+      "measurements": {"sparse_creased_candidates": 243, "supported_creased_candidates": 287, "supported_uncreased_candidates": 19, "transfer_candidates": 2},
+      "limitations": "Bounded controller-like chapter artifact and rounded-panel transfer only; not a complete reference reconstruction."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Verified in Blender 5.2.0 LTS with live unapplied Subdivision modifiers.",
+  "status_note": "Transferred from a 16-point elongated controller shell to a 12-point offset rounded-rectangular aperture; two overconstrained variants retained as counterevidence."
+}

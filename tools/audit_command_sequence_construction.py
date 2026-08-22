@@ -47,7 +47,7 @@ def audit_sequence(sequence: list[dict[str, Any]], primary_names: list[str]) -> 
     for step in sequence:
         command = step.get("command")
         params = step.get("params", {})
-        if command in {"create_primitive", "create_curve", "create_revolved_profile", "create_profile_extrusion", "create_profile_loft", "create_quad_shell_grid", "create_quad_shell_sections", "create_quad_open_surface"}:
+        if command in {"create_primitive", "create_curve", "create_revolved_profile", "create_profile_extrusion", "create_profile_loft", "create_quad_shell_grid", "create_quad_shell_sections", "create_quad_open_surface", "create_quad_annular_shell", "create_quad_layered_annular_shell"}:
             name = params.get("name")
             if isinstance(name, str):
                 created_by[name] = command
@@ -63,7 +63,7 @@ def audit_sequence(sequence: list[dict[str, Any]], primary_names: list[str]) -> 
     for name in primary_names:
         origin = created_by.get(name)
         operations = edited_by.get(name, [])
-        connected_profile = origin in {"create_revolved_profile", "create_profile_extrusion", "create_profile_loft", "create_quad_shell_grid", "create_quad_shell_sections", "create_quad_open_surface"}
+        connected_profile = origin in {"create_revolved_profile", "create_profile_extrusion", "create_profile_loft", "create_quad_shell_grid", "create_quad_shell_sections", "create_quad_open_surface", "create_quad_annular_shell", "create_quad_layered_annular_shell"}
         passed = connected_profile or bool(operations)
         entry = {
             "name": name,

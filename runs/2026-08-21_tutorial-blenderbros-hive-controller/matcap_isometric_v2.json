@@ -1,0 +1,30 @@
+{
+  "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\matcap_isometric_v2.png",
+  "pass_type": "matcap",
+  "view": "isometric",
+  "projection": "ORTHO",
+  "resolution": [
+    700,
+    700
+  ],
+  "target_objects": [
+    "hive_controller_shell_v2"
+  ],
+  "frame_objects": [
+    "hive_controller_shell_v2"
+  ],
+  "camera_location": [
+    0.1889219582080841,
+    -0.21975529193878174,
+    0.22574472427368164
+  ],
+  "camera_ortho_scale": 0.21886072151372898,
+  "scene_revision": null,
+  "foreground_fill_ratio": 0.1202,
+  "foreground_unique_colors_5bit": 85,
+  "dominant_channel_pixel_counts": {
+    "red": 0,
+    "green": 0,
+    "blue": 0
+  }
+}

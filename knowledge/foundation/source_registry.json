@@ -3260,5 +3260,38 @@
         "The reproduction simplifies the tutorial blueprint and does not prove advanced modeling proficiency."
       ]
     }
+  },
+  {
+    "id": "youtube-blenderbros-hive-controller-tutorial",
+    "url": "https://www.youtube.com/watch?v=3wJ81Ua7o_w",
+    "local_path": "runs/2026-08-21_tutorial-blenderbros-hive-controller/",
+    "title": "SUBD Hard Surface Modeling Tutorial in Blender",
+    "creator": "Josh - Blender Bros",
+    "source_type": "video_tutorial",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-21",
+    "topics": ["subdivision-surface", "loop-correspondence", "connected-openings", "quad-topology", "local-support-loops", "pinch-diagnosis"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["timestamped_transcript", "gemini_video_audio", "in_app_browser_frame", "visible_captions", "blender_reproduction", "different_geometry_transfer"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_tutorial-blenderbros-hive-controller/hive_controller_surface_v3.blend", "runs/2026-08-21_tutorial-blenderbros-hive-controller/offset_panel_transfer.blend"],
+      "direct_observations": [
+        "At 19:21 the video visibly shows a coarse connected cage around the controller ring over reference imagery.",
+        "At 29:40 visible captions and the viewport confirm an inset operation on the selected circular region.",
+        "Support-only matched loops reduced heuristic pinch candidates from 243 in the sparse creased version to 19; the different-geometry transfer produced 2."
+      ],
+      "validated_principles": [
+        "Match loop resolution before reconnecting independently developed regions.",
+        "Use connected quad patches around a real opening instead of a detached ring primitive.",
+        "Treat support loops and creases as alternative controls unless evidence shows both are necessary."
+      ],
+      "limitations": [
+        "Audiovisual review covered 18:20-32:30 rather than the complete 49:39 tutorial.",
+        "The reproduction isolates topology behavior and does not claim controller likeness or complete product construction.",
+        "Gemini-derived UI details not independently visible remain model-extracted claims rather than promoted facts."
+      ]
+    }
   }
 ]

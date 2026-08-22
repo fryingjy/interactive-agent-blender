@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "record_type": "TUTORIAL_REPRODUCTION_LEARNING_ASSESSMENT",
+  "source": "https://www.youtube.com/watch?v=3wJ81Ua7o_w",
+  "scope_seconds": [1100, 1950],
+  "status": "TRANSFER_VALIDATED_BOUNDED_CHAPTER",
+  "reproduction": {
+    "retained_blend": "hive_controller_surface_v3.blend",
+    "authored_vertices": 128,
+    "authored_faces": 128,
+    "all_quads": true,
+    "manifold": true,
+    "live_unapplied_modifiers": ["SUBSURF"],
+    "pinch_candidates": 19
+  },
+  "rejected_or_superseded_variants": [
+    {"blend": "hive_controller_surface_v1.blend", "reason": "One radial span left elongated quads; boundary creases produced 243 diagnostic candidates."},
+    {"blend": "hive_controller_surface_v2.blend", "reason": "Radial support plus crease overconstrained the same boundaries and produced 287 diagnostic candidates."}
+  ],
+  "transfer": {
+    "blend": "offset_panel_transfer.blend",
+    "geometry": "12-point rounded-rectangular panel with offset aperture",
+    "authored_vertices": 96,
+    "authored_faces": 96,
+    "all_quads": true,
+    "manifold": true,
+    "pinch_candidates": 2,
+    "hard_surface_shading_audit": "PASS"
+  },
+  "validated_rule": "Reconnect outer and opening boundaries with matched low-resolution quad loops, then add localized radial support only where the desired SubD transition requires it. Support loops and creases are not automatically additive; combining both must be justified by highlight and evaluated-surface evidence.",
+  "limitations": [
+    "This reproduces one topology chapter, not the complete controller tutorial.",
+    "The artifact studies loop correspondence and boundary behavior, not reference likeness or full product construction.",
+    "Diagnostic candidates are heuristic and were interpreted alongside solid and MatCap renders."
+  ]
+}

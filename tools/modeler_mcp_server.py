@@ -119,6 +119,25 @@ def create_quad_open_surface(name: str, front_grid: list[list[list[float]]], rea
 
 
 @mcp.tool()
+def create_quad_annular_shell(name: str, front_outer: list[list[float]], front_inner: list[list[float]], rear_outer: list[list[float]], rear_inner: list[list[float]]) -> dict:
+    """Create one closed manifold all-quad shell by bridging matched outer and inner 3D loops. Use it for a curved host with a true integrated opening or recess boundary when a separate ring primitive would be structurally wrong. All four loops require the same point count and correspondence."""
+    return _call(
+        "create_quad_annular_shell",
+        name=name,
+        front_outer=front_outer,
+        front_inner=front_inner,
+        rear_outer=rear_outer,
+        rear_inner=rear_inner,
+    )
+
+
+@mcp.tool()
+def create_quad_layered_annular_shell(name: str, front_loops: list[list[list[float]]], rear_loops: list[list[list[float]]]) -> dict:
+    """Create one closed manifold all-quad shell from outer-to-inner matched loop layers on each side. Extra radial layers provide local SubD support while preserving one connected host around the opening."""
+    return _call("create_quad_layered_annular_shell", name=name, front_loops=front_loops, rear_loops=rear_loops)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

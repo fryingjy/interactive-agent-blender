@@ -1,0 +1,705 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\typed_support_only_surface_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\hive_controller_corrected_blockout.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\hive_controller_surface_v3.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "2b40e72a6ed9",
+  "results": [
+    {
+      "index": 0,
+      "label": "record_support_loop_boundary_policy",
+      "command": "transaction",
+      "params": {
+        "name": "hive_controller_shell_v2",
+        "action_type": "shading_intent",
+        "operation": "mark_no_sharp_edges_needed",
+        "params": {
+          "reason": "Authored radial support loops control the rounded opening and outer perimeter; no crease or bevel is intended in this soft controller-shell study."
+        },
+        "command_id": "hive-support-only-intent-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1787368379256",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1787368379256",
+          "performed": true,
+          "result": {
+            "name": "hive_controller_shell_v2",
+            "no_sharp_edges_intended": true,
+            "reason": "Authored radial support loops control the rounded opening and outer perimeter; no crease or bevel is intended in this soft controller-shell study."
+          }
+        },
+        "verify": {
+          "action_type": "shading_intent",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1787368379256",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "add_support_only_live_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "hive_controller_shell_v2",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Tutorial_Live_Subdivision"
+        },
+        "command_id": "hive-support-only-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1787368379262",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1787368379262",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1787368379262",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "set_support_only_viewport_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "hive_controller_shell_v2",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Subdivision",
+          "parameter": "levels",
+          "value": 2
+        },
+        "command_id": "hive-support-only-levels-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1787368379276",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1787368379276",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Subdivision",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1787368379276",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "set_support_only_render_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "hive_controller_shell_v2",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Tutorial_Live_Subdivision",
+          "parameter": "render_levels",
+          "value": 2
+        },
+        "command_id": "hive-support-only-render-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1787368379283",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1787368379283",
+          "performed": true,
+          "result": {
+            "modifier_name": "Tutorial_Live_Subdivision",
+            "parameter": "render_levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1787368379283",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "shade_support_only_smooth_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "hive_controller_shell_v2",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "hive-support-only-smooth-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787368379291",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787368379291",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 128,
+            "edges": 256,
+            "faces": 128,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787368379291",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "inspect_support_only_surface",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "hive_controller_shell_v2"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 2048,
+          "edges": 4096,
+          "faces": 2048,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 2048
+        },
+        "surface_quality": {
+          "face_count": 2048,
+          "min_area": 1.62e-06,
+          "max_area": 4.6e-05,
+          "median_area": 6e-06,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.2368,
+          "angle_samples": 4096
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 2048,
+          "median_edge_length": 0.00318412,
+          "median_absolute_laplacian": 0.01489258,
+          "laplacian_mad": 0.01205825,
+          "max_robust_outlier_z": 12.132,
+          "pinch_candidate_count": 19,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 825,
+              "position": [
+                -0.11426,
+                -0.0,
+                0.00204
+              ],
+              "robust_outlier_z": 12.132,
+              "signed_laplacian": 0.231783
+            },
+            {
+              "evaluated_vertex_index": 1833,
+              "position": [
+                -0.11334,
+                -0.00448,
+                0.00204
+              ],
+              "robust_outlier_z": 11.2017,
+              "signed_laplacian": 0.215151
+            },
+            {
+              "evaluated_vertex_index": 1830,
+              "position": [
+                -0.11334,
+                0.00448,
+                0.00204
+              ],
+              "robust_outlier_z": 11.2016,
+              "signed_laplacian": 0.215149
+            },
+            {
+              "evaluated_vertex_index": 1827,
+              "position": [
+                -0.11063,
+                0.00889,
+                0.00205
+              ],
+              "robust_outlier_z": 9.3699,
+              "signed_laplacian": 0.182404
+            },
+            {
+              "evaluated_vertex_index": 1836,
+              "position": [
+                -0.11063,
+                -0.00889,
+                0.00205
+              ],
+              "robust_outlier_z": 9.3696,
+              "signed_laplacian": 0.182398
+            },
+            {
+              "evaluated_vertex_index": 824,
+              "position": [
+                -0.1137,
+                -0.0,
+                0.00283
+              ],
+              "robust_outlier_z": 7.803,
+              "signed_laplacian": 0.154392
+            },
+            {
+              "evaluated_vertex_index": 826,
+              "position": [
+                -0.1137,
+                -0.0,
+                0.0013
+              ],
+              "robust_outlier_z": 7.6448,
+              "signed_laplacian": 0.151564
+            },
+            {
+              "evaluated_vertex_index": 1839,
+              "position": [
+                -0.10622,
+                -0.01318,
+                0.00207
+              ],
+              "robust_outlier_z": 7.6076,
+              "signed_laplacian": 0.150898
+            },
+            {
+              "evaluated_vertex_index": 1824,
+              "position": [
+                -0.10622,
+                0.01318,
+                0.00207
+              ],
+              "robust_outlier_z": 7.6076,
+              "signed_laplacian": 0.150897
+            },
+            {
+              "evaluated_vertex_index": 1832,
+              "position": [
+                -0.11279,
+                -0.00447,
+                0.00283
+              ],
+              "robust_outlier_z": 7.3349,
+              "signed_laplacian": 0.146023
+            },
+            {
+              "evaluated_vertex_index": 1829,
+              "position": [
+                -0.11279,
+                0.00447,
+                0.00283
+              ],
+              "robust_outlier_z": 7.3349,
+              "signed_laplacian": 0.146023
+            },
+            {
+              "evaluated_vertex_index": 1831,
+              "position": [
+                -0.11279,
+                0.00447,
+                0.0013
+              ],
+              "robust_outlier_z": 7.2344,
+              "signed_laplacian": 0.144227
+            },
+            {
+              "evaluated_vertex_index": 1834,
+              "position": [
+                -0.11279,
+                -0.00447,
+                0.0013
+              ],
+              "robust_outlier_z": 7.2342,
+              "signed_laplacian": 0.144222
+            },
+            {
+              "evaluated_vertex_index": 1835,
+              "position": [
+                -0.11009,
+                -0.00887,
+                0.00285
+              ],
+              "robust_outlier_z": 6.4806,
+              "signed_laplacian": 0.13075
+            },
+            {
+              "evaluated_vertex_index": 1826,
+              "position": [
+                -0.11009,
+                0.00887,
+                0.00285
+              ],
+              "robust_outlier_z": 6.4806,
+              "signed_laplacian": 0.130749
+            },
+            {
+              "evaluated_vertex_index": 1837,
+              "position": [
+                -0.11009,
+                -0.00887,
+                0.00131
+              ],
+              "robust_outlier_z": 6.47,
+              "signed_laplacian": 0.130561
+            },
+            {
+              "evaluated_vertex_index": 1828,
+              "position": [
+                -0.11009,
+                0.00887,
+                0.00131
+              ],
+              "robust_outlier_z": 6.4699,
+              "signed_laplacian": 0.130558
+            },
+            {
+              "evaluated_vertex_index": 822,
+              "position": [
+                -0.10018,
+                0.01728,
+                0.00212
+              ],
+              "robust_outlier_z": 6.0468,
+              "signed_laplacian": 0.122995
+            },
+            {
+              "evaluated_vertex_index": 828,
+              "position": [
+                -0.10018,
+                -0.01728,
+                0.00212
+              ],
+              "robust_outlier_z": 6.0466,
+              "signed_laplacian": 0.12299
+            }
+          ],
+          "meaningful_signed_edges": 1600,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 17.0092,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.175,
+            0.09,
+            0.012
+          ],
+          "evaluated_dimensions": [
+            0.1675,
+            0.0878,
+            0.0113
+          ],
+          "shrinkage_ratio_xyz": [
+            0.9573,
+            0.975,
+            0.9418
+          ],
+          "base_bounds": {
+            "min": [
+              -0.12,
+              -0.045,
+              0.0
+            ],
+            "max": [
+              0.055,
+              0.045,
+              0.012
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.1143,
+              -0.0439,
+              0.0003
+            ],
+            "max": [
+              0.0533,
+              0.0439,
+              0.0116
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "audit_support_only_policy",
+      "command": "get_hard_surface_shading_audit",
+      "params": {
+        "name": "hive_controller_shell_v2"
+      },
+      "status": "ok",
+      "result": {
+        "name": "hive_controller_shell_v2",
+        "status": "PASS",
+        "checks": {
+          "semantic_intent_recorded": false,
+          "semantic_intent_explicitly_declared": false,
+          "semantic_weights_match_intent": false,
+          "weight_limited_bevel_present": false,
+          "angle_or_vgroup_intent_recorded": false,
+          "angle_or_vgroup_intent_matches_actual": false,
+          "crease_intent_recorded": false,
+          "crease_matches_intent": false,
+          "no_sharp_edges_claimed": true,
+          "no_sharp_edges_claim_matches_geometry": true,
+          "bevel_before_subd": true,
+          "smooth_by_angle_recorded": true,
+          "uniform_object_scale": true,
+          "not_unannotated_blanket_smooth": true
+        },
+        "bevel_limit_methods_present": [],
+        "weighted_edge_ids": [],
+        "intended_bevel_edge_ids": [],
+        "bevel_intent_source": "LEGACY_UNSPECIFIED",
+        "missing_weight_edge_ids": [],
+        "unexpected_weight_edge_ids": [],
+        "creased_edge_ids": [],
+        "intended_crease_edge_ids": [],
+        "modifier_types": [
+          "SUBSURF"
+        ],
+        "object_scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "warnings": []
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-21_tutorial-blenderbros-hive-controller\\hive_controller_surface_v3.blend"
+  },
+  "pass": true
+}
