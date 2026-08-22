@@ -48,7 +48,7 @@ shading defect. Two consecutive passes are required before increasing difficulty
 | B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10; DOES NOT PASS 8/10 GATE |
 | B3 | Blender Guru lightbulb scene | Profile revolution, curve wires/filament/thread, glass, linked assemblies, emission and compositor glow | TECHNICALLY VERIFIED; CREATOR-RESULT FIDELITY 7.2/10; DOES NOT PASS 8/10 GATE |
 | B4 | Official Blender Fundamentals watering can | One connected body/handle/spout cage, matched bridge loops, transition topology, live Mirror | FRESH-FILE VERIFIED; OFFICIAL-FILE FIDELITY 8.1/10; FIRST CONSECUTIVE PASS |
-| I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | UNBLOCKED -- see note below |
+| I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | FIRST ATTEMPT IN PROGRESS -- see note below |
 | I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
 | A0 | Advanced production prop tutorial | High/low collections, live modifiers, UVs, bake, materials, export | PENDING |
 | P0 | Professional narrated breakdown | Reference interpretation, uncertainty, revisions, final production review | PENDING |
@@ -161,3 +161,25 @@ state was what counted toward the gate. Under that same reading, B1 and B4 toget
 required consecutive passes, and **I0 (intermediate work) is unblocked**. This interpretation is
 stated explicitly, not applied silently, so a future session can judge whether it was the right
 reading of the ladder's own rule.
+
+## I0 first attempt: Blender Guru anvil (4-part intermediate tutorial)
+
+`runs/2026-08-22_tutorial-blenderguru-anvil-intermediate/` is the first I0 attempt: a table,
+proportionally-tapered waist/base, and horn grown as one connected mesh, a Boolean-cut concave
+throat under the horn (Part 2's technique, cleaned up with Remove Doubles rather than a Weld
+modifier, matching the source), one support loop (Part 3's technique), and a live unapplied
+Subdivision Surface modifier. Proportions were tuned against real creator-authored evidence -- Part
+1's own video thumbnail turned out to be a wireframe render of the tutorial's finished anvil, used
+as the shape reference throughout.
+
+The base cage is structurally clean (101 verts, 73 faces, 0 loose/non-manifold/degenerate) and its
+flat-shaded silhouette holds up reasonably against the reference wireframe. The SubD-evaluated
+render does not: only one support loop exists in the whole mesh, so Subdivision Surface rounds every
+transition (waist pinch, base shoulder, horn/table junction, boolean seam) into an indistinct,
+melted-looking blob -- exactly the failure mode Part 3's own transcript notes describe and warn
+about, now reproduced rather than merely read about. **Not scored against any gate.** Full account,
+including three real construction bugs found and fixed (manual bmesh face-tracking errors, an
+un-baked object transform that put all Z-math in the wrong coordinate space, and a lighting-not-
+topology false alarm caught by a bmesh connectivity walk instead of assumption), is in that run's
+README. Next step: systematic support-loop coverage at every major transition, not a single loop
+near the table, before re-rendering and comparing against the reference for a real score.

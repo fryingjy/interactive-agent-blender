@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "title": "Blender Intermediate Modelling Tutorial (Anvil, 4 parts)",
+  "creator": "Blender Guru / Andrew Price",
+  "videos": [
+    {"part": 1, "url": "https://www.youtube.com/watch?v=yi87Dap_WOc", "video_id": "yi87Dap_WOc", "duration_ms": 819000, "title": "Blender Intermediate Modelling Tutorial - Part 1"},
+    {"part": 2, "url": "https://www.youtube.com/watch?v=WxMwa0njGSM", "video_id": "WxMwa0njGSM", "duration_ms": 1340000, "title": "Part 2: Boolean!"},
+    {"part": 3, "url": "https://www.youtube.com/watch?v=lITV4F_P4E0", "video_id": "lITV4F_P4E0", "duration_ms": 1084000, "title": "Part 3: Sharpening Edges"},
+    {"part": 4, "url": "https://www.youtube.com/watch?v=9ViVKUiG8ks", "video_id": "9ViVKUiG8ks", "duration_ms": 1589000, "title": "Part 4: Final Touches"}
+  ],
+  "prior_research": [
+    "runs/2026-08-14_video-study-blenderguru-anvil/gemini_analysis.txt (Part 1, frame+audio, Gemini)",
+    "runs/2026-08-15_video-study-blenderguru-anvil-part2/brief.md (transcript-only)",
+    "runs/2026-08-15_video-study-blenderguru-anvil-part3/brief.md (transcript-only)",
+    "runs/2026-08-15_video-study-blenderguru-anvil-part4/brief.md (transcript-only)"
+  ],
+  "reference_image": "media/part1_thumbnail.jpg -- Part 1's own maxres thumbnail, a wireframe render of the tutorial's actual finished anvil shown next to the presenter. This is creator-authored visual evidence of the target result, not a generic stock photo.",
+  "identity_source": "YouTube oEmbed (title/duration) via TubeAlfred; thumbnail fetched directly from i.ytimg.com",
+  "audiovisual_status": "PART 1 has prior Gemini frame+audio analysis (2026-08-14). Parts 2-4 are transcript-only (auto-captions), no frame review -- their technique notes are capped at confidence <=0.55 per their own briefs.",
+  "notes": "Selected as the I0 (intermediate, reference-driven hard-surface) tutorial: proportional-editing blockout, a Boolean angled-notch cut with quad-preserving cleanup, support-loop edge sharpening (no Bevel modifier, no Bevel/SubD order dependency), and retopology/edge-flow correction via Alt+M merges. TubeAlfred credits are low (12 remaining after this run's one video_get call) -- no further per-video calls planned; construction proceeds from the existing transcript notes plus the Part 1 wireframe reference."
+}
