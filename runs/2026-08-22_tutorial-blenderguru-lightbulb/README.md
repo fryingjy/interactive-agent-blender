@@ -194,11 +194,57 @@ still too sparse) and `v19` (floor-rest math fixed, but too tightly packed and f
 two most informative waypoints; v14, v16, v17, and v18 were deleted after being fully described
 above, per repo-hygiene practice, since each was fully superseded by the next.
 
-The next corrective step, not yet attempted: reuse v19's correct per-bulb floor-rest math with a
-placement radius between v15's too-sparse 1.8-5.5 range and v16-v19's too-tight 1.2-3.3 range (something
-around 2.2-4.0 units, informed by the measured 2.78-unit core diameter so adjacent bulbs can touch
-without clipping through each other), then re-tune the glare bloom once the pile itself reads
-cleanly, and only then compare against the reference for a real score.
+## Correction pass v20-v23: diminishing returns, stopped deliberately rather than guessed further
+
+Attempted the v19 follow-up above and kept going past the point where iteration was still
+converging. Documented in full because the pattern itself -- not any single fix -- is the useful
+finding here.
+
+**v20**: applied v19's floor-rest math at a 2.2-4.0 unit radius (between v15's sparse and
+v16-v19's fused extremes). The render showed real distinct bulbs with visible gaps in the
+background, but the hand-picked camera distance put one foreground bulb almost against the lens,
+filling a third of the frame -- a framing mistake, not a placement one.
+
+**v21**: replaced the hand-picked camera distance with one computed from the actual final bounds
+of the placed group (reusing the method already proven once in v6). The computed bounds came out
+absurd -- 25 x 24 units -- and direct inspection traced it to the 8 extra bulbs added in v14 via
+`.copy()`: several of their duplicated objects carry corrupted transforms (root Z offsets from 6 to
+25 units; their curve children even carry a baked `-1000000000.0` Z that predates this session's
+edits entirely). This was a real bug in the v14 duplication step, silently present in every version
+since, that never mattered until this pass tried to compute real bounds from it.
+
+**v22**: dropped the corrupted v14-v21 duplicates entirely and rebuilt from v13's clean 6-bulb base
+with the validated floor-rest math and bounds-based camera. This produced the cleanest frame of the
+entire v14-v23 attempt: six distinct, correctly grounded, non-interpenetrating bulbs, tightly
+clustered. It does not match the reference's lying-down pose, only because this version skipped
+re-applying that rotation -- a build-order mistake, not a rejected idea.
+
+**v23**: reapplied the lying rotation and v14's bright lighting/no-stripe backdrop on top of v22's
+validated placement and camera methods, all in one consolidated version. The bounds-based camera
+distance this produced (using the same margin formula that worked in v22) framed the group as small
+and sparse in a mostly empty frame, and re-introduced a visible gap between the bulbs and the floor
+plane -- a regression from v22's grounding despite reusing the same `rest_on_floor` function,
+not yet root-caused.
+
+**Deliberately stopped here rather than continuing to guess.** Four versions (v20-v23) each fixed
+the specific problem found in the version before it while introducing or re-exposing a different
+one (framing, corrupted duplicates, lost lying-pose, lost grounding). That pattern -- fix one axis,
+regress another -- is itself the signal that hand-tuned parameter iteration has stopped converging
+for this composition, not a reason to keep trying more values. `v22` (cleanest frame, upright pose)
+and `v23` (lying pose restored, camera regression) are kept as the most informative end states; `v20`
+and `v21` were deleted after being fully described above.
+
+**Honest status of the whole v5-v23 arc**: the v5-v13 pass found and fixed four confirmed, narrow
+technical bugs (alpha-blend glass, double-emission glass, spacing-vs-footprint math, a hidden
+template leak) and those fixes are real and worth keeping. The v14-v23 attempt to also match the
+reference's lying-bulb-cluster composition surfaced two more genuine bugs (highlight-clamp
+suppressing bloom; origin-based rotation pivot) but has not converged to a clean, scoreable render,
+and separately exposed a pre-existing corrupted-duplication bug that predates this whole correction
+pass. No version past v13 is scored against the 8/10 gate. If this asset is revisited, the
+recommended approach is a small, unit-tested placement/camera-framing function built and verified in
+isolation first, rather than continuing to iterate directly on full scene renders -- the render-and-
+eyeball loop is what let the same class of bug (wrong bounds, wrong pivot, wrong floor height)
+recur four times in slightly different forms across v14-v23.
 
 ## Sources
 
