@@ -182,3 +182,51 @@ since it wasn't a clear win and this project doesn't keep evidence that
 doesn't add information. The base foot and horn-junction roughness remain
 open, correctly-named items rather than something a quick numeric tweak
 resolved.
+
+## v9: fixed the horn junction, honest final score against the reference
+
+A close-up render of v7's horn attachment (not kept -- fully superseded by
+v9's fix, described here) showed the actual cause of the roughness, not a
+vague "needs cleanup":
+only 2 of the table's 12 round side faces had been selected as the horn's
+starting region (`x < -0.55`, too strict for a 12-sided profile with an
+effective half-length near 0.77), so the horn was extruded from an
+artificially narrow, pinched sliver of the table's curvature instead of a
+proper arc. Loosening the threshold to `x < -0.35` (4 faces) fixed it --
+`anvil_v9_horn_closeup.png` shows the horn now emerging from a real arc of
+the table wall instead of a pinched knuckle, and the full silhouette
+(`anvil_v9_solid.png`) reads as a recognizably smoother, more coherent
+anvil shape. Structurally clean throughout (kept the base Z-span extension
+from the earlier inconclusive attempt too, since it's neutral at worst).
+
+**Honest comparison against `media/part1_thumbnail.jpg`** (the tutorial's
+own finished-anvil wireframe) surfaces real gaps beyond what quick fixes
+can close:
+
+- The reference anvil has a visible **diagonal support gusset** -- a
+  triangular brace connecting the underside of the table to the base --
+  which this build never constructed at all. It's a real, named missing
+  feature, not a proportion nuance.
+- The reference table is a flat rectangular block with a raised lip along
+  its top edge and sharp corners. Fixing the cross-section problem (v6-v7)
+  traded this away: the table is now a rounded oval disc. This was a
+  disclosed tradeoff at the time (round horn/waist mattering more for
+  silhouette than table sharpness), but on direct comparison it's a real,
+  visible cost, not a minor one.
+- The reference's waist is a gentler hourglass curve; this build's waist is
+  a much sharper funnel taper.
+- The base foot, even after the Z-span extension, stays a comparatively
+  thin stem rather than the reference's substantial, visibly stable flare.
+
+**Final score for this run: not a pass.** Technically, every I0-required
+technique was genuinely applied -- proportional-editing-style taper,
+Boolean cut with source-matching cleanup, support loops, live unapplied
+SubD -- and the base cage is structurally clean throughout every version.
+But direct comparison against the reference shows real, specific gaps (a
+missing gusset, a lost flat table, an over-pinched waist) that go beyond
+what quick fixes can close; matching every other beginner lesson's own
+honest first-attempt pattern (6.8-7.2/10, not immediately passing), this
+run does not pass a fidelity gate and is not scored as if it does. The
+concrete next step, if resumed, is adding the gusset and re-tuning the
+waist/table proportions against the wireframe -- real construction work,
+not another diagnostic pass.
