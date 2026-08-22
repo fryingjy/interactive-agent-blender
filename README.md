@@ -165,6 +165,11 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-21_reference-aa-battery/` is the current real-reference blockout. Independent
   observations falsify one of two competing representations before a single connected 16-sided
   cage is built through typed Blender decisions. Human visual acceptance remains open.
+- `runs/2026-08-21_reference-scotch-c60/` extends that path to a non-rotational manufactured prop.
+  Cross-view evidence rejects disconnected rail primitives and a circular-tube interpretation,
+  drives one connected U-plan cage, and records a render-driven five-to-nine-section revision plus
+  a live crease/SubD surface test. Hub support, base perimeter, production work, and human review
+  remain open.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

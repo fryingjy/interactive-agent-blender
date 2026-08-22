@@ -58,8 +58,16 @@ def main() -> int:
             if stage_advance is not None:
                 if not isinstance(stage_advance, dict):
                     raise ValueError("advance_with_component_coverage must be an object")
+                decomposition = stage_advance["decomposition"]
+                if isinstance(decomposition, str):
+                    decomposition_path = Path(decomposition)
+                    if not decomposition_path.is_absolute():
+                        decomposition_path = (args.sequence.parent / decomposition_path).resolve()
+                    decomposition = json.loads(decomposition_path.read_text(encoding="utf-8"))
+                if not isinstance(decomposition, dict):
+                    raise ValueError("advance_with_component_coverage.decomposition must be an object or JSON file path")
                 coverage = server.cmd_check_scene_component_coverage(
-                    stage_advance["decomposition"],
+                    decomposition,
                     collection_name=stage_advance.get("collection_name"),
                 )
                 evidence = {

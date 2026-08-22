@@ -82,3 +82,17 @@ bounds → human review still open.
 
 This is evidence that the reasoning path now changes construction. It is not a professional-quality
 or generalization claim.
+
+`runs/2026-08-21_reference-scotch-c60/` then applies the same repaired chain to a non-rotational
+manufactured prop. A new eleven-pass visual-reconstruction audit forces property-specific source
+authority, independent observations, competing 3D interpretations, cross-view predictions, and a
+construction plan bound exactly to selected hypotheses. The Blender run rejects an angular
+five-section shell, rebuilds one connected all-quad U-plan cage with nine longitudinal sections,
+and uses a live partial-crease/SubD strategy to improve the molded wave read. A retrieved explicit
+edge-intent rule also drives a complete predeclared physical-radius set for the lower base before a
+live weight-limited Bevel is added. Fresh inspection finds 228/228 quad faces with no non-manifold
+or degenerate geometry and no applied modifiers.
+
+The run remains explicitly incomplete: the hub support and rounded lower perimeter are coarse or
+absent, the lower molding/groove interpretation remains ambiguous, production work has not begun,
+and human review is open. This is one real correction trail, not professional generalization.

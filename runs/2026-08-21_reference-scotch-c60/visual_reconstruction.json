@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "target_id": "scotch_c60_bk",
+  "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+  "property_authority": [
+    {"reference_id": "official_3m_dimensions", "property": "target_identity", "fit_for_property": true, "reason": "First-party product page identifies model and variant."},
+    {"reference_id": "official_3m_dimensions", "property": "overall_dimensions", "fit_for_property": true, "reason": "First-party specification is authoritative for bounds."},
+    {"reference_id": "official_3m_left_oblique", "property": "wave_silhouette_visible", "fit_for_property": true, "reason": "Manufacturer image clearly shows the full left wave profile."},
+    {"reference_id": "market_closed_right_oblique", "property": "wave_silhouette_visible", "fit_for_property": true, "reason": "High-resolution opposing oblique verifies the same landmark order."},
+    {"reference_id": "official_3m_right_oblique", "property": "rear_bridge_continuity", "fit_for_property": true, "reason": "Manufacturer oblique exposes the rear upper connection, though at low resolution."},
+    {"reference_id": "market_open_hub_oblique", "property": "rear_bridge_continuity", "fit_for_property": true, "reason": "Raised hub removes the principal occluder from the rear connection."},
+    {"reference_id": "market_open_hub_oblique", "property": "central_channel_is_open_volume", "fit_for_property": true, "reason": "Opened assembly exposes the cavity floor and both side boundaries."},
+    {"reference_id": "official_3m_left_oblique", "property": "circular_tube_side_bulge_visible", "fit_for_property": true, "reason": "Left rail highlight and silhouette reveal its broad band-like cross-section."},
+    {"reference_id": "market_closed_right_oblique", "property": "circular_tube_side_bulge_visible", "fit_for_property": true, "reason": "High-resolution opposing rail shows a broad flattened crown, not a circular tube flank."},
+    {"reference_id": "market_closed_right_oblique", "property": "lower_upper_seam_visible", "fit_for_property": true, "reason": "High resolution clearly exposes the seam along the right side."},
+    {"reference_id": "market_closed_left_oblique", "property": "lower_upper_seam_visible", "fit_for_property": true, "reason": "Opposing view confirms the boundary continues around the other side."}
+  ],
+  "observations": [
+    {"observation_id": "identity_c60", "reference_id": "official_3m_dimensions", "view": "specification", "region": "whole_object", "property": "target_identity", "value": true, "method": "first-party product identity", "evidence_path": "reference_manifest.json", "confidence": "HIGH"},
+    {"observation_id": "dimensions_c60", "reference_id": "official_3m_dimensions", "view": "specification", "region": "whole_object", "property": "overall_dimensions", "value": {"min": 158.7, "max": 158.7}, "unit": "mm length", "method": "first-party published dimension", "evidence_path": "reference_manifest.json", "confidence": "HIGH"},
+    {"observation_id": "wave_left", "reference_id": "official_3m_left_oblique", "view": "left_oblique", "region": "primary_profile", "property": "wave_silhouette_visible", "value": true, "method": "direct silhouette inspection: raised cutter -> center valley -> high rounded rear", "evidence_path": "media/official_3m_view_a.jpg", "confidence": "HIGH"},
+    {"observation_id": "wave_right", "reference_id": "market_closed_right_oblique", "view": "right_oblique", "region": "primary_profile", "property": "wave_silhouette_visible", "value": true, "method": "direct opposing silhouette inspection", "evidence_path": "media/market_view_b.webp", "confidence": "HIGH"},
+    {"observation_id": "rear_bridge_official", "reference_id": "official_3m_right_oblique", "view": "right_oblique", "region": "upper_shell", "property": "rear_bridge_continuity", "value": true, "method": "visible transverse rear crown joining the rail pair", "evidence_path": "media/official_3m_view_b.jpg", "confidence": "MEDIUM"},
+    {"observation_id": "rear_bridge_open", "reference_id": "market_open_hub_oblique", "view": "open_hub_oblique", "region": "upper_shell", "property": "rear_bridge_continuity", "value": true, "method": "hub-raised view exposes uninterrupted transverse bridge", "evidence_path": "media/market_view_a.webp", "confidence": "HIGH"},
+    {"observation_id": "channel_open", "reference_id": "market_open_hub_oblique", "view": "open_hub_oblique", "region": "central_channel", "property": "central_channel_is_open_volume", "value": true, "method": "direct depth/occlusion inspection of cavity floor and side walls", "evidence_path": "media/market_view_a.webp", "confidence": "HIGH"},
+    {"observation_id": "flat_rail_left", "reference_id": "official_3m_left_oblique", "view": "left_oblique", "region": "rail_cross_section", "property": "circular_tube_side_bulge_visible", "value": false, "method": "broad flattened rail crown and non-circular side transition", "evidence_path": "media/official_3m_view_a.jpg", "confidence": "MEDIUM"},
+    {"observation_id": "flat_rail_right", "reference_id": "market_closed_right_oblique", "view": "right_oblique", "region": "rail_cross_section", "property": "circular_tube_side_bulge_visible", "value": false, "method": "high-resolution opposing highlight/silhouette inspection", "evidence_path": "media/market_view_b.webp", "confidence": "HIGH"},
+    {"observation_id": "seam_right", "reference_id": "market_closed_right_oblique", "view": "right_oblique", "region": "lower_upper_boundary", "property": "lower_upper_seam_visible", "value": true, "method": "direct boundary inspection", "evidence_path": "media/market_view_b.webp", "confidence": "HIGH"},
+    {"observation_id": "seam_left", "reference_id": "market_closed_left_oblique", "view": "left_oblique", "region": "lower_upper_boundary", "property": "lower_upper_seam_visible", "value": true, "method": "opposing boundary inspection", "evidence_path": "media/market_view_c.webp", "confidence": "HIGH"}
+  ],
+  "passes": {
+    "identity": {"status": "PASS", "evidence_ids": ["identity_c60"]},
+    "silhouette": {"status": "PASS", "evidence_ids": ["wave_left", "wave_right"]},
+    "massing": {"status": "PASS", "evidence_ids": ["dimensions_c60", "wave_left", "wave_right"]},
+    "components": {"status": "PASS", "evidence_ids": ["rear_bridge_open", "channel_open", "seam_right"]},
+    "depth": {"status": "PASS", "evidence_ids": ["channel_open", "rear_bridge_open"]},
+    "negative_space": {"status": "PASS", "evidence_ids": ["channel_open"]},
+    "cross_sections": {"status": "PASS", "evidence_ids": ["flat_rail_left", "flat_rail_right"]},
+    "representation_hypotheses": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right"]},
+    "cross_view_prediction": {"status": "PASS", "evidence_ids": ["rear_bridge_official", "rear_bridge_open", "flat_rail_left", "flat_rail_right"]},
+    "uncertainty": {"status": "BOUNDED", "evidence_ids": ["seam_right", "seam_left"]},
+    "construction_plan": {"status": "PASS", "evidence_ids": ["dimensions_c60", "channel_open", "rear_bridge_open", "flat_rail_right"]}
+  },
+  "regions": [
+    {
+      "region_id": "upper_shell_continuity",
+      "impact": "HIGH",
+      "minimum_confirmed_views": 2,
+      "selected_hypothesis_id": "upper_connected_u_shell",
+      "hypotheses": [
+        {
+          "hypothesis_id": "upper_connected_u_shell",
+          "interpretation": {"structure_type": "bridged_transition", "summary": "paired side rails and front/rear bridges form one connected U-plan shell around an open channel"},
+          "construction": {"family": "quad_shell_grid", "continuity": "one connected all-quad cage", "object_policy": "one upper-shell object"},
+          "predicted_consequences": [
+            {"reference_id": "official_3m_right_oblique", "observation_id": "rear_bridge_official", "view": "right_oblique", "property": "rear_bridge_continuity", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "market_open_hub_oblique", "observation_id": "rear_bridge_open", "view": "open_hub_oblique", "property": "rear_bridge_continuity", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "market_open_hub_oblique", "observation_id": "channel_open", "view": "open_hub_oblique", "property": "central_channel_is_open_volume", "prediction_type": "boolean_state", "prediction": true}
+          ]
+        },
+        {
+          "hypothesis_id": "upper_independent_rails_on_solid_top",
+          "interpretation": {"structure_type": "floating_separate_assembly", "summary": "two independent decorative rails sit on a full-width solid top surface"},
+          "construction": {"family": "box_poly", "continuity": "three disconnected objects", "object_policy": "solid top plus rail objects"},
+          "predicted_consequences": [
+            {"reference_id": "official_3m_right_oblique", "observation_id": "rear_bridge_official", "view": "right_oblique", "property": "rear_bridge_continuity", "prediction_type": "boolean_state", "prediction": false},
+            {"reference_id": "market_open_hub_oblique", "observation_id": "rear_bridge_open", "view": "open_hub_oblique", "property": "rear_bridge_continuity", "prediction_type": "boolean_state", "prediction": false},
+            {"reference_id": "market_open_hub_oblique", "observation_id": "channel_open", "view": "open_hub_oblique", "property": "central_channel_is_open_volume", "prediction_type": "boolean_state", "prediction": false}
+          ]
+        }
+      ]
+    },
+    {
+      "region_id": "rail_cross_section",
+      "impact": "HIGH",
+      "minimum_confirmed_views": 2,
+      "selected_hypothesis_id": "flattened_rounded_band",
+      "hypotheses": [
+        {
+          "hypothesis_id": "flattened_rounded_band",
+          "interpretation": {"structure_type": "wrapped_band", "summary": "broad molded rail with a flattened crown and rounded shoulder transitions"},
+          "construction": {"family": "quad_shell_grid", "continuity": "integrated in upper cage", "object_policy": "same upper-shell object"},
+          "predicted_consequences": [
+            {"reference_id": "official_3m_left_oblique", "observation_id": "flat_rail_left", "view": "left_oblique", "property": "circular_tube_side_bulge_visible", "prediction_type": "boolean_state", "prediction": false},
+            {"reference_id": "market_closed_right_oblique", "observation_id": "flat_rail_right", "view": "right_oblique", "property": "circular_tube_side_bulge_visible", "prediction_type": "boolean_state", "prediction": false}
+          ]
+        },
+        {
+          "hypothesis_id": "circular_swept_tube",
+          "interpretation": {"structure_type": "swept_tube", "summary": "circular tube swept along the wave path"},
+          "construction": {"family": "curve_sweep", "continuity": "separate tube rails", "object_policy": "two curve objects"},
+          "predicted_consequences": [
+            {"reference_id": "official_3m_left_oblique", "observation_id": "flat_rail_left", "view": "left_oblique", "property": "circular_tube_side_bulge_visible", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "market_closed_right_oblique", "observation_id": "flat_rail_right", "view": "right_oblique", "property": "circular_tube_side_bulge_visible", "prediction_type": "boolean_state", "prediction": true}
+          ]
+        }
+      ]
+    },
+    {
+      "region_id": "lower_upper_boundary",
+      "impact": "MEDIUM",
+      "minimum_confirmed_views": 2,
+      "selected_hypothesis_id": null,
+      "uncertainty": "The bilateral seam is real, but photos do not prove whether it is a separate shell joint or a cosmetic groove in one molding.",
+      "hypotheses": [
+        {
+          "hypothesis_id": "separate_lower_weighted_base",
+          "interpretation": {"structure_type": "floating_separate_assembly", "summary": "upper U-shell rests on a separately molded weighted lower base"},
+          "construction": {"family": "profile_extrusion", "continuity": "separate lower object", "object_policy": "reversible lower base"},
+          "predicted_consequences": [
+            {"reference_id": "market_closed_right_oblique", "observation_id": "seam_right", "view": "right_oblique", "property": "lower_upper_seam_visible", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "market_closed_left_oblique", "observation_id": "seam_left", "view": "left_oblique", "property": "lower_upper_seam_visible", "prediction_type": "boolean_state", "prediction": true}
+          ]
+        },
+        {
+          "hypothesis_id": "one_molding_with_cosmetic_groove",
+          "interpretation": {"structure_type": "continuous_molded_housing", "summary": "one continuous housing carries a shallow cosmetic side groove"},
+          "construction": {"family": "subd_cage", "continuity": "one housing object", "object_policy": "groove reserved in connected cage"},
+          "predicted_consequences": [
+            {"reference_id": "market_closed_right_oblique", "observation_id": "seam_right", "view": "right_oblique", "property": "lower_upper_seam_visible", "prediction_type": "boolean_state", "prediction": true},
+            {"reference_id": "market_closed_left_oblique", "observation_id": "seam_left", "view": "left_oblique", "property": "lower_upper_seam_visible", "prediction_type": "boolean_state", "prediction": true}
+          ]
+        }
+      ]
+    }
+  ],
+  "construction_plan": {
+    "selected_hypothesis_ids": ["upper_connected_u_shell", "flattened_rounded_band"],
+    "generic_operations": ["create_quad_shell_grid", "create_profile_extrusion", "create_profile_revolution", "add_modifier", "set_smooth_by_angle", "render_diagnostic_pass"],
+    "component_plan": [
+      "one connected all-quad U-plan upper shell with omitted center cells",
+      "one provisional low base kept separately editable because the assembly boundary is unresolved",
+      "separate hub, annular tape roll, and blade only where functional/material boundaries are observed"
+    ],
+    "reversible_assumptions": [
+      {"region_id": "lower_upper_boundary", "assumption": "start with a separate low base; merge/rebuild only if later evidence disproves the assembly seam"}
+    ],
+    "initial_bounds_mm": {"length": 158.7, "width": 57.1, "height": 71.0},
+    "verification": ["front/side/top/iso solid renders", "open central channel visible from top and oblique", "rear bridge continuity visible", "paired rails read as broad bands rather than tubes", "fresh-process connected-component and bounds audit"]
+  }
+}

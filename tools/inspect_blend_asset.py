@@ -13,6 +13,7 @@ from pathlib import Path
 
 import bmesh
 import bpy
+from mathutils import Vector
 
 
 def output_path():
@@ -36,6 +37,11 @@ def mesh_record(obj):
     quads = sum(len(face.verts) == 4 for face in bm.faces)
     degenerate = sum(face.calc_area() < 1e-8 for face in bm.faces)
     bm.free()
+    world_corners = [obj.matrix_world @ Vector(corner) for corner in obj.bound_box]
+    world_dimensions = [
+        max(corner[axis] for corner in world_corners) - min(corner[axis] for corner in world_corners)
+        for axis in range(3)
+    ]
     return {
         "name": obj.name,
         "vertices": len(mesh.vertices),
@@ -53,7 +59,8 @@ def mesh_record(obj):
             {"name": modifier.name, "type": modifier.type, "show_viewport": modifier.show_viewport}
             for modifier in obj.modifiers
         ],
-        "dimensions": [float(value) for value in obj.dimensions],
+        "dimensions": [float(value) for value in world_dimensions],
+        "dimensions_space": "WORLD_AXIS_ALIGNED_BASE_CAGE",
         "scale": [float(value) for value in obj.scale],
         "hidden_viewport": obj.hide_get(),
         "hidden_render": obj.hide_render,
@@ -63,6 +70,12 @@ def mesh_record(obj):
 def main():
     destination = output_path()
     destination.parent.mkdir(parents=True, exist_ok=True)
+    # A freshly loaded background file can expose stale Object.dimensions until
+    # the view layer evaluates object transforms. This matters for authored
+    # radial parts rotated into an assembly axis: without the update, the audit
+    # can report the pre-rotation local bounds even though renders use the
+    # correct world transform.
+    bpy.context.view_layer.update()
     objects = list(bpy.data.objects)
     meshes = [mesh_record(obj) for obj in objects if obj.type == "MESH"]
     meshes.sort(key=lambda item: item["faces"], reverse=True)

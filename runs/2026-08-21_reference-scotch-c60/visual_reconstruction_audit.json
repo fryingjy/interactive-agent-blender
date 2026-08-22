@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "record_type": "VISUAL_RECONSTRUCTION_AUDIT",
+  "target_id": "scotch_c60_bk",
+  "checks": {
+    "identity_bound": true,
+    "independent_observations": true,
+    "property_specific_authority": true,
+    "eleven_passes_recorded": true,
+    "competing_interpretations_tested": true,
+    "bad_interpretation_eliminated": true,
+    "construction_bound_to_selected_interpretation": true,
+    "uncertainty_kept_reversible": true
+  },
+  "region_reports": [
+    {
+      "region_id": "upper_shell_continuity",
+      "ranking": {
+        "schema_version": 1,
+        "disposition": "SELECTED",
+        "selected_candidate": "upper_connected_u_shell",
+        "reason": "unique contradiction-free candidate confirmed across at least 2 views",
+        "minimum_confirmed_views": 2,
+        "candidates": [
+          {
+            "name": "upper_connected_u_shell",
+            "representation": "paired side rails and front/rear bridges form one connected U-plan shell around an open channel",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_3m_right_oblique",
+                  "observation_id": "rear_bridge_official",
+                  "view": "right_oblique",
+                  "property": "rear_bridge_continuity",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "rear_bridge_official"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_open_hub_oblique",
+                  "observation_id": "rear_bridge_open",
+                  "view": "open_hub_oblique",
+                  "property": "rear_bridge_continuity",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "rear_bridge_open"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_open_hub_oblique",
+                  "observation_id": "channel_open",
+                  "view": "open_hub_oblique",
+                  "property": "central_channel_is_open_volume",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "channel_open"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 3,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "open_hub_oblique",
+              "right_oblique"
+            ],
+            "score": 3,
+            "viable": true
+          },
+          {
+            "name": "upper_independent_rails_on_solid_top",
+            "representation": "two independent decorative rails sit on a full-width solid top surface",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_3m_right_oblique",
+                  "observation_id": "rear_bridge_official",
+                  "view": "right_oblique",
+                  "property": "rear_bridge_continuity",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "rear_bridge_official"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_open_hub_oblique",
+                  "observation_id": "rear_bridge_open",
+                  "view": "open_hub_oblique",
+                  "property": "rear_bridge_continuity",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "rear_bridge_open"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_open_hub_oblique",
+                  "observation_id": "channel_open",
+                  "view": "open_hub_oblique",
+                  "property": "central_channel_is_open_volume",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "channel_open"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 0,
+              "CONTRADICTED": 3,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [],
+            "score": -3,
+            "viable": false
+          }
+        ]
+      }
+    },
+    {
+      "region_id": "rail_cross_section",
+      "ranking": {
+        "schema_version": 1,
+        "disposition": "SELECTED",
+        "selected_candidate": "flattened_rounded_band",
+        "reason": "unique contradiction-free candidate confirmed across at least 2 views",
+        "minimum_confirmed_views": 2,
+        "candidates": [
+          {
+            "name": "flattened_rounded_band",
+            "representation": "broad molded rail with a flattened crown and rounded shoulder transitions",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_3m_left_oblique",
+                  "observation_id": "flat_rail_left",
+                  "view": "left_oblique",
+                  "property": "circular_tube_side_bulge_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed False; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "flat_rail_left"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_closed_right_oblique",
+                  "observation_id": "flat_rail_right",
+                  "view": "right_oblique",
+                  "property": "circular_tube_side_bulge_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed False; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "flat_rail_right"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 2,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "left_oblique",
+              "right_oblique"
+            ],
+            "score": 2,
+            "viable": true
+          },
+          {
+            "name": "circular_swept_tube",
+            "representation": "circular tube swept along the wave path",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_3m_left_oblique",
+                  "observation_id": "flat_rail_left",
+                  "view": "left_oblique",
+                  "property": "circular_tube_side_bulge_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed False; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "flat_rail_left"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_closed_right_oblique",
+                  "observation_id": "flat_rail_right",
+                  "view": "right_oblique",
+                  "property": "circular_tube_side_bulge_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed False; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "flat_rail_right"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 0,
+              "CONTRADICTED": 2,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [],
+            "score": -2,
+            "viable": false
+          }
+        ]
+      }
+    },
+    {
+      "region_id": "lower_upper_boundary",
+      "ranking": {
+        "schema_version": 1,
+        "disposition": "AMBIGUOUS",
+        "selected_candidate": null,
+        "reason": "multiple viable candidates remain tied",
+        "minimum_confirmed_views": 2,
+        "candidates": [
+          {
+            "name": "separate_lower_weighted_base",
+            "representation": "upper U-shell rests on a separately molded weighted lower base",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "market_closed_right_oblique",
+                  "observation_id": "seam_right",
+                  "view": "right_oblique",
+                  "property": "lower_upper_seam_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "seam_right"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_closed_left_oblique",
+                  "observation_id": "seam_left",
+                  "view": "left_oblique",
+                  "property": "lower_upper_seam_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "seam_left"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 2,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "left_oblique",
+              "right_oblique"
+            ],
+            "score": 2,
+            "viable": true
+          },
+          {
+            "name": "one_molding_with_cosmetic_groove",
+            "representation": "one continuous housing carries a shallow cosmetic side groove",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "market_closed_right_oblique",
+                  "observation_id": "seam_right",
+                  "view": "right_oblique",
+                  "property": "lower_upper_seam_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "seam_right"
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "market_closed_left_oblique",
+                  "observation_id": "seam_left",
+                  "view": "left_oblique",
+                  "property": "lower_upper_seam_visible",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "seam_left"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 2,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "left_oblique",
+              "right_oblique"
+            ],
+            "score": 2,
+            "viable": true
+          }
+        ]
+      }
+    }
+  ],
+  "selected_hypothesis_ids": [
+    "upper_connected_u_shell",
+    "flattened_rounded_band"
+  ],
+  "contradiction_count": 5,
+  "errors": [],
+  "pass": true
+}

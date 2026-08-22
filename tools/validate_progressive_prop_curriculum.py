@@ -13,8 +13,16 @@ DEFAULT_INPUT = ROOT / "knowledge" / "foundation" / "progressive_prop_benchmark_
 def validate(data):
     errors = []
     props = [prop for tier in data.get("tiers", []) for prop in tier.get("props", [])]
-    ids = [prop.get("id") for prop in props]
-    titles = [prop.get("title") for prop in props]
+    malformed = [index for index, prop in enumerate(props) if not isinstance(prop, dict)]
+    if malformed:
+        errors.append(f"every prop must be an object; malformed indexes: {malformed}")
+    valid_props = [prop for prop in props if isinstance(prop, dict)]
+    ids = [prop.get("id") for prop in valid_props]
+    titles = [prop.get("title") for prop in valid_props]
+    if any(not isinstance(title, str) or not title.strip() for title in titles):
+        errors.append("every prop requires a non-empty title")
+    if any(not isinstance(prop.get("difficulty_reason"), str) or not prop["difficulty_reason"].strip() for prop in valid_props):
+        errors.append("every prop requires a non-empty difficulty_reason")
     if ids != list(range(1, 31)):
         errors.append(f"prop IDs must be exactly 1..30 in order; got {ids}")
     if len(titles) != len(set(titles)):
@@ -47,6 +55,7 @@ def validate(data):
     active_prop_valid = (
         isinstance(active_id, int)
         and active_id in ids
+        and len(titles) == 30
         and active.get("active_prop") == titles[active_id - 1]
     )
     if not (paused or active_prop_valid):

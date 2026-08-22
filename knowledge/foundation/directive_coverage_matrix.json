@@ -161,15 +161,20 @@
       "evidence": [
         "knowledge_engine/reference_analysis.py",
         "knowledge_engine/representation_hypothesis.py",
+        "knowledge_engine/visual_reconstruction.py",
         "tools/verify_reference_set_gate.py",
         "tools/test_representation_hypotheses.py",
+        "tools/audit_visual_reconstruction.py",
         "runs/2026-08-21_reference-aa-battery/hypothesis_evaluation.json",
         "runs/2026-08-21_reference-aa-battery/typed_action_record.json",
+        "runs/2026-08-21_reference-scotch-c60/visual_reconstruction_audit.json",
+        "runs/2026-08-21_reference-scotch-c60/visual_revision_log.json",
+        "runs/2026-08-21_reference-scotch-c60/fresh_asset_inspection.json",
         "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json",
         "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
       ],
-      "current_boundary": "Reference-set gating, calibrated image alignment, and controlled review views exist. Independent observation records can now confirm or contradict numeric/boolean consequences for competing representations without letting candidates embed their own proof. The AA/LR6 run uses side and top evidence to reject a stacked-terminal interpretation and drive one connected typed blockout with exact evaluated dimensions. This remains a simple rotational primary form without human acceptance; it does not prove difficult multi-view interpretation.",
-      "next_step": "Use the same non-circular competing-hypothesis path on a fresh non-rotational manufactured target with ambiguous depth or component continuity, then revise the interpretation from Blender render evidence."
+      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. Independent observations can confirm, contradict, or leave numeric/boolean consequences undecidable without candidates embedding their own proof. AA/LR6 drives a simple connected rotational blockout. Scotch C60 extends the path to a non-rotational connected U-plan shell, eliminates disconnected-rail and circular-tube interpretations, retains an ambiguous lower boundary as reversible, and records a render-driven five-to-nine-section crease/SubD correction. Neither run has human visual acceptance, and C60 still lacks an accurate hub support and lower perimeter.",
+      "next_step": "Correct the remaining C60 component/perimeter mismatches from controlled views, seek human review, then test whether the same reasoning transfers to another unrelated target."
     },
     {
       "id": "13",
@@ -194,10 +199,12 @@
         "runs/2026-08-17_bevel-skill-runtime-use/",
         "knowledge/skills/inset-before-extrude-containment.json",
         "runs/2026-08-18_inset-before-extrude-validation/",
-        "runs/2026-08-18_inset-containment-skill-runtime-use/"
+        "runs/2026-08-18_inset-containment-skill-runtime-use/",
+        "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json",
+        "runs/2026-08-21_reference-scotch-c60/typed_surface_report.json"
       ],
-      "current_boundary": "Source observation, bounded episode review, two-family UV transfer, principal-axis Image Empty transfer, and two-family explicit bevel-intent transfer exist. Since 2026-08-17, two more techniques (bevel-segment parity, inset-before-extrude containment) were each taken all the way through reproduce -> transfer -> visual+technical verify -> retrieval -> planner use -> RUNTIME_VALIDATED, both surfacing and correcting a real overreach in their source's claim rather than promoting it as stated. Real-asset runtime use (an actual unfamiliar reference, not a synthetic ticket built to test the wiring) remains the open gap for both.",
-      "next_step": "Apply a validated skill during an authorized real-reference modeling task and record whether retrieval actually changed the resulting decision and improved the model, not just whether the typed transaction executed."
+      "current_boundary": "Source observation, bounded episode review, transfer experiments, and retrieval infrastructure exist. The C60 run is the first retained unfamiliar-reference task where retrieval changes a real typed action: explicit bevel-intent knowledge causes all twelve physical-radius base edges to be declared before weight assignment, and the live completeness audit passes. The visually chosen width and the asset itself remain unapproved, so this is one bounded real-task use rather than broad transfer.",
+      "next_step": "Repeat natural retrieval on unrelated reference failures and measure whether the retrieved rule improves visual outcomes, not only intent completeness."
     },
     {
       "id": "14",
@@ -222,10 +229,11 @@
         "tools/audit_observation_to_skill_gap.py",
         "runs/2026-08-19_observation-to-skill-gap-audit/",
         "runs/2026-08-19_observed-defect-repair-loop/",
-        "tests/test_skill_trigger_vocabulary.py"
+        "tests/test_skill_trigger_vocabulary.py",
+        "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json"
       ],
-      "current_boundary": "CORRECTED 2026-08-19 by audit. The previously recorded runtime validations for three skills were circular: each test hand-authored a ticket whose type string was copied from the skill's own planner_hint trigger list and whose operation_params carried the fix, so the planner only performed a dictionary lookup and knowledge contributed nothing to the mutation. Two of those RUNTIME_VALIDATED statuses are withdrawn to TRANSFER_VALIDATED. One skill (bevel-segment parity) now has genuine non-circular evidence: knowledge_engine/defect_classifier.py emits a structurally-decidable `corner_triangle` ticket from real base-cage topology, the planner supplies the even-segment parameter from knowledge rather than from the ticket, and the loop gates commit-vs-rollback at verify time. Testing that loop also FALSIFIED a claim in the knowledge base (re-beveling to remove a corner triangle makes the cage strictly worse), which is now recorded as such. A fail-closed test (tests/test_skill_trigger_vocabulary.py) prevents the circularity recurring silently.",
-      "next_step": "Fire a validated skill during an actual reference-driven build. No skill has yet influenced a model made from an unfamiliar reference, because no such build currently exists in the repo."
+      "current_boundary": "CORRECTED 2026-08-19 by audit. Circular runtime validations remain withdrawn except for the independently classified bevel-parity path. The C60 study now adds one non-synthetic unfamiliar-reference use: retrieval selects the explicit semantic bevel-intent rule, which supplies the ordering requirement (declare the complete physical-radius set before weighting) while the reference, not the skill, supplies which base edges need a radius. The resulting 12/12 declaration and live weight-limited Bevel pass the hard-surface audit. One successful use does not establish repeated retrieval quality or visual acceptance.",
+      "next_step": "Repeat the observation -> retrieval -> typed action -> visual consequence chain on an unrelated target and retain failures when retrieval is inapplicable."
     },
     {
       "id": "15",

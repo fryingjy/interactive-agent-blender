@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT",
+  "claim_boundary": "Validates nonblank, distinct capture evidence only; it does not measure visual fidelity or approve a modeling stage.",
+  "minimum_foreground_ratio": 0.001,
+  "views": [
+    {
+      "view_id": "isometric",
+      "path": "runs\\2026-08-21_reference-scotch-c60\\surface_v2_isometric.png",
+      "exists": true,
+      "resolution": [
+        768,
+        768
+      ],
+      "foreground_pixels": 139821,
+      "foreground_ratio": 0.23705546061197916,
+      "pixel_sha256": "6393606cff369a23d2243f7073ba9f35d9cc5ed1bfaac153ca51fee957d41930"
+    },
+    {
+      "view_id": "front",
+      "path": "runs\\2026-08-21_reference-scotch-c60\\surface_v2_front.png",
+      "exists": true,
+      "resolution": [
+        768,
+        768
+      ],
+      "foreground_pixels": 99733,
+      "foreground_ratio": 0.1690894232855903,
+      "pixel_sha256": "a854d86bb789e5fdd31332360cefc511becee95139f99667ad2940c848cc78df"
+    },
+    {
+      "view_id": "top",
+      "path": "runs\\2026-08-21_reference-scotch-c60\\surface_v2_top.png",
+      "exists": true,
+      "resolution": [
+        768,
+        768
+      ],
+      "foreground_pixels": 115042,
+      "foreground_ratio": 0.1950446234809028,
+      "pixel_sha256": "69f97d5d49ed75a68c0cd942ccf0a42cfe5a8b2d3ea667ef49f74339cb7d478a"
+    }
+  ],
+  "missing_views": [],
+  "blank_views": [],
+  "duplicate_view_groups": [],
+  "pass": true
+}

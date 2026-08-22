@@ -477,26 +477,19 @@ than an unfamiliar reference, so they do not touch the reference-interpretation 
 `docs/CURRENT_STATE_GAP_MATRIX.md` has called the single highest-value open item since 2026-08-16.
 The foundation therefore remains **PARTIAL**.
 
-### 2026-08-21 addendum: a real reference-driven candidate is in progress, not yet reviewed
+### 2026-08-21 correction: current retained reference evidence
 
-`runs/2026-08-16_reference-gathering-masterlock-140d/` -- a padlock blockout frozen at stage 12
-since before the magnifying-glass episode, never purged or rejected, just stalled -- was found and
-resumed. Unlike the mallet/mug, this is a genuine reference-driven build: real photos, an official
-dimensional spec, and an active measured comparison against both. Added two shackle sockets and a
-front corner chamfer, each checked against the actual reference photo rather than assumed; measured
-fresh silhouette/negative-space IoU and correctly found today's construction left it flat; found the
-one real localized gap (negative-space) and deliberately declined to close it by narrowing the
-shackle, since that would trade a verified dimensional spec for a better fit against a photo the
-reference manifest itself labels `PERSPECTIVE`, not orthographic. A structured human-review board
-(`runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html`) is prepared.
+The repository audit removed or reclassified stale current-state claims that depended on deleted
+named-product builds and HTML review boards. The retained current reference artifacts are the
+AA/LR6 blockout and the Scotch C60 reconstruction study.
 
-**Update, same day:** the review board reached a recorded human review -- `REVIEW_ACCEPTED_NO_REPAIR`,
-on the reviewer's own qualified terms ("its ok for the most part", not a claim of a finished or
-maximally detailed model). This is the first genuinely reference-driven build in this project's
-history to reach a recorded human accept.
+The C60 run adds an evidence-bound eleven-pass observation → interpretation → prediction →
+construction audit. It rejects disconnected decorative rails and a circular swept-tube rail,
+drives one connected U-plan all-quad shell, and records a real render-driven correction from a
+faceted five-section wave to a nine-section cage with a live partial-crease/SubD strategy. Fresh
+inspection reports 228 quad faces, no triangles, n-gons, non-manifold edges, or degenerate faces,
+plus one unapplied SubD modifier and one unapplied weight-limited Bevel.
 
-This still does not upgrade the exit decision: one accepted build does not establish repeatability,
-its construction so far has not exercised this project's retrieval/skill system (direct bmesh work,
-not retrieval-driven skill selection), and known open items (front wordmark/seam detail, unmodeled
-rear/underside, the negative-space gap deliberately left unfixed) remain exactly as open as before
-acceptance. The foundation remains **PARTIAL**.
+This does not upgrade the exit decision. The hub-support assembly and rounded lower perimeter remain
+unfinished, the lower molding/groove interpretation remains ambiguous, production preparation has
+not begun, and no human has accepted the likeness. The foundation remains **PARTIAL**.

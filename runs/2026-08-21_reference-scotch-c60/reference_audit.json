@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-21_reference-scotch-c60\\reference_manifest.json",
+      "audit": {
+        "target_id": "scotch_c60_bk",
+        "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+        "reference_count": 6,
+        "matching_reference_count": 6,
+        "independent_source_count": 2,
+        "view_count": 4,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true
+        },
+        "covered_properties": {
+          "central_tape_channel": [
+            "official_3m_left_oblique",
+            "market_open_hub_oblique"
+          ],
+          "rear_bridge_continuity": [
+            "official_3m_right_oblique",
+            "market_open_hub_oblique"
+          ],
+          "separate_hub": [
+            "official_3m_right_oblique"
+          ],
+          "wave_profile": [
+            "market_closed_right_oblique"
+          ],
+          "lower_upper_boundary": [
+            "market_closed_left_oblique"
+          ],
+          "overall_dimensions": [
+            "official_3m_dimensions"
+          ]
+        },
+        "dimensional_anchors": [
+          "length 158.7 mm",
+          "width 57.1 mm",
+          "height 71 mm"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      }
+    }
+  ]
+}

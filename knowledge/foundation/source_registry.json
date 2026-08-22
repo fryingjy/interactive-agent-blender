@@ -3176,5 +3176,57 @@
         "The label artwork is fictional and cannot support manufacturer-specific surface detail."
       ]
     }
+  },
+  {
+    "id": "3m-scotch-c60-product-reference",
+    "url": "https://www.3m.com/3M/sl_SI/p/d/v000214265/",
+    "local_path": "runs/2026-08-21_reference-scotch-c60/",
+    "title": "Scotch C60 Desktop Tape Dispenser Product References and Dimensions",
+    "creator": "3M",
+    "source_type": "official_product_reference",
+    "trust_tier": "A",
+    "version": "downloaded 2026-08-21",
+    "topics": ["reference-modeling", "tape-dispenser", "multi-view-interpretation", "dimensional-anchor"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["official_product_photography", "official_product_dimensions"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_reference-scotch-c60/"],
+      "direct_observations": [
+        "The official dimensions constrain the complete target to 158.7 x 57.1 x 71 mm.",
+        "Opposing obliques show a connected wave-shaped upper shell, a real central tape channel, and a transverse rear bridge."
+      ],
+      "limitations": [
+        "The retained official images are low-resolution product views rather than calibrated orthographic projections.",
+        "The official page does not expose the hidden hinge, underside, or internal weighted-base construction."
+      ]
+    }
+  },
+  {
+    "id": "ebay-scotch-c60-multiview-reference",
+    "url": "https://www.ebay.com/itm/125321436143",
+    "local_path": "runs/2026-08-21_reference-scotch-c60/",
+    "title": "Scotch C60 Closed and Open-Hub Marketplace Views",
+    "creator": "marketplace seller",
+    "source_type": "secondary_product_photography",
+    "trust_tier": "B",
+    "version": "downloaded 2026-08-21",
+    "topics": ["reference-modeling", "tape-dispenser", "component-continuity", "negative-space"],
+    "access": {"text": false, "video": false, "audio": false, "captions": false, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["closed_product_obliques", "open_hub_oblique"],
+    "metadata": {
+      "experiments": ["runs/2026-08-21_reference-scotch-c60/"],
+      "direct_observations": [
+        "The opened-hub image proves that the dark center is a real cavity and exposes the rear bridge and hinged hub relationship.",
+        "Closed views show a broad flattened rail crown rather than a circular swept tube."
+      ],
+      "limitations": [
+        "Marketplace provenance is weaker than manufacturer provenance and may include seller processing or perspective distortion.",
+        "The views do not distinguish conclusively between a separate lower molding and one molding with a cosmetic groove."
+      ]
+    }
   }
 ]

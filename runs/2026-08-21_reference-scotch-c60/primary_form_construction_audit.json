@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "lower_weighted_base",
+      "origin": "create_profile_extrusion",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "connected_upper_shell",
+      "origin": "create_quad_shell_grid",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "failures": []
+}

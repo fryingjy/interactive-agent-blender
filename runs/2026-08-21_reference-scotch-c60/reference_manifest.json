@@ -1,0 +1,112 @@
+{
+  "target_id": "scotch_c60_bk",
+  "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+  "required_views": ["left_oblique", "right_oblique", "open_hub_oblique"],
+  "orthographic_required_views": [],
+  "critical_properties": ["overall_dimensions", "central_tape_channel", "rear_bridge_continuity", "separate_hub"],
+  "require_dimensional_anchor": true,
+  "minimum_independent_sources": 2,
+  "items": [
+    {
+      "reference_id": "official_3m_left_oblique",
+      "source_id": "3m_scotch_c60_product",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "view": "left_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "source_url": "https://multimedia.3m.com/mws/media/1083592J/1505-3m-scotch-07.jpg",
+      "local_file": "media/official_3m_view_a.jpg",
+      "claims": [
+        {"property_id": "central_tape_channel", "purpose": "CONSTRUCTION", "observation": "A deep open channel separates two raised side rails around the tape roll.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Low-resolution product photo; perspective prevents direct profile tracing."]
+    },
+    {
+      "reference_id": "official_3m_right_oblique",
+      "source_id": "3m_scotch_c60_product",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["PRIMARY_FORM", "FUNCTIONAL", "CONSTRUCTION"],
+      "view": "right_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "VERY_HIGH",
+      "source_url": "https://multimedia.3m.com/mws/media/2317248J/scotch-tape-dispenser-c60-black-scotch-magic-invisible-tape-19-mm-x-33-m-1-roll-pack-clop.jpg",
+      "local_file": "media/official_3m_view_b.jpg",
+      "claims": [
+        {"property_id": "rear_bridge_continuity", "purpose": "CONSTRUCTION", "observation": "The left and right raised rails meet across the rear behind the roll rather than terminating as independent strips.", "confidence": "MEDIUM"},
+        {"property_id": "separate_hub", "purpose": "FUNCTIONAL", "observation": "The white roll surrounds a distinct dark radial hub inside the channel.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Low resolution and roll occlusion weaken the rear-boundary reading."]
+    },
+    {
+      "reference_id": "market_open_hub_oblique",
+      "source_id": "ebay_c60_listing",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["CONSTRUCTION", "FUNCTIONAL", "PRIMARY_FORM"],
+      "view": "open_hub_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "source_url": "https://i.ebayimg.com/images/g/Hl4AAOSww3ZihXch/s-l1600.webp",
+      "local_file": "media/market_view_a.webp",
+      "claims": [
+        {"property_id": "rear_bridge_continuity", "purpose": "CONSTRUCTION", "observation": "With the attached hub raised, a transverse rear bridge visibly connects both upper rails behind the channel.", "confidence": "HIGH"},
+        {"property_id": "central_tape_channel", "purpose": "PRIMARY_FORM", "observation": "The channel is a real recessed volume bounded by two side rails, not a dark graphic on a full-width top.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Marketplace source and extreme perspective; use for visibility of assembly boundaries, not dimensions."]
+    },
+    {
+      "reference_id": "market_closed_right_oblique",
+      "source_id": "ebay_c60_listing",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "view": "right_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "source_url": "https://i.ebayimg.com/images/g/aYcAAOSwR9FihXcb/s-l1600.webp",
+      "local_file": "media/market_view_b.webp",
+      "claims": [
+        {"property_id": "wave_profile", "purpose": "PRIMARY_FORM", "observation": "The cutter nose, deep center valley, and high rounded rear form the dominant side-profile rhythm.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Perspective photo with tape and roll occluding the inner channel."]
+    },
+    {
+      "reference_id": "market_closed_left_oblique",
+      "source_id": "ebay_c60_listing",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "MATERIAL"],
+      "view": "left_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "USEFUL_VERIFY",
+      "source_url": "https://i.ebayimg.com/images/g/aowAAOSwsUVihXce/s-l1600.webp",
+      "local_file": "media/market_view_c.webp",
+      "claims": [
+        {"property_id": "lower_upper_boundary", "purpose": "CONSTRUCTION", "observation": "A narrow continuous seam follows the wave profile between the upper rail shell and lower side surface.", "confidence": "HIGH"}
+      ],
+      "limitations": ["Perspective photo; seam visibility does not alone prove whether the boundary is an assembly seam or a cosmetic groove."]
+    },
+    {
+      "reference_id": "official_3m_dimensions",
+      "source_id": "3m_scotch_c60_product",
+      "target_id": "scotch_c60_bk",
+      "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+      "purposes": ["DIMENSION"],
+      "view": "specification",
+      "projection": "UNKNOWN",
+      "source_tier": "VERY_HIGH",
+      "source_url": "https://www.3m.com/3M/sl_SI/p/d/v000214265/",
+      "local_file": null,
+      "claims": [
+        {"property_id": "overall_dimensions", "purpose": "DIMENSION", "observation": "3M publishes 158.7 mm overall length, 57.1 mm overall width, and 71 mm overall height.", "confidence": "HIGH"}
+      ],
+      "dimensional_anchors": ["length 158.7 mm", "width 57.1 mm", "height 71 mm"],
+      "limitations": ["Published dimensions bound the complete product and do not locate internal component landmarks."]
+    }
+  ],
+  "conflicts": [],
+  "research_questions": []
+}
