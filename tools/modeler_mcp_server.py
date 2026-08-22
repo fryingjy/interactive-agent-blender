@@ -138,6 +138,12 @@ def create_quad_layered_annular_shell(name: str, front_loops: list[list[list[flo
 
 
 @mcp.tool()
+def create_authored_quad_mesh(name: str, vertices: list[list[float]], faces: list[list[int]]) -> dict:
+    """Create one edge-connected all-quad cage from explicit authored vertices and faces. Use this for topology patterns such as 2-to-1 loop reductions that a rectangular grid cannot represent. Open boundaries are allowed for later live Solidify; loose vertices, disconnected face islands, repeated face vertices, invalid indices, and edges with more than two incident faces are rejected."""
+    return _call("create_authored_quad_mesh", name=name, vertices=vertices, faces=faces)
+
+
+@mcp.tool()
 def get_selection(object_name: str) -> dict:
     """Currently selected vertex/edge/face IDs and the active selection mode for a mesh object."""
     return _call("get_selection", name=object_name)

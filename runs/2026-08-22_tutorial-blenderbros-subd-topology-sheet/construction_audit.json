@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "subd_uniform_curved_shell",
+      "origin": "create_quad_shell_sections",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "subd_uneven_curved_shell_failure",
+      "origin": "create_quad_shell_sections",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "subd_boundary_flow_failure",
+      "origin": "create_quad_shell_sections",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "subd_boundary_flow_correction",
+      "origin": "create_quad_shell_sections",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "failures": []
+}

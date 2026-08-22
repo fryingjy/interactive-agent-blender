@@ -88,6 +88,7 @@ CAPABILITIES = [
     "quad_shell_grid_geometry",
     "quad_annular_shell_geometry",
     "quad_layered_annular_shell_geometry",
+    "authored_quad_mesh_geometry",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -576,6 +577,23 @@ class ModelerServer:
             "edges": len(obj.data.edges),
             "faces": len(obj.data.polygons),
             "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse.",
+        }
+
+    def cmd_create_authored_quad_mesh(self, name, vertices, faces):
+        """Create one validated connected quad cage from explicit authored topology."""
+        if name in bpy.data.objects:
+            raise ValueError(f"object '{name}' already exists")
+        obj = profile_mesh.authored_quad_mesh(name, vertices, faces)
+        persistent_ids.ensure_persistent_ids(obj.name)
+        health = state_probe.mesh_health(obj.name)
+        return {
+            "name": obj.name,
+            "type": obj.type,
+            "vertices": len(obj.data.vertices),
+            "edges": len(obj.data.edges),
+            "faces": len(obj.data.polygons),
+            "mesh_health": health,
+            "construction_boundary": "Explicit authored topology is connected and all-quad; open boundaries are intentional for live Solidify/SubD studies.",
         }
 
     def cmd_create_quad_open_surface(self, name, front_grid, rear_grid, active_cells, bridge_edges):

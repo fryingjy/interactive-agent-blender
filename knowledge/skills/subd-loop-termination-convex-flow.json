@@ -1,0 +1,28 @@
+{
+  "skill_id":"subd.loop_termination.convex_two_to_one_flow",
+  "title":"Terminate SubD density with convex 2-to-1 quad flow",
+  "topic_tags":["subdivision surface","loop termination","2-to-1 reduction","convex quads","pinching"],
+  "applicability":{"modeling_stage":["TOPOLOGY_SURFACE"],"workflow":["connected quad cage","curved hard surface"],"defect":["detail loop spills into corner","concave diamond","localized SubD pinch"]},
+  "preconditions":["extra density should terminate on a low-curvature or visually quiet region","the reduction can preserve one connected quad surface","the evaluated result can be inspected under curvature rather than only while flat"],
+  "required_observations":["base wire around the reduction","quad corner convexity/outward orientation","fixed MatCap after Bend or equivalent curvature","evaluated manifold and face topology"],
+  "action_policy":[
+    "Route the denser boundary into the coarser boundary with convex quads whose corners remain outward.",
+    "Ease polygon size across the reduction; do not place the reduction vertex behind the incoming boundary or create an inward-folding concave quad.",
+    "Place the reduction away from a critical corner when possible, then evaluate it on the intended curved surface with the real modifier stack."
+  ],
+  "expected_effects":["detail density ends locally","no concentrated fan or crease in evaluated wire/MatCap","global corner flow remains unchanged"],
+  "failure_predicates":["any reduction quad becomes concave or self-overlapping","wire converges into a concentrated fan","MatCap shows a localized crease despite matched counts and modifiers"],
+  "recovery":["move the reduction vertex back inside the convex transition region","spread the size change across more than one row","relocate the reduction to a flatter region"],
+  "sources":[{"type":"video_observation","source_id":"xUEs7cszlb0","timestamp_seconds":[607,740],"description":"Ryuu - Blender Bros demonstrates loop termination, rejects an inward-folding diamond, and eases polygon size."}],
+  "experiments":[{
+    "type":"matched curved 2-to-1 reduction reproduction",
+    "evidence_path":"runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/",
+    "result":"PASS",
+    "measurements":{"base_vertices_each":21,"base_quads_each":13,"evaluated_vertices_each":642,"evaluated_quads_each":640,"evaluated_non_manifold_edges_each":0,"safe_pinch_candidates":26,"failure_pinch_candidates":24},
+    "limitations":"One reduction family under one Bend/Solidify/SubD stack. Candidate counts do not identify the defect; the result depends on wire and MatCap judgment and still needs transfer to a different curved asset."
+  }],
+  "runtime_usage":[],
+  "version_scope":"Blender 5.2 LTS reproduction; source tutorial used Blender 3.6",
+  "status":"EXPERIMENTALLY_TESTED",
+  "status_note":"Matched reproduction isolates convexity as the visual difference; different-geometry transfer and complete-asset use remain open."
+}

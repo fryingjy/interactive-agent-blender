@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "TUTORIAL_REPRODUCTION_SYNTHESIS",
+  "stage": 4,
+  "status": "IN_PROGRESS_MULTI_PROBLEM_TOPOLOGY_SHEET_COMPLETE",
+  "validated": [
+    "On curved SubD surfaces, equal polygon count does not substitute for even spacing and balanced flow.",
+    "Candidate pinch count cannot be optimized in isolation; the matched curved failure had fewer candidates but worse severity/median curvature and a less balanced visible arc.",
+    "A continuous local perimeter support ring can redirect the interior grid away from a boundary and sharpen the resulting highlight.",
+    "Support density has a measurable cost and should follow edge function rather than being added globally.",
+    "A 2-to-1 reduction must keep every quad convex/outward; moving one reduction vertex behind the incoming boundary can remain numerically all-quad/manifold after evaluation yet create an obvious pinch."
+  ],
+  "not_yet_validated": [
+    "complete advanced SubD tutorial asset",
+    "different-geometry transfer of the loop-termination rule"
+  ],
+  "artifacts": ["subd_topology_sheet.blend","sheet_front_matcap.png","sheet_front_wire.png","curved_pair_top_matcap.png","boundary_pair_front_matcap.png","typed_report.json","subd_termination_sheet.blend","termination_front_wire.png","termination_front_matcap.png","termination_top_matcap.png","termination_report.json"]
+}

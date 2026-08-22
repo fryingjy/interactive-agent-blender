@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "record_type": "SUBD_TOPOLOGY_SHEET_COMPARISON",
+  "curved_spacing_pair": {
+    "controlled_variables": "same point count, row count, thickness, SubD level, shading policy, and approximate circular base surface; only column spacing changes",
+    "uniform": {"evaluated_vertices":450,"evaluated_quads":448,"non_manifold_edges":0,"median_absolute_laplacian":0.01483842,"max_robust_outlier_z":16.0669,"pinch_candidates":39},
+    "uneven": {"evaluated_vertices":450,"evaluated_quads":448,"non_manifold_edges":0,"median_absolute_laplacian":0.01603806,"max_robust_outlier_z":18.2736,"pinch_candidates":37},
+    "interpretation":"The candidate count alone points the wrong way. Median curvature variation, maximum outlier severity, topology wire, and the fixed top-view highlight support the uneven-spacing failure."
+  },
+  "boundary_flow_pair": {
+    "coarse_failure": {"evaluated_vertices":258,"evaluated_quads":256,"non_manifold_edges":0,"pinch_candidates":20,"normal_angle_p95_degrees":34.7087},
+    "support_ring_correction": {"evaluated_vertices":770,"evaluated_quads":768,"non_manifold_edges":0,"pinch_candidates":4,"normal_angle_p95_degrees":23.8626},
+    "interpretation":"A local continuous perimeter ring materially improves the sloped boundary highlight, but costs about three times the evaluated faces. Use it where the reference requires that sharper perimeter; it is not free detail."
+  },
+  "loop_termination_pair": {
+    "controlled_variables":"same 21 vertices, 13 connected quads, Bend angle, Solidify thickness, SubD level, shading, and presentation; only one reduction vertex position changes",
+    "safe_convex":{"base_non_manifold_boundary_edges":14,"evaluated_vertices":642,"evaluated_quads":640,"evaluated_non_manifold_edges":0,"pinch_candidates":26,"max_robust_outlier_z":13.6557},
+    "concave_failure":{"base_non_manifold_boundary_edges":14,"evaluated_vertices":642,"evaluated_quads":640,"evaluated_non_manifold_edges":0,"pinch_candidates":24,"max_robust_outlier_z":13.9095},
+    "interpretation":"Counts and candidate totals again fail to identify the defect. The base wire reveals the inward/concave reduction and fixed MatCap reveals its concentrated crease; the safe convex pattern preserves a broad continuous highlight."
+  },
+  "claim_boundary":"Metrics are candidate evidence interpreted with fixed-frame MatCap and wire renders. They do not prove universal perceptual quality."
+}

@@ -1,0 +1,3965 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blenderbros-subd-topology-sheet\\typed_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blenderbros-subd-topology-sheet\\subd_topology_sheet.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "82234a5bdc27",
+  "results": [
+    {
+      "index": 0,
+      "label": "build_uniform_curved_quad_shell",
+      "command": "create_quad_shell_sections",
+      "params": {
+        "name": "subd_uniform_curved_shell",
+        "section_grids": [
+          [
+            [
+              [
+                -3.5,
+                0.402,
+                -1.0
+              ],
+              [
+                -2.75,
+                0.095,
+                -1.0
+              ],
+              [
+                -2.0,
+                0.0,
+                -1.0
+              ],
+              [
+                -1.25,
+                0.095,
+                -1.0
+              ],
+              [
+                -0.5,
+                0.402,
+                -1.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.402,
+                0.0
+              ],
+              [
+                -2.75,
+                0.095,
+                0.0
+              ],
+              [
+                -2.0,
+                0.0,
+                0.0
+              ],
+              [
+                -1.25,
+                0.095,
+                0.0
+              ],
+              [
+                -0.5,
+                0.402,
+                0.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.402,
+                1.0
+              ],
+              [
+                -2.75,
+                0.095,
+                1.0
+              ],
+              [
+                -2.0,
+                0.0,
+                1.0
+              ],
+              [
+                -1.25,
+                0.095,
+                1.0
+              ],
+              [
+                -0.5,
+                0.402,
+                1.0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -3.5,
+                0.552,
+                -1.0
+              ],
+              [
+                -2.75,
+                0.245,
+                -1.0
+              ],
+              [
+                -2.0,
+                0.15,
+                -1.0
+              ],
+              [
+                -1.25,
+                0.245,
+                -1.0
+              ],
+              [
+                -0.5,
+                0.552,
+                -1.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.552,
+                0.0
+              ],
+              [
+                -2.75,
+                0.245,
+                0.0
+              ],
+              [
+                -2.0,
+                0.15,
+                0.0
+              ],
+              [
+                -1.25,
+                0.245,
+                0.0
+              ],
+              [
+                -0.5,
+                0.552,
+                0.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.552,
+                1.0
+              ],
+              [
+                -2.75,
+                0.245,
+                1.0
+              ],
+              [
+                -2.0,
+                0.15,
+                1.0
+              ],
+              [
+                -1.25,
+                0.245,
+                1.0
+              ],
+              [
+                -0.5,
+                0.552,
+                1.0
+              ]
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "subd_uniform_curved_shell",
+        "type": "MESH",
+        "section_count": 2,
+        "grid_rows": 3,
+        "grid_columns": 5,
+        "active_cell_count": 8,
+        "vertices": 30,
+        "edges": 56,
+        "faces": 28,
+        "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse."
+      }
+    },
+    {
+      "index": 1,
+      "label": "build_uneven_curved_quad_shell_failure",
+      "command": "create_quad_shell_sections",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure",
+        "section_grids": [
+          [
+            [
+              [
+                0.5,
+                0.402,
+                -1.0
+              ],
+              [
+                0.75,
+                0.272,
+                -1.0
+              ],
+              [
+                1.8,
+                0.007,
+                -1.0
+              ],
+              [
+                2.75,
+                0.095,
+                -1.0
+              ],
+              [
+                3.5,
+                0.402,
+                -1.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.402,
+                0.0
+              ],
+              [
+                0.75,
+                0.272,
+                0.0
+              ],
+              [
+                1.8,
+                0.007,
+                0.0
+              ],
+              [
+                2.75,
+                0.095,
+                0.0
+              ],
+              [
+                3.5,
+                0.402,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.402,
+                1.0
+              ],
+              [
+                0.75,
+                0.272,
+                1.0
+              ],
+              [
+                1.8,
+                0.007,
+                1.0
+              ],
+              [
+                2.75,
+                0.095,
+                1.0
+              ],
+              [
+                3.5,
+                0.402,
+                1.0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                0.5,
+                0.552,
+                -1.0
+              ],
+              [
+                0.75,
+                0.422,
+                -1.0
+              ],
+              [
+                1.8,
+                0.157,
+                -1.0
+              ],
+              [
+                2.75,
+                0.245,
+                -1.0
+              ],
+              [
+                3.5,
+                0.552,
+                -1.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.552,
+                0.0
+              ],
+              [
+                0.75,
+                0.422,
+                0.0
+              ],
+              [
+                1.8,
+                0.157,
+                0.0
+              ],
+              [
+                2.75,
+                0.245,
+                0.0
+              ],
+              [
+                3.5,
+                0.552,
+                0.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.552,
+                1.0
+              ],
+              [
+                0.75,
+                0.422,
+                1.0
+              ],
+              [
+                1.8,
+                0.157,
+                1.0
+              ],
+              [
+                2.75,
+                0.245,
+                1.0
+              ],
+              [
+                3.5,
+                0.552,
+                1.0
+              ]
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "subd_uneven_curved_shell_failure",
+        "type": "MESH",
+        "section_count": 2,
+        "grid_rows": 3,
+        "grid_columns": 5,
+        "active_cell_count": 8,
+        "vertices": 30,
+        "edges": 56,
+        "faces": 28,
+        "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse."
+      }
+    },
+    {
+      "index": 2,
+      "label": "build_boundary_flow_failure_plate",
+      "command": "create_quad_shell_sections",
+      "params": {
+        "name": "subd_boundary_flow_failure",
+        "section_grids": [
+          [
+            [
+              [
+                -3.5,
+                0.0,
+                -4.0
+              ],
+              [
+                -2.0,
+                0.0,
+                -4.0
+              ],
+              [
+                -0.5,
+                0.0,
+                -4.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.0,
+                -3.0
+              ],
+              [
+                -2.0,
+                0.0,
+                -3.0
+              ],
+              [
+                -0.5,
+                0.0,
+                -3.0
+              ]
+            ],
+            [
+              [
+                -3.2,
+                0.0,
+                -2.0
+              ],
+              [
+                -2.0,
+                0.0,
+                -2.0
+              ],
+              [
+                -0.8,
+                0.0,
+                -2.0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -3.5,
+                0.18,
+                -4.0
+              ],
+              [
+                -2.0,
+                0.18,
+                -4.0
+              ],
+              [
+                -0.5,
+                0.18,
+                -4.0
+              ]
+            ],
+            [
+              [
+                -3.5,
+                0.18,
+                -3.0
+              ],
+              [
+                -2.0,
+                0.18,
+                -3.0
+              ],
+              [
+                -0.5,
+                0.18,
+                -3.0
+              ]
+            ],
+            [
+              [
+                -3.2,
+                0.18,
+                -2.0
+              ],
+              [
+                -2.0,
+                0.18,
+                -2.0
+              ],
+              [
+                -0.8,
+                0.18,
+                -2.0
+              ]
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "subd_boundary_flow_failure",
+        "type": "MESH",
+        "section_count": 2,
+        "grid_rows": 3,
+        "grid_columns": 3,
+        "active_cell_count": 4,
+        "vertices": 18,
+        "edges": 32,
+        "faces": 16,
+        "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse."
+      }
+    },
+    {
+      "index": 3,
+      "label": "build_boundary_flow_support_ring_correction",
+      "command": "create_quad_shell_sections",
+      "params": {
+        "name": "subd_boundary_flow_correction",
+        "section_grids": [
+          [
+            [
+              [
+                0.5,
+                0.0,
+                -4.0
+              ],
+              [
+                0.65,
+                0.0,
+                -4.0
+              ],
+              [
+                2.0,
+                0.0,
+                -4.0
+              ],
+              [
+                3.35,
+                0.0,
+                -4.0
+              ],
+              [
+                3.5,
+                0.0,
+                -4.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.0,
+                -3.85
+              ],
+              [
+                0.65,
+                0.0,
+                -3.85
+              ],
+              [
+                2.0,
+                0.0,
+                -3.85
+              ],
+              [
+                3.35,
+                0.0,
+                -3.85
+              ],
+              [
+                3.5,
+                0.0,
+                -3.85
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.0,
+                -3.0
+              ],
+              [
+                0.65,
+                0.0,
+                -3.0
+              ],
+              [
+                2.0,
+                0.0,
+                -3.0
+              ],
+              [
+                3.35,
+                0.0,
+                -3.0
+              ],
+              [
+                3.5,
+                0.0,
+                -3.0
+              ]
+            ],
+            [
+              [
+                0.77,
+                0.0,
+                -2.15
+              ],
+              [
+                0.91,
+                0.0,
+                -2.15
+              ],
+              [
+                2.0,
+                0.0,
+                -2.15
+              ],
+              [
+                3.09,
+                0.0,
+                -2.15
+              ],
+              [
+                3.23,
+                0.0,
+                -2.15
+              ]
+            ],
+            [
+              [
+                0.8,
+                0.0,
+                -2.0
+              ],
+              [
+                0.93,
+                0.0,
+                -2.0
+              ],
+              [
+                2.0,
+                0.0,
+                -2.0
+              ],
+              [
+                3.07,
+                0.0,
+                -2.0
+              ],
+              [
+                3.2,
+                0.0,
+                -2.0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                0.5,
+                0.18,
+                -4.0
+              ],
+              [
+                0.65,
+                0.18,
+                -4.0
+              ],
+              [
+                2.0,
+                0.18,
+                -4.0
+              ],
+              [
+                3.35,
+                0.18,
+                -4.0
+              ],
+              [
+                3.5,
+                0.18,
+                -4.0
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.18,
+                -3.85
+              ],
+              [
+                0.65,
+                0.18,
+                -3.85
+              ],
+              [
+                2.0,
+                0.18,
+                -3.85
+              ],
+              [
+                3.35,
+                0.18,
+                -3.85
+              ],
+              [
+                3.5,
+                0.18,
+                -3.85
+              ]
+            ],
+            [
+              [
+                0.5,
+                0.18,
+                -3.0
+              ],
+              [
+                0.65,
+                0.18,
+                -3.0
+              ],
+              [
+                2.0,
+                0.18,
+                -3.0
+              ],
+              [
+                3.35,
+                0.18,
+                -3.0
+              ],
+              [
+                3.5,
+                0.18,
+                -3.0
+              ]
+            ],
+            [
+              [
+                0.77,
+                0.18,
+                -2.15
+              ],
+              [
+                0.91,
+                0.18,
+                -2.15
+              ],
+              [
+                2.0,
+                0.18,
+                -2.15
+              ],
+              [
+                3.09,
+                0.18,
+                -2.15
+              ],
+              [
+                3.23,
+                0.18,
+                -2.15
+              ]
+            ],
+            [
+              [
+                0.8,
+                0.18,
+                -2.0
+              ],
+              [
+                0.93,
+                0.18,
+                -2.0
+              ],
+              [
+                2.0,
+                0.18,
+                -2.0
+              ],
+              [
+                3.07,
+                0.18,
+                -2.0
+              ],
+              [
+                3.2,
+                0.18,
+                -2.0
+              ]
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ],
+          [
+            true,
+            true,
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "subd_boundary_flow_correction",
+        "type": "MESH",
+        "section_count": 2,
+        "grid_rows": 5,
+        "grid_columns": 5,
+        "active_cell_count": 16,
+        "vertices": 50,
+        "edges": 96,
+        "faces": 48,
+        "construction_boundary": "All base faces are quads. Intermediate authored sections control folded or rolled depth transitions without source-mesh reuse."
+      }
+    },
+    {
+      "index": 4,
+      "label": "uniform_add_subd",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uniform_curved_shell",
+        "action_type": "uniform_curved_subdivision",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Uniform_SubD"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1787382750704",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1787382750704",
+          "performed": true,
+          "result": {
+            "modifier_name": "Uniform_SubD",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "uniform_curved_subdivision",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1787382750704",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "uniform_set_subd_level",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uniform_curved_shell",
+        "action_type": "uniform_subd_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Uniform_SubD",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1787382750708",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1787382750708",
+          "performed": true,
+          "result": {
+            "modifier_name": "Uniform_SubD",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "uniform_subd_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1787382750708",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "uniform_smooth_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uniform_curved_shell",
+        "action_type": "uniform_shading",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1787382750710",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1787382750710",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "uniform_shading",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1787382750710",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "uneven_add_subd",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure",
+        "action_type": "uneven_curved_subdivision",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Uneven_SubD"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1787382750715",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1787382750715",
+          "performed": true,
+          "result": {
+            "modifier_name": "Uneven_SubD",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "uneven_curved_subdivision",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1787382750715",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "uneven_set_subd_level",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure",
+        "action_type": "uneven_subd_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Uneven_SubD",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787382750718",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787382750718",
+          "performed": true,
+          "result": {
+            "modifier_name": "Uneven_SubD",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "uneven_subd_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787382750718",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "uneven_smooth_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure",
+        "action_type": "uneven_shading",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1787382750720",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1787382750720",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "uneven_shading",
+          "op_delta": 0,
+          "before": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 30,
+            "edges": 56,
+            "faces": 28,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1787382750720",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "boundary_failure_add_subd",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_failure",
+        "action_type": "unredirected_boundary_subdivision",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Boundary_Failure_SubD"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1787382750723",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1787382750723",
+          "performed": true,
+          "result": {
+            "modifier_name": "Boundary_Failure_SubD",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "unredirected_boundary_subdivision",
+          "op_delta": 0,
+          "before": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1787382750723",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "boundary_failure_level",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_failure",
+        "action_type": "unredirected_boundary_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Boundary_Failure_SubD",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1787382750724",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1787382750724",
+          "performed": true,
+          "result": {
+            "modifier_name": "Boundary_Failure_SubD",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "unredirected_boundary_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1787382750724",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 12,
+      "label": "boundary_failure_smooth",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_failure",
+        "action_type": "unredirected_boundary_shading",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1787382750726",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1787382750726",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "unredirected_boundary_shading",
+          "op_delta": 0,
+          "before": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 18,
+            "edges": 32,
+            "faces": 16,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1787382750726",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 13,
+      "label": "boundary_correction_add_subd",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_correction",
+        "action_type": "support_ring_boundary_subdivision",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Boundary_Correction_SubD"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1787382750728",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1787382750728",
+          "performed": true,
+          "result": {
+            "modifier_name": "Boundary_Correction_SubD",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "support_ring_boundary_subdivision",
+          "op_delta": 0,
+          "before": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1787382750728",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 14,
+      "label": "boundary_correction_level",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_correction",
+        "action_type": "support_ring_boundary_level",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Boundary_Correction_SubD",
+          "parameter": "levels",
+          "value": 2
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_10_1787382750731",
+          "observed_revision": 10
+        },
+        "perform": {
+          "decision_id": "dec_10_1787382750731",
+          "performed": true,
+          "result": {
+            "modifier_name": "Boundary_Correction_SubD",
+            "parameter": "levels",
+            "value": 2
+          }
+        },
+        "verify": {
+          "action_type": "support_ring_boundary_level",
+          "op_delta": 0,
+          "before": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_10_1787382750731",
+          "result_revision": 11
+        }
+      }
+    },
+    {
+      "index": 15,
+      "label": "boundary_correction_smooth",
+      "command": "transaction",
+      "params": {
+        "name": "subd_boundary_flow_correction",
+        "action_type": "support_ring_boundary_shading",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_11_1787382750733",
+          "observed_revision": 11
+        },
+        "perform": {
+          "decision_id": "dec_11_1787382750733",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "support_ring_boundary_shading",
+          "op_delta": 0,
+          "before": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "after": {
+            "vertices": 50,
+            "edges": 96,
+            "faces": 48,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_11_1787382750733",
+          "result_revision": 12
+        }
+      }
+    },
+    {
+      "index": 16,
+      "label": "uniform_base_state",
+      "command": "get_full_state",
+      "params": {
+        "name": "subd_uniform_curved_shell"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 12,
+        "mesh_health": {
+          "vertices": 30,
+          "edges": 56,
+          "faces": 28,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 22
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 31
+            },
+            {
+              "index": 1,
+              "agent_id": 32
+            },
+            {
+              "index": 2,
+              "agent_id": 33
+            },
+            {
+              "index": 3,
+              "agent_id": 34
+            },
+            {
+              "index": 4,
+              "agent_id": 35
+            },
+            {
+              "index": 5,
+              "agent_id": 36
+            },
+            {
+              "index": 6,
+              "agent_id": 37
+            },
+            {
+              "index": 7,
+              "agent_id": 38
+            },
+            {
+              "index": 8,
+              "agent_id": 39
+            },
+            {
+              "index": 9,
+              "agent_id": 40
+            },
+            {
+              "index": 10,
+              "agent_id": 41
+            },
+            {
+              "index": 11,
+              "agent_id": 42
+            },
+            {
+              "index": 12,
+              "agent_id": 43
+            },
+            {
+              "index": 13,
+              "agent_id": 44
+            },
+            {
+              "index": 14,
+              "agent_id": 45
+            },
+            {
+              "index": 15,
+              "agent_id": 46
+            },
+            {
+              "index": 16,
+              "agent_id": 47
+            },
+            {
+              "index": 17,
+              "agent_id": 48
+            },
+            {
+              "index": 18,
+              "agent_id": 49
+            },
+            {
+              "index": 19,
+              "agent_id": 50
+            },
+            {
+              "index": 20,
+              "agent_id": 51
+            },
+            {
+              "index": 21,
+              "agent_id": 52
+            },
+            {
+              "index": 22,
+              "agent_id": 53
+            },
+            {
+              "index": 23,
+              "agent_id": 54
+            },
+            {
+              "index": 24,
+              "agent_id": 55
+            },
+            {
+              "index": 25,
+              "agent_id": 56
+            },
+            {
+              "index": 26,
+              "agent_id": 57
+            },
+            {
+              "index": 27,
+              "agent_id": 58
+            },
+            {
+              "index": 28,
+              "agent_id": 59
+            },
+            {
+              "index": 29,
+              "agent_id": 60
+            },
+            {
+              "index": 30,
+              "agent_id": 61
+            },
+            {
+              "index": 31,
+              "agent_id": 62
+            },
+            {
+              "index": 32,
+              "agent_id": 63
+            },
+            {
+              "index": 33,
+              "agent_id": 64
+            },
+            {
+              "index": 34,
+              "agent_id": 65
+            },
+            {
+              "index": 35,
+              "agent_id": 66
+            },
+            {
+              "index": 36,
+              "agent_id": 67
+            },
+            {
+              "index": 37,
+              "agent_id": 68
+            },
+            {
+              "index": 38,
+              "agent_id": 69
+            },
+            {
+              "index": 39,
+              "agent_id": 70
+            },
+            {
+              "index": 40,
+              "agent_id": 71
+            },
+            {
+              "index": 41,
+              "agent_id": 72
+            },
+            {
+              "index": 42,
+              "agent_id": 73
+            },
+            {
+              "index": 43,
+              "agent_id": 74
+            },
+            {
+              "index": 44,
+              "agent_id": 75
+            },
+            {
+              "index": 45,
+              "agent_id": 76
+            },
+            {
+              "index": 46,
+              "agent_id": 77
+            },
+            {
+              "index": 47,
+              "agent_id": 78
+            },
+            {
+              "index": 48,
+              "agent_id": 79
+            },
+            {
+              "index": 49,
+              "agent_id": 80
+            },
+            {
+              "index": 50,
+              "agent_id": 81
+            },
+            {
+              "index": 51,
+              "agent_id": 82
+            },
+            {
+              "index": 52,
+              "agent_id": 83
+            },
+            {
+              "index": 53,
+              "agent_id": 84
+            },
+            {
+              "index": 54,
+              "agent_id": 85
+            },
+            {
+              "index": 55,
+              "agent_id": 86
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 87
+            },
+            {
+              "index": 1,
+              "agent_id": 88
+            },
+            {
+              "index": 2,
+              "agent_id": 89
+            },
+            {
+              "index": 3,
+              "agent_id": 90
+            },
+            {
+              "index": 4,
+              "agent_id": 91
+            },
+            {
+              "index": 5,
+              "agent_id": 92
+            },
+            {
+              "index": 6,
+              "agent_id": 93
+            },
+            {
+              "index": 7,
+              "agent_id": 94
+            },
+            {
+              "index": 8,
+              "agent_id": 95
+            },
+            {
+              "index": 9,
+              "agent_id": 96
+            },
+            {
+              "index": 10,
+              "agent_id": 97
+            },
+            {
+              "index": 11,
+              "agent_id": 98
+            },
+            {
+              "index": 12,
+              "agent_id": 99
+            },
+            {
+              "index": 13,
+              "agent_id": 100
+            },
+            {
+              "index": 14,
+              "agent_id": 101
+            },
+            {
+              "index": 15,
+              "agent_id": 102
+            },
+            {
+              "index": 16,
+              "agent_id": 103
+            },
+            {
+              "index": 17,
+              "agent_id": 104
+            },
+            {
+              "index": 18,
+              "agent_id": 105
+            },
+            {
+              "index": 19,
+              "agent_id": 106
+            },
+            {
+              "index": 20,
+              "agent_id": 107
+            },
+            {
+              "index": 21,
+              "agent_id": 108
+            },
+            {
+              "index": 22,
+              "agent_id": 109
+            },
+            {
+              "index": 23,
+              "agent_id": 110
+            },
+            {
+              "index": 24,
+              "agent_id": 111
+            },
+            {
+              "index": 25,
+              "agent_id": 112
+            },
+            {
+              "index": 26,
+              "agent_id": 113
+            },
+            {
+              "index": 27,
+              "agent_id": 114
+            }
+          ],
+          "selected_vertex_count": 30,
+          "selected_edge_count": 56,
+          "selected_face_count": 28
+        },
+        "persistent_id_coverage": {
+          "verts": 30,
+          "edges": 56,
+          "faces": 28
+        }
+      }
+    },
+    {
+      "index": 17,
+      "label": "uniform_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "subd_uniform_curved_shell"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 450,
+          "edges": 896,
+          "faces": 448,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 442
+        },
+        "surface_quality": {
+          "face_count": 448,
+          "min_area": 0.00394681,
+          "max_area": 0.050638,
+          "median_area": 0.030233,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.9564,
+          "angle_samples": 896
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 450,
+          "median_edge_length": 0.19175154,
+          "median_absolute_laplacian": 0.01483842,
+          "laplacian_mad": 0.01159031,
+          "max_robust_outlier_z": 16.0669,
+          "pinch_candidate_count": 39,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 16,
+              "position": [
+                -2.75,
+                0.245,
+                -1.0
+              ],
+              "robust_outlier_z": 16.0669,
+              "signed_laplacian": -0.290928
+            },
+            {
+              "evaluated_vertex_index": 18,
+              "position": [
+                -1.25,
+                0.245,
+                -1.0
+              ],
+              "robust_outlier_z": 15.968,
+              "signed_laplacian": -0.289229
+            },
+            {
+              "evaluated_vertex_index": 17,
+              "position": [
+                -2.0,
+                0.15,
+                -1.0
+              ],
+              "robust_outlier_z": 15.6173,
+              "signed_laplacian": -0.283202
+            },
+            {
+              "evaluated_vertex_index": 53,
+              "position": [
+                -2.9375,
+                0.32175,
+                -1.0
+              ],
+              "robust_outlier_z": 11.1613,
+              "signed_laplacian": -0.206632
+            },
+            {
+              "evaluated_vertex_index": 69,
+              "position": [
+                -2.5625,
+                0.22125,
+                -1.0
+              ],
+              "robust_outlier_z": 11.0887,
+              "signed_laplacian": -0.205384
+            },
+            {
+              "evaluated_vertex_index": 89,
+              "position": [
+                -1.4375,
+                0.22125,
+                -1.0
+              ],
+              "robust_outlier_z": 11.0886,
+              "signed_laplacian": -0.205383
+            },
+            {
+              "evaluated_vertex_index": 71,
+              "position": [
+                -2.1875,
+                0.17375,
+                -1.0
+              ],
+              "robust_outlier_z": 11.0225,
+              "signed_laplacian": -0.204247
+            },
+            {
+              "evaluated_vertex_index": 87,
+              "position": [
+                -1.8125,
+                0.17375,
+                -1.0
+              ],
+              "robust_outlier_z": 11.0225,
+              "signed_laplacian": -0.204247
+            },
+            {
+              "evaluated_vertex_index": 70,
+              "position": [
+                -2.375,
+                0.1975,
+                -1.0
+              ],
+              "robust_outlier_z": 10.7956,
+              "signed_laplacian": -0.200347
+            },
+            {
+              "evaluated_vertex_index": 88,
+              "position": [
+                -1.625,
+                0.1975,
+                -1.0
+              ],
+              "robust_outlier_z": 10.7955,
+              "signed_laplacian": -0.200347
+            },
+            {
+              "evaluated_vertex_index": 52,
+              "position": [
+                -3.125,
+                0.3985,
+                -1.0
+              ],
+              "robust_outlier_z": 10.7829,
+              "signed_laplacian": -0.200129
+            },
+            {
+              "evaluated_vertex_index": 33,
+              "position": [
+                -3.3125,
+                0.32525,
+                -1.0
+              ],
+              "robust_outlier_z": 10.6438,
+              "signed_laplacian": -0.19774
+            },
+            {
+              "evaluated_vertex_index": 51,
+              "position": [
+                -3.3125,
+                0.47525,
+                -1.0
+              ],
+              "robust_outlier_z": 10.6244,
+              "signed_laplacian": -0.197406
+            },
+            {
+              "evaluated_vertex_index": 34,
+              "position": [
+                -3.125,
+                0.2485,
+                -1.0
+              ],
+              "robust_outlier_z": 10.5592,
+              "signed_laplacian": -0.196285
+            },
+            {
+              "evaluated_vertex_index": 73,
+              "position": [
+                -1.625,
+                0.0475,
+                -1.0
+              ],
+              "robust_outlier_z": 10.3198,
+              "signed_laplacian": -0.192172
+            },
+            {
+              "evaluated_vertex_index": 55,
+              "position": [
+                -2.375,
+                0.0475,
+                -1.0
+              ],
+              "robust_outlier_z": 10.3198,
+              "signed_laplacian": -0.192172
+            },
+            {
+              "evaluated_vertex_index": 105,
+              "position": [
+                -1.0625,
+                0.32175,
+                -1.0
+              ],
+              "robust_outlier_z": 10.2279,
+              "signed_laplacian": -0.190593
+            },
+            {
+              "evaluated_vertex_index": 35,
+              "position": [
+                -2.9375,
+                0.17175,
+                -1.0
+              ],
+              "robust_outlier_z": 10.214,
+              "signed_laplacian": -0.190353
+            },
+            {
+              "evaluated_vertex_index": 72,
+              "position": [
+                -1.8125,
+                0.02375,
+                -1.0
+              ],
+              "robust_outlier_z": 10.1035,
+              "signed_laplacian": -0.188455
+            },
+            {
+              "evaluated_vertex_index": 56,
+              "position": [
+                -2.1875,
+                0.02375,
+                -1.0
+              ],
+              "robust_outlier_z": 10.1035,
+              "signed_laplacian": -0.188455
+            }
+          ],
+          "meaningful_signed_edges": 277,
+          "laplacian_sign_change_ratio": 0.028881,
+          "mean_neighbor_normal_angle_p95_degrees": 31.6529,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            3.0,
+            0.552,
+            2.0
+          ],
+          "evaluated_dimensions": [
+            3.0,
+            0.552,
+            2.0
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              -3.5,
+              0.0,
+              -1.0
+            ],
+            "max": [
+              -0.5,
+              0.552,
+              1.0
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -3.5,
+              0.0,
+              -1.0
+            ],
+            "max": [
+              -0.5,
+              0.552,
+              1.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 18,
+      "label": "uneven_base_state",
+      "command": "get_full_state",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 12,
+        "mesh_health": {
+          "vertices": 30,
+          "edges": 56,
+          "faces": 28,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 22
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 31
+            },
+            {
+              "index": 1,
+              "agent_id": 32
+            },
+            {
+              "index": 2,
+              "agent_id": 33
+            },
+            {
+              "index": 3,
+              "agent_id": 34
+            },
+            {
+              "index": 4,
+              "agent_id": 35
+            },
+            {
+              "index": 5,
+              "agent_id": 36
+            },
+            {
+              "index": 6,
+              "agent_id": 37
+            },
+            {
+              "index": 7,
+              "agent_id": 38
+            },
+            {
+              "index": 8,
+              "agent_id": 39
+            },
+            {
+              "index": 9,
+              "agent_id": 40
+            },
+            {
+              "index": 10,
+              "agent_id": 41
+            },
+            {
+              "index": 11,
+              "agent_id": 42
+            },
+            {
+              "index": 12,
+              "agent_id": 43
+            },
+            {
+              "index": 13,
+              "agent_id": 44
+            },
+            {
+              "index": 14,
+              "agent_id": 45
+            },
+            {
+              "index": 15,
+              "agent_id": 46
+            },
+            {
+              "index": 16,
+              "agent_id": 47
+            },
+            {
+              "index": 17,
+              "agent_id": 48
+            },
+            {
+              "index": 18,
+              "agent_id": 49
+            },
+            {
+              "index": 19,
+              "agent_id": 50
+            },
+            {
+              "index": 20,
+              "agent_id": 51
+            },
+            {
+              "index": 21,
+              "agent_id": 52
+            },
+            {
+              "index": 22,
+              "agent_id": 53
+            },
+            {
+              "index": 23,
+              "agent_id": 54
+            },
+            {
+              "index": 24,
+              "agent_id": 55
+            },
+            {
+              "index": 25,
+              "agent_id": 56
+            },
+            {
+              "index": 26,
+              "agent_id": 57
+            },
+            {
+              "index": 27,
+              "agent_id": 58
+            },
+            {
+              "index": 28,
+              "agent_id": 59
+            },
+            {
+              "index": 29,
+              "agent_id": 60
+            },
+            {
+              "index": 30,
+              "agent_id": 61
+            },
+            {
+              "index": 31,
+              "agent_id": 62
+            },
+            {
+              "index": 32,
+              "agent_id": 63
+            },
+            {
+              "index": 33,
+              "agent_id": 64
+            },
+            {
+              "index": 34,
+              "agent_id": 65
+            },
+            {
+              "index": 35,
+              "agent_id": 66
+            },
+            {
+              "index": 36,
+              "agent_id": 67
+            },
+            {
+              "index": 37,
+              "agent_id": 68
+            },
+            {
+              "index": 38,
+              "agent_id": 69
+            },
+            {
+              "index": 39,
+              "agent_id": 70
+            },
+            {
+              "index": 40,
+              "agent_id": 71
+            },
+            {
+              "index": 41,
+              "agent_id": 72
+            },
+            {
+              "index": 42,
+              "agent_id": 73
+            },
+            {
+              "index": 43,
+              "agent_id": 74
+            },
+            {
+              "index": 44,
+              "agent_id": 75
+            },
+            {
+              "index": 45,
+              "agent_id": 76
+            },
+            {
+              "index": 46,
+              "agent_id": 77
+            },
+            {
+              "index": 47,
+              "agent_id": 78
+            },
+            {
+              "index": 48,
+              "agent_id": 79
+            },
+            {
+              "index": 49,
+              "agent_id": 80
+            },
+            {
+              "index": 50,
+              "agent_id": 81
+            },
+            {
+              "index": 51,
+              "agent_id": 82
+            },
+            {
+              "index": 52,
+              "agent_id": 83
+            },
+            {
+              "index": 53,
+              "agent_id": 84
+            },
+            {
+              "index": 54,
+              "agent_id": 85
+            },
+            {
+              "index": 55,
+              "agent_id": 86
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 87
+            },
+            {
+              "index": 1,
+              "agent_id": 88
+            },
+            {
+              "index": 2,
+              "agent_id": 89
+            },
+            {
+              "index": 3,
+              "agent_id": 90
+            },
+            {
+              "index": 4,
+              "agent_id": 91
+            },
+            {
+              "index": 5,
+              "agent_id": 92
+            },
+            {
+              "index": 6,
+              "agent_id": 93
+            },
+            {
+              "index": 7,
+              "agent_id": 94
+            },
+            {
+              "index": 8,
+              "agent_id": 95
+            },
+            {
+              "index": 9,
+              "agent_id": 96
+            },
+            {
+              "index": 10,
+              "agent_id": 97
+            },
+            {
+              "index": 11,
+              "agent_id": 98
+            },
+            {
+              "index": 12,
+              "agent_id": 99
+            },
+            {
+              "index": 13,
+              "agent_id": 100
+            },
+            {
+              "index": 14,
+              "agent_id": 101
+            },
+            {
+              "index": 15,
+              "agent_id": 102
+            },
+            {
+              "index": 16,
+              "agent_id": 103
+            },
+            {
+              "index": 17,
+              "agent_id": 104
+            },
+            {
+              "index": 18,
+              "agent_id": 105
+            },
+            {
+              "index": 19,
+              "agent_id": 106
+            },
+            {
+              "index": 20,
+              "agent_id": 107
+            },
+            {
+              "index": 21,
+              "agent_id": 108
+            },
+            {
+              "index": 22,
+              "agent_id": 109
+            },
+            {
+              "index": 23,
+              "agent_id": 110
+            },
+            {
+              "index": 24,
+              "agent_id": 111
+            },
+            {
+              "index": 25,
+              "agent_id": 112
+            },
+            {
+              "index": 26,
+              "agent_id": 113
+            },
+            {
+              "index": 27,
+              "agent_id": 114
+            }
+          ],
+          "selected_vertex_count": 30,
+          "selected_edge_count": 56,
+          "selected_face_count": 28
+        },
+        "persistent_id_coverage": {
+          "verts": 30,
+          "edges": 56,
+          "faces": 28
+        }
+      }
+    },
+    {
+      "index": 19,
+      "label": "uneven_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "subd_uneven_curved_shell_failure"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 450,
+          "edges": 896,
+          "faces": 448,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 442
+        },
+        "surface_quality": {
+          "face_count": 448,
+          "min_area": 0.00197105,
+          "max_area": 0.066213,
+          "median_area": 0.023046,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.9553,
+          "angle_samples": 896
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 450,
+          "median_edge_length": 0.2085724,
+          "median_absolute_laplacian": 0.01603806,
+          "laplacian_mad": 0.01078057,
+          "max_robust_outlier_z": 18.2736,
+          "pinch_candidate_count": 37,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 17,
+              "position": [
+                1.8,
+                0.157,
+                -1.0
+              ],
+              "robust_outlier_z": 18.2736,
+              "signed_laplacian": -0.30811
+            },
+            {
+              "evaluated_vertex_index": 18,
+              "position": [
+                2.75,
+                0.245,
+                -1.0
+              ],
+              "robust_outlier_z": 16.9432,
+              "signed_laplacian": -0.286846
+            },
+            {
+              "evaluated_vertex_index": 16,
+              "position": [
+                0.75,
+                0.422,
+                -1.0
+              ],
+              "robust_outlier_z": 14.0277,
+              "signed_laplacian": -0.240246
+            },
+            {
+              "evaluated_vertex_index": 87,
+              "position": [
+                2.0375,
+                0.179,
+                -1.0
+              ],
+              "robust_outlier_z": 11.1782,
+              "signed_laplacian": -0.194703
+            },
+            {
+              "evaluated_vertex_index": 71,
+              "position": [
+                1.5375,
+                0.22325,
+                -1.0
+              ],
+              "robust_outlier_z": 11.1138,
+              "signed_laplacian": -0.193673
+            },
+            {
+              "evaluated_vertex_index": 53,
+              "position": [
+                0.6875,
+                0.4545,
+                -1.0
+              ],
+              "robust_outlier_z": 10.9321,
+              "signed_laplacian": -0.190768
+            },
+            {
+              "evaluated_vertex_index": 89,
+              "position": [
+                2.5125,
+                0.223,
+                -1.0
+              ],
+              "robust_outlier_z": 10.8808,
+              "signed_laplacian": -0.189949
+            },
+            {
+              "evaluated_vertex_index": 88,
+              "position": [
+                2.275,
+                0.201,
+                -1.0
+              ],
+              "robust_outlier_z": 10.6334,
+              "signed_laplacian": -0.185994
+            },
+            {
+              "evaluated_vertex_index": 52,
+              "position": [
+                0.625,
+                0.487,
+                -1.0
+              ],
+              "robust_outlier_z": 10.5668,
+              "signed_laplacian": -0.184929
+            },
+            {
+              "evaluated_vertex_index": 70,
+              "position": [
+                1.275,
+                0.2895,
+                -1.0
+              ],
+              "robust_outlier_z": 10.5476,
+              "signed_laplacian": -0.184624
+            },
+            {
+              "evaluated_vertex_index": 69,
+              "position": [
+                1.0125,
+                0.35575,
+                -1.0
+              ],
+              "robust_outlier_z": 10.4973,
+              "signed_laplacian": -0.183819
+            },
+            {
+              "evaluated_vertex_index": 33,
+              "position": [
+                0.5625,
+                0.3695,
+                -1.0
+              ],
+              "robust_outlier_z": 10.4704,
+              "signed_laplacian": -0.18339
+            },
+            {
+              "evaluated_vertex_index": 51,
+              "position": [
+                0.5625,
+                0.5195,
+                -1.0
+              ],
+              "robust_outlier_z": 10.3813,
+              "signed_laplacian": -0.181965
+            },
+            {
+              "evaluated_vertex_index": 34,
+              "position": [
+                0.625,
+                0.337,
+                -1.0
+              ],
+              "robust_outlier_z": 10.3243,
+              "signed_laplacian": -0.181054
+            },
+            {
+              "evaluated_vertex_index": 54,
+              "position": [
+                1.0125,
+                0.20575,
+                -1.0
+              ],
+              "robust_outlier_z": 10.1631,
+              "signed_laplacian": -0.178478
+            },
+            {
+              "evaluated_vertex_index": 55,
+              "position": [
+                1.275,
+                0.1395,
+                -1.0
+              ],
+              "robust_outlier_z": 10.1032,
+              "signed_laplacian": -0.177521
+            },
+            {
+              "evaluated_vertex_index": 105,
+              "position": [
+                2.9375,
+                0.32175,
+                -1.0
+              ],
+              "robust_outlier_z": 9.9885,
+              "signed_laplacian": -0.175687
+            },
+            {
+              "evaluated_vertex_index": 35,
+              "position": [
+                0.6875,
+                0.3045,
+                -1.0
+              ],
+              "robust_outlier_z": 9.9492,
+              "signed_laplacian": -0.175059
+            },
+            {
+              "evaluated_vertex_index": 73,
+              "position": [
+                2.275,
+                0.051,
+                -1.0
+              ],
+              "robust_outlier_z": 9.9311,
+              "signed_laplacian": -0.174769
+            },
+            {
+              "evaluated_vertex_index": 74,
+              "position": [
+                2.5125,
+                0.073,
+                -1.0
+              ],
+              "robust_outlier_z": 9.7262,
+              "signed_laplacian": -0.171495
+            }
+          ],
+          "meaningful_signed_edges": 263,
+          "laplacian_sign_change_ratio": 0.011407,
+          "mean_neighbor_normal_angle_p95_degrees": 31.6208,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            3.0,
+            0.545,
+            2.0
+          ],
+          "evaluated_dimensions": [
+            3.0,
+            0.545,
+            2.0
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              0.5,
+              0.007,
+              -1.0
+            ],
+            "max": [
+              3.5,
+              0.552,
+              1.0
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              0.5,
+              0.007,
+              -1.0
+            ],
+            "max": [
+              3.5,
+              0.552,
+              1.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 20,
+      "label": "boundary_failure_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "subd_boundary_flow_failure"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 258,
+          "edges": 512,
+          "faces": 256,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 250
+        },
+        "surface_quality": {
+          "face_count": 256,
+          "min_area": 0.00769216,
+          "max_area": 0.097292,
+          "median_area": 0.03374,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.8813,
+          "angle_samples": 512
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 258,
+          "median_edge_length": 0.25000048,
+          "median_absolute_laplacian": 0.01549699,
+          "laplacian_mad": 0.01430149,
+          "max_robust_outlier_z": 10.0747,
+          "pinch_candidate_count": 20,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 5,
+              "position": [
+                -0.5,
+                0.0,
+                -3.0
+              ],
+              "robust_outlier_z": 10.0747,
+              "signed_laplacian": -0.229115
+            },
+            {
+              "evaluated_vertex_index": 14,
+              "position": [
+                -0.5,
+                0.18,
+                -3.0
+              ],
+              "robust_outlier_z": 10.0747,
+              "signed_laplacian": -0.229114
+            },
+            {
+              "evaluated_vertex_index": 88,
+              "position": [
+                -0.65,
+                0.18,
+                -2.5
+              ],
+              "robust_outlier_z": 8.1722,
+              "signed_laplacian": -0.188776
+            },
+            {
+              "evaluated_vertex_index": 79,
+              "position": [
+                -0.65,
+                0.0,
+                -2.5
+              ],
+              "robust_outlier_z": 8.1722,
+              "signed_laplacian": -0.188775
+            },
+            {
+              "evaluated_vertex_index": 80,
+              "position": [
+                -0.725,
+                0.0,
+                -2.25
+              ],
+              "robust_outlier_z": 7.9935,
+              "signed_laplacian": -0.184986
+            },
+            {
+              "evaluated_vertex_index": 89,
+              "position": [
+                -0.725,
+                0.18,
+                -2.25
+              ],
+              "robust_outlier_z": 7.9935,
+              "signed_laplacian": -0.184986
+            },
+            {
+              "evaluated_vertex_index": 56,
+              "position": [
+                -0.5,
+                0.18,
+                -3.25
+              ],
+              "robust_outlier_z": 7.7392,
+              "signed_laplacian": -0.179593
+            },
+            {
+              "evaluated_vertex_index": 47,
+              "position": [
+                -0.5,
+                0.0,
+                -3.25
+              ],
+              "robust_outlier_z": 7.7391,
+              "signed_laplacian": -0.179593
+            },
+            {
+              "evaluated_vertex_index": 78,
+              "position": [
+                -0.575,
+                0.0,
+                -2.75
+              ],
+              "robust_outlier_z": 7.5422,
+              "signed_laplacian": -0.175417
+            },
+            {
+              "evaluated_vertex_index": 87,
+              "position": [
+                -0.575,
+                0.18,
+                -2.75
+              ],
+              "robust_outlier_z": 7.5422,
+              "signed_laplacian": -0.175416
+            },
+            {
+              "evaluated_vertex_index": 46,
+              "position": [
+                -0.5,
+                0.0,
+                -3.5
+              ],
+              "robust_outlier_z": 6.5537,
+              "signed_laplacian": -0.154457
+            },
+            {
+              "evaluated_vertex_index": 55,
+              "position": [
+                -0.5,
+                0.18,
+                -3.5
+              ],
+              "robust_outlier_z": 6.5537,
+              "signed_laplacian": -0.154457
+            },
+            {
+              "evaluated_vertex_index": 23,
+              "position": [
+                -2.375,
+                0.0,
+                -4.0
+              ],
+              "robust_outlier_z": 6.1094,
+              "signed_laplacian": -0.145036
+            },
+            {
+              "evaluated_vertex_index": 41,
+              "position": [
+                -2.375,
+                0.18,
+                -4.0
+              ],
+              "robust_outlier_z": 6.1094,
+              "signed_laplacian": -0.145036
+            },
+            {
+              "evaluated_vertex_index": 22,
+              "position": [
+                -2.75,
+                0.0,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0995,
+              "signed_laplacian": -0.144828
+            },
+            {
+              "evaluated_vertex_index": 40,
+              "position": [
+                -2.75,
+                0.18,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0995,
+              "signed_laplacian": -0.144828
+            },
+            {
+              "evaluated_vertex_index": 21,
+              "position": [
+                -3.125,
+                0.0,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0796,
+              "signed_laplacian": -0.144404
+            },
+            {
+              "evaluated_vertex_index": 39,
+              "position": [
+                -3.125,
+                0.18,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0796,
+              "signed_laplacian": -0.144404
+            },
+            {
+              "evaluated_vertex_index": 10,
+              "position": [
+                -2.0,
+                0.18,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0738,
+              "signed_laplacian": -0.144282
+            },
+            {
+              "evaluated_vertex_index": 1,
+              "position": [
+                -2.0,
+                0.0,
+                -4.0
+              ],
+              "robust_outlier_z": 6.0738,
+              "signed_laplacian": -0.144282
+            }
+          ],
+          "meaningful_signed_edges": 164,
+          "laplacian_sign_change_ratio": 0.030488,
+          "mean_neighbor_normal_angle_p95_degrees": 34.7087,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            3.0,
+            0.18,
+            2.0
+          ],
+          "evaluated_dimensions": [
+            3.0,
+            0.18,
+            2.0
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              -3.5,
+              0.0,
+              -4.0
+            ],
+            "max": [
+              -0.5,
+              0.18,
+              -2.0
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -3.5,
+              0.0,
+              -4.0
+            ],
+            "max": [
+              -0.5,
+              0.18,
+              -2.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 21,
+      "label": "boundary_correction_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "subd_boundary_flow_correction"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 770,
+          "edges": 1536,
+          "faces": 768,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 762
+        },
+        "surface_quality": {
+          "face_count": 768,
+          "min_area": 0.00049698,
+          "max_area": 0.068839,
+          "median_area": 0.009633,
+          "area_outlier_count": 0,
+          "area_outlier_ratio": 0.0,
+          "max_adjacent_face_angle_radians": 1.658,
+          "angle_samples": 1536
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 770,
+          "median_edge_length": 0.10494883,
+          "median_absolute_laplacian": 0.00704427,
+          "laplacian_mad": 0.00704427,
+          "max_robust_outlier_z": 12.084,
+          "pinch_candidate_count": 4,
+          "pinch_candidates": [
+            {
+              "evaluated_vertex_index": 14,
+              "position": [
+                3.5,
+                0.0,
+                -3.0
+              ],
+              "robust_outlier_z": 12.084,
+              "signed_laplacian": -0.133248
+            },
+            {
+              "evaluated_vertex_index": 39,
+              "position": [
+                3.5,
+                0.18,
+                -3.0
+              ],
+              "robust_outlier_z": 12.084,
+              "signed_laplacian": -0.133247
+            },
+            {
+              "evaluated_vertex_index": 24,
+              "position": [
+                3.2,
+                0.0,
+                -2.0
+              ],
+              "robust_outlier_z": 6.6958,
+              "signed_laplacian": 0.076974
+            },
+            {
+              "evaluated_vertex_index": 49,
+              "position": [
+                3.2,
+                0.18,
+                -2.0
+              ],
+              "robust_outlier_z": 6.6956,
+              "signed_laplacian": 0.076972
+            }
+          ],
+          "meaningful_signed_edges": 426,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 23.8626,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            3.0,
+            0.18,
+            2.0
+          ],
+          "evaluated_dimensions": [
+            3.0,
+            0.18,
+            2.0
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              0.5,
+              0.0,
+              -4.0
+            ],
+            "max": [
+              3.5,
+              0.18,
+              -2.0
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              0.5,
+              0.0,
+              -4.0
+            ],
+            "max": [
+              3.5,
+              0.18,
+              -2.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 22,
+      "label": "sheet_front_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/sheet_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/sheet_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "frame_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "camera_location": [
+          0.0,
+          -16.964038848876953,
+          -1.500000238418579
+        ],
+        "camera_ortho_scale": 9.482020737984067,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.252002,
+        "foreground_unique_colors_5bit": 52,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 23,
+      "label": "sheet_front_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/sheet_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/sheet_front_wire.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "frame_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure",
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "camera_location": [
+          0.0,
+          -16.964038848876953,
+          -1.500000238418579
+        ],
+        "camera_ortho_scale": 9.482020737984067,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.042957,
+        "foreground_unique_colors_5bit": 2,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 24,
+      "label": "curved_pair_top_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/curved_pair_top_matcap.png",
+        "pass_type": "matcap",
+        "view": "top",
+        "resolution": 768,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/curved_pair_top_matcap.png",
+        "pass_type": "matcap",
+        "view": "top",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure"
+        ],
+        "frame_objects": [
+          "subd_uniform_curved_shell",
+          "subd_uneven_curved_shell_failure"
+        ],
+        "camera_location": [
+          0.0,
+          0.2760000228881836,
+          14.60201644897461
+        ],
+        "camera_ortho_scale": 8.031108983560758,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.01542,
+        "foreground_unique_colors_5bit": 93,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 25,
+      "label": "boundary_pair_front_matcap",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/boundary_pair_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "resolution": 768,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/boundary_pair_front_matcap.png",
+        "pass_type": "matcap",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          768,
+          768
+        ],
+        "target_objects": [
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "frame_objects": [
+          "subd_boundary_flow_failure",
+          "subd_boundary_flow_correction"
+        ],
+        "camera_location": [
+          0.0,
+          -14.474671363830566,
+          -3.000000238418579
+        ],
+        "camera_ortho_scale": 8.010569566863916,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.172089,
+        "foreground_unique_colors_5bit": 48,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blenderbros-subd-topology-sheet\\subd_topology_sheet.blend"
+  },
+  "pass": true
+}

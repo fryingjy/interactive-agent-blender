@@ -88,3 +88,11 @@ def test_connected_layered_quad_annular_shell_is_valid_authored_starting_cage():
         [{"command": "create_quad_layered_annular_shell", "params": {"name": "Shell"}}], ["Shell"]
     )
     assert result["pass"] is True
+
+
+def test_connected_authored_quad_mesh_is_valid_starting_cage():
+    result = audit_sequence(
+        [{"command": "create_authored_quad_mesh", "params": {"name": "TerminationPatch"}}],
+        ["TerminationPatch"],
+    )
+    assert result["pass"] is True

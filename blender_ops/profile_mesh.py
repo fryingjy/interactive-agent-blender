@@ -12,6 +12,78 @@ import math
 import bpy
 
 
+def authored_quad_mesh(name, vertices, faces, *, collection=None):
+    """Create one connected authored quad cage from explicit topology.
+
+    This is the generic escape hatch for topology layouts that cannot be
+    represented by a rectangular grid (for example a 2-to-1 loop reduction).
+    It remains deliberately narrow: every face must be a non-degenerate quad,
+    indices must be valid, the face graph must be connected, and no edge may
+    have more than two incident faces.  Open boundaries are allowed so a live
+    Solidify modifier can remain unapplied during surface studies.
+    """
+    if not isinstance(vertices, (list, tuple)) or len(vertices) < 4:
+        raise ValueError("authored quad mesh needs at least four vertices")
+    clean_vertices = []
+    for point in vertices:
+        if not isinstance(point, (list, tuple)) or len(point) != 3:
+            raise ValueError("authored quad vertices must be [x, y, z] values")
+        clean_vertices.append(tuple(float(value) for value in point))
+    if not isinstance(faces, (list, tuple)) or not faces:
+        raise ValueError("authored quad mesh needs at least one face")
+    clean_faces = []
+    edge_uses = {}
+    vertex_faces = {index: set() for index in range(len(clean_vertices))}
+    for face_index, face in enumerate(faces):
+        if not isinstance(face, (list, tuple)) or len(face) != 4:
+            raise ValueError("every authored face must contain exactly four vertex indices")
+        quad = tuple(int(index) for index in face)
+        if len(set(quad)) != 4:
+            raise ValueError(f"face {face_index} repeats a vertex index")
+        if min(quad) < 0 or max(quad) >= len(clean_vertices):
+            raise ValueError(f"face {face_index} references an out-of-range vertex")
+        clean_faces.append(quad)
+        for vertex_index in quad:
+            vertex_faces[vertex_index].add(face_index)
+        for first, second in zip(quad, quad[1:] + quad[:1]):
+            edge = tuple(sorted((first, second)))
+            edge_uses.setdefault(edge, set()).add(face_index)
+            if len(edge_uses[edge]) > 2:
+                raise ValueError(f"edge {edge} has more than two incident faces")
+    used_vertices = {index for quad in clean_faces for index in quad}
+    if len(used_vertices) != len(clean_vertices):
+        raise ValueError("authored quad mesh contains loose vertices")
+    adjacency = {index: set() for index in range(len(clean_faces))}
+    for incident in edge_uses.values():
+        if len(incident) == 2:
+            first, second = tuple(incident)
+            adjacency[first].add(second)
+            adjacency[second].add(first)
+    visited, pending = set(), [0]
+    while pending:
+        current = pending.pop()
+        if current in visited:
+            continue
+        visited.add(current)
+        pending.extend(adjacency[current] - visited)
+    if len(visited) != len(clean_faces):
+        raise ValueError("authored quad faces must form one edge-connected component")
+
+    mesh = bpy.data.meshes.new(name + "Mesh")
+    mesh.from_pydata(clean_vertices, [], clean_faces)
+    mesh.update()
+    uv_layer = mesh.uv_layers.new(name="AuthoredQuadUV")
+    for polygon in mesh.polygons:
+        for loop_index in polygon.loop_indices:
+            vertex_index = mesh.loops[loop_index].vertex_index
+            x, _y, z = clean_vertices[vertex_index]
+            uv_layer.data[loop_index].uv = (x, z)
+    obj = bpy.data.objects.new(name, mesh)
+    (collection or bpy.context.scene.collection).objects.link(obj)
+    obj["construction_origin"] = "AUTHORED_QUAD_MESH"
+    return obj
+
+
 def revolve_closed_profile(name, profile, *, segments=96, collection=None):
     """Revolve a closed ``(radius, z)`` profile around world Z.
 

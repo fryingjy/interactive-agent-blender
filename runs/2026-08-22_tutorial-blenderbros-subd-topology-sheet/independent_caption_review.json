@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_CAPTION_REVIEW",
+  "source": "https://www.youtube.com/watch?v=xUEs7cszlb0",
+  "review_basis": "YouTube identity via oEmbed plus the previously retained full timestamped caption transcript, independently compared with the new Gemini audiovisual extraction.",
+  "checks": [
+    {"range_seconds":[160,246],"caption_observation":"The instructor contrasts evenly spread cylinder quads with a slid edge loop and limits the warning primarily to curved surfaces.","gemini_alignment":true},
+    {"range_seconds":[398,504],"caption_observation":"The instructor selects the planar region and uses an inset to create a loop that follows the complete boundary before checking the highlight.","gemini_alignment":true},
+    {"range_seconds":[607,740],"caption_observation":"The instructor demonstrates terminating added density away from the corner, rejects an inward-folding diamond, and eases polygon size from small to medium to large.","gemini_alignment":true}
+  ],
+  "limitations":[
+    "The in-app browser control kernel failed and direct YouTube frame extraction was blocked by anti-bot authentication, so this independent check uses retained captions rather than new screenshots.",
+    "Caption agreement verifies spoken demonstrations, not every fine visual topology detail. Blender reproduction remains the visual test."
+  ],
+  "status":"REPRESENTATIVE_CAPTIONS_VERIFIED"
+}

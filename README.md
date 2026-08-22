@@ -179,6 +179,9 @@ The local Blender/MCP entry points are:
   actual full-video study, a connected mechanical enclosure, visible modifier-order failure and
   correction, and a different-geometry symmetry/Boolean transfer. Its evaluated cut topology is
   explicitly retained as a limitation; Stage 4 advanced SubD/pinch diagnosis is next.
+- `runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/` starts Stage 4 with actual audiovisual
+  study and matched all-quad/SubD comparisons for curved-grid spacing and perimeter flow. Loop
+  termination and a complete advanced tutorial asset remain before Stage 4 can close.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

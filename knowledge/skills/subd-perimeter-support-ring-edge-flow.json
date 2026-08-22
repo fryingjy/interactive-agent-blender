@@ -1,0 +1,45 @@
+{
+  "skill_id": "subd.boundary.perimeter_support_ring_edge_flow",
+  "title": "Redirect SubD grid flow with a continuous local perimeter ring",
+  "topic_tags": ["subdivision surface", "edge flow", "support loop", "boundary highlight", "pinching"],
+  "applicability": {
+    "modeling_stage": ["TOPOLOGY_SURFACE"],
+    "workflow": ["connected quad cage", "subdivision hard surface"],
+    "defect": ["washed boundary highlight", "interior loops diverge into perimeter", "rounded corner that should read sharper"]
+  },
+  "preconditions": [
+    "the reference requires a more controlled perimeter radius or highlight",
+    "interior grid flow currently runs directly into that perimeter",
+    "the affected region can accept a continuous quad ring without creating concave or overlapping faces"
+  ],
+  "required_observations": [
+    "base wire topology around the complete boundary",
+    "fixed-frame MatCap or reflective highlight before and after",
+    "evaluated manifold/quad health and cost",
+    "localized surface diagnostics interpreted as candidates only"
+  ],
+  "action_policy": [
+    "Inset or author one continuous local ring that follows the boundary so interior flow terminates against the ring instead of diverging into the edge.",
+    "Keep the ring width tied to the required physical radius; do not add dense global support for one local boundary.",
+    "Reject the ring when it only increases density, creates concentrated corner artifacts, or contradicts a deliberately soft reference edge."
+  ],
+  "expected_effects": ["cleaner perimeter highlight", "lower localized curvature concentration", "sharper but still continuous SubD boundary"],
+  "failure_predicates": ["concave/overlapping quads", "new pinching at corners", "no visible boundary improvement", "unjustified global density increase"],
+  "recovery": ["remove or widen the support ring", "reroute only the affected boundary", "use crease when the edge requires sharpness without a physical support radius"],
+  "sources": [
+    {"type":"video_observation","source_id":"xUEs7cszlb0","timestamp_seconds":[398,504],"description":"Ryuu - Blender Bros demonstrates an inset perimeter loop to redirect flow and clean a boundary highlight."}
+  ],
+  "experiments": [
+    {
+      "type":"matched sloped-boundary reproduction",
+      "evidence_path":"runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/",
+      "result":"PASS",
+      "measurements":{"failure_evaluated_quads":256,"correction_evaluated_quads":768,"failure_pinch_candidates":20,"correction_pinch_candidates":4,"failure_normal_angle_p95_degrees":34.7087,"correction_normal_angle_p95_degrees":23.8626,"non_manifold_edges_each":0},
+      "limitations":"One sloped rectangular boundary. The correction costs three times the evaluated faces and has not yet transferred to a different boundary family."
+    }
+  ],
+  "runtime_usage": [],
+  "version_scope": "Blender 5.2 LTS reproduction; source tutorial used Blender 3.6",
+  "status": "EXPERIMENTALLY_TESTED",
+  "status_note": "One tutorial reproduction supports the rule; different-geometry transfer and a complete advanced asset are still required."
+}

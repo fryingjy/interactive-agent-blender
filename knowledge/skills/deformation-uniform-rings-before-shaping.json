@@ -132,10 +132,34 @@
         "non_manifold_edges_each": 0
       },
       "limitations": "The negative control deliberately encodes uneven spacing and small deterministic manual radius errors. The result validates the tutorial's demonstrated failure mode on one radial product form; it does not prove that every manually stepped mesh is inferior or that all deformations require uniform density."
+    },
+    {
+      "type": "matched curved-shell tutorial reproduction",
+      "evidence_path": "runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/",
+      "result": "PASS_WITH_METRIC_INTERPRETATION_WARNING",
+      "measurements": {
+        "base_faces_each": 28,
+        "evaluated_quads_each": 448,
+        "non_manifold_edges_each": 0,
+        "uniform_median_absolute_laplacian": 0.01483842,
+        "uneven_median_absolute_laplacian": 0.01603806,
+        "uniform_max_robust_outlier_z": 16.0669,
+        "uneven_max_robust_outlier_z": 18.2736,
+        "uniform_pinch_candidates": 39,
+        "uneven_pinch_candidates": 37
+      },
+      "limitations": "The candidate count alone ranks the deliberately uneven cage better, while severity, median curvature variation, fixed top-view MatCap, and wire spacing support the failure. This is explicit evidence that no single surface metric can replace visual review."
     }
   ],
-  "runtime_usage": [],
-  "version_scope": "Blender 5.2 LTS transfer; source tutorial used Blender 2.78.5 UI",
+  "runtime_usage": [
+    {
+      "date": "2026-08-22",
+      "context": "Stage 4 SubD topology-sheet reproduction",
+      "use": "Constructed equal-count uniform and uneven curved quad shells with matched live SubD to test spacing-driven highlight behavior.",
+      "result": "The uniform cage had lower median curvature variation and lower maximum outlier severity; visual evidence was interpreted over the contradictory raw candidate count."
+    }
+  ],
+  "version_scope": "Blender 5.2 LTS transfer/reproduction; source tutorials used Blender 2.78.5 and 3.6 UI",
   "status": "TRANSFER_VALIDATED",
-  "status_note": "A predeclared different-shape transfer passed both the modeling lab and an independent fresh-process verifier. The skill is planner-actionable only for matching localized tickets with scene-owned operation parameters; no real held-out asset runtime use has occurred yet."
+  "status_note": "A predeclared different-shape transfer passed both the modeling lab and an independent fresh-process verifier, followed by a matched curved-shell tutorial runtime use. The skill is planner-actionable only for matching localized tickets with scene-owned operation parameters; no real held-out asset runtime use has occurred yet."
 }
