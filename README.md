@@ -197,14 +197,18 @@ The local Blender/MCP entry points are:
   high/low asset, live source modifiers, UVs on every low mesh, four PBR channels, GLB delivery, and
   a fresh-process import check. Its `5.5/10` reference-fidelity limitation is explicit. Historical
   technical completion does not satisfy the restarted fidelity gate.
-- `runs/2026-08-22_tutorial-game-asset-factory-chair/` and
-  `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` start the strict beginner apprenticeship.
-  The chair's own source-frame review remains blocked -- the video's public thumbnail was fetched and
+- `runs/2026-08-22_tutorial-game-asset-factory-chair/` starts the strict beginner apprenticeship but
+  its own source-frame review remains blocked -- the video's public thumbnail was fetched and
   confirmed to be title-card artwork only, not a usable visual reference, so its status stays
-  MODELED/SOURCE-FRAME REVIEW PENDING rather than being forced to a score without real evidence. The
-  ramen machine has full audiovisual extraction, retained typed-modeling corrections, a connected
-  manifold housing, live modifiers, and fresh-process verification, but its available thumbnail
-  comparison is only `6.8/10`.
+  MODELED/SOURCE-FRAME REVIEW PENDING rather than being forced to a score without real evidence.
+- `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` has full audiovisual extraction, retained
+  typed-modeling corrections, a connected manifold housing, live modifiers, and fresh-process
+  verification; original thumbnail comparison was `6.8/10`. A later correction pass built the
+  reference's most prominent missing feature -- a warm glowing service window, absent entirely from
+  the first pass -- found by direct thumbnail comparison rather than a proportion guess, and fixed
+  two real bugs on the way (a parent-transform inverse that erased the housing's world offset, and
+  an occlusion problem invisible until an isolated render proved the emissive object itself worked).
+  Not re-scored to a specific number, but the single largest named gap is closed.
 - `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/` (the donut/mug scene) was corrected in
   a later v5-v7 pass: direct pixel comparison against the creator's published still found the
   dominant defect was one material bug (the table's base color was effectively pure black with no
