@@ -185,12 +185,21 @@ read as round. A follow-up (v9) fixed the horn-junction roughness -- traced to o
 round table-wall faces being selected as the horn's starting region (too strict a threshold), so
 the horn emerged from a pinched sliver instead of a proper arc.
 
-Direct comparison against the tutorial's own finished-anvil wireframe surfaces real remaining gaps:
-a diagonal support gusset the reference has and this build never constructed; a table that lost its
-flat rectangular character when the cross-section fix rounded it into an oval (a disclosed
-tradeoff, but a real cost on direct comparison); a waist pinch sharper than the reference's gentler
-curve; and a base foot that stays thin even after a Z-span extension. **Final assessment: every
-I0-required technique was genuinely applied and the cage is structurally clean throughout, but this
-does not pass a fidelity gate** -- matching every other beginner lesson's own honest first-attempt
-pattern (6.8-7.2/10) rather than being scored as a pass it hasn't earned. Full account of all three
-passes, including every construction bug found and fixed along the way, is in that run's README.
+Direct comparison against the tutorial's own finished-anvil wireframe then surfaced two named next
+steps -- add the gusset, soften the waist -- and attempting them found something bigger: debugging why
+a gentler waist retune produced an even sharper funnel led to measuring actual per-ring widths
+directly, which found `bpy.ops.transform.resize` had been compounding each ring's scale relative to
+the previous ring's *already-shrunk* size rather than the original table, silently since v2 --
+explaining why the base foot had stayed thin across five prior versions despite two separate fix
+attempts. Fixed by converting intended absolute scale values into the correct per-step relative
+factor. The body now genuinely narrows then flares into a real hourglass with a substantial base
+(v11). The gusset was also added -- grown from the body by extrusion and welded to the base, not a
+separate object -- though it reads thinner than the reference's solid brace.
+
+**Final assessment: every I0-required technique was genuinely applied and the cage is structurally
+clean throughout, but this does not pass a fidelity gate** -- the table stays rounded rather than
+flat (a disclosed earlier tradeoff), the gusset is thin, and the waist is still somewhat sharper than
+the reference. Matches every other beginner lesson's own honest first-attempt pattern (6.8-7.2/10)
+rather than being scored as a pass it hasn't earned. Full account of all four passes, including every
+construction bug found and fixed along the way -- most notably a proportion-collapsing scale bug that
+had been silently present since the very first version -- is in that run's README.
