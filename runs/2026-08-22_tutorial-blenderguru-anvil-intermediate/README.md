@@ -218,15 +218,57 @@ can close:
 - The base foot, even after the Z-span extension, stays a comparatively
   thin stem rather than the reference's substantial, visibly stable flare.
 
-**Final score for this run: not a pass.** Technically, every I0-required
-technique was genuinely applied -- proportional-editing-style taper,
-Boolean cut with source-matching cleanup, support loops, live unapplied
-SubD -- and the base cage is structurally clean throughout every version.
-But direct comparison against the reference shows real, specific gaps (a
-missing gusset, a lost flat table, an over-pinched waist) that go beyond
-what quick fixes can close; matching every other beginner lesson's own
-honest first-attempt pattern (6.8-7.2/10, not immediately passing), this
-run does not pass a fidelity gate and is not scored as if it does. The
-concrete next step, if resumed, is adding the gusset and re-tuning the
-waist/table proportions against the wireframe -- real construction work,
-not another diagnostic pass.
+**Final score for this section (superseded by v11 below): not a pass.**
+Technically, every I0-required technique was genuinely applied --
+proportional-editing-style taper, Boolean cut with source-matching
+cleanup, support loops, live unapplied SubD -- and the base cage is
+structurally clean throughout every version. But direct comparison against
+the reference shows real, specific gaps (a missing gusset, a lost flat
+table, an over-pinched waist) that go beyond what quick fixes can close.
+
+## v10-v11: a bug found in every version so far, plus the gusset
+
+Attempted the named next steps (gusset, gentler waist) and found something
+bigger along the way.
+
+**The waist retune surfaced a bug present since v2.** Debugging why
+softened waist values produced an even more extreme funnel than before
+(not the intended gentler curve) led to measuring actual per-ring X-widths
+directly instead of trusting the render: the body was supposed to narrow
+then widen back out (an hourglass) but was narrowing almost to a point at
+the floor. Root cause: `bpy.ops.transform.resize` scales the *currently
+selected* geometry relative to *its own current size*, not the original
+table -- so passing intended absolute scale values (0.85, 0.65, 0.50,
+0.68, 0.95, 1.08) straight to `resize()` compounds them multiplicatively
+(0.85 x 0.65 x 0.50 x 0.68 x 0.95 x 1.08 ~ 0.19 of the original width at
+the floor, not 108%). This bug was silently present in every version back
+to v2 -- not severe enough with the original numbers to fully collapse the
+base, but the real explanation for why the base foot stayed thin across
+v2-v9 despite two separate attempts to fix it by extending its Z-span.
+Fixed by converting each ring's intended absolute scale into the correct
+*relative* factor (`target[i] / target[i-1]`) before calling `resize()`.
+
+With that fixed, the body genuinely narrows then flares back out -- a real
+hourglass with a substantial base, visible immediately, not another
+marginal tweak.
+
+**The gusset was added**: extrude a wall face near the table's underside
+(opposite the horn) outward and diagonally down in three stages until it
+reaches a point on the base's wall, then weld the two with Remove Doubles
+-- grown from the body directly, not built as a separate touching object.
+v10 built it too thin (reads as a wire, from narrowing 0.6 per step across
+3 steps); v11 loosened this to 0.85 per step, a real but still fairly thin
+wedge -- thickening it further needs a wider starting attachment face, not
+just a gentler taper, and wasn't chased further this pass.
+
+`anvil_v11_solid.png` is the current best state: correct hourglass
+proportions with a genuinely wide base, the horn fix from v9, and a real
+(if thin) gusset. Structurally clean throughout.
+
+**Still not a pass**, but for a narrower list of reasons: the table
+remains rounded rather than flat-rectangular (the disclosed v6 tradeoff),
+the gusset is thinner than the reference's solid brace, and the waist
+curve is still somewhat sharper than the reference's. The
+proportion-collapsing bug that explained the persistently thin base across
+five prior versions is fixed -- the substantive result of this pass is a
+previously-wrong measurement now being right, not a score.
