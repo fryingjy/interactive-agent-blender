@@ -43,9 +43,9 @@ shading defect. Two consecutive passes are required before increasing difficulty
 
 | Stage | Tutorial artifact | Required modeling focus | Status |
 |---|---|---|---|
-| B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | MODELED; SOURCE-FRAME REVIEW PENDING |
+| B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | PROCESS/TOPOLOGY FIDELITY 7.5/10 against real video-inspected evidence (no finished-result image exists); DOES NOT COUNT TOWARD THE 8/10 GATE |
 | B1 | Blender Guru 2026 beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | FRESH-FILE VERIFIED; CREATOR-STILL FIDELITY 8.0/10 after v5-v7 correction; PASSES 8/10 GATE |
-| B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10; DOES NOT PASS 8/10 GATE |
+| B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10, real glowing-window correction pass applied afterward (not re-scored); DOES NOT PASS 8/10 GATE |
 | B3 | Blender Guru lightbulb scene | Profile revolution, curve wires/filament/thread, glass, linked assemblies, emission and compositor glow | TECHNICALLY VERIFIED; CREATOR-RESULT FIDELITY 7.2/10; DOES NOT PASS 8/10 GATE |
 | B4 | Official Blender Fundamentals watering can | One connected body/handle/spout cage, matched bridge loops, transition topology, live Mirror | FRESH-FILE VERIFIED; OFFICIAL-FILE FIDELITY 8.1/10; FIRST CONSECUTIVE PASS |
 | I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | FIRST ATTEMPT IN PROGRESS -- see note below |
@@ -203,3 +203,20 @@ the reference. Matches every other beginner lesson's own honest first-attempt pa
 rather than being scored as a pass it hasn't earned. Full account of all four passes, including every
 construction bug found and fixed along the way -- most notably a proportion-collapsing scale bug that
 had been silently present since the very first version -- is in that run's README.
+
+## B0 unblocked: real evidence was already there, just underused
+
+B0 had been sitting at MODELED/SOURCE-FRAME REVIEW PENDING because a browser attempt to pull a
+direct comparison frame failed and the video's public thumbnail turned out to be title-card art
+only. Both true, but neither was the whole picture: the run's own `gemini_full_video_unverified.json`
+already contained real frame-level video inspection (`video_inspected: true`, `evidence_modalities`
+including `VIDEO`, 0.95 confidence on every episode), not a caption-only transcript, and it had never
+been compared against the actual build. Doing that comparison found four of five real construction
+decisions (seat flattening, the four-loop-cut 3x3 grid, which faces get extruded for legs, which
+faces get extruded for the backrest) matching this run's own build directly, not just in spirit.
+
+Scored 7.5/10 on process/topology fidelity -- a narrower, different kind of evidence than the
+pixel-level finished-result comparisons the other beginner lessons had (no such image exists for this
+tutorial), documented as such rather than conflated with it. Does not count toward the two-pass gate
+(already satisfied by B1 and B4), but closes an evidence gap that had been left unresolved rather than
+actually being unresolvable.
