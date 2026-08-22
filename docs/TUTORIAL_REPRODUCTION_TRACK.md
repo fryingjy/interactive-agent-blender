@@ -44,7 +44,7 @@ shading defect. Two consecutive passes are required before increasing difficulty
 | Stage | Tutorial artifact | Required modeling focus | Status |
 |---|---|---|---|
 | B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | MODELED; SOURCE-FRAME REVIEW PENDING |
-| B1 | Blender Guru beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | TECHNICALLY COMPLETE; corrected v2 modeled, SOURCE-FIDELITY REVIEW PENDING |
+| B1 | Blender Guru 2026 beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | FRESH-FILE VERIFIED; CREATOR-STILL FIDELITY 7.0/10; DOES NOT PASS 8/10 GATE |
 | B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10; DOES NOT PASS 8/10 GATE |
 | I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | PENDING |
 | I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
@@ -72,6 +72,13 @@ and fresh-process verification. It still fails advancement: independent review w
 source thumbnail, visible form is self-assessed at 6.8/10, and two covered top-basin n-gons remain.
 The next lesson must stay at beginner level and must secure representative source-frame evidence
 before modeling so fidelity can be judged rather than inferred.
+
+The corrected B1 v4 pass closes its former source-review gap with a creator-published Blender Guru
+still and timestamped captions. Visual comparison forced a new camera, darker countertop, relocated
+mug, stronger material hierarchy, and five-color live sprinkle system. Fresh-process verification
+passes, but the artifact remains 7.0/10 because its organic irregularity, texture, scatter quality,
+and lighting are visibly simpler than the creator still. This is a second useful beginner failure,
+not an advancement pass.
 
 Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
 perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like

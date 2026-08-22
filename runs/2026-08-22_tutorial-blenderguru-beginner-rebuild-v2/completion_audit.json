@@ -1,13 +1,17 @@
 {
   "schema_version": 1,
   "source_run": "runs\\2026-08-21_tutorial-rebuild-donut\\donut_tutorial.blend",
-  "status": "TECHNICALLY_COMPLETE_VISUAL_REVIEW_PENDING",
+  "status": "CREATOR_STILL_REVIEWED_CORRECTED_V4",
   "corrected_failures": [
     "plate_not_under_donut",
     "donut_and_mug_overlap",
     "14_vertex_ngon_coffee_surface",
     "missing_geometry_nodes_sprinkles",
-    "cropped_flat_final_composition"
+    "cropped_flat_final_composition",
+    "single_color_sprinkles",
+    "bright_empty_background",
+    "camera_angle_and_mug_placement_not_source_like",
+    "v3_overexposed_pale_material_read"
   ],
   "live_modifiers": {
     "Icing": [
@@ -27,6 +31,11 @@
       "BEVEL"
     ]
   },
-  "sprinkle_source_hidden": true,
-  "sprinkle_modifier_applied": false
+  "sprinkle_sources_hidden": true,
+  "sprinkle_modifier_applied": false,
+  "creator_reference": "https://www.blenderguru.com/posts/blender-donut-v5-tutorial",
+  "creator_reference_asset_local_ignored": "media/creator_published_part1.jpg",
+  "visual_fidelity_score": 7.0,
+  "strict_eight_of_ten_gate_passed": false,
+  "gemini_audiovisual_status": "PENDING_FREE_TIER_QUOTA"
 }

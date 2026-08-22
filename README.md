@@ -200,9 +200,10 @@ The local Blender/MCP entry points are:
 - `runs/2026-08-22_tutorial-game-asset-factory-chair/`,
   `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/`, and
   `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/` start the strict beginner apprenticeship.
-  The ramen machine has full audiovisual extraction, retained typed-modeling corrections, a
-  connected manifold housing, live modifiers, and fresh-process verification, but its available
-  thumbnail comparison is only `6.8/10`. None of these runs yet supplies two consecutive,
+  The Blender Guru scene now has creator-still comparison and a source-driven v4 correction, but is
+  only `7.0/10`; the ramen machine has full audiovisual extraction, retained typed-modeling
+  corrections, a connected manifold housing, live modifiers, and fresh-process verification, but
+  its available thumbnail comparison is only `6.8/10`. None of these runs yet supplies consecutive,
   independently source-frame-reviewed `8/10` passes. Held-out prop modeling remains blocked.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
