@@ -203,10 +203,38 @@ close), then overcorrected to near-black at 1.2W. Settled on 5.0W/0.5 size as a 
 ground -- confirmed the base color/normal/roughness node graph itself was correctly linked the whole
 time by checking `is_linked` directly rather than guessing from the render alone.
 
+## Part 6: mug UV unwrap, coffee foam, and the Swingline coordinate bug recurring in a new place
+
+Mug UV unwrap done for real, without the Mio3 UV extension (another external download, same
+substitution reasoning as Part 5's PBR maps): seams placed at every sharp-angle edge (the handle's
+real boundary with the body, the crown/rim/base transitions) plus the base cap boundary -- 110 seam
+edges total, more fragmented than the tutorial's minimal hand-placed set, but a real, functioning
+unwrap rather than the primitive cylinder's meaningless inherited UVs. Then angle-based unwrap.
+
+Coffee foam: reused the mug's own inner-rim edge loop (found by comparing radius within the top
+height band, not modeled fresh) as the foam disc's boundary, filled, double-inset for the raised
+surface-tension edge real liquid shows against a rim, shade-smoothed, UV unwrapped, and given a
+procedural foam-like material (noise-driven roughness/bump, substituting for the coffee-foam atlas
+texture -- same external-download constraint as every other real PBR asset this project can't fetch).
+
+**Caught the exact same class of bug already fixed once this project, in a new place.** The first
+render showed a flat white disc sitting on top of the *donut*, nowhere near the mug. Root cause:
+the foam's boundary vertices were read directly from the mug's mesh data (`bmesh.from_mesh`), which
+is always in the mug object's *local* space -- and used as-is for a brand-new object whose own
+origin is world `(0,0,0)`, not the mug's actual world position `(0.3, 0, 0.075)`. This is the
+identical mistake already found and fixed on the Swingline stapler's hinge throat and anvil recess
+earlier this project, just recurring in a different construction (copying geometry data *between*
+two different objects, rather than editing one object's own mesh against its own origin). Fixed by
+applying `mug.matrix_world` to every captured vertex before using the positions for the new object.
+Worth stating plainly rather than filing away: this bug class has now cost real debugging time twice
+on two unrelated builds -- any future script that reads vertex data from one object to place geometry
+relative to another needs to convert through `matrix_world` as a matter of course, not as an
+afterthought caught by a render.
+
 ## Plan for this run
 
-Parts 1-5 done (donut, mug, icing, plate, materials, lumpiness, camera/lighting, UV unwrap, table
-shader). Part 6 (UV Unwrapping the mug -- a harder, non-flat case) is next. Continuing part by part,
-each with its own verified construction pass, a real structural sanity check performed *before*
-saving, and an isolated render from the correct angle before trusting a shape or composition reads
+Parts 1-6 done (donut, mug + UV unwrap, icing, plate, materials, lumpiness, camera/lighting, coffee
+foam). Part 7 (Scattering -- sprinkles via geometry nodes) is next. Continuing part by part, each
+with its own verified construction pass, a real structural sanity check performed *before* saving,
+and an isolated render from the correct angle before trusting a shape, position, or composition reads
 the way it's supposed to.
