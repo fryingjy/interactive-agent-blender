@@ -122,7 +122,55 @@ and horn are much closer to round/oval in cross-section. This is an
 architectural limitation of the construction, not a parameter to keep
 tuning.
 
-**Still not scored.** v5 is retained as the current best state and as
-correctly-diagnosed evidence of what would actually need to change: a
-higher-sided (8- or 12-sided) cross-section for the waist/horn, not more
-support-loop iteration on the current 4-sided cage.
+**Still not scored.** v5 is retained as correctly-diagnosed evidence of what
+would actually need to change: a higher-sided cross-section for the
+waist/horn, not more support-loop iteration on the current 4-sided cage.
+
+## v6-v7: fixed the diagnosed cross-section limitation
+
+First attempt fixed it the hard way and broke: tried rounding the existing
+4-sided table's boundary in place (subdivide the bottom face into a grid,
+round just the outer loop with To Sphere, extrude from there). This cascaded
+real problems -- rounding the bottom boundary forces the four adjacent side
+walls to re-triangulate to match the new vertex count, so "the one flat -X
+wall face" the horn was supposed to extrude from no longer existed as a
+single face at all, and repeated attempts to re-locate it by position broke
+the same way v1's Z-collision bug did (a rounding transform moves vertices
+off the exact plane being searched for). Abandoned this approach rather than
+keep patching it.
+
+**v6** rebuilt from scratch using a 12-sided cylinder as the starting
+primitive instead of a cube -- every ring (table, waist, base, horn) is
+consistently round from the first vertex, with no square-to-round
+transition topology needed anywhere. The table's edge is now slightly
+faceted/rounded rather than sharp-cornered-rectangular versus the
+reference -- a real, disclosed simplification, traded because the
+diagnosis found the horn/waist reading as round matters more for
+silhouette recognizability than the table's exact corner sharpness. This
+also fixed an unexplained side effect from v4/v5: the material had rendered
+washed-out white despite a near-black base color, which turned out to be
+the blocky 4-sided geometry catching specular highlights across its whole
+faceted silhouette; the properly round v6 geometry renders as correct dark
+steel with a normal, localized specular highlight.
+
+**v7** reapplied v5's validated support-loop technique (`bmesh.ops.bevel`
+on all 108 horizontal ring-boundary edges) to v6's round cage. Structurally
+clean throughout (0 loose/non-manifold/degenerate). The result
+(`anvil_v7_solid.png`) is real, visible progress on both fronts at once:
+the table now reads as a distinct flat disc with a real edge instead of
+melting into the waist, and the waist/horn genuinely read as round/oval
+rather than a smoothed square.
+
+**Remaining rough spots, disclosed rather than hidden:** the horn's
+attachment to the table shows some jagged/uneven geometry where the two
+meet (visible as a rough notch in the render) -- likely the support-loop
+bevel interacting awkwardly with the horn's own tapering segments right at
+the junction. The base foot is still underdeveloped, reading as a short
+thin stem rather than the reference's visibly wide, stable-looking flare.
+
+**Still not scored against the reference.** This is the current best state
+of the run: the specific limitation identified last session (4-sided
+cross-section) is fixed and confirmed working, table definition is real
+progress, and two remaining specific problems (horn-junction roughness,
+underweighted base foot) are named precisely rather than left as a vague
+"needs polish."
