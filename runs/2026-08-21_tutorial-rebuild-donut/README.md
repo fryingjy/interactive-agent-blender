@@ -132,9 +132,35 @@ Solidify modifier was baked. Verified visually too (`part3_final_iso.png`): a re
 visible drip tendrils, correctly clinging to the donut via the (correctly-ordered) shrinkwrap and
 crease.
 
+## Part 4, first piece: the plate
+
+Part 4 opens by finally showing the "homework" object teased at the end of Part 3 (a plate), before
+moving into materials, camera setup, and a lattice-deform pass on the donut. Built the plate first,
+as its own real object: a circle (ngon fill) extruded up and capped open, boundary scaled out for a
+lip, a second extrusion (no vertical move, scaled out) for a flat rim shelf, a third extrusion
+straight up (Z-locked) for the rim wall, Subdivision Surface, and Solidify moved to the top of the
+stack -- the same "modifier order matters" pattern as the mug and icing.
+
+**First attempt was structurally clean but a real design failure, caught by actually looking at an
+isolated render, not just the health check.** The initial wall height (0.01) against the plate's
+~0.18 radius read as almost perfectly flat from a proper side view -- barely distinguishable from a
+coaster, not a plate with the rim the tutorial explicitly calls a hard requirement ("you can't just
+have a plate, it's always got to have a rim on"). This is the same category of lesson as the
+Swingline stapler's rejected construction earlier this project: a health check proves the geometry is
+valid, never that the design reads correctly. Reverted (not git-committed yet) and rebuilt with a
+taller cap extrusion (0.012) and rim wall (0.022, roughly double) -- now clearly reads as a plate
+with a real, visible rim and a flat well, confirmed with the same isolated side-view render technique
+used to verify the Swingline hinge throat and mug handle.
+
+Structurally: 0 loose/degenerate, 32 non-manifold edges matching the open top boundary (32-segment
+circle, same legitimate open-shell-before-Solidify pattern as every other part), 1 ngon (the
+intentional flat bottom cap, matching the tutorial's own ngon fill choice for the base circle).
+
 ## Plan for this run
 
-Parts 1-3 done (donut, mug base, mug handle, donut icing). Part 4 (Materials) is next, not attempted
-in this same pass. Continuing part by part, each with its own verified construction pass and a real
-structural sanity check performed *before* saving, not just a post-hoc health check or a render
-glance -- the clearest lesson from this run so far.
+Parts 1-3 done, plus the plate from Part 4. Still remaining from Part 4: materials (base color,
+roughness, subsurface scattering for the donut/icing), the lattice-deform lumpiness pass on the
+donut+icing, camera positioning, and EEVEE ray-tracing setup -- not attempted in this same pass.
+Continuing part by part, each with its own verified construction pass, a real structural sanity check
+performed *before* saving, and an isolated render from the correct angle before trusting a shape
+reads the way it's supposed to -- the two clearest lessons from this run so far.
