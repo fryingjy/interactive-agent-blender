@@ -205,6 +205,10 @@ The local Blender/MCP entry points are:
   corrections, a connected manifold housing, live modifiers, and fresh-process verification, but
   its available thumbnail comparison is only `6.8/10`. None of these runs yet supplies consecutive,
   independently source-frame-reviewed `8/10` passes. Held-out prop modeling remains blocked.
+- `runs/2026-08-22_tutorial-blenderguru-lightbulb/` adds a full bulb and multi-bulb scene using
+  revolved connected profiles, curve-based wires/filament/thread, linked assemblies, live glass
+  subdivision, emission, and Blender 5.2 compositor glare. Fresh technical verification passes,
+  but direct creator-result comparison is only `7.2/10`; it remains beginner failure evidence.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

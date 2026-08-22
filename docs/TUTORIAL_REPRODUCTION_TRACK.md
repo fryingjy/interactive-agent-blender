@@ -46,6 +46,7 @@ shading defect. Two consecutive passes are required before increasing difficulty
 | B0 | Game Asset Factory basic chair | One cube, loop cuts, connected face extrusion, Edit Mode proportions | MODELED; SOURCE-FRAME REVIEW PENDING |
 | B1 | Blender Guru 2026 beginner scene | Complete donut, icing, mug, plate, scattering, materials, lighting, final composition | FRESH-FILE VERIFIED; CREATOR-STILL FIDELITY 7.0/10; DOES NOT PASS 8/10 GATE |
 | B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10; DOES NOT PASS 8/10 GATE |
+| B3 | Blender Guru lightbulb scene | Profile revolution, curve wires/filament/thread, glass, linked assemblies, emission and compositor glow | TECHNICALLY VERIFIED; CREATOR-RESULT FIDELITY 7.2/10; DOES NOT PASS 8/10 GATE |
 | I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | PENDING |
 | I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
 | A0 | Advanced production prop tutorial | High/low collections, live modifiers, UVs, bake, materials, export | PENDING |
@@ -65,6 +66,7 @@ Current evidence:
 - `runs/2026-08-22_tutorial-game-asset-factory-chair/`
 - `runs/2026-08-22_tutorial-blenderguru-beginner-rebuild-v2/`
 - `runs/2026-08-22_tutorial-polygon-runway-ramen-machine/`
+- `runs/2026-08-22_tutorial-blenderguru-lightbulb/`
 
 The B2 ramen-machine run is the first complete artifact under the stricter restart to combine
 full-video extraction, typed Edit Mode construction, retained visual failures, a finished scene,
@@ -79,6 +81,13 @@ mug, stronger material hierarchy, and five-color live sprinkle system. Fresh-pro
 passes, but the artifact remains 7.0/10 because its organic irregularity, texture, scatter quality,
 and lighting are visibly simpler than the creator still. This is a second useful beginner failure,
 not an advancement pass.
+
+The B3 lightbulb run reproduces the creator's intended profile-revolve, curve-wire, filament,
+screw-thread, glass, emission, linked-duplication, and compositor workflow. Direct comparison with
+the creator-published bulb and finished scene drove a longer envelope, finer 4.5-turn live Bezier
+thread, and two glass-read corrections. Fresh-process technical verification passes, but visual
+fidelity is only 7.2/10: glass is too blue/ghosted, the hero is too orange, and the composition is
+too crowded. It is a third informative beginner failure, not an advancement pass.
 
 Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
 perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like
