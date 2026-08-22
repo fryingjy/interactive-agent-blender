@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-retopology\\production_audit_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-retopology\\corrected.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "066b099998b1",
+  "results": [
+    {
+      "index": 0,
+      "label": "high_lifecycle",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "dragon_eye_dense_target"
+      },
+      "status": "ok",
+      "result": {
+        "name": "dragon_eye_dense_target",
+        "type": "MESH",
+        "data": "dragon_eye_dense_targetMesh",
+        "collections": [
+          "HIGH_POLY"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 448,
+        "edges": 896,
+        "faces": 448,
+        "modifiers": [
+          {
+            "name": "High_SubD",
+            "type": "SUBSURF"
+          }
+        ],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 1,
+      "label": "low_lifecycle",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "dragon_eye_retopo"
+      },
+      "status": "ok",
+      "result": {
+        "name": "dragon_eye_retopo",
+        "type": "MESH",
+        "data": "dragon_eye_retopoMesh",
+        "collections": [
+          "LOW_POLY"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 96,
+        "edges": 192,
+        "faces": 96,
+        "modifiers": [
+          {
+            "name": "Retopo_Shrinkwrap",
+            "type": "SHRINKWRAP"
+          },
+          {
+            "name": "Retopo_SubD",
+            "type": "SUBSURF"
+          },
+          {
+            "name": "Final_Conform",
+            "type": "SHRINKWRAP"
+          }
+        ],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 2,
+      "label": "bounded_stage5_high_low_audit",
+      "command": "get_production_high_low_audit",
+      "params": {
+        "high_name": "dragon_eye_dense_target",
+        "low_name": "dragon_eye_retopo",
+        "silhouette_iou_by_view": {
+          "front": 0.8771534689823526,
+          "side": 0.8928105711553508,
+          "top": 0.885762778249233
+        },
+        "high_collection_name": "HIGH_POLY",
+        "low_collection_name": "LOW_POLY",
+        "max_low_to_high_face_ratio": 0.65,
+        "minimum_silhouette_iou": 0.85,
+        "minimum_view_count": 3,
+        "require_live_modifiers": true
+      },
+      "status": "ok",
+      "result": {
+        "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+        "checks": {
+          "separate_collections": true,
+          "independent_mesh_datablocks": true,
+          "purpose_authored_lower_topology": true,
+          "single_connected_component_each": true,
+          "low_uv_ready": true,
+          "multiview_shape_preserved": true,
+          "current_modifier_stacks_live": true
+        },
+        "pass": true,
+        "editable_variant_only": false,
+        "face_ratio": 0.21428571428571427,
+        "thresholds": {
+          "max_low_to_high_face_ratio": 0.65,
+          "minimum_silhouette_iou": 0.85,
+          "minimum_view_count": 3,
+          "require_live_modifiers": true
+        },
+        "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+        "failures": [],
+        "evidence": {
+          "high_object": "dragon_eye_dense_target",
+          "low_object": "dragon_eye_retopo",
+          "high_collections": [
+            "HIGH_POLY"
+          ],
+          "low_collections": [
+            "LOW_POLY"
+          ],
+          "independent_mesh_datablocks": true,
+          "high_base_faces": 448,
+          "low_base_faces": 96,
+          "high_connected_components": 1,
+          "low_connected_components": 1,
+          "high_live_modifiers": [
+            "High_SubD:SUBSURF"
+          ],
+          "low_live_modifiers": [
+            "Retopo_Shrinkwrap:SHRINKWRAP",
+            "Retopo_SubD:SUBSURF",
+            "Final_Conform:SHRINKWRAP"
+          ],
+          "low_uv": {
+            "layer": "QuadLayeredAnnularShellUV",
+            "loop_count": 384,
+            "degenerate_faces": 0,
+            "inside_unit_tile": true
+          },
+          "silhouette_iou_by_view": {
+            "front": 0.8771534689823526,
+            "side": 0.8928105711553508,
+            "top": 0.885762778249233
+          }
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

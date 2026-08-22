@@ -402,6 +402,53 @@ def archive_object(name, collection_name="REJECTED_COMPONENTS"):
     }
 
 
+def organize_object_collection(
+    name,
+    collection_name,
+    production_variant=None,
+    hide_viewport=False,
+    hide_render=False,
+):
+    """Move an existing object into one explicit production collection.
+
+    Unlike ``package_high_low_variants``, this operation never duplicates geometry. It is for an
+    independently authored high target and retopologized low cage that must remain in separate
+    collections while preserving their own topology and live modifier stacks.
+    """
+    obj = bpy.data.objects.get(name)
+    if obj is None:
+        raise ValueError(f"object '{name}' does not exist")
+    clean_collection_name = str(collection_name).strip()
+    if not clean_collection_name:
+        raise ValueError("collection name cannot be empty")
+    if production_variant not in {None, "HIGH_POLY", "LOW_POLY"}:
+        raise ValueError("production_variant must be HIGH_POLY, LOW_POLY, or null")
+    collection = bpy.data.collections.get(clean_collection_name)
+    created = collection is None
+    if collection is None:
+        collection = bpy.data.collections.new(clean_collection_name)
+        bpy.context.scene.collection.children.link(collection)
+    previous = [owner.name for owner in obj.users_collection]
+    for owner in list(obj.users_collection):
+        owner.objects.unlink(obj)
+    collection.objects.link(obj)
+    if production_variant is not None:
+        obj["production_variant"] = production_variant
+    obj.hide_viewport = bool(hide_viewport)
+    obj.hide_render = bool(hide_render)
+    obj.hide_set(bool(hide_viewport))
+    return {
+        "name": obj.name,
+        "collection": collection.name,
+        "collection_created": created,
+        "previous_collections": previous,
+        "production_variant": obj.get("production_variant"),
+        "hidden_in_viewport": bool(obj.hide_viewport),
+        "hidden_in_render": bool(obj.hide_render),
+        "geometry_duplicated": False,
+    }
+
+
 def object_lifecycle_state(name):
     """Read the identity, ownership, visibility, geometry, and modifier state of one object."""
     obj = bpy.data.objects.get(name)

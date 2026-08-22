@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "record_type": "VIDEO_EPISODE_INDEPENDENT_REVIEW",
+  "source_url": "https://www.youtube.com/watch?v=X2GNyEUvpD4",
+  "identity": {"title":"Retopology in Blender (Beginner Tutorial)","creator":"CG Boost","duration_seconds":854,"published_at":"2022-03-16"},
+  "independent_checks": [
+    "YouTube oEmbed title, creator, and thumbnail",
+    "YouTube indexed description chapters from 00:00 through 13:45",
+    "independently indexed 14:14 duration and caption text corroborating BSurfaces, F2, LoopTools, Shrinkwrap, Slide Relax, and finalization"
+  ],
+  "semantic_inspection": {"method":"Google Gemini video understanding","ranges_seconds":[[0,450],[450,854]],"modalities_reported":["video","audio","captions","UI text"],"records":["gemini_part1_unverified.json","gemini_part2_unverified.json"]},
+  "decision": "ACCEPT_FOR_BOUNDED_REPRODUCTION",
+  "claim_boundary": "The model-extracted timestamp episodes are not promoted on their own. The retained Blender failure, correction, transfer, deformation probe, and high/low audit are the promotion evidence."
+}

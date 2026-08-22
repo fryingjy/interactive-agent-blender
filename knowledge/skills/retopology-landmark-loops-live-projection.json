@@ -1,0 +1,22 @@
+{
+  "skill_id": "retopology.landmark_loops.live_projection_deformation_check",
+  "title": "Anchor retopology with aligned landmark loops and live projection",
+  "topic_tags": ["retopology", "shrinkwrap", "edge flow", "deformation", "eye loop", "mouth loop", "high low"],
+  "applicability": {"modeling_stage":["TOPOLOGY_SURFACE","PRODUCTION_PREP"],"workflow":["high-to-low retopology","deforming organic or soft manufactured landmark"],"defect":["twisted quad correspondence","floating loop cuts","collapsed landmark opening","smooth render hiding bad flow"]},
+  "preconditions": ["a distinct high target exists","the low cage is independently authored rather than duplicated","deforming openings or joints can be identified before broad patch filling"],
+  "required_observations": ["base low-cage wire","high/low fixed-frame silhouettes","live modifier order","evaluated manifoldness","a representative deformation probe"],
+  "action_policy": [
+    "Create closed loops around eye, mouth, joint, or opening landmarks before filling the surrounding patch.",
+    "Keep loop correspondence direction consistent; reject spiraling or crossed radial rows even when the mesh is manifold and all-quad.",
+    "Use live Shrinkwrap for generated/interpolated topology; when SubD shrinks the preview away from the target, test a second live conforming Shrinkwrap after SubD instead of applying modifiers automatically.",
+    "Keep independently authored high and low cages in separate collections and test the low cage under representative deformation."
+  ],
+  "failure_predicates": ["twisted/crossed rows in wire view","new vertices floating after loop insertion","high auto-merge threshold collapsing loops","inverted normals","deformation tears or pinches the landmark","low cage is merely a duplicate"],
+  "recovery": ["restore consistent loop correspondence","rebuild the local strip","adjust view/projection direction","reduce auto-merge threshold","recalculate normals","relax spacing tangentially","add post-SubD live conforming projection when measured fit improves"],
+  "sources": [{"type":"video_observation","source_id":"X2GNyEUvpD4","timestamp_seconds":[10,854],"description":"CG Boost demonstrates BSurfaces/F2 loop construction, projection failures, landmark-first flow, Slide Relax, and finalization."}],
+  "experiments": [{"type":"eye landmark failure/correction plus mouth transfer","evidence_path":"runs/2026-08-22_tutorial-cgboost-retopology/","result":"PASS_BOUNDED","measurements":{"failure_pinch_candidates":24,"correction_pinch_candidates":9,"low_to_high_face_ratio":0.214286,"minimum_silhouette_iou":0.877153,"deformed_non_manifold_edges":0},"counterevidence":"The aligned correction has a higher normal-angle p95 than the twisted failure, so no single curvature statistic establishes semantically correct flow."}],
+  "runtime_usage": [{"operation":"organize_object_collection","usage":"Place independently authored high and low cages in separate production collections without duplicating geometry."}],
+  "version_scope": "Blender 5.2 LTS reproduction; source tutorial used Blender 3.2 Alpha",
+  "status": "TRANSFER_VALIDATED",
+  "status_note": "Validated on eye/brow and pointed-mouth landmark patches with live modifiers. Full-head retopology and the later 0.90 production silhouette target remain open."
+}

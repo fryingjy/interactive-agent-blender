@@ -418,6 +418,28 @@ def get_production_high_low_audit(
 
 
 @mcp.tool()
+def organize_object_collection(
+    object_name: str,
+    collection_name: str,
+    production_variant: str | None = None,
+    hide_viewport: bool = False,
+    hide_render: bool = False,
+) -> dict:
+    """Move an independently authored object into one explicit collection without duplicating its geometry. Use HIGH_POLY/LOW_POLY production_variant only when the objects are genuinely distinct cages."""
+    return _transaction(
+        object_name,
+        "organize_object_collection",
+        "organize_object_collection",
+        {
+            "collection_name": collection_name,
+            "production_variant": production_variant,
+            "hide_viewport": hide_viewport,
+            "hide_render": hide_render,
+        },
+    )
+
+
+@mcp.tool()
 def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
     """Render a Blender-native solid, MatCap, wireframe, normal, depth, or component-mask diagnostic PNG with scene revision and camera metadata."""
     return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)

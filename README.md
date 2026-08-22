@@ -183,7 +183,12 @@ The local Blender/MCP entry points are:
   `runs/2026-08-22_tutorial-blenderbros-tricky-subd-detail/` complete Stage 4 with actual
   audiovisual study, matched SubD failures/corrections, convex loop-termination evidence, a
   connected tapered-shell reproduction, and a different 14-segment diagonal-detail transfer.
-  The asset reproduction is explicitly bounded; Stage 5 retopology is next.
+  The asset reproduction is explicitly bounded and supplies the prerequisite for Stage 5.
+- `runs/2026-08-22_tutorial-cgboost-retopology/` completes bounded Stage 5 with full audiovisual
+  study, independent high/low eye-landmark cages in separate collections, a manifold-but-twisted
+  topology failure, live Shrinkwrap/SubD deformation tests, and a pointed-mouth transfer. The
+  three-view fit passes the tutorial-stage `0.85` gate but remains below the later `0.90` production
+  target. Stage 6 UV/material work is next.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

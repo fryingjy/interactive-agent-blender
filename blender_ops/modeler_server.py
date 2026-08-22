@@ -90,6 +90,7 @@ CAPABILITIES = [
     "quad_layered_annular_shell_geometry",
     "authored_quad_mesh_geometry",
     "quad_radial_surface_geometry",
+    "independent_high_low_collection_organization",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
 ]
@@ -140,6 +141,7 @@ _OPS = {
     "set_modifier_parameter": object_ops.set_modifier_parameter,
     "replace_mesh_from_object": object_ops.replace_mesh_from_object,
     "archive_object": object_ops.archive_object,
+    "organize_object_collection": object_ops.organize_object_collection,
     "package_high_low_variants": object_ops.package_high_low_variants,
     "set_shading": object_ops.set_shading,
     "set_smooth_by_angle": object_ops.set_smooth_by_angle,
