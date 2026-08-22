@@ -189,6 +189,10 @@ The local Blender/MCP entry points are:
   topology failure, live Shrinkwrap/SubD deformation tests, and a pointed-mouth transfer. The
   three-view fit passes the tutorial-stage `0.85` gate but remains below the later `0.90` production
   target. Stage 6 UV/material work is next.
+- `runs/2026-08-22_tutorial-cgboost-uv-production/` completes bounded Stage 6 with two complete
+  audiovisual tutorial studies, a one-object connected compound cage, a visually rejected first
+  transfer, a corrected curved-clasp transfer, non-overlap/distortion measurements, UV checker
+  materials, and real saved tangent-normal bakes. Stage 7 full production delivery is next.
 - `runs/2026-08-19_observation-to-skill-gap-audit/` records the circular-validation correction that
   demoted unsupported runtime claims.
 

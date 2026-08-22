@@ -1,0 +1,570 @@
+{
+  "schema_version": 1,
+  "experiment": "cgboost_uv_tutorial_connected_compound_reproduction",
+  "blender_version": "5.2.0 LTS",
+  "source": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+  "source_episode": [
+    2018,
+    2245
+  ],
+  "hypothesis": "A connected compound cage should be decomposed into topological UV regions and opened with a purposeful longitudinal seam; a UV layer without that cut is not sufficient.",
+  "frozen_thresholds": {
+    "minimum_silhouette_iou": 0.88,
+    "minimum_bake_signal_pixels": 1000
+  },
+  "families": {
+    "tutorial_weird_cube": {
+      "objects": {
+        "high": "tutorial_weird_cube_HIGH",
+        "low": "tutorial_weird_cube_LOW",
+        "failure": "tutorial_weird_cube_NO_SEAM_FAILURE"
+      },
+      "topology": {
+        "high": {
+          "vertices": 400,
+          "edges": 784,
+          "faces": 384,
+          "all_quads": true,
+          "components": 1
+        },
+        "low": {
+          "vertices": 132,
+          "edges": 252,
+          "faces": 120,
+          "all_quads": true,
+          "components": 1
+        }
+      },
+      "live_modifiers": {
+        "high": [
+          "SOLIDIFY"
+        ],
+        "low": [
+          "SOLIDIFY"
+        ]
+      },
+      "authored_seam_edges": 10,
+      "corrected_uv": {
+        "layer": "UVMap",
+        "seam_edges": 10,
+        "island_count": 1,
+        "loop_count": 480,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.0017060478472155638,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 0.38245460811636556,
+        "mean_corner_angle_error_degrees": 3.9675823679597397,
+        "max_corner_angle_error_degrees": 20.035194612951045,
+        "positive_area_overlap_pairs": 0
+      },
+      "failure_uv": {
+        "layer": "UVMap",
+        "seam_edges": 0,
+        "island_count": 1,
+        "loop_count": 480,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 3.9515674288281843e-08,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 1.9942333066842328,
+        "mean_corner_angle_error_degrees": 14.901606900813226,
+        "max_corner_angle_error_degrees": 45.370894549881726,
+        "positive_area_overlap_pairs": 0
+      },
+      "evaluated_health": {
+        "high": {
+          "vertices": 800,
+          "edges": 1600,
+          "faces": 800,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        },
+        "low": {
+          "vertices": 264,
+          "edges": 528,
+          "faces": 264,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        }
+      },
+      "silhouette_iou_by_view": {
+        "front": 0.982384,
+        "side": 0.985342,
+        "top": 0.987668
+      },
+      "production_audit": {
+        "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+        "checks": {
+          "separate_collections": true,
+          "independent_mesh_datablocks": true,
+          "purpose_authored_lower_topology": true,
+          "single_connected_component_each": true,
+          "low_uv_ready": true,
+          "multiview_shape_preserved": true,
+          "current_modifier_stacks_live": true
+        },
+        "pass": true,
+        "editable_variant_only": false,
+        "face_ratio": 0.3125,
+        "thresholds": {
+          "max_low_to_high_face_ratio": 0.65,
+          "minimum_silhouette_iou": 0.88,
+          "minimum_view_count": 2,
+          "require_live_modifiers": true
+        },
+        "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+        "failures": []
+      },
+      "bake": {
+        "operator_result": [
+          "FINISHED"
+        ],
+        "path": "runs\\2026-08-22_tutorial-cgboost-uv-production\\tutorial_weird_cube_tangent_normal.png",
+        "colorspace": "Non-Color",
+        "metrics": {
+          "width": 512,
+          "height": 512,
+          "non_neutral_pixels": 136862,
+          "channel_standard_deviation": [
+            0.06822513752909311,
+            0.03922932068510405,
+            0.01633601754792476
+          ]
+        }
+      },
+      "material_render": {
+        "path": "runs\\2026-08-22_tutorial-cgboost-uv-production\\tutorial_weird_cube_uv_material.png",
+        "engine": "BLENDER_EEVEE",
+        "uv_driven_material": true
+      },
+      "render_records": [
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_high_front.png",
+          "view": "front",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1595
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_low_front.png",
+          "view": "front",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1581
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_high_side.png",
+          "view": "side",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1277
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_low_side.png",
+          "view": "side",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1262
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_high_top.png",
+          "view": "top",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1405
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\tutorial_weird_cube_low_top.png",
+          "view": "top",
+          "resolution": 320,
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1397
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\tutorial_weird_cube_high_matcap.png",
+          "pass_type": "matcap",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "frame_objects": [
+            "tutorial_weird_cube_HIGH"
+          ],
+          "camera_location": [
+            6.307612895965576,
+            -6.230966567993164,
+            7.15748929977417
+          ],
+          "camera_ortho_scale": 6.205601572466429,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.171367,
+          "foreground_unique_colors_5bit": 104,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\tutorial_weird_cube_low_wire.png",
+          "pass_type": "wireframe",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "tutorial_weird_cube_LOW"
+          ],
+          "frame_objects": [
+            "tutorial_weird_cube_LOW"
+          ],
+          "camera_location": [
+            6.3219146728515625,
+            -6.2376909255981445,
+            7.160599231719971
+          ],
+          "camera_ortho_scale": 6.212298594487486,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.061957,
+          "foreground_unique_colors_5bit": 3,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\tutorial_weird_cube_failure_wire.png",
+          "pass_type": "wireframe",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "tutorial_weird_cube_NO_SEAM_FAILURE"
+          ],
+          "frame_objects": [
+            "tutorial_weird_cube_NO_SEAM_FAILURE"
+          ],
+          "camera_location": [
+            6.3219146728515625,
+            -6.2376909255981445,
+            7.160599231719971
+          ],
+          "camera_ortho_scale": 6.212298594487486,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.061957,
+          "foreground_unique_colors_5bit": 3,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        }
+      ]
+    },
+    "transfer_curved_clasp": {
+      "objects": {
+        "high": "transfer_curved_clasp_HIGH",
+        "low": "transfer_curved_clasp_LOW",
+        "failure": "transfer_curved_clasp_NO_SEAM_FAILURE"
+      },
+      "topology": {
+        "high": {
+          "vertices": 464,
+          "edges": 912,
+          "faces": 448,
+          "all_quads": true,
+          "components": 1
+        },
+        "low": {
+          "vertices": 156,
+          "edges": 300,
+          "faces": 144,
+          "all_quads": true,
+          "components": 1
+        }
+      },
+      "live_modifiers": {
+        "high": [
+          "SOLIDIFY"
+        ],
+        "low": [
+          "SOLIDIFY"
+        ]
+      },
+      "authored_seam_edges": 12,
+      "corrected_uv": {
+        "layer": "UVMap",
+        "seam_edges": 12,
+        "island_count": 1,
+        "loop_count": 576,
+        "degenerate_faces": 0,
+        "minimum_face_uv_area": 0.0014755048803731796,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 0.32113406195054434,
+        "mean_corner_angle_error_degrees": 5.088407281486377,
+        "max_corner_angle_error_degrees": 13.812101066714817,
+        "positive_area_overlap_pairs": 0
+      },
+      "failure_uv": {
+        "layer": "UVMap",
+        "seam_edges": 0,
+        "island_count": 1,
+        "loop_count": 576,
+        "degenerate_faces": 34,
+        "minimum_face_uv_area": 9.414691248821327e-13,
+        "inside_unit_tile": true,
+        "world_texel_ratio_cv": 3.1491392597036065,
+        "mean_corner_angle_error_degrees": 36.01844387762134,
+        "max_corner_angle_error_degrees": 98.12187307895829,
+        "positive_area_overlap_pairs": 0
+      },
+      "evaluated_health": {
+        "high": {
+          "vertices": 928,
+          "edges": 1856,
+          "faces": 928,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        },
+        "low": {
+          "vertices": 312,
+          "edges": 624,
+          "faces": 312,
+          "non_manifold_edges": 0,
+          "degenerate_faces": 0
+        }
+      },
+      "silhouette_iou_by_view": {
+        "front": 0.970724,
+        "side": 0.993616,
+        "top": 0.988329
+      },
+      "production_audit": {
+        "disposition": "PRODUCTION_LOW_AUDIT_PASS",
+        "checks": {
+          "separate_collections": true,
+          "independent_mesh_datablocks": true,
+          "purpose_authored_lower_topology": true,
+          "single_connected_component_each": true,
+          "low_uv_ready": true,
+          "multiview_shape_preserved": true,
+          "current_modifier_stacks_live": true
+        },
+        "pass": true,
+        "editable_variant_only": false,
+        "face_ratio": 0.32142857142857145,
+        "thresholds": {
+          "max_low_to_high_face_ratio": 0.65,
+          "minimum_silhouette_iou": 0.88,
+          "minimum_view_count": 2,
+          "require_live_modifiers": true
+        },
+        "modifier_history_boundary": "Current live stacks are observed; Blender does not prove that no modifier was applied earlier in the asset's history.",
+        "failures": []
+      },
+      "bake": {
+        "operator_result": [
+          "FINISHED"
+        ],
+        "path": "runs\\2026-08-22_tutorial-cgboost-uv-production\\transfer_curved_clasp_tangent_normal.png",
+        "colorspace": "Non-Color",
+        "metrics": {
+          "width": 512,
+          "height": 512,
+          "non_neutral_pixels": 49125,
+          "channel_standard_deviation": [
+            0.020365109545458178,
+            0.04116586565665031,
+            0.010191053023345921
+          ]
+        }
+      },
+      "material_render": {
+        "path": "runs\\2026-08-22_tutorial-cgboost-uv-production\\transfer_curved_clasp_uv_material.png",
+        "engine": "BLENDER_EEVEE",
+        "uv_driven_material": true
+      },
+      "render_records": [
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_high_front.png",
+          "view": "front",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1426
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_low_front.png",
+          "view": "front",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.1407
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_high_side.png",
+          "view": "side",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.0703
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_low_side.png",
+          "view": "side",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.07
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_high_top.png",
+          "view": "top",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.0953
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\silhouettes\\transfer_curved_clasp_low_top.png",
+          "view": "top",
+          "resolution": 320,
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "silhouette_fill_ratio": 0.0944
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\transfer_curved_clasp_high_matcap.png",
+          "pass_type": "matcap",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "frame_objects": [
+            "transfer_curved_clasp_HIGH"
+          ],
+          "camera_location": [
+            5.98673152923584,
+            -6.132881164550781,
+            5.783942699432373
+          ],
+          "camera_ortho_scale": 6.107907056601078,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.128741,
+          "foreground_unique_colors_5bit": 106,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\transfer_curved_clasp_low_wire.png",
+          "pass_type": "wireframe",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "transfer_curved_clasp_LOW"
+          ],
+          "frame_objects": [
+            "transfer_curved_clasp_LOW"
+          ],
+          "camera_location": [
+            5.975629806518555,
+            -6.108336448669434,
+            5.756081581115723
+          ],
+          "camera_ortho_scale": 6.083470966860695,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.066905,
+          "foreground_unique_colors_5bit": 3,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        },
+        {
+          "output_path": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-cgboost-uv-production\\transfer_curved_clasp_failure_wire.png",
+          "pass_type": "wireframe",
+          "view": "isometric",
+          "projection": "ORTHO",
+          "resolution": [
+            480,
+            480
+          ],
+          "target_objects": [
+            "transfer_curved_clasp_NO_SEAM_FAILURE"
+          ],
+          "frame_objects": [
+            "transfer_curved_clasp_NO_SEAM_FAILURE"
+          ],
+          "camera_location": [
+            5.975629806518555,
+            -6.108336448669434,
+            5.756081581115723
+          ],
+          "camera_ortho_scale": 6.083470966860695,
+          "scene_revision": null,
+          "foreground_fill_ratio": 0.066905,
+          "foreground_unique_colors_5bit": 3,
+          "dominant_channel_pixel_counts": {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+          }
+        }
+      ]
+    }
+  },
+  "checks": {
+    "tutorial_and_different_transfer_exist": true,
+    "connected_all_quad_independent_cages": true,
+    "twelve_sided_low_cross_sections": true,
+    "purposeful_seam_improves_angle_error": true,
+    "uvs_valid_packed_single_island": true,
+    "live_modifiers_unapplied": true,
+    "evaluated_shells_closed": true,
+    "production_audits_pass": true,
+    "normal_bakes_have_signal": true
+  },
+  "pass": true,
+  "claim_boundary": "Bounded connected sweep-cage interpretation of the tutorial's weird-cube lesson plus a different curved clasp. It validates seam, distortion, packing, material hookup, and tangent-bake behavior; it does not claim an exact copy of the tutorial project file or universal seam placement."
+}

@@ -1,0 +1,24 @@
+{
+  "skill_id": "uv.compound_form.seam_bake_validation",
+  "title": "Validate connected periodic cut graphs through checker material and bake hookup",
+  "topic_tags": ["UV", "seams", "normal bake", "materials", "connected periodic cage"],
+  "applicability": {"modeling_stage":["UV_MATERIAL","PRODUCTION_PREP"],"workflow":["connected periodic compound hard-surface or tubular form","high-to-low tangent bake"],"defect":["closed periodic mapping collision","texture stretch on connected sweep","blank or disconnected bake"]},
+  "preconditions": ["the low cage is independently authored and connected where the form is continuous","high and low are in separate collections","modifier application remains user-controlled"],
+  "required_observations": ["base wire","seam edge count","UV degeneracy/bounds/overlap metrics","checker material render","saved bake image signal","material node hookup","three-view high/low silhouette"],
+  "action_policy": [
+    "Identify periodic tube-like regions and open them with a concealed longitudinal seam rather than accepting a UV layer by itself.",
+    "Normalize layout scale, arrange the cut surface with positive margin, run a geometric collision audit, and render a checker on the actual material.",
+    "For tangent normal baking, make the low material's target Image Texture active, use Cycles selected-to-active, set positive margin, save the image, use Non-Color, and connect through a Normal Map node.",
+    "Reject a visually self-intersecting or badly distorted cage even when structural checks pass."
+  ],
+  "failure_predicates": ["no longitudinal cut on a periodic surface","degenerate or out-of-tile UV faces","positive-area UV overlaps","checker stretch beyond the declared limit","neutral/blank normal map","wrong color space","bake image not saved or node not connected"],
+  "recovery": ["move or add seams at hidden structural boundaries","rip genuine overlaps and repack","straighten an orthogonal active quad before Follow Active Quads","pin stable regions and relax locally","reduce bend radius or improve cage geometry before blaming the unwrap","reselect the correct bake target node and rebake"],
+  "sources": [
+    {"type":"video_observation","source_id":"JwkgVckqGw4","timestamp_seconds":[778,3546],"description":"CG Boost demonstrates seams, Live Unwrap, stretch display, Follow Active Quads, packing, compound-form decomposition, and focal texel allocation."},
+    {"type":"video_observation","source_id":"Se8GdHptD4A","timestamp_seconds":[217,1498],"description":"Ryan King Art demonstrates active image targets, overlap repair, Cycles baking, margin, color-space choice, saving, and PBR node hookup."},
+    {"type":"official_documentation","source_id":"blender-5.2-uv-and-cycles-baking","description":"Blender's current manual constrains UV texture use and image-bake prerequisites."}
+  ],
+  "experiments": [{"type":"weird-cube correction plus curved-clasp transfer","evidence_path":"runs/2026-08-22_tutorial-cgboost-uv-production/","result":"PASS_BOUNDED","measurements":{"tutorial_angle_error_before":14.9016,"tutorial_angle_error_after":3.9676,"transfer_angle_error_before":36.0184,"transfer_angle_error_after":5.0884,"minimum_silhouette_iou":0.970724,"positive_area_overlap_pairs":0},"counterevidence":"Checker stretch remains visible on tight curvature; one seam materially improves these forms but is not a universal distortion cure."}],
+  "version_scope": "Blender 5.2 LTS reproduction; tutorial UI spans Blender 4.x-era workflows",
+  "status": "TRANSFER_VALIDATED"
+}

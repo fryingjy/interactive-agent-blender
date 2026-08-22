@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "stage": 6,
+  "sources": ["JwkgVckqGw4", "Se8GdHptD4A", "Blender 5.2 UV and Cycles baking manuals"],
+  "retained_decisions": [
+    "Treat a connected compound form as a cut graph: identify periodic tube regions and open each with a hidden longitudinal seam.",
+    "A UV layer is not evidence of a usable unwrap; measure degeneracy, bounds, positive-area overlap, angle error, and area-ratio variation, then inspect a checker on the actual material.",
+    "Use Average Island Scale and Pack Islands with positive margin after seam correction.",
+    "For tangent-normal baking, require a UV-ready low cage, active target Image Texture node, Cycles selected-to-active, positive margin, Non-Color data, a saved image, and a connected Normal Map node.",
+    "Reject visual defects independently of green numeric checks; the first clasp passed metrics but was discarded for self-intersection."
+  ],
+  "transfer": "The weird-cube seam strategy was transferred to a different C-shaped clasp cage with independent high/low topology.",
+  "counterevidence": "Purposeful seams reduced mean angular error from 14.90 to 3.97 degrees and 36.02 to 5.09 degrees, but checker deformation remains visible on high-curvature transitions; seam placement alone does not guarantee distortion-free UVs.",
+  "status": "TRANSFER_VALIDATED_BOUNDED"
+}

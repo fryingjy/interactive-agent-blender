@@ -1,0 +1,151 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "generate_content_range",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": null,
+    "reported_source_url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": [
+      1800.0,
+      2400.0
+    ]
+  },
+  "analysis": {
+    "source": {
+      "title": "UV Unwrapping in Blender (Full Beginner Tutorial) #b3d",
+      "creator": "CG Boost",
+      "url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+      "duration_seconds": 3546.0,
+      "blender_version_mentions": []
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Analysis of UV unwrapping techniques from 1800 to 2400 seconds, covering sphere pole straightening, complex shape decomposition, button hole unwrapping, and initial organic head primitive analysis.",
+    "episodes": [
+      {
+        "timestamp_label": "30:00 - 32:11",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Texture pinching and UV distortion at UV sphere poles after UV straightening.",
+        "observed_fact": "Pole edges are marked as seams, UV quads straightened, inner grid vertices pinned with P, Live Unwrap triggered by moving UVs, then unpinned and packed.",
+        "instructor_claim": "Straightening UVs distorts boundary pole triangles unless quad faces are pinned during Live Unwrap.",
+        "interpretation": "Pinning rectilinear quad UVs forces Live Unwrap to recalculate boundary triangles cleanly.",
+        "hypothesis": "Constraining quad UVs isolates pole triangles, allowing auto-relaxation without skewing grid faces.",
+        "reference_evidence": "Severe checker texture distortion and collapsed UV vertices at sphere poles.",
+        "modeling_decision": "Pin stable quad UVs, enable Live Unwrap, translate UV selection to trigger solve, then unpin and pack.",
+        "visible_action": "Circle selects pole edges, marks seams, applies Straighten UVs, selects quad UVs, presses P, enables Live Unwrap, drags UVs, presses Alt+P, and packs islands.",
+        "spoken_reason": "Fix pinching at poles and straighten boundary UV distortion.",
+        "topology_surface_effect": "Pole triangles align neatly into clean UV boundary islands without texture pinching.",
+        "failure": "Straightening UVs without pinning quad geometry leaves pole triangles collapsed.",
+        "correction": "Pin quad grid UVs before triggering Live Unwrap.",
+        "alternatives": "Manually align individual pole UV vertices.",
+        "transferable_principle": "Pin stable quad UV geometry during Live Unwrap to allow tricky boundary triangles to resolve distortion-free.",
+        "start_seconds": 1800,
+        "end_seconds": 1931,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "33:38 - 37:21",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Unwrapping interconnected multi-primitive object containing a cube, curved cylinder, and sphere end.",
+        "observed_fact": "Seams are added at component junction loops to separate cube, cylinder, and sphere into distinct UV islands prior to unwrapping.",
+        "instructor_claim": "Separating contiguous merged meshes into primitive components simplifies seam placement and UV straightening.",
+        "interpretation": "Isolating distinct primitive shapes at topological junction lines prevents cross-geometry UV distortion.",
+        "hypothesis": "Deconstructing compound shapes stops non-uniform stretching from propagating across geometric transitions.",
+        "reference_evidence": "Weird Cube model with contiguous cube, bent pipe, and spherical cap geometry.",
+        "modeling_decision": "Place seam loops at primitive transition boundaries to unwrap each primitive separately.",
+        "visible_action": "Selects junction edge loops, marks seams, isolates islands with L, marks longitudinal cylinder/cube seams, straightens UVs, pins, live-unwraps, unpins, and packs.",
+        "spoken_reason": "Break compound geometry into basic shapes so individual primitive unwrapping steps apply.",
+        "topology_surface_effect": "Mesh unwraps into flat rectilinear quad strips and clean spherical islands without shearing.",
+        "failure": "Unwrapping compound mesh as a single UV island causes severe shearing at junctions.",
+        "correction": "Isolate sub-primitives with seam loops before applying straightening tools.",
+        "alternatives": "Unwrap merged geometry with continuous organic seams.",
+        "transferable_principle": "Deconstruct compound models into primitive components using boundary seam loops before unwrapping.",
+        "start_seconds": 2018,
+        "end_seconds": 2241,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "37:22 - 39:25",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Severe UV face stretching caused by interior hole cylinder walls connecting top and bottom button faces.",
+        "observed_fact": "Marking outer perimeter seam alone causes face UVs to squeeze through center holes until hole rim edge loops are also seamed.",
+        "instructor_claim": "Interior hole geometry pulls front and back surfaces together during unwrap unless separated by seams.",
+        "interpretation": "Through-holes act as topological bridges that prevent planar faces from relaxing flat.",
+        "hypothesis": "Seaming hole rims isolates interior cylinder walls, letting top and bottom planar faces lay flat.",
+        "reference_evidence": "Checker pattern heavily distorted near holes when unwrapping button with perimeter seam only.",
+        "modeling_decision": "Mark seams around interior hole edge loops to detach hole walls from main faces.",
+        "visible_action": "Selects perimeter edge loop, marks seam, observes UV distortion, selects edge loops for all four holes, marks seams, and re-unwraps.",
+        "spoken_reason": "Prevent interior hole faces from squeezing top and bottom surfaces together.",
+        "topology_surface_effect": "Button top and bottom faces unwrap as flat circular disks, while hole walls separate into clean cylindrical islands.",
+        "failure": "Seaming only the outer perimeter causes UV faces to distort through center holes.",
+        "correction": "Mark edge loop seams around all interior hole openings.",
+        "alternatives": "Cut radial seams connecting outer perimeter directly to hole rims.",
+        "transferable_principle": "Isolate interior pass-through hole openings with loop seams to prevent UV face stretching across topological bridges.",
+        "start_seconds": 2242,
+        "end_seconds": 2365,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "39:25 - 40:00",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Planning seam placement on complex organic mesh (Suzanne head).",
+        "observed_fact": "Instructor identifies cylindrical snout/mouth region, spherical skull region, and flat face section on Suzanne head model.",
+        "instructor_claim": "Organic models can be decomposed into basic geometric primitives to plan seam placement.",
+        "interpretation": "Conceptualizing complex organic mesh topology as basic primitive components simplifies seam strategy.",
+        "hypothesis": "Isolating cylindrical snout from spherical skull reduces organic surface distortion.",
+        "reference_evidence": "Suzanne monkey head model in viewport with checker texture.",
+        "modeling_decision": "Plan seam layout by treating the mouth/snout as a distinct cylinder separate from the head.",
+        "visible_action": "Rotates viewport around Suzanne head, highlights mouth junction loop, and plans seam placement.",
+        "spoken_reason": "Isolate the cylindrical mouth area from the spherical head to simplify unwrapping.",
+        "topology_surface_effect": "Prepares organic head topology for clean separation into cylindrical and spherical UV islands.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Apply global automated UV projection.",
+        "transferable_principle": "Decompose complex organic models into constituent basic geometric primitives when planning seam placement.",
+        "start_seconds": 2365,
+        "end_seconds": 2400,
+        "confidence": 0.9,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [
+      "32:22 - 33:32 (Course promotional segment and exercise pause screen)"
+    ],
+    "limitations": [
+      "Analysis limited strictly to timestamp interval 1800 to 2400 seconds."
+    ]
+  }
+}

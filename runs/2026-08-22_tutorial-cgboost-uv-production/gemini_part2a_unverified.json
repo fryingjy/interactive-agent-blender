@@ -1,0 +1,176 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "generate_content_range",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": null,
+    "reported_source_url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": [
+      1200.0,
+      1800.0
+    ]
+  },
+  "analysis": {
+    "source": {
+      "title": "UV Unwrapping in Blender (Full Beginner Tutorial) #b3d",
+      "creator": "CG Boost",
+      "url": "https://www.youtube.com/watch?v=JwkgVckqGw4",
+      "duration_seconds": 3546.0,
+      "blender_version_mentions": [
+        "4.x"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": []
+    },
+    "study_scope": "Torus UV unwrapping, distortion visualization, rectification using Follow Active Quads and UV Toolkit, multi-object UV scale normalization, and island packing.",
+    "episodes": [
+      {
+        "timestamp_label": "20:00 - 21:28",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Unwrapping a closed torus shape causes severe ring distortion with a single seam.",
+        "observed_fact": "A single transverse seam unfolds the torus into a pinched, circular ring island in the UV Editor.",
+        "instructor_claim": "A torus is an endless cylinder connected to itself, requiring two seams to lay flat.",
+        "interpretation": "A single cut breaks the longitudinal loop but leaves the radial perimeter closed.",
+        "hypothesis": "Adding an inner longitudinal perimeter seam allows the mesh to unfold into a strip.",
+        "reference_evidence": "Marking an inner loop seam unwraps the torus into a continuous ribbon.",
+        "modeling_decision": "Mark a second seam along the inner circumference loop.",
+        "visible_action": "Selects inner edge loop with Alt+Click and selects Mark Seam.",
+        "spoken_reason": "Cutting along the inner length opens the ring into a strip.",
+        "topology_surface_effect": "UV island unfolds into a rectangular ribbon shape instead of a pinched circular loop.",
+        "failure": "Single seam unwrapping produced extreme circular warping.",
+        "correction": "Added an inner circumferential seam.",
+        "alternatives": "Cutting along the outer perimeter loop.",
+        "transferable_principle": "Toroidal geometries require two perpendicular seams (one cross-sectional, one longitudinal) to unfold flat.",
+        "start_seconds": 1200.0,
+        "end_seconds": 1288.0,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "21:28 - 23:36",
+        "modeling_stage": "UV Analysis & Distortion Visualization",
+        "problem": "The unwrapped torus strip is bowed and has uneven face areas.",
+        "observed_fact": "Outer perimeter 3D edges are longer than inner ones; enabling UV Stretch Area mode turns the center green and edges blue.",
+        "instructor_claim": "Blender balances 3D edge proportions, resulting in curved UV boundaries and stretch.",
+        "interpretation": "Conformal unwrapping maintains edge ratio differences, bowing the UV island.",
+        "hypothesis": "UV Stretch overlay visually identifies area compression versus expansion.",
+        "reference_evidence": "Enabling UV Stretch Area overlay shades the torus island in blue and green.",
+        "modeling_decision": "Enable UV Stretch overlay set to Area mode.",
+        "visible_action": "Opens Viewport Overlays in UV Editor, enables UV Stretch, and sets type to Area.",
+        "spoken_reason": "Visualizes where texture stretching and compression occur.",
+        "topology_surface_effect": "Island displays color heatmap showing relative area distortion across quad rows.",
+        "failure": "Manual visual check fails to pinpoint subtle area distortions.",
+        "correction": "Toggled UV Stretch Area overlay.",
+        "alternatives": "Inspecting UV checkerboard texture pattern.",
+        "transferable_principle": "UV stretch overlays highlight geometric distortion caused by uneven mesh loop circumferences.",
+        "start_seconds": 1288.0,
+        "end_seconds": 1416.0,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "23:36 - 25:32",
+        "modeling_stage": "UV Rectification / Alignment",
+        "problem": "Curved UV islands cause wavy texture lines along quad strips.",
+        "observed_fact": "Aligning one quad face straight, selecting all faces, and running Follow Active Quads turns the island rectangular.",
+        "instructor_claim": "Straightening a reference quad allows Follow Active Quads to align the rest of the mesh grid.",
+        "interpretation": "Follow Active Quads copies orthogonal quad alignment across connected mesh faces.",
+        "hypothesis": "Unstraightened active quads propagate shear across the entire island.",
+        "reference_evidence": "Selecting an unaligned quad and running Follow Active Quads distorts the UV island diagonally.",
+        "modeling_decision": "Straighten one active quad face before calling Follow Active Quads.",
+        "visible_action": "Aligns active quad edges horizontally/vertically, selects all, and clicks Follow Active Quads.",
+        "spoken_reason": "Ensures the algorithm propagates a clean, non-skewed rectangular grid.",
+        "topology_surface_effect": "Bowed UV island snaps into a straight, uniform rectangular grid.",
+        "failure": "Running Follow Active Quads on an unaligned face sheared the UV grid.",
+        "correction": "Undid operation, straightened reference face first, then re-ran algorithm.",
+        "alternatives": "Manually pinning and aligning boundary vertex rows.",
+        "transferable_principle": "Follow Active Quads requires an explicitly orthogonal reference quad to prevent grid shearing.",
+        "start_seconds": 1416.0,
+        "end_seconds": 1532.0,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "25:32 - 27:43",
+        "modeling_stage": "Multi-Object UV Unwrapping & Extensions",
+        "problem": "Manually straightening multiple torus UV islands is slow.",
+        "observed_fact": "Using UV Toolkit's Straighten UVs batch-rectifies multiple selected torus islands, but leaves scales mismatched.",
+        "instructor_claim": "Add-ons automate multi-object quad straightening; Average Island Scale fixes texel discrepancies.",
+        "interpretation": "Batch tools apply straightening per island, requiring post-process scale normalization.",
+        "hypothesis": "Average Island Scale adjusts relative island sizes based on 3D surface area.",
+        "reference_evidence": "Clicking Average Island Scale resizes all straightened islands to uniform texel density.",
+        "modeling_decision": "Use UV Toolkit to batch-straighten UVs, then execute Average Island Scale.",
+        "visible_action": "Enables UV Toolkit in Preferences, uses Straighten UVs in sidebar, then selects UV -> Average Island Scale.",
+        "spoken_reason": "Automates repetitive multi-object unwrapping while maintaining equal texture scale.",
+        "topology_surface_effect": "All UV islands become straight rectangular strips of identical texel scale.",
+        "failure": "Batch straightening created unequal island scales across identical 3D objects.",
+        "correction": "Executed Average Island Scale after batch straightening.",
+        "alternatives": "Manually straightening each torus island individually.",
+        "transferable_principle": "Automated batch UV processing requires texel scale normalization across objects afterwards.",
+        "start_seconds": 1532.0,
+        "end_seconds": 1663.0,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "27:43 - 29:07",
+        "modeling_stage": "UV Packing & Margin Adjustment",
+        "problem": "Straightened UV strips extend beyond texture bounds and overlap.",
+        "observed_fact": "Pack Islands fits strips inside the 0-1 space; setting Margin to 0.01 adds visible spacing.",
+        "instructor_claim": "Pack Islands arranges UVs inside the tile and margin prevents texture bleeding.",
+        "interpretation": "Packing algorithms scale and position islands into [0,1] space with safety padding.",
+        "hypothesis": "Setting zero margin causes texture bleeding between neighboring UV islands.",
+        "reference_evidence": "Increasing margin parameter from 0.001 to 0.01 creates clear gaps between vertical strips.",
+        "modeling_decision": "Apply Pack Islands with an explicit margin padding.",
+        "visible_action": "Selects UV -> Pack Islands and inputs 0.01 into Margin field.",
+        "spoken_reason": "Prevents adjacent islands from bleeding texture pixels into each other.",
+        "topology_surface_effect": "Islands fit inside 0-1 texture bounds with clean separation gaps.",
+        "failure": "Unpacked strips overflowed the UV tile boundaries.",
+        "correction": "Executed Pack Islands with a 0.01 margin.",
+        "alternatives": "Manually scaling and arranging UV strips inside the tile.",
+        "transferable_principle": "Always pack UV islands with explicit margin padding to prevent texture bleeding across boundaries.",
+        "start_seconds": 1663.0,
+        "end_seconds": 1747.0,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [],
+    "limitations": []
+  }
+}

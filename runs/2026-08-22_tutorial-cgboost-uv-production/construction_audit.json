@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "record_type": "PRIMARY_FORM_CONSTRUCTION_AUDIT",
+  "claim_boundary": "This verifies recorded construction evidence only; it does not judge visual resemblance or topology quality.",
+  "primary_forms": [
+    {
+      "name": "tutorial_weird_cube_HIGH",
+      "origin": "create_authored_quad_mesh",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "tutorial_weird_cube_LOW",
+      "origin": "create_authored_quad_mesh",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "transfer_curved_clasp_HIGH",
+      "origin": "create_authored_quad_mesh",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    },
+    {
+      "name": "transfer_curved_clasp_LOW",
+      "origin": "create_authored_quad_mesh",
+      "topology_operations": [],
+      "connected_profile_origin": true,
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "failures": []
+}

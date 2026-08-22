@@ -1,0 +1,180 @@
+{
+  "provenance": {
+    "extractor": "Google Gemini video understanding",
+    "endpoint": "generate_content_range",
+    "prompt_version": "blender-video-study-v1",
+    "requested_source_url": "https://www.youtube.com/watch?v=Se8GdHptD4A",
+    "requested_model": "gemini-3.6-flash",
+    "response_model": "gemini-3.6-flash",
+    "interaction_id": null,
+    "reported_source_url": "https://www.youtube.com/watch?v=Se8GdHptD4A",
+    "reported_source_matches_request": true,
+    "verification_status": "MODEL_EXTRACTED_UNVERIFIED",
+    "video_archived": false,
+    "requested_time_range": [
+      0.0,
+      760.0
+    ]
+  },
+  "analysis": {
+    "source": {
+      "title": "Texture Baking for Beginners (Blender Tutorial)",
+      "creator": "Ryan King Art",
+      "url": "https://www.youtube.com/watch?v=Se8GdHptD4A",
+      "duration_seconds": 1498,
+      "blender_version_mentions": [
+        "3.0"
+      ]
+    },
+    "access": {
+      "video_inspected": true,
+      "audio_inspected": true,
+      "captions_used": true,
+      "inaccessible_segments": [
+        "760-1498 seconds (outside requested inspection window)"
+      ]
+    },
+    "study_scope": "Analysis of texture baking fundamentals in Blender from 0 to 760 seconds, focusing on image setup, UV unwrapping, engine configuration, and emission-based channel baking.",
+    "episodes": [
+      {
+        "timestamp_label": "03:37 - 05:03",
+        "modeling_stage": "Material / Texture Setup",
+        "problem": "Need a target image texture buffer in the shader node setup to store baked procedural material output.",
+        "observed_fact": "Instructor adds an Image Texture node in the Shader Editor and creates a new 4096x4096 black image named Dirty Metal.",
+        "instructor_claim": "Adding an unlinked blank image texture node inside the active material provides the canvas destination for baking.",
+        "interpretation": "An active Image Texture node acts as the target frame buffer during bake operations.",
+        "hypothesis": "Baking without an active target image node selected will fail or overwrite existing image textures.",
+        "reference_evidence": "Image Texture node created and 4K image buffer assigned in Shader Editor.",
+        "modeling_decision": "Create an unlinked 4K Image Texture node within the target material.",
+        "visible_action": "Press Shift+A, select Image Texture, click New, set name to Dirty Metal, resolution to 4096x4096px, and click OK.",
+        "spoken_reason": "Create a blank image node to serve as the bake target, setting 4K resolution for detail.",
+        "topology_surface_effect": "Creates an unlinked 4K image texture buffer in memory; mesh geometry remains unaffected.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Use 1K or 2K resolutions for lower detail or reduced memory footprint.",
+        "transferable_principle": "Always create and select a dedicated target Image Texture node within the material before baking.",
+        "start_seconds": 217,
+        "end_seconds": 303,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "05:03 - 07:10",
+        "modeling_stage": "UV Unwrapping",
+        "problem": "Mesh surface faces must be unwrapped into 2D space without overlapping to receive baked textures properly.",
+        "observed_fact": "Instructor enters Edit Mode, executes Smart UV Project, and sets Island Margin to 0.002.",
+        "instructor_claim": "Setting a small island margin creates necessary space between UV islands to prevent texture bleed.",
+        "interpretation": "Margin padding prevents neighboring UV pixels from bleeding into each other during texture sampling.",
+        "hypothesis": "A zero island margin will cause visible seam bleeding and edge artifacts in the baked texture.",
+        "reference_evidence": "Smart UV Project pop-up with Island Margin parameter set to 0.002.",
+        "modeling_decision": "Unwrap geometry using Smart UV Project with explicit island margin padding.",
+        "visible_action": "Tab into Edit Mode, press A, press U, select Smart UV Project, set Island Margin to 0.002, and click OK.",
+        "spoken_reason": "Unwrap mesh and add padding between UV islands to prevent texture overlap and bleed.",
+        "topology_surface_effect": "Generates 2D UV island mapping for all mesh faces with defined spacing gaps.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Manual seam placement and standard unwrapping for organic or complex mesh assets.",
+        "transferable_principle": "Always include a positive UV island margin when unwrapping to avoid texture bleeding artifacts during baking.",
+        "start_seconds": 303,
+        "end_seconds": 430,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "07:10 - 08:59",
+        "modeling_stage": "UV Editing",
+        "problem": "Automated Smart UV Project generated overlapping UV face islands that cause baking glitches.",
+        "observed_fact": "Instructor selects overlapping faces using Select Overlap in the UV Editor, presses V to rip faces, and G to move them clear.",
+        "instructor_claim": "Overlapping UV islands cause render calculations to conflict, distorting baked output.",
+        "interpretation": "Manual resolution of UV overlap guarantees 1:1 spatial projection between 3D surfaces and 2D pixels.",
+        "hypothesis": "Leaving overlapping UV faces uncorrected results in corrupted or black texture spots.",
+        "reference_evidence": "Select Overlap option highlights overlapping faces; V key rips selected face into a unique island.",
+        "modeling_decision": "Rip and isolate overlapping face selection into open UV area.",
+        "visible_action": "In UV Editor, go to Select > Select Overlap, select highlighted face, press V to rip, and G to translate face to clear area.",
+        "spoken_reason": "Isolate overlapping UV faces so every surface region bakes to a unique texture location.",
+        "topology_surface_effect": "Splits shared UV boundary vertices into separate UV islands.",
+        "failure": "Smart UV Project generated overlapping UV face boundaries.",
+        "correction": "Execute Select Overlap and use V key to rip overlapping faces into distinct islands.",
+        "alternatives": "Re-unwrap entire model using different projection parameters or marked seams.",
+        "transferable_principle": "Check UV layouts with Select Overlap and rip overlapping faces to prevent cross-contamination of baked pixels.",
+        "start_seconds": 430,
+        "end_seconds": 539,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "08:59 - 11:03",
+        "modeling_stage": "Bake Setup / Render Engine",
+        "problem": "Eevee engine lacks texture baking features, and high default render samples needlessly prolong bake times.",
+        "observed_fact": "Instructor switches Render Engine to Cycles, changes compute device to GPU Compute, and lowers render samples to 10.",
+        "instructor_claim": "Cycles engine is required for texture baking; reducing samples to 10 speeds up baking without degrading output quality.",
+        "interpretation": "Baking procedural surface textures requires minimal ray light-path sampling compared to full scene renders.",
+        "hypothesis": "High render samples (e.g. 4096) increase render duration exponentially with negligible visual gain for surface maps.",
+        "reference_evidence": "Render Properties panel displaying Cycles engine selection and Render Samples set to 10.",
+        "modeling_decision": "Configure Cycles render engine with 10 render samples and GPU acceleration.",
+        "visible_action": "In Render Properties, set Render Engine to Cycles, Device to GPU Compute, and Sampling > Render Samples to 10.",
+        "spoken_reason": "Use Cycles for baking capabilities and set low sample count to optimize baking speed.",
+        "topology_surface_effect": "None on geometry; configures the render sampling pipeline.",
+        "failure": "",
+        "correction": "",
+        "alternatives": "Use CPU render device if no compatible GPU hardware is detected.",
+        "transferable_principle": "Switch to Cycles engine and drop render samples to low values (e.g. 10) for fast, high-quality texture baking.",
+        "start_seconds": 539,
+        "end_seconds": 664,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      },
+      {
+        "timestamp_label": "11:03 - 12:40",
+        "modeling_stage": "Bake Setup / Shader Routing",
+        "problem": "Blender does not feature a native Metallic bake pass type, and baking non-metallic maps with metallic value enabled turns output black.",
+        "observed_fact": "Instructor sets Metallic slider on Principled BSDF to 0, enables Node Wrangler add-on, and selects Emit bake type in Bake panel.",
+        "instructor_claim": "Metallic materials turn bakes pitch black; setting metallic to 0 fixes color baking, while Emit pass allows baking custom channels.",
+        "interpretation": "Emission pass serves as a raw unlit visual data pass to export non-standard shader maps like metallic or roughness cleanly.",
+        "hypothesis": "Baking diffuse or base color with metallic set above zero produces unintended black shading artifacts.",
+        "reference_evidence": "Metallic value set to 0.000 on Principled BSDF; Bake Type set to Emit in Render settings.",
+        "modeling_decision": "Set Metallic shader input to 0 for standard bakes and utilize Emission pass for dedicated map channel baking.",
+        "visible_action": "Set Metallic to 0 on Principled BSDF node, enable Node Wrangler in Preferences, and select Emit under Bake Type.",
+        "spoken_reason": "Turn off metallic slider to prevent black bake output and use Emit pass to bake metallic data.",
+        "topology_surface_effect": "None on geometry; alters shader reflection response for clean data capture.",
+        "failure": "Baking textures with active Metallic shading turns output completely black.",
+        "correction": "Set Metallic input to 0 prior to baking and use Emit pass to isolate custom material channels.",
+        "alternatives": "Use specialized multi-pass texture baking add-ons.",
+        "transferable_principle": "Zero out metallic material properties before baking base maps, and use Emission passes to bake custom surface channels.",
+        "start_seconds": 664,
+        "end_seconds": 760,
+        "confidence": 0.95,
+        "evidence_modalities": [
+          "AUDIO",
+          "CAPTIONS",
+          "UI_TEXT",
+          "VIDEO"
+        ]
+      }
+    ],
+    "rejected_sections": [],
+    "limitations": [
+      "Interval beyond 760 seconds was excluded as per prompt scope instruction scope."
+    ]
+  }
+}

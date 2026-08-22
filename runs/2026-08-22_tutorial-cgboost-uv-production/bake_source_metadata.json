@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "url": "https://www.youtube.com/watch?v=Se8GdHptD4A",
+  "video_id": "Se8GdHptD4A",
+  "title": "Texture Baking for Beginners (Blender Tutorial)",
+  "creator": "Ryan King Art",
+  "duration_seconds": 1498,
+  "published_at": "2023-02-08",
+  "identity_sources": [
+    "indexed tutorial title and creator checked 2026-08-22",
+    "indexed chapter endpoint at 24:58 / 1498 seconds",
+    "indexed chapter list covering image target, UVs, bake settings, metallic, color, roughness, and normal maps"
+  ],
+  "media_archived": false
+}

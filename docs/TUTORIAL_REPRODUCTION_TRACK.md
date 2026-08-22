@@ -25,7 +25,7 @@ professional topics. Watching, transcribing, or summarizing alone never complete
 | 3 | Product hard surface: symmetry, bevel/crease choice, booleans, shading | Complete layered mechanical tutorial asset | COMPLETE WITH EVALUATED-TOPOLOGY LIMITATION |
 | 4 | Advanced SubD: poles, transitions, cylinders, pinch diagnosis | Multi-problem topology sheet plus tutorial asset | COMPLETE WITH BOUNDED INTEGRATED-DETAIL REPRODUCTION |
 | 5 | Retopology and deformation-aware flow | Tutorial retopo asset plus deformation test | COMPLETE WITH BOUNDED LANDMARK-PATCH REPRODUCTION |
-| 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | PENDING |
+| 6 | UVs, texel density, baking, and production materials | Tutorial asset carried through UV/material validation | COMPLETE WITH BOUNDED CONNECTED-CAGE TRANSFER |
 | 7 | Professional asset planning, optimization, and high/low delivery | Full tutorial production asset with separate collections and live modifiers | PENDING |
 | 8 | Held-out reconstruction return gate | Unseen reference asset only after two consecutive tutorial/transfer passes | BLOCKED BY CURRICULUM |
 
@@ -37,6 +37,7 @@ Current evidence:
 - `runs/2026-08-22_tutorial-blenderbros-subd-topology-sheet/`
 - `runs/2026-08-22_tutorial-blenderbros-tricky-subd-detail/`
 - `runs/2026-08-22_tutorial-cgboost-retopology/`
+- `runs/2026-08-22_tutorial-cgboost-uv-production/`
 
 Stage 4 closes on the combination of both 2026-08-22 runs: the sheet covers matched spacing,
 perimeter flow, and convex-versus-concave termination; the complete-asset run adds the source-like
@@ -47,5 +48,10 @@ ladder's return gate.
 Stage 5 closes with full-range audiovisual study, a dense eye/brow target, a genuinely independent
 low cage in a separate collection, a twisted-correspondence failure, an unapplied live projection
 stack, a bend probe, and a pointed-mouth transfer. Its `0.85` multiview gate is intentionally below
-the later production threshold and is recorded as a limitation. Stage 6 UV/material training is now
-active.
+the later production threshold and is recorded as a limitation.
+
+Stage 6 closes with complete audiovisual UV and bake studies, a connected compound tutorial cage,
+a rejected self-intersecting first transfer, an improved curved-clasp transfer, independent high/low
+collections, measured UV overlap/distortion, UV-driven checker renders, and saved tangent-normal
+bakes. Remaining checker stretch and the absence of complete base-color/metallic/roughness delivery
+are explicit; Stage 7 professional high/low delivery is now active.
