@@ -253,6 +253,32 @@ getting it working (inverted light direction, then wildly overexposed energy). R
 photo's real material differences (matte sage body, distinct dark gasket band, metallic cap and
 base with real specular response) in a way no prior render in this run could show.
 
+## Rim bevel (TOPOLOGY_SURFACE)
+
+`get_hard_surface_shading_audit(CapCup)` initially returned `REVIEW_REQUIRED` ("no persistent
+semantic bevel-edge intent is recorded") — a real, honest signal, not a failure, that the
+declare-intent step hadn't happened yet. The reference photo shows the cap's top rim as a real
+rolled/rounded cup lip (the width-vs-height data already measured shows it widening quickly in the
+top 2% of height), so that's the one edge loop warranting a physical bevel:
+
+1. `declare_bevel_edge_intent` on the 16-edge top-rim loop (found via `get_mesh_geometry`, filtered
+   to the max-Z ring), with an explicit rationale.
+2. `set_bevel_weight_by_ids` on the same loop.
+3. `add_modifier(BEVEL)` + `set_modifier_parameter` for `limit_method=WEIGHT`, `width=1.2mm`,
+   `segments=3` — each its own decision transaction, per the one-operation-per-decision rule.
+
+Re-running the audit afterward: `status: "PASS"`, `weighted_edge_ids` exactly matches
+`intended_bevel_edge_ids`, `weight_limited_bevel_present: true` — a structurally verified match
+between declared intent and actual applied weights, not just "a modifier exists."
+
+**A second real bug caught using this**, in the material pass added a few commits ago: a tight
+close-up render (`cap_rim_bevel_closeup.png`, framed to just `CapCup` via `frame_names`) came out
+solid white — the fixed light energy that looked correct at whole-bottle framing overexposed badly
+at a much closer framing. Root cause and fix recorded in that commit (light energy now scales with
+`diag^2`, matching how size/distance already scaled). Re-rendered `blockout_v2_material_front.png`
+and `cap_rim_bevel_closeup.png` after the fix — both correctly exposed, rim bevel visible as a
+subtle softened highlight rather than a knife-sharp edge.
+
 ## Status: PRIMARY_BLOCKOUT built, NOT self-certified as correct
 
 Per the explicit instruction this run follows: a passed gate and a matching render are not the
