@@ -64,6 +64,11 @@ Renders (Blender-native, modifier-evaluated, not GUI screenshots) in this direct
   the radial structure on grip/pommel (confirms this is profile-authored geometry, not a
   primitive stack)
 
+**Note:** `silhouette_top.png`/`shaded_top.png`/`shaded_side.png`/`wireframe_top.png` above show
+the original (pre-correction) `Blade`, kept intentionally for before/after comparison rather than
+deleted. `silhouette_top_v2.png` and `shaded_top_v2.png` (see the correction section below) show
+the current `BladeV2`, which is the geometry actually assembled with Guard/Grip/Pommel now.
+
 ## Status: MODELED / HUMAN VISUAL REVIEW PENDING
 
 This is a first blockout pass, not a self-declared finished asset. Per the project's review
@@ -79,3 +84,51 @@ Known open items, honestly flagged rather than hidden:
 
 Waiting on the user's own visual review before any further stage advancement or claim of
 completion.
+
+## Correction pass: real dimensioned references, not just human eyeballing
+
+Per explicit user feedback ("less review from me, more review via references and tutorials
+online"), the next check on this build was a real evidence pass, not another request for the
+user to eyeball a render. Sources actually fetched and read (not just searched):
+
+- [Longsword](https://en.wikipedia.org/wiki/Longsword) (Wikipedia) — confirms total 100-140cm,
+  blade 80-110cm, grip 20-30cm. This build's blade (105cm) and total length (~137.7cm) sit at the
+  long end of these ranges but inside them; grip (25cm) is centered in range.
+- [Albion Armorers Munich](https://myarmoury.com/bill_swor_alb_munich.html) (myArmoury.com
+  review of a specific, precisely-measured historical-reproduction longsword) — the single
+  strongest source found: overall 125.7cm, blade 94.6cm, **blade width at base 3.8cm, tapering to
+  1.1cm at the point (not a knife-edge zero)**, **guard width 21.6cm**, grip 25.1cm.
+- [myArmoury "Cross-guard width" forum thread](http://myarmoury.com/talk/viewtopic.29211.html)
+  and [myArmoury "quillon length" thread](http://myarmoury.com/talk/viewtopic.14596.html) —
+  independent corroboration for longsword-specific guard widths clustering ~19-30cm (Albion
+  Castellan 18.7cm, Liechtenauer-type 23.5cm, a longsword-with-12in-handle at 29.8cm), confirming
+  this build's 22cm guard is well inside the real range, not a low-confidence guess as originally
+  flagged.
+- Grant Abbitt, ["Make a Detailed Sword in Blender: Topology Tips & Hard Surface
+  Techniques"](https://www.youtube.com/watch?v=f320TtEpGYQ) (full transcript read, not just the
+  title) — a real Blender sword-modeling tutorial, checked for construction technique rather than
+  dimensions. Notable findings: the tutorial's grip/guard/pommel are modeled as separate
+  box-modeled pieces that are explicitly allowed to overlap without welding ("You can overlap
+  them, that's absolutely fine") -- this independently validates the separate-overlapping-object
+  approach already used here for Guard/Grip/Pommel. The tutorial's blade has no fuller at all (a
+  flat hard-surface ridge study using bevel-supported creases instead), so it offered no
+  transferable fuller-construction technique, and it does not address crossguard construction or
+  give any numeric proportions -- everything there is sized by eye against a traced reference
+  image.
+
+**What changed as a result**: the original Blade (base half-width 2.5cm, tapering to a near-zero
+point) was measurably too wide at the base (5cm vs. the Munich's 3.8cm) and too sharply pointed
+(tapering to ~0.2cm vs. the Munich's 1.1cm blunt tip) compared to the one precisely-measured real
+longsword found. The original Blade object was archived (not deleted -- moved to a
+`REJECTED_COMPONENTS` collection, fully recoverable) via one `archive_object` decision
+transaction, and replaced with `BladeV2`: the same 5-section authored construction, with all five
+cross-sections' widths rescaled to match the base-3.8cm/tip-1.1cm anchors, thickness values left
+unchanged (no independently sourced thickness data was found, so those stayed as originally
+authored rather than being adjusted on a guess). New renders: `silhouette_top_v2.png`,
+`shaded_top_v2.png`. Guard, Grip, and Pommel proportions were left unchanged -- they are now
+corroborated by real longsword-specific data (guard) or already matched it closely (grip), rather
+than needing correction.
+
+Still not independently sourced: blade thickness/cross-section profile (spine vs. edge
+thickness), and pommel size/shape (no numeric pommel reference was found in this pass). These
+remain the most likely next things to revisit if a further reference pass turns up better data.
