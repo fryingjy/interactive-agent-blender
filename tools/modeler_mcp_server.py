@@ -441,7 +441,7 @@ def organize_object_collection(
 
 @mcp.tool()
 def render_diagnostic_pass(object_names: list[str], output_path: str, pass_type: str, view: str = "front", resolution: int = 512, margin: float = 1.15, frame_names: list[str] | None = None) -> dict:
-    """Render a Blender-native solid, MatCap, wireframe, normal, depth, or component-mask diagnostic PNG with scene revision and camera metadata."""
+    """Render a Blender-native solid, MatCap, wireframe, normal, depth, component-mask, or material diagnostic PNG with scene revision and camera metadata. 'material' is the one pass that actually shows assigned materials under real lighting (EEVEE, two temporary lights) -- use it, not 'solid', to review whether a material assignment reads correctly; 'solid'/'matcap'/etc. are fast flat-grey Workbench technical passes that never touch materials by design."""
     return _call("render_diagnostic_pass", name=object_names, output_path=output_path, pass_type=pass_type, view=view, resolution=resolution, margin=margin, frame_name=frame_names)
 
 

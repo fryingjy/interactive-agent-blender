@@ -230,14 +230,21 @@ def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
 def render_diagnostic_pass(name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
     """Render a controlled Blender-native diagnostic pass.
 
-    Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, and `component_mask`. Component masks
-    use a stable red/green/blue/yellow palette in the supplied object order (up to four objects), enabling local
-    bound extraction without treating the result as a visual-acceptance verdict. Normal and
-    depth colors are generated on temporary copies of the modifier-evaluated meshes; source objects
-    and scene settings are restored. Camera/projection metadata and scene revision are returned so
-    an image cannot become detached from the state that produced it.
+    Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, `component_mask`, and
+    `material`. Component masks use a stable red/green/blue/yellow palette in the supplied object
+    order (up to four objects), enabling local bound extraction without treating the result as a
+    visual-acceptance verdict. Normal and depth colors are generated on temporary copies of the
+    modifier-evaluated meshes; source objects and scene settings are restored. `material` is a
+    genuinely different kind of pass from the rest: those are fast Workbench technical passes that
+    intentionally never touch materials/lighting (see this module's own docstring for why); this
+    one switches to Blender's real render engine (EEVEE) under two temporary lights so assigned
+    materials -- base color, metallic, roughness -- are actually visible, since a flat grey
+    Workbench pass cannot be used to review whether an assigned material reads correctly. The two
+    temporary lights are removed and the engine restored afterward, same as the temporary camera.
+    Camera/projection metadata and scene revision are returned so an image cannot become detached
+    from the state that produced it.
     """
-    valid_passes = {"solid", "matcap", "wireframe", "normal", "depth", "component_mask"}
+    valid_passes = {"solid", "matcap", "wireframe", "normal", "depth", "component_mask", "material"}
     if pass_type not in valid_passes:
         return {"error": f"pass_type must be one of {sorted(valid_passes)}"}
     names = [name] if isinstance(name, str) else list(name)
@@ -316,35 +323,67 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
         palette = ((1.0, 0.1, 0.1, 1.0), (0.1, 1.0, 0.1, 1.0), (0.1, 0.1, 1.0, 1.0), (1.0, 1.0, 0.1, 1.0))
         for index, obj in enumerate(objs):
             obj.color = palette[index % len(palette)]
+    temp_lights = []
+    if pass_type == "material":
+        # Simple key + fill, positioned relative to the camera so any view angle
+        # gets a lit front face -- not an attempt at a finished lighting setup,
+        # just enough for base color/metallic/roughness to read correctly.
+        right = direction.cross(mathutils.Vector((0.0, 0.0, 1.0)))
+        if right.length < 1e-6:
+            right = mathutils.Vector((1.0, 0.0, 0.0))
+        right.normalize()
+        up = right.cross(direction).normalized()
+        key_data = bpy.data.lights.new(name="__material_pass_key__", type="AREA")
+        key_data.energy = 8.0
+        key_data.size = diag * 1.5
+        key_obj = bpy.data.objects.new("__material_pass_key__", key_data)
+        bpy.context.scene.collection.objects.link(key_obj)
+        key_obj.location = center + direction * diag * 2.0 + right * diag * 1.2 + up * diag * 1.5
+        key_obj.rotation_euler = direction.to_track_quat("Z", "Y").to_euler()
+        fill_data = bpy.data.lights.new(name="__material_pass_fill__", type="AREA")
+        fill_data.energy = 3.0
+        fill_data.size = diag * 2.0
+        fill_obj = bpy.data.objects.new("__material_pass_fill__", fill_data)
+        bpy.context.scene.collection.objects.link(fill_obj)
+        fill_obj.location = center + direction * diag * 2.0 - right * diag * 1.5 + up * diag * 0.5
+        fill_obj.rotation_euler = direction.to_track_quat("Z", "Y").to_euler()
+        temp_lights = [key_obj, fill_obj]
     try:
         scene.camera = cam_obj
-        scene.render.engine = "BLENDER_WORKBENCH"
         scene.render.resolution_x = resolution
         scene.render.resolution_y = resolution
         scene.render.film_transparent = True
         scene.render.image_settings.file_format = "PNG"
         scene.render.image_settings.color_mode = "RGBA"
         scene.render.filepath = output_path
-        shading.type = "SOLID"
-        # MatCap is intentionally a fast Solid-mode review pass: useful for
-        # highlight continuity, missing bevels, faceting, and soft corners
-        # without a material/light/render-engine setup. It is visual evidence,
-        # not a substitute for evaluated topology or a beauty render.
-        shading.light = "MATCAP" if pass_type == "matcap" else ("STUDIO" if pass_type == "solid" else "FLAT")
-        shading.show_shadows = pass_type in {"solid", "matcap"}
-        shading.show_cavity = pass_type in {"solid", "matcap"}
-        if pass_type in {"normal", "depth"}:
-            shading.color_type = "VERTEX"
-        elif pass_type == "component_mask":
-            shading.color_type = "OBJECT"
+        if pass_type == "material":
+            scene.render.engine = "BLENDER_EEVEE"
         else:
-            shading.color_type = "SINGLE"
-            shading.single_color = (0.55, 0.55, 0.55) if pass_type in {"solid", "matcap"} else (0.9, 0.9, 0.9)
+            scene.render.engine = "BLENDER_WORKBENCH"
+            shading.type = "SOLID"
+            # MatCap is intentionally a fast Solid-mode review pass: useful for
+            # highlight continuity, missing bevels, faceting, and soft corners
+            # without a material/light/render-engine setup. It is visual evidence,
+            # not a substitute for evaluated topology or a beauty render.
+            shading.light = "MATCAP" if pass_type == "matcap" else ("STUDIO" if pass_type == "solid" else "FLAT")
+            shading.show_shadows = pass_type in {"solid", "matcap"}
+            shading.show_cavity = pass_type in {"solid", "matcap"}
+            if pass_type in {"normal", "depth"}:
+                shading.color_type = "VERTEX"
+            elif pass_type == "component_mask":
+                shading.color_type = "OBJECT"
+            else:
+                shading.color_type = "SINGLE"
+                shading.single_color = (0.55, 0.55, 0.55) if pass_type in {"solid", "matcap"} else (0.9, 0.9, 0.9)
         out_dir = os.path.dirname(output_path)
         if out_dir:
             os.makedirs(out_dir, exist_ok=True)
         bpy.ops.render.render(write_still=True)
     finally:
+        for light_obj in temp_lights:
+            light_data = light_obj.data
+            bpy.data.objects.remove(light_obj, do_unlink=True)
+            bpy.data.lights.remove(light_data)
         scene.camera = state["camera"]
         scene.render.engine = state["engine"]
         scene.render.resolution_x, scene.render.resolution_y = state["resolution"]
