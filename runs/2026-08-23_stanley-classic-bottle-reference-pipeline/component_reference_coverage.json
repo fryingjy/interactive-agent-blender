@@ -1,0 +1,11 @@
+{
+  "component_count": 4,
+  "covered_component_ids": [
+    "base_ring",
+    "body",
+    "cap_cup",
+    "gasket_ring"
+  ],
+  "uncovered_component_ids": [],
+  "pass": true
+}

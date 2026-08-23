@@ -1,0 +1,252 @@
+{
+  "component_graph_pass": true,
+  "measured_ratio_count": 5,
+  "uncertainty_recorded": true,
+  "reference_set_audit_pass": true,
+  "same_target_identity_pass": true,
+  "view_coverage_pass": true,
+  "critical_property_coverage_pass": true,
+  "conflicts_resolved_pass": true,
+  "question_driven_research_pass": true,
+  "visual_reconstruction_audit_pass": {
+    "schema_version": 1,
+    "record_type": "VISUAL_RECONSTRUCTION_AUDIT",
+    "target_id": "stanley-classic-legendary-bottle",
+    "checks": {
+      "identity_bound": true,
+      "independent_observations": true,
+      "property_specific_authority": true,
+      "eleven_passes_recorded": true,
+      "competing_interpretations_tested": true,
+      "bad_interpretation_eliminated": true,
+      "construction_bound_to_selected_interpretation": true,
+      "uncertainty_kept_reversible": true,
+      "every_component_has_construction_justification": true
+    },
+    "region_reports": [
+      {
+        "region_id": "body_profile",
+        "ranking": {
+          "schema_version": 1,
+          "disposition": "SELECTED",
+          "selected_candidate": "straight_cylinder",
+          "reason": "unique contradiction-free candidate confirmed across at least 2 views",
+          "minimum_confirmed_views": 2,
+          "candidates": [
+            {
+              "name": "straight_cylinder",
+              "representation": "Body is a near-constant-radius revolve (straight cylindrical wall)",
+              "results": [
+                {
+                  "consequence": {
+                    "reference_id": "official_front_photo",
+                    "observation_id": "body_width_ratio_obs",
+                    "view": "front_photo",
+                    "property": "body_width_min_max_ratio",
+                    "prediction_type": "numeric_range",
+                    "prediction": {
+                      "min": 0.95,
+                      "max": 1.0
+                    }
+                  },
+                  "result": {
+                    "status": "CONFIRMED",
+                    "reason": "predicted interval [0.95, 1] covers 100.0% of observed interval [0.965, 0.98]",
+                    "prediction_type": "numeric_range",
+                    "observation_id": "body_width_ratio_obs",
+                    "overlap_fraction": 1.0,
+                    "unit": ""
+                  }
+                },
+                {
+                  "consequence": {
+                    "reference_id": "official_spec_sheet",
+                    "observation_id": "single_diameter_spec_obs",
+                    "view": "spec_sheet",
+                    "property": "single_diameter_describes_body",
+                    "prediction_type": "boolean_state",
+                    "prediction": true
+                  },
+                  "result": {
+                    "status": "CONFIRMED",
+                    "reason": "observed True; predicted True",
+                    "prediction_type": "boolean_state",
+                    "observation_id": "single_diameter_spec_obs"
+                  }
+                }
+              ],
+              "counts": {
+                "CONFIRMED": 2,
+                "CONTRADICTED": 0,
+                "UNDECIDABLE": 0
+              },
+              "confirmed_views": [
+                "front_photo",
+                "spec_sheet"
+              ],
+              "score": 2,
+              "viable": true
+            },
+            {
+              "name": "barrel_taper",
+              "representation": "Body is a barrel/waisted revolve (profile bulges outward at mid-height)",
+              "results": [
+                {
+                  "consequence": {
+                    "reference_id": "official_front_photo",
+                    "observation_id": "body_width_ratio_obs",
+                    "view": "front_photo",
+                    "property": "body_width_min_max_ratio",
+                    "prediction_type": "numeric_range",
+                    "prediction": {
+                      "min": 0.8,
+                      "max": 0.93
+                    }
+                  },
+                  "result": {
+                    "status": "CONTRADICTED",
+                    "reason": "predicted interval [0.8, 0.93] covers 0.0% of observed interval [0.965, 0.98]",
+                    "prediction_type": "numeric_range",
+                    "observation_id": "body_width_ratio_obs",
+                    "overlap_fraction": 0.0,
+                    "unit": ""
+                  }
+                },
+                {
+                  "consequence": {
+                    "reference_id": "official_spec_sheet",
+                    "observation_id": "single_diameter_spec_obs",
+                    "view": "spec_sheet",
+                    "property": "single_diameter_describes_body",
+                    "prediction_type": "boolean_state",
+                    "prediction": false
+                  },
+                  "result": {
+                    "status": "CONTRADICTED",
+                    "reason": "observed True; predicted False",
+                    "prediction_type": "boolean_state",
+                    "observation_id": "single_diameter_spec_obs"
+                  }
+                }
+              ],
+              "counts": {
+                "CONFIRMED": 0,
+                "CONTRADICTED": 2,
+                "UNDECIDABLE": 0
+              },
+              "confirmed_views": [],
+              "score": -2,
+              "viable": false
+            }
+          ]
+        }
+      },
+      {
+        "region_id": "base_ring_construction",
+        "uncontested": true,
+        "hypothesis_id": "base_ring_construction"
+      },
+      {
+        "region_id": "cap_cup_construction",
+        "uncontested": true,
+        "hypothesis_id": "cap_cup_construction"
+      },
+      {
+        "region_id": "gasket_ring_construction",
+        "uncontested": true,
+        "hypothesis_id": "gasket_ring_construction"
+      }
+    ],
+    "selected_hypothesis_ids": [
+      "straight_cylinder",
+      "base_ring_construction",
+      "cap_cup_construction",
+      "gasket_ring_construction"
+    ],
+    "contradiction_count": 2,
+    "errors": [],
+    "pass": true
+  },
+  "component_reference_coverage_pass": {
+    "component_count": 4,
+    "covered_component_ids": [
+      "base_ring",
+      "body",
+      "cap_cup",
+      "gasket_ring"
+    ],
+    "uncovered_component_ids": [],
+    "pass": true
+  },
+  "targeted_research_queries": [],
+  "modeling_constraints": [],
+  "reference_audit": {
+    "target_id": "stanley-classic-legendary-bottle",
+    "target_variant": "1.0qt-hammertone-green",
+    "reference_count": 2,
+    "matching_reference_count": 2,
+    "independent_source_count": 2,
+    "view_count": 2,
+    "checks": {
+      "same_target_identity_pass": true,
+      "view_coverage_pass": true,
+      "orthographic_coverage_pass": true,
+      "provenance_coverage_pass": true,
+      "critical_property_coverage_pass": true,
+      "dimensional_anchor_pass": true,
+      "conflicts_resolved_pass": true,
+      "question_driven_research_pass": true
+    },
+    "covered_properties": {
+      "cap_height_ratio": [
+        "official_front_photo"
+      ],
+      "cap_to_body_diameter_ratio": [
+        "official_front_photo"
+      ],
+      "gasket_band_position": [
+        "official_front_photo"
+      ],
+      "body_width_variation": [
+        "official_front_photo"
+      ],
+      "base_ring_taper": [
+        "official_front_photo"
+      ],
+      "overall_dimensions": [
+        "official_spec_sheet"
+      ],
+      "capacity": [
+        "official_spec_sheet"
+      ]
+    },
+    "dimensional_anchors": [
+      "total_height=30.8cm (official spec, used as the pixel-to-cm scale anchor)"
+    ],
+    "issues": [],
+    "targeted_research_queries": [],
+    "research_audit": {
+      "question_count": 0,
+      "candidate_counts": {
+        "ACCEPTED": 0,
+        "REJECTED": 0,
+        "PENDING": 0
+      },
+      "accepted_reference_links": [],
+      "missing_reference_links": [],
+      "open_questions": [],
+      "blocking_questions": [],
+      "deferred_questions": [],
+      "modeling_constraints": [],
+      "targeted_research_queries": [],
+      "checks": {
+        "question_records_valid": true,
+        "accepted_candidates_link_to_reference_items": true,
+        "no_high_impact_question_open": true
+      },
+      "pass": true
+    },
+    "pass": true,
+    "disposition": "READY_TO_MODEL"
+  }
+}

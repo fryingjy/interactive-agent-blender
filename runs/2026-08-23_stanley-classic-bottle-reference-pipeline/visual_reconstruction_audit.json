@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "record_type": "VISUAL_RECONSTRUCTION_AUDIT",
+  "target_id": "stanley-classic-legendary-bottle",
+  "checks": {
+    "identity_bound": true,
+    "independent_observations": true,
+    "property_specific_authority": true,
+    "eleven_passes_recorded": true,
+    "competing_interpretations_tested": true,
+    "bad_interpretation_eliminated": true,
+    "construction_bound_to_selected_interpretation": true,
+    "uncertainty_kept_reversible": true,
+    "every_component_has_construction_justification": true
+  },
+  "region_reports": [
+    {
+      "region_id": "body_profile",
+      "ranking": {
+        "schema_version": 1,
+        "disposition": "SELECTED",
+        "selected_candidate": "straight_cylinder",
+        "reason": "unique contradiction-free candidate confirmed across at least 2 views",
+        "minimum_confirmed_views": 2,
+        "candidates": [
+          {
+            "name": "straight_cylinder",
+            "representation": "Body is a near-constant-radius revolve (straight cylindrical wall)",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_front_photo",
+                  "observation_id": "body_width_ratio_obs",
+                  "view": "front_photo",
+                  "property": "body_width_min_max_ratio",
+                  "prediction_type": "numeric_range",
+                  "prediction": {
+                    "min": 0.95,
+                    "max": 1.0
+                  }
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "predicted interval [0.95, 1] covers 100.0% of observed interval [0.965, 0.98]",
+                  "prediction_type": "numeric_range",
+                  "observation_id": "body_width_ratio_obs",
+                  "overlap_fraction": 1.0,
+                  "unit": ""
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "official_spec_sheet",
+                  "observation_id": "single_diameter_spec_obs",
+                  "view": "spec_sheet",
+                  "property": "single_diameter_describes_body",
+                  "prediction_type": "boolean_state",
+                  "prediction": true
+                },
+                "result": {
+                  "status": "CONFIRMED",
+                  "reason": "observed True; predicted True",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "single_diameter_spec_obs"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 2,
+              "CONTRADICTED": 0,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [
+              "front_photo",
+              "spec_sheet"
+            ],
+            "score": 2,
+            "viable": true
+          },
+          {
+            "name": "barrel_taper",
+            "representation": "Body is a barrel/waisted revolve (profile bulges outward at mid-height)",
+            "results": [
+              {
+                "consequence": {
+                  "reference_id": "official_front_photo",
+                  "observation_id": "body_width_ratio_obs",
+                  "view": "front_photo",
+                  "property": "body_width_min_max_ratio",
+                  "prediction_type": "numeric_range",
+                  "prediction": {
+                    "min": 0.8,
+                    "max": 0.93
+                  }
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "predicted interval [0.8, 0.93] covers 0.0% of observed interval [0.965, 0.98]",
+                  "prediction_type": "numeric_range",
+                  "observation_id": "body_width_ratio_obs",
+                  "overlap_fraction": 0.0,
+                  "unit": ""
+                }
+              },
+              {
+                "consequence": {
+                  "reference_id": "official_spec_sheet",
+                  "observation_id": "single_diameter_spec_obs",
+                  "view": "spec_sheet",
+                  "property": "single_diameter_describes_body",
+                  "prediction_type": "boolean_state",
+                  "prediction": false
+                },
+                "result": {
+                  "status": "CONTRADICTED",
+                  "reason": "observed True; predicted False",
+                  "prediction_type": "boolean_state",
+                  "observation_id": "single_diameter_spec_obs"
+                }
+              }
+            ],
+            "counts": {
+              "CONFIRMED": 0,
+              "CONTRADICTED": 2,
+              "UNDECIDABLE": 0
+            },
+            "confirmed_views": [],
+            "score": -2,
+            "viable": false
+          }
+        ]
+      }
+    },
+    {
+      "region_id": "base_ring_construction",
+      "uncontested": true,
+      "hypothesis_id": "base_ring_construction"
+    },
+    {
+      "region_id": "cap_cup_construction",
+      "uncontested": true,
+      "hypothesis_id": "cap_cup_construction"
+    },
+    {
+      "region_id": "gasket_ring_construction",
+      "uncontested": true,
+      "hypothesis_id": "gasket_ring_construction"
+    }
+  ],
+  "selected_hypothesis_ids": [
+    "straight_cylinder",
+    "base_ring_construction",
+    "cap_cup_construction",
+    "gasket_ring_construction"
+  ],
+  "contradiction_count": 2,
+  "errors": [],
+  "pass": true
+}

@@ -1,0 +1,69 @@
+{
+  "target_id": "stanley-classic-legendary-bottle",
+  "target_variant": "1.0qt-hammertone-green",
+  "reference_count": 2,
+  "matching_reference_count": 2,
+  "independent_source_count": 2,
+  "view_count": 2,
+  "checks": {
+    "same_target_identity_pass": true,
+    "view_coverage_pass": true,
+    "orthographic_coverage_pass": true,
+    "provenance_coverage_pass": true,
+    "critical_property_coverage_pass": true,
+    "dimensional_anchor_pass": true,
+    "conflicts_resolved_pass": true,
+    "question_driven_research_pass": true
+  },
+  "covered_properties": {
+    "cap_height_ratio": [
+      "official_front_photo"
+    ],
+    "cap_to_body_diameter_ratio": [
+      "official_front_photo"
+    ],
+    "gasket_band_position": [
+      "official_front_photo"
+    ],
+    "body_width_variation": [
+      "official_front_photo"
+    ],
+    "base_ring_taper": [
+      "official_front_photo"
+    ],
+    "overall_dimensions": [
+      "official_spec_sheet"
+    ],
+    "capacity": [
+      "official_spec_sheet"
+    ]
+  },
+  "dimensional_anchors": [
+    "total_height=30.8cm (official spec, used as the pixel-to-cm scale anchor)"
+  ],
+  "issues": [],
+  "targeted_research_queries": [],
+  "research_audit": {
+    "question_count": 0,
+    "candidate_counts": {
+      "ACCEPTED": 0,
+      "REJECTED": 0,
+      "PENDING": 0
+    },
+    "accepted_reference_links": [],
+    "missing_reference_links": [],
+    "open_questions": [],
+    "blocking_questions": [],
+    "deferred_questions": [],
+    "modeling_constraints": [],
+    "targeted_research_queries": [],
+    "checks": {
+      "question_records_valid": true,
+      "accepted_candidates_link_to_reference_items": true,
+      "no_high_impact_question_open": true
+    },
+    "pass": true
+  },
+  "pass": true,
+  "disposition": "READY_TO_MODEL"
+}
