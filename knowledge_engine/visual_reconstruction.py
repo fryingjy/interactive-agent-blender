@@ -109,12 +109,44 @@ def audit_visual_reconstruction(
     region_reports = []
     selected_hypotheses: list[str] = []
     contradiction_count = 0
+    region_component_ids: set[str] = set()
     for region in payload.get("regions", []):
         region_id = region.get("region_id")
         hypotheses = region.get("hypotheses", [])
         if not region_id:
             _fail(errors, "every region needs region_id")
             continue
+        if region.get("component_id"):
+            region_component_ids.add(region["component_id"])
+        uncontested = bool(region.get("uncontested"))
+
+        if uncontested:
+            # A component nobody is contesting the shape of still needs its
+            # construction method named and justified before it gets built --
+            # the literal "explain why a shape is likely revolved/swept/
+            # extruded/..." requirement, now checked even when there is only
+            # one hypothesis on the table, not just when >=2 compete.
+            if len(hypotheses) != 1:
+                _fail(errors, f"uncontested region {region_id} needs exactly one hypothesis")
+                continue
+            hypothesis = hypotheses[0]
+            hypothesis_id = hypothesis.get("hypothesis_id")
+            interpretation = hypothesis.get("interpretation", {})
+            construction = hypothesis.get("construction", {})
+            if interpretation.get("structure_type") not in STRUCTURE_TYPES:
+                _fail(errors, f"hypothesis {hypothesis_id} has unsupported structure_type")
+            if construction.get("family") not in CONSTRUCTION_FAMILIES:
+                _fail(errors, f"hypothesis {hypothesis_id} has unsupported construction family")
+            if not str(interpretation.get("justification", "")).strip():
+                _fail(
+                    errors,
+                    f"uncontested region {region_id} needs a non-empty construction "
+                    f"justification even though its shape is not contested",
+                )
+            selected_hypotheses.append(hypothesis_id)
+            region_reports.append({"region_id": region_id, "uncontested": True, "hypothesis_id": hypothesis_id})
+            continue
+
         if len(hypotheses) < 2:
             _fail(errors, f"region {region_id} needs at least two competing hypotheses")
             continue
@@ -159,6 +191,14 @@ def audit_visual_reconstruction(
             _fail(errors, f"unselected region {region_id} needs an explicit uncertainty boundary")
         region_reports.append({"region_id": region_id, "ranking": ranking})
 
+    declared_component_ids = {c.get("id") for c in payload.get("components", []) if c.get("id")}
+    missing_component_justification = sorted(declared_component_ids - region_component_ids)
+    if missing_component_justification:
+        _fail(
+            errors,
+            f"components with no construction-method region: {missing_component_justification}",
+        )
+
     if not region_reports:
         _fail(errors, "at least one ambiguous region is required")
     if contradiction_count == 0:
@@ -172,7 +212,7 @@ def audit_visual_reconstruction(
         _fail(errors, "construction_plan requires generic_operations")
     unresolved_regions = {
         region.get("region_id") for region in payload.get("regions", [])
-        if region.get("selected_hypothesis_id") is None
+        if region.get("selected_hypothesis_id") is None and not region.get("uncontested")
     }
     reversible_regions = {
         item.get("region_id") for item in plan.get("reversible_assumptions", [])
@@ -189,6 +229,7 @@ def audit_visual_reconstruction(
         "bad_interpretation_eliminated": contradiction_count > 0,
         "construction_bound_to_selected_interpretation": sorted(plan_hypotheses) == sorted(selected_hypotheses),
         "uncertainty_kept_reversible": unresolved_regions <= reversible_regions,
+        "every_component_has_construction_justification": not missing_component_justification,
     }
     return {
         "schema_version": 1,

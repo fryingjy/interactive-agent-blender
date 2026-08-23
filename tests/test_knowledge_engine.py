@@ -806,6 +806,7 @@ class QualityReviewTests(unittest.TestCase):
             "review_result": "reject", "reviewer_type": "human", "reviewer_id": "reviewer-01",
             "asset_id": "unfamiliar-prop", "scene_revision": 7,
             "failure_types": ["proportion", "negative_space"],
+            "root_cause_categories": ["PROPORTION_FAILURE"],
             "regions": [
                 {"target": "body", "failure_type": "proportion", "view": "front", "severity": 0.9},
                 {"target": "handle_gap", "failure_type": "negative_space", "view": "side", "severity": 0.8},
@@ -816,6 +817,7 @@ class QualityReviewTests(unittest.TestCase):
         tickets = review_to_repair_tickets(review, current_scene_revision=7)
         self.assertEqual([ticket["target"] for ticket in tickets], ["body", "handle_gap"])
         self.assertTrue(all(ticket["source"] == "EXTERNAL_HUMAN_REVIEW" for ticket in tickets))
+        self.assertTrue(all(ticket["root_cause_categories"] == ["PROPORTION_FAILURE"] for ticket in tickets))
         with self.assertRaisesRegex(ValueError, "not current revision"):
             review_to_repair_tickets(review, current_scene_revision=8)
         agent_review = {**review, "reviewer_type": "agent"}
@@ -824,6 +826,21 @@ class QualityReviewTests(unittest.TestCase):
         handoff = build_repair_record(review, current_scene_revision=7)
         self.assertEqual(handoff["disposition"], "INSPECT_BEFORE_REPAIR")
         self.assertEqual(handoff["repair_tickets"], tickets)
+
+    def test_rejection_requires_root_cause_categories(self):
+        review = {
+            "review_result": "reject", "reviewer_type": "human", "reviewer_id": "reviewer-01",
+            "asset_id": "unfamiliar-prop", "scene_revision": 7,
+            "failure_types": ["proportion"],
+            "regions": [{"target": "body", "failure_type": "proportion", "severity": 0.9}],
+            "severity": {"proportion": 0.9},
+            "notes": "The body is too tall.",
+        }
+        with self.assertRaisesRegex(ValueError, "root_cause_categories"):
+            validate_external_visual_review(review)
+        with self.assertRaisesRegex(ValueError, "root_cause_categories"):
+            validate_external_visual_review({**review, "root_cause_categories": ["NOT_A_REAL_CATEGORY"]})
+        validate_external_visual_review({**review, "root_cause_categories": ["EXECUTION_FAILURE"]})
 
     def test_reference_board_decision_is_human_and_evidence_bound(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -1144,6 +1161,8 @@ class PlannerTests(unittest.TestCase):
                 "critical_property_coverage_pass": True,
                 "conflicts_resolved_pass": True,
                 "question_driven_research_pass": True,
+                "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
+                "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
             },
             reference_decomposition=decomp,
         ))

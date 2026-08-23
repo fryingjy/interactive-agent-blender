@@ -1,6 +1,19 @@
-# Stylized longsword — first blockout pass
+# Stylized longsword — first blockout pass (SHELVED)
 
-Task: model a game-ready medieval longsword as a stylized fictional prop, per the user's
+**Status update, 2026-08-23:** the user reviewed overall repo direction and made two decisions
+that apply to this run: (1) weapon-related subject matter is being removed from the active
+modeling curriculum in favor of neutral manufactured props (lamps, tools, appliances, cameras,
+containers, furniture, mechanical objects) — not because anything unsafe happened here (the
+fictional-prop-only constraint below was honored throughout), but because a weapon doesn't help
+prove anything the neutral-prop ladder can't already prove, and (2) the project is pausing new
+prop starts for a phase to rebuild the reference-analysis/interpretation layer (see
+`docs/FAILURE_TAXONOMY.md` and the in-progress representation-hypothesis work) before resuming
+modeling. This run is intentionally left as-is (not deleted, not "finished") as real evidence of
+where the reference-driven-correction pattern was working (see the correction-pass section below)
+and where it wasn't yet (still-unsourced blade thickness and pommel size at time of shelving). The
+project's next modeling target will be a fresh neutral prop, not a resumption of this one.
+
+Original task: model a game-ready medieval longsword as a stylized fictional prop, per the user's
 explicit STEP 6 directive. Per the project's own evidence/claim rules and the user's explicit
 instruction, this is treated as **fictional prop art using general modeling principles only** —
 no real weapon-construction or engineering content (blade metallurgy, edge geometry for cutting

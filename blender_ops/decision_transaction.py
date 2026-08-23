@@ -26,6 +26,7 @@ import bmesh
 import bpy
 import copy
 
+import coordinate_safety
 import decision_state
 import persistent_ids
 import state_probe
@@ -234,12 +235,21 @@ class DecisionTransaction:
                     }
             else:
                 self._after_state = state_probe.get_curve_state(self.target_object)
+        geometry_shift_flag = None
+        if (
+            isinstance(self._before_state, dict) and isinstance(self._after_state, dict)
+            and "local_bounds" in self._before_state and "local_bounds" in self._after_state
+        ):
+            geometry_shift_flag = coordinate_safety.detect_implausible_shift(
+                self._before_state, self._after_state
+            )
         return {
             "action_type": self.action_type,
             "op_delta": self._op_delta,
             "before": self._before_state,
             "after": self._after_state,
             "id_delta": id_delta,
+            "geometry_shift_flag": geometry_shift_flag,
         }
 
     def commit(self):

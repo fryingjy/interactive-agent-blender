@@ -29,6 +29,11 @@ class PropertyClaim:
     purpose: str
     observation: str
     confidence: str = "MEDIUM"
+    # Which declared component (from the scene-decomposition component graph)
+    # this specific claim documents. Optional/defaulted so existing claims
+    # and callers stay valid; see validate_component_reference_coverage below
+    # for what actually consumes it.
+    component_id: str = ""
 
     def validate(self) -> None:
         if not self.property_id or not self.observation:
@@ -57,6 +62,11 @@ class ReferenceItem:
     claims: tuple[PropertyClaim, ...] = ()
     dimensional_anchors: tuple[str, ...] = ()
     limitations: tuple[str, ...] = ()
+    # Which declared components (from the scene-decomposition component
+    # graph) this reference image/item documents overall -- one photo commonly
+    # shows several components at once. Optional/defaulted; see
+    # validate_component_reference_coverage below.
+    component_ids: tuple[str, ...] = ()
 
     def validate(self) -> None:
         if not all((self.reference_id, self.source_id, self.target_id, self.target_variant)):
@@ -378,7 +388,7 @@ def reference_set_from_dict(payload: dict[str, Any]) -> ReferenceSet:
     for raw in payload.get("items", []):
         claims = tuple(PropertyClaim(**claim) for claim in raw.get("claims", []))
         item = {**raw, "claims": claims}
-        for key in ("purposes", "dimensional_anchors", "limitations"):
+        for key in ("purposes", "dimensional_anchors", "limitations", "component_ids"):
             item[key] = tuple(item.get(key, []))
         items.append(ReferenceItem(**item))
     conflicts = []
@@ -419,11 +429,48 @@ def reference_set_to_dict(reference_set: ReferenceSet) -> dict[str, Any]:
     return asdict(reference_set)
 
 
+def validate_component_reference_coverage(
+    components: list[dict[str, Any]], items: tuple[ReferenceItem, ...]
+) -> dict[str, Any]:
+    """Prove reference evidence covers each declared component individually, not just globally.
+
+    `knowledge_engine.reasoning.validate_component_graph` proves the declared component
+    list/relationship graph is internally well-formed; it says nothing about whether reference
+    evidence actually documents any specific component. This is the analogous *evidence-coverage*
+    check -- the reference-side counterpart to how `stage_gates._component_coverage_is_valid`
+    already checks *built-geometry* coverage against the same declared components.
+    """
+    declared = {item.get("id") for item in components if item.get("id")}
+    covered: set[str] = set()
+    for item in items:
+        covered.update(item.component_ids)
+        for claim in item.claims:
+            if claim.component_id:
+                covered.add(claim.component_id)
+    uncovered = sorted(declared - covered)
+    return {
+        "component_count": len(declared),
+        "covered_component_ids": sorted(covered & declared),
+        "uncovered_component_ids": uncovered,
+        "pass": not uncovered,
+    }
+
+
 def build_reference_stage_evidence(
     audit: dict[str, Any], *, component_graph_pass: bool,
     measured_ratio_count: int, uncertainty_recorded: bool,
+    visual_reconstruction_audit: dict[str, Any] | None = None,
+    component_reference_coverage: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Map one audit into the exact machine gate contract without hand-copied flags."""
+    """Map one audit into the exact machine gate contract without hand-copied flags.
+
+    ``visual_reconstruction_audit`` and ``component_reference_coverage`` are the real structured
+    results of ``visual_reconstruction.audit_visual_reconstruction(...)`` and
+    ``validate_component_reference_coverage(...)`` respectively -- pass the dict itself, not a
+    bare boolean, so `blender_ops.stage_gates` can keep checking actual structure rather than a
+    self-reported flag. Left as ``None`` only for callers not yet producing that evidence; the
+    REFERENCE_ANALYSIS gate will then correctly fail on them rather than silently pass.
+    """
     checks = audit.get("checks", {})
     return {
         "component_graph_pass": component_graph_pass,
@@ -435,6 +482,8 @@ def build_reference_stage_evidence(
         "critical_property_coverage_pass": bool(checks.get("critical_property_coverage_pass")),
         "conflicts_resolved_pass": bool(checks.get("conflicts_resolved_pass")),
         "question_driven_research_pass": bool(checks.get("question_driven_research_pass")),
+        "visual_reconstruction_audit_pass": visual_reconstruction_audit,
+        "component_reference_coverage_pass": component_reference_coverage,
         "targeted_research_queries": list(audit.get("targeted_research_queries", [])),
         "modeling_constraints": list(
             audit.get("research_audit", {}).get("modeling_constraints", [])

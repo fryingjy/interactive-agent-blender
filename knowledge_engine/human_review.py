@@ -23,6 +23,22 @@ FAILURE_TYPES = {
     "construction_strategy",
 }
 
+# Root-cause classification (docs/FAILURE_TAXONOMY.md, added 2026-08-23): a
+# separate axis from FAILURE_TYPES above. FAILURE_TYPES says what looks wrong
+# in the render; this says which stage of reasoning produced it. One symptom
+# can come from more than one root cause, so both are recorded, not merged.
+ROOT_CAUSE_CATEGORIES = {
+    "REFERENCE_FAILURE",
+    "INTERPRETATION_FAILURE",
+    "REPRESENTATION_FAILURE",
+    "PROPORTION_FAILURE",
+    "COMPONENT_FAILURE",
+    "DEPTH_FAILURE",
+    "SURFACE_FAILURE",
+    "EXECUTION_FAILURE",
+    "EVALUATOR_FAILURE",
+}
+
 
 def _is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
@@ -50,6 +66,11 @@ def validate_external_visual_review(review: dict[str, Any]) -> dict[str, Any]:
     failure_types = review.get("failure_types", [])
     if not isinstance(failure_types, list) or any(item not in FAILURE_TYPES for item in failure_types):
         raise ValueError(f"failure_types must be drawn from {sorted(FAILURE_TYPES)}")
+    root_cause_categories = review.get("root_cause_categories", [])
+    if not isinstance(root_cause_categories, list) or any(
+        item not in ROOT_CAUSE_CATEGORIES for item in root_cause_categories
+    ):
+        raise ValueError(f"root_cause_categories must be drawn from {sorted(ROOT_CAUSE_CATEGORIES)}")
     regions = review.get("regions", [])
     if not isinstance(regions, list):
         raise ValueError("regions must be a list")
@@ -71,6 +92,11 @@ def validate_external_visual_review(review: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("review notes must be text")
     if review["review_result"] == "reject" and (not failure_types or not notes.strip()):
         raise ValueError("a rejection requires failure_types and concrete notes")
+    if review["review_result"] == "reject" and not root_cause_categories:
+        raise ValueError(
+            "a rejection requires root_cause_categories (docs/FAILURE_TAXONOMY.md) so a correction "
+            "targets the stage that actually failed, not just the visible symptom"
+        )
     return review
 
 
@@ -106,6 +132,7 @@ def review_to_repair_tickets(review: dict[str, Any], *, current_scene_revision: 
                 "source": "EXTERNAL_HUMAN_REVIEW",
                 "reviewer_id": review["reviewer_id"],
                 "scene_revision": review["scene_revision"],
+                "root_cause_categories": list(review.get("root_cause_categories", [])),
             })
     tickets.sort(key=lambda ticket: (-ticket["severity"], ticket["type"], ticket["target"]))
     for priority, ticket in enumerate(tickets, start=1):

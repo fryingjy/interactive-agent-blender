@@ -1,6 +1,17 @@
 # Current-state capability gap matrix
 
-Updated: 2026-08-21 after the repository audit, AA/LR6 blockout, and Scotch C60 reconstruction study.
+Updated: 2026-08-23. The 2026-08-21 ground truth below still holds; two new decisions apply on top
+of it. First, `runs/2026-08-23_stylized-longsword/` produced a first blockout and then a real
+reference-corrected revision (blade width/taper rescaled to a precisely-measured historical
+longsword after the original guess proved oversized), which is genuine evidence that the
+reference-correction habit works when applied -- but the project owner also reviewed this and
+concluded the deeper bottleneck this matrix already names below (competing 3D interpretation) is
+still being under-invested in relative to individual model builds, and separately asked that
+weapon-related subject matter be removed from the active modeling curriculum in favor of neutral
+manufactured props. See `docs/FAILURE_TAXONOMY.md` for the new root-cause classification this
+triggered, and `runs/2026-08-23_stylized-longsword/README.md` for the shelving note. New prop
+starts are paused until the reference-reasoning pipeline described in "Current bottleneck" below
+is actually built, not just diagnosed.
 
 ## Ground truth
 
@@ -40,3 +51,36 @@ coarse and it has no human acceptance. The next work is to correct those observe
 unresolved molding/groove boundary reversible, and then test the same reasoning chain on another
 unrelated target. Broad infrastructure or tutorial accumulation remains lower value unless a real
 modeling failure exposes a specific missing capability.
+
+**2026-08-23 update:** the execution-safety prelude and gate-enforcement pass below are now built
+and verified (real pytest coverage, plus a live dry run against the actual C60 reconstruction
+data confirming the gate now genuinely blocks without it and passes with it -- not a synthetic-only
+check). Landed: `blender_ops/coordinate_frames.py` + `coordinate_safety.py` (a generic geometry-
+jumped-coordinate-frame detector, wired into `DecisionTransaction.verify()` as an informational
+`geometry_shift_flag`, targeted narrowly at the recurring world/local coordinate-space bug -- not a
+claim it catches the other execution-bug mechanisms found in the same audit); a root-cause
+taxonomy (`docs/FAILURE_TAXONOMY.md`) now required on every human-review rejection
+(`knowledge_engine/human_review.py::ROOT_CAUSE_CATEGORIES`); component-scoped reference evidence
+(`ReferenceItem.component_ids`, `PropertyClaim.component_id`,
+`validate_component_reference_coverage()`); and a mandatory `REFERENCE_ANALYSIS` gate requirement
+that the real `audit_visual_reconstruction()` result (not a bare `True`) pass, with every declared
+component -- contested or not -- needing a structurally-checked construction-method justification.
+See `docs/REFERENCE_INTERPRETATION.md`'s "Modeling rule" section for the mechanism, and
+`blender_ops/stage_gates.py`'s `REFERENCE_ANALYSIS` requirements for the enforcement itself. Not yet
+done: no new prop has been built under this strengthened gate -- that is the actual proof still
+owed, not this doc's description of the mechanism.
+
+**2026-08-23 direction:** the project owner's own audit of this matrix agrees with the paragraph
+above and sharpens it into a concrete pipeline to build, not just diagnose:
+`visual observations -> competing 3D hypotheses -> cross-view prediction -> eliminate
+contradictions -> choose representation -> sparse blockout -> render -> revise interpretation`,
+with an explicit representation-prediction step (predict what a candidate representation should
+look like from front/side/3-4 before modeling it, reject it if the prediction contradicts the
+source images), reference analysis made component-aware rather than mostly global-silhouette-aware,
+and a required explicit justification (revolved/swept/extruded/molded/separate/continuous/inset/
+nested) before constructing any component. This is now the highest-value next milestone -- proving
+the system can correctly infer an unfamiliar neutral object's 3D construction *before* modeling it
+-- ahead of finishing any individual prop. `docs/FAILURE_TAXONOMY.md` is the first concrete piece
+of this: classifying every real historical failure by root cause (not just symptom) to confirm
+empirically whether failures actually cluster upstream, before more pipeline code is written on
+the assumption that they do.

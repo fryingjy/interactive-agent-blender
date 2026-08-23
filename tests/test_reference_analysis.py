@@ -11,15 +11,18 @@ from knowledge_engine.reference_analysis import (
     audit_reference_set,
     build_reference_stage_evidence,
     reference_set_from_dict,
+    validate_component_reference_coverage,
 )
 
 
 def item(reference_id, source_id, *, target="nailsea", variant="30.5cm", view="front",
-         projection="PERSPECTIVE", purposes=("PRIMARY_FORM",), claims=(), anchors=()):
+         projection="PERSPECTIVE", purposes=("PRIMARY_FORM",), claims=(), anchors=(),
+         component_ids=()):
     return ReferenceItem(
         reference_id=reference_id, source_id=source_id, target_id=target,
         target_variant=variant, purposes=purposes, view=view, projection=projection,
         source_tier="USEFUL_VERIFY", claims=claims, dimensional_anchors=anchors,
+        component_ids=component_ids,
     )
 
 
@@ -237,6 +240,8 @@ class ReferenceAnalysisTests(unittest.TestCase):
             "same_target_identity_pass": True, "view_coverage_pass": True,
             "critical_property_coverage_pass": True, "conflicts_resolved_pass": True,
             "question_driven_research_pass": True,
+            "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
+            "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
         }
         decision = plan_next_decision(PlannerContext(
             task_id="task", asset_id="asset", stage="REFERENCE_ANALYSIS",
@@ -280,6 +285,36 @@ class ReferenceAnalysisTests(unittest.TestCase):
                     "depth", ("front",), "two estimates", status="RESOLVED"
                 ),),
             ))
+
+    def test_component_reference_coverage_passes_when_every_component_is_covered(self):
+        components = [{"id": "body"}, {"id": "handle"}]
+        items = (
+            item("front", "source", target="prop", variant="v1", component_ids=("body",)),
+            item(
+                "detail", "source", target="prop", variant="v1",
+                claims=(PropertyClaim("handle_diameter", "DIMENSION", "measured off scale bar", "HIGH",
+                                       component_id="handle"),),
+            ),
+        )
+        result = validate_component_reference_coverage(components, items)
+        self.assertTrue(result["pass"])
+        self.assertEqual(result["uncovered_component_ids"], [])
+        self.assertEqual(result["covered_component_ids"], ["body", "handle"])
+
+    def test_component_reference_coverage_fails_on_uncovered_component(self):
+        components = [{"id": "body"}, {"id": "handle"}, {"id": "foot"}]
+        items = (item("front", "source", target="prop", variant="v1", component_ids=("body", "handle")),)
+        result = validate_component_reference_coverage(components, items)
+        self.assertFalse(result["pass"])
+        self.assertEqual(result["uncovered_component_ids"], ["foot"])
+        self.assertEqual(result["component_count"], 3)
+
+    def test_component_reference_coverage_ignores_components_without_declared_ids(self):
+        components = [{"id": "body"}, {"name": "no id field"}]
+        items = (item("front", "source", target="prop", variant="v1", component_ids=("body",)),)
+        result = validate_component_reference_coverage(components, items)
+        self.assertTrue(result["pass"])
+        self.assertEqual(result["component_count"], 1)
 
 
 if __name__ == "__main__":

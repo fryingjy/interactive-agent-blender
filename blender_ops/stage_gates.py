@@ -10,7 +10,8 @@ STAGE_REQUIREMENTS = {
         "component_graph_pass", "measured_ratio_count", "uncertainty_recorded",
         "reference_set_audit_pass", "same_target_identity_pass", "view_coverage_pass",
         "critical_property_coverage_pass", "conflicts_resolved_pass",
-        "question_driven_research_pass",
+        "question_driven_research_pass", "visual_reconstruction_audit_pass",
+        "component_reference_coverage_pass",
     ),
     "PRIMARY_BLOCKOUT": (
         "dimensions_checked", "primary_components_present", "component_coverage",
@@ -83,6 +84,28 @@ def _component_coverage_is_valid(value: Any) -> bool:
         and reports[component].get("placement_ok") is True
         and reports[component].get("proportion_ok") is True
         for component in declared
+    )
+
+
+def _visual_reconstruction_audit_is_valid(value: Any) -> bool:
+    """Require the real 11-pass audit_visual_reconstruction() result, not a bare True.
+
+    Mirrors _component_coverage_is_valid's own precedent: a self-asserted boolean proves
+    nothing, so this checks the actual structured record type and its own computed pass.
+    """
+    return (
+        isinstance(value, dict)
+        and value.get("record_type") == "VISUAL_RECONSTRUCTION_AUDIT"
+        and value.get("pass") is True
+    )
+
+
+def _component_reference_coverage_is_valid(value: Any) -> bool:
+    """Require validate_component_reference_coverage()'s structured result, not a bare True."""
+    return (
+        isinstance(value, dict)
+        and value.get("pass") is True
+        and value.get("uncovered_component_ids") == []
     )
 
 
@@ -171,6 +194,10 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             if not evidence["critical_property_coverage_pass"]: failures.append("critical properties lack authoritative evidence")
             if not evidence["conflicts_resolved_pass"]: failures.append("reference conflicts remain unresolved")
             if not evidence["question_driven_research_pass"]: failures.append("high-impact reference questions remain open or unaudited")
+            if not _visual_reconstruction_audit_is_valid(evidence["visual_reconstruction_audit_pass"]):
+                failures.append("visual reconstruction audit missing, invalid, or not passing")
+            if not _component_reference_coverage_is_valid(evidence["component_reference_coverage_pass"]):
+                failures.append("reference evidence does not cover every declared component")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")

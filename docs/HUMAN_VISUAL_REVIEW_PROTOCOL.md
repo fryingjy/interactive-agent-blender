@@ -29,6 +29,11 @@ Valid failure categories are: `proportion`, `component_shape`, `component_relati
 `negative_space`, `depth_overlap`, `silhouette`, `surface_highlight`, `topology`, and
 `construction_strategy`.
 
+These describe the visual *symptom*. `docs/FAILURE_TAXONOMY.md` adds a separate, complementary
+*root-cause* classification (reference/interpretation/representation/proportion/component/depth/
+surface/execution/evaluator) that says which stage of reasoning actually produced the symptom --
+attach both when recording a correction, since the symptom alone does not say what to fix.
+
 The record is intentionally not an aggregate score. The reviewer does not need to prescribe an
 operator or a topology fix; that would conflate diagnosis with authoring.
 

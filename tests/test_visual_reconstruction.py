@@ -74,6 +74,57 @@ class VisualReconstructionTests(unittest.TestCase):
         self.assertFalse(result["pass"])
         self.assertIn("every unresolved region must remain a reversible construction assumption", result["errors"])
 
+    def test_uncontested_region_with_justification_passes(self):
+        payload, references = fixture()
+        payload["components"] = [{"id": "shell"}, {"id": "base_plate"}]
+        payload["regions"][0]["component_id"] = "shell"
+        payload["regions"].append({
+            "region_id": "base_plate_construction",
+            "component_id": "base_plate",
+            "uncontested": True,
+            "hypotheses": [{
+                "hypothesis_id": "base_plate_extruded",
+                "interpretation": {
+                    "structure_type": "extruded_slab",
+                    "summary": "flat plate",
+                    "justification": "the reference shows a constant-thickness flat panel with no visible curvature in any view, consistent with a simple extrusion",
+                },
+                "construction": {"family": "profile_extrusion"},
+            }],
+        })
+        payload["construction_plan"]["selected_hypothesis_ids"] = ["connected", "base_plate_extruded"]
+        result = audit_visual_reconstruction(payload, references)
+        self.assertTrue(result["pass"], result["errors"])
+        self.assertTrue(result["checks"]["every_component_has_construction_justification"])
+
+    def test_uncontested_region_without_justification_fails(self):
+        payload, references = fixture()
+        payload["components"] = [{"id": "shell"}, {"id": "base_plate"}]
+        payload["regions"][0]["component_id"] = "shell"
+        payload["regions"].append({
+            "region_id": "base_plate_construction",
+            "component_id": "base_plate",
+            "uncontested": True,
+            "hypotheses": [{
+                "hypothesis_id": "base_plate_extruded",
+                "interpretation": {"structure_type": "extruded_slab", "summary": "flat plate"},
+                "construction": {"family": "profile_extrusion"},
+            }],
+        })
+        payload["construction_plan"]["selected_hypothesis_ids"] = ["connected", "base_plate_extruded"]
+        result = audit_visual_reconstruction(payload, references)
+        self.assertFalse(result["pass"])
+        self.assertTrue(any("construction justification" in error for error in result["errors"]))
+
+    def test_component_with_no_matching_region_fails(self):
+        payload, references = fixture()
+        payload["components"] = [{"id": "shell"}, {"id": "orphan_component"}]
+        payload["regions"][0]["component_id"] = "shell"
+        result = audit_visual_reconstruction(payload, references)
+        self.assertFalse(result["pass"])
+        self.assertFalse(result["checks"]["every_component_has_construction_justification"])
+        self.assertTrue(any("orphan_component" in error for error in result["errors"]))
+
 
 if __name__ == "__main__":
     unittest.main()

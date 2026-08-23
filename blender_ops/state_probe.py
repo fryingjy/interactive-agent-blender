@@ -554,5 +554,11 @@ def mesh_health(name):
         "loose_verts": sum(1 for v in bm.verts if not v.link_edges),
         "degenerate_faces": sum(1 for f in bm.faces if f.calc_area() < 1e-8),
     }
+    if bm.verts:
+        xs = [v.co.x for v in bm.verts]
+        ys = [v.co.y for v in bm.verts]
+        zs = [v.co.z for v in bm.verts]
+        result["local_bounds"] = {"min": [min(xs), min(ys), min(zs)], "max": [max(xs), max(ys), max(zs)]}
+        result["local_centroid"] = [sum(xs) / len(xs), sum(ys) / len(ys), sum(zs) / len(zs)]
     _free_if_object_mode(obj, bm)
     return result

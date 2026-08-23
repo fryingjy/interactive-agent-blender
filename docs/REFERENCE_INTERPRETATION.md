@@ -101,3 +101,17 @@ photo (the exact failure a flat-vs-curved roofline test hit on the Scotch C38, s
 `runs/2026-08-21_scotch-c38-blockout/README.md`). Run `tools/test_representation_hypotheses.py`
 against a scene JSON of candidates and a reference manifest to get a structured report before
 committing to a representation, not after.
+
+**2026-08-23: this is now a mandatory gate, not an optional tool.** Advancing past
+`REFERENCE_ANALYSIS` into `PRIMARY_BLOCKOUT` requires the real, structured result of
+`knowledge_engine/visual_reconstruction.py::audit_visual_reconstruction()` (`blender_ops/
+stage_gates.py`'s `visual_reconstruction_audit_pass` key -- a bare `True` no longer satisfies it,
+only the actual `{record_type: "VISUAL_RECONSTRUCTION_AUDIT", pass: True}` record does). Every
+declared component -- contested or not -- now needs a region with a declared `structure_type`/
+`construction.family` and a non-empty justification (`region.uncontested = True` skips the
+>=2-hypothesis requirement but not the justification), and reference evidence must be bound to
+specific declared components via `ReferenceItem.component_ids`/`PropertyClaim.component_id`,
+checked by `knowledge_engine/reference_analysis.py::validate_component_reference_coverage()`
+(`component_reference_coverage_pass`) -- not just present somewhere in a global reference set. This
+does not grade *how good* a hypothesis's justification is, only that one is structurally present;
+that judgment call remains the modeler's, evidence-gated but not automated away.

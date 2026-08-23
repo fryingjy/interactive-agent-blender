@@ -89,6 +89,8 @@ class ComponentStrategyTests(unittest.TestCase):
                 "critical_property_coverage_pass": True,
                 "conflicts_resolved_pass": True,
                 "question_driven_research_pass": True,
+                "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
+                "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
             },
             component_strategy_resolution=resolution,
         ))
