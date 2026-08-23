@@ -333,15 +333,27 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
             right = mathutils.Vector((1.0, 0.0, 0.0))
         right.normalize()
         up = right.cross(direction).normalized()
+        # Energy scales with diag^2, not a fixed constant: an area light's
+        # irradiance on the subject depends on its physical size relative to
+        # its distance, and both size and distance here are set proportional
+        # to diag. Shrink diag (e.g. a close framing via frame_names on a
+        # small sub-object) without this scaling and the same absolute Watts
+        # radiate over a proportionally smaller area -- overexposing badly.
+        # Found live: a whole-bottle framing (diag ~0.28) looked correct at
+        # 8W/3W; the same 8W/3W blown out solid white on a tight cap-only
+        # close-up (diag ~0.065, ~4.3x smaller, ~18x brighter at fixed watts).
+        # Constants below are back-solved from the diag=0.28 case that looked
+        # correct on direct visual inspection.
+        energy_scale = (diag / 0.28) ** 2
         key_data = bpy.data.lights.new(name="__material_pass_key__", type="AREA")
-        key_data.energy = 8.0
+        key_data.energy = 8.0 * energy_scale
         key_data.size = diag * 1.5
         key_obj = bpy.data.objects.new("__material_pass_key__", key_data)
         bpy.context.scene.collection.objects.link(key_obj)
         key_obj.location = center + direction * diag * 2.0 + right * diag * 1.2 + up * diag * 1.5
         key_obj.rotation_euler = direction.to_track_quat("Z", "Y").to_euler()
         fill_data = bpy.data.lights.new(name="__material_pass_fill__", type="AREA")
-        fill_data.energy = 3.0
+        fill_data.energy = 3.0 * energy_scale
         fill_data.size = diag * 2.0
         fill_obj = bpy.data.objects.new("__material_pass_fill__", fill_data)
         bpy.context.scene.collection.objects.link(fill_obj)
