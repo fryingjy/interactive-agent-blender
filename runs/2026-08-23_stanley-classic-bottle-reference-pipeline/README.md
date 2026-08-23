@@ -279,12 +279,26 @@ at a much closer framing. Root cause and fix recorded in that commit (light ener
 and `cap_rim_bevel_closeup.png` after the fix — both correctly exposed, rim bevel visible as a
 subtle softened highlight rather than a knife-sharp edge.
 
+## Defect-region check (investigated, not ignored)
+
+`get_evaluated_defect_regions` flags both objects: `Vessel` reports 16 `high_angle` points at
+Z=0.0758 (mid-body), `CapCup` reports 64 across two Z-bands. Investigated rather than dismissed:
+every flagged angle is exactly 22.5 deg = 360/16 -- the segment count used throughout this run, not
+a ring-to-ring transition angle. `Vessel`'s flagged Z sits in the middle of the constant-radius
+body span (two rings of *identical* radius 0.046, which can't produce a real angle change between
+them) -- the tool is reporting the inherent circumferential facet angle of a 16-sided polygon
+approximation once per straight run, not a construction defect. All entries confirm
+`likely_pole_artifact: false` and valence 4 (healthy quads), and this angle is already under the
+30 deg `set_smooth_by_angle` threshold applied to both objects, so it's smoothed in every render
+above. No correction made -- there is nothing here to correct.
+
 ## Status: PRIMARY_BLOCKOUT built, NOT self-certified as correct
 
 Per the explicit instruction this run follows: a passed gate and a matching render are not the
 same claim as "the interpretation is correct" — this blockout matches the *reference photo and
-measurements gathered in this pass*, which is the honest limit of what's been checked. It has not
-been reviewed by the user, has no material/lighting pass, no bevels, and the internal stopper
-remains out of scope (see above). Stopping here for review rather than advancing to secondary
-detail, per the protocol this run is following.
+measurements gathered in this pass*, which is the honest limit of what's been checked. Since the
+last review checkpoint: materials assigned and verified under real lighting (a new capability,
+also fixed live), a real rim bevel with verified semantic intent, and a reviewed (not ignored)
+defect-region check. It has not been reviewed by the user, and the internal stopper remains
+deliberately out of scope (see above) — human review remains the actual gate, not this document.
 
