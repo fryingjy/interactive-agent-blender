@@ -44,6 +44,14 @@ Current evidence includes:
 - explicit semantic bevel-edge declaration separated from weight assignment, with crown/saddle
   double-curvature controls proving that eight omitted sharp-rim segments remain detectable even
   when every evaluated mesh is closed, nondegenerate, and all-quad.
+- a mandatory `REFERENCE_ANALYSIS` gate (component-scoped reference evidence, an 11-pass visual
+  reconstruction audit, per-component construction justification) that a build cannot skip past
+  into modeling, proven on a real fresh prop where a competing body-profile hypothesis was rejected
+  by an actual pixel measurement before any geometry existed, not asserted; a root-cause failure
+  taxonomy (`docs/FAILURE_TAXONOMY.md`) separating what looks wrong from which reasoning stage
+  produced it; and a real material-lit render pass added and debugged live when the existing
+  Workbench-only diagnostics proved unable to show whether an assigned material actually looked
+  right.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

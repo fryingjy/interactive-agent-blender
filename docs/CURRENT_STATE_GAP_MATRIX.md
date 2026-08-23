@@ -9,9 +9,22 @@ concluded the deeper bottleneck this matrix already names below (competing 3D in
 still being under-invested in relative to individual model builds, and separately asked that
 weapon-related subject matter be removed from the active modeling curriculum in favor of neutral
 manufactured props. See `docs/FAILURE_TAXONOMY.md` for the new root-cause classification this
-triggered, and `runs/2026-08-23_stylized-longsword/README.md` for the shelving note. New prop
-starts are paused until the reference-reasoning pipeline described in "Current bottleneck" below
-is actually built, not just diagnosed.
+triggered, and `runs/2026-08-23_stylized-longsword/README.md` for the shelving note.
+
+**Update, same day, later:** the reference-reasoning pipeline described in "Current bottleneck"
+below is now actually built (`1d9d071`) and proven on a real fresh neutral prop, not just
+diagnosed -- `runs/2026-08-23_stanley-classic-bottle-reference-pipeline/`. The `REFERENCE_ANALYSIS`
+gate genuinely required and passed the full evidence chain (component graph, reference-set audit,
+component-reference coverage, the 11-pass visual-reconstruction audit), and it caught a real
+upstream mistake before any geometry existed: a barrel/waisted body profile was a reasonable first
+read of the reference photo, recorded as a genuine competing hypothesis, and rejected by an actual
+pixel measurement (`CONTRADICTED` on both tested views) in favor of the correct straight-cylinder
+reading. The blockout that followed matched the reference-analysis fractions exactly when
+independently re-measured. A second human-review correction (reducing 4 objects to 2, a
+`REPRESENTATION_FAILURE` per the new taxonomy) and a real tooling gap (no material-lit render
+existed; added and debugged live, `81e815b`/`477ba38`) both got handled and recorded properly
+mid-run. This is the first prop this project has taken through blockout under the strengthened
+gate, and no new prop starts are paused now that it exists and works.
 
 ## Ground truth
 
