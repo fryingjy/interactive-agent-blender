@@ -224,6 +224,35 @@ objects). `foreground_fill_ratio` is bit-identical before and after on both fron
 isometric (0.160701) framing — confirms the correction changed only the object/topology
 representation, not the silhouette or proportions that were already verified correct.
 
+## Materials and shading (TOPOLOGY_SURFACE groundwork)
+
+`Vessel` is one connected mesh but carries three real material regions, selected by persistent
+face `agent_id` (classified by ring-band Z position from `get_mesh_geometry`, not eyeballed) and
+assigned via `assign_selected_material` — each its own single-operation decision transaction,
+each `geometry_shift_flag` correctly reporting no shift (material assignment doesn't move
+geometry):
+
+| Region (80/32/16 faces) | Material | Color (sampled from the reference photo) | Metallic / Roughness |
+| --- | --- | --- | --- |
+| base_ring band | `BrushedSteel` | (0.57, 0.565, 0.54) | 0.8 / 0.35 |
+| body band | `HammertoneGreenPaint` | (0.439, 0.518, 0.447) | 0.0 / 0.6 |
+| gasket band | `DarkRubberGasket` | (0.11, 0.227, 0.216) | 0.0 / 0.8 |
+
+`CapCup` reuses `BrushedSteel` (confirmed via `assign_selected_material`'s own `created: false`
+response — no duplicate material was made). `set_smooth_by_angle` (30 deg, sharp edges kept)
+applied to both objects for correct normal interpolation on the round segments without softening
+the real material-boundary edges.
+
+**Reviewing this exposed a real tooling gap, fixed live**: `render_diagnostic_pass`'s existing
+passes (`solid`/`matcap`/etc.) are Workbench-only by design (see that module's own docstring) and
+render flat grey regardless of assigned materials — there was no way to actually check whether
+these material assignments looked right. Added a new `material` pass (real EEVEE render under two
+temporary lights) to `blender_ops/render_passes.py` — see that commit for the two real bugs caught
+getting it working (inverted light direction, then wildly overexposed energy). Renders:
+`blockout_material_front.png`, `blockout_material_isometric.png` — visibly matching the reference
+photo's real material differences (matte sage body, distinct dark gasket band, metallic cap and
+base with real specular response) in a way no prior render in this run could show.
+
 ## Status: PRIMARY_BLOCKOUT built, NOT self-certified as correct
 
 Per the explicit instruction this run follows: a passed gate and a matching render are not the
