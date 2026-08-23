@@ -145,12 +145,16 @@ whole cap height** (radius ratio 0.643 at the very top rising steadily to 0.807 
 a real frustum, not a cylinder with a flourish. Caught and corrected before modeling, using the
 same measure-first discipline, not after.
 
-| Component | Object | Rings | Segments |
-| --- | --- | --- | --- |
-| `base_ring` | `BaseRing` | 6 (rounded-edge taper, finely sampled: frac 0.90-1.00 in 8 real pixel readings) | 16 |
-| `body` | `Body` | 3 (constant radius, per the confirmed straight-cylinder hypothesis) | 16 |
-| `gasket_ring` | `GasketRing` | 2 (linear taper bridging body radius to cap radius) | 16 |
-| `cap_cup` | `CapCup` | 7 (monotonic taper, 6 real measured points + gasket-matching base) | 16 |
+| Component | Object (original) | Object (after correction, see below) | Rings | Segments |
+| --- | --- | --- | --- | --- |
+| `base_ring` | `BaseRing` | `Vessel` | 6 (rounded-edge taper, finely sampled: frac 0.90-1.00 in 8 real pixel readings) | 16 |
+| `body` | `Body` | `Vessel` | 3 (constant radius, per the confirmed straight-cylinder hypothesis) | 16 |
+| `gasket_ring` | `GasketRing` | `Vessel` | 2 (linear taper bridging body radius to cap radius) | 16 |
+| `cap_cup` | `CapCup` | `CapCup` (unchanged) | 7 (monotonic taper, 6 real measured points + gasket-matching base) | 16 |
+
+`base_ring`/`body`/`gasket_ring` were originally built as 3 separate objects, then merged into one
+`Vessel` object per direct human review — see the correction record below before trusting the
+"Object" column above as final.
 
 ### Verification against the reference (not self-declared)
 
@@ -168,12 +172,57 @@ trusting the authored numbers went in correctly:
 Exact match. The `side` view's `foreground_fill_ratio` (0.180016) is bit-identical to `front`'s,
 confirming genuine radial symmetry — a real structural sanity check, not just visual similarity.
 
-Renders (all in this directory): `blockout_silhouette_front.png`, `blockout_shaded_front.png`,
-`blockout_shaded_side.png`, `blockout_shaded_isometric.png`, `blockout_component_mask_front.png`,
-`blockout_wireframe_front.png`. The isometric view also confirms the negative space requirement
+Renders (all in this directory, original 4-object version): `blockout_silhouette_front.png`,
+`blockout_shaded_front.png`, `blockout_shaded_side.png`, `blockout_shaded_isometric.png`,
+`blockout_component_mask_front.png`, `blockout_wireframe_front.png`. Post-correction 2-object
+renders: `blockout_v2_shaded_front.png`, `blockout_v2_shaded_isometric.png` (see the correction
+record below). The isometric view also confirms the negative space requirement
 was satisfied without extra work: `create_quad_radial_surface` produces an open cage by
 construction, so the cap's open top ring *is* the bottle's real drinking opening — visibly hollow
 in the isometric render, not a solid capped cylinder.
+
+## Correction: too many separate objects (human review)
+
+**Symptom**: direct user feedback on the blockout renders — "i dont think so much seperation is
+needed." Four separate mesh objects (`BaseRing`, `Body`, `GasketRing`, `CapCup`) for what reads,
+correctly, as an over-fragmented blockout.
+
+**Root cause**: `REPRESENTATION_FAILURE` (per `docs/FAILURE_TAXONOMY.md`) — not a proportion or
+execution defect (the shape and measurements were already correct), but the wrong *object-level*
+modeling representation. The reference-analysis phase correctly identified 4 semantically distinct
+components by material/color (that stays true and isn't being retracted), but a sparse blockout
+doesn't need every material/color boundary to be a separate mesh object — `base_ring` and
+`gasket_ring` are color/material distinctions within what is physically one continuous vacuum-flask
+shell, not independently removable parts. `cap_cup` is different in kind: it's a genuinely
+separate, removable component (you unscrew/lift it off to drink), the one real functional boundary
+in this object, matching this project's own established convention (separate objects for
+genuinely separate/removable real-world parts, not for every material change).
+
+**Evidence**: the human reviewer's direct instruction is first-class evidence per
+`docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md` and overrides the passing automated gate/render state,
+which never claimed to certify construction strategy in the first place.
+
+**Rejected repair ideas**:
+- *Merge everything into one single object, including the cap* — rejected: the cap is a genuinely
+  separate, removable part, unlike the base/gasket boundaries, which are purely material
+  distinctions on one continuous shell. Collapsing that real functional boundary would trade one
+  representation mistake for another.
+- *Leave the 4 objects and only note the feedback* — rejected: direct human visual-review
+  authority is meant to change the model, not just get filed as a comment.
+
+**Selected correction**: archived `BaseRing`, `Body`, `GasketRing` (moved to `REJECTED_COMPONENTS`,
+recoverable, not deleted — 3 separate single-operation decision transactions, each verified: the
+new `geometry_shift_flag` mechanism from this session's own execution-safety prelude correctly
+reported no implausible shift on any of the three archive-only transactions). Rebuilt as one
+connected `Vessel` object spanning all 9 combined rings (the exact same authored radii/heights,
+concatenated and deduplicated at the shared boundaries) via a single `create_quad_radial_surface`
+call. `CapCup` unchanged.
+
+**Before/after render**: `blockout_shaded_front.png`/`blockout_component_mask_front.png` (before,
+4 objects) vs. `blockout_v2_shaded_front.png`/`blockout_v2_shaded_isometric.png` (after, 2
+objects). `foreground_fill_ratio` is bit-identical before and after on both front (0.180016) and
+isometric (0.160701) framing — confirms the correction changed only the object/topology
+representation, not the silhouette or proportions that were already verified correct.
 
 ## Status: PRIMARY_BLOCKOUT built, NOT self-certified as correct
 
