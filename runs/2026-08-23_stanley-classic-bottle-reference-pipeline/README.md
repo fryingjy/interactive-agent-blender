@@ -127,6 +127,60 @@ interpretation is correct." The gate passing proves the reasoning chain is struc
 and internally consistent, not that reality matches it — that only gets tested once geometry
 exists and gets rendered against these same references (step 10 onward).
 
-**Blocked on Blender**: the typed modeler server (port 9878) is not currently running — it needs
-`tools/start_modeler_in_blender.py`'s contents re-run from Blender's Text Editor (it does not
-auto-start with Blender). Sparse blockout is the next step once that's back.
+**Update**: the typed modeler server was restarted (via `blender_ops.modeler_server.start()` run
+through the generic connector, so no manual Text Editor step was needed this time) and the sparse
+blockout below is complete.
+
+## Sparse blockout (step 10)
+
+Built directly from the frozen construction contract above — every ring's radius/height comes
+from the measured fractions and ratios recorded during reference analysis, not re-eyeballed at
+build time. All four components use `create_quad_radial_surface` (matching their shared
+`profile_revolution` construction family), authored along world Z with no reorientation needed.
+
+One real refinement made *during* construction, not before: the cap's justification in the frozen
+contract undersold its shape ("near-cylindrical with a slight rim flare"). Building it required a
+finer 6-point pixel scan of the cap region, which showed a **clear, monotonic taper across the
+whole cap height** (radius ratio 0.643 at the very top rising steadily to 0.807 near the gasket) —
+a real frustum, not a cylinder with a flourish. Caught and corrected before modeling, using the
+same measure-first discipline, not after.
+
+| Component | Object | Rings | Segments |
+| --- | --- | --- | --- |
+| `base_ring` | `BaseRing` | 6 (rounded-edge taper, finely sampled: frac 0.90-1.00 in 8 real pixel readings) | 16 |
+| `body` | `Body` | 3 (constant radius, per the confirmed straight-cylinder hypothesis) | 16 |
+| `gasket_ring` | `GasketRing` | 2 (linear taper bridging body radius to cap radius) | 16 |
+| `cap_cup` | `CapCup` | 7 (monotonic taper, 6 real measured points + gasket-matching base) | 16 |
+
+### Verification against the reference (not self-declared)
+
+Re-measured the actual built geometry's rendered silhouette (`blockout_component_mask_front.png`)
+the same way the reference photo was measured, to check for scale/construction errors rather than
+trusting the authored numbers went in correctly:
+
+| Boundary | Intended (from reference analysis) | Measured in the built render |
+| --- | --- | --- |
+| Cap top | frac 0.000 | frac 0.000 |
+| Cap/gasket | frac 0.211 | frac 0.211 |
+| Gasket/body | frac ~0.256 | frac 0.256 |
+| Body/base | frac ~0.921 | frac 0.921 |
+
+Exact match. The `side` view's `foreground_fill_ratio` (0.180016) is bit-identical to `front`'s,
+confirming genuine radial symmetry — a real structural sanity check, not just visual similarity.
+
+Renders (all in this directory): `blockout_silhouette_front.png`, `blockout_shaded_front.png`,
+`blockout_shaded_side.png`, `blockout_shaded_isometric.png`, `blockout_component_mask_front.png`,
+`blockout_wireframe_front.png`. The isometric view also confirms the negative space requirement
+was satisfied without extra work: `create_quad_radial_surface` produces an open cage by
+construction, so the cap's open top ring *is* the bottle's real drinking opening — visibly hollow
+in the isometric render, not a solid capped cylinder.
+
+## Status: PRIMARY_BLOCKOUT built, NOT self-certified as correct
+
+Per the explicit instruction this run follows: a passed gate and a matching render are not the
+same claim as "the interpretation is correct" — this blockout matches the *reference photo and
+measurements gathered in this pass*, which is the honest limit of what's been checked. It has not
+been reviewed by the user, has no material/lighting pass, no bevels, and the internal stopper
+remains out of scope (see above). Stopping here for review rather than advancing to secondary
+detail, per the protocol this run is following.
+
