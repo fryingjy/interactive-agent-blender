@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "record_type": "HELDOUT_REFERENCE_ANALYSIS",
+  "target_id": "romanian_flanged_mace_head_72052",
+  "scope": "Model specimen 2 (views 2a-2f), including a simple fitted haft; exclude specimen 1.",
+  "source": {
+    "page_url": "https://www.academia.edu/figures/32792927/figure-10-medieval-mace-heads-with-vertical-flanges-forming",
+    "image_url": "https://figures.academia-assets.com/116925485/figure_012.jpg",
+    "file": "references/multi_view_mace_heads.jpg",
+    "dimensions": [1106, 1903]
+  },
+  "observed_views": {
+    "front_2a": "Full head and haft silhouette with scale bar.",
+    "top_2b": "Radial flange count and circular socket are visible.",
+    "rear_2c": "Opposite elevation confirms bulb symmetry and flange continuity.",
+    "shaft_sections_2d_2e": "Solid and wrapped/hollow circular sections are documented.",
+    "photo_2f": "Artifact surface confirms the illustrated flange layering."
+  },
+  "components": [
+    {"id": "flanged_head", "depth_critical": true, "construction": "one authored central radial body plus one flange repeated around Z, joined only after silhouette validation"},
+    {"id": "haft", "depth_critical": false, "construction": "one 12-sided tapered radial cage"},
+    {"id": "top_finial", "depth_critical": false, "construction": "connected revolved profile with the head core"}
+  ],
+  "depth_critical_reference_support": {
+    "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+    "depth_critical_component_ids": ["flanged_head"],
+    "component_reports": {
+      "flanged_head": {
+        "view_ids": ["front_2a", "top_2b", "rear_2c", "photo_2f"],
+        "reference_ids": ["figure-2a", "figure-2b", "figure-2c", "figure-2f"],
+        "view_count": 4,
+        "pass": true
+      }
+    },
+    "unsupported_component_ids": [],
+    "pass": true
+  },
+  "bounded_cutoff": "Primary head/haft blockout, top/front/isometric comparison, and one correction. No corrosion sculpting, wrapping, UVs or materials before major-form pass.",
+  "success_gate": "Flange count, radial spacing, bulb profile, socket/finial proportion and haft taper must reach 8/10 in front and top views."
+}
