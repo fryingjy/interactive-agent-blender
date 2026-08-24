@@ -63,10 +63,48 @@ def _component_coverage_is_valid(value: Any) -> bool:
         return False
     if value.get("mesh_object_names") != built:
         return False
-    if set(matches) != set(declared) or len(set(matches.values())) != len(matches):
+    if set(matches) != set(declared):
         return False
     if not all(name in built for name in matches.values()):
         return False
+    component_evidence = coverage.get("component_evidence")
+    if component_evidence is None:
+        # Legacy reports prove separation only through one-to-one object names.
+        if len(set(matches.values())) != len(matches):
+            return False
+    else:
+        if not isinstance(component_evidence, dict) or set(component_evidence) != set(declared):
+            return False
+        evidence_keys: set[tuple[str, str, str | None]] = set()
+        for component in declared:
+            record = component_evidence.get(component)
+            if not isinstance(record, dict):
+                return False
+            kind = record.get("kind")
+            object_name = record.get("object_name")
+            region_id = record.get("region_id")
+            if object_name != matches[component] or object_name not in built:
+                return False
+            if kind == "object":
+                if region_id is not None:
+                    return False
+            elif kind == "semantic_region":
+                if not isinstance(region_id, str) or not region_id:
+                    return False
+                element_count = record.get("element_count")
+                if (
+                    record.get("region_valid") is not True
+                    or not isinstance(element_count, int)
+                    or isinstance(element_count, bool)
+                    or element_count <= 0
+                ):
+                    return False
+            else:
+                return False
+            key = (kind, object_name, region_id)
+            if key in evidence_keys:
+                return False
+            evidence_keys.add(key)
     layout = value.get("component_layout")
     if layout is None:
         return True  # compatibility for existing boards without measured regions
@@ -202,7 +240,7 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")
             if not _component_coverage_is_valid(evidence["component_coverage"]):
-                failures.append("structured one-to-one component coverage is missing or invalid")
+                failures.append("structured distinct component coverage is missing or invalid")
         elif stage == "PROPORTION_SILHOUETTE":
             view_count = evidence["view_count"]
             worst_view_iou = evidence["worst_view_iou"]

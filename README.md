@@ -245,6 +245,11 @@ The local Blender/MCP entry points are:
   live unapplied Mirror, official-file proportion comparison, and fresh-process verification. Its
   `8.1/10` source score, together with the corrected donut/mug scene's `8.0/10` above, are read as
   the two required consecutive passes -- intermediate (I0) work is now unblocked.
+- `runs/2026-08-23_stanley-classic-bottle-reference-pipeline/` exercises the strengthened neutral
+  reference pipeline outside the prop ladder. The saved asset is one connected `Vessel` mesh with
+  distinct persistent body/base/gasket regions plus a separate removable `CapCup`; render-driven
+  edits improved the shoulder and closed the open cap top without substitute primitives. It is at
+  `SECONDARY_FORMS`, with no human visual acceptance or ladder-promotion status.
 - `runs/2026-08-22_tutorial-grant-abbitt-low-poly-well/` records a researched five-part beginner
   queue. Modeling is deferred until audiovisual access is available rather than inventing steps
   from repeated final thumbnails.

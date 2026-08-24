@@ -1,0 +1,13 @@
+{
+  "target_id": "stanley-classic-legendary-bottle-1qt",
+  "measurement_method": "Mean normalized foreground width from official front/back images at the stated top-to-bottom height fraction; tolerance frozen before candidate evaluation.",
+  "constraints": [
+    {"id": "width_frac_020", "kind": "scalar", "target": 0.7816, "tolerance": 0.0300, "importance": "medium"},
+    {"id": "width_frac_024", "kind": "scalar", "target": 0.8157, "tolerance": 0.0250, "importance": "high"},
+    {"id": "width_frac_026", "kind": "scalar", "target": 0.8640, "tolerance": 0.0250, "importance": "high"},
+    {"id": "width_frac_028", "kind": "scalar", "target": 0.9323, "tolerance": 0.0250, "importance": "high"},
+    {"id": "width_frac_030", "kind": "scalar", "target": 0.9659, "tolerance": 0.0250, "importance": "high"},
+    {"id": "width_frac_032", "kind": "scalar", "target": 0.9830, "tolerance": 0.0250, "importance": "high"},
+    {"id": "width_frac_035", "kind": "scalar", "target": 0.9863, "tolerance": 0.0250, "importance": "medium"}
+  ]
+}

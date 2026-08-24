@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "record_type": "NORMALIZED_REFERENCE_SILHOUETTE_COMPARISON",
+  "method": "explicit foreground modes; bbox translation/scale normalized; aspect ratio preserved",
+  "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-23_stanley-classic-bottle-reference-pipeline\\shoulder_corrected_front_solid.png",
+  "baseline": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-23_stanley-classic-bottle-reference-pipeline\\shoulder_before_solid.png",
+  "references": {
+    "official_front": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-23_stanley-classic-bottle-reference-pipeline\\reference_front_stanley1913.png",
+    "official_back": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-23_stanley-classic-bottle-reference-pipeline\\media\\official_back.png"
+  },
+  "normalization_size": 512,
+  "minimum_iou_frozen_before_result": 0.9,
+  "views": {
+    "official_front": {
+      "width": 512,
+      "height": 512,
+      "reference_pixels": 64396,
+      "candidate_pixels": 68567,
+      "silhouette_iou": 0.9365423827556073,
+      "centroid_error_normalized": 0.00163032805256134,
+      "bounding_box_error_normalized": 0.0017263349150062194,
+      "symmetric_contour_error_normalized": 0.004804942080225235,
+      "negative_space_iou": 1.0,
+      "reference_negative_space_pixels": 0,
+      "candidate_negative_space_pixels": 0,
+      "reference_bbox": [
+        184,
+        8,
+        327,
+        503
+      ],
+      "candidate_bbox": [
+        181,
+        8,
+        329,
+        503
+      ]
+    },
+    "official_back": {
+      "width": 512,
+      "height": 512,
+      "reference_pixels": 64585,
+      "candidate_pixels": 68567,
+      "silhouette_iou": 0.9412459360557508,
+      "centroid_error_normalized": 0.003928776877156239,
+      "bounding_box_error_normalized": 0.0,
+      "symmetric_contour_error_normalized": 0.004401683338578779,
+      "negative_space_iou": 1.0,
+      "reference_negative_space_pixels": 0,
+      "candidate_negative_space_pixels": 0,
+      "reference_bbox": [
+        181,
+        8,
+        329,
+        503
+      ],
+      "candidate_bbox": [
+        181,
+        8,
+        329,
+        503
+      ]
+    }
+  },
+  "baseline_views": {
+    "official_front": {
+      "width": 512,
+      "height": 512,
+      "reference_pixels": 64396,
+      "candidate_pixels": 69144,
+      "silhouette_iou": 0.9299640137008078,
+      "centroid_error_normalized": 0.001031359006660768,
+      "bounding_box_error_normalized": 0.0017263349150062194,
+      "symmetric_contour_error_normalized": 0.005316490069766973,
+      "negative_space_iou": 1.0,
+      "reference_negative_space_pixels": 0,
+      "candidate_negative_space_pixels": 0,
+      "reference_bbox": [
+        184,
+        8,
+        327,
+        503
+      ],
+      "candidate_bbox": [
+        181,
+        8,
+        329,
+        503
+      ]
+    },
+    "official_back": {
+      "width": 512,
+      "height": 512,
+      "reference_pixels": 64585,
+      "candidate_pixels": 69144,
+      "silhouette_iou": 0.9335058701058354,
+      "centroid_error_normalized": 0.0025776462953883863,
+      "bounding_box_error_normalized": 0.0,
+      "symmetric_contour_error_normalized": 0.005003735429124835,
+      "negative_space_iou": 1.0,
+      "reference_negative_space_pixels": 0,
+      "candidate_negative_space_pixels": 0,
+      "reference_bbox": [
+        181,
+        8,
+        329,
+        503
+      ],
+      "candidate_bbox": [
+        181,
+        8,
+        329,
+        503
+      ]
+    }
+  },
+  "iou_gain_by_view": {
+    "official_front": 0.006578369054799471,
+    "official_back": 0.007740065949915387
+  },
+  "worst_view_iou": 0.9365423827556073,
+  "all_views_improved": true,
+  "pass": true,
+  "limitations": [
+    "Silhouette overlap does not establish material, topology, depth, or human visual acceptance.",
+    "The front/back product images are independent same-target renders but this radial target has nearly identical outer contours in those views."
+  ]
+}

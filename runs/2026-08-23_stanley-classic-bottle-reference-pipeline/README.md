@@ -302,3 +302,31 @@ also fixed live), a real rim bevel with verified semantic intent, and a reviewed
 defect-region check. It has not been reviewed by the user, and the internal stopper remains
 deliberately out of scope (see above) — human review remains the actual gate, not this document.
 
+## 2026-08-24 secondary-form correction pass
+
+The typed runtime ran in a hidden Blender process; the saved `.blend`, revisioned stage log,
+diagnostic renders, and fresh-process reports remain authoritative. A same-variant official rear
+view confirmed there is no hidden asymmetric handle and exposed two high-salience mismatches: an
+overly conical shoulder and an open `CapCup` top.
+
+The shoulder repair stayed inside the connected `Vessel`: three loop cuts and moved/scaled rings
+created a longer straight wall and staged transition. The cap repair stayed inside `CapCup`: its
+existing 16-edge boundary was filled, inset, and raised 1.5 mm into a shallow crown. No replacement
+cylinders or substitute shells were added. The live `RimBevel` remains unapplied. Current cap
+topology is 128 vertices, 240 edges, and 113 faces, including one planar center 16-gon surrounded
+by a 16-quad transition ring; the lower cup opening correctly remains open.
+
+`shoulder_silhouette_comparison.json` uses aspect-preserving normalization and records improvement
+over baseline for both official front and rear views above the frozen 0.90 IoU threshold. The
+constraint contract, observations, and evaluation retain the seven-sample shoulder-width check.
+The `secondary_*` renders expose the corrected solid, wireframe, and material views.
+
+The component gate was also corrected so connected product skins do not require unnecessary
+separate objects. Components may bind to distinct valid, nonempty persistent semantic regions on a
+shared mesh; legacy unbound components remain strict one-to-one object matches.
+`scene_decomposition.json` binds body/base/gasket to separate `Vessel` regions and the removable
+cap to `CapCup`; `fresh_component_coverage.json` verifies those representations from the saved file.
+
+Current stage: `SECONDARY_FORMS`. This non-ladder development run has no human visual acceptance;
+the measured passes do not certify final likeness, wall thickness, production topology, UVs, or
+delivery quality.

@@ -122,10 +122,15 @@ construction, that prose should also become a structured, checkable record via
 added 2026-08-13 directly in response to the adjustable wrench's actual failure mode: "I have a good
 silhouette" vs. "you didn't actually model the wrench." A clean silhouette/topology pass cannot by
 itself prove the object was decomposed into its real parts; `SceneDecomposition.check_object_coverage()`
-can, by comparing the declared primary components against the actual built object names and flagging
-any with no plausible match. Matching is one-to-one and ignores generic tokens: one mesh named
-`Collector_Upper_Shell` cannot claim to satisfy a separate `Boiler_Lower_Shell` merely because both
-contain "shell". It remains a component-presence smoke test, not a geometry or likeness judgment.
+can, by comparing the declared primary components against their actual physical representation and
+flagging any with no plausible match. Legacy name matching remains one-to-one and ignores generic
+tokens: one mesh named `Collector_Upper_Shell` cannot claim to satisfy a separate
+`Boiler_Lower_Shell` merely because both contain "shell". A connected product skin may instead bind
+multiple semantic components to distinct persistent semantic regions on the same host mesh. Each
+bound region must exist, validate against the saved mesh's persistent IDs, and contain elements;
+missing, stale, empty, or reused region identities fail closed. This preserves the anti-collapse
+check without forcing material bands or molded transitions into unnecessary separate objects. It
+remains a component-presence smoke test, not a geometry or likeness judgment.
 When an aligned reference board provides component regions, a primary component may additionally
 record optional normalized-centroid and normalized-size intervals. The same live capture then records
 each matched mesh's evaluated world bounds, centroid, and size relative to the primary-component
@@ -135,8 +140,8 @@ still only a coarse placement/proportion gate, not proof of component shape, dep
 visual fidelity.
 Run `tools/verify_scene_component_coverage.py` in a fresh Blender process against the saved asset,
 the decomposition JSON, and its intended collection to record this check beside an asset review.
-Advancing from `PRIMARY_BLOCKOUT` to silhouette/proportion review requires a structured one-to-one
-coverage object as `component_coverage` stage evidence; a hand-authored boolean is deliberately
+Advancing from `PRIMARY_BLOCKOUT` to silhouette/proportion review requires a structured distinct
+component-coverage object as `component_coverage` stage evidence; a hand-authored boolean is deliberately
 insufficient. A saved-asset evaluation should use the fresh-process report above rather than claim
 that a live-stage record is independent verification. During active modeling, use the typed
 `check_scene_component_coverage` runtime command to capture the actual live mesh names, session,

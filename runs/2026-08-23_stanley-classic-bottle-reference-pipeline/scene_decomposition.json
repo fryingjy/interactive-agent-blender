@@ -1,0 +1,46 @@
+{
+  "object_name": "Stanley Classic Legendary Bottle 1.0 QT",
+  "object_class": "vacuum bottle",
+  "reference_style": "photo",
+  "components": [
+    {
+      "name": "body",
+      "role": "primary",
+      "manufacture": "structural",
+      "coverage_binding": {
+        "kind": "semantic_region",
+        "object_name": "Vessel",
+        "region_id": "body"
+      }
+    },
+    {
+      "name": "base_ring",
+      "role": "primary",
+      "manufacture": "structural",
+      "coverage_binding": {
+        "kind": "semantic_region",
+        "object_name": "Vessel",
+        "region_id": "base_ring"
+      }
+    },
+    {
+      "name": "gasket_ring",
+      "role": "primary",
+      "manufacture": "structural",
+      "coverage_binding": {
+        "kind": "semantic_region",
+        "object_name": "Vessel",
+        "region_id": "gasket_ring"
+      }
+    },
+    {
+      "name": "cap_cup",
+      "role": "primary",
+      "manufacture": "structural",
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "CapCup"
+      }
+    }
+  ]
+}

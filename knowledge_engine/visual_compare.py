@@ -18,6 +18,60 @@ def load_mask(path: str | Path, alpha_threshold: int = 1) -> np.ndarray:
     return luminance < 250
 
 
+def load_foreground_mask(
+    path: str | Path,
+    *,
+    mode: str = "auto",
+    threshold: int = 16,
+) -> np.ndarray:
+    """Load an explicit foreground convention instead of guessing from color.
+
+    ``alpha`` is appropriate for transparent product/reference PNGs,
+    ``light_on_dark`` for Blender Workbench diagnostics, and ``dark_on_light``
+    for conventional white-background masks.  ``auto`` preserves ``load_mask``
+    compatibility.  Making the convention explicit prevents a black render
+    background from being counted as the modeled object.
+    """
+    if mode == "auto":
+        return load_mask(path, alpha_threshold=max(1, threshold))
+    if mode not in {"alpha", "light_on_dark", "dark_on_light"}:
+        raise ValueError("mode must be auto, alpha, light_on_dark, or dark_on_light")
+    image = np.asarray(Image.open(path).convert("RGBA"))
+    if mode == "alpha":
+        return image[..., 3] >= threshold
+    luminance = cv2.cvtColor(image[..., :3], cv2.COLOR_RGB2GRAY)
+    return luminance >= threshold if mode == "light_on_dark" else luminance <= 255 - threshold
+
+
+def normalize_foreground_bbox(mask: np.ndarray, size: int = 512, padding: int = 8) -> np.ndarray:
+    """Center a silhouette in a fixed square while preserving aspect ratio.
+
+    This removes irrelevant source-canvas translation/scale but deliberately
+    retains the object's width-to-height ratio.  Stretching every foreground
+    bounding box to a full square would manufacture deceptively high IoU.
+    """
+    if not isinstance(size, int) or isinstance(size, bool) or size <= 0:
+        raise ValueError("size must be a positive integer")
+    if not isinstance(padding, int) or isinstance(padding, bool) or padding < 0 or padding * 2 >= size:
+        raise ValueError("padding must be a non-negative integer smaller than half the output size")
+    mask = np.asarray(mask, dtype=bool)
+    bbox = _bbox(mask)
+    if bbox is None:
+        return np.zeros((size, size), dtype=bool)
+    x0, y0, x1, y1 = bbox
+    crop = mask[y0 : y1 + 1, x0 : x1 + 1]
+    available = size - 2 * padding
+    scale = available / max(crop.shape)
+    width = max(1, int(round(crop.shape[1] * scale)))
+    height = max(1, int(round(crop.shape[0] * scale)))
+    resized = cv2.resize(crop.astype(np.uint8), (width, height), interpolation=cv2.INTER_NEAREST).astype(bool)
+    result = np.zeros((size, size), dtype=bool)
+    left = (size - width) // 2
+    top = (size - height) // 2
+    result[top : top + height, left : left + width] = resized
+    return result
+
+
 def _bbox(mask: np.ndarray) -> tuple[int, int, int, int] | None:
     ys, xs = np.nonzero(mask)
     if not len(xs):

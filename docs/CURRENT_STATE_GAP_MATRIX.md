@@ -1,6 +1,6 @@
 # Current-state capability gap matrix
 
-Updated: 2026-08-23. The 2026-08-21 ground truth below still holds; two new decisions apply on top
+Updated: 2026-08-24. The 2026-08-21 ground truth below still holds; two new decisions apply on top
 of it. First, `runs/2026-08-23_stylized-longsword/` produced a first blockout and then a real
 reference-corrected revision (blade width/taper rescaled to a precisely-measured historical
 longsword after the original guess proved oversized), which is genuine evidence that the
@@ -25,6 +25,11 @@ independently re-measured. A second human-review correction (reducing 4 objects 
 existed; added and debugged live, `81e815b`/`477ba38`) both got handled and recorded properly
 mid-run. This is the first prop this project has taken through blockout under the strengthened
 gate, and no new prop starts are paused now that it exists and works.
+
+**Update, 2026-08-24:** Stanley now reaches `SECONDARY_FORMS`. Structured coverage supports distinct
+persistent regions on one connected `Vessel` plus the removable `CapCup`; controlled renders drove
+a connected shoulder-loop correction and fill/inset repair of the open cap top. This is real
+closed-loop progress, but still has no human visual acceptance and is not a ladder promotion.
 
 ## Ground truth
 

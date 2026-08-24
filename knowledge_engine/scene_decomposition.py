@@ -203,6 +203,16 @@ class Component:
     # interval for x/y/z.  It stays optional: a single perspective photo must not
     # be laundered into fictional placement precision.
     expected_region: dict[str, dict[str, list[float]]] = field(default_factory=dict)
+    # Explicit physical representation for coverage checks.  A semantic
+    # component does not always deserve its own Blender object: material bands,
+    # molded transitions, and connected shell regions may intentionally share
+    # one editable mesh.  In those cases bind the component to a distinct
+    # persistent semantic region instead of weakening the anti-collapse check.
+    #
+    # Supported forms:
+    #   {"kind": "object", "object_name": "CapCup"}
+    #   {"kind": "semantic_region", "object_name": "Vessel", "region_id": "body"}
+    coverage_binding: dict[str, str] = field(default_factory=dict)
 
     def validate(self) -> None:
         if not self.name.strip():
@@ -212,6 +222,22 @@ class Component:
         if self.manufacture not in VALID_MANUFACTURE:
             raise ValueError(f"invalid manufacture '{self.manufacture}' for component '{self.name}'")
         _validate_evidence_binding(self.name, self.evidence_status, self.confidence, self.evidence)
+        if self.coverage_binding:
+            if not isinstance(self.coverage_binding, dict):
+                raise ValueError(f"coverage binding for component '{self.name}' must be an object")
+            kind = self.coverage_binding.get("kind")
+            allowed = {
+                "object": {"kind", "object_name"},
+                "semantic_region": {"kind", "object_name", "region_id"},
+            }
+            if kind not in allowed or set(self.coverage_binding) != allowed[kind]:
+                raise ValueError(f"invalid coverage binding for component '{self.name}'")
+            if any(
+                not isinstance(value, str) or not value.strip()
+                for key, value in self.coverage_binding.items()
+                if key != "kind"
+            ):
+                raise ValueError(f"coverage binding values for component '{self.name}' must be non-empty strings")
         if not self.expected_region:
             return
         allowed = {"normalized_centroid", "normalized_size"}
@@ -501,7 +527,11 @@ class SceneDecomposition:
     def has_primary_layout_expectations(self) -> bool:
         return any(component.expected_region for component in self.primary_components())
 
-    def check_object_coverage(self, built_object_names: list[str]) -> dict[str, Any]:
+    def check_object_coverage(
+        self,
+        built_object_names: list[str],
+        semantic_regions_by_object: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """The actual anti-wrench check: does the built scene have a plausible
         object for each PRIMARY component, or did construction collapse
         multiple declared primary components into fewer built objects (or one
@@ -510,15 +540,38 @@ class SceneDecomposition:
         primary component with no plausible match is a genuine, mechanically
         checkable red flag a pure silhouette/topology pass cannot catch.
 
-        This is a name-based smoke detector, not geometric proof.  It uses
-        meaningful name tokens and one-to-one maximum matching: a single
-        ``Collector_Upper_Shell`` cannot silently count as both a collector
-        and a ``Boiler_Lower_Shell`` just because both names contain "shell".
-        Passing still does not establish that either component has the right
-        proportions, construction, topology, or silhouette.
+        This is a name/semantic-presence smoke detector, not geometric proof.
+        Unbound components retain one-to-one maximum object matching: a single
+        ``Collector_Upper_Shell`` cannot silently count as two parts.  Explicit
+        ``semantic_region`` bindings may share one host mesh only when each
+        component names a different persistent region that actually exists.
+        This preserves the anti-collapse invariant without forcing connected
+        product skins to be fragmented into separate Blender objects.
         """
         self.validate()
         primaries = self.primary_components()
+        semantic_regions_by_object = semantic_regions_by_object or {}
+        if not isinstance(semantic_regions_by_object, dict):
+            raise ValueError("semantic_regions_by_object must map object names to region-id lists")
+        normalized_regions: dict[str, dict[str, dict[str, Any]]] = {}
+        for object_name, region_records in semantic_regions_by_object.items():
+            if not isinstance(object_name, str):
+                raise ValueError("semantic_regions_by_object keys must be strings")
+            if isinstance(region_records, list):
+                if any(not isinstance(region_id, str) for region_id in region_records):
+                    raise ValueError("semantic region-id lists must contain strings")
+                normalized_regions[object_name] = {
+                    region_id: {"valid": True, "element_count": None}
+                    for region_id in region_records
+                }
+            elif isinstance(region_records, dict):
+                normalized_regions[object_name] = {}
+                for region_id, record in region_records.items():
+                    if not isinstance(region_id, str) or not isinstance(record, dict):
+                        raise ValueError("semantic region records must map string ids to objects")
+                    normalized_regions[object_name][region_id] = record
+            else:
+                raise ValueError("semantic_regions_by_object values must be lists or record maps")
 
         def tokens(name: str) -> set[str]:
             # Blender object names frequently use PascalCase while reference
@@ -532,20 +585,80 @@ class SceneDecomposition:
 
         component_tokens = [tokens(component.name) for component in primaries]
         built_tokens = [tokens(name) for name in built_object_names]
+        built_name_to_index = {name: index for index, name in enumerate(built_object_names)}
+        component_to_object: dict[int, int] = {}
+        component_evidence: dict[str, dict[str, Any]] = {}
+        reserved_object_indices: set[int] = set()
+        semantic_host_indices: set[int] = set()
+        used_region_keys: set[tuple[str, str]] = set()
+        explicitly_unmatched: set[int] = set()
+
+        for component_index, component in enumerate(primaries):
+            binding = component.coverage_binding
+            if not binding:
+                continue
+            object_name = binding["object_name"]
+            object_index = built_name_to_index.get(object_name)
+            if object_index is None:
+                explicitly_unmatched.add(component_index)
+                continue
+            if binding["kind"] == "object":
+                if object_index in reserved_object_indices or object_index in semantic_host_indices:
+                    explicitly_unmatched.add(component_index)
+                    continue
+                reserved_object_indices.add(object_index)
+                component_to_object[component_index] = object_index
+                component_evidence[component.name] = {
+                    "kind": "object", "object_name": object_name, "region_id": None,
+                }
+                continue
+            region_id = binding["region_id"]
+            region_key = (object_name, region_id)
+            region_record = normalized_regions.get(object_name, {}).get(region_id)
+            if (
+                object_index in reserved_object_indices
+                or region_record is None
+                or region_record.get("valid") is not True
+                or (
+                    region_record.get("element_count") is not None
+                    and region_record.get("element_count", 0) <= 0
+                )
+                or region_key in used_region_keys
+            ):
+                explicitly_unmatched.add(component_index)
+                continue
+            semantic_host_indices.add(object_index)
+            used_region_keys.add(region_key)
+            component_to_object[component_index] = object_index
+            component_evidence[component.name] = {
+                "kind": "semantic_region", "object_name": object_name, "region_id": region_id,
+                "region_valid": region_record.get("valid"),
+                "element_count": region_record.get("element_count"),
+            }
+
         candidates: list[list[int]] = []
-        for component, component_words in zip(primaries, component_tokens):
+        for component_index, (component, component_words) in enumerate(zip(primaries, component_tokens)):
+            if component.coverage_binding:
+                candidates.append([])
+                continue
             meaningful_words = component_words - _COVERAGE_GENERIC_TOKENS
             exact_name = normalized(component.name)
             candidates.append([
                 index
                 for index, object_words in enumerate(built_tokens)
+                if index not in reserved_object_indices
+                and index not in semantic_host_indices
                 if normalized(built_object_names[index]) == exact_name
                 or bool(meaningful_words & (object_words - _COVERAGE_GENERIC_TOKENS))
             ])
 
         # Maximum bipartite matching rather than independent membership tests:
         # one built object may satisfy at most one declared primary component.
-        object_to_component: dict[int, int] = {}
+        object_to_component: dict[int, int] = {
+            object_index: component_index
+            for component_index, object_index in component_to_object.items()
+            if primaries[component_index].coverage_binding.get("kind") == "object"
+        }
 
         def assign(component_index: int, visited: set[int]) -> bool:
             for object_index in candidates[component_index]:
@@ -558,17 +671,27 @@ class SceneDecomposition:
                     return True
             return False
 
-        for component_index in sorted(range(len(primaries)), key=lambda index: len(candidates[index])):
+        unbound_indices = [
+            index for index, component in enumerate(primaries)
+            if not component.coverage_binding
+        ]
+        for component_index in sorted(unbound_indices, key=lambda index: len(candidates[index])):
             assign(component_index, set())
 
-        component_to_object = {
+        component_to_object.update({
             component_index: object_index
             for object_index, component_index in object_to_component.items()
-        }
+        })
+        for component_index in unbound_indices:
+            object_index = component_to_object.get(component_index)
+            if object_index is not None:
+                component_evidence[primaries[component_index].name] = {
+                    "kind": "object", "object_name": built_object_names[object_index], "region_id": None,
+                }
         unmatched = [
             component.name
             for component_index, component in enumerate(primaries)
-            if component_index not in component_to_object
+            if component_index not in component_to_object or component_index in explicitly_unmatched
         ]
         return {
             "declared_primary_components": [c.name for c in primaries],
@@ -577,11 +700,16 @@ class SceneDecomposition:
                 primaries[component_index].name: built_object_names[object_index]
                 for component_index, object_index in sorted(component_to_object.items())
             },
+            "component_evidence": component_evidence,
             "unmatched_primary_components": unmatched,
             "coverage_ok": not unmatched,
         }
 
-    def check_component_layout(self, object_bounds: dict[str, dict[str, list[float]]]) -> dict[str, Any]:
+    def check_component_layout(
+        self,
+        object_bounds: dict[str, dict[str, list[float]]],
+        semantic_regions_by_object: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Compare measured component bounds with optional reference-board regions.
 
         Names prove only presence.  This check adds coarse placement and proportion
@@ -592,7 +720,7 @@ class SceneDecomposition:
         """
         if not isinstance(object_bounds, dict):
             raise ValueError("object_bounds must map object names to min/max bounds")
-        coverage = self.check_object_coverage(sorted(object_bounds))
+        coverage = self.check_object_coverage(sorted(object_bounds), semantic_regions_by_object)
         expected = {
             component.name: component.expected_region
             for component in self.primary_components()

@@ -841,9 +841,9 @@ class ModelerServer:
             objects = bpy.data.objects
         meshes = sorted((obj for obj in objects if obj.type == "MESH"), key=lambda obj: obj.name)
         names = [obj.name for obj in meshes]
-        coverage = parsed.check_object_coverage(names)
         depsgraph = bpy.context.evaluated_depsgraph_get()
         bounds = {}
+        semantic_regions_by_object = {}
         for obj in meshes:
             evaluated = obj.evaluated_get(depsgraph)
             corners = [evaluated.matrix_world @ Vector(corner) for corner in evaluated.bound_box]
@@ -851,7 +851,20 @@ class ModelerServer:
                 "min": [min(corner[index] for corner in corners) for index in range(3)],
                 "max": [max(corner[index] for corner in corners) for index in range(3)],
             }
-        component_layout = parsed.check_component_layout(bounds)
+            region_records = {}
+            for region_id in semantic_regions.list_regions(obj.name)["region_ids"]:
+                validation = semantic_regions.validate_region(obj.name, region_id)
+                region = validation.get("region", {})
+                region_records[region_id] = {
+                    "valid": validation.get("valid") is True,
+                    "element_count": sum(
+                        len(region.get(key, []))
+                        for key in ("vertex_ids", "edge_ids", "face_ids")
+                    ),
+                }
+            semantic_regions_by_object[obj.name] = region_records
+        coverage = parsed.check_object_coverage(names, semantic_regions_by_object)
+        component_layout = parsed.check_component_layout(bounds, semantic_regions_by_object)
         passed = coverage["coverage_ok"] and (
             not component_layout["layout_expectations_present"] or component_layout["layout_ok"]
         )

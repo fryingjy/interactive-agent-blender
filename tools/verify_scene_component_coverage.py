@@ -62,6 +62,47 @@ def evaluated_bounds(objects) -> dict[str, dict[str, list[float]]]:
     return result
 
 
+def semantic_region_records(objects) -> dict[str, dict[str, dict[str, object]]]:
+    """Read persisted semantic regions and verify every referenced element ID.
+
+    The live modeler performs the same validation through ``semantic_regions``.
+    This independent verifier reads the saved datablocks directly so a region
+    name alone cannot satisfy connected-component coverage after reload.
+    """
+    result: dict[str, dict[str, dict[str, object]]] = {}
+    domain_attributes = {
+        "vertex_ids": "agent_vertex_id",
+        "edge_ids": "agent_edge_id",
+        "face_ids": "agent_face_id",
+    }
+    for object in objects:
+        records: dict[str, dict[str, object]] = {}
+        try:
+            regions = json.loads(object.get("agent_semantic_regions", "{}"))
+        except (TypeError, json.JSONDecodeError):
+            regions = {}
+        available: dict[str, set[int]] = {}
+        for key, attribute_name in domain_attributes.items():
+            attribute = object.data.attributes.get(attribute_name)
+            available[key] = (
+                {int(item.value) for item in attribute.data}
+                if attribute is not None else set()
+            )
+        for region_id, region in regions.items():
+            missing = {
+                key: sorted(set(region.get(key, [])) - available[key])
+                for key in domain_attributes
+            }
+            element_count = sum(len(region.get(key, [])) for key in domain_attributes)
+            records[region_id] = {
+                "valid": not any(missing.values()),
+                "element_count": element_count,
+                "missing_ids": missing,
+            }
+        result[object.name] = records
+    return result
+
+
 def main() -> int:
     blend_path, decomposition_path, collection_name, report_path = parse_args()
     bpy.ops.wm.open_mainfile(filepath=str(blend_path), load_ui=False)
@@ -70,13 +111,14 @@ def main() -> int:
     )
     objects = mesh_objects(collection_name)
     object_names = [object.name for object in objects]
-    coverage = decomposition.check_object_coverage(object_names)
-    component_layout = decomposition.check_component_layout(evaluated_bounds(objects))
+    semantic_records = semantic_region_records(objects)
+    coverage = decomposition.check_object_coverage(object_names, semantic_records)
+    component_layout = decomposition.check_component_layout(evaluated_bounds(objects), semantic_records)
     passed = coverage["coverage_ok"] and (
         not component_layout["layout_expectations_present"] or component_layout["layout_ok"]
     )
     report = {
-        "schema_version": 2,
+        "schema_version": 3,
         "scope": (
             "Fresh-process component-presence plus optional coarse placement/proportion smoke test. "
             "Passing does not prove reference likeness, silhouette, topology, modifier quality, or human approval."
@@ -85,6 +127,7 @@ def main() -> int:
         "decomposition_path": str(decomposition_path),
         "collection": collection_name,
         "mesh_object_names": object_names,
+        "semantic_region_records": semantic_records,
         "coverage": coverage,
         "component_layout": component_layout,
         "pass": passed,

@@ -83,10 +83,12 @@
       "evidence": [
         "knowledge_engine/component_strategy.py",
         "tools/run_secondary_view_component_strategy_lab.py",
-        "runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md"
+        "runs/2026-08-16_reference-gathering-scotch-c38/reference_plan.md",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/scene_decomposition.json",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/fresh_component_coverage.json"
       ],
-      "current_boundary": "The C38 model run and its human_stage_review.json qualified-stage-pass evidence were deliberately deleted 2026-08-17 (direct user instruction). Component-graph transfer to a fresh complex target remains unproven, and this requirement's strongest prior evidence no longer exists.",
-      "next_step": "Build and review a new target's component graph before detailed modeling."
+      "current_boundary": "The Stanley run now proves structured component planning against a saved live asset without forcing every semantic component into a separate primitive: body, base, and gasket bind to distinct valid nonempty persistent regions on one connected Vessel mesh, while the removable CapCup remains a separate object. This is one neutral rotational target, not broad complex-target transfer or human acceptance.",
+      "next_step": "Carry the same explicit object-versus-semantic-region strategy through a less rotational target and obtain human review of the decomposition."
     },
     {
       "id": "7",
@@ -95,10 +97,11 @@
       "evidence": [
         "knowledge_engine/planner.py",
         "tools/run_planner_contract_lab.py",
-        "runs/2026-08-15_video-transfer-uniform-deformation/planner_use_verification.json"
+        "runs/2026-08-15_video-transfer-uniform-deformation/planner_use_verification.json",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md"
       ],
-      "current_boundary": "The planner contract is verified in controlled work, but repeated adaptive use on visually accepted assets is still sparse.",
-      "next_step": "Record observed mismatch, local decision, and re-render cycles on the next target."
+      "current_boundary": "The planner contract is verified in controlled work and the Stanley run retains real mismatch-to-local-edit cycles for its shoulder and open cap top. Repeated adaptive use on visually accepted assets is still sparse.",
+      "next_step": "Complete the current target's topology/surface cycle and retain the next reference-driven correction before seeking human review."
     },
     {
       "id": "8",
@@ -109,10 +112,11 @@
         "tools/run_transaction_channel_rollback_lab.py",
         "runs/2026-08-16_double-curvature-bevel-subd/double_curvature_bevel_subd_report.json",
         "runs/2026-08-16_connect-vertex-path-curved-transfer/fresh_verification.json",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json",
         "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
       ],
-      "current_boundary": "The typed observe-diagnose-decide-verify loop and fail-closed runner are verified, while artistic adequacy still requires independent visual confirmation.",
-      "next_step": "Continue the same loop for reference mismatches on the next target."
+      "current_boundary": "The typed observe-diagnose-decide-verify loop and fail-closed runner are verified. On Stanley, controlled renders exposed a too-sharp shoulder and an open cap top; typed connected-mesh edits corrected both and were re-rendered. Artistic adequacy still requires independent visual confirmation.",
+      "next_step": "Use the same loop through topology/surface review and retain any rejected branches rather than treating technical validity as likeness."
     },
     {
       "id": "9",
@@ -171,10 +175,13 @@
         "runs/2026-08-21_reference-scotch-c60/visual_revision_log.json",
         "runs/2026-08-21_reference-scotch-c60/fresh_asset_inspection.json",
         "runs/2026-08-16_reference-image-alignment-transfer/fresh_verification.json",
-        "knowledge/skills/reference-axis-aligned-image-empty-setup.json"
+        "knowledge/skills/reference-axis-aligned-image-empty-setup.json",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_constraint_evaluation.json",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json"
       ],
-      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. Independent observations can confirm, contradict, or leave numeric/boolean consequences undecidable without candidates embedding their own proof. AA/LR6 drives a simple connected rotational blockout. Scotch C60 extends the path to a non-rotational connected U-plan shell, eliminates disconnected-rail and circular-tube interpretations, retains an ambiguous lower boundary as reversible, and records a render-driven five-to-nine-section crease/SubD correction. Neither run has human visual acceptance, and C60 still lacks an accurate hub support and lower perimeter.",
-      "next_step": "Correct the remaining C60 component/perimeter mismatches from controlled views, seek human review, then test whether the same reasoning transfers to another unrelated target."
+      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. Stanley adds two official same-target views, an independently measured straight-cylinder hypothesis, aspect-preserving silhouette comparison, and measured shoulder correction on one connected rotational asset. The corrected views clear the frozen 0.90 silhouette threshold and improve over baseline, but no automated metric or self-review is human visual acceptance.",
+      "next_step": "Finish Stanley topology/surface and production verification, obtain human review, then test transfer on an unrelated less-rotational target."
     },
     {
       "id": "13",
@@ -307,10 +314,11 @@
       "evidence": [
         "docs/DEVELOPMENT_PRIORITIES.md",
         "docs/CURRENT_STATE_GAP_MATRIX.md",
-        "knowledge/foundation/foundation_exit_report.md"
+        "knowledge/foundation/foundation_exit_report.md",
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md"
       ],
-      "current_boundary": "The live priorities identify reference interpretation and reviewer-approved Level-1 breadth as the bottleneck; this has not yet been resolved.",
-      "next_step": "Do not substitute additional infrastructure or passive tutorial collection for the pending reference-modeling proof."
+      "current_boundary": "The live priority remains reference interpretation and reviewer-approved breadth. The pipeline is now being exercised on Stanley through SECONDARY_FORMS, while two consecutive beginner tutorial passes have separately unblocked intermediate I0 study. Neither fact resolves the missing human-reviewed unfamiliar-prop proof.",
+      "next_step": "Finish and review the current neutral reference run before starting another prop; use additional tutorial or infrastructure work only when a concrete failure identifies the need."
     }
   ]
 }

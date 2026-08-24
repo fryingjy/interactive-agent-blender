@@ -24,7 +24,7 @@ from knowledge_engine.scene_decomposition import (
     scene_decomposition_from_dict,
 )
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
-from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask
+from knowledge_engine.visual_compare import compare_component_masks, compare_landmarks, compare_masks, make_reference_tickets, negative_space_mask, normalize_foreground_bbox
 from knowledge_engine.human_review import build_repair_record, review_to_repair_tickets, validate_external_visual_review
 from knowledge_engine.reference_board_review import (
     build_reference_board_handoff,
@@ -481,6 +481,55 @@ class SceneDecompositionTests(unittest.TestCase):
         self.assertTrue(result["coverage_ok"])
         self.assertEqual(result["component_matches"], {"stage_gate_asset": "StageGateAsset"})
 
+    def test_coverage_check_allows_explicit_distinct_regions_on_one_connected_object(self):
+        decomp = SceneDecomposition(
+            object_name="bottle",
+            components=[
+                Component("body", "primary", "structural", coverage_binding={
+                    "kind": "semantic_region", "object_name": "Vessel", "region_id": "body",
+                }),
+                Component("base_ring", "primary", "structural", coverage_binding={
+                    "kind": "semantic_region", "object_name": "Vessel", "region_id": "base_ring",
+                }),
+                Component("cap", "primary", "structural", coverage_binding={
+                    "kind": "object", "object_name": "CapCup",
+                }),
+            ],
+        )
+        result = decomp.check_object_coverage(
+            ["CapCup", "Vessel"],
+            {"Vessel": ["body", "base_ring"], "CapCup": []},
+        )
+        self.assertTrue(result["coverage_ok"])
+        self.assertEqual(result["component_matches"]["body"], "Vessel")
+        self.assertEqual(result["component_matches"]["base_ring"], "Vessel")
+        self.assertEqual(result["component_evidence"]["body"]["region_id"], "body")
+
+    def test_coverage_check_rejects_missing_or_reused_semantic_region(self):
+        decomp = SceneDecomposition(
+            object_name="bottle",
+            components=[
+                Component("body", "primary", coverage_binding={
+                    "kind": "semantic_region", "object_name": "Vessel", "region_id": "shell",
+                }),
+                Component("base_ring", "primary", coverage_binding={
+                    "kind": "semantic_region", "object_name": "Vessel", "region_id": "shell",
+                }),
+            ],
+        )
+        result = decomp.check_object_coverage(["Vessel"], {"Vessel": ["shell"]})
+        self.assertFalse(result["coverage_ok"])
+        self.assertEqual(result["unmatched_primary_components"], ["base_ring"])
+
+        missing = SceneDecomposition(
+            object_name="bottle",
+            components=[Component("body", "primary", coverage_binding={
+                "kind": "semantic_region", "object_name": "Vessel", "region_id": "body",
+            })],
+        ).check_object_coverage(["Vessel"], {"Vessel": []})
+        self.assertFalse(missing["coverage_ok"])
+        self.assertEqual(missing["unmatched_primary_components"], ["body"])
+
     def test_component_layout_requires_measured_primary_placement_and_proportion(self):
         decomp = SceneDecomposition(
             object_name="two-part housing",
@@ -680,6 +729,18 @@ class SceneDecompositionTests(unittest.TestCase):
 
 
 class VisualComparisonTests(unittest.TestCase):
+    def test_foreground_bbox_normalization_preserves_aspect_ratio(self):
+        tall = np.zeros((100, 100), dtype=bool)
+        tall[10:90, 40:60] = True
+        wide = np.zeros((100, 100), dtype=bool)
+        wide[40:60, 10:90] = True
+        tall_normalized = normalize_foreground_bbox(tall, size=128, padding=4)
+        wide_normalized = normalize_foreground_bbox(wide, size=128, padding=4)
+        tall_y, tall_x = np.where(tall_normalized)
+        wide_y, wide_x = np.where(wide_normalized)
+        self.assertGreater(np.ptp(tall_y), np.ptp(tall_x))
+        self.assertGreater(np.ptp(wide_x), np.ptp(wide_y))
+
     def test_identical_masks_are_exact(self):
         mask = np.zeros((64, 64), dtype=bool)
         mask[16:48, 20:44] = True
@@ -739,7 +800,7 @@ class QualityReviewTests(unittest.TestCase):
             },
         })
         self.assertFalse(stale_or_collapsed["pass"])
-        self.assertIn("structured one-to-one component coverage is missing or invalid", stale_or_collapsed["failures"])
+        self.assertIn("structured distinct component coverage is missing or invalid", stale_or_collapsed["failures"])
 
         accepted = evaluate_stage_gate("PRIMARY_BLOCKOUT", {
             **base,
@@ -770,7 +831,47 @@ class QualityReviewTests(unittest.TestCase):
             },
         })
         self.assertFalse(result["pass"])
-        self.assertIn("structured one-to-one component coverage is missing or invalid", result["failures"])
+
+    def test_primary_blockout_accepts_distinct_semantic_regions_on_shared_mesh(self):
+        evidence = {
+            "dimensions_checked": True,
+            "primary_components_present": True,
+            "component_coverage": {
+                "capture_type": "LIVE_MODELER_RUNTIME",
+                "session_id": "semantic-coverage-session",
+                "scene_revision": 12,
+                "mesh_object_names": ["CapCup", "Vessel"],
+                "coverage": {
+                    "declared_primary_components": ["body", "base_ring", "cap"],
+                    "built_object_names": ["CapCup", "Vessel"],
+                    "component_matches": {
+                        "body": "Vessel", "base_ring": "Vessel", "cap": "CapCup",
+                    },
+                    "component_evidence": {
+                        "body": {"kind": "semantic_region", "object_name": "Vessel", "region_id": "body", "region_valid": True, "element_count": 96},
+                        "base_ring": {"kind": "semantic_region", "object_name": "Vessel", "region_id": "base_ring", "region_valid": True, "element_count": 32},
+                        "cap": {"kind": "object", "object_name": "CapCup", "region_id": None},
+                    },
+                    "unmatched_primary_components": [],
+                    "coverage_ok": True,
+                },
+                "component_layout": {
+                    "layout_expectations_present": False,
+                    "layout_ok": None,
+                    "status": "not_applicable",
+                    "component_reports": {},
+                },
+                "pass": True,
+            },
+        }
+        result = evaluate_stage_gate("PRIMARY_BLOCKOUT", evidence)
+        self.assertTrue(result["pass"])
+
+        duplicate = json.loads(json.dumps(evidence))
+        duplicate["component_coverage"]["coverage"]["component_evidence"]["base_ring"]["region_id"] = "body"
+        rejected = evaluate_stage_gate("PRIMARY_BLOCKOUT", duplicate)
+        self.assertFalse(rejected["pass"])
+        self.assertIn("structured distinct component coverage is missing or invalid", rejected["failures"])
 
     def test_stage_gate_rejects_global_only_visual_evidence(self):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True, "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []}, "declared_view_ids": ["front", "side"], "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []}, "visual_mismatch_ledger": [{"view_id": "front", "status": "accepted", "salience": "low", "observation": "reviewed"}, {"view_id": "side", "status": "accepted", "salience": "low", "observation": "reviewed"}]})

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION",
+  "target_id": "stanley-classic-legendary-bottle-1qt",
+  "claim_boundary": "Named normalized constraints localize correction work; passing them does not prove visual fidelity or replace human review.",
+  "constraints": [
+    {
+      "id": "width_frac_020",
+      "kind": "scalar",
+      "importance": "medium",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.03,
+      "error": 0.023800000000000043,
+      "target": 0.7816,
+      "observed": 0.8054,
+      "absolute_error": 0.023800000000000043
+    },
+    {
+      "id": "width_frac_024",
+      "kind": "scalar",
+      "importance": "high",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.01650000000000007,
+      "target": 0.8157,
+      "observed": 0.8322,
+      "absolute_error": 0.01650000000000007
+    },
+    {
+      "id": "width_frac_026",
+      "kind": "scalar",
+      "importance": "high",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.0049000000000000155,
+      "target": 0.864,
+      "observed": 0.8591,
+      "absolute_error": 0.0049000000000000155
+    },
+    {
+      "id": "width_frac_028",
+      "kind": "scalar",
+      "importance": "high",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.019500000000000073,
+      "target": 0.9323,
+      "observed": 0.9128,
+      "absolute_error": 0.019500000000000073
+    },
+    {
+      "id": "width_frac_030",
+      "kind": "scalar",
+      "importance": "high",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.012900000000000023,
+      "target": 0.9659,
+      "observed": 0.953,
+      "absolute_error": 0.012900000000000023
+    },
+    {
+      "id": "width_frac_032",
+      "kind": "scalar",
+      "importance": "high",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.017000000000000015,
+      "target": 0.983,
+      "observed": 1.0,
+      "absolute_error": 0.017000000000000015
+    },
+    {
+      "id": "width_frac_035",
+      "kind": "scalar",
+      "importance": "medium",
+      "status": "PASS",
+      "pass": true,
+      "tolerance": 0.025,
+      "error": 0.013700000000000045,
+      "target": 0.9863,
+      "observed": 1.0,
+      "absolute_error": 0.013700000000000045
+    }
+  ],
+  "missing_constraint_ids": [],
+  "failed_constraint_ids": [],
+  "blocking_constraint_ids": [],
+  "tickets": [],
+  "pass": true
+}
