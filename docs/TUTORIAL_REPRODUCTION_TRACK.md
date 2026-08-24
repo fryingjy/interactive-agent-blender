@@ -240,3 +240,17 @@ no crate-specific builder was added.
 Modeling is frozen here to prevent over-investing in one weak result. The next I0 attempt must use a
 different complete intermediate lesson with an independently inspectable final result and the same
 bounded reproduce/verify/transfer cutoff. I1 remains blocked.
+
+## I0 third attempt: Sweaty Grease Studio carabiner
+
+`runs/2026-08-24_tutorial-sweaty-grease-carabiner/` reproduced a complete 9:23 curve-profile
+workflow and added reusable typed curve-resolution control. The body is a clean 440-vertex,
+444-face manifold mesh (down from a rejected 1308-vertex default conversion), and the method
+transferred to an unrelated bent handle. Visual fidelity still failed: the result is too oval and
+round in section, with a simplified nose, gate and sleeve stack and no knurling. The honest score is
+**6.4/10 — not an I0 pass**. This is retained as evidence that topology health and technique
+transfer do not substitute for reference fidelity.
+
+The next run is a bounded held-out Pinterest diagnostic on a double-bladed fantasy hammer. It tests
+the actual end goal—unfamiliar reference-to-model generalization—without counting as an I0
+promotion. Sculpting and detail are excluded; the run stops after one silhouette correction.

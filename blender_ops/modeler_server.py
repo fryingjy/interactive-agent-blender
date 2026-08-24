@@ -153,6 +153,7 @@ _OPS = {
     "mark_no_sharp_edges_needed": object_ops.mark_no_sharp_edges_needed,
     "set_curve_points": curve_ops.set_curve_points,
     "set_curve_bevel_depth": curve_ops.set_curve_bevel_depth,
+    "set_curve_resolution": curve_ops.set_curve_resolution,
     "set_curve_taper": curve_ops.set_curve_taper,
     "set_curve_bevel_object": curve_ops.set_curve_bevel_object,
 }
@@ -758,6 +759,13 @@ class ModelerServer:
 
     def cmd_set_curve_bevel_depth(self, name, depth):
         return curve_ops.set_curve_bevel_depth(name, depth)
+
+    def cmd_set_curve_resolution(self, name, resolution_u=None, bevel_resolution=None):
+        return curve_ops.set_curve_resolution(
+            name,
+            resolution_u=resolution_u,
+            bevel_resolution=bevel_resolution,
+        )
 
     def cmd_set_curve_points(self, name, points):
         return curve_ops.set_curve_points(name, points)

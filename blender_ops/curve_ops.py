@@ -74,6 +74,37 @@ def set_curve_bevel_depth(name, depth):
     return {"name": name, "bevel_depth": depth}
 
 
+def set_curve_resolution(name, resolution_u=None, bevel_resolution=None):
+    """Set path and round-profile sampling without converting the curve.
+
+    Blender's defaults can create a surprisingly dense mesh when a simple
+    blockout curve is converted.  Exposing both sampling controls lets the
+    caller choose density from silhouette and output needs before conversion
+    instead of decimating an already-baked result.
+    """
+    obj = bpy.data.objects[name]
+    if obj.type != "CURVE":
+        raise ValueError(f"'{name}' is not a curve object")
+    if resolution_u is None and bevel_resolution is None:
+        raise ValueError("set_curve_resolution requires at least one resolution value")
+    if resolution_u is not None:
+        value = int(resolution_u)
+        if value < 1:
+            raise ValueError("resolution_u must be at least 1")
+        obj.data.resolution_u = value
+    if bevel_resolution is not None:
+        value = int(bevel_resolution)
+        if value < 0:
+            raise ValueError("bevel_resolution must be non-negative")
+        obj.data.bevel_resolution = value
+    obj.update_tag()
+    return {
+        "name": name,
+        "resolution_u": int(obj.data.resolution_u),
+        "bevel_resolution": int(obj.data.bevel_resolution),
+    }
+
+
 def set_curve_points(name, points):
     """Replace an existing curve spline's editable control-point positions.
 

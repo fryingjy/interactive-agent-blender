@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "record_type": "HELDOUT_REFERENCE_ANALYSIS",
+  "target_id": "double_bladed_fantasy_hammer",
+  "purpose": "Bounded hard-surface reference-to-model generalization test; not an I0 promotion.",
+  "primary_reference": {
+    "pin_url": "https://www.pinterest.com/pin/343188434121646500/",
+    "image_url": "https://i.pinimg.com/736x/66/3d/8c/663d8cedbf34c236568ff2490cb83fd2.jpg",
+    "file": "references/pinterest_primary.jpg",
+    "dimensions": [1366, 3337]
+  },
+  "observations": [
+    "The head is bilaterally symmetric in the front view and can be built as one connected low-poly cage mirrored across X.",
+    "Its outer contour has two broad upper blades, concave waists, lower points and a narrow central socket.",
+    "The long shaft is one continuous 12-16 sided form with controlled radial changes for collars rather than many stacked cylinders.",
+    "Metal collars are justified separate fitted assemblies; the leather wrap is deferred until major-form approval.",
+    "The reference supplies only a front view, so depth must remain a conservative reversible hypothesis."
+  ],
+  "construction": {
+    "head": "Start from one box/cage, mirror, add only contour-defining loops, extrude thickness, use crease-weighted SubD and a small live bevel only where highlight width requires it.",
+    "shaft": "One 12-sided connected radial cage with loop-scaled collar transitions; preserve a circular cross-section with minimal topology.",
+    "assemblies": "Separate only the fitted head socket/collars and the optional leather wrap because they are physically distinct parts."
+  },
+  "bounded_cutoff": "One blockout and one silhouette correction. No sculpting, damage, grain, leather detail, UVs or materials before an 8/10 major-form score.",
+  "success_gate": "Front silhouette, head-to-shaft proportion, concave blade contour, collar placement and plausible 3/4 depth must reach 8/10."
+}

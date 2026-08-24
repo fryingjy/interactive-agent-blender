@@ -246,6 +246,25 @@ def set_curve_bevel_depth(object_name: str, depth: float) -> dict:
 
 
 @mcp.tool()
+def set_curve_resolution(
+    object_name: str,
+    resolution_u: int | None = None,
+    bevel_resolution: int | None = None,
+) -> dict:
+    """Set editable curve path/profile sampling before mesh conversion.
+
+    Use this when Blender's default curve density is excessive for the
+    silhouette or target output. At least one value is required.
+    """
+    return _call(
+        "set_curve_resolution",
+        name=object_name,
+        resolution_u=resolution_u,
+        bevel_resolution=bevel_resolution,
+    )
+
+
+@mcp.tool()
 def set_curve_points(object_name: str, points: list[list[float]]) -> dict:
     """Revise an existing curve's control-point coordinates without converting
     its spline, bevel profile, taper, or other editable curve settings. For a

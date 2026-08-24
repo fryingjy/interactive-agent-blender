@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "record_type": "RUNTIME_CORRECTIONS",
+  "corrections": [
+    {"issue": "A rotate command was prepared with an invalid parameter shape.", "action": "The pending command was abandoned, the known-good checkpoint was retained, and no geometry mutation was claimed."},
+    {"issue": "Default curve conversion produced 1308 vertices and 1316 faces.", "action": "The result was rejected as needlessly dense and the runtime gained an explicit set_curve_resolution operation."},
+    {"issue": "Resolution 3 / bevel resolution 2 passed topology checks but looked faceted.", "action": "It was visually rejected; resolution 6 / bevel resolution 2 was accepted at 440 vertices and 444 faces."},
+    {"issue": "The transfer Blender process reported an Intel driver access violation after saving.", "action": "The report and saved artifact were retained only as bounded evidence; the crash is not represented as a modeling failure or silently omitted."}
+  ]
+}
