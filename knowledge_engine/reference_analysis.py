@@ -456,11 +456,58 @@ def validate_component_reference_coverage(
     }
 
 
+def validate_depth_critical_reference_support(
+    components: list[dict[str, Any]], items: tuple[ReferenceItem, ...]
+) -> dict[str, Any]:
+    """Require more than one observed view for every depth-critical component.
+
+    A front image can cover a component while still providing no evidence for its thickness,
+    layering, attachment depth, or rear construction. Components opt into this stricter check with
+    ``depth_critical: true`` in the decomposition. Evidence counts only when the reference or one
+    of its factual claims is explicitly assigned to that component; inspiration-only material does
+    not satisfy the gate.
+    """
+    critical_ids = {
+        component.get("id") for component in components
+        if component.get("id") and component.get("depth_critical") is True
+    }
+    views_by_component: dict[str, set[str]] = {component_id: set() for component_id in critical_ids}
+    references_by_component: dict[str, set[str]] = {component_id: set() for component_id in critical_ids}
+    for item in items:
+        factual_item = bool(set(item.purposes) & FACTUAL_PURPOSES)
+        assigned = set(item.component_ids) if factual_item else set()
+        assigned.update(
+            claim.component_id for claim in item.claims
+            if claim.component_id and claim.purpose in FACTUAL_PURPOSES
+        )
+        for component_id in critical_ids & assigned:
+            views_by_component[component_id].add(item.view.strip().lower())
+            references_by_component[component_id].add(item.reference_id)
+    reports = {
+        component_id: {
+            "view_ids": sorted(views_by_component[component_id]),
+            "reference_ids": sorted(references_by_component[component_id]),
+            "view_count": len(views_by_component[component_id]),
+            "pass": len(views_by_component[component_id]) >= 2,
+        }
+        for component_id in sorted(critical_ids)
+    }
+    unsupported = [component_id for component_id, report in reports.items() if not report["pass"]]
+    return {
+        "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+        "depth_critical_component_ids": sorted(critical_ids),
+        "component_reports": reports,
+        "unsupported_component_ids": unsupported,
+        "pass": not unsupported,
+    }
+
+
 def build_reference_stage_evidence(
     audit: dict[str, Any], *, component_graph_pass: bool,
     measured_ratio_count: int, uncertainty_recorded: bool,
     visual_reconstruction_audit: dict[str, Any] | None = None,
     component_reference_coverage: dict[str, Any] | None = None,
+    depth_critical_reference_support: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Map one audit into the exact machine gate contract without hand-copied flags.
 
@@ -484,6 +531,7 @@ def build_reference_stage_evidence(
         "question_driven_research_pass": bool(checks.get("question_driven_research_pass")),
         "visual_reconstruction_audit_pass": visual_reconstruction_audit,
         "component_reference_coverage_pass": component_reference_coverage,
+        "depth_critical_reference_support_pass": depth_critical_reference_support,
         "targeted_research_queries": list(audit.get("targeted_research_queries", [])),
         "modeling_constraints": list(
             audit.get("research_audit", {}).get("modeling_constraints", [])

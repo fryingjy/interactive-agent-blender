@@ -113,5 +113,13 @@ declared component -- contested or not -- now needs a region with a declared `st
 specific declared components via `ReferenceItem.component_ids`/`PropertyClaim.component_id`,
 checked by `knowledge_engine/reference_analysis.py::validate_component_reference_coverage()`
 (`component_reference_coverage_pass`) -- not just present somewhere in a global reference set. This
+is still insufficient for parts whose thickness, layering, attachment depth, or rear construction
+can change the chosen representation. Mark those decomposition components with
+`depth_critical: true` and run
+`validate_depth_critical_reference_support()`. The structured
+`depth_critical_reference_support_pass` record now blocks `REFERENCE_ANALYSIS` unless each such
+component has at least two explicitly assigned factual views. A second inspiration image does not
+count, and a bare boolean cannot satisfy the gate. The held-out double-bladed hammer is the control
+case: its front image covered the head but did not support the inferred tapered depth. This gate
 does not grade *how good* a hypothesis's justification is, only that one is structurally present;
 that judgment call remains the modeler's, evidence-gated but not automated away.

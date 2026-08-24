@@ -91,6 +91,7 @@ class ComponentStrategyTests(unittest.TestCase):
                 "question_driven_research_pass": True,
                 "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
                 "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
+                "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
             },
             component_strategy_resolution=resolution,
         ))

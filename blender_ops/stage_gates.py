@@ -12,6 +12,7 @@ STAGE_REQUIREMENTS = {
         "critical_property_coverage_pass", "conflicts_resolved_pass",
         "question_driven_research_pass", "visual_reconstruction_audit_pass",
         "component_reference_coverage_pass",
+        "depth_critical_reference_support_pass",
     ),
     "PRIMARY_BLOCKOUT": (
         "dimensions_checked", "primary_components_present", "component_coverage",
@@ -147,6 +148,33 @@ def _component_reference_coverage_is_valid(value: Any) -> bool:
     )
 
 
+def _depth_critical_reference_support_is_valid(value: Any) -> bool:
+    """Require the structured depth-critical support report, never a bare assertion."""
+    if not isinstance(value, dict) or value.get("record_type") != "DEPTH_CRITICAL_REFERENCE_SUPPORT":
+        return False
+    component_ids = value.get("depth_critical_component_ids")
+    reports = value.get("component_reports")
+    if (
+        not isinstance(component_ids, list)
+        or len(component_ids) != len(set(component_ids))
+        or not isinstance(reports, dict)
+        or set(reports) != set(component_ids)
+        or value.get("unsupported_component_ids") != []
+        or value.get("pass") is not True
+    ):
+        return False
+    return all(
+        isinstance(report, dict)
+        and report.get("pass") is True
+        and isinstance(report.get("view_ids"), list)
+        and len(set(report["view_ids"])) >= 2
+        and report.get("view_count") == len(set(report["view_ids"]))
+        and isinstance(report.get("reference_ids"), list)
+        and len(report["reference_ids"]) >= 2
+        for report in reports.values()
+    )
+
+
 def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
     """Validate the review records that numbers alone cannot replace.
 
@@ -236,6 +264,8 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
                 failures.append("visual reconstruction audit missing, invalid, or not passing")
             if not _component_reference_coverage_is_valid(evidence["component_reference_coverage_pass"]):
                 failures.append("reference evidence does not cover every declared component")
+            if not _depth_critical_reference_support_is_valid(evidence["depth_critical_reference_support_pass"]):
+                failures.append("depth-critical components lack multi-view structural evidence")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")

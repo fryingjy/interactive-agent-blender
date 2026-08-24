@@ -14,6 +14,7 @@ def _base_evidence():
         "question_driven_research_pass": True,
         "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
         "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
+        "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
     }
 
 
@@ -62,3 +63,37 @@ def test_self_asserted_true_does_not_satisfy_component_reference_coverage():
     result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
     assert result["pass"] is False
     assert "reference evidence does not cover every declared component" in result["failures"]
+
+
+def test_front_only_depth_critical_component_blocks_advance():
+    evidence = _base_evidence()
+    evidence["depth_critical_reference_support_pass"] = {
+        "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+        "depth_critical_component_ids": ["head"],
+        "component_reports": {"head": {"view_ids": ["front"], "reference_ids": ["front"], "view_count": 1, "pass": False}},
+        "unsupported_component_ids": ["head"],
+        "pass": False,
+    }
+    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
+    assert result["pass"] is False
+    assert "depth-critical components lack multi-view structural evidence" in result["failures"]
+
+
+def test_bare_true_does_not_satisfy_depth_support():
+    evidence = _base_evidence()
+    evidence["depth_critical_reference_support_pass"] = True
+    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
+    assert result["pass"] is False
+
+
+def test_structured_depth_report_cannot_omit_declared_component_details():
+    evidence = _base_evidence()
+    evidence["depth_critical_reference_support_pass"] = {
+        "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+        "depth_critical_component_ids": ["head"],
+        "component_reports": {},
+        "unsupported_component_ids": [],
+        "pass": True,
+    }
+    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
+    assert result["pass"] is False

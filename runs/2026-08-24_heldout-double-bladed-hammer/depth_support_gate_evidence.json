@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "record_type": "DEPTH_SUPPORT_GATE_CONTROLLED_EXAMPLE",
+  "components": [
+    {"id": "head", "depth_critical": true},
+    {"id": "shaft", "depth_critical": false}
+  ],
+  "available_reference_views": ["front"],
+  "legacy_component_coverage": {
+    "covered_component_ids": ["head", "shaft"],
+    "uncovered_component_ids": [],
+    "pass": true
+  },
+  "depth_critical_reference_support": {
+    "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+    "depth_critical_component_ids": ["head"],
+    "component_reports": {
+      "head": {"view_ids": ["front"], "reference_ids": ["pinterest-primary"], "view_count": 1, "pass": false}
+    },
+    "unsupported_component_ids": ["head"],
+    "pass": false
+  },
+  "expected_stage_result": "REFERENCE_ANALYSIS_BLOCKED",
+  "reason": "The front image covers the head silhouette but cannot validate its thickness, layering, or rear taper."
+}

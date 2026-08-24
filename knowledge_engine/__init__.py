@@ -11,7 +11,7 @@ from .surface_cause_classifier import (
     diagnose_mixed_surface_causes,
 )
 from .telemetry import SkillUsageLog
-from .reference_analysis import ReferenceItem, ReferenceSet, PropertyClaim, audit_reference_set, build_reference_stage_evidence
+from .reference_analysis import ReferenceItem, ReferenceSet, PropertyClaim, audit_reference_set, build_reference_stage_evidence, validate_depth_critical_reference_support
 
 __all__ = [
     "Diagnosis",
@@ -22,6 +22,7 @@ __all__ = [
     "ReferenceItem",
     "ReferenceSet",
     "PropertyClaim",
+    "validate_depth_critical_reference_support",
     "audit_reference_set",
     "build_reference_stage_evidence",
     "MixedSurfaceCauseDiagnosis",

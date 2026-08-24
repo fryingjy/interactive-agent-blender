@@ -12,6 +12,7 @@ from knowledge_engine.reference_analysis import (
     build_reference_stage_evidence,
     reference_set_from_dict,
     validate_component_reference_coverage,
+    validate_depth_critical_reference_support,
 )
 
 
@@ -242,6 +243,7 @@ class ReferenceAnalysisTests(unittest.TestCase):
             "question_driven_research_pass": True,
             "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
             "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
+            "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
         }
         decision = plan_next_decision(PlannerContext(
             task_id="task", asset_id="asset", stage="REFERENCE_ANALYSIS",
@@ -315,6 +317,30 @@ class ReferenceAnalysisTests(unittest.TestCase):
         result = validate_component_reference_coverage(components, items)
         self.assertTrue(result["pass"])
         self.assertEqual(result["component_count"], 1)
+
+    def test_depth_critical_component_requires_two_assigned_views(self):
+        components = [{"id": "head", "depth_critical": True}, {"id": "shaft"}]
+        front_only = (
+            item("front", "source", target="prop", variant="v1", view="front", component_ids=("head", "shaft")),
+        )
+        failed = validate_depth_critical_reference_support(components, front_only)
+        self.assertFalse(failed["pass"])
+        self.assertEqual(failed["unsupported_component_ids"], ["head"])
+        supported = validate_depth_critical_reference_support(
+            components,
+            front_only + (item("oblique", "source", target="prop", variant="v1", view="three-quarter", component_ids=("head",)),),
+        )
+        self.assertTrue(supported["pass"])
+        self.assertEqual(supported["component_reports"]["head"]["view_count"], 2)
+
+    def test_inspiration_only_view_does_not_satisfy_depth_support(self):
+        components = [{"id": "head", "depth_critical": True}]
+        refs = (
+            item("front", "source", target="prop", variant="v1", view="front", component_ids=("head",)),
+            item("mood", "other", target="prop", variant="v1", view="side", purposes=("INSPIRATION",), component_ids=("head",)),
+        )
+        result = validate_depth_critical_reference_support(components, refs)
+        self.assertFalse(result["pass"])
 
 
 if __name__ == "__main__":
