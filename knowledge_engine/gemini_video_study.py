@@ -376,13 +376,13 @@ def validate_analysis(data: dict[str, Any], expected_url: str) -> None:
 
 
 def normalize_model_confidences(data: dict[str, Any]) -> list[dict[str, Any]]:
-    """Normalize an unambiguous model-produced percentage to the 0..1 contract.
+    """Normalize common model-produced confidence scales to the 0..1 contract.
 
-    Structured-output providers occasionally emit ``85`` even when the schema requests a
-    bounded fraction.  Accepting arbitrary out-of-range values would weaken validation, so this
-    conversion is deliberately limited to finite numeric values in ``(1, 100]`` and every change
-    is returned for provenance.  Strings, negatives, values above 100, and non-finite values are
-    left untouched so normal validation rejects them.
+    Providers have emitted both a five-point rating (``5`` means 5/5) and a percentage (``85``)
+    even when the schema requests a bounded fraction. Values in ``(1, 5]`` are therefore treated
+    as a five-point rating and values in ``(5, 100]`` as percentages. Every repair is recorded for
+    provenance. Strings, negatives, values above 100, and non-finite values remain untouched so
+    normal validation rejects them.
     """
     normalizations: list[dict[str, Any]] = []
     for index, episode in enumerate(data.get("episodes", [])):
@@ -390,14 +390,19 @@ def normalize_model_confidences(data: dict[str, Any]) -> list[dict[str, Any]]:
         if isinstance(value, (int, float)) and not isinstance(value, bool):
             numeric = float(value)
             if math.isfinite(numeric) and 1 < numeric <= 100:
-                normalized = numeric / 100.0
+                is_five_point_rating = numeric <= 5
+                normalized = numeric / 5.0 if is_five_point_rating else numeric / 100.0
                 episode["confidence"] = normalized
                 normalizations.append(
                     {
                         "field": f"episodes[{index}].confidence",
                         "original": value,
                         "normalized": normalized,
-                        "reason": "provider_returned_percentage_for_fraction_schema",
+                        "reason": (
+                            "provider_returned_five_point_rating_for_fraction_schema"
+                            if is_five_point_rating
+                            else "provider_returned_percentage_for_fraction_schema"
+                        ),
                     }
                 )
     return normalizations

@@ -12,7 +12,9 @@ was only self-rated 5.5/10. They do **not** authorize a return to random prop be
 ## Completion contract for every lesson
 
 1. Verify source identity and inspect the relevant video/audio range.
-2. Independently check representative frames or visible captions.
+2. Independently inspect a final-result frame plus geometry-usable orthographic/dimensioned evidence
+   (or at least two usable views), measure at least three high-salience constraints, and pass the
+   executable tutorial pre-modeling gate. A promotional thumbnail cannot authorize traced geometry.
 3. Build the tutorial's model or bounded chapter artifact in Blender.
 4. Preserve connected topology inside each real manufactured part; separate objects only for a
    visible assembly, material, or motion boundary.
@@ -20,6 +22,16 @@ was only self-rated 5.5/10. They do **not** authorize a return to random prop be
 6. Record at least one rejected result and correction when the render exposes a problem.
 7. Apply the core technique to different geometry and record both supporting and counterevidence.
 8. Promote only the rule that survived reproduction and transfer.
+
+`tools/run_modeler_command_sequence.py` now enforces this boundary for construction sequences in
+`tutorial-*` run directories. New builds require `--tutorial-evidence`; historical replays require
+the explicit `--allow-legacy-ungated-tutorial` acknowledgement. Validation occurs before the runner
+opens or resets a scene file, so weak evidence cannot create even a provisional cage.
+
+Surface treatment is a second executable gate. A raw cage must first have independently inspected
+front, isometric and wireframe renders, at least three passing measured high-salience comparisons,
+and zero unresolved primary-form tickets. Only then may a tutorial sequence use SubD, bevel,
+creases, weighted edges or smoothing via `--tutorial-blockout-review`.
 
 ## Historical technique ladder (not a professional capability gate)
 

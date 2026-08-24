@@ -103,6 +103,15 @@ class GeminiVideoStudyTests(unittest.TestCase):
         self.assertEqual(changes[0]["original"], 85)
         validate_analysis(data, data["source"]["url"])
 
+    def test_normalizes_five_point_confidence_with_provenance(self):
+        data = _analysis()
+        data["episodes"][0]["confidence"] = 5
+        changes = normalize_model_confidences(data)
+        self.assertEqual(data["episodes"][0]["confidence"], 1.0)
+        self.assertEqual(changes[0]["original"], 5)
+        self.assertEqual(changes[0]["reason"], "provider_returned_five_point_rating_for_fraction_schema")
+        validate_analysis(data, data["source"]["url"])
+
     def test_does_not_normalize_ambiguous_or_invalid_confidence(self):
         for value in ("85", -1, 101, float("inf")):
             data = _analysis()

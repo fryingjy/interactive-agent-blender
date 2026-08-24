@@ -77,6 +77,20 @@ registration to a same-view reference, so candidate and reference bounds use
 the same declared coordinate frame.  This must remain a correction aid, never
 presented as a substitute for human visual judgment.
 
+## 2026-08-24 correction: thumbnail-driven tutorial modeling is blocked
+
+A discarded knife lesson exposed a repeated process failure: full audiovisual analysis correctly
+described the instructor's operations, but geometry began from a promotional perspective thumbnail
+instead of the orthographic knife references visible inside the lesson. The resulting connected,
+all-quad meshes were still generic and inaccurate. Modifier debugging then consumed time on a form
+that had never earned refinement.
+
+`knowledge_engine.tutorial_reproduction` now requires an independently inspected final-result frame,
+geometry-usable orthographic/dimensioned evidence or two usable views, three measured high-salience
+constraints tied to those views, evidence-backed component strategies, and zero unresolved major-form
+questions. Thumbnail-as-geometry is an explicit failure. The typed command-sequence runner enforces
+the gate before any Blender scene mutation for new `tutorial-*` construction runs.
+
 ## 2026-08-16 correction: judging a weak reference-driven result honestly
 
 The Seiko QHE195RLH clock exercise demonstrates the same core limitation in a

@@ -60,6 +60,10 @@ Current evidence includes:
   blade cage, one connected 12-sided hilt cage, semantic creases and live unapplied SubD survive
   fresh-process verification; a corrected leaf-spear transfer passes topology checks, while visible
   shoulder/arc/tip mismatches keep the lesson below promotion.
+- fail-closed tutorial execution gates now reject construction until independently inspected,
+  geometry-usable references supply measured high-salience constraints, and reject modifiers,
+  creases, bevel controls, or smoothing until front/isometric/wireframe base-cage comparisons pass;
+  this directly prevents polished topology from substituting for target fidelity.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

@@ -20,6 +20,12 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from blender_ops.modeler_server import ModelerServer  # noqa: E402
+from knowledge_engine.tutorial_reproduction import (  # noqa: E402
+    tutorial_modeling_gate_required,
+    tutorial_surface_gate_required,
+    validate_tutorial_blockout_review,
+    validate_tutorial_premodeling_evidence,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -29,18 +35,41 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--load", type=Path)
     parser.add_argument("--save", type=Path)
+    parser.add_argument("--tutorial-evidence", type=Path)
+    parser.add_argument("--tutorial-blockout-review", type=Path)
+    parser.add_argument("--allow-legacy-ungated-tutorial", action="store_true")
     return parser.parse_args(argv)
 
 
 def main() -> int:
     args = parse_args()
+    sequence = json.loads(args.sequence.read_text(encoding="utf-8"))
+    if not isinstance(sequence, list) or not sequence:
+        raise ValueError("sequence must be a non-empty JSON list")
+    if tutorial_modeling_gate_required(args.sequence, sequence) and not args.allow_legacy_ungated_tutorial:
+        if args.tutorial_evidence is None:
+            raise ValueError(
+                "tutorial construction is blocked before Blender mutation: provide --tutorial-evidence "
+                "with independently inspected geometry references and measured constraints"
+            )
+        evidence = json.loads(args.tutorial_evidence.read_text(encoding="utf-8"))
+        gate = validate_tutorial_premodeling_evidence(evidence)
+        if not gate["pass"]:
+            raise ValueError(f"tutorial pre-modeling evidence gate failed: {gate['issues']}")
+    if tutorial_surface_gate_required(args.sequence, sequence) and not args.allow_legacy_ungated_tutorial:
+        if args.tutorial_blockout_review is None:
+            raise ValueError(
+                "tutorial surface treatment is blocked before Blender mutation: provide "
+                "--tutorial-blockout-review with measured raw-cage comparisons"
+            )
+        review = json.loads(args.tutorial_blockout_review.read_text(encoding="utf-8"))
+        gate = validate_tutorial_blockout_review(review)
+        if not gate["pass"]:
+            raise ValueError(f"tutorial blockout review gate failed: {gate['issues']}")
     if args.load:
         bpy.ops.wm.open_mainfile(filepath=str(args.load.resolve()))
     else:
         bpy.ops.wm.read_factory_settings(use_empty=True)
-    sequence = json.loads(args.sequence.read_text(encoding="utf-8"))
-    if not isinstance(sequence, list) or not sequence:
-        raise ValueError("sequence must be a non-empty JSON list")
     server = ModelerServer()
     results = []
     success = True
