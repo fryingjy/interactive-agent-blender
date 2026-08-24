@@ -39,6 +39,13 @@ verification, and a successful curved-geometry transfer. Simplified visible form
 bumper n-gons keep I0 incomplete; the next work is a different bounded intermediate tutorial with
 an unobscured creator-final result.
 
+**Update, 2026-08-24, systemic repair:** the reference-to-runtime chain is now fail-closed across
+materialized artifact hashes, target/variant consistency, a spec-first identity and representation
+contract, exact semantic-critic replay binding, root-cause-directed repair, bounded iterations,
+and live Blender authorization. Seven retained reference manifests pass a fresh artifact audit and
+a Blender 5.2 lab proves unauthorized construction, unbound mutation, global undo, and scene restore
+are blocked. This is a system-integrity improvement, not evidence that a new prop is accurate.
+
 ## Ground truth
 
 - Foundation status remains **PARTIAL**.
@@ -54,11 +61,11 @@ an unobscured creator-final result.
 
 | Capability | Demonstrated now | Honest state | Highest-value next proof |
 | --- | --- | --- | --- |
-| Reference-set readiness | Identity, provenance, view, projection, dimensional-anchor, conflict, and question-driven gates | Implemented, but information coverage does not prove understanding | Continue rejecting mixed variants and weak views on every real target |
+| Reference-set readiness | Identity, provenance, view, projection, dimensional-anchor, conflict, question-driven, and local artifact-hash gates | Implemented and replay-resistant, but information coverage does not prove understanding | Continue rejecting mixed variants and weak views on every real target |
 | Competing 3D interpretation | Independent observations now drive an eleven-pass reconstruction audit; the C60 case rejects disconnected rails and a circular swept tube while retaining an unresolved base-boundary ambiguity | Implemented for boundary linearity, numeric ranges, and boolean states; visual judgments are recorded by the modeler and remain fallible | Add a new evaluator only when a real asset exposes another consequence type |
 | Reference → construction | AA/LR6 controls a connected inset terminal; C60 controls one connected U-plan shell, real center channel, rear bridge, rail cross-section strategy, and reversible lower base | Demonstrated on one rotational and one non-rotational primary-form study | Complete the missing C60 hinge/base forms, then test transfer on another unrelated target |
-| Typed Blender execution | Persistent-ID selection, transactions, rollback, fingerprints, typed operations, Blender-native diagnostic renders | Strong infrastructure | Demonstrate sustained use through a difficult reference repair without an object-specific builder |
-| Visual correction | Controlled solid, MatCap, silhouette, wireframe, normal, depth, and component passes exist; C60 rejects a five-section angular wave and rebuilds it as a nine-section live crease/SubD cage | One real visible correction is retained, but final likeness and repeatability remain unproven | Correct the remaining hub-support and base-perimeter mismatches without overfitting one oblique |
+| Typed Blender execution | Persistent-ID selection, transactions, rollback, fingerprints, typed operations, Blender-native diagnostic renders, and target-scoped runtime authorization | Strong infrastructure; Blender 5.2 authorization lab passes | Demonstrate sustained use through a difficult reference repair without an object-specific builder |
+| Visual correction | Controlled visual passes, exact hash-bound semantic critique, root-cause tickets, one-focus checkpoints, and bounded repair exist | One known failure is caught automatically, but successful unfamiliar-asset correction remains unproven | Run the strict loop on a new bounded target and stop/change strategy on stagnation |
 | Topology and shading | Connected-cage operations, explicit sharp intent, physical bevels, crease, SubD, and Smooth by Angle are available | Strong controlled evidence; conditional judgment still limited | Choose among crease, support loops, and bevel from reference-driven surface intent |
 | Knowledge changes behavior | Depth-critical multi-view evidence rejected a spike interpretation and produced a passing broad-flange transfer | Demonstrated once | Repeat on unrelated forms before claiming reliable transfer |
 | Tutorial/video learning | Range-scoped Gemini analysis, identity checks, independent episode review, reproduction, and transfer records exist | Operational but not a substitute for modeling | Research only after a concrete modeling failure; do not mass-ingest |

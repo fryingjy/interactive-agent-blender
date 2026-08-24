@@ -1,17 +1,190 @@
 {
   "target_id": "panasonic_rf2400d_portable_radio",
   "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
-  "required_views": ["front", "front_right_oblique", "manual_feature_diagram"],
-  "critical_properties": ["overall_envelope", "rounded_rectangular_housing", "speaker_vs_tuner_panel_ratio", "handle_negative_space", "antenna_mount_and_angle", "side_tuning_knob"],
+  "required_views": [
+    "front",
+    "front_right_oblique",
+    "manual_feature_diagram"
+  ],
+  "critical_properties": [
+    "overall_envelope",
+    "rounded_rectangular_housing",
+    "speaker_vs_tuner_panel_ratio",
+    "handle_negative_space",
+    "antenna_mount_and_angle",
+    "side_tuning_knob"
+  ],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 1,
   "items": [
-    {"reference_id": "rf2400d_front", "source_id": "panasonic_shop_rf2400", "source_url": "https://shop.panasonic.com/cdn/shop/files/23-0139_AV_RF-2400DP-S_sP_EC_1500xArtboard_3.jpg?v=1692061052&width=1500", "local_file": "rf2400d_official_front_full.jpg", "target_id": "panasonic_rf2400d_portable_radio", "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing", "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "MATERIAL"], "view": "front", "projection": "PERSPECTIVE", "source_tier": "HIGH", "claims": [{"property_id": "rounded_rectangular_housing", "purpose": "PRIMARY_FORM", "observation": "A continuous rounded-rectangle silver surround bounds the black front field.", "confidence": "HIGH"}, {"property_id": "speaker_vs_tuner_panel_ratio", "purpose": "PRIMARY_FORM", "observation": "A large rounded speaker recess fills the left-front field while a narrow vertically oriented tuner/control panel occupies the right-front field.", "confidence": "HIGH"}, {"property_id": "handle_negative_space", "purpose": "PRIMARY_FORM", "observation": "The raised handle forms one dominant rounded-rectangle opening above the housing.", "confidence": "HIGH"}], "dimensional_anchors": [], "limitations": ["Front product photograph is perspective; it is suitable for registered front-form comparison but not rear-depth calibration."]},
-    {"reference_id": "rf2400d_angle", "source_id": "panasonic_shop_rf2400", "target_id": "panasonic_rf2400d_portable_radio", "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing", "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "DETAIL"], "view": "front_right_oblique", "projection": "PERSPECTIVE", "source_tier": "HIGH", "claims": [{"property_id": "antenna_mount_and_angle", "purpose": "CONSTRUCTION", "observation": "A thin telescoping antenna emerges from the rear-right/top housing region and crosses behind the raised handle in the observed pose.", "confidence": "HIGH"}, {"property_id": "side_tuning_knob", "purpose": "DETAIL", "observation": "A large ridged tuning knob projects from the right side, beyond the front housing plane.", "confidence": "HIGH"}], "dimensional_anchors": [], "limitations": ["The product is shown at a perspective angle; it cannot calibrate exact rear depth."]},
-    {"reference_id": "rf2400d_manual", "source_id": "panasonic_rf2400d_owner_manual", "target_id": "panasonic_rf2400d_portable_radio", "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing", "purposes": ["DIMENSION", "FUNCTIONAL", "CONSTRUCTION"], "view": "manual_feature_diagram", "projection": "UNKNOWN", "source_tier": "HIGH", "claims": [{"property_id": "overall_envelope", "purpose": "DIMENSION", "observation": "The owner manual specifies 234 × 122 × 82 mm (W×H×D).", "confidence": "HIGH"}, {"property_id": "antenna_mount_and_angle", "purpose": "FUNCTIONAL", "observation": "The manual identifies a telescopic FM antenna and shows it as an independently adjustable component.", "confidence": "HIGH"}], "dimensional_anchors": ["234 × 122 × 82 mm (W×H×D)"], "limitations": ["Manual diagrams are functional, not precise exterior engineering drawings."]}
+    {
+      "reference_id": "rf2400d_front",
+      "source_id": "panasonic_shop_rf2400",
+      "source_url": "https://shop.panasonic.com/cdn/shop/files/23-0139_AV_RF-2400DP-S_sP_EC_1500xArtboard_3.jpg?v=1692061052&width=1500",
+      "local_file": "rf2400d_official_front_full.jpg",
+      "target_id": "panasonic_rf2400d_portable_radio",
+      "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION",
+        "MATERIAL"
+      ],
+      "view": "front",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "claims": [
+        {
+          "property_id": "rounded_rectangular_housing",
+          "purpose": "PRIMARY_FORM",
+          "observation": "A continuous rounded-rectangle silver surround bounds the black front field.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "speaker_vs_tuner_panel_ratio",
+          "purpose": "PRIMARY_FORM",
+          "observation": "A large rounded speaker recess fills the left-front field while a narrow vertically oriented tuner/control panel occupies the right-front field.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "handle_negative_space",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The raised handle forms one dominant rounded-rectangle opening above the housing.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": [
+        "Front product photograph is perspective; it is suitable for registered front-form comparison but not rear-depth calibration."
+      ],
+      "local_sha256": "5e9817068af013d2d9a2db80054a6f8537e3add07bebe4fddbc4f8904916baa0"
+    },
+    {
+      "reference_id": "rf2400d_angle",
+      "source_id": "panasonic_shop_rf2400",
+      "source_url": "https://shop.panasonic.com/products/portable-am-fm-radio",
+      "target_id": "panasonic_rf2400d_portable_radio",
+      "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION",
+        "DETAIL"
+      ],
+      "view": "front_right_oblique",
+      "projection": "PERSPECTIVE",
+      "source_tier": "HIGH",
+      "claims": [
+        {
+          "property_id": "antenna_mount_and_angle",
+          "purpose": "CONSTRUCTION",
+          "observation": "A thin telescoping antenna emerges from the rear-right/top housing region and crosses behind the raised handle in the observed pose.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "side_tuning_knob",
+          "purpose": "DETAIL",
+          "observation": "A large ridged tuning knob projects from the right side, beyond the front housing plane.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [],
+      "limitations": [
+        "The product is shown at a perspective angle; it cannot calibrate exact rear depth."
+      ]
+    },
+    {
+      "reference_id": "rf2400d_manual",
+      "source_id": "panasonic_rf2400d_owner_manual",
+      "source_url": "https://help.na.panasonic.com/wp-content/uploads/2023/02/RF2400_TQBM0271_ENG.pdf",
+      "target_id": "panasonic_rf2400d_portable_radio",
+      "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
+      "purposes": [
+        "DIMENSION",
+        "FUNCTIONAL",
+        "CONSTRUCTION"
+      ],
+      "view": "manual_feature_diagram",
+      "projection": "UNKNOWN",
+      "source_tier": "HIGH",
+      "claims": [
+        {
+          "property_id": "overall_envelope",
+          "purpose": "DIMENSION",
+          "observation": "The owner manual specifies 234 × 122 × 82 mm (W×H×D).",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "antenna_mount_and_angle",
+          "purpose": "FUNCTIONAL",
+          "observation": "The manual identifies a telescopic FM antenna and shows it as an independently adjustable component.",
+          "confidence": "HIGH"
+        }
+      ],
+      "dimensional_anchors": [
+        "234 × 122 × 82 mm (W×H×D)"
+      ],
+      "limitations": [
+        "Manual diagrams are functional, not precise exterior engineering drawings."
+      ]
+    }
   ],
   "research_questions": [
-    {"question_id": "rf2400d_housing_continuity", "property_id": "rounded_rectangular_housing", "question": "Does the silver front surround belong to one connected exterior housing cage with a recessed black front field, or to a separate chrome-like trim frame?", "trigger": "The answer changes whether the primary shell should reserve an inset region or model a separate decorative frame.", "impact": "HIGH", "search_queries": ["Panasonic RF-2400D side housing close-up", "Panasonic RF-2400D rear view"], "candidates": [{"candidate_id": "official_product_views", "source_url": "https://shop.panasonic.com/products/portable-am-fm-radio", "source_id": "panasonic_shop_rf2400", "observed_identity": "Panasonic RF-2400", "observed_variant": "RF-2400D", "purpose": "CONSTRUCTION", "disposition": "ACCEPTED", "reason": "The front and oblique images show the silver rounded surround passing continuously around the black front field.", "accepted_reference_id": "rf2400d_angle", "limitations": ["Rear shell join remains partly hidden."]}], "status": "RESOLVED", "resolution": "Treat the silver surround as a connected primary shell with a recessed front field; front speaker/tuner panels remain separate visible inserts."},
-    {"question_id": "rf2400d_hidden_rear", "property_id": "rear_controls_and_battery_door", "question": "What is the exact rear control and battery-door layout?", "trigger": "No retained official rear product view is available.", "impact": "MEDIUM", "search_queries": ["Panasonic RF-2400D rear image"], "candidates": [{"candidate_id": "official_manual_functional_diagram", "source_url": "https://help.na.panasonic.com/wp-content/uploads/2023/02/RF2400_TQBM0271_ENG.pdf", "source_id": "panasonic_rf2400d_owner_manual", "observed_identity": "Panasonic RF-2400D", "observed_variant": "RF-2400D", "purpose": "CONSTRUCTION", "disposition": "REJECTED", "reason": "The manual confirms battery use and functional controls but does not provide a readable rear-exterior layout or battery-door geometry.", "accepted_reference_id": "", "limitations": ["Functional diagram is not a rear construction drawing."]}], "status": "DEFERRED", "resolution": "Do not invent the rear panel or battery door during the primary-form exercise.", "modeling_constraint": "Limit first exercise to front, right-side, top handle, and antenna relationships."}
+    {
+      "question_id": "rf2400d_housing_continuity",
+      "property_id": "rounded_rectangular_housing",
+      "question": "Does the silver front surround belong to one connected exterior housing cage with a recessed black front field, or to a separate chrome-like trim frame?",
+      "trigger": "The answer changes whether the primary shell should reserve an inset region or model a separate decorative frame.",
+      "impact": "HIGH",
+      "search_queries": [
+        "Panasonic RF-2400D side housing close-up",
+        "Panasonic RF-2400D rear view"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "official_product_views",
+          "source_url": "https://shop.panasonic.com/products/portable-am-fm-radio",
+          "source_id": "panasonic_shop_rf2400",
+          "observed_identity": "Panasonic RF-2400",
+          "observed_variant": "RF-2400D",
+          "purpose": "CONSTRUCTION",
+          "disposition": "ACCEPTED",
+          "reason": "The front and oblique images show the silver rounded surround passing continuously around the black front field.",
+          "accepted_reference_id": "rf2400d_angle",
+          "limitations": [
+            "Rear shell join remains partly hidden."
+          ]
+        }
+      ],
+      "status": "RESOLVED",
+      "resolution": "Treat the silver surround as a connected primary shell with a recessed front field; front speaker/tuner panels remain separate visible inserts."
+    },
+    {
+      "question_id": "rf2400d_hidden_rear",
+      "property_id": "rear_controls_and_battery_door",
+      "question": "What is the exact rear control and battery-door layout?",
+      "trigger": "No retained official rear product view is available.",
+      "impact": "MEDIUM",
+      "search_queries": [
+        "Panasonic RF-2400D rear image"
+      ],
+      "candidates": [
+        {
+          "candidate_id": "official_manual_functional_diagram",
+          "source_url": "https://help.na.panasonic.com/wp-content/uploads/2023/02/RF2400_TQBM0271_ENG.pdf",
+          "source_id": "panasonic_rf2400d_owner_manual",
+          "observed_identity": "Panasonic RF-2400D",
+          "observed_variant": "RF-2400D",
+          "purpose": "CONSTRUCTION",
+          "disposition": "REJECTED",
+          "reason": "The manual confirms battery use and functional controls but does not provide a readable rear-exterior layout or battery-door geometry.",
+          "accepted_reference_id": "",
+          "limitations": [
+            "Functional diagram is not a rear construction drawing."
+          ]
+        }
+      ],
+      "status": "DEFERRED",
+      "resolution": "Do not invent the rear panel or battery door during the primary-form exercise.",
+      "modeling_constraint": "Limit first exercise to front, right-side, top handle, and antenna relationships."
+    }
   ]
 }

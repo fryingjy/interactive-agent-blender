@@ -56,11 +56,9 @@ what stops a correction from silently becoming a downstream patch over an upstre
 
 ## How this taxonomy gets used
 
-1. **Historical audit** (2026-08-23): every documented failure/correction findable in `runs/` and
-   `knowledge/foundation/foundation_exit_report.md` is being classified against these nine
-   categories, to find out empirically whether this project's real failures cluster upstream or
-   downstream. See the audit findings once complete (this section will be updated with a pointer
-   to that report).
+1. **Historical audit**: a complete back-classification of every dated run remains unfinished and
+   is not claimed. Current repair paths are enforced prospectively in code, and the latest systemic
+   findings are recorded in `docs/SYSTEMIC_MODELING_GAP_REPAIR_2026-08-24.md`.
 2. **Going forward**: any repair ticket, self-caught mismatch, or human-rejection record should
    name its root-cause category alongside its existing symptom `failure_type`, so the fix targets
    the actual failed stage instead of the nearest visible symptom.

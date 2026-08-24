@@ -64,10 +64,17 @@ Current evidence includes:
   geometry-usable references supply measured high-salience constraints, and reject modifiers,
   creases, bevel controls, or smoothing until front/isometric/wireframe base-cage comparisons pass;
   this directly prevents polished topology from substituting for target fidelity.
-- a hash-bound Gemini multi-view semantic critic now complements deterministic silhouette metrics:
-  its first live replay rejected the old generic sword at 0.35 semantic / 0.30 silhouette match,
-  localized the missing blade sweep and wrong collar, and now blocks surface treatment unless the
-  exact target remains identifiable; it is a rejection aid, never human acceptance.
+- a hash-bound Gemini multi-view semantic critic now complements deterministic silhouette metrics.
+  Schema v2 binds the exact target, candidate renders, authorized reference hashes, component IDs,
+  prompt and request fingerprint; it reports earliest root cause and repair scope, and blocks
+  surface polish over upstream failures. Its current live replay still rejects the old generic
+  sword (0.65 semantic / 0.55 silhouette), prioritizing blade curvature and hilt reconstruction;
+  it is a rejection aid, never human acceptance.
+- strict reference authorization now reaches the command runner and live typed Blender server:
+  materialized references are SHA-bound, a spec records identity features/continuity/representation,
+  target records must agree, created objects inherit authorization, and loaded objects require
+  explicit adoption. Visual checkpoints permit one dominant correction and force a strategy change
+  after two stagnant repairs or three attempts.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
@@ -83,6 +90,7 @@ The authoritative readiness decision is in
 | Reference sourcing and analysis | [`docs/REFERENCE_COLLECTION_PROTOCOL.md`](docs/REFERENCE_COLLECTION_PROTOCOL.md) |
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Current capability gap matrix | [`docs/CURRENT_STATE_GAP_MATRIX.md`](docs/CURRENT_STATE_GAP_MATRIX.md) |
+| Latest systemic gap repair | [`docs/SYSTEMIC_MODELING_GAP_REPAIR_2026-08-24.md`](docs/SYSTEMIC_MODELING_GAP_REPAIR_2026-08-24.md) |
 | Progressive prop benchmark ladder | [`docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md`](docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md) |
 | Reference-interpretation contract | [`docs/REFERENCE_INTERPRETATION.md`](docs/REFERENCE_INTERPRETATION.md) |
 | External visual feedback and repair | [`docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md`](docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md) |
@@ -138,7 +146,8 @@ Run the fast regression suite from the repository root:
 python -m pytest -q
 python tools/audit_repository.py
 python tools/audit_directive_coverage.py --output runs/2026-08-16_directive-coverage-audit/directive_coverage_audit.json
-python tools/verify_reference_set_gate.py runs/2026-08-16_reference-gathering-scotch-c38/reference_manifest.json --output runs/2026-08-16_reference-gathering-scotch-c38/audit_report.json
+python tools/materialize_reference_hashes.py runs/2026-08-21_reference-scotch-c60/reference_manifest.json
+python tools/verify_reference_set_gate.py runs/2026-08-21_reference-scotch-c60/reference_manifest.json --output runs/2026-08-21_reference-scotch-c60/reference_audit_current.json
 ```
 
 The directive audit must pass structurally while still reporting `directive_status: PARTIAL` whenever

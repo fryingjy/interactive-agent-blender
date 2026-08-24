@@ -6,6 +6,7 @@ from knowledge_engine.component_strategy import (
 )
 from knowledge_engine.planner import PlannerContext, plan_next_decision
 from knowledge_engine.strategy import ModelingBrief
+from tests.test_reference_analysis_stage_gate import _base_evidence
 
 
 def candidate(candidate_id, policy, front, top, *, objects, components):
@@ -79,20 +80,7 @@ class ComponentStrategyTests(unittest.TestCase):
             stage="REFERENCE_ANALYSIS",
             session_id="test",
             scene_revision=1,
-            stage_evidence={
-                "component_graph_pass": True,
-                "measured_ratio_count": 2,
-                "uncertainty_recorded": True,
-                "reference_set_audit_pass": True,
-                "same_target_identity_pass": True,
-                "view_coverage_pass": True,
-                "critical_property_coverage_pass": True,
-                "conflicts_resolved_pass": True,
-                "question_driven_research_pass": True,
-                "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
-                "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
-                "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
-            },
+            stage_evidence=_base_evidence(),
             component_strategy_resolution=resolution,
         ))
         self.assertEqual(decision.disposition, "RESEARCH")

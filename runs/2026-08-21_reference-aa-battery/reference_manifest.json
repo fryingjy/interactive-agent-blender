@@ -1,9 +1,19 @@
 {
   "target_id": "aa_lr6_cell",
   "target_variant": "IEC LR6 / AA dimensional envelope",
-  "required_views": ["side", "top"],
-  "orthographic_required_views": ["side", "top"],
-  "critical_properties": ["total_height", "body_diameter", "positive_terminal_diameter"],
+  "required_views": [
+    "side",
+    "top"
+  ],
+  "orthographic_required_views": [
+    "side",
+    "top"
+  ],
+  "critical_properties": [
+    "total_height",
+    "body_diameter",
+    "positive_terminal_diameter"
+  ],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 2,
   "items": [
@@ -12,53 +22,109 @@
       "source_id": "duracell_id1500_datasheet",
       "target_id": "aa_lr6_cell",
       "target_variant": "IEC LR6 / AA dimensional envelope",
-      "purposes": ["ORTHOGRAPHIC", "DIMENSION", "CONSTRUCTION", "PRIMARY_FORM"],
+      "purposes": [
+        "ORTHOGRAPHIC",
+        "DIMENSION",
+        "CONSTRUCTION",
+        "PRIMARY_FORM"
+      ],
       "view": "side",
       "projection": "ORTHOGRAPHIC",
       "source_tier": "VERY_HIGH",
       "source_url": "https://www.feyelektronik.de/downloads/db-duracell-industrial-lr6-aa-id1500.pdf",
       "local_file": "duracell_id1500_datasheet.pdf",
       "claims": [
-        {"property_id": "total_height", "purpose": "DIMENSION", "observation": "IEC drawing bounds total height, including the positive terminal, to 49.2-50.5 mm.", "confidence": "HIGH"},
-        {"property_id": "positive_terminal_diameter", "purpose": "DIMENSION", "observation": "Positive terminal diameter is 5.5 mm maximum and its projection is 1.0 mm minimum.", "confidence": "HIGH"}
+        {
+          "property_id": "total_height",
+          "purpose": "DIMENSION",
+          "observation": "IEC drawing bounds total height, including the positive terminal, to 49.2-50.5 mm.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "positive_terminal_diameter",
+          "purpose": "DIMENSION",
+          "observation": "Positive terminal diameter is 5.5 mm maximum and its projection is 1.0 mm minimum.",
+          "confidence": "HIGH"
+        }
       ],
-      "dimensional_anchors": ["total height 49.2-50.5 mm", "positive terminal <=5.5 mm diameter", "positive terminal >=1.0 mm projection"],
-      "limitations": ["Manufacturer drawing defines an allowed envelope, not one branded wrapper profile."]
+      "dimensional_anchors": [
+        "total height 49.2-50.5 mm",
+        "positive terminal <=5.5 mm diameter",
+        "positive terminal >=1.0 mm projection"
+      ],
+      "limitations": [
+        "Manufacturer drawing defines an allowed envelope, not one branded wrapper profile."
+      ],
+      "local_sha256": "b44750efac29761f822c6578cedff797e9e1f1726d94ec5adea62b81845eeffc"
     },
     {
       "reference_id": "duracell_lr6_top_drawing",
       "source_id": "duracell_id1500_datasheet",
       "target_id": "aa_lr6_cell",
       "target_variant": "IEC LR6 / AA dimensional envelope",
-      "purposes": ["ORTHOGRAPHIC", "DIMENSION", "PRIMARY_FORM"],
+      "purposes": [
+        "ORTHOGRAPHIC",
+        "DIMENSION",
+        "PRIMARY_FORM"
+      ],
       "view": "top",
       "projection": "ORTHOGRAPHIC",
       "source_tier": "VERY_HIGH",
       "source_url": "https://www.feyelektronik.de/downloads/db-duracell-industrial-lr6-aa-id1500.pdf",
       "local_file": "duracell_id1500_datasheet.pdf",
       "claims": [
-        {"property_id": "body_diameter", "purpose": "DIMENSION", "observation": "IEC drawing bounds cylindrical body diameter to 13.5-14.5 mm.", "confidence": "HIGH"}
+        {
+          "property_id": "body_diameter",
+          "purpose": "DIMENSION",
+          "observation": "IEC drawing bounds cylindrical body diameter to 13.5-14.5 mm.",
+          "confidence": "HIGH"
+        }
       ],
-      "dimensional_anchors": ["body diameter 13.5-14.5 mm"],
-      "limitations": ["Top view does not prescribe wrapper graphics or seam construction."]
+      "dimensional_anchors": [
+        "body diameter 13.5-14.5 mm"
+      ],
+      "limitations": [
+        "Top view does not prescribe wrapper graphics or seam construction."
+      ],
+      "local_sha256": "b44750efac29761f822c6578cedff797e9e1f1726d94ec5adea62b81845eeffc"
     },
     {
       "reference_id": "wikimedia_aa_labelled_side",
       "source_id": "wikimedia_commons_aa_battery_labelled",
       "target_id": "aa_lr6_cell",
       "target_variant": "IEC LR6 / AA dimensional envelope",
-      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "DIMENSION"],
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION",
+        "DIMENSION"
+      ],
       "view": "side",
       "projection": "ORTHOGRAPHIC",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://commons.wikimedia.org/wiki/File:AA_Battery_(Labelled).svg",
       "local_file": "aa_battery_labelled.svg",
       "claims": [
-        {"property_id": "total_height", "purpose": "DIMENSION", "observation": "Public-domain line drawing labels a representative AA cell as 50 mm high.", "confidence": "MEDIUM"},
-        {"property_id": "body_diameter", "purpose": "DIMENSION", "observation": "Public-domain line drawing labels a representative AA cell as 14 mm diameter.", "confidence": "MEDIUM"}
+        {
+          "property_id": "total_height",
+          "purpose": "DIMENSION",
+          "observation": "Public-domain line drawing labels a representative AA cell as 50 mm high.",
+          "confidence": "MEDIUM"
+        },
+        {
+          "property_id": "body_diameter",
+          "purpose": "DIMENSION",
+          "observation": "Public-domain line drawing labels a representative AA cell as 14 mm diameter.",
+          "confidence": "MEDIUM"
+        }
       ],
-      "dimensional_anchors": ["representative height 50 mm", "representative diameter 14 mm"],
-      "limitations": ["Fictional label artwork; useful for generic form only, not a manufacturer-specific surface."]
+      "dimensional_anchors": [
+        "representative height 50 mm",
+        "representative diameter 14 mm"
+      ],
+      "limitations": [
+        "Fictional label artwork; useful for generic form only, not a manufacturer-specific surface."
+      ],
+      "local_sha256": "a84d0e8fb58fb339de10f08d229d944bb4293c506e5a8f0235379a774e6e5a15"
     }
   ],
   "conflicts": [],

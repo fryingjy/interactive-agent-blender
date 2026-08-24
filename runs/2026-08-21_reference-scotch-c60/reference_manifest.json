@@ -1,9 +1,19 @@
 {
   "target_id": "scotch_c60_bk",
   "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-  "required_views": ["left_oblique", "right_oblique", "open_hub_oblique"],
+  "required_views": [
+    "left_oblique",
+    "right_oblique",
+    "open_hub_oblique"
+  ],
   "orthographic_required_views": [],
-  "critical_properties": ["overall_dimensions", "central_tape_channel", "rear_bridge_continuity", "separate_hub", "attached_hub_support"],
+  "critical_properties": [
+    "overall_dimensions",
+    "central_tape_channel",
+    "rear_bridge_continuity",
+    "separate_hub",
+    "attached_hub_support"
+  ],
   "require_dimensional_anchor": true,
   "minimum_independent_sources": 2,
   "items": [
@@ -12,131 +22,234 @@
       "source_id": "3m_scotch_c60_product",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION"
+      ],
       "view": "left_oblique",
       "projection": "PERSPECTIVE",
       "source_tier": "VERY_HIGH",
       "source_url": "https://multimedia.3m.com/mws/media/1083592J/1505-3m-scotch-07.jpg",
       "local_file": "media/official_3m_view_a.jpg",
       "claims": [
-        {"property_id": "central_tape_channel", "purpose": "CONSTRUCTION", "observation": "A deep open channel separates two raised side rails around the tape roll.", "confidence": "HIGH"}
+        {
+          "property_id": "central_tape_channel",
+          "purpose": "CONSTRUCTION",
+          "observation": "A deep open channel separates two raised side rails around the tape roll.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Low-resolution product photo; perspective prevents direct profile tracing."]
+      "limitations": [
+        "Low-resolution product photo; perspective prevents direct profile tracing."
+      ],
+      "local_sha256": "122d7203f244f164e425fa913e04181bf196617489aefc8df0a3e4fa477ed9b3"
     },
     {
       "reference_id": "official_3m_right_oblique",
       "source_id": "3m_scotch_c60_product",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["PRIMARY_FORM", "FUNCTIONAL", "CONSTRUCTION"],
+      "purposes": [
+        "PRIMARY_FORM",
+        "FUNCTIONAL",
+        "CONSTRUCTION"
+      ],
       "view": "right_oblique",
       "projection": "PERSPECTIVE",
       "source_tier": "VERY_HIGH",
       "source_url": "https://multimedia.3m.com/mws/media/2317248J/scotch-tape-dispenser-c60-black-scotch-magic-invisible-tape-19-mm-x-33-m-1-roll-pack-clop.jpg",
       "local_file": "media/official_3m_view_b.jpg",
       "claims": [
-        {"property_id": "rear_bridge_continuity", "purpose": "CONSTRUCTION", "observation": "The left and right raised rails meet across the rear behind the roll rather than terminating as independent strips.", "confidence": "MEDIUM"},
-        {"property_id": "separate_hub", "purpose": "FUNCTIONAL", "observation": "The white roll surrounds a distinct dark radial hub inside the channel.", "confidence": "HIGH"}
+        {
+          "property_id": "rear_bridge_continuity",
+          "purpose": "CONSTRUCTION",
+          "observation": "The left and right raised rails meet across the rear behind the roll rather than terminating as independent strips.",
+          "confidence": "MEDIUM"
+        },
+        {
+          "property_id": "separate_hub",
+          "purpose": "FUNCTIONAL",
+          "observation": "The white roll surrounds a distinct dark radial hub inside the channel.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Low resolution and roll occlusion weaken the rear-boundary reading."]
+      "limitations": [
+        "Low resolution and roll occlusion weaken the rear-boundary reading."
+      ],
+      "local_sha256": "9b7c60461825a24db507e9fd290e3a76760b3bac0645a807ed8c56026ca3ffe3"
     },
     {
       "reference_id": "market_open_hub_oblique",
       "source_id": "ebay_c60_listing",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["CONSTRUCTION", "FUNCTIONAL", "PRIMARY_FORM"],
+      "purposes": [
+        "CONSTRUCTION",
+        "FUNCTIONAL",
+        "PRIMARY_FORM"
+      ],
       "view": "open_hub_oblique",
       "projection": "PERSPECTIVE",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://i.ebayimg.com/images/g/Hl4AAOSww3ZihXch/s-l1600.webp",
       "local_file": "media/market_view_a.webp",
       "claims": [
-        {"property_id": "rear_bridge_continuity", "purpose": "CONSTRUCTION", "observation": "With the attached hub raised, a transverse rear bridge visibly connects both upper rails behind the channel.", "confidence": "HIGH"},
-        {"property_id": "central_tape_channel", "purpose": "PRIMARY_FORM", "observation": "The channel is a real recessed volume bounded by two side rails, not a dark graphic on a full-width top.", "confidence": "HIGH"}
+        {
+          "property_id": "rear_bridge_continuity",
+          "purpose": "CONSTRUCTION",
+          "observation": "With the attached hub raised, a transverse rear bridge visibly connects both upper rails behind the channel.",
+          "confidence": "HIGH"
+        },
+        {
+          "property_id": "central_tape_channel",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The channel is a real recessed volume bounded by two side rails, not a dark graphic on a full-width top.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Marketplace source and extreme perspective; use for visibility of assembly boundaries, not dimensions."]
+      "limitations": [
+        "Marketplace source and extreme perspective; use for visibility of assembly boundaries, not dimensions."
+      ],
+      "local_sha256": "4fca52456b093790f79ef4ae2e1a69939021f133fc8d1bf812657580af018961"
     },
     {
       "reference_id": "market_closed_right_oblique",
       "source_id": "ebay_c60_listing",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["PRIMARY_FORM", "CONSTRUCTION"],
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION"
+      ],
       "view": "right_oblique",
       "projection": "PERSPECTIVE",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://i.ebayimg.com/images/g/aYcAAOSwR9FihXcb/s-l1600.webp",
       "local_file": "media/market_view_b.webp",
       "claims": [
-        {"property_id": "wave_profile", "purpose": "PRIMARY_FORM", "observation": "The cutter nose, deep center valley, and high rounded rear form the dominant side-profile rhythm.", "confidence": "HIGH"}
+        {
+          "property_id": "wave_profile",
+          "purpose": "PRIMARY_FORM",
+          "observation": "The cutter nose, deep center valley, and high rounded rear form the dominant side-profile rhythm.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Perspective photo with tape and roll occluding the inner channel."]
+      "limitations": [
+        "Perspective photo with tape and roll occluding the inner channel."
+      ],
+      "local_sha256": "332527b25556094dcfe2bfadc20ffcd969d99c0b7d646b2150a517a50980ffd8"
     },
     {
       "reference_id": "market_closed_left_oblique",
       "source_id": "ebay_c60_listing",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["PRIMARY_FORM", "CONSTRUCTION", "MATERIAL"],
+      "purposes": [
+        "PRIMARY_FORM",
+        "CONSTRUCTION",
+        "MATERIAL"
+      ],
       "view": "left_oblique",
       "projection": "PERSPECTIVE",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://i.ebayimg.com/images/g/aowAAOSwsUVihXce/s-l1600.webp",
       "local_file": "media/market_view_c.webp",
       "claims": [
-        {"property_id": "lower_upper_boundary", "purpose": "CONSTRUCTION", "observation": "A narrow continuous seam follows the wave profile between the upper rail shell and lower side surface.", "confidence": "HIGH"}
+        {
+          "property_id": "lower_upper_boundary",
+          "purpose": "CONSTRUCTION",
+          "observation": "A narrow continuous seam follows the wave profile between the upper rail shell and lower side surface.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Perspective photo; seam visibility does not alone prove whether the boundary is an assembly seam or a cosmetic groove."]
+      "limitations": [
+        "Perspective photo; seam visibility does not alone prove whether the boundary is an assembly seam or a cosmetic groove."
+      ],
+      "local_sha256": "5c19448054f409a3c0d71d2e8b4b7984d726b9b89e85e49e2b08e72ed27529a0"
     },
     {
       "reference_id": "video_open_hub_frame",
       "source_id": "youtube_tactless_c60_demo",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["FUNCTIONAL", "CONSTRUCTION"],
+      "purposes": [
+        "FUNCTIONAL",
+        "CONSTRUCTION"
+      ],
       "view": "video_open_position",
       "projection": "PERSPECTIVE",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://www.youtube.com/watch?v=vLOridEUYNs&t=35s",
       "local_file": "media/video_frame_0035.png",
       "claims": [
-        {"property_id": "attached_hub_support", "purpose": "FUNCTIONAL", "observation": "The raised core remains connected to a broad flat linkage pivoting from the rear interior housing.", "confidence": "MEDIUM"}
+        {
+          "property_id": "attached_hub_support",
+          "purpose": "FUNCTIONAL",
+          "observation": "The raised core remains connected to a broad flat linkage pivoting from the rear interior housing.",
+          "confidence": "MEDIUM"
+        }
       ],
-      "limitations": ["Dark handheld video frame; exact hinge axle and lower linkage surface are partly occluded."]
+      "limitations": [
+        "Dark handheld video frame; exact hinge axle and lower linkage surface are partly occluded."
+      ],
+      "local_sha256": "853da52429533255c59803f99f12fe9e34e55b6057759bff746e34d6ffbe4ab8"
     },
     {
       "reference_id": "video_closed_hub_frame",
       "source_id": "youtube_tactless_c60_demo",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["FUNCTIONAL", "CONSTRUCTION"],
+      "purposes": [
+        "FUNCTIONAL",
+        "CONSTRUCTION"
+      ],
       "view": "video_closed_overhead",
       "projection": "PERSPECTIVE",
       "source_tier": "USEFUL_VERIFY",
       "source_url": "https://www.youtube.com/watch?v=vLOridEUYNs&t=40s",
       "local_file": "media/video_frame_0040.png",
       "claims": [
-        {"property_id": "attached_hub_support", "purpose": "CONSTRUCTION", "observation": "Without tape, a longitudinal support visibly connects the centered radial core to a rectangular rear hinge housing.", "confidence": "HIGH"}
+        {
+          "property_id": "attached_hub_support",
+          "purpose": "CONSTRUCTION",
+          "observation": "Without tape, a longitudinal support visibly connects the centered radial core to a rectangular rear hinge housing.",
+          "confidence": "HIGH"
+        }
       ],
-      "limitations": ["Perspective overhead frame; support thickness and underside ribs remain hidden."]
+      "limitations": [
+        "Perspective overhead frame; support thickness and underside ribs remain hidden."
+      ],
+      "local_sha256": "95462545961550f5948417803c9fc06f2edb07a2fbc819103ddb7d4e804e76ef"
     },
     {
       "reference_id": "official_3m_dimensions",
       "source_id": "3m_scotch_c60_product",
       "target_id": "scotch_c60_bk",
       "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
-      "purposes": ["DIMENSION"],
+      "purposes": [
+        "DIMENSION"
+      ],
       "view": "specification",
       "projection": "UNKNOWN",
       "source_tier": "VERY_HIGH",
       "source_url": "https://www.3m.com/3M/sl_SI/p/d/v000214265/",
       "local_file": null,
       "claims": [
-        {"property_id": "overall_dimensions", "purpose": "DIMENSION", "observation": "3M publishes 158.7 mm overall length, 57.1 mm overall width, and 71 mm overall height.", "confidence": "HIGH"}
+        {
+          "property_id": "overall_dimensions",
+          "purpose": "DIMENSION",
+          "observation": "3M publishes 158.7 mm overall length, 57.1 mm overall width, and 71 mm overall height.",
+          "confidence": "HIGH"
+        }
       ],
-      "dimensional_anchors": ["length 158.7 mm", "width 57.1 mm", "height 71 mm"],
-      "limitations": ["Published dimensions bound the complete product and do not locate internal component landmarks."]
+      "dimensional_anchors": [
+        "length 158.7 mm",
+        "width 57.1 mm",
+        "height 71 mm"
+      ],
+      "limitations": [
+        "Published dimensions bound the complete product and do not locate internal component landmarks."
+      ]
     }
   ],
   "conflicts": [],

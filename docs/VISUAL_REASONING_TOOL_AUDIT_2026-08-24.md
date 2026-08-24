@@ -34,6 +34,11 @@ large nonfunctional dependency surface rather than improve modeling.
 | [TRELLIS.2](https://github.com/microsoft/TRELLIS.2) | High-resolution image-to-3D with complex/open topology and PBR | Not locally viable | Requires Linux plus NVIDIA GPU with at least 24 GB; current host has neither |
 | [DUSt3R](https://github.com/naver/dust3r) / [MASt3R](https://github.com/naver/mast3r) | Sparse-view camera/point-map reconstruction for same-scene photographs | Potential depth/camera evidence when genuine same-object views exist | Non-commercial license and PyTorch/GPU burden; evaluate remotely only for an actual matching case |
 | [Depth Anything V2](https://github.com/DepthAnything/Depth-Anything-V2) and [SAM 2](https://github.com/facebookresearch/sam2) | Monocular depth and segmentation | Useful evidence channels, but local foundation models add GPU burden | Gemini already supplies remote segmentation; depth remains a hypothesis unless cross-view corroborated |
+| [image2blender](https://github.com/tyohnn/image2blender) | Spec-first identity/detail inventory, locked passes, bounded repair | Strong process ideas; its component/object and primitive-count assumptions conflict with connected-cage modeling | Adopt identity inventory and repair limits, not its topology assumptions |
+| [blender-ai-mcp](https://github.com/PatrykIti/blender-ai-mcp) | Goal-scoped references, readiness state, checkpoints, retained correction focus | Directly useful orchestration precedent | Adopt target-scoped authorization and durable checkpoint focus |
+| [Thinking in Blender / SEIG](https://arxiv.org/abs/2606.02580) | Staged generator-verifier inverse graphics | Strong architectural match | Keep generation and verification as explicit alternating stages |
+| [EZBlender](https://arxiv.org/abs/2601.07143) | Plan-and-ReAct Blender generation | Supports plan-first execution with observed correction | Use plans as reversible hypotheses, not unchecked scripts |
+| [LL3M](https://arxiv.org/abs/2508.08228) | Editable Blender code with visual self-critique | Supports editable outputs and verifier feedback | Preserve editable construction and explicit visual critique |
 
 Reddit's public search and JSON endpoint were both attempted. The site required a CAPTCHA and
 returned HTTP 403 to the public API, so no Reddit claims are represented as inspected evidence.
@@ -42,14 +47,17 @@ GitHub issues supplied practitioner-level counterevidence instead.
 ## Implemented architecture
 
 ```text
-same-target references
+same-target, SHA-bound references
+  -> identity-feature / continuity / representation spec
   -> deterministic masks, bounds, landmarks and projection checks
   -> sparse editable base cage
   -> solid + wireframe + normal/depth renders
   -> hash-bound Gemini semantic comparison
-  -> localized representation/component/proportion/depth tickets
+  -> localized root-cause + repair-scope tickets
+  -> one artifact/revision-bound correction focus
   -> one typed corrective mutation
   -> re-render and re-critic
+  -> change strategy after two stagnant repairs or three attempts
   -> surface gate only after deterministic and semantic passes
   -> human visual review still decides acceptance
 ```
@@ -61,14 +69,14 @@ severity above 0.10.
 
 ## Real failure replay
 
-The first live replay compared Grant Abbitt's actual side-orthographic lesson reference with the
-old technically clean sword render:
+The current schema-v2 live replay compared Grant Abbitt's actual side-orthographic lesson reference
+with the old technically clean sword render:
 
-- semantic match: `0.35`;
-- silhouette match: `0.30`;
-- component relationship: `0.40`;
-- decision: `REJECT_REPRESENTATION`;
-- detected faults: missing upward sweep/wide belly and the wrong generic collar construction.
+- semantic match: `0.65`;
+- silhouette match: `0.55`;
+- decision: `CORRECT_PRIMARY_FORM`;
+- highest ticket: blade curvature is too straight (`PROPORTION_FAILURE`, adjust primary form);
+- second ticket: generic ring/cylinder hilt construction (`EXECUTION_FAILURE`, rebuild component).
 
 This is the same failure the user identified visually. The result is retained in
 `runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json`.

@@ -489,6 +489,30 @@ def set_control_mode(mode: str) -> dict:
 
 
 @mcp.tool()
+def get_reference_authorization() -> dict:
+    """Report whether this live typed-server session has passing structured reference authorization and which target/variant it is bound to."""
+    return _call("get_reference_authorization")
+
+
+@mcp.tool()
+def authorize_reference_modeling(evidence: dict) -> dict:
+    """Authorize geometry creation for one target after the complete structured REFERENCE_ANALYSIS gate passes. Bare booleans and malformed audit records are rejected; created objects retain the authorization fingerprint."""
+    return _call("authorize_reference_modeling", evidence=evidence)
+
+
+@mcp.tool()
+def authorize_tutorial_modeling(evidence: dict) -> dict:
+    """Authorize geometry creation for one tutorial target after independently inspected audiovisual/frame evidence and measured constraints pass."""
+    return _call("authorize_tutorial_modeling", evidence=evidence)
+
+
+@mcp.tool()
+def bind_existing_object_to_reference(object_name: str) -> dict:
+    """Explicitly bind an inspected loaded mesh/curve to the current target authorization after reconnecting. This is never inferred from object names or scene presence."""
+    return _call("bind_existing_object_to_reference", name=object_name)
+
+
+@mcp.tool()
 def poll_events(since_seq: int = 0) -> dict:
     """Poll for scene-change events (mesh_changed, undo, redo, file_saved) with sequence number greater than since_seq. This is eventual-consistency polling, not real-time push -- event delivery latency is tied to Blender's redraw cycle and can be tens of seconds with no other viewport activity; do not treat a missing event as proof nothing changed."""
     return _call("poll_events", since_seq=since_seq)

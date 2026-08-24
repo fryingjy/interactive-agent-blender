@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import string
 from typing import Any
 
 
@@ -13,6 +14,8 @@ STAGE_REQUIREMENTS = {
         "question_driven_research_pass", "visual_reconstruction_audit_pass",
         "component_reference_coverage_pass",
         "depth_critical_reference_support_pass",
+        "reference_audit",
+        "modeling_spec_audit",
     ),
     "PRIMARY_BLOCKOUT": (
         "dimensions_checked", "primary_components_present", "component_coverage",
@@ -31,6 +34,14 @@ STAGE_REQUIREMENTS = {
 
 def _is_number(value: Any) -> bool:
     return isinstance(value, (int, float)) and not isinstance(value, bool)
+
+
+def _is_sha256(value: Any) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(character in string.hexdigits for character in value)
+    )
 
 
 def _component_coverage_is_valid(value: Any) -> bool:
@@ -132,25 +143,104 @@ def _visual_reconstruction_audit_is_valid(value: Any) -> bool:
     Mirrors _component_coverage_is_valid's own precedent: a self-asserted boolean proves
     nothing, so this checks the actual structured record type and its own computed pass.
     """
+    required_checks = {
+        "identity_bound", "independent_observations", "property_specific_authority",
+        "eleven_passes_recorded", "competing_interpretations_tested",
+        "bad_interpretation_eliminated", "construction_bound_to_selected_interpretation",
+        "uncertainty_kept_reversible", "every_component_has_construction_justification",
+    }
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        return False
+    checks = value.get("checks")
+    selected = value.get("selected_hypothesis_ids")
     return (
-        isinstance(value, dict)
-        and value.get("record_type") == "VISUAL_RECONSTRUCTION_AUDIT"
+        value.get("record_type") == "VISUAL_RECONSTRUCTION_AUDIT"
+        and isinstance(value.get("target_id"), str) and bool(value["target_id"])
+        and isinstance(checks, dict) and required_checks <= set(checks)
+        and all(checks.get(key) is True for key in required_checks)
+        and isinstance(value.get("region_reports"), list) and bool(value["region_reports"])
+        and isinstance(selected, list) and bool(selected) and len(selected) == len(set(selected))
+        and _is_number(value.get("contradiction_count")) and value["contradiction_count"] > 0
+        and value.get("errors") == []
+        and value.get("pass") is True
+    )
+
+
+def _reference_audit_is_valid(value: Any) -> bool:
+    required_checks = {
+        "same_target_identity_pass", "view_coverage_pass", "orthographic_coverage_pass",
+        "provenance_coverage_pass", "critical_property_coverage_pass",
+        "dimensional_anchor_pass", "conflicts_resolved_pass", "question_driven_research_pass",
+        "artifact_binding_pass",
+    }
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        return False
+    checks = value.get("checks")
+    return (
+        value.get("record_type") == "REFERENCE_SET_AUDIT"
+        and isinstance(value.get("target_id"), str) and bool(value["target_id"])
+        and isinstance(value.get("target_variant"), str) and bool(value["target_variant"])
+        and isinstance(value.get("reference_count"), int) and value["reference_count"] > 0
+        and isinstance(value.get("matching_reference_count"), int)
+        and 0 < value["matching_reference_count"] <= value["reference_count"]
+        and isinstance(checks, dict) and required_checks <= set(checks)
+        and all(checks.get(key) is True for key in required_checks)
+        and value.get("issues") == []
+        and value.get("pass") is True
+        and value.get("disposition") == "READY_TO_MODEL"
+        and isinstance(value.get("authorized_reference_sha256"), list)
+        and bool(value["authorized_reference_sha256"])
+        and len(value["authorized_reference_sha256"]) == len(set(value["authorized_reference_sha256"]))
+        and all(_is_sha256(item) for item in value["authorized_reference_sha256"])
+    )
+
+
+def _modeling_spec_audit_is_valid(value: Any) -> bool:
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        return False
+    component_ids = value.get("component_ids")
+    feature_ids = value.get("identity_feature_ids")
+    reference_hashes = value.get("authorized_reference_sha256")
+    return (
+        value.get("record_type") == "REFERENCE_MODELING_SPEC_AUDIT"
+        and isinstance(value.get("target_id"), str) and bool(value["target_id"])
+        and isinstance(value.get("target_variant"), str) and bool(value["target_variant"])
+        and isinstance(component_ids, list) and bool(component_ids)
+        and len(component_ids) == len(set(component_ids))
+        and all(isinstance(item, str) and item for item in component_ids)
+        and isinstance(feature_ids, list) and bool(feature_ids)
+        and len(feature_ids) == len(set(feature_ids))
+        and all(isinstance(item, str) and item for item in feature_ids)
+        and isinstance(reference_hashes, list) and bool(reference_hashes)
+        and len(reference_hashes) == len(set(reference_hashes))
+        and all(_is_sha256(item) for item in reference_hashes)
+        and value.get("errors") == []
         and value.get("pass") is True
     )
 
 
 def _component_reference_coverage_is_valid(value: Any) -> bool:
     """Require validate_component_reference_coverage()'s structured result, not a bare True."""
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        return False
+    covered = value.get("covered_component_ids")
+    count = value.get("component_count")
     return (
-        isinstance(value, dict)
-        and value.get("pass") is True
+        value.get("record_type") == "COMPONENT_REFERENCE_COVERAGE"
+        and isinstance(count, int) and not isinstance(count, bool) and count > 0
+        and isinstance(covered, list) and len(covered) == count and len(covered) == len(set(covered))
         and value.get("uncovered_component_ids") == []
+        and value.get("pass") is True
     )
 
 
 def _depth_critical_reference_support_is_valid(value: Any) -> bool:
     """Require the structured depth-critical support report, never a bare assertion."""
-    if not isinstance(value, dict) or value.get("record_type") != "DEPTH_CRITICAL_REFERENCE_SUPPORT":
+    if (
+        not isinstance(value, dict)
+        or value.get("schema_version") != 1
+        or value.get("record_type") != "DEPTH_CRITICAL_REFERENCE_SUPPORT"
+    ):
         return False
     component_ids = value.get("depth_critical_component_ids")
     reports = value.get("component_reports")
@@ -249,6 +339,12 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
     failures: list[str] = []
     if not missing:
         if stage == "REFERENCE_ANALYSIS":
+            reference_audit = evidence["reference_audit"]
+            if not _reference_audit_is_valid(reference_audit):
+                failures.append("reference_audit is missing, malformed, or not ready to model")
+            modeling_spec_audit = evidence["modeling_spec_audit"]
+            if not _modeling_spec_audit_is_valid(modeling_spec_audit):
+                failures.append("modeling_spec_audit is missing, malformed, or not passing")
             if not evidence["component_graph_pass"]: failures.append("component graph invalid")
             ratio_count = evidence["measured_ratio_count"]
             if not _is_number(ratio_count) or ratio_count < 1:
@@ -260,12 +356,38 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             if not evidence["critical_property_coverage_pass"]: failures.append("critical properties lack authoritative evidence")
             if not evidence["conflicts_resolved_pass"]: failures.append("reference conflicts remain unresolved")
             if not evidence["question_driven_research_pass"]: failures.append("high-impact reference questions remain open or unaudited")
+            audit_checks = reference_audit.get("checks", {}) if isinstance(reference_audit, dict) else {}
+            flattened = {
+                "reference_set_audit_pass": reference_audit.get("pass") if isinstance(reference_audit, dict) else None,
+                "same_target_identity_pass": audit_checks.get("same_target_identity_pass"),
+                "view_coverage_pass": bool(audit_checks.get("view_coverage_pass")) and bool(audit_checks.get("orthographic_coverage_pass")),
+                "critical_property_coverage_pass": audit_checks.get("critical_property_coverage_pass"),
+                "conflicts_resolved_pass": audit_checks.get("conflicts_resolved_pass"),
+                "question_driven_research_pass": audit_checks.get("question_driven_research_pass"),
+            }
+            if any(evidence.get(key) is not value for key, value in flattened.items()):
+                failures.append("flattened reference flags contradict the structured reference_audit")
             if not _visual_reconstruction_audit_is_valid(evidence["visual_reconstruction_audit_pass"]):
                 failures.append("visual reconstruction audit missing, invalid, or not passing")
             if not _component_reference_coverage_is_valid(evidence["component_reference_coverage_pass"]):
                 failures.append("reference evidence does not cover every declared component")
             if not _depth_critical_reference_support_is_valid(evidence["depth_critical_reference_support_pass"]):
                 failures.append("depth-critical components lack multi-view structural evidence")
+            if _reference_audit_is_valid(reference_audit):
+                target_id = reference_audit["target_id"]
+                target_variant = reference_audit["target_variant"]
+                visual_audit = evidence["visual_reconstruction_audit_pass"]
+                if isinstance(visual_audit, dict) and visual_audit.get("target_id") != target_id:
+                    failures.append("visual reconstruction audit targets a different asset")
+                if _modeling_spec_audit_is_valid(modeling_spec_audit) and (
+                    modeling_spec_audit["target_id"] != target_id
+                    or modeling_spec_audit["target_variant"] != target_variant
+                ):
+                    failures.append("modeling spec targets a different asset or variant")
+                if _modeling_spec_audit_is_valid(modeling_spec_audit) and not set(
+                    modeling_spec_audit["authorized_reference_sha256"]
+                ) <= set(reference_audit["authorized_reference_sha256"]):
+                    failures.append("modeling spec cites reference artifacts outside the audited set")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")

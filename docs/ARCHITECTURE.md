@@ -6,13 +6,16 @@ The project separates Blender authority from planner/research policy. Blender ow
 evaluated geometry; ordinary Python modules own ranking, evidence aggregation, and durable records.
 
 ```text
-reference / brief / retrieved knowledge
+materialized references / brief / retrieved knowledge
+                  |
+                  v
+ identity + continuity + representation spec
                   |
                   v
         planner and stage policy
                   |
                   v
- typed MCP call -> Blender modeler server
+ target authorization -> typed MCP call -> Blender modeler server
                   |
                   v
  observe -> transaction -> mutate -> verify -> commit/reject
@@ -24,7 +27,7 @@ reference / brief / retrieved knowledge
        |                      |                |
        +----------+-----------+----------------+
                   v
-       independent verifier / run report
+ artifact-bound stage checkpoint / independent verifier / run report
 ```
 
 ## Blender-side authority (`blender_ops/`)
@@ -40,7 +43,9 @@ reference / brief / retrieved knowledge
 - `evaluated_probe.py` and `render_passes.py` inspect the dependency-graph result and Blender-native
   visual channels.
 - `modeling_stage.py` and `stage_gates.py` make workflow transitions explicit and evidence-bound.
-- `modeler_server.py` exposes the Blender command protocol used by the MCP layer.
+- `modeler_server.py` exposes the Blender command protocol used by the MCP layer. The live singleton
+  is strict: construction needs a passing target/variant-bound reference authorization, created
+  objects inherit its hash, and loaded objects require explicit binding.
 
 ## Policy and learning (`knowledge_engine/`)
 
@@ -50,6 +55,10 @@ reference / brief / retrieved knowledge
   and Blender-version relevance.
 - `surface_cause_classifier.py`, `visual_compare.py`, and `quality_review.py` aggregate bounded
   evidence without collapsing technical, surface, and visual truth into one score.
+- `reference_analysis.py` verifies materialized artifact hashes; `modeling_spec.py` binds semantic
+  identity features to continuity and representation decisions; `gemini_reference_critic.py`
+  produces exact-render root-cause tickets; `stage_checkpoint.py` and `iteration_control.py` retain
+  one correction focus and force a strategy change after bounded stagnation.
 - `telemetry.py` and `session_learning.py` retain real use and replay evidence.
 
 ## External interfaces

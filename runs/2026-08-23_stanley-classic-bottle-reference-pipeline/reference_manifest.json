@@ -62,7 +62,8 @@
         "base_ring",
         "cap_cup",
         "gasket_ring"
-      ]
+      ],
+      "local_sha256": "4d1b46291c81216e60d0ff3c2828be80266d76b7a9bc62e1fa29ec36c88a0595"
     },
     {
       "reference_id": "official_spec_sheet",

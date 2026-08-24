@@ -1,6 +1,8 @@
 import json
 import tempfile
 import unittest
+
+from tests.test_reference_analysis_stage_gate import _base_evidence as valid_reference_stage_evidence
 from pathlib import Path
 
 from knowledge_engine.ingest.document_ingest import crawl_local_documents, ingest_document
@@ -1083,7 +1085,7 @@ class PlannerTests(unittest.TestCase):
             "type": "human_review_proportion", "target": "body", "severity": 1.0,
             "source": "EXTERNAL_HUMAN_REVIEW", "scene_revision": 3,
         }]))
-        self.assertEqual(decision.action, "RECAPTURE_STALE_HUMAN_REVIEW")
+        self.assertEqual(decision.action, "RECAPTURE_STALE_VISUAL_REVIEW")
         self.assertEqual(decision.disposition, "INSPECT")
 
     def test_authority_and_external_edit_preempt_mutation(self):
@@ -1252,20 +1254,7 @@ class PlannerTests(unittest.TestCase):
         ])
         decision = plan_next_decision(self.context(
             stage="REFERENCE_ANALYSIS",
-            stage_evidence={
-                "component_graph_pass": True,
-                "measured_ratio_count": 3,
-                "uncertainty_recorded": True,
-                "reference_set_audit_pass": True,
-                "same_target_identity_pass": True,
-                "view_coverage_pass": True,
-                "critical_property_coverage_pass": True,
-                "conflicts_resolved_pass": True,
-                "question_driven_research_pass": True,
-                "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
-                "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
-                "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
-            },
+            stage_evidence=valid_reference_stage_evidence(),
             reference_decomposition=decomp,
         ))
         self.assertEqual(decision.disposition, "RESEARCH")
@@ -1300,6 +1289,57 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(decision.operation_params["representation"], "CURVE")
         self.assertEqual(decision.operation_params["component_policy"], "SEPARATE_COMPONENTS")
         self.assertTrue(any("handle-path" in note for note in decision.operation_params["reference_claim_notes"]))
+
+    def test_upstream_root_causes_block_local_geometry_patches(self):
+        interpretation = plan_next_decision(self.context(visual_tickets=[{
+            "type": "semantic_silhouette", "target": "blade", "priority": 1,
+            "severity": 0.9, "root_cause": "INTERPRETATION_FAILURE",
+            "suggested_operation": "move_selection",
+        }]))
+        self.assertEqual(interpretation.action, "REOPEN_3D_INTERPRETATION")
+        self.assertIsNone(interpretation.operation)
+        self.assertEqual(interpretation.next_stage, "REFERENCE_ANALYSIS")
+
+        representation = plan_next_decision(self.context(visual_tickets=[{
+            "type": "human_review_construction_strategy", "target": "guard", "priority": 1,
+            "severity": 0.8, "root_cause_categories": ["REPRESENTATION_FAILURE"],
+            "source": "EXTERNAL_HUMAN_REVIEW", "scene_revision": 4,
+            "suggested_operation": "scale_selection",
+        }]))
+        self.assertEqual(representation.action, "REBUILD_COMPONENT_REPRESENTATION")
+        self.assertEqual(representation.disposition, "REPLAN")
+        self.assertIsNone(representation.operation)
+
+    def test_evaluator_failure_preserves_geometry(self):
+        decision = plan_next_decision(self.context(visual_tickets=[{
+            "type": "silhouette_error", "target": "body", "priority": 1,
+            "severity": 0.8, "root_cause": "EVALUATOR_FAILURE",
+            "suggested_operation": "scale_selection",
+        }]))
+        self.assertEqual(decision.action, "RECALIBRATE_VISUAL_EVALUATOR")
+        self.assertIsNone(decision.operation)
+
+    def test_stagnant_visual_repairs_force_strategy_change(self):
+        history = [
+            {
+                "stage": "PROPORTION_SILHOUETTE", "target_region": "blade",
+                "status": "committed", "before_score": 0.50, "after_score": 0.505,
+            },
+            {
+                "stage": "PROPORTION_SILHOUETTE", "target_region": "blade",
+                "status": "committed", "before_score": 0.505, "after_score": 0.506,
+            },
+        ]
+        decision = plan_next_decision(self.context(
+            recent_decisions=history,
+            visual_tickets=[{
+                "type": "silhouette_error", "target": "blade", "priority": 1,
+                "severity": 0.8, "suggested_operation": "move_selection",
+            }],
+        ))
+        self.assertEqual(decision.action, "CHANGE_MODELING_STRATEGY")
+        self.assertEqual(decision.disposition, "REPLAN")
+        self.assertIsNone(decision.operation)
 
 
 class CurriculumInventoryTests(unittest.TestCase):

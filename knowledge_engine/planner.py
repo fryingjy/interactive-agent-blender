@@ -12,6 +12,7 @@ from typing import Any
 
 from blender_ops.stage_gates import evaluate_stage_gate
 from knowledge_engine.reasoning import Diagnosis, RegionRepairHistory
+from knowledge_engine.iteration_control import evaluate_iteration_budget
 from knowledge_engine.scene_decomposition import SceneDecomposition
 from knowledge_engine.strategy import ModelingBrief, choose_strategy
 
@@ -139,6 +140,89 @@ def _highest_ticket(context: PlannerContext) -> dict[str, Any] | None:
             str(item.get("type", "")),
         ),
     )[0]
+
+
+def _root_cause_contract(
+    context: PlannerContext, ticket: dict[str, Any], target: str | None
+) -> DecisionContract | None:
+    roots = ticket.get("root_cause_categories", ticket.get("root_cause", []))
+    if isinstance(roots, str):
+        roots = [roots]
+    roots = set(roots) if isinstance(roots, list) else set()
+    region = str(ticket.get("target")) if ticket.get("target") else None
+    if "REFERENCE_FAILURE" in roots:
+        return _contract(
+            context,
+            disposition="RESEARCH",
+            action="REOPEN_REFERENCE_IDENTITY",
+            operation=None,
+            operation_params={},
+            target_object=target,
+            target_region=region,
+            rationale=("the failure is in the reference set, not the mesh",),
+            expected_effect="Replace or rebind the incorrect target/variant evidence before any geometry repair.",
+            verification=("rerun same-target identity and reference readiness", "regress to REFERENCE_ANALYSIS"),
+            confidence="HIGH",
+            next_stage="REFERENCE_ANALYSIS",
+        )
+    if "INTERPRETATION_FAILURE" in roots:
+        return _contract(
+            context,
+            disposition="RESEARCH",
+            action="REOPEN_3D_INTERPRETATION",
+            operation=None,
+            operation_params={},
+            target_object=target,
+            target_region=region,
+            rationale=("the inferred 3D form is contradicted; local mesh patching cannot repair the mental model",),
+            expected_effect="Generate and test new cross-view shape hypotheses before rebuilding.",
+            verification=("eliminate at least one competing interpretation", "regress to REFERENCE_ANALYSIS"),
+            confidence="HIGH",
+            next_stage="REFERENCE_ANALYSIS",
+        )
+    if "REPRESENTATION_FAILURE" in roots:
+        return _contract(
+            context,
+            disposition="REPLAN",
+            action="REBUILD_COMPONENT_REPRESENTATION",
+            operation=None,
+            operation_params={"component_id": region},
+            target_object=target,
+            target_region=region,
+            rationale=("the selected modeling representation is wrong; downstream adjustments would preserve the error",),
+            expected_effect="Replace the affected component with a newly justified continuous/separate/swept/revolved/extruded construction.",
+            verification=("record the rejected representation", "rerender raw base-cage views before surface work"),
+            confidence="HIGH",
+        )
+    if "EVALUATOR_FAILURE" in roots:
+        return _contract(
+            context,
+            disposition="INSPECT",
+            action="RECALIBRATE_VISUAL_EVALUATOR",
+            operation=None,
+            operation_params={},
+            target_object=target,
+            target_region=region,
+            rationale=("the judge is wrong; changing geometry would optimize against a faulty signal",),
+            expected_effect="Repair the render, mask, camera, binding, or metric before another model edit.",
+            verification=("replay the evaluator on a known control", "preserve current geometry"),
+            confidence="HIGH",
+        )
+    if "EXECUTION_FAILURE" in roots:
+        return _contract(
+            context,
+            disposition="INSPECT",
+            action="VERIFY_OR_ROLL_BACK_EXECUTION",
+            operation="get_full_state",
+            operation_params={"object_name": target} if target else {},
+            target_object=target,
+            target_region=region,
+            rationale=("the intended construction may be sound but the Blender mutation executed incorrectly",),
+            expected_effect="Compare actual state with the decision contract before retrying the same technique.",
+            verification=("inspect base/evaluated geometry", "rollback or issue one corrected typed mutation"),
+            confidence="HIGH",
+        )
+    return None
 
 
 def _skill_guided_ticket_decision(
@@ -519,19 +603,47 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         ticket_type = str(ticket.get("type", "visual_mismatch"))
         region = ticket.get("target")
         ticket_revision = ticket.get("scene_revision")
-        if ticket.get("source") == "EXTERNAL_HUMAN_REVIEW" and ticket_revision != context.scene_revision:
+        revision_bound_source = ticket.get("source") in {
+            "EXTERNAL_HUMAN_REVIEW", "GEMINI_REFERENCE_CRITIC"
+        }
+        if revision_bound_source and ticket_revision != context.scene_revision:
             return _contract(
                 context,
                 disposition="INSPECT",
-                action="RECAPTURE_STALE_HUMAN_REVIEW",
+                action="RECAPTURE_STALE_VISUAL_REVIEW",
                 target_object=target,
                 target_region=str(region) if region else None,
                 rationale=(
-                    f"human review targets scene revision {ticket_revision}, not observed revision {context.scene_revision}",
+                    f"visual review targets scene revision {ticket_revision}, not observed revision {context.scene_revision}",
                     "a later edit may have repaired or moved the reviewed region",
                 ),
-                expected_effect="Obtain a current human judgment before using it to drive a repair.",
+                expected_effect="Obtain a current render-bound judgment before using it to drive a repair.",
                 verification=("review scene revision equals the current observation",),
+                confidence="HIGH",
+            )
+        root_cause = _root_cause_contract(context, ticket, target)
+        if root_cause is not None:
+            return root_cause
+        iteration_budget = evaluate_iteration_budget(
+            context.recent_decisions,
+            stage=context.stage,
+            target_region=str(region) if region else None,
+        )
+        if iteration_budget["decision"] == "CHANGE_STRATEGY":
+            return _contract(
+                context,
+                disposition="REPLAN",
+                action="CHANGE_MODELING_STRATEGY",
+                operation=None,
+                operation_params={"iteration_budget": iteration_budget},
+                target_object=target,
+                target_region=str(region) if region else None,
+                rationale=(
+                    iteration_budget["reason"],
+                    "another local patch would be unmeasured repetition rather than progress",
+                ),
+                expected_effect="Select a different representation or rebuild the affected region from the last accepted checkpoint.",
+                verification=("state the new strategy", "compare against the same fixed views", "reset the region repair budget only after measurable improvement"),
                 confidence="HIGH",
             )
         suggested = ticket.get("suggested_operation")

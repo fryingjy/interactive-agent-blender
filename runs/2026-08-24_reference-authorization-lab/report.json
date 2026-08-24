@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_AUTHORIZATION_LAB",
+  "blender_version": "5.2.0 LTS",
+  "checks": [
+    {
+      "check": "construction_before_authorization_is_blocked",
+      "pass": true,
+      "error": "reference-driven construction is not authorized in this server session; call authorize_reference_modeling with passing structured REFERENCE_ANALYSIS evidence first"
+    },
+    {
+      "check": "malformed_authorization_is_blocked",
+      "pass": true,
+      "error": "reference authorization gate failed: ['component_graph_pass', 'measured_ratio_count', 'uncertainty_recorded', 'reference_set_audit_pass', 'same_target_identity_pass', 'view_coverage_pass', 'critical_property_coverage_pass', 'conflicts_resolved_pass', 'question_driven_research_pass', 'visual_reconstruction_audit_pass', 'component_reference_coverage_pass', 'depth_critical_reference_support_pass', 'modeling_spec_audit']"
+    },
+    {
+      "check": "structured_authorization_passes",
+      "pass": true
+    },
+    {
+      "check": "created_object_is_hash_bound",
+      "pass": true
+    },
+    {
+      "check": "unbound_existing_object_mutation_is_blocked",
+      "pass": true,
+      "error": "object 'ManualUnbound' is not bound to the current reference authorization; inspect it, then explicitly call bind_existing_object_to_reference before mutation"
+    },
+    {
+      "check": "authorization_cannot_change_during_pending_decision",
+      "pass": true,
+      "error": "cannot replace reference authorization while a decision is pending"
+    },
+    {
+      "check": "explicit_binding_enables_transaction",
+      "pass": true
+    },
+    {
+      "check": "transaction_created_object_inherits_binding",
+      "pass": true
+    },
+    {
+      "check": "global_undo_is_blocked",
+      "pass": true,
+      "error": "global undo is disabled on the strict agent server; reject a decision or restore a checkpoint"
+    },
+    {
+      "check": "full_scene_restore_is_blocked",
+      "pass": true,
+      "error": "full-scene checkpoint restore is disabled on the strict agent server; load the checkpoint before creating the server, then authorize and explicitly bind targets"
+    },
+    {
+      "check": "bound_semantic_region_write_passes",
+      "pass": true
+    },
+    {
+      "check": "unbound_semantic_region_write_is_blocked",
+      "pass": true,
+      "error": "authorized mutation target 'NotPresent' does not exist"
+    }
+  ],
+  "pass": true
+}

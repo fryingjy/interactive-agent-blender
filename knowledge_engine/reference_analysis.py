@@ -7,8 +7,11 @@ separate concepts.
 
 from __future__ import annotations
 
+import hashlib
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 
 FACTUAL_PURPOSES = {
@@ -59,6 +62,7 @@ class ReferenceItem:
     # factual-readiness criteria, but makes a validated manifest reproducible.
     source_url: str = ""
     local_file: str = ""
+    local_sha256: str = ""
     claims: tuple[PropertyClaim, ...] = ()
     dimensional_anchors: tuple[str, ...] = ()
     limitations: tuple[str, ...] = ()
@@ -77,6 +81,21 @@ class ReferenceItem:
             raise ValueError(f"unknown projection: {self.projection}")
         if self.source_tier not in VALID_SOURCE_TIERS:
             raise ValueError(f"unknown source tier: {self.source_tier}")
+        if not self.source_url and not self.local_file:
+            raise ValueError("reference items require source_url or local_file provenance")
+        if self.source_url:
+            parsed = urlparse(self.source_url)
+            if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                raise ValueError("reference source_url must be an absolute HTTP(S) URL")
+        if self.local_file:
+            path = Path(self.local_file)
+            if not path.is_file():
+                raise ValueError(f"reference local_file does not exist: {self.local_file}")
+            if len(self.local_sha256) != 64:
+                raise ValueError("materialized reference files require local_sha256")
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest.lower() != self.local_sha256.lower():
+                raise ValueError("reference local_sha256 does not match local_file")
         unknown = set(self.purposes) - FACTUAL_PURPOSES - {"INSPIRATION"}
         if unknown:
             raise ValueError(f"unknown reference purposes: {sorted(unknown)}")
@@ -276,6 +295,11 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         if item.target_id == reference_set.target_id
         and item.target_variant == reference_set.target_variant
     ]
+    artifact_hashes = sorted({
+        item.local_sha256.lower() for item in matching if item.local_file and item.local_sha256
+    })
+    if not artifact_hashes:
+        issues.append("no materialized reference artifact is hash-bound")
     mismatched = [
         item.reference_id for item in reference_set.items
         if item.target_id != reference_set.target_id
@@ -362,9 +386,12 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         "dimensional_anchor_pass": bool(anchors) or not reference_set.require_dimensional_anchor,
         "conflicts_resolved_pass": not open_conflicts,
         "question_driven_research_pass": research_audit["pass"],
+        "artifact_binding_pass": bool(artifact_hashes),
     }
     ready = all(checks.values())
     return {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
         "target_id": reference_set.target_id,
         "target_variant": reference_set.target_variant,
         "reference_count": len(reference_set.items),
@@ -374,6 +401,7 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         "checks": checks,
         "covered_properties": covered_properties,
         "dimensional_anchors": anchors,
+        "authorized_reference_sha256": artifact_hashes,
         "issues": issues,
         "targeted_research_queries": list(dict.fromkeys(queries)),
         "research_audit": research_audit,
@@ -382,12 +410,16 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
     }
 
 
-def reference_set_from_dict(payload: dict[str, Any]) -> ReferenceSet:
+def reference_set_from_dict(payload: dict[str, Any], *, base_dir: str | Path | None = None) -> ReferenceSet:
     """Load the documented JSON manifest shape without weakening validation."""
     items = []
     for raw in payload.get("items", []):
         claims = tuple(PropertyClaim(**claim) for claim in raw.get("claims", []))
         item = {**raw, "claims": claims}
+        if item.get("local_file") and base_dir is not None:
+            local_path = Path(item["local_file"])
+            if not local_path.is_absolute():
+                item["local_file"] = str((Path(base_dir) / local_path).resolve())
         for key in ("purposes", "dimensional_anchors", "limitations", "component_ids"):
             item[key] = tuple(item.get(key, []))
         items.append(ReferenceItem(**item))
@@ -449,6 +481,8 @@ def validate_component_reference_coverage(
                 covered.add(claim.component_id)
     uncovered = sorted(declared - covered)
     return {
+        "schema_version": 1,
+        "record_type": "COMPONENT_REFERENCE_COVERAGE",
         "component_count": len(declared),
         "covered_component_ids": sorted(covered & declared),
         "uncovered_component_ids": uncovered,
@@ -494,6 +528,7 @@ def validate_depth_critical_reference_support(
     }
     unsupported = [component_id for component_id, report in reports.items() if not report["pass"]]
     return {
+        "schema_version": 1,
         "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
         "depth_critical_component_ids": sorted(critical_ids),
         "component_reports": reports,
@@ -508,6 +543,7 @@ def build_reference_stage_evidence(
     visual_reconstruction_audit: dict[str, Any] | None = None,
     component_reference_coverage: dict[str, Any] | None = None,
     depth_critical_reference_support: dict[str, Any] | None = None,
+    modeling_spec_audit: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Map one audit into the exact machine gate contract without hand-copied flags.
 
@@ -532,6 +568,7 @@ def build_reference_stage_evidence(
         "visual_reconstruction_audit_pass": visual_reconstruction_audit,
         "component_reference_coverage_pass": component_reference_coverage,
         "depth_critical_reference_support_pass": depth_critical_reference_support,
+        "modeling_spec_audit": modeling_spec_audit,
         "targeted_research_queries": list(audit.get("targeted_research_queries", [])),
         "modeling_constraints": list(
             audit.get("research_audit", {}).get("modeling_constraints", [])

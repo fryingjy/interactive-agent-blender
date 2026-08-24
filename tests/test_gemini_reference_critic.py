@@ -9,8 +9,11 @@ from PIL import Image
 from knowledge_engine.gemini_reference_critic import (
     analyze_reference_candidate,
     build_critic_parts,
+    critic_to_repair_tickets,
+    derive_correction_directive,
     load_critic_manifest,
     validate_critic_analysis,
+    validate_critic_record,
 )
 
 
@@ -27,6 +30,8 @@ def valid_analysis(decision="CORRECT_PRIMARY_FORM"):
             "depth_plausibility_score": 0.55,
             "mismatches": [{
                 "category": "REPRESENTATION",
+                "root_cause": "REPRESENTATION_FAILURE",
+                "repair_scope": "REBUILD_COMPONENT",
                 "component_id": "body",
                 "evidence": "The reference hook overhang is missing.",
                 "reference_box_2d": [100, 100, 500, 400],
@@ -107,11 +112,60 @@ class GeminiReferenceCriticTests(unittest.TestCase):
             self.manifest, model="test-model", generate=generate
         )
         self.assertEqual(result["record_type"], "GEMINI_REFERENCE_CRITIC")
+        self.assertEqual(result["schema_version"], 2)
         self.assertEqual(result["provenance"]["model"], "test-model")
         self.assertEqual(
             result["provenance"]["view_artifacts"][0]["reference_sha256"],
             self.manifest["views"][0]["reference_sha256"],
         )
+
+    def test_retained_record_revalidates_and_binds_exact_candidate(self):
+        def generate(**_kwargs):
+            return SimpleNamespace(text=json.dumps(valid_analysis()))
+
+        result = analyze_reference_candidate(self.manifest, model="test-model", generate=generate)
+        validated = validate_critic_record(
+            result,
+            expected_target_id="test_prop",
+            expected_views={"front": self.manifest["views"][0]["candidate_sha256"]},
+            authorized_reference_hashes={self.manifest["views"][0]["reference_sha256"]},
+        )
+        self.assertIs(validated, result)
+
+    def test_record_for_different_candidate_or_reference_is_rejected(self):
+        def generate(**_kwargs):
+            return SimpleNamespace(text=json.dumps(valid_analysis()))
+
+        result = analyze_reference_candidate(self.manifest, model="test-model", generate=generate)
+        with self.assertRaisesRegex(ValueError, "candidate views"):
+            validate_critic_record(result, expected_views={"front": "0" * 64})
+        with self.assertRaisesRegex(ValueError, "authorized evidence"):
+            validate_critic_record(result, authorized_reference_hashes={"0" * 64})
+
+    def test_tampered_request_fingerprint_is_rejected(self):
+        def generate(**_kwargs):
+            return SimpleNamespace(text=json.dumps(valid_analysis()))
+
+        result = analyze_reference_candidate(self.manifest, model="test-model", generate=generate)
+        result["provenance"]["request_sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "request fingerprint"):
+            validate_critic_record(result)
+
+    def test_root_cause_drives_rebuild_and_blocks_polish(self):
+        directive = derive_correction_directive(valid_analysis())
+        self.assertEqual(directive["disposition"], "REBUILD_COMPONENT")
+        self.assertIn("Do not add bevel", directive["prohibited_shortcut"])
+
+    def test_rejection_becomes_root_cause_planner_tickets(self):
+        def generate(**_kwargs):
+            return SimpleNamespace(text=json.dumps(valid_analysis()))
+
+        result = analyze_reference_candidate(self.manifest, model="test-model", generate=generate)
+        tickets = critic_to_repair_tickets(result, current_scene_revision=7)
+        self.assertEqual(tickets[0]["root_cause"], "REPRESENTATION_FAILURE")
+        self.assertEqual(tickets[0]["repair_scope"], "REBUILD_COMPONENT")
+        self.assertEqual(tickets[0]["scene_revision"], 7)
+        self.assertEqual(tickets[0]["source"], "GEMINI_REFERENCE_CRITIC")
 
 
 if __name__ == "__main__":

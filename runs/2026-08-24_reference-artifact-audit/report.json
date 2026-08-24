@@ -1,0 +1,595 @@
+{
+  "schema_version": 1,
+  "reports": [
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-panasonic-rf2400d\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "panasonic_rf2400d_portable_radio",
+        "target_variant": "Panasonic RF-2400D portable AM/FM radio, silver/black housing",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 2,
+        "view_count": 3,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "rounded_rectangular_housing": [
+            "rf2400d_front"
+          ],
+          "speaker_vs_tuner_panel_ratio": [
+            "rf2400d_front"
+          ],
+          "handle_negative_space": [
+            "rf2400d_front"
+          ],
+          "antenna_mount_and_angle": [
+            "rf2400d_angle",
+            "rf2400d_manual"
+          ],
+          "side_tuning_knob": [
+            "rf2400d_angle"
+          ],
+          "overall_envelope": [
+            "rf2400d_manual"
+          ]
+        },
+        "dimensional_anchors": [
+          "234 \u00d7 122 \u00d7 82 mm (W\u00d7H\u00d7D)"
+        ],
+        "authorized_reference_sha256": [
+          "5e9817068af013d2d9a2db80054a6f8537e3add07bebe4fddbc4f8904916baa0"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 2,
+          "candidate_counts": {
+            "ACCEPTED": 1,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [
+            "rf2400d_angle"
+          ],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "rf2400d_hidden_rear"
+          ],
+          "modeling_constraints": [
+            "Limit first exercise to front, right-side, top handle, and antenna relationships."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-seiko-qhe195rlh\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "seiko_qhe195rlh",
+        "target_variant": "Seiko QHE195RLH red bedside alarm clock",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 1,
+        "view_count": 3,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "rounded_rectangle_front_housing": [
+            "seiko_official_front"
+          ],
+          "circular_dial_recess": [
+            "seiko_official_front"
+          ],
+          "top_button": [
+            "seiko_official_front",
+            "seiko_official_right_side"
+          ],
+          "side_profile": [
+            "seiko_official_right_side"
+          ],
+          "overall_width": [
+            "seiko_official_specification"
+          ],
+          "overall_height": [
+            "seiko_official_specification"
+          ],
+          "overall_depth": [
+            "seiko_official_specification"
+          ]
+        },
+        "dimensional_anchors": [
+          "overall dimensions 3.9 \u00d7 4.5 \u00d7 1.8 inches"
+        ],
+        "authorized_reference_sha256": [
+          "0b3e78e68dcbbae8884c4e83324bc9af078cffebb61839246646f84c21e08a23",
+          "1dec0fffffac4c3a08ba9d26b90141dccf81d66022a3792777d91fe55f0406fc"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 1,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "qhe195rlh_rear_detail"
+          ],
+          "modeling_constraints": [
+            "Do not add rear buttons, battery door, or underside seams until same-variant evidence is retained."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-masterlock-140d\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "master_lock_140d",
+        "target_variant": "Master Lock 140D solid-brass padlock with standard hardened-steel shackle",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 2,
+        "view_count": 3,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "body_to_shackle_separation": [
+            "front_right_oblique",
+            "front_product"
+          ],
+          "body_primary_form": [
+            "front_right_oblique"
+          ],
+          "front_seam_location": [
+            "front_right_oblique"
+          ],
+          "body_width": [
+            "masterlock_specification"
+          ],
+          "shackle_clearance_height": [
+            "masterlock_specification"
+          ],
+          "shackle_clearance_width": [
+            "masterlock_specification"
+          ],
+          "shackle_diameter": [
+            "masterlock_specification"
+          ],
+          "body_height": [
+            "front_product"
+          ]
+        },
+        "dimensional_anchors": [
+          "body width 40 mm",
+          "shackle clearance height 22 mm",
+          "shackle clearance width 21 mm",
+          "shackle diameter 6 mm",
+          "initial body height hypothesis 32 mm from official front-image proportion, not a manufacturing drawing"
+        ],
+        "authorized_reference_sha256": [
+          "846d6c7affc52c4959f76c5953068c3fed30439dd2d8a4ff2324afe5c24a0a13",
+          "cdc8dc7b393ab543089e9b2ff6b782cca05406f01d578e69f3acd229b6fa4804"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 1,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 1,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [
+            "body_depth"
+          ],
+          "modeling_constraints": [
+            "Keep body depth editable and do not add underside/rear detail."
+          ],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-21_reference-scotch-c60\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "scotch_c60_bk",
+        "target_variant": "Scotch C60-BK black two-tone desktop tape dispenser",
+        "reference_count": 8,
+        "matching_reference_count": 8,
+        "independent_source_count": 3,
+        "view_count": 6,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "central_tape_channel": [
+            "official_3m_left_oblique",
+            "market_open_hub_oblique"
+          ],
+          "rear_bridge_continuity": [
+            "official_3m_right_oblique",
+            "market_open_hub_oblique"
+          ],
+          "separate_hub": [
+            "official_3m_right_oblique"
+          ],
+          "wave_profile": [
+            "market_closed_right_oblique"
+          ],
+          "lower_upper_boundary": [
+            "market_closed_left_oblique"
+          ],
+          "attached_hub_support": [
+            "video_open_hub_frame",
+            "video_closed_hub_frame"
+          ],
+          "overall_dimensions": [
+            "official_3m_dimensions"
+          ]
+        },
+        "dimensional_anchors": [
+          "length 158.7 mm",
+          "width 57.1 mm",
+          "height 71 mm"
+        ],
+        "authorized_reference_sha256": [
+          "122d7203f244f164e425fa913e04181bf196617489aefc8df0a3e4fa477ed9b3",
+          "332527b25556094dcfe2bfadc20ffcd969d99c0b7d646b2150a517a50980ffd8",
+          "4fca52456b093790f79ef4ae2e1a69939021f133fc8d1bf812657580af018961",
+          "5c19448054f409a3c0d71d2e8b4b7984d726b9b89e85e49e2b08e72ed27529a0",
+          "853da52429533255c59803f99f12fe9e34e55b6057759bff746e34d6ffbe4ab8",
+          "95462545961550f5948417803c9fc06f2edb07a2fbc819103ddb7d4e804e76ef",
+          "9b7c60461825a24db507e9fd290e3a76760b3bac0645a807ed8c56026ca3ffe3"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-16_reference-gathering-ikea-kupong\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "ikea_kupong_90621811",
+        "target_variant": "IKEA KUPONG black alarm clock, article 906.218.11",
+        "reference_count": 4,
+        "matching_reference_count": 4,
+        "independent_source_count": 1,
+        "view_count": 4,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "overall_width": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "overall_height": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "overall_depth": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "continuous_shell_silhouette": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "front_display_recess": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "front_underbody_opening": [
+            "ikea_kupong_official_product_photo"
+          ],
+          "rear_support_profile": [
+            "ikea_kupong_official_3d_orthographic_views"
+          ]
+        },
+        "dimensional_anchors": [
+          "length 2.75 in",
+          "height 2.25 in",
+          "depth 1.5 in",
+          "official product model cross-check only; manufacturer dimensions remain the scale authority"
+        ],
+        "authorized_reference_sha256": [
+          "7321fbb7967eb8bab6844f3f77dedfdeff6f08c1e900e6eaf33a4d886f0ef697",
+          "7c10e19592ae12a92b94bc010195b1580107341db49eb50bd7f61f65be754f6c",
+          "908d7ca1733b3842f48d8e302c9e1409d314d289416e7ac308348fa33336e502",
+          "97217c6d2ed407aee80903b771dc2e322a9411c9deee933c1f925671d9f9620a"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-21_reference-aa-battery\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "aa_lr6_cell",
+        "target_variant": "IEC LR6 / AA dimensional envelope",
+        "reference_count": 3,
+        "matching_reference_count": 3,
+        "independent_source_count": 2,
+        "view_count": 2,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "total_height": [
+            "duracell_lr6_side_drawing",
+            "wikimedia_aa_labelled_side"
+          ],
+          "positive_terminal_diameter": [
+            "duracell_lr6_side_drawing"
+          ],
+          "body_diameter": [
+            "duracell_lr6_top_drawing",
+            "wikimedia_aa_labelled_side"
+          ]
+        },
+        "dimensional_anchors": [
+          "total height 49.2-50.5 mm",
+          "positive terminal <=5.5 mm diameter",
+          "positive terminal >=1.0 mm projection",
+          "body diameter 13.5-14.5 mm",
+          "representative height 50 mm",
+          "representative diameter 14 mm"
+        ],
+        "authorized_reference_sha256": [
+          "a84d0e8fb58fb339de10f08d229d944bb4293c506e5a8f0235379a774e6e5a15",
+          "b44750efac29761f822c6578cedff797e9e1f1726d94ec5adea62b81845eeffc"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    },
+    {
+      "manifest": "runs\\2026-08-23_stanley-classic-bottle-reference-pipeline\\reference_manifest.json",
+      "audit": {
+        "schema_version": 1,
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "stanley-classic-legendary-bottle",
+        "target_variant": "1.0qt-hammertone-green",
+        "reference_count": 2,
+        "matching_reference_count": 2,
+        "independent_source_count": 2,
+        "view_count": 2,
+        "checks": {
+          "same_target_identity_pass": true,
+          "view_coverage_pass": true,
+          "orthographic_coverage_pass": true,
+          "provenance_coverage_pass": true,
+          "critical_property_coverage_pass": true,
+          "dimensional_anchor_pass": true,
+          "conflicts_resolved_pass": true,
+          "question_driven_research_pass": true,
+          "artifact_binding_pass": true
+        },
+        "covered_properties": {
+          "cap_height_ratio": [
+            "official_front_photo"
+          ],
+          "cap_to_body_diameter_ratio": [
+            "official_front_photo"
+          ],
+          "gasket_band_position": [
+            "official_front_photo"
+          ],
+          "body_width_variation": [
+            "official_front_photo"
+          ],
+          "base_ring_taper": [
+            "official_front_photo"
+          ],
+          "overall_dimensions": [
+            "official_spec_sheet"
+          ],
+          "capacity": [
+            "official_spec_sheet"
+          ]
+        },
+        "dimensional_anchors": [
+          "total_height=30.8cm (official spec, used as the pixel-to-cm scale anchor)"
+        ],
+        "authorized_reference_sha256": [
+          "4d1b46291c81216e60d0ff3c2828be80266d76b7a9bc62e1fa29ec36c88a0595"
+        ],
+        "issues": [],
+        "targeted_research_queries": [],
+        "research_audit": {
+          "question_count": 0,
+          "candidate_counts": {
+            "ACCEPTED": 0,
+            "REJECTED": 0,
+            "PENDING": 0
+          },
+          "accepted_reference_links": [],
+          "missing_reference_links": [],
+          "open_questions": [],
+          "blocking_questions": [],
+          "deferred_questions": [],
+          "modeling_constraints": [],
+          "targeted_research_queries": [],
+          "checks": {
+            "question_records_valid": true,
+            "accepted_candidates_link_to_reference_items": true,
+            "no_high_impact_question_open": true
+          },
+          "pass": true
+        },
+        "pass": true,
+        "disposition": "READY_TO_MODEL"
+      },
+      "pass": true
+    }
+  ],
+  "pass": true
+}

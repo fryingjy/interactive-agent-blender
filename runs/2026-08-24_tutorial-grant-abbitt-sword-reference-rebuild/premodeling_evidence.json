@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
   "record_type": "TUTORIAL_PREMODELING_EVIDENCE",
+  "target_id": "grant_abbitt_curved_sword",
+  "target_variant": "lesson_side_orthographic_0077",
   "source_identity": {
     "url": "https://www.youtube.com/watch?v=f320TtEpGYQ",
     "title": "Make a Detailed Sword in Blender :Topology Tips & Hard Surface Techniques",

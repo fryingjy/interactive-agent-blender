@@ -35,7 +35,7 @@ from knowledge_engine.representation_hypothesis import (
 
 
 def _run(scene_payload: dict, reference_payload: dict) -> dict:
-    reference_set = reference_set_from_dict(reference_payload)
+    reference_set = reference_set_from_dict(reference_payload, base_dir=args.reference_manifest.parent)
     items_by_id = {item.reference_id: item for item in reference_set.items}
 
     # Schema 2 keeps observations outside candidates, preventing a strategy

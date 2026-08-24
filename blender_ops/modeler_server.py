@@ -19,6 +19,7 @@ directions, more robust than accumulate-and-retry-json.loads for a
 protocol designed from scratch.
 """
 
+import hashlib
 import json
 import os
 import socket
@@ -50,6 +51,7 @@ import render_passes
 import semantic_regions
 import state_fingerprint
 import state_probe
+import stage_gates
 
 PROTOCOL_VERSION = "0.3"
 CAPABILITIES = [
@@ -93,6 +95,7 @@ CAPABILITIES = [
     "independent_high_low_collection_organization",
     "recoverable_component_replacement",
     "recoverable_component_archiving",
+    "reference_authorized_construction",
 ]
 # NOT claimed as a capability, found live during testing: an "origin" tag
 # (agent vs external) was attempted on each event via a self._agent_active
@@ -160,7 +163,7 @@ _OPS = {
 
 
 class ModelerServer:
-    def __init__(self, host="localhost", port=9878):
+    def __init__(self, host="localhost", port=9878, enforce_reference_authorization=False):
         self.host = host
         self.port = port
         self.running = False
@@ -209,6 +212,45 @@ class ModelerServer:
         # the user's mouse" means refusing to even ATTEMPT a mutation while
         # USER_CONTROL is set, not detecting the collision after it happens.
         self._control_mode = "AGENT_CONTROL"
+        # The live MCP singleton enables this. Historical Blender labs instantiate the class with
+        # the compatibility default and remain reproducible, while the normal agent-facing typed
+        # server cannot create geometry before a structured REFERENCE_ANALYSIS gate passes.
+        self._enforce_reference_authorization = bool(enforce_reference_authorization)
+        self._reference_authorization = None
+
+    def _require_reference_authorization(self):
+        if self._enforce_reference_authorization and self._reference_authorization is None:
+            raise ValueError(
+                "reference-driven construction is not authorized in this server session; call "
+                "authorize_reference_modeling with passing structured REFERENCE_ANALYSIS evidence first"
+            )
+
+    def _tag_authorized_object(self, name):
+        if self._reference_authorization is None:
+            return
+        obj = bpy.data.objects.get(name)
+        if obj is not None:
+            obj["reference_target_id"] = self._reference_authorization["target_id"]
+            obj["reference_target_variant"] = self._reference_authorization["target_variant"]
+            obj["reference_authorization_sha256"] = self._reference_authorization["evidence_sha256"]
+
+    def _require_authorized_object(self, name):
+        self._require_reference_authorization()
+        if not self._enforce_reference_authorization:
+            return
+        obj = bpy.data.objects.get(name)
+        if obj is None:
+            raise ValueError(f"authorized mutation target {name!r} does not exist")
+        expected = self._reference_authorization
+        if (
+            obj.get("reference_target_id") != expected["target_id"]
+            or obj.get("reference_target_variant") != expected["target_variant"]
+            or obj.get("reference_authorization_sha256") != expected["evidence_sha256"]
+        ):
+            raise ValueError(
+                f"object {name!r} is not bound to the current reference authorization; "
+                "inspect it, then explicitly call bind_existing_object_to_reference before mutation"
+            )
 
     # ---- lifecycle -----------------------------------------------------
     # Found live during development: importlib.reload(modeler_server) resets
@@ -468,6 +510,7 @@ class ModelerServer:
         """The one-time starting block a modeling session begins from --
         free to call outside a decision transaction (nothing exists yet
         for begin_decision's external-edit check to compare against)."""
+        self._require_reference_authorization()
         loc = tuple(location) if location else (0.0, 0.0, 0.0)
         result = object_ops.create_primitive(name, primitive_type, location=loc, **kwargs)
         # Creation is intentionally free of a decision transaction because no
@@ -475,6 +518,7 @@ class ModelerServer:
         # selection vocabulary as every later mesh decision; without this,
         # a seed cube can only be manipulated through raw Blender indices.
         persistent_ids.ensure_persistent_ids(name)
+        self._tag_authorized_object(name)
         return result
 
     def cmd_create_revolved_profile(self, name, profile, segments=16):
@@ -485,11 +529,13 @@ class ModelerServer:
         Persistent IDs are assigned immediately so every later form decision can
         select and mutate the cage through the normal transaction path.
         """
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         clean_profile = [tuple(float(value) for value in point) for point in profile]
         obj = profile_mesh.revolve_closed_profile(name, clean_profile, segments=int(segments))
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -507,11 +553,13 @@ class ModelerServer:
         does not import, inspect, or reproduce source topology; the profile is
         authored from the active reference constraint sheet.
         """
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         clean_profile = [tuple(float(value) for value in point) for point in profile]
         obj = profile_mesh.extrude_closed_profile(name, clean_profile, depth=float(depth))
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -528,12 +576,14 @@ class ModelerServer:
 
     def cmd_create_profile_loft(self, name, front_profile, rear_profile, depth):
         """Create one connected cage between authored front and rear outlines."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         front = [tuple(float(value) for value in point) for point in front_profile]
         rear = [tuple(float(value) for value in point) for point in rear_profile]
         obj = profile_mesh.loft_closed_profiles(name, front, rear, depth=float(depth))
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -549,10 +599,12 @@ class ModelerServer:
 
     def cmd_create_quad_shell_grid(self, name, front_grid, rear_grid, active_cells):
         """Create one manifold all-quad shell from matching authored grids."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_shell_from_grids(name, front_grid, rear_grid, active_cells)
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -567,10 +619,12 @@ class ModelerServer:
 
     def cmd_create_quad_shell_sections(self, name, section_grids, active_cells):
         """Create one all-quad connected shell through authored depth sections."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_shell_from_sections(name, section_grids, active_cells)
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -586,10 +640,12 @@ class ModelerServer:
 
     def cmd_create_authored_quad_mesh(self, name, vertices, faces):
         """Create one validated connected quad cage from explicit authored topology."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.authored_quad_mesh(name, vertices, faces)
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         health = state_probe.mesh_health(obj.name)
         return {
             "name": obj.name,
@@ -603,6 +659,7 @@ class ModelerServer:
 
     def cmd_create_quad_radial_surface(self, name, rings, segments=16, phase=0.0):
         """Create one connected radial quad cage with authored local relief."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_radial_surface(
@@ -612,6 +669,7 @@ class ModelerServer:
             phase=float(phase),
         )
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {
             "name": obj.name,
             "type": obj.type,
@@ -625,14 +683,17 @@ class ModelerServer:
 
     def cmd_create_quad_open_surface(self, name, front_grid, rear_grid, active_cells, bridge_edges):
         """Create an open connected quad cage with explicitly declared bridges."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_open_surface_from_grids(name, front_grid, rear_grid, active_cells, bridge_edges)
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         return {"name": obj.name, "type": obj.type, "vertices": len(obj.data.vertices), "edges": len(obj.data.edges), "faces": len(obj.data.polygons), "bridge_edge_count": len(bridge_edges), "construction_boundary": "Open boundaries are intentional; use live Solidify only after silhouette review."}
 
     def cmd_create_quad_annular_shell(self, name, front_outer, front_inner, rear_outer, rear_inner):
         """Create one manifold all-quad shell between matched outer/inner loops."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_annular_shell_from_loops(
@@ -643,6 +704,7 @@ class ModelerServer:
             rear_inner,
         )
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         count = len(front_outer)
         edge_index_to_id = persistent_ids.get_id_maps(obj.name)["edges"]["index_to_id"]
         edge_by_vertices = {
@@ -675,10 +737,12 @@ class ModelerServer:
 
     def cmd_create_quad_layered_annular_shell(self, name, front_loops, rear_loops):
         """Create one connected annular shell with localized radial support loops."""
+        self._require_reference_authorization()
         if name in bpy.data.objects:
             raise ValueError(f"object '{name}' already exists")
         obj = profile_mesh.quad_layered_annular_shell_from_loops(name, front_loops, rear_loops)
         persistent_ids.ensure_persistent_ids(obj.name)
+        self._tag_authorized_object(obj.name)
         radial_count = len(front_loops)
         point_count = len(front_loops[0])
         edge_index_to_id = persistent_ids.get_id_maps(obj.name)["edges"]["index_to_id"]
@@ -755,12 +819,17 @@ class ModelerServer:
         """Free to call outside a decision transaction, same reasoning as
         create_primitive -- a new curve object, nothing yet exists for
         begin_decision's external-edit check to compare against."""
-        return curve_ops.create_curve_from_points(name, points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
+        self._require_reference_authorization()
+        result = curve_ops.create_curve_from_points(name, points, bevel_depth=bevel_depth, closed=closed, curve_type=curve_type)
+        self._tag_authorized_object(result["name"] if isinstance(result, dict) else name)
+        return result
 
     def cmd_set_curve_bevel_depth(self, name, depth):
+        self._require_authorized_object(name)
         return curve_ops.set_curve_bevel_depth(name, depth)
 
     def cmd_set_curve_resolution(self, name, resolution_u=None, bevel_resolution=None):
+        self._require_authorized_object(name)
         return curve_ops.set_curve_resolution(
             name,
             resolution_u=resolution_u,
@@ -768,15 +837,21 @@ class ModelerServer:
         )
 
     def cmd_set_curve_points(self, name, points):
+        self._require_authorized_object(name)
         return curve_ops.set_curve_points(name, points)
 
     def cmd_set_curve_taper(self, name, taper_object_name):
+        self._require_authorized_object(name)
+        self._require_authorized_object(taper_object_name)
         return curve_ops.set_curve_taper(name, taper_object_name)
 
     def cmd_set_curve_bevel_object(self, name, bevel_object_name, hide_profile=True):
+        self._require_authorized_object(name)
+        self._require_authorized_object(bevel_object_name)
         return curve_ops.set_curve_bevel_object(name, bevel_object_name, hide_profile=hide_profile)
 
     def cmd_convert_curve_to_mesh(self, name, new_mesh_name=None, merge_dist=0.0001, replace_source=False):
+        self._require_authorized_object(name)
         result = curve_ops.convert_curve_to_mesh(
             name,
             new_mesh_name=new_mesh_name,
@@ -784,12 +859,14 @@ class ModelerServer:
             replace_source=replace_source,
         )
         persistent_ids.ensure_persistent_ids(result["name"])
+        self._tag_authorized_object(result["name"])
         return result
 
     def cmd_get_modeling_stage(self, name):
         return {"name": name, "stage": modeling_stage.get_stage(name), "log": modeling_stage.get_stage_log(name)}
 
     def cmd_set_modeling_stage(self, name, stage, evidence):
+        self._require_authorized_object(name)
         if stage not in modeling_stage.STAGES:
             raise ValueError(f"stage must be one of {modeling_stage.STAGES}")
         current = modeling_stage.get_stage(name)
@@ -947,6 +1024,7 @@ class ModelerServer:
     # metadata about the mesh, they don't mutate its geometry.
 
     def cmd_create_region(self, name, region_id, role, vertex_ids=None, edge_ids=None, face_ids=None):
+        self._require_authorized_object(name)
         return semantic_regions.create_region(name, region_id, role, vertex_ids, edge_ids, face_ids)
 
     def cmd_get_region(self, name, region_id):
@@ -959,9 +1037,11 @@ class ModelerServer:
         return semantic_regions.validate_region(name, region_id)
 
     def cmd_update_region(self, name, region_id, vertex_ids=None, edge_ids=None, face_ids=None, role=None):
+        self._require_authorized_object(name)
         return semantic_regions.update_region(name, region_id, vertex_ids, edge_ids, face_ids, role)
 
     def cmd_delete_region(self, name, region_id):
+        self._require_authorized_object(name)
         return semantic_regions.delete_region(name, region_id)
 
     def cmd_select_region(self, name, region_id, extend=False):
@@ -971,15 +1051,24 @@ class ModelerServer:
     # decision, so not routed through perform_decision) ------------------
 
     def cmd_undo(self):
+        if self._enforce_reference_authorization:
+            raise ValueError("global undo is disabled on the strict agent server; reject a decision or restore a checkpoint")
         return object_ops.undo()
 
     def cmd_redo(self):
+        if self._enforce_reference_authorization:
+            raise ValueError("global redo is disabled on the strict agent server; use a verified decision or checkpoint")
         return object_ops.redo()
 
     def cmd_save_checkpoint(self, label, directory):
         return object_ops.save_checkpoint(label, directory)
 
     def cmd_restore_checkpoint(self, filepath):
+        if self._enforce_reference_authorization:
+            raise ValueError(
+                "full-scene checkpoint restore is disabled on the strict agent server; load the "
+                "checkpoint before creating the server, then authorize and explicitly bind targets"
+            )
         return object_ops.restore_checkpoint(filepath)
 
     def cmd_save_file(self, filepath=None):
@@ -1015,6 +1104,75 @@ class ModelerServer:
         self._control_mode = mode
         return {"previous": previous, "control_mode": mode}
 
+    def cmd_get_reference_authorization(self):
+        return {
+            "enforced": self._enforce_reference_authorization,
+            "authorized": self._reference_authorization is not None,
+            "authorization": dict(self._reference_authorization) if self._reference_authorization else None,
+        }
+
+    def cmd_authorize_reference_modeling(self, evidence):
+        if self._control_mode != "AGENT_CONTROL":
+            raise ValueError("reference modeling cannot be authorized outside AGENT_CONTROL")
+        if not isinstance(evidence, dict):
+            raise TypeError("reference authorization evidence must be an object")
+        if self._pending:
+            raise ValueError("cannot replace reference authorization while a decision is pending")
+        gate = stage_gates.evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
+        if not gate["pass"]:
+            raise ValueError(f"reference authorization gate failed: {gate['failures'] or gate['missing']}")
+        audit = evidence["reference_audit"]
+        canonical = json.dumps(evidence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        self._reference_authorization = {
+            "session_id": self.session_id,
+            "target_id": audit["target_id"],
+            "target_variant": audit["target_variant"],
+            "evidence_sha256": hashlib.sha256(canonical.encode("utf-8")).hexdigest(),
+            "authorized_at_revision": decision_state.current_revision(),
+            "authorization_kind": "REFERENCE_ANALYSIS",
+        }
+        return {"authorized": True, "gate": gate, **self._reference_authorization}
+
+    def cmd_authorize_tutorial_modeling(self, evidence):
+        if self._control_mode != "AGENT_CONTROL":
+            raise ValueError("tutorial modeling cannot be authorized outside AGENT_CONTROL")
+        if not isinstance(evidence, dict):
+            raise TypeError("tutorial authorization evidence must be an object")
+        if self._pending:
+            raise ValueError("cannot replace tutorial authorization while a decision is pending")
+        from knowledge_engine.tutorial_reproduction import validate_tutorial_premodeling_evidence
+
+        gate = validate_tutorial_premodeling_evidence(evidence)
+        if not gate["pass"]:
+            raise ValueError(f"tutorial authorization gate failed: {gate['issues']}")
+        canonical = json.dumps(evidence, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        self._reference_authorization = {
+            "session_id": self.session_id,
+            "target_id": evidence["target_id"],
+            "target_variant": evidence["target_variant"],
+            "evidence_sha256": hashlib.sha256(canonical.encode("utf-8")).hexdigest(),
+            "authorized_at_revision": decision_state.current_revision(),
+            "authorization_kind": "TUTORIAL_PREMODELING_EVIDENCE",
+        }
+        return {"authorized": True, "gate": gate, **self._reference_authorization}
+
+    def cmd_bind_existing_object_to_reference(self, name):
+        """Explicitly adopt a loaded object after reauthorization; never happens implicitly."""
+        self._require_reference_authorization()
+        obj = bpy.data.objects.get(name)
+        if obj is None or obj.type not in {"MESH", "CURVE"}:
+            raise ValueError(f"reference binding requires an existing MESH or CURVE object, got {name!r}")
+        if any(entry.get("target") == name for entry in self._pending.values()):
+            raise ValueError("cannot rebind an object with a pending decision")
+        previous = {
+            "target_id": obj.get("reference_target_id"),
+            "target_variant": obj.get("reference_target_variant"),
+            "evidence_sha256": obj.get("reference_authorization_sha256"),
+        }
+        self._tag_authorized_object(name)
+        self._check_external_edit(name)
+        return {"name": name, "previous_binding": previous, "authorization": dict(self._reference_authorization)}
+
     def cmd_begin_decision(self, name, action_type):
         if self._control_mode != "AGENT_CONTROL":
             raise ValueError(
@@ -1023,6 +1181,7 @@ class ModelerServer:
                 f"declared control -- call set_control_mode('AGENT_CONTROL') first if that's "
                 f"no longer accurate."
             )
+        self._require_authorized_object(name)
         edit_check = self._check_external_edit(name)
         if edit_check["external_edit_detected"]:
             raise ValueError(
@@ -1099,12 +1258,26 @@ class ModelerServer:
         entry = self._pending.get(decision_id)
         if entry is None:
             raise ValueError(f"no pending decision {decision_id}")
+        created_names = sorted(
+            set(bpy.data.objects.keys()) - (entry["tx"]._before_object_names or set())
+        )
         new_rev = entry["tx"].commit()
         target = entry["target"]
         with self._pending_lock:
             del self._pending[decision_id]
         self._check_external_edit(target)  # refresh the snapshot to this decision's own result
-        return {"decision_id": decision_id, "result_revision": new_rev}
+        authorized_created = []
+        for object_name in created_names:
+            obj = bpy.data.objects.get(object_name)
+            if obj is not None and obj.type in {"MESH", "CURVE"}:
+                self._tag_authorized_object(object_name)
+                self._check_external_edit(object_name)
+                authorized_created.append(object_name)
+        return {
+            "decision_id": decision_id,
+            "result_revision": new_rev,
+            "authorized_created_objects": authorized_created,
+        }
 
     def cmd_abandon_decision(self, decision_id, reason=""):
         """Discard a pending decision that never reached perform() -- e.g.
@@ -1157,7 +1330,7 @@ _server = None
 def get_server():
     global _server
     if _server is None:
-        _server = ModelerServer()
+        _server = ModelerServer(enforce_reference_authorization=True)
     return _server
 
 

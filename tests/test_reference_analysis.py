@@ -1,4 +1,8 @@
+import hashlib
 import unittest
+from pathlib import Path
+
+from tests.test_reference_analysis_stage_gate import _base_evidence
 
 from knowledge_engine.planner import PlannerContext, plan_next_decision
 from knowledge_engine.reference_analysis import (
@@ -19,11 +23,13 @@ from knowledge_engine.reference_analysis import (
 def item(reference_id, source_id, *, target="nailsea", variant="30.5cm", view="front",
          projection="PERSPECTIVE", purposes=("PRIMARY_FORM",), claims=(), anchors=(),
          component_ids=()):
+    artifact = Path(__file__).resolve()
     return ReferenceItem(
         reference_id=reference_id, source_id=source_id, target_id=target,
         target_variant=variant, purposes=purposes, view=view, projection=projection,
         source_tier="USEFUL_VERIFY", claims=claims, dimensional_anchors=anchors,
-        component_ids=component_ids,
+        component_ids=component_ids, source_url=f"https://example.com/{reference_id}",
+        local_file=str(artifact), local_sha256=hashlib.sha256(artifact.read_bytes()).hexdigest(),
     )
 
 
@@ -91,6 +97,7 @@ class ReferenceAnalysisTests(unittest.TestCase):
                 "reference_id": "front", "source_id": "source", "target_id": "prop",
                 "target_variant": "v1", "purposes": ["PRIMARY_FORM"], "view": "front",
                 "projection": "PERSPECTIVE", "source_tier": "USEFUL_VERIFY",
+                "source_url": "https://example.com/front",
             }],
             "research_questions": [{
                 "question_id": "dimensions", "property_id": "width",
@@ -235,16 +242,7 @@ class ReferenceAnalysisTests(unittest.TestCase):
         self.assertIsNone(decision.operation)
 
     def test_reference_stage_advances_only_with_full_evidence(self):
-        evidence = {
-            "component_graph_pass": True, "measured_ratio_count": 3,
-            "uncertainty_recorded": True, "reference_set_audit_pass": True,
-            "same_target_identity_pass": True, "view_coverage_pass": True,
-            "critical_property_coverage_pass": True, "conflicts_resolved_pass": True,
-            "question_driven_research_pass": True,
-            "visual_reconstruction_audit_pass": {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True},
-            "component_reference_coverage_pass": {"pass": True, "uncovered_component_ids": []},
-            "depth_critical_reference_support_pass": {"record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
-        }
+        evidence = _base_evidence()
         decision = plan_next_decision(PlannerContext(
             task_id="task", asset_id="asset", stage="REFERENCE_ANALYSIS",
             session_id="session", scene_revision=0, stage_evidence=evidence,
@@ -264,6 +262,33 @@ class ReferenceAnalysisTests(unittest.TestCase):
         self.assertTrue(evidence["reference_set_audit_pass"])
         self.assertTrue(evidence["question_driven_research_pass"])
         self.assertEqual(evidence["reference_audit"]["target_id"], "prop")
+
+    def test_url_only_reference_cannot_authorize_geometry_without_fixed_artifact(self):
+        ref = ReferenceItem(
+            reference_id="front", source_id="source", target_id="prop", target_variant="v1",
+            purposes=("PRIMARY_FORM",), view="front", projection="PERSPECTIVE",
+            source_tier="USEFUL_VERIFY", source_url="https://example.com/front",
+        )
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1", items=(ref,),
+            required_views=("front",), critical_properties=(),
+        ))
+        self.assertFalse(audit["checks"]["artifact_binding_pass"])
+        self.assertEqual(audit["disposition"], "TARGETED_RESEARCH")
+
+    def test_materialized_reference_hash_mismatch_is_rejected(self):
+        artifact = Path(__file__).resolve()
+        ref = ReferenceItem(
+            reference_id="front", source_id="source", target_id="prop", target_variant="v1",
+            purposes=("PRIMARY_FORM",), view="front", projection="PERSPECTIVE",
+            source_tier="USEFUL_VERIFY", source_url="https://example.com/front",
+            local_file=str(artifact), local_sha256="0" * 64,
+        )
+        with self.assertRaisesRegex(ValueError, "does not match"):
+            audit_reference_set(ReferenceSet(
+                target_id="prop", target_variant="v1", items=(ref,),
+                required_views=("front",), critical_properties=(),
+            ))
 
     def test_low_confidence_claim_cannot_authorize_a_critical_property(self):
         weak = item(
