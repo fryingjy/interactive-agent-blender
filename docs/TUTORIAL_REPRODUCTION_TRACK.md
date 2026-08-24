@@ -251,6 +251,8 @@ round in section, with a simplified nose, gate and sleeve stack and no knurling.
 **6.4/10 — not an I0 pass**. This is retained as evidence that topology health and technique
 transfer do not substitute for reference fidelity.
 
-The next run is a bounded held-out Pinterest diagnostic on a double-bladed fantasy hammer. It tests
-the actual end goal—unfamiliar reference-to-model generalization—without counting as an I0
-promotion. Sculpting and detail are excluded; the run stops after one silhouette correction.
+The bounded held-out Pinterest diagnostic on a double-bladed fantasy hammer is complete at
+**6.6/10 — not passing**. It used one connected head cage and one connected 12-sided radial shaft;
+a 3/4 render rejected uniform head depth and triggered a tapered-depth correction. The final head
+still reads as a monolithic plate rather than two forged blade masses around a socket, and the
+single front reference cannot strongly validate depth. The result does not count as I0 promotion.

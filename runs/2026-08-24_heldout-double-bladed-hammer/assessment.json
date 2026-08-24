@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "record_type": "HELDOUT_REFERENCE_MODEL_ASSESSMENT",
+  "target_id": "double_bladed_fantasy_hammer",
+  "score_10": 6.6,
+  "gate": "NOT_PASSING_8_OF_10_MAJOR_FORM_GATE",
+  "fresh_verification_pass": true,
+  "construction_evidence": {
+    "head": {"base_vertices": 32, "base_faces": 18, "evaluated_vertices": 176, "evaluated_faces": 162, "non_manifold_edges": 0, "ngons": 2, "live_modifier": "HeadEdgeRadius_Unapplied"},
+    "shaft": {"base_vertices": 276, "base_faces": 276, "non_manifold_edges": 0, "ngons": 0, "radial_segments": 12},
+    "modifiers_applied": false
+  },
+  "strengths": [
+    "Recognizable front silhouette and broadly correct head-to-shaft proportion.",
+    "Head is one connected authored cage rather than a pile of blade primitives.",
+    "Shaft, collar transitions and pommel are one connected 12-sided all-quad revolved cage.",
+    "A 3/4 render contradicted the first uniform-depth plate and triggered a tapered-depth correction.",
+    "Fresh Blender 5.2 verification reproduced the saved-file renders and technical state."
+  ],
+  "failures": [
+    "The head still reads as one monolithic plate rather than two forged blade masses attached around a central socket.",
+    "The single front reference does not justify the inferred rear taper strongly enough.",
+    "Blade planes lack the target's layered ridges and directional facets.",
+    "Shaft collar spacing and pommel are simplified.",
+    "The two head cap n-gons are acceptable for this planar non-SubD blockout, but they are not an all-quad production head."
+  ],
+  "root_cause": "REPRESENTATION_SELECTION_AND_COMPONENT_INFERENCE",
+  "capability_claim": "This is evidence of bounded connected-cage construction and adaptive correction, not proof of general reference-to-model competence.",
+  "promotion_authorized": false
+}

@@ -3328,5 +3328,46 @@
         "The curved-shell transfer validates one construction principle, not complete prop fidelity."
       ]
     }
+  },
+  {
+    "id": "youtube-sweaty-grease-carabiner-tutorial",
+    "url": "https://www.youtube.com/watch?v=46XJ6_V5PN0",
+    "local_path": "runs/2026-08-24_tutorial-sweaty-grease-carabiner/",
+    "title": "Blender - Carabiner Modeling Tutorial",
+    "creator": "Sweaty Grease Studio",
+    "source_type": "video_tutorial",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-24",
+    "topics": ["curve-profile-modeling", "controlled-conversion-density", "mechanical-assembly", "procedural-knurling"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["gemini_full_video_audio", "browser_frames", "source_thumbnail", "blender_reproduction", "different_geometry_transfer"],
+    "metadata": {
+      "experiments": ["runs/2026-08-24_tutorial-sweaty-grease-carabiner/carabiner_tutorial.blend", "runs/2026-08-24_tutorial-sweaty-grease-carabiner/bent_handle_transfer.blend"],
+      "validated_principles": ["Choose curve sampling from silhouette need before conversion; Blender defaults can be needlessly dense."],
+      "limitations": ["The reproduction scored 6.4/10 and did not match the target's flattened triangular stock, mechanical nose or knurling."]
+    }
+  },
+  {
+    "id": "pinterest-double-bladed-fantasy-hammer-heldout",
+    "url": "https://www.pinterest.com/pin/343188434121646500/",
+    "local_path": "runs/2026-08-24_heldout-double-bladed-hammer/",
+    "title": "Double-bladed fantasy hammer reference",
+    "creator": "D&DBeyond Pinterest pin",
+    "source_type": "single_image_reference",
+    "trust_tier": "C",
+    "version": "reviewed 2026-08-24",
+    "topics": ["held-out-reference-modeling", "connected-cage", "hidden-form-inference", "weapon-prop"],
+    "access": {"text": true, "image": true, "video": false, "audio": false, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["pinterest_full_image", "blender_front_render", "blender_isometric_render", "fresh_file_verification"],
+    "metadata": {
+      "experiment": "runs/2026-08-24_heldout-double-bladed-hammer/double_bladed_hammer.blend",
+      "score_10": 6.6,
+      "root_cause": "REPRESENTATION_SELECTION_AND_COMPONENT_INFERENCE",
+      "limitations": ["Only one source view was available; depth remained a weak hypothesis and the head read as a monolithic plate."]
+    }
   }
 ]

@@ -110,3 +110,10 @@ the system can correctly infer an unfamiliar neutral object's 3D construction *b
 of this: classifying every real historical failure by root cause (not just symptom) to confirm
 empirically whether failures actually cluster upstream, before more pipeline code is written on
 the assumption that they do.
+
+**2026-08-24 held-out evidence:** the double-bladed fantasy hammer reached only 6.6/10. Its
+connected-cage construction, fresh-file technical verification and one render-driven depth
+correction worked, but the chosen head representation stayed too monolithic. This strengthens the
+diagnosis that the bottleneck is component inference and hidden-form prediction, not command
+transport or mesh validity. The next depth-critical target must have a second view or an independent
+same-object structural source before modeling begins.
