@@ -214,7 +214,7 @@ def subdivide_selection(name, cuts=2):
     return {"new_verts": len(new_verts), "new_faces": len(new_faces)}
 
 
-def inset_selection(name, thickness=0.05, depth=0.0):
+def inset_selection(name, thickness=0.05, depth=0.0, use_boundary=True, use_even_offset=True):
     """Inset the currently selected faces by `thickness`, optionally pushed
     in/out along their normal by `depth`. Leaves the shrunk original faces
     selected (matching Blender's own Inset Faces tool -- the new inner
@@ -244,8 +244,12 @@ def inset_selection(name, thickness=0.05, depth=0.0):
     reused_edges = {e for f in selected_faces for e in f.edges}
 
     ret = bmesh.ops.inset_region(
-        bm, faces=selected_faces, thickness=thickness, depth=depth,
-        use_boundary=True, use_even_offset=True,
+        bm,
+        faces=selected_faces,
+        thickness=thickness,
+        depth=depth,
+        use_boundary=bool(use_boundary),
+        use_even_offset=bool(use_even_offset),
     )
     ring_faces = ret["faces"]
     ring_verts = {v for f in ring_faces for v in f.verts} - reused_verts
@@ -264,7 +268,63 @@ def inset_selection(name, thickness=0.05, depth=0.0):
     bm.select_flush(True)
 
     _write_back(obj, bm)
-    return len(selected_faces)
+    return {
+        "selected_faces": len(selected_faces),
+        "ring_faces": len(ring_faces),
+        "use_boundary": bool(use_boundary),
+        "use_even_offset": bool(use_even_offset),
+    }
+
+
+def duplicate_selection(name):
+    """Duplicate selected mesh elements in place and select only the copies.
+
+    Faces are preferred, then edges, then vertices, matching other typed
+    selection operations.  This is the Edit Mode half of Blender's common
+    ``Shift+D`` then ``P > Selection`` fitted-assembly workflow.  The copies
+    receive new persistent IDs immediately; callers may then transform them
+    or pass them to :func:`separate_selection` without pretending element
+    identity survives duplication.
+    """
+    obj, bm = _bm_from_object(name)
+    faces = [face for face in bm.faces if face.select]
+    edges = [edge for edge in bm.edges if edge.select]
+    verts = [vert for vert in bm.verts if vert.select]
+    if faces:
+        face_edges = {edge for face in faces for edge in face.edges}
+        face_verts = {vert for face in faces for vert in face.verts}
+        geom = [*faces, *face_edges, *face_verts]
+        domain = "faces"
+    elif edges:
+        edge_verts = {vert for edge in edges for vert in edge.verts}
+        geom = [*edges, *edge_verts]
+        domain = "edges"
+    elif verts:
+        geom = list(verts)
+        domain = "vertices"
+    else:
+        _write_back(obj, bm)
+        raise ValueError(f"nothing selected on '{name}' to duplicate")
+
+    result = bmesh.ops.duplicate(bm, geom=geom)
+    duplicated = result.get("geom", [])
+    new_verts = [item for item in duplicated if isinstance(item, bmesh.types.BMVert)]
+    new_edges = [item for item in duplicated if isinstance(item, bmesh.types.BMEdge)]
+    new_faces = [item for item in duplicated if isinstance(item, bmesh.types.BMFace)]
+    persistent_ids.clear_ids_in_open_bmesh(bm, verts=new_verts, edges=new_edges, faces=new_faces)
+
+    for seq in (bm.verts, bm.edges, bm.faces):
+        for item in seq:
+            item.select = False
+    for item in (*new_verts, *new_edges, *new_faces):
+        item.select = True
+    _write_back(obj, bm)
+    return {
+        "domain": domain,
+        "new_verts": len(new_verts),
+        "new_edges": len(new_edges),
+        "new_faces": len(new_faces),
+    }
 
 
 def extrude_selection(name, offset=0.1):

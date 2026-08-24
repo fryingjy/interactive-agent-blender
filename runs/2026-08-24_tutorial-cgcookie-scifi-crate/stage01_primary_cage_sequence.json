@@ -1,0 +1,87 @@
+[
+  {
+    "label": "seed_one_cube",
+    "command": "create_primitive",
+    "params": {"name": "Crate", "primitive_type": "cube", "size": 2.0}
+  },
+  {
+    "label": "select_seed_vertices",
+    "command": "select_by_ids",
+    "params": {"name": "Crate", "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8], "extend": false}
+  },
+  {
+    "label": "shape_quarter_cage",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "shape_one_cube_into_quarter_crate",
+      "operation": "scale_selection",
+      "params": {"factor": [0.7, 0.7, 1.2], "center": [0.0, 0.0, 0.0]}
+    }
+  },
+  {
+    "label": "move_cage_to_positive_quadrant",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "move_same_cube_cage_to_positive_mirror_quadrant",
+      "operation": "move_selection",
+      "params": {"delta": [0.7, 0.7, 1.2]}
+    }
+  },
+  {
+    "label": "add_live_symmetry",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "add_dual_axis_live_symmetry",
+      "operation": "add_modifier",
+      "params": {"modifier_type": "MIRROR", "modifier_name": "QuarterSymmetry"}
+    }
+  },
+  {
+    "label": "set_xy_symmetry",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "mirror_on_x_and_y_only",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "QuarterSymmetry", "parameter": "use_axis", "value": [true, true, false]}
+    }
+  },
+  {
+    "label": "enable_clipping",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "protect_mirror_center_seams",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "QuarterSymmetry", "parameter": "use_clip", "value": true}
+    }
+  },
+  {
+    "label": "enable_merge",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "merge_mirror_center_seams",
+      "operation": "set_modifier_parameter",
+      "params": {"modifier_name": "QuarterSymmetry", "parameter": "use_mirror_merge", "value": true}
+    }
+  },
+  {
+    "label": "organize_tutorial_asset",
+    "transaction": {
+      "name": "Crate",
+      "action_type": "organize_tutorial_asset",
+      "operation": "organize_object_collection",
+      "params": {"collection_name": "CGCOOKIE_CRATE"}
+    }
+  },
+  {
+    "label": "render_primary_cage",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "Crate",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-cgcookie-scifi-crate/stage01_primary_cage_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 512,
+      "margin": 1.2
+    }
+  }
+]

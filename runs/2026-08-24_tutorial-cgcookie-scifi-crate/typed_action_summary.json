@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_RUNTIME_ACTION_SUMMARY",
+  "artifact": "crate_tutorial.blend",
+  "revision_range": [8, 47],
+  "actions": [
+    {"revisions": [8, 10], "summary": "Removed mirror-plane partitions, subdivided the quarter cage, and inset the front panel."},
+    {"revisions": [11, 16], "summary": "Recessed front, handle, and top regions; handle inset used boundary disabled; removed the observed internal handle partition."},
+    {"revisions": [17, 22], "summary": "Duplicated and separated a fitted latch, then added live symmetry and thickness."},
+    {"revisions": [23, 31], "summary": "Duplicated and separated fitted bumpers, added a local quad grid, rib extrusion, symmetry, and live thickness."},
+    {"revisions": [32, 46], "summary": "Added live bevels, Smooth by Angle, materials, naming, and collection organization."},
+    {"revisions": [47, 47], "summary": "Corrected the latch to X/Y symmetry after the first final render exposed missing visible coverage."}
+  ],
+  "provenance_boundary": "This is a concise summary of observed typed-runtime outputs and the freshly verified saved state, not a byte-for-byte event log. Stage-one request/response details remain in stage01_primary_cage_report.json."
+}

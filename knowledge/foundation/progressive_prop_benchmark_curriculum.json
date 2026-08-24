@@ -129,14 +129,14 @@
     "active_prop_id": null,
     "active_prop": null,
     "active_target_variant": null,
-    "phase": "reference-pipeline-transfer-with-intermediate-tutorial-open",
+    "phase": "intermediate-tutorial-apprenticeship-i0-active",
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "PAUSED_NO_ACTIVE_PROP",
-    "training_run": "runs/2026-08-22_tutorial-blender-official-watering-can/",
-    "training_run_boundary": "The corrected donut/mug scene at 8.0/10 and official watering can at 8.1/10 satisfy the two consecutive beginner tutorial passes. Intermediate I0 tutorial work is unblocked. These are tutorial reproductions, not progressive-prop promotions or unfamiliar-reference proof.",
+    "training_run": "runs/2026-08-24_tutorial-cgcookie-scifi-crate/",
+    "training_run_boundary": "The CG Cookie sci-fi-crate reproduction is a retained I0 non-pass at 6.8/10. It added tested fitted-assembly runtime operations and passed a curved-geometry transfer, but simplified visible forms and evaluated bumper n-gons keep I0 incomplete. It is tutorial evidence, not a progressive-prop promotion.",
     "current_reference_execution": "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/",
-    "current_reference_execution_boundary": "Non-ladder neutral-reference development at SECONDARY_FORMS: one connected Vessel mesh carries distinct persistent body/base/gasket semantic regions, the removable CapCup remains separate, and measured shoulder plus cap-top corrections are retained. There is no human acceptance and no ladder promotion.",
-    "next_action": "Finish the Stanley topology/surface and production checks with fresh-process verification and human review, then resume the unblocked I0 tutorial sequence. Do not treat the current run as a ladder pass or begin another reference prop before this run is resolved."
+    "current_reference_execution_boundary": "Frozen at SECONDARY_FORMS by direct instruction to move on: one connected Vessel mesh carries distinct persistent body/base/gasket semantic regions, the removable CapCup remains separate, and measured shoulder plus cap-top corrections are retained. There is no human acceptance and no ladder promotion.",
+    "next_action": "Continue I0 with a different complete intermediate lesson whose unobscured creator-final result can be independently inspected. Use a fixed research/reproduction/transfer/time budget, preserve non-passing attempts, and do not advance to I1 or start another held-out prop."
   }
 }

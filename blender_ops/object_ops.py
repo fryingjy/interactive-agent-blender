@@ -311,6 +311,15 @@ def set_modifier_parameter(name, modifier_name, parameter, value):
     result_value = getattr(mod, parameter)
     if isinstance(result_value, bpy.types.Object):
         result_value = result_value.name
+    elif not isinstance(result_value, (str, int, float, bool, type(None))):
+        # RNA vector/array properties (for example Mirror.use_axis) expose a
+        # ``bpy_prop_array`` that json cannot encode even though its members
+        # are plain scalars.  Reports must remain reproducible for those
+        # settings instead of failing after the Blender mutation succeeded.
+        try:
+            result_value = list(result_value)
+        except TypeError:
+            result_value = str(result_value)
     return {"modifier_name": modifier_name, "parameter": parameter, "value": result_value}
 
 

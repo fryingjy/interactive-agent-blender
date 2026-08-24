@@ -29,7 +29,15 @@ gate, and no new prop starts are paused now that it exists and works.
 **Update, 2026-08-24:** Stanley now reaches `SECONDARY_FORMS`. Structured coverage supports distinct
 persistent regions on one connected `Vessel` plus the removable `CapCup`; controlled renders drove
 a connected shoulder-loop correction and fill/inset repair of the open cap top. This is real
-closed-loop progress, but still has no human visual acceptance and is not a ladder promotion.
+closed-loop progress, but still has no human visual acceptance and is not a ladder promotion. The
+run is now frozen at that stage by direct instruction to move on.
+
+**Update, 2026-08-24, tutorial cutoff:** the CG Cookie sci-fi-crate I0 reproduction is retained at
+6.8/10 rather than polished indefinitely. It demonstrates a connected one-cube shell, fitted
+duplicate/separate assemblies, live unapplied modifiers, render-driven correction, fresh-process
+verification, and a successful curved-geometry transfer. Simplified visible forms and 32 evaluated
+bumper n-gons keep I0 incomplete; the next work is a different bounded intermediate tutorial with
+an unobscured creator-final result.
 
 ## Ground truth
 

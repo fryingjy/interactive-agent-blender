@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_type": "DIFFERENT_GEOMETRY_TRANSFER_EVALUATION",
+  "source_principle": "Duplicate fitted source faces, separate only at a real assembly boundary, preserve a sparse editable base, and add thickness non-destructively.",
+  "artifact": "curved_fitted_panel_transfer.blend",
+  "different_geometry": "Three adjacent quad faces from a 12-sided closed cylinder rather than a planar cube wall.",
+  "result": {
+    "source_shell_base_non_manifold_edges": 0,
+    "source_shell_base_ngons": 2,
+    "source_shell_ngon_context": "intentional flat cylinder caps; the transferred side patch is all quad",
+    "plate_base_faces": 3,
+    "plate_base_quads": 3,
+    "plate_evaluated_faces": 14,
+    "plate_evaluated_non_manifold_edges": 0,
+    "plate_evaluated_ngons": 0,
+    "live_solidify_unapplied": true,
+    "visually_fitted_to_source_curvature": true
+  },
+  "status": "TRANSFER_PASS",
+  "claim_boundary": "The transfer validates the fitted duplicate/separate/thickness operation on curved geometry. It does not validate complete prop fidelity or make the tutorial reproduction pass."
+}

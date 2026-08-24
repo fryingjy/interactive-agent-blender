@@ -52,6 +52,10 @@ Current evidence includes:
   produced it; and a real material-lit render pass added and debugged live when the existing
   Workbench-only diagnostics proved unable to show whether an assigned material actually looked
   right.
+- a bounded CG Cookie sci-fi-crate I0 reproduction that is honestly retained as a 6.8/10 non-pass:
+  it adds configurable inset boundaries and typed fitted-face duplication, verifies the saved asset
+  in a fresh Blender process, and passes a curved-shell transfer without claiming tutorial fidelity
+  or advancing the apprenticeship gate.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

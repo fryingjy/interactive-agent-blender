@@ -96,12 +96,13 @@
       "status": "PARTIAL",
       "evidence": [
         "knowledge_engine/planner.py",
-        "tools/run_planner_contract_lab.py",
-        "runs/2026-08-15_video-transfer-uniform-deformation/planner_use_verification.json",
-        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md"
-      ],
-      "current_boundary": "The planner contract is verified in controlled work and the Stanley run retains real mismatch-to-local-edit cycles for its shoulder and open cap top. Repeated adaptive use on visually accepted assets is still sparse.",
-      "next_step": "Complete the current target's topology/surface cycle and retain the next reference-driven correction before seeking human review."
+      "tools/run_planner_contract_lab.py",
+      "runs/2026-08-15_video-transfer-uniform-deformation/planner_use_verification.json",
+      "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/README.md"
+    ],
+    "current_boundary": "The planner contract is verified in controlled work. Stanley retains mismatch-to-local-edit cycles, and the bounded crate reproduction retains a render-driven latch-symmetry correction before freezing as a 6.8/10 non-pass. Repeated adaptive use on visually accepted assets is still sparse.",
+    "next_step": "Apply the same bounded diagnose-and-correct loop to a different I0 lesson with a clearly inspectable creator result."
     },
     {
       "id": "8",
@@ -111,12 +112,14 @@
         "blender_ops/decision_transaction.py",
         "tools/run_transaction_channel_rollback_lab.py",
         "runs/2026-08-16_double-curvature-bevel-subd/double_curvature_bevel_subd_report.json",
-        "runs/2026-08-16_connect-vertex-path-curved-transfer/fresh_verification.json",
-        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json",
-        "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
-      ],
-      "current_boundary": "The typed observe-diagnose-decide-verify loop and fail-closed runner are verified. On Stanley, controlled renders exposed a too-sharp shoulder and an open cap top; typed connected-mesh edits corrected both and were re-rendered. Artistic adequacy still requires independent visual confirmation.",
-      "next_step": "Use the same loop through topology/surface review and retain any rejected branches rather than treating technical validity as likeness."
+      "runs/2026-08-16_connect-vertex-path-curved-transfer/fresh_verification.json",
+      "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/tutorial_assessment.json",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/runtime_corrections.json",
+      "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
+    ],
+    "current_boundary": "The typed observe-diagnose-decide-verify loop and fail-closed runner are verified. The crate run adds a real report-serialization correction, explicit discard of uncertain pending sessions, a render-driven symmetry correction, and fresh-process verification. Technical validity still does not establish likeness.",
+    "next_step": "Use short decision transactions in the next I0 reproduction and stop at the fixed assessment/transfer cutoff."
     },
     {
       "id": "9",
@@ -139,11 +142,13 @@
         "blender_ops/semantic_regions.py",
         "tools/run_semantic_region_render_lab.py",
         "blender_ops/object_ops.py",
-        "blender_ops/profile_mesh.py",
-        "runs/2026-08-16_double-curvature-bevel-subd/fresh_verification.json",
-        "runs/2026-08-16_connect-vertex-path-curved-transfer/fresh_verification.json"
-      ],
-      "current_boundary": "Identity and semantic regions cover the tested operations. Connected profile revolution now assigns persistent IDs immediately, and partial crease values such as 0.82 remain explicit intent instead of being silently discarded.",
+      "blender_ops/profile_mesh.py",
+      "runs/2026-08-16_double-curvature-bevel-subd/fresh_verification.json",
+      "runs/2026-08-16_connect-vertex-path-curved-transfer/fresh_verification.json",
+      "blender_ops/mesh_ops.py",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_evaluation.json"
+    ],
+    "current_boundary": "Identity and semantic regions cover the tested operations. Duplicate Selection now assigns new persistent IDs to copied elements before fitted-face separation, making the identity discontinuity explicit; its curved-shell transfer passes fresh verification.",
       "next_step": "Add operation-specific tests only when newly sanctioned operations require them."
     },
     {
@@ -206,11 +211,13 @@
         "runs/2026-08-17_bevel-skill-runtime-use/",
         "knowledge/skills/inset-before-extrude-containment.json",
         "runs/2026-08-18_inset-before-extrude-validation/",
-        "runs/2026-08-18_inset-containment-skill-runtime-use/",
-        "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json",
-        "runs/2026-08-21_reference-scotch-c60/typed_surface_report.json"
-      ],
-      "current_boundary": "Source observation, bounded episode review, transfer experiments, and retrieval infrastructure exist. The C60 run is the first retained unfamiliar-reference task where retrieval changes a real typed action: explicit bevel-intent knowledge causes all twelve physical-radius base edges to be declared before weight assignment, and the live completeness audit passes. The visually chosen width and the asset itself remain unapproved, so this is one bounded real-task use rather than broad transfer.",
+      "runs/2026-08-18_inset-containment-skill-runtime-use/",
+      "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json",
+      "runs/2026-08-21_reference-scotch-c60/typed_surface_report.json",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/independent_episode_review.json",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_evaluation.json"
+    ],
+    "current_boundary": "Source observation, bounded episode review, transfer experiments, and retrieval infrastructure exist. The crate study links full audiovisual extraction and an independent transcript check to a typed reproduction and different-geometry transfer, while preserving the 6.8/10 fidelity failure instead of promoting it.",
       "next_step": "Repeat natural retrieval on unrelated reference failures and measure whether the retrieved rule improves visual outcomes, not only intent completeness."
     },
     {
@@ -234,12 +241,13 @@
         "runs/2026-08-18_inset-containment-skill-runtime-use/",
         "knowledge_engine/defect_classifier.py",
         "tools/audit_observation_to_skill_gap.py",
-        "runs/2026-08-19_observation-to-skill-gap-audit/",
-        "runs/2026-08-19_observed-defect-repair-loop/",
-        "tests/test_skill_trigger_vocabulary.py",
-        "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json"
-      ],
-      "current_boundary": "CORRECTED 2026-08-19 by audit. Circular runtime validations remain withdrawn except for the independently classified bevel-parity path. The C60 study now adds one non-synthetic unfamiliar-reference use: retrieval selects the explicit semantic bevel-intent rule, which supplies the ordering requirement (declare the complete physical-radius set before weighting) while the reference, not the skill, supplies which base edges need a radius. The resulting 12/12 declaration and live weight-limited Bevel pass the hard-surface audit. One successful use does not establish repeated retrieval quality or visual acceptance.",
+      "runs/2026-08-19_observation-to-skill-gap-audit/",
+      "runs/2026-08-19_observed-defect-repair-loop/",
+      "tests/test_skill_trigger_vocabulary.py",
+      "runs/2026-08-21_reference-scotch-c60/skill_retrieval_record.json",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_evaluation.json"
+    ],
+    "current_boundary": "CORRECTED 2026-08-19 by audit. Circular runtime validations remain withdrawn except for the independently classified bevel-parity path. The crate study adds a controlled curved-shell transfer of fitted duplicate/separate geometry; that transfer passes technically while the source reproduction remains a visible non-pass, preserving the distinction between transferable operation and artistic result.",
       "next_step": "Repeat the observation -> retrieval -> typed action -> visual consequence chain on an unrelated target and retain failures when retrieval is inapplicable."
     },
     {
@@ -313,12 +321,13 @@
       "status": "PARTIAL",
       "evidence": [
         "docs/DEVELOPMENT_PRIORITIES.md",
-        "docs/CURRENT_STATE_GAP_MATRIX.md",
-        "knowledge/foundation/foundation_exit_report.md",
-        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md"
-      ],
-      "current_boundary": "The live priority remains reference interpretation and reviewer-approved breadth. The pipeline is now being exercised on Stanley through SECONDARY_FORMS, while two consecutive beginner tutorial passes have separately unblocked intermediate I0 study. Neither fact resolves the missing human-reviewed unfamiliar-prop proof.",
-      "next_step": "Finish and review the current neutral reference run before starting another prop; use additional tutorial or infrastructure work only when a concrete failure identifies the need."
+      "docs/CURRENT_STATE_GAP_MATRIX.md",
+      "knowledge/foundation/foundation_exit_report.md",
+      "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md",
+      "runs/2026-08-24_tutorial-cgcookie-scifi-crate/README.md"
+    ],
+    "current_boundary": "Stanley is frozen at SECONDARY_FORMS by direct instruction to move on. Intermediate I0 is active, but the retained CG Cookie crate attempt scores 6.8/10 and does not unblock I1. Neither run resolves the missing human-reviewed unfamiliar-prop proof.",
+    "next_step": "Start a different bounded I0 lesson with an inspectable final target; do not return to crate polishing, advance to I1, or start another held-out prop."
     }
   ]
 }

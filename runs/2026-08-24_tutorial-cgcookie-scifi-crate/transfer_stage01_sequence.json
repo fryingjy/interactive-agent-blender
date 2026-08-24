@@ -1,0 +1,35 @@
+[
+  {
+    "label": "create_curved_transfer_target",
+    "command": "create_primitive",
+    "params": {
+      "name": "CurvedShell",
+      "primitive_type": "cylinder",
+      "vertices": 12,
+      "radius": 1.0,
+      "depth": 2.0,
+      "end_fill_type": "NGON"
+    }
+  },
+  {
+    "label": "organize_transfer_target",
+    "transaction": {
+      "name": "CurvedShell",
+      "action_type": "organize_curved_transfer_target",
+      "operation": "organize_object_collection",
+      "params": {"collection_name": "CURVED_FITTED_PANEL_TRANSFER"}
+    }
+  },
+  {
+    "label": "render_transfer_baseline",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": "CurvedShell",
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_baseline_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 512,
+      "margin": 1.2
+    }
+  }
+]

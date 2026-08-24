@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "record_type": "RUNTIME_CORRECTION_LOG",
+  "corrections": [
+    {
+      "problem": "The typed inset operation hard-coded boundary treatment.",
+      "consequence": "A handle cavity crossing a mirror seam could not reproduce the lesson's Boundary-off workflow.",
+      "fix": "inset_selection now exposes use_boundary and use_even_offset and records both in its result."
+    },
+    {
+      "problem": "The typed surface had no Shift+D-style selected-geometry duplication.",
+      "consequence": "Fitted latch and bumper assemblies would have required unrelated primitives or an identity-unsafe bypass.",
+      "fix": "duplicate_selection now duplicates selected faces/edges/vertices, assigns new persistent IDs, and leaves only copies selected for a following separate_selection."
+    },
+    {
+      "problem": "set_modifier_parameter returned Blender bpy_prop_array values directly.",
+      "consequence": "The first otherwise-successful Mirror sequence saved the blend but failed while JSON-serializing its report.",
+      "fix": "Non-scalar RNA values are normalized to JSON-safe lists before reporting; the complete stage was rerun from factory-empty state and passed."
+    },
+    {
+      "problem": "Long socket batches could outlive the shell command and leave one transaction pending.",
+      "consequence": "Two early unsaved sessions became uncertain.",
+      "fix": "Both sessions were discarded; later work used short committed batches, explicit saves, and fresh-process sequence verification. No uncertain geometry was retained as evidence."
+    }
+  ]
+}

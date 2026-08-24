@@ -3293,5 +3293,40 @@
         "Gemini-derived UI details not independently visible remain model-extracted claims rather than promoted facts."
       ]
     }
+  },
+  {
+    "id": "youtube-cgcookie-scifi-crate-tutorial",
+    "url": "https://www.youtube.com/watch?v=1hQuynokYu0",
+    "local_path": "runs/2026-08-24_tutorial-cgcookie-scifi-crate/",
+    "title": "Modeling a Sci-Fi Crate in Blender | Box Modeling Fundamentals",
+    "creator": "CG Cookie - Learn Blender",
+    "source_type": "video_tutorial",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-24",
+    "topics": ["connected-box-modeling", "mirror", "panel-recess", "fitted-assemblies", "duplicate-separate", "live-modifiers"],
+    "access": {"text": true, "video": true, "audio": true, "captions": true, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["gemini_full_video_audio", "browser_player_identity", "exported_transcript", "source_thumbnail", "blender_reproduction", "different_geometry_transfer"],
+    "metadata": {
+      "experiments": [
+        "runs/2026-08-24_tutorial-cgcookie-scifi-crate/crate_tutorial.blend",
+        "runs/2026-08-24_tutorial-cgcookie-scifi-crate/curved_fitted_panel_transfer.blend"
+      ],
+      "direct_observations": [
+        "The lesson starts from the default cube, deletes three quarters, and uses live X/Y Mirror symmetry for a connected primary shell.",
+        "Panel seams and the handle cavity are created by face edits; the handle inset disables Boundary at the mirror seam.",
+        "Latch and bumper assemblies are fitted by duplicating source faces before separating them at real assembly boundaries."
+      ],
+      "candidate_principles": [
+        "Prefer connected edits for shell-owned recesses and duplicate fitted faces only when a real assembly boundary justifies separation.",
+        "Keep symmetry, thickness, and edge treatment live until the cage and visible proportions survive review."
+      ],
+      "limitations": [
+        "The reproduction scored 6.8/10 and does not pass I0.",
+        "Independent browser screenshot capture timed out, and the retained thumbnail obscures the final model with title graphics.",
+        "The curved-shell transfer validates one construction principle, not complete prop fidelity."
+      ]
+    }
   }
 ]

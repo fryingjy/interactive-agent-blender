@@ -48,7 +48,7 @@ shading defect. Two consecutive passes are required before increasing difficulty
 | B2 | Polygon Runway beginner ramen-machine scene | Accurate multi-part decomposition, bevel/shading basics, connected housing, clean presentation | TECHNICALLY VERIFIED; THUMBNAIL FIDELITY 6.8/10, real glowing-window correction pass applied afterward (not re-scored); DOES NOT PASS 8/10 GATE |
 | B3 | Blender Guru lightbulb scene | Profile revolution, curve wires/filament/thread, glass, linked assemblies, emission and compositor glow | TECHNICALLY VERIFIED; CREATOR-RESULT FIDELITY 7.2/10; DOES NOT PASS 8/10 GATE |
 | B4 | Official Blender Fundamentals watering can | One connected body/handle/spout cage, matched bridge loops, transition topology, live Mirror | FRESH-FILE VERIFIED; OFFICIAL-FILE FIDELITY 8.1/10; FIRST CONSECUTIVE PASS |
-| I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | FIRST ATTEMPT IN PROGRESS -- see note below |
+| I0 | Complete reference-driven hard-surface tutorial | Full object, proportion correction, booleans/continuous topology by context | ACTIVE — two retained non-passing attempts; see notes below |
 | I1 | Complete curved/SubD tutorial | Surface continuity, sparse control cage, support/crease/bevel diagnosis | PENDING |
 | A0 | Advanced production prop tutorial | High/low collections, live modifiers, UVs, bake, materials, export | PENDING |
 | P0 | Professional narrated breakdown | Reference interpretation, uncertainty, revisions, final production review | PENDING |
@@ -220,3 +220,23 @@ pixel-level finished-result comparisons the other beginner lessons had (no such 
 tutorial), documented as such rather than conflated with it. Does not count toward the two-pass gate
 (already satisfied by B1 and B4), but closes an evidence gap that had been left unresolved rather than
 actually being unresolvable.
+
+## I0 second attempt: CG Cookie sci-fi crate
+
+`runs/2026-08-24_tutorial-cgcookie-scifi-crate/` is a deliberately bounded second I0 attempt. The
+complete 31:56 lesson was analyzed through Gemini video/audio/captions and independently checked
+against the browser player identity and exported transcript. The build uses one connected quarter
+cage derived from one cube, live X/Y symmetry, connected panel and handle recesses, and fitted latch
+and bumper assemblies duplicated from source faces before separation. A render-driven correction
+changed the latch from one-axis to two-axis symmetry. All modifiers remain unapplied.
+
+The attempt is retained at **6.8/10 — not an I0 pass**. The latch, bumper coverage, and panel layout
+are simplified, the bumper's evaluated stack creates 32 n-gons, and no unobscured creator-final
+frame was independently captured. The useful construction principle did pass a different-geometry
+transfer on three adjacent faces of a 12-sided curved shell. Runtime support was generalized through
+`duplicate_selection`, configurable inset boundary behavior, and JSON-safe modifier-array reports;
+no crate-specific builder was added.
+
+Modeling is frozen here to prevent over-investing in one weak result. The next I0 attempt must use a
+different complete intermediate lesson with an independently inspectable final result and the same
+bounded reproduce/verify/transfer cutoff. I1 remains blocked.

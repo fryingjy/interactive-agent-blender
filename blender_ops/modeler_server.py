@@ -119,6 +119,7 @@ _OPS = {
     "move_selection": mesh_ops.move_selection,
     "scale_selection": mesh_ops.scale_selection,
     "inset_selection": mesh_ops.inset_selection,
+    "duplicate_selection": mesh_ops.duplicate_selection,
     "subdivide_selection": mesh_ops.subdivide_selection,
     "rotate_selection": mesh_ops.rotate_selection,
     "bevel_selection": mesh_ops.bevel_selection,

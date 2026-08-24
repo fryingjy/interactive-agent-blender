@@ -1,0 +1,2242 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\fresh_crate_verification_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_tutorial.blend",
+  "saved_file": null,
+  "blender_version": "5.2.0 LTS",
+  "session_id": "1675692dbd7c",
+  "results": [
+    {
+      "index": 0,
+      "label": "crate_base_state",
+      "command": "get_full_state",
+      "params": {
+        "name": "Crate"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 47,
+        "mesh_health": {
+          "vertices": 121,
+          "edges": 226,
+          "faces": 106,
+          "non_manifold_edges": 28,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0,
+          "local_bounds": {
+            "min": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max": [
+              1.399999976158142,
+              1.399999976158142,
+              2.4000000953674316
+            ]
+          },
+          "local_centroid": [
+            0.8299173326039118,
+            0.8198346825670605,
+            1.3839669986204668
+          ]
+        },
+        "valence_distribution": {
+          "2": 2,
+          "3": 38,
+          "4": 71,
+          "5": 10
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 27
+            },
+            {
+              "index": 9,
+              "agent_id": 28
+            },
+            {
+              "index": 10,
+              "agent_id": 29
+            },
+            {
+              "index": 11,
+              "agent_id": 30
+            },
+            {
+              "index": 12,
+              "agent_id": 31
+            },
+            {
+              "index": 13,
+              "agent_id": 32
+            },
+            {
+              "index": 14,
+              "agent_id": 33
+            },
+            {
+              "index": 15,
+              "agent_id": 34
+            },
+            {
+              "index": 16,
+              "agent_id": 35
+            },
+            {
+              "index": 17,
+              "agent_id": 36
+            },
+            {
+              "index": 18,
+              "agent_id": 37
+            },
+            {
+              "index": 19,
+              "agent_id": 38
+            },
+            {
+              "index": 20,
+              "agent_id": 39
+            },
+            {
+              "index": 21,
+              "agent_id": 40
+            },
+            {
+              "index": 22,
+              "agent_id": 41
+            },
+            {
+              "index": 23,
+              "agent_id": 42
+            },
+            {
+              "index": 24,
+              "agent_id": 43
+            },
+            {
+              "index": 25,
+              "agent_id": 44
+            },
+            {
+              "index": 26,
+              "agent_id": 45
+            },
+            {
+              "index": 27,
+              "agent_id": 46
+            },
+            {
+              "index": 28,
+              "agent_id": 47
+            },
+            {
+              "index": 29,
+              "agent_id": 48
+            },
+            {
+              "index": 30,
+              "agent_id": 49
+            },
+            {
+              "index": 31,
+              "agent_id": 50
+            },
+            {
+              "index": 32,
+              "agent_id": 51
+            },
+            {
+              "index": 33,
+              "agent_id": 52
+            },
+            {
+              "index": 34,
+              "agent_id": 53
+            },
+            {
+              "index": 35,
+              "agent_id": 54
+            },
+            {
+              "index": 36,
+              "agent_id": 55
+            },
+            {
+              "index": 37,
+              "agent_id": 56
+            },
+            {
+              "index": 38,
+              "agent_id": 57
+            },
+            {
+              "index": 39,
+              "agent_id": 58
+            },
+            {
+              "index": 40,
+              "agent_id": 59
+            },
+            {
+              "index": 41,
+              "agent_id": 60
+            },
+            {
+              "index": 42,
+              "agent_id": 61
+            },
+            {
+              "index": 43,
+              "agent_id": 62
+            },
+            {
+              "index": 44,
+              "agent_id": 63
+            },
+            {
+              "index": 45,
+              "agent_id": 65
+            },
+            {
+              "index": 46,
+              "agent_id": 66
+            },
+            {
+              "index": 47,
+              "agent_id": 67
+            },
+            {
+              "index": 48,
+              "agent_id": 68
+            },
+            {
+              "index": 49,
+              "agent_id": 69
+            },
+            {
+              "index": 50,
+              "agent_id": 70
+            },
+            {
+              "index": 51,
+              "agent_id": 71
+            },
+            {
+              "index": 52,
+              "agent_id": 72
+            },
+            {
+              "index": 53,
+              "agent_id": 73
+            },
+            {
+              "index": 54,
+              "agent_id": 74
+            },
+            {
+              "index": 55,
+              "agent_id": 75
+            },
+            {
+              "index": 56,
+              "agent_id": 76
+            },
+            {
+              "index": 57,
+              "agent_id": 77
+            },
+            {
+              "index": 58,
+              "agent_id": 78
+            },
+            {
+              "index": 59,
+              "agent_id": 79
+            },
+            {
+              "index": 60,
+              "agent_id": 80
+            },
+            {
+              "index": 61,
+              "agent_id": 81
+            },
+            {
+              "index": 62,
+              "agent_id": 82
+            },
+            {
+              "index": 63,
+              "agent_id": 83
+            },
+            {
+              "index": 64,
+              "agent_id": 84
+            },
+            {
+              "index": 65,
+              "agent_id": 85
+            },
+            {
+              "index": 66,
+              "agent_id": 86
+            },
+            {
+              "index": 67,
+              "agent_id": 87
+            },
+            {
+              "index": 68,
+              "agent_id": 88
+            },
+            {
+              "index": 69,
+              "agent_id": 89
+            },
+            {
+              "index": 70,
+              "agent_id": 90
+            },
+            {
+              "index": 71,
+              "agent_id": 92
+            },
+            {
+              "index": 72,
+              "agent_id": 93
+            },
+            {
+              "index": 73,
+              "agent_id": 94
+            },
+            {
+              "index": 74,
+              "agent_id": 95
+            },
+            {
+              "index": 75,
+              "agent_id": 296
+            },
+            {
+              "index": 76,
+              "agent_id": 297
+            },
+            {
+              "index": 77,
+              "agent_id": 298
+            },
+            {
+              "index": 78,
+              "agent_id": 299
+            },
+            {
+              "index": 79,
+              "agent_id": 300
+            },
+            {
+              "index": 80,
+              "agent_id": 301
+            },
+            {
+              "index": 81,
+              "agent_id": 302
+            },
+            {
+              "index": 82,
+              "agent_id": 303
+            },
+            {
+              "index": 83,
+              "agent_id": 328
+            },
+            {
+              "index": 84,
+              "agent_id": 329
+            },
+            {
+              "index": 85,
+              "agent_id": 330
+            },
+            {
+              "index": 86,
+              "agent_id": 331
+            },
+            {
+              "index": 87,
+              "agent_id": 332
+            },
+            {
+              "index": 88,
+              "agent_id": 333
+            },
+            {
+              "index": 89,
+              "agent_id": 334
+            },
+            {
+              "index": 90,
+              "agent_id": 335
+            },
+            {
+              "index": 91,
+              "agent_id": 336
+            },
+            {
+              "index": 92,
+              "agent_id": 365
+            },
+            {
+              "index": 93,
+              "agent_id": 366
+            },
+            {
+              "index": 94,
+              "agent_id": 367
+            },
+            {
+              "index": 95,
+              "agent_id": 368
+            },
+            {
+              "index": 96,
+              "agent_id": 369
+            },
+            {
+              "index": 97,
+              "agent_id": 370
+            },
+            {
+              "index": 98,
+              "agent_id": 387
+            },
+            {
+              "index": 99,
+              "agent_id": 388
+            },
+            {
+              "index": 100,
+              "agent_id": 389
+            },
+            {
+              "index": 101,
+              "agent_id": 390
+            },
+            {
+              "index": 102,
+              "agent_id": 391
+            },
+            {
+              "index": 103,
+              "agent_id": 392
+            },
+            {
+              "index": 104,
+              "agent_id": 412
+            },
+            {
+              "index": 105,
+              "agent_id": 413
+            },
+            {
+              "index": 106,
+              "agent_id": 414
+            },
+            {
+              "index": 107,
+              "agent_id": 415
+            },
+            {
+              "index": 108,
+              "agent_id": 416
+            },
+            {
+              "index": 109,
+              "agent_id": 417
+            },
+            {
+              "index": 110,
+              "agent_id": 418
+            },
+            {
+              "index": 111,
+              "agent_id": 419
+            },
+            {
+              "index": 112,
+              "agent_id": 444
+            },
+            {
+              "index": 113,
+              "agent_id": 445
+            },
+            {
+              "index": 114,
+              "agent_id": 446
+            },
+            {
+              "index": 115,
+              "agent_id": 447
+            },
+            {
+              "index": 116,
+              "agent_id": 448
+            },
+            {
+              "index": 117,
+              "agent_id": 449
+            },
+            {
+              "index": 118,
+              "agent_id": 450
+            },
+            {
+              "index": 119,
+              "agent_id": 451
+            },
+            {
+              "index": 120,
+              "agent_id": 452
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 96
+            },
+            {
+              "index": 1,
+              "agent_id": 97
+            },
+            {
+              "index": 2,
+              "agent_id": 98
+            },
+            {
+              "index": 3,
+              "agent_id": 99
+            },
+            {
+              "index": 4,
+              "agent_id": 100
+            },
+            {
+              "index": 5,
+              "agent_id": 101
+            },
+            {
+              "index": 6,
+              "agent_id": 102
+            },
+            {
+              "index": 7,
+              "agent_id": 103
+            },
+            {
+              "index": 8,
+              "agent_id": 104
+            },
+            {
+              "index": 9,
+              "agent_id": 105
+            },
+            {
+              "index": 10,
+              "agent_id": 106
+            },
+            {
+              "index": 11,
+              "agent_id": 107
+            },
+            {
+              "index": 12,
+              "agent_id": 108
+            },
+            {
+              "index": 13,
+              "agent_id": 109
+            },
+            {
+              "index": 14,
+              "agent_id": 110
+            },
+            {
+              "index": 15,
+              "agent_id": 111
+            },
+            {
+              "index": 16,
+              "agent_id": 112
+            },
+            {
+              "index": 17,
+              "agent_id": 113
+            },
+            {
+              "index": 18,
+              "agent_id": 114
+            },
+            {
+              "index": 19,
+              "agent_id": 115
+            },
+            {
+              "index": 20,
+              "agent_id": 116
+            },
+            {
+              "index": 21,
+              "agent_id": 117
+            },
+            {
+              "index": 22,
+              "agent_id": 118
+            },
+            {
+              "index": 23,
+              "agent_id": 119
+            },
+            {
+              "index": 24,
+              "agent_id": 120
+            },
+            {
+              "index": 25,
+              "agent_id": 121
+            },
+            {
+              "index": 26,
+              "agent_id": 122
+            },
+            {
+              "index": 27,
+              "agent_id": 123
+            },
+            {
+              "index": 28,
+              "agent_id": 124
+            },
+            {
+              "index": 29,
+              "agent_id": 125
+            },
+            {
+              "index": 30,
+              "agent_id": 126
+            },
+            {
+              "index": 31,
+              "agent_id": 127
+            },
+            {
+              "index": 32,
+              "agent_id": 128
+            },
+            {
+              "index": 33,
+              "agent_id": 129
+            },
+            {
+              "index": 34,
+              "agent_id": 130
+            },
+            {
+              "index": 35,
+              "agent_id": 131
+            },
+            {
+              "index": 36,
+              "agent_id": 133
+            },
+            {
+              "index": 37,
+              "agent_id": 134
+            },
+            {
+              "index": 38,
+              "agent_id": 135
+            },
+            {
+              "index": 39,
+              "agent_id": 136
+            },
+            {
+              "index": 40,
+              "agent_id": 137
+            },
+            {
+              "index": 41,
+              "agent_id": 138
+            },
+            {
+              "index": 42,
+              "agent_id": 139
+            },
+            {
+              "index": 43,
+              "agent_id": 140
+            },
+            {
+              "index": 44,
+              "agent_id": 141
+            },
+            {
+              "index": 45,
+              "agent_id": 142
+            },
+            {
+              "index": 46,
+              "agent_id": 143
+            },
+            {
+              "index": 47,
+              "agent_id": 144
+            },
+            {
+              "index": 48,
+              "agent_id": 145
+            },
+            {
+              "index": 49,
+              "agent_id": 148
+            },
+            {
+              "index": 50,
+              "agent_id": 149
+            },
+            {
+              "index": 51,
+              "agent_id": 150
+            },
+            {
+              "index": 52,
+              "agent_id": 151
+            },
+            {
+              "index": 53,
+              "agent_id": 152
+            },
+            {
+              "index": 54,
+              "agent_id": 153
+            },
+            {
+              "index": 55,
+              "agent_id": 154
+            },
+            {
+              "index": 56,
+              "agent_id": 155
+            },
+            {
+              "index": 57,
+              "agent_id": 157
+            },
+            {
+              "index": 58,
+              "agent_id": 158
+            },
+            {
+              "index": 59,
+              "agent_id": 160
+            },
+            {
+              "index": 60,
+              "agent_id": 161
+            },
+            {
+              "index": 61,
+              "agent_id": 162
+            },
+            {
+              "index": 62,
+              "agent_id": 163
+            },
+            {
+              "index": 63,
+              "agent_id": 164
+            },
+            {
+              "index": 64,
+              "agent_id": 165
+            },
+            {
+              "index": 65,
+              "agent_id": 166
+            },
+            {
+              "index": 66,
+              "agent_id": 167
+            },
+            {
+              "index": 67,
+              "agent_id": 168
+            },
+            {
+              "index": 68,
+              "agent_id": 169
+            },
+            {
+              "index": 69,
+              "agent_id": 170
+            },
+            {
+              "index": 70,
+              "agent_id": 171
+            },
+            {
+              "index": 71,
+              "agent_id": 172
+            },
+            {
+              "index": 72,
+              "agent_id": 173
+            },
+            {
+              "index": 73,
+              "agent_id": 174
+            },
+            {
+              "index": 74,
+              "agent_id": 175
+            },
+            {
+              "index": 75,
+              "agent_id": 176
+            },
+            {
+              "index": 76,
+              "agent_id": 177
+            },
+            {
+              "index": 77,
+              "agent_id": 178
+            },
+            {
+              "index": 78,
+              "agent_id": 179
+            },
+            {
+              "index": 79,
+              "agent_id": 180
+            },
+            {
+              "index": 80,
+              "agent_id": 181
+            },
+            {
+              "index": 81,
+              "agent_id": 182
+            },
+            {
+              "index": 82,
+              "agent_id": 183
+            },
+            {
+              "index": 83,
+              "agent_id": 184
+            },
+            {
+              "index": 84,
+              "agent_id": 185
+            },
+            {
+              "index": 85,
+              "agent_id": 186
+            },
+            {
+              "index": 86,
+              "agent_id": 187
+            },
+            {
+              "index": 87,
+              "agent_id": 188
+            },
+            {
+              "index": 88,
+              "agent_id": 189
+            },
+            {
+              "index": 89,
+              "agent_id": 190
+            },
+            {
+              "index": 90,
+              "agent_id": 191
+            },
+            {
+              "index": 91,
+              "agent_id": 192
+            },
+            {
+              "index": 92,
+              "agent_id": 193
+            },
+            {
+              "index": 93,
+              "agent_id": 194
+            },
+            {
+              "index": 94,
+              "agent_id": 195
+            },
+            {
+              "index": 95,
+              "agent_id": 196
+            },
+            {
+              "index": 96,
+              "agent_id": 197
+            },
+            {
+              "index": 97,
+              "agent_id": 198
+            },
+            {
+              "index": 98,
+              "agent_id": 199
+            },
+            {
+              "index": 99,
+              "agent_id": 200
+            },
+            {
+              "index": 100,
+              "agent_id": 201
+            },
+            {
+              "index": 101,
+              "agent_id": 202
+            },
+            {
+              "index": 102,
+              "agent_id": 203
+            },
+            {
+              "index": 103,
+              "agent_id": 204
+            },
+            {
+              "index": 104,
+              "agent_id": 205
+            },
+            {
+              "index": 105,
+              "agent_id": 206
+            },
+            {
+              "index": 106,
+              "agent_id": 207
+            },
+            {
+              "index": 107,
+              "agent_id": 209
+            },
+            {
+              "index": 108,
+              "agent_id": 210
+            },
+            {
+              "index": 109,
+              "agent_id": 211
+            },
+            {
+              "index": 110,
+              "agent_id": 212
+            },
+            {
+              "index": 111,
+              "agent_id": 213
+            },
+            {
+              "index": 112,
+              "agent_id": 214
+            },
+            {
+              "index": 113,
+              "agent_id": 215
+            },
+            {
+              "index": 114,
+              "agent_id": 216
+            },
+            {
+              "index": 115,
+              "agent_id": 217
+            },
+            {
+              "index": 116,
+              "agent_id": 220
+            },
+            {
+              "index": 117,
+              "agent_id": 221
+            },
+            {
+              "index": 118,
+              "agent_id": 222
+            },
+            {
+              "index": 119,
+              "agent_id": 223
+            },
+            {
+              "index": 120,
+              "agent_id": 224
+            },
+            {
+              "index": 121,
+              "agent_id": 225
+            },
+            {
+              "index": 122,
+              "agent_id": 226
+            },
+            {
+              "index": 123,
+              "agent_id": 227
+            },
+            {
+              "index": 124,
+              "agent_id": 229
+            },
+            {
+              "index": 125,
+              "agent_id": 230
+            },
+            {
+              "index": 126,
+              "agent_id": 232
+            },
+            {
+              "index": 127,
+              "agent_id": 233
+            },
+            {
+              "index": 128,
+              "agent_id": 234
+            },
+            {
+              "index": 129,
+              "agent_id": 235
+            },
+            {
+              "index": 130,
+              "agent_id": 304
+            },
+            {
+              "index": 131,
+              "agent_id": 305
+            },
+            {
+              "index": 132,
+              "agent_id": 306
+            },
+            {
+              "index": 133,
+              "agent_id": 307
+            },
+            {
+              "index": 134,
+              "agent_id": 308
+            },
+            {
+              "index": 135,
+              "agent_id": 309
+            },
+            {
+              "index": 136,
+              "agent_id": 310
+            },
+            {
+              "index": 137,
+              "agent_id": 311
+            },
+            {
+              "index": 138,
+              "agent_id": 312
+            },
+            {
+              "index": 139,
+              "agent_id": 313
+            },
+            {
+              "index": 140,
+              "agent_id": 314
+            },
+            {
+              "index": 141,
+              "agent_id": 315
+            },
+            {
+              "index": 142,
+              "agent_id": 316
+            },
+            {
+              "index": 143,
+              "agent_id": 317
+            },
+            {
+              "index": 144,
+              "agent_id": 318
+            },
+            {
+              "index": 145,
+              "agent_id": 319
+            },
+            {
+              "index": 146,
+              "agent_id": 337
+            },
+            {
+              "index": 147,
+              "agent_id": 338
+            },
+            {
+              "index": 148,
+              "agent_id": 339
+            },
+            {
+              "index": 149,
+              "agent_id": 340
+            },
+            {
+              "index": 150,
+              "agent_id": 341
+            },
+            {
+              "index": 151,
+              "agent_id": 342
+            },
+            {
+              "index": 152,
+              "agent_id": 343
+            },
+            {
+              "index": 153,
+              "agent_id": 344
+            },
+            {
+              "index": 154,
+              "agent_id": 345
+            },
+            {
+              "index": 155,
+              "agent_id": 346
+            },
+            {
+              "index": 156,
+              "agent_id": 347
+            },
+            {
+              "index": 157,
+              "agent_id": 348
+            },
+            {
+              "index": 158,
+              "agent_id": 349
+            },
+            {
+              "index": 159,
+              "agent_id": 350
+            },
+            {
+              "index": 160,
+              "agent_id": 351
+            },
+            {
+              "index": 161,
+              "agent_id": 352
+            },
+            {
+              "index": 162,
+              "agent_id": 353
+            },
+            {
+              "index": 163,
+              "agent_id": 354
+            },
+            {
+              "index": 164,
+              "agent_id": 355
+            },
+            {
+              "index": 165,
+              "agent_id": 356
+            },
+            {
+              "index": 166,
+              "agent_id": 371
+            },
+            {
+              "index": 167,
+              "agent_id": 372
+            },
+            {
+              "index": 168,
+              "agent_id": 373
+            },
+            {
+              "index": 169,
+              "agent_id": 374
+            },
+            {
+              "index": 170,
+              "agent_id": 375
+            },
+            {
+              "index": 171,
+              "agent_id": 376
+            },
+            {
+              "index": 172,
+              "agent_id": 377
+            },
+            {
+              "index": 173,
+              "agent_id": 378
+            },
+            {
+              "index": 174,
+              "agent_id": 379
+            },
+            {
+              "index": 175,
+              "agent_id": 380
+            },
+            {
+              "index": 176,
+              "agent_id": 381
+            },
+            {
+              "index": 177,
+              "agent_id": 393
+            },
+            {
+              "index": 178,
+              "agent_id": 394
+            },
+            {
+              "index": 179,
+              "agent_id": 395
+            },
+            {
+              "index": 180,
+              "agent_id": 396
+            },
+            {
+              "index": 181,
+              "agent_id": 397
+            },
+            {
+              "index": 182,
+              "agent_id": 398
+            },
+            {
+              "index": 183,
+              "agent_id": 399
+            },
+            {
+              "index": 184,
+              "agent_id": 400
+            },
+            {
+              "index": 185,
+              "agent_id": 401
+            },
+            {
+              "index": 186,
+              "agent_id": 402
+            },
+            {
+              "index": 187,
+              "agent_id": 403
+            },
+            {
+              "index": 188,
+              "agent_id": 404
+            },
+            {
+              "index": 189,
+              "agent_id": 405
+            },
+            {
+              "index": 190,
+              "agent_id": 420
+            },
+            {
+              "index": 191,
+              "agent_id": 421
+            },
+            {
+              "index": 192,
+              "agent_id": 422
+            },
+            {
+              "index": 193,
+              "agent_id": 423
+            },
+            {
+              "index": 194,
+              "agent_id": 424
+            },
+            {
+              "index": 195,
+              "agent_id": 425
+            },
+            {
+              "index": 196,
+              "agent_id": 426
+            },
+            {
+              "index": 197,
+              "agent_id": 427
+            },
+            {
+              "index": 198,
+              "agent_id": 428
+            },
+            {
+              "index": 199,
+              "agent_id": 429
+            },
+            {
+              "index": 200,
+              "agent_id": 430
+            },
+            {
+              "index": 201,
+              "agent_id": 431
+            },
+            {
+              "index": 202,
+              "agent_id": 432
+            },
+            {
+              "index": 203,
+              "agent_id": 433
+            },
+            {
+              "index": 204,
+              "agent_id": 434
+            },
+            {
+              "index": 205,
+              "agent_id": 435
+            },
+            {
+              "index": 206,
+              "agent_id": 453
+            },
+            {
+              "index": 207,
+              "agent_id": 454
+            },
+            {
+              "index": 208,
+              "agent_id": 455
+            },
+            {
+              "index": 209,
+              "agent_id": 456
+            },
+            {
+              "index": 210,
+              "agent_id": 457
+            },
+            {
+              "index": 211,
+              "agent_id": 458
+            },
+            {
+              "index": 212,
+              "agent_id": 459
+            },
+            {
+              "index": 213,
+              "agent_id": 460
+            },
+            {
+              "index": 214,
+              "agent_id": 461
+            },
+            {
+              "index": 215,
+              "agent_id": 462
+            },
+            {
+              "index": 216,
+              "agent_id": 463
+            },
+            {
+              "index": 217,
+              "agent_id": 464
+            },
+            {
+              "index": 218,
+              "agent_id": 465
+            },
+            {
+              "index": 219,
+              "agent_id": 466
+            },
+            {
+              "index": 220,
+              "agent_id": 467
+            },
+            {
+              "index": 221,
+              "agent_id": 468
+            },
+            {
+              "index": 222,
+              "agent_id": 469
+            },
+            {
+              "index": 223,
+              "agent_id": 470
+            },
+            {
+              "index": 224,
+              "agent_id": 471
+            },
+            {
+              "index": 225,
+              "agent_id": 472
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 22
+            },
+            {
+              "index": 1,
+              "agent_id": 23
+            },
+            {
+              "index": 2,
+              "agent_id": 25
+            },
+            {
+              "index": 3,
+              "agent_id": 26
+            },
+            {
+              "index": 4,
+              "agent_id": 236
+            },
+            {
+              "index": 5,
+              "agent_id": 237
+            },
+            {
+              "index": 6,
+              "agent_id": 238
+            },
+            {
+              "index": 7,
+              "agent_id": 239
+            },
+            {
+              "index": 8,
+              "agent_id": 240
+            },
+            {
+              "index": 9,
+              "agent_id": 241
+            },
+            {
+              "index": 10,
+              "agent_id": 242
+            },
+            {
+              "index": 11,
+              "agent_id": 245
+            },
+            {
+              "index": 12,
+              "agent_id": 248
+            },
+            {
+              "index": 13,
+              "agent_id": 249
+            },
+            {
+              "index": 14,
+              "agent_id": 250
+            },
+            {
+              "index": 15,
+              "agent_id": 251
+            },
+            {
+              "index": 16,
+              "agent_id": 252
+            },
+            {
+              "index": 17,
+              "agent_id": 253
+            },
+            {
+              "index": 18,
+              "agent_id": 254
+            },
+            {
+              "index": 19,
+              "agent_id": 255
+            },
+            {
+              "index": 20,
+              "agent_id": 256
+            },
+            {
+              "index": 21,
+              "agent_id": 257
+            },
+            {
+              "index": 22,
+              "agent_id": 258
+            },
+            {
+              "index": 23,
+              "agent_id": 259
+            },
+            {
+              "index": 24,
+              "agent_id": 260
+            },
+            {
+              "index": 25,
+              "agent_id": 261
+            },
+            {
+              "index": 26,
+              "agent_id": 262
+            },
+            {
+              "index": 27,
+              "agent_id": 263
+            },
+            {
+              "index": 28,
+              "agent_id": 264
+            },
+            {
+              "index": 29,
+              "agent_id": 265
+            },
+            {
+              "index": 30,
+              "agent_id": 266
+            },
+            {
+              "index": 31,
+              "agent_id": 267
+            },
+            {
+              "index": 32,
+              "agent_id": 269
+            },
+            {
+              "index": 33,
+              "agent_id": 270
+            },
+            {
+              "index": 34,
+              "agent_id": 271
+            },
+            {
+              "index": 35,
+              "agent_id": 272
+            },
+            {
+              "index": 36,
+              "agent_id": 273
+            },
+            {
+              "index": 37,
+              "agent_id": 274
+            },
+            {
+              "index": 38,
+              "agent_id": 275
+            },
+            {
+              "index": 39,
+              "agent_id": 276
+            },
+            {
+              "index": 40,
+              "agent_id": 278
+            },
+            {
+              "index": 41,
+              "agent_id": 279
+            },
+            {
+              "index": 42,
+              "agent_id": 280
+            },
+            {
+              "index": 43,
+              "agent_id": 281
+            },
+            {
+              "index": 44,
+              "agent_id": 282
+            },
+            {
+              "index": 45,
+              "agent_id": 283
+            },
+            {
+              "index": 46,
+              "agent_id": 284
+            },
+            {
+              "index": 47,
+              "agent_id": 285
+            },
+            {
+              "index": 48,
+              "agent_id": 286
+            },
+            {
+              "index": 49,
+              "agent_id": 287
+            },
+            {
+              "index": 50,
+              "agent_id": 290
+            },
+            {
+              "index": 51,
+              "agent_id": 293
+            },
+            {
+              "index": 52,
+              "agent_id": 294
+            },
+            {
+              "index": 53,
+              "agent_id": 295
+            },
+            {
+              "index": 54,
+              "agent_id": 320
+            },
+            {
+              "index": 55,
+              "agent_id": 321
+            },
+            {
+              "index": 56,
+              "agent_id": 322
+            },
+            {
+              "index": 57,
+              "agent_id": 323
+            },
+            {
+              "index": 58,
+              "agent_id": 324
+            },
+            {
+              "index": 59,
+              "agent_id": 325
+            },
+            {
+              "index": 60,
+              "agent_id": 326
+            },
+            {
+              "index": 61,
+              "agent_id": 327
+            },
+            {
+              "index": 62,
+              "agent_id": 357
+            },
+            {
+              "index": 63,
+              "agent_id": 358
+            },
+            {
+              "index": 64,
+              "agent_id": 359
+            },
+            {
+              "index": 65,
+              "agent_id": 360
+            },
+            {
+              "index": 66,
+              "agent_id": 291
+            },
+            {
+              "index": 67,
+              "agent_id": 288
+            },
+            {
+              "index": 68,
+              "agent_id": 361
+            },
+            {
+              "index": 69,
+              "agent_id": 362
+            },
+            {
+              "index": 70,
+              "agent_id": 292
+            },
+            {
+              "index": 71,
+              "agent_id": 289
+            },
+            {
+              "index": 72,
+              "agent_id": 363
+            },
+            {
+              "index": 73,
+              "agent_id": 364
+            },
+            {
+              "index": 74,
+              "agent_id": 382
+            },
+            {
+              "index": 75,
+              "agent_id": 383
+            },
+            {
+              "index": 76,
+              "agent_id": 384
+            },
+            {
+              "index": 77,
+              "agent_id": 385
+            },
+            {
+              "index": 78,
+              "agent_id": 386
+            },
+            {
+              "index": 79,
+              "agent_id": 406
+            },
+            {
+              "index": 80,
+              "agent_id": 407
+            },
+            {
+              "index": 81,
+              "agent_id": 268
+            },
+            {
+              "index": 82,
+              "agent_id": 277
+            },
+            {
+              "index": 83,
+              "agent_id": 409
+            },
+            {
+              "index": 84,
+              "agent_id": 410
+            },
+            {
+              "index": 85,
+              "agent_id": 411
+            },
+            {
+              "index": 86,
+              "agent_id": 436
+            },
+            {
+              "index": 87,
+              "agent_id": 437
+            },
+            {
+              "index": 88,
+              "agent_id": 438
+            },
+            {
+              "index": 89,
+              "agent_id": 439
+            },
+            {
+              "index": 90,
+              "agent_id": 440
+            },
+            {
+              "index": 91,
+              "agent_id": 441
+            },
+            {
+              "index": 92,
+              "agent_id": 442
+            },
+            {
+              "index": 93,
+              "agent_id": 443
+            },
+            {
+              "index": 94,
+              "agent_id": 473
+            },
+            {
+              "index": 95,
+              "agent_id": 474
+            },
+            {
+              "index": 96,
+              "agent_id": 475
+            },
+            {
+              "index": 97,
+              "agent_id": 476
+            },
+            {
+              "index": 98,
+              "agent_id": 247
+            },
+            {
+              "index": 99,
+              "agent_id": 244
+            },
+            {
+              "index": 100,
+              "agent_id": 246
+            },
+            {
+              "index": 101,
+              "agent_id": 243
+            },
+            {
+              "index": 102,
+              "agent_id": 477
+            },
+            {
+              "index": 103,
+              "agent_id": 478
+            },
+            {
+              "index": 104,
+              "agent_id": 479
+            },
+            {
+              "index": 105,
+              "agent_id": 480
+            }
+          ],
+          "selected_vertex_count": 121,
+          "selected_edge_count": 226,
+          "selected_face_count": 106
+        },
+        "persistent_id_coverage": {
+          "verts": 121,
+          "edges": 226,
+          "faces": 106
+        }
+      }
+    },
+    {
+      "index": 1,
+      "label": "crate_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "Crate"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 1266,
+          "edges": 2528,
+          "faces": 1264,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 1098,
+          "5": 80,
+          "3": 88
+        },
+        "surface_quality": {
+          "face_count": 1264,
+          "min_area": 0.00019105,
+          "max_area": 0.21,
+          "median_area": 0.006219,
+          "area_outlier_count": 328,
+          "area_outlier_ratio": 0.2595,
+          "max_adjacent_face_angle_radians": 0.8189,
+          "angle_samples": 2528
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 1266,
+          "median_edge_length": 0.06500006,
+          "median_absolute_laplacian": 0.08221944,
+          "laplacian_mad": 0.08221944,
+          "max_robust_outlier_z": 4.6658,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 1546,
+          "laplacian_sign_change_ratio": 0.111255,
+          "mean_neighbor_normal_angle_p95_degrees": 27.887,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            1.4,
+            1.4,
+            2.4
+          ],
+          "evaluated_dimensions": [
+            2.8,
+            2.8,
+            2.4
+          ],
+          "shrinkage_ratio_xyz": [
+            2.0,
+            2.0,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "max": [
+              1.4,
+              1.4,
+              2.4
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -1.4,
+              -1.4,
+              0.0
+            ],
+            "max": [
+              1.4,
+              1.4,
+              2.4
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "latch_lifecycle",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "CrateLatch"
+      },
+      "status": "ok",
+      "result": {
+        "name": "CrateLatch",
+        "type": "MESH",
+        "data": "CrateLatch_Mesh",
+        "collections": [
+          "CGCOOKIE_CRATE"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 4,
+        "edges": 4,
+        "faces": 1,
+        "modifiers": [
+          {
+            "name": "LatchSymmetry",
+            "type": "MIRROR"
+          },
+          {
+            "name": "LatchThickness",
+            "type": "SOLIDIFY"
+          },
+          {
+            "name": "EdgeHighlights",
+            "type": "BEVEL"
+          }
+        ],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 3,
+      "label": "latch_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "CrateLatch"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 64,
+          "edges": 128,
+          "faces": 68,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 64
+        },
+        "surface_quality": {
+          "face_count": 68,
+          "min_area": 0.00028059,
+          "max_area": 0.187248,
+          "median_area": 0.008451,
+          "area_outlier_count": 16,
+          "area_outlier_ratio": 0.2353,
+          "max_adjacent_face_angle_radians": 0.7854,
+          "angle_samples": 128
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 64,
+          "median_edge_length": 0.04400003,
+          "median_absolute_laplacian": 1.28924541,
+          "laplacian_mad": 0.45027547,
+          "max_robust_outlier_z": 0.8373,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 100,
+          "laplacian_sign_change_ratio": 0.0,
+          "mean_neighbor_normal_angle_p95_degrees": 42.158,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.35,
+            0.0,
+            0.6
+          ],
+          "evaluated_dimensions": [
+            0.7,
+            2.8,
+            0.6
+          ],
+          "shrinkage_ratio_xyz": [
+            2.0,
+            null,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              0.0,
+              1.4,
+              1.8
+            ],
+            "max": [
+              0.35,
+              1.4,
+              2.4
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -0.35,
+              -1.4,
+              1.8
+            ],
+            "max": [
+              0.35,
+              1.4,
+              2.4
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "bumper_lifecycle",
+      "command": "get_object_lifecycle_state",
+      "params": {
+        "name": "CrateBumpers"
+      },
+      "status": "ok",
+      "result": {
+        "name": "CrateBumpers",
+        "type": "MESH",
+        "data": "CrateBumpers_Mesh",
+        "collections": [
+          "CGCOOKIE_CRATE"
+        ],
+        "hidden_in_viewport": false,
+        "hidden_in_render": false,
+        "vertices": 102,
+        "edges": 192,
+        "faces": 91,
+        "modifiers": [
+          {
+            "name": "BumperSymmetry",
+            "type": "MIRROR"
+          },
+          {
+            "name": "BumperThickness",
+            "type": "SOLIDIFY"
+          },
+          {
+            "name": "EdgeHighlights",
+            "type": "BEVEL"
+          }
+        ],
+        "replacement_source": null,
+        "archived_component": false
+      }
+    },
+    {
+      "index": 5,
+      "label": "bumper_evaluated_state",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "CrateBumpers"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 1752,
+          "edges": 3536,
+          "faces": 1792,
+          "non_manifold_edges": 0,
+          "ngons": 32,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "4": 1592,
+          "3": 48,
+          "5": 112
+        },
+        "surface_quality": {
+          "face_count": 1792,
+          "min_area": 2.92e-06,
+          "max_area": 0.012261,
+          "median_area": 0.000687,
+          "area_outlier_count": 200,
+          "area_outlier_ratio": 0.1116,
+          "max_adjacent_face_angle_radians": 3.0483,
+          "angle_samples": 3536
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 1752,
+          "median_edge_length": 0.03161359,
+          "median_absolute_laplacian": 0.11821297,
+          "laplacian_mad": 0.08069402,
+          "max_robust_outlier_z": 4.9337,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 2080,
+          "laplacian_sign_change_ratio": 0.096154,
+          "mean_neighbor_normal_angle_p95_degrees": 61.7336,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            0.35,
+            0.04,
+            0.6
+          ],
+          "evaluated_dimensions": [
+            2.8,
+            2.88,
+            0.6
+          ],
+          "shrinkage_ratio_xyz": [
+            8.0,
+            72.0001,
+            1.0
+          ],
+          "base_bounds": {
+            "min": [
+              1.05,
+              1.4,
+              0.0
+            ],
+            "max": [
+              1.4,
+              1.44,
+              0.6
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              -1.4,
+              -1.44,
+              0.0
+            ],
+            "max": [
+              1.4,
+              1.44,
+              0.6
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "save_result": null,
+  "pass": true
+}

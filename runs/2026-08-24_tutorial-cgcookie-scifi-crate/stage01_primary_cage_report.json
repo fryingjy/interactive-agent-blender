@@ -1,0 +1,894 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\stage01_primary_cage_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_tutorial.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "055bca5e94b6",
+  "results": [
+    {
+      "index": 0,
+      "label": "seed_one_cube",
+      "command": "create_primitive",
+      "params": {
+        "name": "Crate",
+        "primitive_type": "cube",
+        "size": 2.0
+      },
+      "status": "ok",
+      "result": {
+        "name": "Crate",
+        "type": "MESH",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "label": "select_seed_vertices",
+      "command": "select_by_ids",
+      "params": {
+        "name": "Crate",
+        "vertex_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "extend": false
+      },
+      "status": "ok",
+      "result": {
+        "verts": 8,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 2,
+      "label": "shape_quarter_cage",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "shape_one_cube_into_quarter_crate",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            0.7,
+            0.7,
+            1.2
+          ],
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_0_1787593141385",
+          "observed_revision": 0
+        },
+        "perform": {
+          "decision_id": "dec_0_1787593141385",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "shape_one_cube_into_quarter_crate",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                -1.0,
+                -1.0,
+                -1.0
+              ],
+              "max": [
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "local_centroid": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                -0.699999988079071,
+                -0.699999988079071,
+                -1.2000000476837158
+              ],
+              "max": [
+                0.699999988079071,
+                0.699999988079071,
+                1.2000000476837158
+              ]
+            },
+            "local_centroid": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.464); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_0_1787593141385",
+          "result_revision": 1
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "move_cage_to_positive_quadrant",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "move_same_cube_cage_to_positive_mirror_quadrant",
+        "operation": "move_selection",
+        "params": {
+          "delta": [
+            0.7,
+            0.7,
+            1.2
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_1_1787593141387",
+          "observed_revision": 1
+        },
+        "perform": {
+          "decision_id": "dec_1_1787593141387",
+          "performed": true,
+          "result": 8
+        },
+        "verify": {
+          "action_type": "move_same_cube_cage_to_positive_mirror_quadrant",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                -0.699999988079071,
+                -0.699999988079071,
+                -1.2000000476837158
+              ],
+              "max": [
+                0.699999988079071,
+                0.699999988079071,
+                1.2000000476837158
+              ]
+            },
+            "local_centroid": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 1.556 (0.50x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_1_1787593141387",
+          "result_revision": 2
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "add_live_symmetry",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "add_dual_axis_live_symmetry",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "MIRROR",
+          "modifier_name": "QuarterSymmetry"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_2_1787593141388",
+          "observed_revision": 2
+        },
+        "perform": {
+          "decision_id": "dec_2_1787593141388",
+          "performed": true,
+          "result": {
+            "modifier_name": "QuarterSymmetry",
+            "type": "MIRROR",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "add_dual_axis_live_symmetry",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_2_1787593141388",
+          "result_revision": 3
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "set_xy_symmetry",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "mirror_on_x_and_y_only",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "QuarterSymmetry",
+          "parameter": "use_axis",
+          "value": [
+            true,
+            true,
+            false
+          ]
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_3_1787593141390",
+          "observed_revision": 3
+        },
+        "perform": {
+          "decision_id": "dec_3_1787593141390",
+          "performed": true,
+          "result": {
+            "modifier_name": "QuarterSymmetry",
+            "parameter": "use_axis",
+            "value": [
+              true,
+              true,
+              false
+            ]
+          }
+        },
+        "verify": {
+          "action_type": "mirror_on_x_and_y_only",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_3_1787593141390",
+          "result_revision": 4
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "enable_clipping",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "protect_mirror_center_seams",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "QuarterSymmetry",
+          "parameter": "use_clip",
+          "value": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787593141392",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787593141392",
+          "performed": true,
+          "result": {
+            "modifier_name": "QuarterSymmetry",
+            "parameter": "use_clip",
+            "value": true
+          }
+        },
+        "verify": {
+          "action_type": "protect_mirror_center_seams",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787593141392",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "enable_merge",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "merge_mirror_center_seams",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "QuarterSymmetry",
+          "parameter": "use_mirror_merge",
+          "value": true
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1787593141394",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1787593141394",
+          "performed": true,
+          "result": {
+            "modifier_name": "QuarterSymmetry",
+            "parameter": "use_mirror_merge",
+            "value": true
+          }
+        },
+        "verify": {
+          "action_type": "merge_mirror_center_seams",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1787593141394",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "organize_tutorial_asset",
+      "command": "transaction",
+      "params": {
+        "name": "Crate",
+        "action_type": "organize_tutorial_asset",
+        "operation": "organize_object_collection",
+        "params": {
+          "collection_name": "CGCOOKIE_CRATE"
+        }
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1787593141396",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1787593141396",
+          "performed": true,
+          "result": {
+            "name": "Crate",
+            "collection": "CGCOOKIE_CRATE",
+            "collection_created": true,
+            "previous_collections": [
+              "Scene Collection"
+            ],
+            "production_variant": null,
+            "hidden_in_viewport": false,
+            "hidden_in_render": false,
+            "geometry_duplicated": false
+          }
+        },
+        "verify": {
+          "action_type": "organize_tutorial_asset",
+          "op_delta": 0,
+          "before": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "after": {
+            "vertices": 8,
+            "edges": 12,
+            "faces": 6,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "max": [
+                1.399999976158142,
+                1.399999976158142,
+                2.4000000953674316
+              ]
+            },
+            "local_centroid": [
+              0.699999988079071,
+              0.699999988079071,
+              1.2000000476837158
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 3.111); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1787593141396",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "render_primary_cage",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": "Crate",
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-cgcookie-scifi-crate/stage01_primary_cage_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "resolution": 512,
+        "margin": 1.2
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-cgcookie-scifi-crate/stage01_primary_cage_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "projection": "ORTHO",
+        "resolution": [
+          512,
+          512
+        ],
+        "target_objects": [
+          "Crate"
+        ],
+        "frame_objects": [
+          "Crate"
+        ],
+        "camera_location": [
+          5.346650123596191,
+          -5.346650123596191,
+          6.546649932861328
+        ],
+        "camera_ortho_scale": 5.556401658965265,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.397339,
+        "foreground_unique_colors_5bit": 27,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_tutorial.blend"
+  },
+  "pass": true
+}
