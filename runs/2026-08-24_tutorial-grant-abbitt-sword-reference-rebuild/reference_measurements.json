@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_PIXEL_MEASUREMENTS",
+  "source": "source_frame_0077_reference_crop.png",
+  "measurement_method": "Local-Lab-contrast mask after excluding the crop border; one connected sword component",
+  "foreground_bbox_xyxy": [89, 31, 798, 114],
+  "total_length_pixels": 709,
+  "blade_root_x": 252,
+  "blade_tip_x": 798,
+  "blade_length_pixels": 546,
+  "hilt_length_pixels": 163,
+  "maximum_silhouette_height_pixels": 84,
+  "frozen_model_mapping": {
+    "blade_length_units": 10.0,
+    "hilt_length_units": 3.0,
+    "units_per_reference_pixel": 0.018315,
+    "image_y_to_model_z_origin": 84
+  },
+  "blade_outer_contour_samples": [
+    {"pixel": [252, 70, 104], "model": [0.0, 0.256, -0.366]},
+    {"pixel": [285, 70, 100], "model": [0.604, 0.256, -0.293]},
+    {"pixel": [330, 70, 92], "model": [1.429, 0.256, -0.146]},
+    {"pixel": [395, 63, 91], "model": [2.619, 0.385, -0.128]},
+    {"pixel": [480, 58, 103], "model": [4.176, 0.476, -0.348]},
+    {"pixel": [570, 52, 112], "model": [5.824, 0.586, -0.513]},
+    {"pixel": [655, 36, 105], "model": [7.381, 0.879, -0.385]},
+    {"pixel": [725, 32, 89], "model": [8.663, 0.952, -0.092]},
+    {"pixel": [780, 34, 57], "model": [9.670, 0.916, 0.495]},
+    {"pixel": [798, 35, 36], "model": [10.0, 0.897, 0.879]}
+  ],
+  "limitations": [
+    "The contrast mask measures outer silhouette only; the center-ridge samples are visually traced from the retained frame.",
+    "Pixel measurements constrain the side view and do not establish hidden depth."
+  ]
+}

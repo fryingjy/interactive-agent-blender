@@ -493,3 +493,17 @@ plus one unapplied SubD modifier and one unapplied weight-limited Bevel.
 This does not upgrade the exit decision. The hub-support assembly and rounded lower perimeter remain
 unfinished, the lower molding/groove interpretation remains ambiguous, production preparation has
 not begun, and no human has accepted the likeness. The foundation remains **PARTIAL**.
+
+### 2026-08-24 semantic visual-verifier update
+
+A broad tooling audit found no credible local "professional modeler" shortcut for this host: the
+most relevant image-to-3D, remeshing, and reconstruction systems require CUDA-class hardware and
+still produce hypotheses rather than authored production topology. The actionable gap was semantic
+visual rejection. A hash-bound Gemini multi-view critic is now wired into the tutorial surface gate
+alongside deterministic measurements. On its first live replay it rejected the previous generic
+Grant Abbitt sword (`0.35` semantic, `0.30` silhouette), identifying the missing blade sweep and
+wrong collar construction that human review had already exposed.
+
+This is useful anti-fake-progress evidence, not a capability promotion. One known bad candidate was
+caught; no new accurate cage, cross-target transfer, or human-accepted unfamiliar asset exists yet.
+The foundation therefore remains **PARTIAL**.

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_REFERENCE_CRITIC",
+  "provenance": {
+    "provider": "Google Gemini",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "blender-reference-critic-v1",
+    "target_id": "grant_abbitt_curved_sword",
+    "view_artifacts": [
+      {
+        "view": "side",
+        "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild\\source_frame_0077_reference_crop.png",
+        "reference_sha256": "87dd737b5d5180539083433b7c68d150ce27409f22d049983a5fe464c3a5583b",
+        "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\corrected_front_solid.png",
+        "candidate_sha256": "2f49e3d8daab012c69cf4422fdd089aca62cb97dd4bb7d78ee421e00481ac706"
+      }
+    ]
+  },
+  "analysis": {
+    "target_identity_matches": false,
+    "view_reviews": [
+      {
+        "view": "side",
+        "reference_observation": "S-curved single-edged blade (elven style curved sword) with an elegant upward sweeping tip, wide belly, and distinct stylized guard collar fitting leading into a tapered handle and flared pommel.",
+        "candidate_observation": "Nearly straight blade with a rigid polygonal blocky outline, lack of fluid curvature or upward tip sweep, generic handle with blocky circular collar rings and flat pommel.",
+        "semantic_match_score": 0.35,
+        "silhouette_match_score": 0.3,
+        "component_relationship_score": 0.4,
+        "depth_plausibility_score": 0.6,
+        "mismatches": [
+          {
+            "category": "SILHOUETTE",
+            "component_id": "blade",
+            "evidence": "The candidate blade lacks the smooth sweeping upward curve towards the tip and stylized wide belly seen in the reference.",
+            "reference_box_2d": [
+              217,
+              276,
+              642,
+              936
+            ],
+            "candidate_box_2d": [
+              453,
+              287,
+              545,
+              951
+            ],
+            "severity": 0.85,
+            "confidence": 0.95,
+            "correction_goal": "Curve the blade upward towards the tip and refine the spine/edge silhouettes to match the organic curved elven sword profile."
+          },
+          {
+            "category": "COMPONENT",
+            "component_id": "hilt_and_fittings",
+            "evidence": "The candidate's guard area consists of a simple symmetrical ring collar rather than the stylized angled collar guard of the reference.",
+            "reference_box_2d": [
+              421,
+              246,
+              614,
+              312
+            ],
+            "candidate_box_2d": [
+              467,
+              243,
+              543,
+              290
+            ],
+            "severity": 0.7,
+            "confidence": 0.9,
+            "correction_goal": "Reconstruct the hilt collar to reflect the angled, integrated guard form from the reference video."
+          }
+        ]
+      }
+    ],
+    "cross_view_contradictions": [],
+    "decision": "REJECT_REPRESENTATION",
+    "decision_reason": "The candidate fails to match the iconic curved silhouette and specific component design of Grant Abbitt's curved sword, presenting an overly straight, generic blade blockout.",
+    "limitations": [
+      "Single side view available for evaluation."
+    ]
+  },
+  "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+}

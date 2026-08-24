@@ -64,6 +64,10 @@ Current evidence includes:
   geometry-usable references supply measured high-salience constraints, and reject modifiers,
   creases, bevel controls, or smoothing until front/isometric/wireframe base-cage comparisons pass;
   this directly prevents polished topology from substituting for target fidelity.
+- a hash-bound Gemini multi-view semantic critic now complements deterministic silhouette metrics:
+  its first live replay rejected the old generic sword at 0.35 semantic / 0.30 silhouette match,
+  localized the missing blade sweep and wrong collar, and now blocks surface treatment unless the
+  exact target remains identifiable; it is a rejection aid, never human acceptance.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

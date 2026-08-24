@@ -30,8 +30,10 @@ opens or resets a scene file, so weak evidence cannot create even a provisional 
 
 Surface treatment is a second executable gate. A raw cage must first have independently inspected
 front, isometric and wireframe renders, at least three passing measured high-salience comparisons,
-and zero unresolved primary-form tickets. Only then may a tutorial sequence use SubD, bevel,
-creases, weighted edges or smoothing via `--tutorial-blockout-review`.
+zero unresolved primary-form tickets, and a hash-bound Gemini semantic review that still identifies
+the exact target and returns `ADVANCE_TO_SURFACE_CANDIDATE`. Only then may a tutorial sequence use
+SubD, bevel, creases, weighted edges or smoothing via `--tutorial-blockout-review`. The Gemini review
+can block refinement but never substitutes for later human visual acceptance.
 
 ## Historical technique ladder (not a professional capability gate)
 

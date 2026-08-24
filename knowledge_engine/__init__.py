@@ -18,6 +18,11 @@ from .tutorial_reproduction import (
     validate_tutorial_blockout_review,
     validate_tutorial_premodeling_evidence,
 )
+from .gemini_reference_critic import (
+    analyze_reference_candidate,
+    load_critic_manifest,
+    validate_critic_analysis,
+)
 
 __all__ = [
     "Diagnosis",
@@ -35,6 +40,9 @@ __all__ = [
     "tutorial_surface_gate_required",
     "validate_tutorial_blockout_review",
     "validate_tutorial_premodeling_evidence",
+    "analyze_reference_candidate",
+    "load_critic_manifest",
+    "validate_critic_analysis",
     "MixedSurfaceCauseDiagnosis",
     "SurfaceCauseAblation",
     "SurfaceCauseDiagnosis",

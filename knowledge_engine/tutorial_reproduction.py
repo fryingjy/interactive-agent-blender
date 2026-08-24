@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -62,6 +63,20 @@ def validate_tutorial_premodeling_evidence(payload: dict[str, Any]) -> dict[str,
 
     frames = payload.get("target_frames") if isinstance(payload.get("target_frames"), list) else []
     inspected = [item for item in frames if isinstance(item, dict) and item.get("independently_inspected") is True]
+    frame_file_failures: list[str] = []
+    for item in inspected:
+        local_path = item.get("local_path")
+        expected_digest = item.get("sha256")
+        path = Path(local_path) if isinstance(local_path, str) and local_path else None
+        if path is None or not path.is_file():
+            frame_file_failures.append(f"{item.get('id', '<unnamed>')}: retained frame file is missing")
+            continue
+        actual_digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        if not isinstance(expected_digest, str) or actual_digest.lower() != expected_digest.lower():
+            frame_file_failures.append(f"{item.get('id', '<unnamed>')}: retained frame SHA-256 does not match")
+    frame_files_pass = bool(inspected) and not frame_file_failures
+    if not frame_files_pass:
+        issues.extend(frame_file_failures or ["at least one retained independently inspected frame file is required"])
     final_frames = [item for item in inspected if item.get("role") == "final_result"]
     geometry_frames = [item for item in inspected if item.get("usable_for_geometry") is True and item.get("role") in {"orthographic_reference", "dimensioned_reference", "depth_reference"}]
     final_result_pass = bool(final_frames)
@@ -80,10 +95,21 @@ def validate_tutorial_premodeling_evidence(payload: dict[str, Any]) -> dict[str,
 
     accepted_ids = {str(item.get("id")) for item in geometry_frames if item.get("id")}
     constraints = payload.get("constraints") if isinstance(payload.get("constraints"), list) else []
-    high_salience_constraints = [item for item in constraints if isinstance(item, dict) and item.get("high_salience") is True and item.get("measurement_status") == "MEASURED" and str(item.get("evidence_frame_id")) in accepted_ids and isinstance(item.get("value_normalized"), (int, float)) and not isinstance(item.get("value_normalized"), bool)]
-    constraints_pass = len(high_salience_constraints) >= 3
+    high_salience_constraints = [
+        item for item in constraints
+        if isinstance(item, dict)
+        and item.get("name")
+        and item.get("high_salience") is True
+        and item.get("measurement_status") == "MEASURED"
+        and str(item.get("evidence_frame_id")) in accepted_ids
+        and isinstance(item.get("value_normalized"), (int, float))
+        and not isinstance(item.get("value_normalized"), bool)
+        and 0.0 <= float(item["value_normalized"]) <= 1.0
+    ]
+    unique_constraint_names = {str(item["name"]) for item in high_salience_constraints}
+    constraints_pass = len(high_salience_constraints) >= 3 and len(unique_constraint_names) == len(high_salience_constraints)
     if not constraints_pass:
-        issues.append("at least three measured high-salience constraints must cite geometry-usable frames")
+        issues.append("at least three uniquely named, normalized high-salience constraints must cite geometry-usable frames")
 
     component_plan = payload.get("component_plan") if isinstance(payload.get("component_plan"), list) else []
     component_plan_pass = bool(component_plan) and all(isinstance(item, dict) and item.get("component") and item.get("construction_strategy") and bool(set(map(str, item.get("evidence_frame_ids", []))) & accepted_ids) for item in component_plan)
@@ -98,6 +124,7 @@ def validate_tutorial_premodeling_evidence(payload: dict[str, Any]) -> dict[str,
     checks = {
         "source_identity_pass": identity_pass,
         "audiovisual_access_pass": audiovisual_pass,
+        "retained_frame_files_pass": frame_files_pass,
         "independent_final_result_pass": final_result_pass,
         "geometry_reference_pass": geometry_reference_pass,
         "thumbnail_not_used_as_geometry_pass": not thumbnail_geometry_misuse,
@@ -152,11 +179,47 @@ def validate_tutorial_blockout_review(payload: dict[str, Any]) -> dict[str, Any]
     if not decision_pass:
         issues.append("blockout review decision must be ADVANCE_TO_SURFACE")
 
+    critic = payload.get("semantic_critic") if isinstance(payload.get("semantic_critic"), dict) else {}
+    critic_analysis = critic.get("analysis") if isinstance(critic.get("analysis"), dict) else {}
+    critic_artifacts = (
+        critic.get("provenance", {}).get("view_artifacts", [])
+        if isinstance(critic.get("provenance"), dict) else []
+    )
+    critic_artifacts_pass = bool(critic_artifacts)
+    for artifact in critic_artifacts:
+        if not isinstance(artifact, dict):
+            critic_artifacts_pass = False
+            break
+        for role in ("reference", "candidate"):
+            path_value = artifact.get(role)
+            expected = artifact.get(f"{role}_sha256")
+            path = Path(path_value) if isinstance(path_value, str) and path_value else None
+            if path is None or not path.is_file() or not isinstance(expected, str):
+                critic_artifacts_pass = False
+                break
+            if hashlib.sha256(path.read_bytes()).hexdigest().lower() != expected.lower():
+                critic_artifacts_pass = False
+                break
+        if not critic_artifacts_pass:
+            break
+        if str(artifact.get("reference_sha256", "")).lower() == str(artifact.get("candidate_sha256", "")).lower():
+            critic_artifacts_pass = False
+            break
+    semantic_critic_pass = (
+        critic.get("record_type") == "GEMINI_REFERENCE_CRITIC"
+        and critic_artifacts_pass
+        and critic_analysis.get("target_identity_matches") is True
+        and critic_analysis.get("decision") == "ADVANCE_TO_SURFACE_CANDIDATE"
+    )
+    if not semantic_critic_pass:
+        issues.append("a hash-valid semantic critic must identify the target and return ADVANCE_TO_SURFACE_CANDIDATE")
+
     checks = {
         "base_cage_render_review_pass": render_pass,
         "high_salience_constraints_pass": constraint_pass,
         "no_primary_mismatch_tickets_pass": no_primary_mismatch_pass,
         "advance_decision_pass": decision_pass,
+        "semantic_critic_pass": semantic_critic_pass,
     }
     return {
         "schema_version": 1,

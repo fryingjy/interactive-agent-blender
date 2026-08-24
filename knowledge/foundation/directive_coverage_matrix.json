@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "assessed_on": "2026-08-21",
+  "assessed_on": "2026-08-24",
   "directive": "docs/MASTER_DIRECTIVE.md",
   "overall_status": "PARTIAL",
   "status_definitions": {
@@ -186,10 +186,13 @@
         "knowledge/skills/reference-axis-aligned-image-empty-setup.json",
         "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md",
         "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_constraint_evaluation.json",
-        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json"
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json",
+        "knowledge_engine/gemini_reference_critic.py",
+        "runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json",
+        "docs/VISUAL_REASONING_TOOL_AUDIT_2026-08-24.md"
       ],
-      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. Stanley adds two official same-target views, an independently measured straight-cylinder hypothesis, aspect-preserving silhouette comparison, and measured shoulder correction on one connected rotational asset. The corrected views clear the frozen 0.90 silhouette threshold and improve over baseline, but no automated metric or self-review is human visual acceptance.",
-      "next_step": "Finish Stanley topology/surface and production verification, obtain human review, then test transfer on an unrelated less-rotational target."
+      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. A hash-bound Gemini critic also rejected one known sword representation failure and localized its missing sweep and wrong collar. This is one replayed rejection, not proof of reliable professional judgment, hidden-form inference, or human acceptance.",
+      "next_step": "Run a measured sparse-cage correction through deterministic and semantic review, then test the same verifier on an unrelated target before surface work."
     },
     {
       "id": "13",
@@ -274,10 +277,12 @@
       "evidence": [
         "knowledge/foundation/benchmark_readiness.json",
         "knowledge/foundation/held_out_reference_registry.json",
-        "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
+        "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md",
+        "knowledge_engine/tutorial_reproduction.py",
+        "runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json"
       ],
-      "current_boundary": "The project preserves explicit rejections and rejects automated-only success, but lacks enough accepted held-out assets for a capability claim.",
-      "next_step": "Keep thresholds frozen before new benchmarks and seek independent visual acceptance after technical checks."
+      "current_boundary": "The project preserves explicit rejections, rejects automated-only success, and now blocks tutorial surface treatment when a hash-bound semantic critic rejects target identity. The critic remains fallible and cannot grant acceptance; there are still too few accepted held-out assets for a capability claim.",
+      "next_step": "Keep thresholds frozen, test the critic on new accepted and rejected cases, and preserve human visual acceptance as the final authority."
     },
     {
       "id": "17",

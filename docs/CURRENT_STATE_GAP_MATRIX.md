@@ -124,3 +124,13 @@ was rejected by the top view; a broad-flange connected cage then reached 8.1/10 
 gate with fresh evaluated-manifold evidence. This is the first direct proof that the strengthened
 reference pipeline changed a modeling decision successfully. It authorizes detail on this asset,
 but does not unblock I1 or prove general professional capability.
+
+**2026-08-24 semantic-verifier update:** a hardware and tool audit found that another local
+CUDA-first image-to-3D package is not a practical answer on this Intel-UHD host. The feasible missing
+layer was semantic visual rejection. `knowledge_engine/gemini_reference_critic.py` now compares
+hash-bound reference/candidate views, emits localized component and representation tickets, and
+fails closed before surface treatment. Its first live replay rejected the old generic Grant Abbitt
+sword at 0.35 semantic and 0.30 silhouette match, localizing the missing blade sweep and incorrect
+collar. This proves one known failure can now be caught automatically; it does not prove the critic
+can model, judge hidden geometry, or grant professional/human acceptance. The next proof is a real
+sparse-cage correction loop followed by an unrelated second target.
