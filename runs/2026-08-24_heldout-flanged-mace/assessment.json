@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "record_type": "HELDOUT_REFERENCE_MODEL_ASSESSMENT",
+  "target_id": "romanian_flanged_mace_head_72052",
+  "score_10": 8.1,
+  "gate": "PASSING_8_OF_10_MAJOR_FORM_GATE",
+  "fresh_verification_pass": true,
+  "technical_evidence": {
+    "head_base": {"vertices": 504, "faces": 468, "non_manifold_boundary_edges": 72, "ngons": 0},
+    "head_evaluated": {"vertices": 1008, "faces": 1008, "non_manifold_edges": 0, "ngons": 0},
+    "haft_base_and_evaluated": {"vertices": 144, "faces": 144, "non_manifold_edges": 0, "ngons": 0},
+    "live_unapplied_modifiers": ["HeadThickness_Unapplied"]
+  },
+  "strengths": [
+    "Front silhouette matches the documented bulb profile, socket collar and finial hierarchy.",
+    "Top view matches the observed twelve broad radial flanges after rejecting the first spike-like interpretation.",
+    "The head is one connected 36-segment all-quad radial cage, not twelve separate blade primitives.",
+    "The haft is one connected 12-sided all-quad tapered cage.",
+    "The stronger depth-critical evidence gate changed behavior: four assigned views supported the representation before blockout.",
+    "Fresh-file front, top, isometric and wireframe renders reproduced the saved result."
+  ],
+  "limitations": [
+    "The modeled haft is simplified and does not reproduce the artifact's wrapping, wear or exact lower construction.",
+    "Flange edge curvature and irregular archaeological deformation are intentionally omitted at the major-form gate.",
+    "No UV, material, corrosion, texture, high/low split or export preparation has been performed.",
+    "One successful bounded held-out form does not prove general professional modeling capability."
+  ],
+  "promotion_authorized": false,
+  "detail_authorized": true
+}

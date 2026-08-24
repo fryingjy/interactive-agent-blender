@@ -60,7 +60,7 @@ an unobscured creator-final result.
 | Typed Blender execution | Persistent-ID selection, transactions, rollback, fingerprints, typed operations, Blender-native diagnostic renders | Strong infrastructure | Demonstrate sustained use through a difficult reference repair without an object-specific builder |
 | Visual correction | Controlled solid, MatCap, silhouette, wireframe, normal, depth, and component passes exist; C60 rejects a five-section angular wave and rebuilds it as a nine-section live crease/SubD cage | One real visible correction is retained, but final likeness and repeatability remain unproven | Correct the remaining hub-support and base-perimeter mismatches without overfitting one oblique |
 | Topology and shading | Connected-cage operations, explicit sharp intent, physical bevels, crease, SubD, and Smooth by Angle are available | Strong controlled evidence; conditional judgment still limited | Choose among crease, support loops, and bevel from reference-driven surface intent |
-| Knowledge changes behavior | Retrieval can alter planner parameters and one skill survives non-circular runtime audit | Partial | Fire validated knowledge naturally during an unfamiliar reference build and measure the outcome |
+| Knowledge changes behavior | Depth-critical multi-view evidence rejected a spike interpretation and produced a passing broad-flange transfer | Demonstrated once | Repeat on unrelated forms before claiming reliable transfer |
 | Tutorial/video learning | Range-scoped Gemini analysis, identity checks, independent episode review, reproduction, and transfer records exist | Operational but not a substitute for modeling | Research only after a concrete modeling failure; do not mass-ingest |
 | UV/material/export | Controlled UV, bake, PBR, high/low, and export evidence exists | Transfer evidence, not accepted-asset proof | Apply production preparation after a reference model passes major-form review |
 | Human review | Rejection records and review schemas exist; human rejection overrides metrics | No current AA/LR6 or C60 approval | Obtain human review after visual correction, without pre-approval boards or HTML gates |
@@ -117,3 +117,10 @@ correction worked, but the chosen head representation stayed too monolithic. Thi
 diagnosis that the bottleneck is component inference and hidden-form prediction, not command
 transport or mesh validity. The next depth-critical target must have a second view or an independent
 same-object structural source before modeling begins.
+
+**2026-08-24 multi-view transfer:** after the new depth-critical gate was enforced, the Romanian
+flanged-mace test used four assigned structural views. Its first spike-like radial interpretation
+was rejected by the top view; a broad-flange connected cage then reached 8.1/10 at the major-form
+gate with fresh evaluated-manifold evidence. This is the first direct proof that the strengthened
+reference pipeline changed a modeling decision successfully. It authorizes detail on this asset,
+but does not unblock I1 or prove general professional capability.

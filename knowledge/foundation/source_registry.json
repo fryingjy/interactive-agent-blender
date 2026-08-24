@@ -3369,5 +3369,29 @@
       "root_cause": "REPRESENTATION_SELECTION_AND_COMPONENT_INFERENCE",
       "limitations": ["Only one source view was available; depth remained a weak hypothesis and the head read as a monolithic plate."]
     }
+  },
+  {
+    "id": "academia-romanian-flanged-mace-heads-figure-10",
+    "url": "https://www.academia.edu/figures/32792927/figure-10-medieval-mace-heads-with-vertical-flanges-forming",
+    "local_path": "runs/2026-08-24_heldout-flanged-mace/",
+    "title": "Medieval mace heads with vertical flanges forming a bulb",
+    "creator": "Georgiana Ducman / Martin Husar",
+    "source_type": "technical_multi_view_figure",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-24",
+    "topics": ["flanged-mace", "multi-view-reference", "radial-topology", "held-out-reference-modeling"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["technical_front_view", "technical_top_view", "technical_rear_view", "cross_sections", "artifact_photo", "blender_multiview_renders"],
+    "metadata": {
+      "experiment": "runs/2026-08-24_heldout-flanged-mace/flanged_mace.blend",
+      "score_10": 8.1,
+      "validated_principles": [
+        "Depth-critical components require explicitly assigned secondary views before representation selection.",
+        "Top-view evidence can distinguish broad radial flanges from a visually plausible but incorrect spike pattern."
+      ],
+      "limitations": ["Major-form blockout only; surface wear, materials, UVs and production preparation remain incomplete."]
+    }
   }
 ]
