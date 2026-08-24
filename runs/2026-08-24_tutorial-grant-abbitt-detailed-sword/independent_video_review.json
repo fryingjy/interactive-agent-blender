@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "record_type": "INDEPENDENT_TUTORIAL_VIDEO_REVIEW",
+  "source": "source_metadata.json",
+  "model_extraction": "gemini_full_video_unverified.json",
+  "reviewer": "Codex in-app browser plus creator thumbnail",
+  "checks": [
+    {"disposition": "CONFIRMED", "evidence": "Browser player identity", "conclusion": "The page title, Grant Abbitt channel identity, URL and 40:35 duration match the requested source."},
+    {"disposition": "CONFIRMED", "evidence": "Creator-authored thumbnail", "conclusion": "The unobscured finished model and wireframe show a long forward-curved blade, raised center ridge, asymmetric shoulder, fitted collar stack, cylindrical grip and flared pommel."},
+    {"disposition": "MODEL_EXTRACTED_UNVERIFIED", "evidence": "Gemini full audiovisual analysis", "conclusion": "The 18 timestamped modeling episodes are retained as candidate observations because ads prevented representative browser-frame checks and no independent transcript was available."}
+  ],
+  "accepted_construction_rules": [
+    "Trace silhouette and internal ridge lines before filling the connected blade surface.",
+    "Use edge flow and localized support or crease control to preserve the ridge and tip under live subdivision.",
+    "Keep fitted collars separate where the real assembly changes material or manufacturing logic."
+  ],
+  "promotion_status": "REPRODUCTION_REQUIRED"
+}

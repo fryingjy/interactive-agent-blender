@@ -133,10 +133,10 @@
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "PAUSED_NO_ACTIVE_PROP",
-    "training_run": "runs/2026-08-24_tutorial-sweaty-grease-carabiner/",
-    "training_run_boundary": "The third I0 reproduction is a retained 6.4/10 non-pass. It added deliberate curve-density control and passed an unrelated bent-handle transfer, but its oval round-stock approximation missed the target's flattened triangular body and mechanical joint fidelity.",
+    "training_run": "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/",
+    "training_run_boundary": "The fourth I0 reproduction is a retained 7.2/10 non-pass. It uses a connected all-quad ridged blade, semantic creases and live unapplied SubD, and passes a corrected leaf-spear transfer; shoulder, arc, tip and hilt fidelity remain below the 8/10 gate.",
     "current_reference_execution": "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/",
     "current_reference_execution_boundary": "Frozen at SECONDARY_FORMS by direct instruction to move on: one connected Vessel mesh carries distinct persistent body/base/gasket semantic regions, the removable CapCup remains separate, and measured shoulder plus cap-top corrections are retained. There is no human acceptance and no ladder promotion.",
-    "next_action": "The stronger depth-critical evidence gate changed behavior successfully on the 8.1/10 multi-view flanged-mace blockout. Preserve that result as held-out transfer evidence, then continue I0 tutorial apprenticeship; do not advance to I1 from one held-out form pass."
+    "next_action": "Continue bounded weapon-relevant I0 tutorial apprenticeship and target visible shape fidelity, especially shoulder transitions and long controlled curves. Do not advance to I1 until two independent I0 reproductions reach at least 8/10."
   }
 }

@@ -1,0 +1,138 @@
+[
+  {
+    "label": "select_entire_connected_blade_cage",
+    "command": "select_by_ids",
+    "params": {
+      "name": "SwordBlade",
+      "vertex_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72],
+      "extend": false
+    }
+  },
+  {
+    "label": "correct_blade_length_and_slenderness",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "correct_primary_silhouette_proportions",
+      "operation": "scale_selection",
+      "params": {
+        "factor": [1.16, 1.0, 0.84],
+        "center": [0.0, 0.0, 0.0]
+      },
+      "command_id": "grant-sword-proportion-correction-v1"
+    }
+  },
+  {
+    "label": "crease_observed_ridge_and_outline",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "semantic_subdivision_edge_control",
+      "operation": "set_edge_crease_by_ids",
+      "params": {
+        "edge_ids": [73, 74, 75, 77, 79, 80, 81, 82, 85, 86, 87, 88, 90, 92, 93, 96, 97, 98, 100, 102, 103, 106, 107, 108, 110, 112, 113, 116, 117, 118, 120, 122, 123, 126, 127, 128, 130, 132, 133, 136, 137, 138, 140, 142, 143, 146, 147, 148, 150, 152, 153, 156, 157, 158, 160, 162, 163, 166, 167, 168, 170, 172, 173, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 190, 210, 211, 212],
+        "value": 0.88,
+        "clear_others": true
+      },
+      "command_id": "grant-sword-semantic-creases-v1"
+    }
+  },
+  {
+    "label": "add_live_unapplied_subdivision",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "surface_modifier",
+      "operation": "add_modifier",
+      "params": {
+        "modifier_type": "SUBSURF",
+        "modifier_name": "Sword_Live_Subdivision"
+      },
+      "command_id": "grant-sword-live-subd-v1"
+    }
+  },
+  {
+    "label": "set_subdivision_view_level",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "surface_modifier_parameter",
+      "operation": "set_modifier_parameter",
+      "params": {
+        "modifier_name": "Sword_Live_Subdivision",
+        "parameter": "levels",
+        "value": 1
+      },
+      "command_id": "grant-sword-subd-level-v1"
+    }
+  },
+  {
+    "label": "set_subdivision_render_level",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "surface_modifier_parameter",
+      "operation": "set_modifier_parameter",
+      "params": {
+        "modifier_name": "Sword_Live_Subdivision",
+        "parameter": "render_levels",
+        "value": 1
+      },
+      "command_id": "grant-sword-subd-render-level-v1"
+    }
+  },
+  {
+    "label": "shade_blade_by_angle",
+    "transaction": {
+      "name": "SwordBlade",
+      "action_type": "shading_policy",
+      "operation": "set_smooth_by_angle",
+      "params": {
+        "angle": 0.5235987756,
+        "keep_sharp_edges": true
+      },
+      "command_id": "grant-sword-smooth-by-angle-v1"
+    }
+  },
+  {
+    "label": "inspect_corrected_blade",
+    "command": "get_full_state",
+    "params": {"name": "SwordBlade"}
+  },
+  {
+    "label": "inspect_corrected_blade_evaluated",
+    "command": "get_evaluated_state",
+    "params": {"name": "SwordBlade"}
+  },
+  {
+    "label": "render_corrected_front",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["SwordBlade", "SwordHilt"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_solid.png",
+      "pass_type": "solid",
+      "view": "front",
+      "resolution": 720,
+      "margin": 1.1
+    }
+  },
+  {
+    "label": "render_corrected_isometric",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["SwordBlade", "SwordHilt"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_isometric_solid.png",
+      "pass_type": "solid",
+      "view": "isometric",
+      "resolution": 720,
+      "margin": 1.1
+    }
+  },
+  {
+    "label": "render_corrected_wireframe",
+    "command": "render_diagnostic_pass",
+    "params": {
+      "name": ["SwordBlade", "SwordHilt"],
+      "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_wireframe.png",
+      "pass_type": "wireframe",
+      "view": "front",
+      "resolution": 720,
+      "margin": 1.1
+    }
+  }
+]

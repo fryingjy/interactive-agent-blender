@@ -1,0 +1,1529 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\surface_correction_sequence.json",
+  "loaded_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\detailed_sword.blend",
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\detailed_sword.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "d90aff12f88c",
+  "results": [
+    {
+      "index": 0,
+      "label": "select_entire_connected_blade_cage",
+      "command": "select_by_ids",
+      "params": {
+        "name": "SwordBlade",
+        "vertex_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71,
+          72
+        ],
+        "extend": false
+      },
+      "status": "ok",
+      "result": {
+        "verts": 72,
+        "edges": 0,
+        "faces": 0
+      }
+    },
+    {
+      "index": 1,
+      "label": "correct_blade_length_and_slenderness",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "correct_primary_silhouette_proportions",
+        "operation": "scale_selection",
+        "params": {
+          "factor": [
+            1.16,
+            1.0,
+            0.84
+          ],
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "command_id": "grant-sword-proportion-correction-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_4_1787599146305",
+          "observed_revision": 4
+        },
+        "perform": {
+          "decision_id": "dec_4_1787599146305",
+          "performed": true,
+          "result": 72
+        },
+        "verify": {
+          "action_type": "correct_primary_silhouette_proportions",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.6800000071525574
+              ],
+              "max": [
+                7.900000095367432,
+                0.18000000715255737,
+                0.8399999737739563
+              ]
+            },
+            "local_centroid": [
+              4.25583332280318,
+              0.0,
+              0.09805555527822839
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0.6811 (0.08x the shape's own bounding-box diagonal of 8.053); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_4_1787599146305",
+          "result_revision": 5
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "crease_observed_ridge_and_outline",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "semantic_subdivision_edge_control",
+        "operation": "set_edge_crease_by_ids",
+        "params": {
+          "edge_ids": [
+            73,
+            74,
+            75,
+            77,
+            79,
+            80,
+            81,
+            82,
+            85,
+            86,
+            87,
+            88,
+            90,
+            92,
+            93,
+            96,
+            97,
+            98,
+            100,
+            102,
+            103,
+            106,
+            107,
+            108,
+            110,
+            112,
+            113,
+            116,
+            117,
+            118,
+            120,
+            122,
+            123,
+            126,
+            127,
+            128,
+            130,
+            132,
+            133,
+            136,
+            137,
+            138,
+            140,
+            142,
+            143,
+            146,
+            147,
+            148,
+            150,
+            152,
+            153,
+            156,
+            157,
+            158,
+            160,
+            162,
+            163,
+            166,
+            167,
+            168,
+            170,
+            172,
+            173,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            190,
+            210,
+            211,
+            212
+          ],
+          "value": 0.88,
+          "clear_others": true
+        },
+        "command_id": "grant-sword-semantic-creases-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_5_1787599146313",
+          "observed_revision": 5
+        },
+        "perform": {
+          "decision_id": "dec_5_1787599146313",
+          "performed": true,
+          "result": {
+            "attribute": "crease_edge",
+            "value": 0.88,
+            "assigned_edge_ids": [
+              73,
+              74,
+              75,
+              77,
+              79,
+              80,
+              81,
+              82,
+              85,
+              86,
+              87,
+              88,
+              90,
+              92,
+              93,
+              96,
+              97,
+              98,
+              100,
+              102,
+              103,
+              106,
+              107,
+              108,
+              110,
+              112,
+              113,
+              116,
+              117,
+              118,
+              120,
+              122,
+              123,
+              126,
+              127,
+              128,
+              130,
+              132,
+              133,
+              136,
+              137,
+              138,
+              140,
+              142,
+              143,
+              146,
+              147,
+              148,
+              150,
+              152,
+              153,
+              156,
+              157,
+              158,
+              160,
+              162,
+              163,
+              166,
+              167,
+              168,
+              170,
+              172,
+              173,
+              176,
+              177,
+              178,
+              179,
+              180,
+              181,
+              182,
+              183,
+              184,
+              185,
+              186,
+              187,
+              188,
+              190,
+              210,
+              211,
+              212
+            ],
+            "missing_edge_ids": [],
+            "clear_others": true
+          }
+        },
+        "verify": {
+          "action_type": "semantic_subdivision_edge_control",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 9.26); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_5_1787599146313",
+          "result_revision": 6
+        }
+      }
+    },
+    {
+      "index": 3,
+      "label": "add_live_unapplied_subdivision",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "surface_modifier",
+        "operation": "add_modifier",
+        "params": {
+          "modifier_type": "SUBSURF",
+          "modifier_name": "Sword_Live_Subdivision"
+        },
+        "command_id": "grant-sword-live-subd-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_6_1787599146320",
+          "observed_revision": 6
+        },
+        "perform": {
+          "decision_id": "dec_6_1787599146320",
+          "performed": true,
+          "result": {
+            "modifier_name": "Sword_Live_Subdivision",
+            "type": "SUBSURF",
+            "show_viewport": true
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 9.26); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_6_1787599146320",
+          "result_revision": 7
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "set_subdivision_view_level",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Sword_Live_Subdivision",
+          "parameter": "levels",
+          "value": 1
+        },
+        "command_id": "grant-sword-subd-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_7_1787599146327",
+          "observed_revision": 7
+        },
+        "perform": {
+          "decision_id": "dec_7_1787599146327",
+          "performed": true,
+          "result": {
+            "modifier_name": "Sword_Live_Subdivision",
+            "parameter": "levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 9.26); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_7_1787599146327",
+          "result_revision": 8
+        }
+      }
+    },
+    {
+      "index": 5,
+      "label": "set_subdivision_render_level",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "surface_modifier_parameter",
+        "operation": "set_modifier_parameter",
+        "params": {
+          "modifier_name": "Sword_Live_Subdivision",
+          "parameter": "render_levels",
+          "value": 1
+        },
+        "command_id": "grant-sword-subd-render-level-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_8_1787599146335",
+          "observed_revision": 8
+        },
+        "perform": {
+          "decision_id": "dec_8_1787599146335",
+          "performed": true,
+          "result": {
+            "modifier_name": "Sword_Live_Subdivision",
+            "parameter": "render_levels",
+            "value": 1
+          }
+        },
+        "verify": {
+          "action_type": "surface_modifier_parameter",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 9.26); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_8_1787599146335",
+          "result_revision": 9
+        }
+      }
+    },
+    {
+      "index": 6,
+      "label": "shade_blade_by_angle",
+      "command": "transaction",
+      "params": {
+        "name": "SwordBlade",
+        "action_type": "shading_policy",
+        "operation": "set_smooth_by_angle",
+        "params": {
+          "angle": 0.5235987756,
+          "keep_sharp_edges": true
+        },
+        "command_id": "grant-sword-smooth-by-angle-v1"
+      },
+      "status": "ok",
+      "result": {
+        "begin": {
+          "decision_id": "dec_9_1787599146341",
+          "observed_revision": 9
+        },
+        "perform": {
+          "decision_id": "dec_9_1787599146341",
+          "performed": true,
+          "result": {
+            "shading": "SMOOTH_BY_ANGLE",
+            "angle": 0.5235987756,
+            "keep_sharp_edges": true,
+            "modifier_count": 1
+          }
+        },
+        "verify": {
+          "action_type": "shading_policy",
+          "op_delta": 0,
+          "before": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "after": {
+            "vertices": 72,
+            "edges": 140,
+            "faces": 70,
+            "non_manifold_edges": 0,
+            "ngons": 0,
+            "loose_verts": 0,
+            "degenerate_faces": 0,
+            "local_bounds": {
+              "min": [
+                0.0,
+                -0.18000000715255737,
+                -0.5712000131607056
+              ],
+              "max": [
+                9.163999557495117,
+                0.18000000715255737,
+                0.7055999636650085
+              ]
+            },
+            "local_centroid": [
+              4.936766495307286,
+              0.0,
+              0.08236666520436604
+            ]
+          },
+          "id_delta": {
+            "verts": {
+              "added": [],
+              "removed": []
+            },
+            "edges": {
+              "added": [],
+              "removed": []
+            },
+            "faces": {
+              "added": [],
+              "removed": []
+            }
+          },
+          "geometry_shift_flag": {
+            "flagged": false,
+            "status": "EVALUATED",
+            "reason": "centroid shifted 0 (0.00x the shape's own bounding-box diagonal of 9.26); threshold is 3.00x"
+          }
+        },
+        "judgment": "committed",
+        "judge_result": {
+          "decision_id": "dec_9_1787599146341",
+          "result_revision": 10
+        }
+      }
+    },
+    {
+      "index": 7,
+      "label": "inspect_corrected_blade",
+      "command": "get_full_state",
+      "params": {
+        "name": "SwordBlade"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 10,
+        "mesh_health": {
+          "vertices": 72,
+          "edges": 140,
+          "faces": 70,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0,
+          "local_bounds": {
+            "min": [
+              0.0,
+              -0.18000000715255737,
+              -0.5712000131607056
+            ],
+            "max": [
+              9.163999557495117,
+              0.18000000715255737,
+              0.7055999636650085
+            ]
+          },
+          "local_centroid": [
+            4.936766495307286,
+            0.0,
+            0.08236666520436604
+          ]
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 64
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            },
+            {
+              "index": 30,
+              "agent_id": 31
+            },
+            {
+              "index": 31,
+              "agent_id": 32
+            },
+            {
+              "index": 32,
+              "agent_id": 33
+            },
+            {
+              "index": 33,
+              "agent_id": 34
+            },
+            {
+              "index": 34,
+              "agent_id": 35
+            },
+            {
+              "index": 35,
+              "agent_id": 36
+            },
+            {
+              "index": 36,
+              "agent_id": 37
+            },
+            {
+              "index": 37,
+              "agent_id": 38
+            },
+            {
+              "index": 38,
+              "agent_id": 39
+            },
+            {
+              "index": 39,
+              "agent_id": 40
+            },
+            {
+              "index": 40,
+              "agent_id": 41
+            },
+            {
+              "index": 41,
+              "agent_id": 42
+            },
+            {
+              "index": 42,
+              "agent_id": 43
+            },
+            {
+              "index": 43,
+              "agent_id": 44
+            },
+            {
+              "index": 44,
+              "agent_id": 45
+            },
+            {
+              "index": 45,
+              "agent_id": 46
+            },
+            {
+              "index": 46,
+              "agent_id": 47
+            },
+            {
+              "index": 47,
+              "agent_id": 48
+            },
+            {
+              "index": 48,
+              "agent_id": 49
+            },
+            {
+              "index": 49,
+              "agent_id": 50
+            },
+            {
+              "index": 50,
+              "agent_id": 51
+            },
+            {
+              "index": 51,
+              "agent_id": 52
+            },
+            {
+              "index": 52,
+              "agent_id": 53
+            },
+            {
+              "index": 53,
+              "agent_id": 54
+            },
+            {
+              "index": 54,
+              "agent_id": 55
+            },
+            {
+              "index": 55,
+              "agent_id": 56
+            },
+            {
+              "index": 56,
+              "agent_id": 57
+            },
+            {
+              "index": 57,
+              "agent_id": 58
+            },
+            {
+              "index": 58,
+              "agent_id": 59
+            },
+            {
+              "index": 59,
+              "agent_id": 60
+            },
+            {
+              "index": 60,
+              "agent_id": 61
+            },
+            {
+              "index": 61,
+              "agent_id": 62
+            },
+            {
+              "index": 62,
+              "agent_id": 63
+            },
+            {
+              "index": 63,
+              "agent_id": 64
+            },
+            {
+              "index": 64,
+              "agent_id": 65
+            },
+            {
+              "index": 65,
+              "agent_id": 66
+            },
+            {
+              "index": 66,
+              "agent_id": 67
+            },
+            {
+              "index": 67,
+              "agent_id": 68
+            },
+            {
+              "index": 68,
+              "agent_id": 69
+            },
+            {
+              "index": 69,
+              "agent_id": 70
+            },
+            {
+              "index": 70,
+              "agent_id": 71
+            },
+            {
+              "index": 71,
+              "agent_id": 72
+            }
+          ],
+          "selected_edges": [],
+          "selected_faces": [],
+          "selected_vertex_count": 72,
+          "selected_edge_count": 0,
+          "selected_face_count": 0
+        },
+        "persistent_id_coverage": {
+          "verts": 72,
+          "edges": 140,
+          "faces": 70
+        }
+      }
+    },
+    {
+      "index": 8,
+      "label": "inspect_corrected_blade_evaluated",
+      "command": "get_evaluated_state",
+      "params": {
+        "name": "SwordBlade"
+      },
+      "status": "ok",
+      "result": {
+        "mesh_health": {
+          "vertices": 282,
+          "edges": 560,
+          "faces": 280,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 274
+        },
+        "surface_quality": {
+          "face_count": 280,
+          "min_area": 0.00089765,
+          "max_area": 0.135215,
+          "median_area": 0.075575,
+          "area_outlier_count": 8,
+          "area_outlier_ratio": 0.0286,
+          "max_adjacent_face_angle_radians": 2.7591,
+          "angle_samples": 560
+        },
+        "surface_diagnostics": {
+          "vertex_samples": 282,
+          "median_edge_length": 0.25773337,
+          "median_absolute_laplacian": 0.05755121,
+          "laplacian_mad": 0.05323902,
+          "max_robust_outlier_z": 3.8707,
+          "pinch_candidate_count": 0,
+          "pinch_candidates": [],
+          "meaningful_signed_edges": 184,
+          "laplacian_sign_change_ratio": 0.048913,
+          "mean_neighbor_normal_angle_p95_degrees": 42.247,
+          "classification": "CANDIDATE_EVIDENCE_ONLY",
+          "limitations": [
+            "boundaries and intentional corrugation can resemble defects",
+            "thresholds require validation by surface family and render/highlight inspection"
+          ]
+        },
+        "bounding_box": {
+          "base_dimensions": [
+            9.164,
+            0.36,
+            1.2768
+          ],
+          "evaluated_dimensions": [
+            9.164,
+            0.36,
+            1.239
+          ],
+          "shrinkage_ratio_xyz": [
+            1.0,
+            1.0,
+            0.9704
+          ],
+          "base_bounds": {
+            "min": [
+              0.0,
+              -0.18,
+              -0.5712
+            ],
+            "max": [
+              9.164,
+              0.18,
+              0.7056
+            ]
+          },
+          "evaluated_bounds": {
+            "min": [
+              0.0,
+              -0.18,
+              -0.5334
+            ],
+            "max": [
+              9.164,
+              0.18,
+              0.7056
+            ]
+          }
+        }
+      }
+    },
+    {
+      "index": 9,
+      "label": "render_corrected_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 720,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "frame_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "camera_location": [
+          2.932000160217285,
+          -25.156108856201172,
+          0.07280004024505615
+        ],
+        "camera_ortho_scale": 13.83586022776001,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.054172,
+        "foreground_unique_colors_5bit": 61,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 10,
+      "label": "render_corrected_isometric",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_isometric_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "resolution": 720,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_isometric_solid.png",
+        "pass_type": "solid",
+        "view": "isometric",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "frame_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "camera_location": [
+          17.455886840820312,
+          -14.523885726928711,
+          14.596685409545898
+        ],
+        "camera_ortho_scale": 13.83586022776001,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.03717,
+        "foreground_unique_colors_5bit": 69,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 11,
+      "label": "render_corrected_wireframe",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_wireframe.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 720,
+        "margin": 1.1
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/corrected_front_wireframe.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          720,
+          720
+        ],
+        "target_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "frame_objects": [
+          "SwordBlade",
+          "SwordHilt"
+        ],
+        "camera_location": [
+          2.932000160217285,
+          -25.156108856201172,
+          0.07280004024505615
+        ],
+        "camera_ortho_scale": 13.83586022776001,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.014551,
+        "foreground_unique_colors_5bit": 3,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\detailed_sword.blend"
+  },
+  "pass": true
+}

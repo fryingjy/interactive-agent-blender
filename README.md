@@ -56,6 +56,10 @@ Current evidence includes:
   it adds configurable inset boundaries and typed fitted-face duplication, verifies the saved asset
   in a fresh Blender process, and passes a curved-shell transfer without claiming tutorial fidelity
   or advancing the apprenticeship gate.
+- a bounded Grant Abbitt sword I0 reproduction retained at 7.2/10: one connected all-quad ridged
+  blade cage, one connected 12-sided hilt cage, semantic creases and live unapplied SubD survive
+  fresh-process verification; a corrected leaf-spear transfer passes topology checks, while visible
+  shoulder/arc/tip mismatches keep the lesson below promotion.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).

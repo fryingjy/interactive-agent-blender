@@ -1,0 +1,2776 @@
+{
+  "schema_version": 1,
+  "record_type": "TYPED_MODELER_COMMAND_SEQUENCE",
+  "sequence": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\transfer_sequence.json",
+  "loaded_file": null,
+  "saved_file": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\transfer_leaf_spear.blend",
+  "blender_version": "5.2.0 LTS",
+  "session_id": "294418c7b4bf",
+  "results": [
+    {
+      "index": 0,
+      "label": "create_connected_leaf_spear_ridge_shell",
+      "command": "create_quad_shell_grid",
+      "params": {
+        "name": "Transfer_LeafSpearHead",
+        "front_grid": [
+          [
+            [
+              0.0,
+              -0.03,
+              -0.22
+            ],
+            [
+              0.0,
+              -0.15,
+              0.0
+            ],
+            [
+              0.0,
+              -0.03,
+              0.22
+            ]
+          ],
+          [
+            [
+              0.45,
+              -0.03,
+              -0.48
+            ],
+            [
+              0.45,
+              -0.17,
+              0.0
+            ],
+            [
+              0.45,
+              -0.03,
+              0.48
+            ]
+          ],
+          [
+            [
+              1.15,
+              -0.03,
+              -0.68
+            ],
+            [
+              1.15,
+              -0.19,
+              0.0
+            ],
+            [
+              1.15,
+              -0.03,
+              0.68
+            ]
+          ],
+          [
+            [
+              2.0,
+              -0.03,
+              -0.63
+            ],
+            [
+              2.0,
+              -0.18,
+              0.0
+            ],
+            [
+              2.0,
+              -0.03,
+              0.63
+            ]
+          ],
+          [
+            [
+              2.8,
+              -0.03,
+              -0.45
+            ],
+            [
+              2.8,
+              -0.15,
+              0.0
+            ],
+            [
+              2.8,
+              -0.03,
+              0.45
+            ]
+          ],
+          [
+            [
+              3.45,
+              -0.03,
+              -0.2
+            ],
+            [
+              3.45,
+              -0.11,
+              0.0
+            ],
+            [
+              3.45,
+              -0.03,
+              0.2
+            ]
+          ],
+          [
+            [
+              3.85,
+              -0.02,
+              -0.015
+            ],
+            [
+              3.85,
+              -0.04,
+              0.0
+            ],
+            [
+              3.85,
+              -0.02,
+              0.015
+            ]
+          ]
+        ],
+        "rear_grid": [
+          [
+            [
+              0.0,
+              0.03,
+              -0.22
+            ],
+            [
+              0.0,
+              0.15,
+              0.0
+            ],
+            [
+              0.0,
+              0.03,
+              0.22
+            ]
+          ],
+          [
+            [
+              0.45,
+              0.03,
+              -0.48
+            ],
+            [
+              0.45,
+              0.17,
+              0.0
+            ],
+            [
+              0.45,
+              0.03,
+              0.48
+            ]
+          ],
+          [
+            [
+              1.15,
+              0.03,
+              -0.68
+            ],
+            [
+              1.15,
+              0.19,
+              0.0
+            ],
+            [
+              1.15,
+              0.03,
+              0.68
+            ]
+          ],
+          [
+            [
+              2.0,
+              0.03,
+              -0.63
+            ],
+            [
+              2.0,
+              0.18,
+              0.0
+            ],
+            [
+              2.0,
+              0.03,
+              0.63
+            ]
+          ],
+          [
+            [
+              2.8,
+              0.03,
+              -0.45
+            ],
+            [
+              2.8,
+              0.15,
+              0.0
+            ],
+            [
+              2.8,
+              0.03,
+              0.45
+            ]
+          ],
+          [
+            [
+              3.45,
+              0.03,
+              -0.2
+            ],
+            [
+              3.45,
+              0.11,
+              0.0
+            ],
+            [
+              3.45,
+              0.03,
+              0.2
+            ]
+          ],
+          [
+            [
+              3.85,
+              0.02,
+              -0.015
+            ],
+            [
+              3.85,
+              0.04,
+              0.0
+            ],
+            [
+              3.85,
+              0.02,
+              0.015
+            ]
+          ]
+        ],
+        "active_cells": [
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ],
+          [
+            true,
+            true
+          ]
+        ]
+      },
+      "status": "ok",
+      "result": {
+        "name": "Transfer_LeafSpearHead",
+        "type": "MESH",
+        "grid_rows": 7,
+        "grid_columns": 3,
+        "active_cell_count": 12,
+        "vertices": 42,
+        "edges": 80,
+        "faces": 40,
+        "construction_boundary": "All base faces are quads. Grid positions and active cells are authored reference decisions, not imported source topology."
+      }
+    },
+    {
+      "index": 1,
+      "label": "inspect_transfer_base",
+      "command": "get_full_state",
+      "params": {
+        "name": "Transfer_LeafSpearHead"
+      },
+      "status": "ok",
+      "result": {
+        "revision": 0,
+        "mesh_health": {
+          "vertices": 42,
+          "edges": 80,
+          "faces": 40,
+          "non_manifold_edges": 0,
+          "ngons": 0,
+          "loose_verts": 0,
+          "degenerate_faces": 0,
+          "local_bounds": {
+            "min": [
+              0.0,
+              -0.1899999976158142,
+              -0.6800000071525574
+            ],
+            "max": [
+              3.8499999046325684,
+              0.1899999976158142,
+              0.6800000071525574
+            ]
+          },
+          "local_centroid": [
+            1.9571428384099687,
+            0.0,
+            0.0
+          ]
+        },
+        "valence_distribution": {
+          "3": 8,
+          "4": 34
+        },
+        "selection": {
+          "mode": "OBJECT",
+          "selection_mode": [
+            "VERTEX"
+          ],
+          "selected_vertices": [
+            {
+              "index": 0,
+              "agent_id": 1
+            },
+            {
+              "index": 1,
+              "agent_id": 2
+            },
+            {
+              "index": 2,
+              "agent_id": 3
+            },
+            {
+              "index": 3,
+              "agent_id": 4
+            },
+            {
+              "index": 4,
+              "agent_id": 5
+            },
+            {
+              "index": 5,
+              "agent_id": 6
+            },
+            {
+              "index": 6,
+              "agent_id": 7
+            },
+            {
+              "index": 7,
+              "agent_id": 8
+            },
+            {
+              "index": 8,
+              "agent_id": 9
+            },
+            {
+              "index": 9,
+              "agent_id": 10
+            },
+            {
+              "index": 10,
+              "agent_id": 11
+            },
+            {
+              "index": 11,
+              "agent_id": 12
+            },
+            {
+              "index": 12,
+              "agent_id": 13
+            },
+            {
+              "index": 13,
+              "agent_id": 14
+            },
+            {
+              "index": 14,
+              "agent_id": 15
+            },
+            {
+              "index": 15,
+              "agent_id": 16
+            },
+            {
+              "index": 16,
+              "agent_id": 17
+            },
+            {
+              "index": 17,
+              "agent_id": 18
+            },
+            {
+              "index": 18,
+              "agent_id": 19
+            },
+            {
+              "index": 19,
+              "agent_id": 20
+            },
+            {
+              "index": 20,
+              "agent_id": 21
+            },
+            {
+              "index": 21,
+              "agent_id": 22
+            },
+            {
+              "index": 22,
+              "agent_id": 23
+            },
+            {
+              "index": 23,
+              "agent_id": 24
+            },
+            {
+              "index": 24,
+              "agent_id": 25
+            },
+            {
+              "index": 25,
+              "agent_id": 26
+            },
+            {
+              "index": 26,
+              "agent_id": 27
+            },
+            {
+              "index": 27,
+              "agent_id": 28
+            },
+            {
+              "index": 28,
+              "agent_id": 29
+            },
+            {
+              "index": 29,
+              "agent_id": 30
+            },
+            {
+              "index": 30,
+              "agent_id": 31
+            },
+            {
+              "index": 31,
+              "agent_id": 32
+            },
+            {
+              "index": 32,
+              "agent_id": 33
+            },
+            {
+              "index": 33,
+              "agent_id": 34
+            },
+            {
+              "index": 34,
+              "agent_id": 35
+            },
+            {
+              "index": 35,
+              "agent_id": 36
+            },
+            {
+              "index": 36,
+              "agent_id": 37
+            },
+            {
+              "index": 37,
+              "agent_id": 38
+            },
+            {
+              "index": 38,
+              "agent_id": 39
+            },
+            {
+              "index": 39,
+              "agent_id": 40
+            },
+            {
+              "index": 40,
+              "agent_id": 41
+            },
+            {
+              "index": 41,
+              "agent_id": 42
+            }
+          ],
+          "selected_edges": [
+            {
+              "index": 0,
+              "agent_id": 43
+            },
+            {
+              "index": 1,
+              "agent_id": 44
+            },
+            {
+              "index": 2,
+              "agent_id": 45
+            },
+            {
+              "index": 3,
+              "agent_id": 46
+            },
+            {
+              "index": 4,
+              "agent_id": 47
+            },
+            {
+              "index": 5,
+              "agent_id": 48
+            },
+            {
+              "index": 6,
+              "agent_id": 49
+            },
+            {
+              "index": 7,
+              "agent_id": 50
+            },
+            {
+              "index": 8,
+              "agent_id": 51
+            },
+            {
+              "index": 9,
+              "agent_id": 52
+            },
+            {
+              "index": 10,
+              "agent_id": 53
+            },
+            {
+              "index": 11,
+              "agent_id": 54
+            },
+            {
+              "index": 12,
+              "agent_id": 55
+            },
+            {
+              "index": 13,
+              "agent_id": 56
+            },
+            {
+              "index": 14,
+              "agent_id": 57
+            },
+            {
+              "index": 15,
+              "agent_id": 58
+            },
+            {
+              "index": 16,
+              "agent_id": 59
+            },
+            {
+              "index": 17,
+              "agent_id": 60
+            },
+            {
+              "index": 18,
+              "agent_id": 61
+            },
+            {
+              "index": 19,
+              "agent_id": 62
+            },
+            {
+              "index": 20,
+              "agent_id": 63
+            },
+            {
+              "index": 21,
+              "agent_id": 64
+            },
+            {
+              "index": 22,
+              "agent_id": 65
+            },
+            {
+              "index": 23,
+              "agent_id": 66
+            },
+            {
+              "index": 24,
+              "agent_id": 67
+            },
+            {
+              "index": 25,
+              "agent_id": 68
+            },
+            {
+              "index": 26,
+              "agent_id": 69
+            },
+            {
+              "index": 27,
+              "agent_id": 70
+            },
+            {
+              "index": 28,
+              "agent_id": 71
+            },
+            {
+              "index": 29,
+              "agent_id": 72
+            },
+            {
+              "index": 30,
+              "agent_id": 73
+            },
+            {
+              "index": 31,
+              "agent_id": 74
+            },
+            {
+              "index": 32,
+              "agent_id": 75
+            },
+            {
+              "index": 33,
+              "agent_id": 76
+            },
+            {
+              "index": 34,
+              "agent_id": 77
+            },
+            {
+              "index": 35,
+              "agent_id": 78
+            },
+            {
+              "index": 36,
+              "agent_id": 79
+            },
+            {
+              "index": 37,
+              "agent_id": 80
+            },
+            {
+              "index": 38,
+              "agent_id": 81
+            },
+            {
+              "index": 39,
+              "agent_id": 82
+            },
+            {
+              "index": 40,
+              "agent_id": 83
+            },
+            {
+              "index": 41,
+              "agent_id": 84
+            },
+            {
+              "index": 42,
+              "agent_id": 85
+            },
+            {
+              "index": 43,
+              "agent_id": 86
+            },
+            {
+              "index": 44,
+              "agent_id": 87
+            },
+            {
+              "index": 45,
+              "agent_id": 88
+            },
+            {
+              "index": 46,
+              "agent_id": 89
+            },
+            {
+              "index": 47,
+              "agent_id": 90
+            },
+            {
+              "index": 48,
+              "agent_id": 91
+            },
+            {
+              "index": 49,
+              "agent_id": 92
+            },
+            {
+              "index": 50,
+              "agent_id": 93
+            },
+            {
+              "index": 51,
+              "agent_id": 94
+            },
+            {
+              "index": 52,
+              "agent_id": 95
+            },
+            {
+              "index": 53,
+              "agent_id": 96
+            },
+            {
+              "index": 54,
+              "agent_id": 97
+            },
+            {
+              "index": 55,
+              "agent_id": 98
+            },
+            {
+              "index": 56,
+              "agent_id": 99
+            },
+            {
+              "index": 57,
+              "agent_id": 100
+            },
+            {
+              "index": 58,
+              "agent_id": 101
+            },
+            {
+              "index": 59,
+              "agent_id": 102
+            },
+            {
+              "index": 60,
+              "agent_id": 103
+            },
+            {
+              "index": 61,
+              "agent_id": 104
+            },
+            {
+              "index": 62,
+              "agent_id": 105
+            },
+            {
+              "index": 63,
+              "agent_id": 106
+            },
+            {
+              "index": 64,
+              "agent_id": 107
+            },
+            {
+              "index": 65,
+              "agent_id": 108
+            },
+            {
+              "index": 66,
+              "agent_id": 109
+            },
+            {
+              "index": 67,
+              "agent_id": 110
+            },
+            {
+              "index": 68,
+              "agent_id": 111
+            },
+            {
+              "index": 69,
+              "agent_id": 112
+            },
+            {
+              "index": 70,
+              "agent_id": 113
+            },
+            {
+              "index": 71,
+              "agent_id": 114
+            },
+            {
+              "index": 72,
+              "agent_id": 115
+            },
+            {
+              "index": 73,
+              "agent_id": 116
+            },
+            {
+              "index": 74,
+              "agent_id": 117
+            },
+            {
+              "index": 75,
+              "agent_id": 118
+            },
+            {
+              "index": 76,
+              "agent_id": 119
+            },
+            {
+              "index": 77,
+              "agent_id": 120
+            },
+            {
+              "index": 78,
+              "agent_id": 121
+            },
+            {
+              "index": 79,
+              "agent_id": 122
+            }
+          ],
+          "selected_faces": [
+            {
+              "index": 0,
+              "agent_id": 123
+            },
+            {
+              "index": 1,
+              "agent_id": 124
+            },
+            {
+              "index": 2,
+              "agent_id": 125
+            },
+            {
+              "index": 3,
+              "agent_id": 126
+            },
+            {
+              "index": 4,
+              "agent_id": 127
+            },
+            {
+              "index": 5,
+              "agent_id": 128
+            },
+            {
+              "index": 6,
+              "agent_id": 129
+            },
+            {
+              "index": 7,
+              "agent_id": 130
+            },
+            {
+              "index": 8,
+              "agent_id": 131
+            },
+            {
+              "index": 9,
+              "agent_id": 132
+            },
+            {
+              "index": 10,
+              "agent_id": 133
+            },
+            {
+              "index": 11,
+              "agent_id": 134
+            },
+            {
+              "index": 12,
+              "agent_id": 135
+            },
+            {
+              "index": 13,
+              "agent_id": 136
+            },
+            {
+              "index": 14,
+              "agent_id": 137
+            },
+            {
+              "index": 15,
+              "agent_id": 138
+            },
+            {
+              "index": 16,
+              "agent_id": 139
+            },
+            {
+              "index": 17,
+              "agent_id": 140
+            },
+            {
+              "index": 18,
+              "agent_id": 141
+            },
+            {
+              "index": 19,
+              "agent_id": 142
+            },
+            {
+              "index": 20,
+              "agent_id": 143
+            },
+            {
+              "index": 21,
+              "agent_id": 144
+            },
+            {
+              "index": 22,
+              "agent_id": 145
+            },
+            {
+              "index": 23,
+              "agent_id": 146
+            },
+            {
+              "index": 24,
+              "agent_id": 147
+            },
+            {
+              "index": 25,
+              "agent_id": 148
+            },
+            {
+              "index": 26,
+              "agent_id": 149
+            },
+            {
+              "index": 27,
+              "agent_id": 150
+            },
+            {
+              "index": 28,
+              "agent_id": 151
+            },
+            {
+              "index": 29,
+              "agent_id": 152
+            },
+            {
+              "index": 30,
+              "agent_id": 153
+            },
+            {
+              "index": 31,
+              "agent_id": 154
+            },
+            {
+              "index": 32,
+              "agent_id": 155
+            },
+            {
+              "index": 33,
+              "agent_id": 156
+            },
+            {
+              "index": 34,
+              "agent_id": 157
+            },
+            {
+              "index": 35,
+              "agent_id": 158
+            },
+            {
+              "index": 36,
+              "agent_id": 159
+            },
+            {
+              "index": 37,
+              "agent_id": 160
+            },
+            {
+              "index": 38,
+              "agent_id": 161
+            },
+            {
+              "index": 39,
+              "agent_id": 162
+            }
+          ],
+          "selected_vertex_count": 42,
+          "selected_edge_count": 80,
+          "selected_face_count": 40
+        },
+        "persistent_id_coverage": {
+          "verts": 42,
+          "edges": 80,
+          "faces": 40
+        }
+      }
+    },
+    {
+      "index": 2,
+      "label": "inspect_transfer_geometry",
+      "command": "get_mesh_geometry",
+      "params": {
+        "name": "Transfer_LeafSpearHead"
+      },
+      "status": "ok",
+      "result": {
+        "name": "Transfer_LeafSpearHead",
+        "space": "LOCAL",
+        "vertices": [
+          {
+            "agent_id": 1,
+            "co": [
+              0.0,
+              -0.03,
+              -0.22
+            ]
+          },
+          {
+            "agent_id": 2,
+            "co": [
+              0.0,
+              -0.15,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 3,
+            "co": [
+              0.0,
+              -0.03,
+              0.22
+            ]
+          },
+          {
+            "agent_id": 4,
+            "co": [
+              0.45,
+              -0.03,
+              -0.48
+            ]
+          },
+          {
+            "agent_id": 5,
+            "co": [
+              0.45,
+              -0.17,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 6,
+            "co": [
+              0.45,
+              -0.03,
+              0.48
+            ]
+          },
+          {
+            "agent_id": 7,
+            "co": [
+              1.15,
+              -0.03,
+              -0.68
+            ]
+          },
+          {
+            "agent_id": 8,
+            "co": [
+              1.15,
+              -0.19,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 9,
+            "co": [
+              1.15,
+              -0.03,
+              0.68
+            ]
+          },
+          {
+            "agent_id": 10,
+            "co": [
+              2.0,
+              -0.03,
+              -0.63
+            ]
+          },
+          {
+            "agent_id": 11,
+            "co": [
+              2.0,
+              -0.18,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 12,
+            "co": [
+              2.0,
+              -0.03,
+              0.63
+            ]
+          },
+          {
+            "agent_id": 13,
+            "co": [
+              2.8,
+              -0.03,
+              -0.45
+            ]
+          },
+          {
+            "agent_id": 14,
+            "co": [
+              2.8,
+              -0.15,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 15,
+            "co": [
+              2.8,
+              -0.03,
+              0.45
+            ]
+          },
+          {
+            "agent_id": 16,
+            "co": [
+              3.45,
+              -0.03,
+              -0.2
+            ]
+          },
+          {
+            "agent_id": 17,
+            "co": [
+              3.45,
+              -0.11,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 18,
+            "co": [
+              3.45,
+              -0.03,
+              0.2
+            ]
+          },
+          {
+            "agent_id": 19,
+            "co": [
+              3.85,
+              -0.02,
+              -0.015
+            ]
+          },
+          {
+            "agent_id": 20,
+            "co": [
+              3.85,
+              -0.04,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 21,
+            "co": [
+              3.85,
+              -0.02,
+              0.015
+            ]
+          },
+          {
+            "agent_id": 22,
+            "co": [
+              0.0,
+              0.03,
+              -0.22
+            ]
+          },
+          {
+            "agent_id": 23,
+            "co": [
+              0.0,
+              0.15,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 24,
+            "co": [
+              0.0,
+              0.03,
+              0.22
+            ]
+          },
+          {
+            "agent_id": 25,
+            "co": [
+              0.45,
+              0.03,
+              -0.48
+            ]
+          },
+          {
+            "agent_id": 26,
+            "co": [
+              0.45,
+              0.17,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 27,
+            "co": [
+              0.45,
+              0.03,
+              0.48
+            ]
+          },
+          {
+            "agent_id": 28,
+            "co": [
+              1.15,
+              0.03,
+              -0.68
+            ]
+          },
+          {
+            "agent_id": 29,
+            "co": [
+              1.15,
+              0.19,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 30,
+            "co": [
+              1.15,
+              0.03,
+              0.68
+            ]
+          },
+          {
+            "agent_id": 31,
+            "co": [
+              2.0,
+              0.03,
+              -0.63
+            ]
+          },
+          {
+            "agent_id": 32,
+            "co": [
+              2.0,
+              0.18,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 33,
+            "co": [
+              2.0,
+              0.03,
+              0.63
+            ]
+          },
+          {
+            "agent_id": 34,
+            "co": [
+              2.8,
+              0.03,
+              -0.45
+            ]
+          },
+          {
+            "agent_id": 35,
+            "co": [
+              2.8,
+              0.15,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 36,
+            "co": [
+              2.8,
+              0.03,
+              0.45
+            ]
+          },
+          {
+            "agent_id": 37,
+            "co": [
+              3.45,
+              0.03,
+              -0.2
+            ]
+          },
+          {
+            "agent_id": 38,
+            "co": [
+              3.45,
+              0.11,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 39,
+            "co": [
+              3.45,
+              0.03,
+              0.2
+            ]
+          },
+          {
+            "agent_id": 40,
+            "co": [
+              3.85,
+              0.02,
+              -0.015
+            ]
+          },
+          {
+            "agent_id": 41,
+            "co": [
+              3.85,
+              0.04,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 42,
+            "co": [
+              3.85,
+              0.02,
+              0.015
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "agent_id": 43,
+            "vertices": [
+              1,
+              4
+            ]
+          },
+          {
+            "agent_id": 44,
+            "vertices": [
+              1,
+              2
+            ]
+          },
+          {
+            "agent_id": 45,
+            "vertices": [
+              2,
+              5
+            ]
+          },
+          {
+            "agent_id": 46,
+            "vertices": [
+              4,
+              5
+            ]
+          },
+          {
+            "agent_id": 47,
+            "vertices": [
+              22,
+              25
+            ]
+          },
+          {
+            "agent_id": 48,
+            "vertices": [
+              25,
+              26
+            ]
+          },
+          {
+            "agent_id": 49,
+            "vertices": [
+              23,
+              26
+            ]
+          },
+          {
+            "agent_id": 50,
+            "vertices": [
+              22,
+              23
+            ]
+          },
+          {
+            "agent_id": 51,
+            "vertices": [
+              2,
+              3
+            ]
+          },
+          {
+            "agent_id": 52,
+            "vertices": [
+              3,
+              6
+            ]
+          },
+          {
+            "agent_id": 53,
+            "vertices": [
+              5,
+              6
+            ]
+          },
+          {
+            "agent_id": 54,
+            "vertices": [
+              26,
+              27
+            ]
+          },
+          {
+            "agent_id": 55,
+            "vertices": [
+              24,
+              27
+            ]
+          },
+          {
+            "agent_id": 56,
+            "vertices": [
+              23,
+              24
+            ]
+          },
+          {
+            "agent_id": 57,
+            "vertices": [
+              4,
+              7
+            ]
+          },
+          {
+            "agent_id": 58,
+            "vertices": [
+              5,
+              8
+            ]
+          },
+          {
+            "agent_id": 59,
+            "vertices": [
+              7,
+              8
+            ]
+          },
+          {
+            "agent_id": 60,
+            "vertices": [
+              25,
+              28
+            ]
+          },
+          {
+            "agent_id": 61,
+            "vertices": [
+              28,
+              29
+            ]
+          },
+          {
+            "agent_id": 62,
+            "vertices": [
+              26,
+              29
+            ]
+          },
+          {
+            "agent_id": 63,
+            "vertices": [
+              6,
+              9
+            ]
+          },
+          {
+            "agent_id": 64,
+            "vertices": [
+              8,
+              9
+            ]
+          },
+          {
+            "agent_id": 65,
+            "vertices": [
+              29,
+              30
+            ]
+          },
+          {
+            "agent_id": 66,
+            "vertices": [
+              27,
+              30
+            ]
+          },
+          {
+            "agent_id": 67,
+            "vertices": [
+              7,
+              10
+            ]
+          },
+          {
+            "agent_id": 68,
+            "vertices": [
+              8,
+              11
+            ]
+          },
+          {
+            "agent_id": 69,
+            "vertices": [
+              10,
+              11
+            ]
+          },
+          {
+            "agent_id": 70,
+            "vertices": [
+              28,
+              31
+            ]
+          },
+          {
+            "agent_id": 71,
+            "vertices": [
+              31,
+              32
+            ]
+          },
+          {
+            "agent_id": 72,
+            "vertices": [
+              29,
+              32
+            ]
+          },
+          {
+            "agent_id": 73,
+            "vertices": [
+              9,
+              12
+            ]
+          },
+          {
+            "agent_id": 74,
+            "vertices": [
+              11,
+              12
+            ]
+          },
+          {
+            "agent_id": 75,
+            "vertices": [
+              32,
+              33
+            ]
+          },
+          {
+            "agent_id": 76,
+            "vertices": [
+              30,
+              33
+            ]
+          },
+          {
+            "agent_id": 77,
+            "vertices": [
+              10,
+              13
+            ]
+          },
+          {
+            "agent_id": 78,
+            "vertices": [
+              11,
+              14
+            ]
+          },
+          {
+            "agent_id": 79,
+            "vertices": [
+              13,
+              14
+            ]
+          },
+          {
+            "agent_id": 80,
+            "vertices": [
+              31,
+              34
+            ]
+          },
+          {
+            "agent_id": 81,
+            "vertices": [
+              34,
+              35
+            ]
+          },
+          {
+            "agent_id": 82,
+            "vertices": [
+              32,
+              35
+            ]
+          },
+          {
+            "agent_id": 83,
+            "vertices": [
+              12,
+              15
+            ]
+          },
+          {
+            "agent_id": 84,
+            "vertices": [
+              14,
+              15
+            ]
+          },
+          {
+            "agent_id": 85,
+            "vertices": [
+              35,
+              36
+            ]
+          },
+          {
+            "agent_id": 86,
+            "vertices": [
+              33,
+              36
+            ]
+          },
+          {
+            "agent_id": 87,
+            "vertices": [
+              13,
+              16
+            ]
+          },
+          {
+            "agent_id": 88,
+            "vertices": [
+              14,
+              17
+            ]
+          },
+          {
+            "agent_id": 89,
+            "vertices": [
+              16,
+              17
+            ]
+          },
+          {
+            "agent_id": 90,
+            "vertices": [
+              34,
+              37
+            ]
+          },
+          {
+            "agent_id": 91,
+            "vertices": [
+              37,
+              38
+            ]
+          },
+          {
+            "agent_id": 92,
+            "vertices": [
+              35,
+              38
+            ]
+          },
+          {
+            "agent_id": 93,
+            "vertices": [
+              15,
+              18
+            ]
+          },
+          {
+            "agent_id": 94,
+            "vertices": [
+              17,
+              18
+            ]
+          },
+          {
+            "agent_id": 95,
+            "vertices": [
+              38,
+              39
+            ]
+          },
+          {
+            "agent_id": 96,
+            "vertices": [
+              36,
+              39
+            ]
+          },
+          {
+            "agent_id": 97,
+            "vertices": [
+              16,
+              19
+            ]
+          },
+          {
+            "agent_id": 98,
+            "vertices": [
+              17,
+              20
+            ]
+          },
+          {
+            "agent_id": 99,
+            "vertices": [
+              19,
+              20
+            ]
+          },
+          {
+            "agent_id": 100,
+            "vertices": [
+              37,
+              40
+            ]
+          },
+          {
+            "agent_id": 101,
+            "vertices": [
+              40,
+              41
+            ]
+          },
+          {
+            "agent_id": 102,
+            "vertices": [
+              38,
+              41
+            ]
+          },
+          {
+            "agent_id": 103,
+            "vertices": [
+              18,
+              21
+            ]
+          },
+          {
+            "agent_id": 104,
+            "vertices": [
+              20,
+              21
+            ]
+          },
+          {
+            "agent_id": 105,
+            "vertices": [
+              41,
+              42
+            ]
+          },
+          {
+            "agent_id": 106,
+            "vertices": [
+              39,
+              42
+            ]
+          },
+          {
+            "agent_id": 107,
+            "vertices": [
+              1,
+              22
+            ]
+          },
+          {
+            "agent_id": 108,
+            "vertices": [
+              2,
+              23
+            ]
+          },
+          {
+            "agent_id": 109,
+            "vertices": [
+              4,
+              25
+            ]
+          },
+          {
+            "agent_id": 110,
+            "vertices": [
+              3,
+              24
+            ]
+          },
+          {
+            "agent_id": 111,
+            "vertices": [
+              6,
+              27
+            ]
+          },
+          {
+            "agent_id": 112,
+            "vertices": [
+              7,
+              28
+            ]
+          },
+          {
+            "agent_id": 113,
+            "vertices": [
+              9,
+              30
+            ]
+          },
+          {
+            "agent_id": 114,
+            "vertices": [
+              10,
+              31
+            ]
+          },
+          {
+            "agent_id": 115,
+            "vertices": [
+              12,
+              33
+            ]
+          },
+          {
+            "agent_id": 116,
+            "vertices": [
+              13,
+              34
+            ]
+          },
+          {
+            "agent_id": 117,
+            "vertices": [
+              15,
+              36
+            ]
+          },
+          {
+            "agent_id": 118,
+            "vertices": [
+              16,
+              37
+            ]
+          },
+          {
+            "agent_id": 119,
+            "vertices": [
+              18,
+              39
+            ]
+          },
+          {
+            "agent_id": 120,
+            "vertices": [
+              19,
+              40
+            ]
+          },
+          {
+            "agent_id": 121,
+            "vertices": [
+              21,
+              42
+            ]
+          },
+          {
+            "agent_id": 122,
+            "vertices": [
+              20,
+              41
+            ]
+          }
+        ],
+        "faces": [
+          {
+            "agent_id": 123,
+            "vertices": [
+              1,
+              2,
+              5,
+              4
+            ],
+            "center": [
+              0.225,
+              -0.095,
+              -0.175
+            ],
+            "normal": [
+              0.120534,
+              0.930591,
+              0.345648
+            ]
+          },
+          {
+            "agent_id": 124,
+            "vertices": [
+              25,
+              26,
+              23,
+              22
+            ],
+            "center": [
+              0.225,
+              0.095,
+              -0.175
+            ],
+            "normal": [
+              0.120534,
+              -0.930591,
+              0.345648
+            ]
+          },
+          {
+            "agent_id": 125,
+            "vertices": [
+              2,
+              3,
+              6,
+              5
+            ],
+            "center": [
+              0.225,
+              -0.095,
+              0.175
+            ],
+            "normal": [
+              0.120534,
+              0.930591,
+              -0.345648
+            ]
+          },
+          {
+            "agent_id": 126,
+            "vertices": [
+              26,
+              27,
+              24,
+              23
+            ],
+            "center": [
+              0.225,
+              0.095,
+              0.175
+            ],
+            "normal": [
+              0.120534,
+              -0.930591,
+              -0.345648
+            ]
+          },
+          {
+            "agent_id": 127,
+            "vertices": [
+              4,
+              5,
+              8,
+              7
+            ],
+            "center": [
+              0.8,
+              -0.105,
+              -0.29
+            ],
+            "normal": [
+              0.049539,
+              0.966958,
+              0.250075
+            ]
+          },
+          {
+            "agent_id": 128,
+            "vertices": [
+              28,
+              29,
+              26,
+              25
+            ],
+            "center": [
+              0.8,
+              0.105,
+              -0.29
+            ],
+            "normal": [
+              0.049539,
+              -0.966958,
+              0.250075
+            ]
+          },
+          {
+            "agent_id": 129,
+            "vertices": [
+              5,
+              6,
+              9,
+              8
+            ],
+            "center": [
+              0.8,
+              -0.105,
+              0.29
+            ],
+            "normal": [
+              0.049539,
+              0.966958,
+              -0.250075
+            ]
+          },
+          {
+            "agent_id": 130,
+            "vertices": [
+              29,
+              30,
+              27,
+              26
+            ],
+            "center": [
+              0.8,
+              0.105,
+              0.29
+            ],
+            "normal": [
+              0.049539,
+              -0.966958,
+              -0.250075
+            ]
+          },
+          {
+            "agent_id": 131,
+            "vertices": [
+              7,
+              8,
+              11,
+              10
+            ],
+            "center": [
+              1.575,
+              -0.1075,
+              -0.3275
+            ],
+            "normal": [
+              -0.012496,
+              0.973048,
+              0.230263
+            ]
+          },
+          {
+            "agent_id": 132,
+            "vertices": [
+              31,
+              32,
+              29,
+              28
+            ],
+            "center": [
+              1.575,
+              0.1075,
+              -0.3275
+            ],
+            "normal": [
+              -0.012496,
+              -0.973048,
+              0.230263
+            ]
+          },
+          {
+            "agent_id": 133,
+            "vertices": [
+              8,
+              9,
+              12,
+              11
+            ],
+            "center": [
+              1.575,
+              -0.1075,
+              0.3275
+            ],
+            "normal": [
+              -0.012496,
+              0.973048,
+              -0.230263
+            ]
+          },
+          {
+            "agent_id": 134,
+            "vertices": [
+              32,
+              33,
+              30,
+              29
+            ],
+            "center": [
+              1.575,
+              0.1075,
+              0.3275
+            ],
+            "normal": [
+              -0.012496,
+              -0.973048,
+              -0.230263
+            ]
+          },
+          {
+            "agent_id": 135,
+            "vertices": [
+              10,
+              11,
+              14,
+              13
+            ],
+            "center": [
+              2.4,
+              -0.0975,
+              -0.27
+            ],
+            "normal": [
+              -0.045428,
+              0.969141,
+              0.242285
+            ]
+          },
+          {
+            "agent_id": 136,
+            "vertices": [
+              34,
+              35,
+              32,
+              31
+            ],
+            "center": [
+              2.4,
+              0.0975,
+              -0.27
+            ],
+            "normal": [
+              -0.045428,
+              -0.969141,
+              0.242285
+            ]
+          },
+          {
+            "agent_id": 137,
+            "vertices": [
+              11,
+              12,
+              15,
+              14
+            ],
+            "center": [
+              2.4,
+              -0.0975,
+              0.27
+            ],
+            "normal": [
+              -0.045428,
+              0.969141,
+              -0.242285
+            ]
+          },
+          {
+            "agent_id": 138,
+            "vertices": [
+              35,
+              36,
+              33,
+              32
+            ],
+            "center": [
+              2.4,
+              0.0975,
+              0.27
+            ],
+            "normal": [
+              -0.045428,
+              -0.969141,
+              -0.242285
+            ]
+          },
+          {
+            "agent_id": 139,
+            "vertices": [
+              13,
+              14,
+              17,
+              16
+            ],
+            "center": [
+              3.125,
+              -0.08,
+              -0.1625
+            ],
+            "normal": [
+              -0.085648,
+              0.952267,
+              0.293005
+            ]
+          },
+          {
+            "agent_id": 140,
+            "vertices": [
+              37,
+              38,
+              35,
+              34
+            ],
+            "center": [
+              3.125,
+              0.08,
+              -0.1625
+            ],
+            "normal": [
+              -0.085648,
+              -0.952267,
+              0.293005
+            ]
+          },
+          {
+            "agent_id": 141,
+            "vertices": [
+              14,
+              15,
+              18,
+              17
+            ],
+            "center": [
+              3.125,
+              -0.08,
+              0.1625
+            ],
+            "normal": [
+              -0.085648,
+              0.952267,
+              -0.293005
+            ]
+          },
+          {
+            "agent_id": 142,
+            "vertices": [
+              38,
+              39,
+              36,
+              35
+            ],
+            "center": [
+              3.125,
+              0.08,
+              0.1625
+            ],
+            "normal": [
+              -0.085648,
+              -0.952267,
+              -0.293005
+            ]
+          },
+          {
+            "agent_id": 143,
+            "vertices": [
+              16,
+              17,
+              20,
+              19
+            ],
+            "center": [
+              3.65,
+              -0.05,
+              -0.05375
+            ],
+            "normal": [
+              -0.184951,
+              0.891078,
+              0.414455
+            ]
+          },
+          {
+            "agent_id": 144,
+            "vertices": [
+              40,
+              41,
+              38,
+              37
+            ],
+            "center": [
+              3.65,
+              0.05,
+              -0.05375
+            ],
+            "normal": [
+              -0.184951,
+              -0.891078,
+              0.414455
+            ]
+          },
+          {
+            "agent_id": 145,
+            "vertices": [
+              17,
+              18,
+              21,
+              20
+            ],
+            "center": [
+              3.65,
+              -0.05,
+              0.05375
+            ],
+            "normal": [
+              -0.184951,
+              0.891078,
+              -0.414455
+            ]
+          },
+          {
+            "agent_id": 146,
+            "vertices": [
+              41,
+              42,
+              39,
+              38
+            ],
+            "center": [
+              3.65,
+              0.05,
+              0.05375
+            ],
+            "normal": [
+              -0.184951,
+              -0.891078,
+              -0.414455
+            ]
+          },
+          {
+            "agent_id": 147,
+            "vertices": [
+              1,
+              2,
+              23,
+              22
+            ],
+            "center": [
+              0.0,
+              -0.0,
+              -0.11
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 148,
+            "vertices": [
+              1,
+              4,
+              25,
+              22
+            ],
+            "center": [
+              0.225,
+              0.0,
+              -0.35
+            ],
+            "normal": [
+              0.500278,
+              0.0,
+              0.865865
+            ]
+          },
+          {
+            "agent_id": 149,
+            "vertices": [
+              2,
+              3,
+              24,
+              23
+            ],
+            "center": [
+              0.0,
+              0.0,
+              0.11
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 150,
+            "vertices": [
+              3,
+              6,
+              27,
+              24
+            ],
+            "center": [
+              0.225,
+              0.0,
+              0.35
+            ],
+            "normal": [
+              -0.500278,
+              0.0,
+              0.865865
+            ]
+          },
+          {
+            "agent_id": 151,
+            "vertices": [
+              4,
+              7,
+              28,
+              25
+            ],
+            "center": [
+              0.8,
+              0.0,
+              -0.58
+            ],
+            "normal": [
+              0.274721,
+              0.0,
+              0.961524
+            ]
+          },
+          {
+            "agent_id": 152,
+            "vertices": [
+              6,
+              9,
+              30,
+              27
+            ],
+            "center": [
+              0.8,
+              0.0,
+              0.58
+            ],
+            "normal": [
+              -0.274721,
+              0.0,
+              0.961524
+            ]
+          },
+          {
+            "agent_id": 153,
+            "vertices": [
+              7,
+              10,
+              31,
+              28
+            ],
+            "center": [
+              1.575,
+              0.0,
+              -0.655
+            ],
+            "normal": [
+              -0.058722,
+              0.0,
+              0.998274
+            ]
+          },
+          {
+            "agent_id": 154,
+            "vertices": [
+              9,
+              12,
+              33,
+              30
+            ],
+            "center": [
+              1.575,
+              0.0,
+              0.655
+            ],
+            "normal": [
+              0.058722,
+              0.0,
+              0.998274
+            ]
+          },
+          {
+            "agent_id": 155,
+            "vertices": [
+              10,
+              13,
+              34,
+              31
+            ],
+            "center": [
+              2.4,
+              0.0,
+              -0.54
+            ],
+            "normal": [
+              -0.219512,
+              0.0,
+              0.97561
+            ]
+          },
+          {
+            "agent_id": 156,
+            "vertices": [
+              12,
+              15,
+              36,
+              33
+            ],
+            "center": [
+              2.4,
+              0.0,
+              0.54
+            ],
+            "normal": [
+              0.219512,
+              0.0,
+              0.97561
+            ]
+          },
+          {
+            "agent_id": 157,
+            "vertices": [
+              13,
+              16,
+              37,
+              34
+            ],
+            "center": [
+              3.125,
+              0.0,
+              -0.325
+            ],
+            "normal": [
+              -0.358979,
+              0.0,
+              0.933346
+            ]
+          },
+          {
+            "agent_id": 158,
+            "vertices": [
+              15,
+              18,
+              39,
+              36
+            ],
+            "center": [
+              3.125,
+              0.0,
+              0.325
+            ],
+            "normal": [
+              0.358979,
+              0.0,
+              0.933346
+            ]
+          },
+          {
+            "agent_id": 159,
+            "vertices": [
+              16,
+              19,
+              40,
+              37
+            ],
+            "center": [
+              3.65,
+              0.0,
+              -0.1075
+            ],
+            "normal": [
+              -0.419778,
+              0.0,
+              0.907627
+            ]
+          },
+          {
+            "agent_id": 160,
+            "vertices": [
+              18,
+              21,
+              42,
+              39
+            ],
+            "center": [
+              3.65,
+              0.0,
+              0.1075
+            ],
+            "normal": [
+              0.419778,
+              0.0,
+              0.907627
+            ]
+          },
+          {
+            "agent_id": 161,
+            "vertices": [
+              19,
+              20,
+              41,
+              40
+            ],
+            "center": [
+              3.85,
+              0.0,
+              -0.0075
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          },
+          {
+            "agent_id": 162,
+            "vertices": [
+              20,
+              21,
+              42,
+              41
+            ],
+            "center": [
+              3.85,
+              0.0,
+              0.0075
+            ],
+            "normal": [
+              -1.0,
+              -0.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "label": "render_transfer_front",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": "Transfer_LeafSpearHead",
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_front_solid.png",
+        "pass_type": "solid",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "Transfer_LeafSpearHead"
+        ],
+        "frame_objects": [
+          "Transfer_LeafSpearHead"
+        ],
+        "camera_location": [
+          1.9249999523162842,
+          -8.201584815979004,
+          0.0
+        ],
+        "camera_ortho_scale": 4.715911406464493,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.162383,
+        "foreground_unique_colors_5bit": 31,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    },
+    {
+      "index": 4,
+      "label": "render_transfer_wire",
+      "command": "render_diagnostic_pass",
+      "params": {
+        "name": "Transfer_LeafSpearHead",
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_front_wireframe.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "resolution": 640,
+        "margin": 1.15
+      },
+      "status": "ok",
+      "result": {
+        "output_path": "C:/Users/odane/Downloads/3d/runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_front_wireframe.png",
+        "pass_type": "wireframe",
+        "view": "front",
+        "projection": "ORTHO",
+        "resolution": [
+          640,
+          640
+        ],
+        "target_objects": [
+          "Transfer_LeafSpearHead"
+        ],
+        "frame_objects": [
+          "Transfer_LeafSpearHead"
+        ],
+        "camera_location": [
+          1.9249999523162842,
+          -8.201584815979004,
+          0.0
+        ],
+        "camera_ortho_scale": 4.715911406464493,
+        "scene_revision": null,
+        "foreground_fill_ratio": 0.010815,
+        "foreground_unique_colors_5bit": 2,
+        "dominant_channel_pixel_counts": {
+          "red": 0,
+          "green": 0,
+          "blue": 0
+        }
+      }
+    }
+  ],
+  "save_result": {
+    "filepath": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\transfer_leaf_spear.blend"
+  },
+  "pass": true
+}

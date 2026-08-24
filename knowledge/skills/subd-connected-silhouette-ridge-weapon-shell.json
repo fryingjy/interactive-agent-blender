@@ -1,0 +1,31 @@
+{
+  "skill_id": "subd.connected_silhouette_ridge_weapon_shell",
+  "title": "Build thin ridged weapon forms as one connected silhouette-and-ridge shell",
+  "topic_tags": ["weapon modeling", "connected topology", "all quads", "ridge", "edge crease", "subdivision surface"],
+  "status": "EXPERIMENTALLY_TESTED",
+  "applicability": {
+    "modeling_stage": ["PRIMARY_FORM", "TOPOLOGY_SURFACE"],
+    "workflow": ["thin blade", "spearhead", "raised center ridge", "reference silhouette"],
+    "exclusions": ["thick forged heads whose side views require multiple depth masses", "ornament requiring sculpted relief"]
+  },
+  "preconditions": [
+    "the silhouette and at least one internal ridge path are visible or strongly supported",
+    "the part is a continuous forged or machined blade rather than an assembly of plates",
+    "front and rear shell grids can use matching row correspondence"
+  ],
+  "action_policy": [
+    "Author outer silhouette paths and the internal ridge path before filling faces.",
+    "Bridge matching front and rear grids as one connected all-quad shell.",
+    "Use selective semantic creases on the physical outline and ridge with live unapplied SubD; do not smooth every edge indiscriminately.",
+    "At a pointed termination, keep a tiny valid terminal row or redirect topology; never collapse several distinct quad-row vertices to one coordinate."
+  ],
+  "required_observations": ["front silhouette", "isometric depth read", "base wireframe", "evaluated topology health", "fresh-process render"],
+  "failure_predicates": ["degenerate tip faces", "pillowed ridge", "blocky shoulder", "blade arc diverges from reference", "unsupported depth assumption"],
+  "recovery": ["rebuild the terminal row", "retune silhouette stations before adding detail", "adjust only semantic crease coverage", "obtain a secondary view when depth is critical"],
+  "experiments": [
+    {"type": "tutorial reproduction", "evidence_path": "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/", "result": "STRUCTURAL_PASS_VISUAL_NON_PASS", "measurements": {"base_vertices": 72, "base_quads": 70, "evaluated_quads": 280, "pinch_candidates": 0, "score_10": 7.2}},
+    {"type": "different-geometry leaf-spear transfer", "evidence_path": "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_report.json", "result": "PASS_AFTER_REJECTED_DEGENERATE_TIP", "measurements": {"vertices": 42, "quads": 40, "non_manifold_edges": 0, "ngons": 0, "degenerate_faces": 0}}
+  ],
+  "version_scope": "Blender 5.2 LTS reproduction; tutorial demonstrates Blender 4.4.1",
+  "status_note": "The topology rule transferred, but the tutorial reproduction did not reach the I0 visual-fidelity gate."
+}

@@ -256,3 +256,18 @@ The bounded held-out Pinterest diagnostic on a double-bladed fantasy hammer is c
 a 3/4 render rejected uniform head depth and triggered a tapered-depth correction. The final head
 still reads as a monolithic plate rather than two forged blade masses around a socket, and the
 single front reference cannot strongly validate depth. The result does not count as I0 promotion.
+
+## I0 fourth attempt: Grant Abbitt detailed sword
+
+`runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/` reproduces a complete 40:35
+silhouette-tracing, ridge-topology and hard-surface lesson on a weapon target. The blade is one
+connected all-quad shell, the hilt is one connected 12-sided revolved cage, and semantic creases
+control a live unapplied Subdivision Surface modifier. A solid-render correction lengthened and
+slimmed the initial blade instead of relying on smooth shading to conceal the proportion error.
+
+Fresh Blender 5.2 inspection passes structural checks, and the connected ridge-shell method
+transferred to a leaf spearhead after rejecting a first tip with two degenerate quads. Visual
+fidelity remains below the gate: the shoulder is blocky, the long arc and upswept tip are only
+approximate, and the hilt is simplified. The honest score is **7.2/10 — not an I0 pass**. I1 remains
+blocked; the next bounded lesson should remain weapon-relevant and must improve target-shape
+fidelity rather than merely topology health.

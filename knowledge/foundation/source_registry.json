@@ -3393,5 +3393,26 @@
       ],
       "limitations": ["Major-form blockout only; surface wear, materials, UVs and production preparation remain incomplete."]
     }
+  },
+  {
+    "id": "youtube-grant-abbitt-detailed-sword-topology",
+    "url": "https://www.youtube.com/watch?v=f320TtEpGYQ",
+    "local_path": "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/",
+    "title": "Make a Detailed Sword in Blender :Topology Tips & Hard Surface Techniques",
+    "creator": "Grant Abbitt (Gabbitt)",
+    "source_type": "video_tutorial",
+    "trust_tier": "B",
+    "version": "reviewed 2026-08-24",
+    "topics": ["weapon-modeling", "silhouette-tracing", "connected-quad-shell", "ridge-topology", "edge-crease", "live-subdivision"],
+    "access": {"text": false, "video": true, "audio": true, "captions": true, "blend_data": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "rejected_reason": null,
+    "modalities_inspected": ["gemini_full_video_audio", "browser_player_identity", "creator_thumbnail", "blender_reproduction", "different_geometry_transfer"],
+    "metadata": {
+      "experiments": ["runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/detailed_sword.blend", "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/transfer_leaf_spear.blend"],
+      "score_10": 7.2,
+      "validated_principles": ["Build thin ridged weapon forms as connected silhouette-and-ridge quad shells; keep semantic creases and subdivision live."],
+      "limitations": ["The reproduction remains below I0 fidelity due to shoulder, blade-arc, tip and hilt mismatches; Gemini episodes remain model-extracted rather than independently frame-confirmed."]
+    }
   }
 ]
