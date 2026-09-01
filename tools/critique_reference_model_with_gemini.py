@@ -14,6 +14,7 @@ if str(ROOT) not in sys.path:
 from knowledge_engine.gemini_reference_critic import (  # noqa: E402
     DEFAULT_MODEL,
     analyze_reference_candidate,
+    analyze_reference_candidate_ensemble,
     build_critic_prompt,
     load_critic_manifest,
 )
@@ -25,6 +26,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--samples", type=int, default=3)
     args = parser.parse_args()
     manifest = load_critic_manifest(args.manifest)
     if args.dry_run:
@@ -38,7 +40,11 @@ def main() -> int:
         return 0
     if args.output is None:
         parser.error("--output is required unless --dry-run is used")
-    result = analyze_reference_candidate(manifest, model=args.model)
+    result = (
+        analyze_reference_candidate(manifest, model=args.model)
+        if args.samples == 1
+        else analyze_reference_candidate_ensemble(manifest, model=args.model, samples=args.samples)
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result, indent=2))

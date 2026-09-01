@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_MODELING_READINESS",
+  "status": "ACTIVE",
+  "effective_date": "2026-09-01",
+  "reason": "The repaired perception and evaluator loop now passes controlled and immutable historical regressions, but those automated gates cannot establish professional visual judgment. New reference-driven props remain blocked pending held-out human calibration.",
+  "allowed_scopes": ["SYSTEM_VALIDATION_FIXTURE"],
+  "clearance_gates": [
+    {"id": "reference_projection_classification", "status": "PASS", "evidence": ["knowledge_engine/reference_registration.py", "tests/test_reference_registration.py"]},
+    {"id": "camera_pose_registration_lab", "status": "PASS", "evidence": ["runs/2026-09-01_reference-perception-lab/report.json"]},
+    {"id": "segmentation_integrity_lab", "status": "PASS", "evidence": ["knowledge_engine/segmentation_audit.py", "runs/2026-09-01_reference-perception-lab/report.json"]},
+    {"id": "critic_consensus_and_conflict_lab", "status": "PASS", "evidence": ["knowledge_engine/gemini_reference_critic.py", "tests/test_gemini_reference_critic.py"]},
+    {"id": "controlled_perception_regression_anchor", "status": "PASS", "evidence": ["knowledge/foundation/reference_perception_regression_anchor.json", "runs/2026-09-01_reference-perception-lab/regression.json"]},
+    {"id": "immutable_multitask_non_regression", "status": "PASS", "evidence": ["knowledge/foundation/reference_evaluator_regression_anchor.json", "runs/2026-09-01_system-gap-audit/reference_evaluator_regression.json"]},
+    {"id": "held_out_human_visual_calibration", "status": "NOT_RUN"}
+  ],
+  "clearance_rule": "Set status to CLEARED only after every gate is PASS with retained evidence. Do not lower thresholds to manufacture readiness.",
+  "prohibited_while_active": [
+    "new reference-prop construction",
+    "surface polish used to hide primary-form uncertainty",
+    "claiming professional readiness from aggregate silhouette or VLM scores"
+  ]
+}

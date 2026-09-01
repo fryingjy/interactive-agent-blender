@@ -8,10 +8,12 @@ from PIL import Image
 
 from knowledge_engine.gemini_reference_critic import (
     analyze_reference_candidate,
+    analyze_reference_candidate_ensemble,
     build_critic_parts,
     critic_to_repair_tickets,
     derive_correction_directive,
     load_critic_manifest,
+    reconcile_critic_records,
     validate_critic_analysis,
     validate_critic_record,
 )
@@ -94,6 +96,7 @@ class GeminiReferenceCriticTests(unittest.TestCase):
     def test_undeclared_component_and_bad_box_fail(self):
         analysis = valid_analysis()
         mismatch = analysis["view_reviews"][0]["mismatches"][0]
+        mismatch["category"] = "PROPORTION"
         mismatch["component_id"] = "invented"
         mismatch["reference_box_2d"] = [0, 0, 1001, 5]
         with self.assertRaises(ValueError):
@@ -102,6 +105,27 @@ class GeminiReferenceCriticTests(unittest.TestCase):
     def test_contradictory_advance_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "advance decision contradicts"):
             validate_critic_analysis(valid_analysis("ADVANCE_TO_SURFACE_CANDIDATE"), self.manifest)
+
+    def test_directional_width_advice_must_agree_with_reported_boxes(self):
+        analysis = valid_analysis()
+        mismatch = analysis["view_reviews"][0]["mismatches"][0]
+        mismatch["category"] = "PROPORTION"
+        mismatch["evidence"] = "The candidate is too narrow."
+        mismatch["correction_goal"] = "Widen the body."
+        mismatch["reference_box_2d"] = [100, 100, 500, 300]
+        mismatch["candidate_box_2d"] = [100, 100, 500, 360]
+        with self.assertRaisesRegex(ValueError, "width correction contradicts"):
+            validate_critic_analysis(analysis, self.manifest)
+
+    def test_directional_width_advice_accepts_consistent_boxes(self):
+        analysis = valid_analysis()
+        mismatch = analysis["view_reviews"][0]["mismatches"][0]
+        mismatch["category"] = "PROPORTION"
+        mismatch["evidence"] = "The candidate is too narrow."
+        mismatch["correction_goal"] = "Widen the body."
+        mismatch["reference_box_2d"] = [100, 100, 500, 360]
+        mismatch["candidate_box_2d"] = [100, 100, 500, 300]
+        validate_critic_analysis(analysis, self.manifest)
 
     def test_mocked_call_returns_hash_bound_provenance_without_key(self):
         def generate(**kwargs):
@@ -166,6 +190,62 @@ class GeminiReferenceCriticTests(unittest.TestCase):
         self.assertEqual(tickets[0]["repair_scope"], "REBUILD_COMPONENT")
         self.assertEqual(tickets[0]["scene_revision"], 7)
         self.assertEqual(tickets[0]["source"], "GEMINI_REFERENCE_CRITIC")
+
+    def test_ensemble_requires_consensus_before_geometry_mutation(self):
+        analyses = [valid_analysis(), valid_analysis(), valid_analysis("REJECT_REPRESENTATION")]
+
+        def generate(**_kwargs):
+            return SimpleNamespace(text=json.dumps(analyses.pop(0)))
+
+        run = analyze_reference_candidate_ensemble(
+            self.manifest, model="test-model", samples=3, generate=generate
+        )
+        consensus = run["consensus"]
+        self.assertEqual(consensus["decision"], "CORRECT_PRIMARY_FORM")
+        self.assertTrue(consensus["geometry_mutation_authorized"])
+        self.assertEqual(consensus["consensus_mismatches"][0]["agreement_count"], 3)
+
+    def test_split_ensemble_fails_as_evaluator_failure(self):
+        decisions = ["CORRECT_PRIMARY_FORM", "REJECT_REPRESENTATION", "ADVANCE_TO_SURFACE_CANDIDATE"]
+        records = []
+        for decision in decisions:
+            analysis = valid_analysis(decision)
+            if decision == "ADVANCE_TO_SURFACE_CANDIDATE":
+                analysis["view_reviews"][0].update({
+                    "semantic_match_score": 0.95,
+                    "silhouette_match_score": 0.95,
+                    "component_relationship_score": 0.95,
+                    "depth_plausibility_score": 0.95,
+                    "mismatches": [],
+                })
+                analysis["decision_reason"] = "All supplied views pass the machine threshold."
+            def generate(**_kwargs):
+                return SimpleNamespace(text=json.dumps(analysis))
+            records.append(analyze_reference_candidate(self.manifest, model="test-model", generate=generate))
+        consensus = reconcile_critic_records(records)
+        self.assertEqual(consensus["decision"], "EVALUATOR_FAILURE")
+        self.assertFalse(consensus["geometry_mutation_authorized"])
+        self.assertFalse(consensus["surface_candidate_authorized"])
+
+    def test_surface_advance_requires_unanimity(self):
+        records = []
+        for decision in ["ADVANCE_TO_SURFACE_CANDIDATE", "ADVANCE_TO_SURFACE_CANDIDATE", "CORRECT_PRIMARY_FORM"]:
+            analysis = valid_analysis(decision)
+            if decision == "ADVANCE_TO_SURFACE_CANDIDATE":
+                review = analysis["view_reviews"][0]
+                for field in (
+                    "semantic_match_score", "silhouette_match_score",
+                    "component_relationship_score", "depth_plausibility_score",
+                ):
+                    review[field] = 0.95
+                review["mismatches"] = []
+                analysis["decision_reason"] = "Every supplied view passes."
+            def generate(**_kwargs):
+                return SimpleNamespace(text=json.dumps(analysis))
+            records.append(analyze_reference_candidate(self.manifest, model="test-model", generate=generate))
+        consensus = reconcile_critic_records(records)
+        self.assertEqual(consensus["decision"], "EVALUATOR_FAILURE")
+        self.assertFalse(consensus["surface_candidate_authorized"])
 
 
 if __name__ == "__main__":

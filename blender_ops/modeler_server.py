@@ -1005,15 +1005,30 @@ class ModelerServer:
     def cmd_inspect_region(self, name, center_ids, rings=2):
         return state_probe.inspect_region(name, center_ids, rings=rings)
 
-    def cmd_render_silhouette(self, name, output_path, view="front", resolution=512, margin=1.15):
+    def cmd_render_silhouette(
+        self, name, output_path, view="front", resolution=512, margin=1.15, frame_name=None
+    ):
         """Free to call outside a decision transaction -- a render is a
-        read of the current state, not a mutation, same as get_full_state."""
-        return render_passes.render_silhouette(name, output_path, view=view, resolution=resolution, margin=margin)
+        read of the current state, not a mutation, same as get_full_state.
 
-    def cmd_render_diagnostic_pass(self, name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
+        ``frame_name`` deliberately mirrors the renderer's multi-object framing
+        contract.  An articulated assembly can render a selected subset while
+        retaining a stable whole-prop camera frame across review passes.
+        """
+        return render_passes.render_silhouette(
+            name, output_path, view=view, resolution=resolution, margin=margin,
+            frame_name=frame_name,
+        )
+
+    def cmd_render_diagnostic_pass(
+        self, name, output_path, pass_type, view="front", resolution=512, margin=1.15,
+        frame_name=None, preview_smooth_names=None,
+    ):
         return render_passes.render_diagnostic_pass(
             name, output_path, pass_type, view=view, resolution=resolution,
-            margin=margin, frame_name=frame_name)
+            margin=margin, frame_name=frame_name,
+            preview_smooth_names=preview_smooth_names,
+        )
 
     def cmd_render_semantic_region(self, name, region_id, output_path, view="front", resolution=512, margin=1.15):
         return render_passes.render_semantic_region(
@@ -1173,7 +1188,7 @@ class ModelerServer:
         self._check_external_edit(name)
         return {"name": name, "previous_binding": previous, "authorization": dict(self._reference_authorization)}
 
-    def cmd_begin_decision(self, name, action_type):
+    def cmd_begin_decision(self, name, action_type, allowed_vertex_ids=None):
         if self._control_mode != "AGENT_CONTROL":
             raise ValueError(
                 f"cannot start a decision: control_mode is '{self._control_mode}', not "
@@ -1192,7 +1207,12 @@ class ModelerServer:
                 f"check just captured the current state as the new baseline."
             )
         obs_rev = decision_state.current_revision()
-        tx = decision_transaction.decision_transaction(obs_rev, action_type, target_object=name)
+        tx = decision_transaction.decision_transaction(
+            obs_rev,
+            action_type,
+            target_object=name,
+            allowed_vertex_ids=allowed_vertex_ids,
+        )
         tx.__enter__()
         decision_id = f"dec_{obs_rev}_{int(time.time() * 1000)}"
         with self._pending_lock:
@@ -1205,7 +1225,11 @@ class ModelerServer:
                 "tx": tx, "target": name,
                 "baseline_fingerprint": self._last_known_fingerprint.get(name),
             }
-        return {"decision_id": decision_id, "observed_revision": obs_rev}
+        return {
+            "decision_id": decision_id,
+            "observed_revision": obs_rev,
+            "allowed_vertex_ids": None if allowed_vertex_ids is None else sorted({int(value) for value in allowed_vertex_ids}),
+        }
 
     def cmd_perform_decision(self, decision_id, operation, params, command_id=None):
         if command_id is not None and command_id in self._command_journal:

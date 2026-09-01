@@ -157,6 +157,19 @@ def get_id_maps(name):
     return result
 
 
+def vertex_positions_by_id(name):
+    """Return local-space positions keyed by complete persistent vertex ID."""
+    ensure_persistent_ids(name)
+    obj = bpy.data.objects[name]
+    bm = bmesh_io.read_bmesh(obj)
+    bm.verts.ensure_lookup_table()
+    layer = bm.verts.layers.int.get(_LAYER_NAMES["verts"])
+    result = {int(vertex[layer]): tuple(float(value) for value in vertex.co) for vertex in bm.verts}
+    if obj.mode != "EDIT":
+        bm.free()
+    return result
+
+
 def find_by_id(name, element_type, agent_id):
     """Resolve a remembered persistent ID back to its current Blender index
     and live data, even after unrelated topology changes elsewhere in the

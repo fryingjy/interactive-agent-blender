@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "target_id": "ikea-tertial-70504295",
+  "component_ids": [
+    "shade_shell",
+    "socket_housing",
+    "head_yoke",
+    "upper_parallel_arm",
+    "elbow_plate",
+    "lower_parallel_arm",
+    "base_clamp",
+    "tension_springs",
+    "pivot_hardware"
+  ],
+  "context": "Primary blockout review only. Ignore color, materials, vent slots, screw-head detail, spring coil detail, bevels, smoothing, and polish. Judge exact IKEA TERTIAL 705.042.95 major silhouette, arm-length ratios, joint placement, shade profile, component boundaries, and functional negative spaces.",
+  "views": [
+    {
+      "view": "side_hero",
+      "reference": "references/tertial_official_1.jpg",
+      "candidate": "blockout_v1_front_solid.png"
+    }
+  ]
+}

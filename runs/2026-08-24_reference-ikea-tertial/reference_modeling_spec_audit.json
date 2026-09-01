@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_MODELING_SPEC_AUDIT",
+  "target_id": "ikea-tertial-70504295",
+  "target_variant": "light-blue-us-70504295",
+  "component_ids": [
+    "shade_shell",
+    "socket_housing",
+    "head_yoke",
+    "upper_parallel_arm",
+    "elbow_plate",
+    "lower_parallel_arm",
+    "base_clamp",
+    "tension_springs",
+    "pivot_hardware",
+    "power_cable"
+  ],
+  "identity_feature_ids": [
+    "flared_reflector",
+    "vented_head",
+    "long_upper_pair",
+    "open_elbow_plate",
+    "long_lower_pair",
+    "functional_clamp_void",
+    "head_layer_stack",
+    "four_spring_layout"
+  ],
+  "authorized_reference_sha256": [
+    "0e88b2cb79c2e2c556e92e9344bdb03b44bb1d1c146f5a54d8538eecb7c26aae",
+    "34a3b6f54d362d397d606cee03be6fbb3aa5934a63f62686cebff21ac09a6d90",
+    "3c7b98996e1831984227142696094dcbd7625ab48725c13da9f2ab95d9dd72b0",
+    "55eb3f4e4c58ff9488f72fe9d37cf71cbe258346cb7e972baa3f32f1059e9523",
+    "d521916fd765b03ff02206859090c62dd4e2e9ee6a8a2ee8761cb011bc050d27",
+    "d9db9992403a813c09e9d66eb5bf26ee81526ad55f8102e9b981ff38f3bf28c3",
+    "f4424cf3462c65c9ea8791903890871601924e55f00b2d16fb5673bd476e3920",
+    "f656db2af2577aea72c1e689b083b149c8cc97433b4f68ed6f8d8f7ba63ff1a7"
+  ],
+  "errors": [],
+  "pass": true,
+  "claim_boundary": "A valid spec makes visible intent and repair limits explicit; it does not prove the interpretation or resulting model is accurate."
+}

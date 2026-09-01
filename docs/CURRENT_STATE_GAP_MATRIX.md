@@ -141,3 +141,11 @@ sword at 0.35 semantic and 0.30 silhouette match, localizing the missing blade s
 collar. This proves one known failure can now be caught automatically; it does not prove the critic
 can model, judge hidden geometry, or grant professional/human acceptance. The next proof is a real
 sparse-cage correction loop followed by an unrelated second target.
+# 2026-09-01 system-repair override
+
+Reference-driven modeling is under an active repository-wide hold. Controlled camera/shape
+disentanglement, mask-integrity, bounded parameter fitting, critic-consensus, and perception
+non-regression fixtures now pass. Immutable multi-task real-reference regression and held-out human
+visual calibration remain open, so the system is not authorized to start another prop. See
+`docs/SYSTEM_GAP_AUDIT_2026-09-01.md` and
+`knowledge/foundation/reference_modeling_readiness.json`.

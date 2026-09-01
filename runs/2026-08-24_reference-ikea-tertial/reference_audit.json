@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_SET_AUDIT",
+  "target_id": "ikea-tertial-70504295",
+  "target_variant": "light-blue-us-70504295",
+  "reference_count": 8,
+  "matching_reference_count": 8,
+  "independent_source_count": 8,
+  "view_count": 8,
+  "checks": {
+    "same_target_identity_pass": true,
+    "view_coverage_pass": true,
+    "orthographic_coverage_pass": true,
+    "provenance_coverage_pass": true,
+    "critical_property_coverage_pass": true,
+    "dimensional_anchor_pass": true,
+    "conflicts_resolved_pass": true,
+    "question_driven_research_pass": true,
+    "artifact_binding_pass": true
+  },
+  "covered_properties": {
+    "shade_diameter": [
+      "official_product_hero"
+    ],
+    "upper_arm_to_shade_ratio": [
+      "official_product_hero"
+    ],
+    "lower_arm_to_shade_ratio": [
+      "official_product_hero"
+    ],
+    "parallel_arm_construction": [
+      "official_product_hero"
+    ],
+    "middle_joint_negative_space": [
+      "official_product_hero"
+    ],
+    "clamp_gap": [
+      "official_product_hero"
+    ],
+    "cable_route": [
+      "official_product_hero"
+    ],
+    "articulated_pose_graph": [
+      "official_installed_side"
+    ],
+    "paired_lower_bars": [
+      "official_installed_side"
+    ],
+    "spring_count": [
+      "official_installed_side"
+    ],
+    "arm_depth_separation": [
+      "official_context_pair"
+    ],
+    "wall_mount_alternative": [
+      "official_context_pair"
+    ],
+    "head_yoke_layering": [
+      "official_head_joint_detail"
+    ],
+    "shade_swivel": [
+      "official_head_joint_detail"
+    ],
+    "bar_cross_section": [
+      "official_head_joint_detail"
+    ],
+    "pivot_fasteners": [
+      "official_head_joint_detail"
+    ],
+    "full_component_graph": [
+      "assembly_overview"
+    ],
+    "shade_profile": [
+      "assembly_overview"
+    ],
+    "shade_single_shell": [
+      "assembly_shade_profile"
+    ],
+    "shade_height_ratio": [
+      "assembly_shade_profile"
+    ],
+    "clamp_component_split": [
+      "assembly_clamp_parts"
+    ],
+    "clamp_range": [
+      "assembly_clamp_parts"
+    ],
+    "spring_attachment_points": [
+      "assembly_spring_detail"
+    ],
+    "spring_pair_count": [
+      "assembly_spring_detail"
+    ]
+  },
+  "dimensional_anchors": [
+    "shade_diameter=17cm",
+    "clamping_range<=57.15mm"
+  ],
+  "authorized_reference_sha256": [
+    "0e88b2cb79c2e2c556e92e9344bdb03b44bb1d1c146f5a54d8538eecb7c26aae",
+    "34a3b6f54d362d397d606cee03be6fbb3aa5934a63f62686cebff21ac09a6d90",
+    "3c7b98996e1831984227142696094dcbd7625ab48725c13da9f2ab95d9dd72b0",
+    "55eb3f4e4c58ff9488f72fe9d37cf71cbe258346cb7e972baa3f32f1059e9523",
+    "d521916fd765b03ff02206859090c62dd4e2e9ee6a8a2ee8761cb011bc050d27",
+    "d9db9992403a813c09e9d66eb5bf26ee81526ad55f8102e9b981ff38f3bf28c3",
+    "f4424cf3462c65c9ea8791903890871601924e55f00b2d16fb5673bd476e3920",
+    "f656db2af2577aea72c1e689b083b149c8cc97433b4f68ed6f8d8f7ba63ff1a7"
+  ],
+  "issues": [],
+  "targeted_research_queries": [],
+  "research_audit": {
+    "question_count": 0,
+    "candidate_counts": {
+      "ACCEPTED": 0,
+      "REJECTED": 0,
+      "PENDING": 0
+    },
+    "accepted_reference_links": [],
+    "missing_reference_links": [],
+    "open_questions": [],
+    "blocking_questions": [],
+    "deferred_questions": [],
+    "modeling_constraints": [],
+    "targeted_research_queries": [],
+    "checks": {
+      "question_records_valid": true,
+      "accepted_candidates_link_to_reference_items": true,
+      "no_high_impact_question_open": true
+    },
+    "pass": true
+  },
+  "pass": true,
+  "disposition": "READY_TO_MODEL"
+}

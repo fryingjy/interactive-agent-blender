@@ -30,6 +30,7 @@ import coordinate_safety
 import decision_state
 import persistent_ids
 import state_probe
+import mutation_footprint
 
 
 class TransactionError(Exception):
@@ -50,7 +51,7 @@ def _copy_custom_property_value(value):
 
 
 class DecisionTransaction:
-    def __init__(self, observed_revision, action_type, target_object=None):
+    def __init__(self, observed_revision, action_type, target_object=None, allowed_vertex_ids=None):
         self.observed_revision = observed_revision
         self.action_type = action_type
         self.target_object = target_object
@@ -62,6 +63,10 @@ class DecisionTransaction:
         self._after_state = None
         self._before_ids = None
         self._after_ids = None
+        self._allowed_vertex_ids = None if allowed_vertex_ids is None else {int(value) for value in allowed_vertex_ids}
+        self._before_vertex_positions = None
+        self._after_vertex_positions = None
+        self._footprint_audit = None
         self._op_delta = None
         # A transaction may own an editable mesh *or* curve.  The old name
         # reflected the original mesh-only implementation and encouraged
@@ -117,6 +122,13 @@ class DecisionTransaction:
                 # before/after ID sets captured around this transaction are complete.
                 persistent_ids.ensure_persistent_ids(self.target_object)
                 self._before_ids = persistent_ids.get_id_maps(self.target_object)
+                self._before_vertex_positions = persistent_ids.vertex_positions_by_id(self.target_object)
+                if self._allowed_vertex_ids is not None:
+                    unknown = self._allowed_vertex_ids - set(self._before_vertex_positions)
+                    if unknown:
+                        raise TransactionError(
+                            f"mutation footprint cites unknown persistent vertex ids: {sorted(unknown)}"
+                        )
             else:
                 self._before_state = state_probe.get_curve_state(self.target_object)
         return self
@@ -225,6 +237,12 @@ class DecisionTransaction:
                 # range: added/removed persistent element IDs.
                 persistent_ids.ensure_persistent_ids(self.target_object)
                 self._after_ids = persistent_ids.get_id_maps(self.target_object)
+                self._after_vertex_positions = persistent_ids.vertex_positions_by_id(self.target_object)
+                self._footprint_audit = mutation_footprint.audit_vertex_footprint(
+                    self._before_vertex_positions,
+                    self._after_vertex_positions,
+                    self._allowed_vertex_ids,
+                )
                 id_delta = {}
                 for kind in ("verts", "edges", "faces"):
                     before_ids = set(self._before_ids[kind]["id_to_index"])
@@ -250,6 +268,7 @@ class DecisionTransaction:
             "after": self._after_state,
             "id_delta": id_delta,
             "geometry_shift_flag": geometry_shift_flag,
+            "mutation_footprint": self._footprint_audit,
         }
 
     def commit(self):
@@ -259,6 +278,14 @@ class DecisionTransaction:
             raise TransactionError("this transaction was already committed")
         if self._rejected:
             raise TransactionError("this transaction was already rejected")
+        if self._allowed_vertex_ids is not None and self._footprint_audit is None:
+            raise TransactionError("cannot commit a footprint-scoped mesh decision before verify()")
+        if self._footprint_audit is not None and not self._footprint_audit["pass"]:
+            raise TransactionError(
+                "cannot commit: operation changed protected persistent vertices; "
+                f"moved={self._footprint_audit['unexpected_moved_vertex_ids']}, "
+                f"removed={self._footprint_audit['unexpected_removed_vertex_ids']}"
+            )
         new_revision = decision_state.advance_revision(self.observed_revision)
         self._committed = True
         self._free_snapshot()
@@ -425,5 +452,5 @@ class DecisionTransaction:
         return False
 
 
-def decision_transaction(observed_revision, action_type, target_object=None):
-    return DecisionTransaction(observed_revision, action_type, target_object)
+def decision_transaction(observed_revision, action_type, target_object=None, allowed_vertex_ids=None):
+    return DecisionTransaction(observed_revision, action_type, target_object, allowed_vertex_ids)

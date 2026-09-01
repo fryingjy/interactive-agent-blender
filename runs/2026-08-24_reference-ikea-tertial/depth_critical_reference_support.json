@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
+  "depth_critical_component_ids": [
+    "base_clamp",
+    "elbow_plate",
+    "head_yoke",
+    "lower_parallel_arm",
+    "shade_shell",
+    "socket_housing",
+    "tension_springs",
+    "upper_parallel_arm"
+  ],
+  "component_reports": {
+    "base_clamp": {
+      "view_ids": [
+        "assembly_overview",
+        "clamp_exploded",
+        "installed_side",
+        "rear_three_quarter",
+        "side_hero"
+      ],
+      "reference_ids": [
+        "assembly_clamp_parts",
+        "assembly_overview",
+        "official_context_pair",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 5,
+      "pass": true
+    },
+    "elbow_plate": {
+      "view_ids": [
+        "assembly_overview",
+        "installed_side",
+        "side_hero",
+        "spring_attachment"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "assembly_spring_detail",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 4,
+      "pass": true
+    },
+    "head_yoke": {
+      "view_ids": [
+        "assembly_overview",
+        "head_joint_closeup",
+        "installed_side",
+        "side_hero"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "official_head_joint_detail",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 4,
+      "pass": true
+    },
+    "lower_parallel_arm": {
+      "view_ids": [
+        "assembly_overview",
+        "installed_side",
+        "rear_three_quarter",
+        "side_hero"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "official_context_pair",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 4,
+      "pass": true
+    },
+    "shade_shell": {
+      "view_ids": [
+        "assembly_overview",
+        "installed_side",
+        "shade_profile_diagram",
+        "side_hero"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "assembly_shade_profile",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 4,
+      "pass": true
+    },
+    "socket_housing": {
+      "view_ids": [
+        "assembly_overview",
+        "head_joint_closeup",
+        "installed_side",
+        "side_hero"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "official_head_joint_detail",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 4,
+      "pass": true
+    },
+    "tension_springs": {
+      "view_ids": [
+        "assembly_overview",
+        "installed_side",
+        "rear_three_quarter",
+        "side_hero",
+        "spring_attachment"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "assembly_spring_detail",
+        "official_context_pair",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 5,
+      "pass": true
+    },
+    "upper_parallel_arm": {
+      "view_ids": [
+        "assembly_overview",
+        "head_joint_closeup",
+        "installed_side",
+        "rear_three_quarter",
+        "side_hero",
+        "spring_attachment"
+      ],
+      "reference_ids": [
+        "assembly_overview",
+        "assembly_spring_detail",
+        "official_context_pair",
+        "official_head_joint_detail",
+        "official_installed_side",
+        "official_product_hero"
+      ],
+      "view_count": 6,
+      "pass": true
+    }
+  },
+  "unsupported_component_ids": [],
+  "pass": true
+}

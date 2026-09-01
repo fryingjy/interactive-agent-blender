@@ -33,9 +33,9 @@ def named_path(value: str) -> tuple[str, Path]:
     return name.strip(), Path(path).resolve()
 
 
-def compare(reference: Path, candidate_mask, size: int) -> dict:
+def compare(reference: Path, candidate_mask, size: int, reference_mode: str) -> dict:
     reference_mask = normalize_foreground_bbox(
-        load_foreground_mask(reference, mode="alpha"), size=size
+        load_foreground_mask(reference, mode=reference_mode), size=size
     )
     return compare_masks(reference_mask, candidate_mask)
 
@@ -46,6 +46,12 @@ def main() -> int:
     parser.add_argument("output", type=Path)
     parser.add_argument("--reference", action="append", type=named_path, required=True)
     parser.add_argument("--baseline", type=Path)
+    parser.add_argument(
+        "--reference-mode",
+        choices=("alpha", "light_on_dark", "dark_on_light", "auto"),
+        default="alpha",
+        help="Explicit foreground convention for every supplied reference mask.",
+    )
     parser.add_argument("--minimum-iou", type=float, default=0.9)
     parser.add_argument("--size", type=int, default=512)
     args = parser.parse_args()
@@ -57,7 +63,7 @@ def main() -> int:
         load_foreground_mask(candidate_path, mode="light_on_dark"), size=args.size
     )
     candidate = {
-        view: compare(path, candidate_mask, args.size)
+        view: compare(path, candidate_mask, args.size, args.reference_mode)
         for view, path in references.items()
     }
     baseline = None
@@ -68,7 +74,7 @@ def main() -> int:
             load_foreground_mask(baseline_path, mode="light_on_dark"), size=args.size
         )
         baseline = {
-            view: compare(path, baseline_mask, args.size)
+            view: compare(path, baseline_mask, args.size, args.reference_mode)
             for view, path in references.items()
         }
         improvements = {
@@ -80,6 +86,7 @@ def main() -> int:
         "schema_version": 1,
         "record_type": "NORMALIZED_REFERENCE_SILHOUETTE_COMPARISON",
         "method": "explicit foreground modes; bbox translation/scale normalized; aspect ratio preserved",
+        "reference_foreground_mode": args.reference_mode,
         "candidate": str(candidate_path),
         "baseline": str(args.baseline.resolve()) if args.baseline else None,
         "references": {view: str(path) for view, path in references.items()},

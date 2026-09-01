@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "record_type": "GEMINI_REFERENCE_CRITIC",
+  "provenance": {
+    "provider": "Google Gemini",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "blender-reference-critic-v2",
+    "target_id": "ikea-tertial-70504295",
+    "component_ids": [
+      "shade_shell",
+      "socket_housing",
+      "head_yoke",
+      "upper_parallel_arm",
+      "elbow_plate",
+      "lower_parallel_arm",
+      "base_clamp",
+      "tension_springs",
+      "pivot_hardware",
+      "power_cable"
+    ],
+    "context": "Semantic primary-blockout preview after scaling articulated pivot spacing 1.25x about the fixed clamp pivot. The correction addresses the official hero measurements: upper pivot span is 1.89 shade diameters and lower pivot span is 1.95 shade diameters, each with a six-percent perspective band. Curved parts use temporary smooth preview copies only; saved geometry and shading are unchanged. Ignore materials, vent slots, screw heads, bevels, and polish. Judge primary form, silhouette, and component relationships at blockout scope.",
+    "request_sha256": "4ca635447d0583486799760319d8a13030354e5b04aece43616b695cc952c6be",
+    "view_artifacts": [
+      {
+        "view": "side_hero",
+        "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_reference-ikea-tertial\\references\\tertial_official_1.jpg",
+        "reference_sha256": "d521916fd765b03ff02206859090c62dd4e2e9ee6a8a2ee8761cb011bc050d27",
+        "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_reference-ikea-tertial\\blockout_v14_front_semantic_preview.png",
+        "candidate_sha256": "5d956f64ee383fd86db28870e8a7657f71e92da8ee32f0551c2d068fe38c46e2"
+      }
+    ]
+  },
+  "analysis": {
+    "target_identity_matches": true,
+    "view_reviews": [
+      {
+        "view": "side_hero",
+        "reference_observation": "Blue desk lamp with articulated dual-arm, springs, shade, and clamp mount.",
+        "candidate_observation": "Grey 3D blockout matching the reference primary components and overall pose.",
+        "semantic_match_score": 0.76,
+        "silhouette_match_score": 0.72,
+        "component_relationship_score": 0.7,
+        "depth_plausibility_score": 0.74,
+        "mismatches": [
+          {
+            "category": "PROPORTION",
+            "root_cause": "PROPORTION_FAILURE",
+            "repair_scope": "ADJUST_PRIMARY_FORM",
+            "component_id": "upper_parallel_arm",
+            "evidence": "Arm length and pivot spans are slightly foreshortened relative to reference.",
+            "reference_box_2d": [
+              154,
+              345,
+              431,
+              843
+            ],
+            "candidate_box_2d": [
+              223,
+              362,
+              396,
+              740
+            ],
+            "severity": 0.35,
+            "confidence": 0.75,
+            "correction_goal": "Adjust upper arm length and pivot spacing to match reference profile."
+          }
+        ]
+      }
+    ],
+    "cross_view_contradictions": [],
+    "decision": "CORRECT_PRIMARY_FORM",
+    "decision_reason": "Primary proportions of the upper parallel arm require minor adjustments to align with reference.",
+    "limitations": [
+      "Single side view limits depth assessment along non-visible axes."
+    ]
+  },
+  "correction_directive": {
+    "disposition": "ADJUST_PRIMARY_FORM",
+    "ticket": {
+      "category": "PROPORTION",
+      "root_cause": "PROPORTION_FAILURE",
+      "repair_scope": "ADJUST_PRIMARY_FORM",
+      "component_id": "upper_parallel_arm",
+      "evidence": "Arm length and pivot spans are slightly foreshortened relative to reference.",
+      "reference_box_2d": [
+        154,
+        345,
+        431,
+        843
+      ],
+      "candidate_box_2d": [
+        223,
+        362,
+        396,
+        740
+      ],
+      "severity": 0.35,
+      "confidence": 0.75,
+      "correction_goal": "Adjust upper arm length and pivot spacing to match reference profile.",
+      "view": "side_hero"
+    },
+    "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+  },
+  "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+}

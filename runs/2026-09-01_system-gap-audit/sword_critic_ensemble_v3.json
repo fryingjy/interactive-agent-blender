@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE_RUN",
+  "records": [
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "grant_abbitt_curved_sword",
+        "component_ids": [
+          "blade",
+          "hilt_and_fittings"
+        ],
+        "context": "Blockout review. Ignore material and polish. The target is the exact sword shown in the instructor's side-orthographic reference at 01:17, not a generic sword.",
+        "request_sha256": "75a330f4ed775cf82e8ebaf17035fca5e0c625f57f9b62f73166a965c6562b5f",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild\\source_frame_0077_reference_crop.png",
+            "reference_sha256": "87dd737b5d5180539083433b7c68d150ce27409f22d049983a5fe464c3a5583b",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\corrected_front_solid.png",
+            "candidate_sha256": "2f49e3d8daab012c69cf4422fdd089aca62cb97dd4bb7d78ee421e00481ac706"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "The reference features an elegant, flowing curved sword with a distinct recurve, sharp tip, and detailed hilt collar.",
+            "candidate_observation": "The candidate presents a blocky, simplified sword silhouette with reduced curvature and chunkier hilt fittings.",
+            "semantic_match_score": 0.58,
+            "silhouette_match_score": 0.52,
+            "component_relationship_score": 0.62,
+            "depth_plausibility_score": 0.65,
+            "mismatches": [
+              {
+                "category": "SILHOUETTE",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "blade",
+                "evidence": "Candidate blade lacks the exaggerated curvature and sweeping taper toward the tip seen in the reference.",
+                "reference_box_2d": [
+                  215,
+                  275,
+                  638,
+                  933
+                ],
+                "candidate_box_2d": [
+                  450,
+                  286,
+                  545,
+                  951
+                ],
+                "severity": 0.68,
+                "confidence": 0.72,
+                "correction_goal": "Adjust the primary curvature and profile flow of the blade to match the reference silhouette."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Major form and proportion discrepancies exist in the blade silhouette, requiring primary shape adjustments.",
+        "limitations": [
+          "Evaluated based on a single orthographic side view."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "SILHOUETTE",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "blade",
+          "evidence": "Candidate blade lacks the exaggerated curvature and sweeping taper toward the tip seen in the reference.",
+          "reference_box_2d": [
+            215,
+            275,
+            638,
+            933
+          ],
+          "candidate_box_2d": [
+            450,
+            286,
+            545,
+            951
+          ],
+          "severity": 0.68,
+          "confidence": 0.72,
+          "correction_goal": "Adjust the primary curvature and profile flow of the blade to match the reference silhouette.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "grant_abbitt_curved_sword",
+        "component_ids": [
+          "blade",
+          "hilt_and_fittings"
+        ],
+        "context": "Blockout review. Ignore material and polish. The target is the exact sword shown in the instructor's side-orthographic reference at 01:17, not a generic sword.",
+        "request_sha256": "75a330f4ed775cf82e8ebaf17035fca5e0c625f57f9b62f73166a965c6562b5f",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild\\source_frame_0077_reference_crop.png",
+            "reference_sha256": "87dd737b5d5180539083433b7c68d150ce27409f22d049983a5fe464c3a5583b",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\corrected_front_solid.png",
+            "candidate_sha256": "2f49e3d8daab012c69cf4422fdd089aca62cb97dd4bb7d78ee421e00481ac706"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "Slender curved single-edged sword blade with an elegant upswept tip and detailed collar fitting.",
+            "candidate_observation": "Thicker, flatter blade profile with a blocky pommel and overall simplified silhouette lacking the sharp upsweep.",
+            "semantic_match_score": 0.65,
+            "silhouette_match_score": 0.58,
+            "component_relationship_score": 0.62,
+            "depth_plausibility_score": 0.65,
+            "mismatches": [
+              {
+                "category": "SILHOUETTE",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "blade",
+                "evidence": "Candidate blade curvature and upswept tip lack the sweep and fine tapering seen in the reference.",
+                "reference_box_2d": [
+                  212,
+                  281,
+                  620,
+                  936
+                ],
+                "candidate_box_2d": [
+                  454,
+                  288,
+                  545,
+                  951
+                ],
+                "severity": 0.55,
+                "confidence": 0.85,
+                "correction_goal": "Adjust blade profile to reflect the reference curvature and elongated tip."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "The candidate primary form shows significant silhouette and curvature deviations from the target blade silhouette.",
+        "limitations": [
+          "Only a single side view is available for comparative evaluation."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "SILHOUETTE",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "blade",
+          "evidence": "Candidate blade curvature and upswept tip lack the sweep and fine tapering seen in the reference.",
+          "reference_box_2d": [
+            212,
+            281,
+            620,
+            936
+          ],
+          "candidate_box_2d": [
+            454,
+            288,
+            545,
+            951
+          ],
+          "severity": 0.55,
+          "confidence": 0.85,
+          "correction_goal": "Adjust blade profile to reflect the reference curvature and elongated tip.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "grant_abbitt_curved_sword",
+        "component_ids": [
+          "blade",
+          "hilt_and_fittings"
+        ],
+        "context": "Blockout review. Ignore material and polish. The target is the exact sword shown in the instructor's side-orthographic reference at 01:17, not a generic sword.",
+        "request_sha256": "75a330f4ed775cf82e8ebaf17035fca5e0c625f57f9b62f73166a965c6562b5f",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild\\source_frame_0077_reference_crop.png",
+            "reference_sha256": "87dd737b5d5180539083433b7c68d150ce27409f22d049983a5fe464c3a5583b",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-grant-abbitt-detailed-sword\\corrected_front_solid.png",
+            "candidate_sha256": "2f49e3d8daab012c69cf4422fdd089aca62cb97dd4bb7d78ee421e00481ac706"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "Slender, elegantly curved sword blade with an asymmetrical tip curvature, subtle recurve base, and a styled hilt.",
+            "candidate_observation": "Thicker, straighter blockout blade with overly simplified hilt geometry and minimal curvature.",
+            "semantic_match_score": 0.5,
+            "silhouette_match_score": 0.45,
+            "component_relationship_score": 0.5,
+            "depth_plausibility_score": 0.55,
+            "mismatches": [
+              {
+                "category": "SILHOUETTE",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "blade",
+                "evidence": "Candidate blade lacks the dynamic sweeping curvature and proper tapering present in the reference.",
+                "reference_box_2d": [
+                  210,
+                  260,
+                  680,
+                  930
+                ],
+                "candidate_box_2d": [
+                  450,
+                  280,
+                  550,
+                  950
+                ],
+                "severity": 0.65,
+                "confidence": 0.7,
+                "correction_goal": "Refine blade profile to match the sweeping curve and tip curvature."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "The candidate primary form lacks the signature curvature and proportions of the reference curved sword.",
+        "limitations": [
+          "Single perspective view limits complete 3D depth evaluation."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "SILHOUETTE",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "blade",
+          "evidence": "Candidate blade lacks the dynamic sweeping curvature and proper tapering present in the reference.",
+          "reference_box_2d": [
+            210,
+            260,
+            680,
+            930
+          ],
+          "candidate_box_2d": [
+            450,
+            280,
+            550,
+            950
+          ],
+          "severity": 0.65,
+          "confidence": 0.7,
+          "correction_goal": "Refine blade profile to match the sweeping curve and tip curvature.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    }
+  ],
+  "consensus": {
+    "schema_version": 1,
+    "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE",
+    "request_sha256": "75a330f4ed775cf82e8ebaf17035fca5e0c625f57f9b62f73166a965c6562b5f",
+    "sample_count": 3,
+    "minimum_agreement": 2,
+    "decision_counts": {
+      "CORRECT_PRIMARY_FORM": 3
+    },
+    "decision": "CORRECT_PRIMARY_FORM",
+    "geometry_mutation_authorized": true,
+    "surface_candidate_authorized": false,
+    "consensus_mismatches": [
+      {
+        "view": "side",
+        "component_id": "blade",
+        "category": "SILHOUETTE",
+        "root_cause": "PROPORTION_FAILURE",
+        "repair_scope": "ADJUST_PRIMARY_FORM",
+        "agreement_count": 3,
+        "severity_median": 0.65,
+        "confidence_median": 0.72,
+        "evidence": "Candidate blade curvature and upswept tip lack the sweep and fine tapering seen in the reference.",
+        "correction_goal": "Adjust blade profile to reflect the reference curvature and elongated tip."
+      }
+    ],
+    "claim_boundary": "Consensus reduces single-call instability; it cannot replace registered references, deterministic measurements, topology inspection, or human acceptance."
+  }
+}

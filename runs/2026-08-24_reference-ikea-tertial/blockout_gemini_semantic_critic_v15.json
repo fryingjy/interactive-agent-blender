@@ -1,0 +1,105 @@
+{
+  "schema_version": 2,
+  "record_type": "GEMINI_REFERENCE_CRITIC",
+  "provenance": {
+    "provider": "Google Gemini",
+    "model": "gemini-3.6-flash",
+    "prompt_version": "blender-reference-critic-v3",
+    "target_id": "ikea-tertial-70504295",
+    "component_ids": [
+      "shade_shell",
+      "socket_housing",
+      "head_yoke",
+      "upper_parallel_arm",
+      "elbow_plate",
+      "lower_parallel_arm",
+      "base_clamp",
+      "tension_springs",
+      "pivot_hardware",
+      "power_cable"
+    ],
+    "context": "Current best reversible primary blockout after rollback of a failed 1.25x articulation experiment. Against the segmented official hero silhouette, this cage improves IoU from the retained v1 baseline of 0.2686 to 0.4440, centroid error from 0.0462 to 0.0063, and contour error from 0.0369 to 0.0150. Curved parts use temporary smooth preview copies only; saved geometry and shading are unchanged. Ignore materials, vent slots, screw heads, bevels, and polish. Judge primary form, silhouette, and component relationships at blockout scope.",
+    "request_sha256": "01138aed68975e46773cee75c5f5cc0a51731b77d66f05b16fb7e1b02046195f",
+    "view_artifacts": [
+      {
+        "view": "side_hero",
+        "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_reference-ikea-tertial\\references\\tertial_official_1.jpg",
+        "reference_sha256": "d521916fd765b03ff02206859090c62dd4e2e9ee6a8a2ee8761cb011bc050d27",
+        "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_reference-ikea-tertial\\blockout_v15_front_semantic_preview.png",
+        "candidate_sha256": "45049ec9b74637d6a7c37cabaafe0e957016becfbe42961ee53fd1a1e52030b0"
+      }
+    ]
+  },
+  "analysis": {
+    "target_identity_matches": true,
+    "view_reviews": [
+      {
+        "view": "side_hero",
+        "reference_observation": "IKEA Tertial work lamp featuring a classic dome shade with attached cylindrical socket housing, extended two-section articulated parallel arms, tension springs, joint plates, and desk clamp base.",
+        "candidate_observation": "3D blockout representing the Tertial lamp structure, showing the dome shade, socket housing, double parallel arms, joint connectors, springs, and clamp assembly.",
+        "semantic_match_score": 0.82,
+        "silhouette_match_score": 0.78,
+        "component_relationship_score": 0.8,
+        "depth_plausibility_score": 0.85,
+        "mismatches": [
+          {
+            "category": "PROPORTION",
+            "root_cause": "PROPORTION_FAILURE",
+            "repair_scope": "ADJUST_PRIMARY_FORM",
+            "component_id": "upper_parallel_arm",
+            "evidence": "Candidate upper parallel arm angle and length differ slightly from reference pose, altering overall proportion.",
+            "reference_box_2d": [
+              140,
+              318,
+              412,
+              830
+            ],
+            "candidate_box_2d": [
+              250,
+              381,
+              395,
+              740
+            ],
+            "severity": 0.25,
+            "confidence": 0.85,
+            "correction_goal": "Adjust arm lengths and joint angles to better match reference proportion."
+          }
+        ]
+      }
+    ],
+    "cross_view_contradictions": [],
+    "decision": "CORRECT_PRIMARY_FORM",
+    "decision_reason": "Visible primary form, arm articulation angle, and proportion mismatches remain relative to reference image.",
+    "limitations": [
+      "Single view available for review."
+    ]
+  },
+  "correction_directive": {
+    "disposition": "ADJUST_PRIMARY_FORM",
+    "ticket": {
+      "category": "PROPORTION",
+      "root_cause": "PROPORTION_FAILURE",
+      "repair_scope": "ADJUST_PRIMARY_FORM",
+      "component_id": "upper_parallel_arm",
+      "evidence": "Candidate upper parallel arm angle and length differ slightly from reference pose, altering overall proportion.",
+      "reference_box_2d": [
+        140,
+        318,
+        412,
+        830
+      ],
+      "candidate_box_2d": [
+        250,
+        381,
+        395,
+        740
+      ],
+      "severity": 0.25,
+      "confidence": 0.85,
+      "correction_goal": "Adjust arm lengths and joint angles to better match reference proportion.",
+      "view": "side_hero"
+    },
+    "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+  },
+  "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+}

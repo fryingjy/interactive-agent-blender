@@ -12,10 +12,15 @@ judgment, multi-view reference modeling, production preparation, broader held-ou
 longer-horizon retention, and experienced human review remain open. Advanced sculpting and organic
 specialization are deliberately deferred.
 
+**Reference-modeling hold: ACTIVE.** New prop construction is blocked until held-out human visual
+calibration passes. Controlled system fixtures are the only permitted modeling-like mutations. See
+[`knowledge/foundation/reference_modeling_readiness.json`](knowledge/foundation/reference_modeling_readiness.json).
+
 Current evidence includes:
 
 - typed modeling operations, persistent element IDs, semantic regions, state fingerprints, and
-  transaction-owned rollback;
+  transaction-owned rollback; localized mesh decisions can declare allowed persistent vertex IDs,
+  and commit is blocked if protected existing vertices move or disappear;
 - base-cage, modifier-evaluated, technical, silhouette, wireframe, normal, depth, and component
   evidence channels;
 - stage gates, reference measurements, localized mismatch tickets, strategy selection, and
@@ -75,6 +80,11 @@ Current evidence includes:
   target records must agree, created objects inherit authorization, and loaded objects require
   explicit adoption. Visual checkpoints permit one dominant correction and force a strategy change
   after two stagnant repairs or three attempts.
+- reference projection is now typed before geometry comparison; uncalibrated perspective remains
+  style-only, segmentation is audited for polarity/components/borders/expected holes, repeated
+  Gemini reviews require majority-localized repairs and unanimous surface advancement, and bounded
+  SciPy fitting searches only predeclared semantic parameters. A controlled camera/shape fixture
+  and frozen per-metric regression anchor pass, but do not clear the active modeling hold.
 
 The authoritative readiness decision is in
 [`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
@@ -91,6 +101,7 @@ The authoritative readiness decision is in
 | Current development priorities | [`docs/DEVELOPMENT_PRIORITIES.md`](docs/DEVELOPMENT_PRIORITIES.md) |
 | Current capability gap matrix | [`docs/CURRENT_STATE_GAP_MATRIX.md`](docs/CURRENT_STATE_GAP_MATRIX.md) |
 | Latest systemic gap repair | [`docs/SYSTEMIC_MODELING_GAP_REPAIR_2026-08-24.md`](docs/SYSTEMIC_MODELING_GAP_REPAIR_2026-08-24.md) |
+| Current system gap audit and hold | [`docs/SYSTEM_GAP_AUDIT_2026-09-01.md`](docs/SYSTEM_GAP_AUDIT_2026-09-01.md) |
 | Progressive prop benchmark ladder | [`docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md`](docs/PROGRESSIVE_PROP_BENCHMARK_CURRICULUM.md) |
 | Reference-interpretation contract | [`docs/REFERENCE_INTERPRETATION.md`](docs/REFERENCE_INTERPRETATION.md) |
 | External visual feedback and repair | [`docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md`](docs/HUMAN_VISUAL_REVIEW_PROTOCOL.md) |

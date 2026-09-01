@@ -1,0 +1,454 @@
+{
+  "target_id": "ikea-tertial-70504295",
+  "target_variant": "light-blue-us-70504295",
+  "components": [
+    {
+      "id": "shade_shell",
+      "label": "One-piece flared stamped-steel reflector",
+      "depth_critical": true
+    },
+    {
+      "id": "socket_housing",
+      "label": "Vented cylindrical socket housing",
+      "depth_critical": true
+    },
+    {
+      "id": "head_yoke",
+      "label": "Triangular head pivot yoke and swivel",
+      "depth_critical": true
+    },
+    {
+      "id": "upper_parallel_arm",
+      "label": "Two separate upper stamped-steel arm bars",
+      "depth_critical": true
+    },
+    {
+      "id": "elbow_plate",
+      "label": "Triangular middle joint plate with open cutout",
+      "depth_critical": true
+    },
+    {
+      "id": "lower_parallel_arm",
+      "label": "Two separate lower stamped-steel arm bars",
+      "depth_critical": true
+    },
+    {
+      "id": "base_clamp",
+      "label": "ABS table clamp, bushing, and lower pivot mount",
+      "depth_critical": true
+    },
+    {
+      "id": "tension_springs",
+      "label": "Four exposed extension springs",
+      "depth_critical": true
+    },
+    {
+      "id": "pivot_hardware",
+      "label": "Repeated pins, screws, washers, and adjustment tabs",
+      "depth_critical": false
+    },
+    {
+      "id": "power_cable",
+      "label": "Flexible power cable routed through the articulated assembly",
+      "depth_critical": false
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "parallel_bars_hero",
+      "reference_id": "official_product_hero",
+      "view": "side_hero",
+      "property": "parallel_rectangular_bars_visible",
+      "value": true,
+      "method": "Direct visual count: two separated rectangular strips are visible in each arm section.",
+      "evidence_path": "references/tertial_official_1.jpg"
+    },
+    {
+      "observation_id": "parallel_bars_assembly",
+      "reference_id": "assembly_overview",
+      "view": "assembly_overview",
+      "property": "parallel_rectangular_bars_visible",
+      "value": true,
+      "method": "Official line drawing independently depicts two separated long members per arm section.",
+      "evidence_path": "references/assembly_pages/page_01.png"
+    },
+    {
+      "observation_id": "upper_length_ratio",
+      "reference_id": "official_product_hero",
+      "view": "side_hero",
+      "property": "upper_pivot_length_over_shade_diameter",
+      "value": {
+        "min": 1.78,
+        "max": 2.0
+      },
+      "method": "Image landmarks: upper pivot span about 578 px; shade rim about 306 px; 1.89 ratio with \u00b16% perspective/landmark band.",
+      "evidence_path": "references/tertial_official_1.jpg"
+    },
+    {
+      "observation_id": "shade_is_revolved",
+      "reference_id": "assembly_shade_profile",
+      "view": "shade_profile_diagram",
+      "property": "rotationally_symmetric_flared_shell",
+      "value": true,
+      "method": "Official isolated part diagram shows one circular neck, continuous flared profile, and circular lower rim.",
+      "evidence_path": "references/assembly_pages/page_03.png"
+    },
+    {
+      "observation_id": "clamp_is_separate",
+      "reference_id": "assembly_clamp_parts",
+      "view": "clamp_exploded",
+      "property": "clamp_and_bushing_are_separate_parts",
+      "value": true,
+      "method": "Official exploded inventory depicts clamp and bushing/mount as two separately supplied parts.",
+      "evidence_path": "references/assembly_pages/page_04.png"
+    }
+  ],
+  "property_authority": [
+    {
+      "reference_id": "official_product_hero",
+      "property": "parallel_rectangular_bars_visible",
+      "fit_for_property": true
+    },
+    {
+      "reference_id": "assembly_overview",
+      "property": "parallel_rectangular_bars_visible",
+      "fit_for_property": true
+    },
+    {
+      "reference_id": "official_product_hero",
+      "property": "upper_pivot_length_over_shade_diameter",
+      "fit_for_property": true
+    },
+    {
+      "reference_id": "assembly_shade_profile",
+      "property": "rotationally_symmetric_flared_shell",
+      "fit_for_property": true
+    },
+    {
+      "reference_id": "assembly_clamp_parts",
+      "property": "clamp_and_bushing_are_separate_parts",
+      "fit_for_property": true
+    }
+  ],
+  "passes": {
+    "identity": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "silhouette": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "massing": {
+      "status": "PASS",
+      "evidence_ids": [
+        "upper_length_ratio"
+      ]
+    },
+    "components": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "depth": {
+      "status": "PASS",
+      "evidence_ids": [
+        "clamp_is_separate"
+      ]
+    },
+    "negative_space": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero",
+        "clamp_is_separate"
+      ]
+    },
+    "cross_sections": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero",
+        "shade_is_revolved"
+      ]
+    },
+    "representation_hypotheses": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "cross_view_prediction": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "uncertainty": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    },
+    "construction_plan": {
+      "status": "PASS",
+      "evidence_ids": [
+        "parallel_bars_hero"
+      ]
+    }
+  },
+  "regions": [
+    {
+      "region_id": "upper_arm_structure",
+      "component_id": "upper_parallel_arm",
+      "minimum_confirmed_views": 2,
+      "selected_hypothesis_id": "paired_stamped_bars",
+      "hypotheses": [
+        {
+          "hypothesis_id": "paired_stamped_bars",
+          "interpretation": {
+            "structure_type": "floating_separate_assembly",
+            "summary": "Two separate shallow rectangular stamped bars",
+            "justification": "Both official photo and assembly drawing show two separated parallel strips; head close-up confirms shallow rectangular cross-sections."
+          },
+          "construction": {
+            "family": "profile_extrusion"
+          },
+          "predicted_consequences": [
+            {
+              "reference_id": "official_product_hero",
+              "observation_id": "parallel_bars_hero",
+              "view": "side_hero",
+              "property": "parallel_rectangular_bars_visible",
+              "prediction_type": "boolean_state",
+              "prediction": true
+            },
+            {
+              "reference_id": "assembly_overview",
+              "observation_id": "parallel_bars_assembly",
+              "view": "assembly_overview",
+              "property": "parallel_rectangular_bars_visible",
+              "prediction_type": "boolean_state",
+              "prediction": true
+            }
+          ]
+        },
+        {
+          "hypothesis_id": "single_wide_arm_slab",
+          "interpretation": {
+            "structure_type": "extruded_slab",
+            "summary": "One wide solid link per section",
+            "justification": "A low-resolution silhouette could collapse the paired strips into one slab; retained as the competing failure mode."
+          },
+          "construction": {
+            "family": "box_poly"
+          },
+          "predicted_consequences": [
+            {
+              "reference_id": "official_product_hero",
+              "observation_id": "parallel_bars_hero",
+              "view": "side_hero",
+              "property": "parallel_rectangular_bars_visible",
+              "prediction_type": "boolean_state",
+              "prediction": false
+            },
+            {
+              "reference_id": "assembly_overview",
+              "observation_id": "parallel_bars_assembly",
+              "view": "assembly_overview",
+              "property": "parallel_rectangular_bars_visible",
+              "prediction_type": "boolean_state",
+              "prediction": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "region_id": "shade_shell_construction",
+      "component_id": "shade_shell",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "shade_shell_selected",
+          "interpretation": {
+            "structure_type": "revolved_body",
+            "summary": "shade_shell",
+            "justification": "Official isolated-part diagram and product photos show one axisymmetric stamped reflector; a connected revolved profile preserves the neck, dome, flare, and rolled lip."
+          },
+          "construction": {
+            "family": "profile_revolution"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "socket_housing_construction",
+      "component_id": "socket_housing",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "socket_housing_selected",
+          "interpretation": {
+            "structure_type": "revolved_body",
+            "summary": "socket_housing",
+            "justification": "The housing is a circular vented shell around the bulb socket; start from one connected revolved cage and cut/represent slots only after primary form approval."
+          },
+          "construction": {
+            "family": "profile_revolution"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "head_yoke_construction",
+      "component_id": "head_yoke",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "head_yoke_selected",
+          "interpretation": {
+            "structure_type": "floating_separate_assembly",
+            "summary": "head_yoke",
+            "justification": "Close-up proves rounded triangular plates, shaft, and arm bars are mechanically separate layers around pivots."
+          },
+          "construction": {
+            "family": "profile_extrusion"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "elbow_plate_construction",
+      "component_id": "elbow_plate",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "elbow_plate_selected",
+          "interpretation": {
+            "structure_type": "through_hole",
+            "summary": "elbow_plate",
+            "justification": "The elbow is a stamped triangular plate with a large through opening; model its outer and inner profile as one connected plate cage."
+          },
+          "construction": {
+            "family": "profile_extrusion"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "lower_parallel_arm_construction",
+      "component_id": "lower_parallel_arm",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "lower_parallel_arm_selected",
+          "interpretation": {
+            "structure_type": "floating_separate_assembly",
+            "summary": "lower_parallel_arm",
+            "justification": "Installed and oblique views confirm two separate shallow rectangular strips mirroring the upper link construction."
+          },
+          "construction": {
+            "family": "profile_extrusion"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "base_clamp_construction",
+      "component_id": "base_clamp",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "base_clamp_selected",
+          "interpretation": {
+            "structure_type": "floating_separate_assembly",
+            "summary": "base_clamp",
+            "justification": "Official exploded view proves clamp and bushing are separate ABS parts; each part should be a connected box-modeled cage with the functional clamping void preserved."
+          },
+          "construction": {
+            "family": "box_poly"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "tension_springs_construction",
+      "component_id": "tension_springs",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "tension_springs_selected",
+          "interpretation": {
+            "structure_type": "swept_tube",
+            "summary": "tension_springs",
+            "justification": "Four physically separate helical tension springs follow measured hook endpoints; curve sweeps are the appropriate reversible representation."
+          },
+          "construction": {
+            "family": "curve_sweep"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "pivot_hardware_construction",
+      "component_id": "pivot_hardware",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "pivot_hardware_selected",
+          "interpretation": {
+            "structure_type": "nested_cylindrical_stack",
+            "summary": "pivot_hardware",
+            "justification": "Repeated actual fasteners are shallow 12-16 sided radial parts, instanced from a small number of authored hardware forms."
+          },
+          "construction": {
+            "family": "separate_radial_assembly"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "power_cable_construction",
+      "component_id": "power_cable",
+      "uncontested": true,
+      "hypotheses": [
+        {
+          "hypothesis_id": "power_cable_selected",
+          "interpretation": {
+            "structure_type": "swept_tube",
+            "summary": "power_cable",
+            "justification": "The official product views expose one flexible cable whose routed arches materially affect the outer silhouette; a reversible curve sweep matches its physical construction."
+          },
+          "construction": {
+            "family": "curve_sweep"
+          }
+        }
+      ]
+    }
+  ],
+  "construction_plan": {
+    "selected_hypothesis_ids": [
+      "paired_stamped_bars",
+      "shade_shell_selected",
+      "socket_housing_selected",
+      "head_yoke_selected",
+      "elbow_plate_selected",
+      "lower_parallel_arm_selected",
+      "base_clamp_selected",
+      "tension_springs_selected",
+      "pivot_hardware_selected",
+      "power_cable_selected"
+    ],
+    "generic_operations": [
+      "create_profile_extrusion",
+      "create_quad_radial_surface",
+      "create_curve_sweep",
+      "transform_objects"
+    ],
+    "reversible_assumptions": []
+  }
+}

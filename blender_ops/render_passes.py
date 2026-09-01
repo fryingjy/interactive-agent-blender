@@ -28,6 +28,11 @@ import bmesh
 import bpy
 import mathutils
 
+try:
+    from . import decision_state
+except ImportError:  # Blender add-on modules are also loaded as top-level modules.
+    import decision_state
+
 _VIEW_VECTORS = {
     "front": mathutils.Vector((0.0, -1.0, 0.0)),
     "back": mathutils.Vector((0.0, 1.0, 0.0)),
@@ -208,6 +213,8 @@ def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
         wire.thickness = max(local_diag * 0.004, 0.002)
         wire.use_replace = True
         return temp
+    if pass_type == "smooth_preview":
+        return temp
     attribute = mesh.color_attributes.new(name="visual_pass_color", type="BYTE_COLOR", domain="CORNER")
     mesh.color_attributes.active_color = attribute
     if pass_type == "normal":
@@ -227,7 +234,10 @@ def _diagnostic_mesh_copy(obj, pass_type, direction, depth_range):
     return temp
 
 
-def render_diagnostic_pass(name, output_path, pass_type, view="front", resolution=512, margin=1.15, frame_name=None):
+def render_diagnostic_pass(
+    name, output_path, pass_type, view="front", resolution=512, margin=1.15,
+    frame_name=None, preview_smooth_names=None,
+):
     """Render a controlled Blender-native diagnostic pass.
 
     Supported passes are `solid`, `matcap`, `wireframe`, `normal`, `depth`, `component_mask`, and
@@ -248,6 +258,11 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
     if pass_type not in valid_passes:
         return {"error": f"pass_type must be one of {sorted(valid_passes)}"}
     names = [name] if isinstance(name, str) else list(name)
+    smooth_names = set(preview_smooth_names or [])
+    if smooth_names - set(names):
+        return {"error": "preview_smooth_names must be a subset of target object names"}
+    if smooth_names and pass_type not in {"solid", "matcap"}:
+        return {"error": "preview_smooth_names is supported only for solid or matcap passes"}
     objs = []
     for object_name in names:
         obj = bpy.data.objects.get(object_name)
@@ -287,6 +302,19 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
     if pass_type in {"wireframe", "normal", "depth"}:
         temp_objects = [_diagnostic_mesh_copy(obj, pass_type, direction, depth_range) for obj in objs]
         render_objects = temp_objects
+    elif smooth_names:
+        # Copy the complete target set, not only smoothed members. Mixing
+        # evaluated temporary meshes with source objects can produce renderer-
+        # dependent visibility/shading differences in Workbench. A complete
+        # temporary review set keeps the pass isolated and deterministic.
+        render_objects = []
+        for obj in objs:
+            temp = _diagnostic_mesh_copy(obj, "smooth_preview", direction, depth_range)
+            if obj.name in smooth_names:
+                for polygon in temp.data.polygons:
+                    polygon.use_smooth = True
+            temp_objects.append(temp)
+            render_objects.append(temp)
 
     cam_data = bpy.data.cameras.new(name="__diagnostic_cam__")
     cam_data.type = "ORTHO"
@@ -443,12 +471,19 @@ def render_diagnostic_pass(name, output_path, pass_type, view="front", resolutio
         "resolution": [resolution, resolution],
         "target_objects": names,
         "frame_objects": frame_names,
+        "preview_smooth_names": sorted(smooth_names),
+        "preview_geometry_mutated": False,
         "camera_location": camera_location,
         "camera_ortho_scale": diag * margin,
-        "scene_revision": scene.get("scene_revision"),
+        "scene_revision": decision_state.current_revision(),
         "foreground_fill_ratio": round(fill_ratio, 6),
         "foreground_unique_colors_5bit": unique_quantized,
         "dominant_channel_pixel_counts": dominant,
+        "preview_limitation": (
+            "Smooth preview affects temporary evaluated copies only; raw-cage wireframe and saved "
+            "object shading remain the authority for topology and edge-intent review."
+            if smooth_names else None
+        ),
     }
 
 

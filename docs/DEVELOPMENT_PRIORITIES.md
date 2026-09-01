@@ -1,7 +1,13 @@
 # Current modeling-development priorities
 
 **Effective:** 2026-08-11
-**Status:** binding override for research, experiments, and benchmark selection
+**Status:** binding override for research, experiments, and benchmark selection; **SYSTEM REPAIR HOLD ACTIVE 2026-09-01**
+
+New reference-prop construction is blocked by
+`knowledge/foundation/reference_modeling_readiness.json`. Only controlled system-validation
+fixtures are permitted while the hold is active. Existing target-level authorization does not
+override this repository-wide hold. Clear it only after every listed gate passes; threshold
+lowering or a single successful example is not clearance.
 
 The current target is professional prop modeling. Resource allocation should therefore favor
 skills that improve editable hard-surface and subdivision assets from references:
@@ -53,7 +59,7 @@ specialization. Existing evidence remains **KNOWN / DEFERRED**; it is not delete
   density, pole-placement, and repair judgment; sculpt-heavy organic pipelines do not.
 - A minimal sculpt operation is allowed only when it is the most suitable local technique inside
   a primarily higher-priority prop workflow.
-- New held-out work should favor electronics, mechanical or stylized equipment, furniture,
+- After the system-repair hold clears, new held-out work should favor electronics, mechanical or stylized equipment, furniture,
   containers, appliances, product-like assets, curved SubD objects, and complex hard-surface props.
 - For continuous product skins, predeclare one-object and one-connected-component expectations.
   Grow compatible features from routed loops, inset, extrusion, bridge, spin, or related Edit Mode

@@ -11,11 +11,12 @@ import json
 import math
 import mimetypes
 import os
+import statistics
 from pathlib import Path
 from typing import Any, Callable
 
 
-PROMPT_VERSION = "blender-reference-critic-v2"
+PROMPT_VERSION = "blender-reference-critic-v3"
 DEFAULT_MODEL = "gemini-3.6-flash"
 DECISIONS = {
     "REJECT_REPRESENTATION",
@@ -213,6 +214,13 @@ Decision rules:
   silhouette, component-relationship, and depth-plausibility scores and no mismatch severity exceeds
   0.10. This decision is only a machine-review candidate and never human acceptance.
 
+Measurement discipline:
+- A reference_box_2d and candidate_box_2d pair must enclose the same component scope.
+- Before saying narrower/wider, compare normalized box widths. Before saying shorter/taller,
+  compare normalized box heights. The signed correction direction must agree with those numbers.
+- If framing, occlusion, or perspective prevents that comparison, report EVALUATOR_FAILURE with
+  RECALIBRATE_EVALUATOR instead of issuing a directional geometry correction.
+
 Return only the requested JSON. Preserve uncertainty in limitations."""
 
 
@@ -247,6 +255,28 @@ def _valid_box(value: Any) -> bool:
     ):
         return False
     return value[0] <= value[2] and value[1] <= value[3]
+
+
+def _validate_directional_box_claim(mismatch: dict[str, Any]) -> None:
+    """Reject geometry advice whose signed direction contradicts its own boxes."""
+    if mismatch.get("category") not in {"PROPORTION", "SILHOUETTE"}:
+        return
+    reference = mismatch.get("reference_box_2d")
+    candidate = mismatch.get("candidate_box_2d")
+    if not (isinstance(reference, list) and len(reference) == 4 and isinstance(candidate, list) and len(candidate) == 4):
+        return
+    reference_height, reference_width = reference[2] - reference[0], reference[3] - reference[1]
+    candidate_height, candidate_width = candidate[2] - candidate[0], candidate[3] - candidate[1]
+    text = f"{mismatch.get('evidence', '')} {mismatch.get('correction_goal', '')}".lower()
+    tolerance = 0.03
+    if any(word in text for word in ("narrower", "too narrow", "widen")) and candidate_width >= reference_width * (1 - tolerance):
+        raise ValueError("critic width correction contradicts its normalized boxes")
+    if any(word in text for word in ("wider", "too wide", "narrow the")) and candidate_width <= reference_width * (1 + tolerance):
+        raise ValueError("critic width correction contradicts its normalized boxes")
+    if any(word in text for word in ("shorter", "too short", "increase height", "make taller")) and candidate_height >= reference_height * (1 - tolerance):
+        raise ValueError("critic height correction contradicts its normalized boxes")
+    if any(word in text for word in ("taller", "too tall", "reduce height", "make shorter")) and candidate_height <= reference_height * (1 + tolerance):
+        raise ValueError("critic height correction contradicts its normalized boxes")
 
 
 def validate_critic_analysis(data: dict[str, Any], manifest: dict[str, Any]) -> None:
@@ -323,6 +353,7 @@ def validate_critic_analysis(data: dict[str, Any], manifest: dict[str, Any]) -> 
                 raise ValueError("critic mismatch box must be [] or normalized [ymin,xmin,ymax,xmax]")
             if not str(mismatch.get("evidence") or "").strip() or not str(mismatch.get("correction_goal") or "").strip():
                 raise ValueError("critic mismatch requires evidence and correction_goal")
+            _validate_directional_box_claim(mismatch)
             high_severity = high_severity or float(mismatch["severity"]) > 0.10
         if min(float(review[field]) for field in score_fields) < 0.90 and not mismatches:
             raise ValueError("a below-threshold view requires at least one localized mismatch")
@@ -550,4 +581,102 @@ def analyze_reference_candidate(
             "This remote VLM review may reject or localize visible mismatches. It cannot prove "
             "topology, hidden geometry, professional quality, or human acceptance."
         ),
+    }
+
+
+def reconcile_critic_records(
+    records: list[dict[str, Any]], *, minimum_agreement: int | None = None
+) -> dict[str, Any]:
+    """Reconcile repeated independent reviews without averaging disagreement away.
+
+    An advance requires unanimity. Rejections/corrections require a majority decision and only
+    retain mismatch tickets whose component, category, root cause, and repair scope independently
+    recur. A split decision is classified as evaluator failure and cannot mutate geometry.
+    """
+    if len(records) < 2:
+        raise ValueError("critic reconciliation requires at least two records")
+    for record in records:
+        validate_critic_record(record)
+    fingerprints = {record["provenance"]["request_sha256"] for record in records}
+    if len(fingerprints) != 1:
+        raise ValueError("critic ensemble records do not review the same hash-bound request")
+    threshold = minimum_agreement or (len(records) // 2 + 1)
+    if not 2 <= threshold <= len(records):
+        raise ValueError("minimum_agreement must be between two and the sample count")
+    decisions: dict[str, int] = {}
+    for record in records:
+        decision = record["analysis"]["decision"]
+        decisions[decision] = decisions.get(decision, 0) + 1
+    winning_decision, winning_count = max(decisions.items(), key=lambda item: (item[1], item[0]))
+    decision_consensus = winning_count >= threshold
+    if winning_decision == "ADVANCE_TO_SURFACE_CANDIDATE" and winning_count != len(records):
+        decision_consensus = False
+
+    grouped: dict[tuple[str, str, str, str, str], list[dict[str, Any]]] = {}
+    for record in records:
+        for review in record["analysis"]["view_reviews"]:
+            for mismatch in review["mismatches"]:
+                key = (
+                    review["view"].lower(), mismatch["component_id"], mismatch["category"],
+                    mismatch["root_cause"], mismatch["repair_scope"],
+                )
+                grouped.setdefault(key, []).append(mismatch)
+    consensus_mismatches = []
+    for key, items in sorted(grouped.items()):
+        if len(items) < threshold:
+            continue
+        representative = max(items, key=lambda item: (float(item["confidence"]), float(item["severity"])))
+        consensus_mismatches.append({
+            "view": key[0],
+            "component_id": key[1],
+            "category": key[2],
+            "root_cause": key[3],
+            "repair_scope": key[4],
+            "agreement_count": len(items),
+            "severity_median": statistics.median(float(item["severity"]) for item in items),
+            "confidence_median": statistics.median(float(item["confidence"]) for item in items),
+            "evidence": representative["evidence"],
+            "correction_goal": representative["correction_goal"],
+        })
+    evaluator_failure = not decision_consensus or (
+        winning_decision != "ADVANCE_TO_SURFACE_CANDIDATE" and not consensus_mismatches
+    )
+    return {
+        "schema_version": 1,
+        "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE",
+        "request_sha256": next(iter(fingerprints)),
+        "sample_count": len(records),
+        "minimum_agreement": threshold,
+        "decision_counts": decisions,
+        "decision": "EVALUATOR_FAILURE" if evaluator_failure else winning_decision,
+        "geometry_mutation_authorized": bool(
+            not evaluator_failure and winning_decision != "ADVANCE_TO_SURFACE_CANDIDATE" and consensus_mismatches
+        ),
+        "surface_candidate_authorized": bool(
+            not evaluator_failure and winning_decision == "ADVANCE_TO_SURFACE_CANDIDATE"
+        ),
+        "consensus_mismatches": consensus_mismatches,
+        "claim_boundary": "Consensus reduces single-call instability; it cannot replace registered references, deterministic measurements, topology inspection, or human acceptance.",
+    }
+
+
+def analyze_reference_candidate_ensemble(
+    manifest: dict[str, Any],
+    *,
+    samples: int = 3,
+    model: str = DEFAULT_MODEL,
+    api_key: str | None = None,
+    generate: Callable[..., Any] | None = None,
+) -> dict[str, Any]:
+    if not isinstance(samples, int) or isinstance(samples, bool) or not 2 <= samples <= 7:
+        raise ValueError("samples must be an integer in [2, 7]")
+    records = [
+        analyze_reference_candidate(manifest, model=model, api_key=api_key, generate=generate)
+        for _ in range(samples)
+    ]
+    return {
+        "schema_version": 1,
+        "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE_RUN",
+        "records": records,
+        "consensus": reconcile_critic_records(records),
     }

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "target_id": "ikea-tertial-70504295",
+  "component_ids": [
+    "shade_shell", "socket_housing", "head_yoke", "upper_parallel_arm",
+    "elbow_plate", "lower_parallel_arm", "base_clamp", "tension_springs",
+    "pivot_hardware", "power_cable"
+  ],
+  "context": "Semantic primary-blockout preview after scaling articulated pivot spacing 1.25x about the fixed clamp pivot. The correction addresses the official hero measurements: upper pivot span is 1.89 shade diameters and lower pivot span is 1.95 shade diameters, each with a six-percent perspective band. Curved parts use temporary smooth preview copies only; saved geometry and shading are unchanged. Ignore materials, vent slots, screw heads, bevels, and polish. Judge primary form, silhouette, and component relationships at blockout scope.",
+  "views": [
+    {
+      "view": "side_hero",
+      "reference": "references/tertial_official_1.jpg",
+      "candidate": "blockout_v14_front_semantic_preview.png"
+    }
+  ]
+}

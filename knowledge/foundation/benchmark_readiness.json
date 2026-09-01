@@ -70,7 +70,13 @@
       ]
     }
   ],
-  "ready_for_held_out_modeling": true,
+  "ready_for_held_out_modeling": false,
+  "system_repair_hold": {
+    "status": "ACTIVE",
+    "authority": "knowledge/foundation/reference_modeling_readiness.json",
+    "effective_date": "2026-09-01",
+    "reason": "New prop work is blocked until camera/reference registration, segmentation, verifier consensus, immutable multi-task non-regression, and held-out human calibration all pass. The automated gates now pass; held-out human visual calibration remains open."
+  },
   "selection_priority": {
     "P0": [
       "tools",

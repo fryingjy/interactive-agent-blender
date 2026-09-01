@@ -1,0 +1,167 @@
+{
+  "object_name": "IKEA TERTIAL Work Lamp 705.042.95",
+  "object_class": "articulated clamp work lamp",
+  "reference_style": "mixed",
+  "components": [
+    {
+      "name": "shade_shell",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": false,
+      "notes": "One-piece flared stamped-steel reflector",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "ShadeShell"
+      }
+    },
+    {
+      "name": "socket_housing",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": false,
+      "notes": "Vented cylindrical socket housing",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "SocketHousing"
+      }
+    },
+    {
+      "name": "head_yoke",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Triangular head pivot yoke and swivel",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "HeadYoke"
+      }
+    },
+    {
+      "name": "upper_parallel_arm",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Two separate upper stamped-steel arm bars",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "UpperArmBar_A"
+      }
+    },
+    {
+      "name": "elbow_plate",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": false,
+      "notes": "Triangular middle joint plate with open cutout",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "ElbowPlate"
+      }
+    },
+    {
+      "name": "lower_parallel_arm",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Two separate lower stamped-steel arm bars",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "LowerArmBar_A"
+      }
+    },
+    {
+      "name": "base_clamp",
+      "role": "primary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "ABS table clamp, bushing, and lower pivot mount",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "BaseClamp"
+      }
+    },
+    {
+      "name": "tension_springs",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Four exposed extension springs",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "UpperSpring_Front"
+      }
+    },
+    {
+      "name": "pivot_hardware",
+      "role": "tertiary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Repeated pins, screws, washers, and adjustment tabs",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "ElbowPivot"
+      }
+    },
+    {
+      "name": "power_cable",
+      "role": "secondary",
+      "manufacture": "structural",
+      "separately_manufactured": true,
+      "notes": "Flexible power cable routed through the articulated assembly",
+      "evidence_status": "OBSERVED",
+      "confidence": 0.9,
+      "evidence": [
+        "reference_manifest.json"
+      ],
+      "coverage_binding": {
+        "kind": "object",
+        "object_name": "PowerCable"
+      }
+    }
+  ]
+}
