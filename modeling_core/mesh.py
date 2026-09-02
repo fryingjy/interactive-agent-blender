@@ -48,3 +48,33 @@ def build_section_loft(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[in
             nxt = (segment + 1) % segments
             faces.append((lower + segment, lower + nxt, upper + nxt, upper + segment))
     return np.asarray(vertices, dtype=np.float64), faces
+
+
+def build_profile_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    """Build one connected all-quad side cage from an arbitrary measured X/Z outline."""
+    profile = [(float(point[0]), float(point[1])) for point in shape["profile"]]
+    sx, sy, sz = (float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z"))
+    vertices = []
+    for station in shape["depth_stations"]:
+        for x, z in profile:
+            vertices.append((
+                x * sx * float(station.get("scale_x", 1.0)),
+                float(station["y"]) * sy,
+                z * sz * float(station.get("scale_z", 1.0)),
+            ))
+    count = len(profile)
+    faces = []
+    for station in range(len(shape["depth_stations"]) - 1):
+        front, rear = station * count, (station + 1) * count
+        for index in range(count):
+            nxt = (index + 1) % count
+            faces.append((front + index, front + nxt, rear + nxt, rear + index))
+    return np.asarray(vertices, dtype=np.float64), faces
+
+
+def build_shape_mesh(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    if shape["family"] == "section_loft":
+        return build_section_loft(shape)
+    if shape["family"] == "profile_extrusion":
+        return build_profile_extrusion(shape)
+    raise ValueError(f"unsupported shape family: {shape.get('family')}")

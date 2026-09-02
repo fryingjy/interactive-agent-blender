@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "candidate_id": "blade-profile",
+  "shape": {
+    "family": "profile_extrusion",
+    "scale_x": 1.0,
+    "scale_y": 1.0,
+    "scale_z": 1.0,
+    "profile": [[-0.22, -1.0], [0.22, -1.0], [0.34, 0.35], [0.16, 0.78], [0.0, 1.08], [-0.16, 0.78], [-0.34, 0.35]],
+    "depth_stations": [
+      {"y": -0.12, "scale_x": 0.92, "scale_z": 1.0},
+      {"y": 0.0, "scale_x": 1.0, "scale_z": 1.0},
+      {"y": 0.12, "scale_x": 0.92, "scale_z": 1.0}
+    ]
+  },
+  "views": [
+    {"id": "front", "projection": "orthographic", "image_size": [96, 96], "yaw_degrees": 0, "pitch_degrees": 0, "roll_degrees": 0, "world_scale": 2.5, "offset_x": 0, "offset_y": 0},
+    {"id": "side", "projection": "orthographic", "image_size": [96, 96], "yaw_degrees": 90, "pitch_degrees": 0, "roll_degrees": 0, "world_scale": 2.5, "offset_x": 0, "offset_y": 0}
+  ],
+  "variables": [
+    {"pointer": "/shape/scale_x", "bounds": [0.7, 1.4]},
+    {"pointer": "/shape/scale_y", "bounds": [0.6, 1.4]}
+  ],
+  "acceptance": {"max_mean_view_loss": 0.18, "max_each_view_loss": 0.25, "require_hole_count_match": true}
+}

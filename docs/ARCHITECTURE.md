@@ -30,11 +30,13 @@ base cage + evaluated surface + diagnostic renders
 ## `modeling_core/`
 
 - `hypothesis.py` validates the executable shape/camera intermediate representation.
+- `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic connected cages from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.
 - `fitting.py` performs bounded multiview fitting and preserves per-view disagreement.
 - `compiler.py` emits the existing typed `create_authored_quad_mesh` command without applying
   modifiers.
+- `selection.py` competes generic shape families and refuses to select an incompatible candidate.
 
 This layer exists because correctness cannot be recovered by adding more Blender operations to a
 bad shape plan. Coordinates must be measured or fitted before they become scene mutations.

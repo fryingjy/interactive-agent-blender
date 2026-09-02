@@ -70,6 +70,16 @@ def main():
     loose_verts = sum(1 for v in bm.verts if not v.link_edges)
     loose_edges = sum(1 for e in bm.edges if not e.link_faces)
     degenerate_faces = sum(1 for f in bm.faces if f.calc_area() < 1e-8)
+    winding_conflicts = 0
+    for edge in bm.edges:
+        if len(edge.link_faces) != 2:
+            continue
+        directions = []
+        for face in edge.link_faces:
+            loop = next(loop for loop in face.loops if loop.edge == edge)
+            directions.append((loop.vert.index, loop.link_loop_next.vert.index))
+        if directions[0] == directions[1]:
+            winding_conflicts += 1
 
     # Signed volume on a closed manifold mesh is positive only if normals are
     # consistently outward-facing -- a definitive check, not a heuristic.
@@ -87,6 +97,7 @@ def main():
         "loose_verts": loose_verts,
         "loose_edges": loose_edges,
         "degenerate_faces": degenerate_faces,
+        "face_winding_conflicts": winding_conflicts,
         "signed_volume": signed_volume,
     }
     bm.free()
@@ -98,7 +109,7 @@ def main():
         "ngons_ok": ngons <= args.max_ngons,
         "loose_geometry_ok": loose_verts == 0 and loose_edges == 0,
         "degenerate_faces_ok": degenerate_faces == 0,
-        "normals_consistent_ok": True if args.allow_open else signed_volume > 0,
+        "normals_consistent_ok": winding_conflicts == 0 and (args.allow_open or signed_volume > 0),
     }
     passed = all(checks.values())
 

@@ -21,12 +21,30 @@ def _rotation(view: dict[str, Any]) -> np.ndarray:
 
 
 def project_vertices(vertices: np.ndarray, view: dict[str, Any]) -> np.ndarray:
-    """Project world XYZ to image XY using an explicit orthographic camera hypothesis."""
+    """Project world XYZ to image XY using an explicit camera hypothesis."""
     width, height = view["image_size"]
     rotated = np.asarray(vertices, dtype=float) @ _rotation(view).T
-    scale = float(view["world_scale"])
-    x = width * 0.5 + (rotated[:, 0] / scale + float(view["offset_x"])) * min(width, height)
-    y = height * 0.5 - (rotated[:, 2] / scale + float(view["offset_y"])) * min(width, height)
+    if view.get("projection", "orthographic") == "perspective":
+        matrix = view.get("world_to_camera")
+        if matrix is not None:
+            homogeneous = np.column_stack((np.asarray(vertices, dtype=float), np.ones(len(vertices))))
+            camera = homogeneous @ np.asarray(matrix, dtype=float).T
+            depth = camera[:, 2]
+            horizontal = camera[:, 0]
+            vertical = camera[:, 1]
+        else:
+            depth = float(view["camera_distance"]) - rotated[:, 1]
+            horizontal = rotated[:, 0]
+            vertical = -rotated[:, 2]
+        if np.any(depth <= 1e-4):
+            raise ValueError("geometry crosses or falls behind the perspective camera")
+        focal = 0.5 * height / math.tan(0.5 * math.radians(float(view["vertical_fov_degrees"])))
+        x = width * 0.5 + focal * horizontal / depth + float(view["offset_x"]) * min(width, height)
+        y = height * 0.5 + focal * vertical / depth - float(view["offset_y"]) * min(width, height)
+    else:
+        scale = float(view["world_scale"])
+        x = width * 0.5 + (rotated[:, 0] / scale + float(view["offset_x"])) * min(width, height)
+        y = height * 0.5 - (rotated[:, 2] / scale + float(view["offset_y"])) * min(width, height)
     return np.column_stack((x, y))
 
 

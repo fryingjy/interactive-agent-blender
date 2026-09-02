@@ -10,23 +10,24 @@ The Blender control plane is mature: typed operations, persistent mesh identity,
 rollback, state fingerprints, evaluated-geometry inspection, semantic regions, and Blender-native
 diagnostic renders are implemented.
 
-The shape-solving plane has been restarted. The first working vertical slice now:
+The shape-solving plane has been restarted. Its working vertical slice now:
 
 1. validates an explicit shape-and-camera hypothesis;
 2. renders it cheaply on CPU;
-3. fits bounded semantic parameters to multiple silhouettes;
-4. retains disagreement per view;
-5. compiles the result into one connected all-quad cage;
-6. leaves surface modifiers live and unapplied for the artist.
+3. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
+4. fits bounded semantic parameters to multiple silhouettes and enclosed negative spaces;
+5. competes section-loft and arbitrary profile-extrusion families and rejects incompatible fits;
+6. compiles a compatible result into one connected all-quad cage;
+7. leaves surface modifiers live and unapplied for the artist.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
-current solver supports orthographic section lofts only. Professional generalization remains
-unproven.
+current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
+Professional generalization remains unproven.
 
 ## Architecture
 
 ```text
-references -> masks/cameras -> bounded shape hypothesis -> multiview fit
+references -> masks/landmarks/cameras -> competing shape hypotheses -> multiview fit
            -> topology compiler -> typed Blender transaction -> inspect/refit/reject
 ```
 
@@ -61,6 +62,9 @@ Fit and compile a hypothesis:
 
 ```powershell
 python tools/modeling_pipeline.py validate hypothesis.json
+python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
+python tools/modeling_pipeline.py select-family loft.json profile.json `
+  --mask front=front-mask.png --mask side=side-mask.png --output selected.json
 python tools/modeling_pipeline.py fit hypothesis.json `
   --mask front=front-mask.png --mask side=side-mask.png --output fitted.json
 python tools/modeling_pipeline.py compile fitted.json --name Blockout --output command.json

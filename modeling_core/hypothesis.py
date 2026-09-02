@@ -27,36 +27,75 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("shape hypothesis must be a schema-version 1 object")
     result = copy.deepcopy(raw)
     shape = result.get("shape")
-    if not isinstance(shape, dict) or shape.get("family") != "section_loft":
-        raise ValueError("shape.family must be section_loft")
-    segments = int(shape.get("segments", 0))
-    if segments < 8 or segments > 32 or segments % 4:
-        raise ValueError("section loft segments must be a multiple of four from 8 through 32")
-    shape["segments"] = segments
-    shape["cross_section"] = str(shape.get("cross_section", "superellipse"))
-    if shape["cross_section"] not in {"superellipse", "box"}:
-        raise ValueError("shape.cross_section must be superellipse or box")
+    if not isinstance(shape, dict) or shape.get("family") not in {"section_loft", "profile_extrusion"}:
+        raise ValueError("shape.family must be section_loft or profile_extrusion")
     for key in ("scale_x", "scale_y", "scale_z"):
         shape[key] = _finite(shape.get(key, 1.0), f"shape.{key}")
         if shape[key] <= 0:
             raise ValueError(f"shape.{key} must be positive")
-    stations = shape.get("stations")
-    if not isinstance(stations, list) or len(stations) < 2:
-        raise ValueError("section loft needs at least two stations")
-    previous_z = None
-    for index, station in enumerate(stations):
-        if not isinstance(station, dict):
-            raise ValueError(f"station {index} must be an object")
-        for key in ("z", "half_width", "half_depth"):
-            station[key] = _finite(station.get(key), f"station {index}.{key}")
-        station["power"] = _finite(station.get("power", 2.0), f"station {index}.power")
-        if station["half_width"] <= 0 or station["half_depth"] <= 0:
-            raise ValueError(f"station {index} dimensions must be positive")
-        if not 1.0 <= station["power"] <= 12.0:
-            raise ValueError(f"station {index}.power must be between 1 and 12")
-        if previous_z is not None and station["z"] <= previous_z:
-            raise ValueError("station z values must be strictly increasing")
-        previous_z = station["z"]
+    if shape["family"] == "section_loft":
+        segments = int(shape.get("segments", 0))
+        if segments < 8 or segments > 32 or segments % 4:
+            raise ValueError("section loft segments must be a multiple of four from 8 through 32")
+        shape["segments"] = segments
+        shape["cross_section"] = str(shape.get("cross_section", "superellipse"))
+        if shape["cross_section"] not in {"superellipse", "box"}:
+            raise ValueError("shape.cross_section must be superellipse or box")
+        stations = shape.get("stations")
+        if not isinstance(stations, list) or len(stations) < 2:
+            raise ValueError("section loft needs at least two stations")
+        previous_z = None
+        for index, station in enumerate(stations):
+            if not isinstance(station, dict):
+                raise ValueError(f"station {index} must be an object")
+            for key in ("z", "half_width", "half_depth"):
+                station[key] = _finite(station.get(key), f"station {index}.{key}")
+            station["power"] = _finite(station.get("power", 2.0), f"station {index}.power")
+            if station["half_width"] <= 0 or station["half_depth"] <= 0:
+                raise ValueError(f"station {index} dimensions must be positive")
+            if not 1.0 <= station["power"] <= 12.0:
+                raise ValueError(f"station {index}.power must be between 1 and 12")
+            if previous_z is not None and station["z"] <= previous_z:
+                raise ValueError("station z values must be strictly increasing")
+            previous_z = station["z"]
+    else:
+        profile = shape.get("profile")
+        if not isinstance(profile, list) or len(profile) < 4:
+            raise ValueError("profile extrusion needs at least four outline points")
+        normalized_profile = []
+        for index, point in enumerate(profile):
+            if not isinstance(point, list) or len(point) != 2:
+                raise ValueError(f"profile point {index} must be [x, z]")
+            normalized_profile.append([_finite(point[0], "profile x"), _finite(point[1], "profile z")])
+        if len({tuple(point) for point in normalized_profile}) != len(normalized_profile):
+            raise ValueError("profile outline points must be unique")
+        signed_area = 0.5 * sum(
+            point[0] * normalized_profile[(index + 1) % len(normalized_profile)][1]
+            - normalized_profile[(index + 1) % len(normalized_profile)][0] * point[1]
+            for index, point in enumerate(normalized_profile)
+        )
+        if abs(signed_area) <= 1e-10:
+            raise ValueError("profile outline must enclose non-zero area")
+        shape["profile_winding_normalized"] = signed_area > 0.0
+        if signed_area > 0.0:
+            normalized_profile.reverse()
+        shape["profile_winding"] = "CLOCKWISE_XZ"
+        shape["profile"] = normalized_profile
+        depth_stations = shape.get("depth_stations")
+        if not isinstance(depth_stations, list) or len(depth_stations) < 2:
+            raise ValueError("profile extrusion needs at least two depth stations")
+        previous_y = None
+        for index, station in enumerate(depth_stations):
+            if not isinstance(station, dict):
+                raise ValueError(f"depth station {index} must be an object")
+            station["y"] = _finite(station.get("y"), f"depth station {index}.y")
+            station["scale_x"] = _finite(station.get("scale_x", 1.0), f"depth station {index}.scale_x")
+            station["scale_z"] = _finite(station.get("scale_z", 1.0), f"depth station {index}.scale_z")
+            if station["scale_x"] <= 0 or station["scale_z"] <= 0:
+                raise ValueError("depth-station scales must be positive")
+            if previous_y is not None and station["y"] <= previous_y:
+                raise ValueError("depth-station y values must be strictly increasing")
+            previous_y = station["y"]
 
     views = result.get("views")
     if not isinstance(views, list) or not views:
@@ -69,9 +108,10 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
         if not identifier or identifier in identifiers:
             raise ValueError("view ids must be unique and non-empty")
         identifiers.add(identifier)
-        if view.get("projection", "orthographic") != "orthographic":
-            raise ValueError("the CPU solver currently accepts orthographic views only")
-        view["projection"] = "orthographic"
+        projection = str(view.get("projection", "orthographic"))
+        if projection not in {"orthographic", "perspective"}:
+            raise ValueError("view projection must be orthographic or perspective")
+        view["projection"] = projection
         view["image_size"] = [int(value) for value in view.get("image_size", [])]
         if len(view["image_size"]) != 2 or min(view["image_size"]) < 16:
             raise ValueError(f"view {identifier} needs image_size [width, height] >= 16")
@@ -80,6 +120,27 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
             view[key] = _finite(view.get(key, default), f"view {identifier}.{key}")
         if view["world_scale"] <= 0:
             raise ValueError(f"view {identifier}.world_scale must be positive")
+        view["camera_distance"] = _finite(view.get("camera_distance", 5.0), f"view {identifier}.camera_distance")
+        view["vertical_fov_degrees"] = _finite(view.get("vertical_fov_degrees", 50.0), f"view {identifier}.vertical_fov_degrees")
+        if projection == "perspective":
+            if view["camera_distance"] <= 0:
+                raise ValueError(f"view {identifier}.camera_distance must be positive")
+            if not 5.0 <= view["vertical_fov_degrees"] <= 150.0:
+                raise ValueError(f"view {identifier}.vertical_fov_degrees must be between 5 and 150")
+            matrix = view.get("world_to_camera")
+            if matrix is not None:
+                if not isinstance(matrix, list) or len(matrix) != 3 or any(not isinstance(row, list) or len(row) != 4 for row in matrix):
+                    raise ValueError(f"view {identifier}.world_to_camera must be a 3x4 matrix")
+                view["world_to_camera"] = [[_finite(value, "world_to_camera") for value in row] for row in matrix]
+
+    acceptance = result.setdefault("acceptance", {})
+    if not isinstance(acceptance, dict):
+        raise ValueError("acceptance must be an object")
+    acceptance["max_mean_view_loss"] = _finite(acceptance.get("max_mean_view_loss", 0.18), "acceptance.max_mean_view_loss")
+    acceptance["max_each_view_loss"] = _finite(acceptance.get("max_each_view_loss", 0.25), "acceptance.max_each_view_loss")
+    acceptance["require_hole_count_match"] = bool(acceptance.get("require_hole_count_match", True))
+    if acceptance["max_mean_view_loss"] <= 0 or acceptance["max_each_view_loss"] <= 0:
+        raise ValueError("acceptance loss limits must be positive")
 
     variables = result.get("variables", [])
     if not isinstance(variables, list):

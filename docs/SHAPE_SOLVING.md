@@ -8,15 +8,17 @@ materialized silhouettes outside Blender.
 
 A schema-version 1 hypothesis contains:
 
-- one `section_loft` connected-cage family;
+- a generic `section_loft` or arbitrary measured `profile_extrusion` connected-cage family;
 - 8–32 radial segments in multiples of four (12 or 16 is the normal blockout range);
 - either a true sharp `box` perimeter or a measured `superellipse` cross-section;
 - ordered cross sections with width, depth, height, and superellipse power;
 - explicit orthographic camera hypotheses;
 - JSON-pointer variables with finite bounds.
 
-The initial family is intentionally narrow. A target that cannot be represented by it must trigger
-a new generic family or a documented assembly split—not a target-named Python builder.
+The family set is intentionally narrow. `section_loft` covers axial manufactured forms;
+`profile_extrusion` covers blades, shields, brackets, plates, and other outline-led forms with
+controlled depth stations. A target that cannot be represented must trigger a new generic family or
+a documented assembly split—not a target-named Python builder.
 
 ## Closed loop
 
@@ -33,25 +35,38 @@ reference images
 ```
 
 The optimizer may change only declared variables. It cannot invent parts, switch topology, or hide
-a failed view inside an aggregate score. Per-view losses remain in the fit record.
+a failed view inside an aggregate score. Per-view losses, contour error, and enclosed negative-space
+counts remain in the fit record. Perspective views carry explicit distance and field of view.
 
 ## Command line
 
 ```powershell
 python tools/modeling_pipeline.py validate hypothesis.json
+python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
+python tools/modeling_pipeline.py select-family loft.json profile.json `
+  --mask front=front-mask.png --mask side=side-mask.png --output selected.json
 python tools/modeling_pipeline.py fit hypothesis.json `
   --mask front=front-mask.png --mask side=side-mask.png --output fitted.json
 python tools/modeling_pipeline.py compile fitted.json --name Blockout --output command.json
 ```
 
+Family selection fits at least two generic candidates against identical evidence and returns only
+the lowest-loss compatible result. Compilation refuses raw or incompatible fits by default.
+
 The compiled command uses `create_authored_quad_mesh`. It emits one connected all-quad side cage,
 leaves caps explicit, and applies no modifiers. Blender mutations still run through the existing
 decision transaction and independent state inspection.
 
+Perspective calibration expects at least six non-coplanar 3D landmarks paired with measured image
+pixels and a stated field of view. It records the world-to-camera matrix and normalized reprojection
+error; it does not invent correspondences or pretend an arbitrary product board is a calibrated
+multiview capture.
+
 ## Current boundary
 
-This is a real vertical slice, not general reconstruction yet. It supports orthographic section
-lofts and has a deterministic two-view recovery test. Perspective calibration, articulated
-assemblies, profile-extrusion cages, negative-space constraints, and image-derived initialization
-remain future work. Optional image-to-3D systems may provide priors, but their meshes are never
-accepted as production topology.
+This is a real vertical slice, not general reconstruction yet. It supports orthographic and
+perspective cameras, section lofts, profile extrusions, explicit negative-space diagnostics, and
+fail-closed family compatibility. Articulated assemblies, perspective initialization from image
+landmarks, negative-space-producing topology, and image-derived shape initialization remain future
+work. Optional image-to-3D systems may provide priors, but their meshes are never accepted as
+production topology.

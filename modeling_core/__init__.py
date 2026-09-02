@@ -1,15 +1,23 @@
 """Reference-conditioned shape solving before Blender mutation."""
 
 from .compiler import compile_blender_command
-from .fitting import fit_hypothesis
+from .camera import calibrate_perspective_view, camera_intrinsics
+from .fitting import fit_hypothesis, mask_diagnostics
 from .hypothesis import validate_hypothesis
-from .mesh import build_section_loft
+from .mesh import build_profile_extrusion, build_section_loft, build_shape_mesh
 from .render import render_silhouette
+from .selection import select_shape_family
 
 __all__ = [
     "build_section_loft",
+    "build_profile_extrusion",
+    "build_shape_mesh",
+    "calibrate_perspective_view",
+    "camera_intrinsics",
     "compile_blender_command",
     "fit_hypothesis",
+    "mask_diagnostics",
     "render_silhouette",
+    "select_shape_family",
     "validate_hypothesis",
 ]
