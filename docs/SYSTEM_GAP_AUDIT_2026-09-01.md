@@ -8,8 +8,9 @@ failure was an underconstrained **perception → diagnosis → mutation** loop: 
 segmentation, representation, and geometry errors could be conflated, then a single noisy critic or
 aggregate silhouette score could authorize another incorrect edit.
 
-New prop modeling is therefore on an enforced hold. The runtime permits only explicitly declared
-`SYSTEM_VALIDATION_FIXTURE` work until every readiness gate passes.
+New prop modeling was placed on an enforced hold while the repair gates were open. The runtime
+permitted only explicitly declared `SYSTEM_VALIDATION_FIXTURE` work until every gate passed. That
+hold was cleared later on 2026-09-01 by the frozen calibration described below.
 
 ## Root causes found
 
@@ -96,17 +97,16 @@ official maintenance release. The localized transaction fixture was rerun succes
 9. Keep baseline, retained best, and one named failed hypothesis; purge intermediate duplicates.
 10. Require held-out human visual calibration before clearing the modeling hold.
 
-## Still open — no false completion claim
+## Calibration resolution — no false completion claim
 
-The controlled mechanisms and a frozen three-target real-reference rejection regression now pass.
-That regression covers the TERTIAL lamp, curved sword, and Panasonic radio families and refuses
-aggregate-score substitution. The system is still not cleared for new prop modeling: held-out human
-visual calibration remains open. The hold is intentionally active until that gate passes. A single
-successful or improved prop will not clear it.
+The controlled mechanisms and frozen three-target real-reference rejection regression pass. That
+regression covers the TERTIAL lamp, curved sword, and Panasonic radio families and refuses
+aggregate-score substitution. The later external response agreed with all four precommitted
+calibration decisions, so the system hold is cleared for a new Level-1 prop.
 
 The external calibration is now prepared, not silently self-scored. Four frozen cases cover the
 CG Cookie crate, Sweaty Grease carabiner, Blender official watering can, and a pixel-identical
 positive control. Three independent Gemini reviews are retained per case. A human must review the
-public image pairs without reading the frozen critic outputs; any disagreement remains evaluator
-failure and keeps the hold active. Passing this gate would calibrate rejection behavior only, not
-prove modeling competence.
+public image pairs without reading the frozen critic outputs. The retained response and result show
+4/4 agreement: all three model candidates were rejected and the identical control was accepted.
+This calibrates rejection behavior only; it does not prove modeling competence.

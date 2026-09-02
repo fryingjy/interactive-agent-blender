@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "record_type": "HELD_OUT_HUMAN_VISUAL_CALIBRATION_RESPONSE",
+  "reviewer_type": "human",
+  "reviewer_id": "capz",
+  "reviewed_at": "2026-09-01",
+  "source_quote": "HC-A: REJECT_MAJOR_FORM; HC-B: REJECT_MAJOR_FORM; HC-C: REJECT_MAJOR_FORM; HC-D: ACCEPT_VISIBLE_MATCH",
+  "cases": [
+    {
+      "case_id": "HC-A",
+      "verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong."
+    },
+    {
+      "case_id": "HC-B",
+      "verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong."
+    },
+    {
+      "case_id": "HC-C",
+      "verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong."
+    },
+    {
+      "case_id": "HC-D",
+      "verdict": "ACCEPT_VISIBLE_MATCH",
+      "notes": "Human reviewer accepted the exact visible-match control."
+    }
+  ]
+}

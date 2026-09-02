@@ -1,5 +1,7 @@
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from knowledge_engine.modeling_readiness import (
     evaluate_modeling_scope,
@@ -38,6 +40,30 @@ class ModelingReadinessTests(unittest.TestCase):
         invalid["clearance_gates"][1]["status"] = "PASS"
         validate_modeling_readiness_policy(invalid)
         self.assertTrue(evaluate_modeling_scope(invalid, "NEW_REFERENCE_PROP")["allowed"])
+
+    def test_repository_policy_is_cleared_by_retained_human_calibration(self):
+        root = Path(__file__).resolve().parents[1]
+        repository_policy = json.loads(
+            (root / "knowledge/foundation/reference_modeling_readiness.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        validate_modeling_readiness_policy(repository_policy)
+        calibration = next(
+            gate
+            for gate in repository_policy["clearance_gates"]
+            if gate["id"] == "held_out_human_visual_calibration"
+        )
+        result = json.loads(
+            (root / "runs/2026-09-01_human-calibration/result.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertEqual(repository_policy["status"], "CLEARED")
+        self.assertEqual(calibration["status"], "PASS")
+        self.assertTrue(result["pass"])
+        self.assertEqual(result["agreement_count"], result["case_count"])
+        self.assertTrue(evaluate_modeling_scope(repository_policy, "NEW_REFERENCE_PROP")["allowed"])
 
 
 if __name__ == "__main__":

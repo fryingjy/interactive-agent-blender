@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "record_type": "REFERENCE_MODELING_READINESS",
-  "status": "ACTIVE",
+  "status": "CLEARED",
   "effective_date": "2026-09-01",
-  "reason": "The repaired perception and evaluator loop now passes controlled and immutable historical regressions, but those automated gates cannot establish professional visual judgment. New reference-driven props remain blocked pending held-out human calibration.",
+  "reason": "Every frozen system-readiness gate now passes. External human calibration agreed with all four precommitted evaluator decisions: three visibly wrong model candidates were rejected and the pixel-identical control was accepted. This clears the system hold for a new Level-1 reference prop but does not establish professional modeling capability.",
   "allowed_scopes": ["SYSTEM_VALIDATION_FIXTURE"],
   "clearance_gates": [
     {"id": "reference_projection_classification", "status": "PASS", "evidence": ["knowledge_engine/reference_registration.py", "tests/test_reference_registration.py"]},
@@ -12,7 +12,7 @@
     {"id": "critic_consensus_and_conflict_lab", "status": "PASS", "evidence": ["knowledge_engine/gemini_reference_critic.py", "tests/test_gemini_reference_critic.py"]},
     {"id": "controlled_perception_regression_anchor", "status": "PASS", "evidence": ["knowledge/foundation/reference_perception_regression_anchor.json", "runs/2026-09-01_reference-perception-lab/regression.json"]},
     {"id": "immutable_multitask_non_regression", "status": "PASS", "evidence": ["knowledge/foundation/reference_evaluator_regression_anchor.json", "runs/2026-09-01_system-gap-audit/reference_evaluator_regression.json"]},
-    {"id": "held_out_human_visual_calibration", "status": "NOT_RUN", "evidence": ["runs/2026-09-01_human-calibration/public_manifest.json", "knowledge/foundation/held_out_human_calibration_anchor.json"], "note": "Frozen four-case package is ready; only an external human response can complete this gate."}
+    {"id": "held_out_human_visual_calibration", "status": "PASS", "evidence": ["runs/2026-09-01_human-calibration/public_manifest.json", "knowledge/foundation/held_out_human_calibration_anchor.json", "runs/2026-09-01_human-calibration/human_response.json", "runs/2026-09-01_human-calibration/result.json"], "note": "External human response agreed with all four frozen critic decisions. This calibrates accept/reject behavior only."}
   ],
   "clearance_rule": "Set status to CLEARED only after every gate is PASS with retained evidence. Do not lower thresholds to manufacture readiness.",
   "prohibited_while_active": [

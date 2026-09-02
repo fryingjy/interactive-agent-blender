@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "record_type": "HELD_OUT_HUMAN_VISUAL_CALIBRATION_RESULT",
+  "reviewer_type": "human",
+  "reviewer_id": "capz",
+  "results": [
+    {
+      "case_id": "HC-A",
+      "target_id": "cgcookie_scifi_crate_tutorial",
+      "automated_decision": "CORRECT_PRIMARY_FORM",
+      "human_verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong.",
+      "agreement": true
+    },
+    {
+      "case_id": "HC-B",
+      "target_id": "sweaty_grease_carabiner_tutorial",
+      "automated_decision": "CORRECT_PRIMARY_FORM",
+      "human_verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong.",
+      "agreement": true
+    },
+    {
+      "case_id": "HC-C",
+      "target_id": "blender_official_watering_can_tutorial",
+      "automated_decision": "CORRECT_PRIMARY_FORM",
+      "human_verdict": "REJECT_MAJOR_FORM",
+      "notes": "Human reviewer explicitly judged the modeled candidates wrong.",
+      "agreement": true
+    },
+    {
+      "case_id": "HC-D",
+      "target_id": "pixel_identity_positive_control",
+      "automated_decision": "ADVANCE_TO_SURFACE_CANDIDATE",
+      "human_verdict": "ACCEPT_VISIBLE_MATCH",
+      "notes": "Human reviewer accepted the exact visible-match control.",
+      "agreement": true
+    }
+  ],
+  "agreement_count": 4,
+  "case_count": 4,
+  "decision": "PASS",
+  "pass": true,
+  "claim_boundary": "This calibrates frozen semantic accept/reject decisions on retained images. It does not establish professional modeling skill, hidden-form correctness, topology quality, or unfamiliar-prop generalization."
+}

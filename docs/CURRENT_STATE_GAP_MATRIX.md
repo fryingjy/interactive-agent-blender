@@ -143,10 +143,10 @@ can model, judge hidden geometry, or grant professional/human acceptance. The ne
 sparse-cage correction loop followed by an unrelated second target.
 # 2026-09-01 system-repair override
 
-Reference-driven modeling is under an active repository-wide hold. Controlled camera/shape
+The repository-wide reference-modeling hold is now cleared. Controlled camera/shape
 disentanglement, mask-integrity, bounded parameter fitting, critic-consensus, perception
-non-regression, and immutable three-target real-reference rejection regression now pass. A frozen
-four-case external calibration package is ready, but held-out human visual calibration remains
-open, so the system is not authorized to start another prop. See
+non-regression, and immutable three-target real-reference rejection regression pass. The frozen
+four-case external calibration then agreed 4/4: three bad models were rejected and the identical
+control was accepted. This permits the next Level-1 run but does not upgrade capability status. See
 `docs/SYSTEM_GAP_AUDIT_2026-09-01.md` and
 `knowledge/foundation/reference_modeling_readiness.json`.

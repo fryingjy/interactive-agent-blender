@@ -12,8 +12,9 @@ judgment, multi-view reference modeling, production preparation, broader held-ou
 longer-horizon retention, and experienced human review remain open. Advanced sculpting and organic
 specialization are deliberately deferred.
 
-**Reference-modeling hold: ACTIVE.** New prop construction is blocked until held-out human visual
-calibration passes. Controlled system fixtures are the only permitted modeling-like mutations. See
+**Reference-modeling hold: CLEARED.** The frozen four-case human calibration agreed 4/4 with the
+precommitted evaluator decisions. A new Level-1 reference prop may begin, but the foundation remains
+PARTIAL and no professional-capability claim is authorized. See
 [`knowledge/foundation/reference_modeling_readiness.json`](knowledge/foundation/reference_modeling_readiness.json).
 
 Current evidence includes:
@@ -84,7 +85,8 @@ Current evidence includes:
   style-only, segmentation is audited for polarity/components/borders/expected holes, repeated
   Gemini reviews require majority-localized repairs and unanimous surface advancement, and bounded
   SciPy fitting searches only predeclared semantic parameters. A controlled camera/shape fixture
-  and frozen per-metric regression anchor pass, but do not clear the active modeling hold.
+  and frozen per-metric regression anchor pass; the later frozen human calibration clears the
+  system hold without proving modeling competence.
 
 The authoritative current readiness decision is in
 [`knowledge/foundation/reference_modeling_readiness.json`](knowledge/foundation/reference_modeling_readiness.json).
@@ -95,6 +97,7 @@ The final evaluator-calibration package is frozen at
 [`runs/2026-09-01_human-calibration/public_manifest.json`](runs/2026-09-01_human-calibration/public_manifest.json).
 It contains three retained neutral model comparisons plus a pixel-identical positive control. The
 critic outputs are hash-bound before human review; disagreement cannot be tuned away afterward.
+The retained [`result.json`](runs/2026-09-01_human-calibration/result.json) records 4/4 agreement.
 
 ## Start here
 
