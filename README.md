@@ -23,8 +23,9 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 5. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
    evidence while leaving component shape families unresolved;
 6. initializes section-loft, outline-extrusion, radial, and one-hole candidates directly from
-   registered orthographic component masks, including solved world bounds and residual-derived
-   parameter bounds, while rejecting rank-deficient depth evidence;
+   registered orthographic or calibrated multiview-perspective component masks, including solved
+   world bounds and residual-derived parameter bounds, while rejecting rank-deficient cameras and
+   inconsistent projected bounds;
 7. fits each component's competing generic families against its own label masks under fixed shared
    cameras, including bounded object-space placement without letting candidates move the camera;
 8. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while

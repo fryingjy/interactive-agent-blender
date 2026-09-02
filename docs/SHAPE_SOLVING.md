@@ -48,13 +48,16 @@ view without materially worsening the all-view mean; it is never applied directl
 lever exists, the ticket requests family/bound reconsideration. A negative-space count mismatch is
 classified as a representation failure rather than disguised as a scale or smoothing adjustment.
 
-`initialize-components` removes the need to hand-author the first coordinates for the currently
-supported orthographic case. It solves component center and axis-aligned half-extents from registered
-silhouette bounds, requires rank three for both placement and extent systems, selects a stable X/Z
-profile view, and derives loft stations, external outlines, radial profiles, or corresponding
-outer/inner through-hole loops. Translation and scale bounds come from solve residual, mask pixel
-scale, and an explicit uncertainty floor. Rank-deficient views produce no geometry. The initializer
-does not yet solve perspective-only evidence, sweep paths, multiple holes, or hidden concavity.
+`initialize-components` removes the need to hand-author the first coordinates for registered
+orthographic or calibrated multiview-perspective evidence. The orthographic path requires rank
+three for both placement and extent systems. The perspective path triangulates mask-center rays,
+requires well-conditioned calibrated camera geometry, and nonlinearly fits an axis-aligned box to
+the projected bounds of its eight corners. Both paths select a stable X/Z profile view and derive
+loft stations, external outlines, radial profiles, or corresponding outer/inner through-hole loops.
+Translation and scale bounds come from solve residual, mask pixel scale, and an explicit uncertainty
+floor. Rank-deficient cameras and mutually inconsistent bounds produce no geometry. The initializer
+does not infer camera calibration or component correspondences, and it does not yet initialize
+sweep paths, multiple holes, or hidden concavity.
 
 `compile-assembly` emits typed `create_authored_quad_mesh` commands only when every family and
 assembly edge is resolved. Separate assemblies remain separate editable objects. A connected set of

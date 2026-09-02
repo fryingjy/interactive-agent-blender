@@ -159,6 +159,21 @@ initialization on explicit component labels. The next scoped gap is calibrated-p
 initialization, followed by automatic component/correspondence proposals with confidence and
 correction hooks on ordinary photographs.
 
+Evidence update — 2026-09-02 (candidate-initialization cycle 2): calibrated perspective component
+masks can now initialize the same executable family set without target-authored coordinates. The
+solver validates rigid world-to-camera matrices, triangulates component-center rays, rejects weak
+camera rank/conditioning, and fits an axis-aligned 3D box against the projected bounds of all eight
+corners. Perspective profile rays are intersected with a solved X/Z plane instead of being treated
+as orthographic measurements. Controlled tests recover translated nonuniform bounds, reject
+duplicate cameras and non-rigid calibration, and preserve family ambiguity when the evidence does
+not distinguish two valid explanations. A separate one-hole fixture completed calibrated masks →
+automatic candidate initialization → ring-versus-solid competition → correct ring selection →
+typed Blender compilation. Fresh Blender 5.2.1 execution and independent verification produced a
+closed 48-vertex/48-quad cage with zero invalid non-manifold edges, boundaries, n-gons, loose
+geometry, degenerates, or winding conflicts. This proves calibrated multiview perspective bounds,
+not calibration or semantic perception from ordinary photographs. The next P0 gap is automatic
+component and cross-view correspondence proposals with explicit confidence and correction hooks.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain
@@ -168,9 +183,9 @@ Current priority order:
    manual correction hooks.
 3. **Camera and correspondence solving** — initialize orthographic/perspective views from image
    evidence, report reprojection error, and reject underconstrained calibration.
-4. **Complete evidence-derived candidate initialization** — extend the proved orthographic path to
-   calibrated perspective views and path/repeated families while retaining rank, residual, and
-   uncertainty diagnostics instead of relying on hand-authored candidate coordinates.
+4. **Automatic component and cross-view correspondence proposals** — replace explicit label-map
+   identity with confidence-scored, editable proposals while retaining source hashes, variant
+   checks, ambiguity, and correction hooks; do not let semantic guesses silently authorize shape.
 5. **Remaining representation and fitting gaps** — add only evidence-justified shell,
    multi-opening, repeated, or branch families; preserve per-view/component disagreement and convert
    contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.

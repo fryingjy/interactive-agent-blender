@@ -13,7 +13,12 @@ from .assembly import propose_assembly_hypotheses, resolve_assembly_hypotheses
 from .component_fitting import compile_component_assembly, fit_component_families
 from .continuity import build_continuous_cage, shape_boundary_ports
 from .refit import build_component_refit_tickets
-from .initialization import initialize_component_candidates, solve_orthographic_component_bounds
+from .initialization import (
+    initialize_component_candidates,
+    solve_orthographic_component_bounds,
+    solve_perspective_component_bounds,
+    solve_registered_component_bounds,
+)
 from .selection import select_shape_family
 
 __all__ = [
@@ -43,6 +48,8 @@ __all__ = [
     "build_component_refit_tickets",
     "initialize_component_candidates",
     "solve_orthographic_component_bounds",
+    "solve_perspective_component_bounds",
+    "solve_registered_component_bounds",
     "select_shape_family",
     "validate_hypothesis",
 ]

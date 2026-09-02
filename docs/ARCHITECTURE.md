@@ -50,9 +50,11 @@ base cage + evaluated surface + diagnostic renders
   material multiview-mean regression; unrepresented negative spaces escalate to a family or graph
   change.
 - `initialization.py` solves an axis-aligned world center and extent box from independent registered
-  orthographic component silhouettes, derives executable profiles/width stations/one-hole loops,
-  and creates residual- and pixel-uncertainty-bounded candidate variables. Rank-deficient views
-  remain explicitly underconstrained.
+  orthographic silhouettes or calibrated multiview perspective silhouette boxes. Perspective
+  initialization triangulates component-center rays, fits projected eight-corner bounds, and
+  rejects weak camera geometry or inconsistent observations. Both paths derive executable
+  profiles/width stations/one-hole loops and residual- and pixel-uncertainty-bounded variables;
+  rank-deficient views remain explicitly underconstrained.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic loft, extrusion, closed annular extrusion, revolution, and
   transported-frame circular/profile sweep cages from semantic parameters.

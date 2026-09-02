@@ -9,10 +9,11 @@ from typing import Any
 
 import cv2
 import numpy as np
-from scipy.optimize import lsq_linear
+from scipy.optimize import least_squares, lsq_linear
 
+from .camera import camera_intrinsics
 from .hypothesis import validate_hypothesis
-from .render import view_rotation_matrix
+from .render import project_vertices, view_rotation_matrix
 
 
 SUPPORTED_INITIAL_FAMILIES = {
@@ -143,6 +144,7 @@ def solve_orthographic_component_bounds(
     uncertainty = min(0.35, max(0.08, relative_residual * 2.0, max(pixel_scales) * 2.0 / float(np.min(extents))))
     return {
         "status": "SOLVED",
+        "method": "ORTHOGRAPHIC_LINEAR_BOUNDS",
         "used_view_ids": used_views,
         "center": center.tolist(),
         "half_extents": extents.tolist(),
@@ -156,13 +158,200 @@ def solve_orthographic_component_bounds(
     }
 
 
+def _perspective_camera(view: dict[str, Any]) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    matrix = np.asarray(view.get("world_to_camera"), dtype=float)
+    if matrix.shape != (3, 4) or not np.isfinite(matrix).all():
+        raise ValueError(f"perspective view {view.get('id')} requires a finite calibrated 3x4 world_to_camera matrix")
+    rotation, translation = matrix[:, :3], matrix[:, 3]
+    if not np.allclose(rotation @ rotation.T, np.eye(3), atol=1e-4) or np.linalg.det(rotation) < 0.99:
+        raise ValueError(f"perspective view {view.get('id')} has a non-rigid calibration matrix")
+    center = -rotation.T @ translation
+    return rotation, translation, center
+
+
+def _perspective_ray(view: dict[str, Any], pixel: tuple[float, float]) -> tuple[np.ndarray, np.ndarray]:
+    rotation, _translation, center = _perspective_camera(view)
+    width, height = view["image_size"]
+    intrinsics = camera_intrinsics(tuple(view["image_size"]), float(view["vertical_fov_degrees"]))
+    canvas = min(width, height)
+    adjusted_x = float(pixel[0]) - float(view.get("offset_x", 0.0)) * canvas
+    adjusted_y = float(pixel[1]) + float(view.get("offset_y", 0.0)) * canvas
+    camera_direction = np.asarray([
+        (adjusted_x - intrinsics[0, 2]) / intrinsics[0, 0],
+        (adjusted_y - intrinsics[1, 2]) / intrinsics[1, 1],
+        1.0,
+    ])
+    world_direction = rotation.T @ camera_direction
+    world_direction /= np.linalg.norm(world_direction)
+    return center, world_direction
+
+
+def _box_corners(center: np.ndarray, extents: np.ndarray) -> np.ndarray:
+    signs = np.asarray([
+        [x, y, z]
+        for x in (-1.0, 1.0)
+        for y in (-1.0, 1.0)
+        for z in (-1.0, 1.0)
+    ])
+    return center + signs * extents
+
+
+def solve_perspective_component_bounds(
+    masks: dict[str, np.ndarray],
+    views: list[dict[str, Any]],
+    *,
+    maximum_normalized_bbox_residual: float = 0.035,
+) -> dict[str, Any]:
+    """Fit an axis-aligned world box to calibrated perspective silhouette bounds."""
+    if not 0 < maximum_normalized_bbox_residual <= 0.25:
+        raise ValueError("maximum_normalized_bbox_residual must be in (0, 0.25]")
+    view_map = {view["id"]: view for view in views}
+    if len(view_map) != len(views) or set(masks) != set(view_map):
+        raise ValueError("component masks and solver views must have unique matching ids")
+    calibrated = []
+    observations = {}
+    ray_origins = []
+    ray_directions = []
+    for view_id, mask in masks.items():
+        view = view_map[view_id]
+        if view.get("projection") != "perspective" or view.get("world_to_camera") is None:
+            continue
+        _rotation, _translation, camera_center = _perspective_camera(view)
+        ys, xs = np.nonzero(mask)
+        bbox = np.asarray([xs.min(), ys.min(), xs.max(), ys.max()], dtype=float)
+        pixel_center = (0.5 * (bbox[0] + bbox[2]), 0.5 * (bbox[1] + bbox[3]))
+        origin, direction = _perspective_ray(view, pixel_center)
+        calibrated.append(view)
+        observations[view_id] = {"bbox_pixels": bbox.tolist(), "camera_center": camera_center.tolist()}
+        ray_origins.append(origin)
+        ray_directions.append(direction)
+    if len(calibrated) < 2:
+        return {"status": "UNDERCONSTRAINED", "issues": ["at least two calibrated perspective component views are required"], "used_view_ids": [view["id"] for view in calibrated]}
+    identity = np.eye(3)
+    triangulation_matrix = sum(identity - np.outer(direction, direction) for direction in ray_directions)
+    triangulation_rhs = sum((identity - np.outer(direction, direction)) @ origin for origin, direction in zip(ray_origins, ray_directions))
+    rank = int(np.linalg.matrix_rank(triangulation_matrix, tol=1e-8))
+    condition = float(np.linalg.cond(triangulation_matrix))
+    if rank < 3 or condition > 1e8:
+        return {
+            "status": "UNDERCONSTRAINED",
+            "issues": [f"perspective center rays have rank {rank}/3 or condition {condition:.3g}"],
+            "used_view_ids": [view["id"] for view in calibrated],
+            "triangulation_rank": rank,
+            "condition_number": condition,
+        }
+    center = np.linalg.solve(triangulation_matrix, triangulation_rhs)
+    angular_sizes = []
+    depths = []
+    pixel_world_scales = []
+    for view in calibrated:
+        rotation, translation, _camera_center = _perspective_camera(view)
+        camera_point = rotation @ center + translation
+        if camera_point[2] <= 1e-4:
+            return {"status": "REJECTED", "issues": [f"triangulated center is behind perspective view {view['id']}"]}
+        bbox = np.asarray(observations[view["id"]]["bbox_pixels"])
+        focal = camera_intrinsics(tuple(view["image_size"]), float(view["vertical_fov_degrees"]))[0, 0]
+        half_pixels = 0.5 * np.asarray([bbox[2] - bbox[0] + 1, bbox[3] - bbox[1] + 1])
+        angular_sizes.extend((half_pixels / focal * camera_point[2]).tolist())
+        depths.append(float(camera_point[2]))
+        pixel_world_scales.append(float(camera_point[2] / focal))
+    initial_extent = max(float(np.median(angular_sizes)), max(pixel_world_scales))
+    initial = np.concatenate((center, np.log(np.full(3, initial_extent))))
+    median_depth = float(np.median(depths))
+    center_span = max(initial_extent * 4.0, median_depth * 0.35)
+    minimum_extent = max(max(pixel_world_scales) * 0.5, initial_extent * 0.08)
+    maximum_extent = min(median_depth * 0.75, initial_extent * 6.0)
+    if not np.isfinite([center_span, minimum_extent, maximum_extent]).all() or maximum_extent <= minimum_extent:
+        return {
+            "status": "REJECTED",
+            "issues": ["calibrated perspective bounds do not admit a finite positive extent interval"],
+            "used_view_ids": [view["id"] for view in calibrated],
+        }
+    lower = np.concatenate((center - center_span, np.log(np.full(3, minimum_extent))))
+    upper = np.concatenate((center + center_span, np.log(np.full(3, maximum_extent))))
+
+    def residual(parameters: np.ndarray) -> np.ndarray:
+        trial_center = parameters[:3]
+        trial_extents = np.exp(parameters[3:])
+        corners = _box_corners(trial_center, trial_extents)
+        values = []
+        for view in calibrated:
+            try:
+                projected = project_vertices(corners, view)
+                predicted = np.asarray([
+                    projected[:, 0].min(), projected[:, 1].min(),
+                    projected[:, 0].max(), projected[:, 1].max(),
+                ])
+                observed = np.asarray(observations[view["id"]]["bbox_pixels"])
+                values.extend(((predicted - observed) / max(view["image_size"])).tolist())
+            except ValueError:
+                values.extend([1.0, 1.0, 1.0, 1.0])
+        return np.asarray(values)
+
+    fit = least_squares(residual, initial, bounds=(lower, upper), max_nfev=800, xtol=1e-10, ftol=1e-10, gtol=1e-10)
+    fitted_center = fit.x[:3]
+    fitted_extents = np.exp(fit.x[3:])
+    final_residuals = residual(fit.x)
+    maximum_residual = float(np.max(np.abs(final_residuals)))
+    if not fit.success or maximum_residual > maximum_normalized_bbox_residual:
+        return {
+            "status": "REJECTED",
+            "issues": [f"calibrated perspective boxes disagree by normalized residual {maximum_residual:.4f}"],
+            "used_view_ids": [view["id"] for view in calibrated],
+            "maximum_normalized_bbox_residual": maximum_residual,
+            "observations": observations,
+        }
+    ray_miss = max(float(np.linalg.norm(np.cross(fitted_center - origin, direction))) for origin, direction in zip(ray_origins, ray_directions))
+    uncertainty = min(0.4, max(0.1, maximum_residual * 5.0, ray_miss / max(float(np.max(fitted_extents)), 1e-8)))
+    return {
+        "status": "SOLVED",
+        "method": "CALIBRATED_PERSPECTIVE_BBOX_FIT",
+        "used_view_ids": [view["id"] for view in calibrated],
+        "center": fitted_center.tolist(),
+        "half_extents": fitted_extents.tolist(),
+        "triangulation_rank": rank,
+        "condition_number": condition,
+        "maximum_normalized_bbox_residual": maximum_residual,
+        "maximum_ray_miss": ray_miss,
+        "relative_uncertainty": uncertainty,
+        "world_per_pixel": max(pixel_world_scales),
+        "observations": observations,
+    }
+
+
+def solve_registered_component_bounds(masks: dict[str, np.ndarray], views: list[dict[str, Any]]) -> dict[str, Any]:
+    """Prefer a full-rank orthographic solve, then calibrated perspective evidence."""
+    orthographic = solve_orthographic_component_bounds(masks, views)
+    if orthographic["status"] == "SOLVED":
+        return orthographic
+    perspective = solve_perspective_component_bounds(masks, views)
+    if perspective["status"] == "SOLVED":
+        perspective["orthographic_attempt"] = orthographic
+        return perspective
+    return {
+        "status": "UNDERCONSTRAINED" if "UNDERCONSTRAINED" in {orthographic["status"], perspective["status"]} else "REJECTED",
+        "issues": [
+            *(f"orthographic: {issue}" for issue in orthographic.get("issues", [])),
+            *(f"perspective: {issue}" for issue in perspective.get("issues", [])),
+        ],
+        "orthographic_attempt": orthographic,
+        "perspective_attempt": perspective,
+    }
+
+
 def _canonical_profile_view(views: list[dict[str, Any]], solved_view_ids: set[str]) -> dict[str, Any] | None:
     candidates = []
     for view in views:
-        if view["id"] not in solved_view_ids or view.get("projection", "orthographic") != "orthographic":
+        if view["id"] not in solved_view_ids:
             continue
-        rotation = view_rotation_matrix(view)
-        alignment = min(abs(float(rotation[0, 0])), abs(float(rotation[2, 2])))
+        if view.get("projection", "orthographic") == "orthographic":
+            rotation = view_rotation_matrix(view)
+            alignment = min(abs(float(rotation[0, 0])), abs(float(rotation[2, 2])))
+        elif view.get("projection") == "perspective" and view.get("world_to_camera") is not None:
+            rotation, _translation, _center = _perspective_camera(view)
+            alignment = min(abs(float(rotation[0, 0])), abs(float(rotation[1, 2])), abs(float(rotation[2, 1])))
+        else:
+            continue
         candidates.append((alignment, view))
     if not candidates or max(candidates, key=lambda item: item[0])[0] < 0.85:
         return None
@@ -174,6 +363,18 @@ def _pixel_to_local_xz(
     view: dict[str, Any],
     center: np.ndarray,
 ) -> list[list[float]]:
+    if view.get("projection", "orthographic") == "perspective":
+        world_xz = []
+        for point in points:
+            origin, direction = _perspective_ray(view, (float(point[0]), float(point[1])))
+            if abs(float(direction[1])) <= 1e-8:
+                raise ValueError("perspective profile ray is parallel to the solved X/Z plane")
+            distance = (float(center[1]) - float(origin[1])) / float(direction[1])
+            if distance <= 0:
+                raise ValueError("perspective profile ray intersects the solved X/Z plane behind the camera")
+            world = origin + distance * direction
+            world_xz.append([float(world[0] - center[0]), float(world[2] - center[2])])
+        return world_xz
     width, height = view["image_size"]
     canvas = min(width, height)
     scale = float(view["world_scale"])
@@ -287,7 +488,7 @@ def initialize_component_candidates(
     for component in assembly_hypotheses.get("components", []):
         component_id = component["component_id"]
         masks, views = _component_masks(bundle, component_id)
-        bounds = solve_orthographic_component_bounds(masks, views)
+        bounds = solve_registered_component_bounds(masks, views)
         report = {"bounds": bounds, "families": {}}
         candidates = []
         if bounds["status"] == "SOLVED":
@@ -368,5 +569,5 @@ def initialize_component_candidates(
             for view in bundle.get("views", [])
         },
         "ready_for_component_fitting": ready,
-        "claim_boundary": "Initialization is derived from registered orthographic component silhouettes. It does not infer hidden concavity, perspective-only depth, sweep paths, multiple holes, or final topology.",
+        "claim_boundary": "Initialization is derived from full-rank registered orthographic bounds or calibrated multiview perspective bounds. It does not infer camera calibration, component correspondence, hidden concavity, sweep paths, multiple holes, or final topology.",
     }

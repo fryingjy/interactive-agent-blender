@@ -11,6 +11,7 @@ from modeling_core import (
     initialize_component_candidates,
     render_silhouette,
     solve_orthographic_component_bounds,
+    solve_perspective_component_bounds,
 )
 
 
@@ -63,6 +64,39 @@ def _assembly(families):
             "representation_candidates": [{"family": family} for family in families],
         }],
     }
+
+
+def _look_at_view(view_id, camera_center, target, *, image_size=(160, 160), fov=45.0):
+    camera_center = np.asarray(camera_center, dtype=float)
+    forward = np.asarray(target, dtype=float) - camera_center
+    forward /= np.linalg.norm(forward)
+    right = np.cross(forward, np.asarray([0.0, 0.0, 1.0]))
+    right /= np.linalg.norm(right)
+    down = np.cross(forward, right)
+    rotation = np.vstack((right, down, forward))
+    translation = -rotation @ camera_center
+    return {
+        "id": view_id,
+        "projection": "perspective",
+        "image_size": list(image_size),
+        "vertical_fov_degrees": fov,
+        "world_to_camera": np.column_stack((rotation, translation)).tolist(),
+        "yaw_degrees": 0.0,
+        "pitch_degrees": 0.0,
+        "roll_degrees": 0.0,
+        "world_scale": 1.0,
+        "camera_distance": 1.0,
+        "offset_x": 0.0,
+        "offset_y": 0.0,
+    }
+
+
+def _perspective_views(target):
+    return [
+        _look_at_view("front-perspective", [0.0, -5.0, 0.4], target),
+        _look_at_view("side-perspective", [5.0, 0.0, 0.6], target),
+        _look_at_view("oblique-perspective", [3.5, -4.5, 2.2], target),
+    ]
 
 
 def test_registered_front_and_side_masks_initialize_world_bounds_and_two_families(tmp_path: Path):
@@ -156,3 +190,91 @@ def test_inconsistent_registered_bounds_are_rejected_instead_of_widening_forever
     )
     assert result["status"] == "REJECTED"
     assert "disagree" in result["issues"][0]
+
+
+def test_calibrated_perspective_masks_initialize_bounds_and_profile_candidates(tmp_path: Path):
+    center = np.asarray([0.3, -0.2, 0.15])
+    extents = np.asarray([0.4, 0.25, 0.7])
+    shape = {
+        "family": "section_loft", "segments": 12, "cross_section": "box",
+        "translate_x": float(center[0]), "translate_y": float(center[1]), "translate_z": float(center[2]),
+        "stations": [
+            {"z": float(-extents[2]), "half_width": float(extents[0]), "half_depth": float(extents[1]), "power": 4.0},
+            {"z": float(extents[2]), "half_width": float(extents[0]), "half_depth": float(extents[1]), "power": 4.0},
+        ],
+    }
+    views = _perspective_views(center)
+    bundle = _bundle(tmp_path, shape, views=views)
+    masks = {
+        record["view_id"]: cv2.imread(record["component_evidence"]["label_map"]["path"], cv2.IMREAD_GRAYSCALE) == 1
+        for record in bundle["views"]
+    }
+    solved = solve_perspective_component_bounds(masks, views)
+    assert solved["status"] == "SOLVED"
+    assert solved["method"] == "CALIBRATED_PERSPECTIVE_BBOX_FIT"
+    np.testing.assert_allclose(solved["center"], center, atol=0.07)
+    np.testing.assert_allclose(solved["half_extents"], extents, atol=0.08)
+
+    initialized = initialize_component_candidates(
+        bundle,
+        _assembly(["section_loft", "profile_extrusion", "profile_revolution"]),
+    )
+    report = initialized["initialization_reports"]["body"]
+    assert report["bounds"]["method"] == "CALIBRATED_PERSPECTIVE_BBOX_FIT"
+    assert {candidate["shape"]["family"] for candidate in initialized["components"]["body"]} == {
+        "section_loft", "profile_extrusion",
+    }
+    assert initialized["ready_for_component_fitting"] is True
+
+
+def test_duplicate_perspective_camera_rays_remain_underconstrained(tmp_path: Path):
+    center = np.asarray([0.3, -0.2, 0.15])
+    shape = {
+        "family": "section_loft", "segments": 12, "cross_section": "box",
+        "stations": [
+            {"z": -0.7, "half_width": 0.4, "half_depth": 0.25, "power": 4.0},
+            {"z": 0.7, "half_width": 0.4, "half_depth": 0.25, "power": 4.0},
+        ],
+        "translate_x": 0.3, "translate_y": -0.2, "translate_z": 0.15,
+    }
+    first = _look_at_view("perspective-a", [0.0, -5.0, 0.4], center)
+    second = copy.deepcopy(first)
+    second["id"] = "perspective-b"
+    bundle = _bundle(tmp_path, shape, views=[first, second])
+    result = initialize_component_candidates(bundle, _assembly(["section_loft", "profile_extrusion"]))
+    assert result["initialization_reports"]["body"]["bounds"]["status"] == "UNDERCONSTRAINED"
+    assert result["components"]["body"] == []
+
+
+def test_calibrated_perspective_negative_space_selects_ring_family(tmp_path: Path):
+    center = np.asarray([0.3, -0.2, 0.15])
+    shape = {
+        "family": "profile_ring_extrusion",
+        "translate_x": float(center[0]), "translate_y": float(center[1]), "translate_z": float(center[2]),
+        "outer_profile": [[-0.45, -0.7], [0.45, -0.7], [0.45, 0.7], [-0.45, 0.7]],
+        "inner_profile": [[-0.2, -0.35], [0.2, -0.35], [0.2, 0.35], [-0.2, 0.35]],
+        "depth_stations": [{"y": -0.25}, {"y": 0.25}],
+    }
+    bundle = _bundle(tmp_path, shape, views=_perspective_views(center))
+    assembly = _assembly(["profile_ring_extrusion", "profile_extrusion", "section_loft"])
+    initialized = initialize_component_candidates(bundle, assembly)
+    assert initialized["ready_for_component_fitting"] is True
+    fitted = fit_component_families(
+        bundle,
+        assembly,
+        initialized["components"],
+        seed=4,
+        maxiter=6,
+        popsize=4,
+    )
+    assert fitted["components"]["body"]["selection"]["selected_family"] == "profile_ring_extrusion"
+    assert fitted["ready_for_compilation"] is True
+
+
+def test_non_rigid_perspective_calibration_is_rejected():
+    view = _look_at_view("invalid", [0.0, -5.0, 0.4], [0.3, -0.2, 0.15])
+    view["world_to_camera"][0][0] *= 1.2
+    mask = np.zeros((160, 160), dtype=bool)
+    mask[50:110, 55:105] = True
+    with np.testing.assert_raises_regex(ValueError, "non-rigid calibration"):
+        solve_perspective_component_bounds({"invalid": mask}, [view])
