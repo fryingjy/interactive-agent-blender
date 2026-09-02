@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from modeling_core import calibrate_perspective_view, compile_blender_command, extract_reference_evidence, fit_hypothesis, select_shape_family, validate_hypothesis
+from modeling_core import build_multiview_evidence_bundle, calibrate_perspective_view, compile_blender_command, extract_component_evidence, extract_reference_evidence, fit_hypothesis, select_shape_family, validate_hypothesis
 
 
 def _read_json(path: Path) -> dict:
@@ -49,6 +49,14 @@ def main() -> int:
     evidence.add_argument("--method", choices=("auto", "alpha", "border"), default="auto")
     evidence.add_argument("--background-tolerance", type=float)
     evidence.add_argument("--mask-override", type=Path, help="edited full-size binary mask to remeasure with explicit provenance")
+    components = subparsers.add_parser("annotate-components", help="bind an editable grayscale component label map to reference evidence")
+    components.add_argument("evidence", type=Path)
+    components.add_argument("label_map", type=Path)
+    components.add_argument("--component", action="append", required=True, metavar="ID=LABEL")
+    components.add_argument("--output", type=Path, required=True)
+    bundle = subparsers.add_parser("bundle-references", help="bind audited, registered per-view evidence for shape solving")
+    bundle.add_argument("manifest", type=Path)
+    bundle.add_argument("--output", type=Path, required=True)
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -82,6 +90,41 @@ def main() -> int:
         )
         print(json.dumps(result, indent=2))
         return 0 if result["accepted_for_fitting"] else 2
+
+    if args.action == "annotate-components":
+        specifications = []
+        for value in args.component:
+            if "=" not in value:
+                parser.error("--component values must be ID=LABEL")
+            identifier, raw_label = value.split("=", 1)
+            try:
+                label = int(raw_label)
+            except ValueError:
+                parser.error("component labels must be integers")
+            specifications.append({"id": identifier, "label": label})
+        result = extract_component_evidence(args.evidence, args.label_map, specifications)
+        _write_json(args.output, result)
+        return 0 if result["accepted_for_bundle"] else 2
+
+    if args.action == "bundle-references":
+        manifest = _read_json(args.manifest)
+        base = args.manifest.resolve().parent
+        resolve = lambda value: (base / value).resolve() if isinstance(value, str) and not Path(value).is_absolute() else value
+        views = []
+        for view in manifest.get("views", []):
+            normalized = dict(view)
+            normalized["evidence"] = resolve(normalized.get("evidence"))
+            if normalized.get("components") is not None:
+                normalized["components"] = resolve(normalized["components"])
+            views.append(normalized)
+        result = build_multiview_evidence_bundle(
+            resolve(manifest.get("reference_audit")),
+            resolve(manifest.get("registration_gate")),
+            views,
+            required_component_support=manifest.get("required_component_support"),
+        )
+        _write_json(args.output, result)
+        return 0 if result["accepted_for_shape_solving"] else 2
 
     if args.action == "calibrate-camera":
         correspondences = _read_json(args.correspondences)

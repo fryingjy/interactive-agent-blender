@@ -32,6 +32,10 @@ base cage + evaluated surface + diagnostic renders
 - `hypothesis.py` validates the executable shape/camera intermediate representation.
 - `reference_evidence.py` binds image provenance and extracts fail-closed masks, normalized crops,
   outline landmarks, profiles, and enclosed negative-space observations for separable backgrounds.
+- `component_evidence.py` binds editable grayscale semantic labels to source silhouettes and
+  measures per-view visible regions and adjacency.
+- `reference_bundle.py` joins only reference-audited, registration-approved, hash-current views and
+  checks cross-view component support before shape solving.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic connected cages from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.

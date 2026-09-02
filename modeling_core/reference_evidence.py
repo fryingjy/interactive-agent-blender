@@ -240,6 +240,12 @@ def extract_reference_evidence(
             "normalized_mask": str(normalized_mask_path),
             "preview": str(preview_path),
         },
+        "artifact_sha256": {
+            "editable_mask": hashlib.sha256(mask_path.read_bytes()).hexdigest(),
+            "normalized_image": hashlib.sha256(normalized_path.read_bytes()).hexdigest(),
+            "normalized_mask": hashlib.sha256(normalized_mask_path.read_bytes()).hexdigest(),
+            "preview": hashlib.sha256(preview_path.read_bytes()).hexdigest(),
+        },
         "accepted_for_fitting": not issues,
         "issues": issues,
         "manual_correction": {

@@ -70,6 +70,16 @@ proved this narrow case. General photographs, variant selection, semantic compon
 identity, and automatic correspondences remain unproved. The active priority therefore remains P0,
 with multi-view acquisition and component-aware evidence as the next gap rather than another prop.
 
+Evidence update — 2026-09-02 (component/multiview cycle): editable grayscale component labels are
+now bound to each source hash and checked for silhouette coverage, background leakage, visible
+regions, and adjacency. A multiview bundle now accepts only unique images authorized by the existing
+same-target/variant audit and authoritative under the existing registration gate; it also enforces
+declared cross-view component support. This closes the mechanical evidence-binding gap, not semantic
+understanding: component IDs are still explicit annotations, and the system cannot independently
+recognize that two arbitrary photographs show the same variant. The next highest-value work is to
+turn these per-view component observations into competing component graphs and generic assembly
+representations while preserving uncertainty about occlusion and hidden structure.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

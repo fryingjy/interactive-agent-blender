@@ -14,12 +14,15 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 
 1. extracts hashed masks, normalized crops, outline landmarks, profiles, and enclosed negative spaces
    from alpha or clean-background references, with fail-closed diagnostics and editable-mask replay;
-2. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
-3. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
-4. fits bounded semantic parameters to multiple silhouettes and enclosed negative spaces;
-5. competes section-loft and arbitrary profile-extrusion families and rejects incompatible fits;
-6. compiles a compatible result into one connected all-quad cage;
-7. leaves surface modifiers live and unapplied for the artist.
+2. binds editable semantic component labels to each source silhouette and measures visible component
+   extent and adjacency without claiming hidden structure;
+3. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
+   enforces required cross-view component support;
+4. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
+5. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
+6. fits bounded semantic parameters to multiple silhouettes and enclosed negative spaces;
+7. competes section-loft and arbitrary profile-extrusion families and rejects incompatible fits;
+8. compiles a compatible result into one connected all-quad cage with live modifiers.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -67,6 +70,9 @@ Fit and compile a hypothesis:
 
 ```powershell
 python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
+python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
+  component-labels.png --component body=1 --component handle=2 --output components.json
+python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `

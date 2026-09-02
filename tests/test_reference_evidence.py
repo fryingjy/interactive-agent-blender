@@ -22,6 +22,8 @@ def test_alpha_evidence_preserves_enclosed_negative_space(tmp_path: Path):
     assert report["extraction"]["method"] == "alpha"
     assert report["measurements"]["enclosed_negative_space_count"] == 1
     assert Path(report["artifacts"]["editable_mask"]).is_file()
+    mask_path = Path(report["artifacts"]["editable_mask"])
+    assert report["artifact_sha256"]["editable_mask"] == hashlib.sha256(mask_path.read_bytes()).hexdigest()
     assert report["source"]["sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
 
 
