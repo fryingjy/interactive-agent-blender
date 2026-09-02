@@ -460,8 +460,9 @@ trust-rebuild. It is retained as a historical snapshot rather than corrected lin
 consistent with how `runs/README.md` treats prior purges: do not silently rewrite a citation to
 hide that its underlying evidence changed.
 
-The two documents that *are* kept current across that boundary are
-`knowledge/foundation/directive_coverage_matrix.json` (see its requirement 4 for the first
-completed human visual-review acceptance in this project's history) and
-`docs/CURRENT_STATE_GAP_MATRIX.md` (see its "2026-08-20 additions" section). Read those two for
-current state; this file's tables above should not be cited as current without cross-checking them.
+This addendum is itself now historical. The referenced mallet and mug-handle build/review
+directories were later deleted and are explicitly excluded from active evidence by the 2026-08-21
+status correction in `knowledge/foundation/foundation_exit_report.md`. Current authority is
+`knowledge/foundation/reference_modeling_readiness.json`, with requirement-level boundaries in
+`knowledge/foundation/directive_coverage_matrix.json`. This file's tables and addenda must not be
+cited as current without cross-checking those records.
