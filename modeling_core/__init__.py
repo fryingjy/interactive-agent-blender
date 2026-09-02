@@ -4,7 +4,7 @@ from .compiler import compile_blender_command
 from .camera import calibrate_perspective_view, camera_intrinsics
 from .fitting import fit_hypothesis, mask_diagnostics
 from .hypothesis import validate_hypothesis
-from .mesh import build_profile_extrusion, build_section_loft, build_shape_mesh
+from .mesh import build_curve_sweep, build_profile_extrusion, build_profile_revolution, build_section_loft, build_shape_mesh
 from .render import render_silhouette
 from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .component_evidence import extract_component_evidence
@@ -12,11 +12,14 @@ from .reference_bundle import build_multiview_evidence_bundle
 from .assembly import propose_assembly_hypotheses, resolve_assembly_hypotheses
 from .component_fitting import compile_component_assembly, fit_component_families
 from .continuity import build_continuous_cage, shape_boundary_ports
+from .refit import build_component_refit_tickets
 from .selection import select_shape_family
 
 __all__ = [
     "build_section_loft",
     "build_profile_extrusion",
+    "build_profile_revolution",
+    "build_curve_sweep",
     "build_shape_mesh",
     "calibrate_perspective_view",
     "camera_intrinsics",
@@ -34,6 +37,7 @@ __all__ = [
     "compile_component_assembly",
     "build_continuous_cage",
     "shape_boundary_ports",
+    "build_component_refit_tickets",
     "select_shape_family",
     "validate_hypothesis",
 ]

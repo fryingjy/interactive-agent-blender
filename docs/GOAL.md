@@ -111,6 +111,25 @@ continuity, not arbitrary fusion, loop resampling, or branch junctions. The next
 is broader generic component families plus localized refit tickets from per-view/component
 residuals; those are needed before a real P0 exit target can be attempted defensibly.
 
+Evidence update — 2026-09-02 (localized-refit cycle): retained component fits now emit prioritized
+component/view tickets from their actual silhouette, contour, and negative-space residuals. The
+diagnostic layer probes only declared bounded shape parameters and recommends a direction only when
+the target view improves without materially regressing the multiview mean. Probes never mutate the
+fit. A missing negative space escalates directly to family or component-graph change, and a residual
+with no safe local lever is labeled as a representation/bounds problem. The next P0 capability gap
+is representation breadth: radial/revolved, curved sweep, bent profile, shell, and opening-bearing
+families must become executable and compete under the same fixed-view evidence contract.
+
+Evidence update — 2026-09-02 (representation-breadth cycle 1): `profile_revolution` and
+transported-frame `curve_sweep` are now executable generic families, not planner-only labels. They
+validate bounded semantic parameters, build connected open all-quad cages, participate in CPU
+silhouette fitting, compile through typed Blender commands, and expose compatible continuity ports.
+Fresh Blender 5.2.1 execution and independent checks passed for both 48-vertex/36-quad fixtures with
+zero invalid non-manifold edges, n-gons, loose geometry, degenerate faces, or winding conflicts. The
+next breadth gap is not more radial duplication: it is shell/opening-bearing construction and bent
+outline-led sheets, followed by evidence-driven family initialization rather than hand-authored
+candidate starting values.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

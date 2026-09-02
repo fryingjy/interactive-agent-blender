@@ -125,6 +125,8 @@ def test_multicomponent_family_fitting_uses_fixed_cameras_and_recovers_placement
     assert result["ready_for_compilation"] is True
     assert result["components"]["body"]["selection"]["selected_family"] == "section_loft"
     assert result["components"]["handle"]["selection"]["selected_family"] == "profile_extrusion"
+    assert isinstance(result["refit_tickets"], list)
+    assert all("component_id" in ticket and "view_id" in ticket for ticket in result["refit_tickets"])
     for component_id, truth in truths.items():
         fitted = result["components"][component_id]["selection"]["selected_result"]["hypothesis"]["shape"]
         assert abs(fitted["translate_x"] - truth["translate_x"]) < 0.08

@@ -42,6 +42,12 @@ registered cameras; camera variables are forbidden during family competition. Bo
 placement into per-component camera offsets. A family remains unresolved when compatible candidates
 are separated by less than the configured loss margin.
 
+Each retained component fit also produces localized residual tickets. Small bounded probes test
+only already-declared shape parameters. A probe becomes a refit hint only if it improves the named
+view without materially worsening the all-view mean; it is never applied directly. If no safe local
+lever exists, the ticket requests family/bound reconsideration. A negative-space count mismatch is
+classified as a representation failure rather than disguised as a scale or smoothing adjustment.
+
 `compile-assembly` emits typed `create_authored_quad_mesh` commands only when every family and
 assembly edge is resolved. Separate assemblies remain separate editable objects. A connected set of
 continuous edges becomes one object only when an explicit interface record binds one unused open
@@ -55,7 +61,8 @@ fail closed instead of falling back to object joining.
 
 A schema-version 1 hypothesis contains:
 
-- a generic `section_loft` or arbitrary measured `profile_extrusion` connected-cage family;
+- a generic `section_loft`, measured `profile_extrusion`, radial `profile_revolution`, or bent
+  `curve_sweep` connected-cage family;
 - 8–32 radial segments in multiples of four (12 or 16 is the normal blockout range);
 - either a true sharp `box` perimeter or a measured `superellipse` cross-section;
 - ordered cross sections with width, depth, height, and superellipse power;
@@ -64,8 +71,10 @@ A schema-version 1 hypothesis contains:
 
 The family set is intentionally narrow. `section_loft` covers axial manufactured forms;
 `profile_extrusion` covers blades, shields, brackets, plates, and other outline-led forms with
-controlled depth stations. A target that cannot be represented must trigger a new generic family or
-a documented assembly split—not a target-named Python builder.
+controlled depth stations; `profile_revolution` covers measured radial bodies; and `curve_sweep`
+uses transported frames for bent handles, pipes, cables, and shafts. All remain open-ended editable
+quad cages. A target that cannot be represented must trigger a new generic family or a documented
+assembly split—not a target-named Python builder.
 
 ## Closed loop
 
@@ -99,6 +108,8 @@ python tools/modeling_pipeline.py resolve-assembly assembly.json observations.js
   --output resolved-assembly.json
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
+python tools/modeling_pipeline.py diagnose-fit fitted.json --component-id body `
+  --mask front=front-mask.png --mask side=side-mask.png --output refit-tickets.json
 python tools/modeling_pipeline.py compile-assembly component-selection.json `
   --continuity-interfaces continuity-interfaces.json `
   --output compiled-assembly.json --sequence-output sequence.json
@@ -126,14 +137,14 @@ multiview capture.
 ## Current boundary
 
 This is a real vertical slice, not general reconstruction yet. It supports orthographic and
-perspective cameras, section lofts, profile extrusions, explicit negative-space diagnostics, and
-fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
+perspective cameras, section lofts, profile extrusions, profile revolutions, curve sweeps, explicit
+negative-space diagnostics, and fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
 fixtures and one real concept image. Editable component labels and audited multiview binding are
 implemented, but automatic semantic labeling, complex photographic backgrounds, and independent
 visual identity recognition are not. Separate-object and bounded shared-cage assembly compilation
 are now implemented. Shared-cage scope is deliberately narrow: explicit equal-cardinality open ports
-and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions, broader
-generic families, correspondence discovery, negative-space-producing topology, and image-derived
+and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions, shells,
+opening-bearing topology, bent outline sheets, correspondence discovery, and image-derived
 initialization remain future work.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

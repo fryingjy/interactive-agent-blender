@@ -13,6 +13,7 @@ import numpy as np
 from .compiler import compile_blender_command
 from .continuity import build_continuous_cage
 from .hypothesis import validate_hypothesis
+from .refit import build_component_refit_tickets
 from .selection import select_shape_family
 
 
@@ -154,6 +155,11 @@ def fit_component_families(
             "loss_margin": margin,
             "minimum_loss_margin": minimum_loss_margin,
             "selection": selection,
+            "refit_tickets": build_component_refit_tickets(
+                component_id,
+                selection["selected_result"],
+                masks,
+            ) if selection["selected_result"] is not None else [],
         }
 
     all_selected = all(item["status"] == "SELECTED" for item in reports.values())
@@ -174,12 +180,21 @@ def fit_component_families(
             and len(selected) == len(expected_pairs)
             and policies_valid
         )
+    refit_tickets = [
+        {**ticket, "component_id": component_id}
+        for component_id, report in reports.items()
+        for ticket in report["refit_tickets"]
+    ]
+    refit_tickets.sort(key=lambda item: (-item["severity"], item["type"], item["component_id"], item["view_id"]))
+    for priority, ticket in enumerate(refit_tickets, 1):
+        ticket["priority"] = priority
     return {
         "schema_version": 1,
         "record_type": "COMPONENT_FAMILY_SELECTION_SET",
         "target_id": bundle.get("target_id"),
         "target_variant": bundle.get("target_variant"),
         "components": reports,
+        "refit_tickets": refit_tickets,
         "assembly_resolution": copy.deepcopy(resolved_assembly),
         "all_components_selected": all_selected,
         "assembly_graph_resolved": graph_ready,

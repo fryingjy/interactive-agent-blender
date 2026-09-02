@@ -27,7 +27,11 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 7. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
    explicitly bound equal-cardinality ports weld or bridge continuous components into one checked
    all-quad cage;
-8. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
+8. converts retained per-component/per-view residuals into scoped refit or representation-change
+   tickets using bounded parameter probes that may not hide multiview regression;
+9. executes section-loft, outline-extrusion, profile-revolution, and transported-frame curve-sweep
+   cage families through the same validation, fitting, and Blender compilation path;
+10. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -83,6 +87,8 @@ python tools/modeling_pipeline.py resolve-assembly assembly.json observations.js
   --output resolved-assembly.json
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
+python tools/modeling_pipeline.py diagnose-fit fitted.json --component-id body `
+  --mask front=front-mask.png --mask side=side-mask.png --output refit-tickets.json
 python tools/modeling_pipeline.py compile-assembly component-selection.json `
   --continuity-interfaces continuity-interfaces.json `
   --output compiled-assembly.json --sequence-output sequence.json

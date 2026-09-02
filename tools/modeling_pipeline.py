@@ -15,6 +15,7 @@ if str(ROOT) not in sys.path:
 
 from modeling_core import (
     build_multiview_evidence_bundle,
+    build_component_refit_tickets,
     calibrate_perspective_view,
     compile_component_assembly,
     compile_blender_command,
@@ -86,6 +87,11 @@ def main() -> int:
     fit_components.add_argument("--output", type=Path, required=True)
     fit_components.add_argument("--seed", type=int, default=0)
     fit_components.add_argument("--maxiter", type=int, default=20)
+    diagnose_fit = subparsers.add_parser("diagnose-fit", help="convert per-view fitted residuals into scoped refit tickets")
+    diagnose_fit.add_argument("fitted", type=Path)
+    diagnose_fit.add_argument("--component-id", required=True)
+    diagnose_fit.add_argument("--mask", action="append", required=True, metavar="VIEW_ID=PATH")
+    diagnose_fit.add_argument("--output", type=Path, required=True)
     compile_assembly = subparsers.add_parser("compile-assembly", help="compile resolved continuous groups and separate components to typed Blender commands")
     compile_assembly.add_argument("selection", type=Path)
     compile_assembly.add_argument("--output", type=Path, required=True)
@@ -207,6 +213,21 @@ def main() -> int:
         if args.sequence_output:
             args.sequence_output.parent.mkdir(parents=True, exist_ok=True)
             args.sequence_output.write_text(json.dumps(result["command_sequence"], indent=2) + "\n", encoding="utf-8")
+        return 0
+
+    if args.action == "diagnose-fit":
+        tickets = build_component_refit_tickets(
+            args.component_id,
+            _read_json(args.fitted),
+            _load_masks(args.mask, parser),
+        )
+        _write_json(args.output, {
+            "schema_version": 1,
+            "record_type": "COMPONENT_REFIT_TICKET_SET",
+            "component_id": args.component_id,
+            "tickets": tickets,
+            "claim_boundary": "Parameter probes are diagnostic and never mutate geometry. Any suggested direction still requires a bounded all-view refit and regression check.",
+        })
         return 0
 
     if args.action == "calibrate-camera":

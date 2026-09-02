@@ -1,7 +1,7 @@
 """Validation for the executable shape-and-camera intermediate representation.
 
-The representation is deliberately small.  It describes what may be optimized before Blender is
-allowed to mutate: one connected section loft, registered views, and explicit bounded variables.
+The representation is deliberately small. It describes what may be optimized before Blender is
+allowed to mutate: one generic connected cage, registered views, and explicit bounded variables.
 It does not contain arbitrary Python or asset-specific builder logic.
 """
 
@@ -27,8 +27,8 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("shape hypothesis must be a schema-version 1 object")
     result = copy.deepcopy(raw)
     shape = result.get("shape")
-    if not isinstance(shape, dict) or shape.get("family") not in {"section_loft", "profile_extrusion"}:
-        raise ValueError("shape.family must be section_loft or profile_extrusion")
+    if not isinstance(shape, dict) or shape.get("family") not in {"section_loft", "profile_extrusion", "profile_revolution", "curve_sweep"}:
+        raise ValueError("shape.family must be section_loft, profile_extrusion, profile_revolution, or curve_sweep")
     for key in ("scale_x", "scale_y", "scale_z"):
         shape[key] = _finite(shape.get(key, 1.0), f"shape.{key}")
         if shape[key] <= 0:
@@ -60,7 +60,7 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
             if previous_z is not None and station["z"] <= previous_z:
                 raise ValueError("station z values must be strictly increasing")
             previous_z = station["z"]
-    else:
+    elif shape["family"] == "profile_extrusion":
         profile = shape.get("profile")
         if not isinstance(profile, list) or len(profile) < 4:
             raise ValueError("profile extrusion needs at least four outline points")
@@ -98,6 +98,57 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
             if previous_y is not None and station["y"] <= previous_y:
                 raise ValueError("depth-station y values must be strictly increasing")
             previous_y = station["y"]
+    elif shape["family"] == "profile_revolution":
+        segments = int(shape.get("segments", 0))
+        if segments < 8 or segments > 32 or segments % 4:
+            raise ValueError("profile revolution segments must be a multiple of four from 8 through 32")
+        shape["segments"] = segments
+        profile = shape.get("profile")
+        if not isinstance(profile, list) or len(profile) < 2:
+            raise ValueError("profile revolution needs at least two [radius, z] points")
+        normalized_profile = []
+        previous_z = None
+        for index, point in enumerate(profile):
+            if not isinstance(point, list) or len(point) != 2:
+                raise ValueError(f"revolution profile point {index} must be [radius, z]")
+            radius = _finite(point[0], f"revolution profile {index}.radius")
+            z = _finite(point[1], f"revolution profile {index}.z")
+            if radius <= 0:
+                raise ValueError("open all-quad revolution profile radii must be positive")
+            if normalized_profile and normalized_profile[-1] == [radius, z]:
+                raise ValueError("revolution profile consecutive points must be distinct")
+            if previous_z is not None and z < previous_z:
+                raise ValueError("revolution profile z values must be non-decreasing")
+            normalized_profile.append([radius, z])
+            previous_z = z
+        shape["profile"] = normalized_profile
+    else:
+        segments = int(shape.get("segments", 0))
+        if segments < 8 or segments > 32 or segments % 4:
+            raise ValueError("curve sweep segments must be a multiple of four from 8 through 32")
+        shape["segments"] = segments
+        stations = shape.get("path_stations")
+        if not isinstance(stations, list) or len(stations) < 2:
+            raise ValueError("curve sweep needs at least two path stations")
+        previous_point = None
+        for index, station in enumerate(stations):
+            if not isinstance(station, dict):
+                raise ValueError(f"path station {index} must be an object")
+            point = station.get("point")
+            if not isinstance(point, list) or len(point) != 3:
+                raise ValueError(f"path station {index}.point must be [x, y, z]")
+            station["point"] = [_finite(value, f"path station {index}.point") for value in point]
+            if previous_point is not None and math.dist(previous_point, station["point"]) <= 1e-8:
+                raise ValueError("curve sweep consecutive path points must be distinct")
+            station["radius"] = _finite(station.get("radius"), f"path station {index}.radius")
+            station["scale_x"] = _finite(station.get("scale_x", 1.0), f"path station {index}.scale_x")
+            station["scale_y"] = _finite(station.get("scale_y", 1.0), f"path station {index}.scale_y")
+            station["roll_degrees"] = _finite(station.get("roll_degrees", 0.0), f"path station {index}.roll_degrees")
+            if station["radius"] <= 0 or station["scale_x"] <= 0 or station["scale_y"] <= 0:
+                raise ValueError("curve sweep radii and station scales must be positive")
+            previous_point = station["point"]
+        if any(math.dist(stations[index - 1]["point"], stations[index + 1]["point"]) <= 1e-8 for index in range(1, len(stations) - 1)):
+            raise ValueError("curve sweep centered path tangents must be non-zero")
 
     views = result.get("views")
     if not isinstance(views, list) or not views:

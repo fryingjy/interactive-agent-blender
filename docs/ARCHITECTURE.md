@@ -45,8 +45,13 @@ base cage + evaluated surface + diagnostic renders
 - `continuity.py` compiles explicitly bound, equal-cardinality open ports into one connected quad
   cage by welding coincident loops or bridging measured gaps. It rejects reused ports, excessive
   spans, disconnected output, degeneracy, non-manifold edges, and winding conflicts.
+- `refit.py` probes only declared bounded shape parameters around a retained fit and emits localized
+  component/view tickets. It suggests a parameter direction only when the view improves without a
+  material multiview-mean regression; unrepresented negative spaces escalate to a family or graph
+  change.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
-- `mesh.py` generates deterministic connected cages from semantic parameters.
+- `mesh.py` generates deterministic loft, extrusion, revolution, and transported-frame sweep cages
+  from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.
 - `fitting.py` performs bounded multiview fitting and preserves per-view disagreement.
 - `compiler.py` emits the existing typed `create_authored_quad_mesh` command without applying

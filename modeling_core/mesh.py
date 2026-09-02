@@ -74,9 +74,94 @@ def build_profile_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tup
     return np.asarray(vertices, dtype=np.float64), faces
 
 
+def build_profile_revolution(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    """Revolve an ordered radius/Z profile into one open all-quad radial cage."""
+    segments = int(shape["segments"])
+    sx, sy, sz = (float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z"))
+    tx, ty, tz = (float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z"))
+    vertices = []
+    for radius, z in shape["profile"]:
+        for segment in range(segments):
+            angle = 2.0 * math.pi * segment / segments
+            vertices.append((
+                float(radius) * math.cos(angle) * sx + tx,
+                float(radius) * math.sin(angle) * sy + ty,
+                float(z) * sz + tz,
+            ))
+    faces = []
+    for station in range(len(shape["profile"]) - 1):
+        lower, upper = station * segments, (station + 1) * segments
+        for segment in range(segments):
+            nxt = (segment + 1) % segments
+            faces.append((lower + segment, lower + nxt, upper + nxt, upper + segment))
+    return np.asarray(vertices, dtype=np.float64), faces
+
+
+def _sweep_frames(points: np.ndarray) -> list[tuple[np.ndarray, np.ndarray]]:
+    tangents = []
+    for index in range(len(points)):
+        direction = (
+            points[1] - points[0]
+            if index == 0
+            else points[-1] - points[-2]
+            if index == len(points) - 1
+            else points[index + 1] - points[index - 1]
+        )
+        tangents.append(direction / np.linalg.norm(direction))
+    axes = np.eye(3)
+    first_axis = axes[int(np.argmin(np.abs(axes @ tangents[0])))]
+    normal = np.cross(tangents[0], first_axis)
+    normal /= np.linalg.norm(normal)
+    frames = []
+    for tangent in tangents:
+        transported = normal - np.dot(normal, tangent) * tangent
+        if np.linalg.norm(transported) <= 1e-8:
+            axis = axes[int(np.argmin(np.abs(axes @ tangent)))]
+            transported = np.cross(tangent, axis)
+        normal = transported / np.linalg.norm(transported)
+        binormal = np.cross(tangent, normal)
+        binormal /= np.linalg.norm(binormal)
+        frames.append((normal.copy(), binormal))
+    return frames
+
+
+def build_curve_sweep(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    """Sweep elliptical rings along a measured 3D path using transported local frames."""
+    segments = int(shape["segments"])
+    stations = shape["path_stations"]
+    points = np.asarray([station["point"] for station in stations], dtype=np.float64)
+    frames = _sweep_frames(points)
+    vertices = []
+    for station, point, (normal, binormal) in zip(stations, points, frames):
+        roll = math.radians(float(station.get("roll_degrees", 0.0)))
+        radius = float(station["radius"])
+        scale_x = float(station.get("scale_x", 1.0))
+        scale_y = float(station.get("scale_y", 1.0))
+        for segment in range(segments):
+            angle = 2.0 * math.pi * segment / segments + roll
+            vertices.append(point + radius * (
+                math.cos(angle) * scale_x * normal
+                + math.sin(angle) * scale_y * binormal
+            ))
+    vertices = np.asarray(vertices, dtype=np.float64)
+    vertices *= np.asarray([float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z")])
+    vertices += np.asarray([float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z")])
+    faces = []
+    for station in range(len(stations) - 1):
+        first, second = station * segments, (station + 1) * segments
+        for segment in range(segments):
+            nxt = (segment + 1) % segments
+            faces.append((first + segment, first + nxt, second + nxt, second + segment))
+    return vertices, faces
+
+
 def build_shape_mesh(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
     if shape["family"] == "section_loft":
         return build_section_loft(shape)
     if shape["family"] == "profile_extrusion":
         return build_profile_extrusion(shape)
+    if shape["family"] == "profile_revolution":
+        return build_profile_revolution(shape)
+    if shape["family"] == "curve_sweep":
+        return build_curve_sweep(shape)
     raise ValueError(f"unsupported shape family: {shape.get('family')}")
