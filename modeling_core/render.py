@@ -9,6 +9,39 @@ import cv2
 import numpy as np
 
 
+def _boundary_loops(faces: list[tuple[int, ...]]) -> list[list[int]]:
+    edge_uses: dict[tuple[int, int], int] = {}
+    for face in faces:
+        for index in range(len(face)):
+            edge = tuple(sorted((face[index], face[(index + 1) % len(face)])))
+            edge_uses[edge] = edge_uses.get(edge, 0) + 1
+    adjacency: dict[int, list[int]] = {}
+    for (first, second), count in edge_uses.items():
+        if count == 1:
+            adjacency.setdefault(first, []).append(second)
+            adjacency.setdefault(second, []).append(first)
+    if any(len(neighbors) != 2 for neighbors in adjacency.values()):
+        return []
+    loops = []
+    unused = {edge for edge, count in edge_uses.items() if count == 1}
+    while unused:
+        start, current = min(unused)
+        loop = [start]
+        previous = start
+        while current != start:
+            loop.append(current)
+            unused.discard(tuple(sorted((previous, current))))
+            choices = [neighbor for neighbor in adjacency[current] if neighbor != previous]
+            if len(choices) != 1:
+                return []
+            previous, current = current, choices[0]
+            if len(loop) > len(adjacency):
+                return []
+        unused.discard(tuple(sorted((previous, start))))
+        loops.append(loop)
+    return loops
+
+
 def _rotation(view: dict[str, Any]) -> np.ndarray:
     yaw, pitch, roll = (math.radians(float(view[key])) for key in ("yaw_degrees", "pitch_degrees", "roll_degrees"))
     cz, sz = math.cos(yaw), math.sin(yaw)
@@ -50,7 +83,7 @@ def project_vertices(vertices: np.ndarray, view: dict[str, Any]) -> np.ndarray:
 
 def render_silhouette(
     vertices: np.ndarray,
-    faces: list[tuple[int, int, int, int]],
+    faces: list[tuple[int, ...]],
     view: dict[str, Any],
 ) -> np.ndarray:
     """Rasterize the union of cage faces; depth is irrelevant for a binary silhouette."""
@@ -59,5 +92,8 @@ def render_silhouette(
     mask = np.zeros((height, width), dtype=np.uint8)
     for face in faces:
         polygon = np.rint(points[np.asarray(face, dtype=int)]).astype(np.int32)
-        cv2.fillConvexPoly(mask, polygon, 1, lineType=cv2.LINE_8)
+        cv2.fillPoly(mask, [polygon], 1, lineType=cv2.LINE_8)
+    for loop in _boundary_loops(faces):
+        polygon = np.rint(points[np.asarray(loop, dtype=int)]).astype(np.int32)
+        cv2.fillPoly(mask, [polygon], 1, lineType=cv2.LINE_8)
     return mask.astype(bool)

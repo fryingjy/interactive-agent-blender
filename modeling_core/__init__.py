@@ -4,7 +4,7 @@ from .compiler import compile_blender_command
 from .camera import calibrate_perspective_view, camera_intrinsics
 from .fitting import fit_hypothesis, mask_diagnostics
 from .hypothesis import validate_hypothesis
-from .mesh import build_curve_sweep, build_profile_extrusion, build_profile_revolution, build_section_loft, build_shape_mesh
+from .mesh import build_curve_sweep, build_profile_extrusion, build_profile_revolution, build_profile_ring_extrusion, build_profile_sweep, build_section_loft, build_shape_mesh
 from .render import render_silhouette
 from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .component_evidence import extract_component_evidence
@@ -19,6 +19,8 @@ __all__ = [
     "build_section_loft",
     "build_profile_extrusion",
     "build_profile_revolution",
+    "build_profile_ring_extrusion",
+    "build_profile_sweep",
     "build_curve_sweep",
     "build_shape_mesh",
     "calibrate_perspective_view",

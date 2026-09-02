@@ -61,8 +61,8 @@ fail closed instead of falling back to object joining.
 
 A schema-version 1 hypothesis contains:
 
-- a generic `section_loft`, measured `profile_extrusion`, radial `profile_revolution`, or bent
-  `curve_sweep` connected-cage family;
+- a generic `section_loft`, measured `profile_extrusion`, radial `profile_revolution`, circular
+  `curve_sweep`, arbitrary `profile_sweep`, or single-opening `profile_ring_extrusion` cage family;
 - 8–32 radial segments in multiples of four (12 or 16 is the normal blockout range);
 - either a true sharp `box` perimeter or a measured `superellipse` cross-section;
 - ordered cross sections with width, depth, height, and superellipse power;
@@ -71,10 +71,13 @@ A schema-version 1 hypothesis contains:
 
 The family set is intentionally narrow. `section_loft` covers axial manufactured forms;
 `profile_extrusion` covers blades, shields, brackets, plates, and other outline-led forms with
-controlled depth stations; `profile_revolution` covers measured radial bodies; and `curve_sweep`
-uses transported frames for bent handles, pipes, cables, and shafts. All remain open-ended editable
-quad cages. A target that cannot be represented must trigger a new generic family or a documented
-assembly split—not a target-named Python builder.
+controlled depth stations; `profile_revolution` covers measured radial bodies; `curve_sweep` uses
+transported frames for bent handles, pipes, cables, and shafts; `profile_sweep` transports a measured
+non-circular section for bent outline-led volumes; and `profile_ring_extrusion` creates one closed,
+manifold through-opening from corresponding outer/inner loops. Open volume families remain editable
+uncapped cages in Blender, but their boundary loops are virtually filled for silhouette fitting so
+axial views measure the intended solid volume. A target that cannot be represented must trigger a
+new generic family or a documented assembly split—not a target-named Python builder.
 
 ## Closed loop
 
@@ -137,14 +140,15 @@ multiview capture.
 ## Current boundary
 
 This is a real vertical slice, not general reconstruction yet. It supports orthographic and
-perspective cameras, section lofts, profile extrusions, profile revolutions, curve sweeps, explicit
-negative-space diagnostics, and fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
+perspective cameras, section lofts, profile extrusions, profile revolutions, circular/profile
+sweeps, one corresponding-loop through-opening, explicit negative-space diagnostics, and fail-closed
+family compatibility. Clean-background silhouette extraction is proven on controlled
 fixtures and one real concept image. Editable component labels and audited multiview binding are
 implemented, but automatic semantic labeling, complex photographic backgrounds, and independent
 visual identity recognition are not. Separate-object and bounded shared-cage assembly compilation
 are now implemented. Shared-cage scope is deliberately narrow: explicit equal-cardinality open ports
-and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions, shells,
-opening-bearing topology, bent outline sheets, correspondence discovery, and image-derived
+and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions,
+multiple/non-corresponding openings, general thin shells, correspondence discovery, and image-derived
 initialization remain future work.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

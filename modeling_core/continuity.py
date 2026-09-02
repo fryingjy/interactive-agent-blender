@@ -34,6 +34,13 @@ def shape_boundary_ports(shape: dict[str, Any]) -> dict[str, list[int]]:
             "start": list(range(count)),
             "end": list(range((station_count - 1) * count, station_count * count)),
         }
+    if shape["family"] == "profile_sweep":
+        count = len(shape["profile"])
+        station_count = len(shape["path_stations"])
+        return {
+            "start": list(range(count)),
+            "end": list(range((station_count - 1) * count, station_count * count)),
+        }
     raise ValueError(f"shape family has no continuity-port implementation: {shape.get('family')}")
 
 

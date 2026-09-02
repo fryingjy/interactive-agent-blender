@@ -130,6 +130,20 @@ next breadth gap is not more radial duplication: it is shell/opening-bearing con
 outline-led sheets, followed by evidence-driven family initialization rather than hand-authored
 candidate starting values.
 
+Evidence update — 2026-09-02 (representation-breadth cycle 2): `profile_sweep` now transports a
+measured non-circular section along a 3D path, and `profile_ring_extrusion` builds a closed manifold
+single-through-hole cage from corresponding outer/inner loops. The latter lets negative-space
+evidence select an opening-bearing family over a solid extrusion instead of merely rejecting both.
+This cycle also corrected a fitting defect: open volume cages viewed down their uncapped axis could
+rasterize as outlines. The CPU renderer now derives boundary cycles and fills virtual caps in the
+silhouette only; Blender topology stays open and editable. Fresh Blender 5.2.1 checks proved a
+16-vertex/16-quad closed ring with zero boundary or invalid non-manifold edges and a bent
+16-vertex/12-quad profile sweep with only its two intentional open boundaries; both had zero n-gons,
+loose geometry, degenerates, or winding conflicts. Scope remains narrow: one corresponding-loop
+opening is not arbitrary boolean topology or a general shell system. The largest P0 gap is now
+evidence-derived candidate initialization and bounds, followed by automatic component labels and
+cross-view correspondences on ordinary photographs.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain
@@ -139,11 +153,12 @@ Current priority order:
    manual correction hooks.
 3. **Camera and correspondence solving** — initialize orthographic/perspective views from image
    evidence, report reprojection error, and reject underconstrained calibration.
-4. **Representation and assembly hypotheses** — expand beyond section loft and profile extrusion to
-   component graphs, repeated/radial parts, bent profiles, shells, openings, and real assembly
-   boundaries without target-named builders.
-5. **Cross-view fitting and localized diagnosis** — preserve per-view/component disagreement and
-   convert contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.
+4. **Evidence-derived candidate initialization** — turn registered component masks, landmarks,
+   negative spaces, and camera scale into generic family starting values and defensible parameter
+   bounds instead of relying on hand-authored candidate coordinates.
+5. **Remaining representation and fitting gaps** — add only evidence-justified shell,
+   multi-opening, repeated, or branch families; preserve per-view/component disagreement and convert
+   contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.
 6. **Blender visual closure** — compare controlled solid, silhouette, wireframe, and evaluated views;
    refit, repair, or change family before secondary detail.
 

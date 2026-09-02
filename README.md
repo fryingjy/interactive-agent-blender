@@ -29,8 +29,9 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    all-quad cage;
 8. converts retained per-component/per-view residuals into scoped refit or representation-change
    tickets using bounded parameter probes that may not hide multiview regression;
-9. executes section-loft, outline-extrusion, profile-revolution, and transported-frame curve-sweep
-   cage families through the same validation, fitting, and Blender compilation path;
+9. executes section-loft, outline-extrusion, profile-revolution, curve/profile-sweep, and a closed
+   single-through-hole ring extrusion through the same validation, fitting, and Blender compilation
+   path; open volume cages receive virtual silhouette caps during fitting without changing topology;
 10. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The

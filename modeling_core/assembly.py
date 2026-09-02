@@ -12,6 +12,8 @@ GENERIC_COMPONENT_FAMILIES = {
     "section_loft",
     "profile_revolution",
     "curve_sweep",
+    "profile_sweep",
+    "profile_ring_extrusion",
     "boolean_cage",
 }
 COMPONENT_ROLES = {"primary", "secondary", "tertiary"}
@@ -92,6 +94,8 @@ def propose_assembly_hypotheses(
                         "section_loft": "cross-section change along a dominant axis",
                         "profile_revolution": "radial symmetry and axis evidence",
                         "curve_sweep": "path and cross-section evidence",
+                        "profile_sweep": "path plus a stable non-circular cross-section",
+                        "profile_ring_extrusion": "registered outer/inner contours and through-opening depth",
                         "boolean_cage": "opening/cavity depth and boundary evidence",
                     }[family],
                 }

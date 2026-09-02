@@ -50,9 +50,11 @@ base cage + evaluated surface + diagnostic renders
   material multiview-mean regression; unrepresented negative spaces escalate to a family or graph
   change.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
-- `mesh.py` generates deterministic loft, extrusion, revolution, and transported-frame sweep cages
-  from semantic parameters.
-- `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.
+- `mesh.py` generates deterministic loft, extrusion, closed annular extrusion, revolution, and
+  transported-frame circular/profile sweep cages from semantic parameters.
+- `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops. It detects open
+  boundary cycles and fills them only in the rasterized silhouette, so an editable uncapped volume
+  does not collapse to an outline when viewed down its open axis.
 - `fitting.py` performs bounded multiview fitting and preserves per-view disagreement.
 - `compiler.py` emits the existing typed `create_authored_quad_mesh` command without applying
   modifiers.

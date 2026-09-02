@@ -74,6 +74,43 @@ def build_profile_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tup
     return np.asarray(vertices, dtype=np.float64), faces
 
 
+def build_profile_ring_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    """Extrude corresponding outer/inner profiles into a closed all-quad through-hole cage."""
+    outer = [(float(point[0]), float(point[1])) for point in shape["outer_profile"]]
+    inner = [(float(point[0]), float(point[1])) for point in shape["inner_profile"]]
+    stations = shape["depth_stations"]
+    sx, sy, sz = (float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z"))
+    tx, ty, tz = (float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z"))
+    vertices = []
+    for station in stations:
+        station_scale_x = float(station.get("scale_x", 1.0))
+        station_scale_z = float(station.get("scale_z", 1.0))
+        for profile in (outer, inner):
+            for x, z in profile:
+                vertices.append((
+                    x * sx * station_scale_x + tx,
+                    float(station["y"]) * sy + ty,
+                    z * sz * station_scale_z + tz,
+                ))
+    count = len(outer)
+    stride = count * 2
+    faces = []
+    for station_index in range(len(stations) - 1):
+        front = station_index * stride
+        rear = (station_index + 1) * stride
+        for index in range(count):
+            nxt = (index + 1) % count
+            faces.append((front + index, front + nxt, rear + nxt, rear + index))
+            faces.append((front + count + index, rear + count + index, rear + count + nxt, front + count + nxt))
+    front = 0
+    rear = (len(stations) - 1) * stride
+    for index in range(count):
+        nxt = (index + 1) % count
+        faces.append((front + index, front + count + index, front + count + nxt, front + nxt))
+        faces.append((rear + index, rear + nxt, rear + count + nxt, rear + count + index))
+    return np.asarray(vertices, dtype=np.float64), faces
+
+
 def build_profile_revolution(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
     """Revolve an ordered radius/Z profile into one open all-quad radial cage."""
     segments = int(shape["segments"])
@@ -155,13 +192,45 @@ def build_curve_sweep(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int
     return vertices, faces
 
 
+def build_profile_sweep(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
+    """Sweep an arbitrary measured profile along a 3D path with transported frames."""
+    profile = np.asarray(shape["profile"], dtype=np.float64)
+    stations = shape["path_stations"]
+    points = np.asarray([station["point"] for station in stations], dtype=np.float64)
+    frames = _sweep_frames(points)
+    vertices = []
+    for station, point, (normal, binormal) in zip(stations, points, frames):
+        roll = math.radians(float(station.get("roll_degrees", 0.0)))
+        rolled_normal = math.cos(roll) * normal + math.sin(roll) * binormal
+        rolled_binormal = -math.sin(roll) * normal + math.cos(roll) * binormal
+        scale_u = float(station.get("scale_u", 1.0))
+        scale_v = float(station.get("scale_v", 1.0))
+        for u, v in profile:
+            vertices.append(point + u * scale_u * rolled_normal + v * scale_v * rolled_binormal)
+    vertices = np.asarray(vertices, dtype=np.float64)
+    vertices *= np.asarray([float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z")])
+    vertices += np.asarray([float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z")])
+    count = len(profile)
+    faces = []
+    for station_index in range(len(stations) - 1):
+        first, second = station_index * count, (station_index + 1) * count
+        for index in range(count):
+            nxt = (index + 1) % count
+            faces.append((first + index, first + nxt, second + nxt, second + index))
+    return vertices, faces
+
+
 def build_shape_mesh(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[int, int, int, int]]]:
     if shape["family"] == "section_loft":
         return build_section_loft(shape)
     if shape["family"] == "profile_extrusion":
         return build_profile_extrusion(shape)
+    if shape["family"] == "profile_ring_extrusion":
+        return build_profile_ring_extrusion(shape)
     if shape["family"] == "profile_revolution":
         return build_profile_revolution(shape)
     if shape["family"] == "curve_sweep":
         return build_curve_sweep(shape)
+    if shape["family"] == "profile_sweep":
+        return build_profile_sweep(shape)
     raise ValueError(f"unsupported shape family: {shape.get('family')}")

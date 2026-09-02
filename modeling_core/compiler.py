@@ -22,7 +22,7 @@ def compile_blender_command(raw: dict[str, Any], *, name: str = "FittedProxy") -
             "source": f"modeling_core.{hypothesis['shape']['family']}",
             "connected_components": 1,
             "all_quad": True,
-            "end_caps": "OPEN_FOR_EXPLICIT_SURFACE_DECISION",
+            "end_caps": "CLOSED_ANNULAR_CAPS" if hypothesis["shape"]["family"] == "profile_ring_extrusion" else "OPEN_FOR_EXPLICIT_SURFACE_DECISION",
             "modifiers_applied": False,
             "profile_winding_normalized": bool(hypothesis["shape"].get("profile_winding_normalized", False)),
         },
