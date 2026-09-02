@@ -16,10 +16,12 @@ if str(ROOT) not in sys.path:
 from modeling_core import (
     build_multiview_evidence_bundle,
     calibrate_perspective_view,
+    compile_component_assembly,
     compile_blender_command,
     extract_component_evidence,
     extract_reference_evidence,
     fit_hypothesis,
+    fit_component_families,
     propose_assembly_hypotheses,
     resolve_assembly_hypotheses,
     select_shape_family,
@@ -76,6 +78,19 @@ def main() -> int:
     resolve_assembly.add_argument("hypotheses", type=Path)
     resolve_assembly.add_argument("observations", type=Path)
     resolve_assembly.add_argument("--output", type=Path, required=True)
+    fit_components = subparsers.add_parser("fit-components", help="fit and compete shape families independently for every bundled component")
+    fit_components.add_argument("bundle", type=Path)
+    fit_components.add_argument("assembly_hypotheses", type=Path)
+    fit_components.add_argument("candidates", type=Path)
+    fit_components.add_argument("--resolved-assembly", type=Path)
+    fit_components.add_argument("--output", type=Path, required=True)
+    fit_components.add_argument("--seed", type=int, default=0)
+    fit_components.add_argument("--maxiter", type=int, default=20)
+    compile_assembly = subparsers.add_parser("compile-assembly", help="compile selected separate components to typed Blender commands")
+    compile_assembly.add_argument("selection", type=Path)
+    compile_assembly.add_argument("--output", type=Path, required=True)
+    compile_assembly.add_argument("--sequence-output", type=Path)
+    compile_assembly.add_argument("--object-prefix", default="Blockout_")
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -162,6 +177,31 @@ def main() -> int:
         )
         _write_json(args.output, result)
         return 0 if result["ready_for_component_graph"] else 2
+
+    if args.action == "fit-components":
+        candidates = _read_json(args.candidates)
+        resolved = _read_json(args.resolved_assembly) if args.resolved_assembly else None
+        result = fit_component_families(
+            _read_json(args.bundle),
+            _read_json(args.assembly_hypotheses),
+            candidates.get("components", {}),
+            resolved_assembly=resolved,
+            seed=args.seed,
+            maxiter=args.maxiter,
+        )
+        _write_json(args.output, result)
+        return 0 if result["ready_for_compilation"] else 2
+
+    if args.action == "compile-assembly":
+        result = compile_component_assembly(
+            _read_json(args.selection),
+            object_prefix=args.object_prefix,
+        )
+        _write_json(args.output, result)
+        if args.sequence_output:
+            args.sequence_output.parent.mkdir(parents=True, exist_ok=True)
+            args.sequence_output.write_text(json.dumps(result["command_sequence"], indent=2) + "\n", encoding="utf-8")
+        return 0
 
     if args.action == "calibrate-camera":
         correspondences = _read_json(args.correspondences)

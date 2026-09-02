@@ -35,6 +35,18 @@ separation can select separate objects; verified independent motion is strong se
 evidence. Conflicts and one-view continuity remain unresolved. Even a resolved assembly graph is
 not construction-ready until each component's 3D family is fitted and selected separately.
 
+`fit-components` extracts each semantic region directly from the hash-verified grayscale label
+maps and fits at least two declared generic families per component. Every candidate uses the same
+registered cameras; camera variables are forbidden during family competition. Bounded
+`translate_x/y/z` shape parameters place components in shared world space rather than laundering
+placement into per-component camera offsets. A family remains unresolved when compatible candidates
+are separated by less than the configured loss margin.
+
+`compile-assembly` emits one typed `create_authored_quad_mesh` command per component only when every
+family and assembly edge is resolved. Separate assemblies remain separate editable objects.
+Continuous edges deliberately fail: independently fitted meshes are not joined and mislabeled as a
+shared cage. A true continuity compiler is required for that case.
+
 ## Intermediate representation
 
 A schema-version 1 hypothesis contains:
@@ -81,6 +93,10 @@ python tools/modeling_pipeline.py bundle-references bundle-manifest.json --outpu
 python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
 python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
   --output resolved-assembly.json
+python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
+  --resolved-assembly resolved-assembly.json --output component-selection.json
+python tools/modeling_pipeline.py compile-assembly component-selection.json `
+  --output compiled-assembly.json --sequence-output sequence.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `
@@ -109,8 +125,8 @@ perspective cameras, section lofts, profile extrusions, explicit negative-space 
 fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
 fixtures and one real concept image. Editable component labels and audited multiview binding are
 implemented, but automatic semantic labeling, complex photographic backgrounds, and independent
-visual identity recognition are not. Component-level family fitting, typed mixed-assembly
-compilation, correspondence discovery, negative-space-producing topology, and image-derived shape
-initialization remain future work.
+visual identity recognition are not. Separate-object family fitting and typed compilation are now
+implemented; shared-cage assembly compilation, broader generic families, correspondence discovery,
+negative-space-producing topology, and image-derived initialization remain future work.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

@@ -39,6 +39,9 @@ base cage + evaluated surface + diagnostic renders
 - `assembly.py` proposes generic per-component representation candidates and bracketing continuous
   versus separate assembly graphs, then resolves graph edges only from independent discriminating
   observations. Assembly resolution never implies that component shape families are resolved.
+- `component_fitting.py` extracts each component's hash-bound label masks, fixes shared cameras,
+  fits competing executable families with bounded object-space placement, enforces a selection
+  margin, and compiles only supported separate-object assemblies. Shared-cage edges fail closed.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic connected cages from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.

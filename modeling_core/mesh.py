@@ -17,6 +17,7 @@ def build_section_loft(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[in
     segments = int(shape["segments"])
     vertices: list[tuple[float, float, float]] = []
     sx, sy, sz = (float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z"))
+    tx, ty, tz = (float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z"))
     for station in shape["stations"]:
         width = float(station["half_width"]) * sx
         depth = float(station["half_depth"]) * sy
@@ -29,9 +30,9 @@ def build_section_loft(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[in
                 for step in range(per_side):
                     factor = step / per_side
                     vertices.append((
-                        start[0] + (end[0] - start[0]) * factor,
-                        start[1] + (end[1] - start[1]) * factor,
-                        z,
+                        start[0] + (end[0] - start[0]) * factor + tx,
+                        start[1] + (end[1] - start[1]) * factor + ty,
+                        z + tz,
                     ))
         else:
             exponent = 2.0 / float(station.get("power", 2.0))
@@ -40,7 +41,7 @@ def build_section_loft(shape: dict[str, Any]) -> tuple[np.ndarray, list[tuple[in
                 cosine, sine = math.cos(angle), math.sin(angle)
                 x = width * math.copysign(abs(cosine) ** exponent, cosine)
                 y = depth * math.copysign(abs(sine) ** exponent, sine)
-                vertices.append((x, y, z))
+                vertices.append((x + tx, y + ty, z + tz))
     faces: list[tuple[int, int, int, int]] = []
     for station in range(len(shape["stations"]) - 1):
         lower, upper = station * segments, (station + 1) * segments
@@ -54,13 +55,14 @@ def build_profile_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tup
     """Build one connected all-quad side cage from an arbitrary measured X/Z outline."""
     profile = [(float(point[0]), float(point[1])) for point in shape["profile"]]
     sx, sy, sz = (float(shape.get(key, 1.0)) for key in ("scale_x", "scale_y", "scale_z"))
+    tx, ty, tz = (float(shape.get(key, 0.0)) for key in ("translate_x", "translate_y", "translate_z"))
     vertices = []
     for station in shape["depth_stations"]:
         for x, z in profile:
             vertices.append((
-                x * sx * float(station.get("scale_x", 1.0)),
-                float(station["y"]) * sy,
-                z * sz * float(station.get("scale_z", 1.0)),
+                x * sx * float(station.get("scale_x", 1.0)) + tx,
+                float(station["y"]) * sy + ty,
+                z * sz * float(station.get("scale_z", 1.0)) + tz,
             ))
     count = len(profile)
     faces = []

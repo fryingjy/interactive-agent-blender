@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import copy
+import math
 from pathlib import Path
 from typing import Any
 
@@ -77,6 +79,23 @@ def build_multiview_evidence_bundle(
             view_issues.append("view is not authoritative in the registration gate")
         if not source_id:
             view_issues.append("view lacks a provenance source_id")
+        solver_view = specification.get("solver_view")
+        if solver_view is not None:
+            if not isinstance(solver_view, dict):
+                raise ValueError(f"{view_id}: solver_view must be an object")
+            solver_view = copy.deepcopy(solver_view)
+            if solver_view.get("id") != view_id:
+                view_issues.append("solver view id does not match the evidence view")
+            if solver_view.get("image_size") != source.get("image_size"):
+                view_issues.append("solver view image size does not match the source image")
+            if solver_view.get("projection") not in {"orthographic", "perspective"}:
+                view_issues.append("solver view has an unsupported projection")
+            numeric_values = [
+                value for key, value in solver_view.items()
+                if key not in {"id", "projection", "image_size", "world_to_camera"}
+            ]
+            if any(isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(float(value)) for value in numeric_values):
+                view_issues.append("solver view contains non-finite camera values")
 
         component_record = None
         if specification.get("components") is not None:
@@ -107,6 +126,7 @@ def build_multiview_evidence_bundle(
             "mask_sha256": mask_hash,
             "measurements": evidence.get("measurements"),
             "component_evidence": component_record,
+            "solver_view": solver_view,
             "issues": view_issues,
         })
 

@@ -103,6 +103,14 @@ class ModelingCoreTests(unittest.TestCase):
         observed = {tuple(np.round(point, 6)) for point in first_ring}
         self.assertTrue(expected_corners.issubset(observed))
 
+    def test_shape_translation_places_component_without_moving_shared_camera(self):
+        translated = hypothesis()
+        translated["shape"].update({"translate_x": 1.25, "translate_y": -0.4, "translate_z": 0.75})
+        original, _ = build_section_loft(hypothesis()["shape"])
+        moved, _ = build_section_loft(translated["shape"])
+        expected = np.tile(np.asarray([1.25, -0.4, 0.75]), (len(original), 1))
+        np.testing.assert_allclose(moved - original, expected)
+
     def test_compiler_emits_one_connected_all_quad_cage(self):
         command = compile_blender_command(hypothesis(), name="Recovered")
         self.assertEqual(command["command"], "create_authored_quad_mesh")

@@ -33,6 +33,8 @@ def validate_hypothesis(raw: dict[str, Any]) -> dict[str, Any]:
         shape[key] = _finite(shape.get(key, 1.0), f"shape.{key}")
         if shape[key] <= 0:
             raise ValueError(f"shape.{key} must be positive")
+    for key in ("translate_x", "translate_y", "translate_z"):
+        shape[key] = _finite(shape.get(key, 0.0), f"shape.{key}")
     if shape["family"] == "section_loft":
         segments = int(shape.get("segments", 0))
         if segments < 8 or segments > 32 or segments % 4:

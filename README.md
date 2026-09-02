@@ -22,9 +22,11 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    assembly graphs, then refuses to choose topology from projected adjacency alone;
 5. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
    evidence while leaving component shape families unresolved;
-6. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
-7. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
-8. fits and competes bounded shape families, rejecting incompatible fits before compiling a cage.
+6. fits each component's competing generic families against its own label masks under fixed shared
+   cameras, including bounded object-space placement without letting candidates move the camera;
+7. compiles resolved separate assemblies into distinct typed Blender objects and refuses to fake a
+   continuous relationship by joining independently fitted meshes;
+8. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -78,6 +80,10 @@ python tools/modeling_pipeline.py bundle-references bundle-manifest.json --outpu
 python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
 python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
   --output resolved-assembly.json
+python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
+  --resolved-assembly resolved-assembly.json --output component-selection.json
+python tools/modeling_pipeline.py compile-assembly component-selection.json `
+  --output compiled-assembly.json --sequence-output sequence.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `

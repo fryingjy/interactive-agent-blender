@@ -89,6 +89,16 @@ blocked while component shape families are unselected. The next gap is component
 family fitting and competition, followed by compiling a resolved mixed graph into typed Blender
 transactions without collapsing continuous regions or fragmenting genuine assemblies.
 
+Evidence update — 2026-09-02 (component-fitting cycle): each component can now fit and compete
+executable families against its own hash-bound masks under fixed shared cameras, with bounded
+object-space translation and an ambiguity margin. A controlled two-component fixture recovered
+placement, selected different families for the two parts, compiled a resolved separate assembly,
+and passed fresh Blender 5.2.1 typed execution plus independent verification on both objects. Camera
+optimization during family competition is rejected. Continuous relationships also reject
+compilation rather than joining independent meshes. The next highest-value gap is a real shared-cage
+continuity compiler, followed by broader component families and localized refit tickets derived from
+per-component/per-view residuals.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

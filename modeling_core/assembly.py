@@ -247,7 +247,7 @@ def resolve_assembly_hypotheses(
         if selected is None:
             unresolved.append(pair_id)
     selected_relationships = [
-        hypothesis
+        {**hypothesis, "pair_id": relation["pair_id"]}
         for relation in resolved
         for hypothesis in relation["hypotheses"]
         if hypothesis["hypothesis_id"] == relation["selected_hypothesis_id"]
