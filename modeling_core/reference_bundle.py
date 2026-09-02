@@ -101,8 +101,10 @@ def build_multiview_evidence_bundle(
         bound_views.append({
             "view_id": view_id,
             "source_id": source_id,
+            "source_path": str(source_path.resolve()),
             "source_sha256": source_hash,
-            "mask_path": evidence.get("artifacts", {}).get("editable_mask"),
+            "mask_path": str(mask_path.resolve()),
+            "mask_sha256": mask_hash,
             "measurements": evidence.get("measurements"),
             "component_evidence": component_record,
             "issues": view_issues,

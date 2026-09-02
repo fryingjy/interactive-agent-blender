@@ -80,6 +80,15 @@ recognize that two arbitrary photographs show the same variant. The next highest
 turn these per-view component observations into competing component graphs and generic assembly
 representations while preserving uncertainty about occlusion and hidden structure.
 
+Evidence update — 2026-09-02 (assembly-hypothesis cycle): bundled component observations now produce
+generic per-component representation candidates and explicit continuous-cage versus separate-object
+graph candidates. Projected adjacency never chooses topology. An edge resolves only from independent,
+view-hash-bound observations of seams, continuous surface flow, projected separation, or verified motion;
+one-view and contradictory evidence stay unresolved. The output explicitly remains construction-
+blocked while component shape families are unselected. The next gap is component-level multiview
+family fitting and competition, followed by compiling a resolved mixed graph into typed Blender
+transactions without collapsing continuous regions or fragmenting genuine assemblies.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

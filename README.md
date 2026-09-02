@@ -18,11 +18,13 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    extent and adjacency without claiming hidden structure;
 3. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
    enforces required cross-view component support;
-4. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
-5. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
-6. fits bounded semantic parameters to multiple silhouettes and enclosed negative spaces;
-7. competes section-loft and arbitrary profile-extrusion families and rejects incompatible fits;
-8. compiles a compatible result into one connected all-quad cage with live modifiers.
+4. proposes generic component representations and competing continuous-cage versus separate-object
+   assembly graphs, then refuses to choose topology from projected adjacency alone;
+5. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
+   evidence while leaving component shape families unresolved;
+6. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
+7. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
+8. fits and competes bounded shape families, rejecting incompatible fits before compiling a cage.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -73,6 +75,9 @@ python tools/modeling_pipeline.py extract-reference reference.png --output-dir w
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   component-labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json
+python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
+python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
+  --output resolved-assembly.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `

@@ -9,6 +9,7 @@ from .render import render_silhouette
 from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .component_evidence import extract_component_evidence
 from .reference_bundle import build_multiview_evidence_bundle
+from .assembly import propose_assembly_hypotheses, resolve_assembly_hypotheses
 from .selection import select_shape_family
 
 __all__ = [
@@ -25,6 +26,8 @@ __all__ = [
     "extract_reference_evidence",
     "extract_component_evidence",
     "build_multiview_evidence_bundle",
+    "propose_assembly_hypotheses",
+    "resolve_assembly_hypotheses",
     "select_shape_family",
     "validate_hypothesis",
 ]

@@ -23,6 +23,18 @@ non-authoritative cameras, component labels bound to another source, and compone
 declared number of supporting views. This connects the repository's mature audit layer to the new
 pixel evidence without replacing either one.
 
+`propose-assembly` converts bundled visible regions and adjacency into two deliberately bracketing
+graph candidates: shared editable cages and separate objects. It also requires at least two generic
+shape-family candidates for every component. Projected adjacency cannot select connectivity because
+both a molded transition and an attached part can touch in the same silhouette.
+
+`resolve-assembly` accepts independently recorded observations whose artifact SHA-256 is authorized
+for the cited registered view. Two registered
+views showing a continuous transition can select a shared cage; two views exposing a seam or
+separation can select separate objects; verified independent motion is strong separate-assembly
+evidence. Conflicts and one-view continuity remain unresolved. Even a resolved assembly graph is
+not construction-ready until each component's 3D family is fitted and selected separately.
+
 ## Intermediate representation
 
 A schema-version 1 hypothesis contains:
@@ -66,6 +78,9 @@ python tools/modeling_pipeline.py extract-reference reference.png --output-dir w
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json
+python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
+python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
+  --output resolved-assembly.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `
@@ -94,7 +109,8 @@ perspective cameras, section lofts, profile extrusions, explicit negative-space 
 fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
 fixtures and one real concept image. Editable component labels and audited multiview binding are
 implemented, but automatic semantic labeling, complex photographic backgrounds, and independent
-visual identity recognition are not. Articulated assembly hypotheses, correspondence discovery,
-negative-space-producing topology, and image-derived shape initialization remain future work.
+visual identity recognition are not. Component-level family fitting, typed mixed-assembly
+compilation, correspondence discovery, negative-space-producing topology, and image-derived shape
+initialization remain future work.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

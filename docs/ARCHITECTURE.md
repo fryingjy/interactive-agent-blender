@@ -36,6 +36,9 @@ base cage + evaluated surface + diagnostic renders
   measures per-view visible regions and adjacency.
 - `reference_bundle.py` joins only reference-audited, registration-approved, hash-current views and
   checks cross-view component support before shape solving.
+- `assembly.py` proposes generic per-component representation candidates and bracketing continuous
+  versus separate assembly graphs, then resolves graph edges only from independent discriminating
+  observations. Assembly resolution never implies that component shape families are resolved.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic connected cages from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.

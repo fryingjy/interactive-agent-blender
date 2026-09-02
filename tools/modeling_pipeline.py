@@ -13,7 +13,18 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from modeling_core import build_multiview_evidence_bundle, calibrate_perspective_view, compile_blender_command, extract_component_evidence, extract_reference_evidence, fit_hypothesis, select_shape_family, validate_hypothesis
+from modeling_core import (
+    build_multiview_evidence_bundle,
+    calibrate_perspective_view,
+    compile_blender_command,
+    extract_component_evidence,
+    extract_reference_evidence,
+    fit_hypothesis,
+    propose_assembly_hypotheses,
+    resolve_assembly_hypotheses,
+    select_shape_family,
+    validate_hypothesis,
+)
 
 
 def _read_json(path: Path) -> dict:
@@ -57,6 +68,14 @@ def main() -> int:
     bundle = subparsers.add_parser("bundle-references", help="bind audited, registered per-view evidence for shape solving")
     bundle.add_argument("manifest", type=Path)
     bundle.add_argument("--output", type=Path, required=True)
+    propose = subparsers.add_parser("propose-assembly", help="propose generic component representations and continuity alternatives")
+    propose.add_argument("bundle", type=Path)
+    propose.add_argument("component_specs", type=Path)
+    propose.add_argument("--output", type=Path, required=True)
+    resolve_assembly = subparsers.add_parser("resolve-assembly", help="resolve assembly alternatives from independent multiview observations")
+    resolve_assembly.add_argument("hypotheses", type=Path)
+    resolve_assembly.add_argument("observations", type=Path)
+    resolve_assembly.add_argument("--output", type=Path, required=True)
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -125,6 +144,24 @@ def main() -> int:
         )
         _write_json(args.output, result)
         return 0 if result["accepted_for_shape_solving"] else 2
+
+    if args.action == "propose-assembly":
+        specifications = _read_json(args.component_specs)
+        result = propose_assembly_hypotheses(
+            _read_json(args.bundle),
+            specifications.get("components", []),
+        )
+        _write_json(args.output, result)
+        return 0
+
+    if args.action == "resolve-assembly":
+        observations = _read_json(args.observations)
+        result = resolve_assembly_hypotheses(
+            _read_json(args.hypotheses),
+            observations.get("observations", []),
+        )
+        _write_json(args.output, result)
+        return 0 if result["ready_for_component_graph"] else 2
 
     if args.action == "calibrate-camera":
         correspondences = _read_json(args.correspondences)
