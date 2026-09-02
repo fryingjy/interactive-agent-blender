@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "title": "Progressive Prop Benchmark Curriculum",
-  "updated": "2026-08-24",
+  "updated": "2026-09-01",
   "provenance": {
     "role": "user_supplied_project_guidance",
     "source_name": "PROGRESSIVE_PROP_BENCHMARK_CURRICULUM_CODEX.md",
@@ -129,14 +129,10 @@
     "active_prop_id": null,
     "active_prop": null,
     "active_target_variant": null,
-    "phase": "intermediate-tutorial-apprenticeship-i0-active",
+    "phase": "shape_solver_rebuild",
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "PAUSED_NO_ACTIVE_PROP",
-    "training_run": "runs/2026-08-24_tutorial-grant-abbitt-detailed-sword/",
-    "training_run_boundary": "The fourth I0 reproduction is a retained 7.2/10 non-pass. It uses a connected all-quad ridged blade, semantic creases and live unapplied SubD, and passes a corrected leaf-spear transfer; shoulder, arc, tip and hilt fidelity remain below the 8/10 gate.",
-    "current_reference_execution": "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/",
-    "current_reference_execution_boundary": "Frozen at SECONDARY_FORMS by direct instruction to move on: one connected Vessel mesh carries distinct persistent body/base/gasket semantic regions, the removable CapCup remains separate, and measured shoulder plus cap-top corrections are retained. There is no human acceptance and no ladder promotion.",
-    "next_action": "Continue bounded weapon-relevant I0 tutorial apprenticeship and target visible shape fidelity, especially shoulder transitions and long controlled curves. Do not advance to I1 until two independent I0 reproductions reach at least 8/10."
+    "next_action": "Add and validate the generic shape families, camera fitting, and family-rejection behavior required by the next target before resuming the ladder."
   }
 }

@@ -1,9 +1,0 @@
-[
-  {"label":"head_base","command":"get_full_state","params":{"name":"HammerHead"}},
-  {"label":"head_evaluated","command":"get_evaluated_state","params":{"name":"HammerHead"}},
-  {"label":"shaft_base","command":"get_full_state","params":{"name":"HammerShaft"}},
-  {"label":"shaft_evaluated","command":"get_evaluated_state","params":{"name":"HammerShaft"}},
-  {"label":"fresh_front","command":"render_diagnostic_pass","params":{"name":["HammerHead","HammerShaft"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-24_heldout-double-bladed-hammer/fresh_front_solid.png","pass_type":"solid","view":"front","resolution":640,"margin":1.12}},
-  {"label":"fresh_isometric","command":"render_diagnostic_pass","params":{"name":["HammerHead","HammerShaft"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-24_heldout-double-bladed-hammer/fresh_isometric_solid.png","pass_type":"solid","view":"isometric","resolution":640,"margin":1.12}},
-  {"label":"fresh_wire","command":"render_diagnostic_pass","params":{"name":["HammerHead","HammerShaft"],"output_path":"C:/Users/odane/Downloads/3d/runs/2026-08-24_heldout-double-bladed-hammer/fresh_front_wireframe.png","pass_type":"wireframe","view":"front","resolution":640,"margin":1.12}}
-]

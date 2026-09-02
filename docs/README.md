@@ -1,28 +1,17 @@
-# Documentation index
+# Documentation
 
-## Current authority
+- [Architecture](ARCHITECTURE.md)
+- [Shape-solving loop](SHAPE_SOLVING.md)
+- [Development priorities](DEVELOPMENT_PRIORITIES.md)
+- [Master operating directive](MASTER_DIRECTIVE.md)
+- [Reference collection](REFERENCE_COLLECTION_PROTOCOL.md)
+- [Reference interpretation](REFERENCE_INTERPRETATION.md)
+- [Failure taxonomy](FAILURE_TAXONOMY.md)
+- [Knowledge system](KNOWLEDGE_SYSTEM.md)
+- [Video extraction](VIDEO_EXTRACTION_PROTOCOL.md)
+- [Blend-file study](BLEND_FILE_STUDY_PROTOCOL.md)
+- [Repository layout](REPOSITORY_LAYOUT.md)
+- [MatCap resources](MATCAP_RESOURCES.md)
 
-1. [`MASTER_DIRECTIVE.md`](MASTER_DIRECTIVE.md) — durable operating contract.
-2. [`DIRECTIVE_IMPLEMENTATION_AUDIT.md`](DIRECTIVE_IMPLEMENTATION_AUDIT.md) — current evidence
-   mapped to directive requirements.
-3. [`../knowledge/foundation/foundation_exit_report.md`](../knowledge/foundation/foundation_exit_report.md)
-   — readiness decision, limitations, and next priority.
-4. [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) — learning-system sequence and benchmark rules.
-
-## System guides
-
-- [`ARCHITECTURE.md`](ARCHITECTURE.md) — runtime and evidence flow.
-- [`KNOWLEDGE_SYSTEM.md`](KNOWLEDGE_SYSTEM.md) — source, experiment, promotion, retrieval, and
-  retention lifecycle.
-- [`REPOSITORY_LAYOUT.md`](REPOSITORY_LAYOUT.md) — folder responsibilities and organization rules.
-
-- [`MATCAP_RESOURCES.md`](MATCAP_RESOURCES.md) — installed Blender 5.2 MatCap provenance,
-  verification, and review-channel guidance.
-
-## Historical record
-
-- [`BENCHMARK_HISTORY.md`](BENCHMARK_HISTORY.md) — chronological implementation narrative retained
-  from the original README. It is useful evidence history, not the current-state entry point.
-
-When documents disagree, prefer current code and reproducible evidence, then correct the stale
-document.
+Dated audits, target reports, and superseded curricula are available in Git history but are not
+current system documentation.

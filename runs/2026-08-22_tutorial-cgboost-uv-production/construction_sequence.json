@@ -1,8 +1,0 @@
-[
-  {"label":"tutorial_high_connected_cage","command":"create_authored_quad_mesh","params":{"name":"tutorial_weird_cube_HIGH"}},
-  {"label":"tutorial_low_connected_cage","command":"create_authored_quad_mesh","params":{"name":"tutorial_weird_cube_LOW"}},
-  {"label":"transfer_high_connected_cage","command":"create_authored_quad_mesh","params":{"name":"transfer_curved_clasp_HIGH"}},
-  {"label":"transfer_low_connected_cage","command":"create_authored_quad_mesh","params":{"name":"transfer_curved_clasp_LOW"}},
-  {"label":"tutorial_live_shell","transaction":{"name":"tutorial_weird_cube_LOW","action_type":"live_thickness","operation":"add_modifier","params":{"modifier_type":"SOLIDIFY","modifier_name":"Live shell thickness - unapplied"}}},
-  {"label":"transfer_live_shell","transaction":{"name":"transfer_curved_clasp_LOW","action_type":"live_thickness","operation":"add_modifier","params":{"modifier_type":"SOLIDIFY","modifier_name":"Live shell thickness - unapplied"}}}
-]

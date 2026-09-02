@@ -33,6 +33,7 @@ def parse_args():
     parser.add_argument("--max-non-manifold", type=int, default=0)
     parser.add_argument("--report-dir", default=None)
     parser.add_argument("--evaluated", action="store_true")
+    parser.add_argument("--allow-open", action="store_true", help="allow intentional boundary edges and skip closed-volume orientation")
     return parser.parse_args(argv)
 
 
@@ -62,6 +63,8 @@ def main():
     bm.edges.ensure_lookup_table()
     bm.faces.ensure_lookup_table()
 
+    boundary_edges = sum(1 for e in bm.edges if len(e.link_faces) == 1)
+    invalid_non_manifold_edges = sum(1 for e in bm.edges if len(e.link_faces) not in {1, 2})
     non_manifold_edges = sum(1 for e in bm.edges if not e.is_manifold)
     ngons = sum(1 for f in bm.faces if len(f.verts) > 4)
     loose_verts = sum(1 for v in bm.verts if not v.link_edges)
@@ -78,6 +81,8 @@ def main():
         "edges": len(bm.edges),
         "faces": len(bm.faces),
         "non_manifold_edges": non_manifold_edges,
+        "boundary_edges": boundary_edges,
+        "invalid_non_manifold_edges": invalid_non_manifold_edges,
         "ngons": ngons,
         "loose_verts": loose_verts,
         "loose_edges": loose_edges,
@@ -89,11 +94,11 @@ def main():
         evaluated_obj.to_mesh_clear()
 
     checks = {
-        "non_manifold_edges_ok": non_manifold_edges <= args.max_non_manifold,
+        "non_manifold_edges_ok": invalid_non_manifold_edges == 0 if args.allow_open else non_manifold_edges <= args.max_non_manifold,
         "ngons_ok": ngons <= args.max_ngons,
         "loose_geometry_ok": loose_verts == 0 and loose_edges == 0,
         "degenerate_faces_ok": degenerate_faces == 0,
-        "normals_consistent_ok": signed_volume > 0,
+        "normals_consistent_ok": True if args.allow_open else signed_volume > 0,
     }
     passed = all(checks.values())
 

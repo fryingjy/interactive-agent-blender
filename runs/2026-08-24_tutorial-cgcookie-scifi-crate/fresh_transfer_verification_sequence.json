@@ -1,6 +1,0 @@
-[
-  {"label": "shell_base_state", "command": "get_full_state", "params": {"name": "CurvedShell"}},
-  {"label": "shell_evaluated_state", "command": "get_evaluated_state", "params": {"name": "CurvedShell"}},
-  {"label": "plate_lifecycle", "command": "get_object_lifecycle_state", "params": {"name": "CurvedPlate"}},
-  {"label": "plate_evaluated_state", "command": "get_evaluated_state", "params": {"name": "CurvedPlate"}}
-]

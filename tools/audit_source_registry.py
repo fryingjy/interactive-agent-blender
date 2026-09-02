@@ -37,7 +37,7 @@ def classify_reference(field: str, value: str) -> str:
         return "non_path_reference"
     if " (" in text:
         return "non_path_reference"
-    if text.startswith(("runs/", "knowledge/", "docs/", "tools/")):
+    if text.startswith(("runs/", "knowledge/", "docs/", "tools/", "tests/", "modeling_core/", "blender_ops/", "reference/")):
         return "artifact"
     return "non_path_reference"
 
@@ -72,7 +72,7 @@ def load_retention_ledger(path: Path = RETENTION_LEDGER) -> dict[str, dict[str, 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output", type=Path, default=ROOT / "runs" / "source-registry-audit.json")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     records = json.loads(REGISTRY.read_text(encoding="utf-8"))
     findings = []
@@ -118,9 +118,10 @@ def main() -> int:
                     if not check["exists"]:
                         record_missing(record_id, f"metadata.{field}", check)
     total_missing = len(findings) + len(classified_missing)
-    result = {"registry": str(REGISTRY.relative_to(ROOT)), "retention_ledger": str(RETENTION_LEDGER.relative_to(ROOT)), "record_count": len(records), "missing_artifact_count": total_missing, "unclassified_missing_artifact_count": len(findings), "classified_missing_artifact_count": len(classified_missing), "explicitly_non_retained_count": len(intentionally_non_retained), "non_path_reference_count": len(non_path_references), "locally_reproducible": total_missing == 0, "missing_artifacts": findings, "classified_missing_artifacts": classified_missing, "explicitly_non_retained": intentionally_non_retained, "non_path_references": non_path_references, "claim_boundary": "Classified non-retained evidence remains unavailable for local reproduction. The ledger explains its retention state but does not turn it into a passing artifact or prove the external source claim."}
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
+    result = {"registry": str(REGISTRY.relative_to(ROOT)), "retention_ledger": str(RETENTION_LEDGER.relative_to(ROOT)) if RETENTION_LEDGER.exists() else None, "record_count": len(records), "missing_artifact_count": total_missing, "unclassified_missing_artifact_count": len(findings), "classified_missing_artifact_count": len(classified_missing), "explicitly_non_retained_count": len(intentionally_non_retained), "non_path_reference_count": len(non_path_references), "locally_reproducible": total_missing == 0, "missing_artifacts": findings, "classified_missing_artifacts": classified_missing, "explicitly_non_retained": intentionally_non_retained, "non_path_references": non_path_references, "claim_boundary": "This audit checks local artifact references. It does not independently validate claims made by external URLs."}
+    if args.output is not None:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(json.dumps(result, indent=2))
     return 0 if not findings else 2
 

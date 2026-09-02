@@ -1,8 +1,0 @@
-[
-  {"label": "crate_base_state", "command": "get_full_state", "params": {"name": "Crate"}},
-  {"label": "crate_evaluated_state", "command": "get_evaluated_state", "params": {"name": "Crate"}},
-  {"label": "latch_lifecycle", "command": "get_object_lifecycle_state", "params": {"name": "CrateLatch"}},
-  {"label": "latch_evaluated_state", "command": "get_evaluated_state", "params": {"name": "CrateLatch"}},
-  {"label": "bumper_lifecycle", "command": "get_object_lifecycle_state", "params": {"name": "CrateBumpers"}},
-  {"label": "bumper_evaluated_state", "command": "get_evaluated_state", "params": {"name": "CrateBumpers"}}
-]

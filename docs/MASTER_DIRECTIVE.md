@@ -2,7 +2,7 @@
 
 Repository: `https://github.com/fryingjy/interactive-agent-blender`
 
-This document defines the durable operating contract for the project. It intentionally excludes commit-bound progress claims, source catalogs, and exhaustive curricula. Keep those in run evidence, foundation reports, knowledge records, and `docs/RESEARCH_ROADMAP.md`.
+This document defines the durable operating contract for the project. It intentionally excludes commit-bound progress claims and source catalogs. Keep current sources in the foundation registry and current shape-solving work in `docs/SHAPE_SOLVING.md`.
 
 If prose conflicts with current code or reproducible evidence, evidence wins. Correct the documentation; never force evidence to fit an outdated claim.
 
@@ -59,7 +59,7 @@ Before modifying this repository or operating its live modeler:
 
 1. Inspect the current branch, commit, and worktree status.
 2. Read the current README and the parts of this directive relevant to the task.
-3. Inspect `docs/RESEARCH_ROADMAP.md` only for research or learning-system work.
+3. Inspect `docs/SHAPE_SOLVING.md` and `docs/KNOWLEDGE_SYSTEM.md` for solver or learning-system work.
 4. Inspect current foundation reports, coverage records, and recent run evidence when they affect the task.
 5. Inspect the relevant implementation and tests; do not infer behavior from filenames or old reports.
 6. Connect to Blender/modeler only when needed and record process/session identity, protocol version, scene revision, active object, mode, and selection.
@@ -318,7 +318,7 @@ evidence paths
 
 Test principles on a different shape before claiming transfer. Use retrieval quizzes without pasting study notes into the prompt when measuring retention.
 
-Keep exhaustive curricula and source inventories outside this master directive. Update `docs/RESEARCH_ROADMAP.md` and the knowledge/foundation records instead.
+Keep source inventories outside this master directive. Update the knowledge/foundation registry and current architecture documents instead.
 
 ## 15. Quality and completion
 

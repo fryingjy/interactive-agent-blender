@@ -10,7 +10,7 @@ from knowledge_engine.ingest.scene_document import (
     render_markdown,
 )
 
-FIXTURE = Path(__file__).resolve().parent.parent / "runs" / "2026-08-10_video-ingestion" / "project_owned_modeling_lesson.mp4"
+FIXTURE = Path(__file__).resolve().parent / "fixtures" / "video" / "modeling_lesson.mp4"
 FIXTURE_ROOT = FIXTURE.parent
 
 
@@ -36,10 +36,10 @@ class SceneDocumentTests(unittest.TestCase):
                 frames_per_scene=2,
             )
 
-            self.assertEqual(document["file"]["filename"], "project_owned_modeling_lesson.mp4")
+            self.assertEqual(document["file"]["filename"], "modeling_lesson.mp4")
             self.assertTrue(document["file"]["sha256"])
             self.assertAlmostEqual(document["file"]["duration_seconds"], 6.0, delta=0.5)
-            self.assertEqual(document["title"], "Project Owned Modeling Lesson")
+            self.assertEqual(document["title"], "Modeling Lesson")
             self.assertEqual(document["summary"], UNFILLED)
 
             self.assertEqual(len(document["scenes"]), 3)

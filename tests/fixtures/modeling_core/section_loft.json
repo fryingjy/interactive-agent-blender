@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "shape": {
+    "family": "section_loft",
+    "cross_section": "box",
+    "segments": 12,
+    "scale_x": 1.0,
+    "scale_y": 1.0,
+    "scale_z": 1.0,
+    "stations": [
+      {"z": -0.8, "half_width": 0.32, "half_depth": 0.22, "power": 4.0},
+      {"z": 0.0, "half_width": 0.42, "half_depth": 0.28, "power": 4.0},
+      {"z": 0.8, "half_width": 0.25, "half_depth": 0.18, "power": 4.0}
+    ]
+  },
+  "views": [
+    {"id": "front", "projection": "orthographic", "image_size": [72, 72], "yaw_degrees": 0, "pitch_degrees": 0, "roll_degrees": 0, "world_scale": 2.2, "offset_x": 0, "offset_y": 0},
+    {"id": "side", "projection": "orthographic", "image_size": [72, 72], "yaw_degrees": 90, "pitch_degrees": 0, "roll_degrees": 0, "world_scale": 2.2, "offset_x": 0, "offset_y": 0}
+  ],
+  "variables": [
+    {"pointer": "/shape/scale_x", "bounds": [0.65, 1.45]},
+    {"pointer": "/shape/scale_y", "bounds": [0.55, 1.25]}
+  ]
+}

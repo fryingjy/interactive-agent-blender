@@ -1,84 +1,62 @@
 # Architecture
 
-## System boundary
-
-The project separates Blender authority from planner/research policy. Blender owns scene state and
-evaluated geometry; ordinary Python modules own ranking, evidence aggregation, and durable records.
+The project has two authorities: a reference-conditioned solver decides what geometry should exist;
+Blender owns scene mutation and evaluated truth.
 
 ```text
-materialized references / brief / retrieved knowledge
-                  |
-                  v
- identity + continuity + representation spec
-                  |
-                  v
-        planner and stage policy
-                  |
-                  v
- target authorization -> typed MCP call -> Blender modeler server
-                  |
-                  v
- observe -> transaction -> mutate -> verify -> commit/reject
-                  |
-       +----------+-----------+----------------+
-       |                      |                |
-       v                      v                v
-   base cage          evaluated surface   visual passes
-       |                      |                |
-       +----------+-----------+----------------+
-                  v
- artifact-bound stage checkpoint / independent verifier / run report
+materialized references
+        |
+        v
+mask / landmark / camera evidence
+        |
+        v
+bounded shape hypothesis (modeling_core)
+        |
+        v
+CPU multiview fit + per-view residuals
+        |
+        v
+topology compiler -> typed Blender command
+        |
+        v
+transaction -> connected cage -> live modifiers
+        |
+        v
+base cage + evaluated surface + diagnostic renders
+        |
+        +---- refit / change family / accept / reject
 ```
 
-## Blender-side authority (`blender_ops/`)
+## `modeling_core/`
 
-- `state_probe.py` and `state_fingerprint.py` expose current mode, selection, topology, coordinates,
-  transforms, and modifiers.
-- `decision_transaction.py` captures transaction-owned rollback state and enforces one scoped
-  artistic mutation on the sanctioned path.
-- `persistent_ids.py` and `semantic_regions.py` preserve element identity and modeling intent across
-  supported operations.
-- `mesh_ops.py`, `object_ops.py`, `curve_ops.py`, and `profile_mesh.py` provide typed modeling
-  operations and authored shape construction.
-- `evaluated_probe.py` and `render_passes.py` inspect the dependency-graph result and Blender-native
-  visual channels.
-- `modeling_stage.py` and `stage_gates.py` make workflow transitions explicit and evidence-bound.
-- `modeler_server.py` exposes the Blender command protocol used by the MCP layer. The live singleton
-  is strict: construction needs a passing target/variant-bound reference authorization, created
-  objects inherit its hash, and loaded objects require explicit binding.
+- `hypothesis.py` validates the executable shape/camera intermediate representation.
+- `mesh.py` generates deterministic connected cages from semantic parameters.
+- `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.
+- `fitting.py` performs bounded multiview fitting and preserves per-view disagreement.
+- `compiler.py` emits the existing typed `create_authored_quad_mesh` command without applying
+  modifiers.
 
-## Policy and learning (`knowledge_engine/`)
+This layer exists because correctness cannot be recovered by adding more Blender operations to a
+bad shape plan. Coordinates must be measured or fitted before they become scene mutations.
 
-- `planner.py`, `reasoning.py`, `strategy.py`, and `component_strategy.py` select one local action
-  from live evidence, including fail-closed secondary-view resolution of component depth/continuity.
-- `retrieval.py` ranks knowledge by query, stage, workflow, defect, topology, modifiers, prior use,
-  and Blender-version relevance.
-- `surface_cause_classifier.py`, `visual_compare.py`, and `quality_review.py` aggregate bounded
-  evidence without collapsing technical, surface, and visual truth into one score.
-- `reference_analysis.py` verifies materialized artifact hashes; `modeling_spec.py` binds semantic
-  identity features to continuity and representation decisions; `gemini_reference_critic.py`
-  produces exact-render root-cause tickets; `stage_checkpoint.py` and `iteration_control.py` retain
-  one correction focus and force a strategy change after bounded stagnation.
-- `telemetry.py` and `session_learning.py` retain real use and replay evidence.
+## `blender_ops/`
 
-## External interfaces
+Blender remains authoritative for scene state. Persistent IDs, state fingerprints, transaction-owned
+rollback, typed operations, evaluated geometry probes, semantic regions, and native diagnostic
+renders remain in this layer. A command return is not proof of success; the resulting cage,
+modifier surface, render, and technical state must be inspected.
 
-- `addon.py` starts the Blender-side socket endpoint.
-- `.mcp.json` configures the generic Blender MCP connection.
-- `tools/modeler_mcp_server.py` exposes the typed modeler operations to an MCP-aware agent.
+## `knowledge_engine/`
 
-Session identity, scene revision, decision ID, command ID, and event ID remain distinct. A command
-return is never sufficient evidence of success; the actual Blender result must be inspected.
+This package contains reusable reference, review, retrieval, and stage policy. It may rank evidence
+or propose a bounded hypothesis, but it cannot bypass fitting or Blender transactions.
 
-## Evidence channels
+## Interfaces
 
-The architecture intentionally keeps four channels separate:
+- `addon.py` starts the Blender-side endpoint.
+- `tools/modeler_mcp_server.py` exposes typed Blender operations.
+- `tools/modeling_pipeline.py` validates, fits, and compiles shape hypotheses.
+- `.mcp.json` configures the local connections.
 
-1. base cage — editable topology and semantic integrity;
-2. evaluated surface — modifier/deformation result and surface health;
-3. visual/reference — silhouette, proportions, negative space, highlights, and appearance;
-4. technical validity — manifoldness as required, degenerates, normals, transforms, UVs, and scene
-   hygiene.
-
-Independent verifiers run in fresh factory-startup Blender processes and avoid importing the model
-generator whenever practical.
+Historical experiments and target-specific builders are not part of the runtime architecture. Git
+history preserves them without forcing every checkout and audit to carry their artifacts.

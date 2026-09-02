@@ -30,10 +30,6 @@ from knowledge_engine.tutorial_reproduction import (  # noqa: E402
     validate_tutorial_blockout_review,
     validate_tutorial_premodeling_evidence,
 )
-from knowledge_engine.modeling_readiness import (  # noqa: E402
-    evaluate_modeling_scope,
-    load_modeling_readiness,
-)
 
 
 def parse_args() -> argparse.Namespace:
@@ -47,16 +43,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--reference-stage-evidence", type=Path)
     parser.add_argument("--tutorial-blockout-review", type=Path)
     parser.add_argument("--allow-procedural-fixture", action="store_true")
-    parser.add_argument(
-        "--modeling-scope",
-        choices=("SYSTEM_VALIDATION_FIXTURE", "REPLAY_EXISTING_TARGET", "NEW_REFERENCE_PROP"),
-        default="NEW_REFERENCE_PROP",
-    )
-    parser.add_argument(
-        "--modeling-readiness",
-        type=Path,
-        default=ROOT / "knowledge" / "foundation" / "reference_modeling_readiness.json",
-    )
     parser.add_argument("--allow-legacy-ungated-tutorial", action="store_true", help=argparse.SUPPRESS)
     return parser.parse_args(argv)
 
@@ -79,17 +65,6 @@ def main() -> int:
         "procedural_fixture_exemption": fixture_exemption,
         "asset_mutation_requires_authorization": mutation_required,
     }
-    readiness = evaluate_modeling_scope(
-        load_modeling_readiness(args.modeling_readiness), args.modeling_scope
-    )
-    gate_results["system_modeling_readiness"] = readiness
-    if mutation_required and not fixture_exemption and not readiness["allowed"]:
-        raise ValueError(
-            "reference-driven asset construction is blocked by the active system-repair hold: "
-            f"{readiness['open_clearance_gates']}"
-        )
-    if fixture_exemption and args.modeling_scope != "SYSTEM_VALIDATION_FIXTURE":
-        raise ValueError("procedural fixture exemptions require --modeling-scope SYSTEM_VALIDATION_FIXTURE")
     tutorial_evidence = None
     reference_evidence = None
     if tutorial_modeling_gate_required(args.sequence, sequence) and not fixture_exemption:

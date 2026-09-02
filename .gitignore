@@ -2,18 +2,14 @@
 __pycache__/
 .pytest_cache/
 *.pyc
-gh_auth.log
 *.blend1
-runs/*/blend/*.blend
-runs/*/failed_*/*.blend
-runs/*/media/
-runs/*/asymmetric/
-runs/*/reference_segmentation_preview.png
-runs/*/.godot/
 *.glb.import
-runs/*/*.png.import
-runs/2026-08-11_godot-engine-validation/*_housing_tangent_normal.png
-runs/2026-08-11_godot-engine-validation/*.uid
+*.png.import
+gh_auth.log
+
+# Local generated work. Promote only small deterministic fixtures to tests/fixtures/.
+runs/
+work/
+outputs/
 **/generated_transcript.vtt
 **/speech_transcription_report.json
-runs/*/ingested/**/frame_*.png

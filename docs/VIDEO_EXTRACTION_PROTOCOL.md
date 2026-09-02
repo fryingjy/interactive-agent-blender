@@ -1,7 +1,7 @@
 # Video extraction protocol
 
 Adopted 2026-08-14 (user-authored, superseding the informal extraction approach used earlier this
-session). Governs how every video in `docs/BLENDER_MODELING_CURRICULUM_V2.md` is studied. This is
+session). Governs how every retained modeling video is studied. This is
 not a "watch and summarize" pass -- these videos are training sources for a professional-modeling
 agent, and the objective is never "the AI knows a bevel exists." The objective is "the AI understands
 when, where, why, and how a professional modeler would use a bevel, what can go wrong, how to

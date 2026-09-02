@@ -134,7 +134,7 @@ discipline.
 ## Video source (2026-08-13, via CloudGlue): a mechanistic "why" for the crease-vs-Bevel heuristic
 
 `SOURCE OBSERVATION`, not yet experimentally verified -- keep separate from the tested findings
-above per `docs/RESEARCH_ROADMAP.md`'s four knowledge layers. "The MOST IMPORTANT Hard Surface
+above per `docs/KNOWLEDGE_SYSTEM.md`'s knowledge layers. "The MOST IMPORTANT Hard Surface
 Modeling Tip - Edge Creasing" (youtube.com/watch?v=3sXbUC7l70w, retrieved and comprehended via the
 CloudGlue MCP connector, full scene-by-scene transcript with timestamps) argues against using crease
 for hard-surface work, on two claims:
