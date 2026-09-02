@@ -20,7 +20,7 @@
         "docs/CURRENT_STATE_GAP_MATRIX.md"
       ],
       "current_boundary": "The typed loop and evidence infrastructure exist, but unseen-reference professional modeling has not been demonstrated repeatedly.",
-      "next_step": "Complete a human-authorized Level-1 reference prop through independent review and retain the correction trail."
+      "next_step": "After the evaluator hold is cleared, complete a Level-1 unfamiliar reference prop autonomously, obtain independent review of the result, and retain the full correction trail."
     },
     {
       "id": "2",
@@ -44,7 +44,7 @@
         "tools/audit_repository.py"
       ],
       "current_boundary": "The checklist and repository audit are available; a live Blender connection is only inspected when the task needs one.",
-      "next_step": "Record live Blender identity and state before the next authorized scene mutation."
+      "next_step": "After the evaluator hold is cleared, record live Blender identity and state before the first new scene mutation."
     },
     {
       "id": "4",
@@ -74,7 +74,7 @@
         "tools/run_stage_gate_lab.py"
       ],
       "current_boundary": "The state machine and evidence gate are verified in controlled work; artistic stage judgment remains partial under Section 4.",
-      "next_step": "Use the gate for the next human-authorized reference-modeling run."
+      "next_step": "After the evaluator hold is cleared, use this gate for the next reference-modeling run; do not add a separate pre-modeling approval board."
     },
     {
       "id": "6",
@@ -88,7 +88,7 @@
         "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/fresh_component_coverage.json"
       ],
       "current_boundary": "The Stanley run now proves structured component planning against a saved live asset without forcing every semantic component into a separate primitive: body, base, and gasket bind to distinct valid nonempty persistent regions on one connected Vessel mesh, while the removable CapCup remains a separate object. This is one neutral rotational target, not broad complex-target transfer or human acceptance.",
-      "next_step": "Carry the same explicit object-versus-semantic-region strategy through a less rotational target and obtain human review of the decomposition."
+      "next_step": "After the evaluator hold is cleared, carry the same explicit object-versus-semantic-region strategy through a less rotational target and obtain post-result human review of the decomposition."
     },
     {
       "id": "7",
@@ -105,7 +105,7 @@
       "runs/2026-08-24_heldout-flanged-mace/README.md"
     ],
     "current_boundary": "The planner contract is verified in controlled work. Stanley retains mismatch-to-local-edit cycles, and the bounded crate reproduction retains a render-driven latch-symmetry correction before freezing as a 6.8/10 non-pass. Repeated adaptive use on visually accepted assets is still sparse.",
-    "next_step": "Apply the same bounded diagnose-and-correct loop to a different I0 lesson with a clearly inspectable creator result."
+      "next_step": "After the evaluator hold is cleared, apply the bounded diagnose-and-correct loop to an unfamiliar Level-1 target with a clearly inspectable reference result."
     },
     {
       "id": "8",
@@ -122,7 +122,7 @@
       "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md"
     ],
     "current_boundary": "The typed observe-diagnose-decide-verify loop and fail-closed runner are verified. The crate run adds a real report-serialization correction, explicit discard of uncertain pending sessions, a render-driven symmetry correction, and fresh-process verification. Technical validity still does not establish likeness.",
-    "next_step": "Use short decision transactions in the next I0 reproduction and stop at the fixed assessment/transfer cutoff."
+      "next_step": "After the evaluator hold is cleared, use short decision transactions in the next Level-1 run and stop at the fixed assessment/transfer cutoff."
     },
     {
       "id": "9",
@@ -164,7 +164,7 @@
         "tools/run_professional_review_audit.py"
       ],
       "current_boundary": "Base/evaluated/visual/technical channels are available, but their outputs still require informed interpretation.",
-      "next_step": "Use all relevant channels in the next asset review rather than treating a technical pass as visual approval."
+      "next_step": "After the evaluator hold is cleared, use all relevant truth channels in the next asset review rather than treating a technical pass as visual approval."
     },
     {
       "id": "12",
@@ -230,7 +230,7 @@
       "runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_evaluation.json"
     ],
     "current_boundary": "Source observation, bounded episode review, transfer experiments, and retrieval infrastructure exist. The crate study links full audiovisual extraction and an independent transcript check to a typed reproduction and different-geometry transfer, while preserving the 6.8/10 fidelity failure instead of promoting it.",
-      "next_step": "Repeat natural retrieval on unrelated reference failures and measure whether the retrieved rule improves visual outcomes, not only intent completeness."
+      "next_step": "After the evaluator hold is cleared, repeat natural retrieval on unrelated reference failures and measure whether the retrieved rule improves visual outcomes, not only intent completeness."
     },
     {
       "id": "14",
@@ -260,7 +260,7 @@
       "runs/2026-08-24_tutorial-cgcookie-scifi-crate/transfer_evaluation.json"
     ],
     "current_boundary": "CORRECTED 2026-08-19 by audit. Circular runtime validations remain withdrawn except for the independently classified bevel-parity path. The crate study adds a controlled curved-shell transfer of fitted duplicate/separate geometry; that transfer passes technically while the source reproduction remains a visible non-pass, preserving the distinction between transferable operation and artistic result.",
-      "next_step": "Repeat the observation -> retrieval -> typed action -> visual consequence chain on an unrelated target and retain failures when retrieval is inapplicable."
+      "next_step": "After the evaluator hold is cleared, repeat the observation -> retrieval -> typed action -> visual consequence chain on an unrelated target and retain failures when retrieval is inapplicable."
     },
     {
       "id": "15",
@@ -274,7 +274,7 @@
         "knowledge_engine/quality_review.py"
       ],
       "current_boundary": "Production high/low packaging, seam-directed UV transfer, bakes, exports, and quality checks are demonstrated across controlled cases, but no reviewer-accepted production asset establishes full transfer.",
-      "next_step": "Apply the complete quality checklist to an approved prop and preserve live, unapplied modifier stacks."
+      "next_step": "After a hold-cleared prop passes primary-form review, apply the complete quality checklist and preserve live, unapplied modifier stacks."
     },
     {
       "id": "16",
@@ -330,7 +330,7 @@
         "docs/CURRENT_STATE_GAP_MATRIX.md"
       ],
       "current_boundary": "The directive's Level-1-first correction is adopted; advanced curriculum and sculpt specialization remain intentionally deferred.",
-      "next_step": "Build breadth across simple, structurally distinct authorized props before returning to Level-5-plus complexity."
+    "next_step": "After the evaluator hold is cleared, build breadth across simple, structurally distinct props before returning to Level-5-plus complexity."
     },
     {
       "id": "19",
