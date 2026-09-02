@@ -25,6 +25,8 @@ from modeling_core import (
     fit_component_families,
     initialize_component_candidates,
     propose_assembly_hypotheses,
+    propose_component_regions,
+    propose_cross_view_correspondences,
     resolve_assembly_hypotheses,
     select_shape_family,
     validate_hypothesis,
@@ -69,6 +71,15 @@ def main() -> int:
     components.add_argument("label_map", type=Path)
     components.add_argument("--component", action="append", required=True, metavar="ID=LABEL")
     components.add_argument("--output", type=Path, required=True)
+    propose_components = subparsers.add_parser("propose-components", help="create editable appearance-region labels without claiming semantic identity")
+    propose_components.add_argument("evidence", type=Path)
+    propose_components.add_argument("--output-dir", type=Path, required=True)
+    propose_components.add_argument("--max-regions", type=int, default=6)
+    propose_components.add_argument("--minimum-region-fraction", type=float, default=0.03)
+    propose_components.add_argument("--seed", type=int, default=0)
+    propose_correspondences = subparsers.add_parser("propose-correspondences", help="match appearance-region proposals across views for review")
+    propose_correspondences.add_argument("manifest", type=Path)
+    propose_correspondences.add_argument("--output", type=Path, required=True)
     bundle = subparsers.add_parser("bundle-references", help="bind audited, registered per-view evidence for shape solving")
     bundle.add_argument("manifest", type=Path)
     bundle.add_argument("--output", type=Path, required=True)
@@ -151,6 +162,31 @@ def main() -> int:
         result = extract_component_evidence(args.evidence, args.label_map, specifications)
         _write_json(args.output, result)
         return 0 if result["accepted_for_bundle"] else 2
+
+    if args.action == "propose-components":
+        result = propose_component_regions(
+            args.evidence,
+            args.output_dir,
+            maximum_regions=args.max_regions,
+            minimum_region_fraction=args.minimum_region_fraction,
+            seed=args.seed,
+        )
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.action == "propose-correspondences":
+        manifest = _read_json(args.manifest)
+        base = args.manifest.resolve().parent
+        views = []
+        for view in manifest.get("views", []):
+            normalized = dict(view)
+            proposal = normalized.get("proposal")
+            if isinstance(proposal, str) and not Path(proposal).is_absolute():
+                normalized["proposal"] = (base / proposal).resolve()
+            views.append(normalized)
+        result = propose_cross_view_correspondences(views)
+        _write_json(args.output, result)
+        return 0
 
     if args.action == "bundle-references":
         manifest = _read_json(args.manifest)

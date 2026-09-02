@@ -8,6 +8,7 @@ from .mesh import build_curve_sweep, build_profile_extrusion, build_profile_revo
 from .render import render_silhouette
 from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .component_evidence import extract_component_evidence
+from .component_proposals import propose_component_regions, propose_cross_view_correspondences
 from .reference_bundle import build_multiview_evidence_bundle
 from .assembly import propose_assembly_hypotheses, resolve_assembly_hypotheses
 from .component_fitting import compile_component_assembly, fit_component_families
@@ -38,6 +39,8 @@ __all__ = [
     "analyze_reference_mask",
     "extract_reference_evidence",
     "extract_component_evidence",
+    "propose_component_regions",
+    "propose_cross_view_correspondences",
     "build_multiview_evidence_bundle",
     "propose_assembly_hypotheses",
     "resolve_assembly_hypotheses",

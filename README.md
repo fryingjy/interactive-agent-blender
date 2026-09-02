@@ -16,27 +16,29 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    from alpha or clean-background references, with fail-closed diagnostics and editable-mask replay;
 2. binds editable semantic component labels to each source silhouette and measures visible component
    extent and adjacency without claiming hidden structure;
-3. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
+3. proposes deterministic appearance-region labels and cross-view matches with confidence,
+   ambiguity, editable artifacts, and a mandatory semantic-confirmation boundary;
+4. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
    enforces required cross-view component support;
-4. proposes generic component representations and competing continuous-cage versus separate-object
+5. proposes generic component representations and competing continuous-cage versus separate-object
    assembly graphs, then refuses to choose topology from projected adjacency alone;
-5. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
+6. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
    evidence while leaving component shape families unresolved;
-6. initializes section-loft, outline-extrusion, radial, and one-hole candidates directly from
+7. initializes section-loft, outline-extrusion, radial, and one-hole candidates directly from
    registered orthographic or calibrated multiview-perspective component masks, including solved
    world bounds and residual-derived parameter bounds, while rejecting rank-deficient cameras and
    inconsistent projected bounds;
-7. fits each component's competing generic families against its own label masks under fixed shared
+8. fits each component's competing generic families against its own label masks under fixed shared
    cameras, including bounded object-space placement without letting candidates move the camera;
-8. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
+9. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
    explicitly bound equal-cardinality ports weld or bridge continuous components into one checked
    all-quad cage;
-9. converts retained per-component/per-view residuals into scoped refit or representation-change
+10. converts retained per-component/per-view residuals into scoped refit or representation-change
    tickets using bounded parameter probes that may not hide multiview regression;
-10. executes section-loft, outline-extrusion, profile-revolution, curve/profile-sweep, and a closed
+11. executes section-loft, outline-extrusion, profile-revolution, curve/profile-sweep, and a closed
    single-through-hole ring extrusion through the same validation, fitting, and Blender compilation
    path; open volume cages receive virtual silhouette caps during fitting without changing topology;
-11. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
+12. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -84,6 +86,10 @@ Fit and compile a hypothesis:
 
 ```powershell
 python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
+python tools/modeling_pipeline.py propose-components work/reference/reference_evidence.json `
+  --output-dir work/component-proposal
+python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `
+  --output correspondence-proposal.json
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   component-labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json

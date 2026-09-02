@@ -34,6 +34,10 @@ base cage + evaluated surface + diagnostic renders
   outline landmarks, profiles, and enclosed negative-space observations for separable backgrounds.
 - `component_evidence.py` binds editable grayscale semantic labels to source silhouettes and
   measures per-view visible regions and adjacency.
+- `component_proposals.py` creates deterministic Lab-color appearance regions inside a verified
+  object mask and uses global assignment to propose cross-view matches from color, area, and aspect
+  descriptors. It emits editable hash-bound artifacts, confidence, unmatched/ambiguous records,
+  and never marks its output as semantic evidence.
 - `reference_bundle.py` joins only reference-audited, registration-approved, hash-current views and
   checks cross-view component support before shape solving.
 - `assembly.py` proposes generic per-component representation candidates and bracketing continuous

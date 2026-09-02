@@ -17,6 +17,17 @@ undeclared labels, and measures each component's visible bounds, landmarks, area
 and adjacency. Label zero is background; labels 1–255 are declared explicitly. These regions are
 annotations, not proof of hidden extent, physical continuity, or occlusion order.
 
+`propose-components` can create a first editable label map when none exists. Its deliberately small
+local baseline selects one or more Lab-color appearance clusters inside the already verified object
+mask, records model-selection diagnostics, fragmentation, color dispersion, and confidence, and
+materializes a hash-bound preview. `propose-correspondences` then uses global assignment over color,
+visible area, and aspect descriptors to bracket cross-view region identity. It reports low-margin
+matches and unmatched regions instead of forcing a complete graph. Neither output is accepted as
+semantic evidence: lighting can split one part, identical finishes can merge separate parts, and
+occlusion can change area or aspect. The editable labels still must receive semantic IDs through
+`annotate-components` before bundling. Stronger local or external segmenters may replace the label
+proposal, but they inherit the same hash, review, and confirmation boundary.
+
 `bundle-references` consumes the existing reference-set and registration gate records. It rejects
 stale or unauthorized source hashes, duplicate images masquerading as different views,
 non-authoritative cameras, component labels bound to another source, and components lacking the
@@ -114,6 +125,10 @@ counts remain in the fit record. Perspective views carry explicit distance and f
 python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
 python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/corrected `
   --mask-override work/reference/reference_mask.png
+python tools/modeling_pipeline.py propose-components work/reference/reference_evidence.json `
+  --output-dir work/component-proposal
+python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `
+  --output correspondence-proposal.json
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json

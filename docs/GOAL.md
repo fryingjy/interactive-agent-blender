@@ -174,6 +174,20 @@ geometry, degenerates, or winding conflicts. This proves calibrated multiview pe
 not calibration or semantic perception from ordinary photographs. The next P0 gap is automatic
 component and cross-view correspondence proposals with explicit confidence and correction hooks.
 
+Evidence update — 2026-09-02 (component-proposal cycle 1): the repository now has a local,
+deterministic prior for missing component labels. It proposes Lab-color appearance regions only
+inside a hash-verified object mask, emits editable labels and previews, and records cluster
+selection, fragmentation, dispersion, and confidence. A cross-view matcher uses global assignment
+over color, visible area, and aspect descriptors; unmatched and low-margin alternatives remain
+explicit. Controlled transfer tests show that it discovers a two-finish split, avoids inventing
+multiple regions on a uniform object, follows appearance when left/right positions reverse,
+preserves equal-descriptor ambiguity, and rejects stale label artifacts. The proposal records are
+hard-coded as non-semantic and cannot enter a shape bundle until edited labels receive explicit
+component IDs through the existing annotation contract. This is a useful correction hook and CPU
+baseline, not general part understanding: same-colored assemblies, lighting gradients, occlusion,
+and texture can defeat it. The next scoped gap is a confirmation/materialization bridge plus a
+stronger optional segmentation adapter evaluated under the same fail-closed contract.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain
