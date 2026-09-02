@@ -144,6 +144,21 @@ opening is not arbitrary boolean topology or a general shell system. The largest
 evidence-derived candidate initialization and bounds, followed by automatic component labels and
 cross-view correspondences on ordinary photographs.
 
+Evidence update — 2026-09-02 (candidate-initialization cycle 1): registered orthographic component
+masks can now initialize executable section-loft, outline-extrusion, radial, and single-through-hole
+candidates without target-authored coordinates. The solver reconstructs world center and
+axis-aligned half-extents from camera rows and silhouette bounds, requires full rank for both,
+derives profile geometry from a stable X/Z view, and sizes parameter bounds from pixel scale and
+solve residual. Duplicate/mismatched view identities, stale label hashes, collapsed axes, and
+rank-deficient depth fail closed. A controlled one-hole component completed masks → automatic
+candidate initialization → three-family competition → correct ring-family selection → typed Blender
+compilation. Fresh Blender 5.2.1 verification found the automatically initialized winner to be a
+closed 48-vertex/48-quad cage with zero boundary or invalid non-manifold edges, n-gons, loose
+geometry, degenerates, or winding conflicts. This does not close P0: it is orthographic-only
+initialization on explicit component labels. The next scoped gap is calibrated-perspective
+initialization, followed by automatic component/correspondence proposals with confidence and
+correction hooks on ordinary photographs.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain
@@ -153,9 +168,9 @@ Current priority order:
    manual correction hooks.
 3. **Camera and correspondence solving** — initialize orthographic/perspective views from image
    evidence, report reprojection error, and reject underconstrained calibration.
-4. **Evidence-derived candidate initialization** — turn registered component masks, landmarks,
-   negative spaces, and camera scale into generic family starting values and defensible parameter
-   bounds instead of relying on hand-authored candidate coordinates.
+4. **Complete evidence-derived candidate initialization** — extend the proved orthographic path to
+   calibrated perspective views and path/repeated families while retaining rank, residual, and
+   uncertainty diagnostics instead of relying on hand-authored candidate coordinates.
 5. **Remaining representation and fitting gaps** — add only evidence-justified shell,
    multi-opening, repeated, or branch families; preserve per-view/component disagreement and convert
    contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.

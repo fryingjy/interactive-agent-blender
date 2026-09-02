@@ -23,6 +23,7 @@ from modeling_core import (
     extract_reference_evidence,
     fit_hypothesis,
     fit_component_families,
+    initialize_component_candidates,
     propose_assembly_hypotheses,
     resolve_assembly_hypotheses,
     select_shape_family,
@@ -87,6 +88,10 @@ def main() -> int:
     fit_components.add_argument("--output", type=Path, required=True)
     fit_components.add_argument("--seed", type=int, default=0)
     fit_components.add_argument("--maxiter", type=int, default=20)
+    initialize_components = subparsers.add_parser("initialize-components", help="derive generic family candidates and bounds from registered component masks")
+    initialize_components.add_argument("bundle", type=Path)
+    initialize_components.add_argument("assembly_hypotheses", type=Path)
+    initialize_components.add_argument("--output", type=Path, required=True)
     diagnose_fit = subparsers.add_parser("diagnose-fit", help="convert per-view fitted residuals into scoped refit tickets")
     diagnose_fit.add_argument("fitted", type=Path)
     diagnose_fit.add_argument("--component-id", required=True)
@@ -187,6 +192,8 @@ def main() -> int:
 
     if args.action == "fit-components":
         candidates = _read_json(args.candidates)
+        if candidates.get("record_type") == "INITIALIZED_COMPONENT_CANDIDATE_SET" and not candidates.get("ready_for_component_fitting"):
+            parser.error("initialized candidate set is underconstrained or lacks two executable families per component")
         resolved = _read_json(args.resolved_assembly) if args.resolved_assembly else None
         result = fit_component_families(
             _read_json(args.bundle),
@@ -198,6 +205,14 @@ def main() -> int:
         )
         _write_json(args.output, result)
         return 0 if result["ready_for_compilation"] else 2
+
+    if args.action == "initialize-components":
+        result = initialize_component_candidates(
+            _read_json(args.bundle),
+            _read_json(args.assembly_hypotheses),
+        )
+        _write_json(args.output, result)
+        return 0 if result["ready_for_component_fitting"] else 2
 
     if args.action == "compile-assembly":
         interface_payload = _read_json(args.continuity_interfaces) if args.continuity_interfaces else {}

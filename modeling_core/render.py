@@ -42,7 +42,7 @@ def _boundary_loops(faces: list[tuple[int, ...]]) -> list[list[int]]:
     return loops
 
 
-def _rotation(view: dict[str, Any]) -> np.ndarray:
+def view_rotation_matrix(view: dict[str, Any]) -> np.ndarray:
     yaw, pitch, roll = (math.radians(float(view[key])) for key in ("yaw_degrees", "pitch_degrees", "roll_degrees"))
     cz, sz = math.cos(yaw), math.sin(yaw)
     cx, sx = math.cos(pitch), math.sin(pitch)
@@ -56,7 +56,7 @@ def _rotation(view: dict[str, Any]) -> np.ndarray:
 def project_vertices(vertices: np.ndarray, view: dict[str, Any]) -> np.ndarray:
     """Project world XYZ to image XY using an explicit camera hypothesis."""
     width, height = view["image_size"]
-    rotated = np.asarray(vertices, dtype=float) @ _rotation(view).T
+    rotated = np.asarray(vertices, dtype=float) @ view_rotation_matrix(view).T
     if view.get("projection", "orthographic") == "perspective":
         matrix = view.get("world_to_camera")
         if matrix is not None:

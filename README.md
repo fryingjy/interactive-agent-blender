@@ -22,17 +22,20 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    assembly graphs, then refuses to choose topology from projected adjacency alone;
 5. resolves assembly edges only from independent multiview seam, continuity, separation, or motion
    evidence while leaving component shape families unresolved;
-6. fits each component's competing generic families against its own label masks under fixed shared
+6. initializes section-loft, outline-extrusion, radial, and one-hole candidates directly from
+   registered orthographic component masks, including solved world bounds and residual-derived
+   parameter bounds, while rejecting rank-deficient depth evidence;
+7. fits each component's competing generic families against its own label masks under fixed shared
    cameras, including bounded object-space placement without letting candidates move the camera;
-7. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
+8. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
    explicitly bound equal-cardinality ports weld or bridge continuous components into one checked
    all-quad cage;
-8. converts retained per-component/per-view residuals into scoped refit or representation-change
+9. converts retained per-component/per-view residuals into scoped refit or representation-change
    tickets using bounded parameter probes that may not hide multiview regression;
-9. executes section-loft, outline-extrusion, profile-revolution, curve/profile-sweep, and a closed
+10. executes section-loft, outline-extrusion, profile-revolution, curve/profile-sweep, and a closed
    single-through-hole ring extrusion through the same validation, fitting, and Blender compilation
    path; open volume cages receive virtual silhouette caps during fitting without changing topology;
-10. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
+11. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
 current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
@@ -86,6 +89,8 @@ python tools/modeling_pipeline.py bundle-references bundle-manifest.json --outpu
 python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
 python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
   --output resolved-assembly.json
+python tools/modeling_pipeline.py initialize-components bundle.json assembly.json `
+  --output initialized-candidates.json
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
 python tools/modeling_pipeline.py diagnose-fit fitted.json --component-id body `

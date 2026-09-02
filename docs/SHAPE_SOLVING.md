@@ -48,6 +48,14 @@ view without materially worsening the all-view mean; it is never applied directl
 lever exists, the ticket requests family/bound reconsideration. A negative-space count mismatch is
 classified as a representation failure rather than disguised as a scale or smoothing adjustment.
 
+`initialize-components` removes the need to hand-author the first coordinates for the currently
+supported orthographic case. It solves component center and axis-aligned half-extents from registered
+silhouette bounds, requires rank three for both placement and extent systems, selects a stable X/Z
+profile view, and derives loft stations, external outlines, radial profiles, or corresponding
+outer/inner through-hole loops. Translation and scale bounds come from solve residual, mask pixel
+scale, and an explicit uncertainty floor. Rank-deficient views produce no geometry. The initializer
+does not yet solve perspective-only evidence, sweep paths, multiple holes, or hidden concavity.
+
 `compile-assembly` emits typed `create_authored_quad_mesh` commands only when every family and
 assembly edge is resolved. Separate assemblies remain separate editable objects. A connected set of
 continuous edges becomes one object only when an explicit interface record binds one unused open
@@ -109,6 +117,8 @@ python tools/modeling_pipeline.py bundle-references bundle-manifest.json --outpu
 python tools/modeling_pipeline.py propose-assembly bundle.json components.json --output assembly.json
 python tools/modeling_pipeline.py resolve-assembly assembly.json observations.json `
   --output resolved-assembly.json
+python tools/modeling_pipeline.py initialize-components bundle.json assembly.json `
+  --output initialized-candidates.json
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
 python tools/modeling_pipeline.py diagnose-fit fitted.json --component-id body `
