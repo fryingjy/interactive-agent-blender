@@ -37,7 +37,9 @@ base cage + evaluated surface + diagnostic renders
 - `component_proposals.py` creates deterministic Lab-color appearance regions inside a verified
   object mask and uses global assignment to propose cross-view matches from color, area, and aspect
   descriptors. It emits editable hash-bound artifacts, confidence, unmatched/ambiguous records,
-  and never marks its output as semantic evidence.
+  and never marks its output as semantic evidence. Its materialization bridge requires an explicit
+  complete confirmation decision, revalidates every proposal/source/mask hash, and then produces
+  ordinary `REFERENCE_COMPONENT_EVIDENCE` records for the existing bundle contract.
 - `reference_bundle.py` joins only reference-audited, registration-approved, hash-current views and
   checks cross-view component support before shape solving.
 - `assembly.py` proposes generic per-component representation candidates and bracketing continuous

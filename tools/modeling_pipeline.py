@@ -24,6 +24,7 @@ from modeling_core import (
     fit_hypothesis,
     fit_component_families,
     initialize_component_candidates,
+    materialize_confirmed_component_evidence,
     propose_assembly_hypotheses,
     propose_component_regions,
     propose_cross_view_correspondences,
@@ -80,6 +81,10 @@ def main() -> int:
     propose_correspondences = subparsers.add_parser("propose-correspondences", help="match appearance-region proposals across views for review")
     propose_correspondences.add_argument("manifest", type=Path)
     propose_correspondences.add_argument("--output", type=Path, required=True)
+    confirm_components = subparsers.add_parser("confirm-components", help="materialize reviewed cross-view proposal groups as semantic component evidence")
+    confirm_components.add_argument("manifest", type=Path)
+    confirm_components.add_argument("--output-dir", type=Path, required=True)
+    confirm_components.add_argument("--output", type=Path, required=True)
     bundle = subparsers.add_parser("bundle-references", help="bind audited, registered per-view evidence for shape solving")
     bundle.add_argument("manifest", type=Path)
     bundle.add_argument("--output", type=Path, required=True)
@@ -187,6 +192,26 @@ def main() -> int:
         result = propose_cross_view_correspondences(views)
         _write_json(args.output, result)
         return 0
+
+    if args.action == "confirm-components":
+        manifest = _read_json(args.manifest)
+        base = args.manifest.resolve().parent
+        resolve = lambda value: (base / value).resolve() if isinstance(value, str) and not Path(value).is_absolute() else value
+        views = []
+        for view in manifest.get("views", []):
+            normalized = dict(view)
+            normalized["proposal"] = resolve(normalized.get("proposal"))
+            normalized["evidence"] = resolve(normalized.get("evidence"))
+            views.append(normalized)
+        result = materialize_confirmed_component_evidence(
+            resolve(manifest.get("correspondence")),
+            views,
+            manifest.get("assignments", []),
+            manifest.get("confirmation", {}),
+            args.output_dir,
+        )
+        _write_json(args.output, result)
+        return 0 if result["ready_for_bundle"] else 2
 
     if args.action == "bundle-references":
         manifest = _read_json(args.manifest)

@@ -12,6 +12,7 @@ import cv2
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+from .component_evidence import extract_component_evidence
 from .reference_evidence import analyze_reference_mask
 
 
@@ -295,6 +296,14 @@ def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str,
         "record_type": "CROSS_VIEW_COMPONENT_CORRESPONDENCE_PROPOSAL",
         "anchor_view_id": anchor_id,
         "view_ids": identifiers,
+        "proposal_bindings": {
+            view_id: {
+                "source_reference_sha256": proposal["source_reference_sha256"],
+                "source_mask_sha256": proposal["source_mask_sha256"],
+                "editable_label_map_sha256": proposal["artifact_sha256"]["editable_label_map"],
+            }
+            for view_id, proposal in loaded
+        },
         "groups": groups,
         "unmatched_regions": unmatched,
         "incomplete_groups": incomplete,
@@ -307,4 +316,131 @@ def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str,
             "instruction": "Edit group matches and assign semantic IDs before producing REFERENCE_COMPONENT_EVIDENCE records.",
         },
         "claim_boundary": "Matching compares visible appearance, area, and aspect descriptors. It does not prove that regions are the same physical component across views.",
+    }
+
+
+def materialize_confirmed_component_evidence(
+    correspondence: dict[str, Any] | str | Path,
+    views: list[dict[str, Any]],
+    assignments: list[dict[str, Any]],
+    confirmation: dict[str, Any],
+    output_directory: str | Path,
+) -> dict[str, Any]:
+    """Convert explicitly reviewed proposal groups into bundle-ready semantic label evidence."""
+    proposal = _read(correspondence)
+    if proposal.get("record_type") != "CROSS_VIEW_COMPONENT_CORRESPONDENCE_PROPOSAL":
+        raise ValueError("confirmation requires a cross-view component correspondence proposal")
+    if confirmation.get("decision") != "CONFIRM_COMPONENT_IDENTITY":
+        raise ValueError("confirmation decision must be CONFIRM_COMPONENT_IDENTITY")
+    if confirmation.get("reviewer_type") not in {"HUMAN", "AGENT_EVIDENCE_REVIEW"}:
+        raise ValueError("confirmation reviewer_type must be HUMAN or AGENT_EVIDENCE_REVIEW")
+    if not str(confirmation.get("reviewer_id") or "").strip() or not str(confirmation.get("reviewed_at") or "").strip():
+        raise ValueError("confirmation requires reviewer_id and reviewed_at")
+    if not isinstance(assignments, list) or not assignments:
+        raise ValueError("at least one confirmed semantic assignment is required")
+
+    group_ids = [group["proposal_group_id"] for group in proposal.get("groups", [])]
+    assigned_groups = [str(item.get("proposal_group_id") or "") for item in assignments]
+    component_ids = [str(item.get("component_id") or "").strip() for item in assignments]
+    if set(assigned_groups) != set(group_ids) or len(assigned_groups) != len(set(assigned_groups)):
+        raise ValueError("confirmed assignments must cover every proposal group exactly once")
+    if any(not identifier for identifier in component_ids) or len(component_ids) != len(set(component_ids)):
+        raise ValueError("confirmed component ids must be unique and non-empty")
+    if len(assignments) > 255:
+        raise ValueError("confirmed component labels exceed the grayscale label-map limit")
+
+    view_ids = [str(item.get("view_id") or "").strip().lower() for item in views]
+    if set(view_ids) != set(proposal.get("view_ids", [])) or len(view_ids) != len(set(view_ids)):
+        raise ValueError("confirmation views must exactly match the correspondence proposal")
+    proposal_hash = hashlib.sha256(
+        json.dumps(proposal, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    group_map = {group["proposal_group_id"]: group for group in proposal["groups"]}
+    assignment_map = {item["proposal_group_id"]: item for item in assignments}
+    destination = Path(output_directory).resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    records = {}
+    issues = []
+    for item in views:
+        view_id = str(item["view_id"]).strip().lower()
+        region_proposal = _read(item.get("proposal"))
+        evidence = _read(item.get("evidence"))
+        if region_proposal.get("record_type") != "COMPONENT_REGION_PROPOSAL":
+            raise ValueError(f"{view_id}: invalid component region proposal")
+        binding = proposal.get("proposal_bindings", {}).get(view_id)
+        actual_binding = {
+            "source_reference_sha256": region_proposal.get("source_reference_sha256"),
+            "source_mask_sha256": region_proposal.get("source_mask_sha256"),
+            "editable_label_map_sha256": region_proposal.get("artifact_sha256", {}).get("editable_label_map"),
+        }
+        if binding != actual_binding:
+            raise ValueError(f"{view_id}: proposal no longer matches its correspondence binding")
+        if evidence.get("source", {}).get("sha256") != binding["source_reference_sha256"]:
+            raise ValueError(f"{view_id}: reference evidence belongs to another source")
+        if evidence.get("artifact_sha256", {}).get("editable_mask") != binding["source_mask_sha256"]:
+            raise ValueError(f"{view_id}: reference mask revision differs from the proposal")
+        label_path = _current_file(
+            {
+                "path": region_proposal.get("artifacts", {}).get("editable_label_map"),
+                "sha256": binding["editable_label_map_sha256"],
+            },
+            label=f"{view_id} editable proposal label map",
+        )
+        source_labels = cv2.imread(str(label_path), cv2.IMREAD_GRAYSCALE)
+        if source_labels is None:
+            raise ValueError(f"{view_id}: proposal label map cannot be decoded")
+        region_labels = {
+            region["proposal_region_id"]: int(region["label"])
+            for region in region_proposal.get("regions", [])
+        }
+        confirmed_labels = np.zeros_like(source_labels)
+        component_specs = []
+        for semantic_label, assignment in enumerate(assignments, 1):
+            group = group_map[assignment["proposal_group_id"]]
+            region_id = group.get("matches", {}).get(view_id)
+            if region_id not in region_labels:
+                raise ValueError(f"{view_id}: confirmed group {group['proposal_group_id']} has no bound region")
+            confirmed_labels[source_labels == region_labels[region_id]] = semantic_label
+            component_specs.append({
+                "id": assignment["component_id"],
+                "label": semantic_label,
+                "role": assignment.get("role", "UNSPECIFIED"),
+                "continuity_policy": assignment.get("continuity_policy", "UNRESOLVED"),
+            })
+        if np.any((source_labels > 0) & (confirmed_labels == 0)):
+            raise ValueError(f"{view_id}: confirmed groups leave proposal pixels unmapped")
+        view_directory = destination / view_id
+        view_directory.mkdir(parents=True, exist_ok=True)
+        confirmed_path = view_directory / "confirmed_component_labels.png"
+        cv2.imwrite(str(confirmed_path), confirmed_labels)
+        component_evidence = extract_component_evidence(evidence, confirmed_path, component_specs)
+        component_evidence["proposal_confirmation"] = {
+            "correspondence_sha256": proposal_hash,
+            "confirmation": dict(confirmation),
+            "assignments": [dict(assignment_map[group_id]) for group_id in group_ids],
+        }
+        component_evidence["claim_boundary"] = (
+            "Semantic IDs were explicitly confirmed from hash-bound appearance proposals. "
+            "Confirmation establishes reviewed cross-view naming, not hidden extent, continuity, or geometry."
+        )
+        record_path = view_directory / "component_evidence.json"
+        record_path.write_text(json.dumps(component_evidence, indent=2) + "\n", encoding="utf-8")
+        if not component_evidence["accepted_for_bundle"]:
+            issues.extend(f"{view_id}: {issue}" for issue in component_evidence["issues"])
+        records[view_id] = {
+            "path": str(record_path),
+            "sha256": hashlib.sha256(record_path.read_bytes()).hexdigest(),
+            "component_ids": component_evidence["component_ids"],
+            "accepted_for_bundle": component_evidence["accepted_for_bundle"],
+        }
+    return {
+        "schema_version": 1,
+        "record_type": "CONFIRMED_CROSS_VIEW_COMPONENT_SET",
+        "correspondence_sha256": proposal_hash,
+        "confirmation": dict(confirmation),
+        "assignments": [dict(assignment_map[group_id]) for group_id in group_ids],
+        "views": records,
+        "ready_for_bundle": not issues and len(records) == len(views),
+        "issues": issues,
+        "claim_boundary": "This record materializes reviewed semantic labels. It does not prove physical continuity, hidden structure, or final shape.",
     }

@@ -1,11 +1,14 @@
 import copy
+import json
 from pathlib import Path
 
 import cv2
 import numpy as np
 
 from modeling_core import (
+    build_multiview_evidence_bundle,
     extract_reference_evidence,
+    materialize_confirmed_component_evidence,
     propose_component_regions,
     propose_cross_view_correspondences,
 )
@@ -95,3 +98,116 @@ def test_tampered_proposal_label_map_cannot_be_matched(tmp_path: Path):
         assert "stale or missing" in str(error)
     else:
         raise AssertionError("tampered component proposal was accepted")
+
+
+def test_reviewed_correspondences_materialize_shared_semantic_component_evidence(tmp_path: Path):
+    front_evidence = _evidence(tmp_path, "confirmed-front")
+    reverse_evidence = _evidence(tmp_path, "confirmed-reverse", swap=True)
+    front = propose_component_regions(front_evidence, tmp_path / "confirmed-front-proposal", seed=8)
+    reverse = propose_component_regions(reverse_evidence, tmp_path / "confirmed-reverse-proposal", seed=8)
+    correspondence = propose_cross_view_correspondences([
+        {"view_id": "front", "proposal": front},
+        {"view_id": "reverse", "proposal": reverse},
+    ])
+    assignments = [
+        {
+            "proposal_group_id": correspondence["groups"][0]["proposal_group_id"],
+            "component_id": "body",
+            "role": "PRIMARY_VOLUME",
+            "continuity_policy": "CONTINUOUS_MESH",
+        },
+        {
+            "proposal_group_id": correspondence["groups"][1]["proposal_group_id"],
+            "component_id": "insert",
+            "role": "SECONDARY_VOLUME",
+            "continuity_policy": "SEPARATE_ASSEMBLY",
+        },
+    ]
+    confirmation = {
+        "decision": "CONFIRM_COMPONENT_IDENTITY",
+        "reviewer_type": "AGENT_EVIDENCE_REVIEW",
+        "reviewer_id": "controlled-test",
+        "reviewed_at": "2026-09-02T00:00:00Z",
+        "notes": "Controlled colors establish the fixture identity only.",
+    }
+    result = materialize_confirmed_component_evidence(
+        correspondence,
+        [
+            {"view_id": "front", "proposal": front, "evidence": front_evidence},
+            {"view_id": "reverse", "proposal": reverse, "evidence": reverse_evidence},
+        ],
+        assignments,
+        confirmation,
+        tmp_path / "confirmed-output",
+    )
+    assert result["ready_for_bundle"] is True
+    for view_id in ("front", "reverse"):
+        record = json.loads(Path(result["views"][view_id]["path"]).read_text(encoding="utf-8"))
+        assert record["accepted_for_bundle"] is True
+        assert record["component_ids"] == ["body", "insert"]
+        assert record["proposal_confirmation"]["confirmation"]["decision"] == "CONFIRM_COMPONENT_IDENTITY"
+    audit = {
+        "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "confirmed-fixture",
+        "target_variant": "v1",
+        "authorized_reference_sha256": [
+            front_evidence["source"]["sha256"], reverse_evidence["source"]["sha256"],
+        ],
+        "pass": True,
+    }
+    registration = {
+        "record_type": "REFERENCE_REGISTRATION_GATE",
+        "target_id": "confirmed-fixture",
+        "authoritative_views": ["front", "reverse"],
+        "pass": True,
+    }
+    bundle = build_multiview_evidence_bundle(
+        audit,
+        registration,
+        [
+            {"view_id": "front", "source_id": "fixture", "evidence": front_evidence, "components": result["views"]["front"]["path"]},
+            {"view_id": "reverse", "source_id": "fixture", "evidence": reverse_evidence, "components": result["views"]["reverse"]["path"]},
+        ],
+        required_component_support={"body": 2, "insert": 2},
+    )
+    assert bundle["accepted_for_shape_solving"] is True
+    assert bundle["component_support"] == {"body": ["front", "reverse"], "insert": ["front", "reverse"]}
+
+
+def test_confirmation_requires_complete_assignments_and_explicit_decision(tmp_path: Path):
+    first_evidence = _evidence(tmp_path, "gate-first")
+    second_evidence = _evidence(tmp_path, "gate-second", swap=True)
+    first = propose_component_regions(first_evidence, tmp_path / "gate-first-proposal")
+    second = propose_component_regions(second_evidence, tmp_path / "gate-second-proposal")
+    correspondence = propose_cross_view_correspondences([
+        {"view_id": "first", "proposal": first},
+        {"view_id": "second", "proposal": second},
+    ])
+    views = [
+        {"view_id": "first", "proposal": first, "evidence": first_evidence},
+        {"view_id": "second", "proposal": second, "evidence": second_evidence},
+    ]
+    confirmation = {
+        "decision": "CONFIRM_COMPONENT_IDENTITY",
+        "reviewer_type": "HUMAN",
+        "reviewer_id": "fixture-reviewer",
+        "reviewed_at": "2026-09-02T00:00:00Z",
+    }
+    incomplete = [{"proposal_group_id": correspondence["groups"][0]["proposal_group_id"], "component_id": "body"}]
+    try:
+        materialize_confirmed_component_evidence(correspondence, views, incomplete, confirmation, tmp_path / "incomplete")
+    except ValueError as error:
+        assert "cover every proposal group" in str(error)
+    else:
+        raise AssertionError("incomplete semantic confirmation was accepted")
+    invalid_confirmation = dict(confirmation, decision="APPROVE")
+    assignments = [
+        {"proposal_group_id": group["proposal_group_id"], "component_id": f"part-{index}"}
+        for index, group in enumerate(correspondence["groups"], 1)
+    ]
+    try:
+        materialize_confirmed_component_evidence(correspondence, views, assignments, invalid_confirmation, tmp_path / "invalid")
+    except ValueError as error:
+        assert "CONFIRM_COMPONENT_IDENTITY" in str(error)
+    else:
+        raise AssertionError("invalid confirmation decision was accepted")

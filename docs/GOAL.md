@@ -188,6 +188,19 @@ baseline, not general part understanding: same-colored assemblies, lighting grad
 and texture can defeat it. The next scoped gap is a confirmation/materialization bridge plus a
 stronger optional segmentation adapter evaluated under the same fail-closed contract.
 
+Evidence update — 2026-09-02 (component-proposal cycle 2): reviewed cross-view proposals can now be
+materialized into the existing semantic component-evidence contract. The bridge requires complete
+one-to-one group assignments, unique shared component IDs, an explicit
+`CONFIRM_COMPONENT_IDENTITY` decision, reviewer identity and timestamp, current source/mask/label
+hashes, and full proposal-pixel coverage in every view. It records the correspondence hash and
+confirmation inside each per-view evidence file. A controlled two-view test reversed the regions'
+screen positions, recovered shared IDs from appearance matching, materialized both views, and
+passed the normal multiview bundle with two-view support for each component. Missing groups and a
+generic approval decision fail closed. This closes the review/materialization plumbing, not visual
+semantics. The remaining P0 perception gap is a stronger optional segmentation adapter and its
+evaluation on ordinary multi-angle photographs, followed by correspondence/camera evidence that
+does not depend on controlled color separation.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

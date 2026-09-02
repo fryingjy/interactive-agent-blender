@@ -17,7 +17,8 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 2. binds editable semantic component labels to each source silhouette and measures visible component
    extent and adjacency without claiming hidden structure;
 3. proposes deterministic appearance-region labels and cross-view matches with confidence,
-   ambiguity, editable artifacts, and a mandatory semantic-confirmation boundary;
+   ambiguity, editable artifacts, and a mandatory semantic-confirmation boundary, then materializes
+   reviewed shared IDs as bundle-ready evidence with reviewer provenance;
 4. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
    enforces required cross-view component support;
 5. proposes generic component representations and competing continuous-cage versus separate-object
@@ -90,6 +91,8 @@ python tools/modeling_pipeline.py propose-components work/reference/reference_ev
   --output-dir work/component-proposal
 python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `
   --output correspondence-proposal.json
+python tools/modeling_pipeline.py confirm-components confirmation-manifest.json `
+  --output-dir work/confirmed-components --output confirmed-components.json
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   component-labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json

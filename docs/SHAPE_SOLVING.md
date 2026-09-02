@@ -25,8 +25,13 @@ visible area, and aspect descriptors to bracket cross-view region identity. It r
 matches and unmatched regions instead of forcing a complete graph. Neither output is accepted as
 semantic evidence: lighting can split one part, identical finishes can merge separate parts, and
 occlusion can change area or aspect. The editable labels still must receive semantic IDs through
-`annotate-components` before bundling. Stronger local or external segmenters may replace the label
-proposal, but they inherit the same hash, review, and confirmation boundary.
+`annotate-components` before bundling, or `confirm-components` can materialize a fully reviewed
+cross-view assignment manifest. That bridge requires every provisional group exactly once, shared
+unique semantic IDs, an explicit `CONFIRM_COMPONENT_IDENTITY` decision, reviewer identity/time,
+current proposal/source/mask hashes, and complete pixel mapping in every view. It emits the same
+`REFERENCE_COMPONENT_EVIDENCE` type used by manual annotation, with confirmation provenance added.
+Stronger local or external segmenters may replace the label proposal, but they inherit the same
+hash, review, and confirmation boundary.
 
 `bundle-references` consumes the existing reference-set and registration gate records. It rejects
 stale or unauthorized source hashes, duplicate images masquerading as different views,
@@ -129,6 +134,8 @@ python tools/modeling_pipeline.py propose-components work/reference/reference_ev
   --output-dir work/component-proposal
 python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `
   --output correspondence-proposal.json
+python tools/modeling_pipeline.py confirm-components confirmation-manifest.json `
+  --output-dir work/confirmed-components --output confirmed-components.json
 python tools/modeling_pipeline.py annotate-components work/reference/reference_evidence.json `
   labels.png --component body=1 --component handle=2 --output components.json
 python tools/modeling_pipeline.py bundle-references bundle-manifest.json --output bundle.json
