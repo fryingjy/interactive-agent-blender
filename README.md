@@ -31,7 +31,8 @@ references -> masks/landmarks/cameras -> competing shape hypotheses -> multiview
            -> topology compiler -> typed Blender transaction -> inspect/refit/reject
 ```
 
-See [Architecture](docs/ARCHITECTURE.md) and [Shape solving](docs/SHAPE_SOLVING.md).
+See the [living project goal](docs/GOAL.md), [architecture](docs/ARCHITECTURE.md), and
+[shape-solving contract](docs/SHAPE_SOLVING.md).
 
 ## Repository map
 
@@ -45,6 +46,9 @@ See [Architecture](docs/ARCHITECTURE.md) and [Shape solving](docs/SHAPE_SOLVING.
 - `tests/` — unit/regression tests plus small owned fixtures.
 - `reference/` — redistributable project reference inputs only.
 - `docs/` — current architecture, workflow, and research contracts.
+
+`docs/GOAL.md` is the single mutable roadmap. Update its active gate and priorities when new
+evidence changes the highest-value work; do not create competing continuation plans.
 
 Historical experiment output and target-specific builders were removed from the active tree. They
 remain recoverable from Git history. New generated evidence belongs outside source control unless it
