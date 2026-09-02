@@ -86,11 +86,12 @@ def main() -> int:
     fit_components.add_argument("--output", type=Path, required=True)
     fit_components.add_argument("--seed", type=int, default=0)
     fit_components.add_argument("--maxiter", type=int, default=20)
-    compile_assembly = subparsers.add_parser("compile-assembly", help="compile selected separate components to typed Blender commands")
+    compile_assembly = subparsers.add_parser("compile-assembly", help="compile resolved continuous groups and separate components to typed Blender commands")
     compile_assembly.add_argument("selection", type=Path)
     compile_assembly.add_argument("--output", type=Path, required=True)
     compile_assembly.add_argument("--sequence-output", type=Path)
     compile_assembly.add_argument("--object-prefix", default="Blockout_")
+    compile_assembly.add_argument("--continuity-interfaces", type=Path, help="explicit port bindings and measured bridge bounds")
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -193,9 +194,14 @@ def main() -> int:
         return 0 if result["ready_for_compilation"] else 2
 
     if args.action == "compile-assembly":
+        interface_payload = _read_json(args.continuity_interfaces) if args.continuity_interfaces else {}
+        interfaces = interface_payload.get("interfaces", interface_payload)
+        if not isinstance(interfaces, dict):
+            parser.error("--continuity-interfaces must contain a JSON object or an interfaces object")
         result = compile_component_assembly(
             _read_json(args.selection),
             object_prefix=args.object_prefix,
+            continuity_interfaces=interfaces,
         )
         _write_json(args.output, result)
         if args.sequence_output:

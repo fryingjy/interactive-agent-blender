@@ -41,7 +41,10 @@ base cage + evaluated surface + diagnostic renders
   observations. Assembly resolution never implies that component shape families are resolved.
 - `component_fitting.py` extracts each component's hash-bound label masks, fixes shared cameras,
   fits competing executable families with bounded object-space placement, enforces a selection
-  margin, and compiles only supported separate-object assemblies. Shared-cage edges fail closed.
+  margin, groups continuous assembly edges, and preserves resolved separate-object boundaries.
+- `continuity.py` compiles explicitly bound, equal-cardinality open ports into one connected quad
+  cage by welding coincident loops or bridging measured gaps. It rejects reused ports, excessive
+  spans, disconnected output, degeneracy, non-manifold edges, and winding conflicts.
 - `camera.py` calibrates perspective views from measured 3D/2D landmark correspondences.
 - `mesh.py` generates deterministic connected cages from semantic parameters.
 - `render.py` provides a cheap CPU silhouette renderer for optimizer inner loops.

@@ -11,6 +11,7 @@ from .component_evidence import extract_component_evidence
 from .reference_bundle import build_multiview_evidence_bundle
 from .assembly import propose_assembly_hypotheses, resolve_assembly_hypotheses
 from .component_fitting import compile_component_assembly, fit_component_families
+from .continuity import build_continuous_cage, shape_boundary_ports
 from .selection import select_shape_family
 
 __all__ = [
@@ -31,6 +32,8 @@ __all__ = [
     "resolve_assembly_hypotheses",
     "fit_component_families",
     "compile_component_assembly",
+    "build_continuous_cage",
+    "shape_boundary_ports",
     "select_shape_family",
     "validate_hypothesis",
 ]

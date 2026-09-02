@@ -99,6 +99,18 @@ compilation rather than joining independent meshes. The next highest-value gap i
 continuity compiler, followed by broader component families and localized refit tickets derived from
 per-component/per-view residuals.
 
+Evidence update — 2026-09-02 (continuity-compilation cycle): evidence-resolved mixed graphs now
+compile without primitive joining or forced object collapse. Continuous groups require explicit
+unused boundary-port bindings, equal loop cardinality, and a measured maximum bridge span;
+coincident loops weld and bounded separated loops bridge with quads. Separate groups remain separate
+objects and all modifiers remain unapplied. Unit tests cover weld, bridge, mixed graphs, port reuse,
+cardinality mismatch, and span rejection. A fresh Blender 5.2.1 process created a 48-vertex,
+36-quad bridged cage, and independent verification found zero invalid non-manifold edges, n-gons,
+loose geometry, degenerate faces, or winding conflicts. This proves only linear compatible-port
+continuity, not arbitrary fusion, loop resampling, or branch junctions. The next highest-value gap
+is broader generic component families plus localized refit tickets from per-view/component
+residuals; those are needed before a real P0 exit target can be attempted defensibly.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

@@ -24,8 +24,9 @@ The shape-solving plane has been restarted. Its working vertical slice now:
    evidence while leaving component shape families unresolved;
 6. fits each component's competing generic families against its own label masks under fixed shared
    cameras, including bounded object-space placement without letting candidates move the camera;
-7. compiles resolved separate assemblies into distinct typed Blender objects and refuses to fake a
-   continuous relationship by joining independently fitted meshes;
+7. compiles resolved mixed graphs: separate assemblies remain distinct Blender objects, while
+   explicitly bound equal-cardinality ports weld or bridge continuous components into one checked
+   all-quad cage;
 8. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
@@ -83,6 +84,7 @@ python tools/modeling_pipeline.py resolve-assembly assembly.json observations.js
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
 python tools/modeling_pipeline.py compile-assembly component-selection.json `
+  --continuity-interfaces continuity-interfaces.json `
   --output compiled-assembly.json --sequence-output sequence.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json

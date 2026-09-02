@@ -144,7 +144,7 @@ def test_separate_assembly_compiles_to_distinct_typed_objects(tmp_path: Path):
     assert compiled["modifiers_applied"] is False
 
 
-def test_continuous_relationship_fails_instead_of_joining_fitted_components(tmp_path: Path):
+def test_continuous_relationship_compiles_one_shared_cage_with_explicit_ports(tmp_path: Path):
     bundle, assembly, resolved, candidates, _truths, _labels = _fixture(tmp_path)
     resolved["selected_relationships"][0] = {
         "pair_id": "body::handle",
@@ -155,12 +155,108 @@ def test_continuous_relationship_fails_instead_of_joining_fitted_components(tmp_
         bundle, assembly, candidates, resolved_assembly=resolved,
         seed=7, maxiter=8, popsize=5,
     )
+    body_shape = selection["components"]["body"]["selection"]["selected_result"]["hypothesis"]["shape"]
+    handle_shape = selection["components"]["handle"]["selection"]["selected_result"]["hypothesis"]["shape"]
+    body_shape.update({"translate_x": 0.0, "translate_y": 0.0, "translate_z": 0.0})
+    handle_shape.update({"translate_x": 0.0, "translate_y": 0.0, "translate_z": 0.0})
+    # Use two compatible loft cages to isolate assembly compilation from family fitting.
+    handle_shape.clear()
+    handle_shape.update(copy.deepcopy(body_shape))
+    handle_shape["stations"] = [
+        {**body_shape["stations"][-1]},
+        {**body_shape["stations"][-1], "z": 1.1},
+    ]
+    compiled = compile_component_assembly(
+        selection,
+        object_prefix="Fixture_",
+        continuity_interfaces={
+            "body::handle": {
+                "ports": {"body": "end", "handle": "start"},
+                "maximum_bridge_span": 0.1,
+            },
+        },
+    )
+    assert compiled["object_map"] == {
+        "body": "Fixture_body__handle",
+        "handle": "Fixture_body__handle",
+    }
+    assert len(compiled["command_sequence"]) == 1
+    assert compiled["command_sequence"][0]["metadata"]["assembly_policy"] == "CONTINUOUS_GROUP"
+    assert compiled["command_sequence"][0]["metadata"]["interfaces"][0]["mode"] == "WELD"
+
+
+def test_missing_continuity_interface_fails_closed(tmp_path: Path):
+    bundle, assembly, resolved, candidates, _truths, _labels = _fixture(tmp_path)
+    resolved["selected_relationships"][0]["construction_policy"] = "CONTINUOUS_MESH"
+    selection = fit_component_families(
+        bundle, assembly, candidates, resolved_assembly=resolved,
+        seed=7, maxiter=8, popsize=5,
+    )
     try:
         compile_component_assembly(selection)
     except ValueError as error:
-        assert "shared-cage compilation is not implemented" in str(error)
+        assert "interfaces must exactly match" in str(error)
     else:
-        raise AssertionError("continuous components were incorrectly compiled as separate objects")
+        raise AssertionError("continuous compilation was allowed without explicit interface evidence")
+
+
+def test_mixed_graph_preserves_continuous_group_and_separate_assembly():
+    first = _loft(0.0)
+    first["stations"] = [
+        {"z": -1.0, "half_width": 0.3, "half_depth": 0.2, "power": 4.0},
+        {"z": 0.0, "half_width": 0.3, "half_depth": 0.2, "power": 4.0},
+    ]
+    second = copy.deepcopy(first)
+    second["stations"] = [
+        {"z": 0.0, "half_width": 0.3, "half_depth": 0.2, "power": 4.0},
+        {"z": 1.0, "half_width": 0.3, "half_depth": 0.2, "power": 4.0},
+    ]
+    third = _profile(1.2)
+
+    def report(identifier, shape):
+        return {
+            "status": "SELECTED",
+            "selection": {
+                "selected_result": {
+                    "family_compatible": True,
+                    "hypothesis": {
+                        "schema_version": 1,
+                        "candidate_id": identifier,
+                        "shape": shape,
+                        "views": [{"id": "fixture", "projection": "orthographic", "image_size": [96, 96], "world_scale": 3.0}],
+                        "variables": [],
+                        "acceptance": {
+                            "max_mean_view_loss": 0.2,
+                            "max_each_view_loss": 0.3,
+                            "require_hole_count_match": True,
+                        },
+                    },
+                },
+            },
+        }
+
+    selection = {
+        "record_type": "COMPONENT_FAMILY_SELECTION_SET",
+        "target_id": "mixed-fixture",
+        "ready_for_compilation": True,
+        "components": {"a": report("a", first), "b": report("b", second), "c": report("c", third)},
+        "assembly_resolution": {
+            "selected_relationships": [
+                {"pair_id": "a::b", "components": ["a", "b"], "hypothesis_id": "a::b:continuous", "construction_policy": "CONTINUOUS_MESH"},
+                {"pair_id": "b::c", "components": ["b", "c"], "hypothesis_id": "b::c:separate", "construction_policy": "SEPARATE_COMPONENTS"},
+            ],
+        },
+    }
+    compiled = compile_component_assembly(
+        selection,
+        object_prefix="Mixed_",
+        continuity_interfaces={
+            "a::b": {"ports": {"a": "end", "b": "start"}, "maximum_bridge_span": 0.1},
+        },
+    )
+    assert len(compiled["command_sequence"]) == 2
+    assert compiled["object_map"] == {"a": "Mixed_a__b", "b": "Mixed_a__b", "c": "Mixed_c"}
+    assert [group["assembly_policy"] for group in compiled["groups"]] == ["CONTINUOUS_GROUP", "SEPARATE_COMPONENT"]
 
 
 def test_candidate_cannot_optimize_shared_camera_to_win(tmp_path: Path):

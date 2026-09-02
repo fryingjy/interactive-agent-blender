@@ -42,10 +42,14 @@ registered cameras; camera variables are forbidden during family competition. Bo
 placement into per-component camera offsets. A family remains unresolved when compatible candidates
 are separated by less than the configured loss margin.
 
-`compile-assembly` emits one typed `create_authored_quad_mesh` command per component only when every
-family and assembly edge is resolved. Separate assemblies remain separate editable objects.
-Continuous edges deliberately fail: independently fitted meshes are not joined and mislabeled as a
-shared cage. A true continuity compiler is required for that case.
+`compile-assembly` emits typed `create_authored_quad_mesh` commands only when every family and
+assembly edge is resolved. Separate assemblies remain separate editable objects. A connected set of
+continuous edges becomes one object only when an explicit interface record binds one unused open
+port on each component, both loops have equal cardinality, and the fitted separation stays within a
+measured maximum span. Coincident loops weld; separated compatible loops receive an all-quad bridge.
+The result is checked for connectivity, degeneracy, edge manifoldness, and winding conflicts before
+it reaches Blender. Missing interfaces, reused ports, incompatible loop counts, and excessive spans
+fail closed instead of falling back to object joining.
 
 ## Intermediate representation
 
@@ -96,6 +100,7 @@ python tools/modeling_pipeline.py resolve-assembly assembly.json observations.js
 python tools/modeling_pipeline.py fit-components bundle.json assembly.json candidates.json `
   --resolved-assembly resolved-assembly.json --output component-selection.json
 python tools/modeling_pipeline.py compile-assembly component-selection.json `
+  --continuity-interfaces continuity-interfaces.json `
   --output compiled-assembly.json --sequence-output sequence.json
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
@@ -125,8 +130,10 @@ perspective cameras, section lofts, profile extrusions, explicit negative-space 
 fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
 fixtures and one real concept image. Editable component labels and audited multiview binding are
 implemented, but automatic semantic labeling, complex photographic backgrounds, and independent
-visual identity recognition are not. Separate-object family fitting and typed compilation are now
-implemented; shared-cage assembly compilation, broader generic families, correspondence discovery,
-negative-space-producing topology, and image-derived initialization remain future work.
+visual identity recognition are not. Separate-object and bounded shared-cage assembly compilation
+are now implemented. Shared-cage scope is deliberately narrow: explicit equal-cardinality open ports
+and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions, broader
+generic families, correspondence discovery, negative-space-producing topology, and image-derived
+initialization remain future work.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

@@ -11,7 +11,41 @@ import cv2
 import numpy as np
 
 from .compiler import compile_blender_command
+from .continuity import build_continuous_cage
+from .hypothesis import validate_hypothesis
 from .selection import select_shape_family
+
+
+class _ComponentGroups:
+    def __init__(self, component_ids: list[str]):
+        self.parent = {component_id: component_id for component_id in component_ids}
+
+    def find(self, component_id: str) -> str:
+        parent = self.parent[component_id]
+        if parent != component_id:
+            self.parent[component_id] = self.find(parent)
+        return self.parent[component_id]
+
+    def union(self, first: str, second: str) -> None:
+        first_root, second_root = self.find(first), self.find(second)
+        if first_root != second_root:
+            self.parent[max(first_root, second_root)] = min(first_root, second_root)
+
+
+def _relationship_components(relationship: dict[str, Any], known: set[str]) -> list[str]:
+    components = relationship.get("components")
+    if components is None:
+        components = str(relationship.get("pair_id") or "").split("::")
+    if not isinstance(components, list) or len(components) != 2 or len(set(components)) != 2:
+        raise ValueError(f"relationship {relationship.get('pair_id')!r} must identify exactly two components")
+    if not set(components) <= known or "::".join(sorted(components)) != relationship.get("pair_id"):
+        raise ValueError(f"relationship {relationship.get('pair_id')!r} has inconsistent component ids")
+    return components
+
+
+def _object_name(prefix: str, component_ids: list[str]) -> str:
+    identifier = "__".join(sorted(component_ids))
+    return prefix + "".join(character if character.isalnum() or character == "_" else "_" for character in identifier)
 
 
 def _component_masks(bundle: dict[str, Any], component_id: str) -> tuple[dict[str, np.ndarray], list[dict[str, Any]]]:
@@ -158,12 +192,9 @@ def compile_component_assembly(
     selection_set: dict[str, Any],
     *,
     object_prefix: str = "Blockout_",
+    continuity_interfaces: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
-    """Compile a fully selected separate-object assembly into typed commands.
-
-    Continuous relationships deliberately fail until a true shared-cage compiler can preserve their
-    topology.  Compiling independently fitted meshes and joining them would violate the decision.
-    """
+    """Compile resolved continuous groups and separate assemblies into typed commands."""
     if selection_set.get("record_type") != "COMPONENT_FAMILY_SELECTION_SET" or not selection_set.get("ready_for_compilation"):
         raise ValueError("component assembly is not ready for compilation")
     resolution = selection_set.get("assembly_resolution")
@@ -171,29 +202,106 @@ def compile_component_assembly(
     unsupported = [item.get("hypothesis_id") for item in relationships if item.get("construction_policy") not in {"CONTINUOUS_MESH", "SEPARATE_COMPONENTS"}]
     if unsupported:
         raise ValueError(f"unsupported assembly construction policies: {unsupported}")
-    continuous = [item["hypothesis_id"] for item in relationships if item.get("construction_policy") == "CONTINUOUS_MESH"]
-    if continuous:
-        raise ValueError(f"shared-cage compilation is not implemented for continuous relationships: {continuous}")
-    commands = []
-    object_map = {}
-    for component_id, report in selection_set["components"].items():
-        selected = report["selection"].get("selected_result")
+    component_reports = selection_set.get("components", {})
+    component_ids = list(component_reports)
+    known_components = set(component_ids)
+    selected_shapes = {}
+    for component_id, report in component_reports.items():
+        selected = report.get("selection", {}).get("selected_result")
         if selected is None or not selected.get("family_compatible"):
             raise ValueError(f"component {component_id!r} has no compatible fitted result")
-        name = object_prefix + "".join(character if character.isalnum() or character == "_" else "_" for character in component_id)
-        command = compile_blender_command(selected["hypothesis"], name=name)
-        command["metadata"]["component_id"] = component_id
-        command["metadata"]["assembly_policy"] = "SEPARATE_COMPONENT"
+        selected_shapes[component_id] = validate_hypothesis(selected["hypothesis"])["shape"]
+
+    continuous_relationships = []
+    groups = _ComponentGroups(component_ids)
+    seen_pairs = set()
+    for relationship in relationships:
+        components = _relationship_components(relationship, known_components)
+        if relationship["pair_id"] in seen_pairs:
+            raise ValueError(f"duplicate assembly relationship: {relationship['pair_id']}")
+        seen_pairs.add(relationship["pair_id"])
+        normalized = {**relationship, "components": components}
+        if relationship["construction_policy"] == "CONTINUOUS_MESH":
+            continuous_relationships.append(normalized)
+            groups.union(*components)
+    expected_interfaces = {item["pair_id"] for item in continuous_relationships}
+    provided_interfaces = set((continuity_interfaces or {}).keys())
+    if provided_interfaces != expected_interfaces:
+        raise ValueError("continuity interfaces must exactly match resolved continuous relationship pairs")
+
+    grouped_components: dict[str, list[str]] = {}
+    for component_id in component_ids:
+        grouped_components.setdefault(groups.find(component_id), []).append(component_id)
+    commands = []
+    object_map = {}
+    group_reports = []
+    object_names = set()
+    for members in grouped_components.values():
+        name = _object_name(object_prefix, members)
+        if name in object_names:
+            raise ValueError("sanitized component ids collide as Blender object names")
+        object_names.add(name)
+        if len(members) == 1:
+            component_id = members[0]
+            selected = component_reports[component_id]["selection"]["selected_result"]
+            command = compile_blender_command(selected["hypothesis"], name=name)
+            command["metadata"].update({
+                "component_id": component_id,
+                "component_ids": members,
+                "assembly_policy": "SEPARATE_COMPONENT",
+            })
+            group_report = {"object_name": name, "component_ids": members, "assembly_policy": "SEPARATE_COMPONENT"}
+        else:
+            member_set = set(members)
+            group_relationships = [
+                item for item in continuous_relationships if set(item["components"]) <= member_set
+            ]
+            group_interfaces = {
+                item["pair_id"]: continuity_interfaces[item["pair_id"]]
+                for item in group_relationships
+            }
+            cage = build_continuous_cage(
+                {component_id: selected_shapes[component_id] for component_id in members},
+                group_relationships,
+                group_interfaces,
+            )
+            command = {
+                "command": "create_authored_quad_mesh",
+                "params": {
+                    "name": name,
+                    "vertices": cage["vertices"].tolist(),
+                    "faces": [list(face) for face in cage["faces"]],
+                },
+                "metadata": {
+                    "source": "modeling_core.continuity",
+                    "component_ids": members,
+                    "assembly_policy": "CONTINUOUS_GROUP",
+                    "connected_components": 1,
+                    "all_quad": True,
+                    "end_caps": "OPEN_FOR_EXPLICIT_SURFACE_DECISION",
+                    "modifiers_applied": False,
+                    "interfaces": cage["interfaces"],
+                    "topology_stats": cage["stats"],
+                },
+            }
+            group_report = {
+                "object_name": name,
+                "component_ids": members,
+                "assembly_policy": "CONTINUOUS_GROUP",
+                "interfaces": cage["interfaces"],
+                "topology_stats": cage["stats"],
+            }
         commands.append(command)
-        object_map[component_id] = name
-    if len(set(object_map.values())) != len(object_map):
-        raise ValueError("sanitized component ids collide as Blender object names")
+        group_reports.append(group_report)
+        for component_id in members:
+            object_map[component_id] = name
     return {
         "schema_version": 1,
         "record_type": "COMPILED_COMPONENT_ASSEMBLY",
         "target_id": selection_set.get("target_id"),
         "object_map": object_map,
+        "groups": group_reports,
         "command_sequence": commands,
         "modifiers_applied": False,
-        "claim_boundary": "Commands create separately fitted editable cages. They do not apply modifiers or claim resolved shared topology.",
+        "claim_boundary": "Commands preserve evidence-resolved object boundaries. Continuous groups use explicit equal-cardinality ports to weld or bridge one editable quad cage; arbitrary topology fusion, resampling, branch junctions, hidden surfaces, and final topology remain outside this claim.",
     }
