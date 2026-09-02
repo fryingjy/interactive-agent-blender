@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "record_type": "HELD_OUT_HUMAN_VISUAL_CALIBRATION_MANIFEST",
+  "frozen_at": "2026-09-01",
+  "instructions": "Review only the displayed reference and candidate. ACCEPT_VISIBLE_MATCH means no major visible primary-form/component mismatch blocks continuation. REJECT_MAJOR_FORM means at least one major visible form, proportion, silhouette, or component-relationship mismatch remains. Ignore topology and hidden geometry unless directly visible. Do not consult the critic outputs before responding.",
+  "cases": [
+    {
+      "case_id": "HC-A",
+      "target_id": "cgcookie_scifi_crate_tutorial",
+      "case_kind": "REAL_MODEL_REVIEW",
+      "reference": "runs/2026-08-24_tutorial-cgcookie-scifi-crate/media/source_thumbnail.jpg",
+      "reference_sha256": "3640de6042911967f74554842938fa175519cb7f321b6cf9da715ef04fd09d75",
+      "reference_retention": "SOURCE_MEDIA_NOT_RETAINED",
+      "candidate": "runs/2026-08-24_tutorial-cgcookie-scifi-crate/crate_final_v2_material.png",
+      "candidate_sha256": "6d90be81df22d8c533ef77ea6cc61112028e17bd2c6e44fe7348bafed2a95c18"
+    },
+    {
+      "case_id": "HC-B",
+      "target_id": "sweaty_grease_carabiner_tutorial",
+      "case_kind": "REAL_MODEL_REVIEW",
+      "reference": "runs/2026-08-24_tutorial-sweaty-grease-carabiner/media/frame_0288_browser.jpg",
+      "reference_sha256": "1777359e76c3d871787f511e0c641a2dbca75db6f4b9485990a46e0a60ce0bbe",
+      "reference_retention": "SOURCE_MEDIA_NOT_RETAINED",
+      "candidate": "runs/2026-08-24_tutorial-sweaty-grease-carabiner/fresh_final_solid.png",
+      "candidate_sha256": "28cd44adea6f3cffea04b6a9e12cfd7dd5499e7aa4b3629aa69e6a312ab2f4c6"
+    },
+    {
+      "case_id": "HC-C",
+      "target_id": "blender_official_watering_can_tutorial",
+      "case_kind": "REAL_MODEL_REVIEW",
+      "reference": "runs/2026-08-22_tutorial-blender-official-watering-can/media/official_side_solid.png",
+      "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+      "reference_retention": "SOURCE_MEDIA_NOT_RETAINED",
+      "candidate": "runs/2026-08-22_tutorial-blender-official-watering-can/v5_side_solid.png",
+      "candidate_sha256": "e13c65d938b157174558840cd8be8c43c799292e84a498c0dc44596903bdb174"
+    },
+    {
+      "case_id": "HC-D",
+      "target_id": "pixel_identity_positive_control",
+      "case_kind": "POSITIVE_PIXEL_CONTROL",
+      "reference": "runs/2026-08-22_tutorial-blender-official-watering-can/media/official_side_solid.png",
+      "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+      "reference_retention": "SOURCE_MEDIA_NOT_RETAINED",
+      "candidate": "runs/2026-09-01_human-calibration/positive_control_candidate.png",
+      "candidate_sha256": "4bc8c12acc4839a13d1666c4779b37f1c062b918335fa840aca00cf2e112b042"
+    }
+  ],
+  "claim_boundary": "This is a frozen evaluator-calibration questionnaire, not a modeling benchmark or approval board."
+}

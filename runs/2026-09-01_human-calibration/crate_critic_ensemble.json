@@ -1,0 +1,335 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE_RUN",
+  "records": [
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "cgcookie_scifi_crate_tutorial",
+        "component_ids": [
+          "main_shell",
+          "panel_recesses",
+          "handle",
+          "latches",
+          "bumpers"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained final reproduction against the tutorial source thumbnail for visible target identity, primary form, component layout, and major silhouette only. The source is an uncalibrated perspective image, so do not authorize hidden geometry, depth, topology, or surface polish. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "fb4db08d0783e17c6859c1b6916e11c92372b6c3b3a157ef7de33be748906712",
+        "view_artifacts": [
+          {
+            "view": "source_hero",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\media\\source_thumbnail.jpg",
+            "reference_sha256": "3640de6042911967f74554842938fa175519cb7f321b6cf9da715ef04fd09d75",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_final_v2_material.png",
+            "candidate_sha256": "6d90be81df22d8c533ef77ea6cc61112028e17bd2c6e44fe7348bafed2a95c18"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "source_hero",
+            "reference_observation": "The reference features a wireframe sci-fi crate thumbnail image with beveled corner edges and paneling features.",
+            "candidate_observation": "The candidate presents a solid sci-fi crate blockout matching the overall boxy structure with handles and latches.",
+            "semantic_match_score": 0.78,
+            "silhouette_match_score": 0.75,
+            "component_relationship_score": 0.78,
+            "depth_plausibility_score": 0.78,
+            "mismatches": [
+              {
+                "category": "SILHOUETTE",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "main_shell",
+                "evidence": "Main shell edges present sharper bevels than reference wireframe silhouettes.",
+                "reference_box_2d": [
+                  0,
+                  0,
+                  1000,
+                  1000
+                ],
+                "candidate_box_2d": [
+                  118,
+                  134,
+                  887,
+                  866
+                ],
+                "severity": 0.25,
+                "confidence": 0.75,
+                "correction_goal": "Adjust chamfer and bevel profiles on the primary shell corners."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Primary form bevels and component proportions require minor adjustments to align closer with reference visual guides.",
+        "limitations": [
+          "Reference thumbnail contains heavy text overlay obstructing direct visibility of internal panel structures."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "SILHOUETTE",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "main_shell",
+          "evidence": "Main shell edges present sharper bevels than reference wireframe silhouettes.",
+          "reference_box_2d": [
+            0,
+            0,
+            1000,
+            1000
+          ],
+          "candidate_box_2d": [
+            118,
+            134,
+            887,
+            866
+          ],
+          "severity": 0.25,
+          "confidence": 0.75,
+          "correction_goal": "Adjust chamfer and bevel profiles on the primary shell corners.",
+          "view": "source_hero"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "cgcookie_scifi_crate_tutorial",
+        "component_ids": [
+          "main_shell",
+          "panel_recesses",
+          "handle",
+          "latches",
+          "bumpers"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained final reproduction against the tutorial source thumbnail for visible target identity, primary form, component layout, and major silhouette only. The source is an uncalibrated perspective image, so do not authorize hidden geometry, depth, topology, or surface polish. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "fb4db08d0783e17c6859c1b6916e11c92372b6c3b3a157ef7de33be748906712",
+        "view_artifacts": [
+          {
+            "view": "source_hero",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\media\\source_thumbnail.jpg",
+            "reference_sha256": "3640de6042911967f74554842938fa175519cb7f321b6cf9da715ef04fd09d75",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_final_v2_material.png",
+            "candidate_sha256": "6d90be81df22d8c533ef77ea6cc61112028e17bd2c6e44fe7348bafed2a95c18"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "source_hero",
+            "reference_observation": "Wireframe crate showing primary cubic shell, inset side panels, top panel recesses, corner bumpers, and center latch details.",
+            "candidate_observation": "Solid shaded sci-fi crate matching primary cubic geometry, panel recesses, side handles, corner bumpers, and orange latch accent placements.",
+            "semantic_match_score": 0.82,
+            "silhouette_match_score": 0.81,
+            "component_relationship_score": 0.8,
+            "depth_plausibility_score": 0.83,
+            "mismatches": [
+              {
+                "category": "COMPONENT",
+                "root_cause": "EXECUTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "panel_recesses",
+                "evidence": "Minor proportion variance in side panel bevel depth and recess inset profiles relative to reference wireframe structure.",
+                "reference_box_2d": [
+                  100,
+                  100,
+                  900,
+                  900
+                ],
+                "candidate_box_2d": [
+                  120,
+                  130,
+                  880,
+                  870
+                ],
+                "severity": 0.28,
+                "confidence": 0.75,
+                "correction_goal": "Refine inset depth and panel bevel transitions to align closer with reference layout."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Primary form matches the target identity, but minor form and component proportion recalibrations are needed to meet the strict threshold.",
+        "limitations": [
+          "Reference image is a semi-transparent wireframe with text overlays, obscuring exact surface relief details."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "COMPONENT",
+          "root_cause": "EXECUTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "panel_recesses",
+          "evidence": "Minor proportion variance in side panel bevel depth and recess inset profiles relative to reference wireframe structure.",
+          "reference_box_2d": [
+            100,
+            100,
+            900,
+            900
+          ],
+          "candidate_box_2d": [
+            120,
+            130,
+            880,
+            870
+          ],
+          "severity": 0.28,
+          "confidence": 0.75,
+          "correction_goal": "Refine inset depth and panel bevel transitions to align closer with reference layout.",
+          "view": "source_hero"
+        },
+        "prohibited_shortcut": "Do not change unrelated geometry while testing this correction."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "cgcookie_scifi_crate_tutorial",
+        "component_ids": [
+          "main_shell",
+          "panel_recesses",
+          "handle",
+          "latches",
+          "bumpers"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained final reproduction against the tutorial source thumbnail for visible target identity, primary form, component layout, and major silhouette only. The source is an uncalibrated perspective image, so do not authorize hidden geometry, depth, topology, or surface polish. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "fb4db08d0783e17c6859c1b6916e11c92372b6c3b3a157ef7de33be748906712",
+        "view_artifacts": [
+          {
+            "view": "source_hero",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\media\\source_thumbnail.jpg",
+            "reference_sha256": "3640de6042911967f74554842938fa175519cb7f321b6cf9da715ef04fd09d75",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-24_tutorial-cgcookie-scifi-crate\\crate_final_v2_material.png",
+            "candidate_sha256": "6d90be81df22d8c533ef77ea6cc61112028e17bd2c6e44fe7348bafed2a95c18"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "source_hero",
+            "reference_observation": "A sci-fi crate with chamfered edges, corner bumpers, latch details, top panel recesses, and side handle slots visible in wireframe thumbnail.",
+            "candidate_observation": "A clean solid 3D blockout of a sci-fi crate matching primary features including top recesses, corner feet bumpers, latches, and side recesses.",
+            "semantic_match_score": 0.85,
+            "silhouette_match_score": 0.82,
+            "component_relationship_score": 0.83,
+            "depth_plausibility_score": 0.85,
+            "mismatches": [
+              {
+                "category": "SILHOUETTE",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "main_shell",
+                "evidence": "Candidate box edges have smaller bevels compared to the reference wireframe outline.",
+                "reference_box_2d": [
+                  0,
+                  0,
+                  1000,
+                  1000
+                ],
+                "candidate_box_2d": [
+                  121,
+                  134,
+                  885,
+                  865
+                ],
+                "severity": 0.25,
+                "confidence": 0.75,
+                "correction_goal": "Increase chamfer size on outer shell edges to better match reference silhouette."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Primary form matches target identity but minor bevel and proportion adjustments are required to achieve exact silhouette match.",
+        "limitations": [
+          "Reference image contains large text overlay obscuring lower wireframe center.",
+          "Uncalibrated perspective in reference thumbnail."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "SILHOUETTE",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "main_shell",
+          "evidence": "Candidate box edges have smaller bevels compared to the reference wireframe outline.",
+          "reference_box_2d": [
+            0,
+            0,
+            1000,
+            1000
+          ],
+          "candidate_box_2d": [
+            121,
+            134,
+            885,
+            865
+          ],
+          "severity": 0.25,
+          "confidence": 0.75,
+          "correction_goal": "Increase chamfer size on outer shell edges to better match reference silhouette.",
+          "view": "source_hero"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    }
+  ],
+  "consensus": {
+    "schema_version": 1,
+    "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE",
+    "request_sha256": "fb4db08d0783e17c6859c1b6916e11c92372b6c3b3a157ef7de33be748906712",
+    "sample_count": 3,
+    "minimum_agreement": 2,
+    "decision_counts": {
+      "CORRECT_PRIMARY_FORM": 3
+    },
+    "decision": "CORRECT_PRIMARY_FORM",
+    "geometry_mutation_authorized": true,
+    "surface_candidate_authorized": false,
+    "consensus_mismatches": [
+      {
+        "view": "source_hero",
+        "component_id": "main_shell",
+        "category": "SILHOUETTE",
+        "root_cause": "PROPORTION_FAILURE",
+        "repair_scope": "ADJUST_PRIMARY_FORM",
+        "agreement_count": 2,
+        "severity_median": 0.25,
+        "confidence_median": 0.75,
+        "evidence": "Main shell edges present sharper bevels than reference wireframe silhouettes.",
+        "correction_goal": "Adjust chamfer and bevel profiles on the primary shell corners."
+      }
+    ],
+    "claim_boundary": "Consensus reduces single-call instability; it cannot replace registered references, deterministic measurements, topology inspection, or human acceptance."
+  }
+}

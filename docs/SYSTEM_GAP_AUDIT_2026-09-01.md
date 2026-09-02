@@ -103,3 +103,10 @@ That regression covers the TERTIAL lamp, curved sword, and Panasonic radio famil
 aggregate-score substitution. The system is still not cleared for new prop modeling: held-out human
 visual calibration remains open. The hold is intentionally active until that gate passes. A single
 successful or improved prop will not clear it.
+
+The external calibration is now prepared, not silently self-scored. Four frozen cases cover the
+CG Cookie crate, Sweaty Grease carabiner, Blender official watering can, and a pixel-identical
+positive control. Three independent Gemini reviews are retained per case. A human must review the
+public image pairs without reading the frozen critic outputs; any disagreement remains evaluator
+failure and keeps the hold active. Passing this gate would calibrate rejection behavior only, not
+prove modeling competence.

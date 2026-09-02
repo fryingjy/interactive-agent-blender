@@ -86,8 +86,15 @@ Current evidence includes:
   SciPy fitting searches only predeclared semantic parameters. A controlled camera/shape fixture
   and frozen per-metric regression anchor pass, but do not clear the active modeling hold.
 
-The authoritative readiness decision is in
-[`knowledge/foundation/foundation_exit_report.md`](knowledge/foundation/foundation_exit_report.md).
+The authoritative current readiness decision is in
+[`knowledge/foundation/reference_modeling_readiness.json`](knowledge/foundation/reference_modeling_readiness.json).
+The older `foundation_exit_report.md` is retained as historical evidence and is not current
+authority.
+
+The final evaluator-calibration package is frozen at
+[`runs/2026-09-01_human-calibration/public_manifest.json`](runs/2026-09-01_human-calibration/public_manifest.json).
+It contains three retained neutral model comparisons plus a pixel-identical positive control. The
+critic outputs are hash-bound before human review; disagreement cannot be tuned away afterward.
 
 ## Start here
 

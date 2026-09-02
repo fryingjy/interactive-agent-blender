@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE_RUN",
+  "records": [
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "pixel_identity_positive_control",
+        "component_ids": [
+          "visible_subject"
+        ],
+        "context": "Frozen evaluator positive control. The reference and candidate are intentionally the exact same image. Judge only whether any visible mismatch exists. ADVANCE_TO_SURFACE_CANDIDATE is required when no mismatch exists; inventing a correction is evaluator failure. This control makes no 3D or professional-quality claim.",
+        "request_sha256": "171e73a3547b8abad359917b4ba39617ae68fc5c67dd06255f2f015eddbdeb36",
+        "view_artifacts": [
+          {
+            "view": "identity",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-09-01_human-calibration\\positive_control_candidate.png",
+            "candidate_sha256": "4bc8c12acc4839a13d1666c4779b37f1c062b918335fa840aca00cf2e112b042"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "identity",
+            "reference_observation": "A 3D watering can with a tapered central body, long curved spout, and large loop handle.",
+            "candidate_observation": "An identical render of the 3D watering can with matching geometry, perspective, and alignment.",
+            "semantic_match_score": 0.93,
+            "silhouette_match_score": 0.93,
+            "component_relationship_score": 0.93,
+            "depth_plausibility_score": 0.93,
+            "mismatches": []
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "ADVANCE_TO_SURFACE_CANDIDATE",
+        "decision_reason": "Reference and candidate images match identically for this positive control test.",
+        "limitations": [
+          "Evaluated based on a single orthographic-like view."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADVANCE",
+        "ticket": null
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "pixel_identity_positive_control",
+        "component_ids": [
+          "visible_subject"
+        ],
+        "context": "Frozen evaluator positive control. The reference and candidate are intentionally the exact same image. Judge only whether any visible mismatch exists. ADVANCE_TO_SURFACE_CANDIDATE is required when no mismatch exists; inventing a correction is evaluator failure. This control makes no 3D or professional-quality claim.",
+        "request_sha256": "171e73a3547b8abad359917b4ba39617ae68fc5c67dd06255f2f015eddbdeb36",
+        "view_artifacts": [
+          {
+            "view": "identity",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-09-01_human-calibration\\positive_control_candidate.png",
+            "candidate_sha256": "4bc8c12acc4839a13d1666c4779b37f1c062b918335fa840aca00cf2e112b042"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "identity",
+            "reference_observation": "A watering can with a tapered main body, thin curved spout, and large circular handle loop.",
+            "candidate_observation": "Identical rendering of the watering can, matching shape, silhouette, and proportions perfectly.",
+            "semantic_match_score": 0.9,
+            "silhouette_match_score": 0.9,
+            "component_relationship_score": 0.9,
+            "depth_plausibility_score": 0.9,
+            "mismatches": []
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "ADVANCE_TO_SURFACE_CANDIDATE",
+        "decision_reason": "The candidate is identical to the reference image in every visible aspect, satisfying positive control criteria.",
+        "limitations": [
+          "Single perspective evaluation prevents assessment of 3D depth consistency."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADVANCE",
+        "ticket": null
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "pixel_identity_positive_control",
+        "component_ids": [
+          "visible_subject"
+        ],
+        "context": "Frozen evaluator positive control. The reference and candidate are intentionally the exact same image. Judge only whether any visible mismatch exists. ADVANCE_TO_SURFACE_CANDIDATE is required when no mismatch exists; inventing a correction is evaluator failure. This control makes no 3D or professional-quality claim.",
+        "request_sha256": "171e73a3547b8abad359917b4ba39617ae68fc5c67dd06255f2f015eddbdeb36",
+        "view_artifacts": [
+          {
+            "view": "identity",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-09-01_human-calibration\\positive_control_candidate.png",
+            "candidate_sha256": "4bc8c12acc4839a13d1666c4779b37f1c062b918335fa840aca00cf2e112b042"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "identity",
+            "reference_observation": "Watering can blockout model showing main body, gooseneck spout, and large curved loop handle against a transparent background.",
+            "candidate_observation": "Identical rendering of the watering can blockout model with identical geometry, posture, framing, and features.",
+            "semantic_match_score": 0.9,
+            "silhouette_match_score": 0.9,
+            "component_relationship_score": 0.9,
+            "depth_plausibility_score": 0.9,
+            "mismatches": []
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "ADVANCE_TO_SURFACE_CANDIDATE",
+        "decision_reason": "The candidate image is identical to the reference image, matching all visual criteria and scores perfectly.",
+        "limitations": [
+          "Single orthographic orthogonal perspective view provided."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADVANCE",
+        "ticket": null
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    }
+  ],
+  "consensus": {
+    "schema_version": 1,
+    "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE",
+    "request_sha256": "171e73a3547b8abad359917b4ba39617ae68fc5c67dd06255f2f015eddbdeb36",
+    "sample_count": 3,
+    "minimum_agreement": 2,
+    "decision_counts": {
+      "ADVANCE_TO_SURFACE_CANDIDATE": 3
+    },
+    "decision": "ADVANCE_TO_SURFACE_CANDIDATE",
+    "geometry_mutation_authorized": false,
+    "surface_candidate_authorized": true,
+    "consensus_mismatches": [],
+    "claim_boundary": "Consensus reduces single-call instability; it cannot replace registered references, deterministic measurements, topology inspection, or human acceptance."
+  }
+}

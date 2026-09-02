@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "target_id": "sweaty_grease_carabiner_tutorial",
+  "component_ids": ["body", "gate", "hinge", "locking_sleeve", "nose"],
+  "context": "Frozen external-calibration case. Compare the retained final reproduction against the tutorial final frame for visible target identity, body profile, gate/nose relationship, component proportions, and major silhouette only. The source is an uncalibrated perspective image, so do not authorize hidden geometry, topology, or surface polish. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+  "views": [
+    {
+      "view": "source_hero",
+      "reference": "../2026-08-24_tutorial-sweaty-grease-carabiner/media/frame_0288_browser.jpg",
+      "candidate": "../2026-08-24_tutorial-sweaty-grease-carabiner/fresh_final_solid.png"
+    }
+  ]
+}

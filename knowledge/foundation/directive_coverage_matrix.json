@@ -189,10 +189,16 @@
         "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/shoulder_silhouette_comparison.json",
         "knowledge_engine/gemini_reference_critic.py",
         "runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json",
-        "docs/VISUAL_REASONING_TOOL_AUDIT_2026-08-24.md"
+        "docs/VISUAL_REASONING_TOOL_AUDIT_2026-08-24.md",
+        "knowledge_engine/reference_registration.py",
+        "knowledge_engine/segmentation_audit.py",
+        "knowledge_engine/parameter_fitting.py",
+        "knowledge/foundation/reference_perception_regression_anchor.json",
+        "knowledge/foundation/reference_evaluator_regression_anchor.json",
+        "runs/2026-09-01_human-calibration/public_manifest.json"
       ],
-      "current_boundary": "Reference-set gating, calibrated image alignment, controlled review views, and an evidence-bound eleven-pass reconstruction audit now exist. A hash-bound Gemini critic also rejected one known sword representation failure and localized its missing sweep and wrong collar. This is one replayed rejection, not proof of reliable professional judgment, hidden-form inference, or human acceptance.",
-      "next_step": "Run a measured sparse-cage correction through deterministic and semantic review, then test the same verifier on an unrelated target before surface work."
+      "current_boundary": "Projection authority, segmentation integrity, bounded semantic fitting, repeated critic consensus, controlled perception regression, and a three-target immutable rejection regression now pass. A separate four-case human-calibration package is frozen before review. None of these proves hidden-form inference, professional judgment, or accepted unfamiliar modeling.",
+      "next_step": "Obtain the frozen external human calibration without tuning its decisions, then keep the hold active on any disagreement."
     },
     {
       "id": "13",
@@ -279,10 +285,13 @@
         "knowledge/foundation/held_out_reference_registry.json",
         "docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md",
         "knowledge_engine/tutorial_reproduction.py",
-        "runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json"
+        "runs/2026-08-24_tutorial-grant-abbitt-sword-reference-rebuild/old_candidate_gemini_critic.json",
+        "knowledge/foundation/reference_evaluator_regression_anchor.json",
+        "knowledge/foundation/held_out_human_calibration_anchor.json",
+        "runs/2026-09-01_human-calibration/public_manifest.json"
       ],
-      "current_boundary": "The project preserves explicit rejections, rejects automated-only success, and now blocks tutorial surface treatment when a hash-bound semantic critic rejects target identity. The critic remains fallible and cannot grant acceptance; there are still too few accepted held-out assets for a capability claim.",
-      "next_step": "Keep thresholds frozen, test the critic on new accepted and rejected cases, and preserve human visual acceptance as the final authority."
+      "current_boundary": "The project preserves explicit rejections, blocks automated-only success, passes strict controlled and real-target rejection regressions, and now freezes three neutral model cases plus a positive control before external review. The critic remains fallible and cannot grant acceptance; no accepted unfamiliar asset supports a capability claim.",
+      "next_step": "Score the frozen human response without changing prompts or expected decisions; preserve any disagreement as evaluator failure."
     },
     {
       "id": "17",
@@ -334,8 +343,8 @@
       "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/README.md",
       "runs/2026-08-24_tutorial-cgcookie-scifi-crate/README.md"
     ],
-    "current_boundary": "Stanley remains frozen and three I0 attempts remain below 8/10. The mandatory depth-critical multi-view gate changed representation choice successfully on the held-out flanged mace, which reached 8.1/10 at major form. This is one bounded transfer, not professional-capability proof; I1 remains blocked.",
-    "next_step": "Retain the flanged-mace major-form pass, continue bounded I0 apprenticeship, and require repeated unrelated multi-view passes before any generalization claim."
+    "current_boundary": "The 2026-09-01 system-repair hold blocks new construction. Automated camera, mask, critic-consensus, perception, and three-target rejection regressions pass; the frozen human-calibration package awaits external judgment. Earlier I0 and major-form results remain bounded evidence, not professional capability.",
+    "next_step": "Complete the frozen external calibration first. Resume only after the repository-wide hold is honestly cleared; then require repeated unrelated multi-view passes before any generalization claim."
     }
   ]
 }

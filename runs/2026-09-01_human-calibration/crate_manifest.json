@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "target_id": "cgcookie_scifi_crate_tutorial",
+  "component_ids": ["main_shell", "panel_recesses", "handle", "latches", "bumpers"],
+  "context": "Frozen external-calibration case. Compare the retained final reproduction against the tutorial source thumbnail for visible target identity, primary form, component layout, and major silhouette only. The source is an uncalibrated perspective image, so do not authorize hidden geometry, depth, topology, or surface polish. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+  "views": [
+    {
+      "view": "source_hero",
+      "reference": "../2026-08-24_tutorial-cgcookie-scifi-crate/media/source_thumbnail.jpg",
+      "candidate": "../2026-08-24_tutorial-cgcookie-scifi-crate/crate_final_v2_material.png"
+    }
+  ]
+}

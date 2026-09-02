@@ -1,6 +1,6 @@
 # Current-state capability gap matrix
 
-Updated: 2026-08-24. The 2026-08-21 ground truth below still holds; two new decisions apply on top
+Updated: 2026-09-01. The 2026-08-21 ground truth below still holds; later decisions apply on top
 of it. First, `runs/2026-08-23_stylized-longsword/` produced a first blockout and then a real
 reference-corrected revision (blade width/taper rescaled to a precisely-measured historical
 longsword after the original guess proved oversized), which is genuine evidence that the
@@ -144,8 +144,9 @@ sparse-cage correction loop followed by an unrelated second target.
 # 2026-09-01 system-repair override
 
 Reference-driven modeling is under an active repository-wide hold. Controlled camera/shape
-disentanglement, mask-integrity, bounded parameter fitting, critic-consensus, and perception
-non-regression fixtures now pass. Immutable multi-task real-reference regression and held-out human
-visual calibration remain open, so the system is not authorized to start another prop. See
+disentanglement, mask-integrity, bounded parameter fitting, critic-consensus, perception
+non-regression, and immutable three-target real-reference rejection regression now pass. A frozen
+four-case external calibration package is ready, but held-out human visual calibration remains
+open, so the system is not authorized to start another prop. See
 `docs/SYSTEM_GAP_AUDIT_2026-09-01.md` and
 `knowledge/foundation/reference_modeling_readiness.json`.

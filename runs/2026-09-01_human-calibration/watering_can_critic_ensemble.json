@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE_RUN",
+  "records": [
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "blender_official_watering_can_tutorial",
+        "component_ids": [
+          "body",
+          "shoulder",
+          "handle",
+          "spout",
+          "rose",
+          "attachment_transitions"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained connected-cage reproduction against the official lesson model in the matched side view for visible target identity, primary proportions, handle/spout trajectory, attachment transitions, and major silhouette. Ignore materials and wire overlay differences. Do not infer hidden topology from the images. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "38de0b872722995456ffe2521cb2aab4bd6df16c281db86131d99e81a4e7ad92",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\v5_side_solid.png",
+            "candidate_sha256": "e13c65d938b157174558840cd8be8c43c799292e84a498c0dc44596903bdb174"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "The reference features a central tapered cylindrical body, a thin large looped handle connecting top and bottom, and a thin curved spout extending outward.",
+            "candidate_observation": "The candidate matches the general shape but has noticeably thicker handle geometry and slight variations in the top handle transition curve.",
+            "semantic_match_score": 0.78,
+            "silhouette_match_score": 0.73,
+            "component_relationship_score": 0.75,
+            "depth_plausibility_score": 0.82,
+            "mismatches": [
+              {
+                "category": "PROPORTION",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "handle",
+                "evidence": "The handle thickness in the candidate is significantly greater than in the reference.",
+                "reference_box_2d": [
+                  273,
+                  408,
+                  708,
+                  856
+                ],
+                "candidate_box_2d": [
+                  273,
+                  412,
+                  694,
+                  855
+                ],
+                "severity": 0.45,
+                "confidence": 0.85,
+                "correction_goal": "Reduce the tube radius/thickness of the handle to match the delicate proportions of the reference."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "The candidate accurately reproduces the overall form and components, but the handle thickness proportion deviates notably from the reference.",
+        "limitations": [
+          "Evaluated based on a single side view observation."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "PROPORTION",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "handle",
+          "evidence": "The handle thickness in the candidate is significantly greater than in the reference.",
+          "reference_box_2d": [
+            273,
+            408,
+            708,
+            856
+          ],
+          "candidate_box_2d": [
+            273,
+            412,
+            694,
+            855
+          ],
+          "severity": 0.45,
+          "confidence": 0.85,
+          "correction_goal": "Reduce the tube radius/thickness of the handle to match the delicate proportions of the reference.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "blender_official_watering_can_tutorial",
+        "component_ids": [
+          "body",
+          "shoulder",
+          "handle",
+          "spout",
+          "rose",
+          "attachment_transitions"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained connected-cage reproduction against the official lesson model in the matched side view for visible target identity, primary proportions, handle/spout trajectory, attachment transitions, and major silhouette. Ignore materials and wire overlay differences. Do not infer hidden topology from the images. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "38de0b872722995456ffe2521cb2aab4bd6df16c281db86131d99e81a4e7ad92",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\v5_side_solid.png",
+            "candidate_sha256": "e13c65d938b157174558840cd8be8c43c799292e84a498c0dc44596903bdb174"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "Slender circular handle arc, tapered body, thin curved spout.",
+            "candidate_observation": "Thicker handle cross-section, slightly altered curvature transition at top attachment.",
+            "semantic_match_score": 0.78,
+            "silhouette_match_score": 0.72,
+            "component_relationship_score": 0.75,
+            "depth_plausibility_score": 0.8,
+            "mismatches": [
+              {
+                "category": "PROPORTION",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "handle",
+                "evidence": "Candidate handle tube thickness is noticeably greater than reference.",
+                "reference_box_2d": [
+                  272,
+                  407,
+                  712,
+                  856
+                ],
+                "candidate_box_2d": [
+                  272,
+                  412,
+                  698,
+                  856
+                ],
+                "severity": 0.45,
+                "confidence": 0.78,
+                "correction_goal": "Reduce handle thickness and adjust top attachment curve."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Primary form mismatch present due to handle thickness and attachment curve deviations.",
+        "limitations": [
+          "Single orthogonal view provided; 3D depth details unverified."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "PROPORTION",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "handle",
+          "evidence": "Candidate handle tube thickness is noticeably greater than reference.",
+          "reference_box_2d": [
+            272,
+            407,
+            712,
+            856
+          ],
+          "candidate_box_2d": [
+            272,
+            412,
+            698,
+            856
+          ],
+          "severity": 0.45,
+          "confidence": 0.78,
+          "correction_goal": "Reduce handle thickness and adjust top attachment curve.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    },
+    {
+      "schema_version": 2,
+      "record_type": "GEMINI_REFERENCE_CRITIC",
+      "provenance": {
+        "provider": "Google Gemini",
+        "model": "gemini-3.6-flash",
+        "prompt_version": "blender-reference-critic-v3",
+        "target_id": "blender_official_watering_can_tutorial",
+        "component_ids": [
+          "body",
+          "shoulder",
+          "handle",
+          "spout",
+          "rose",
+          "attachment_transitions"
+        ],
+        "context": "Frozen external-calibration case. Compare the retained connected-cage reproduction against the official lesson model in the matched side view for visible target identity, primary proportions, handle/spout trajectory, attachment transitions, and major silhouette. Ignore materials and wire overlay differences. Do not infer hidden topology from the images. Return CORRECT_PRIMARY_FORM or REBUILD_REPRESENTATION when major visible mismatch remains; ADVANCE_TO_SURFACE_CANDIDATE only if no major visible form/component mismatch remains.",
+        "request_sha256": "38de0b872722995456ffe2521cb2aab4bd6df16c281db86131d99e81a4e7ad92",
+        "view_artifacts": [
+          {
+            "view": "side",
+            "reference": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\media\\official_side_solid.png",
+            "reference_sha256": "378ffbbdde831892096f7f8cc8f9bb6bfc330a221a6a1fff60ffd1e3bf75ce55",
+            "candidate": "C:\\Users\\odane\\Downloads\\3d\\runs\\2026-08-22_tutorial-blender-official-watering-can\\v5_side_solid.png",
+            "candidate_sha256": "e13c65d938b157174558840cd8be8c43c799292e84a498c0dc44596903bdb174"
+          }
+        ]
+      },
+      "analysis": {
+        "target_identity_matches": true,
+        "view_reviews": [
+          {
+            "view": "side",
+            "reference_observation": "A watering can featuring a cylindrical body with a domed top, a thin gooseneck spout, and a large circular loop handle spanning from top to bottom.",
+            "candidate_observation": "A watering can with matching primary elements, though the handle curvature and thickness differ near the top transition point.",
+            "semantic_match_score": 0.72,
+            "silhouette_match_score": 0.68,
+            "component_relationship_score": 0.68,
+            "depth_plausibility_score": 0.75,
+            "mismatches": [
+              {
+                "category": "PROPORTION",
+                "root_cause": "PROPORTION_FAILURE",
+                "repair_scope": "ADJUST_PRIMARY_FORM",
+                "component_id": "handle",
+                "evidence": "The handle thickness is larger than reference, and the upper attachment trajectory displays a noticeable dip.",
+                "reference_box_2d": [
+                  272,
+                  407,
+                  712,
+                  856
+                ],
+                "candidate_box_2d": [
+                  272,
+                  412,
+                  700,
+                  856
+                ],
+                "severity": 0.45,
+                "confidence": 0.72,
+                "correction_goal": "Adjust handle thickness to match the reference and refine the top arc trajectory."
+              }
+            ]
+          }
+        ],
+        "cross_view_contradictions": [],
+        "decision": "CORRECT_PRIMARY_FORM",
+        "decision_reason": "Primary handle proportions and attachment trajectories show clear variance from reference model.",
+        "limitations": [
+          "Single side view limits 3D depth evaluation."
+        ]
+      },
+      "correction_directive": {
+        "disposition": "ADJUST_PRIMARY_FORM",
+        "ticket": {
+          "category": "PROPORTION",
+          "root_cause": "PROPORTION_FAILURE",
+          "repair_scope": "ADJUST_PRIMARY_FORM",
+          "component_id": "handle",
+          "evidence": "The handle thickness is larger than reference, and the upper attachment trajectory displays a noticeable dip.",
+          "reference_box_2d": [
+            272,
+            407,
+            712,
+            856
+          ],
+          "candidate_box_2d": [
+            272,
+            412,
+            700,
+            856
+          ],
+          "severity": 0.45,
+          "confidence": 0.72,
+          "correction_goal": "Adjust handle thickness to match the reference and refine the top arc trajectory.",
+          "view": "side"
+        },
+        "prohibited_shortcut": "Do not add bevel, crease, SubD, shading, materials, or tertiary detail while this ticket remains."
+      },
+      "claim_boundary": "This remote VLM review may reject or localize visible mismatches. It cannot prove topology, hidden geometry, professional quality, or human acceptance."
+    }
+  ],
+  "consensus": {
+    "schema_version": 1,
+    "record_type": "GEMINI_REFERENCE_CRITIC_ENSEMBLE",
+    "request_sha256": "38de0b872722995456ffe2521cb2aab4bd6df16c281db86131d99e81a4e7ad92",
+    "sample_count": 3,
+    "minimum_agreement": 2,
+    "decision_counts": {
+      "CORRECT_PRIMARY_FORM": 3
+    },
+    "decision": "CORRECT_PRIMARY_FORM",
+    "geometry_mutation_authorized": true,
+    "surface_candidate_authorized": false,
+    "consensus_mismatches": [
+      {
+        "view": "side",
+        "component_id": "handle",
+        "category": "PROPORTION",
+        "root_cause": "PROPORTION_FAILURE",
+        "repair_scope": "ADJUST_PRIMARY_FORM",
+        "agreement_count": 3,
+        "severity_median": 0.45,
+        "confidence_median": 0.78,
+        "evidence": "The handle thickness in the candidate is significantly greater than in the reference.",
+        "correction_goal": "Reduce the tube radius/thickness of the handle to match the delicate proportions of the reference."
+      }
+    ],
+    "claim_boundary": "Consensus reduces single-call instability; it cannot replace registered references, deterministic measurements, topology inspection, or human acceptance."
+  }
+}
