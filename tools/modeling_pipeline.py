@@ -24,6 +24,7 @@ from modeling_core import (
     fit_hypothesis,
     fit_component_families,
     initialize_component_candidates,
+    import_component_region_proposal,
     materialize_confirmed_component_evidence,
     propose_assembly_hypotheses,
     propose_component_regions,
@@ -78,6 +79,11 @@ def main() -> int:
     propose_components.add_argument("--max-regions", type=int, default=6)
     propose_components.add_argument("--minimum-region-fraction", type=float, default=0.03)
     propose_components.add_argument("--seed", type=int, default=0)
+    import_components = subparsers.add_parser("import-component-proposal", help="normalize external segmenter labels into the review-only proposal contract")
+    import_components.add_argument("evidence", type=Path)
+    import_components.add_argument("label_map", type=Path)
+    import_components.add_argument("provider_report", type=Path)
+    import_components.add_argument("--output-dir", type=Path, required=True)
     propose_correspondences = subparsers.add_parser("propose-correspondences", help="match appearance-region proposals across views for review")
     propose_correspondences.add_argument("manifest", type=Path)
     propose_correspondences.add_argument("--output", type=Path, required=True)
@@ -175,6 +181,16 @@ def main() -> int:
             maximum_regions=args.max_regions,
             minimum_region_fraction=args.minimum_region_fraction,
             seed=args.seed,
+        )
+        print(json.dumps(result, indent=2))
+        return 0
+
+    if args.action == "import-component-proposal":
+        result = import_component_region_proposal(
+            args.evidence,
+            args.label_map,
+            args.provider_report,
+            args.output_dir,
         )
         print(json.dumps(result, indent=2))
         return 0

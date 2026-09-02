@@ -31,7 +31,12 @@ unique semantic IDs, an explicit `CONFIRM_COMPONENT_IDENTITY` decision, reviewer
 current proposal/source/mask hashes, and complete pixel mapping in every view. It emits the same
 `REFERENCE_COMPONENT_EVIDENCE` type used by manual annotation, with confirmation provenance added.
 Stronger local or external segmenters may replace the label proposal, but they inherit the same
-hash, review, and confirmation boundary.
+hash, review, and confirmation boundary. `import-component-proposal` is that adapter: it requires a
+provider/model/version record and confidence for every source label, rejects incomplete object
+coverage or background leakage, normalizes arbitrary grayscale labels, penalizes fragmented masks,
+and still emits `accepted_as_semantic_evidence: false`. This can accept output from promptable
+segmenters such as [Meta SAM 3.1](https://github.com/facebookresearch/sam3), but the repository does
+not bundle a large model checkpoint or treat provider confidence as semantic authorization.
 
 `bundle-references` consumes the existing reference-set and registration gate records. It rejects
 stale or unauthorized source hashes, duplicate images masquerading as different views,
@@ -132,6 +137,8 @@ python tools/modeling_pipeline.py extract-reference reference.png --output-dir w
   --mask-override work/reference/reference_mask.png
 python tools/modeling_pipeline.py propose-components work/reference/reference_evidence.json `
   --output-dir work/component-proposal
+python tools/modeling_pipeline.py import-component-proposal work/reference/reference_evidence.json `
+  external-labels.png provider-report.json --output-dir work/external-component-proposal
 python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `
   --output correspondence-proposal.json
 python tools/modeling_pipeline.py confirm-components confirmation-manifest.json `

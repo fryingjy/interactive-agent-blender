@@ -165,6 +165,7 @@ def propose_component_regions(
 
     if count == 1:
         confidence = 1.0
+        maximum_fragmentation = max(int(region["connected_fragment_count"]) for region in regions)
     else:
         region_centers = np.asarray([region["mean_lab"] for region in regions])
         pairwise = np.linalg.norm(region_centers[:, None] - region_centers[None, :], axis=2)
@@ -172,6 +173,17 @@ def propose_component_regions(
         dispersion = max(float(region["color_dispersion_lab"]) for region in regions)
         fragmentation = max(int(region["connected_fragment_count"]) for region in regions)
         confidence = float(np.clip((separation - dispersion) / 45.0, 0.0, 1.0) * (1.0 / max(1, fragmentation)))
+        maximum_fragmentation = fragmentation
+    quality_issues = []
+    if count > 1 and confidence < 0.6:
+        quality_issues.append(f"appearance-region confidence is only {confidence:.4f}")
+    if maximum_fragmentation > 4:
+        quality_issues.append(f"a proposed region is fragmented into {maximum_fragmentation} islands")
+    proposal_status = (
+        "SINGLE_REGION_NO_DECOMPOSITION" if count == 1
+        else "REVIEW_REQUIRED_LOW_CONFIDENCE" if quality_issues
+        else "REVIEWABLE_PROPOSAL"
+    )
 
     destination = Path(output_directory).resolve()
     destination.mkdir(parents=True, exist_ok=True)
@@ -195,6 +207,8 @@ def propose_component_regions(
         "regions": regions,
         "model_selection": model_selection,
         "proposal_confidence": confidence,
+        "proposal_status": proposal_status,
+        "quality_issues": quality_issues,
         "artifacts": {
             "editable_label_map": str(label_path),
             "preview": str(preview_path),
@@ -213,6 +227,124 @@ def propose_component_regions(
     }
     report_path = destination / "component_proposal.json"
     report_path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+    return result
+
+
+def import_component_region_proposal(
+    reference_evidence: dict[str, Any] | str | Path,
+    label_map_path: str | Path,
+    provider_report: dict[str, Any] | str | Path,
+    output_directory: str | Path,
+) -> dict[str, Any]:
+    """Normalize an external segmenter's labels into the same review-only proposal contract."""
+    evidence = _read(reference_evidence)
+    provider = _read(provider_report)
+    if evidence.get("record_type") != "REFERENCE_IMAGE_EVIDENCE" or not evidence.get("accepted_for_fitting"):
+        raise ValueError("external component proposals require accepted REFERENCE_IMAGE_EVIDENCE")
+    for key in ("provider", "model_id", "model_version"):
+        if not str(provider.get(key) or "").strip():
+            raise ValueError(f"external provider report requires {key}")
+    source_path = _current_file(evidence.get("source", {}), label="source image")
+    source_mask_path = _current_file(
+        {
+            "path": evidence.get("artifacts", {}).get("editable_mask"),
+            "sha256": evidence.get("artifact_sha256", {}).get("editable_mask"),
+        },
+        label="editable source mask",
+    )
+    external_path = Path(label_map_path).resolve()
+    image = cv2.imread(str(source_path), cv2.IMREAD_COLOR)
+    source_mask = cv2.imread(str(source_mask_path), cv2.IMREAD_GRAYSCALE)
+    external = cv2.imread(str(external_path), cv2.IMREAD_GRAYSCALE)
+    if image is None or source_mask is None or external is None or image.shape[:2] != source_mask.shape or external.shape != source_mask.shape:
+        raise ValueError("external labels, source image, and source mask must be decodable at matching dimensions")
+    foreground = source_mask >= 128
+    if np.any((external > 0) & ~foreground):
+        raise ValueError("external component labels leak outside the verified object mask")
+    if np.any(foreground & (external == 0)):
+        raise ValueError("external component labels must cover the complete verified object mask")
+    observed = [int(value) for value in np.unique(external) if value]
+    if not observed:
+        raise ValueError("external component proposal contains no regions")
+    confidence_record = provider.get("region_confidence", {})
+    confidences = []
+    normalized = np.zeros_like(external)
+    for new_label, old_label in enumerate(observed, 1):
+        value = confidence_record.get(str(old_label), confidence_record.get(old_label))
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not 0.0 <= float(value) <= 1.0:
+            raise ValueError(f"external region {old_label} requires confidence in [0, 1]")
+        confidences.append(float(value))
+        normalized[external == old_label] = new_label
+
+    lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB).astype(float)
+    regions = []
+    maximum_fragmentation = 1
+    for label, provider_confidence in enumerate(confidences, 1):
+        region_mask = normalized == label
+        region_colors = lab_image[region_mask]
+        connected_count, _connected = cv2.connectedComponents(region_mask.astype(np.uint8), connectivity=8)
+        fragmentation = connected_count - 1
+        maximum_fragmentation = max(maximum_fragmentation, fragmentation)
+        regions.append({
+            "proposal_region_id": f"appearance-region-{label:03d}",
+            "label": label,
+            "provider_confidence": provider_confidence,
+            "visible_area_fraction_of_object": float(region_mask.sum() / foreground.sum()),
+            "mean_lab": region_colors.mean(axis=0).tolist(),
+            "color_dispersion_lab": float(np.mean(np.linalg.norm(region_colors - region_colors.mean(axis=0), axis=1))),
+            "connected_fragment_count": fragmentation,
+            "measurements": analyze_reference_mask(region_mask),
+        })
+    confidence = min(confidences) / max(1, maximum_fragmentation)
+    quality_issues = []
+    if confidence < 0.6:
+        quality_issues.append(f"external proposal confidence is only {confidence:.4f} after fragmentation penalty")
+    if maximum_fragmentation > 4:
+        quality_issues.append(f"an external region is fragmented into {maximum_fragmentation} islands")
+    status = "REVIEW_REQUIRED_LOW_CONFIDENCE" if quality_issues else "REVIEWABLE_PROPOSAL"
+
+    destination = Path(output_directory).resolve()
+    destination.mkdir(parents=True, exist_ok=True)
+    output_label_path = destination / "component_proposal_labels.png"
+    preview_path = destination / "component_proposal_preview.png"
+    cv2.imwrite(str(output_label_path), normalized)
+    preview = image.copy()
+    boundaries = np.zeros_like(foreground)
+    boundaries[1:, :] |= normalized[1:, :] != normalized[:-1, :]
+    boundaries[:, 1:] |= normalized[:, 1:] != normalized[:, :-1]
+    preview[boundaries & foreground] = (0, 255, 255)
+    cv2.imwrite(str(preview_path), preview)
+    result = {
+        "schema_version": 1,
+        "record_type": "COMPONENT_REGION_PROPOSAL",
+        "source_reference_sha256": evidence["source"]["sha256"],
+        "source_mask_sha256": evidence["artifact_sha256"]["editable_mask"],
+        "proposal_method": "EXTERNAL_LABEL_IMPORT",
+        "provider": dict(provider),
+        "provider_label_map": {
+            "path": str(external_path),
+            "sha256": hashlib.sha256(external_path.read_bytes()).hexdigest(),
+        },
+        "region_count": len(regions),
+        "regions": regions,
+        "model_selection": {"authority": "EXTERNAL_PROVIDER_REVIEW_REQUIRED"},
+        "proposal_confidence": confidence,
+        "proposal_status": status,
+        "quality_issues": quality_issues,
+        "artifacts": {"editable_label_map": str(output_label_path), "preview": str(preview_path)},
+        "artifact_sha256": {
+            "editable_label_map": hashlib.sha256(output_label_path.read_bytes()).hexdigest(),
+            "preview": hashlib.sha256(preview_path.read_bytes()).hexdigest(),
+        },
+        "accepted_as_semantic_evidence": False,
+        "review_required": True,
+        "manual_correction": {
+            "allowed": True,
+            "instruction": "Review or edit component_proposal_labels.png before correspondence confirmation. Provider confidence does not authorize geometry.",
+        },
+        "claim_boundary": "External labels are hash-bound proposals from the declared provider. Model output is not semantic truth, physical continuity, or final topology.",
+    }
+    (destination / "component_proposal.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return result
 
 
@@ -279,7 +411,11 @@ def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str,
                 margin = float(np.clip((second - selected_cost) / max(second, 1e-6), 0.0, 1.0))
             else:
                 margin = 1.0
-            confidence = float(math.exp(-selected_cost) * margin)
+            proposal_quality = min(
+                float(anchor.get("proposal_confidence", 0.0)),
+                float(proposal.get("proposal_confidence", 0.0)),
+            )
+            confidence = float(math.exp(-selected_cost) * margin * proposal_quality)
             groups[row]["matches"][view_id] = proposal["regions"][column]["proposal_region_id"]
             groups[row]["pair_confidence"][view_id] = confidence
             if confidence < 0.6:

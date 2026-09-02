@@ -201,6 +201,22 @@ semantics. The remaining P0 perception gap is a stronger optional segmentation a
 evaluation on ordinary multi-angle photographs, followed by correspondence/camera evidence that
 does not depend on controlled color separation.
 
+Evidence update — 2026-09-02 (component-proposal cycle 3): the deterministic proposer was run on
+the supplied tactical-axe product reference rather than another synthetic fixture. Object-mask
+extraction passed, but the appearance model incorrectly separated shading/highlights: its smaller
+region covered 5.6% of the object and fragmented into 177 islands, reducing proposal confidence to
+0.0056. The pipeline now classifies that result as `REVIEW_REQUIRED_LOW_CONFIDENCE`, records both
+defects, and propagates proposal quality into cross-view match confidence. This is useful negative
+evidence: separable background does not imply usable part segmentation, especially for same-finish
+hard-surface assemblies. A provider-agnostic external adapter now accepts stronger label maps with
+declared provider/model/version and per-region confidence, while enforcing complete verified-mask
+coverage, zero background leakage, hash provenance, fragmentation penalties, and the same mandatory
+review/confirmation boundary. Controlled tests prove that it can preserve two same-color supplied
+part labels and rejects leakage or missing confidence. The next P0 work is to exercise a genuinely
+strong segmenter on ordinary multi-angle references and evaluate cross-view identity jointly with
+camera/correspondence evidence; the local color baseline is now correctly bounded rather than
+mistaken for that solution.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

@@ -9,6 +9,7 @@ from .render import render_silhouette
 from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .component_evidence import extract_component_evidence
 from .component_proposals import (
+    import_component_region_proposal,
     materialize_confirmed_component_evidence,
     propose_component_regions,
     propose_cross_view_correspondences,
@@ -43,6 +44,7 @@ __all__ = [
     "analyze_reference_mask",
     "extract_reference_evidence",
     "extract_component_evidence",
+    "import_component_region_proposal",
     "materialize_confirmed_component_evidence",
     "propose_component_regions",
     "propose_cross_view_correspondences",

@@ -8,6 +8,7 @@ import numpy as np
 from modeling_core import (
     build_multiview_evidence_bundle,
     extract_reference_evidence,
+    import_component_region_proposal,
     materialize_confirmed_component_evidence,
     propose_component_regions,
     propose_cross_view_correspondences,
@@ -35,6 +36,7 @@ def test_two_color_object_proposes_editable_regions_without_semantic_authorizati
     assert result["region_count"] == 2
     assert result["accepted_as_semantic_evidence"] is False
     assert result["review_required"] is True
+    assert result["proposal_status"] == "REVIEWABLE_PROPOSAL"
     labels = cv2.imread(result["artifacts"]["editable_label_map"], cv2.IMREAD_GRAYSCALE)
     source_mask = cv2.imread(evidence["artifacts"]["editable_mask"], cv2.IMREAD_GRAYSCALE) >= 128
     assert np.array_equal(labels > 0, source_mask)
@@ -47,6 +49,7 @@ def test_uniform_object_does_not_invent_multiple_components(tmp_path: Path):
     result = propose_component_regions(evidence, tmp_path / "uniform-proposal", maximum_regions=6)
     assert result["region_count"] == 1
     assert result["proposal_confidence"] == 1.0
+    assert result["proposal_status"] == "SINGLE_REGION_NO_DECOMPOSITION"
 
 
 def test_cross_view_match_uses_appearance_not_left_right_position(tmp_path: Path):
@@ -211,3 +214,62 @@ def test_confirmation_requires_complete_assignments_and_explicit_decision(tmp_pa
         assert "CONFIRM_COMPONENT_IDENTITY" in str(error)
     else:
         raise AssertionError("invalid confirmation decision was accepted")
+
+
+def test_external_segmenter_adapter_preserves_same_color_part_labels_for_review(tmp_path: Path):
+    evidence = _evidence(tmp_path, "external-uniform", uniform=True)
+    labels = np.zeros((90, 120), dtype=np.uint8)
+    labels[18:72, 24:60] = 7
+    labels[18:72, 60:96] = 19
+    label_path = tmp_path / "external-labels.png"
+    cv2.imwrite(str(label_path), labels)
+    provider = {
+        "provider": "controlled-segmenter",
+        "model_id": "fixture-model",
+        "model_version": "1",
+        "prompt": "head and handle",
+        "region_confidence": {"7": 0.94, "19": 0.92},
+    }
+    result = import_component_region_proposal(
+        evidence,
+        label_path,
+        provider,
+        tmp_path / "external-proposal",
+    )
+    assert result["proposal_method"] == "EXTERNAL_LABEL_IMPORT"
+    assert result["region_count"] == 2
+    assert result["proposal_confidence"] == 0.92
+    assert result["proposal_status"] == "REVIEWABLE_PROPOSAL"
+    assert result["accepted_as_semantic_evidence"] is False
+    normalized = cv2.imread(result["artifacts"]["editable_label_map"], cv2.IMREAD_GRAYSCALE)
+    assert set(np.unique(normalized)) == {0, 1, 2}
+
+
+def test_external_segmenter_adapter_rejects_leakage_and_missing_confidence(tmp_path: Path):
+    evidence = _evidence(tmp_path, "external-invalid", uniform=True)
+    labels = np.zeros((90, 120), dtype=np.uint8)
+    labels[18:72, 24:96] = 1
+    labels[0, 0] = 2
+    label_path = tmp_path / "leaking-labels.png"
+    cv2.imwrite(str(label_path), labels)
+    provider = {
+        "provider": "controlled-segmenter",
+        "model_id": "fixture-model",
+        "model_version": "1",
+        "region_confidence": {"1": 0.9},
+    }
+    try:
+        import_component_region_proposal(evidence, label_path, provider, tmp_path / "leaking")
+    except ValueError as error:
+        assert "leak outside" in str(error)
+    else:
+        raise AssertionError("external background leakage was accepted")
+    labels[0, 0] = 0
+    labels[18:72, 60:96] = 2
+    cv2.imwrite(str(label_path), labels)
+    try:
+        import_component_region_proposal(evidence, label_path, provider, tmp_path / "missing-confidence")
+    except ValueError as error:
+        assert "requires confidence" in str(error)
+    else:
+        raise AssertionError("external region without confidence was accepted")

@@ -39,7 +39,9 @@ base cage + evaluated surface + diagnostic renders
   descriptors. It emits editable hash-bound artifacts, confidence, unmatched/ambiguous records,
   and never marks its output as semantic evidence. Its materialization bridge requires an explicit
   complete confirmation decision, revalidates every proposal/source/mask hash, and then produces
-  ordinary `REFERENCE_COMPONENT_EVIDENCE` records for the existing bundle contract.
+  ordinary `REFERENCE_COMPONENT_EVIDENCE` records for the existing bundle contract. External
+  segmenter label maps enter through the same proposal type with provider/model/version, per-region
+  confidence, source-label hash, full-mask coverage, leakage, and fragmentation checks.
 - `reference_bundle.py` joins only reference-audited, registration-approved, hash-current views and
   checks cross-view component support before shape solving.
 - `assembly.py` proposes generic per-component representation candidates and bracketing continuous
