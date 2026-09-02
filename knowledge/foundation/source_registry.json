@@ -152,5 +152,33 @@
     "access": {"text": false, "video": true, "audio": true, "captions": true},
     "status": "EXPERIMENTALLY_TESTED",
     "metadata": {"experiments": ["tests/test_ingest.py"], "skills": []}
+  },
+  {
+    "id": "gemini-image-understanding-official",
+    "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+    "local_path": null,
+    "title": "Gemini API: Image understanding and segmentation",
+    "creator": "Google",
+    "source_type": "official_docs",
+    "trust_tier": "A",
+    "version": "current as researched 2026-09-02",
+    "topics": ["segmentation", "object-detection", "reference-analysis"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "metadata": {"experiments": ["tests/test_gemini_component_segmentation.py"], "skills": []}
+  },
+  {
+    "id": "segment-anything-3-official",
+    "url": "https://github.com/facebookresearch/sam3",
+    "local_path": null,
+    "title": "Segment Anything 3",
+    "creator": "Meta Research",
+    "source_type": "official_repository",
+    "trust_tier": "A",
+    "version": "3.1 current as researched 2026-09-02",
+    "topics": ["segmentation", "promptable-segmentation", "reference-analysis"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "STUDIED",
+    "metadata": {"experiments": [], "skills": []}
   }
 ]

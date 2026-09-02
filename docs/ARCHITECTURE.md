@@ -89,6 +89,13 @@ modifier surface, render, and technical state must be inspected.
 This package contains reusable reference, review, retrieval, and stage policy. It may rank evidence
 or propose a bounded hypothesis, but it cannot bypass fitting or Blender transactions.
 
+`gemini_component_segmentation.py` requests structured physical-part boxes and polygons from a
+configured Gemini image model, detects provider coordinate-order drift against each returned box,
+and audits raw polygon coverage/overlap against the deterministic object mask. When raw polygons
+are close but imperfect, only their non-overlapping interiors become watershed seeds; a completed
+partition must have supported internal image edges before entering the external proposal adapter.
+Remote labels and confidence remain non-authoritative.
+
 ## Interfaces
 
 - `addon.py` starts the Blender-side endpoint.

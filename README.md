@@ -89,6 +89,8 @@ Fit and compile a hypothesis:
 python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
 python tools/modeling_pipeline.py propose-components work/reference/reference_evidence.json `
   --output-dir work/component-proposal
+python tools/modeling_pipeline.py segment-components-gemini work/reference/reference_evidence.json `
+  --output-dir work/gemini-components --output gemini-segmentation.json
 python tools/modeling_pipeline.py import-component-proposal work/reference/reference_evidence.json `
   external-labels.png provider-report.json --output-dir work/external-component-proposal
 python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `

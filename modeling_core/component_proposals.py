@@ -267,6 +267,7 @@ def import_component_region_proposal(
     if not observed:
         raise ValueError("external component proposal contains no regions")
     confidence_record = provider.get("region_confidence", {})
+    occlusion_record = provider.get("region_occlusion_expected", {})
     confidences = []
     normalized = np.zeros_like(external)
     for new_label, old_label in enumerate(observed, 1):
@@ -278,29 +279,34 @@ def import_component_region_proposal(
 
     lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB).astype(float)
     regions = []
-    maximum_fragmentation = 1
+    maximum_unexpected_fragmentation = 1
     for label, provider_confidence in enumerate(confidences, 1):
         region_mask = normalized == label
         region_colors = lab_image[region_mask]
         connected_count, _connected = cv2.connectedComponents(region_mask.astype(np.uint8), connectivity=8)
         fragmentation = connected_count - 1
-        maximum_fragmentation = max(maximum_fragmentation, fragmentation)
+        occlusion_expected = occlusion_record.get(str(label), occlusion_record.get(label, False))
+        if not isinstance(occlusion_expected, bool):
+            raise ValueError(f"external region {label} occlusion expectation must be boolean")
+        if not occlusion_expected:
+            maximum_unexpected_fragmentation = max(maximum_unexpected_fragmentation, fragmentation)
         regions.append({
             "proposal_region_id": f"appearance-region-{label:03d}",
             "label": label,
             "provider_confidence": provider_confidence,
+            "occlusion_expected": occlusion_expected,
             "visible_area_fraction_of_object": float(region_mask.sum() / foreground.sum()),
             "mean_lab": region_colors.mean(axis=0).tolist(),
             "color_dispersion_lab": float(np.mean(np.linalg.norm(region_colors - region_colors.mean(axis=0), axis=1))),
             "connected_fragment_count": fragmentation,
             "measurements": analyze_reference_mask(region_mask),
         })
-    confidence = min(confidences) / max(1, maximum_fragmentation)
+    confidence = min(confidences) / max(1, maximum_unexpected_fragmentation)
     quality_issues = []
     if confidence < 0.6:
         quality_issues.append(f"external proposal confidence is only {confidence:.4f} after fragmentation penalty")
-    if maximum_fragmentation > 4:
-        quality_issues.append(f"an external region is fragmented into {maximum_fragmentation} islands")
+    if maximum_unexpected_fragmentation > 4:
+        quality_issues.append(f"an external region is unexpectedly fragmented into {maximum_unexpected_fragmentation} islands")
     status = "REVIEW_REQUIRED_LOW_CONFIDENCE" if quality_issues else "REVIEWABLE_PROPOSAL"
 
     destination = Path(output_directory).resolve()

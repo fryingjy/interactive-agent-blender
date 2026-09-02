@@ -33,6 +33,7 @@ from modeling_core import (
     select_shape_family,
     validate_hypothesis,
 )
+from knowledge_engine import run_gemini_component_segmentation
 
 
 def _read_json(path: Path) -> dict:
@@ -84,6 +85,11 @@ def main() -> int:
     import_components.add_argument("label_map", type=Path)
     import_components.add_argument("provider_report", type=Path)
     import_components.add_argument("--output-dir", type=Path, required=True)
+    gemini_components = subparsers.add_parser("segment-components-gemini", help="request and audit Gemini physical-component polygons")
+    gemini_components.add_argument("evidence", type=Path)
+    gemini_components.add_argument("--output-dir", type=Path, required=True)
+    gemini_components.add_argument("--output", type=Path, required=True)
+    gemini_components.add_argument("--model", default="gemini-3.7-flash")
     propose_correspondences = subparsers.add_parser("propose-correspondences", help="match appearance-region proposals across views for review")
     propose_correspondences.add_argument("manifest", type=Path)
     propose_correspondences.add_argument("--output", type=Path, required=True)
@@ -194,6 +200,15 @@ def main() -> int:
         )
         print(json.dumps(result, indent=2))
         return 0
+
+    if args.action == "segment-components-gemini":
+        result = run_gemini_component_segmentation(
+            args.evidence,
+            args.output_dir,
+            model=args.model,
+        )
+        _write_json(args.output, result)
+        return 0 if result["ready_for_external_adapter"] else 2
 
     if args.action == "propose-correspondences":
         manifest = _read_json(args.manifest)

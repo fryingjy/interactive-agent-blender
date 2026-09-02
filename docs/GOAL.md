@@ -217,6 +217,25 @@ strong segmenter on ordinary multi-angle references and evaluate cross-view iden
 camera/correspondence evidence; the local color baseline is now correctly bounded rather than
 mistaken for that solution.
 
+Evidence update — 2026-09-02 (component-proposal cycle 4): current official Gemini image
+understanding supports segmentation polygons, so a hash-bound remote provider path was implemented
+and exercised with the configured key on the supplied tactical axe. The key is now proven usable;
+an initial `gemini-3.7-flash` request rejected the documented minimal-thinking setting and a retry
+hit temporary model demand, while `gemini-3.6-flash` completed. Gemini correctly identified the
+steel head/full-tang body and attached textured handle scale, with later prompting avoiding
+highlight clusters and unnecessary fasteners. Integration testing caught provider drift: returned
+polygons used `[y,x]` despite the requested/documented `[x,y]`; coordinate order is now selected and
+recorded only when each polygon's own box disambiguates it. The best raw masks still covered only
+87.62% of the verified silhouette and overlapped on 13.21%, so they were not accepted directly.
+Their exclusive interiors seeded a bounded watershed partition. The final mask covered the object
+completely, had no overlap, and its internal part boundary measured 1.54× the object-interior
+gradient baseline. After raw-error confidence penalties and an explicit host-occlusion exception
+for the steel visible on both sides of the handle scale, the external adapter produced a 0.714
+`REVIEWABLE_PROPOSAL`; it remains non-semantic and review-required. This is the first real-image
+strong-model segmentation transfer, but it is one view and one target. The next P0 gap is repeated
+multi-angle segmentation/correspondence on an identity-audited variant, jointly constrained with
+camera evidence rather than appearance alone.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

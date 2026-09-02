@@ -38,6 +38,15 @@ and still emits `accepted_as_semantic_evidence: false`. This can accept output f
 segmenters such as [Meta SAM 3.1](https://github.com/facebookresearch/sam3), but the repository does
 not bundle a large model checkpoint or treat provider confidence as semantic authorization.
 
+`segment-components-gemini` is one concrete provider path. It asks for physical manufactured
+components rather than colors or highlights, accepts either `[x,y]` or `[y,x]` polygon ordering only
+when the provider's own box disambiguates it, and measures polygon coverage and overlap against the
+verified source mask. A bounded watershed refinement is allowed only when raw coverage is at least
+75%, raw overlap is at most 25%, every component has an exclusive interior seed, and the resulting
+complete partition's internal boundaries have at least 0.7× the object-interior gradient baseline.
+Model confidence is penalized by raw uncovered/overlap fractions. Expected visible fragmentation
+must be declared as host occlusion by an attached assembly; it is not silently ignored.
+
 `bundle-references` consumes the existing reference-set and registration gate records. It rejects
 stale or unauthorized source hashes, duplicate images masquerading as different views,
 non-authoritative cameras, component labels bound to another source, and components lacking the
@@ -137,6 +146,8 @@ python tools/modeling_pipeline.py extract-reference reference.png --output-dir w
   --mask-override work/reference/reference_mask.png
 python tools/modeling_pipeline.py propose-components work/reference/reference_evidence.json `
   --output-dir work/component-proposal
+python tools/modeling_pipeline.py segment-components-gemini work/reference/reference_evidence.json `
+  --output-dir work/gemini-components --output gemini-segmentation.json
 python tools/modeling_pipeline.py import-component-proposal work/reference/reference_evidence.json `
   external-labels.png provider-report.json --output-dir work/external-component-proposal
 python tools/modeling_pipeline.py propose-correspondences correspondence-manifest.json `

@@ -40,6 +40,7 @@ from .gemini_reference_critic import (
     validate_critic_analysis,
     validate_critic_record,
 )
+from .gemini_component_segmentation import run_gemini_component_segmentation
 
 __all__ = [
     "Diagnosis",
@@ -70,6 +71,7 @@ __all__ = [
     "load_critic_manifest",
     "validate_critic_analysis",
     "validate_critic_record",
+    "run_gemini_component_segmentation",
     "MixedSurfaceCauseDiagnosis",
     "SurfaceCauseAblation",
     "SurfaceCauseDiagnosis",
