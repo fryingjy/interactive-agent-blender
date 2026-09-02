@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from modeling_core import calibrate_perspective_view, compile_blender_command, fit_hypothesis, select_shape_family, validate_hypothesis
+from modeling_core import calibrate_perspective_view, compile_blender_command, extract_reference_evidence, fit_hypothesis, select_shape_family, validate_hypothesis
 
 
 def _read_json(path: Path) -> dict:
@@ -43,6 +43,12 @@ def main() -> int:
     subparsers = parser.add_subparsers(dest="action", required=True)
     validate = subparsers.add_parser("validate", help="validate a shape hypothesis")
     validate.add_argument("hypothesis", type=Path)
+    evidence = subparsers.add_parser("extract-reference", help="extract auditable mask and landmark evidence from an isolated-object image")
+    evidence.add_argument("image", type=Path)
+    evidence.add_argument("--output-dir", type=Path, required=True)
+    evidence.add_argument("--method", choices=("auto", "alpha", "border"), default="auto")
+    evidence.add_argument("--background-tolerance", type=float)
+    evidence.add_argument("--mask-override", type=Path, help="edited full-size binary mask to remeasure with explicit provenance")
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -65,6 +71,17 @@ def main() -> int:
     compile_parser.add_argument("--output", type=Path, required=True)
     compile_parser.add_argument("--allow-unfitted", action="store_true", help="compile a validated raw hypothesis for controlled fixtures")
     args = parser.parse_args()
+
+    if args.action == "extract-reference":
+        result = extract_reference_evidence(
+            args.image,
+            args.output_dir,
+            method=args.method,
+            background_tolerance=args.background_tolerance,
+            mask_override=args.mask_override,
+        )
+        print(json.dumps(result, indent=2))
+        return 0 if result["accepted_for_fitting"] else 2
 
     if args.action == "calibrate-camera":
         correspondences = _read_json(args.correspondences)

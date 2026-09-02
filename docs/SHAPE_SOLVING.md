@@ -4,6 +4,13 @@ The system no longer asks a language model to invent final vertex coordinates di
 reference board. It first creates an executable, bounded shape hypothesis and tests it against
 materialized silhouettes outside Blender.
 
+For isolated objects with alpha or a separable border background, `extract-reference` now produces
+a source-hashed evidence record, editable full-resolution mask, normalized crop, outline landmarks,
+33-sample width profile, extrema, centroid, and enclosed-negative-space measurements. Ambiguous or
+border-leaking extraction fails closed. An edited mask can be replayed with `--mask-override`; both
+the original image and override remain hash-bound in the record. This is a deterministic baseline,
+not general semantic segmentation.
+
 ## Intermediate representation
 
 A schema-version 1 hypothesis contains:
@@ -41,6 +48,9 @@ counts remain in the fit record. Perspective views carry explicit distance and f
 ## Command line
 
 ```powershell
+python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
+python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/corrected `
+  --mask-override work/reference/reference_mask.png
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `
@@ -66,7 +76,8 @@ multiview capture.
 
 This is a real vertical slice, not general reconstruction yet. It supports orthographic and
 perspective cameras, section lofts, profile extrusions, explicit negative-space diagnostics, and
-fail-closed family compatibility. Articulated assemblies, perspective initialization from image
-landmarks, negative-space-producing topology, and image-derived shape initialization remain future
-work. Optional image-to-3D systems may provide priors, but their meshes are never accepted as
-production topology.
+fail-closed family compatibility. Clean-background silhouette extraction is proven on controlled
+fixtures and one real concept image; complex photographic backgrounds and semantic component
+segmentation are not. Articulated assemblies, correspondence discovery, negative-space-producing
+topology, and image-derived shape initialization remain future work. Optional image-to-3D systems
+may provide priors, but their meshes are never accepted as production topology.

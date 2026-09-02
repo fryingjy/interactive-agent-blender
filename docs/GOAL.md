@@ -62,6 +62,14 @@ for development, not evidence for completion.
 The control plane is strong and the first bounded shape solver is real. The largest gap is now the
 path from ordinary images to a defensible multi-part 3D hypothesis.
 
+Evidence update — 2026-09-02: the repository now has a source-hashed, fail-closed extraction path
+for alpha and clean-background isolated-object images. It emits editable masks, normalized crops,
+outline landmarks, width profiles, extrema, centroids, and enclosed negative spaces; edited masks
+can be re-ingested with their own hashes. Controlled fixtures and a real supplied sword concept
+proved this narrow case. General photographs, variant selection, semantic components, cross-view
+identity, and automatic correspondences remain unproved. The active priority therefore remains P0,
+with multi-view acquisition and component-aware evidence as the next gap rather than another prop.
+
 Current priority order:
 
 1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain

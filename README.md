@@ -12,8 +12,9 @@ diagnostic renders are implemented.
 
 The shape-solving plane has been restarted. Its working vertical slice now:
 
-1. validates an explicit shape-and-camera hypothesis;
-2. renders it cheaply on CPU;
+1. extracts hashed masks, normalized crops, outline landmarks, profiles, and enclosed negative spaces
+   from alpha or clean-background references, with fail-closed diagnostics and editable-mask replay;
+2. validates an explicit shape-and-camera hypothesis and renders it cheaply on CPU;
 3. supports orthographic views, perspective hypotheses, and landmark-based PnP camera calibration;
 4. fits bounded semantic parameters to multiple silhouettes and enclosed negative spaces;
 5. competes section-loft and arbitrary profile-extrusion families and rejects incompatible fits;
@@ -65,6 +66,7 @@ python tools/audit_source_registry.py
 Fit and compile a hypothesis:
 
 ```powershell
+python tools/modeling_pipeline.py extract-reference reference.png --output-dir work/reference
 python tools/modeling_pipeline.py validate hypothesis.json
 python tools/modeling_pipeline.py calibrate-camera correspondences.json --output camera.json
 python tools/modeling_pipeline.py select-family loft.json profile.json `

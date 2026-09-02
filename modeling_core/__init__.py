@@ -6,6 +6,7 @@ from .fitting import fit_hypothesis, mask_diagnostics
 from .hypothesis import validate_hypothesis
 from .mesh import build_profile_extrusion, build_section_loft, build_shape_mesh
 from .render import render_silhouette
+from .reference_evidence import analyze_reference_mask, extract_reference_evidence
 from .selection import select_shape_family
 
 __all__ = [
@@ -18,6 +19,8 @@ __all__ = [
     "fit_hypothesis",
     "mask_diagnostics",
     "render_silhouette",
+    "analyze_reference_mask",
+    "extract_reference_evidence",
     "select_shape_family",
     "validate_hypothesis",
 ]
