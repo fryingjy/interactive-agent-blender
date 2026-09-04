@@ -814,9 +814,18 @@ class QualityReviewTests(unittest.TestCase):
         result = aggregate_professional_review([
             ReviewChannel("technical", 1.0, evidence="verify.json"),
             ReviewChannel("surface", 0.95, hard_pass=False, evidence="surface.json"),
-        ])
+        ], required_criteria=["technical", "surface"])
         self.assertFalse(result["pass"])
         self.assertEqual(result["hard_failures"], ["surface"])
+
+    def test_professional_review_cannot_skip_a_declared_criterion(self):
+        result = aggregate_professional_review(
+            [ReviewChannel("reference_fidelity", 1.0, evidence="comparison.json")],
+            required_criteria=["reference_fidelity", "surface_quality"],
+        )
+        self.assertFalse(result["pass"])
+        self.assertEqual(result["uncovered_criteria"], ["surface_quality"])
+        self.assertFalse(result["criteria_coverage_pass"])
 
     def test_human_rejection_becomes_revision_bound_localized_repair_tickets(self):
         review = {

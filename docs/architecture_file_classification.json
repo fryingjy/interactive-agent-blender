@@ -20,12 +20,12 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 274,
+  "tracked_file_count": 275,
   "python_file_count": 162,
   "classification_counts": {
     "CORE_RUNTIME": 37,
     "CURRENT_DOC": 17,
-    "CURRENT_KNOWLEDGE": 115,
+    "CURRENT_KNOWLEDGE": 116,
     "HISTORICAL": 1,
     "TEST_SUPPORT": 59,
     "TOOL": 45
@@ -546,6 +546,17 @@
       "path": "docs/git_object_size_audit.json",
       "classification": "CURRENT_DOC",
       "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/blend_corpus_apprenticeship_baseline.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
       "imports": [],
       "production_importers": [],

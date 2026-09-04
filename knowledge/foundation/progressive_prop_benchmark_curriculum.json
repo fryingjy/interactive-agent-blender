@@ -9,6 +9,73 @@
     "does_not_override_direct_user_instructions": true
   },
   "governing_principle": "Every prop is harder for a named reason; advance only after human acceptance of major form, proportion, components, negative space, depth, and surface quality.",
+  "capability_bootstrap": {
+    "status": "ACTIVE",
+    "purpose": "Convert reference interpretation and expert examples into transferable modeling decisions before the held-out prop ladder resumes.",
+    "diagnosed_gaps": [
+      "reference evidence does not yet produce reliable three-dimensional form and assembly decisions on ordinary photographs",
+      "shape-family fitting does not yet express the local edit-mode and modifier decisions used to refine a professional cage",
+      "silhouette and technical checks underweight curvature, highlight flow, edge intent, interface quality, and editability",
+      "tutorial and blend-file observations are not yet paired with reproduction, transfer, and real-task outcome evidence",
+      "the planner can complete a step without proving coverage of every applicable visual and technical criterion"
+    ],
+    "tracks": [
+      {
+        "id": "REFERENCE_TO_FORM",
+        "required_drills": ["multiview_landmark_blockout", "depth_and_overlap_reconciliation", "hidden_form_hypothesis_rejection"]
+      },
+      {
+        "id": "CONSTRUCTION_GRAMMAR",
+        "required_drills": ["connected_profile_cage", "box_subd_edge_intent", "radial_continuous_detail", "genuine_assembly_boundaries"]
+      },
+      {
+        "id": "SURFACE_CONTROL",
+        "required_drills": ["crease_vs_support_loop_vs_bevel", "base_cage_vs_evaluated_highlight", "flat_smooth_by_angle_and_subd_shading"]
+      },
+      {
+        "id": "ADAPTIVE_REPAIR",
+        "required_drills": ["localized_visual_diagnosis", "bounded_edit_and_regression_check", "rollback_or_representation_change"]
+      }
+    ],
+    "evidence_per_drill": [
+      "source_observation_with_hash",
+      "observed_vs_inferred_separation",
+      "expected_visual_effect",
+      "reproduction_blend",
+      "different_family_transfer_blend",
+      "base_cage_and_evaluated_renders",
+      "before_after_metrics",
+      "failure_or_success_classification"
+    ],
+    "promotion_gates": [
+      {"id": "B0", "name": "baseline", "requirement": "record the current system result before adding target-specific guidance"},
+      {"id": "B1", "name": "reproduction", "requirement": "reproduce the observed principle on neutral geometry"},
+      {"id": "B2", "name": "transfer", "requirement": "improve a different shape family without source geometry or copied coordinates"},
+      {"id": "B3", "name": "adaptive_application", "requirement": "use the principle in a live observe-decide-act-verify repair"},
+      {"id": "B4", "name": "held_out_entry", "requirement": "pass every required track and a blinded or human visual review without target-specific code"}
+    ],
+    "review_channels": [
+      "reference_fidelity",
+      "major_form_and_proportion",
+      "depth_and_negative_space",
+      "component_and_interface_logic",
+      "base_cage_editability",
+      "evaluated_surface_and_highlight_flow",
+      "edge_and_shading_intent",
+      "adaptive_repair_quality"
+    ],
+    "hard_failures": [
+      "major_form_rejection",
+      "missing_high_salience_component",
+      "unsupported_hidden_geometry_claim",
+      "primitive_spam_for_continuous_form",
+      "joined_independent_primitives_claimed_as_connected_topology",
+      "blanket_smoothing_used_to_hide_edge_or_surface defects",
+      "applied_required_live_modifiers",
+      "target_specific_builder_or_copied_source_geometry",
+      "uncovered_review_criterion"
+    ]
+  },
   "global_rules": [
     "use_unfamiliar_references",
     "no_object_specific_builder",
@@ -129,10 +196,10 @@
     "active_prop_id": null,
     "active_prop": null,
     "active_target_variant": null,
-    "phase": "shape_solver_rebuild",
+    "phase": "professional_apprenticeship_bootstrap",
     "authorization": "LADDER_PAUSED",
     "modeling_authorized": false,
     "ladder_status": "PAUSED_NO_ACTIVE_PROP",
-    "next_action": "Add and validate the generic shape families, camera fitting, and family-rejection behavior required by the next target before resuming the ladder."
+    "next_action": "Run measured reference-to-form, construction, surface, and adaptive-repair drills from expert examples; resume the prop ladder only after reproduction and cross-family transfer evidence passes."
   }
 }

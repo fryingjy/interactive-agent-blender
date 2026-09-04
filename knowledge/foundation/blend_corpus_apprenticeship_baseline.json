@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "record_type": "BLEND_CORPUS_APPRENTICESHIP_BASELINE",
+  "observed_at": "2026-09-04",
+  "blender_version": "5.2.1 LTS",
+  "scope": {
+    "available_blend_files": 110,
+    "sampled_files": 13,
+    "sample_selection": "Weapon and hard-surface examples small enough for bounded read-only inspection; not a random or quality-certified sample.",
+    "source_files_embedded": false,
+    "generated_renders_embedded": false
+  },
+  "sources": [
+    {"name": "axe.blend", "sha256": "3C16C6E1B44B8B9092B8E7C5A72EC3AEBEC11EA57EB040CB97F7451A2442F294", "bytes": 1271426},
+    {"name": "battle axe.blend", "sha256": "0F443956CF5F39EFD8442484D91BD7F8766C76BC72CD3340FE70BC3AF93D54B2", "bytes": 1360638},
+    {"name": "batarang.blend", "sha256": "9097D5B516244771D7D63756ECC956E48EEBC3D4EABF788D2E4F85E201431B57", "bytes": 3019740},
+    {"name": "butcher knife.blend", "sha256": "EB306AD184B3C9330B09B1FBE1671638DC5BBDB90B46A8FAC241F04A00294ECF", "bytes": 2237544},
+    {"name": "gladius.blend", "sha256": "39583A56F7A2B33CBE36794D957C5199189D6F0545CFDDCEC0BCB4CA4677C7AE", "bytes": 15936211},
+    {"name": "hammer.blend", "sha256": "A5F300954D675D85CAE6DA6394539F1B05712E94366A1B4D44ACD36F874E80DF", "bytes": 12725524},
+    {"name": "ka bar.blend", "sha256": "7377BB70E69680B57B4AFF38D936D1EA552B795B08AD16271BF212BB052BD4B1", "bytes": 1103844},
+    {"name": "katana2.blend", "sha256": "22E616976733068AC0E451719DBB59A1A8E67545013E305F18D47DE8FDEFF8B3", "bytes": 3170788},
+    {"name": "rapier.blend", "sha256": "AB0487F0A88263FE22FD6FFBC8C7EC8B567BBD82D1106D233012D9C5A368DAED", "bytes": 1615540},
+    {"name": "spear 2.blend", "sha256": "A373B7D27E97276F8026F9775738CAD020B8CEBE37A598EBAD77826FBB8EBC30", "bytes": 2571608},
+    {"name": "suppressor.blend", "sha256": "E8264985294876DA7746CF4A7024CD8E4F476541D7C0FF922A41A0A39410DEA7", "bytes": 54952064},
+    {"name": "throwing knife.blend", "sha256": "91605B6209E47970B3971F08BAE5F3ED127511C7D44305DB084D415BADFBCDAD", "bytes": 1395408},
+    {"name": "trident head.blend", "sha256": "AC9D77A5DA6D7E0593D9B0151824BE14F08AEA1F7B80A0FB97EE1A4CFEB34483", "bytes": 878288}
+  ],
+  "aggregate_observations": {
+    "mesh_objects": 322,
+    "single_connected_component_meshes": 272,
+    "multi_connected_component_meshes": 50,
+    "subdivision_surface_meshes": 176,
+    "bevel_modifier_meshes": 100,
+    "mirror_modifier_meshes": 116,
+    "crease_attribute_meshes": 24,
+    "weighted_normal_modifier_meshes": 0,
+    "uv_meshes": 320
+  },
+  "focused_observation": {
+    "source": "battle axe.blend",
+    "visual_reviewed": true,
+    "mesh_objects": 5,
+    "mesh_roles": ["blade", "guard", "handle", "pommel", "wrap"],
+    "all_mesh_objects_internally_connected": true,
+    "base_faces": 1455,
+    "quad_fraction": 0.999,
+    "subdivision_surface_meshes": 5,
+    "crease_attribute_meshes": 5,
+    "crease_values": {"1.0": 1395},
+    "modifier_examples": {
+      "blade": ["MIRROR", "SUBSURF"],
+      "guard": ["SUBSURF", "SMOOTH_BY_ANGLE_NODES"],
+      "wrap": ["SOLIDIFY", "SUBSURF", "SMOOTH_BY_ANGLE_NODES"]
+    }
+  },
+  "interpretation": [
+    "Connected topology is primarily an inside-component rule; complete assets still use separate objects at genuine assembly boundaries.",
+    "Hard-surface quality in the sample is produced by hybrid construction, not one universal bevel, crease, or SubD rule.",
+    "The focused battle-axe example supports sparse connected cages, selective full-strength creases, live SubD, applied transforms, and Smooth by Angle after subdivision.",
+    "Dense or multi-component source meshes are not automatically better and must not become geometry templates."
+  ],
+  "status": "OBSERVED_NOT_TRANSFER_VALIDATED",
+  "next_experiment": "Reproduce the focused edge-intent and assembly strategy on neutral geometry, then transfer it to an unrelated profile-led weapon component before runtime promotion.",
+  "claim_boundary": "These are read-only structural observations plus bounded visual review. The sample is not quality-certified, does not prove artist intent, and cannot authorize copying source geometry or coordinates."
+}

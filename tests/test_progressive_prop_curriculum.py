@@ -41,6 +41,19 @@ class ProgressivePropCurriculumTests(unittest.TestCase):
         errors = validate(corrupted)
         self.assertIn("every prop requires a non-empty difficulty_reason", errors)
 
+    def test_apprenticeship_tracks_cannot_be_silently_skipped(self):
+        corrupted = copy.deepcopy(self.fixture)
+        corrupted["capability_bootstrap"]["tracks"].pop()
+        self.assertIn(
+            "capability bootstrap requires the four distinct professional modeling tracks",
+            validate(corrupted),
+        )
+
+    def test_uncovered_review_criterion_remains_a_hard_failure(self):
+        corrupted = copy.deepcopy(self.fixture)
+        corrupted["capability_bootstrap"]["hard_failures"].remove("uncovered_review_criterion")
+        self.assertIn("uncovered review criteria must be a hard failure", validate(corrupted))
+
 
 if __name__ == "__main__":
     unittest.main()

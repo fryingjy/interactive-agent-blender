@@ -71,6 +71,20 @@ now excludes candidate and historical knowledge. This reduces architectural ambi
 advance P0 by itself; P0 still requires a successful real held-out multiview reference-to-blockout
 demonstration after the neutral regression proves that consolidation preserved the machinery.
 
+Evidence update — 2026-09-04 (professional-capability diagnosis): current 3D-agent research and a
+read-only sample of 13 weapon/hard-surface files show that more tools or shape families alone will
+not close the quality gap. The missing bridge is an apprenticeship loop that pairs visual intent
+with construction decisions, reproduces each decision on neutral geometry, transfers it to a
+different family, and then tests it in an adaptive repair. The sample contained 322 mesh objects:
+272 were internally connected, while complete assets still used separate objects for genuine
+assemblies; 176 used SubD, 100 Bevel, 116 Mirror, and only 24 carried crease attributes. A focused
+battle-axe file used five internally connected, nearly all-quad components with live SubD and
+selective full-strength creases. This rejects both primitive spam and a universal "everything must
+be one object/use creases/use bevel" rule. The prop ladder is therefore paused behind the active
+`capability_bootstrap` in `progressive_prop_benchmark_curriculum.json`; no held-out result may count
+until reference-to-form, construction-grammar, surface-control, and adaptive-repair drills pass
+reproduction and cross-family transfer.
+
 Evidence update — 2026-09-02: the repository now has a source-hashed, fail-closed extraction path
 for alpha and clean-background isolated-object images. It emits editable masks, normalized crops,
 outline landmarks, width profiles, extrema, centroids, and enclosed negative spaces; edited masks
@@ -272,22 +286,21 @@ unproved.
 
 Current priority order:
 
-1. **Reference acquisition and provenance** — collect exact-variant views with at least two useful
-   full-object viewpoint families, retain URLs/paths and licenses where relevant, reject duplicate
-   catalog angles and unrelated variants, and record uncertainty.
-2. **Image evidence extraction** — normalize/crop views and derive editable object masks,
-   silhouettes, landmarks, component regions, overlaps, and negative spaces with confidence and
-   manual correction hooks.
-3. **Camera and correspondence solving** — initialize orthographic/perspective views from image
-   evidence, report reprojection error, and reject underconstrained calibration.
-4. **Automatic component and cross-view correspondence proposals** — transfer-test box-local
-   provider masks, role-aware visible occlusion, and explicit no-match correspondence on independent
-   sources; do not let semantic guesses or one successful crop silently authorize shape.
-5. **Remaining representation and fitting gaps** — add only evidence-justified shell,
-   multi-opening, repeated, or branch families; preserve per-view/component disagreement and convert
-   contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.
-6. **Blender visual closure** — compare controlled solid, silhouette, wireframe, and evaluated views;
-   refit, repair, or change family before secondary detail.
+1. **Establish a scored baseline** — run small non-held-out reference tasks through the current
+   system unchanged and record where form, depth, construction, surface, or repair judgment fails.
+2. **Reference-to-form apprenticeship** — practice multiview landmarks, depth/overlap reconciliation,
+   and rejection of unsupported hidden-form hypotheses before topology refinement.
+3. **Construction-grammar apprenticeship** — reproduce and transfer connected profile cages,
+   box/SubD edge intent, radial continuous details, and genuine assembly boundaries from inspected
+   examples and tutorials without copying source geometry.
+4. **Surface-control apprenticeship** — compare crease, support-loop, bevel, weighted-normal, flat,
+   and Smooth-by-Angle choices through base-cage, evaluated, and highlight renders; promote only
+   choices that transfer across shape families.
+5. **Adaptive critic and repair** — require evidence for every applicable review criterion, localize
+   the highest-impact visible defect, make one bounded live edit, and accept, rollback, or change
+   representation from measured before/after evidence.
+6. **Resume P0 on a real target** — only after the four bootstrap tracks pass, acquire an exact-
+   variant multiview target and run the complete reference-to-blockout exit path below.
 
 P0 exits only when one real, previously unused, multi-view reference can move through:
 

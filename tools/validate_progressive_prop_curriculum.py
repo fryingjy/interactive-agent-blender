@@ -12,6 +12,26 @@ DEFAULT_INPUT = ROOT / "knowledge" / "foundation" / "progressive_prop_benchmark_
 
 def validate(data):
     errors = []
+    bootstrap = data.get("capability_bootstrap")
+    if not isinstance(bootstrap, dict) or bootstrap.get("status") not in {"ACTIVE", "COMPLETE"}:
+        errors.append("capability bootstrap must be ACTIVE or COMPLETE")
+        bootstrap = {}
+    tracks = bootstrap.get("tracks", [])
+    track_ids = [track.get("id") for track in tracks if isinstance(track, dict)]
+    required_tracks = {"REFERENCE_TO_FORM", "CONSTRUCTION_GRAMMAR", "SURFACE_CONTROL", "ADAPTIVE_REPAIR"}
+    if set(track_ids) != required_tracks or len(track_ids) != len(required_tracks):
+        errors.append("capability bootstrap requires the four distinct professional modeling tracks")
+    if any(not track.get("required_drills") for track in tracks if isinstance(track, dict)):
+        errors.append("every capability track requires at least one drill")
+    promotion_ids = [gate.get("id") for gate in bootstrap.get("promotion_gates", []) if isinstance(gate, dict)]
+    if promotion_ids != ["B0", "B1", "B2", "B3", "B4"]:
+        errors.append("capability promotion gates must be exactly B0..B4 in order")
+    if len(bootstrap.get("review_channels", [])) < 8:
+        errors.append("capability bootstrap review channels are incomplete")
+    if "uncovered_review_criterion" not in bootstrap.get("hard_failures", []):
+        errors.append("uncovered review criteria must be a hard failure")
+    if len(bootstrap.get("evidence_per_drill", [])) < 8:
+        errors.append("capability drill evidence contract is incomplete")
     props = [prop for tier in data.get("tiers", []) for prop in tier.get("props", [])]
     malformed = [index for index, prop in enumerate(props) if not isinstance(prop, dict)]
     if malformed:
@@ -66,6 +86,8 @@ def validate(data):
     valid_direct = authorization == "DIRECT_USER_AUTHORIZATION" and modeling_authorized is True
     if not (paused or valid_locked or valid_direct):
         errors.append("active authorization and modeling_authorized must form a supported paused, locked, or direct-user pair")
+    if paused and bootstrap.get("status") == "ACTIVE" and active.get("phase") != "professional_apprenticeship_bootstrap":
+        errors.append("an active capability bootstrap must be the paused ladder phase")
     if len(data.get("evidence_required", [])) < 15:
         errors.append("evidence contract is incomplete")
     return errors
