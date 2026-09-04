@@ -10,7 +10,7 @@ The protocol began as a deliberately small live-verified slice. It now includes 
 inspection, events, semantic regions, visual/evaluated evidence, and an expanded typed mutation
 surface routed through the same begin -> perform -> verify -> commit/reject lifecycle.
 
-Threading model copied from addon.py's proven pattern: a daemon accept
+The server uses a daemon accept
 thread, a daemon thread per client connection, and bpy.app.timers.register
 to marshal every actual bpy/bmesh call onto Blender's main thread -- the
 Python API is not safe to call from a background thread directly. Framing

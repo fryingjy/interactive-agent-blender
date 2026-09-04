@@ -12,7 +12,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ALLOWED_ROOT_FILES = {".gitignore", ".mcp.json", "README.md", "addon.py"}
+ALLOWED_ROOT_FILES = {".gitignore", ".mcp.json", "README.md"}
 FORBIDDEN_TRACKED_NAMES = {".env", "gh_auth.log"}
 FORBIDDEN_TRACKED_PARTS = {"__pycache__", ".pytest_cache"}
 FORBIDDEN_TRACKED_SUFFIXES = {".blend1", ".pyc"}

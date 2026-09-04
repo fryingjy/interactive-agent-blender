@@ -118,7 +118,7 @@ A user-directed critique (2026-08-13) named a genuinely stronger version of this
 tutorial's own working `.blend` is available alongside its video, correlate video timestamp -> what
 the artist said -> what they did -> what actually changed in the `.blend` file, rather than studying
 either source alone. That is a real improvement over this protocol's current file-only study loop,
-but it requires the video-understanding pipeline in `docs/VIDEO_EXTRACTION_PROTOCOL.md` (speech/action
+but it requires the video-understanding pipeline in `docs/VIDEO_PROTOCOL.md` (speech/action
 alignment, Blender-action recognition) to exist first -- none of the ten files studied so far
 (`runs/2026-08-13_blend-file-study/`) came with a paired tutorial video, so this remains a documented
 future direction, not a capability to apply yet.

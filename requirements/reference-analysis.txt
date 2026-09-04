@@ -1,6 +1,6 @@
 # Used across knowledge_engine/ and tools/ for silhouette, landmark, component-mask,
 # and multiview comparison against reference imagery (e.g. reference_overlay.py,
-# component_mask_observations.py, compare_reference_render.py, measure_reference.py).
+# component-mask observations, reference/render comparison, and reference evidence extraction).
 numpy>=2.0,<3
 opencv-python>=4.9,<6
 Pillow>=10.0,<13

@@ -8,21 +8,15 @@ from typing import Any
 
 STAGE_REQUIREMENTS = {
     "REFERENCE_ANALYSIS": (
-        "component_graph_pass", "measured_ratio_count", "uncertainty_recorded",
-        "reference_set_audit_pass", "same_target_identity_pass", "view_coverage_pass",
-        "critical_property_coverage_pass", "conflicts_resolved_pass",
-        "question_driven_research_pass", "visual_reconstruction_audit_pass",
-        "component_reference_coverage_pass",
-        "depth_critical_reference_support_pass",
         "reference_audit",
         "modeling_spec_audit",
+        "shape_pipeline_evidence",
     ),
     "PRIMARY_BLOCKOUT": (
         "dimensions_checked", "primary_components_present", "component_coverage",
     ),
     "PROPORTION_SILHOUETTE": (
-        "view_count", "worst_view_iou", "multiview_regression_pass",
-        "declared_view_ids", "constraint_report", "visual_mismatch_ledger", "render_evidence_preflight",
+        "fitted_shape_evidence", "visual_mismatch_ledger", "render_evidence_preflight",
     ),
     "SECONDARY_FORMS": ("secondary_components_present", "placement_checked"),
     "TOPOLOGY_SURFACE": ("technical_clean", "topology_reviewed", "evaluated_surface_reviewed"),
@@ -137,33 +131,71 @@ def _component_coverage_is_valid(value: Any) -> bool:
     )
 
 
-def _visual_reconstruction_audit_is_valid(value: Any) -> bool:
-    """Require the real 11-pass audit_visual_reconstruction() result, not a bare True.
-
-    Mirrors _component_coverage_is_valid's own precedent: a self-asserted boolean proves
-    nothing, so this checks the actual structured record type and its own computed pass.
-    """
-    required_checks = {
-        "identity_bound", "independent_observations", "property_specific_authority",
-        "eleven_passes_recorded", "competing_interpretations_tested",
-        "bad_interpretation_eliminated", "construction_bound_to_selected_interpretation",
-        "uncertainty_kept_reversible", "every_component_has_construction_justification",
-    }
+def _shape_pipeline_evidence_is_valid(value: Any) -> bool:
+    """Require the hash-bound multiview bundle consumed by ``modeling_core``."""
     if not isinstance(value, dict) or value.get("schema_version") != 1:
         return False
-    checks = value.get("checks")
-    selected = value.get("selected_hypothesis_ids")
+    views = value.get("views")
     return (
-        value.get("record_type") == "VISUAL_RECONSTRUCTION_AUDIT"
+        value.get("record_type") == "MULTIVIEW_REFERENCE_EVIDENCE_BUNDLE"
         and isinstance(value.get("target_id"), str) and bool(value["target_id"])
-        and isinstance(checks, dict) and required_checks <= set(checks)
-        and all(checks.get(key) is True for key in required_checks)
-        and isinstance(value.get("region_reports"), list) and bool(value["region_reports"])
-        and isinstance(selected, list) and bool(selected) and len(selected) == len(set(selected))
-        and _is_number(value.get("contradiction_count")) and value["contradiction_count"] > 0
-        and value.get("errors") == []
-        and value.get("pass") is True
+        and isinstance(value.get("target_variant"), str) and bool(value["target_variant"])
+        and isinstance(views, list) and len(views) >= 2
+        and len({view.get("view_id") for view in views if isinstance(view, dict)}) == len(views)
+        and all(
+            isinstance(view, dict)
+            and isinstance(view.get("view_id"), str) and bool(view["view_id"])
+            and isinstance(view.get("source_sha256"), str) and _is_sha256(view["source_sha256"])
+            and isinstance(view.get("mask_sha256"), str) and _is_sha256(view["mask_sha256"])
+            and view.get("issues") == []
+            for view in views
+        )
+        and value.get("missing_component_support") == {}
+        and value.get("issues") == []
+        and value.get("accepted_for_shape_solving") is True
     )
+
+
+def _fitted_view_ids(value: Any) -> list[str] | None:
+    """Validate fitted solver evidence and return its independently scored views."""
+    if not isinstance(value, dict) or value.get("schema_version") != 1:
+        return None
+    if value.get("record_type") == "SHAPE_FAMILY_SELECTION":
+        selected = value.get("selected_result")
+        candidates = value.get("candidates")
+        if (
+            value.get("pass") is not True
+            or not isinstance(candidates, list) or len(candidates) < 2
+            or not isinstance(selected, dict)
+            or selected.get("record_type") != "FITTED_SHAPE_HYPOTHESIS"
+            or selected.get("family_compatible") is not True
+            or selected.get("compatibility_issues") != []
+        ):
+            return None
+        per_view = selected.get("per_view")
+        return sorted(per_view) if isinstance(per_view, dict) and len(per_view) >= 2 else None
+    if value.get("record_type") == "COMPONENT_FAMILY_SELECTION_SET":
+        components = value.get("components")
+        if value.get("ready_for_compilation") is not True or not isinstance(components, dict) or not components:
+            return None
+        view_sets = []
+        for report in components.values():
+            selected = report.get("selection", {}).get("selected_result") if isinstance(report, dict) else None
+            per_view = selected.get("per_view") if isinstance(selected, dict) else None
+            if (
+                not isinstance(report, dict)
+                or report.get("status") != "SELECTED"
+                or not isinstance(selected, dict)
+                or selected.get("record_type") != "FITTED_SHAPE_HYPOTHESIS"
+                or selected.get("family_compatible") is not True
+                or selected.get("compatibility_issues") != []
+                or not isinstance(per_view, dict) or len(per_view) < 2
+            ):
+                return None
+            view_sets.append(set(per_view))
+        shared = set.intersection(*view_sets)
+        return sorted(shared) if len(shared) >= 2 and all(views == shared for views in view_sets) else None
+    return None
 
 
 def _reference_audit_is_valid(value: Any) -> bool:
@@ -219,53 +251,7 @@ def _modeling_spec_audit_is_valid(value: Any) -> bool:
     )
 
 
-def _component_reference_coverage_is_valid(value: Any) -> bool:
-    """Require validate_component_reference_coverage()'s structured result, not a bare True."""
-    if not isinstance(value, dict) or value.get("schema_version") != 1:
-        return False
-    covered = value.get("covered_component_ids")
-    count = value.get("component_count")
-    return (
-        value.get("record_type") == "COMPONENT_REFERENCE_COVERAGE"
-        and isinstance(count, int) and not isinstance(count, bool) and count > 0
-        and isinstance(covered, list) and len(covered) == count and len(covered) == len(set(covered))
-        and value.get("uncovered_component_ids") == []
-        and value.get("pass") is True
-    )
-
-
-def _depth_critical_reference_support_is_valid(value: Any) -> bool:
-    """Require the structured depth-critical support report, never a bare assertion."""
-    if (
-        not isinstance(value, dict)
-        or value.get("schema_version") != 1
-        or value.get("record_type") != "DEPTH_CRITICAL_REFERENCE_SUPPORT"
-    ):
-        return False
-    component_ids = value.get("depth_critical_component_ids")
-    reports = value.get("component_reports")
-    if (
-        not isinstance(component_ids, list)
-        or len(component_ids) != len(set(component_ids))
-        or not isinstance(reports, dict)
-        or set(reports) != set(component_ids)
-        or value.get("unsupported_component_ids") != []
-        or value.get("pass") is not True
-    ):
-        return False
-    return all(
-        isinstance(report, dict)
-        and report.get("pass") is True
-        and isinstance(report.get("view_ids"), list)
-        and len(set(report["view_ids"])) >= 2
-        and report.get("view_count") == len(set(report["view_ids"]))
-        and isinstance(report.get("reference_ids"), list)
-        and len(report["reference_ids"]) >= 2
-        for report in reports.values()
-    )
-
-
-def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
+def _visual_evidence_failures(evidence: dict[str, Any], view_ids: list[str]) -> list[str]:
     """Validate the review records that numbers alone cannot replace.
 
     This deliberately checks provenance and completeness rather than trying to
@@ -283,22 +269,6 @@ def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
         or preflight.get("duplicate_view_groups") != []
     ):
         failures.append("render evidence contains blank or duplicate declared views")
-    view_ids = evidence["declared_view_ids"]
-    if (
-        not isinstance(view_ids, list)
-        or len(view_ids) < 2
-        or any(not isinstance(view_id, str) or not view_id.strip() for view_id in view_ids)
-        or len(set(view_ids)) != len(view_ids)
-    ):
-        failures.append("declared_view_ids must contain at least two unique non-empty view identifiers")
-        return failures
-
-    report = evidence["constraint_report"]
-    if not isinstance(report, dict) or report.get("record_type") != "LOCAL_REFERENCE_CONSTRAINT_EVALUATION":
-        failures.append("constraint_report must be a local reference-constraint evaluation")
-    elif report.get("pass") is not True or report.get("blocking_constraint_ids") != []:
-        failures.append("high-salience reference constraints remain unresolved")
-
     ledger = evidence["visual_mismatch_ledger"]
     if not isinstance(ledger, list) or not ledger:
         failures.append("visual_mismatch_ledger must record a review for every declared view")
@@ -332,7 +302,7 @@ def _visual_evidence_failures(evidence: dict[str, Any]) -> list[str]:
     return failures
 
 
-def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float = 0.9) -> dict:
+def evaluate_stage_gate(stage: str, evidence: dict[str, Any]) -> dict:
     if stage not in STAGE_REQUIREMENTS:
         raise ValueError(f"unknown modeling stage: {stage}")
     missing = [key for key in STAGE_REQUIREMENTS[stage] if key not in evidence]
@@ -345,40 +315,12 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
             modeling_spec_audit = evidence["modeling_spec_audit"]
             if not _modeling_spec_audit_is_valid(modeling_spec_audit):
                 failures.append("modeling_spec_audit is missing, malformed, or not passing")
-            if not evidence["component_graph_pass"]: failures.append("component graph invalid")
-            ratio_count = evidence["measured_ratio_count"]
-            if not _is_number(ratio_count) or ratio_count < 1:
-                failures.append("measured_ratio_count must be a positive number")
-            if not evidence["uncertainty_recorded"]: failures.append("reference uncertainty omitted")
-            if not evidence["reference_set_audit_pass"]: failures.append("reference set is not ready to model")
-            if not evidence["same_target_identity_pass"]: failures.append("reference set mixes target identities or variants")
-            if not evidence["view_coverage_pass"]: failures.append("required reference views are missing")
-            if not evidence["critical_property_coverage_pass"]: failures.append("critical properties lack authoritative evidence")
-            if not evidence["conflicts_resolved_pass"]: failures.append("reference conflicts remain unresolved")
-            if not evidence["question_driven_research_pass"]: failures.append("high-impact reference questions remain open or unaudited")
-            audit_checks = reference_audit.get("checks", {}) if isinstance(reference_audit, dict) else {}
-            flattened = {
-                "reference_set_audit_pass": reference_audit.get("pass") if isinstance(reference_audit, dict) else None,
-                "same_target_identity_pass": audit_checks.get("same_target_identity_pass"),
-                "view_coverage_pass": bool(audit_checks.get("view_coverage_pass")) and bool(audit_checks.get("orthographic_coverage_pass")),
-                "critical_property_coverage_pass": audit_checks.get("critical_property_coverage_pass"),
-                "conflicts_resolved_pass": audit_checks.get("conflicts_resolved_pass"),
-                "question_driven_research_pass": audit_checks.get("question_driven_research_pass"),
-            }
-            if any(evidence.get(key) is not value for key, value in flattened.items()):
-                failures.append("flattened reference flags contradict the structured reference_audit")
-            if not _visual_reconstruction_audit_is_valid(evidence["visual_reconstruction_audit_pass"]):
-                failures.append("visual reconstruction audit missing, invalid, or not passing")
-            if not _component_reference_coverage_is_valid(evidence["component_reference_coverage_pass"]):
-                failures.append("reference evidence does not cover every declared component")
-            if not _depth_critical_reference_support_is_valid(evidence["depth_critical_reference_support_pass"]):
-                failures.append("depth-critical components lack multi-view structural evidence")
+            shape_pipeline_evidence = evidence["shape_pipeline_evidence"]
+            if not _shape_pipeline_evidence_is_valid(shape_pipeline_evidence):
+                failures.append("shape_pipeline_evidence is missing, malformed, or not accepted for shape solving")
             if _reference_audit_is_valid(reference_audit):
                 target_id = reference_audit["target_id"]
                 target_variant = reference_audit["target_variant"]
-                visual_audit = evidence["visual_reconstruction_audit_pass"]
-                if isinstance(visual_audit, dict) and visual_audit.get("target_id") != target_id:
-                    failures.append("visual reconstruction audit targets a different asset")
                 if _modeling_spec_audit_is_valid(modeling_spec_audit) and (
                     modeling_spec_audit["target_id"] != target_id
                     or modeling_spec_audit["target_variant"] != target_variant
@@ -388,22 +330,26 @@ def evaluate_stage_gate(stage: str, evidence: dict[str, Any], *, min_iou: float 
                     modeling_spec_audit["authorized_reference_sha256"]
                 ) <= set(reference_audit["authorized_reference_sha256"]):
                     failures.append("modeling spec cites reference artifacts outside the audited set")
+                if _shape_pipeline_evidence_is_valid(shape_pipeline_evidence) and (
+                    shape_pipeline_evidence["target_id"] != target_id
+                    or shape_pipeline_evidence["target_variant"] != target_variant
+                ):
+                    failures.append("shape pipeline evidence targets a different asset or variant")
+                if _shape_pipeline_evidence_is_valid(shape_pipeline_evidence) and not {
+                    view["source_sha256"] for view in shape_pipeline_evidence["views"]
+                } <= set(reference_audit["authorized_reference_sha256"]):
+                    failures.append("shape pipeline evidence cites reference artifacts outside the audited set")
         elif stage == "PRIMARY_BLOCKOUT":
             if not evidence["dimensions_checked"]: failures.append("dimensions not checked")
             if not evidence["primary_components_present"]: failures.append("primary components missing")
             if not _component_coverage_is_valid(evidence["component_coverage"]):
                 failures.append("structured distinct component coverage is missing or invalid")
         elif stage == "PROPORTION_SILHOUETTE":
-            view_count = evidence["view_count"]
-            worst_view_iou = evidence["worst_view_iou"]
-            if not _is_number(view_count) or view_count < 2:
-                failures.append("view_count must describe at least two relevant views")
-            if not _is_number(worst_view_iou) or not 0.0 <= worst_view_iou <= 1.0:
-                failures.append("worst_view_iou must be a number in [0, 1]")
-            elif worst_view_iou < min_iou:
-                failures.append(f"worst-view IoU below {min_iou}")
-            if not evidence["multiview_regression_pass"]: failures.append("a relevant view regressed")
-            failures.extend(_visual_evidence_failures(evidence))
+            view_ids = _fitted_view_ids(evidence["fitted_shape_evidence"])
+            if view_ids is None:
+                failures.append("fitted_shape_evidence is not a passing multi-family, multi-view solver result")
+            else:
+                failures.extend(_visual_evidence_failures(evidence, view_ids))
         else:
             for key in STAGE_REQUIREMENTS[stage]:
                 if isinstance(evidence[key], bool) and not evidence[key]:

@@ -22,7 +22,6 @@ from knowledge_engine.scene_decomposition import (
     ReferenceClaim,
     Relationship,
     SceneDecomposition,
-    StrategyCandidate,
     scene_decomposition_from_dict,
 )
 from knowledge_engine.telemetry import SkillUsage, SkillUsageLog
@@ -34,7 +33,6 @@ from knowledge_engine.reference_board_review import (
     validate_reference_board_gate,
     validate_reference_board_review,
 )
-from knowledge_engine.strategy import ModelingBrief, choose_strategy
 from knowledge_engine.quality_review import ReviewChannel, aggregate_professional_review, evaluate_stage_gate
 from knowledge_engine.planner import PlannerContext, plan_next_decision
 from knowledge_engine.session_learning import apply_replay_result, mine_session_events
@@ -384,20 +382,6 @@ class SceneDecompositionTests(unittest.TestCase):
                 ),
             ],
             claims=claims,
-            strategies=[
-                StrategyCandidate(
-                    "shell-plus-curve-handle",
-                    "BOX_MESH + CURVE",
-                    ["body-form", "handle-path", "separate-handle", "construction"],
-                ),
-                StrategyCandidate(
-                    "single-monolithic-shell",
-                    "CONTINUOUS_MESH",
-                    ["separate-handle"],
-                    status="rejected",
-                    rejection_reason="Would erase the observed pivot gaps and component boundary.",
-                ),
-            ],
             require_evidence_bindings=True,
         )
 
@@ -578,27 +562,6 @@ class SceneDecompositionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "invalid expected region keys"):
             decomp.validate()
 
-    def test_reference_to_blockout_contract_preserves_unknowns_and_selected_strategy(self):
-        decomp = self._strict_lantern_decomposition(extra_claims=[
-            ReferenceClaim(
-                "unseen-base", "unknowns", "The underside is not visible.", "UNKNOWN", 0.1,
-                impact="low", component_refs=["body"],
-            ),
-        ])
-        contract = decomp.to_reference_to_blockout_contract(reference_set_id="lantern-board-v1")
-        self.assertEqual(contract["record_type"], "REFERENCE_TO_BLOCKOUT_CONTRACT")
-        self.assertEqual(contract["selected_strategy"]["name"], "shell-plus-curve-handle")
-        self.assertEqual([claim["claim_id"] for claim in contract["unknown"]], ["unseen-base"])
-        self.assertEqual([item["name"] for item in contract["primary_components"]], ["body", "handle"])
-
-    def test_reference_to_blockout_contract_requires_explicit_choice_for_multiple_candidates(self):
-        decomp = self._strict_lantern_decomposition()
-        decomp.strategies.append(StrategyCandidate(
-            "alternate-shell", "BOX_MESH", ["body-form"],
-        ))
-        with self.assertRaisesRegex(ValueError, "selected_strategy_name"):
-            decomp.to_reference_to_blockout_contract(reference_set_id="lantern-board-v1")
-
     def test_observed_claim_requires_concrete_evidence(self):
         decomp = self._strict_lantern_decomposition()
         decomp.claims[0].evidence = []
@@ -639,7 +602,6 @@ class SceneDecompositionTests(unittest.TestCase):
             "landmarks", "symmetry", "repetition", "thickness_hypotheses", "depth_order",
             "material_boundaries", "construction_hypotheses", "known_dimensions",
             "estimated_dimensions", "unknowns", "ambiguities", "confidence_by_claim",
-            "candidate_modeling_strategies", "rejected_strategies",
         }
         self.assertTrue(required.issubset(artifact))
         self.assertEqual(tuple(CLAIM_CATEGORIES), tuple(dict.fromkeys(CLAIM_CATEGORIES)))
@@ -670,48 +632,6 @@ class SceneDecompositionTests(unittest.TestCase):
                 }],
             })
 
-    def test_only_supported_claims_change_modeling_strategy(self):
-        decomp = self._strict_lantern_decomposition(extra_claims=[
-            ReferenceClaim(
-                "weak-counterclaim",
-                "ambiguities",
-                "The handle may be a rigid polygonal extrusion.",
-                "WEAKLY_INFERRED",
-                0.35,
-                evidence=["single blurred crop"],
-                modeling_consequence="Do not harden this guess.",
-                modeling_signals={"follows_path": False},
-            ),
-        ])
-        brief = decomp.to_modeling_brief(ModelingBrief(follows_path=False))
-        self.assertTrue(brief.follows_path)
-        self.assertTrue(brief.independent_motion_or_material)
-        self.assertIn("handle-path", " ".join(brief.notes))
-
-    def test_secondary_path_does_not_choose_curve_for_primary_shell(self):
-        decomp = SceneDecomposition(
-            object_name="clock",
-            components=[
-                Component("shell", "primary", evidence_status="OBSERVED", confidence=0.9, evidence=["front"]),
-                Component("handle", "secondary", evidence_status="OBSERVED", confidence=0.9, evidence=["front"]),
-            ],
-            claims=[
-                ReferenceClaim(
-                    "shell-smooth", "primary_forms", "Shell is continuously curved.", "OBSERVED", 0.9,
-                    evidence=["front"], component_refs=["shell"],
-                    modeling_signals={"smooth_continuous_surface": True},
-                ),
-                ReferenceClaim(
-                    "handle-curve", "continuous_surfaces", "Handle follows an arch.", "OBSERVED", 0.9,
-                    evidence=["front"], component_refs=["handle"],
-                    modeling_signals={"follows_path": True},
-                ),
-            ],
-        )
-        brief = decomp.to_modeling_brief()
-        self.assertTrue(brief.smooth_continuous_surface)
-        self.assertFalse(brief.follows_path)
-
     def test_conflicting_supported_signals_block_strategy(self):
         decomp = self._strict_lantern_decomposition(extra_claims=[
             ReferenceClaim(
@@ -726,8 +646,6 @@ class SceneDecompositionTests(unittest.TestCase):
             ),
         ])
         self.assertEqual(decomp.blockout_readiness()["conflicting_modeling_signals"], ["follows_path"])
-        with self.assertRaisesRegex(ValueError, "conflicting evidence-bound modeling signal"):
-            decomp.to_modeling_brief()
 
 
 class VisualComparisonTests(unittest.TestCase):
@@ -878,23 +796,19 @@ class QualityReviewTests(unittest.TestCase):
     def test_stage_gate_rejects_global_only_visual_evidence(self):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {"view_count": 3, "worst_view_iou": 0.88, "multiview_regression_pass": True, "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []}, "declared_view_ids": ["front", "side"], "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []}, "visual_mismatch_ledger": [{"view_id": "front", "status": "accepted", "salience": "low", "observation": "reviewed"}, {"view_id": "side", "status": "accepted", "salience": "low", "observation": "reviewed"}]})
         self.assertFalse(result["pass"])
-        self.assertIn("worst-view IoU below 0.9", result["failures"])
+        self.assertIn("fitted_shape_evidence", result["missing"])
 
-    def test_stage_gate_reports_malformed_numeric_evidence_without_crashing(self):
+    def test_stage_gate_rejects_self_asserted_fit_without_crashing(self):
         result = evaluate_stage_gate("PROPORTION_SILHOUETTE", {
-            "view_count": "three", "worst_view_iou": "high",
-            "multiview_regression_pass": True,
+            "fitted_shape_evidence": True,
             "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
-            "declared_view_ids": ["front", "side"],
-            "constraint_report": {"record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION", "pass": True, "blocking_constraint_ids": []},
             "visual_mismatch_ledger": [
                 {"view_id": "front", "status": "accepted", "salience": "low", "observation": "reviewed"},
                 {"view_id": "side", "status": "accepted", "salience": "low", "observation": "reviewed"},
             ],
         })
         self.assertFalse(result["pass"])
-        self.assertIn("view_count must describe at least two relevant views", result["failures"])
-        self.assertIn("worst_view_iou must be a number in [0, 1]", result["failures"])
+        self.assertIn("fitted_shape_evidence is not a passing multi-family, multi-view solver result", result["failures"])
 
     def test_hard_failure_overrides_weighted_score(self):
         result = aggregate_professional_review([
@@ -1047,24 +961,6 @@ class SessionLearningTests(unittest.TestCase):
         self.assertEqual(richer["status"], "REPLAY_VALIDATED")
 
 
-class StrategyTests(unittest.TestCase):
-    def test_curve_and_separate_component_choice(self):
-        result = choose_strategy(ModelingBrief(follows_path=True, independent_motion_or_material=True))
-        self.assertEqual(result["representation"]["choice"], "CURVE")
-        self.assertEqual(result["components"]["choice"], "SEPARATE_COMPONENTS")
-
-    def test_rebuild_requires_accumulated_evidence(self):
-        patch = choose_strategy(ModelingBrief(local_damage_fraction=0.05))["repair"]
-        rebuild = choose_strategy(ModelingBrief(local_damage_fraction=0.6, failed_repairs=3, modifier_instability=0.8))["repair"]
-        self.assertEqual(patch["choice"], "PATCH_REGION")
-        self.assertEqual(rebuild["choice"], "REBUILD_REGION")
-
-    def test_edit_policy_preserves_editability_without_bake_evidence(self):
-        result = choose_strategy(ModelingBrief())
-        self.assertEqual(result["editing"]["choice"], "NONDESTRUCTIVE_MODIFIERS")
-        self.assertIn("no destructive downstream constraint", result["editing"]["reasons"][0])
-
-
 class PlannerTests(unittest.TestCase):
     def context(self, **changes):
         values = dict(
@@ -1137,14 +1033,15 @@ class PlannerTests(unittest.TestCase):
         self.assertEqual(visual.operation, "scale_selection")
         self.assertEqual(visual.target_region, "rim")
         advance = plan_next_decision(self.context(stage_evidence={
-            "view_count": 3, "worst_view_iou": 0.95, "multiview_regression_pass": True,
-            "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
-            "declared_view_ids": ["front", "side"],
-            "constraint_report": {
-                "record_type": "LOCAL_REFERENCE_CONSTRAINT_EVALUATION",
-                "pass": True,
-                "blocking_constraint_ids": [],
+            "fitted_shape_evidence": {
+                "schema_version": 1, "record_type": "SHAPE_FAMILY_SELECTION", "pass": True,
+                "candidates": [{"candidate_id": "a"}, {"candidate_id": "b"}],
+                "selected_result": {
+                    "record_type": "FITTED_SHAPE_HYPOTHESIS", "family_compatible": True,
+                    "compatibility_issues": [], "per_view": {"front": {"loss": 0.02}, "side": {"loss": 0.03}},
+                },
             },
+            "render_evidence_preflight": {"record_type": "MULTIVIEW_RENDER_EVIDENCE_PREFLIGHT", "pass": True, "blank_views": [], "duplicate_view_groups": []},
             "visual_mismatch_ledger": [
                 {"view_id": "front", "status": "accepted", "salience": "high", "observation": "primary contour reviewed"},
                 {"view_id": "side", "status": "accepted", "salience": "high", "observation": "depth profile reviewed"},
@@ -1276,19 +1173,17 @@ class PlannerTests(unittest.TestCase):
         ))
         self.assertEqual(decision.action, "LOCALIZE_NON_MANIFOLD_REGION")
 
-    def test_evidence_bound_claims_change_representation_and_component_policy(self):
+    def test_missing_component_routes_to_fitted_hypothesis_pipeline(self):
         decomp = SceneDecompositionTests()._strict_lantern_decomposition()
         decision = plan_next_decision(self.context(
             visual_tickets=[{
                 "type": "missing_component", "target": "handle", "priority": 1, "severity": 1.0,
             }],
-            brief=ModelingBrief(follows_path=False, independent_motion_or_material=False),
             reference_decomposition=decomp,
         ))
-        self.assertEqual(decision.operation, "create_curve")
-        self.assertEqual(decision.operation_params["representation"], "CURVE")
-        self.assertEqual(decision.operation_params["component_policy"], "SEPARATE_COMPONENTS")
-        self.assertTrue(any("handle-path" in note for note in decision.operation_params["reference_claim_notes"]))
+        self.assertEqual(decision.action, "RUN_COMPONENT_HYPOTHESIS_PIPELINE")
+        self.assertIsNone(decision.operation)
+        self.assertEqual(decision.operation_params["component_id"], "handle")
 
     def test_upstream_root_causes_block_local_geometry_patches(self):
         interpretation = plan_next_decision(self.context(visual_tickets=[{

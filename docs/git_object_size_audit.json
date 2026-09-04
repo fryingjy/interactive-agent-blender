@@ -1,0 +1,656 @@
+{
+  "schema_version": 1,
+  "record_type": "GIT_OBJECT_SIZE_AUDIT",
+  "audited_head": "83aefd3a75ef6f891df8c69efaba53642d1fa14e",
+  "reachable_blob_count": 6123,
+  "reachable_blob_bytes": 638024101,
+  "current_blob_bytes": 2288261,
+  "deleted_only_blob_bytes": 635735840,
+  "deleted_only_fraction": 0.9964135194949321,
+  "deleted_historical_media_bytes": 606027315,
+  "deleted_historical_media_fraction": 0.9498501922578627,
+  "bytes_by_first_path_component": {
+    "runs": 605355272,
+    "knowledge": 9679944,
+    "docs": 7374564,
+    "blender_ops": 4993832,
+    "tools": 3614140,
+    "tests": 2315652,
+    "README.md": 1702100,
+    "knowledge_engine": 1566848,
+    "modeling_core": 582778,
+    "addon.py": 366924,
+    "reference": 251022,
+    "models": 211047,
+    "NEXT_STEPS.md": 5092,
+    ".gitignore": 2626,
+    "requirements": 1700,
+    ".mcp.json": 560
+  },
+  "bytes_by_representative_extension": {
+    ".png": 430542711,
+    ".blend": 119259579,
+    ".json": 26633718,
+    ".jpg": 15144592,
+    ".py": 13415225,
+    ".md": 12810271,
+    ".html": 10118155,
+    ".glb": 5331120,
+    ".jsonl": 1860999,
+    ".pdf": 1839349,
+    ".txt": 573496,
+    ".svg": 291627,
+    ".mp4": 172713,
+    ".gd": 8625,
+    ".obj": 7153,
+    ".rejected": 6628,
+    ".log": 4533,
+    "[none]": 2630,
+    ".godot": 520,
+    ".mtl": 243,
+    ".vtt": 214
+  },
+  "largest_blobs": [
+    {
+      "oid": "d61ebf4217d2c6b906c4ce4534f8d109d131d7a3",
+      "bytes": 36857662,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_facial-expression-transfer/facial_expression_transfer.blend"
+      ]
+    },
+    {
+      "oid": "9bb4ddc36df68880feca270b0971b90121da8164",
+      "bytes": 36252369,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expressive_facial_articulation.blend"
+      ]
+    },
+    {
+      "oid": "9f56a830a033e35c4ed65d8f165e2c106ea0034e",
+      "bytes": 5346186,
+      "current": false,
+      "paths": [
+        "runs/2026-08-17_flashlight-model/references/wikimedia_maglite_switch_detail.jpg"
+      ]
+    },
+    {
+      "oid": "4f76c7972f6367a6b930ecd43facd75e64c2b4d5",
+      "bytes": 3074527,
+      "current": false,
+      "paths": [
+        "runs/2026-08-21_scotch-c38-blockout/review_board/review_board.html"
+      ]
+    },
+    {
+      "oid": "e14f943a26611efa60fd31ad385bbdb5d6562a8e",
+      "bytes": 2868226,
+      "current": false,
+      "paths": [
+        "runs/2026-08-20_masterlock-140d-resume/review_board/review_board.html"
+      ]
+    },
+    {
+      "oid": "ba3615cd797222feb2e8f7969825378459913b4d",
+      "bytes": 2806819,
+      "current": false,
+      "paths": [
+        "runs/2026-08-21_swingline-747-primary-cage/review_board/review_board.html"
+      ]
+    },
+    {
+      "oid": "f8baabaf6138ee4991023622a991559fcae058b7",
+      "bytes": 2486106,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_reference-gathering-panasonic-rf2400d/stage_24_reference_segmentation_preserve_handle_gap/reference_segmentation_preview.png"
+      ]
+    },
+    {
+      "oid": "176efa38bfdda61c60966cd8c4efd4086f5d4d27",
+      "bytes": 1781184,
+      "current": false,
+      "paths": [
+        "runs/2026-08-14_simple-crate/reference/wooden_apple_crate.jpg"
+      ]
+    },
+    {
+      "oid": "2d02195c8b27b83eaf372208c7a99c994abc59c0",
+      "bytes": 1624078,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_real-video-loopcut-review/frames/frame_0150.500s.png"
+      ]
+    },
+    {
+      "oid": "b6c8f8ff24e6a96773f3be13e450ac765320ebbc",
+      "bytes": 1617573,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_real-video-loopcut-review/frames/frame_0158.500s.png"
+      ]
+    },
+    {
+      "oid": "5a0ab6f0b72e9157f0403b5d3f43f8ce2103a4c9",
+      "bytes": 1589394,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "6fe3453b772cba3fa9d4bd88285a234326eccc70",
+      "bytes": 1579090,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_real-video-loopcut-review/frames/frame_0166.500s.png"
+      ]
+    },
+    {
+      "oid": "02b16e4d42ddfcdf48094b7bd127ce0849a3c817",
+      "bytes": 1541939,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_real-video-loopcut-review/frames/frame_0178.500s.png"
+      ]
+    },
+    {
+      "oid": "03369e59bc34c1ef9a10bff4e7486e563658e10c",
+      "bytes": 1305060,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_connected-camera-corrective/export/connected_camera.glb"
+      ]
+    },
+    {
+      "oid": "a843525b50d28543566472e6915bb4a548d00a74",
+      "bytes": 1228680,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_heldout-boombox/export/heldout_boombox.glb"
+      ]
+    },
+    {
+      "oid": "a18a3c15958337cbc3d60d4422db5d43158b1afe",
+      "bytes": 1196147,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "ada602037bdf4de5ce8b490373579554e0cfe0c3",
+      "bytes": 1191664,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "b14ff3d2dc6a5a1ff58c79dc162898c2d3087792",
+      "bytes": 1186618,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "a02cc4a9f75cf4b876c39de99feb55f1e414fbb2",
+      "bytes": 1186494,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "f4d7c9d3a65d5454090fa781e8d62e056185aeff",
+      "bytes": 1186494,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_integrated_wireframe.png"
+      ]
+    },
+    {
+      "oid": "a8dd0c6913af7546dc5d7308040e7824a3dbe9de",
+      "bytes": 1158392,
+      "current": false,
+      "paths": [
+        "runs/2026-08-10_multistroke-sculpt-learning/multistroke_sculpt_learning.blend"
+      ]
+    },
+    {
+      "oid": "19a3c247dba9504d5424b6b256c082e4c211d11b",
+      "bytes": 1136304,
+      "current": false,
+      "paths": [
+        "runs/2026-08-23_stanley-classic-bottle-reference-pipeline/reference_front_stanley1913.png"
+      ]
+    },
+    {
+      "oid": "365c0b2cdb507bed663f936fdf9ed0ac4c31f2a7",
+      "bytes": 1059492,
+      "current": false,
+      "paths": [
+        "runs/2026-08-15_bevel-subd-order/bevel_subd_order_wire.png"
+      ]
+    },
+    {
+      "oid": "50d74b8f428d770aba48975d16f7b78d0532ce23",
+      "bytes": 1047937,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_reference-gathering-ikea-kupong/product-page.html"
+      ]
+    },
+    {
+      "oid": "ef5e1759da74d30a06223e5b6a347f14cccfe3b0",
+      "bytes": 1012811,
+      "current": false,
+      "paths": [
+        "runs/2026-08-10_heldout-fantasy-sword/fantasy_sword_heldout.blend"
+      ]
+    },
+    {
+      "oid": "45fddb3bbc842e40296962fb24854187db3e7eac",
+      "bytes": 1012160,
+      "current": false,
+      "paths": [
+        "runs/2026-08-10_heldout-fantasy-sword/fantasy_sword_heldout.blend"
+      ]
+    },
+    {
+      "oid": "9f5af62168e832c672cce887895fc768d71826fd",
+      "bytes": 1008917,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_curved-bevel-normal-policy/curved_bevel_normal_policy_matcap.png"
+      ]
+    },
+    {
+      "oid": "6e0e1d8bb0394a8000b1cfe2815166630911c2e8",
+      "bytes": 988915,
+      "current": false,
+      "paths": [
+        "runs/2026-08-10_transfer-trident/stylized_trident.blend"
+      ]
+    },
+    {
+      "oid": "b12c1be56631f9d8d971c17f2d6e16304f3cefbe",
+      "bytes": 980638,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_mixed-surface-diagnosis/mixed_surface_diagnosis.blend"
+      ]
+    },
+    {
+      "oid": "a3509066e91ac43e45fc56d91654cf948ef52747",
+      "bytes": 904576,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "a6484854a1d63ccf84a73ae2c0c911240fdd4ab2",
+      "bytes": 902377,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "923e0f9fc4c363183e93e35cba171475181fdaf5",
+      "bytes": 900719,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-blenderguru-lightbulb/lightbulb_scene_v2.png"
+      ]
+    },
+    {
+      "oid": "e9172b70d0cf6b9e4bae2b220b822fc3f4f876a0",
+      "bytes": 896997,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-blenderguru-lightbulb/lightbulb_scene_v4.png"
+      ]
+    },
+    {
+      "oid": "306ae6700dc8bc717374c37b19b780b404414a55",
+      "bytes": 896410,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "37f40f59ce3640976dd19509ceb5bc5ebaca03b4",
+      "bytes": 896161,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "d0e825e3eb1cebc553e956eecacffe91c8e41a33",
+      "bytes": 896063,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "0b3e546c2a6e41eb42d20c8e65d31fd46ba7496e",
+      "bytes": 895802,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_comparison.png"
+      ]
+    },
+    {
+      "oid": "46e14ab8d12092ede3dc1b5c1d164f8839d3976e",
+      "bytes": 890909,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-blenderguru-lightbulb/lightbulb_scene_v3.png"
+      ]
+    },
+    {
+      "oid": "ff1327b670324184c76362d00ff3bc5c6c2fdc82",
+      "bytes": 868037,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_reference-gathering-panasonic-rf2400d/RF2400_TQBM0271_ENG.pdf"
+      ]
+    },
+    {
+      "oid": "013adead1add8e2a098801f7b4ebaaf65be55629",
+      "bytes": 865378,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/ramen_machine_material_v5.png"
+      ]
+    },
+    {
+      "oid": "fbea3665aae3c9103d46490e872b647b82751806",
+      "bytes": 855164,
+      "current": false,
+      "paths": [
+        "runs/2026-08-16_double-curvature-bevel-subd/double_curvature_base_cage_wire.png"
+      ]
+    },
+    {
+      "oid": "9e4ed021fcd79b52789b91a19fba37b78cab5370",
+      "bytes": 854978,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/ramen_machine_material_v4.png"
+      ]
+    },
+    {
+      "oid": "936a1d7838b7972637e20d97ea5db5cace6894aa",
+      "bytes": 853025,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "e2ddedb4586cf8fea0777469faf9690bb5eab238",
+      "bytes": 852953,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "242593afb584099fc6941a25dc73c55dcc5169e4",
+      "bytes": 851801,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_integrated_jaw_smile.png"
+      ]
+    },
+    {
+      "oid": "b29c96b8d65042a1e69fef8e0c7184087f788a9c",
+      "bytes": 850400,
+      "current": false,
+      "paths": [
+        "runs/2026-08-17_flashlight-model/references/wikimedia_maglite_01.jpg"
+      ]
+    },
+    {
+      "oid": "9c41231362c4c0507da1103112fbdffb4db5f233",
+      "bytes": 848629,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/ramen_machine_material_v1.png"
+      ]
+    },
+    {
+      "oid": "e6141f28a281fe9ab6451324c4806f6e7186bb7f",
+      "bytes": 848569,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "4f23e2b5feceea11ff477bc7a715ecf9f3a14dc2",
+      "bytes": 848508,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "e013fcd12ae03aad6eb5a8888064e4961d9fe834",
+      "bytes": 848483,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "e96dd26f8fb004f3f9bae3ccc2b758f80de20fd6",
+      "bytes": 848322,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_failure_mouth_only.png"
+      ]
+    },
+    {
+      "oid": "ae9f903eb55d6f58d1648947548924a6b5663abf",
+      "bytes": 844512,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "013ed6be94ab25f0218fc3755d27ec59a2c6c803",
+      "bytes": 841837,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "7b16b606e7ea63a4fd22930fc8566b556100406d",
+      "bytes": 841426,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "8a1f1d8f3dbe64721c10b32f6d86907a7e118a8c",
+      "bytes": 841021,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_integrated_jaw_smile.png"
+      ]
+    },
+    {
+      "oid": "d4a4c4ad7f1ef6f057d91a1494c9871610d8377b",
+      "bytes": 840084,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-blenderguru-lightbulb/lightbulb_scene_v19.png"
+      ]
+    },
+    {
+      "oid": "5d501b879eb03c32dbdfc2491b23144e7c9d2879",
+      "bytes": 838238,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "04979007dc6beee8d9b69eef671c846ecfd2f659",
+      "bytes": 837612,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/ramen_machine_material_v3.png"
+      ]
+    },
+    {
+      "oid": "a103106ae1f8d2ec1e917e9b9d5e84ae9178b860",
+      "bytes": 837288,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "fc7bd0bcc7d8d239137b90e73dc84dc32dac5d25",
+      "bytes": 837287,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "e6a73eed09adeb02e5e22207b8693b165953d2d4",
+      "bytes": 837259,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "e42fd6e4292429edd7c0bfef317f84c17e1c2a02",
+      "bytes": 837015,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_integrated_three_quarter.png"
+      ]
+    },
+    {
+      "oid": "02b542638ae076dc8b2c726173f92c339f8156df",
+      "bytes": 835126,
+      "current": false,
+      "paths": [
+        "runs/2026-08-22_tutorial-polygon-runway-ramen-machine/ramen_machine_material_v2.png"
+      ]
+    },
+    {
+      "oid": "b9d457a369ece173906f6eeba2d751f53ace469f",
+      "bytes": 834460,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "5a4b5c369e47037b7008cadf1bd713ae05c50368",
+      "bytes": 834364,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "d8f8e495d51b5d6647fb9689498249b649a98577",
+      "bytes": 834327,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "cea38cd6f6e3b034d127a49329d8b2cae4c63ac6",
+      "bytes": 834035,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_integrated.png"
+      ]
+    },
+    {
+      "oid": "13549309f2ea21216b689f797766d33f727a554d",
+      "bytes": 833371,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fifth_absolute_quad_gate/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "8f99e806c5a2400b54e718762f770f1920e82908",
+      "bytes": 833310,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_first_pass/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "a691c0c527cbb2c3ef5079de234eab0a9412653e",
+      "bytes": 833287,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_fourth_jaw_shape/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "a5428ebde3ad45b1a9b06dbc4df9527f38d16fdb",
+      "bytes": 833194,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_second_visual_review/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "6af98614dc2737eaefa9d22523ab6662c94a73e6",
+      "bytes": 833193,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/failed_third_weighted_jaw/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "025ab7b5076ea5113310e37113d50abadf61faa3",
+      "bytes": 833124,
+      "current": false,
+      "paths": [
+        "runs/2026-08-11_expressive-facial-articulation/expression_rest.png"
+      ]
+    },
+    {
+      "oid": "0f5b933537f05d49df448e35c7bcd99778aed1c9",
+      "bytes": 831319,
+      "current": false,
+      "paths": [
+        "runs/2026-08-21_scotch-c38-blockout/reference_segmentation/reference_segmentation_preview.png"
+      ]
+    },
+    {
+      "oid": "ef37bf6d78552afa87d185e278fc6a5c04ec67d4",
+      "bytes": 827839,
+      "current": false,
+      "paths": [
+        "runs/2026-08-10_heldout-chair/heldout_chair.blend"
+      ]
+    }
+  ],
+  "history_rewrite_performed": false
+}

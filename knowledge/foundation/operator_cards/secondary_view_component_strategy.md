@@ -10,17 +10,11 @@ component organization, and edit-mode strategy.
 
 ## Executable policy
 
-`knowledge_engine.component_strategy.resolve_component_strategy()` compares explicit construction
-candidates. If the primary view is tied within the declared tolerance, the policy returns
-`TARGETED_REFERENCE_RESEARCH` until every candidate has a discriminating same-variant secondary
-view. Selection requires both an absolute secondary-view fit and a frozen margin over the runner-up.
-
-The planner consumes this result in two places:
-
-- `REFERENCE_ANALYSIS`: unresolved evidence returns `RESOLVE_SECONDARY_VIEW_STRATEGY` and blocks the
-  stage transition without geometry mutation.
-- Component blockout: a resolved policy overrides the generic component prior and records the
-  selected measured candidate in the decision contract.
+`modeling_core.assembly` proposes explicit continuous and separate construction graphs, and
+`modeling_core.component_fitting` fits at least two executable families per component against the
+same registered views. If a primary view cannot discriminate candidates, the fit remains ambiguous
+until a same-variant secondary view supplies a sufficient measured margin. The planner may request
+that evidence, but it cannot choose the geometry itself.
 
 `CONTINUOUS_MESH` evidence must describe exactly one object and one connected component. Joining
 multiple disconnected shells or merely placing them in one collection does not satisfy continuity.
@@ -40,7 +34,8 @@ Evidence: `runs/2026-08-15_secondary-view-component-strategy/`.
 
 ## Boundary
 
-This is synthetic reconstruction evidence, not automatic image understanding. It does not prove
+The original standalone component-strategy scorer was removed after its policy was absorbed into
+the fitted assembly path. This is synthetic reconstruction evidence, not automatic image understanding. It does not prove
 that the system can discover the correct component boundary in a real photograph or that the
 chosen construction improves a held-out prop. That requires a real multi-view task and human visual
 review.

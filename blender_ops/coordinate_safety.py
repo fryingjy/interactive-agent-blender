@@ -1,7 +1,6 @@
 """Generic, asset-agnostic detector for a geometry edit that jumped to what
 looks like a different coordinate frame -- the observable symptom shared by
-the recurring world/local coordinate-space bug (see coordinate_frames.py's
-docstring for the three real, independent cases this is grounded in).
+the recurring world/local coordinate-space bug.
 
 Pure Python, no bpy dependency: takes the ``local_bounds``/``local_centroid``
 fields state_probe.mesh_health() reports before and after a mutation, and

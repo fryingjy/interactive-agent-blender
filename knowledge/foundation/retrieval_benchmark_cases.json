@@ -1,15 +1,8 @@
 {
-  "version": 9,
+  "version": 10,
   "frozen_on": "2026-08-15",
-  "calibration_note": "The original cases were authored after inspecting the six-skill store and calibrating a 4.0 abstention threshold. Versions 3 and 4 added paired reference cases. Version 5 added one seam-directed UV positive while preserving a generic UV-pack abstention. Version 6 adds a narrow principal-axis Image Empty setup positive while retaining the generic reference-camera abstention. Version 7 adds explicit bevel-edge completeness while preserving unrelated shading/reference abstentions. Version 8 adds strict all-quad Connect Vertex Path selection on a curved SubD patch. Version 9 adds an editable flattened curve-profile path case. These are regression cases, not held-out evidence.",
+  "calibration_note": "Version 10 removes positives for one historical destructive boolean cleanup and one unvalidated candidate; runtime retrieval now excludes HISTORICAL, CANDIDATE, and unclassified records. Earlier additions remain regression cases, not held-out evidence.",
   "cases": [
-    {
-      "case_id": "boolean_tangent",
-      "kind": "positive",
-      "context": {"query": "tangent boolean groove degenerates", "workflow": "boolean", "defect": "non manifold zero length", "modifiers": ["BOOLEAN"]},
-      "expected_top_skill": "boolean-groove-cut-topology-cleanup",
-      "minimum_top_margin": 1.0
-    },
     {
       "case_id": "material_orphan",
       "kind": "positive",
@@ -25,24 +18,10 @@
       "minimum_top_margin": 1.0
     },
     {
-      "case_id": "subd_boundary",
-      "kind": "positive",
-      "context": {"query": "subdivision boundary pinching mismatch", "workflow": "subdivision", "defect": "boundary resolution", "modifiers": ["SUBSURF"]},
-      "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
-      "minimum_top_margin": 1.0
-    },
-    {
       "case_id": "mirror_stack",
       "kind": "positive",
       "context": {"query": "mirror subdivision seam", "workflow": "modifier-stack", "defect": "non manifold seam", "modifiers": ["MIRROR", "SUBSURF"]},
       "expected_top_skill": "modifier.stack_order.subd_safe_mirror_placement",
-      "minimum_top_margin": 1.0
-    },
-    {
-      "case_id": "boolean_paraphrase",
-      "kind": "positive",
-      "context": {"query": "cutter leaves sliver faces after difference", "workflow": "boolean", "defect": "zero area polygons", "modifiers": ["BOOLEAN"]},
-      "expected_top_skill": "boolean-groove-cut-topology-cleanup",
       "minimum_top_margin": 1.0
     },
     {
@@ -57,13 +36,6 @@
       "kind": "positive",
       "context": {"query": "script changes viewport swatch but Principled render stays gray", "workflow": "materials", "defect": "node base color mismatch"},
       "expected_top_skill": "diffuse-color-not-connected-to-bsdf",
-      "minimum_top_margin": 1.0
-    },
-    {
-      "case_id": "boundary_paraphrase",
-      "kind": "positive",
-      "context": {"query": "rim grid has unequal edge counts and seven sided faces", "workflow": "subdivision", "defect": "resolution mismatch boundary", "modifiers": ["SUBSURF"]},
-      "expected_top_skill": "subd.boundary_resolution.match_quads_over_triangulate",
       "minimum_top_margin": 1.0
     },
     {

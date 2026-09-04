@@ -23,7 +23,7 @@ FAILURE_TYPES = {
     "construction_strategy",
 }
 
-# Root-cause classification (docs/FAILURE_TAXONOMY.md, added 2026-08-23): a
+# Root-cause classification (docs/REVIEW_AND_REPAIR.md): a
 # separate axis from FAILURE_TYPES above. FAILURE_TYPES says what looks wrong
 # in the render; this says which stage of reasoning produced it. One symptom
 # can come from more than one root cause, so both are recorded, not merged.
@@ -94,7 +94,7 @@ def validate_external_visual_review(review: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("a rejection requires failure_types and concrete notes")
     if review["review_result"] == "reject" and not root_cause_categories:
         raise ValueError(
-            "a rejection requires root_cause_categories (docs/FAILURE_TAXONOMY.md) so a correction "
+            "a rejection requires root_cause_categories (docs/REVIEW_AND_REPAIR.md) so a correction "
             "targets the stage that actually failed, not just the visible symptom"
         )
     return review

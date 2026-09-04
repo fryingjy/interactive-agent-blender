@@ -122,6 +122,8 @@ python tools/modeling_pipeline.py select-family loft.json profile.json `
 python tools/modeling_pipeline.py fit hypothesis.json `
   --mask front=front-mask.png --mask side=side-mask.png --output fitted.json
 python tools/modeling_pipeline.py compile fitted.json --name Blockout --output command.json
+python tools/modeling_pipeline.py compare-reference reference.png render.png `
+  --output-dir work/comparison --alignment strict --view front
 ```
 
 ## Modeling rules
@@ -140,10 +142,10 @@ python tools/modeling_pipeline.py compile fitted.json --name Blockout --output c
 
 ## Blender entry points
 
-- `addon.py` — Blender-side socket add-on.
-- `.mcp.json` — local MCP configuration.
+- `.mcp.json` — local MCP configuration, including the externally maintained `blender-mcp` bridge.
 - `tools/modeler_mcp_server.py` — typed agent-facing operation surface.
 - `blender_ops/modeler_server.py` — Blender-side command implementation.
+- `tools/start_modeler_in_blender.py` — starts the typed Blender-side server in a fresh Blender process.
 - `tools/run_modeler_command_sequence.py` — fresh-process execution of typed JSON sequences.
 
 Blender 5.2 LTS is the current tested target. Optional dependencies are split under

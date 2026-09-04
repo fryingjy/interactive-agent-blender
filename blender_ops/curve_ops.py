@@ -5,7 +5,7 @@ Built after a real, documented mistake: the first pass at the gadget
 wristband used a torus (a symmetric ring) to approximate a strap that
 actually wraps around, overlaps itself, has a buckle-hole gap, and tapers
 to a closed point at one end -- verified by pixel-measuring the reference
-image (tools/measure_reference.py), not by eye. A torus cannot represent
+image (`modeling_pipeline.py extract-reference`), not by eye. A torus cannot represent
 any of that. Blender's Curve object (bevel_depth for a 3D cross-section
 along the path, taper_object for width control along its length) is the
 actual right tool, confirmed against the Blender Manual before building

@@ -1,5 +1,6 @@
 {
   "id": "material-slot-orphan-assignment",
+  "status": "RUNTIME_VALIDATED",
   "title": "New material added via data.materials.append() renders unused because faces still point at the old slot index",
   "topic_tags": [
     "material",

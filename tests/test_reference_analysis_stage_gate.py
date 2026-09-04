@@ -3,186 +3,68 @@ from blender_ops.stage_gates import evaluate_stage_gate
 
 def _base_evidence():
     reference_audit = {
-        "schema_version": 1,
-        "record_type": "REFERENCE_SET_AUDIT",
-        "target_id": "prop",
-        "target_variant": "v1",
-        "reference_count": 2,
-        "matching_reference_count": 2,
+        "schema_version": 1, "record_type": "REFERENCE_SET_AUDIT",
+        "target_id": "prop", "target_variant": "v1",
+        "reference_count": 2, "matching_reference_count": 2,
         "checks": {
-            "same_target_identity_pass": True,
-            "view_coverage_pass": True,
-            "orthographic_coverage_pass": True,
-            "provenance_coverage_pass": True,
-            "critical_property_coverage_pass": True,
-            "dimensional_anchor_pass": True,
-            "conflicts_resolved_pass": True,
-            "question_driven_research_pass": True,
+            "same_target_identity_pass": True, "view_coverage_pass": True,
+            "orthographic_coverage_pass": True, "provenance_coverage_pass": True,
+            "critical_property_coverage_pass": True, "dimensional_anchor_pass": True,
+            "conflicts_resolved_pass": True, "question_driven_research_pass": True,
             "artifact_binding_pass": True,
         },
-        "issues": [],
-        "pass": True,
-        "disposition": "READY_TO_MODEL",
-        "authorized_reference_sha256": ["a" * 64],
+        "issues": [], "pass": True, "disposition": "READY_TO_MODEL",
+        "authorized_reference_sha256": ["a" * 64, "c" * 64],
     }
     return {
-        "component_graph_pass": True,
-        "measured_ratio_count": 3,
-        "uncertainty_recorded": True,
-        "reference_set_audit_pass": True,
-        "same_target_identity_pass": True,
-        "view_coverage_pass": True,
-        "critical_property_coverage_pass": True,
-        "conflicts_resolved_pass": True,
-        "question_driven_research_pass": True,
-        "visual_reconstruction_audit_pass": {
-            "schema_version": 1,
-            "record_type": "VISUAL_RECONSTRUCTION_AUDIT",
-            "target_id": "prop",
-            "checks": {
-                "identity_bound": True,
-                "independent_observations": True,
-                "property_specific_authority": True,
-                "eleven_passes_recorded": True,
-                "competing_interpretations_tested": True,
-                "bad_interpretation_eliminated": True,
-                "construction_bound_to_selected_interpretation": True,
-                "uncertainty_kept_reversible": True,
-                "every_component_has_construction_justification": True,
-            },
-            "region_reports": [{"region_id": "body"}],
-            "selected_hypothesis_ids": ["box"],
-            "contradiction_count": 1,
-            "errors": [],
-            "pass": True,
+        "shape_pipeline_evidence": {
+            "schema_version": 1, "record_type": "MULTIVIEW_REFERENCE_EVIDENCE_BUNDLE",
+            "target_id": "prop", "target_variant": "v1",
+            "views": [
+                {"view_id": "front", "source_sha256": "a" * 64, "mask_sha256": "b" * 64, "issues": []},
+                {"view_id": "side", "source_sha256": "c" * 64, "mask_sha256": "d" * 64, "issues": []},
+            ],
+            "missing_component_support": {}, "issues": [], "accepted_for_shape_solving": True,
         },
-        "component_reference_coverage_pass": {
-            "schema_version": 1,
-            "record_type": "COMPONENT_REFERENCE_COVERAGE",
-            "component_count": 1,
-            "covered_component_ids": ["body"],
-            "uncovered_component_ids": [],
-            "pass": True,
-        },
-        "depth_critical_reference_support_pass": {"schema_version": 1, "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT", "depth_critical_component_ids": [], "component_reports": {}, "unsupported_component_ids": [], "pass": True},
         "modeling_spec_audit": {
-            "schema_version": 1,
-            "record_type": "REFERENCE_MODELING_SPEC_AUDIT",
-            "target_id": "prop",
-            "target_variant": "v1",
-            "component_ids": ["body"],
-            "identity_feature_ids": ["outer_arc"],
-            "authorized_reference_sha256": ["a" * 64],
-            "errors": [],
-            "pass": True,
+            "schema_version": 1, "record_type": "REFERENCE_MODELING_SPEC_AUDIT",
+            "target_id": "prop", "target_variant": "v1", "component_ids": ["body"],
+            "identity_feature_ids": ["outer_arc"], "authorized_reference_sha256": ["a" * 64],
+            "errors": [], "pass": True,
         },
         "reference_audit": reference_audit,
     }
 
 
-def test_full_evidence_including_new_keys_passes():
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", _base_evidence())
-    assert result["pass"] is True
+def test_structured_reference_and_shape_pipeline_evidence_passes():
+    assert evaluate_stage_gate("REFERENCE_ANALYSIS", _base_evidence())["pass"] is True
 
 
-def test_missing_visual_reconstruction_audit_key_blocks_advance():
+def test_missing_shape_pipeline_evidence_blocks_advance():
     evidence = _base_evidence()
-    del evidence["visual_reconstruction_audit_pass"]
+    del evidence["shape_pipeline_evidence"]
     result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
     assert result["pass"] is False
-    assert "visual_reconstruction_audit_pass" in result["missing"]
+    assert "shape_pipeline_evidence" in result["missing"]
 
 
-def test_self_asserted_true_does_not_satisfy_visual_reconstruction_audit():
-    # A bare True is exactly the "self-reported flag" this gate must refuse --
-    # only the real structured audit_visual_reconstruction() result counts.
+def test_self_asserted_shape_pipeline_flag_is_rejected():
     evidence = _base_evidence()
-    evidence["visual_reconstruction_audit_pass"] = True
+    evidence["shape_pipeline_evidence"] = True
     result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
     assert result["pass"] is False
-    assert "visual reconstruction audit missing, invalid, or not passing" in result["failures"]
+    assert "shape_pipeline_evidence is missing, malformed, or not accepted" in result["failures"][0]
 
 
-def test_failing_visual_reconstruction_audit_blocks_advance():
+def test_rejected_or_cross_target_shape_bundle_blocks_advance():
     evidence = _base_evidence()
-    evidence["visual_reconstruction_audit_pass"] = {"record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": False}
+    evidence["shape_pipeline_evidence"]["target_id"] = "other_prop"
     result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
     assert result["pass"] is False
-    assert "visual reconstruction audit missing, invalid, or not passing" in result["failures"]
-
-
-def test_uncovered_component_blocks_advance():
+    assert "shape pipeline evidence targets a different asset or variant" in result["failures"]
     evidence = _base_evidence()
-    evidence["component_reference_coverage_pass"] = {"pass": False, "uncovered_component_ids": ["handle"]}
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "reference evidence does not cover every declared component" in result["failures"]
-
-
-def test_self_asserted_true_does_not_satisfy_component_reference_coverage():
-    evidence = _base_evidence()
-    evidence["component_reference_coverage_pass"] = True
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "reference evidence does not cover every declared component" in result["failures"]
-
-
-def test_front_only_depth_critical_component_blocks_advance():
-    evidence = _base_evidence()
-    evidence["depth_critical_reference_support_pass"] = {
-        "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
-        "depth_critical_component_ids": ["head"],
-        "component_reports": {"head": {"view_ids": ["front"], "reference_ids": ["front"], "view_count": 1, "pass": False}},
-        "unsupported_component_ids": ["head"],
-        "pass": False,
-    }
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "depth-critical components lack multi-view structural evidence" in result["failures"]
-
-
-def test_bare_true_does_not_satisfy_depth_support():
-    evidence = _base_evidence()
-    evidence["depth_critical_reference_support_pass"] = True
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-
-
-def test_structured_depth_report_cannot_omit_declared_component_details():
-    evidence = _base_evidence()
-    evidence["depth_critical_reference_support_pass"] = {
-        "record_type": "DEPTH_CRITICAL_REFERENCE_SUPPORT",
-        "schema_version": 1,
-        "depth_critical_component_ids": ["head"],
-        "component_reports": {},
-        "unsupported_component_ids": [],
-        "pass": True,
-    }
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-
-
-def test_minimal_forged_structured_records_do_not_pass():
-    evidence = _base_evidence()
-    evidence["visual_reconstruction_audit_pass"] = {
-        "schema_version": 1, "record_type": "VISUAL_RECONSTRUCTION_AUDIT", "pass": True
-    }
-    evidence["component_reference_coverage_pass"] = {
-        "schema_version": 1, "record_type": "COMPONENT_REFERENCE_COVERAGE",
-        "component_count": 0, "covered_component_ids": [], "uncovered_component_ids": [], "pass": True,
-    }
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "visual reconstruction audit missing, invalid, or not passing" in result["failures"]
-    assert "reference evidence does not cover every declared component" in result["failures"]
-
-
-def test_flat_flags_cannot_contradict_reference_audit():
-    evidence = _base_evidence()
-    evidence["same_target_identity_pass"] = False
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "flattened reference flags contradict the structured reference_audit" in result["failures"]
+    evidence["shape_pipeline_evidence"]["accepted_for_shape_solving"] = False
+    assert evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)["pass"] is False
 
 
 def test_missing_modeling_spec_blocks_reference_authorization():
@@ -191,14 +73,6 @@ def test_missing_modeling_spec_blocks_reference_authorization():
     result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
     assert result["pass"] is False
     assert "modeling_spec_audit" in result["missing"]
-
-
-def test_cross_target_visual_audit_cannot_be_replayed():
-    evidence = _base_evidence()
-    evidence["visual_reconstruction_audit_pass"]["target_id"] = "other_prop"
-    result = evaluate_stage_gate("REFERENCE_ANALYSIS", evidence)
-    assert result["pass"] is False
-    assert "visual reconstruction audit targets a different asset" in result["failures"]
 
 
 def test_cross_variant_modeling_spec_cannot_be_replayed():

@@ -11,7 +11,7 @@ this project's current priority allocation (hard-surface/SubD/topology).
 
 ## References collected
 
-Real photographs only, no invented proportions. Per `docs/REFERENCE_COLLECTION_PROTOCOL.md`'s own
+Real photographs only, no invented proportions. Per `docs/REFERENCE_PROTOCOL.md`'s own
 confidence levels, this is **MEDIUM confidence**: two independent photographs agree on primary
 proportions, but neither is a true orthographic/dimensioned source, so depth (front-to-back
 thickness) is inferred from general padlock construction knowledge, not measured -- flagged

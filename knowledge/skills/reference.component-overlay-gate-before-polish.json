@@ -24,7 +24,7 @@
   "evidence": {
     "experiment": "runs/2026-08-16_smeg-klf03-model/",
     "review": "runs/2026-08-16_smeg-klf03-model/stage_08_visual_review.json",
-    "tool": "tools/compare_reference_render.py",
+    "tool": "tools/modeling_pipeline.py compare-reference",
     "observed_failure": "Whole-object normalized scores near 0.77–0.88 concealed component overlap of 0.4001 for the spout, 0.5741 for the handle, and 0.5156 for the base."
   },
   "limitations": [

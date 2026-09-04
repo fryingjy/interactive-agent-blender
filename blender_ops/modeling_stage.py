@@ -108,7 +108,7 @@ def set_stage(name, stage, evidence):
     }
 
 
-def advance_stage(name, stage, evidence, *, min_iou=0.9):
+def advance_stage(name, stage, evidence):
     """Advance only when evidence passes the stage being completed.
 
     `set_stage` remains available for explicit regression and legacy records. New forward
@@ -124,7 +124,7 @@ def advance_stage(name, stage, evidence, *, min_iou=0.9):
     expected = STAGES[STAGES.index(previous) + 1] if previous in STAGES and previous != STAGES[-1] else None
     if stage != expected:
         raise ValueError(f"forward transition must be exactly {previous} -> {expected}; requested {stage}")
-    gate = evaluate_stage_gate(previous, evidence, min_iou=min_iou)
+    gate = evaluate_stage_gate(previous, evidence)
     if previous == "PRIMARY_BLOCKOUT" and gate["pass"]:
         coverage = evidence["component_coverage"]
         captured_revision = int(coverage["scene_revision"])

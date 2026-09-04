@@ -30,7 +30,7 @@ task gap
 
 Structured runtime retrieval uses a calibrated default score floor and may return no skill. That
 abstention is intentional: weak lexical overlap must not turn an unrelated ticket into an executable
-hint. Use `knowledge/skill_store.py search-structured --min-score ...` only to lower the floor for
+hint. Use `tools/knowledge_skills.py search-structured --min-score ...` only to lower the floor for
 explicit exploratory search, never silently for planner mutations. The frozen positive/negative
 regression cases live in `knowledge/foundation/retrieval_benchmark_cases.json`.
 

@@ -100,8 +100,10 @@ adapter. Remote labels and confidence remain non-authoritative.
 
 ## Interfaces
 
-- `addon.py` starts the Blender-side endpoint.
-- `tools/modeler_mcp_server.py` exposes typed Blender operations.
+- The externally maintained `blender-mcp` package supplies the general Blender connection declared
+  in `.mcp.json`; no fork of its add-on is vendored here.
+- `tools/start_modeler_in_blender.py` starts `blender_ops/modeler_server.py`, and
+  `tools/modeler_mcp_server.py` exposes its typed Blender operations.
 - `tools/modeling_pipeline.py` validates, fits, and compiles shape hypotheses.
 - `.mcp.json` configures the local connections.
 

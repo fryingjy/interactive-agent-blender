@@ -21,7 +21,7 @@ visual-study credit.
 
 ## Ordered queue
 
-**2026-08-12 priority correction:** `docs/DEVELOPMENT_PRIORITIES.md` is the binding override for
+**Current priority:** `docs/GOAL.md` is the binding roadmap for
 research, experiments, and benchmarks. P0 is core mesh/topology/SubD/hard-surface/reference/
 modifier/surface-judgment work; P1 is production modeling including retopology, UVs, baking,
 materials, export, stylized work, and appropriate curves/procedural work; P2 is advanced organic

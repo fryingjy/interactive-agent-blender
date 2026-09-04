@@ -40,7 +40,15 @@ from .gemini_reference_critic import (
     validate_critic_analysis,
     validate_critic_record,
 )
-from .gemini_component_segmentation import run_gemini_component_segmentation
+
+
+def __getattr__(name: str):
+    """Keep optional image/provider dependencies out of Blender-only imports."""
+    if name == "run_gemini_component_segmentation":
+        from .gemini_component_segmentation import run_gemini_component_segmentation
+
+        return run_gemini_component_segmentation
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 __all__ = [
     "Diagnosis",

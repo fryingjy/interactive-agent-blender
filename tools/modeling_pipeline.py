@@ -8,6 +8,7 @@ from pathlib import Path
 import sys
 
 import cv2
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
@@ -34,6 +35,8 @@ from modeling_core import (
     validate_hypothesis,
 )
 from knowledge_engine import run_gemini_component_segmentation
+from knowledge_engine.component_mask_observations import extract_component_mask_observations
+from knowledge_engine.reference_overlay import compare_reference_render, save_mask
 
 
 def _read_json(path: Path) -> dict:
@@ -155,7 +158,64 @@ def main() -> int:
     compile_parser.add_argument("--name", default="FittedProxy")
     compile_parser.add_argument("--output", type=Path, required=True)
     compile_parser.add_argument("--allow-unfitted", action="store_true", help="compile a validated raw hypothesis for controlled fixtures")
+    compare = subparsers.add_parser("compare-reference", help="inspect a render against a reference in a declared alignment frame")
+    compare.add_argument("reference", type=Path)
+    compare.add_argument("candidate", type=Path)
+    compare.add_argument("--output-dir", type=Path, required=True)
+    compare.add_argument("--alignment", choices=("strict", "uniform-bbox", "bbox", "landmarks"), default="strict")
+    compare.add_argument("--landmark-pairs", type=Path)
+    compare.add_argument("--reference-mask-mode", choices=("auto", "alpha", "light-background", "luminance-range"), default="auto")
+    compare.add_argument("--candidate-mask-mode", choices=("auto", "alpha", "light-background", "luminance-range"), default="auto")
+    compare.add_argument("--background-threshold", type=int, default=240)
+    compare.add_argument("--reference-luminance-min", type=int, default=0)
+    compare.add_argument("--reference-luminance-max", type=int, default=255)
+    compare.add_argument("--candidate-luminance-min", type=int, default=0)
+    compare.add_argument("--candidate-luminance-max", type=int, default=255)
+    compare.add_argument("--reference-roi", nargs=4, type=int, metavar=("X0", "Y0", "X1", "Y1"))
+    compare.add_argument("--candidate-roi", nargs=4, type=int, metavar=("X0", "Y0", "X1", "Y1"))
+    compare.add_argument("--view", default="unknown")
+    inspect_components = subparsers.add_parser("inspect-component-mask", help="measure normalized component bounds in a Blender diagnostic mask")
+    inspect_components.add_argument("image", type=Path)
+    inspect_components.add_argument("--components", nargs="+", required=True)
+    inspect_components.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+
+    if args.action == "inspect-component-mask":
+        report = extract_component_mask_observations(args.image, args.components)
+        _write_json(args.output, report)
+        print(json.dumps({"observed": sorted(report["observations"]), "missing": report["missing_component_ids"], "output": str(args.output)}, indent=2))
+        return 0 if not report["missing_component_ids"] else 2
+
+    if args.action == "compare-reference":
+        landmark_pairs = None
+        if args.landmark_pairs:
+            payload = _read_json(args.landmark_pairs)
+            landmark_pairs = payload.get("pairs", payload)
+        output = args.output_dir.resolve()
+        output.mkdir(parents=True, exist_ok=True)
+        report, images = compare_reference_render(
+            args.reference,
+            args.candidate,
+            alignment=args.alignment,
+            reference_mask_mode=args.reference_mask_mode,
+            candidate_mask_mode=args.candidate_mask_mode,
+            light_background_threshold=args.background_threshold,
+            reference_luminance_min=args.reference_luminance_min,
+            reference_luminance_max=args.reference_luminance_max,
+            candidate_luminance_min=args.candidate_luminance_min,
+            candidate_luminance_max=args.candidate_luminance_max,
+            reference_roi=tuple(args.reference_roi) if args.reference_roi else None,
+            candidate_roi=tuple(args.candidate_roi) if args.candidate_roi else None,
+            landmark_pairs=landmark_pairs,
+            view=args.view,
+        )
+        save_mask(images["reference_mask"], output / "reference_mask.png")
+        save_mask(images["candidate_mask_aligned"], output / "candidate_mask_aligned.png")
+        Image.fromarray(images["overlay"], "RGB").save(output / "overlay.png")
+        Image.fromarray(images["contour_error_heatmap"], "RGB").save(output / "contour_error_heatmap.png")
+        _write_json(output / "comparison.json", report)
+        print(json.dumps({"report": str(output / "comparison.json"), "metrics": report["metrics"], "alignment": report["alignment"]}, indent=2))
+        return 0
 
     if args.action == "extract-reference":
         result = extract_reference_evidence(

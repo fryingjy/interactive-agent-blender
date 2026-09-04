@@ -82,7 +82,7 @@ def main() -> int:
         if args.reference_stage_evidence is None:
             raise ValueError(
                 "reference-driven construction is blocked before Blender mutation: provide "
-                "--reference-stage-evidence from build_reference_stage_evidence()"
+                "--reference-stage-evidence containing the audited multiview shape-pipeline bundle"
             )
         reference_evidence = json.loads(args.reference_stage_evidence.read_text(encoding="utf-8"))
         gate = evaluate_stage_gate("REFERENCE_ANALYSIS", reference_evidence)

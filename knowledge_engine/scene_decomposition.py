@@ -1,5 +1,5 @@
 """Structured component/relationship decomposition of a reference object, produced
-BEFORE modeling and checked AFTER, per docs/REFERENCE_COLLECTION_PROTOCOL.md's
+BEFORE modeling and checked AFTER, per docs/REFERENCE_PROTOCOL.md's
 "modeling brief before Blender" step and a user-directed critique (2026-08-13):
 
     SYSTEM: "I have a good silhouette."
@@ -95,16 +95,6 @@ MODELING_SIGNAL_FIELDS = {
     "watertight_union_required",
     "independent_motion_or_material",
 }
-# These describe the representation of the *dominant continuous form*. A claim
-# that only concerns a secondary component (for example, a curve-shaped carry
-# handle) must not silently choose CURVE for the whole asset's primary cage.
-PRIMARY_REPRESENTATION_SIGNALS = {
-    "smooth_continuous_surface",
-    "follows_path",
-    "deformation_expected",
-}
-
-
 def _validate_evidence_binding(label: str, status: str, confidence: float, evidence: list[str]) -> None:
     if status not in EVIDENCE_STATES:
         raise ValueError(f"invalid evidence status '{status}' for {label}")
@@ -147,45 +137,6 @@ class ReferenceClaim:
             raise ValueError(f"unknown modeling signals for '{self.claim_id}': {sorted(unknown_signals)}")
         if self.impact == "high" and self.evidence_status != "UNKNOWN" and not self.modeling_consequence.strip():
             raise ValueError(f"high-impact claim '{self.claim_id}' requires a modeling consequence")
-
-
-@dataclass
-class StrategyCandidate:
-    name: str
-    representation: str
-    rationale_claim_ids: list[str]
-    status: str = "candidate"  # candidate / rejected
-    rejection_reason: str = ""
-    reversible: bool = True
-    # What this candidate PREDICTS should be observable in reference evidence
-    # if it's correct -- e.g. {"view": "side_profile", "property": "roofline",
-    # "prediction_type": "boundary_linearity", "prediction": "linear",
-    # "testable_projection_types": ["ORTHOGRAPHIC"]}. Optional: older
-    # candidates and most quick synthetic-only strategies won't have this.
-    # Checked by knowledge_engine.representation_hypothesis, not here -- this
-    # dataclass only carries the claim, it doesn't evaluate it (same
-    # separation this module already keeps between claims and checks).
-    predicted_consequences: list[dict] = field(default_factory=list)
-
-    def validate(self, claim_ids: set[str]) -> None:
-        if not self.name.strip() or not self.representation.strip():
-            raise ValueError("strategy name and representation are required")
-        if self.status not in {"candidate", "rejected"}:
-            raise ValueError(f"invalid strategy status '{self.status}'")
-        if not self.rationale_claim_ids:
-            raise ValueError(f"strategy '{self.name}' requires at least one evidence-bound rationale claim")
-        missing = sorted(set(self.rationale_claim_ids) - claim_ids)
-        if missing:
-            raise ValueError(f"strategy '{self.name}' references missing claims: {missing}")
-        if self.status == "rejected" and not self.rejection_reason.strip():
-            raise ValueError(f"rejected strategy '{self.name}' requires a reason")
-        for consequence in self.predicted_consequences:
-            required = {"view", "property", "prediction_type", "prediction"}
-            missing_keys = required - set(consequence)
-            if missing_keys:
-                raise ValueError(
-                    f"strategy '{self.name}' predicted_consequence missing keys: {sorted(missing_keys)}"
-                )
 
 
 @dataclass
@@ -289,7 +240,6 @@ class SceneDecomposition:
     object_class: str = "unknown"
     reference_style: str = "mixed"
     claims: list[ReferenceClaim] = field(default_factory=list)
-    strategies: list[StrategyCandidate] = field(default_factory=list)
     require_evidence_bindings: bool = False
 
     def validate(self) -> None:
@@ -324,8 +274,6 @@ class SceneDecomposition:
             missing_components = sorted(set(claim.component_refs) - component_names)
             if missing_components:
                 raise ValueError(f"claim '{claim.claim_id}' references missing components: {missing_components}")
-        for strategy in self.strategies:
-            strategy.validate(set(claim_ids))
         if self.require_evidence_bindings:
             if not self.claims:
                 raise ValueError("strict reference decomposition requires typed reference claims")
@@ -339,8 +287,6 @@ class SceneDecomposition:
                     "strict reference decomposition requires evidence-bound primary components: "
                     f"{unsupported_primaries}"
                 )
-            if not any(strategy.status == "candidate" for strategy in self.strategies):
-                raise ValueError("strict reference decomposition requires a candidate modeling strategy")
 
     def to_dict(self) -> dict[str, Any]:
         self.validate()
@@ -356,8 +302,6 @@ class SceneDecomposition:
             "components": [asdict(c) for c in self.components],
             "relationships": [asdict(r) for r in self.relationships],
             "confidence_by_claim": {claim.claim_id: claim.confidence for claim in self.claims},
-            "candidate_modeling_strategies": [asdict(item) for item in self.strategies if item.status == "candidate"],
-            "rejected_strategies": [asdict(item) for item in self.strategies if item.status == "rejected"],
             "reference_readiness": self.blockout_readiness(),
         }
         for category, items in grouped.items():
@@ -368,7 +312,7 @@ class SceneDecomposition:
         """Determine whether interpretation is strong enough to risk a blockout.
 
         This is intentionally stricter than graph validity.  A plausible component
-        list is not enough when primary form, construction, or strategy is unknown.
+        list is not enough when primary form or construction is unknown.
         """
         categories = {category: [] for category in CLAIM_CATEGORIES}
         for claim in self.claims:
@@ -380,8 +324,6 @@ class SceneDecomposition:
             missing.append("evidence_bound_primary_components")
         if not any(item.evidence_status in {"OBSERVED", "STRONGLY_INFERRED"} for item in categories["construction_hypotheses"]):
             missing.append("construction_hypotheses")
-        if not any(item.status == "candidate" for item in self.strategies):
-            missing.append("candidate_modeling_strategy")
         unresolved = [
             claim
             for claim in self.claims
@@ -406,119 +348,6 @@ class SceneDecomposition:
                 status: sum(claim.evidence_status == status for claim in self.claims)
                 for status in sorted(EVIDENCE_STATES)
             },
-        }
-
-    def to_modeling_brief(self, base=None):
-        """Translate evidence-bound claims into the existing strategy input.
-
-        Weak/unknown claims never harden into strategy booleans.  This is the
-        operational bridge from reference interpretation to modeling choice.
-        """
-        from knowledge_engine.strategy import ModelingBrief
-
-        values = asdict(base) if base is not None else asdict(ModelingBrief())
-        notes = list(values.pop("notes", ()))
-        primary_names = {component.name for component in self.primary_components()}
-        signal_claims: dict[str, list[tuple[str, bool]]] = {}
-        for claim in self.claims:
-            if claim.evidence_status not in {"OBSERVED", "STRONGLY_INFERRED"}:
-                continue
-            for key, value in claim.modeling_signals.items():
-                # An unscoped claim remains global.  A scoped primary-shape
-                # signal, however, only affects the primary representation
-                # when it is actually about a primary component.  Component
-                # strategies remain available in the decomposition/contract
-                # rather than being flattened into one asset-wide boolean.
-                if (
-                    key in PRIMARY_REPRESENTATION_SIGNALS
-                    and claim.component_refs
-                    and not (set(claim.component_refs) & primary_names)
-                ):
-                    continue
-                signal_claims.setdefault(key, []).append((claim.claim_id, bool(value)))
-            if claim.modeling_consequence:
-                notes.append(f"{claim.claim_id}: {claim.modeling_consequence}")
-        for key, bindings in signal_claims.items():
-            distinct = {value for _, value in bindings}
-            if len(distinct) > 1:
-                claim_ids = [claim_id for claim_id, _ in bindings]
-                raise ValueError(
-                    f"conflicting evidence-bound modeling signal '{key}' from claims {claim_ids}"
-                )
-            values[key] = bindings[0][1]
-        if any(component.separately_manufactured is True and component.evidence_status in {"OBSERVED", "STRONGLY_INFERRED"} for component in self.components):
-            values["independent_motion_or_material"] = True
-        values["notes"] = tuple(dict.fromkeys(notes))
-        return ModelingBrief(**values)
-
-    def to_reference_to_blockout_contract(
-        self,
-        *,
-        reference_set_id: str,
-        selected_strategy_name: str | None = None,
-    ) -> dict[str, Any]:
-        """Emit the directive-required bridge from reference evidence to blockout.
-
-        This is deliberately an interpretation artifact, not a blockout pass.  It
-        preserves unknowns and rejected alternatives so a later Blender decision
-        cannot quietly relabel a weak claim as construction truth.
-        """
-        self.validate()
-        if not isinstance(reference_set_id, str) or not reference_set_id.strip():
-            raise ValueError("reference_set_id is required for a reference-to-blockout contract")
-        candidates = [strategy for strategy in self.strategies if strategy.status == "candidate"]
-        if selected_strategy_name is None:
-            if len(candidates) != 1:
-                raise ValueError(
-                    "selected_strategy_name is required when the decomposition has zero or multiple candidate strategies"
-                )
-            selected = candidates[0]
-        else:
-            selected = next((strategy for strategy in candidates if strategy.name == selected_strategy_name), None)
-            if selected is None:
-                raise ValueError("selected_strategy_name must name a candidate strategy")
-
-        def claims(category: str) -> list[dict[str, Any]]:
-            return [asdict(claim) for claim in self.claims if claim.category == category]
-
-        supported = [
-            asdict(claim) for claim in self.claims
-            if claim.evidence_status in {"OBSERVED", "STRONGLY_INFERRED"}
-        ]
-        unresolved = [
-            asdict(claim) for claim in self.claims
-            if claim.evidence_status in {"WEAKLY_INFERRED", "UNKNOWN"}
-        ]
-        components = {component.name: asdict(component) for component in self.components}
-        return {
-            "schema_version": 1,
-            "record_type": "REFERENCE_TO_BLOCKOUT_CONTRACT",
-            "target": self.object_name,
-            "reference_set_id": reference_set_id,
-            "known": supported,
-            "unknown": unresolved,
-            "primary_forms": claims("primary_forms"),
-            "primary_components": [components[component.name] for component in self.primary_components()],
-            "secondary_components": [asdict(component) for component in self.components if component.role == "secondary"],
-            "negative_spaces": claims("negative_spaces"),
-            "silhouette_landmarks": claims("landmarks"),
-            "depth_landmarks": claims("depth_order") + claims("overlap"),
-            "symmetry": claims("symmetry"),
-            "continuous_surface_hypotheses": claims("continuous_surfaces"),
-            "separate_component_hypotheses": claims("separate_parts"),
-            "dimensional_anchors": claims("known_dimensions") + claims("estimated_dimensions"),
-            "candidate_strategies": [asdict(strategy) for strategy in candidates],
-            "selected_strategy": asdict(selected),
-            "rejected_strategies": [asdict(strategy) for strategy in self.strategies if strategy.status == "rejected"],
-            "confidence": {
-                "claims": {claim.claim_id: claim.confidence for claim in self.claims},
-                "components": {component.name: component.confidence for component in self.components},
-            },
-            "reference_readiness": self.blockout_readiness(),
-            "limitation": (
-                "This contract makes reference interpretation and selected representation traceable. "
-                "It does not authorize Blender construction until required external/human review gates pass."
-            ),
         }
 
     def primary_components(self) -> list[Component]:
@@ -810,7 +639,7 @@ def scene_decomposition_from_dict(payload: dict[str, Any]) -> SceneDecomposition
 
     The loader deliberately validates after construction.  A reference board cannot
     gain blockout authority merely because its JSON parses: strict records must still
-    bind primary components, claims, and strategies to concrete evidence.
+    bind primary components and claims to concrete evidence.
     """
     if not isinstance(payload, dict):
         raise ValueError("scene decomposition must be a JSON object")
@@ -837,15 +666,6 @@ def scene_decomposition_from_dict(payload: dict[str, Any]) -> SceneDecomposition
         components = [Component(**record) for record in payload.get("components", [])]
         relationships = [Relationship(**record) for record in payload.get("relationships", [])]
         claims = [ReferenceClaim(**record) for record in raw_claims]
-        strategies = [
-            StrategyCandidate(**record)
-            for record in (
-                list(payload.get("candidate_modeling_strategies", []))
-                + list(payload.get("rejected_strategies", []))
-                if "strategies" not in payload
-                else list(payload["strategies"])
-            )
-        ]
     except (TypeError, ValueError) as exc:
         raise ValueError(f"invalid scene decomposition record: {exc}") from exc
     result = SceneDecomposition(
@@ -855,7 +675,6 @@ def scene_decomposition_from_dict(payload: dict[str, Any]) -> SceneDecomposition
         components=components,
         relationships=relationships,
         claims=claims,
-        strategies=strategies,
         require_evidence_bindings=bool(payload.get("require_evidence_bindings", False)),
     )
     result.validate()

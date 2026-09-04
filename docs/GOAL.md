@@ -62,6 +62,15 @@ for development, not evidence for completion.
 The control plane is strong and the first bounded shape solver is real. The largest gap is now the
 path from ordinary images to a defensible multi-part 3D hypothesis.
 
+Evidence update — 2026-09-04 (repository V2 consolidation): the active tree now has one explicit
+geometry authority (`modeling_core`), one typed Blender mutation authority (`blender_ops`), and one
+pipeline CLI (`tools/modeling_pipeline.py`). Parallel heuristic reconstruction/strategy modules,
+destructive repair code, stale addon code, thin duplicate CLIs, and overlapping policy documents
+were removed with import/reference evidence recorded in `CONSOLIDATION_AUDIT.md`. Runtime retrieval
+now excludes candidate and historical knowledge. This reduces architectural ambiguity but does not
+advance P0 by itself; P0 still requires a successful real held-out multiview reference-to-blockout
+demonstration after the neutral regression proves that consolidation preserved the machinery.
+
 Evidence update — 2026-09-02: the repository now has a source-hashed, fail-closed extraction path
 for alpha and clean-background isolated-object images. It emits editable masks, normalized crops,
 outline landmarks, width profiles, extrema, centroids, and enclosed negative spaces; edited masks

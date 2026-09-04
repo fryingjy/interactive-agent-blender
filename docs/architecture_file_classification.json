@@ -1,0 +1,3628 @@
+{
+  "schema_version": 1,
+  "record_type": "ACTIVE_TREE_ARCHITECTURE_AUDIT",
+  "authoritative_pipeline": [
+    "reference",
+    "evidence",
+    "components/correspondence",
+    "cameras",
+    "competing shape hypotheses",
+    "fit",
+    "compile",
+    "typed Blender",
+    "inspect",
+    "diagnose/refit/rebuild"
+  ],
+  "authoritative_roots": [
+    "blender_ops/modeler_server.py",
+    "tools/modeler_mcp_server.py",
+    "tools/modeling_pipeline.py",
+    "tools/run_modeler_command_sequence.py",
+    "tools/start_modeler_in_blender.py"
+  ],
+  "tracked_file_count": 274,
+  "python_file_count": 162,
+  "classification_counts": {
+    "CORE_RUNTIME": 37,
+    "CURRENT_DOC": 17,
+    "CURRENT_KNOWLEDGE": 115,
+    "HISTORICAL": 1,
+    "TEST_SUPPORT": 59,
+    "TOOL": 45
+  },
+  "parse_errors": [],
+  "files": [
+    {
+      "path": ".gitignore",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": ".mcp.json",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "README.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/bmesh_io.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.bmesh_io",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/evaluated_probe.py",
+        "blender_ops/mesh_ops.py",
+        "blender_ops/persistent_ids.py",
+        "blender_ops/state_fingerprint.py",
+        "blender_ops/state_probe.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/coordinate_safety.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.coordinate_safety",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/decision_transaction.py"
+      ],
+      "test_importers": [
+        "tests/test_coordinate_safety.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/curve_ops.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.curve_ops",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/decision_state.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.decision_state",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/decision_transaction.py",
+        "blender_ops/modeler_server.py",
+        "blender_ops/modeling_stage.py",
+        "blender_ops/render_passes.py",
+        "blender_ops/semantic_regions.py",
+        "blender_ops/state_probe.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/decision_transaction.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.decision_transaction",
+      "imports": [
+        "blender_ops/coordinate_safety.py",
+        "blender_ops/decision_state.py",
+        "blender_ops/mutation_footprint.py",
+        "blender_ops/persistent_ids.py",
+        "blender_ops/state_probe.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/evaluated_probe.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.evaluated_probe",
+      "imports": [
+        "blender_ops/bmesh_io.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/mesh_ops.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.mesh_ops",
+      "imports": [
+        "blender_ops/bmesh_io.py",
+        "blender_ops/persistent_ids.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py",
+        "blender_ops/semantic_regions.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/modeler_server.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.modeler_server",
+      "imports": [
+        "blender_ops/curve_ops.py",
+        "blender_ops/decision_state.py",
+        "blender_ops/decision_transaction.py",
+        "blender_ops/evaluated_probe.py",
+        "blender_ops/mesh_ops.py",
+        "blender_ops/modeling_stage.py",
+        "blender_ops/object_ops.py",
+        "blender_ops/persistent_ids.py",
+        "blender_ops/profile_mesh.py",
+        "blender_ops/render_passes.py",
+        "blender_ops/semantic_regions.py",
+        "blender_ops/stage_gates.py",
+        "blender_ops/state_fingerprint.py",
+        "blender_ops/state_probe.py",
+        "knowledge_engine/scene_decomposition.py",
+        "knowledge_engine/tutorial_reproduction.py"
+      ],
+      "production_importers": [
+        "tools/run_modeler_command_sequence.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": true
+    },
+    {
+      "path": "blender_ops/modeling_stage.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.modeling_stage",
+      "imports": [
+        "blender_ops/decision_state.py",
+        "blender_ops/stage_gates.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/mutation_footprint.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.mutation_footprint",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/decision_transaction.py"
+      ],
+      "test_importers": [
+        "tests/test_mutation_footprint.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/object_ops.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.object_ops",
+      "imports": [
+        "blender_ops/persistent_ids.py",
+        "knowledge_engine/high_low_audit.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/persistent_ids.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.persistent_ids",
+      "imports": [
+        "blender_ops/bmesh_io.py"
+      ],
+      "production_importers": [
+        "blender_ops/decision_transaction.py",
+        "blender_ops/mesh_ops.py",
+        "blender_ops/modeler_server.py",
+        "blender_ops/object_ops.py",
+        "blender_ops/semantic_regions.py",
+        "blender_ops/state_fingerprint.py",
+        "blender_ops/state_probe.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/profile_mesh.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.profile_mesh",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/render_passes.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.render_passes",
+      "imports": [
+        "blender_ops/decision_state.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py",
+        "tools/render_blend_diagnostic.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/semantic_regions.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.semantic_regions",
+      "imports": [
+        "blender_ops/decision_state.py",
+        "blender_ops/mesh_ops.py",
+        "blender_ops/persistent_ids.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/stage_gates.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.stage_gates",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/modeler_server.py",
+        "blender_ops/modeling_stage.py",
+        "knowledge_engine/planner.py",
+        "knowledge_engine/quality_review.py",
+        "tools/run_modeler_command_sequence.py"
+      ],
+      "test_importers": [
+        "tests/test_reference_analysis_stage_gate.py",
+        "tests/test_visual_evidence_gate.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/state_fingerprint.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.state_fingerprint",
+      "imports": [
+        "blender_ops/bmesh_io.py",
+        "blender_ops/persistent_ids.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "blender_ops/state_probe.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "blender_ops.state_probe",
+      "imports": [
+        "blender_ops/bmesh_io.py",
+        "blender_ops/decision_state.py",
+        "blender_ops/persistent_ids.py"
+      ],
+      "production_importers": [
+        "blender_ops/decision_transaction.py",
+        "blender_ops/modeler_server.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/BLEND_FILE_STUDY_PROTOCOL.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/CONSOLIDATION_AUDIT.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/EXTERNAL_ARCHITECTURE_RESEARCH.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/GOAL.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/KNOWLEDGE_SYSTEM.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/MASTER_DIRECTIVE.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/MATCAP_RESOURCES.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/README.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/REFERENCE_PROTOCOL.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/REPOSITORY_LAYOUT.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/REVIEW_AND_REPAIR.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/SHAPE_SOLVING.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/VIDEO_PROTOCOL.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/architecture_file_classification.json",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "docs/git_object_size_audit.json",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/manual_modeling_walk.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_card_classification.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/array_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/bevel.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/bevel_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/bisect.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/bmesh_api_foundations.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/boolean_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/bridge_fill_gridfill.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/circularize_planar_loop.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/connect_vertex_path.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/corrective_shape_keys.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/diagnostic_visual_passes.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/dissolve_and_delete.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/edge_crease.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/expanded_typed_operations.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/export_roundtrip.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/highpoly_lowpoly_pipeline.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/mandatory_mesh_editing_inventory.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/materials_production.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/mirror_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/modifier_stack_order.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/profile_revolution_topology.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/retopology.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/sculpt_foundations.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/secondary_modifiers.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/secondary_view_component_strategy.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/session_learning_and_replay.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/shrinkwrap_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/simple_deform_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/slides_rip_orientation_shading.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/smooth_by_angle.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/solidify_modifier.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/spin_split_separate_symmetrize.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/surface_diagnostics.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/topology_context_subd.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/transaction_recovery.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/uv_foundations.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/operator_cards/visual_reference_comparison.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/progressive_prop_benchmark_curriculum.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_001.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_002.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_003.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_003_validation.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_004.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/quizzes/quiz_004_validation.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/retrieval_benchmark_cases.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/source_registry.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/topic_coverage_matrix.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/video_learning_curriculum.md",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/bevel-segments-parity-corner-triangle.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/boolean-groove-cut-topology-cleanup.json",
+      "classification": "HISTORICAL",
+      "classification_reason": "negative evidence retained but status-gated out of runtime retrieval",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/connect-vertex-path-subd-safe-quads.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/curve-flattened-cross-section-path.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/curved-bevel-normal-policy.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/deformation-uniform-rings-before-shaping.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/diffuse-color-not-connected-to-bsdf.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/evidence-bound-reference-interpretation.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/explicit-semantic-bevel-edge-intent.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/inset-before-extrude-containment.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/material-slot-orphan-assignment.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/modifier-stack-order-subd-safe.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/production-high-low-pbr-export-loop.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/production-high-low-readiness-audit.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/question-driven-reference-research.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/reference-axis-aligned-image-empty-setup.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/reference.component-overlay-gate-before-polish.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/retopology-landmark-loops-live-projection.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/secondary-view-component-strategy.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/shrinkwrap-project-scoped-footprint.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-boundary-resolution-matched-quads-over-triangulation.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-connected-silhouette-ridge-weapon-shell.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-integrated-detail-gradual-fade.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-loop-termination-convex-flow.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-matched-annular-loops-local-support.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/subd-perimeter-support-ring-edge-flow.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/topology.loop_cuts.reserve_functional_regions.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/uv-compound-form-seam-bake-validation.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/skills/uv-seam-graph-connected-tube.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/__init__.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine",
+      "imports": [
+        "knowledge_engine/gemini_component_segmentation.py",
+        "knowledge_engine/gemini_reference_critic.py",
+        "knowledge_engine/iteration_control.py",
+        "knowledge_engine/modeling_spec.py",
+        "knowledge_engine/reasoning.py",
+        "knowledge_engine/reference_analysis.py",
+        "knowledge_engine/retrieval.py",
+        "knowledge_engine/stage_checkpoint.py",
+        "knowledge_engine/surface_cause_classifier.py",
+        "knowledge_engine/telemetry.py",
+        "knowledge_engine/tutorial_reproduction.py"
+      ],
+      "production_importers": [
+        "tools/modeling_pipeline.py"
+      ],
+      "test_importers": [
+        "tests/test_gemini_component_segmentation.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/component_mask_observations.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.component_mask_observations",
+      "imports": [],
+      "production_importers": [
+        "tools/modeling_pipeline.py"
+      ],
+      "test_importers": [
+        "tests/test_component_mask_observations.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/defect_classifier.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.defect_classifier",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_defect_classifier.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/gemini_component_segmentation.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.gemini_component_segmentation",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/gemini_reference_critic.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.gemini_reference_critic",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "knowledge_engine/stage_checkpoint.py",
+        "knowledge_engine/tutorial_reproduction.py",
+        "tools/critique_reference_model_with_gemini.py"
+      ],
+      "test_importers": [
+        "tests/test_gemini_reference_critic.py",
+        "tests/test_stage_checkpoint.py",
+        "tests/test_tutorial_reproduction.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/gemini_video_study.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.gemini_video_study",
+      "imports": [],
+      "production_importers": [
+        "tools/analyze_video_with_gemini.py"
+      ],
+      "test_importers": [
+        "tests/test_gemini_video_study.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/high_low_audit.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.high_low_audit",
+      "imports": [],
+      "production_importers": [
+        "blender_ops/object_ops.py"
+      ],
+      "test_importers": [
+        "tests/test_high_low_audit.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/human_review.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.human_review",
+      "imports": [],
+      "production_importers": [
+        "tools/record_external_visual_review.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/__init__.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/document_ingest.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.document_ingest",
+      "imports": [
+        "knowledge_engine/schemas.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/scene_document.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.scene_document",
+      "imports": [
+        "knowledge_engine/ingest/video_ingest.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_ingest.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/speech_transcribe.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.speech_transcribe",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/ingest/video_ingest.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/transcript_ingest.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.transcript_ingest",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/ingest/video_ingest.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/video_discovery.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.video_discovery",
+      "imports": [],
+      "production_importers": [
+        "tools/discover_video_lessons.py"
+      ],
+      "test_importers": [
+        "tests/test_video_discovery.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/ingest/video_ingest.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.ingest.video_ingest",
+      "imports": [
+        "knowledge_engine/ingest/speech_transcribe.py",
+        "knowledge_engine/ingest/transcript_ingest.py"
+      ],
+      "production_importers": [
+        "knowledge_engine/ingest/scene_document.py",
+        "tools/ingest_local_video.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/iteration_control.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.iteration_control",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "knowledge_engine/planner.py",
+        "knowledge_engine/stage_checkpoint.py"
+      ],
+      "test_importers": [
+        "tests/test_iteration_control.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/modeling_spec.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.modeling_spec",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py"
+      ],
+      "test_importers": [
+        "tests/test_modeling_spec.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/parameter_fitting.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.parameter_fitting",
+      "imports": [
+        "knowledge_engine/visual_compare.py"
+      ],
+      "production_importers": [
+        "modeling_core/fitting.py"
+      ],
+      "test_importers": [
+        "tests/test_parameter_fitting.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/planner.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.planner",
+      "imports": [
+        "blender_ops/stage_gates.py",
+        "knowledge_engine/iteration_control.py",
+        "knowledge_engine/reasoning.py",
+        "knowledge_engine/scene_decomposition.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py",
+        "tests/test_reference_analysis.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/quality_review.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.quality_review",
+      "imports": [
+        "blender_ops/stage_gates.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/reasoning.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.reasoning",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "knowledge_engine/planner.py",
+        "knowledge_engine/scene_decomposition.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/reference_analysis.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.reference_analysis",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "tools/verify_reference_set_gate.py"
+      ],
+      "test_importers": [
+        "tests/test_reference_analysis.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/reference_board_review.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.reference_board_review",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/reference_overlay.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.reference_overlay",
+      "imports": [
+        "knowledge_engine/visual_compare.py"
+      ],
+      "production_importers": [
+        "tools/modeling_pipeline.py"
+      ],
+      "test_importers": [
+        "tests/test_reference_overlay.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/reference_registration.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.reference_registration",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_reference_registration.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/retrieval.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.retrieval",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "tools/knowledge_skills.py",
+        "tools/run_retrieval_benchmark.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/scene_decomposition.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.scene_decomposition",
+      "imports": [
+        "knowledge_engine/reasoning.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py",
+        "knowledge_engine/planner.py",
+        "tools/verify_scene_component_coverage.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/schemas.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.schemas",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/ingest/document_ingest.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/segmentation_audit.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.segmentation_audit",
+      "imports": [
+        "knowledge_engine/visual_compare.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_segmentation_audit.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/session_learning.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.session_learning",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/stage_checkpoint.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.stage_checkpoint",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py",
+        "knowledge_engine/iteration_control.py"
+      ],
+      "production_importers": [
+        "knowledge_engine/__init__.py"
+      ],
+      "test_importers": [
+        "tests/test_stage_checkpoint.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/surface_cause_classifier.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.surface_cause_classifier",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py",
+        "tools/modeler_mcp_server.py"
+      ],
+      "test_importers": [
+        "tests/test_surface_cause_classifier.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/telemetry.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.telemetry",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/__init__.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/tutorial_reproduction.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.tutorial_reproduction",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py"
+      ],
+      "production_importers": [
+        "blender_ops/modeler_server.py",
+        "knowledge_engine/__init__.py",
+        "tools/run_modeler_command_sequence.py"
+      ],
+      "test_importers": [
+        "tests/test_tutorial_reproduction.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/video_episode_review.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.video_episode_review",
+      "imports": [],
+      "production_importers": [
+        "tools/review_video_episode.py"
+      ],
+      "test_importers": [
+        "tests/test_video_episode_review.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/video_knowledge.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.video_knowledge",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_video_knowledge.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge_engine/visual_compare.py",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": "knowledge_engine.visual_compare",
+      "imports": [],
+      "production_importers": [
+        "knowledge_engine/parameter_fitting.py",
+        "knowledge_engine/reference_overlay.py",
+        "knowledge_engine/segmentation_audit.py"
+      ],
+      "test_importers": [
+        "tests/test_knowledge_engine.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/__init__.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core",
+      "imports": [
+        "modeling_core/assembly.py",
+        "modeling_core/camera.py",
+        "modeling_core/compiler.py",
+        "modeling_core/component_evidence.py",
+        "modeling_core/component_fitting.py",
+        "modeling_core/component_proposals.py",
+        "modeling_core/continuity.py",
+        "modeling_core/fitting.py",
+        "modeling_core/hypothesis.py",
+        "modeling_core/initialization.py",
+        "modeling_core/mesh.py",
+        "modeling_core/reference_bundle.py",
+        "modeling_core/reference_evidence.py",
+        "modeling_core/refit.py",
+        "modeling_core/render.py",
+        "modeling_core/selection.py"
+      ],
+      "production_importers": [
+        "tools/modeling_pipeline.py"
+      ],
+      "test_importers": [
+        "tests/test_assembly_hypotheses.py",
+        "tests/test_component_fitting.py",
+        "tests/test_component_initialization.py",
+        "tests/test_component_proposals.py",
+        "tests/test_continuity_compiler.py",
+        "tests/test_gemini_component_segmentation.py",
+        "tests/test_modeling_core.py",
+        "tests/test_multiview_reference_evidence.py",
+        "tests/test_reference_evidence.py",
+        "tests/test_refit_tickets.py",
+        "tests/test_shape_breadth.py"
+      ],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/assembly.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.assembly",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/camera.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.camera",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/initialization.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/compiler.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.compiler",
+      "imports": [
+        "modeling_core/hypothesis.py",
+        "modeling_core/mesh.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_fitting.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/component_evidence.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.component_evidence",
+      "imports": [
+        "modeling_core/reference_evidence.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_proposals.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/component_fitting.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.component_fitting",
+      "imports": [
+        "modeling_core/compiler.py",
+        "modeling_core/continuity.py",
+        "modeling_core/hypothesis.py",
+        "modeling_core/refit.py",
+        "modeling_core/selection.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/component_proposals.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.component_proposals",
+      "imports": [
+        "modeling_core/component_evidence.py",
+        "modeling_core/reference_evidence.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/continuity.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.continuity",
+      "imports": [
+        "modeling_core/mesh.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_fitting.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/fitting.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.fitting",
+      "imports": [
+        "knowledge_engine/parameter_fitting.py",
+        "modeling_core/hypothesis.py",
+        "modeling_core/mesh.py",
+        "modeling_core/render.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/refit.py",
+        "modeling_core/selection.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/hypothesis.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.hypothesis",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/compiler.py",
+        "modeling_core/component_fitting.py",
+        "modeling_core/fitting.py",
+        "modeling_core/initialization.py",
+        "modeling_core/refit.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/initialization.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.initialization",
+      "imports": [
+        "modeling_core/camera.py",
+        "modeling_core/hypothesis.py",
+        "modeling_core/render.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/mesh.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.mesh",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/compiler.py",
+        "modeling_core/continuity.py",
+        "modeling_core/fitting.py",
+        "modeling_core/refit.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/reference_bundle.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.reference_bundle",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/reference_evidence.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.reference_evidence",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_evidence.py",
+        "modeling_core/component_proposals.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/refit.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.refit",
+      "imports": [
+        "modeling_core/fitting.py",
+        "modeling_core/hypothesis.py",
+        "modeling_core/mesh.py",
+        "modeling_core/render.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_fitting.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/render.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.render",
+      "imports": [],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/fitting.py",
+        "modeling_core/initialization.py",
+        "modeling_core/refit.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/selection.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.selection",
+      "imports": [
+        "modeling_core/fitting.py"
+      ],
+      "production_importers": [
+        "modeling_core/__init__.py",
+        "modeling_core/component_fitting.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/bottle/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/door_handle/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/padlock/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/soap_dish/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/speaker_enclosure/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/stapler/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "reference/teapot/notes.md",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "requirements/reference-analysis.txt",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "requirements/video-fixtures.txt",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "requirements/video-learning.txt",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/__init__.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/modeling_core/profile_extrusion.json",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/modeling_core/section_loft.json",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/video/modeling_lesson.mp4",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/video/modeling_lesson.vtt",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_assembly_hypotheses.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_assembly_hypotheses",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_command_sequence_construction_audit.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_command_sequence_construction_audit",
+      "imports": [
+        "tools/audit_command_sequence_construction.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_component_fitting.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_component_fitting",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_component_initialization.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_component_initialization",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_component_mask_observations.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_component_mask_observations",
+      "imports": [
+        "knowledge_engine/component_mask_observations.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_component_proposals.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_component_proposals",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_continuity_compiler.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_continuity_compiler",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_coordinate_safety.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_coordinate_safety",
+      "imports": [
+        "blender_ops/coordinate_safety.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_defect_classifier.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_defect_classifier",
+      "imports": [
+        "knowledge_engine/defect_classifier.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_gemini_component_segmentation.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_gemini_component_segmentation",
+      "imports": [
+        "knowledge_engine/__init__.py",
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_gemini_reference_critic.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_gemini_reference_critic",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_stage_checkpoint.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_gemini_video_study.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_gemini_video_study",
+      "imports": [
+        "knowledge_engine/gemini_video_study.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_high_low_audit.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_high_low_audit",
+      "imports": [
+        "knowledge_engine/high_low_audit.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_ingest.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_ingest",
+      "imports": [
+        "knowledge_engine/ingest/scene_document.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_iteration_control.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_iteration_control",
+      "imports": [
+        "knowledge_engine/iteration_control.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_knowledge_engine.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_knowledge_engine",
+      "imports": [
+        "knowledge_engine/human_review.py",
+        "knowledge_engine/ingest/document_ingest.py",
+        "knowledge_engine/ingest/speech_transcribe.py",
+        "knowledge_engine/ingest/transcript_ingest.py",
+        "knowledge_engine/planner.py",
+        "knowledge_engine/quality_review.py",
+        "knowledge_engine/reasoning.py",
+        "knowledge_engine/reference_board_review.py",
+        "knowledge_engine/retrieval.py",
+        "knowledge_engine/scene_decomposition.py",
+        "knowledge_engine/schemas.py",
+        "knowledge_engine/session_learning.py",
+        "knowledge_engine/telemetry.py",
+        "knowledge_engine/visual_compare.py",
+        "tests/test_reference_analysis_stage_gate.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_materialize_reference_hashes.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_materialize_reference_hashes",
+      "imports": [
+        "tools/materialize_reference_hashes.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_modeler_server_render_contract.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_modeler_server_render_contract",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_modeling_core.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_modeling_core",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_modeling_spec.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_modeling_spec",
+      "imports": [
+        "knowledge_engine/modeling_spec.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_multiview_reference_evidence.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_multiview_reference_evidence",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_multiview_render_evidence.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_multiview_render_evidence",
+      "imports": [
+        "tools/verify_multiview_render_evidence.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_mutation_footprint.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_mutation_footprint",
+      "imports": [
+        "blender_ops/mutation_footprint.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_optional_dependency_boundaries.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_optional_dependency_boundaries",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_parameter_fitting.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_parameter_fitting",
+      "imports": [
+        "knowledge_engine/parameter_fitting.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_progressive_prop_curriculum.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_progressive_prop_curriculum",
+      "imports": [
+        "tools/validate_progressive_prop_curriculum.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_analysis.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_analysis",
+      "imports": [
+        "knowledge_engine/planner.py",
+        "knowledge_engine/reference_analysis.py",
+        "tests/test_reference_analysis_stage_gate.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_analysis_stage_gate.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_analysis_stage_gate",
+      "imports": [
+        "blender_ops/stage_gates.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_knowledge_engine.py",
+        "tests/test_reference_analysis.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_evidence.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_evidence",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_overlay.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_overlay",
+      "imports": [
+        "knowledge_engine/reference_overlay.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_perception_regression.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_perception_regression",
+      "imports": [
+        "tools/evaluate_reference_perception_regression.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_reference_registration.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_reference_registration",
+      "imports": [
+        "knowledge_engine/reference_registration.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_refit_tickets.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_refit_tickets",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_retrieval_benchmark.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_retrieval_benchmark",
+      "imports": [
+        "tools/run_retrieval_benchmark.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_retrieval_quiz_validation.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_retrieval_quiz_validation",
+      "imports": [
+        "tools/validate_retrieval_quiz.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_segmentation_audit.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_segmentation_audit",
+      "imports": [
+        "knowledge_engine/segmentation_audit.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_shape_breadth.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_shape_breadth",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_skill_trigger_vocabulary.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_skill_trigger_vocabulary",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_source_registry_audit.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_source_registry_audit",
+      "imports": [
+        "tools/audit_source_registry.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_stage_checkpoint.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_stage_checkpoint",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py",
+        "knowledge_engine/stage_checkpoint.py",
+        "tests/test_gemini_reference_critic.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_surface_cause_classifier.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_surface_cause_classifier",
+      "imports": [
+        "knowledge_engine/surface_cause_classifier.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_tutorial_reproduction.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_tutorial_reproduction",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py",
+        "knowledge_engine/tutorial_reproduction.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_verify_reference_set_gate.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_verify_reference_set_gate",
+      "imports": [
+        "tools/verify_reference_set_gate.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_video_discovery.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_video_discovery",
+      "imports": [
+        "knowledge_engine/ingest/video_discovery.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_video_episode_review.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_video_episode_review",
+      "imports": [
+        "knowledge_engine/video_episode_review.py",
+        "tools/review_video_episode.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_video_knowledge.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_video_knowledge",
+      "imports": [
+        "knowledge_engine/video_knowledge.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_visual_evidence_gate.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_visual_evidence_gate",
+      "imports": [
+        "blender_ops/stage_gates.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tools/analyze_video_with_gemini.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.analyze_video_with_gemini",
+      "imports": [
+        "knowledge_engine/gemini_video_study.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/analyze_youtube_reference_workflow.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.analyze_youtube_reference_workflow",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/audit_architecture.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.audit_architecture",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/audit_command_sequence_construction.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.audit_command_sequence_construction",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_command_sequence_construction_audit.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/audit_git_objects.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.audit_git_objects",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/audit_repository.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.audit_repository",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/audit_source_registry.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.audit_source_registry",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_source_registry_audit.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/build_reference_empties.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.build_reference_empties",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/clean_blend_scene.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.clean_blend_scene",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/create_local_video_fixture.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.create_local_video_fixture",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/critique_reference_model_with_gemini.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.critique_reference_model_with_gemini",
+      "imports": [
+        "knowledge_engine/gemini_reference_critic.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/decision_log.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.decision_log",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/discover_video_lessons.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.discover_video_lessons",
+      "imports": [
+        "knowledge_engine/ingest/video_discovery.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/evaluate_reference_perception_regression.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.evaluate_reference_perception_regression",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_reference_perception_regression.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/extract_video_frames_with_blender.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.extract_video_frames_with_blender",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/ingest_local_video.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.ingest_local_video",
+      "imports": [
+        "knowledge_engine/ingest/video_ingest.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/inspect_blend_asset.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.inspect_blend_asset",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/inspect_blend_crease_and_nodes.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.inspect_blend_crease_and_nodes",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/inspect_blend_file.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.inspect_blend_file",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/knowledge_skills.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.knowledge_skills",
+      "imports": [
+        "knowledge_engine/retrieval.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/materialize_reference_hashes.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.materialize_reference_hashes",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_materialize_reference_hashes.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/migrate_source_registry.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.migrate_source_registry",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/modeler_cli.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.modeler_cli",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/modeler_mcp_server.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.modeler_mcp_server",
+      "imports": [
+        "knowledge_engine/surface_cause_classifier.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/modeling_pipeline.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.modeling_pipeline",
+      "imports": [
+        "knowledge_engine/__init__.py",
+        "knowledge_engine/component_mask_observations.py",
+        "knowledge_engine/reference_overlay.py",
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/record_external_visual_review.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.record_external_visual_review",
+      "imports": [
+        "knowledge_engine/human_review.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/render_blend_asset_review.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.render_blend_asset_review",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/render_blend_beauty.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.render_blend_beauty",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/render_blend_diagnostic.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.render_blend_diagnostic",
+      "imports": [
+        "blender_ops/render_passes.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/render_multiview_reference.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.render_multiview_reference",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/review_video_episode.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.review_video_episode",
+      "imports": [
+        "knowledge_engine/video_episode_review.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_video_episode_review.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/run_modeler_command_sequence.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.run_modeler_command_sequence",
+      "imports": [
+        "blender_ops/modeler_server.py",
+        "blender_ops/stage_gates.py",
+        "knowledge_engine/tutorial_reproduction.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/run_retrieval_benchmark.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.run_retrieval_benchmark",
+      "imports": [
+        "knowledge_engine/retrieval.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_retrieval_benchmark.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/segment_reference_grabcut.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.segment_reference_grabcut",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/start_modeler_in_blender.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.start_modeler_in_blender",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/validate_progressive_prop_curriculum.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.validate_progressive_prop_curriculum",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_progressive_prop_curriculum.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/validate_retrieval_quiz.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.validate_retrieval_quiz",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_retrieval_quiz_validation.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/verify_mesh.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.verify_mesh",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/verify_multiview_render_evidence.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.verify_multiview_render_evidence",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_multiview_render_evidence.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/verify_reference_set_gate.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.verify_reference_set_gate",
+      "imports": [
+        "knowledge_engine/reference_analysis.py"
+      ],
+      "production_importers": [],
+      "test_importers": [
+        "tests/test_verify_reference_set_gate.py"
+      ],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/verify_reference_view_orientation.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.verify_reference_view_orientation",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    },
+    {
+      "path": "tools/verify_scene_component_coverage.py",
+      "classification": "TOOL",
+      "classification_reason": "CLI, verifier, audit, launcher, or optional dependency declaration",
+      "python_module": "tools.verify_scene_component_coverage",
+      "imports": [
+        "knowledge_engine/scene_decomposition.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": true
+    }
+  ]
+}

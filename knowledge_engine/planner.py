@@ -14,7 +14,6 @@ from blender_ops.stage_gates import evaluate_stage_gate
 from knowledge_engine.reasoning import Diagnosis, RegionRepairHistory
 from knowledge_engine.iteration_control import evaluate_iteration_budget
 from knowledge_engine.scene_decomposition import SceneDecomposition
-from knowledge_engine.strategy import ModelingBrief, choose_strategy
 
 
 STAGES = (
@@ -51,12 +50,9 @@ class PlannerContext:
     retrieved_skills: list[dict[str, Any]] = field(default_factory=list)
     diagnosis: Diagnosis | None = None
     repair_history: RegionRepairHistory | None = None
-    brief: ModelingBrief = field(default_factory=ModelingBrief)
     reference_decomposition: SceneDecomposition | None = None
-    component_strategy_resolution: dict[str, Any] | None = None
     external_edit_detected: bool = False
     intentional_non_manifold_edge_ids: tuple[int, ...] = ()
-    minimum_stage_iou: float = 0.9
 
     def validate(self) -> None:
         if not self.task_id or not self.asset_id:
@@ -71,14 +67,6 @@ class PlannerContext:
             raise ValueError("intentional_non_manifold_edge_ids must be unique persistent edge IDs")
         if self.reference_decomposition is not None:
             self.reference_decomposition.validate()
-        if self.component_strategy_resolution is not None:
-            disposition = self.component_strategy_resolution.get("disposition")
-            if disposition not in {"TARGETED_REFERENCE_RESEARCH", "SELECT_STRATEGY"}:
-                raise ValueError(f"invalid component strategy disposition: {disposition}")
-            if disposition == "SELECT_STRATEGY" and self.component_strategy_resolution.get(
-                "chosen_policy"
-            ) not in {"CONTINUOUS_MESH", "SEPARATE_COMPONENTS"}:
-                raise ValueError("selected component strategy requires a valid chosen_policy")
 
 
 @dataclass(frozen=True)
@@ -295,12 +283,6 @@ def _skill_guided_ticket_decision(
     return None
 
 
-def _effective_brief(context: PlannerContext) -> ModelingBrief:
-    if context.reference_decomposition is None:
-        return context.brief
-    return context.reference_decomposition.to_modeling_brief(context.brief)
-
-
 def _next_stage(stage: str) -> str | None:
     index = STAGES.index(stage)
     return STAGES[index + 1] if index + 1 < len(STAGES) else None
@@ -389,39 +371,11 @@ def _reference_stage_contract(
     context: PlannerContext, target: str | None
 ) -> DecisionContract:
     """Prevent every geometry action until structured reference evidence passes."""
-    gate = evaluate_stage_gate(
-        context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou
-    )
+    gate = evaluate_stage_gate(context.stage, context.stage_evidence)
     if gate["pass"]:
         decomposition_gate = _reference_decomposition_contract(context, target)
         if decomposition_gate is not None:
             return decomposition_gate
-        resolution = context.component_strategy_resolution
-        if resolution and resolution["disposition"] == "TARGETED_REFERENCE_RESEARCH":
-            return _contract(
-                context,
-                disposition="RESEARCH",
-                action="RESOLVE_SECONDARY_VIEW_STRATEGY",
-                operation=None,
-                operation_params={
-                    "queries": list(resolution.get("queries", [])),
-                    "required_secondary_views": list(
-                        resolution.get("required_secondary_views", [])
-                    ),
-                },
-                target_object=target,
-                target_region=None,
-                rationale=(str(resolution.get("reason", "component strategy is unresolved")),),
-                expected_effect=(
-                    "Acquire a discriminating same-variant view before choosing continuous or "
-                    "separate construction."
-                ),
-                verification=(
-                    "rerun multi-view component-strategy resolution",
-                    "retain the rejected strategy and measured view scores",
-                ),
-                confidence="HIGH",
-            )
         return _passed_stage_contract(context, target)
     queries = tuple(map(str, context.stage_evidence.get("targeted_research_queries", [])))
     return _contract(
@@ -537,9 +491,7 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         decomposition_gate = _reference_decomposition_contract(context, target)
         if decomposition_gate is not None:
             return decomposition_gate
-        coverage_gate = evaluate_stage_gate(
-            context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou
-        )
+        coverage_gate = evaluate_stage_gate(context.stage, context.stage_evidence)
         coverage = context.stage_evidence.get("component_coverage")
         captured_revision = (
             coverage.get("scene_revision") if isinstance(coverage, dict) else None
@@ -651,46 +603,21 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
         if skill_guided is not None:
             return skill_guided
         if ticket_type in {"missing_component", "component_mismatch"}:
-            effective_brief = _effective_brief(context)
-            strategy = choose_strategy(effective_brief)
-            representation = strategy["representation"]["choice"]
-            component_policy = strategy["components"]["choice"]
-            strategy_resolution = context.component_strategy_resolution
-            if strategy_resolution and strategy_resolution["disposition"] == "SELECT_STRATEGY":
-                component_policy = str(strategy_resolution["chosen_policy"])
             return _contract(
                 context,
-                disposition="ACT",
-                action="BLOCK_OUT_MISSING_COMPONENT",
-                operation="create_curve" if representation == "CURVE" else "create_primitive",
-                operation_params={
-                    "component_id": region,
-                    "representation": representation,
-                    "component_policy": component_policy,
-                    "component_strategy_candidate": (
-                        strategy_resolution.get("chosen_candidate_id")
-                        if strategy_resolution
-                        and strategy_resolution["disposition"] == "SELECT_STRATEGY"
-                        else None
-                    ),
-                    "reference_claim_notes": list(effective_brief.notes),
-                },
+                disposition="INSPECT",
+                action="RUN_COMPONENT_HYPOTHESIS_PIPELINE",
+                operation=None,
+                operation_params={"component_id": region},
                 target_object=target,
                 target_region=str(region) if region else None,
                 rationale=(
                     f"highest-priority ticket is {ticket_type}",
-                    *tuple(strategy["representation"]["reasons"]),
-                    *tuple(strategy["components"]["reasons"]),
-                    *(
-                        (str(strategy_resolution.get("reason")),)
-                        if strategy_resolution
-                        and strategy_resolution["disposition"] == "SELECT_STRATEGY"
-                        else ()
-                    ),
+                    "representation and assembly policy belong to competing fitted modeling_core hypotheses",
                 ),
-                expected_effect="Add the missing primary/secondary silhouette contribution as an editable component.",
-                verification=("component mask is present", "component graph remains valid", "recompute silhouette metrics"),
-                confidence=strategy["representation"]["confidence"],
+                expected_effect="Produce component evidence, competing fitted families, and a resolved assembly policy before Blender mutation.",
+                verification=("component evidence is hash-bound", "at least two families compete", "all relevant views are scored"),
+                confidence="HIGH",
             )
         return _contract(
             context,
@@ -709,7 +636,7 @@ def plan_next_decision(context: PlannerContext) -> DecisionContract:
             confidence="MEDIUM" if suggested else "LOW",
         )
 
-    gate = evaluate_stage_gate(context.stage, context.stage_evidence, min_iou=context.minimum_stage_iou)
+    gate = evaluate_stage_gate(context.stage, context.stage_evidence)
     if gate["pass"]:
         return _passed_stage_contract(context, target)
 

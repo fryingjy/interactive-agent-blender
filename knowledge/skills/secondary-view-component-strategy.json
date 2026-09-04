@@ -15,7 +15,8 @@
     "workflow": "secondary-view component depth reconstruction",
     "reference_issue": "primary-view ambiguity about component depth, continuity, or a separate faceplate",
     "required_inputs": [
-      "at least two explicit construction candidates",
+      "an accepted multiview component-evidence bundle",
+      "at least two executable shape families and competing assembly hypotheses",
       "fixed-frame primary-view measurements",
       "same-variant secondary-view measurements",
       "object and connected-component counts for built candidates"
@@ -30,7 +31,7 @@
     "Represent continuous and separate construction as explicit competing candidates.",
     "If the primary-view scores are tied within the declared ambiguity tolerance, do not choose from that view.",
     "Acquire a same-variant side, top, or oblique view that exposes depth or boundary continuation.",
-    "Require the selected strategy to clear both an absolute secondary-view fit gate and a predeclared margin over the alternative.",
+    "Use modeling_core component fitting and assembly resolution; require the selected family to clear its compatibility gates and a predeclared margin over the alternative.",
     "Verify CONTINUOUS_MESH as one object and one connected component; joining disconnected shells does not qualify.",
     "Retain the rejected construction and its per-view measurements."
   ],
@@ -42,7 +43,7 @@
     "the reference variant differs across views"
   ],
   "recovery": [
-    "return TARGETED_REFERENCE_RESEARCH without a Blender mutation",
+    "return to reference evidence without a Blender mutation",
     "search specifically for the missing same-variant depth-revealing view",
     "keep the disputed region reversible until the evidence discriminates"
   ],

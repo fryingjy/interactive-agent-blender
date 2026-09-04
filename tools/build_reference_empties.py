@@ -1,5 +1,5 @@
 """Set up front/side/top Image Empties for a modeling reference, per
-docs/REFERENCE_COLLECTION_PROTOCOL.md's "Blender reference setup" section --
+docs/REFERENCE_PROTOCOL.md's "Blender reference setup" section --
 axis-aligned, orthographic-facing, locked against accidental selection/move.
 
 Run as:

@@ -14,7 +14,7 @@ class RetrievalBenchmarkTests(unittest.TestCase):
         cases = load_cases(DEFAULT_CASES)
         report = run_benchmark(cases, ROOT / "knowledge" / "skills", min_score=4.0)
         self.assertTrue(report["pass"])
-        self.assertEqual(report["case_count"], 24)
+        self.assertEqual(report["case_count"], 20)
         self.assertEqual(report["positive_accuracy"], 1.0)
         self.assertEqual(report["abstention_accuracy"], 1.0)
 

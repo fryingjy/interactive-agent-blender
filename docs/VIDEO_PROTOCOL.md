@@ -1,4 +1,4 @@
-# Video extraction protocol
+# Video study protocol
 
 Adopted 2026-08-14 (user-authored, superseding the informal extraction approach used earlier this
 session). Governs how every retained modeling video is studied. This is

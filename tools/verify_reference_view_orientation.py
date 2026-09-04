@@ -16,7 +16,7 @@ comes out wide vs narrow against the reference's own measured aspect ratios
 -- catching an axis mismatch in seconds, before any real construction time
 is spent.
 
-This does not replace measure_reference.py (which measures the reference
+This does not replace ``modeling_pipeline.py extract-reference`` (which measures the reference
 itself) or real modeling judgment -- it only confirms the *plane assignment*
 is not inverted before landmark-based construction begins.
 
@@ -48,7 +48,7 @@ from render_passes import render_silhouette  # noqa: E402
 
 
 def mask_bbox_aspect(path: Path):
-    """Reuses the same non-background bounding-box logic as measure_reference.py,
+    """Uses the same non-background bounding-box concept as reference extraction,
     via Blender's own image loading (no external dependency needed inside bpy)."""
     img = bpy.data.images.load(str(path))
     w, h = img.size

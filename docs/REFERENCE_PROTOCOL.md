@@ -1,4 +1,4 @@
-# Reference collection & reference-driven modeling protocol
+# Reference protocol
 
 ## Mission
 
@@ -153,7 +153,7 @@ Graph-shape validity
 nowhere outside its own test -- this is now its first real caller, not a second parallel validator.
 See `runs/2026-08-13_telephone-rebuild/scene_decomposition.json` for a worked example.
 
-The evidence-bound extension is specified in `docs/REFERENCE_INTERPRETATION.md`. Important
+The evidence-bound interpretation contract is defined below. Important
 interpretations are typed as `OBSERVED`, `STRONGLY_INFERRED`, `WEAKLY_INFERRED`, or `UNKNOWN` and
 carry evidence, confidence, impact, component references, and a modeling consequence. The structured
 artifact covers the directive-required camera, form hierarchy, continuity/separation, negative-space,
@@ -294,12 +294,35 @@ If the agent does not have enough evidence to make an important modeling decisio
 identify the missing evidence and research it. Do not guess simply to keep moving. The objective is
 not a beautiful reference board -- the objective is a better model.
 
-## Relationship to the video-learning roadmap
+## Interpretation and geometry authority
 
-The local-file ingestion path remains available for user-provided media. Public YouTube study now
-also has a reproducible Gemini caller (`tools/analyze_youtube_reference_workflow.py`) that consumes
-the real audio/visual stream without downloading or archiving the video. The seven-video reference
-study and honest source-fitness synthesis are in
-`runs/2026-08-15_video-study-reference-workflow/`. This closes reproducible public-video access and
-timestamped episode extraction for this curriculum; it does not close automatic discovery,
-speech-to-Blender-action recognition, source truthfulness, reproduction, transfer, or promotion.
+Reference interpretation records visible components, relationships, uncertainty, questions, and
+dimensional anchors; it does not choose geometry. The executable path is:
+
+```text
+reference audit
+-> image evidence and editable masks
+-> reviewed components and correspondence
+-> registered cameras
+-> competing executable shape and assembly hypotheses
+-> bounded multiview fit
+-> typed Blender compilation
+-> evaluated inspection and refit/rebuild tickets
+```
+
+`knowledge_engine.reference_analysis` owns provenance and research policy.
+`knowledge_engine.scene_decomposition` retains the evidence-bound component vocabulary needed for
+live scene-coverage inspection. `modeling_core` is the only authority for representation, assembly,
+fitting, and topology compilation. Model-assisted labels remain proposals until reviewed and
+hash-bound. A fitted winner proves agreement only with the supplied masks, cameras, variables, and
+families; it does not prove hidden geometry or professional quality.
+
+Advancing from `REFERENCE_ANALYSIS` requires a structured `REFERENCE_SET_AUDIT`,
+`REFERENCE_MODELING_SPEC_AUDIT`, and accepted `MULTIVIEW_REFERENCE_EVIDENCE_BUNDLE`. Bare booleans,
+hand-copied ratios, and prose-selected mesh families do not satisfy the gate.
+
+## Relationship to video learning
+
+Local and public-video study is a research source governed by `VIDEO_PROTOCOL.md`. It may improve
+reference reasoning or technique retrieval, but it cannot bypass source validation, shape-family
+competition, Blender inspection, or transfer testing.

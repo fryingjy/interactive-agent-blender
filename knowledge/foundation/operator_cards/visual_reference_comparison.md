@@ -112,4 +112,4 @@ fails, Y still passes) before relying on it for the hand plane.
 
 `runs/2026-08-13_watering-can-rebuild/reference_analysis.md` records the vessel-taper glance-vs-
 measurement conflict in full (all five corroborating methods, the recorded conflict block per
-`docs/REFERENCE_COLLECTION_PROTOCOL.md`'s format, and the resolved modeling brief).
+`docs/REFERENCE_PROTOCOL.md`'s format, and the resolved component evidence).

@@ -298,11 +298,9 @@ class ReferenceAnalysisTests(unittest.TestCase):
             required_views=("front",), critical_properties=(),
         ))
         evidence = build_reference_stage_evidence(
-            audit, component_graph_pass=True, measured_ratio_count=2,
-            uncertainty_recorded=True,
+            audit, shape_pipeline_evidence={"record_type": "MULTIVIEW_REFERENCE_EVIDENCE_BUNDLE"},
         )
-        self.assertTrue(evidence["reference_set_audit_pass"])
-        self.assertTrue(evidence["question_driven_research_pass"])
+        self.assertEqual(evidence["shape_pipeline_evidence"]["record_type"], "MULTIVIEW_REFERENCE_EVIDENCE_BUNDLE")
         self.assertEqual(evidence["reference_audit"]["target_id"], "prop")
 
     def test_url_only_reference_cannot_authorize_geometry_without_fixed_artifact(self):

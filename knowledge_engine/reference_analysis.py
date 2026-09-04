@@ -582,36 +582,17 @@ def validate_depth_critical_reference_support(
 
 
 def build_reference_stage_evidence(
-    audit: dict[str, Any], *, component_graph_pass: bool,
-    measured_ratio_count: int, uncertainty_recorded: bool,
-    visual_reconstruction_audit: dict[str, Any] | None = None,
-    component_reference_coverage: dict[str, Any] | None = None,
-    depth_critical_reference_support: dict[str, Any] | None = None,
+    audit: dict[str, Any], *,
+    shape_pipeline_evidence: dict[str, Any] | None = None,
     modeling_spec_audit: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Map one audit into the exact machine gate contract without hand-copied flags.
+    """Bind the reference audit to the actual ``modeling_core`` input bundle.
 
-    ``visual_reconstruction_audit`` and ``component_reference_coverage`` are the real structured
-    results of ``visual_reconstruction.audit_visual_reconstruction(...)`` and
-    ``validate_component_reference_coverage(...)`` respectively -- pass the dict itself, not a
-    bare boolean, so `blender_ops.stage_gates` can keep checking actual structure rather than a
-    self-reported flag. Left as ``None`` only for callers not yet producing that evidence; the
-    REFERENCE_ANALYSIS gate will then correctly fail on them rather than silently pass.
+    No flattened pass flags are copied: the stage gate validates the structured
+    source records and rejects a missing or cross-target solver bundle.
     """
-    checks = audit.get("checks", {})
     return {
-        "component_graph_pass": component_graph_pass,
-        "measured_ratio_count": measured_ratio_count,
-        "uncertainty_recorded": uncertainty_recorded,
-        "reference_set_audit_pass": bool(audit.get("pass")),
-        "same_target_identity_pass": bool(checks.get("same_target_identity_pass")),
-        "view_coverage_pass": bool(checks.get("view_coverage_pass")) and bool(checks.get("orthographic_coverage_pass")),
-        "critical_property_coverage_pass": bool(checks.get("critical_property_coverage_pass")),
-        "conflicts_resolved_pass": bool(checks.get("conflicts_resolved_pass")),
-        "question_driven_research_pass": bool(checks.get("question_driven_research_pass")),
-        "visual_reconstruction_audit_pass": visual_reconstruction_audit,
-        "component_reference_coverage_pass": component_reference_coverage,
-        "depth_critical_reference_support_pass": depth_critical_reference_support,
+        "shape_pipeline_evidence": shape_pipeline_evidence,
         "modeling_spec_audit": modeling_spec_audit,
         "targeted_research_queries": list(audit.get("targeted_research_queries", [])),
         "modeling_constraints": list(

@@ -1,5 +1,7 @@
 {
   "id": "boolean-groove-cut-topology-cleanup",
+  "status": "HISTORICAL",
+  "status_note": "Retained as negative evidence only. Its destructive apply/merge/triangulate repair was superseded by live modifiers, typed bounded cleanup, and explicit topology rebuilding; it is excluded from runtime retrieval.",
   "title": "N-gons and degenerate faces after a boolean DIFFERENCE groove cut on a hard-surface body",
   "topic_tags": [
     "topology",
@@ -21,7 +23,7 @@
       "bmesh.ops.triangulate(bm, faces=[f for f in bm.faces if len(f.verts) > 4])",
       "bm.to_mesh(obj.data); obj.data.update()"
     ],
-    "code_snippet": "blender_ops/repair.py::repair_non_manifold_from_boolean(name, merge_dist=0.0001)"
+    "code_snippet": "Historical only; the unbounded blender_ops/repair.py helper was removed during Repo V2 consolidation."
   },
   "evidence": {
     "before": {

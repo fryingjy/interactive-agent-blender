@@ -1,5 +1,6 @@
 {
   "id": "diffuse-color-not-connected-to-bsdf",
+  "status": "EXPERIMENTALLY_TESTED",
   "title": "Setting material.diffuse_color does not affect the actual rendered Base Color on a node-based Principled BSDF material",
   "topic_tags": [
     "material",

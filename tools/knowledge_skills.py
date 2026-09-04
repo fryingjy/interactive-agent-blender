@@ -14,7 +14,7 @@ from knowledge_engine.retrieval import (
     StructuredSkillStore,
 )
 
-SKILLS_DIR = Path(__file__).resolve().parent / "skills"
+SKILLS_DIR = REPO_ROOT / "knowledge" / "skills"
 
 REQUIRED_FIELDS = {
     "id", "title", "topic_tags", "problem", "symptom", "fix",

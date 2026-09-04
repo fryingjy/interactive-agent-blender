@@ -11,6 +11,13 @@ from typing import Any
 
 
 DEFAULT_MIN_RETRIEVAL_SCORE = 4.0
+RUNTIME_RETRIEVABLE_STATUSES = {
+    "EXPERIMENTALLY_TESTED",
+    "REPRODUCTION_VALIDATED",
+    "TRANSFER_VALIDATED",
+    "RUNTIME_VALIDATED",
+    "PROMOTED",
+}
 MIN_QUERY_CONTRIBUTION = 1.5
 SPECIFIC_CONTEXT_CHANNELS = (
     "modeling_stage",
@@ -53,6 +60,8 @@ class StructuredSkillStore:
         records = []
         for path in sorted(self.skills_dir.glob("*.json")):
             record = json.loads(path.read_text(encoding="utf-8"))
+            if record.get("status") not in RUNTIME_RETRIEVABLE_STATUSES:
+                continue
             record["_path"] = str(path)
             records.append(record)
         return records
