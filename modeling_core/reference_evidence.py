@@ -17,6 +17,32 @@ import cv2
 import numpy as np
 
 
+def _normalize_decoded_image(image: np.ndarray) -> tuple[np.ndarray, dict[str, Any]]:
+    """Normalize common integer image depths to the 8-bit working contract.
+
+    OpenCV decodes ordinary 16-bit PNG product photography as ``uint16``, but
+    several color and drawing operations used below only accept 8-bit input.
+    Keep the original file hash as provenance and record the deterministic
+    decode conversion instead of failing inside an unrelated OpenCV call.
+    """
+    if image.dtype == np.uint8:
+        return image, {
+            "source_dtype": "uint8",
+            "working_dtype": "uint8",
+            "bit_depth_normalization": "NONE",
+        }
+    if image.dtype == np.uint16:
+        normalized = ((image.astype(np.uint32) + 128) // 257).astype(np.uint8)
+        return normalized, {
+            "source_dtype": "uint16",
+            "working_dtype": "uint8",
+            "bit_depth_normalization": "UINT16_FULL_RANGE_TO_UINT8",
+        }
+    raise ValueError(
+        f"reference image dtype {image.dtype} is unsupported; expected uint8 or uint16 integer pixels"
+    )
+
+
 def _border_pixels(image: np.ndarray) -> np.ndarray:
     top, bottom = image[0], image[-1]
     left, right = image[1:-1, 0], image[1:-1, -1]
@@ -52,6 +78,8 @@ def _extract_mask(image: np.ndarray, *, method: str, background_tolerance: float
             "threshold": 128,
             "background_model": None,
             "border_color_spread": None,
+            "border_background_inlier_fraction": None,
+            "border_background_inlier_limit": None,
         }
 
     bgr = image[:, :, :3]
@@ -60,7 +88,15 @@ def _extract_mask(image: np.ndarray, *, method: str, background_tolerance: float
     background = np.median(border, axis=0)
     distances = np.linalg.norm(lab - background, axis=2)
     border_distances = np.linalg.norm(border - background, axis=1)
-    spread = float(np.percentile(border_distances, 95))
+    # Product detail photographs routinely crop the object into one edge. A
+    # raw border percentile then mistakes those object pixels for background
+    # variation and can raise the threshold until the object disappears.
+    median_distance = float(np.median(border_distances))
+    distance_mad = float(np.median(np.abs(border_distances - median_distance)))
+    inlier_limit = max(6.0, median_distance + 3.0 * max(distance_mad, 1.0))
+    border_inliers = border_distances <= inlier_limit
+    inlier_fraction = float(border_inliers.mean())
+    spread = float(np.percentile(border_distances[border_inliers], 95)) if border_inliers.any() else float("inf")
     tolerance = float(background_tolerance) if background_tolerance is not None else max(10.0, spread * 2.5 + 4.0)
     if tolerance <= 0:
         raise ValueError("background_tolerance must be positive")
@@ -69,6 +105,8 @@ def _extract_mask(image: np.ndarray, *, method: str, background_tolerance: float
         "threshold": tolerance,
         "background_model": [round(float(value), 4) for value in background],
         "border_color_spread": spread,
+        "border_background_inlier_fraction": inlier_fraction,
+        "border_background_inlier_limit": inlier_limit,
     }
 
 
@@ -148,6 +186,7 @@ def extract_reference_evidence(
     image = cv2.imread(str(source), cv2.IMREAD_UNCHANGED)
     if image is None or image.ndim not in {2, 3}:
         raise ValueError(f"OpenCV could not decode reference image: {source}")
+    image, decode = _normalize_decoded_image(image)
     if image.ndim == 2:
         image = cv2.cvtColor(image, cv2.COLOR_GRAY2BGRA)
     elif image.shape[2] == 3:
@@ -169,6 +208,8 @@ def extract_reference_evidence(
             "threshold": 128,
             "background_model": None,
             "border_color_spread": None,
+            "border_background_inlier_fraction": None,
+            "border_background_inlier_limit": None,
             "override_path": str(override_source),
             "override_sha256": hashlib.sha256(override_source.read_bytes()).hexdigest(),
         }
@@ -184,15 +225,19 @@ def extract_reference_evidence(
     border_fraction = float(_border_pixels(mask[:, :, None]).mean())
     retained = component_report["retained"]
     largest_fraction = max(item["area"] for item in retained) / max(1, int(mask.sum()))
-    issues = []
+    segmentation_issues = []
     if not 0.003 <= foreground_fraction <= 0.90:
-        issues.append("foreground fraction is implausible for an isolated-object reference")
-    if border_fraction > 0.02:
-        issues.append("foreground leaks into the image border")
+        segmentation_issues.append("foreground fraction is implausible for an isolated-object reference")
     if largest_fraction < 0.70:
-        issues.append("foreground is strongly fragmented")
-    if extraction["method"] == "border_lab_distance" and extraction["border_color_spread"] > 18.0:
-        issues.append("border background is too variable for reliable automatic subtraction")
+        segmentation_issues.append("foreground is strongly fragmented")
+    if (
+        extraction["method"] == "border_lab_distance"
+        and float(extraction.get("border_background_inlier_fraction") or 0.0) < 0.55
+    ):
+        segmentation_issues.append("no dominant border background supports reliable automatic subtraction")
+    fitting_issues = list(segmentation_issues)
+    if border_fraction > 0.02:
+        fitting_issues.append("foreground reaches the image border; the silhouette is crop-truncated")
 
     measurements = analyze_reference_mask(mask)
     left, top, right, bottom = measurements["bbox_pixels"]
@@ -227,6 +272,7 @@ def extract_reference_evidence(
         },
         "extraction": {
             **extraction,
+            "decode": decode,
             "foreground_fraction": foreground_fraction,
             "border_foreground_fraction": border_fraction,
             "largest_component_fraction": largest_fraction,
@@ -246,8 +292,10 @@ def extract_reference_evidence(
             "normalized_mask": hashlib.sha256(normalized_mask_path.read_bytes()).hexdigest(),
             "preview": hashlib.sha256(preview_path.read_bytes()).hexdigest(),
         },
-        "accepted_for_fitting": not issues,
-        "issues": issues,
+        "accepted_for_component_segmentation": not segmentation_issues,
+        "accepted_for_fitting": not fitting_issues,
+        "segmentation_issues": segmentation_issues,
+        "issues": fitting_issues,
         "manual_correction": {
             "allowed": True,
             "applied": override_source is not None,

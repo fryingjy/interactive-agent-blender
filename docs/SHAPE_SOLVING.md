@@ -39,13 +39,16 @@ segmenters such as [Meta SAM 3.1](https://github.com/facebookresearch/sam3), but
 not bundle a large model checkpoint or treat provider confidence as semantic authorization.
 
 `segment-components-gemini` is one concrete provider path. It asks for physical manufactured
-components rather than colors or highlights, accepts either `[x,y]` or `[y,x]` polygon ordering only
-when the provider's own box disambiguates it, and measures polygon coverage and overlap against the
-verified source mask. A bounded watershed refinement is allowed only when raw coverage is at least
-75%, raw overlap is at most 25%, every component has an exclusive interior seed, and the resulting
-complete partition's internal boundaries have at least 0.7× the object-interior gradient baseline.
-Model confidence is penalized by raw uncovered/overlap fractions. Expected visible fragmentation
-must be declared as host occlusion by an attached assembly; it is not silently ignored.
+components rather than colors or highlights and follows Gemini's documented coordinate contract:
+`box_2d` is `[ymin,xmin,ymax,xmax]` over the full image, while `mask_polygon` is `[x,y]` normalized
+inside that box. It measures polygon coverage and overlap against the verified source mask. A
+declared attached assembly or insert may occlude a primary host in the provider hypothesis; the
+adapter subtracts only that visible cover from the host and reports the resolved fraction. It never
+hides overlap between peer visible components. A bounded watershed refinement is allowed only when
+raw coverage is at least 55%, post-compositing overlap is at most 25%, every component has an
+exclusive interior seed, and the resulting complete partition has image-edge support. Model
+confidence is penalized by raw incompleteness and any unresolved overlap. Provider words and masks
+remain editable proposals, never semantic or construction authorization.
 
 `bundle-references` consumes the existing reference-set and registration gate records. It rejects
 stale or unauthorized source hashes, duplicate images masquerading as different views,

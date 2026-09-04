@@ -46,6 +46,48 @@ def test_border_background_extracts_outline_and_normalized_crop(tmp_path: Path):
     assert normalized.shape[1] < image.shape[1]
 
 
+def test_uint16_product_png_is_normalized_before_lab_extraction(tmp_path: Path):
+    image = np.full((90, 120, 3), 65535, dtype=np.uint16)
+    image[15:75, 20:100] = (7000, 9000, 11000)
+    source = tmp_path / "catalog-16-bit.png"
+    assert cv2.imwrite(str(source), image)
+
+    report = extract_reference_evidence(source, tmp_path / "catalog-evidence")
+
+    assert report["accepted_for_fitting"] is True
+    assert report["extraction"]["decode"] == {
+        "source_dtype": "uint16",
+        "working_dtype": "uint8",
+        "bit_depth_normalization": "UINT16_FULL_RANGE_TO_UINT8",
+    }
+    normalized = cv2.imread(report["artifacts"]["normalized_image"], cv2.IMREAD_UNCHANGED)
+    assert normalized.dtype == np.uint8
+
+
+def test_edge_cropped_product_detail_can_segment_but_cannot_fit_full_silhouette(tmp_path: Path):
+    image = np.full((100, 140, 3), 250, dtype=np.uint8)
+    cv2.rectangle(image, (35, 15), (139, 85), (25, 30, 35), thickness=-1)
+    source = tmp_path / "edge-cropped-detail.png"
+    assert cv2.imwrite(str(source), image)
+
+    report = extract_reference_evidence(source, tmp_path / "detail-evidence")
+
+    assert report["accepted_for_component_segmentation"] is True
+    assert report["accepted_for_fitting"] is False
+    assert report["segmentation_issues"] == []
+    assert any("crop-truncated" in issue for issue in report["issues"])
+    assert report["extraction"]["border_background_inlier_fraction"] > 0.55
+
+
+def test_unsupported_float_decode_fails_with_explicit_dtype_error(monkeypatch, tmp_path: Path):
+    source = tmp_path / "unsupported.exr"
+    source.write_bytes(b"fixture")
+    monkeypatch.setattr(cv2, "imread", lambda *_args, **_kwargs: np.ones((8, 8, 3), dtype=np.float32))
+
+    with pytest.raises(ValueError, match="dtype float32 is unsupported"):
+        extract_reference_evidence(source, tmp_path / "unused")
+
+
 def test_empty_or_indistinguishable_reference_fails_closed(tmp_path: Path):
     source = tmp_path / "empty.png"
     cv2.imwrite(str(source), np.full((64, 64, 3), 127, dtype=np.uint8))

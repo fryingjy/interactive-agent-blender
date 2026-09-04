@@ -24,6 +24,7 @@ AUTHORITATIVE_CONFIDENCE = {"MEDIUM", "HIGH"}
 VALID_RESEARCH_IMPACTS = {"LOW", "MEDIUM", "HIGH"}
 VALID_RESEARCH_STATUSES = {"OPEN", "RESOLVED", "DEFERRED"}
 VALID_CANDIDATE_DISPOSITIONS = {"ACCEPTED", "REJECTED", "PENDING"}
+VALID_GEOMETRY_SCOPES = {"FULL_OBJECT", "OCCLUDED_OBJECT", "PARTIAL_OBJECT", "COMPONENT_DETAIL"}
 
 
 @dataclass(frozen=True)
@@ -71,6 +72,10 @@ class ReferenceItem:
     # shows several components at once. Optional/defaulted; see
     # validate_component_reference_coverage below.
     component_ids: tuple[str, ...] = ()
+    geometry_scope: str = "FULL_OBJECT"
+    viewpoint_family: str = ""
+    occlusion_fraction: float = 0.0
+    identity_markers: tuple[str, ...] = ()
 
     def validate(self) -> None:
         if not all((self.reference_id, self.source_id, self.target_id, self.target_variant)):
@@ -81,6 +86,14 @@ class ReferenceItem:
             raise ValueError(f"unknown projection: {self.projection}")
         if self.source_tier not in VALID_SOURCE_TIERS:
             raise ValueError(f"unknown source tier: {self.source_tier}")
+        if self.geometry_scope not in VALID_GEOMETRY_SCOPES:
+            raise ValueError(f"unknown geometry scope: {self.geometry_scope}")
+        if isinstance(self.occlusion_fraction, bool) or not 0.0 <= float(self.occlusion_fraction) <= 1.0:
+            raise ValueError("reference occlusion_fraction must be in [0, 1]")
+        if self.geometry_scope == "FULL_OBJECT" and self.occlusion_fraction > 0.05:
+            raise ValueError("FULL_OBJECT references cannot declare material occlusion")
+        if any(not str(marker).strip() for marker in self.identity_markers):
+            raise ValueError("identity markers must be non-empty strings")
         if not self.source_url and not self.local_file:
             raise ValueError("reference items require source_url or local_file provenance")
         if self.source_url:
@@ -211,6 +224,8 @@ class ReferenceSet:
     orthographic_required_views: tuple[str, ...] = ()
     require_dimensional_anchor: bool = False
     minimum_independent_sources: int = 1
+    minimum_full_object_geometry_views: int = 1
+    minimum_distinct_viewpoint_families: int = 1
     conflicts: tuple[ReferenceConflict, ...] = ()
     research_questions: tuple[ReferenceResearchQuestion, ...] = ()
 
@@ -276,6 +291,10 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         raise ValueError("target_id and target_variant are required")
     if reference_set.minimum_independent_sources < 1:
         raise ValueError("minimum_independent_sources must be positive")
+    if reference_set.minimum_full_object_geometry_views < 1:
+        raise ValueError("minimum_full_object_geometry_views must be positive")
+    if reference_set.minimum_distinct_viewpoint_families < 1:
+        raise ValueError("minimum_distinct_viewpoint_families must be positive")
     for item in reference_set.items:
         item.validate()
     reference_ids = [item.reference_id for item in reference_set.items]
@@ -309,6 +328,23 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         issues.append(f"mixed target identity or variant: {', '.join(mismatched)}")
 
     views = {item.view.lower() for item in matching}
+    full_object_items = [item for item in matching if item.geometry_scope == "FULL_OBJECT"]
+    viewpoint_families = {
+        (item.viewpoint_family or item.view).strip().lower()
+        for item in full_object_items
+    }
+    if len(full_object_items) < reference_set.minimum_full_object_geometry_views:
+        issues.append(
+            f"only {len(full_object_items)} full-object geometry view(s); "
+            f"{reference_set.minimum_full_object_geometry_views} required"
+        )
+        queries.append(f"{reference_set.target_id} {reference_set.target_variant} complete unobscured product view")
+    if len(viewpoint_families) < reference_set.minimum_distinct_viewpoint_families:
+        issues.append(
+            f"only {len(viewpoint_families)} distinct full-object viewpoint family/families; "
+            f"{reference_set.minimum_distinct_viewpoint_families} required"
+        )
+        queries.append(f"{reference_set.target_id} {reference_set.target_variant} opposite side rear oblique view")
     missing_views = sorted(set(map(str.lower, reference_set.required_views)) - views)
     for view in missing_views:
         issues.append(f"missing required view: {view}")
@@ -378,6 +414,12 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
     checks = {
         "same_target_identity_pass": not mismatched and bool(matching),
         "view_coverage_pass": not missing_views,
+        "full_object_geometry_coverage_pass": (
+            len(full_object_items) >= reference_set.minimum_full_object_geometry_views
+        ),
+        "viewpoint_diversity_pass": (
+            len(viewpoint_families) >= reference_set.minimum_distinct_viewpoint_families
+        ),
         "orthographic_coverage_pass": not missing_ortho,
         "provenance_coverage_pass": len(source_ids) >= reference_set.minimum_independent_sources,
         "critical_property_coverage_pass": (
@@ -398,6 +440,8 @@ def audit_reference_set(reference_set: ReferenceSet) -> dict[str, Any]:
         "matching_reference_count": len(matching),
         "independent_source_count": len(source_ids),
         "view_count": len(views),
+        "full_object_geometry_view_count": len(full_object_items),
+        "distinct_viewpoint_families": sorted(viewpoint_families),
         "checks": checks,
         "covered_properties": covered_properties,
         "dimensional_anchors": anchors,
@@ -420,7 +464,7 @@ def reference_set_from_dict(payload: dict[str, Any], *, base_dir: str | Path | N
             local_path = Path(item["local_file"])
             if not local_path.is_absolute():
                 item["local_file"] = str((Path(base_dir) / local_path).resolve())
-        for key in ("purposes", "dimensional_anchors", "limitations", "component_ids"):
+        for key in ("purposes", "dimensional_anchors", "limitations", "component_ids", "identity_markers"):
             item[key] = tuple(item.get(key, []))
         items.append(ReferenceItem(**item))
     conflicts = []

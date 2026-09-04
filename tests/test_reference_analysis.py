@@ -34,6 +34,48 @@ def item(reference_id, source_id, *, target="nailsea", variant="30.5cm", view="f
 
 
 class ReferenceAnalysisTests(unittest.TestCase):
+    def test_duplicate_catalog_angles_do_not_satisfy_viewpoint_diversity(self):
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1",
+            items=(
+                item("retailer-a", "source-a", target="prop", variant="v1", view="side-a"),
+                item("retailer-b", "source-b", target="prop", variant="v1", view="side-b"),
+            ),
+            required_views=("side-a", "side-b"),
+            critical_properties=(),
+            minimum_independent_sources=2,
+            minimum_full_object_geometry_views=2,
+            minimum_distinct_viewpoint_families=2,
+        ))
+        # Both images default to their declared view as distinct families.
+        self.assertTrue(audit["checks"]["viewpoint_diversity_pass"])
+
+        same_angle_items = tuple(
+            ReferenceItem(**{**candidate.__dict__, "viewpoint_family": "left-profile"})
+            for candidate in (
+                item("retailer-a2", "source-a", target="prop", variant="v1", view="side-a"),
+                item("retailer-b2", "source-b", target="prop", variant="v1", view="side-b"),
+            )
+        )
+        repeated = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1", items=same_angle_items,
+            required_views=("side-a", "side-b"), critical_properties=(),
+            minimum_independent_sources=2,
+            minimum_full_object_geometry_views=2,
+            minimum_distinct_viewpoint_families=2,
+        ))
+        self.assertFalse(repeated["checks"]["viewpoint_diversity_pass"])
+        self.assertEqual(repeated["distinct_viewpoint_families"], ["left-profile"])
+
+    def test_component_detail_does_not_count_as_full_object_geometry(self):
+        detail = item("detail", "source", target="prop", variant="v1", view="reverse-detail")
+        detail = ReferenceItem(**{**detail.__dict__, "geometry_scope": "COMPONENT_DETAIL"})
+        audit = audit_reference_set(ReferenceSet(
+            target_id="prop", target_variant="v1", items=(detail,),
+            required_views=("reverse-detail",), critical_properties=(),
+        ))
+        self.assertFalse(audit["checks"]["full_object_geometry_coverage_pass"])
+
     def test_open_high_impact_question_blocks_modeling_and_emits_exact_query(self):
         question = ReferenceResearchQuestion(
             question_id="rear-construction",

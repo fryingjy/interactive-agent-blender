@@ -161,11 +161,15 @@
     "creator": "Google",
     "source_type": "official_docs",
     "trust_tier": "A",
-    "version": "current as researched 2026-09-02",
+    "version": "current as researched 2026-09-04",
     "topics": ["segmentation", "object-detection", "reference-analysis"],
     "access": {"text": true, "video": false, "audio": false, "captions": false},
     "status": "EXPERIMENTALLY_TESTED",
-    "metadata": {"experiments": ["tests/test_gemini_component_segmentation.py"], "skills": []}
+    "metadata": {
+      "experiments": ["tests/test_gemini_component_segmentation.py"],
+      "skills": [],
+      "notes": ["ZT0102 box-local polygon transfer audited on 2026-09-04; generated evidence is excluded from source control."]
+    }
   },
   {
     "id": "segment-anything-3-official",
@@ -180,5 +184,24 @@
     "access": {"text": true, "video": false, "audio": false, "captions": false},
     "status": "STUDIED",
     "metadata": {"experiments": [], "skills": []}
+  },
+  {
+    "id": "knivesandtools-zero-tolerance-0102",
+    "url": "https://www.knivesandtools.co.uk/en/pt/-zero-tolerance-102-tactical-tomahawk.htm",
+    "local_path": null,
+    "title": "Zero Tolerance 0102 Tactical Tomahawk product record",
+    "creator": "Knivesandtools / KATO Group",
+    "source_type": "product_reference",
+    "trust_tier": "B",
+    "version": "accessed 2026-09-03",
+    "topics": ["reference-provenance", "hard-surface-components", "dimensions", "multi-view-images"],
+    "access": {"text": true, "video": false, "audio": false, "captions": false},
+    "status": "EXPERIMENTALLY_TESTED",
+    "metadata": {
+      "experiments": [],
+      "skills": [],
+      "notes": ["ZT0102 exact-variant reference and segmentation transfer audited on 2026-09-03/04; copyrighted images are excluded from source control."],
+      "limitations": ["Catalog set contains only one full-object viewpoint family; detail crops do not resolve full-object depth."]
+    }
   }
 ]

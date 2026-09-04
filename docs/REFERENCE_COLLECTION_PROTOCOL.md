@@ -242,7 +242,11 @@ these concepts separate:
 - an inspiration image cannot authorize a dimensional or construction claim;
 - an image of a different variant cannot fill a missing view for the target variant;
 - an unresolved critical conflict forces targeted research;
-- a dimensional anchor counts only when its reference is explicitly scoped to `DIMENSION`.
+- a dimensional anchor counts only when its reference is explicitly scoped to `DIMENSION`;
+- duplicate full-object catalog angles do not satisfy a requested number of distinct viewpoint
+  families, and a component detail does not count as a complete geometry view;
+- `geometry_scope`, `viewpoint_family`, and bounded `occlusion_fraction` state what an image can
+  actually constrain instead of promoting every accepted image to equal authority.
 
 The disposition is `READY_TO_MODEL` or `TARGETED_RESEARCH`. The planner responds to the latter with
 no Blender operation. `build_reference_stage_evidence()` maps the audit into the strict

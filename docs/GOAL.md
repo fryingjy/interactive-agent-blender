@@ -1,7 +1,7 @@
 # Living Project Goal
 
 Status: **PARTIAL — perception-to-geometry capability is the active gate**  
-Last reviewed: **2026-09-02**
+Last reviewed: **2026-09-04**
 
 This is the repository's mutable execution goal. The durable operating contract remains
 [`MASTER_DIRECTIVE.md`](MASTER_DIRECTIVE.md). If this page conflicts with current code or
@@ -236,18 +236,44 @@ strong-model segmentation transfer, but it is one view and one target. The next 
 multi-angle segmentation/correspondence on an identity-audited variant, jointly constrained with
 camera evidence rather than appearance alone.
 
+Evidence update — 2026-09-04 (component-proposal cycle 5, contract correction): an exact-variant
+ZT0102 audit found that the prior Gemini adapter contradicted the current official segmentation
+contract. Gemini 3.8 returns `[ymin,xmin,ymax,xmax]` full-image boxes and `[x,y]` polygons normalized
+inside each box; the old full-image-polygon prompt and coordinate-order guessing produced unstable
+part boundaries. Prompt v3 now follows the documented box-local transform exactly, normalizes
+16-bit catalog PNGs to bounded 8-bit request images, and can replay hash-bound provider responses.
+It also distinguishes component-segmentation eligibility from silhouette-fitting eligibility, so a
+useful crop may propose visible parts without pretending to be a complete fitting view.
+
+The same untouched full-profile image then exposed and fixed a second modeling fact: a continuous
+steel host is legitimately described behind an attached G10 scale, but visible component labels
+must be exclusive. Role-aware compositing now subtracts only declared `ATTACHED_ASSEMBLY`/`INSERT`
+pixels from a `PRIMARY_VOLUME`; peer overlaps still fail. On the full profile, raw box-local masks
+covered 62.14% and overlapped 34.19%, all of that overlap was the declared scale-over-host relation,
+and a bounded watershed produced a complete exclusive partition whose internal boundary had 2.12x
+the object-interior gradient baseline. Visual inspection showed the boundary following the scale
+perimeter instead of the earlier diagonal/winding split. An opposite-face head detail transferred
+with 82.56% raw coverage and a 3.57x boundary ratio. Cross-view matching grouped both components
+without unmatched regions; the scale match reached 0.735 confidence while the cropped host match
+correctly remained ambiguous at 0.442. An independent retailer profile failed closed at a 0.612
+boundary ratio. The exact reference audit also found only one full-object viewpoint family despite
+multiple URLs, so the set remains `TARGETED_RESEARCH`. This is a real visible correction and
+partial transfer, not a P0 exit: multi-source component boundaries and full-object depth are still
+unproved.
+
 Current priority order:
 
-1. **Reference acquisition and provenance** — collect local or online multi-angle evidence, retain
-   source URLs/paths and licenses where relevant, reject unrelated variants, and record uncertainty.
+1. **Reference acquisition and provenance** — collect exact-variant views with at least two useful
+   full-object viewpoint families, retain URLs/paths and licenses where relevant, reject duplicate
+   catalog angles and unrelated variants, and record uncertainty.
 2. **Image evidence extraction** — normalize/crop views and derive editable object masks,
    silhouettes, landmarks, component regions, overlaps, and negative spaces with confidence and
    manual correction hooks.
 3. **Camera and correspondence solving** — initialize orthographic/perspective views from image
    evidence, report reprojection error, and reject underconstrained calibration.
-4. **Automatic component and cross-view correspondence proposals** — replace explicit label-map
-   identity with confidence-scored, editable proposals while retaining source hashes, variant
-   checks, ambiguity, and correction hooks; do not let semantic guesses silently authorize shape.
+4. **Automatic component and cross-view correspondence proposals** — transfer-test box-local
+   provider masks, role-aware visible occlusion, and explicit no-match correspondence on independent
+   sources; do not let semantic guesses or one successful crop silently authorize shape.
 5. **Remaining representation and fitting gaps** — add only evidence-justified shell,
    multi-opening, repeated, or branch families; preserve per-view/component disagreement and convert
    contour, landmark, depth, overlap, and negative-space errors into scoped modeling work.

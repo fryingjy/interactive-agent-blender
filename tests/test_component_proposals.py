@@ -4,6 +4,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+import pytest
 
 from modeling_core import (
     build_multiview_evidence_bundle,
@@ -86,6 +87,97 @@ def test_cross_view_match_preserves_descriptor_ambiguity(tmp_path: Path):
     ])
     assert result["status"] == "AMBIGUOUS_REVIEW_REQUIRED"
     assert len(result["ambiguous_matches"]) == 2
+
+
+def test_cross_view_match_uses_provider_words_as_non_authoritative_features(tmp_path: Path):
+    evidence_a = _evidence(tmp_path, "semantic-a", uniform=True)
+    evidence_b = _evidence(tmp_path, "semantic-b", uniform=True)
+    labels_a = np.zeros((90, 120), dtype=np.uint8)
+    labels_a[18:72, 24:60] = 1
+    labels_a[18:72, 60:96] = 2
+    labels_b = np.zeros((90, 120), dtype=np.uint8)
+    labels_b[18:72, 24:60] = 2
+    labels_b[18:72, 60:96] = 1
+    path_a, path_b = tmp_path / "semantic-a-labels.png", tmp_path / "semantic-b-labels.png"
+    assert cv2.imwrite(str(path_a), labels_a)
+    assert cv2.imwrite(str(path_b), labels_b)
+    common = {
+        "provider": "controlled-segmenter", "model_id": "fixture", "model_version": "1",
+        "region_confidence": {"1": 0.95, "2": 0.95},
+    }
+    first = import_component_region_proposal(evidence_a, path_a, {
+        **common,
+        "region_semantic_proposals": {
+            "1": {"label": "host body", "role": "PRIMARY_VOLUME", "evidence": "host seam"},
+            "2": {"label": "cover panel", "role": "ATTACHED_ASSEMBLY", "evidence": "cover seam"},
+        },
+    }, tmp_path / "semantic-a-proposal")
+    second = import_component_region_proposal(evidence_b, path_b, {
+        **common,
+        "region_semantic_proposals": {
+            "1": {"label": "host body", "role": "PRIMARY_VOLUME", "evidence": "host seam"},
+            "2": {"label": "cover panel", "role": "ATTACHED_ASSEMBLY", "evidence": "cover seam"},
+        },
+    }, tmp_path / "semantic-b-proposal")
+
+    result = propose_cross_view_correspondences([
+        {"view_id": "front", "proposal": first, "target_id": "fixture", "target_variant": "v1"},
+        {"view_id": "reverse", "proposal": second, "target_id": "fixture", "target_variant": "v1"},
+    ])
+
+    assert result["status"] == "CONFIDENT_PROPOSAL"
+    assert result["accepted_as_semantic_identity"] is False
+    assert result["target_identity"] == {"target_id": "fixture", "target_variant": "v1"}
+    for group in result["groups"]:
+        assert group["match_diagnostics"]["reverse"]["feature_costs"]["semantic_label"] == 0.0
+
+
+def test_cross_view_match_does_not_force_unrelated_partial_region(tmp_path: Path):
+    first = propose_component_regions(_evidence(tmp_path, "unmatched-a", uniform=True), tmp_path / "unmatched-a-proposal")
+    second = propose_component_regions(_evidence(tmp_path, "unmatched-b", uniform=True), tmp_path / "unmatched-b-proposal")
+    first["regions"][0]["mean_lab"] = [10.0, 10.0, 10.0]
+    second["regions"][0]["mean_lab"] = [250.0, 250.0, 250.0]
+    first["regions"][0]["provider_semantic_proposal"] = {
+        "label": "host body", "role": "PRIMARY_VOLUME", "evidence": "host outline",
+    }
+    second["regions"][0]["provider_semantic_proposal"] = {
+        "label": "isolated button", "role": "OTHER", "evidence": "button rim",
+    }
+
+    result = propose_cross_view_correspondences([
+        {"view_id": "full", "proposal": first, "geometry_scope": "FULL_OBJECT"},
+        {"view_id": "detail", "proposal": second, "geometry_scope": "COMPONENT_DETAIL"},
+    ])
+
+    assert result["status"] == "AMBIGUOUS_REVIEW_REQUIRED"
+    assert result["unmatched_regions"]["detail"] == ["appearance-region-001"]
+    assert len(result["groups"]) == 2
+    assert result["groups"][1]["match_diagnostics"]["detail"]["rejected_by_cost_gate"] is True
+    assert result["view_geometry_scope"]["detail"] == "COMPONENT_DETAIL"
+
+
+def test_partial_view_semantic_subset_is_not_penalized_as_a_different_component(tmp_path: Path):
+    first = propose_component_regions(
+        _evidence(tmp_path, "subset-full", uniform=True), tmp_path / "subset-full-proposal"
+    )
+    second = propose_component_regions(
+        _evidence(tmp_path, "subset-detail", uniform=True), tmp_path / "subset-detail-proposal"
+    )
+    first["regions"][0]["provider_semantic_proposal"] = {
+        "label": "axe head and tang steel body", "role": "PRIMARY_VOLUME", "evidence": "visible"
+    }
+    second["regions"][0]["provider_semantic_proposal"] = {
+        "label": "axe head", "role": "PRIMARY_VOLUME", "evidence": "visible"
+    }
+
+    result = propose_cross_view_correspondences([
+        {"view_id": "full", "proposal": first, "geometry_scope": "FULL_OBJECT"},
+        {"view_id": "detail", "proposal": second, "geometry_scope": "COMPONENT_DETAIL"},
+    ])
+
+    diagnostics = result["groups"][0]["match_diagnostics"]["detail"]
+    assert diagnostics["feature_costs"]["semantic_label"] == 0.0
+    assert result["accepted_as_semantic_identity"] is False
 
 
 def test_tampered_proposal_label_map_cannot_be_matched(tmp_path: Path):
@@ -229,6 +321,10 @@ def test_external_segmenter_adapter_preserves_same_color_part_labels_for_review(
         "model_version": "1",
         "prompt": "head and handle",
         "region_confidence": {"7": 0.94, "19": 0.92},
+        "region_semantic_proposals": {
+            "7": {"label": "host body", "role": "PRIMARY_VOLUME", "evidence": "Continuous host outline."},
+            "19": {"label": "cover", "role": "ATTACHED_ASSEMBLY", "evidence": "Visible cover seam."},
+        },
     }
     result = import_component_region_proposal(
         evidence,
@@ -241,6 +337,7 @@ def test_external_segmenter_adapter_preserves_same_color_part_labels_for_review(
     assert result["proposal_confidence"] == 0.92
     assert result["proposal_status"] == "REVIEWABLE_PROPOSAL"
     assert result["accepted_as_semantic_evidence"] is False
+    assert result["regions"][0]["provider_semantic_proposal"]["label"] == "host body"
     normalized = cv2.imread(result["artifacts"]["editable_label_map"], cv2.IMREAD_GRAYSCALE)
     assert set(np.unique(normalized)) == {0, 1, 2}
 
@@ -273,3 +370,21 @@ def test_external_segmenter_adapter_rejects_leakage_and_missing_confidence(tmp_p
         assert "requires confidence" in str(error)
     else:
         raise AssertionError("external region without confidence was accepted")
+
+
+def test_failed_gemini_segmentation_gate_cannot_be_imported(tmp_path: Path):
+    evidence = _evidence(tmp_path, "failed-gemini", uniform=True)
+    labels = np.zeros((90, 120), dtype=np.uint8)
+    labels[18:72, 24:96] = 1
+    label_path = tmp_path / "failed-gemini-labels.png"
+    assert cv2.imwrite(str(label_path), labels)
+    provider = {
+        "provider": "Google Gemini",
+        "model_id": "gemini-test",
+        "model_version": "prompt-v1",
+        "region_confidence": {"1": 0.99},
+        "segmentation_gate_pass": False,
+    }
+
+    with pytest.raises(ValueError, match="did not pass"):
+        import_component_region_proposal(evidence, label_path, provider, tmp_path / "rejected")

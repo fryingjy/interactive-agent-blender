@@ -19,6 +19,8 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 3. proposes deterministic appearance-region labels and cross-view matches with confidence,
    ambiguity, editable artifacts, and a mandatory semantic-confirmation boundary, then materializes
    reviewed shared IDs as bundle-ready evidence with reviewer provenance;
+   an optional Gemini path follows box-local segmentation coordinates, composites only declared
+   cover-over-host occlusion, and requires image-supported complete visible partitions;
 4. assembles only hash-authorized, registration-approved, unique views into a multiview bundle and
    enforces required cross-view component support;
 5. proposes generic component representations and competing continuous-cage versus separate-object
@@ -42,8 +44,9 @@ The shape-solving plane has been restarted. Its working vertical slice now:
 12. supports orthographic/perspective fitting and PnP calibration before compiling editable cages.
 
 That is meaningful infrastructure, not proof that the system can model arbitrary objects. The
-current solver does not yet infer landmarks, masks, assemblies, or hidden structure automatically.
-Professional generalization remains unproven.
+current solver does not yet infer reliable multi-source component identity, calibrated cameras, or
+hidden structure automatically; model-assisted masks remain review-only proposals. Professional
+generalization remains unproven.
 
 ## Architecture
 

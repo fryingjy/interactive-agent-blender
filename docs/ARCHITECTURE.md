@@ -90,11 +90,13 @@ This package contains reusable reference, review, retrieval, and stage policy. I
 or propose a bounded hypothesis, but it cannot bypass fitting or Blender transactions.
 
 `gemini_component_segmentation.py` requests structured physical-part boxes and polygons from a
-configured Gemini image model, detects provider coordinate-order drift against each returned box,
-and audits raw polygon coverage/overlap against the deterministic object mask. When raw polygons
-are close but imperfect, only their non-overlapping interiors become watershed seeds; a completed
-partition must have supported internal image edges before entering the external proposal adapter.
-Remote labels and confidence remain non-authoritative.
+configured Gemini image model, maps the documented full-image `[ymin,xmin,ymax,xmax]` box plus
+box-local `[x,y]` polygon into source pixels, and audits raw coverage/overlap against the
+deterministic object mask. Declared attached assemblies and inserts may visibly occlude a primary
+host; only that role relationship is composited, while peer overlap remains an error. When raw
+polygons are usable but incomplete, their exclusive interiors become watershed seeds and the
+completed partition must have supported internal image edges before entering the external proposal
+adapter. Remote labels and confidence remain non-authoritative.
 
 ## Interfaces
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -115,8 +116,11 @@ def propose_component_regions(
     if not 0.005 <= minimum_region_fraction <= 0.25:
         raise ValueError("minimum_region_fraction must be in [0.005, 0.25]")
     evidence = _read(reference_evidence)
-    if evidence.get("record_type") != "REFERENCE_IMAGE_EVIDENCE" or not evidence.get("accepted_for_fitting"):
-        raise ValueError("component proposals require accepted REFERENCE_IMAGE_EVIDENCE")
+    segmentation_ready = evidence.get(
+        "accepted_for_component_segmentation", evidence.get("accepted_for_fitting")
+    )
+    if evidence.get("record_type") != "REFERENCE_IMAGE_EVIDENCE" or not segmentation_ready:
+        raise ValueError("component proposals require REFERENCE_IMAGE_EVIDENCE accepted for component segmentation")
     source_path = _current_file(evidence.get("source", {}), label="source image")
     mask_path = _current_file(
         {
@@ -239,11 +243,16 @@ def import_component_region_proposal(
     """Normalize an external segmenter's labels into the same review-only proposal contract."""
     evidence = _read(reference_evidence)
     provider = _read(provider_report)
-    if evidence.get("record_type") != "REFERENCE_IMAGE_EVIDENCE" or not evidence.get("accepted_for_fitting"):
-        raise ValueError("external component proposals require accepted REFERENCE_IMAGE_EVIDENCE")
+    segmentation_ready = evidence.get(
+        "accepted_for_component_segmentation", evidence.get("accepted_for_fitting")
+    )
+    if evidence.get("record_type") != "REFERENCE_IMAGE_EVIDENCE" or not segmentation_ready:
+        raise ValueError("external component proposals require REFERENCE_IMAGE_EVIDENCE accepted for component segmentation")
     for key in ("provider", "model_id", "model_version"):
         if not str(provider.get(key) or "").strip():
             raise ValueError(f"external provider report requires {key}")
+    if provider.get("provider") == "Google Gemini" and provider.get("segmentation_gate_pass") is not True:
+        raise ValueError("Gemini provider report did not pass its segmentation gate")
     source_path = _current_file(evidence.get("source", {}), label="source image")
     source_mask_path = _current_file(
         {
@@ -268,6 +277,9 @@ def import_component_region_proposal(
         raise ValueError("external component proposal contains no regions")
     confidence_record = provider.get("region_confidence", {})
     occlusion_record = provider.get("region_occlusion_expected", {})
+    semantic_record = provider.get("region_semantic_proposals", {})
+    if semantic_record and not isinstance(semantic_record, dict):
+        raise ValueError("external region semantic proposals must be a label-keyed object")
     confidences = []
     normalized = np.zeros_like(external)
     for new_label, old_label in enumerate(observed, 1):
@@ -280,14 +292,26 @@ def import_component_region_proposal(
     lab_image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB).astype(float)
     regions = []
     maximum_unexpected_fragmentation = 1
-    for label, provider_confidence in enumerate(confidences, 1):
+    for label, (old_label, provider_confidence) in enumerate(zip(observed, confidences), 1):
         region_mask = normalized == label
         region_colors = lab_image[region_mask]
         connected_count, _connected = cv2.connectedComponents(region_mask.astype(np.uint8), connectivity=8)
         fragmentation = connected_count - 1
-        occlusion_expected = occlusion_record.get(str(label), occlusion_record.get(label, False))
+        occlusion_expected = occlusion_record.get(str(old_label), occlusion_record.get(old_label, False))
         if not isinstance(occlusion_expected, bool):
             raise ValueError(f"external region {label} occlusion expectation must be boolean")
+        semantic = semantic_record.get(str(old_label), semantic_record.get(old_label))
+        if semantic is not None:
+            if not isinstance(semantic, dict):
+                raise ValueError(f"external region {label} semantic proposal must be an object")
+            if not str(semantic.get("label") or "").strip():
+                raise ValueError(f"external region {label} semantic proposal requires a label")
+            if semantic.get("role") not in {
+                "PRIMARY_VOLUME", "ATTACHED_ASSEMBLY", "FASTENER", "INSERT", "OTHER"
+            }:
+                raise ValueError(f"external region {label} semantic proposal has an invalid role")
+            if not str(semantic.get("evidence") or "").strip():
+                raise ValueError(f"external region {label} semantic proposal requires visible evidence")
         if not occlusion_expected:
             maximum_unexpected_fragmentation = max(maximum_unexpected_fragmentation, fragmentation)
         regions.append({
@@ -295,6 +319,7 @@ def import_component_region_proposal(
             "label": label,
             "provider_confidence": provider_confidence,
             "occlusion_expected": occlusion_expected,
+            "provider_semantic_proposal": dict(semantic) if semantic is not None else None,
             "visible_area_fraction_of_object": float(region_mask.sum() / foreground.sum()),
             "mean_lab": region_colors.mean(axis=0).tolist(),
             "color_dispersion_lab": float(np.mean(np.linalg.norm(region_colors - region_colors.mean(axis=0), axis=1))),
@@ -363,12 +388,85 @@ def _proposal_descriptor(region: dict[str, Any]) -> np.ndarray:
     ])
 
 
+_SEMANTIC_TOKEN_ALIASES = {
+    "bolts": "fastener", "bolt": "fastener", "screws": "fastener", "screw": "fastener",
+    "rivets": "fastener", "rivet": "fastener", "fasteners": "fastener",
+    "scales": "scale", "grips": "grip", "assemblies": "assembly",
+}
+_SEMANTIC_GENERIC_TOKENS = {
+    "and", "body", "component", "assembly", "primary", "volume", "visible",
+    "metal", "steel", "composite", "g", "material",
+}
+
+
+def _semantic_tokens(region: dict[str, Any]) -> set[str]:
+    semantic = region.get("provider_semantic_proposal")
+    if not isinstance(semantic, dict):
+        return set()
+    tokens = re.findall(r"[a-z]+", str(semantic.get("label") or "").lower())
+    normalized = {_SEMANTIC_TOKEN_ALIASES.get(token, token) for token in tokens}
+    return normalized - _SEMANTIC_GENERIC_TOKENS
+
+
+def _pair_cost(
+    first: dict[str, Any],
+    second: dict[str, Any],
+    *,
+    first_scope: str,
+    second_scope: str,
+) -> tuple[float, dict[str, Any]]:
+    left, right = _proposal_descriptor(first), _proposal_descriptor(second)
+    feature_costs: dict[str, float] = {
+        "color_lab": min(float(np.linalg.norm(left[:3] - right[:3]) / 80.0), 2.0),
+        "visible_area": min(float(abs(left[3] - right[3])), 2.0),
+        "aspect_ratio": min(float(abs(left[4] - right[4])), 2.0),
+    }
+    weights = {"color_lab": 0.70, "visible_area": 0.18, "aspect_ratio": 0.12}
+    first_tokens, second_tokens = _semantic_tokens(first), _semantic_tokens(second)
+    first_semantic, second_semantic = (
+        first.get("provider_semantic_proposal"), second.get("provider_semantic_proposal")
+    )
+    if first_tokens and second_tokens and isinstance(first_semantic, dict) and isinstance(second_semantic, dict):
+        # A detail view often uses a shorter compatible phrase ("axe head") than a full
+        # view ("axe head and tang steel body"). Overlap coefficient preserves that subset
+        # relation while role and visual features keep words from authorizing identity.
+        semantic_overlap = len(first_tokens & second_tokens) / min(len(first_tokens), len(second_tokens))
+        feature_costs["semantic_label"] = 1.0 - semantic_overlap
+        feature_costs["semantic_role"] = float(first_semantic.get("role") != second_semantic.get("role"))
+        weights = {
+            "color_lab": 0.30,
+            "visible_area": 0.12,
+            "aspect_ratio": 0.08,
+            "semantic_label": 0.35,
+            "semantic_role": 0.15,
+        }
+    scope_reliability = {
+        "FULL_OBJECT": 1.0,
+        "OCCLUDED_OBJECT": 0.45,
+        "PARTIAL_OBJECT": 0.25,
+        "COMPONENT_DETAIL": 0.20,
+    }
+    reliability = min(scope_reliability[first_scope], scope_reliability[second_scope])
+    weights["visible_area"] *= reliability
+    weights["aspect_ratio"] *= reliability
+    weight_total = sum(weights.values())
+    normalized_weights = {name: value / weight_total for name, value in weights.items()}
+    cost = float(sum(feature_costs[name] * normalized_weights[name] for name in normalized_weights))
+    return cost, {
+        "feature_costs": feature_costs,
+        "normalized_weights": normalized_weights,
+        "scope_reliability": reliability,
+    }
+
+
 def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str, Any]:
-    """Match appearance proposals across views while preserving ambiguity and unmatched regions."""
+    """Match review-only regions without forcing absent or unrelated components together."""
     if not isinstance(views, list) or len(views) < 2:
         raise ValueError("cross-view proposal requires at least two views")
     loaded = []
     identifiers = []
+    allowed_scopes = {"FULL_OBJECT", "OCCLUDED_OBJECT", "PARTIAL_OBJECT", "COMPONENT_DETAIL"}
+    declared_identities = set()
     for item in views:
         view_id = str(item.get("view_id") or "").strip().lower()
         if not view_id:
@@ -384,72 +482,142 @@ def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str,
             },
             label=f"{view_id} editable proposal label map",
         )
-        loaded.append((view_id, proposal))
+        scope = str(item.get("geometry_scope") or "FULL_OBJECT").strip().upper()
+        if scope not in allowed_scopes:
+            raise ValueError(f"{view_id}: unknown geometry_scope")
+        target_id = str(item.get("target_id") or "").strip()
+        target_variant = str(item.get("target_variant") or "").strip()
+        if bool(target_id) != bool(target_variant):
+            raise ValueError(f"{view_id}: target_id and target_variant must be declared together")
+        if target_id:
+            declared_identities.add((target_id, target_variant))
+        loaded.append({"view_id": view_id, "proposal": proposal, "scope": scope})
     if len(identifiers) != len(set(identifiers)):
         raise ValueError("proposal view ids must be unique")
+    if len(declared_identities) > 1:
+        raise ValueError("cross-view proposals contain mixed target identity or variant")
+    if declared_identities and len(declared_identities) == 1 and any(
+        not str(item.get("target_id") or "").strip() for item in views
+    ):
+        raise ValueError("identity-bound correspondence requires target identity on every view")
 
-    anchor_id, anchor = loaded[0]
+    anchor_id, anchor = loaded[0]["view_id"], loaded[0]["proposal"]
     groups = [
         {
-            "proposal_group_id": f"appearance-group-{index + 1:03d}",
+            "proposal_group_id": f"component-group-{index + 1:03d}",
             "matches": {anchor_id: region["proposal_region_id"]},
             "pair_confidence": {},
+            "match_diagnostics": {},
+            "_members": [(region, loaded[0]["scope"])],
+            "_qualities": [float(anchor.get("proposal_confidence", 0.0))],
         }
         for index, region in enumerate(anchor["regions"])
     ]
-    unmatched = {}
+    unmatched = {anchor_id: []}
     ambiguous = []
-    anchor_descriptors = np.asarray([_proposal_descriptor(region) for region in anchor["regions"]])
-    for view_id, proposal in loaded[1:]:
-        other_descriptors = np.asarray([_proposal_descriptor(region) for region in proposal["regions"]])
-        color_cost = np.linalg.norm(anchor_descriptors[:, None, :3] - other_descriptors[None, :, :3], axis=2) / 80.0
-        area_cost = np.abs(anchor_descriptors[:, None, 3] - other_descriptors[None, :, 3])
-        aspect_cost = np.abs(anchor_descriptors[:, None, 4] - other_descriptors[None, :, 4])
-        costs = 0.7 * color_cost + 0.18 * area_cost + 0.12 * aspect_cost
-        anchor_rows, other_columns = linear_sum_assignment(costs)
+    maximum_match_cost = 0.85
+    for loaded_view in loaded[1:]:
+        view_id, proposal, scope = (
+            loaded_view["view_id"], loaded_view["proposal"], loaded_view["scope"]
+        )
+        pair_details: list[list[dict[str, Any]]] = []
+        costs = np.zeros((len(groups), len(proposal["regions"])), dtype=float)
+        for group_index, group in enumerate(groups):
+            detail_row = []
+            for region_index, region in enumerate(proposal["regions"]):
+                member_results = [
+                    _pair_cost(member, region, first_scope=member_scope, second_scope=scope)
+                    for member, member_scope in group["_members"]
+                ]
+                member_costs = np.asarray([result[0] for result in member_results], dtype=float)
+                representative = int(np.argmin(member_costs))
+                costs[group_index, region_index] = float(np.median(member_costs))
+                detail_row.append({
+                    **member_results[representative][1],
+                    "aggregate_cost": float(costs[group_index, region_index]),
+                    "representative_prior_view_count": len(member_results),
+                })
+            pair_details.append(detail_row)
+        group_rows, other_columns = linear_sum_assignment(costs)
         matched_other = set()
-        for row, column in zip(anchor_rows.tolist(), other_columns.tolist()):
-            matched_other.add(column)
+        rejected_other = set()
+        for row, column in zip(group_rows.tolist(), other_columns.tolist()):
             selected_cost = float(costs[row, column])
-            alternatives = np.delete(costs[row], column)
-            if len(alternatives):
-                second = float(np.min(alternatives))
-                margin = float(np.clip((second - selected_cost) / max(second, 1e-6), 0.0, 1.0))
-            else:
-                margin = 1.0
+            alternatives = np.delete(costs[row], column).tolist()
+            alternatives.append(maximum_match_cost)
+            second = float(min(alternatives))
+            margin = float(np.clip((second - selected_cost) / max(second, 1e-6), 0.0, 1.0))
+            if selected_cost >= maximum_match_cost:
+                rejected_other.add(column)
+                continue
+            matched_other.add(column)
             proposal_quality = min(
-                float(anchor.get("proposal_confidence", 0.0)),
+                min(groups[row]["_qualities"]),
                 float(proposal.get("proposal_confidence", 0.0)),
             )
             confidence = float(math.exp(-selected_cost) * margin * proposal_quality)
             groups[row]["matches"][view_id] = proposal["regions"][column]["proposal_region_id"]
             groups[row]["pair_confidence"][view_id] = confidence
+            groups[row]["match_diagnostics"][view_id] = {
+                **pair_details[row][column],
+                "selected_cost": selected_cost,
+                "no_match_cost": maximum_match_cost,
+                "assignment_margin": margin,
+            }
+            groups[row]["_members"].append((proposal["regions"][column], scope))
+            groups[row]["_qualities"].append(float(proposal.get("proposal_confidence", 0.0)))
             if confidence < 0.6:
                 ambiguous.append({"view_id": view_id, "group_id": groups[row]["proposal_group_id"], "confidence": confidence})
-        unmatched[view_id] = [
-            region["proposal_region_id"]
-            for index, region in enumerate(proposal["regions"])
-            if index not in matched_other
-        ]
+        unmatched_indices = [index for index in range(len(proposal["regions"])) if index not in matched_other]
+        unmatched[view_id] = [proposal["regions"][index]["proposal_region_id"] for index in unmatched_indices]
+        for index in unmatched_indices:
+            region = proposal["regions"][index]
+            groups.append({
+                "proposal_group_id": f"component-group-{len(groups) + 1:03d}",
+                "matches": {view_id: region["proposal_region_id"]},
+                "pair_confidence": {},
+                "match_diagnostics": {view_id: {
+                    "created_from_unmatched_region": True,
+                    "rejected_by_cost_gate": index in rejected_other,
+                    "no_match_cost": maximum_match_cost,
+                }},
+                "_members": [(region, scope)],
+                "_qualities": [float(proposal.get("proposal_confidence", 0.0))],
+            })
     incomplete = [group["proposal_group_id"] for group in groups if len(group["matches"]) != len(loaded)]
     status = "CONFIDENT_PROPOSAL" if not ambiguous and not incomplete and not any(unmatched.values()) else "AMBIGUOUS_REVIEW_REQUIRED"
+    public_groups = [
+        {key: value for key, value in group.items() if not key.startswith("_")}
+        for group in groups
+    ]
     return {
         "schema_version": 1,
         "record_type": "CROSS_VIEW_COMPONENT_CORRESPONDENCE_PROPOSAL",
         "anchor_view_id": anchor_id,
         "view_ids": identifiers,
+        "target_identity": (
+            {"target_id": next(iter(declared_identities))[0], "target_variant": next(iter(declared_identities))[1]}
+            if declared_identities else None
+        ),
+        "view_geometry_scope": {item["view_id"]: item["scope"] for item in loaded},
         "proposal_bindings": {
-            view_id: {
+            item["view_id"]: {
                 "source_reference_sha256": proposal["source_reference_sha256"],
                 "source_mask_sha256": proposal["source_mask_sha256"],
                 "editable_label_map_sha256": proposal["artifact_sha256"]["editable_label_map"],
             }
-            for view_id, proposal in loaded
+            for item in loaded for proposal in [item["proposal"]]
         },
-        "groups": groups,
+        "groups": public_groups,
         "unmatched_regions": unmatched,
         "incomplete_groups": incomplete,
         "ambiguous_matches": ambiguous,
+        "matching_model": {
+            "method": "INCREMENTAL_GLOBAL_ASSIGNMENT_WITH_EXPLICIT_NO_MATCH",
+            "maximum_match_cost": maximum_match_cost,
+            "features": ["color_lab", "visible_area", "aspect_ratio", "provider_semantic_label_if_available", "provider_semantic_role_if_available"],
+            "partial_view_area_aspect_downweighting": True,
+        },
         "status": status,
         "accepted_as_semantic_identity": False,
         "review_required": True,
@@ -457,7 +625,7 @@ def propose_cross_view_correspondences(views: list[dict[str, Any]]) -> dict[str,
             "allowed": True,
             "instruction": "Edit group matches and assign semantic IDs before producing REFERENCE_COMPONENT_EVIDENCE records.",
         },
-        "claim_boundary": "Matching compares visible appearance, area, and aspect descriptors. It does not prove that regions are the same physical component across views.",
+        "claim_boundary": "Matching combines appearance, bounded geometry descriptors, and optional provider semantic proposals with an explicit no-match gate. Provider words remain proposal features, not identity truth or geometry authorization.",
     }
 
 

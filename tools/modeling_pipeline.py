@@ -89,7 +89,10 @@ def main() -> int:
     gemini_components.add_argument("evidence", type=Path)
     gemini_components.add_argument("--output-dir", type=Path, required=True)
     gemini_components.add_argument("--output", type=Path, required=True)
-    gemini_components.add_argument("--model", default="gemini-3.7-flash")
+    gemini_components.add_argument("--model", default="gemini-3.8-flash")
+    gemini_components.add_argument("--request-timeout-ms", type=int, default=60_000)
+    gemini_components.add_argument("--request-max-dimension", type=int, default=1536)
+    gemini_components.add_argument("--response-replay", type=Path, help="re-audit a saved raw Gemini JSON response without another API call")
     propose_correspondences = subparsers.add_parser("propose-correspondences", help="match appearance-region proposals across views for review")
     propose_correspondences.add_argument("manifest", type=Path)
     propose_correspondences.add_argument("--output", type=Path, required=True)
@@ -206,6 +209,9 @@ def main() -> int:
             args.evidence,
             args.output_dir,
             model=args.model,
+            request_timeout_ms=args.request_timeout_ms,
+            request_maximum_dimension=args.request_max_dimension,
+            response_replay=args.response_replay,
         )
         _write_json(args.output, result)
         return 0 if result["ready_for_external_adapter"] else 2
