@@ -85,15 +85,22 @@ def render_silhouette(
     vertices: np.ndarray,
     faces: list[tuple[int, ...]],
     view: dict[str, Any],
+    *,
+    fill_open_boundaries: bool = True,
 ) -> np.ndarray:
-    """Rasterize the union of cage faces; depth is irrelevant for a binary silhouette."""
+    """Rasterize faces, optionally completing open proxy boundaries.
+
+    The default preserves the optimizer's intended-volume approximation. Use
+    ``fill_open_boundaries=False`` to inspect only authored faces; virtual caps
+    must never be interpreted as evidence that a saved mesh is closed.
+    """
     width, height = view["image_size"]
     points = project_vertices(vertices, view)
     mask = np.zeros((height, width), dtype=np.uint8)
     for face in faces:
         polygon = np.rint(points[np.asarray(face, dtype=int)]).astype(np.int32)
         cv2.fillPoly(mask, [polygon], 1, lineType=cv2.LINE_8)
-    for loop in _boundary_loops(faces):
+    for loop in _boundary_loops(faces) if fill_open_boundaries else []:
         polygon = np.rint(points[np.asarray(loop, dtype=int)]).astype(np.int32)
         cv2.fillPoly(mask, [polygon], 1, lineType=cv2.LINE_8)
     return mask.astype(bool)

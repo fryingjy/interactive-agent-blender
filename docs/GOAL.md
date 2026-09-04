@@ -286,6 +286,26 @@ unproved.
 
 Current priority order:
 
+Immediate evidence correction (2026-09-04): the trident training proxy passed
+family selection at mean silhouette loss 0.0914 (front IoU 0.8622, side 0.9566),
+yet its Blender renders showed distorted interior surfaces. Independent inspection
+found 400 quad faces and 100 open boundary edges. This is a useful shape proxy,
+not a professional cage. The CPU renderer now exposes authored-face-only rendering
+through `fill_open_boundaries=False`; its default virtual-cap approximation remains
+appropriate only for intended-volume fitting. Production review must compare actual
+Blender surfaces and must not inherit a proxy's pass. Next, validate renderer parity
+on fixed cameras and reproduce an intentional ridge/cross-section construction on
+a neutral blade before attempting another finished prop. Construction-plan schema
+validation alone does not satisfy this requirement.
+
+The first neutral construction exercise now has an independently verified closed
+diamond-section blade (20 vertices, 18 quads). Its fixed-camera Workbench comparison
+with authored-face CPU rendering produced front/side IoU 0.9532/0.8948 at 256 pixels,
+with maximum outside distances of 2.20/2.00 pixels. This localizes a raster-boundary
+discrepancy but does not establish exact renderer parity. The simple ridge is coherent;
+live subdivision control and cross-family transfer remain unproved. Reproduction
+parameters and limitations are recorded in `../knowledge/foundation/surface_construction_baseline.json`.
+
 1. **Establish a scored baseline** — run small non-held-out reference tasks through the current
    system unchanged and record where form, depth, construction, surface, or repair judgment fails.
 2. **Reference-to-form apprenticeship** — practice multiview landmarks, depth/overlap reconciliation,

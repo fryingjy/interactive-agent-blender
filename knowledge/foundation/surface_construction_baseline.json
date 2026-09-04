@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "record_type": "DEVELOPMENT_EXPERIMENT",
+  "date": "2026-09-04",
+  "status": "PARTIAL",
+  "experiment": "closed diamond-section blade and authored-face renderer parity",
+  "held_out": false,
+  "construction": {
+    "description": "Four vertices per diamond section; connect corresponding vertices with quads and explicitly cap both ends.",
+    "section_z_half_width_half_depth": [[0.0, 0.23, 0.065], [0.12, 0.23, 0.065], [1.25, 0.19, 0.052], [1.65, 0.11, 0.036], [1.95, 0.006, 0.004]],
+    "vertices": 20,
+    "quad_faces": 18,
+    "boundary_edges": 0,
+    "degenerate_faces": 0,
+    "face_winding_conflicts": 0,
+    "modifiers_applied": false,
+    "execution": "create_authored_quad_mesh through run_modeler_command_sequence; explicitly a procedural lab fixture"
+  },
+  "renderer_comparison": {
+    "blender_version": "5.2.1 LTS",
+    "resolution": [256, 256],
+    "orthographic_scale": 2.6,
+    "camera_target": [0, 0, 0.975],
+    "front_camera": [0, -5, 0.975],
+    "side_camera": [5, 0, 0.975],
+    "blender_mask": "Workbench flat white, transparent background, alpha > 127",
+    "cpu_mask": "render_silhouette(fill_open_boundaries=False)",
+    "front_iou": 0.95317,
+    "side_iou": 0.89481,
+    "front_max_outside_distance_pixels": 2.1969,
+    "side_max_outside_distance_pixels": 2.0,
+    "assessment": "Differences are localized to a roughly two-pixel boundary band; strict pixel parity is not established. Thin silhouettes magnify IoU sensitivity. No thresholds were relaxed to claim parity."
+  },
+  "visual_review": {
+    "observed": "Solid oblique render shows coherent tapered faces and a central ridge without the trident proxy's repeated compressed outlines.",
+    "limitations": ["Simple neutral fixture, not reference reconstruction", "Tiny flat tip cap remains", "Ridge contrast under this studio light is weak", "No SubD surface-control or cross-family transfer proof", "Not evidence of autonomous repair or professional capability"]
+  },
+  "local_artifacts": "work/surface-parity-lab/",
+  "next_experiment": "Compare boundary errors at multiple resolutions and test ridge-preserving live subdivision against the unsubdivided cage."
+}

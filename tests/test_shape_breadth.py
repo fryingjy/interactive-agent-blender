@@ -179,6 +179,11 @@ def test_open_profile_extrusion_axial_view_is_filled_as_an_intended_volume():
     vertices, faces = build_profile_extrusion(normalized["shape"])
     mask = render_silhouette(vertices, faces, normalized["views"][0])
     assert mask[48, 48] == 1
+    authored = render_silhouette(
+        vertices, faces, normalized["views"][0], fill_open_boundaries=False,
+    )
+    assert not authored[48, 48]
+    assert authored.sum() < mask.sum() * 0.1
 
 
 def test_negative_space_evidence_selects_ring_family_over_solid_extrusion():
