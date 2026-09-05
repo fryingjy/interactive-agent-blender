@@ -1,6 +1,6 @@
 # External Architecture Research
 
-Reviewed: **2026-09-04**
+Reviewed: **2026-09-05**
 
 This note records ideas worth testing after repository consolidation. These projects are evidence
 and comparison points, not dependencies and not sources to copy wholesale. Claims below are limited
@@ -19,6 +19,28 @@ to their papers, project pages, and repositories as reviewed on the date above.
 | [3DCodeBench](https://arxiv.org/abs/2606.01057) | Reports API failures plus visually successful outputs with disconnected/floating geometry, uses pairwise human preferences, and finds multi-turn refinement useful. | Typed operations already address API reliability; add stronger assembly/editability hard failures and blinded pairwise review to measure visible progress. |
 
 ## Consolidation conclusions
+
+### September 5 targeted refresh
+
+[Thinking in Blender / SEIG](https://arxiv.org/abs/2606.02580) reports improved reconstruction
+through staged refinement of executable Blender scene factors. Its single-image scene results do
+not establish professional hard-surface cages or hidden-form accuracy. Our inference: first separate
+major-form construction from materials/lighting and inspect each executed result, rather than
+adding another generator or polishing an incorrect proxy. This is research guidance, not a locally
+validated skill; adoption must produce a reference-task Blender result and measured correction.
+
+[EZBlender](https://github.com/Aztech-Lab/EZ_Blender) separates a central planner from specialized
+editing agents. Its examples include editing provided scene/shapekey setups; that does not prove
+unfamiliar reference reconstruction. The retained runtime already provides narrow operations and
+inspection. No installation or parallel bridge is justified by this comparison.
+
+[OpenAI's Astra model documentation](https://developers.openai.com/api/docs/models/gpt-6-astra)
+describes reasoning, coding, computer-use and research capability. These are model-level properties,
+not evidence that this session has a native Blender connector or that the repository's modeling
+failures are fixed. Use the available model with the existing tools; no Astra A/B or professional
+modeling improvement has been demonstrated by this documentation review.
+
+### Retained conclusions
 
 The comparison does not justify replacing the retained architecture. It reinforces five principles
 already present here:

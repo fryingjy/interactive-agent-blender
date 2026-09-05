@@ -26,7 +26,8 @@ task gap
   second-shape coverage.
 - `knowledge/foundation/quizzes/` — retrieval and retention checks performed without copying notes.
 - `knowledge/skills/` — runtime-oriented learned skills with applicability boundaries.
-- `knowledge/foundation/foundation_exit_report.md` — current capability gate.
+- `knowledge/foundation/progressive_prop_benchmark_curriculum.json` — current capability gate;
+  [GOAL.md](GOAL.md) is its living execution roadmap.
 
 Structured runtime retrieval uses a calibrated default score floor and may return no skill. That
 abstention is intentional: weak lexical overlap must not turn an unrelated ticket into an executable

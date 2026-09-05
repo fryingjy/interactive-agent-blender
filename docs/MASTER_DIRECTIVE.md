@@ -289,8 +289,8 @@ captured
 -> interpreted
 -> candidate
 -> experimentally tested
--> runtime validated
 -> transfer validated
+-> runtime validated
 -> promoted
 ```
 
@@ -391,66 +391,20 @@ highest-value next step
 
 Report only fields relevant to the session. Never pad reports with unmeasured claims.
 
-## 18. Tool architecture: Cloudglue and the Blender Connector (2026-08-13)
+## 18. Tool discovery and evidence boundaries
 
-Two additional MCP connectors are available in this environment alongside the repository's own
-typed modeler: **Cloudglue** (`mcp__Cloudglue__*`, video understanding — `describe_video`,
-`search_video_moments`, `search_video_summaries`, `segment_video_chapters`,
-`extract_video_entities`, `segment_video_camera_shots`, confirmed functional via a live
-`list_collections` call) and a **Blender Connector** (`mcp__Blender__*`, broad live-Blender access —
-`execute_blender_code`, `get_objects_summary`, viewport/window screenshots,
-`get_blendfile_summary_*`, plus offline `search_manual_docs`/`search_api_docs` over the bundled
-Blender manual and Python API reference, confirmed functional standalone).
+Discover the tools actually available in the current session; old connector names, ports and
+successful calls do not prove present availability. Keep environment-specific access results in
+experiment records, not this durable contract.
 
-Broad tools discover and observe; the narrow typed modeler establishes reproducible evidence. Do not
-let this collapse into one undifferentiated "AI can touch Blender" capability:
-
-- **Cloudglue** is a research source, equivalent in kind to a documentation page or forum post, not
-  a fact. A video showing a technique does not make the technique correct for the current asset;
-  treat its output as `SOURCE OBSERVATION` requiring the same `INTERPRETATION -> EXPERIMENTAL
-  EVIDENCE -> EXECUTABLE GUIDANCE` promotion path as any other source (Section 13). For held-out
-  benchmarks, never research the specific target asset after the benchmark is frozen — mark the
-  benchmark `CONTAMINATED` if this happens.
-- **Blender Connector** mutations bypass this repository's transaction/identity/rollback machinery.
-  A mutation performed through it must be disclosed as `BLENDER_CONNECTOR_BYPASS`, never silently
-  counted as `TYPED_MODELER` evidence, and must trigger external-edit reconciliation
-  (`check_external_edit`/re-probe) before the typed path resumes — the same discipline already
-  required for any other out-of-band edit (Section 9). Use it to observe, prototype, and discover;
-  formalize a capability into `blender_ops/` (with tests, rollback, and identity guarantees) before
-  relying on it for benchmark evidence.
-- Neither connector's live-instance tools work without their own server actually running (the
-  Blender Connector needs its addon started inside an open Blender session on port 9876, distinct
-  from `blender_ops/modeler_server.py`'s own port 9878) — confirmed live, not assumed; both report a
-  clear connection-refused/timeout rather than silently no-op.
-- Do not build a redundant video-transcription/frame-extraction stack or a redundant generic
-  Blender-Python bridge inside this repository merely because these connectors exist elsewhere in
-  the environment — they are not guaranteed available in every session, so `blender_ops/`'s own
-  typed surface and `knowledge_engine/ingest/video_ingest.py`'s local-file path remain the
-  repository's real, portable capability; the connectors are an accelerant when present, not a
-  replacement for owning the evidence trail.
-
-## 19a. Continuation directive reconciliation (2026-08-14)
-
-A second external planning document (`AUTONOMOUS_BLENDER_PRO_MODELING_CONTINUATION_DIRECTIVE`) was
-supplied after Section 18's directive. Per Section 3's own authority order (user intent above any
-document), its "Benchmark Ladder" (its own Section 53) directly reinforces — rather than
-conflicts with — the live user correction that started the current simple-shapes curriculum:
-Level 1 is explicitly "simple single-component objects," escalating only through Levels 2-8 toward
-unseen complex references. This project's earlier repeated pattern (boombox, camera, wrench,
-watering can, telephone, the paused katana blade) skipped straight to Level 5+ complexity every
-time and failed direct visual review every time despite clean technical checks — exactly the
-"one successful asset is not generalization" / "automated metric PASS, human review REJECT" warning
-both directives repeat. The corrected reading: do not return to Level 5+ benchmarks until genuine
-Level 1 breadth exists — multiple simple, structurally different single/low-component objects,
-each independently checkpointed against a real reference — not one lucky asset.
-
-Known gaps between this document and current reality (same category as Section 18's reconciliation):
-it predates and does not reference the katana pause, the simple-crate work
-(`runs/2026-08-14_simple-crate/`), or CloudGlue running out of credits
-(`knowledge_engine/ingest/scene_document.py`). Its prescribed research/video/`.blend`-study tracks
-(its Sections 17-27) remain valid future work but are explicitly lower priority than closing Level 1
-breadth first, per its own Section 58 ("LEARN -> TEST -> APPLY -> MEASURE" over "WATCH -> WATCH ->
-WATCH").
+- Video and external-model analyses are source observations, not validated skills. Apply the
+  research lifecycle in Section 13 and preserve benchmark contamination rules.
+- Out-of-band Blender mutations bypass typed identity and rollback guarantees. Disclose the bypass
+  and reconcile external edits before typed execution resumes; never count it as typed evidence.
+- Retain the repository's typed runtime and local-media ingestion as portable authorities. Use
+  optional connectors only for a demonstrated gap; do not duplicate working bridges or ingestion.
+- A new model version does not establish tool access or professional modeling capability. Measure
+  task-level effects against frozen criteria and retain negative results.
 
 ## 19. Current development rule
 

@@ -21,8 +21,9 @@ process refreshed Studio Lights and recognized all 15 files as user-defined MatC
 Blender process was refreshed again on 2026-08-11 and recognized 42 usable MatCaps total: 27
 built-in review MatCaps plus the 15 CC0 user additions.
 
-Machine-readable local validation is recorded in
-`runs/2026-08-11_connected-camera-corrective/blender_environment_report.json`.
+The original machine-readable validation was stored under a historical run removed from the active
+tree. Installation counts above describe that dated observation, not guaranteed current state;
+re-query Blender Studio Lights when selecting a MatCap on another machine or Blender version.
 
 A much larger public GitHub MatCap dump was reviewed but deliberately not installed: its own license
 notice says original author/source relationships were not retained. Quantity without usable

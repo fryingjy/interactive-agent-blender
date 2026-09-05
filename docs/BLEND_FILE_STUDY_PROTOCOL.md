@@ -2,8 +2,7 @@
 
 ## Why this exists
 
-Every source this project has studied so far is a document or a video: text, frames, captions,
-transcripts. A `.blend` file is a different kind of source entirely -- it is not someone *describing*
+A `.blend` file complements documents and videos: it is not someone *describing*
 a technique, it is the actual *result* of a professional modeler's decisions, inspectable directly:
 topology, edge loops, pole placement, bevel weights, modifier stacks and their order, the SubD control
 cage versus its evaluated surface, object decomposition, symmetry, naming, collections, and whatever
@@ -37,7 +36,8 @@ SOURCE BLEND
 
 Do not stop after INSPECT. Do not stop after EXTRACT PRINCIPLE with only a written description. A
 principle that has not been reproduced, transferred to different geometry, and applied to a real task
-is `CANDIDATE` at best, not `PROMOTED` -- use the existing lifecycle states honestly.
+must retain its actual stage (for example `CANDIDATE`, `EXPERIMENTALLY_TESTED`, or
+`TRANSFER_VALIDATED`), not `PROMOTED` -- use the existing lifecycle states honestly.
 
 ## Per-file inspection checklist
 
@@ -88,9 +88,9 @@ For each `.blend`, working read-only (open it, never save over it, never edit th
 ## When something can't be inspected
 
 Say so directly in the record rather than guessing or fabricating an observation. If a lesson has
-been reproduced but not yet transferred to a different shape, mark it `EXPERIMENTAL`, not
-`VALIDATED` -- these are the existing lifecycle states in `knowledge/foundation/source_registry.json`
-and `docs/KNOWLEDGE_SYSTEM.md`, reused here rather than invented fresh.
+been reproduced but not yet transferred to a different shape, mark the technique
+`EXPERIMENTALLY_TESTED`, not `TRANSFER_VALIDATED` or `PROMOTED`. Use the
+[knowledge lifecycle](KNOWLEDGE_SYSTEM.md), not invented shorthand status names.
 
 ## Research use
 
@@ -112,13 +112,13 @@ observations, candidate principles, reproduction experiments, and transfer evide
 `knowledge/foundation/operator_cards/` alongside every other operator card -- update an existing card
 when a studied file adds to a topic that already has one, rather than creating a duplicate.
 
-## Future connection to video study (not yet possible)
+## Paired video and saved-state study
 
 A user-directed critique (2026-08-13) named a genuinely stronger version of this protocol: if a
 tutorial's own working `.blend` is available alongside its video, correlate video timestamp -> what
 the artist said -> what they did -> what actually changed in the `.blend` file, rather than studying
 either source alone. That is a real improvement over this protocol's current file-only study loop,
-but it requires the video-understanding pipeline in `docs/VIDEO_PROTOCOL.md` (speech/action
-alignment, Blender-action recognition) to exist first -- none of the ten files studied so far
-(`runs/2026-08-13_blend-file-study/`) came with a paired tutorial video, so this remains a documented
-future direction, not a capability to apply yet.
+and uses the existing [video pipeline](VIDEO_PROTOCOL.md) for speech/action alignment. A paired
+study still requires matching source identities, timestamped observations and saved-state evidence;
+video access alone does not prove a correspondence to a particular mesh. Earlier file-only studies
+do not retroactively become paired studies.

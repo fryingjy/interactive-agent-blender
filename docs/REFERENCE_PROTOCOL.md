@@ -149,9 +149,9 @@ and revision before recording the stage evidence. The blockout gate rejects a ca
 live scene revision differs, so coverage must be recaptured after any intervening edit.
 Graph-shape validity
 (duplicate/missing ids, dangling relationships) delegates to the existing
-`knowledge_engine/reasoning.py::validate_component_graph`, which existed already but was called from
-nowhere outside its own test -- this is now its first real caller, not a second parallel validator.
-See `runs/2026-08-13_telephone-rebuild/scene_decomposition.json` for a worked example.
+`knowledge_engine/reasoning.py::validate_component_graph`. This is a shared vocabulary validator,
+not a second geometry planner. The current executable path is described in
+[Shape solving](SHAPE_SOLVING.md).
 
 The evidence-bound interpretation contract is defined below. Important
 interpretations are typed as `OBSERVED`, `STRONGLY_INFERRED`, `WEAKLY_INFERRED`, or `UNKNOWN` and
@@ -172,8 +172,8 @@ primary and secondary structure is understood.
 
 Collect and evaluate gaps, openings, slots, holes, clearances, panel separations, handles, spaces
 between components. A model with the right outer silhouette can still be structurally wrong if its
-negative spaces are wrong -- this is exactly the lesson the adjustable wrench rejection already
-established the hard way (see `docs/DIRECTIVE_IMPLEMENTATION_AUDIT.md`).
+negative spaces are wrong. Conversely, image gaps from reflections or texture are not necessarily
+geometric holes: retain the [baseline counterexamples](BOOTSTRAP_BASELINE.md).
 
 ## Mechanical/product objects
 

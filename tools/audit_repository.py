@@ -6,9 +6,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import subprocess
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,11 +31,36 @@ def tracked_files() -> list[Path]:
     return sorted(path for path in paths if path.is_file())
 
 
+def missing_document_links(path: Path, root: Path) -> list[dict[str, str]]:
+    """Check file destinations in Markdown links, not prose/code example paths.
+
+    Handles inline links and reference definitions; excludes fenced/inline code.
+    Fragment existence and remote availability are deliberately outside this audit.
+    """
+    content = path.read_text(encoding="utf-8")
+    content = re.sub(r"(?ms)^\s*(`{3,}|~{3,})[^\n]*\n.*?^\s*\1\s*$", "", content)
+    content = re.sub(r"(`+).*?\1", "", content)
+    destinations = re.findall(r"\]\(\s*(<[^>]+>|[^\s)]+)", content)
+    destinations += re.findall(r"(?m)^\s*\[[^\]]+\]:\s*(<[^>]+>|\S+)", content)
+    missing = []
+    for destination in sorted(set(destinations)):
+        destination = destination.strip("<>")
+        parsed = urlsplit(destination)
+        if parsed.scheme or parsed.netloc or not parsed.path:
+            continue
+        target = unquote(parsed.path)
+        resolved = (root / target.lstrip("/") if target.startswith("/") else path.parent / target).resolve()
+        if not resolved.is_relative_to(root.resolve()) or not resolved.exists():
+            missing.append({"document": path.relative_to(root).as_posix(), "destination": destination})
+    return missing
+
+
 def audit() -> dict:
     files = tracked_files()
     forbidden = []
     root_drift = []
     syntax_errors = []
+    broken_links = []
     hashes: dict[tuple[str, int], list[str]] = defaultdict(list)
 
     for path in files:
@@ -55,6 +82,8 @@ def audit() -> dict:
                 compile(content, relative_text, "exec")
             except (SyntaxError, UnicodeError) as exc:
                 syntax_errors.append(f"{relative_text}: {exc}")
+        if path.suffix == ".md" and (relative.parts[0] == "docs" or relative_text == "README.md"):
+            broken_links.extend(missing_document_links(path, ROOT))
 
     duplicate_groups = [
         {"bytes": size, "paths": paths}
@@ -66,6 +95,7 @@ def audit() -> dict:
         "no_unclassified_root_files": not root_drift,
         "python_syntax_clean": not syntax_errors,
         "no_exact_duplicate_tracked_files": not duplicate_groups,
+        "current_document_file_links_resolve": not broken_links,
     }
     return {
         "tracked_file_count": len(files),
@@ -74,6 +104,7 @@ def audit() -> dict:
         "unclassified_root_files": root_drift,
         "python_syntax_errors": syntax_errors,
         "exact_duplicate_groups": duplicate_groups,
+        "broken_current_document_links": broken_links,
         "pass": all(checks.values()),
     }
 

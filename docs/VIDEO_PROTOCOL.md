@@ -29,9 +29,7 @@ diagnose the failure, and what alternative strategies exist."
 9. Compare extracted principles against the Blender Manual, the Blender Python API docs, other
    professional tutorials, Blender Stack Exchange, Blender Artists, or other credible sources where
    practical.
-10. If sources disagree, preserve the contradiction -- do not silently pick a side. (Matches the
-    existing practice in `runs/2026-08-14_video-curriculum/synthesis.md`, e.g. the
-    booleans-are-finger-painting-vs-recommended-for-beginners reconciliation.)
+10. If sources disagree, preserve the contradiction rather than silently picking a side.
 11. For important claims, design a controlled Blender experiment.
 12. Test the technique on DIFFERENT geometry from the tutorial's own asset.
 13. Only promote a technique to reusable/trusted knowledge if it survives that transfer test.
@@ -59,7 +57,8 @@ in a command, report, prompt, or committed file. Use `--dry-run` to validate a U
 secret-free request summary without consuming API quota.
 
 Install the reproducible optional runtime with
-`pip install -r requirements-video-learning.txt` if it is not already available. A key that merely
+`pip install -r requirements/video-learning.txt` using the maintained
+[dependency file](../requirements/video-learning.txt) if it is not already available. A key that merely
 exists is insufficient: it must be authorized for the selected Gemini model and public-video
 interaction. Credential-denied requests create no study evidence and must remain explicitly
 unprocessed rather than being retried as transcript-only claims.

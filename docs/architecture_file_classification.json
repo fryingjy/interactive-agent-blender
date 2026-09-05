@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 289,
-  "python_file_count": 168,
+  "tracked_file_count": 290,
+  "python_file_count": 169,
   "classification_counts": {
     "CORE_RUNTIME": 38,
     "CURRENT_DOC": 18,
     "CURRENT_KNOWLEDGE": 122,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 65,
+    "TEST_SUPPORT": 66,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -3139,6 +3139,19 @@
       "entrypoint": false
     },
     {
+      "path": "tests/test_repository_document_links.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_repository_document_links",
+      "imports": [
+        "tools/audit_repository.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
       "path": "tests/test_retrieval_benchmark.py",
       "classification": "TEST_SUPPORT",
       "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
@@ -3388,7 +3401,9 @@
       "python_module": "tools.audit_repository",
       "imports": [],
       "production_importers": [],
-      "test_importers": [],
+      "test_importers": [
+        "tests/test_repository_document_links.py"
+      ],
       "reachable_from_authoritative_roots": false,
       "entrypoint": true
     },

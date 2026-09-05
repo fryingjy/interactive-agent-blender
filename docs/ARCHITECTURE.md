@@ -70,6 +70,10 @@ base cage + evaluated surface + diagnostic renders
   boundary cycles and fills them only in the rasterized silhouette, so an editable uncapped volume
   does not collapse to an outline when viewed down its open axis.
 - `fitting.py` performs bounded multiview fitting and preserves per-view disagreement.
+- `construction.py` separates production construction intent from fitted proxies and proposes
+  feature edges from persistent-ID probes with explicit preserve/smooth overrides. Plans need
+  executed surface evidence; schema validity is not a quality pass. Authored-face CPU comparisons
+  use `fill_open_boundaries=False` and must be verified against Blender; virtual caps are not faces.
 - `compiler.py` emits the existing typed `create_authored_quad_mesh` command without applying
   modifiers.
 - `selection.py` competes generic shape families and refuses to select an incompatible candidate.

@@ -204,7 +204,10 @@ implemented, but automatic semantic labeling, complex photographic backgrounds, 
 visual identity recognition are not. Separate-object and bounded shared-cage assembly compilation
 are now implemented. Shared-cage scope is deliberately narrow: explicit equal-cardinality open ports
 and linear weld/bridge connections. Loop resampling, arbitrary fusion, branching junctions,
-multiple/non-corresponding openings, general thin shells, correspondence discovery, and image-derived
-initialization remain future work.
+multiple/non-corresponding openings, general thin shells, and automatic geometric correspondence
+discovery remain future work. Image-derived initialization is implemented for registered orthographic
+and calibrated perspective component masks; it does not infer reliable calibration or semantic
+components from arbitrary photographs. See [the frozen baseline](BOOTSTRAP_BASELINE.md) for current
+real-image failures rather than extrapolating from controlled fixtures.
 Optional image-to-3D systems may provide priors, but their meshes are never accepted as production
 topology.

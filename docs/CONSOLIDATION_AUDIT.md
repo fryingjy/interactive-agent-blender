@@ -171,7 +171,46 @@ separate coordinated maintenance operation:
 This plan is intentionally not part of ordinary cleanup because rewriting shared object identity is
 destructive and operationally distinct from deleting files in the current tree.
 
-## Verification
+## September 5 consolidation refresh
+
+Audit baseline: `4579480` (recover removed text with `git show 4579480:docs/GOAL.md`,
+or the corresponding document path). This is a maintenance pass, not capability expansion.
+The refreshed active-tree inventory covers 290 files and 169 Python files; no exact duplicate
+non-empty files or Python parse failures were found. Static imports/classification are evidence,
+not proof that every zero-import module is dead. No source module, user asset, media file or
+shared Git history was deleted in this pass.
+
+| Removed or corrected material | Evidence / deletion classification | Retained authority |
+| --- | --- | --- |
+| Chronological implementation queues in `GOAL.md` | **SUPERSEDED**: completed features exist in the retained solver/runtime, while the frozen B0 and curriculum now define the current phase. Several old paragraphs prescribe already completed work. | Single current queue, unchanged completion criteria, linked negative evidence; full prior diary in Git |
+| `MASTER_DIRECTIVE.md` sections 18 and 19a's dated connector availability and August priority reconciliation | **HISTORICAL-only / SUPERSEDED**: session tool discovery does not expose those connector names; the September bootstrap supersedes the crate/katana-era queue. | Durable discovery, bypass disclosure, typed authority and benchmark discipline |
+| Deleted foundation gate, telephone example and implementation-audit references | **SUPERSEDED**: targets absent from active tree. | Current curriculum, shape protocol and baseline counterexamples |
+| Claim that image-derived initialization is future work | **SUPERSEDED** by `modeling_core/initialization.py` and its tests. | Explicit orthographic/calibrated-perspective support and ordinary-photo limitations |
+| Root-level video dependency install command | **SUPERSEDED** by `requirements/video-learning.txt`. | Correct command plus checked local Markdown link |
+| File-study claims that no Blend sources/video pipeline exist, shorthand lifecycle labels and conflicting promotion order | **SUPERSEDED** by current file-study evidence, video implementation and knowledge lifecycle. | Observation/inference separation, transfer before runtime promotion, paired-study evidence requirements |
+
+The same audit tool now checks local file destinations in current documentation Markdown links and
+reference definitions. It excludes code examples and remote links; it does not validate prose paths,
+remote availability, fragment anchors or all CommonMark syntax. Four regression tests cover missing
+targets, encoded/spaced paths, reference definitions, code examples and repository escape.
+
+Self-diagnosis: the last two reference cycles improved evidence diagnostics without producing a
+reference-task Blender artifact. This pass removes contradictory context and stale instructions;
+it does not fix semantic perception, camera reasoning or construction skill by itself. The goal
+now explicitly requires a bounded reference-to-construction exercise and prohibits treating another
+metadata-only cycle as modeling progress. No bootstrap gate, family-selection margin, benchmark
+result or runtime authorization was weakened.
+
+Verification: **420 tests and 30 subtests passed**, with `BLENDER_TEST_EXECUTABLE` set to Blender
+5.2.1, including fresh-process evaluated-shoulder failure/repair execution. Repository hygiene,
+current document file links, curriculum and source-registry checks pass. Research refresh is in
+[External architecture research](EXTERNAL_ARCHITECTURE_RESEARCH.md); no additional package was
+needed for this maintenance pass. Git object inspection was read-only; the separate recovery and
+history-rewrite plan above remains unexecuted. At baseline `4579480`, 6,168 reachable blobs total
+639,162,943 bytes; current-HEAD blobs occupy 2,410,679 bytes. Deleted historical media represents
+94.82% of reachable blob bytes. These are uncompressed object sizes, not checkout or pack-file sizes.
+
+## Original consolidation verification (historical snapshot)
 
 - Full Python suite: **400 passed, 30 subtests passed**.
 - Repository audit: **PASS**, 274 active files, zero forbidden
