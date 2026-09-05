@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_PRACTICE_LESSON",
+  "target_id": "practice_m8_flat_washer",
+  "status": "DIMENSIONALLY_VERIFIED_SURFACE_DIAGNOSTIC_NOT_ACCEPTED_ASSET",
+  "blender_version": "5.2.1 LTS",
+  "sources": [
+    "https://www.westfieldfasteners.co.uk/Metric-Washers/Form-A-Washer-M8-A4-Stainless.html",
+    "https://www.westfieldfasteners.co.uk/A4-Washer-M8.html",
+    "https://www.westfieldfasteners.co.uk/Images3/Drawings/Form-A-Washers-DIN-125A-Similar-to-ISO-7089.png"
+  ],
+  "source_limitations": "One supplier engineering drawing with front and section views, not independent photos. Supplier photo shows several sizes; not exact M8 dimension evidence.",
+  "nominal_mm": {"outside_diameter": 16, "bore": 8.4, "thickness": 1.6},
+  "study_tolerance_mm": 0.1,
+  "units": "One Blender unit represents 10 mm; no manufacturing certification.",
+  "reference_pipeline": {
+    "mask_method": "Source contour extraction with separately retained true bore; text not treated as geometry.",
+    "competing_families": ["profile_ring_extrusion", "profile_extrusion"],
+    "mean_losses": [0.02347463099292331, 0.22753618450924856],
+    "selected": "profile_ring_extrusion",
+    "reference_gate_passed": true,
+    "fixture_exemption_used": false
+  },
+  "observed_repairs": [
+    "Fit supplied correct annular topology but OD and thickness missed nominal dimensions. Projected existing loops to dimensioned radii and axial planes through persistent-ID typed edits.",
+    "12-sided raw cage visibly faceted; valid Gemini critic rejected it. Subdivided only circumferential edges, then projected new vertices to circles: 96 vertices, 96 quads, one closed component.",
+    "24-sided raw-cage critic feedback still requested smoothing. Three subsequent structured reviews failed validation; retained captured raw response diagnoses faceting but leaves below-threshold side scores without a localized mismatch. No review was treated as approval.",
+    "Isolated live bevel (0.005 units, 3 segments, 45-degree angle limit) then subdivision level 2 improved curvature. It shrank OD to 15.7993–15.8273 mm and bore to 8.2942–8.3100 mm.",
+    "Scaled outer and inner base loops separately using nominal/measured mean evaluated diameter, then reran the same live-modifier diagnostic. No modifier was applied."
+  ],
+  "final_evaluated_measurements": {
+    "method": "Independent Blender BVH, 360 radial samples at mid-thickness, axial thickness ray and through-bore ray",
+    "outside_diameter_mm_range": [15.98583325532987, 16.014191447042286],
+    "bore_diameter_mm_range": [8.391986905290242, 8.408000425228146],
+    "thickness_mm": 1.5993738174438477,
+    "through_hole_clear": true,
+    "dimension_pass": true
+  },
+  "verification": {
+    "base": {"vertices": 96, "quads": 96, "non_manifold_edges": 0, "winding_conflicts": 0},
+    "evaluated": {"vertices": 6144, "quads": 6144, "non_manifold_edges": 0, "winding_conflicts": 0},
+    "agent_visual_review": "Front and isometric Workbench/MatCap images inspected: circular outline, open bore, flat annular face and small continuous edge radius; not a material or production-quality verdict.",
+    "human_acceptance": false,
+    "held_out_success": false
+  },
+  "retained_local_artifacts": {
+    "editable_cage": "work/washer-study/washer-compensated-cage.blend",
+    "unaccepted_live_modifier_trial": "work/washer-study/washer-compensated.diagnostic.blend",
+    "source_and_execution_records": "work/washer-study"
+  },
+  "media_policy": "Deleted all 10 review PNGs and 4 superseded blend checkpoints after inspection. Compact observations and measurements remain; deleted images cannot be used as available hash-bound review evidence. Source drawing, extraction inputs and final editable files remain local, not a Git media archive. Re-render before a new review; old review hashes are not current authority.",
+  "transfer_lesson": "A selected fit is not dimensional correctness. A circular base cage does not guarantee a circular or correctly sized evaluated surface. Check outer and inner radii separately; inspect the intended modifier result without mistaking diagnostic access for acceptance.",
+  "next_step": "Stage-aware independent cage/evaluated review; then a simple flanged spacer. No complex weapon or professional-capability claim from this exercise."
+}

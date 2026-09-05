@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 293,
-  "python_file_count": 171,
+  "tracked_file_count": 295,
+  "python_file_count": 172,
   "classification_counts": {
     "CORE_RUNTIME": 38,
     "CURRENT_DOC": 18,
-    "CURRENT_KNOWLEDGE": 123,
+    "CURRENT_KNOWLEDGE": 124,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 68,
+    "TEST_SUPPORT": 69,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -1203,6 +1203,17 @@
       "entrypoint": false
     },
     {
+      "path": "knowledge/foundation/washer_reference_practice.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
       "path": "knowledge/skills/bevel-segments-parity-corner-triangle.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
@@ -2060,6 +2071,7 @@
         "tools/run_modeler_command_sequence.py"
       ],
       "test_importers": [
+        "tests/test_surface_diagnostic_policy.py",
         "tests/test_tutorial_reproduction.py"
       ],
       "reachable_from_authoritative_roots": true,
@@ -3282,6 +3294,19 @@
       "python_module": "tests.test_surface_cause_classifier",
       "imports": [
         "knowledge_engine/surface_cause_classifier.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_surface_diagnostic_policy.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_surface_diagnostic_policy",
+      "imports": [
+        "knowledge_engine/tutorial_reproduction.py"
       ],
       "production_importers": [],
       "test_importers": [],

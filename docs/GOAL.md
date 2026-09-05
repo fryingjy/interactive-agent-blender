@@ -74,12 +74,19 @@ Useful construction evidence is separate and bounded:
 
 ## Immediate work: close the reference-to-construction gap
 
+The user-requested simple-object practice now has a real supplier-drawing washer blockout,
+competing ring/solid fits, typed corrections and an isolated live-modifier trial. See
+[washer practice](../knowledge/foundation/washer_reference_practice.json). Evaluated dimensions
+pass the study tolerance after shrinkage compensation; this is not an accepted benchmark asset.
+The raw-cage critic rejected polygonal curvature and later returned invalid structured feedback.
+Diagnostic modifier trials do not constitute reviewer acceptance or bootstrap promotion.
+
 1. Keep frozen raw B0 outcomes unchanged. Label interventions separately; do not tune baseline
    thresholds or quietly replace failed masks.
-2. Finish a bounded reference-to-form development exercise using an already collected neutral
-   candidate. Resolve the specific missing component/camera/depth evidence, not an unlimited new
-   reference collection. If unresolvable, record the failed criterion and use another existing
-   candidate; do not repeat the same metadata-only cycle.
+2. Finish the washer's stage-aware cage/evaluated review, then transfer the demonstrated circular
+   surface control to a simple flanged spacer before a low-component mechanical assembly. Use
+   dimensioned reference evidence where available; do not repeat metadata-only cycles or claim
+   ordinary-photo mastery from engineering drawings.
 3. Compare plausible explanations and identify a discriminating observation. A tied fit stays
    ambiguous: do not loosen the margin or use fixture authorization on a real reference.
 4. Once the existing development authorization contract is satisfied, produce and inspect an actual
@@ -115,6 +122,8 @@ is an experimental variable, not proof of capability; comparisons must freeze ta
 - Choose crease, support loops, bevel, weighted normals, flat or angle-based smoothing from intended
   surface/highlight behavior. Never blanket-smooth to conceal inaccurate form.
 - Keep modifiers live and inspect base and evaluated geometry. Prefer cheap Workbench diagnostics.
+- Treat review renders/screenshots as temporary; retain concise lessons, limitations and final
+  editable models rather than growing a permanent image archive. Preserve active source bindings.
 - No HTML reference boards or unnecessary pre-model approval requests. Respect actual runtime gates;
   do not fabricate approval evidence or independent reviews.
 - Install tools only for demonstrated unmet needs. Preserve working architecture and user assets.

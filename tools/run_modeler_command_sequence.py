@@ -29,6 +29,7 @@ from knowledge_engine.tutorial_reproduction import (  # noqa: E402
     tutorial_modeling_gate_required,
     validate_tutorial_blockout_review,
     validate_tutorial_premodeling_evidence,
+    validate_surface_diagnostic,
 )
 
 
@@ -42,6 +43,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--tutorial-evidence", type=Path)
     parser.add_argument("--reference-stage-evidence", type=Path)
     parser.add_argument("--tutorial-blockout-review", type=Path)
+    parser.add_argument("--surface-diagnostic-only", action="store_true",
+                        help="Test live modifiers on a new .diagnostic.blend copy; never approve an asset")
     parser.add_argument("--allow-procedural-fixture", action="store_true")
     parser.add_argument("--allow-legacy-ungated-tutorial", action="store_true", help=argparse.SUPPRESS)
     return parser.parse_args(argv)
@@ -67,6 +70,10 @@ def main() -> int:
     }
     tutorial_evidence = None
     reference_evidence = None
+    if args.surface_diagnostic_only:
+        if fixture_exemption:
+            raise ValueError("surface diagnostic cannot use fixture exemptions")
+        gate_results["surface_diagnostic"] = validate_surface_diagnostic(sequence, args.load, args.save)
     if tutorial_modeling_gate_required(args.sequence, sequence) and not fixture_exemption:
         if args.tutorial_evidence is None:
             raise ValueError(
@@ -89,7 +96,7 @@ def main() -> int:
         gate_results["reference_analysis"] = gate
         if not gate["pass"]:
             raise ValueError(f"reference-analysis gate failed: {gate['failures'] or gate['missing']}")
-    if asset_surface_gate_required(args.sequence, sequence) and not fixture_exemption:
+    if asset_surface_gate_required(args.sequence, sequence) and not fixture_exemption and not args.surface_diagnostic_only:
         if args.tutorial_blockout_review is None:
             raise ValueError(
                 "asset surface treatment is blocked before Blender mutation: provide "
@@ -117,7 +124,7 @@ def main() -> int:
             gate_results["reference_analysis"] = gate
             if not gate["pass"]:
                 raise ValueError(f"reference-analysis gate failed: {gate['failures'] or gate['missing']}")
-    if asset_surface_gate_required(args.sequence, sequence) and not fixture_exemption:
+    if asset_surface_gate_required(args.sequence, sequence) and not fixture_exemption and not args.surface_diagnostic_only:
         review_target = review.get("target_id")
         evidence_target = (
             tutorial_evidence.get("target_id") if tutorial_evidence is not None
@@ -253,6 +260,7 @@ def main() -> int:
         "results": results,
         "save_result": save_result,
         "pass": success,
+        "artifact_role": "UNACCEPTED_SURFACE_DIAGNOSTIC" if args.surface_diagnostic_only else "MODELING_SEQUENCE_RESULT",
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

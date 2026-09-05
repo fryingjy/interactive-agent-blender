@@ -69,7 +69,7 @@
     "typed_decision_reports": "01-report.json through 09-report.json; separate checkpointed Blender processes",
     "independent_saved_state_verifier": "tests/fixtures/shell_construction/inspect_saved.py",
     "reproduction_test": "tests/test_shell_construction_blender.py",
-    "media_retention": "Generated media and Blend checkpoints stay local and ignored. The controlled replay and small measured record are tracked."
+    "media_retention": "Per user preference, inspected renders and superseded intermediate Blend checkpoints were deleted after final verification. Only final 04-bevel.blend and radial-study.blend, compact measurements and typed decision logs remain locally; the controlled replay and this record are tracked. Listed renders describe historical observations, not currently available review artifacts."
   },
   "limitations": [
     "Agent-guided neutral drills, not automated reference-to-construction or held-out successes.",

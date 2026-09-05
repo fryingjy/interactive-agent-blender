@@ -127,7 +127,7 @@ def main():
         report_dir = Path(args.report_dir)
         report_dir.mkdir(parents=True, exist_ok=True)
         ts = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
-        out_path = report_dir / f"{args.object_name}_{ts}.json"
+        out_path = report_dir / f"{args.object_name}_{report['geometry_source']}_{ts}_{time.time_ns()}.json"
         out_path.write_text(json.dumps(report, indent=2))
         report["report_path"] = str(out_path)
 

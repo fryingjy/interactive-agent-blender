@@ -71,6 +71,37 @@ def asset_surface_gate_required(sequence_path: str | Path, sequence: list[dict[s
     return bool(_sequence_operations(sequence) & SURFACE_OPERATIONS) and not procedural_fixture_sequence(sequence_path)
 
 
+def validate_surface_diagnostic(sequence, load_path, save_path):
+    """Allow isolated live-modifier experiments, never asset/stage acceptance."""
+    if not load_path or not Path(load_path).is_file():
+        raise ValueError("surface diagnostic requires an existing saved base cage")
+    if not save_path or not str(save_path).endswith(".diagnostic.blend"):
+        raise ValueError("surface diagnostic output must end in .diagnostic.blend")
+    if Path(save_path).exists() or Path(save_path).resolve() == Path(load_path).resolve():
+        raise ValueError("surface diagnostic cannot overwrite an existing file")
+    queries = {"get_full_state", "get_mesh_geometry", "get_evaluated_state",
+               "get_evaluated_intersection_candidates", "render_diagnostic_pass"}
+    parameters = {"width", "segments", "limit_method", "angle_limit", "levels", "render_levels"}
+    for step in sequence:
+        if not isinstance(step, dict) or set(step) - {"command", "params", "transaction", "label"}:
+            raise ValueError("unsupported surface diagnostic step")
+        if "transaction" in step:
+            if "command" in step:
+                raise ValueError("ambiguous surface diagnostic step")
+            tx = step["transaction"]
+            op, params = tx.get("operation"), tx.get("params", {})
+            valid = (
+                op == "add_modifier" and params.get("modifier_type") in {"BEVEL", "SUBSURF"}
+                or op == "set_modifier_parameter" and params.get("parameter") in parameters
+                or op == "set_smooth_by_angle"
+            )
+            if not valid:
+                raise ValueError("surface diagnostic permits only live bevel/subdivision/shading trials")
+        elif step.get("command") not in queries:
+            raise ValueError("surface diagnostic forbids construction, export, save and stage advancement")
+    return {"diagnostic_only": True, "quality_accepted": False, "stage_advancement_authorized": False}
+
+
 def asset_mutation_gate_required(sequence_path: str | Path, sequence: list[dict[str, Any]]) -> bool:
     """Identify any real-asset mutation, including local corrections that create no new object."""
     safe_prefixes = ("get_", "list_", "check_", "audit_", "render_", "poll_")
