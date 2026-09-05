@@ -5,7 +5,57 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import math
 from typing import Any
+
+
+def propose_feature_edges(
+    edges: list[dict[str, Any]], *, angle_degrees: float, rationale: str,
+    preserve_ids: list[int] | None = None, smooth_ids: list[int] | None = None,
+) -> dict[str, Any]:
+    """Propose crease candidates from inspected edges, with explicit intent overrides.
+
+    Angles measure existing geometry, not artistic intent. Boundary/invalid edges
+    remain unresolved and this function never mutates Blender.
+    """
+    if not math.isfinite(angle_degrees) or not 0 < angle_degrees < 180:
+        raise ValueError("angle_degrees must be finite and between 0 and 180")
+    if not isinstance(rationale, str) or not rationale.strip():
+        raise ValueError("feature proposal requires a modeling rationale")
+    ids = [edge.get("agent_id") for edge in edges]
+    if not edges or any(type(value) is not int or value <= 0 for value in ids) or len(set(ids)) != len(ids):
+        raise ValueError("inspected edges require unique positive persistent IDs")
+    preserve, smooth = set(preserve_ids or []), set(smooth_ids or [])
+    if any(type(value) is not int for value in preserve | smooth) or (preserve | smooth) - set(ids):
+        raise ValueError("intent overrides must resolve to inspected persistent IDs")
+    if preserve & smooth:
+        raise ValueError("an edge cannot have conflicting preserve and smooth intent")
+    selected, unresolved, decisions = [], [], []
+    for edge in sorted(edges, key=lambda item: item["agent_id"]):
+        edge_id, angle = edge["agent_id"], edge.get("face_angle_radians")
+        valid = isinstance(angle, (int, float)) and not isinstance(angle, bool) and math.isfinite(angle) and 0 <= angle <= math.pi + 1e-5
+        if edge.get("is_boundary") is not False or not valid:
+            unresolved.append(edge_id)
+            reason = "REQUIRES_TOPOLOGY_REVIEW"
+        elif edge_id in smooth:
+            reason = "EXPLICIT_SMOOTH_INTENT"
+        elif edge_id in preserve:
+            selected.append(edge_id)
+            reason = "EXPLICIT_PRESERVE_INTENT"
+        elif math.degrees(angle) >= angle_degrees:
+            selected.append(edge_id)
+            reason = "ANGLE_CANDIDATE"
+        else:
+            reason = "BELOW_ANGLE_THRESHOLD"
+        decisions.append({"edge_id": edge_id, "reason": reason})
+    return {
+        "schema_version": 1, "record_type": "FEATURE_EDGE_PROPOSAL",
+        "source_edges_sha256": selection_sha256({"edges": sorted(edges, key=lambda item: item["agent_id"])}),
+        "angle_degrees": angle_degrees, "rationale": rationale,
+        "candidate_edge_ids": selected, "unresolved_edge_ids": unresolved,
+        "decisions": decisions, "mutation_authorized": False,
+        "claim_boundary": "Geometric candidates require surface-intent review and current-state ID validation before applying crease or bevel. An angle is not proof of desired sharpness.",
+    }
 
 
 CONSTRUCTION_METHODS = {

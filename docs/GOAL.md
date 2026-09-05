@@ -1,7 +1,7 @@
 # Living Project Goal
 
 Status: **PARTIAL — perception-to-geometry capability is the active gate**  
-Last reviewed: **2026-09-04**
+Last reviewed: **2026-09-05**
 
 This is the repository's mutable execution goal. The durable operating contract remains
 [`MASTER_DIRECTIVE.md`](MASTER_DIRECTIVE.md). If this page conflicts with current code or
@@ -285,6 +285,17 @@ partial transfer, not a P0 exit: multi-source component boundaries and full-obje
 unproved.
 
 Current priority order:
+
+Cross-family repair update (2026-09-05): feature-edge proposals now consume existing
+Blender region probes and persistent IDs, with explicit preserve/smooth overrides.
+The same angular proposal preserved blade features and housing corners, but a stepped
+housing exposed eight evaluated shoulder vertices intruding into its raised column.
+Manifold and normal checks passed despite the visible defect. Four explicit coplanar
+shoulder constraints removed the intrusion and visible marks through typed transactions.
+An opt-in real-Blender regression reproduces both failure and repair. See
+`../knowledge/foundation/feature_edge_transfer_experiment.json`. This advances controlled
+surface repair, not reference reconstruction. Automated localization of evaluated overlap
+and transfer to an ordinary reference remain outstanding.
 
 Immediate evidence correction (2026-09-04): the trident training proxy passed
 family selection at mean silhouette loss 0.0914 (front IoU 0.8622, side 0.9566),

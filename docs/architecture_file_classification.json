@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 279,
-  "python_file_count": 164,
+  "tracked_file_count": 281,
+  "python_file_count": 165,
   "classification_counts": {
     "CORE_RUNTIME": 38,
     "CURRENT_DOC": 17,
-    "CURRENT_KNOWLEDGE": 118,
+    "CURRENT_KNOWLEDGE": 119,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 60,
+    "TEST_SUPPORT": 61,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -555,6 +555,17 @@
     },
     {
       "path": "knowledge/foundation/blend_corpus_apprenticeship_baseline.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/feature_edge_transfer_experiment.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
@@ -2188,9 +2199,13 @@
       "python_module": "modeling_core.construction",
       "imports": [],
       "production_importers": [
-        "modeling_core/__init__.py"
+        "modeling_core/__init__.py",
+        "tools/modeling_pipeline.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/test_construction_plan.py",
+        "tests/test_feature_transfer_blender.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2610,7 +2625,8 @@
       "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
       "python_module": "tests.test_construction_plan",
       "imports": [
-        "modeling_core/__init__.py"
+        "modeling_core/__init__.py",
+        "modeling_core/construction.py"
       ],
       "production_importers": [],
       "test_importers": [],
@@ -2650,6 +2666,19 @@
       "python_module": "tests.test_defect_classifier",
       "imports": [
         "knowledge_engine/defect_classifier.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_feature_transfer_blender.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_feature_transfer_blender",
+      "imports": [
+        "modeling_core/construction.py"
       ],
       "production_importers": [],
       "test_importers": [],
@@ -3463,7 +3492,8 @@
         "knowledge_engine/__init__.py",
         "knowledge_engine/component_mask_observations.py",
         "knowledge_engine/reference_overlay.py",
-        "modeling_core/__init__.py"
+        "modeling_core/__init__.py",
+        "modeling_core/construction.py"
       ],
       "production_importers": [],
       "test_importers": [],

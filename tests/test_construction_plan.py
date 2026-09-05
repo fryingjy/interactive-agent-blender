@@ -3,6 +3,35 @@ import copy
 import pytest
 
 from modeling_core import selection_sha256, validate_editable_construction_plan
+from modeling_core.construction import propose_feature_edges
+
+
+def test_edge_proposal_excludes_coplanar_loops_and_preserves_explicit_intent():
+    edges = [
+        {"agent_id": 1, "face_angle_radians": 0.0, "is_boundary": False},
+        {"agent_id": 2, "face_angle_radians": 1.5708, "is_boundary": False},
+        {"agent_id": 3, "face_angle_radians": 0.2, "is_boundary": False},
+    ]
+    result = propose_feature_edges(edges, angle_degrees=30, rationale="Keep housing corners; preserve the shallow ridge.", preserve_ids=[3])
+    assert result["candidate_edge_ids"] == [2, 3]
+    assert not result["mutation_authorized"]
+    assert propose_feature_edges(edges, angle_degrees=30, rationale="Round this corner", smooth_ids=[2])["candidate_edge_ids"] == []
+
+
+def test_edge_proposal_does_not_hide_invalid_topology_with_an_override():
+    edges = [{"agent_id": 1, "face_angle_radians": None, "is_boundary": True}]
+    result = propose_feature_edges(edges, angle_degrees=30, rationale="Inspect open rim", preserve_ids=[1])
+    assert result["unresolved_edge_ids"] == [1]
+    assert result["candidate_edge_ids"] == []
+
+
+def test_edge_proposal_rejects_stale_conflicting_and_duplicate_ids():
+    edges = [{"agent_id": 1, "face_angle_radians": 0.0, "is_boundary": False}]
+    for kwargs in ({"preserve_ids": [2]}, {"preserve_ids": [1], "smooth_ids": [1]}):
+        with pytest.raises(ValueError):
+            propose_feature_edges(edges, angle_degrees=30, rationale="Test intent", **kwargs)
+    with pytest.raises(ValueError):
+        propose_feature_edges(edges * 2, angle_degrees=30, rationale="Duplicate IDs")
 
 
 def _selection():

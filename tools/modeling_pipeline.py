@@ -36,6 +36,7 @@ from modeling_core import (
     validate_hypothesis,
 )
 from knowledge_engine import run_gemini_component_segmentation
+from modeling_core.construction import propose_feature_edges
 from knowledge_engine.component_mask_observations import extract_component_mask_observations
 from knowledge_engine.reference_overlay import compare_reference_render, save_mask
 
@@ -142,6 +143,13 @@ def main() -> int:
     construction_plan.add_argument("selection", type=Path)
     construction_plan.add_argument("plan", type=Path)
     construction_plan.add_argument("--output", type=Path, required=True)
+    feature_edges = subparsers.add_parser("propose-feature-edges", help="propose sharp-edge candidates from a current Blender region probe")
+    feature_edges.add_argument("probe", type=Path)
+    feature_edges.add_argument("--angle-degrees", type=float, required=True)
+    feature_edges.add_argument("--rationale", required=True)
+    feature_edges.add_argument("--preserve-ids", type=int, nargs="*", default=[])
+    feature_edges.add_argument("--smooth-ids", type=int, nargs="*", default=[])
+    feature_edges.add_argument("--output", type=Path, required=True)
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -397,6 +405,14 @@ def main() -> int:
         result = validate_editable_construction_plan(_read_json(args.plan), _read_json(args.selection))
         _write_json(args.output, result)
         return 0 if result["ready_for_blender_realization"] else 2
+
+    if args.action == "propose-feature-edges":
+        probe = _read_json(args.probe)
+        result = propose_feature_edges(probe["edges"], angle_degrees=args.angle_degrees,
+                                       rationale=args.rationale, preserve_ids=args.preserve_ids,
+                                       smooth_ids=args.smooth_ids)
+        _write_json(args.output, result)
+        return 2 if result["unresolved_edge_ids"] else 0
 
     if args.action == "diagnose-fit":
         tickets = build_component_refit_tickets(

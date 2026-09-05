@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "record_type": "DEVELOPMENT_EXPERIMENT",
+  "date": "2026-09-05",
+  "status": "CONTROLLED_REPAIR_VERIFIED",
+  "held_out": false,
+  "families": ["diamond-section blade", "stepped rectangular housing"],
+  "method": "Existing Blender region probes supply persistent edge IDs and adjacent-face angles. Propose candidates at an explicit 25 degree threshold, review surface behavior, and add localized intent overrides only when evidence warrants.",
+  "initial_selection": {
+    "blade": {"selected": 24, "total": 36},
+    "housing": {"selected": 32, "total": 44}
+  },
+  "failure": {
+    "observation": "Dark marks at the housing shoulder persisted with shadows and cavity disabled.",
+    "evaluated_shoulder_vertices_inside_column": 8,
+    "manifold_check_passed": true,
+    "normal_consistency_check_passed": true,
+    "cause": "Unconstrained coplanar shoulder connections allow the subdivision surface to intrude into the raised column footprint."
+  },
+  "repair": {
+    "action": "Preserve four coplanar shoulder corner connections in addition to the angular feature candidates.",
+    "selected_housing_edges": 36,
+    "evaluated_shoulder_vertices_inside_column": 0,
+    "visible_marks_removed": true,
+    "evaluated_vertices": 354,
+    "evaluated_quads": 352,
+    "modifiers_applied": false,
+    "typed_transactions_verified": true
+  },
+  "reproduction": {
+    "test": "tests/test_feature_transfer_blender.py",
+    "environment": "Set BLENDER_TEST_EXECUTABLE to a Blender executable and run pytest on that test.",
+    "blender_version": "5.2.1 LTS",
+    "local_artifacts": "work/feature-transfer-lab/"
+  },
+  "general_lesson": "Angle-based edge selection is a proposal, not complete surface intent. Coplanar constraints can matter at concave junctions. Inspect evaluated overlap as well as silhouette, manifoldness, and normals.",
+  "limits": [
+    "Only two controlled fixtures; not ordinary-reference reconstruction",
+    "The observer localized the failure; production overlap localization is not automated",
+    "Regression uses fixture-local coordinates to measure the known defect",
+    "No universal crease threshold or automatic professional-quality claim"
+  ]
+}
