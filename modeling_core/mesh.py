@@ -60,9 +60,9 @@ def build_profile_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, list[tup
     for station in shape["depth_stations"]:
         for x, z in profile:
             vertices.append((
-                x * sx * float(station.get("scale_x", 1.0)) + tx,
+                (x * float(station.get("scale_x", 1.0)) + float(station.get("offset_x", 0.0))) * sx + tx,
                 float(station["y"]) * sy + ty,
-                z * sz * float(station.get("scale_z", 1.0)) + tz,
+                (z * float(station.get("scale_z", 1.0)) + float(station.get("offset_z", 0.0))) * sz + tz,
             ))
     count = len(profile)
     faces = []
@@ -88,9 +88,9 @@ def build_profile_ring_extrusion(shape: dict[str, Any]) -> tuple[np.ndarray, lis
         for profile in (outer, inner):
             for x, z in profile:
                 vertices.append((
-                    x * sx * station_scale_x + tx,
+                    (x * station_scale_x + float(station.get("offset_x", 0.0))) * sx + tx,
                     float(station["y"]) * sy + ty,
-                    z * sz * station_scale_z + tz,
+                    (z * station_scale_z + float(station.get("offset_z", 0.0))) * sz + tz,
                 ))
     count = len(outer)
     stride = count * 2

@@ -106,6 +106,8 @@ def _normalize_depth_stations(raw: Any, label: str) -> list[dict[str, Any]]:
         station["y"] = _finite(station.get("y"), f"{label} station {index}.y")
         station["scale_x"] = _finite(station.get("scale_x", 1.0), f"{label} station {index}.scale_x")
         station["scale_z"] = _finite(station.get("scale_z", 1.0), f"{label} station {index}.scale_z")
+        station["offset_x"] = _finite(station.get("offset_x", 0.0), f"{label} station {index}.offset_x")
+        station["offset_z"] = _finite(station.get("offset_z", 0.0), f"{label} station {index}.offset_z")
         if station["scale_x"] <= 0 or station["scale_z"] <= 0:
             raise ValueError(f"{label} station scales must be positive")
         if previous_y is not None and station["y"] <= previous_y:

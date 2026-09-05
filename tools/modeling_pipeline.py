@@ -32,6 +32,7 @@ from modeling_core import (
     propose_cross_view_correspondences,
     resolve_assembly_hypotheses,
     select_shape_family,
+    validate_editable_construction_plan,
     validate_hypothesis,
 )
 from knowledge_engine import run_gemini_component_segmentation
@@ -137,6 +138,10 @@ def main() -> int:
     compile_assembly.add_argument("--sequence-output", type=Path)
     compile_assembly.add_argument("--object-prefix", default="Blockout_")
     compile_assembly.add_argument("--continuity-interfaces", type=Path, help="explicit port bindings and measured bridge bounds")
+    construction_plan = subparsers.add_parser("validate-construction-plan", help="validate the editable-construction bridge after shape fitting")
+    construction_plan.add_argument("selection", type=Path)
+    construction_plan.add_argument("plan", type=Path)
+    construction_plan.add_argument("--output", type=Path, required=True)
     camera = subparsers.add_parser("calibrate-camera", help="solve a perspective view from 3D/2D correspondences")
     camera.add_argument("correspondences", type=Path)
     camera.add_argument("--output", type=Path, required=True)
@@ -387,6 +392,11 @@ def main() -> int:
             args.sequence_output.parent.mkdir(parents=True, exist_ok=True)
             args.sequence_output.write_text(json.dumps(result["command_sequence"], indent=2) + "\n", encoding="utf-8")
         return 0
+
+    if args.action == "validate-construction-plan":
+        result = validate_editable_construction_plan(_read_json(args.plan), _read_json(args.selection))
+        _write_json(args.output, result)
+        return 0 if result["ready_for_blender_realization"] else 2
 
     if args.action == "diagnose-fit":
         tickets = build_component_refit_tickets(

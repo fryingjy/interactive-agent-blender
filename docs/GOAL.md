@@ -306,6 +306,14 @@ discrepancy but does not establish exact renderer parity. The simple ridge is co
 live subdivision control and cross-family transfer remain unproved. Reproduction
 parameters and limitations are recorded in `../knowledge/foundation/surface_construction_baseline.json`.
 
+The follow-up live-SubD exercise compared four crease policies on two widths of the
+same diamond-section cage. No creases shrank width by approximately 35%; longitudinal
+creases reduced shrinkage to approximately 2% but rounded the ends. Longitudinal plus
+terminal boundary creases preserved overall dimensions while leaving intermediate
+profile transitions smooth. The evaluated result passed independent closed-mesh checks
+(290 vertices, 288 quads). This is within-family operator evidence, not cross-family
+transfer or autonomous modeling. See `../knowledge/foundation/selective_crease_experiment.json`.
+
 1. **Establish a scored baseline** — run small non-held-out reference tasks through the current
    system unchanged and record where form, depth, construction, surface, or repair judgment fails.
 2. **Reference-to-form apprenticeship** — practice multiview landmarks, depth/overlap reconciliation,

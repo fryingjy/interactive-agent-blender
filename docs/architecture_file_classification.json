@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 275,
-  "python_file_count": 162,
+  "tracked_file_count": 279,
+  "python_file_count": 164,
   "classification_counts": {
-    "CORE_RUNTIME": 37,
+    "CORE_RUNTIME": 38,
     "CURRENT_DOC": 17,
-    "CURRENT_KNOWLEDGE": 116,
+    "CURRENT_KNOWLEDGE": 118,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 59,
+    "TEST_SUPPORT": 60,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -1082,7 +1082,29 @@
       "entrypoint": false
     },
     {
+      "path": "knowledge/foundation/selective_crease_experiment.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
       "path": "knowledge/foundation/source_registry.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/surface_construction_baseline.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
@@ -2032,6 +2054,7 @@
         "modeling_core/component_evidence.py",
         "modeling_core/component_fitting.py",
         "modeling_core/component_proposals.py",
+        "modeling_core/construction.py",
         "modeling_core/continuity.py",
         "modeling_core/fitting.py",
         "modeling_core/hypothesis.py",
@@ -2051,6 +2074,7 @@
         "tests/test_component_fitting.py",
         "tests/test_component_initialization.py",
         "tests/test_component_proposals.py",
+        "tests/test_construction_plan.py",
         "tests/test_continuity_compiler.py",
         "tests/test_gemini_component_segmentation.py",
         "tests/test_modeling_core.py",
@@ -2150,6 +2174,19 @@
         "modeling_core/component_evidence.py",
         "modeling_core/reference_evidence.py"
       ],
+      "production_importers": [
+        "modeling_core/__init__.py"
+      ],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": true,
+      "entrypoint": false
+    },
+    {
+      "path": "modeling_core/construction.py",
+      "classification": "CORE_RUNTIME",
+      "classification_reason": "member of the authoritative shape-solving or typed Blender execution path",
+      "python_module": "modeling_core.construction",
+      "imports": [],
       "production_importers": [
         "modeling_core/__init__.py"
       ],
@@ -2559,6 +2596,19 @@
       "classification": "TEST_SUPPORT",
       "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
       "python_module": "tests.test_component_proposals",
+      "imports": [
+        "modeling_core/__init__.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_construction_plan.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_construction_plan",
       "imports": [
         "modeling_core/__init__.py"
       ],

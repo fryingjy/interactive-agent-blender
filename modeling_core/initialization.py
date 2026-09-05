@@ -358,6 +358,26 @@ def _canonical_profile_view(views: list[dict[str, Any]], solved_view_ids: set[st
     return copy.deepcopy(max(candidates, key=lambda item: item[0])[1])
 
 
+def _canonical_depth_view(
+    views: list[dict[str, Any]],
+    solved_view_ids: set[str],
+    profile_view_id: str,
+) -> dict[str, Any] | None:
+    """Return an orthographic view whose image axes reliably measure Y and Z."""
+    candidates = []
+    for view in views:
+        if view["id"] == profile_view_id or view["id"] not in solved_view_ids:
+            continue
+        if view.get("projection", "orthographic") != "orthographic":
+            continue
+        rotation = view_rotation_matrix(view)
+        alignment = min(abs(float(rotation[0, 1])), abs(float(rotation[2, 2])))
+        candidates.append((alignment, view))
+    if not candidates or max(candidates, key=lambda item: item[0])[0] < 0.85:
+        return None
+    return copy.deepcopy(max(candidates, key=lambda item: item[0])[1])
+
+
 def _pixel_to_local_xz(
     points: np.ndarray,
     view: dict[str, Any],
@@ -391,14 +411,103 @@ def _pixel_to_local_xz(
     return world_xz.tolist()
 
 
+def _simplify_external_contour(
+    mask: np.ndarray,
+    contour: np.ndarray,
+    *,
+    minimum_iou: float = 0.975,
+    maximum_points: int = 64,
+) -> np.ndarray:
+    """Choose the sparsest contour that still preserves the observed silhouette.
+
+    A perimeter-relative epsilon alone silently removes narrow notches and prongs.
+    This bounded search keeps polygon density economical while making the retained
+    image evidence, rather than one global epsilon, decide how many points are needed.
+    """
+    target = np.zeros(mask.shape, dtype=np.uint8)
+    cv2.fillPoly(target, [contour], 1, lineType=cv2.LINE_8)
+    perimeter = cv2.arcLength(contour, True)
+    for fraction in (0.02, 0.015, 0.01, 0.0075, 0.005, 0.0035, 0.0025, 0.00175, 0.00125, 0.0008, 0.0005):
+        approximation = cv2.approxPolyDP(contour, max(0.5, perimeter * fraction), True)
+        if not 4 <= len(approximation) <= maximum_points:
+            continue
+        candidate = np.zeros(mask.shape, dtype=np.uint8)
+        cv2.fillPoly(candidate, [approximation], 1, lineType=cv2.LINE_8)
+        union = np.count_nonzero(target | candidate)
+        intersection = np.count_nonzero(target & candidate)
+        if union and intersection / union >= minimum_iou:
+            return approximation[:, 0, :].astype(float)
+    raise ValueError(
+        f"component contour needs more than {maximum_points} points or cannot preserve "
+        f"silhouette IoU {minimum_iou:.3f}"
+    )
+
+
 def _external_profile(mask: np.ndarray, view: dict[str, Any], center: np.ndarray) -> list[list[float]]:
     contours, _hierarchy = cv2.findContours(mask.astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     contour = max(contours, key=cv2.contourArea)
-    perimeter = cv2.arcLength(contour, True)
-    approximation = cv2.approxPolyDP(contour, max(1.0, perimeter * 0.01), True)[:, 0, :].astype(float)
-    if len(approximation) < 4:
-        raise ValueError("component contour cannot initialize a four-point profile")
+    approximation = _simplify_external_contour(mask, contour)
     return _pixel_to_local_xz(approximation, view, center)
+
+
+def _depth_stations_from_side_mask(
+    mask: np.ndarray,
+    view: dict[str, Any],
+    center: np.ndarray,
+    profile: list[list[float]],
+    *,
+    samples: int = 9,
+) -> list[dict[str, float]]:
+    """Measure a sparse Y/Z envelope, including asymmetric station offsets."""
+    if view.get("projection", "orthographic") != "orthographic":
+        raise ValueError("depth stations require an orthographic Y/Z view")
+    _ys, xs = np.nonzero(mask)
+    columns = np.unique(xs)
+    if len(columns) < 2:
+        raise ValueError("depth silhouette does not span two image columns")
+    sample_indices = np.linspace(0, len(columns) - 1, min(samples, len(columns))).round().astype(int)
+    sampled_columns = columns[np.unique(sample_indices)]
+    width, height = view["image_size"]
+    canvas = min(width, height)
+    scale = float(view["world_scale"])
+    rotation = view_rotation_matrix(view)
+    yz_matrix = rotation[[0, 2]][:, [1, 2]]
+    if abs(float(np.linalg.det(yz_matrix))) < 0.5:
+        raise ValueError("depth view image axes do not stably constrain Y/Z")
+    profile_z = np.asarray(profile, dtype=float)[:, 1]
+    profile_min, profile_max = float(profile_z.min()), float(profile_z.max())
+    profile_span = profile_max - profile_min
+    if profile_span <= 1e-8:
+        raise ValueError("profile has no vertical span")
+    profile_mid = 0.5 * (profile_min + profile_max)
+    stations = []
+    for column in sampled_columns:
+        rows = np.flatnonzero(mask[:, int(column)])
+        if not len(rows):
+            continue
+        horizontal = ((float(column) - width * 0.5) / canvas - float(view["offset_x"])) * scale
+        world_yz = []
+        for row in (int(rows.min()), int(rows.max())):
+            vertical = ((height * 0.5 - float(row)) / canvas - float(view["offset_y"])) * scale
+            rhs = np.asarray([horizontal, vertical]) - rotation[[0, 2], 0] * center[0]
+            world_yz.append(np.linalg.solve(yz_matrix, rhs))
+        world_yz = np.asarray(world_yz)
+        local_y = float(world_yz[:, 0].mean() - center[1])
+        local_z = world_yz[:, 1] - center[2]
+        observed_min, observed_max = float(local_z.min()), float(local_z.max())
+        station_scale = min(1.0, max((observed_max - observed_min) / profile_span, 1e-4))
+        observed_mid = 0.5 * (observed_min + observed_max)
+        stations.append({
+            "y": local_y,
+            "scale_z": station_scale,
+            "offset_z": observed_mid - profile_mid * station_scale,
+        })
+    stations.sort(key=lambda station: station["y"])
+    if len(stations) < 2 or any(
+        upper["y"] - lower["y"] <= 1e-8 for lower, upper in zip(stations, stations[1:])
+    ):
+        raise ValueError("depth silhouette did not produce ordered Y/Z stations")
+    return stations
 
 
 def _resample_contour(contour: np.ndarray, count: int) -> np.ndarray:
@@ -499,6 +608,7 @@ def initialize_component_candidates(
                 report["issues"] = ["no registered view has a stable X/Z profile plane"]
             else:
                 mask = masks[profile_view["id"]]
+                depth_view = _canonical_depth_view(views, set(bounds["used_view_ids"]), profile_view["id"])
                 variables = _candidate_variables(center, extents, bounds["relative_uncertainty"], bounds["world_per_pixel"])
                 declared = [item["family"] for item in component.get("representation_candidates", [])]
                 width_profile = _width_profile(mask, profile_view, center)
@@ -517,11 +627,17 @@ def initialize_component_candidates(
                                 ],
                             }
                         elif family == "profile_extrusion":
+                            profile = _external_profile(mask, profile_view, center)
+                            depth_stations = (
+                                _depth_stations_from_side_mask(masks[depth_view["id"]], depth_view, center, profile)
+                                if depth_view is not None
+                                else [{"y": float(-extents[1])}, {"y": float(extents[1])}]
+                            )
                             shape = {
                                 "family": family,
                                 "translate_x": float(center[0]), "translate_y": float(center[1]), "translate_z": float(center[2]),
-                                "profile": _external_profile(mask, profile_view, center),
-                                "depth_stations": [{"y": float(-extents[1])}, {"y": float(extents[1])}],
+                                "profile": profile,
+                                "depth_stations": depth_stations,
                             }
                         elif family == "profile_ring_extrusion":
                             outer, inner = _ring_profiles(mask, profile_view, center)

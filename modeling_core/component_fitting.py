@@ -313,10 +313,12 @@ def compile_component_assembly(
     return {
         "schema_version": 1,
         "record_type": "COMPILED_COMPONENT_ASSEMBLY",
+        "artifact_role": "FITTED_SHAPE_PROXY_ASSEMBLY",
+        "production_cage_claimed": False,
         "target_id": selection_set.get("target_id"),
         "object_map": object_map,
         "groups": group_reports,
         "command_sequence": commands,
         "modifiers_applied": False,
-        "claim_boundary": "Commands preserve evidence-resolved object boundaries. Continuous groups use explicit equal-cardinality ports to weld or bridge one editable quad cage; arbitrary topology fusion, resampling, branch junctions, hidden surfaces, and final topology remain outside this claim.",
+        "claim_boundary": "Commands preserve evidence-resolved object boundaries as a fitted shape proxy. Continuous groups use explicit equal-cardinality ports, but production feature flow, support topology, modifiers, shading, hidden surfaces, and final topology require a separate editable construction plan and Blender realization pass.",
     }

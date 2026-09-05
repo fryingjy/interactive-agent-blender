@@ -20,10 +20,13 @@ def compile_blender_command(raw: dict[str, Any], *, name: str = "FittedProxy") -
         },
         "metadata": {
             "source": f"modeling_core.{hypothesis['shape']['family']}",
+            "artifact_role": "FITTED_SHAPE_PROXY",
+            "production_cage_claimed": False,
             "connected_components": 1,
             "all_quad": True,
             "end_caps": "CLOSED_ANNULAR_CAPS" if hypothesis["shape"]["family"] == "profile_ring_extrusion" else "OPEN_FOR_EXPLICIT_SURFACE_DECISION",
             "modifiers_applied": False,
             "profile_winding_normalized": bool(hypothesis["shape"].get("profile_winding_normalized", False)),
+            "claim_boundary": "This mesh is a fitted visual proxy. Editable production construction requires a separate validated construction plan.",
         },
     }

@@ -91,6 +91,8 @@ class ModelingCoreTests(unittest.TestCase):
         self.assertEqual(len(faces), 14)
         command = compile_blender_command(raw, name="BladeProxy")
         self.assertEqual(command["metadata"]["source"], "modeling_core.profile_extrusion")
+        self.assertEqual(command["metadata"]["artifact_role"], "FITTED_SHAPE_PROXY")
+        self.assertFalse(command["metadata"]["production_cage_claimed"])
         self.assertTrue(all(len(face) == 4 for face in command["params"]["faces"]))
         self.assertTrue(command["metadata"]["profile_winding_normalized"])
 

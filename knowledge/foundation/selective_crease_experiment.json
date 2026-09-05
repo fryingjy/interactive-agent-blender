@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "record_type": "DEVELOPMENT_EXPERIMENT",
+  "status": "PARTIAL",
+  "experiment": "Selective crease and live subdivision on diamond-section cages",
+  "blender_version": "5.2.1 LTS",
+  "source_baseline": "surface_construction_baseline.json",
+  "subdivision_levels": 2,
+  "crease_value": 1,
+  "variants": [
+    {
+      "name": "narrow_none",
+      "policy": "none",
+      "creased_edges": 0,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.15063755214214325,
+          0.15063755214214325
+        ],
+        [
+          -0.04249199479818344,
+          0.04249199479818344
+        ],
+        [
+          0.009629630483686924,
+          1.9259262084960938
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "narrow_longitudinal",
+      "policy": "longitudinal",
+      "creased_edges": 16,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.225057914853096,
+          0.225057914853096
+        ],
+        [
+          -0.0634840875864029,
+          0.0634840875864029
+        ],
+        [
+          0.009629630483686924,
+          1.9259262084960938
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "narrow_ends_and_longitudinal",
+      "policy": "ends_and_longitudinal",
+      "creased_edges": 24,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.23000003397464752,
+          0.23000003397464752
+        ],
+        [
+          -0.0650000050663948,
+          0.0650000050663948
+        ],
+        [
+          0,
+          1.9500004053115845
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "narrow_all",
+      "policy": "all",
+      "creased_edges": 36,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.23000003397464752,
+          0.23000003397464752
+        ],
+        [
+          -0.0650000050663948,
+          0.0650000050663948
+        ],
+        [
+          0,
+          1.9500004053115845
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "broad_none",
+      "policy": "none",
+      "creased_edges": 0,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.27114757895469666,
+          0.27114757895469666
+        ],
+        [
+          -0.04249199479818344,
+          0.04249199479818344
+        ],
+        [
+          0.009629630483686924,
+          1.9259262084960938
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "broad_longitudinal",
+      "policy": "longitudinal",
+      "creased_edges": 16,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.40510424971580505,
+          0.40510424971580505
+        ],
+        [
+          -0.0634840875864029,
+          0.0634840875864029
+        ],
+        [
+          0.009629630483686924,
+          1.9259262084960938
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "broad_ends_and_longitudinal",
+      "policy": "ends_and_longitudinal",
+      "creased_edges": 24,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.4140000641345978,
+          0.4140000641345978
+        ],
+        [
+          -0.0650000050663948,
+          0.0650000050663948
+        ],
+        [
+          0,
+          1.9500004053115845
+        ]
+      ],
+      "modifiers_applied": false
+    },
+    {
+      "name": "broad_all",
+      "policy": "all",
+      "creased_edges": 36,
+      "base_vertices": 20,
+      "evaluated_vertices": 290,
+      "evaluated_bounds": [
+        [
+          -0.4140000641345978,
+          0.4140000641345978
+        ],
+        [
+          -0.0650000050663948,
+          0.0650000050663948
+        ],
+        [
+          0,
+          1.9500004053115845
+        ]
+      ],
+      "modifiers_applied": false
+    }
+  ],
+  "decision": "Retain longitudinal plus terminal boundary creases for this intended sharp-ended fixture; leave intermediate section rings uncreased.",
+  "limitations": [
+    "Controlled direct operator test, not adaptive transaction proof",
+    "Broader variant changes width only: no cross-family transfer claim",
+    "Bounds preservation alone does not establish reference or highlight fidelity",
+    "No modifiers applied; flat shaded diagnostic surfaces"
+  ],
+  "artifacts": "work/surface-parity-lab/subdivision-study.blend"
+}

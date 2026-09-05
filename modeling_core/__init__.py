@@ -1,6 +1,7 @@
 """Reference-conditioned shape solving before Blender mutation."""
 
 from .compiler import compile_blender_command
+from .construction import selection_sha256, validate_editable_construction_plan
 from .camera import calibrate_perspective_view, camera_intrinsics
 from .fitting import fit_hypothesis, mask_diagnostics
 from .hypothesis import validate_hypothesis
@@ -38,6 +39,8 @@ __all__ = [
     "calibrate_perspective_view",
     "camera_intrinsics",
     "compile_blender_command",
+    "selection_sha256",
+    "validate_editable_construction_plan",
     "fit_hypothesis",
     "mask_diagnostics",
     "render_silhouette",
