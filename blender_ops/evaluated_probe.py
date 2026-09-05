@@ -21,6 +21,7 @@ import math
 import bpy
 import bmesh
 import mathutils
+from mathutils.bvhtree import BVHTree
 
 try:
     from . import bmesh_io
@@ -43,6 +44,58 @@ def _read_evaluated_bmesh(obj):
         obj_eval.to_mesh_clear()
 
     return bm, cleanup
+
+
+def evaluated_intersection_candidates(name, max_triangles=10000, max_pairs=100):
+    """Locate non-adjacent evaluated triangle overlap candidates without mutation.
+
+    Adjacent triangles and triangles from the same polygon are excluded. Results
+    are inspection candidates, not a watertightness or self-intersection proof.
+    Evaluated polygon indices are temporary, never persistent base-cage IDs.
+    """
+    if type(max_triangles) is not int or not 1 <= max_triangles <= 10000:
+        raise ValueError("max_triangles must be an integer from 1 through 10000")
+    if type(max_pairs) is not int or not 1 <= max_pairs <= 1000:
+        raise ValueError("max_pairs must be an integer from 1 through 1000")
+    obj = bpy.data.objects.get(name)
+    if obj is None or obj.type != 'MESH':
+        return {'error': f"'{name}' is not a mesh object"}
+    evaluated = obj.evaluated_get(bpy.context.evaluated_depsgraph_get())
+    mesh = evaluated.to_mesh()
+    try:
+        mesh.calc_loop_triangles()
+        count = len(mesh.loop_triangles)
+        if count > max_triangles:
+            return {'status': 'NOT_EVALUATED_LIMIT', 'triangle_count': count, 'limit': max_triangles}
+        vertices = [obj.matrix_world @ vertex.co for vertex in mesh.vertices]
+        triangles = [tuple(triangle.vertices) for triangle in mesh.loop_triangles]
+        polygons = [triangle.polygon_index for triangle in mesh.loop_triangles]
+        tree = BVHTree.FromPolygons(vertices, triangles, all_triangles=True, epsilon=0.0)
+        candidates = []
+        candidate_count = 0
+        for first, second in tree.overlap(tree):
+            if first >= second or polygons[first] == polygons[second]:
+                continue
+            if set(triangles[first]) & set(triangles[second]):
+                continue
+            candidate_count += 1
+            if len(candidates) >= max_pairs:
+                continue
+            points = [vertices[index] for index in triangles[first] + triangles[second]]
+            candidates.append({
+                'evaluated_triangle_indices': [first, second],
+                'evaluated_polygon_indices': [polygons[first], polygons[second]],
+                'world_bounds': [[min(point[axis] for point in points), max(point[axis] for point in points)] for axis in range(3)],
+            })
+        return {
+            'status': 'REVIEW_CANDIDATES' if candidate_count else 'NO_NONADJACENT_CANDIDATES',
+            'triangle_count': count, 'candidate_count': candidate_count,
+            'pairs': candidates, 'pairs_truncated': candidate_count > max_pairs,
+            'geometry_modified': False,
+            'claim_boundary': 'BVH overlap candidates exclude shared-vertex neighbors and may miss adjacent foldovers or coplanar overlap. No candidates is not proof of a clean surface. Inspect the localized region before repair.',
+        }
+    finally:
+        evaluated.to_mesh_clear()
 
 
 def evaluated_mesh_health(name):

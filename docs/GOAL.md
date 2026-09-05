@@ -294,8 +294,13 @@ Manifold and normal checks passed despite the visible defect. Four explicit copl
 shoulder constraints removed the intrusion and visible marks through typed transactions.
 An opt-in real-Blender regression reproduces both failure and repair. See
 `../knowledge/foundation/feature_edge_transfer_experiment.json`. This advances controlled
-surface repair, not reference reconstruction. Automated localization of evaluated overlap
-and transfer to an ordinary reference remain outstanding.
+surface repair, not reference reconstruction. A follow-up BVH query now localizes
+non-adjacent evaluated triangle overlap without fixture dimensions: zero candidates on
+the original cage, 28 on the defective surface, zero after repair. The query is available
+through the runtime and MCP bridge and tested in the real-Blender regression. It returns
+inspection candidates, not a clean-surface verdict; shared-vertex foldovers and coplanar
+overlap may be missed. Mapping these regions to a repair choice and transferring to an
+ordinary reference remain outstanding.
 
 Immediate evidence correction (2026-09-04): the trident training proxy passed
 family selection at mean silhouette loss 0.0914 (front IoU 0.8622, side 0.9566),

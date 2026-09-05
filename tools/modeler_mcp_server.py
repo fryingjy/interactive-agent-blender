@@ -404,6 +404,12 @@ def get_evaluated_state(object_name: str) -> dict:
 
 
 @mcp.tool()
+def get_evaluated_intersection_candidates(object_name: str, max_triangles: int = 10000, max_pairs: int = 100) -> dict:
+    """Locate non-adjacent evaluated triangle overlap candidates and world bounds without changing geometry. Shared-vertex neighbors are excluded; empty results do not prove absence of adjacent foldovers or coplanar overlap. Evaluated indices are not persistent cage IDs."""
+    return _call("get_evaluated_intersection_candidates", name=object_name, max_triangles=max_triangles, max_pairs=max_pairs)
+
+
+@mcp.tool()
 def get_hard_surface_shading_audit(object_name: str) -> dict:
     """Audit a hard-surface mesh's recorded semantic bevel weights, WEIGHT Bevel/SubD order, Smooth by Angle policy, and object-scale warning. Missing semantic intent is reported as REVIEW_REQUIRED rather than inferred."""
     return _call("get_hard_surface_shading_audit", name=object_name)

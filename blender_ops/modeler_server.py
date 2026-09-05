@@ -897,6 +897,9 @@ class ModelerServer:
             "bounding_box": evaluated_probe.bounding_box_comparison(name),
         }
 
+    def cmd_get_evaluated_intersection_candidates(self, name, max_triangles=10000, max_pairs=100):
+        return evaluated_probe.evaluated_intersection_candidates(name, max_triangles, max_pairs)
+
     def cmd_analyze_bridge_selection(self, name, twist_offsets=None, allow_unequal=False):
         """Read-only simulation of candidate Bridge Edge Loops correspondences."""
         return mesh_ops.analyze_bridge_selection(

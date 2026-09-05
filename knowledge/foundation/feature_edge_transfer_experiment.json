@@ -34,9 +34,17 @@
     "local_artifacts": "work/feature-transfer-lab/"
   },
   "general_lesson": "Angle-based edge selection is a proposal, not complete surface intent. Coplanar constraints can matter at concave junctions. Inspect evaluated overlap as well as silhouette, manifoldness, and normals.",
+  "general_localization_followup": {
+    "method": "Blender BVH overlap candidates on non-adjacent evaluated triangles; no fixture dimensions used by the detector.",
+    "original_cage_candidates": 0,
+    "defective_subdivision_candidates": 28,
+    "repaired_subdivision_candidates": 0,
+    "runtime_and_mcp_command": "get_evaluated_intersection_candidates",
+    "limits": "Shared-vertex neighbors are excluded; adjacent foldovers and coplanar overlap may be missed. Candidates require inspection. Evaluated polygon indices are not persistent base-cage IDs."
+  },
   "limits": [
     "Only two controlled fixtures; not ordinary-reference reconstruction",
-    "The observer localized the failure; production overlap localization is not automated",
+    "The observer chose the repair. The later BVH detector localizes candidates automatically but does not choose construction changes.",
     "Regression uses fixture-local coordinates to measure the known defect",
     "No universal crease threshold or automatic professional-quality claim"
   ]

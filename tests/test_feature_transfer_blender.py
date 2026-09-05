@@ -68,11 +68,19 @@ bpy.ops.wm.save_as_mainfile(filepath=str(root/'base.blend'))
 bpy.ops.wm.open_mainfile(filepath=str(root/'base.blend'))
 mutate('set_edge_crease_by_ids',{{'edge_ids':{initial['candidate_edge_ids']!r},'value':1.0,'clear_others':True}})
 before=overlap_count()
+before_candidates=server.cmd_get_evaluated_intersection_candidates('Housing',max_pairs=1)
+limited=server.cmd_get_evaluated_intersection_candidates('Housing',max_triangles=1)
 mutate('set_edge_crease_by_ids',{{'edge_ids':{repaired['candidate_edge_ids']!r},'value':1.0,'clear_others':True}})
 after=overlap_count()
-(root/'result.json').write_text(json.dumps({{'before':before,'after':after,'live_modifiers':len(bpy.data.objects['Housing'].modifiers)}}))
+after_candidates=server.cmd_get_evaluated_intersection_candidates('Housing')
+(root/'result.json').write_text(json.dumps({{'before':before,'after':after,'before_candidates':before_candidates,'after_candidates':after_candidates,'limited':limited,'live_modifiers':len(bpy.data.objects['Housing'].modifiers)}}))
 """)
     result = json.loads((tmp_path / "result.json").read_text())
     assert result["before"] == 8
     assert result["after"] == 0
     assert result["live_modifiers"] == 1
+    assert result["before_candidates"]["candidate_count"] > 0
+    assert result["before_candidates"]["pairs_truncated"]
+    assert len(result["before_candidates"]["pairs"]) == 1
+    assert result["after_candidates"]["candidate_count"] == 0
+    assert result["limited"]["status"] == "NOT_EVALUATED_LIMIT"
