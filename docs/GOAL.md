@@ -65,6 +65,12 @@ Useful construction evidence is separate and bounded:
   intrusion. Evaluated overlap candidates localize inspection, not a clean-surface verdict.
 - A prior trident proxy passed silhouette selection but had distorted interior surfaces. Virtual
   fitting caps must never count as authored Blender faces or production-cage evidence.
+- [Connected shell transfer](../knowledge/foundation/connected_shell_transfer.json): cube inset and
+  extrusion produced a 16-vertex connected cavity; transfer to a radial cage exposed a polygonal
+  rim that shading could not fix. Bevel/SubD plus measured diameter correction reduced radial
+  variation about 93.5% while retaining the floor and live modifiers. This is an agent-guided
+  neutral reproduction/transfer, not a reference model or bootstrap promotion. Apply the lesson to
+  the missing reference construction next rather than accumulating more generic drills.
 
 ## Immediate work: close the reference-to-construction gap
 

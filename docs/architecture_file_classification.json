@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 290,
-  "python_file_count": 169,
+  "tracked_file_count": 293,
+  "python_file_count": 171,
   "classification_counts": {
     "CORE_RUNTIME": 38,
     "CURRENT_DOC": 18,
-    "CURRENT_KNOWLEDGE": 122,
+    "CURRENT_KNOWLEDGE": 123,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 66,
+    "TEST_SUPPORT": 68,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -599,6 +599,17 @@
     },
     {
       "path": "knowledge/foundation/bootstrap_mask_intervention.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/connected_shell_transfer.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
@@ -2643,6 +2654,17 @@
       "entrypoint": false
     },
     {
+      "path": "tests/fixtures/shell_construction/inspect_saved.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.fixtures.shell_construction.inspect_saved",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
       "path": "tests/fixtures/video/modeling_lesson.mp4",
       "classification": "TEST_SUPPORT",
       "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
@@ -3198,6 +3220,17 @@
       "imports": [
         "modeling_core/__init__.py"
       ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/test_shell_construction_blender.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.test_shell_construction_blender",
+      "imports": [],
       "production_importers": [],
       "test_importers": [],
       "reachable_from_authoritative_roots": false,

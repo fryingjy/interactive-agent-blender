@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "record_type": "CONTROLLED_CONSTRUCTION_TRANSFER_EXPERIMENT",
+  "date": "2026-09-05",
+  "status": "CONTROLLED_TRANSFER_WITH_AGENT_GUIDED_REPAIR",
+  "bootstrap_promotion": false,
+  "runtime_skill_promotion": false,
+  "verification": {
+    "full_suite": "421 passed, 30 subtests passed with fresh Blender enabled",
+    "audits": "Repository, architecture, curriculum and source registry passed",
+    "independent_mesh_checks": "Box base and radial base/evaluated: zero boundary edges, loose geometry, degenerates and winding conflicts; radial base explicitly permits its two planar cap n-gons"
+  },
+  "trigger": "Hammond envelope fits concealed missing cavity and authored end surfaces. Practice real connected shell construction rather than adding further silhouette diagnostics.",
+  "source_observation": {
+    "url": "https://www.hammfg.com/files/parts/images/1590A/1590a-1.jpg",
+    "sha256": "55d62b3d916e2c1fd34b7eab72767cf247ae7a77330502b9a796d6a5ead16e11",
+    "observed": "Opened body has interior floor, walls, rim and corner fastener features. Lid and screws are separate assemblies.",
+    "inferred": "Continuous shell construction is appropriate to reproduce as a neutral grammar exercise.",
+    "not_claimed": "The photograph does not reveal the original modeling operations. Neither drill reconstructs this product, its dimensions, corner bosses or lid. No source geometry was copied."
+  },
+  "neutral_parameters": {
+    "box_dimensions": [2.0, 1.2, 0.6],
+    "radial_radius": 1.0,
+    "radial_segments": 16,
+    "height": 0.6,
+    "inset": 0.08,
+    "extrusion": -0.52,
+    "bevel_width": 0.015,
+    "bevel_segments": 3,
+    "bevel_angle_degrees": 30,
+    "note": "Deliberately synthetic dimensions, not measurements of the product."
+  },
+  "decision_history": [
+    "Start from one cube; scale the selected mesh, inset its observed upward face, inspect selection, then extrude inward. No stacked wall primitives or authored answer mesh.",
+    "Inspect Workbench cavity render. Floor, walls and rim are present on one 16-vertex, 14-quad cage.",
+    "Add a live three-segment angle-limited bevel: narrow edge highlights without changing the planar box envelope. No unnecessary subdivision on the box.",
+    "Transfer inset/extrusion to a 16-sided cylinder. Keep two planar cap n-gons explicitly; do not claim an all-quad base cage.",
+    "Inspect raw and angle-smoothed radial renders. Smoothing improves wall shading but does not remove the polygonal rim silhouette.",
+    "Add level-2 subdivision after the live bevel. Inspect solid and MatCap views; rim becomes rounder but evaluated diameter shrinks from 2.0 to approximately 1.9491.",
+    "Re-observe cage IDs and scale only X/Y by 2/1.9491. Re-render and independently inspect the saved asset. Keep the original 64-vertex base topology and live modifiers.",
+    "Package independent editable high/low copies in HIGH_POLY and LOW_POLY; low retains live bevel and subdivision at level 0. This is variant packaging, not retopology."
+  ],
+  "results": {
+    "blender_version": "5.2.1 LTS",
+    "box": {
+      "base_vertices": 16, "base_faces": 14, "base_ngons": 0,
+      "connected_components": 1, "evaluated_non_manifold_edges": 0,
+      "center_floor_thickness": 0.07999992370605469,
+      "center_cavity_depth": 0.5200000405311584
+    },
+    "radial": {
+      "base_vertices": 64, "base_faces": 50, "base_ngons": 2,
+      "connected_components": 1, "evaluated_faces": 3968,
+      "evaluated_non_manifold_edges": 0,
+      "corrected_evaluated_dimensions": [1.9999908208847046, 1.999990701675415, 0.5998469591140747],
+      "center_floor_thickness": 0.07999968528747559,
+      "center_cavity_depth": 0.5198472142219543,
+      "midheight_radial_samples": 360,
+      "radial_peak_to_peak_before": 0.01920574346538395,
+      "radial_peak_to_peak_after": 0.0012550066615955036,
+      "radial_variation_reduction_percent_approx": 93.47
+    }
+  },
+  "evidence": {
+    "local_root": "work/shell-construction-lab",
+    "box_blend": "04-bevel.blend",
+    "radial_blend": "radial-study.blend",
+    "inspected_renders": ["03-cavity.png", "04-bevel.png", "06-radial-raw.png", "07-radial-bevel.png", "08-radial-subd.png", "08-radial-matcap.png", "09-radial-corrected.png"],
+    "typed_decision_reports": "01-report.json through 09-report.json; separate checkpointed Blender processes",
+    "independent_saved_state_verifier": "tests/fixtures/shell_construction/inspect_saved.py",
+    "reproduction_test": "tests/test_shell_construction_blender.py",
+    "media_retention": "Generated media and Blend checkpoints stay local and ignored. The controlled replay and small measured record are tracked."
+  },
+  "limitations": [
+    "Agent-guided neutral drills, not automated reference-to-construction or held-out successes.",
+    "No human or blinded independent visual review; no B4 gate change.",
+    "Center ray checks do not prove uniform thickness everywhere or full floor planarity.",
+    "Zero BVH overlap candidates and manifoldness do not certify surface quality.",
+    "Two planar base cap n-gons are appropriate only while their support and flatness remain controlled; evaluated all-quads do not repair arbitrary bad base topology.",
+    "The frozen B0 housing ambiguity is unchanged. This drill does not bypass its selection or reference-authorization gates."
+  ],
+  "next_application": "Use this construction knowledge in the existing neutral reference task only after resolving the cavity/component and camera evidence. Do not substitute additional generic drills for that missing application."
+}
