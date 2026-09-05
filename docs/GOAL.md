@@ -330,8 +330,14 @@ profile transitions smooth. The evaluated result passed independent closed-mesh 
 (290 vertices, 288 quads). This is within-family operator evidence, not cross-family
 transfer or autonomous modeling. See `../knowledge/foundation/selective_crease_experiment.json`.
 
-1. **Establish a scored baseline** — run small non-held-out reference tasks through the current
-   system unchanged and record where form, depth, construction, surface, or repair judgment fails.
+1. **Complete the frozen B0 baseline** — the [baseline report](BOOTSTRAP_BASELINE.md) now records
+   unchanged extraction/proposal outcomes for ten manufacturer images across four neutral families.
+   Seven extractor acceptances still include false image holes, fragmented appearance regions and
+   unresolved component/camera/pose evidence. A separately labeled drawing-assisted housing
+   envelope fits well but remains ambiguous at the unchanged family margin; it does not establish
+   cavity, lid, production cage or surface quality. Preserve these raw outcomes, complete the
+   reference-to-form intervention under a distinct record, and exercise the missing Blender and
+   review channels. B0 and the overall bootstrap remain PARTIAL; the ladder stays paused.
 2. **Reference-to-form apprenticeship** — practice multiview landmarks, depth/overlap reconciliation,
    and rejection of unsupported hidden-form hypotheses before topology refinement.
 3. **Construction-grammar apprenticeship** — reproduce and transfer connected profile cages,

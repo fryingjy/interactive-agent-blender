@@ -1,0 +1,74 @@
+[
+  {
+    "file": "olfa-front.jpg",
+    "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586837018180Black_1.jpg",
+    "sha256": "035efa9cbc73e9e91a0d997b0b2001bb001dbb7c374c43a7074bc95f12bf49ae",
+    "bytes": 58922
+  },
+  {
+    "file": "olfa-packed.jpg",
+    "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/1586837018180Black_2.jpg",
+    "sha256": "47066ca6c7d92edc7b0b24832a87a9f9617898d32ba1554cf39bbd131ca8dbb4",
+    "bytes": 334194
+  },
+  {
+    "file": "olfa-use.jpg",
+    "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/features_180black_1.jpg",
+    "sha256": "7edd4b17604d6677ab7a3fb6579c8970958c2cba39861586b9bca685991a05d4",
+    "bytes": 569808
+  },
+  {
+    "file": "olfa-disassembly.jpg",
+    "url": "https://www.olfa.co.jp/en/wordpress/wp-content/uploads/features_180black_3-1200x318.jpg",
+    "sha256": "118fc204b59003b6764752b3d35dffb474ddfd8ba5a00db6150ad4e5e6a3f346",
+    "bytes": 23872
+  },
+  {
+    "file": "housing-1.jpg",
+    "url": "https://www.hammfg.com/files/parts/images/1590A/1590a-1.jpg",
+    "sha256": "55d62b3d916e2c1fd34b7eab72767cf247ae7a77330502b9a796d6a5ead16e11",
+    "bytes": 223147
+  },
+  {
+    "file": "housing-2.jpg",
+    "url": "https://www.hammfg.com/files/parts/images/1590A/1590a-2.jpg",
+    "sha256": "3aedce842328d11171fa8f7c9fc9e07ea57d33b4d6800bc836da7e555aa9fcb3",
+    "bytes": 134689
+  },
+  {
+    "file": "clip-front.jpg",
+    "url": "https://mau-cdn.b-cdn.net/media/de/6d/91/1754298386/2132590-sw.jpg?ts=1755756981&",
+    "sha256": "a66fcca5afcceef7732cc4f45303b0ae9e12abb04f9f0b4f2a6f1b0cf781b289",
+    "bytes": 95554
+  },
+  {
+    "file": "clip-alt.jpg",
+    "url": "https://mau-cdn.b-cdn.net/media/f9/72/69/1754301835/2132590-zusatz-8-sw.jpg?ts=1755757000&",
+    "sha256": "9fd390bda01f72a8a707b730c63177eae6e8eed1703a87a6ce857f13c52db078",
+    "bytes": 95033
+  },
+  {
+    "file": "clip-alt2.jpg",
+    "url": "https://mau-cdn.b-cdn.net/media/1d/3c/94/1754296560/2132590-zusatz-7-sw.jpg?ts=1755756971&",
+    "sha256": "1fa037307e49c1e772b4e4338211cbe2953af62fe81c308b6d2a72845b55c709",
+    "bytes": 95479
+  },
+  {
+    "file": "knob-gray.jpg",
+    "url": "https://live-katalog.ganternorm.com/catalog-images/ganter/9f851ce58098498f1a313d8edd8c34ac/GN-526-Control-Knobs-Plastic-Bushing-Steel-DGR-Gray-RAL-7035-matte-finish.jpg",
+    "sha256": "a62a3ac187fc59b735737d1adfa757c29edbc4af7445d3f5929f894f8a8075b0",
+    "bytes": 10868
+  },
+  {
+    "file": "knob-drawing.svg",
+    "url": "https://live-katalog.ganternorm.com/svg/ganter/e7dc24171f2082548daacaa8ac6d4894/GN-526-Control-Knobs-Plastic-Bushing-Steel-sketch.svg",
+    "sha256": "dd42931a3131c3cf50ff5520b16676708a59d3816f1189927c13acfced80d1c2",
+    "bytes": 120542
+  },
+  {
+    "file": "1590A.pdf",
+    "url": "https://www.hammfg.com/pdf/1590A.pdf",
+    "sha256": "ddce617a4a6f866c51f10552d7d4eed6cf17296c6ccf8838422ba114d4d5b825",
+    "usage": "Dimensioned drawing; envelope annotation is separately labeled, not automatic perception"
+  }
+]

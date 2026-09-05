@@ -1,0 +1,319 @@
+{
+  "schema_version": 1,
+  "record_type": "APPRENTICESHIP_BASELINE_RESULTS",
+  "date": "2026-09-05",
+  "baseline_commit": "ec9ddcf44245a6bf5d1e7e75ee2be5ce0716a2df",
+  "status": "PARTIAL_B0",
+  "contract": "bootstrap_baseline_manifest.json",
+  "source_manifest": "tests/fixtures/bootstrap_baseline/sources.json",
+  "method": "Unchanged default extractor on ten source images; default appearance proposals on seven accepted images. Separate annotation-assisted housing exterior-envelope diagnostic, using unchanged initializer and fitting.",
+  "photo_runs": [
+    {
+      "file": "olfa-front.jpg",
+      "source_sha256": "035efa9cbc73e9e91a0d997b0b2001bb001dbb7c374c43a7074bc95f12bf49ae",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 0,
+      "appearance_region_count": 2,
+      "appearance_fragment_counts": [
+        6,
+        85
+      ]
+    },
+    {
+      "file": "olfa-packed.jpg",
+      "source_sha256": "47066ca6c7d92edc7b0b24832a87a9f9617898d32ba1554cf39bbd131ca8dbb4",
+      "extractor_accepted": false,
+      "extraction_issues": [
+        "foreground is strongly fragmented",
+        "foreground reaches the image border; the silhouette is crop-truncated"
+      ],
+      "mask_hole_count": 168,
+      "appearance_region_count": null,
+      "appearance_fragment_counts": []
+    },
+    {
+      "file": "olfa-use.jpg",
+      "source_sha256": "7edd4b17604d6677ab7a3fb6579c8970958c2cba39861586b9bca685991a05d4",
+      "extractor_accepted": false,
+      "extraction_issues": [
+        "foreground is strongly fragmented",
+        "foreground reaches the image border; the silhouette is crop-truncated"
+      ],
+      "mask_hole_count": 1682,
+      "appearance_region_count": null,
+      "appearance_fragment_counts": []
+    },
+    {
+      "file": "olfa-disassembly.jpg",
+      "source_sha256": "118fc204b59003b6764752b3d35dffb474ddfd8ba5a00db6150ad4e5e6a3f346",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 32,
+      "appearance_region_count": 3,
+      "appearance_fragment_counts": [
+        5,
+        787,
+        641
+      ]
+    },
+    {
+      "file": "housing-1.jpg",
+      "source_sha256": "55d62b3d916e2c1fd34b7eab72767cf247ae7a77330502b9a796d6a5ead16e11",
+      "extractor_accepted": false,
+      "extraction_issues": [
+        "foreground is strongly fragmented"
+      ],
+      "mask_hole_count": 335,
+      "appearance_region_count": null,
+      "appearance_fragment_counts": []
+    },
+    {
+      "file": "housing-2.jpg",
+      "source_sha256": "3aedce842328d11171fa8f7c9fc9e07ea57d33b4d6800bc836da7e555aa9fcb3",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 247,
+      "appearance_region_count": 3,
+      "appearance_fragment_counts": [
+        3659,
+        3013,
+        2196
+      ]
+    },
+    {
+      "file": "clip-front.jpg",
+      "source_sha256": "a66fcca5afcceef7732cc4f45303b0ae9e12abb04f9f0b4f2a6f1b0cf781b289",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 19,
+      "appearance_region_count": 2,
+      "appearance_fragment_counts": [
+        27,
+        34
+      ]
+    },
+    {
+      "file": "clip-alt.jpg",
+      "source_sha256": "9fd390bda01f72a8a707b730c63177eae6e8eed1703a87a6ce857f13c52db078",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 47,
+      "appearance_region_count": 2,
+      "appearance_fragment_counts": [
+        96,
+        24
+      ]
+    },
+    {
+      "file": "clip-alt2.jpg",
+      "source_sha256": "1fa037307e49c1e772b4e4338211cbe2953af62fe81c308b6d2a72845b55c709",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 19,
+      "appearance_region_count": 2,
+      "appearance_fragment_counts": [
+        32,
+        34
+      ]
+    },
+    {
+      "file": "knob-gray.jpg",
+      "source_sha256": "a62a3ac187fc59b735737d1adfa757c29edbc4af7445d3f5929f894f8a8075b0",
+      "extractor_accepted": true,
+      "extraction_issues": [],
+      "mask_hole_count": 46,
+      "appearance_region_count": 2,
+      "appearance_fragment_counts": [
+        5,
+        100
+      ]
+    }
+  ],
+  "envelope": {
+    "status": "AMBIGUOUS_OR_INCOMPATIBLE",
+    "loss_margin": 0.00600376781426455,
+    "minimum_loss_margin": 0.02,
+    "candidates": [
+      {
+        "family": "section_loft",
+        "compatible": true,
+        "mean_view_loss": 0.01577029362963266,
+        "per_view": {
+          "front": {
+            "loss": 0.005922097089878897,
+            "silhouette_iou": 0.9942456113065962,
+            "contour_error_normalized": 0.0004791668470716104,
+            "reference_hole_count": 0,
+            "candidate_hole_count": 0,
+            "hole_iou": 1
+          },
+          "side": {
+            "loss": 0.025618490169386422,
+            "silhouette_iou": 0.9747509446925455,
+            "contour_error_normalized": 0.0010555281769484282,
+            "reference_hole_count": 0,
+            "candidate_hole_count": 0,
+            "hole_iou": 1
+          }
+        }
+      },
+      {
+        "family": "profile_extrusion",
+        "compatible": true,
+        "mean_view_loss": 0.00976652581536811,
+        "per_view": {
+          "front": {
+            "loss": 0.009699703015189142,
+            "silhouette_iou": 0.9904860111288377,
+            "contour_error_normalized": 0.0005306118400767446,
+            "reference_hole_count": 0,
+            "candidate_hole_count": 0,
+            "hole_iou": 1
+          },
+          "side": {
+            "loss": 0.009833348615547077,
+            "silhouette_iou": 0.9903178769320502,
+            "contour_error_normalized": 0.00043207299313507974,
+            "reference_hole_count": 0,
+            "candidate_hole_count": 0,
+            "hole_iou": 1
+          }
+        }
+      }
+    ]
+  },
+  "tasks": [
+    {
+      "id": "B0_PROFILE",
+      "root_causes": [
+        "REFERENCE_FAILURE",
+        "COMPONENT_FAILURE",
+        "DEPTH_FAILURE"
+      ],
+      "observed": [
+        "The front image shows blade, metal channel, slider and rear clip; two appearance regions do not identify those assemblies.",
+        "The disassembly illustration includes an arrow and moved components; it is not a second registered view of the assembled pose."
+      ],
+      "next": "Resolve profile/channel/slider/clip identities and obtain or justify a real depth view before 3D fitting.",
+      "status": "INCOMPLETE_AT_REFERENCE_STAGES",
+      "review_channels": {
+        "reference_fidelity": "NOT_EVALUATED",
+        "major_form_and_proportion": "NOT_EVALUATED",
+        "depth_and_negative_space": "NOT_EVALUATED",
+        "component_and_interface_logic": "NOT_EVALUATED",
+        "base_cage_editability": "NOT_EVALUATED",
+        "evaluated_surface_and_highlight_flow": "NOT_EVALUATED",
+        "edge_and_shading_intent": "NOT_EVALUATED",
+        "adaptive_repair_quality": "NOT_EVALUATED"
+      },
+      "geometry_created": false,
+      "reviewer": "agent self-review; not independent or human approval"
+    },
+    {
+      "id": "B0_HOUSING",
+      "root_causes": [
+        "REFERENCE_FAILURE",
+        "COMPONENT_FAILURE",
+        "REPRESENTATION_FAILURE"
+      ],
+      "observed": [
+        "247 extracted holes in the assembled photograph are not 247 geometric apertures.",
+        "Three appearance regions contain 3659, 3013 and 2196 fragments; finish/lighting is not part identity.",
+        "The drawing-assisted envelope fit is ambiguous at the existing margin. It excludes the cavity, lid and fasteners, so is not a full asset baseline."
+      ],
+      "next": "Use the observed cavity and separate lid to constrain component topology and depth; preserve the unassisted photo baseline.",
+      "status": "INCOMPLETE_AT_REFERENCE_STAGES",
+      "review_channels": {
+        "reference_fidelity": "NOT_EVALUATED",
+        "major_form_and_proportion": "NOT_EVALUATED",
+        "depth_and_negative_space": "NOT_EVALUATED",
+        "component_and_interface_logic": "NOT_EVALUATED",
+        "base_cage_editability": "NOT_EVALUATED",
+        "evaluated_surface_and_highlight_flow": "NOT_EVALUATED",
+        "edge_and_shading_intent": "NOT_EVALUATED",
+        "adaptive_repair_quality": "NOT_EVALUATED"
+      },
+      "geometry_created": false,
+      "reviewer": "agent self-review; not independent or human approval"
+    },
+    {
+      "id": "B0_RADIAL",
+      "root_causes": [
+        "REFERENCE_FAILURE",
+        "DEPTH_FAILURE"
+      ],
+      "observed": [
+        "The family photograph shows a gray cap, fluted body, lower band and side feature, but no underside/bore.",
+        "46 extracted image holes are not verified geometry.",
+        "GN 526-32-B6-DGR is an available exact variant in the manufacturer table; the shared family photograph does not prove its precise dimensions."
+      ],
+      "next": "Freeze an exact-size drawing and additional view; do not infer bore or side-feature depths from the family photograph.",
+      "status": "INCOMPLETE_AT_REFERENCE_STAGES",
+      "review_channels": {
+        "reference_fidelity": "NOT_EVALUATED",
+        "major_form_and_proportion": "NOT_EVALUATED",
+        "depth_and_negative_space": "NOT_EVALUATED",
+        "component_and_interface_logic": "NOT_EVALUATED",
+        "base_cage_editability": "NOT_EVALUATED",
+        "evaluated_surface_and_highlight_flow": "NOT_EVALUATED",
+        "edge_and_shading_intent": "NOT_EVALUATED",
+        "adaptive_repair_quality": "NOT_EVALUATED"
+      },
+      "geometry_created": false,
+      "reviewer": "agent self-review; not independent or human approval"
+    },
+    {
+      "id": "B0_ASSEMBLY",
+      "root_causes": [
+        "REFERENCE_FAILURE",
+        "COMPONENT_FAILURE",
+        "DEPTH_FAILURE"
+      ],
+      "observed": [
+        "The clip has a continuous bent body and two separate wire handles; two appearance regions merge semantic components.",
+        "The alternate photograph changes handle pose. The third image visually repeats the first camera/configuration with different framing; it is not independent depth support."
+      ],
+      "next": "Separate rigid body correspondence from articulated-handle pose; preserve wire-loop negative spaces in reviewed masks.",
+      "status": "INCOMPLETE_AT_REFERENCE_STAGES",
+      "review_channels": {
+        "reference_fidelity": "NOT_EVALUATED",
+        "major_form_and_proportion": "NOT_EVALUATED",
+        "depth_and_negative_space": "NOT_EVALUATED",
+        "component_and_interface_logic": "NOT_EVALUATED",
+        "base_cage_editability": "NOT_EVALUATED",
+        "evaluated_surface_and_highlight_flow": "NOT_EVALUATED",
+        "edge_and_shading_intent": "NOT_EVALUATED",
+        "adaptive_repair_quality": "NOT_EVALUATED"
+      },
+      "geometry_created": false,
+      "reviewer": "agent self-review; not independent or human approval"
+    }
+  ],
+  "annotation_assisted_diagnostic": {
+    "target": "Hammond 1590A exterior envelope only",
+    "review_channels": {
+      "reference_fidelity": "PARTIAL",
+      "major_form_and_proportion": "PARTIAL",
+      "depth_and_negative_space": "PARTIAL",
+      "component_and_interface_logic": "NOT_EVALUATED",
+      "base_cage_editability": "NOT_EVALUATED",
+      "evaluated_surface_and_highlight_flow": "NOT_EVALUATED",
+      "edge_and_shading_intent": "NOT_EVALUATED",
+      "adaptive_repair_quality": "NOT_EVALUATED"
+    },
+    "why_partial": "2D drawing ROIs and camera registration supplied by agent; outer envelope only, minor dimension-line remnants remain in masks, one manufacturer source. No independent annotation review, complete components, Blender cage, evaluated-surface or adaptive-repair evidence.",
+    "blender_execution_attempted": false,
+    "compilation_authorized": false,
+    "thresholds_changed": false
+  },
+  "knowledge_promotion": "NONE",
+  "b4_authorized": false,
+  "limitations": [
+    "These are scored early-stage baseline failures, not four completed reference-to-Blender attempts.",
+    "No photographic camera calibration was fabricated. No product quality score was assigned without a model.",
+    "Tiny threshold gaps must not be promoted directly to geometric holes; blanket hole filling would also destroy real wire-loop negative spaces.",
+    "Physical component and pose observations are agent interpretations of inspected source images, not outputs of the appearance proposer.",
+    "B0 remains partial until missing channels are exercised; tests do not supply that evidence."
+  ]
+}

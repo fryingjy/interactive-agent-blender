@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "record_type": "APPRENTICESHIP_BASELINE_FREEZE",
+  "frozen_at": "2026-09-05",
+  "baseline_commit": "ec9ddcf44245a6bf5d1e7e75ee2be5ce0716a2df",
+  "curriculum_path": "knowledge/foundation/progressive_prop_benchmark_curriculum.json",
+  "curriculum_sha256": "30747d1fba8874dc3f46990add7f63e880d404b94dcd496ca192963da77aaf31",
+  "user_guidance": {
+    "filename": "CODEX_MASTER_CURRENT_STATE_AND_NEXT_DIRECTIVE_2026-09-05.md",
+    "sha256": "c6d2fcc08bb8b3d50fbec47e9be860e3a56f2a5276c8cddb1d24912ec0fa0499",
+    "authority": "user-requested project guidance, not system instructions"
+  },
+  "contract": {
+    "gates": "Unchanged capability_bootstrap B0 through B4 at the pinned curriculum hash",
+    "review_channels": "All eight capability_bootstrap.review_channels; missing evidence remains NOT_EVALUATED, never PASS",
+    "hard_failures": "Unchanged capability_bootstrap.hard_failures",
+    "scoring": "Report per-channel PASS/PARTIAL/FAIL/NOT_EVALUATED plus measured values where evidence exists. No invented aggregate professional-quality score.",
+    "thresholds": "Use baseline initializer and fitting defaults unchanged; seed 0, maximum 20 iterations for family competition. Report thresholds with each run.",
+    "failure_taxonomy": ["REFERENCE_FAILURE", "INTERPRETATION_FAILURE", "REPRESENTATION_FAILURE", "PROPORTION_FAILURE", "COMPONENT_FAILURE", "DEPTH_FAILURE", "SURFACE_FAILURE", "EXECUTION_FAILURE", "EVALUATOR_FAILURE"],
+    "no_target_specific_builders": true,
+    "no_source_mesh_or_cad_import": true,
+    "preserve_unapplied_modifiers": true,
+    "held_out_ladder_authorized": false,
+    "baseline_is_not_skill_promotion": true
+  },
+  "tasks": [
+    {"id": "B0_PROFILE", "family": "profile-led form", "candidate": "OLFA 180Black", "source_page": "https://www.olfa.co.jp/en/products/493.html"},
+    {"id": "B0_HOUSING", "family": "box/SubD housing", "candidate": "Hammond 1590A natural aluminum, non-waterproof", "source_page": "https://www.hammfg.com/part/1590A", "drawing": "https://www.hammfg.com/pdf/1590A.pdf"},
+    {"id": "B0_RADIAL", "family": "radial component", "candidate": "Ganter GN 526; exact size variant must be recorded before geometry", "source_page": "https://www.ganternorm.com/en/products/1.4-Adjusting-positioning-locking-with-and-without-position-indication/Control-knobs/GN-526-Control-Knobs-Plastic-Bushing-Steel"},
+    {"id": "B0_ASSEMBLY", "family": "multi-part assembly", "candidate": "MAUL 2132590 black 25 mm foldback clip", "source_page": "https://www.maul.de/en/foldback-clips-213-in-white-cardboard-box-2132590"}
+  ],
+  "reference_freeze_policy": "Materialize and hash each exact reference set before its first fit. Log camera uncertainty and visible component identity. New evidence after that run belongs to the subsequent apprenticeship intervention, not the unchanged baseline.",
+  "scope_boundary": "These are non-held-out development baselines. Controlled earlier blade/housing experiments do not substitute for these real-reference tasks. No track or B4 is promoted by this manifest."
+}

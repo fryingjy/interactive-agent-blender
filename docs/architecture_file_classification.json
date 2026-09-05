@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 281,
-  "python_file_count": 165,
+  "tracked_file_count": 287,
+  "python_file_count": 167,
   "classification_counts": {
     "CORE_RUNTIME": 38,
-    "CURRENT_DOC": 17,
-    "CURRENT_KNOWLEDGE": 119,
+    "CURRENT_DOC": 18,
+    "CURRENT_KNOWLEDGE": 121,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 61,
+    "TEST_SUPPORT": 64,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -400,6 +400,17 @@
       "entrypoint": false
     },
     {
+      "path": "docs/BOOTSTRAP_BASELINE.md",
+      "classification": "CURRENT_DOC",
+      "classification_reason": "current repository or architecture documentation",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
       "path": "docs/CONSOLIDATION_AUDIT.md",
       "classification": "CURRENT_DOC",
       "classification_reason": "current repository or architecture documentation",
@@ -555,6 +566,28 @@
     },
     {
       "path": "knowledge/foundation/blend_corpus_apprenticeship_baseline.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/bootstrap_baseline_manifest.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/bootstrap_baseline_results.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
@@ -1813,6 +1846,7 @@
         "tools/verify_reference_set_gate.py"
       ],
       "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py",
         "tests/test_reference_analysis.py"
       ],
       "reachable_from_authoritative_roots": true,
@@ -1856,6 +1890,7 @@
       "imports": [],
       "production_importers": [],
       "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py",
         "tests/test_reference_registration.py"
       ],
       "reachable_from_authoritative_roots": false,
@@ -2153,7 +2188,9 @@
         "modeling_core/__init__.py",
         "modeling_core/component_proposals.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2172,7 +2209,9 @@
       "production_importers": [
         "modeling_core/__init__.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2188,7 +2227,9 @@
       "production_importers": [
         "modeling_core/__init__.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_photos.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2276,7 +2317,9 @@
       "production_importers": [
         "modeling_core/__init__.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2293,7 +2336,9 @@
         "modeling_core/fitting.py",
         "modeling_core/refit.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2306,7 +2351,9 @@
       "production_importers": [
         "modeling_core/__init__.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2321,7 +2368,10 @@
         "modeling_core/component_evidence.py",
         "modeling_core/component_proposals.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py",
+        "tests/fixtures/bootstrap_baseline/replay_photos.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2356,7 +2406,9 @@
         "modeling_core/initialization.py",
         "modeling_core/refit.py"
       ],
-      "test_importers": [],
+      "test_importers": [
+        "tests/fixtures/bootstrap_baseline/replay_envelope.py"
+      ],
       "reachable_from_authoritative_roots": true,
       "entrypoint": false
     },
@@ -2491,6 +2543,52 @@
       "classification": "TEST_SUPPORT",
       "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
       "python_module": "tests",
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/bootstrap_baseline/replay_envelope.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.fixtures.bootstrap_baseline.replay_envelope",
+      "imports": [
+        "knowledge_engine/reference_analysis.py",
+        "knowledge_engine/reference_registration.py",
+        "modeling_core/component_evidence.py",
+        "modeling_core/component_fitting.py",
+        "modeling_core/initialization.py",
+        "modeling_core/mesh.py",
+        "modeling_core/reference_bundle.py",
+        "modeling_core/reference_evidence.py",
+        "modeling_core/render.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/bootstrap_baseline/replay_photos.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.fixtures.bootstrap_baseline.replay_photos",
+      "imports": [
+        "modeling_core/component_proposals.py",
+        "modeling_core/reference_evidence.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/bootstrap_baseline/sources.json",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": null,
       "imports": [],
       "production_importers": [],
       "test_importers": [],
