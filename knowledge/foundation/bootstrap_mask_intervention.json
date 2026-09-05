@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "record_type": "REFERENCE_MASK_INTERVENTION",
+  "date": "2026-09-05",
+  "baseline_commit": "92101af",
+  "baseline_untouched": true,
+  "status": "PARTIAL_REFERENCE_TO_FORM",
+  "experiment": "tests/fixtures/bootstrap_baseline/replay_mask_intervention.py",
+  "size_policy": {
+    "maximum_area": "max(4, round(0.0002 * object_bbox_area))",
+    "selected_before_measuring_region_areas": true,
+    "automatic_use_accepted": false,
+    "reason": "Area filtering leaves larger highlights and erases a known tiny true aperture."
+  },
+  "results": [
+    {
+      "source_mask_sha256": "e8fab9090f7bf87d6a39c1b8588ed0cdef2721c975fc0993a734415a28fa9a15",
+      "name": "housing-2",
+      "cutoff_px": 124,
+      "before": 247,
+      "after": 2,
+      "changed_pixels": 1220,
+      "source_reviewed_override": {
+        "after": 0,
+        "changed_pixels": 2297,
+        "source_sha256": "3aedce842328d11171fa8f7c9fc9e07ea57d33b4d6800bc836da7e555aa9fcb3",
+        "override_sha256": "741456d3ad2cf2ce05884793ecc813d8a34248022c5bd88c0d228dac9f2c12df",
+        "evidence_sha256": "c43b730c11bde940002c879e3ee6c820523951ad29eb63bc53c353d19277ea78",
+        "decision": "Enclosed bright gaps lie on backed solid surfaces in this assembled view; fill only enclosed background, retain all external boundaries.",
+        "reviewer": "agent source-image review; no independent approval",
+        "geometry_authorized": false
+      },
+      "retained_region_count": 2
+    },
+    {
+      "source_mask_sha256": "6150c7685f7fc4dbd6246f5131496fda51f1f1e227cb835ca9b1b0334e2d9723",
+      "name": "knob-gray",
+      "cutoff_px": 10,
+      "before": 46,
+      "after": 7,
+      "changed_pixels": 125,
+      "source_reviewed_override": {
+        "after": 0,
+        "changed_pixels": 264,
+        "source_sha256": "a62a3ac187fc59b735737d1adfa757c29edbc4af7445d3f5929f894f8a8075b0",
+        "override_sha256": "4a869aeedf428d0bc8fbd2c8b987d2a4e51abe96e5ea558efe72ea5ce1151949",
+        "evidence_sha256": "aa352dfb82ca33f31b1aa21c07272b7c37701ac04cdfc68feee819d4361ca6b0",
+        "decision": "Enclosed bright gaps lie on backed solid surfaces in this assembled view; fill only enclosed background, retain all external boundaries.",
+        "reviewer": "agent source-image review; no independent approval",
+        "geometry_authorized": false
+      },
+      "retained_region_count": 7
+    },
+    {
+      "source_mask_sha256": "39d44a3baeec25f2dd0600d30150786041038dfccb5cbbf2726ce24b0a2cc16d",
+      "name": "clip-front",
+      "cutoff_px": 30,
+      "before": 19,
+      "after": 8,
+      "changed_pixels": 33,
+      "source_reviewed_override": {
+        "decision": "DEFER: preserve ambiguous small gaps and wire loops; area alone cannot select real negative space.",
+        "geometry_authorized": false
+      },
+      "retained_region_count": 8
+    },
+    {
+      "source_mask_sha256": "a86eb08655f690043dc20326c1aae8933fdaddf72d6a80dc5ed2d689ea2aac02",
+      "name": "clip-alt",
+      "cutoff_px": 33,
+      "before": 47,
+      "after": 8,
+      "changed_pixels": 116,
+      "source_reviewed_override": {
+        "decision": "DEFER: preserve ambiguous small gaps and wire loops; area alone cannot select real negative space.",
+        "geometry_authorized": false
+      },
+      "retained_region_count": 8
+    },
+    {
+      "counterexample": "Known tiny true aperture inside a solid silhouette",
+      "hole_area": 1,
+      "fixed_minimum_cutoff": 4,
+      "measured_before": 1,
+      "measured_after": 0,
+      "size_only_policy_erases_real_hole": true,
+      "policy_accepted_for_automatic_use": false
+    }
+  ],
+  "scope": "Source-reviewed outer object-mask corrections on two assembled views only. Clip decisions deferred. No automatic semantic labeling, camera solve, geometry construction, Blender surface review, or B4 promotion.",
+  "runtime_change": "Existing analyze_reference_mask now provides up to 64 largest localized image-gap regions, exact mask-pixel hash, bounds and interior seeds. Existing masks, counts and fitting thresholds remain unchanged. Geometric-hole interpretation stays unknown.",
+  "next": "Resolve physical components and camera/depth evidence. Do not convert this pixel-mask improvement into a modeling-quality claim."
+}

@@ -337,7 +337,10 @@ transfer or autonomous modeling. See `../knowledge/foundation/selective_crease_e
    envelope fits well but remains ambiguous at the unchanged family margin; it does not establish
    cavity, lid, production cage or surface quality. Preserve these raw outcomes, complete the
    reference-to-form intervention under a distinct record, and exercise the missing Blender and
-   review channels. B0 and the overall bootstrap remain PARTIAL; the ladder stays paused.
+   review channels. The first separate intervention corrected backed-surface masks on two views
+   through source-reviewed overrides, and rejected size-only hole filling using a tiny-aperture
+   counterexample. Localized gap inspection now supports that review; semantic components and
+   camera/depth reconciliation remain next. B0 and the bootstrap remain PARTIAL; the ladder stays paused.
 2. **Reference-to-form apprenticeship** — practice multiview landmarks, depth/overlap reconciliation,
    and rejection of unsupported hidden-form hypotheses before topology refinement.
 3. **Construction-grammar apprenticeship** — reproduce and transfer connected profile cages,

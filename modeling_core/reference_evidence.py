@@ -110,12 +110,26 @@ def _extract_mask(image: np.ndarray, *, method: str, background_tolerance: float
     }
 
 
-def _holes(mask: np.ndarray) -> tuple[int, int]:
+def _holes(mask: np.ndarray) -> tuple[int, int, list[dict[str, Any]]]:
     inverse = (~mask).astype(np.uint8)
     count, labels, stats, _ = cv2.connectedComponentsWithStats(inverse, connectivity=8)
     border_labels = set(labels[0]) | set(labels[-1]) | set(labels[:, 0]) | set(labels[:, -1])
     holes = [label for label in range(1, count) if label not in border_labels]
-    return len(holes), sum(int(stats[label, cv2.CC_STAT_AREA]) for label in holes)
+    # Localize a bounded review set without silently discarding small holes from
+    # the existing metrics. Size ranks inspection priority, never physical truth.
+    ranked = sorted(holes, key=lambda label: (-int(stats[label, cv2.CC_STAT_AREA]), label))
+    regions = []
+    for label in ranked[:64]:
+        x, y, w, h, area = (int(value) for value in stats[label])
+        local_y, local_x = np.nonzero(labels[y:y+h, x:x+w] == label)
+        regions.append({
+            "region_label": label,
+            "bbox_pixels": [x, y, x+w, y+h],
+            "area_pixels": area,
+            "seed_pixel": [x + int(local_x[0]), y + int(local_y[0])],
+            "interpretation": "UNREVIEWED_IMAGE_GAP",
+        })
+    return len(holes), sum(int(stats[label, cv2.CC_STAT_AREA]) for label in holes), regions
 
 
 def analyze_reference_mask(mask: np.ndarray) -> dict[str, Any]:
@@ -143,7 +157,7 @@ def analyze_reference_mask(mask: np.ndarray) -> dict[str, Any]:
             "right": round(float((row_x.max() - left + 1) / bbox_width), 6) if len(row_x) else None,
             "width": round(float((row_x.max() - row_x.min() + 1) / bbox_width), 6) if len(row_x) else 0.0,
         })
-    hole_count, hole_pixels = _holes(mask)
+    hole_count, hole_pixels, hole_regions = _holes(mask)
     return {
         "image_size": [width, height],
         "bbox_pixels": [left, top, right + 1, bottom + 1],
@@ -160,6 +174,14 @@ def analyze_reference_mask(mask: np.ndarray) -> dict[str, Any]:
         "row_profile": samples,
         "enclosed_negative_space_count": hole_count,
         "enclosed_negative_space_fraction": hole_pixels / (width * height),
+        "negative_space_review": {
+            "mask_pixels_sha256": hashlib.sha256(mask.astype(np.uint8).tobytes()).hexdigest(),
+            "regions": hole_regions,
+            "region_limit": 64,
+            "truncated": hole_count > len(hole_regions),
+            "geometric_hole_count": None,
+            "claim_boundary": "Labels and seeds belong only to this exact mask and image size. Image gaps may be highlights, texture, or real openings. Neither size nor extraction acceptance verifies geometry; no holes were filled.",
+        },
     }
 
 

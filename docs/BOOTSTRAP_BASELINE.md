@@ -95,6 +95,40 @@ reference tasks.
 
 ## Continuation
 
+### First reference-to-form intervention
+
+The [separate mask intervention](../knowledge/foundation/bootstrap_mask_intervention.json)
+preserves all original baseline records. A fixed small-area filling experiment
+reduced housing/knob/clip image noise, but left larger highlight gaps and erased a
+known tiny true aperture in a controlled counterexample. It was **rejected for
+automatic use**, not installed as a default mask cleanup.
+
+Source-image review supports filling the enclosed bright gaps on the backed
+surfaces of the assembled housing and knob views. Re-ingesting those explicit
+overrides through the existing extractor reduced their counts from 247/46 to 0/0
+without changing exterior background pixels or bounding boxes. The edited-pixel
+overlays were inspected. The clip remains deferred: real loop spaces and ambiguous
+small gaps must not be discarded based on size. These are agent-reviewed masks,
+not independent ground truth or completed multiview/Blender models.
+
+The existing mask analyzer now localizes up to 64 largest image gaps with bounds,
+interior seed pixels and an exact mask-pixel hash; full counts remain untruncated.
+It explicitly leaves geometric-hole interpretation unknown. This is a scoped
+diagnostic correction, not a new solver or automatic semantic repair.
+
+Replay against the unchanged baseline masks:
+
+```powershell
+python tests/fixtures/bootstrap_baseline/replay_mask_intervention.py
+```
+
+Intervention verification: **416 tests and 30 subtests passed**, including the fresh
+Blender regression; repository, architecture and curriculum audits passed. Added
+tests cover exact gap localization, one-pixel apertures, bounded reporting without
+truncated totals, and exterior-connected notches. No baseline gates were changed.
+
+### Still outstanding
+
 Keep the raw outcomes immutable. Complete the reference-to-form intervention using
 reviewed component masks, pose-aware correspondence, landmarks and actual depth
 evidence, then rerun under a distinct intervention record. Compare the first stage

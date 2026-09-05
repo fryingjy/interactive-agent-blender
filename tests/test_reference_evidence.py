@@ -119,3 +119,41 @@ def test_mask_analysis_uses_full_image_normalized_coordinates():
     result = analyze_reference_mask(mask)
     assert result["bbox_normalized"] == [0.25, 0.25, 0.75, 0.75]
     assert result["centroid_normalized"] == pytest.approx([0.4875, 0.475])
+
+
+def test_negative_space_inventory_localizes_without_filling_or_inventing_semantics():
+    mask = np.zeros((40, 50), dtype=bool)
+    mask[3:37, 3:47] = True
+    mask[8:18, 10:22] = False
+    mask[25, 30] = False  # Could be a tiny real aperture or noise: do not decide.
+    before = mask.copy()
+    result = analyze_reference_mask(mask)
+    review = result['negative_space_review']
+    assert result['enclosed_negative_space_count'] == 2
+    assert [r['area_pixels'] for r in review['regions']] == [120, 1]
+    assert review['regions'][0]['bbox_pixels'] == [10, 8, 22, 18]
+    assert review['regions'][0]['seed_pixel'] == [10, 8]
+    assert review['geometric_hole_count'] is None
+    assert not review['truncated']
+    assert np.array_equal(mask, before)
+    assert review['mask_pixels_sha256'] == hashlib.sha256(mask.astype(np.uint8).tobytes()).hexdigest()
+
+
+def test_negative_space_inventory_is_bounded_but_counts_are_not_truncated():
+    mask = np.zeros((44, 44), dtype=bool)
+    mask[2:42, 2:42] = True
+    mask[5:35:3, 5:35:3] = False
+    result = analyze_reference_mask(mask)
+    assert result['enclosed_negative_space_count'] == 100
+    assert len(result['negative_space_review']['regions']) == 64
+    assert result['negative_space_review']['truncated'] is True
+    assert result['enclosed_negative_space_fraction'] == pytest.approx(100 / mask.size)
+
+
+def test_negative_space_inventory_excludes_exterior_connected_notches():
+    mask = np.zeros((30, 30), dtype=bool)
+    mask[5:25, 5:25] = True
+    mask[5:15, 12:16] = False
+    result = analyze_reference_mask(mask)
+    assert result['enclosed_negative_space_count'] == 0
+    assert result['negative_space_review']['regions'] == []

@@ -20,14 +20,14 @@
     "tools/run_modeler_command_sequence.py",
     "tools/start_modeler_in_blender.py"
   ],
-  "tracked_file_count": 287,
-  "python_file_count": 167,
+  "tracked_file_count": 289,
+  "python_file_count": 168,
   "classification_counts": {
     "CORE_RUNTIME": 38,
     "CURRENT_DOC": 18,
-    "CURRENT_KNOWLEDGE": 121,
+    "CURRENT_KNOWLEDGE": 122,
     "HISTORICAL": 1,
-    "TEST_SUPPORT": 64,
+    "TEST_SUPPORT": 65,
     "TOOL": 45
   },
   "parse_errors": [],
@@ -588,6 +588,17 @@
     },
     {
       "path": "knowledge/foundation/bootstrap_baseline_results.json",
+      "classification": "CURRENT_KNOWLEDGE",
+      "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
+      "python_module": null,
+      "imports": [],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "knowledge/foundation/bootstrap_mask_intervention.json",
       "classification": "CURRENT_KNOWLEDGE",
       "classification_reason": "research, review, retrieval, learning policy, or curated knowledge",
       "python_module": null,
@@ -2370,6 +2381,7 @@
       ],
       "test_importers": [
         "tests/fixtures/bootstrap_baseline/replay_envelope.py",
+        "tests/fixtures/bootstrap_baseline/replay_mask_intervention.py",
         "tests/fixtures/bootstrap_baseline/replay_photos.py"
       ],
       "reachable_from_authoritative_roots": true,
@@ -2564,6 +2576,19 @@
         "modeling_core/reference_bundle.py",
         "modeling_core/reference_evidence.py",
         "modeling_core/render.py"
+      ],
+      "production_importers": [],
+      "test_importers": [],
+      "reachable_from_authoritative_roots": false,
+      "entrypoint": false
+    },
+    {
+      "path": "tests/fixtures/bootstrap_baseline/replay_mask_intervention.py",
+      "classification": "TEST_SUPPORT",
+      "classification_reason": "test, deterministic fixture, or redistributable neutral reference",
+      "python_module": "tests.fixtures.bootstrap_baseline.replay_mask_intervention",
+      "imports": [
+        "modeling_core/reference_evidence.py"
       ],
       "production_importers": [],
       "test_importers": [],
