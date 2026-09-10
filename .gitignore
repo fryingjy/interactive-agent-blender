@@ -1,0 +1,19 @@
+# Local credentials and environments
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Local studies, client data, temporary inspection media, and deliveries
+work/
+deliveries/
+*.blend
+*.blend1
+*.blend2
+
+# OS files
+Thumbs.db
+.DS_Store
