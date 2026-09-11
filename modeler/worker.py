@@ -6,7 +6,7 @@ from pathlib import Path
 import bpy
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from modeler.runtime import edit, inspect
+from modeler.runtime import edit, inspect, set_subdivision
 from modeler.render import render
 
 
@@ -33,6 +33,8 @@ def main():
         if Path(request['path']).resolve() == report.resolve():
             raise ValueError('Render and report paths must differ')
         result = render(request)
+    elif request['action'] == 'set_subdivision':
+        result = set_subdivision(request)
     else:
         result = edit(request)
     if mutation:

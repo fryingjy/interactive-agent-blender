@@ -38,7 +38,9 @@ Render request (no `--output`; the image path must be new):
 {"action": "render", "object": "Cube", "eye": [4, -6, 3], "target": [0, 0, 0], "scale": 4, "path": "work/preview.png"}
 ```
 
-Only single-user meshes in Object Mode without shape keys are supported. Selection and rendered visibility follow the loaded object. Mesh-health checks do not detect all intersections, flipped faces, bad proportions, or poor shading. Source modifiers remain live; editing their settings is not exposed yet. This is a local trusted-user tool, not a sandbox. Checkpoint files and reports are not published automatically.
+Only single-user meshes in Object Mode without shape keys are supported. Mesh-health checks do not detect all intersections, flipped faces, bad proportions, or poor shading. Source modifiers remain live. This is a local trusted-user tool, not a sandbox. Checkpoint files and reports are not published automatically.
+
+On this workstation, Workbench intermittently crashes inside the Intel graphics driver at process shutdown. A saved PNG is not evidence of a clean process exit. Add `"engine": "CYCLES"` to a render request for the tested CPU clay-render alternative (8 samples, 512 square). It leaves source materials untouched. Workbench remains available, not proven stable.
 
 ## Verification
 
@@ -51,5 +53,17 @@ python -m unittest discover -s tests -p "test_*.py" -v
 Tests use synthetic fixtures and temporary media, not commission examples. [Current shield study and next work](docs/CURRENT.md) records the first reference-driven exercise, including a rejected topology tradeoff. UV/material delivery and Roblox validation remain unimplemented.
 
 The editor also supports `subdivide_edges` (`edges`, `cuts`) and `set_vertex_positions` (`positions`: vertex-index/coordinate pairs). Selective edge subdivision may introduce triangles and n-gons; manifoldness is not a sufficient topology-quality check.
+
+Surface operations use the same fingerprint requirement:
+
+| Action | Additional request fields | Scope |
+| --- | --- | --- |
+| `inset_region` | `faces`, positive `thickness`, signed `depth` | Connected selected face region; no intersection guarantee |
+| `set_edge_crease` | `edges`, `weight` in 0–1 | Selected edge attribute |
+| `set_vertex_crease` | `vertices`, `weight` in 0–1 | Selected vertex attribute |
+| `set_face_smoothing` | `faces`, boolean `smooth` | Selected faces only; does not fix geometry |
+| `set_subdivision` | integer `levels` in 0–3 | Creates/updates one live `Modeler_Subdivision` modifier |
+
+Inspection reports triangle/quad/n-gon counts. Mesh edits warn when they introduce n-gons; the warning is a review signal, not a blanket prohibition. The managed subdivision operation restores its prior settings if post-edit inspection fails.
 
 Optional image comparison dependencies are listed in `requirements.txt`. `python -m modeler.compare --help` describes alpha-mask comparison with an explicit scale and offset. Same-view silhouette overlap is not proof of depth, surface quality, or professional acceptance.
