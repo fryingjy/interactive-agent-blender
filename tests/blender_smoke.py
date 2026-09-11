@@ -51,6 +51,15 @@ class RuntimeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             edit(request)
 
+    def test_subdivide_and_position_preserve_closed_cage(self):
+        state = inspect(self.name)
+        edit(self.request('subdivide_edges', edges=list(range(len(state['geometry']['edges']))), cuts=2))
+        state = inspect(self.name)
+        self.assertEqual(len(state['geometry']['vertices']), 56)
+        positions = [[i, [x*.5, y*.1, z]] for i, (x,y,z) in enumerate(state['geometry']['vertices'])]
+        changed = edit(self.request('set_vertex_positions', positions=positions))
+        self.assertEqual(changed['after']['health'], dict(components=1, nonmanifold_edges=0, degenerate_faces=0))
+
     def test_modifier_change_invalidates_fingerprint(self):
         modifier = bpy.context.object.modifiers.new('Live bevel', 'BEVEL')
         before = inspect(self.name)['fingerprint']

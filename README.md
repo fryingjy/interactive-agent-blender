@@ -48,4 +48,8 @@ $env:BLENDER_EXECUTABLE = "C:\Program Files\Blender Foundation\Blender 5.2\blend
 python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
-Tests use synthetic fixtures and temporary media, not commission examples. Next: one permitted-reference prop, measured proportions, and visible repair; then expand operations only as that exercise requires. UV/material delivery, reference comparison, and Roblox validation remain unimplemented.
+Tests use synthetic fixtures and temporary media, not commission examples. [Current shield study and next work](docs/CURRENT.md) records the first reference-driven exercise, including a rejected topology tradeoff. UV/material delivery and Roblox validation remain unimplemented.
+
+The editor also supports `subdivide_edges` (`edges`, `cuts`) and `set_vertex_positions` (`positions`: vertex-index/coordinate pairs). Selective edge subdivision may introduce triangles and n-gons; manifoldness is not a sufficient topology-quality check.
+
+Optional image comparison dependencies are listed in `requirements.txt`. `python -m modeler.compare --help` describes alpha-mask comparison with an explicit scale and offset. Same-view silhouette overlap is not proof of depth, surface quality, or professional acceptance.

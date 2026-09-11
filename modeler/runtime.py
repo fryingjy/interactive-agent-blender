@@ -103,11 +103,12 @@ def edit(request):
     if request.get('expected_fingerprint') != before['fingerprint']:
         raise ValueError('Stale or missing fingerprint; inspect before editing')
     action = request['action']
-    allowed = {'extrude_face': {'face', 'delta'}, 'move_vertices': {'vertices', 'delta'}}
+    allowed = {'extrude_face': {'face', 'delta'}, 'move_vertices': {'vertices', 'delta'},
+               'subdivide_edges': {'edges', 'cuts'}, 'set_vertex_positions': {'positions'}}
     if action not in allowed or set(request) != allowed[action] | {
             'object', 'action', 'expected_fingerprint'}:
         raise ValueError('Unknown action or unexpected request fields')
-    delta = vector(request['delta'])
+    delta = vector(request['delta']) if 'delta' in request else None
     obj = mesh_object(name)
     original = obj.data
     candidate = original.copy()
@@ -116,6 +117,7 @@ def edit(request):
         bm.from_mesh(candidate)
         bm.verts.ensure_lookup_table()
         bm.faces.ensure_lookup_table()
+        bm.edges.ensure_lookup_table()
         if action == 'extrude_face':
             face = bm.faces[indices([request['face']], len(bm.faces))[0]]
             result = bmesh.ops.extrude_face_region(bm, geom=[face], use_keep_orig=False)
@@ -123,9 +125,25 @@ def edit(request):
                 bmesh.ops.delete(bm, geom=[face], context='FACES_ONLY')
             verts = [element for element in result['geom'] if isinstance(element, bmesh.types.BMVert)]
             bmesh.ops.translate(bm, verts=verts, vec=delta)
-        else:
+        elif action == 'move_vertices':
             verts = [bm.verts[i] for i in indices(request['vertices'], len(bm.verts))]
             bmesh.ops.translate(bm, verts=verts, vec=delta)
+        elif action == 'subdivide_edges':
+            cuts = request['cuts']
+            if type(cuts) is not int or not 1 <= cuts <= 16:
+                raise ValueError('Cuts must be an integer from 1 to 16')
+            edges = [bm.edges[i] for i in indices(request['edges'], len(bm.edges))]
+            bmesh.ops.subdivide_edges(bm, edges=edges, cuts=cuts, use_grid_fill=True)
+        else:
+            positions = request['positions']
+            if not isinstance(positions, list) or not positions:
+                raise ValueError('Expected vertex/position pairs')
+            ids = indices([pair[0] for pair in positions], len(bm.verts))
+            coords = [vector(pair[1]) for pair in positions]
+            if any(len(pair) != 2 for pair in positions):
+                raise ValueError('Expected vertex/position pairs')
+            for index, position in zip(ids, coords):
+                bm.verts[index].co = position
         bm.normal_update()
         bm.to_mesh(candidate)
         candidate.update()

@@ -1,0 +1,3 @@
+# Optional reference-image comparison; Blender runtime uses bundled modules.
+numpy>=1.26,<3
+Pillow>=10,<13
